@@ -162,6 +162,11 @@
           </label>
 
           <label class="field">
+            <span>Phone</span>
+            <input id="profilePhone" type="tel" placeholder="Linked before activation" autocomplete="tel">
+          </label>
+
+          <label class="field">
             <span>Lane</span>
             <select id="role">
               <option value="builder">Builder</option>
@@ -246,14 +251,25 @@
             <p>Proof Stack</p>
             <h2>Werkles verifies you. Members see status, not your files.</h2>
           </div>
+          <div class="gate-list" aria-label="Required account gate">
+            <span>Required: driver's license front</span>
+            <span>Required: driver's license back</span>
+            <span>Required: live face capture</span>
+            <span>Required: linked phone number</span>
+          </div>
           <div class="verification-list">
+            <label><input type="checkbox" name="verify" value="licenseFront" checked disabled> Driver's license front</label>
+            <label><input type="checkbox" name="verify" value="licenseBack" checked disabled> Driver's license back</label>
+            <label><input type="checkbox" name="verify" value="faceCapture" checked disabled> Face capture</label>
+            <label><input type="checkbox" name="verify" value="phone" checked disabled> Phone link gate</label>
             <label><input type="checkbox" name="verify" value="identity" checked> Identity</label>
             <label><input type="checkbox" name="verify" value="funds" checked> Funds snapshot</label>
             <label><input type="checkbox" name="verify" value="history"> Work history support</label>
             <label><input type="checkbox" name="verify" value="license"> Licenses</label>
             <label><input type="checkbox" name="verify" value="references"> Reference checks</label>
           </div>
-          <p class="status-line"><span id="verifiedCount">2/5</span> prototype proof signals selected.</p>
+          <p id="gateStatus" class="status-line" role="status">License front/back, face capture, and linked phone required before account activation.</p>
+          <p class="status-line"><span id="verifiedCount">6/9</span> prototype proof requirements and signals selected.</p>
           <a class="button button-outline" href="proof.html">How proof will work</a>
         </article>
 
@@ -277,6 +293,10 @@
               <input id="betaEmail" type="email" placeholder="you@example.com" required>
             </label>
             <label class="field">
+              <span>Phone</span>
+              <input id="betaPhone" type="tel" placeholder="Linked before activation" autocomplete="tel" required>
+            </label>
+            <label class="field">
               <span>Lane</span>
               <select id="betaRole">
                 <option value="builder">Builder</option>
@@ -286,8 +306,8 @@
                 <option value="spark">Spark</option>
               </select>
             </label>
-            <button class="button button-dark" type="submit">Join the first room</button>
-            <p id="betaStatus" class="status-line" role="status">Stored locally until we wire Supabase.</p>
+            <button class="button button-dark" type="submit">Request gated invite</button>
+            <p id="betaStatus" class="status-line" role="status">Production activation will require license front/back, face capture, and phone link.</p>
           </form>
         </article>
       </section>

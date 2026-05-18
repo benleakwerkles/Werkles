@@ -50,10 +50,24 @@
         <strong>Current prototype boundary</strong>
         <p>
           Werkles does not currently accept, upload, process, or store sensitive financial,
-          identity, license, employment, tax, or business documents through this website. Do not
-          email or message us bank statements, IDs, Social Security numbers, tax returns, payroll
-          files, customer lists, private contracts, or background documents. The secure upload
-          flow comes later.
+          driver's license, phone, identity, employment, tax, or business documents through this
+          website. Do not email or message us bank statements, driver's licenses, IDs, Social
+          Security numbers, tax returns, payroll files, customer lists, private contracts, or
+          background documents. The secure upload flow comes later.
+        </p>
+      </section>
+
+      <section class="proof-warning proof-gate">
+        <div>
+          <p class="eyebrow">Account gate</p>
+          <h2>No active member account without license front/back, face capture, and linked phone.</h2>
+        </div>
+        <p>
+          Werkles should block full membership until the person captures the front and back of a
+          driver's license, completes a live face capture, and links a phone number to the account.
+          Other members should only see that the gate was passed, with date and scope. They should
+          not see the license image, license number, date of birth, address, phone number, face
+          image, or verification vendor data.
         </p>
       </section>
 
@@ -67,8 +81,9 @@
           <article>
             <strong>Source-checked</strong>
             <p>
-              Strongest category. A license lookup, vendor background check, or linked account
-              snapshot can be checked against a system of record.
+              Strongest category. A driver's license front/back capture with live face match,
+              license lookup, vendor background check, phone link, or linked account snapshot can
+              be checked against a system of record.
             </p>
           </article>
           <article>
@@ -117,7 +132,9 @@
             A scoped proof signal is better than storing raw files.
           </p>
           <ul>
-            <li>Identity: verified person, not public ID display.</li>
+            <li>Driver's license: front/back captured, not public ID display.</li>
+            <li>Face capture: identity match signal, not public face file.</li>
+            <li>Phone: linked account signal, not public phone display.</li>
             <li>Funds: dated snapshot or range, not a guarantee.</li>
             <li>License: active status as of lookup date.</li>
             <li>References: confirmed source, not absolute truth.</li>
@@ -162,8 +179,10 @@
         <ol class="proof-steps">
           <li>
             <strong>1. Ask for a proof category.</strong>
-            Werkles requests a specific proof category: identity, funds snapshot, license,
-            background check, work history support, reference check, or business record.
+            Werkles starts with the account gate: driver's license front, driver's license back,
+            live face capture, and linked phone. Then it requests any added category: funds
+            snapshot, license, background check, work history support, reference check, or business
+            record.
           </li>
           <li>
             <strong>2. Prefer vendor verification.</strong>

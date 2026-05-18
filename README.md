@@ -11,6 +11,7 @@ Current prototype:
 - Profile controls for money available, money needed, skills, and outcomes
 - Match deck with score explanations
 - Intro queue
+- Required account gate: driver's license front/back, face capture, and linked phone number before member activation
 - Proof checklist and `proof.html` trust page: Werkles verifies members; members do not inspect each other's raw documents
 - Canvas-based market map
 - Local browser storage for profile, intro queue, and beta signup capture

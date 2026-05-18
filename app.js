@@ -11,7 +11,7 @@ const profiles = [
     skills: ["field", "license", "estimating", "customers"],
     needs: ["sales", "admin", "books", "capital"],
     goals: ["leave", "start", "partner"],
-    verified: ["identity", "history", "license", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "history", "license", "references"],
     summary: "Licensed service plumber with a repeat customer list. Wants a partner who can sell, schedule, and help fund the first trucks."
   },
   {
@@ -26,7 +26,7 @@ const profiles = [
     skills: ["ops", "hiring", "admin", "field"],
     needs: ["capital", "sales", "books"],
     goals: ["leave", "equity", "partner"],
-    verified: ["identity", "history", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "history", "references"],
     summary: "Warehouse floor lead who trains crews, fixes broken processes, and wants an equity path instead of another promotion promise."
   },
   {
@@ -41,7 +41,7 @@ const profiles = [
     skills: ["sales", "admin", "customers", "estimating"],
     needs: ["license", "field", "capital"],
     goals: ["start", "partner", "equity"],
-    verified: ["identity", "history"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "history"],
     summary: "HVAC dispatcher and inside sales closer. Knows the seasonal call flow and wants to pair with a licensed tech."
   },
   {
@@ -56,7 +56,7 @@ const profiles = [
     skills: ["field", "license", "estimating", "equipment"],
     needs: ["sales", "admin", "capital"],
     goals: ["buy", "scale", "partner"],
-    verified: ["identity", "funds", "history", "license"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "funds", "history", "license"],
     summary: "Master electrician looking at a retiring owner's book of small commercial accounts. Needs closing capital and back-office help."
   },
   {
@@ -71,7 +71,7 @@ const profiles = [
     skills: ["books", "admin", "ops", "hiring"],
     needs: ["field", "sales", "license"],
     goals: ["equity", "partner", "scale"],
-    verified: ["identity", "funds", "history", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "funds", "history", "references"],
     summary: "Back-office manager for a local services company. Can clean up books, payroll, permits, scheduling, and vendor chaos."
   },
   {
@@ -86,7 +86,7 @@ const profiles = [
     skills: ["capital", "sales", "books", "admin"],
     needs: ["field", "license", "estimating"],
     goals: ["start", "buy", "partner"],
-    verified: ["identity", "funds", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "funds", "references"],
     summary: "Backer with home-service sales experience. Wants a real operator, not a passive paper deal."
   },
   {
@@ -101,7 +101,7 @@ const profiles = [
     skills: ["idea", "customers", "sales"],
     needs: ["ops", "field", "books", "capital"],
     goals: ["start", "partner", "equity"],
-    verified: ["identity", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "references"],
     summary: "Has a tested lead source for recurring local service work and early customer interest. Needs operators, books, and proof under pressure."
   },
   {
@@ -116,7 +116,7 @@ const profiles = [
     skills: ["field", "equipment", "customers", "estimating"],
     needs: ["capital", "books", "admin"],
     goals: ["leave", "start", "partner"],
-    verified: ["identity", "history", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "history", "references"],
     summary: "Diesel mechanic with fleet contacts and diagnostic equipment. Wants a shop partner who can handle billing and first-truck money."
   },
   {
@@ -131,7 +131,7 @@ const profiles = [
     skills: ["ops", "hiring", "sales", "admin", "capital"],
     needs: ["license", "field", "estimating"],
     goals: ["scale", "buy", "partner"],
-    verified: ["identity", "funds", "history", "references"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "funds", "history", "references"],
     summary: "Former contractor ops lead with capital and hard-won crew, cash, and calendar judgment. Looking for overlooked crews ready to own more of the upside."
   },
   {
@@ -146,7 +146,7 @@ const profiles = [
     skills: ["field", "customers", "equipment"],
     needs: ["license", "capital", "admin"],
     goals: ["leave", "equity", "partner"],
-    verified: ["identity", "history"],
+    verified: ["licenseFront", "licenseBack", "faceCapture", "phone", "identity", "history"],
     summary: "Service tech with weekend side jobs and a loyal neighborhood customer base. Wants to level up without getting buried by debt."
   }
 ];
@@ -184,10 +184,24 @@ const skillLabels = {
   idea: "idea / lead"
 };
 
+const proofLabels = {
+  licenseFront: "driver's license front",
+  licenseBack: "driver's license back",
+  faceCapture: "face capture",
+  phone: "linked phone",
+  identity: "identity",
+  funds: "funds snapshot",
+  history: "work history support",
+  license: "license",
+  references: "reference checks"
+};
+
+const requiredProof = ["licenseFront", "licenseBack", "faceCapture", "phone"];
+
 const storageKeys = {
-  profile: "werkles.profile.v4",
+  profile: "werkles.profile.v5",
   intros: "werkles.intros.v4",
-  beta: "werkles.beta.v1"
+  beta: "werkles.beta.v2"
 };
 
 const state = {
@@ -198,6 +212,7 @@ const state = {
 };
 
 const profileNameInput = document.querySelector("#profileName");
+const profilePhoneInput = document.querySelector("#profilePhone");
 const roleInput = document.querySelector("#role");
 const industryInput = document.querySelector("#industry");
 const locationInput = document.querySelector("#location");
@@ -209,12 +224,14 @@ const capitalNeededValue = document.querySelector("#capitalNeededValue");
 const candidateCard = document.querySelector("#candidateCard");
 const introQueue = document.querySelector("#introQueue");
 const verifiedCount = document.querySelector("#verifiedCount");
+const gateStatus = document.querySelector("#gateStatus");
 const searchInput = document.querySelector("#searchInput");
 const graph = document.querySelector("#matchGraph");
 const graphContext = graph.getContext("2d");
 const profileStatus = document.querySelector("#profileStatus");
 const betaForm = document.querySelector("#betaForm");
 const betaEmail = document.querySelector("#betaEmail");
+const betaPhone = document.querySelector("#betaPhone");
 const betaRole = document.querySelector("#betaRole");
 const betaStatus = document.querySelector("#betaStatus");
 const heroMatchScore = document.querySelector("#heroMatchScore");
@@ -249,6 +266,10 @@ function setCheckedValues(name, values) {
   });
 }
 
+function withRequiredProof(values) {
+  return Array.from(new Set([...requiredProof, ...(values || [])]));
+}
+
 function normalizeRole(role) {
   const legacy = {
     worker: "builder",
@@ -262,6 +283,7 @@ function getUserProfile() {
   return {
     id: "you",
     name: profileNameInput.value.trim() || "You",
+    phone: profilePhoneInput.value.trim(),
     role: roleInput.value,
     industry: industryInput.value,
     city: locationInput.value.trim(),
@@ -270,7 +292,7 @@ function getUserProfile() {
     capitalNeeded: Number(capitalNeededInput.value),
     skills: selectedValues("skills"),
     goals: selectedValues("goals"),
-    verified: selectedValues("verify")
+    verified: withRequiredProof(selectedValues("verify"))
   };
 }
 
@@ -279,6 +301,7 @@ function hydrateProfile() {
   if (!saved) return;
 
   profileNameInput.value = saved.name || "Ben";
+  profilePhoneInput.value = saved.phone || "";
   roleInput.value = normalizeRole(saved.role);
   industryInput.value = saved.industry || "plumbing";
   locationInput.value = saved.city || "Cleveland, OH";
@@ -287,7 +310,7 @@ function hydrateProfile() {
   capitalNeededInput.value = saved.capitalNeeded ?? 0;
   setCheckedValues("skills", saved.skills || []);
   setCheckedValues("goals", saved.goals || []);
-  setCheckedValues("verify", saved.verified || []);
+  setCheckedValues("verify", withRequiredProof(saved.verified || []));
 }
 
 function sameState(left, right) {
@@ -492,8 +515,14 @@ function renderMetrics() {
 }
 
 function renderTrust() {
-  const verified = selectedValues("verify");
-  verifiedCount.textContent = `${verified.length}/5`;
+  const verified = withRequiredProof(selectedValues("verify"));
+  const totalProofInputs = document.querySelectorAll(`input[name="verify"]`).length;
+  const phoneDigits = profilePhoneInput.value.replace(/\D/g, "");
+  const gateReady = requiredProof.every((proof) => verified.includes(proof)) && phoneDigits.length >= 10;
+  verifiedCount.textContent = `${verified.length}/${totalProofInputs}`;
+  gateStatus.textContent = gateReady
+    ? "Account gate ready in prototype: license front/back, face capture, and phone present."
+    : "License front/back, face capture, and linked phone required before account activation.";
 }
 
 function renderIntroQueue() {
@@ -602,6 +631,7 @@ function buildBrief() {
   const topMatches = getScoredMatches().slice(0, 3);
   return [
     `Werkles profile: ${profile.name}`,
+    `Linked phone: ${profile.phone || "required before activation"}`,
     `Lane: ${roleLabels[profile.role]}`,
     `Arena: ${industryLabels[profile.industry]}`,
     `City: ${profile.city}`,
@@ -609,7 +639,7 @@ function buildBrief() {
     `Money needed: ${money(profile.capitalNeeded)}`,
     `Skills: ${profile.skills.map((skill) => skillLabels[skill] || skill).join(", ") || "none selected"}`,
     `Goals: ${profile.goals.join(", ") || "none selected"}`,
-    `Proof signals: ${profile.verified.join(", ") || "none selected"}`,
+    `Proof signals: ${profile.verified.map((proof) => proofLabels[proof] || proof).join(", ") || "none selected"}`,
     "",
     "Top matches:",
     ...topMatches.map((match) => `- ${match.name}: ${match.score}% fit, ${roleLabels[match.role]}, ${industryLabels[match.industry]}`)
@@ -712,12 +742,14 @@ betaForm.addEventListener("submit", (event) => {
   const entries = loadJson(storageKeys.beta, []);
   entries.push({
     email: betaEmail.value.trim(),
+    phone: betaPhone.value.trim(),
     role: betaRole.value,
     createdAt: new Date().toISOString()
   });
   saveJson(storageKeys.beta, entries);
-  betaStatus.textContent = "You are on the local beta list. Backend signup comes next.";
+  betaStatus.textContent = "Invite request saved locally. Activation still requires license front/back, face capture, and phone link.";
   betaEmail.value = "";
+  betaPhone.value = "";
 });
 
 hydrateProfile();
