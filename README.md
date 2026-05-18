@@ -19,3 +19,8 @@ Current prototype:
 This prototype is intentionally an introductions product. Real investment, lending, securities, ownership, KYC, and AML flows should be designed with legal and financial professionals before any production launch.
 
 Next production step: migrate profile, intro, and beta signup data from local browser storage to Supabase.
+
+AI collaboration packet:
+
+- `AI_HANDOFF.md` explains the product, codebase, current scope, risks, and next milestones.
+- `AI_TEAM_PROMPTS.md` contains copy/paste prompts for Gemini Pro, DeepSeek, Perplexity Max, and Codex integration.
