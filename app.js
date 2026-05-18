@@ -167,13 +167,20 @@ const skillLabels = {
   capital: "capital"
 };
 
+const storageKeys = {
+  profile: "werkles.profile.v3",
+  intros: "werkles.intros.v3",
+  beta: "werkles.beta.v1"
+};
+
 const state = {
   filter: "all",
   search: "",
-  intros: new Set()
+  deckIndex: 0,
+  intros: new Set(loadJson(storageKeys.intros, []))
 };
 
-const form = document.querySelector("#profileForm");
+const profileNameInput = document.querySelector("#profileName");
 const roleInput = document.querySelector("#role");
 const industryInput = document.querySelector("#industry");
 const locationInput = document.querySelector("#location");
@@ -182,14 +189,31 @@ const capitalAvailableInput = document.querySelector("#capitalAvailable");
 const capitalNeededInput = document.querySelector("#capitalNeeded");
 const capitalAvailableValue = document.querySelector("#capitalAvailableValue");
 const capitalNeededValue = document.querySelector("#capitalNeededValue");
-const matchList = document.querySelector("#matchList");
+const candidateCard = document.querySelector("#candidateCard");
 const introQueue = document.querySelector("#introQueue");
-const trustFill = document.querySelector("#trustFill");
-const trustPercent = document.querySelector("#trustPercent");
 const verifiedCount = document.querySelector("#verifiedCount");
 const searchInput = document.querySelector("#searchInput");
 const graph = document.querySelector("#matchGraph");
 const graphContext = graph.getContext("2d");
+const profileStatus = document.querySelector("#profileStatus");
+const betaForm = document.querySelector("#betaForm");
+const betaEmail = document.querySelector("#betaEmail");
+const betaRole = document.querySelector("#betaRole");
+const betaStatus = document.querySelector("#betaStatus");
+const heroMatchScore = document.querySelector("#heroMatchScore");
+
+function loadJson(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function saveJson(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
 
 function money(value) {
   if (value === 0) return "$0";
@@ -201,10 +225,17 @@ function selectedValues(name) {
   return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
 }
 
+function setCheckedValues(name, values) {
+  const valueSet = new Set(values || []);
+  document.querySelectorAll(`input[name="${name}"]`).forEach((input) => {
+    input.checked = valueSet.has(input.value);
+  });
+}
+
 function getUserProfile() {
   return {
     id: "you",
-    name: "You",
+    name: profileNameInput.value.trim() || "You",
     role: roleInput.value,
     industry: industryInput.value,
     city: locationInput.value.trim(),
@@ -215,6 +246,22 @@ function getUserProfile() {
     goals: selectedValues("goals"),
     verified: selectedValues("verify")
   };
+}
+
+function hydrateProfile() {
+  const saved = loadJson(storageKeys.profile, null);
+  if (!saved) return;
+
+  profileNameInput.value = saved.name || "Ben";
+  roleInput.value = saved.role || "worker";
+  industryInput.value = saved.industry || "plumbing";
+  locationInput.value = saved.city || "Cleveland, OH";
+  radiusInput.value = saved.radius || 75;
+  capitalAvailableInput.value = saved.capitalAvailable ?? 50000;
+  capitalNeededInput.value = saved.capitalNeeded ?? 0;
+  setCheckedValues("skills", saved.skills || []);
+  setCheckedValues("goals", saved.goals || []);
+  setCheckedValues("verify", saved.verified || []);
 }
 
 function sameState(left, right) {
@@ -264,7 +311,8 @@ function scoreProfile(user, candidate) {
     reasons.push(`you cover ${userCoversNeeds} need${userCoversNeeds > 1 ? "s" : ""}`);
   }
 
-  const candidateCoversNeeds = sharedCount(candidate.skills, ["field", "license", "ops", "sales", "books", "admin"].filter((skill) => !user.skills.includes(skill)));
+  const missingCoreSkills = ["field", "license", "ops", "sales", "books", "admin"].filter((skill) => !user.skills.includes(skill));
+  const candidateCoversNeeds = sharedCount(candidate.skills, missingCoreSkills);
   if (candidateCoversNeeds > 0) {
     score += Math.min(12, candidateCoversNeeds * 4);
     reasons.push("complementary skill stack");
@@ -304,12 +352,17 @@ function scoreProfile(user, candidate) {
   };
 }
 
-function getFilteredMatches() {
+function getScoredMatches() {
   const user = getUserProfile();
-  const search = state.search.toLowerCase();
-
   return profiles
     .map((profile) => scoreProfile(user, profile))
+    .sort((left, right) => right.score - left.score);
+}
+
+function getFilteredMatches() {
+  const search = state.search.toLowerCase();
+
+  return getScoredMatches()
     .filter((profile) => state.filter === "all" || profile.role === state.filter)
     .filter((profile) => {
       if (!search) return true;
@@ -323,8 +376,14 @@ function getFilteredMatches() {
         ...profile.needs.map((skill) => skillLabels[skill] || skill)
       ].join(" ").toLowerCase();
       return haystack.includes(search);
-    })
-    .sort((left, right) => right.score - left.score);
+    });
+}
+
+function getActiveMatch() {
+  const matches = getFilteredMatches();
+  if (!matches.length) return null;
+  state.deckIndex = ((state.deckIndex % matches.length) + matches.length) % matches.length;
+  return matches[state.deckIndex];
 }
 
 function initials(name) {
@@ -336,50 +395,56 @@ function initials(name) {
     .toUpperCase();
 }
 
-function renderMatches() {
+function renderCandidate() {
   const matches = getFilteredMatches();
+  const profile = getActiveMatch();
+  const topMatch = getScoredMatches()[0];
+  heroMatchScore.textContent = topMatch ? `${topMatch.score}%` : "0%";
 
-  matchList.innerHTML = matches
-    .map((profile) => {
-      const added = state.intros.has(profile.id);
-      const visibleSkills = profile.skills.slice(0, 4).map((skill) => `<span class="tag">${skillLabels[skill] || skill}</span>`).join("");
-      const verified = profile.verified.length >= 3 ? `<span class="verified-tag">${profile.verified.length} checks</span>` : "";
-      const reasons = profile.reasons.map((reason) => `<li>${reason}</li>`).join("");
-
-      return `
-        <article class="match-card" data-role="${profile.role}">
-          <div>
-            <div class="match-header">
-              <span class="avatar ${profile.role}" aria-hidden="true">${initials(profile.name)}</span>
-              <div>
-                <h3>${profile.name}</h3>
-                <div class="profile-meta">
-                  <span class="tag">${roleLabels[profile.role]}</span>
-                  <span class="tag">${industryLabels[profile.industry]}</span>
-                  <span class="tag">${profile.city}</span>
-                  ${verified}
-                </div>
-              </div>
-            </div>
-            <p class="match-summary">${profile.summary}</p>
-            <div class="profile-meta">${visibleSkills}</div>
-            <ul class="reason-list">${reasons}</ul>
-          </div>
-          <div class="score-box">
-            <span class="score">${profile.score}%</span>
-            <div class="card-actions">
-              <button class="save-button ${added ? "is-added" : ""}" type="button" data-save="${profile.id}" title="Shortlist ${profile.name}" aria-label="Shortlist ${profile.name}">${added ? "✓" : "+"}</button>
-              <button class="intro-button ${added ? "is-added" : ""}" type="button" data-intro="${profile.id}">${added ? "Intro queued" : "Request intro"}</button>
-            </div>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-
-  if (!matches.length) {
-    matchList.innerHTML = `<div class="intro-queue empty">No matches found for that search.</div>`;
+  if (!profile) {
+    candidateCard.innerHTML = `<div class="candidate-empty">No matches found. Loosen the filters or search for another trade.</div>`;
+    drawGraph([]);
+    return;
   }
+
+  const added = state.intros.has(profile.id);
+  const visibleSkills = profile.skills.slice(0, 5).map((skill) => `<span class="tag">${skillLabels[skill] || skill}</span>`).join("");
+  const verified = profile.verified.length >= 3 ? `<span class="verified-tag">${profile.verified.length} proof checks</span>` : "";
+  const reasons = profile.reasons.map((reason) => `<li>${reason}</li>`).join("");
+
+  candidateCard.innerHTML = `
+    <div class="candidate-top">
+      <span class="avatar ${profile.role}" aria-hidden="true">${initials(profile.name)}</span>
+      <div>
+        <h3>${profile.name}</h3>
+        <div class="meta-row">
+          <span class="tag">${roleLabels[profile.role]}</span>
+          <span class="tag">${industryLabels[profile.industry]}</span>
+          <span class="tag">${profile.city}</span>
+          ${verified}
+        </div>
+      </div>
+      <span class="score">${profile.score}%</span>
+    </div>
+
+    <p class="candidate-summary">${profile.summary}</p>
+
+    <div class="candidate-stats">
+      <div><strong>${profile.years}</strong><span>years in arena</span></div>
+      <div><strong>${money(profile.capitalNeeded)}</strong><span>capital needed</span></div>
+      <div><strong>${money(profile.capitalAvailable)}</strong><span>capital available</span></div>
+    </div>
+
+    <div class="tag-row">${visibleSkills}</div>
+    <ul class="reason-list">${reasons}</ul>
+
+    <div class="candidate-actions">
+      <button class="button button-dark" type="button" data-intro="${profile.id}">${added ? "Intro queued" : "Request intro"}</button>
+      <button class="button button-outline" type="button" data-save="${profile.id}">${added ? "Remove shortlist" : "Shortlist"}</button>
+      <button class="button button-outline" type="button" data-next>Pass for now</button>
+      <span class="status-line">${state.deckIndex + 1} of ${matches.length}</span>
+    </div>
+  `;
 
   drawGraph(matches.slice(0, 5));
 }
@@ -393,9 +458,6 @@ function renderMetrics() {
 
 function renderTrust() {
   const verified = selectedValues("verify");
-  const percent = Math.round((verified.length / 5) * 100);
-  trustFill.style.width = `${percent}%`;
-  trustPercent.textContent = `${percent}%`;
   verifiedCount.textContent = `${verified.length}/5`;
 }
 
@@ -415,7 +477,7 @@ function renderIntroQueue() {
         <span class="mini-avatar">${initials(profile.name)}</span>
         <span>
           <strong>${profile.name}</strong>
-          <small>${roleLabels[profile.role]} · ${industryLabels[profile.industry]}</small>
+          <small>${roleLabels[profile.role]} - ${industryLabels[profile.industry]}</small>
         </span>
       </div>
     `)
@@ -426,10 +488,10 @@ function drawGraph(matches) {
   const width = graph.width;
   const height = graph.height;
   graphContext.clearRect(0, 0, width, height);
-  graphContext.fillStyle = "#fffaf0";
+  graphContext.fillStyle = "#f8faf9";
   graphContext.fillRect(0, 0, width, height);
 
-  graphContext.strokeStyle = "#ded6c7";
+  graphContext.strokeStyle = "#d9e0dc";
   graphContext.lineWidth = 1;
   for (let x = 40; x < width; x += 80) {
     graphContext.beginPath();
@@ -445,41 +507,41 @@ function drawGraph(matches) {
   }
 
   const center = { x: width / 2, y: height / 2 };
-  graphContext.fillStyle = "#17202a";
+  graphContext.fillStyle = "#111312";
   graphContext.beginPath();
-  graphContext.arc(center.x, center.y, 27, 0, Math.PI * 2);
+  graphContext.arc(center.x, center.y, 28, 0, Math.PI * 2);
   graphContext.fill();
-  graphContext.fillStyle = "#fffdf8";
+  graphContext.fillStyle = "#ccff4d";
   graphContext.font = "900 13px Inter, sans-serif";
   graphContext.textAlign = "center";
   graphContext.textBaseline = "middle";
   graphContext.fillText("YOU", center.x, center.y);
 
   const roleColors = {
-    worker: "#19715f",
-    operator: "#2156a5",
-    capital: "#b58a1f",
-    hybrid: "#a3314e"
+    worker: "#10966f",
+    operator: "#2855f6",
+    capital: "#e4a826",
+    hybrid: "#f05f4d"
   };
 
   matches.forEach((match, index) => {
     const angle = -Math.PI / 2 + index * ((Math.PI * 2) / Math.max(matches.length, 5));
-    const distance = 54 + (99 - match.score) * 1.25;
+    const distance = 58 + (99 - match.score) * 1.25;
     const x = center.x + Math.cos(angle) * distance;
     const y = center.y + Math.sin(angle) * distance;
 
-    graphContext.strokeStyle = "rgba(23, 32, 42, 0.25)";
+    graphContext.strokeStyle = "rgba(17, 19, 18, 0.25)";
     graphContext.lineWidth = Math.max(2, match.score / 24);
     graphContext.beginPath();
     graphContext.moveTo(center.x, center.y);
     graphContext.lineTo(x, y);
     graphContext.stroke();
 
-    graphContext.fillStyle = roleColors[match.role] || "#17202a";
+    graphContext.fillStyle = roleColors[match.role] || "#111312";
     graphContext.beginPath();
-    graphContext.arc(x, y, 20, 0, Math.PI * 2);
+    graphContext.arc(x, y, 21, 0, Math.PI * 2);
     graphContext.fill();
-    graphContext.fillStyle = "#fffdf8";
+    graphContext.fillStyle = "#ffffff";
     graphContext.font = "900 11px Inter, sans-serif";
     graphContext.fillText(initials(match.name), x, y);
   });
@@ -491,41 +553,136 @@ function render() {
   renderTrust();
   renderMetrics();
   renderIntroQueue();
-  renderMatches();
+  renderCandidate();
 }
 
-form.addEventListener("input", render);
+function saveProfile(message = "Profile saved in this browser.") {
+  saveJson(storageKeys.profile, getUserProfile());
+  profileStatus.textContent = message;
+}
 
-document.querySelector(".verification-list").addEventListener("input", render);
+function buildBrief() {
+  const profile = getUserProfile();
+  const topMatches = getScoredMatches().slice(0, 3);
+  return [
+    `Werkles profile: ${profile.name}`,
+    `Lane: ${roleLabels[profile.role]}`,
+    `Arena: ${industryLabels[profile.industry]}`,
+    `City: ${profile.city}`,
+    `Capital available: ${money(profile.capitalAvailable)}`,
+    `Capital needed: ${money(profile.capitalNeeded)}`,
+    `Skills: ${profile.skills.map((skill) => skillLabels[skill] || skill).join(", ") || "none selected"}`,
+    `Goals: ${profile.goals.join(", ") || "none selected"}`,
+    `Verification: ${profile.verified.join(", ") || "none selected"}`,
+    "",
+    "Top matches:",
+    ...topMatches.map((match) => `- ${match.name}: ${match.score}% fit, ${roleLabels[match.role]}, ${industryLabels[match.industry]}`)
+  ].join("\n");
+}
+
+async function copyBrief() {
+  const brief = buildBrief();
+  try {
+    await navigator.clipboard.writeText(brief);
+    profileStatus.textContent = "Founder brief copied.";
+  } catch {
+    profileStatus.textContent = brief;
+  }
+}
+
+function saveIntroState() {
+  saveJson(storageKeys.intros, Array.from(state.intros));
+}
+
+function moveDeck(direction) {
+  const matches = getFilteredMatches();
+  if (!matches.length) return;
+  state.deckIndex = (state.deckIndex + direction + matches.length) % matches.length;
+  renderCandidate();
+}
+
+document.querySelector("#profileForm").addEventListener("input", () => {
+  state.deckIndex = 0;
+  saveProfile("Profile updated.");
+  render();
+});
+
+document.querySelector(".verification-list").addEventListener("input", () => {
+  saveProfile("Verification updated.");
+  render();
+});
+
+document.querySelector("#saveProfile").addEventListener("click", () => {
+  saveProfile();
+  render();
+});
+
+document.querySelector("#copyBrief").addEventListener("click", copyBrief);
 
 searchInput.addEventListener("input", (event) => {
   state.search = event.target.value;
-  renderMatches();
+  state.deckIndex = 0;
+  renderCandidate();
 });
 
 document.querySelector(".segment-control").addEventListener("click", (event) => {
   const button = event.target.closest("[data-filter]");
   if (!button) return;
   state.filter = button.dataset.filter;
+  state.deckIndex = 0;
   document.querySelectorAll(".segment").forEach((segment) => segment.classList.toggle("is-active", segment === button));
-  renderMatches();
+  renderCandidate();
 });
 
-matchList.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-intro], [data-save]");
-  if (!button) return;
-  const id = button.dataset.intro || button.dataset.save;
+candidateCard.addEventListener("click", (event) => {
+  const introButton = event.target.closest("[data-intro], [data-save]");
+  if (event.target.closest("[data-next]")) {
+    moveDeck(1);
+    return;
+  }
+  if (!introButton) return;
+  const id = introButton.dataset.intro || introButton.dataset.save;
   if (state.intros.has(id)) {
     state.intros.delete(id);
   } else {
     state.intros.add(id);
   }
+  saveIntroState();
+  render();
+});
+
+document.querySelector("#prevMatch").addEventListener("click", () => moveDeck(-1));
+document.querySelector("#nextMatch").addEventListener("click", () => moveDeck(1));
+document.querySelector("#saveMatch").addEventListener("click", () => {
+  const active = getActiveMatch();
+  if (!active) return;
+  if (state.intros.has(active.id)) {
+    state.intros.delete(active.id);
+  } else {
+    state.intros.add(active.id);
+  }
+  saveIntroState();
   render();
 });
 
 document.querySelector("#clearIntros").addEventListener("click", () => {
   state.intros.clear();
+  saveIntroState();
   render();
 });
 
+betaForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const entries = loadJson(storageKeys.beta, []);
+  entries.push({
+    email: betaEmail.value.trim(),
+    role: betaRole.value,
+    createdAt: new Date().toISOString()
+  });
+  saveJson(storageKeys.beta, entries);
+  betaStatus.textContent = "You are on the local beta list. Backend signup comes next.";
+  betaEmail.value = "";
+});
+
+hydrateProfile();
 render();

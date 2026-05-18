@@ -1,0 +1,5 @@
+dist/
+werkles-site.zip
+netlify.toml
+server.log
+server.err.log
