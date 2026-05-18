@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Werkles</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Werkles home">
+          <span class="brand-mark">W</span>
+          <span>
+            <strong>Werkles</strong>
+            <small>Main Street partner matching</small>
+          </span>
+        </a>
+
+        <nav class="topnav" aria-label="Primary">
+          <button class="nav-pill is-active" type="button">Matches</button>
+          <button class="nav-pill" type="button">Intros</button>
+          <button class="nav-pill" type="button">Verify</button>
+        </nav>
+
+        <div class="trust-score" aria-label="Your verification readiness">
+          <span class="trust-score__label">Trust</span>
+          <span class="trust-score__bar"><span id="trustFill"></span></span>
+          <strong id="trustPercent">40%</strong>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="profile-panel" aria-labelledby="profileTitle">
+          <div class="section-heading">
+            <p>Build Profile</p>
+            <h1 id="profileTitle">What are you bringing?</h1>
+          </div>
+
+          <form id="profileForm" class="profile-form">
+            <label class="field">
+              <span>Your lane</span>
+              <select id="role">
+                <option value="worker">Worker / builder</option>
+                <option value="operator">Trade operator</option>
+                <option value="capital">Capital partner</option>
+                <option value="hybrid">Hybrid</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Primary arena</span>
+              <select id="industry">
+                <option value="plumbing">Plumbing</option>
+                <option value="hvac">HVAC</option>
+                <option value="electrical">Electrical</option>
+                <option value="contracting">Contracting</option>
+                <option value="logistics">Logistics</option>
+                <option value="auto">Auto / diesel</option>
+                <option value="services">Local services</option>
+              </select>
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span>City</span>
+                <input id="location" type="text" value="Cleveland, OH" autocomplete="address-level2">
+              </label>
+
+              <label class="field compact">
+                <span>Radius</span>
+                <input id="radius" type="number" min="5" max="500" step="5" value="75">
+              </label>
+            </div>
+
+            <label class="field money-field">
+              <span>Money available to invest</span>
+              <output id="capitalAvailableValue">$50k</output>
+              <input id="capitalAvailable" type="range" min="0" max="250000" step="5000" value="50000">
+            </label>
+
+            <label class="field money-field">
+              <span>Money needed</span>
+              <output id="capitalNeededValue">$0</output>
+              <input id="capitalNeeded" type="range" min="0" max="250000" step="5000" value="0">
+            </label>
+
+            <fieldset class="check-grid">
+              <legend>Skills on the table</legend>
+              <label><input type="checkbox" name="skills" value="field" checked> Field work</label>
+              <label><input type="checkbox" name="skills" value="license"> License</label>
+              <label><input type="checkbox" name="skills" value="sales" checked> Sales</label>
+              <label><input type="checkbox" name="skills" value="ops" checked> Ops</label>
+              <label><input type="checkbox" name="skills" value="admin"> Admin</label>
+              <label><input type="checkbox" name="skills" value="hiring"> Hiring</label>
+              <label><input type="checkbox" name="skills" value="books"> Books</label>
+              <label><input type="checkbox" name="skills" value="estimating"> Estimating</label>
+              <label><input type="checkbox" name="skills" value="customers"> Customers</label>
+              <label><input type="checkbox" name="skills" value="equipment"> Equipment</label>
+            </fieldset>
+
+            <fieldset class="check-grid">
+              <legend>Target outcome</legend>
+              <label><input type="checkbox" name="goals" value="leave" checked> Leave employer</label>
+              <label><input type="checkbox" name="goals" value="start" checked> Start shop</label>
+              <label><input type="checkbox" name="goals" value="scale"> Scale shop</label>
+              <label><input type="checkbox" name="goals" value="buy"> Buy business</label>
+              <label><input type="checkbox" name="goals" value="equity"> Earn equity</label>
+              <label><input type="checkbox" name="goals" value="partner"> Find partner</label>
+            </fieldset>
+          </form>
+        </aside>
+
+        <section class="match-panel" aria-labelledby="matchTitle">
+          <div class="match-toolbar">
+            <div class="section-heading">
+              <p>Live Matching</p>
+              <h2 id="matchTitle">People ready to build</h2>
+            </div>
+
+            <div class="toolbar-actions">
+              <label class="search-box">
+                <span class="sr-only">Search matches</span>
+                <input id="searchInput" type="search" placeholder="Search skill, city, trade">
+              </label>
+
+              <div class="segment-control" aria-label="Filter matches">
+                <button class="segment is-active" type="button" data-filter="all">All</button>
+                <button class="segment" type="button" data-filter="worker">Workers</button>
+                <button class="segment" type="button" data-filter="operator">Operators</button>
+                <button class="segment" type="button" data-filter="capital">Capital</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="metric-strip" aria-label="Marketplace snapshot">
+            <div>
+              <span id="workerCount">0</span>
+              <small>workers</small>
+            </div>
+            <div>
+              <span id="operatorCount">0</span>
+              <small>operators</small>
+            </div>
+            <div>
+              <span id="capitalCount">0</span>
+              <small>capital partners</small>
+            </div>
+            <div>
+              <span id="introCount">0</span>
+              <small>intro queue</small>
+            </div>
+          </div>
+
+          <div id="matchList" class="match-list" aria-live="polite"></div>
+        </section>
+
+        <aside class="right-rail" aria-labelledby="rightRailTitle">
+          <div class="rail-block">
+            <div class="section-heading">
+              <p>Market Map</p>
+              <h2 id="rightRailTitle">Fit signals</h2>
+            </div>
+            <canvas id="matchGraph" width="520" height="320" aria-label="Visual map of top partner matches"></canvas>
+          </div>
+
+          <div class="rail-block">
+            <div class="rail-title-row">
+              <h2>Verification</h2>
+              <span id="verifiedCount">2/5</span>
+            </div>
+            <div class="verification-list">
+              <label><input type="checkbox" name="verify" value="identity" checked> Identity</label>
+              <label><input type="checkbox" name="verify" value="funds" checked> Funds / capital</label>
+              <label><input type="checkbox" name="verify" value="history"> Work history</label>
+              <label><input type="checkbox" name="verify" value="license"> Licenses</label>
+              <label><input type="checkbox" name="verify" value="references"> References</label>
+            </div>
+          </div>
+
+          <div class="rail-block">
+            <div class="rail-title-row">
+              <h2>Intro Queue</h2>
+              <button id="clearIntros" class="icon-button" type="button" title="Clear intro queue" aria-label="Clear intro queue">×</button>
+            </div>
+            <div id="introQueue" class="intro-queue empty">No intro requests yet.</div>
+          </div>
+
+          <div class="rail-note">
+            Werkles is an introductions platform prototype. Deals, lending, securities, and ownership documents need real legal and financial review.
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
