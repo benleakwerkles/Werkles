@@ -374,10 +374,10 @@ function scoreProfile(user, candidate) {
 
   if (candidate.verified.length >= 4) {
     score += 7;
-    reasons.push("strong verification");
+    reasons.push("strong proof signals");
   } else if (candidate.verified.length >= 2) {
     score += 4;
-    reasons.push("basic verification");
+    reasons.push("some proof signals");
   }
 
   return {
@@ -444,7 +444,7 @@ function renderCandidate() {
 
   const added = state.intros.has(profile.id);
   const visibleSkills = profile.skills.slice(0, 5).map((skill) => `<span class="tag">${skillLabels[skill] || skill}</span>`).join("");
-  const verified = profile.verified.length >= 3 ? `<span class="verified-tag">${profile.verified.length} proof checks</span>` : "";
+  const verified = profile.verified.length >= 3 ? `<span class="verified-tag">${profile.verified.length} proof signals</span>` : "";
   const reasons = profile.reasons.map((reason) => `<li>${reason}</li>`).join("");
 
   candidateCard.innerHTML = `
@@ -609,7 +609,7 @@ function buildBrief() {
     `Money needed: ${money(profile.capitalNeeded)}`,
     `Skills: ${profile.skills.map((skill) => skillLabels[skill] || skill).join(", ") || "none selected"}`,
     `Goals: ${profile.goals.join(", ") || "none selected"}`,
-    `Verification: ${profile.verified.join(", ") || "none selected"}`,
+    `Proof signals: ${profile.verified.join(", ") || "none selected"}`,
     "",
     "Top matches:",
     ...topMatches.map((match) => `- ${match.name}: ${match.score}% fit, ${roleLabels[match.role]}, ${industryLabels[match.industry]}`)

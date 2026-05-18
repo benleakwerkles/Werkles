@@ -965,6 +965,37 @@ input[type="checkbox"] {
   font-weight: 800;
 }
 
+.proof-levels {
+  background: #ffffff;
+}
+
+.proof-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.proof-matrix article {
+  min-height: 180px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #f8faf9;
+}
+
+.proof-matrix strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.proof-matrix p {
+  margin: 0;
+  color: #27312b;
+  line-height: 1.55;
+}
+
 .proof-process {
   padding: 20px;
 }
@@ -1005,6 +1036,13 @@ input[type="checkbox"] {
     #ffffff;
 }
 
+.proof-boundary {
+  border-color: rgba(11, 159, 105, 0.32);
+  background:
+    linear-gradient(135deg, rgba(11, 159, 105, 0.12), rgba(214, 154, 36, 0.08)),
+    #ffffff;
+}
+
 @media (max-width: 1120px) {
   .people-strip,
   .operations-grid,
@@ -1012,7 +1050,8 @@ input[type="checkbox"] {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .proof-steps {
+  .proof-steps,
+  .proof-matrix {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1101,7 +1140,8 @@ input[type="checkbox"] {
   .chip-grid,
   .deck-buttons,
   .proof-grid,
-  .proof-steps {
+  .proof-steps,
+  .proof-matrix {
     grid-template-columns: 1fr;
   }
 

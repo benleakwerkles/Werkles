@@ -38,9 +38,9 @@
           <p class="eyebrow">Werkles verifies you</p>
           <h1>Members do not verify each other.</h1>
           <p>
-            Werkles should verify identity, funds signals, licenses, work history, and references
-            before serious introductions. Partners should see your Werkles proof status, not your
-            raw bank statements, IDs, tax records, customer lists, or private files.
+            Werkles should verify different facts with different levels of confidence. Partners
+            should see the proof method, status, scope, and date, not your raw bank statements,
+            IDs, tax records, customer lists, or private files.
           </p>
         </div>
         <img src="assets/werkles-logo.png" alt="Werkles logo">
@@ -55,6 +55,44 @@
           files, customer lists, private contracts, or background documents. The secure upload
           flow comes later.
         </p>
+      </section>
+
+      <section class="proof-process proof-levels" aria-labelledby="proofStrengthTitle">
+        <div class="section-heading">
+          <p>Proof strength</p>
+          <h2 id="proofStrengthTitle">Not every proof badge means the same thing.</h2>
+        </div>
+
+        <div class="proof-matrix">
+          <article>
+            <strong>Source-checked</strong>
+            <p>
+              Strongest category. A license lookup, vendor background check, or linked account
+              snapshot can be checked against a system of record.
+            </p>
+          </article>
+          <article>
+            <strong>Document-supported</strong>
+            <p>
+              Pay stubs, tax records, contracts, or statements can support a claim, but the badge
+              must say what was reviewed and when.
+            </p>
+          </article>
+          <article>
+            <strong>Point-in-time funds</strong>
+            <p>
+              Werkles can verify an account balance or statement contents as of a date. That does
+              not guarantee the money remains available or that the member will invest.
+            </p>
+          </article>
+          <article>
+            <strong>Reference-confirmed</strong>
+            <p>
+              References and work history are useful, but gameable. They should be labeled as
+              confirmed, supported, or attested, not treated like a bank balance or license.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section class="proof-grid" aria-label="Werkles proof principles">
@@ -76,13 +114,13 @@
           <h2>Least document possible.</h2>
           <p>
             Werkles should collect the least sensitive evidence that answers the trust question.
-            A verified signal is better than storing raw files.
+            A scoped proof signal is better than storing raw files.
           </p>
           <ul>
             <li>Identity: verified person, not public ID display.</li>
-            <li>Funds: range or status, not open bank-file sharing.</li>
-            <li>License: public lookup where available.</li>
-            <li>References: confirmation and notes, not gossip dumps.</li>
+            <li>Funds: dated snapshot or range, not a guarantee.</li>
+            <li>License: active status as of lookup date.</li>
+            <li>References: confirmed source, not absolute truth.</li>
           </ul>
         </article>
 
@@ -124,13 +162,14 @@
         <ol class="proof-steps">
           <li>
             <strong>1. Ask for a proof category.</strong>
-            Werkles requests a specific verification: identity, funds signal, license, work
-            history, reference, or business record.
+            Werkles requests a specific proof category: identity, funds snapshot, license,
+            background check, work history support, reference check, or business record.
           </li>
           <li>
             <strong>2. Prefer vendor verification.</strong>
-            Identity and funds checks should use trusted providers where possible. Werkles should
-            receive status, range, or result data instead of storing more raw material than needed.
+            Identity, background, license, and account checks should use trusted providers where
+            possible. Werkles should receive status, range, date, or result data instead of storing
+            more raw material than needed.
           </li>
           <li>
             <strong>3. Store documents only when unavoidable.</strong>
@@ -139,15 +178,28 @@
           </li>
           <li>
             <strong>4. Publish only the badge.</strong>
-            Other users see a Werkles proof badge, category, status, and date. They do not get the
-            source documents.
+            Other members see a Werkles proof badge, category, method, status, date, and scope.
+            They do not get the source documents.
           </li>
           <li>
             <strong>5. Expire and delete.</strong>
-            Proof should have refresh dates, retention rules, and a deletion request path before
-            upload launches.
+            Proof should have refresh dates, retention rules, and a deletion request path. Funds
+            snapshots, licenses, and background checks should age differently.
           </li>
         </ol>
+      </section>
+
+      <section class="proof-warning proof-boundary">
+        <div>
+          <p class="eyebrow">Trust boundary</p>
+          <h2>Proof is evidence, not a promise of future behavior.</h2>
+        </div>
+        <p>
+          Werkles should never imply that a member is honest forever, solvent forever, safe forever,
+          or guaranteed to close a deal. The honest promise is narrower and stronger: this fact was
+          checked by this method, against this source, at this time, and this is what members are
+          allowed to see.
+        </p>
       </section>
 
       <section class="proof-warning">

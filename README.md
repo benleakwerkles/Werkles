@@ -7,11 +7,11 @@ Open `index.html` in a browser to run it. No install step is required. The curre
 Current prototype:
 
 - Builder, operator, backer, connector, and spark profile lanes
-- Matching by role fit, trade arena, geography, capital fit, skills, goals, and verification
-- Profile controls for capital available, capital needed, skills, and outcomes
+- Matching by role fit, trade arena, geography, money fit, skills, goals, and proof signals
+- Profile controls for money available, money needed, skills, and outcomes
 - Match deck with score explanations
 - Intro queue
-- Verification checklist and `proof.html` trust page: Werkles verifies members; members do not inspect each other's raw documents
+- Proof checklist and `proof.html` trust page: Werkles verifies members; members do not inspect each other's raw documents
 - Canvas-based market map
 - Local browser storage for profile, intro queue, and beta signup capture
 - Founder brief copy action for sharing a profile summary
