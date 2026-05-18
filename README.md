@@ -20,6 +20,12 @@ This prototype is intentionally an introductions product. Real investment, lendi
 
 Next production step: migrate profile, intro, and beta signup data from local browser storage to Supabase.
 
+SEO quarantine:
+
+- Production currently sends `X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex`.
+- `index.html` includes matching robots meta tags.
+- Remove those directives only when the brand, copy, and product positioning are ready for search indexing.
+
 AI collaboration packet:
 
 - `AI_HANDOFF.md` explains the product, codebase, current scope, risks, and next milestones.
