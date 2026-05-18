@@ -102,7 +102,7 @@ const profiles = [
     needs: ["capital", "books", "admin"],
     goals: ["leave", "start", "partner"],
     verified: ["identity", "history", "references"],
-    summary: "Diesel mechanic with fleet contacts and diagnostic equipment. Wants a shop partner who can handle billing and startup cash."
+    summary: "Diesel mechanic with fleet contacts and diagnostic equipment. Wants a shop partner who can handle billing and first-truck money."
   },
   {
     id: "erica-henson",
@@ -117,7 +117,7 @@ const profiles = [
     needs: ["license", "field", "estimating"],
     goals: ["scale", "buy", "partner"],
     verified: ["identity", "funds", "history", "references"],
-    summary: "Former regional contractor exec with capital and systems experience. Looking for overlooked crews ready to own more of the upside."
+    summary: "Former contractor ops lead with capital and hard-won crew, cash, and calendar judgment. Looking for overlooked crews ready to own more of the upside."
   },
   {
     id: "malik-porter",
@@ -511,17 +511,17 @@ function drawGraph(matches) {
   graphContext.beginPath();
   graphContext.arc(center.x, center.y, 28, 0, Math.PI * 2);
   graphContext.fill();
-  graphContext.fillStyle = "#ccff4d";
+  graphContext.fillStyle = "#d6ff59";
   graphContext.font = "900 13px Inter, sans-serif";
   graphContext.textAlign = "center";
   graphContext.textBaseline = "middle";
   graphContext.fillText("YOU", center.x, center.y);
 
   const roleColors = {
-    worker: "#10966f",
-    operator: "#2855f6",
-    capital: "#e4a826",
-    hybrid: "#f05f4d"
+    worker: "#0b9f69",
+    operator: "#6f3ff5",
+    capital: "#d69a24",
+    hybrid: "#ff4fa7"
   };
 
   matches.forEach((match, index) => {
