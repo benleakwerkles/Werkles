@@ -1,30 +1,19 @@
 # Deploy Werkles
 
-`werkles.com` is the address. You still need a web host to serve the app files.
+`werkles.com` is the address. The app is now a Next.js project deployed through the existing GitHub/Vercel path.
 
 ## Fastest path
 
-Use Netlify, Vercel, or Cloudflare Pages for the app, then point the GoDaddy DNS records for `werkles.com` at that host.
+Use Vercel for the app, then point the GoDaddy DNS records for `werkles.com` at Vercel.
 
-This prototype is static, so the host only needs:
-
-- `index.html`
-- `styles.css`
-- `app.js`
-
-## Option A: Netlify drag-and-drop
-
-1. Create a Netlify site from this folder or upload `werkles-site.zip`.
-2. Add `werkles.com` as a custom domain in Netlify.
-3. In GoDaddy DNS, add the records Netlify gives you.
-4. Wait for DNS and SSL to finish provisioning.
-
-## Option B: Vercel
+## Vercel
 
 1. Create a Vercel project from this folder.
 2. Add `werkles.com` and `www.werkles.com` in the Vercel project domain settings.
 3. In GoDaddy DNS, add the records Vercel gives you.
 4. Wait for DNS and SSL to finish provisioning.
+5. Set environment variables from `.env.example`.
+6. Run the Supabase migration from `supabase/migrations/00001_initial_schema.sql`.
 
 ### Vercel dashboard route
 
@@ -33,10 +22,10 @@ Best long-term route:
 1. Put this folder in a GitHub repo named `werkles`.
 2. In Vercel, choose **Add New... > Project**.
 3. Import the `werkles` GitHub repo.
-4. Use **Other** as the framework preset if Vercel does not detect one.
+4. Use **Next.js** as the framework preset if Vercel does not detect it automatically.
 5. Use the project root as the root directory.
-6. Leave build command empty.
-7. Leave output directory empty or use `.` for this static prototype.
+6. Build command: `npm run build`.
+7. Output directory: leave as Vercel default for Next.js.
 8. Deploy.
 9. In the project, go to **Settings > Domains** and add `werkles.com`.
 10. Copy Vercel's exact DNS records into GoDaddy.
@@ -50,19 +39,14 @@ vercel
 vercel --prod
 ```
 
-Typical answers for this prototype:
+Typical answers:
 
 - Set up and deploy: yes
 - Link to existing project: no, unless you already created one
 - Project name: `werkles`
 - Directory: `.`
-- Framework preset: Other
-- Build command: none
-- Output directory: `.`
-
-## Option C: GoDaddy hosting
-
-If you bought GoDaddy web hosting, upload these files into the site's public web folder, usually `public_html`.
+- Framework preset: Next.js
+- Build command: `npm run build`
 
 ## DNS notes
 

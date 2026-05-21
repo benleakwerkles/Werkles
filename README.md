@@ -1,23 +1,22 @@
-# Werkles Prototype
+# Werkles
 
-Werkles is a static web app prototype for matching builders, operators, backers, connectors, and sparks who want to start, buy, or scale local businesses together.
+Werkles is a Next.js + Supabase web app for matching builders, operators, backers, connectors, and sparks who want to start, buy, or scale Main Street businesses together.
 
-Open `index.html` in a browser to run it. No install step is required. The current site is deployed on Vercel and can run as static HTML, CSS, and JavaScript.
+The current GitHub repo is connected to Vercel for `werkles.com`. The app has started its migration from the static prototype to a typed Next.js App Router project while preserving the existing deployment path.
 
-Current prototype:
+Current app:
 
-- Builder, operator, backer, connector, and spark profile lanes
-- Matching by role fit, trade arena, geography, money fit, skills, goals, and proof signals
-- Profile controls for money available, money needed, skills, and outcomes
-- Match deck with score explanations
-- Intro queue
+- Public homepage with Mythic Capitalism copy from `lib/copy.ts`
+- Signup/login screens using Supabase Auth client wiring
+- Dashboard match deck route that calls `match_candidates_for_blueprint`
+- Profile creation/edit page mapped to the Supabase `profiles` schema
+- Intro request API and intro inbox scaffold
 - Required account gate: driver's license front/back, face capture, and linked phone number before member activation
-- Proof checklist and `proof.html` trust page: Werkles verifies members; members do not inspect each other's raw documents
-- Canvas-based market map
-- Local browser storage for profile and intro queue; beta signup posts to the Vercel API route when Supabase env vars are configured
-- Founder brief copy action for sharing a profile summary
+- Proof page: Werkles verifies members; members do not inspect each other's raw documents
+- Beta signup route at `/api/beta`
+- TTL cron route at `/api/cron/ttl`
 
-This prototype is intentionally an introductions and verification-status product. Werkles is not a money-movement, lending, securities, broker-dealer, business-sale, or deal-facilitation platform.
+This app is intentionally an introductions and verification-status product. Werkles is not a money-movement, lending, securities, broker-dealer, business-sale, or deal-facilitation platform.
 
 Architecture direction:
 
@@ -30,18 +29,25 @@ Architecture direction:
 - Admin authorization is table-driven through `public.admin_users`; use `supabase/admin_bootstrap.sql` after Camelot Auth accounts and profiles exist.
 - Production matching is scaffolded in Supabase with `public.match_candidates_for_blueprint(...)`, returning explainable factors without raw financial ranges.
 
-Next production step: convert the static prototype into a Next.js/Supabase vertical slice with database-backed profiles, explainable matching, intro requests, and admin review.
+Local setup:
+
+```powershell
+npm install
+npm run dev
+```
+
+Required environment variables are listed in `.env.example`.
 
 Architecture docs:
 
 - `docs/architecture.md`
 - `docs/adr/ADR-001-web-first-mobile-first.md`
-- `supabase/migrations/202605200001_initial_werkles_schema.sql`
+- `supabase/migrations/00001_initial_schema.sql`
 
 SEO quarantine:
 
 - Production currently sends `X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex`.
-- `index.html` includes matching robots meta tags.
+- Next metadata and static legacy HTML include matching robots meta tags.
 - Remove those directives only when the brand, copy, and product positioning are ready for search indexing.
 
 AI collaboration packet:

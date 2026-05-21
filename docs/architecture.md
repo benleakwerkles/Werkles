@@ -2,7 +2,7 @@
 
 This document is the current source of truth for architecture, monetization boundaries, and cross-agent working assumptions.
 
-Current locked spec: Werkles v0.2 final master spec, May 20, 2026. This supersedes earlier AI handoffs.
+Current locked spec: Werkles v0.2 final spec and build instructions, May 21, 2026. This supersedes earlier AI handoffs.
 
 ## Platform
 

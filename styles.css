@@ -234,6 +234,13 @@ nav a {
   margin-top: 26px;
 }
 
+.hero-trust {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
 .hero-card {
   display: grid;
   gap: 12px;
@@ -418,6 +425,26 @@ nav a {
   color: #27312b;
   font-size: 1.05rem;
   line-height: 1.55;
+}
+
+.how-steps {
+  display: grid;
+  gap: 10px;
+}
+
+.how-steps article {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.how-steps h3 {
+  margin: 0;
+}
+
+.how-steps p {
+  margin-top: 6px;
 }
 
 .matchboard,
@@ -1114,6 +1141,94 @@ input[type="checkbox"] {
   line-height: 1.45;
 }
 
+.auth-shell,
+.dashboard-main {
+  min-height: 100vh;
+  padding: 22px;
+}
+
+.auth-shell {
+  display: grid;
+  place-items: center;
+}
+
+.auth-panel {
+  display: grid;
+  width: min(100%, 520px);
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.auth-panel h1,
+.dashboard-main h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 0.98;
+}
+
+.form-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.dashboard-main {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.dashboard-nav a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  background: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(320px, 1fr);
+  gap: 14px;
+}
+
+.factor-list {
+  display: grid;
+}
+
+.factor-list li {
+  display: grid;
+  gap: 4px;
+}
+
+.factor-list strong {
+  text-transform: uppercase;
+}
+
+.wide-field {
+  grid-column: span 2;
+}
+
+.profile-editor {
+  min-height: auto;
+}
+
 @media (max-width: 1120px) {
   .people-strip,
   .operations-grid,
@@ -1148,7 +1263,8 @@ input[type="checkbox"] {
   .proof-callout,
   .proof-warning,
   .profile-grid,
-  .operations-grid {
+  .operations-grid,
+  .dashboard-grid {
     grid-template-columns: 1fr;
   }
 

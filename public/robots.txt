@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Werkles is in brand/product formation. Search engines may crawl this site
+# so they can see the X-Robots-Tag and meta robots noindex directives, but
+# pages should not be indexed until the quarantine is removed.

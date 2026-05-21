@@ -10,8 +10,10 @@ Admin bootstrap:
 
 Required Vercel environment variables for the beta signup API:
 
-- `SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `CRON_SECRET`
 
 The service-role key must stay server-side only. Do not expose it in browser code.
 

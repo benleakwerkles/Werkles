@@ -2,7 +2,7 @@
 
 Use this file to brief Gemini, DeepSeek, Perplexity, or any other review agent on the current Werkles prototype.
 
-Current locked spec: Werkles v0.2 final master spec, May 20, 2026. Discard earlier partial handoffs.
+Current locked spec: Werkles v0.2 final spec and build instructions, May 21, 2026. Discard earlier partial handoffs.
 
 ## One-Sentence Product
 
@@ -13,18 +13,21 @@ Werkles is business partner matching for builders, operators, backers, connector
 - Domain: `werkles.com`
 - Hosting: Vercel
 - Repo: GitHub repo connected to Vercel
-- App type: static HTML/CSS/JavaScript prototype
-- Backend: Supabase schema and Vercel beta-signup API scaffold are in repo, not fully wired into the live UI yet
-- Persistence: browser `localStorage`
+- App type: Next.js App Router + TypeScript + Tailwind-ready CSS tokens
+- Backend: Supabase schema, server routes, auth/profile/matches/intros scaffolds are in repo
+- Persistence: Supabase for production routes; legacy static files remain as reference
 - Next architecture: web-first, mobile-first responsive Next.js on Vercel with Supabase Postgres and Supabase Auth
 - Current files:
-  - `index.html`: app structure and UI
+  - `app/page.tsx`: public homepage
+  - `app/dashboard/*`: profile, match deck, blueprint, and intro scaffolds
+  - `lib/copy.ts`: Mythic Capitalism copy source
   - `styles.css`: visual design
-  - `app.js`: mock profiles, matching logic, local storage, intro queue
+  - `app.js`: legacy mock prototype reference
   - `README.md`: project overview
   - `DEPLOY.md`: deploy notes
-  - `vercel.json`: static deploy headers
-  - `supabase/migrations/202605200001_initial_werkles_schema.sql`: v0.2 schema, RLS, triggers, and matching function
+  - `next.config.ts`: Next security headers
+  - `vercel.json`: Vercel fallback/security headers
+  - `supabase/migrations/00001_initial_schema.sql`: v0.2 schema, RLS, triggers, and matching function
   - `supabase/admin_bootstrap.sql`: Camelot admin bootstrap after Auth signup/profile creation
 
 ## Architecture Decisions
