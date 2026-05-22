@@ -241,6 +241,36 @@ nav a {
   font-weight: 850;
 }
 
+.hero-promise {
+  max-width: 760px;
+  margin-top: 14px;
+  color: #f7efe4;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 4vw, 4.6rem);
+  line-height: 0.98;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+}
+
+.hero-promise strong,
+.hero-promise em {
+  color: var(--green);
+  font-style: normal;
+}
+
+.trust-badge {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+  margin-top: 14px;
+  padding: 0 14px;
+  border: 1px solid rgba(11, 159, 105, 0.42);
+  border-radius: 999px;
+  color: #0b7d5a;
+  background: rgba(221, 247, 234, 0.72);
+  font-weight: 900;
+}
+
 .hero-card {
   display: grid;
   gap: 12px;

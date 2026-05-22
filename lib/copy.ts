@@ -5,10 +5,11 @@ export const copy = {
     "Werkles is a partner discovery and verification platform. We do not facilitate any securities transaction, loan, investment, or sale of business. Werkles never holds or transmits funds.",
   hero: {
     eyebrow: "Mythic capitalism for people with invoices due",
-    headline: "The Machine is Hungry. What are you bringing?",
+    headline: "Find the missing piece before the machine eats you.",
     subhead:
-      "Private partner discovery for people building real businesses. Find the missing piece before the machine eats you.",
-    primaryCta: "Start Your Dossier",
+      "Private partner discovery for builders, operators, backers, connectors, and sparks putting real businesses together.",
+    brandPromise: "Create with trust. Build to thrive.",
+    primaryCta: "Enter the Foundry",
     secondaryCta: "See How Werkles Works",
     trustLine: "Verified profiles. Private introductions. No public shouting into the void."
   },
@@ -64,7 +65,8 @@ export const copy = {
   },
   trust: {
     eyebrow: "Proof matters. So does staying in our lane.",
-    headline: "Werkles verifies signals. Werkles does not sell you an investment.",
+    badge: "Built on Trust",
+    headline: "Create with trust. Build to thrive.",
     body:
       "The platform is built for discovery, trust, and introductions. We store verification receipts, not raw identity files, bank account numbers, or full documents. Money movement, lending, securities, and deal facilitation are not v0 features."
   },

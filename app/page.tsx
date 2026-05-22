@@ -33,6 +33,7 @@ export default function HomePage() {
             <p className="eyebrow">{copy.hero.eyebrow}</p>
             <h1>{copy.hero.headline}</h1>
             <p>{copy.hero.subhead}</p>
+            <p className="hero-promise">{copy.hero.brandPromise}</p>
             <div className="hero-actions">
               <Link className="button button-light" href="/signup">{copy.hero.primaryCta}</Link>
               <Link className="button button-ghost" href="#how">{copy.hero.secondaryCta}</Link>
@@ -84,6 +85,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">{copy.trust.eyebrow}</p>
             <h2>{copy.trust.headline}</h2>
+            <p className="trust-badge">{copy.trust.badge}</p>
           </div>
           <p>{copy.trust.body}</p>
         </section>
