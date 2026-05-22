@@ -10,7 +10,7 @@ export default function HomePage() {
       <header className="site-header">
         <Link className="brand" href="/" aria-label="Werkles home">
           <span className="brand-mark image-mark">
-            <img src="/assets/werkles-mark.png" alt="" aria-hidden="true" />
+            <img src="/assets/werkles-mark-transparent.png" alt="" aria-hidden="true" />
           </span>
           <span>
             <strong>{copy.brand}</strong>
@@ -45,7 +45,7 @@ export default function HomePage() {
             <img src="/assets/werkles-logo.png" alt="Werkles logo" />
             <div className="hero-card-copy">
               <strong>v0.2</strong>
-              <span>private build room</span>
+              <span>{copy.trust.badge}</span>
             </div>
             <div className="mini-people" aria-hidden="true">
               <span>B</span>

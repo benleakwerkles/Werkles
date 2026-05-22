@@ -1,6 +1,6 @@
 export const copy = {
   brand: "Werkles",
-  tagline: "People who build together",
+  tagline: "Private partner discovery",
   disclaimer:
     "Werkles is a partner discovery and verification platform. We do not facilitate any securities transaction, loan, investment, or sale of business. Werkles never holds or transmits funds.",
   hero: {
@@ -10,7 +10,7 @@ export const copy = {
       "Private partner discovery for builders, operators, backers, connectors, and sparks putting real businesses together.",
     brandPromise: "Create with trust. Build to thrive.",
     primaryCta: "Enter the Foundry",
-    secondaryCta: "See How Werkles Works",
+    secondaryCta: "See the match deck",
     trustLine: "Verified profiles. Private introductions. No public shouting into the void."
   },
   lanes: {
