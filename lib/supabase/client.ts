@@ -5,7 +5,7 @@ export function getSupabaseBrowser() {
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
-    throw new Error("Supabase browser environment variables are not configured");
+    throw new Error("The steel is not connected yet. Add the Supabase URL and anon key before this door opens.");
   }
 
   return createClient(

@@ -51,7 +51,15 @@ export default function ProfilePage() {
 
   useEffect(() => {
     async function loadProfile() {
-      const supabase = getSupabaseBrowser();
+      let supabase: ReturnType<typeof getSupabaseBrowser>;
+
+      try {
+        supabase = getSupabaseBrowser();
+      } catch (error) {
+        setStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+        return;
+      }
+
       const { data: userData } = await supabase.auth.getUser();
 
       if (!userData.user) {
@@ -81,7 +89,15 @@ export default function ProfilePage() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const supabase = getSupabaseBrowser();
+    let supabase: ReturnType<typeof getSupabaseBrowser>;
+
+    try {
+      supabase = getSupabaseBrowser();
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+      return;
+    }
+
     const { data: userData } = await supabase.auth.getUser();
 
     if (!userData.user) {
@@ -128,7 +144,15 @@ export default function ProfilePage() {
   }
 
   async function triggerVerification(kind: "identity" | "funds") {
-    const supabase = getSupabaseBrowser();
+    let supabase: ReturnType<typeof getSupabaseBrowser>;
+
+    try {
+      supabase = getSupabaseBrowser();
+    } catch (error) {
+      setVerificationStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+      return;
+    }
+
     const { data } = await supabase.auth.getSession();
     const token = data.session?.access_token;
 
