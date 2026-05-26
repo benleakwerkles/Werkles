@@ -1,26 +1,30 @@
 # Operator Dashboard
 
 - Current phase: Ghost Forge one-prompt setup
-- Current step: Ghost Forge model patch push/deploy gate
+- Current step: Replicate no-browser diagnostic patch review
 - Current risk level: MEDIUM
-- Current status: One-prompt test reached Ghost Forge but failed before image generation because the deployed worker used `claude-3-5-haiku-latest`; local model patch is applied; syntax check passed; Ben approved patch push/deploy.
-- Last completed gate: Ben approved Ghost Forge model patch deploy.
+- Current status: Ghost Forge model patch is live and Claude works; after Ben said Replicate credit was done, one retry still returned Replicate 402 insufficient credit. Browser handoff to Replicate failed, so Codex prepared a no-browser diagnostic patch locally.
+- Last completed gate: One credited retry was attempted after a 120-second wait and verified in the database.
 - Next required AI, if any: none
 - Exact file to send, if any: none
-- Exact thing Ben must do next: Nothing. Codex should push/deploy the model patch, then retry exactly one prompt after the patched service is live.
+- Exact thing Ben must do next: Say `APPROVE REPLICATE DIAGNOSTIC PATCH PUSH DEPLOY` or `STOP REPLICATE PATCH`.
 - APPLY allowed: No
 - APPLY blocked because:
+  - diagnostic patch needs human approval before push/deploy
   - image-generation gate remains closed
 - PUSH allowed: No
 - PUSH blocked because:
-  - push remains blocked until Ben explicitly says PUSH and the push gate is clean
+  - push remains blocked until Ben approves the Replicate diagnostic patch push/deploy
 - Handoff warnings:
   - do not use Ben's normal browser unless Ben explicitly asks
   - do not print or request secrets in chat
   - spend sources of truth are `foreman/SPEND_LEDGER_INDEX.md`, the company ledgers, `foreman/COMMINGLING_UNTANGLING_PLAYBOOK.md`, `foreman/UNCLASSIFIED_SPEND_INBOX.md`, and `foreman/REIMBURSEMENT_AND_INTERCOMPANY_LOG.md` until separate Google Sheet creation/update is approved
 - Blockers:
-  - Ghost Forge model patch has not been pushed/deployed
+  - Replicate still reports insufficient credit
+  - Replicate account/token context needs diagnostic confirmation
   - one-prompt image test has not succeeded
+  - local batch-status hygiene patch has not been deployed
+  - local no-browser Replicate diagnostic patch has not been deployed
   - background image generation is not approved
-  - push remains blocked until Ben explicitly says PUSH and the push gate is clean
-- Plain English: The worker is alive and the database is ready, but the first prompt hit a Claude model-name bug. The fix is local; deploy is the next gate.
+  - no background batch generation until one-prompt succeeds and Ben approves a batch budget
+- Plain English: The worker and database are ready, Claude works, but Replicate still does not recognize usable credit. Since the browser is unreliable, the next clean move is to deploy a locked diagnostic endpoint that asks Replicate which account the Render token belongs to without creating an image or exposing the token.

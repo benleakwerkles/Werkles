@@ -1,59 +1,42 @@
-[MECHANICAL PREP: GHOST_FORGE_MODEL_PATCH_DEPLOY]
+[AWAITING HUMAN GATE: REPLICATE_DIAGNOSTIC_PATCH_REVIEW]
 
-One-prompt Ghost Forge test was approved and attempted from the Render Web Shell.
+Browser handoff failed, so Codex prepared a no-browser Replicate diagnostic patch.
 
-Result:
-
-```json
-{"ok":false,"error":"Claude prompt generation failed 404: model: claude-3-5-haiku-latest"}
-```
-
-HTTP status:
-
-```text
-500
-```
-
-Interpretation:
-
-- The request reached the Ghost Forge worker.
-- It failed before Replicate image generation.
-- No image was produced.
-- The original running worker used a hardcoded Anthropic model alias: `claude-3-5-haiku-latest`.
-- First local patch made the model configurable and defaulted to `claude-3-5-haiku-20241022`, but the Anthropic account also returned 404 for that model.
-- Codex queried the account's `/v1/models` endpoint from Render without printing the API key.
-- Available IDs included `claude-haiku-4-5-20251001`.
-- Local repo patch now defaults `ANTHROPIC_MODEL` to account-available Haiku model `claude-haiku-4-5-20251001`.
-- Local syntax check passed with `node --check ghost-forge-worker/server.mjs`.
-
-Files patched locally:
+Patch prepared locally, not pushed and not deployed:
 
 - `ghost-forge-worker/server.mjs`
+  - Adds authenticated `GET /diagnostics/replicate/account`.
+  - Calls Replicate `GET /v1/account` and `GET /v1/predictions` using the private `REPLICATE_API_TOKEN` already stored in Render.
+  - Returns non-secret account context only: account type, username, name, GitHub URL, and redacted recent prediction summaries.
+  - Does not create a prediction.
+  - Does not print or return the Replicate token.
+  - Switches Replicate API calls to the current documented `Bearer` authorization scheme.
+- `ghost-forge-worker/replicate-account-check.ps1`
+  - Calls the diagnostic endpoint using `GHOST_FORGE_API_KEY`.
+  - Does not need or print the Replicate token.
 - `ghost-forge-worker/README.md`
-- `ghost-forge-worker/render-env-checklist.md`
-- `foreman/WERKLES_SPEND_LEDGER.md`
-- `foreman/UNCLASSIFIED_SPEND_INBOX.md`
-- `foreman/REIMBURSEMENT_AND_INTERCOMPANY_LOG.md`
+  - Documents the diagnostic route.
 
-APPROVAL RECEIVED:
-Ben approved pushing/deploying the Ghost Forge model patch with:
+NEXT HUMAN ACTION:
+
+Ben says one of:
 
 ```text
-APPROVE GHOST FORGE MODEL PATCH DEPLOY
+APPROVE REPLICATE DIAGNOSTIC PATCH PUSH DEPLOY
 ```
 
-NEXT CODEX ACTION:
-Codex should:
+or
 
-1. Commit/push only the Ghost Forge model patch and cockpit updates that are needed for this fix.
-2. Trigger or stage the Render deploy for `werkles-ghost-forge1`.
-3. Stop if Render asks for final deploy approval not already covered.
-4. Re-run exactly one prompt test only after the patched service is live.
+```text
+STOP REPLICATE PATCH
+```
 
-Still blocked:
+If approved, Codex should run syntax checks, commit/push the patch to `ghost-forge-one-prompt-test`, wait for Render deploy, then call the diagnostic endpoint. Codex must not print, request, enter, or save secrets and must not create predictions during the diagnostic.
 
-- One-prompt retry.
+Still blocked until after diagnostic:
+
+- Replicate credit recognized by provider.
+- One-prompt successful image generation.
 - Background/batch image generation.
-- Google Drive spend sheet creation until Google OAuth/connector authorization is ready.
 
-Do not enter, print, save, request, or paste secrets into chat.
+Do not enter, print, save, request, or paste secrets into chat. Do not enter billing or credit card information.

@@ -83,6 +83,15 @@ Health check:
 curl "$PUBLIC_BASE_URL/health"
 ```
 
+Replicate account diagnostic:
+
+```bash
+curl "$PUBLIC_BASE_URL/diagnostics/replicate/account" \
+  -H "Authorization: Bearer $GHOST_FORGE_API_KEY"
+```
+
+This calls Replicate's non-secret account and prediction-list endpoints with the server-side `REPLICATE_API_TOKEN`. It returns the account `type`, `username`, `name`, `github_url`, and a redacted recent-prediction summary. It does not return the token and does not create a prediction.
+
 ## Cheap Cloud Deploy Notes
 
 ### Render

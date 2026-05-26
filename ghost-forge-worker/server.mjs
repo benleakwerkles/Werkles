@@ -276,6 +276,29 @@ app.get("/batches/:id", async (req, res) => {
   }
 });
 
+app.get("/diagnostics/replicate/account", async (req, res) => {
+  try {
+    assertInternalAuth(req);
+
+    const account = await getReplicateAccount();
+    const predictions = await listReplicatePredictions();
+
+    res.json({
+      ok: true,
+      checked_at: new Date().toISOString(),
+      note: "Non-secret Replicate account context for the API token configured on this worker. No predictions were created.",
+      replicate_account: sanitizeReplicateAccount(account),
+      recent_predictions: summarizeReplicatePredictions(predictions)
+    });
+  } catch (error) {
+    logError("GET /diagnostics/replicate/account failed", error);
+    res.status(error.statusCode || 500).json({
+      ok: false,
+      error: error.message || "Internal error"
+    });
+  }
+});
+
 app.listen(Number(PORT), () => {
   console.log(`Ghost Forge worker listening on port ${PORT}`);
 });
@@ -619,6 +642,11 @@ async function enqueueReplicatePrediction(batch, output) {
       error: error.message || "Replicate enqueue failed",
       updated_at: new Date().toISOString()
     });
+    try {
+      await refreshBatchStatus(output.batch_id);
+    } catch (refreshError) {
+      logError("Batch status refresh after Replicate enqueue failure failed", refreshError);
+    }
     throw error;
   }
 }
@@ -628,7 +656,7 @@ async function createReplicatePrediction({ model, input, webhook }) {
   const response = await fetch(url, {
     method: "POST",
     headers: {
-      authorization: `Token ${REPLICATE_API_TOKEN}`,
+      authorization: `Bearer ${REPLICATE_API_TOKEN}`,
       "content-type": "application/json",
       prefer: "wait=0"
     },
@@ -642,6 +670,58 @@ async function createReplicatePrediction({ model, input, webhook }) {
   }
 
   return payload;
+}
+
+async function getReplicateAccount() {
+  return replicateGet("https://api.replicate.com/v1/account");
+}
+
+async function listReplicatePredictions() {
+  return replicateGet("https://api.replicate.com/v1/predictions");
+}
+
+async function replicateGet(url) {
+  const response = await fetch(url, {
+    headers: {
+      authorization: `Bearer ${REPLICATE_API_TOKEN}`,
+      "content-type": "application/json"
+    }
+  });
+
+  const payload = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    const error = new Error(`Replicate diagnostic failed ${response.status}: ${providerErrorMessage(payload)}`);
+    error.statusCode = response.status;
+    throw error;
+  }
+
+  return payload;
+}
+
+function sanitizeReplicateAccount(account) {
+  return {
+    type: account?.type || null,
+    username: account?.username || null,
+    name: account?.name || null,
+    github_url: account?.github_url || null
+  };
+}
+
+function summarizeReplicatePredictions(payload) {
+  return Array.isArray(payload?.results)
+    ? payload.results.slice(0, 5).map((prediction) => ({
+        id: prediction?.id || null,
+        status: prediction?.status || null,
+        model: prediction?.model || null,
+        version: prediction?.version || null,
+        source: prediction?.source || null,
+        created_at: prediction?.created_at || null,
+        completed_at: prediction?.completed_at || null,
+        error: prediction?.error ? redactSensitiveText(String(prediction.error)) : null,
+        web_url: prediction?.urls?.web || null
+      }))
+    : [];
 }
 
 function replicatePredictionRequest({ model, input, webhook }) {

@@ -161,3 +161,55 @@ Status: active local cockpit as of 2026-05-25.
   - README and Render checklist updated.
 - Local check: `node --check ghost-forge-worker/server.mjs` passed.
 - Next gate: `[AWAITING HUMAN GATE: GHOST_FORGE_MODEL_PATCH_PUSH_DEPLOY_APPROVAL]`
+
+## Ghost Forge Model Patch Deploy
+
+- Commit `79c835b Fix Ghost Forge Anthropic model` pushed to `origin/ghost-forge-one-prompt-test`.
+- Render deploy for `79c835b` succeeded and went live.
+- Account model list then showed available model `claude-haiku-4-5-20251001`.
+- Commit `600a89e Use available Claude Haiku model` pushed to `origin/ghost-forge-one-prompt-test`.
+- Render deploy for `600a89e` succeeded and went live.
+- Patched one-prompt retry reached Replicate and failed at Replicate billing/credit:
+  - `Replicate prediction failed 402: You have insufficient credit to run this model.`
+- No image was generated.
+- No Replicate prediction was created.
+- No asset was uploaded.
+- Database state:
+  - Batch `bfd1dbf7-478d-484c-b2ba-ff57dbaf760e`: `pending`
+  - Output `75735fdc-c80b-4cc6-9a9a-7fd7161fa900`: `failed`
+  - 2026-05-26 image spend: estimated `$0.20`, actual `$0.00`
+  - 2026-05-26 Claude spend: estimated `$0.04`, actual `$0.000761`, request count `2`
+- Next gate: `[AWAITING HUMAN GATE: REPLICATE_BILLING_CREDIT_FOR_GHOST_FORGE]`
+
+## Ghost Forge Replicate Credit Retry
+
+- Ben said `replicate credit done`.
+- Codex waited 120 seconds before retrying.
+- Retry still failed with Replicate 402 insufficient credit.
+- No Replicate prediction was created.
+- No image was generated.
+- No asset was uploaded.
+- Latest batch `9d0ba70e-f117-40d1-a724-07b33e27529d`: `pending`
+- Latest output `b5044f75-bd7b-41ca-9acf-615cd97e3b28`: `failed`
+- 2026-05-26 image spend now: estimated `$0.40`, actual `$0.00`
+- 2026-05-26 Claude spend now: estimated `$0.06`, actual `$0.001502`, request count `3`
+- Local hygiene patch added but not deployed:
+  - Refresh batch status after synchronous Replicate enqueue failure.
+  - `node --check ghost-forge-worker/server.mjs` passed.
+- Next gate: `[AWAITING HUMAN GATE: REPLICATE_CREDIT_NOT_RECOGNIZED]`
+
+## Ghost Forge Replicate No-Browser Diagnostic Prep
+
+- Ben reported the Codex in-app browser was not visible/reliable for Replicate login.
+- Codex prepared a local no-browser diagnostic patch, not pushed and not deployed.
+- Patch details:
+  - `ghost-forge-worker/server.mjs` adds authenticated `GET /diagnostics/replicate/account`.
+  - The route calls Replicate `GET /v1/account` and `GET /v1/predictions` using the private `REPLICATE_API_TOKEN` already stored server-side.
+  - The route returns only non-secret account context and redacted prediction summaries.
+  - The route does not create predictions, generate images, or return token values.
+  - Replicate API auth header was aligned with current docs: `Bearer ${REPLICATE_API_TOKEN}`.
+  - `ghost-forge-worker/replicate-account-check.ps1` added to call the route with `GHOST_FORGE_API_KEY`.
+  - `ghost-forge-worker/README.md` documents the route.
+- Local check passed:
+  - `node --check ghost-forge-worker/server.mjs`
+- Next gate: `[AWAITING HUMAN GATE: REPLICATE_DIAGNOSTIC_PATCH_REVIEW]`
