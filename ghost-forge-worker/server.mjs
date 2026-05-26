@@ -620,7 +620,7 @@ async function enqueueReplicatePredictions(batch, outputs) {
 
 async function enqueueReplicatePrediction(batch, output) {
   try {
-    const webhookUrl = `${PUBLIC_BASE_URL.replace(/\/$/, "")}/webhook/replicate?output_id=${encodeURIComponent(output.id)}`;
+    const webhookUrl = `${normalizedPublicBaseUrl()}/webhook/replicate?output_id=${encodeURIComponent(output.id)}`;
     const prediction = await createReplicatePrediction({
       model: output.model || batch.model,
       input: {
@@ -649,6 +649,10 @@ async function enqueueReplicatePrediction(batch, output) {
     }
     throw error;
   }
+}
+
+function normalizedPublicBaseUrl() {
+  return PUBLIC_BASE_URL.trim().replace(/[/.]+$/, "");
 }
 
 async function createReplicatePrediction({ model, input, webhook }) {

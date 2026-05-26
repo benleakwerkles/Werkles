@@ -1,30 +1,25 @@
 # Operator Dashboard
 
 - Current phase: Ghost Forge one-prompt setup
-- Current step: Replicate no-browser diagnostic patch review
+- Current step: Ghost Forge webhook base URL fix approval
 - Current risk level: MEDIUM
-- Current status: Ghost Forge model patch is live and Claude works; after Ben said Replicate credit was done, one retry still returned Replicate 402 insufficient credit. Browser handoff to Replicate failed, so Codex prepared a no-browser diagnostic patch locally.
-- Last completed gate: One credited retry was attempted after a 120-second wait and verified in the database.
+- Current status: One prompt succeeded through Replicate and was uploaded to Supabase after a manual signed webhook replay. Automatic Replicate webhook callback needs a trailing-dot URL fix before future predictions.
+- Last completed gate: Ben approved one-prompt retry after Replicate diagnostic.
 - Next required AI, if any: none
 - Exact file to send, if any: none
-- Exact thing Ben must do next: Say `APPROVE REPLICATE DIAGNOSTIC PATCH PUSH DEPLOY` or `STOP REPLICATE PATCH`.
+- Exact thing Ben must do next: Say `APPROVE GHOST FORGE WEBHOOK BASE URL FIX PUSH DEPLOY` or `STOP GHOST FORGE`.
 - APPLY allowed: No
 - APPLY blocked because:
-  - diagnostic patch needs human approval before push/deploy
-  - image-generation gate remains closed
+  - webhook base URL fix needs human approval before push/deploy
 - PUSH allowed: No
 - PUSH blocked because:
-  - push remains blocked until Ben approves the Replicate diagnostic patch push/deploy
+  - push remains blocked until Ben approves the webhook base URL fix push/deploy
 - Handoff warnings:
   - do not use Ben's normal browser unless Ben explicitly asks
   - do not print or request secrets in chat
   - spend sources of truth are `foreman/SPEND_LEDGER_INDEX.md`, the company ledgers, `foreman/COMMINGLING_UNTANGLING_PLAYBOOK.md`, `foreman/UNCLASSIFIED_SPEND_INBOX.md`, and `foreman/REIMBURSEMENT_AND_INTERCOMPANY_LOG.md` until separate Google Sheet creation/update is approved
 - Blockers:
-  - Replicate still reports insufficient credit
-  - Replicate account/token context needs diagnostic confirmation
-  - one-prompt image test has not succeeded
-  - local batch-status hygiene patch has not been deployed
-  - local no-browser Replicate diagnostic patch has not been deployed
+  - automatic Replicate webhook callback has a malformed trailing-dot URL
   - background image generation is not approved
-  - no background batch generation until one-prompt succeeds and Ben approves a batch budget
-- Plain English: The worker and database are ready, Claude works, but Replicate still does not recognize usable credit. Since the browser is unreliable, the next clean move is to deploy a locked diagnostic endpoint that asks Replicate which account the Render token belongs to without creating an image or exposing the token.
+  - no background batch generation until automatic webhook callback is fixed and Ben approves a batch budget
+- Plain English: The forge made its first image. The remaining bug is plumbing: future Replicate callbacks need `https://werkles-ghost-forge1.onrender.com/webhook/...`, not `https://werkles-ghost-forge1.onrender.com./webhook/...`.

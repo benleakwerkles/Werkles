@@ -23,6 +23,8 @@ cp .env.example .env
 
 Fill `.env` in your cloud provider or local test shell. Do not commit `.env`.
 
+`PUBLIC_BASE_URL` must be the public worker origin with no trailing slash or dot. The worker normalizes trailing slashes/dots before creating Replicate webhook URLs, but Render should still store the clean value, for example `https://werkles-ghost-forge1.onrender.com`.
+
 ## Environment Variables
 
 ```bash

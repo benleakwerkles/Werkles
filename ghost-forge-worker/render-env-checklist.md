@@ -12,6 +12,7 @@ Set these in Render Dashboard. Do not paste values into Codex or chat.
 - [x] `SUPABASE_URL` saved privately by Ben
 - [x] `SUPABASE_SERVICE_ROLE_KEY` saved privately by Ben
 - [x] `PUBLIC_BASE_URL=https://werkles-ghost-forge1.onrender.com`
+  - Must not include a trailing dot or slash. Bad: `https://werkles-ghost-forge1.onrender.com.`
 
 ## Non-Secret First-Test Values
 

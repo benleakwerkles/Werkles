@@ -213,3 +213,77 @@ Status: active local cockpit as of 2026-05-25.
 - Local check passed:
   - `node --check ghost-forge-worker/server.mjs`
 - Next gate: `[AWAITING HUMAN GATE: REPLICATE_DIAGNOSTIC_PATCH_REVIEW]`
+
+## Ghost Forge Replicate Diagnostic Deploy
+
+- Ben approved:
+  - `APPROVE REPLICATE DIAGNOSTIC PATCH PUSH DEPLOY`
+- Local syntax check passed:
+  - `node --check ghost-forge-worker/server.mjs`
+- Commit created and pushed:
+  - `96329ea Add Replicate account diagnostic`
+- Render manual deploy triggered from dashboard:
+  - Service: `werkles-ghost-forge1`
+  - Branch: `ghost-forge-one-prompt-test`
+  - Deployed commit: `96329ea1343f7ac10072d491723bf197d0a102df`
+- Public unauthenticated diagnostic route check:
+  - `GET /diagnostics/replicate/account` returned `401 Unauthorized`
+  - This confirms the new route is live and protected.
+- Authenticated diagnostic run from Render Web Shell:
+  - Used `GHOST_FORGE_API_KEY` from Render service environment.
+  - Did not print `GHOST_FORGE_API_KEY`.
+  - Did not print `REPLICATE_API_TOKEN`.
+  - Did not create any Replicate prediction.
+- Diagnostic result:
+  - `ok: true`
+  - Replicate account type: `user`
+  - Replicate username: `benleakwerkles`
+  - Replicate GitHub URL: `https://github.com/benleakwerkles`
+  - Recent predictions returned by this token: none
+- Health check after deploy:
+  - `GET /health` returned `{"ok":true,"service":"ghost-forge-worker","renderer":"replicate"}`
+- Interpretation:
+  - Render's Replicate token belongs to `benleakwerkles`, not a different visible username.
+  - The previous 402 was not explained by a wrong Replicate username.
+  - The deployed worker now uses Replicate's current documented `Bearer` auth scheme for prediction and diagnostic calls.
+- Next gate: `[AWAITING HUMAN GATE: REPLICATE_ONE_PROMPT_RETRY_APPROVAL]`
+
+## Ghost Forge One-Prompt Retry After Replicate Diagnostic
+
+- Ben approved:
+  - `APPROVE ONE PROMPT RETRY AFTER REPLICATE DIAGNOSTIC`
+- Codex ran exactly one prompt from Render Shell using `GHOST_FORGE_API_KEY` from the service environment.
+- Request result:
+  - `ok: true`
+  - Batch ID: `5d544518-17ae-4ad9-a5ed-19a502d42e62`
+  - Total prompts: `1`
+  - Estimated image cost: `$0.20`
+  - Initial status: `queued`
+- Replicate result:
+  - Prediction ID: `0e7weaey99rmt0cycq6ackes4r`
+  - Status: `succeeded`
+  - Model: `ideogram-ai/ideogram-v3-quality`
+  - Output count: `1`
+  - Replicate predict time: about `15.06s`
+  - Output bytes downloaded by Replicate: `1460620`
+- Automatic webhook issue found:
+  - Replicate's stored webhook URL was malformed:
+    - `https://werkles-ghost-forge1.onrender.com./webhook/replicate?output_id=0c31e055-9092-43a6-902b-427e7e7f96be`
+  - The extra dot after `onrender.com` prevented the normal callback path.
+- Codex manually replayed the signed webhook from Render Shell for this one existing prediction:
+  - Used `REPLICATE_API_TOKEN` and `REPLICATE_WEBHOOK_SECRET` from Render environment.
+  - Did not print secret values.
+  - Did not create another prediction.
+  - Worker response: `200 {"ok":true,"handled":"completed",...}`
+- Final batch check:
+  - Batch status: `completed`
+  - Output status: `completed`
+  - Output ID: `0c31e055-9092-43a6-902b-427e7e7f96be`
+  - Storage bucket: `ghost-forge`
+  - Storage path: `5d544518-17ae-4ad9-a5ed-19a502d42e62/hero-background/0c31e055-9092-43a6-902b-427e7e7f96be.png`
+  - Content type: `image/png`
+  - Byte size: `1460620`
+- Local fix prepared, not pushed and not deployed:
+  - `ghost-forge-worker/server.mjs` now normalizes `PUBLIC_BASE_URL` before composing webhook URLs.
+  - `ghost-forge-worker/README.md` and `ghost-forge-worker/render-env-checklist.md` document no trailing slash/dot for `PUBLIC_BASE_URL`.
+- Next gate: `[AWAITING HUMAN GATE: GHOST_FORGE_WEBHOOK_BASE_URL_FIX_APPROVAL]`
