@@ -1,5 +1,20 @@
 ﻿# Current State
 
+## Cockpit Sync 2026-05-31 (current — read this first)
+
+Earlier the crew check-in flagged this file and `OPERATOR_DASHBOARD.md` as stale. This block refreshes the top-level truth; the dated sections below are kept as historical record.
+
+- Canonical repo: public `benleakwerkles/Werkles1`. The private `benleakwerkles/Werkles` repo is **empty** (no commits) and is not canonical.
+- `main` is clean and synced with `origin/main` at `60f74c8` (2026-05-30 werkles.com morale deploy).
+- App health verified 2026-05-31: `npm ci`, `npm run typecheck`, `npm run build` pass; dev preview returns `200` across public + dashboard routes; homepage shows current dark-copper "The Forge" v0.6 copy.
+- Assets committed (via `git ls-files`): 24 Tier 3 icon PNGs; 12/40 Gate 05 style variants (4 style logo-Ws + 8 style lane icons); atmosphere plates (hero/proof v0.1+v0.2, workshop interior, conservatory).
+- Gate 05: 28 style variants remain after a Render 429; stopped at `[13/40] enamel/connector`.
+- Squibb mascot: NOT landed — `public/assets/mascot/` has only README + `.gitkeep`. Awaiting Ben's manual cutout per `foreman/MASCOT_RULES.md`.
+- Open decision: Comptroller (Petra) verdict on first APP_INFRA slice (A–E) + Gate 05 RESUME/PAUSE/STOP. Packet: `foreman/handoffs/outbox/TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.2.md`.
+- Human gates unchanged: login/OAuth, billing, secrets in chat, push-to-main/deploy/SQL/production-data, final brand lock, spend above approved caps.
+
+---
+
 Ghost Forge branch is pushed:
 
 ```text
