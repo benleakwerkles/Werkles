@@ -13,11 +13,11 @@ Both Operator-approved and recorded in `foreman/gates/APPROVAL_LOG.md`.
 
 - **Gate 05 / Ghost Forge: PAUSED.** No image batches active. Any resume is a deliberate Operator action inside the approved lane + budget, with `GHOST_FORGE_API_KEY` held privately in a local terminal (never in chat). 12/40 style variants remain landed; 28 unbuilt.
 - **Bellows: not active.** Source/framework stays in the source-preservation / ingest lane only; no live Bellows runs.
-- **Imagery direction: unresolved.** No `foreman/IMAGERY_DIRECTION.md` exists. The human-vs-foundry/fantasy question must be recorded before any new image spend.
+- **Imagery direction: captured pending local verification.** Latest Sally report says `foreman/IMAGERY_DIRECTION.md` exists, status direction locked 2026-05-31, and Ender imagery packet is prepared. Gate 05 remains paused. Next visual action, if opened, is Ender Tests 1–3 UI-only card/formation implementation, not Ghost Forge image generation.
 
 ## Active human gate
 
-- **APP_INFRA-01 — Functional Surface Review** (maps to `[AWAITING HUMAN GATE: APP_INFRA_REVIEW]` in `foreman/APP_INFRA_UX_START_PACKET.md`). This remains the active human gate unless already closed. First slice (A–E) selection awaits a Comptroller (Petra) verdict — packet ready at `foreman/handoffs/outbox/TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.2.md` / `PETRA_PASTE_BLOCK_v0.2.txt`.
+- **APP_INFRA-01 — Functional Surface Review** remains the active human gate unless already closed. Before opening new app work, confirm current cockpit state and review packet status. (Maps to `[AWAITING HUMAN GATE: APP_INFRA_REVIEW]` in `foreman/APP_INFRA_UX_START_PACKET.md`; Comptroller/Petra packet at `foreman/handoffs/outbox/TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.2.md` / `PETRA_PASTE_BLOCK_v0.2.txt`.)
 
 ## Pending (not Ghost Forge)
 
