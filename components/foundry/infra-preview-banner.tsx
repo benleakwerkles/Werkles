@@ -1,12 +1,12 @@
 import { copy } from "@/lib/copy";
-import { isAppInfraPreview } from "@/lib/app-infra-preview";
+import { isCruciblePreview } from "@/lib/app-infra-preview";
 
 type InfraPreviewBannerProps = {
   detail: string;
 };
 
 export function InfraPreviewBanner({ detail }: InfraPreviewBannerProps) {
-  if (!isAppInfraPreview()) return null;
+  if (!isCruciblePreview()) return null;
 
   return (
     <p className="trust-badge infra-preview-banner" role="status">

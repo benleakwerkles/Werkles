@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAppInfraPreview } from "@/lib/app-infra-preview";
+import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
 import { getFoundryDuesPriceId, getStripe } from "@/lib/stripe";
 import { getSupabaseService } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/supabase/request";
@@ -7,7 +7,7 @@ import { requireUser } from "@/lib/supabase/request";
 export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
-  if (isAppInfraPreview()) {
+  if (isAuthStripeTestBlocked()) {
     return NextResponse.json(
       { error: "Paid checkout is disabled during APP_INFRA preview." },
       { status: 403 }

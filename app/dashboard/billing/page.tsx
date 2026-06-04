@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { InfraPreviewBanner } from "@/components/foundry/infra-preview-banner";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
-import { isAppInfraPreview } from "@/lib/app-infra-preview";
+import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 type BillingProfile = {
@@ -25,7 +24,7 @@ const PREVIEW_PROFILE: BillingProfile = {
 };
 
 export default function BillingPage() {
-  const preview = isAppInfraPreview();
+  const preview = isAuthStripeTestBlocked();
   const [profile, setProfile] = useState<BillingProfile | null>(preview ? PREVIEW_PROFILE : null);
   const [status, setStatus] = useState(
     preview ? copy.dashboard.billing.previewShell : copy.dashboard.billing.idle
@@ -66,7 +65,45 @@ export default function BillingPage() {
   }, [preview]);
 
   async function openPortal() {
-    setStatus(copy.dashboard.billing.portalBlocked);
+    if (preview) {
+      setStatus(copy.dashboard.billing.portalBlocked);
+      return;
+    }
+
+    setStatus("Opening the billing portal.");
+
+    try {
+      const supabase = getSupabaseBrowser();
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+
+      if (!token) {
+        setStatus("Log in to open the billing portal.");
+        return;
+      }
+
+      const response = await fetch("/api/billing/portal", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setStatus(payload.error || "Billing portal could not open.");
+        return;
+      }
+
+      if (payload.url) {
+        window.location.href = payload.url;
+        return;
+      }
+
+      setStatus("Billing portal returned no URL.");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Billing portal could not open.");
+    }
   }
 
   return (
@@ -80,7 +117,6 @@ export default function BillingPage() {
       </nav>
 
       <section className="ops-card billing-panel">
-        <InfraPreviewBanner detail={copy.infraPreview.billing} />
         <div className="card-heading">
           <p>{copy.dashboard.billing.kicker}</p>
           <h1>{copy.dashboard.billing.headline}</h1>
@@ -103,7 +139,7 @@ export default function BillingPage() {
             : "not set"}
         </p>
         <button className="button button-outline" type="button" onClick={openPortal} disabled={preview}>
-          Prepare billing portal
+          Open billing portal
         </button>
         <p className="status-line" role="status">{status}</p>
       </section>
