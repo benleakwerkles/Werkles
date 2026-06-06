@@ -1,8 +1,10 @@
 # Gate 05 — Style variant batches
 
-Status: **IN PROGRESS** (autonomous run for Ben review)
+Status: **PAUSED** — Gate 05 / Ghost Forge image spend parked until APP_INFRA-01 closes or Ben opens separate budget/render gate.
 
 Purpose: Give Ben **four distinct icon/logo styles** to compare against v0.1 brass foundry set.
+
+**Imagery doctrine (people/formation):** `foreman/IMAGERY_DIRECTION.md` · prompt catalog `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` — **do not run while PAUSED.**
 
 Styles:
 

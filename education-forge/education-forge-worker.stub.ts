@@ -1,15 +1,16 @@
 /**
- * Education Bellows worker stub.
+ * Education Forge worker stub.
  *
- * This is not the full Bellows worker. It is a text-only curriculum scaffold
- * for Learning Corner drafts. It must not publish content or write outside:
+ * Internal curriculum drafting scaffold — NOT the public Bellows product surface.
+ * Bellows lives at /bellows (see foreman/SITE_MAP.md).
  *
+ * May write only to:
  * - content/education/drafts/
- * - foreman/bellows-output/
+ * - foreman/education-forge-output/
  * - education-forge/
  */
 
-type BellowsConfig = {
+type EducationForgeConfig = {
   maxDraftsPerRun: number;
   maxSourcesPerDraft: number;
   dailyCostLimitUsd: number;
@@ -23,17 +24,17 @@ type BacklogTopic = {
   status: "queued" | "drafted" | "blocked" | "reviewed";
 };
 
-const config: BellowsConfig = {
+const config: EducationForgeConfig = {
   maxDraftsPerRun: Number(process.env.MAX_DRAFTS_PER_RUN || 1),
   maxSourcesPerDraft: Number(process.env.MAX_SOURCES_PER_DRAFT || 8),
   dailyCostLimitUsd: Number(process.env.DAILY_COST_LIMIT_USD || 5),
-  dryRun: process.env.BELLOWS_DRY_RUN !== "false"
+  dryRun: process.env.EDUCATION_FORGE_DRY_RUN !== "false",
 };
 
 const allowedWriteRoots = [
   "content/education/drafts/",
-  "foreman/bellows-output/",
-  "education-forge/"
+  "foreman/education-forge-output/",
+  "education-forge/",
 ] as const;
 
 function assertAllowedWritePath(path: string) {
@@ -41,7 +42,7 @@ function assertAllowedWritePath(path: string) {
   const allowed = allowedWriteRoots.some((root) => normalized.startsWith(root));
 
   if (!allowed) {
-    throw new Error(`Bellows write blocked outside allowed roots: ${path}`);
+    throw new Error(`Education Forge write blocked outside allowed roots: ${path}`);
   }
 }
 
@@ -70,31 +71,30 @@ async function draftOneLesson(topic: BacklogTopic) {
       status: "dry_run",
       topic: topic.title,
       outputPath,
-      note: "No draft generated. Full Bellows remains gated."
+      note: "No draft generated. Education Forge live runs remain gated.",
     };
   }
 
   throw new Error("Live drafting is not enabled in the scaffold.");
 }
 
-export async function runEducationBellows(topics: BacklogTopic[]) {
+export async function runEducationForge(topics: BacklogTopic[]) {
   const selected = enforceRunLimits(topics);
 
   if (selected.length === 0) {
-    return [{ status: "idle", note: "No queued Learning Corner topics." }];
+    return [{ status: "idle", note: "No queued Bellows curriculum topics." }];
   }
 
   return Promise.all(selected.map(draftOneLesson));
 }
 
-export const educationBellowsRules = {
+export const educationForgeRules = {
   allowedWriteRoots,
   config,
   hardStops: [
-    "Do not publish content.",
+    "Do not publish to /bellows or other app routes.",
     "Do not edit app, lib, company, supabase, or API routes.",
     "Do not run indefinitely.",
-    "Do not provide financial, legal, tax, or investment advice."
-  ]
+    "Do not provide financial, legal, tax, or investment advice.",
+  ],
 } as const;
-

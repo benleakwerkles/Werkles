@@ -1,6 +1,8 @@
-# Learning Corner Source Policy
+# Education Forge Source Policy
 
-Learning Corner content exists to de-gate practical operator knowledge without copying gurus, selling fantasies, or pretending education is advice.
+> **Deprecated naming:** this document used Bellows to mean autonomous text worker. Current naming: Bellows is the learning area; background content worker should be called Education Forge / Curriculum Forge / Content Forge.
+
+Education Forge drafts (for eventual **Bellows** publish review) exist to de-gate practical operator knowledge without copying gurus, selling fantasies, or pretending education is advice.
 
 ## Source Rules
 
@@ -14,7 +16,7 @@ Learning Corner content exists to de-gate practical operator knowledge without c
 
 ## Advice Boundary
 
-Learning Corner drafts are educational content only.
+Bellows drafts are educational content only.
 
 - No financial advice.
 - No legal advice.

@@ -65,6 +65,6 @@ export function LaneSigil({
   return <SiteIcon icon={iconMap[lane]} size="lg" label={label} showLabel className="lane-sigil" />;
 }
 
-export function NavIcon({ icon }: { icon: "nav-people" | "nav-how" | "nav-proof" | "nav-dues" }) {
+export function NavIcon({ icon }: { icon: "nav-people" | "nav-how" | "nav-proof" | "nav-bellows" | "nav-dues" }) {
   return <SiteIcon icon={icon} size="sm" className="nav-icon-wrap" />;
 }
