@@ -2,21 +2,21 @@
 
 ## Effective gate
 
-`[IN PROGRESS: SUPABASE_AUTH_STRIPE_TEST_WIRING]`
+`[AWAITING HUMAN GATE: SUPABASE_AUTH_STRIPE_MERGE_TO_MAIN]`
 
 ## Active writer
 
-**Ben (Operator)** — Supabase Auth + Stripe test wiring per `foreman/gates/OAUTH_STRIPE_OPERATOR_CHECKLIST.md`.
+**Ben (Operator)** — merge PR #8 when ready; Production rollout is a separate gate.
 
-**Maker (Cursor)** — **parked** for provider consoles and secret entry. Mechanical prep only when scoped.
+**Maker (Cursor)** — **parked** until merge approved. No Production deploy/env.
 
-**Petra (Comptroller)** — APP_INFRA-01 human gate **closed** (Ben APPROVE). GATE_05 **PAUSE**. UI_COMMIT **OPEN**.
+**Petra (Comptroller)** — SUPABASE_AUTH_STRIPE Preview proof **PASS** recorded. GATE_05 **PAUSE**.
 
-**Codex** — cockpit sync on request after provider milestones.
+**Codex** — cockpit synced 2026-06-01.
 
 ## Deliverable
 
-APP_INFRA-01 **APPROVED** — `foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_REVIEW.md` · app `02bf718`.
+SUPABASE_AUTH_STRIPE_TEST_WIRING Preview proof **PASS** — branch `supabase-auth-stripe-test-wiring` @ `29d0b4c` · PR #8 unmerged.
 
 ## Gate 05 / Ghost Forge
 
@@ -24,7 +24,7 @@ APP_INFRA-01 **APPROVED** — `foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_R
 
 ## Preview
 
-http://localhost:3000 or https://werkles.com (`APP_INFRA_PREVIEW = true` until Ben flips for test wiring)
+https://werkles1-git-supabase-auth-stripe-test-wiring-werkles.vercel.app (wiring branch)
 
 ## Foreman
 

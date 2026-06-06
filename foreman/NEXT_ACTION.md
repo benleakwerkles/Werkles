@@ -1,52 +1,51 @@
 # NEXT ACTION
 
-**Effective gate:** `[IN PROGRESS: SUPABASE_AUTH_STRIPE_TEST_WIRING]`
+**Effective gate:** `[AWAITING HUMAN GATE: SUPABASE_AUTH_STRIPE_MERGE_TO_MAIN]`
 
 ---
 
-## Ben (Operator) — APP_INFRA-01 closed (2026-06-03)
+## SUPABASE_AUTH_STRIPE_TEST_WIRING — Preview proof PASS (2026-06-01)
 
-**Verdict:** **APPROVE** — recorded in `foreman/gates/APPROVAL_LOG.md`.
+**Recorded:** `foreman/gates/APPROVAL_LOG.md` · branch `supabase-auth-stripe-test-wiring` @ `29d0b4c`
 
-**Next hands:** Follow **`foreman/gates/OAUTH_STRIPE_OPERATOR_CHECKLIST.md`** (Supabase Auth URL + keys → Stripe test mode → webhook → test checkout).
+| Proof step | Result |
+|------------|--------|
+| Preview auth signup/login/confirm | PASS |
+| First Weld / profile | PASS |
+| Stripe test checkout | PASS |
+| Webhook → membership active | PASS |
+| Billing portal | PASS |
+| Cancel → paid access revoked | PASS |
+| `/dashboard/crucible` blocked | PASS |
 
-**Preview flag:** `APP_INFRA_PREVIEW` remains `true` in `lib/app-infra-preview.ts` until you flip it for test wiring or deploy prep.
+**PR #8:** open — **not merged** (human gate).
 
----
+**Production:** untouched — env/deploy rollout is a **separate** human gate after merge.
 
-## Petra verdict — crew-checkin (2026-05-31)
-
-**VERDICT: GO_WITH_CONDITIONS** — human gate **closed** with Ben **APPROVE**.
-
-**GATE_05:** **PAUSE** — APP_INFRA-01 closed; Ghost Forge image spend still needs separate budget/render gate.
-
-**UI_COMMIT:** **OPEN** — app UI commits allowed per lane; push/deploy/SQL/secrets remain human gates.
-
-**Maker deliverable:** `foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_REVIEW.md` — Ben **APPROVED** preview-gated surfaces (`02bf718`).
-
----
-
-## Maker (Cursor) — parked for provider wiring
-
-- **No** deploy, push, SQL, secrets entry, Ghost Forge, Education Forge worker
-- Provider consoles: Ben-only per checklist
-- Routine typecheck/build = non-gates inside approved scope
+**Still open (not blocking):** Turf ≠ ZIP product model; production env rollout.
 
 ---
 
-## Codex — on request
+## Ben (Operator) — next hands
 
-- Cockpit sync after provider milestones (record each in `APPROVAL_LOG.md`)
+1. When ready: **approve merge of PR #8** (`supabase-auth-stripe-test-wiring` → `main`)
+2. **Do not** enter Production Stripe/Supabase secrets or deploy Production until explicit rollout gate
+3. Record merge approval in `foreman/gates/APPROVAL_LOG.md`
+
+---
+
+## Maker (Cursor) — parked
+
+- **No** Production deploy, Production env changes, matching/UI, rescue, PR #6, Ghost Forge, Bellows, Ender visuals
+- Mechanical prep for merge only when Ben approves
 
 ---
 
 ## Conditions (active)
 
-- Supabase + Stripe **test** wiring is the slice — operator checklist order
-- No Stripe **live** until test webhook + checkout pass
-- No Ghost Forge spend (Gate 05 PAUSE)
-- No Bellows content generation until D lane gate
-- No push / deploy / SQL / secrets from automation
+- Gate 05 / Ghost Forge: **PAUSE**
+- No Stripe **live** until separate live-mode gates
+- No push / deploy / SQL / secrets from automation without explicit approval
 
 ---
 
@@ -62,4 +61,4 @@
 
 ## Hard stops
 
-no deploy | no push | no SQL | no secrets | no Ghost Forge | no Education Forge worker | no external Aeye Send unless separately requested
+no Production deploy | no Production env | no SQL | no secrets | no Ghost Forge | no Education Forge worker | no matching work

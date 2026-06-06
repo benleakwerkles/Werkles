@@ -1,7 +1,7 @@
 {
   "schemaVersion": "context-health/v0.1",
-  "updatedAt": "2026-06-03T04:57:50.000Z",
-  "expectedGate": "[IN PROGRESS: SUPABASE_AUTH_STRIPE_TEST_WIRING]",
+  "updatedAt": "2026-06-02T00:00:00.000Z",
+  "expectedGate": "[AWAITING HUMAN GATE: SUPABASE_AUTH_STRIPE_MERGE_TO_MAIN]",
   "sourceBundleVersion": "aeye-crew-relay/v0.1",
   "cousins": {
     "PETRA": {
