@@ -44,7 +44,8 @@ Checkpoint uncommitted Sally lane work before merging `origin/main` into the res
 
 ## Post-merge verification
 
-- [ ] `git status` clean
-- [ ] `npm run typecheck` pass
-- [ ] Homepage rewrite surfaces still present
-- [ ] `isAuthStripeTestBlocked()` / `isCruciblePreview()` from main
+- [x] `git status` clean
+- [x] `npm run typecheck` pass (2026-06-06)
+- [x] Homepage rewrite surfaces still present
+- [x] `isAuthStripeTestBlocked()` / `isCruciblePreview()` from main
+- [x] Merge commit: `405d53e` — `origin/main` @ `0c727a2` into rescue branch
