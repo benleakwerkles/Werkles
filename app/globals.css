@@ -1,4 +1,5 @@
 @import "../styles.css";
+@import "./visual-system.css";
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700;9..40,800&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap");
 
 /* Brightened workshop v0.4 — warm paper panels + visible forge atmosphere */
@@ -8,6 +9,7 @@
   --werkles-draft-hero-v02: url("/assets/draft/ghost-forge/werkles-draft-hero-foundry-v0.2.png");
   --werkles-draft-hero-ben-workshop: url("/assets/draft/ghost-forge/werkles-draft-workshop-interior-ben-pass.png");
   --werkles-draft-hero-ben-conservatory: url("/assets/draft/ghost-forge/werkles-draft-conservatory-ben-pass.png");
+  --werkles-stock-preview-hero: url("/assets/draft/stock-preview/hero-workshop.jpg");
   --werkles-draft-proof: url("/assets/draft/ghost-forge/werkles-draft-proof-trust-v0.1.png");
   --werkles-draft-proof-v02: url("/assets/draft/ghost-forge/werkles-draft-proof-trust-v0.2.png");
   --werkles-copper-frame: rgba(159, 102, 51, 0.46);
@@ -40,6 +42,9 @@ html {
 
 #top,
 #people,
+#profile-cards,
+#lanes,
+#formation,
 #how,
 #beta,
 #forge-preview,
@@ -806,6 +811,13 @@ textarea:focus {
   box-shadow: 0 22px 56px rgba(44, 35, 29, 0.14);
 }
 
+.hero.hero--stock-preview {
+  background:
+    linear-gradient(112deg, rgba(246, 239, 229, 0.58) 0%, rgba(246, 239, 229, 0.28) 46%, rgba(44, 35, 29, 0.18) 100%),
+    radial-gradient(circle at 78% 22%, rgba(159, 102, 51, 0.1), transparent 22rem),
+    var(--werkles-stock-preview-hero) center / cover;
+}
+
 .hero.hero--draft-v01::before,
 .hero.hero--draft-v01::after {
   content: none;
@@ -1019,6 +1031,154 @@ main .proof-warning.proof-boundary .trust-badge {
 .hero.hero--draft-v01 .hero-card-copy span {
   color: var(--werkles-ink-muted-on-paper);
   text-shadow: none;
+}
+
+.hero.hero--rewrite-v1 .hero-lead {
+  font-size: 1.08rem;
+  line-height: 1.55;
+  max-width: 38rem;
+}
+
+.hero.hero--rewrite-v1 .hero-positioning {
+  margin-top: 0.65rem;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  max-width: 34rem;
+}
+
+.hero.hero--rewrite-v1 .hero-before {
+  margin-top: 0.5rem;
+  color: var(--werkles-copper);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.45;
+  max-width: 34rem;
+}
+
+.hero.hero--rewrite-v1 .hero-signup-preview {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(159, 102, 51, 0.22);
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 36rem;
+}
+
+.hero-artifact {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: clamp(14px, 2.5vw, 22px);
+  border: 1px solid var(--werkles-copper-frame);
+  border-radius: var(--radius);
+  background: var(--werkles-cockpit-panel);
+  box-shadow: 0 18px 44px rgba(44, 35, 29, 0.12);
+}
+
+.hero-artifact__label {
+  margin: 0;
+  color: var(--werkles-copper);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-artifact__plate {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(159, 102, 51, 0.28);
+  border-radius: calc(var(--radius) - 2px);
+  background: linear-gradient(135deg, rgba(255, 252, 247, 0.96), rgba(246, 239, 229, 0.88));
+}
+
+.hero-artifact__title {
+  color: var(--werkles-ink-on-paper);
+  font-size: 1rem;
+}
+
+.hero-artifact__fit {
+  margin: 0;
+  color: var(--werkles-teal-deep);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.hero-artifact__body {
+  margin: 0;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.hero-artifact__badge {
+  justify-self: start;
+  padding: 4px 10px;
+  border: 1px solid rgba(2, 145, 126, 0.38);
+  border-radius: 999px;
+  color: var(--werkles-teal-deep);
+  background: rgba(24, 197, 174, 0.12);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-artifact__note {
+  margin: 0;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.hero-fold-trust {
+  margin: 0 22px 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 252, 247, 0.96), rgba(246, 239, 229, 0.9));
+}
+
+.hero-fold-trust__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.hero-fold-trust__item p {
+  margin: 0;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.hero-fold-trust__item .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.hero-fold-trust__badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--werkles-teal-deep);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-fold-trust__detail {
+  margin-top: 0.45rem !important;
+  font-size: 0.84rem !important;
+}
+
+@media (max-width: 900px) {
+  .hero-fold-trust__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .manifesto,

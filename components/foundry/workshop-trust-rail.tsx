@@ -1,37 +1,28 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import { copy } from "@/lib/copy";
-import { getWorkshopMomentCopy } from "@/lib/workshop-moment";
-
-const railPhrases = [
-  copy.hero.trustLine,
-  copy.trust.headline,
-  copy.hero.brandPromise,
-  "Proof signals. Private knocks.",
-  "Built on Trust.",
-  "Inspect the deck before the knock."
-];
 
 export function WorkshopTrustRail() {
-  const [momentLine, setMomentLine] = useState(copy.trust.headline);
-
-  useEffect(() => {
-    setMomentLine(getWorkshopMomentCopy().trustRail);
-  }, []);
-
-  const track = useMemo(
-    () => [...railPhrases, momentLine, ...railPhrases, momentLine],
-    [momentLine]
-  );
+  const { foldTrust } = copy.home;
 
   return (
-    <div className="workshop-trust-rail" aria-hidden="true">
-      <div className="workshop-trust-rail__track">
-        {track.map((phrase, index) => (
-          <span key={`${phrase}-${index}`}>{phrase}</span>
-        ))}
+    <section className="hero-fold-trust" aria-label="Homepage trust and signup preview">
+      <div className="hero-fold-trust__grid">
+        <article className="hero-fold-trust__item">
+          <p className="eyebrow">The before</p>
+          <p>{foldTrust.before}</p>
+        </article>
+        <article className="hero-fold-trust__item">
+          <p className="eyebrow">Proof posture</p>
+          <p>{foldTrust.proof}</p>
+          <p className="hero-fold-trust__badge">{copy.trust.badge}</p>
+        </article>
+        <article className="hero-fold-trust__item">
+          <p className="eyebrow">If you sign up</p>
+          <p>{foldTrust.signup}</p>
+          <p className="hero-fold-trust__detail">{copy.hero.signupPreview}</p>
+        </article>
       </div>
-    </div>
+    </section>
   );
 }

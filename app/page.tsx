@@ -5,18 +5,15 @@ import { DraftReviewBadge } from "@/components/foundry/draft-review-badge";
 import { HeaderMarkReview } from "@/components/foundry/header-mark-review";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { SiteHeader } from "@/components/foundry/site-header";
-import { LaneSigil, SiteIcon } from "@/components/foundry/site-icon";
+import { SiteIcon } from "@/components/foundry/site-icon";
 import { WorkshopBandPanel } from "@/components/foundry/workshop-band-panel";
 import { WorkshopTrustRail } from "@/components/foundry/workshop-trust-rail";
+import { EnderVisualTestsSection } from "@/components/visual-system/ender-visual-tests-section";
 import { copy } from "@/lib/copy";
 import { homeStepIcons } from "@/lib/site-icons";
-import { laneFacets, routeAtmosphere, stepFacets, workshopFacets } from "@/lib/workshop-facets";
-
-const laneKeys = ["builder", "operator", "backer", "connector", "spark"] as const;
+import { routeAtmosphere, stepFacets, workshopFacets } from "@/lib/workshop-facets";
 
 export default function HomePage() {
-  const laneCards = laneKeys.map((key) => ({ key, ...copy.lanes[key] }));
-
   return (
     <>
       <SiteHeader />
@@ -29,17 +26,9 @@ export default function HomePage() {
 
         <WorkshopTrustRail />
 
-        <HeaderMarkReview />
+        <EnderVisualTestsSection />
 
-        <section id="people" className="people-strip" aria-label="Werkles people lanes">
-          {laneCards.map((lane) => (
-            <article key={lane.key} className={workshopFacets[laneFacets[lane.key]]}>
-              <LaneSigil lane={lane.key} label={lane.title} />
-              <h2>{lane.headline}</h2>
-              <p>{lane.description}</p>
-            </article>
-          ))}
-        </section>
+        <HeaderMarkReview />
 
         <section id="how" className="manifesto" aria-labelledby="howTitle">
           <WorkshopBandPanel tone="workshop" layout="split">

@@ -9,14 +9,20 @@ export const copy = {
     foundryRecord: "Foundry record"
   },
   hero: {
-    eyebrow: "A warm foundry floor for people who actually build",
-    headline: "Bring your piece to The Forge.",
+    eyebrow: "Private foundry floor",
+    headline: "You already know what the problem is. Werkles is what you do about it.",
     subhead:
-      "A private floor for Builders, Operators, Backers, Connectors, and Sparks looking for serious fit, not guru fog.",
+      "Werkles is a private floor where Builders, Operators, Backers, Connectors, and Sparks discover possible partners — with visible fit reasons, not guru fog.",
+    positioning:
+      "Not another noisy network. A foundry for people who build and want serious fit before the knock.",
+    beforeState:
+      "Before: fragmented workflows, public shouting, and introductions that never survived Tuesday.",
     brandPromise: "Create with trust. Build to thrive.",
     primaryCta: "Enter the Foundry",
     secondaryCta: "See how it works",
-    trustLine: "Proof signals. Private knocks. No public shouting into the void."
+    trustLine: "Proof signals. Private knocks. No magic trust.",
+    signupPreview:
+      "Sign up → pick your lane → open your Forge file. Verification gates come before the full floor opens."
   },
   lanes: {
     builder: {
@@ -52,11 +58,11 @@ export const copy = {
   },
   howItWorks: {
     eyebrow: "How Werkles works",
-    headline: "Open your Forge file. Test the fit. Lock the joints.",
+    headline: "Get a Forge file. See why the fit might work. Knock when it's worth it.",
     steps: [
       {
         title: "Open your Forge file.",
-        body: "Pick your lane, name your arena and turf, skills, timeline, and proof posture. Keep it plain. The Forge hates perfume."
+        body: "You get a plain-language profile: your lane, arena, turf, skills, and proof posture — enough steel for the floor to read you clearly."
       },
       {
         title: "Test the fit.",
@@ -84,6 +90,14 @@ export const copy = {
     idle: "Mock-only copy. No production signup behavior is claimed here.",
     loading: "Checking the floorboards.",
     success: "The knock has been made. Now we see who opens the door."
+  },
+  bellows: {
+    eyebrow: "Bellows",
+    headline: "Learn how the floor actually works.",
+    body:
+      "Practical lessons, SOPs, and anti-guru operator knowledge from the Werkles foundry. Squibb hosts — no guru fog, no pretend certainty.",
+    shellNote: "Route shell only — full Bellows curriculum ships after separate approval.",
+    host: "Hosted by Squibb"
   },
   onboarding: {
     headline: "The First Weld",
@@ -139,9 +153,21 @@ export const copy = {
     firewallHeadline: "The money we do not touch."
   },
   home: {
+    artifact: {
+      label: "Example output — draft illustration",
+      title: "Forge file · Builder lane",
+      fitLine: "Fit signal: complementary Operator lane, shared turf, visible proof posture",
+      body: "Arena: light commercial HVAC · Turf: 787xx · Timeline: Q3 weld test",
+      note: "Stylized example. Your file is yours."
+    },
+    foldTrust: {
+      before: "Tired of guru fog and dead introductions?",
+      proof: "Proof signals vary in strength — nothing here fakes trust.",
+      signup: "Sign up opens your Forge file, not the full floor yet."
+    },
     proofStack: {
-      kicker: "Proof Stack",
-      headline: "Inspect the steel before you knock.",
+      kicker: "Before the crucible",
+      headline: "See what verification unlocks — before you commit.",
       cta: "How proof will work"
     },
     dashboardTeaser: {
@@ -151,10 +177,10 @@ export const copy = {
       cta: "Open the deck"
     },
     accountGate: [
-      "Driver's license front",
-      "Driver's license back",
-      "Live face capture",
-      "Linked phone with consent"
+      "1 · Account → pick your lane",
+      "2 · Forge file → arena, turf, skills",
+      "3 · Verification preview → ID, face, phone (before full access)",
+      "4 · Crucible gate → inspect signals, then knock"
     ]
   },
   dashboard: {
