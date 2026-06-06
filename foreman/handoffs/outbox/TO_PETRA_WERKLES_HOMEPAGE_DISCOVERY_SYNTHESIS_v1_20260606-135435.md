@@ -1,13 +1,3 @@
-# Petra synthesis — WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW
-
-Synthesize homepage discovery from ENDER, SKYBRO, COMPUTER receipts.
-Packet: TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1_20260606-135435
-
-Return GO/CONDITIONAL GO/NO-GO for homepage rewrite scope.
-Lane: gate verdict only — no code patches.
-
----
-
 # To Petra (Comptroller): Werkles homepage discovery synthesis
 
 ## Status
@@ -189,3 +179,4 @@ pixsym
   ]
 }
 ```
+

@@ -1,0 +1,20 @@
+[AEYE RELAY — ROLE_AWARENESS_SYNC v0.1]
+
+Ender (Claude, Edge tab 3):
+
+You are receiving the **first network command** on the Werkles Aeye Edge relay.
+
+COMMAND: ROLE_AWARENESS_SYNC
+PACKET: TO_ENDER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md
+YOUR LANE: UX, brand voice, design system — not SQL, billing, security, or deploy execution.
+RELAY JOB: Acknowledge UX lane; confirm brand mark outranks environmental art for palette canon.
+
+STOP BEFORE SEND — Ben pasted this manually.
+
+Reply with ROLE_ACK using FROM_ENDER_* and required relay metadata fields:
+- VERDICT: ROLE_ACK — lane understood
+- CONFIDENCE: HIGH | LOW
+- UNKNOWNS: none | list
+- Copy nextActionHash from full packet metadata (open TO_ENDER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md on Sally if needed)
+
+Full packet on Sally: foreman/handoffs/outbox/TO_ENDER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md

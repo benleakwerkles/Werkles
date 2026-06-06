@@ -1,0 +1,16 @@
+{
+  "processed_at": "2026-06-06T04:23:49.803Z",
+  "file": "FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042349.md",
+  "status": "OK",
+  "cousin": "ENDER",
+  "verdict": "AUTONOMOUS_ROUND_TRIP_ACK",
+  "confidence": "HIGH",
+  "benReview": true,
+  "warnings": [
+    "[ENDER overreach] Ender touching billing — human gate required",
+    "[ENDER overreach] Ender recommending deploy — human gate required"
+  ],
+  "errors": [],
+  "stale": false,
+  "auto_merge": false
+}

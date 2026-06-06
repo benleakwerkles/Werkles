@@ -1,0 +1,16 @@
+{
+  "processed_at": "2026-06-06T13:50:02.753Z",
+  "file": "FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+  "status": "OK",
+  "cousin": "ENDER",
+  "verdict": "WERKLES_HOMEPAGE_DISCOVERY_ACK",
+  "confidence": "HIGH",
+  "benReview": true,
+  "warnings": [
+    "[ENDER overreach] Ender touching billing — human gate required",
+    "[ENDER overreach] Ender recommending deploy — human gate required"
+  ],
+  "errors": [],
+  "stale": false,
+  "auto_merge": false
+}
