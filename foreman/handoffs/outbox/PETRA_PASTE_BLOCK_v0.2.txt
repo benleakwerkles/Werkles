@@ -1,0 +1,28 @@
+TO: PETRA (ChatGPT Comptroller)
+FROM: Ben — Maker prepared this packet (2026-05-31)
+
+Crew check-in v0.2: home UI shipped and werkles.com got a morale deploy. Ready to pivot toward functionality — need Comptroller scope before Codex or Maker open APP_INFRA work, and a call on the remaining Ghost Forge images.
+
+1) Open and follow exactly:
+   foreman/handoffs/outbox/TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.2.md
+
+2) Read cockpit sources listed in that packet (especially APP_INFRA_UX_START_PACKET, SITE_STYLE_APPROVED_v0.6, DRAFT_SITE_ASSET_RESULTS_v0.2, HUMAN_GATES, LANES, BUDGET, OPERATOR_DASHBOARD synced 2026-05-31).
+
+3) Reply using the VERDICT block at the bottom of the packet. Decide:
+   - first APP_INFRA slice (A–E or custom)
+   - Gate 05: RESUME | PAUSE | STOP
+   - UI commit timing
+   - whether Codex syncs cockpit + writes a handoff
+   - whether Maker stays on UI or switches to your slice
+
+Verified context snapshot (2026-05-31):
+- Canonical repo = public benleakwerkles/Werkles1; private benleakwerkles/Werkles is empty.
+- main clean at 60f74c8 (2026-05-30 werkles.com deploy); build + typecheck pass; routes 200.
+- Assets committed: 24 Tier 3 icons; Gate 05 12/40 style variants; atmosphere plates.
+- Gate 05: 28 remaining, stopped on Render 429.
+- Squibb mascot NOT landed — pending Ben manual cutout.
+- OPERATOR_DASHBOARD.md and CURRENT_STATE.md refreshed 2026-05-31.
+
+Hard limits: No deploy. No push to main. No merge. No SQL. No secrets in chat. No new spend unless you open it in LANES/BUDGET. Do not run Ghost Forge from an unsanctioned machine.
+
+When done, Ben pastes your VERDICT back to Maker or Codex.

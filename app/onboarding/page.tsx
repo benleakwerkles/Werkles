@@ -27,59 +27,51 @@ export default function OnboardingPage() {
 
   async function saveFirstWeld(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = new FormData(event.currentTarget);
     setBusy(true);
     setStatus("Heating the first weld.");
 
-    const user = await currentUser();
-    if (!user) {
+    try {
+      const lane = String(form.get("lane") || "Builder");
+      const arena = String(form.get("arena") || "").trim();
+      const turf = String(form.get("turf") || "").replace(/\D/g, "").slice(0, 5);
+
+      if (!arena || turf.length !== 5) {
+        setStatus("Arena and a valid ZIP are required.");
+        return;
+      }
+
+      const supabase = getSupabaseBrowser();
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+
+      if (!token) {
+        setStatus(copy.onboarding.loginRequired);
+        return;
+      }
+
+      const response = await fetch("/api/onboarding/first-weld", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ lane, arena, turf })
+      });
+
+      const payload = (await response.json().catch(() => ({}))) as { error?: string };
+      if (!response.ok) {
+        setStatus(payload.error || copy.onboarding.zipFailed);
+        return;
+      }
+
+      setStatus(`${copy.onboarding.saved} Pick a door below, or go straight to Foundry Dues.`);
+      setPhase("doors");
+    } catch {
+      setStatus("First weld jammed. Try again.");
+    } finally {
       setBusy(false);
-      setStatus(copy.onboarding.loginRequired);
-      return;
     }
-
-    const form = new FormData(event.currentTarget);
-    const lane = String(form.get("lane") || "Builder");
-    const arena = String(form.get("arena") || "").trim();
-    const turf = String(form.get("turf") || "").replace(/\D/g, "").slice(0, 5);
-
-    if (!arena || turf.length !== 5) {
-      setBusy(false);
-      setStatus("Arena and a valid ZIP are required.");
-      return;
-    }
-
-    const zipResponse = await fetch(`/api/zip?zip=${turf}`);
-    if (!zipResponse.ok) {
-      setBusy(false);
-      setStatus(copy.onboarding.zipFailed);
-      return;
-    }
-
-    const zip = await zipResponse.json();
-    const supabase = getSupabaseBrowser();
-    const { error } = await supabase.from("profiles").upsert({
-      id: user.id,
-      email: user.email,
-      display_name: user.email?.split("@")[0] || "Werkles Builder",
-      lane,
-      industry_tags: [arena],
-      location_city: zip.city,
-      location_state: zip.state,
-      location_lat: zip.lat,
-      location_lng: zip.lng,
-      turf_zip: turf,
-      work_preference: "Local Only"
-    });
-
-    setBusy(false);
-
-    if (error) {
-      setStatus(error.message);
-      return;
-    }
-
-    setStatus(copy.onboarding.saved);
-    setPhase("doors");
   }
 
   async function chooseDepth(profileDepth: "full_audit" | "blueprint") {
@@ -109,6 +101,7 @@ export default function OnboardingPage() {
 
   async function saveQuickWeld(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = new FormData(event.currentTarget);
     setBusy(true);
     setStatus("Locking the quick weld.");
     const user = await currentUser();
@@ -118,7 +111,6 @@ export default function OnboardingPage() {
       return;
     }
 
-    const form = new FormData(event.currentTarget);
     const { error } = await getSupabaseBrowser()
       .from("profiles")
       .update({
@@ -143,21 +135,20 @@ export default function OnboardingPage() {
 
   async function saveBlueprint(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const narrative = String(form.get("blueprint_narrative") || "").trim();
+
+    if (narrative.length < 20) {
+      setStatus(copy.onboarding.workshopMinLength);
+      return;
+    }
+
     setBusy(true);
     setStatus("Rolling out the Workshop.");
     const user = await currentUser();
     if (!user) {
       setBusy(false);
       setStatus("Log in before saving.");
-      return;
-    }
-
-    const form = new FormData(event.currentTarget);
-    const narrative = String(form.get("blueprint_narrative") || "").trim();
-
-    if (narrative.length < 20) {
-      setBusy(false);
-      setStatus(copy.onboarding.workshopMinLength);
       return;
     }
 
@@ -225,6 +216,11 @@ export default function OnboardingPage() {
           <div className="card-heading">
             <p>Three doors</p>
             <h2>{copy.onboarding.doorsHeadline}</h2>
+          </div>
+          <div className="profile-actions">
+            <Link className="button button-light" href="/membership">
+              Continue to Foundry Dues
+            </Link>
           </div>
           <div className="door-grid">
             <article className="ops-card door-card">

@@ -7,13 +7,13 @@ import { InfraPreviewBanner } from "@/components/foundry/infra-preview-banner";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
-import { isAppInfraPreview } from "@/lib/app-infra-preview";
+import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 type Plan = "monthly" | "annual";
 
 export default function MembershipPage() {
-  const preview = isAppInfraPreview();
+  const preview = isAuthStripeTestBlocked();
   const [status, setStatus] = useState(
     preview ? copy.infraPreview.membershipCheckout : "Choose your dues. Stripe handles the brass register."
   );

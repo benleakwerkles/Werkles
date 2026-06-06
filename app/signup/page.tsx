@@ -6,11 +6,11 @@ import { InfraPreviewBanner } from "@/components/foundry/infra-preview-banner";
 import { WorkshopGreeter } from "@/components/foundry/workshop-greeter";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { copy } from "@/lib/copy";
-import { isAppInfraPreview } from "@/lib/app-infra-preview";
+import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 export default function SignupPage() {
-  const preview = isAppInfraPreview();
+  const preview = isAuthStripeTestBlocked();
   const [status, setStatus] = useState(
     preview ? copy.infraPreview.signup : copy.auth.signupIdle
   );

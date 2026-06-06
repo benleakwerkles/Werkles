@@ -1,52 +1,57 @@
 # NEXT ACTION
 
-**Effective gate:** `[IN PROGRESS: SUPABASE_AUTH_STRIPE_TEST_WIRING]`
+**Effective gate:** `[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]`
 
 ---
 
-## Ben (Operator) — APP_INFRA-01 closed (2026-06-03)
+## Integration status (2026-06-06)
 
-**Verdict:** **APPROVE** — recorded in `foreman/gates/APPROVAL_LOG.md`.
+`origin/main` @ `0c727a2` merged into `rescue/sally-dirty-worktree-2026-06-01` per `SALLY_MERGE_SAFETY_PROTOCOL`.
 
-**Next hands:** Follow **`foreman/gates/OAUTH_STRIPE_OPERATOR_CHECKLIST.md`** (Supabase Auth URL + keys → Stripe test mode → webhook → test checkout).
+| Fact | Status |
+|------|--------|
+| APP_INFRA on main | Landed @ `0c727a2` |
+| SUPABASE_AUTH_STRIPE Preview proof | **PASS** |
+| Split preview gate model | Adopted from main |
+| Homepage rewrite v1 | Preserved on rescue branch |
+| Dispatch proofs | Preserved on rescue branch |
+| Production rollout | **Still gated** |
+| Stripe live / live verification | **Blocked** |
+| Crucible | **Blocked** |
 
-**Preview flag:** `APP_INFRA_PREVIEW` remains `true` in `lib/app-infra-preview.ts` until you flip it for test wiring or deploy prep.
-
----
-
-## Petra verdict — crew-checkin (2026-05-31)
-
-**VERDICT: GO_WITH_CONDITIONS** — human gate **closed** with Ben **APPROVE**.
-
-**GATE_05:** **PAUSE** — APP_INFRA-01 closed; Ghost Forge image spend still needs separate budget/render gate.
-
-**UI_COMMIT:** **OPEN** — app UI commits allowed per lane; push/deploy/SQL/secrets remain human gates.
-
-**Maker deliverable:** `foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_REVIEW.md` — Ben **APPROVED** preview-gated surfaces (`02bf718`).
+Snapshot: `foreman/reviews/SALLY_PRE_MERGE_SNAPSHOT_2026-06-06.md`
 
 ---
 
-## Maker (Cursor) — parked for provider wiring
+## Ben (Operator) — next hands
 
-- **No** deploy, push, SQL, secrets entry, Ghost Forge, Education Forge worker
-- Provider consoles: Ben-only per checklist
-- Routine typecheck/build = non-gates inside approved scope
+1. Review local preview at http://localhost:3000 — homepage rewrite + auth surfaces coexist
+2. Send Petra synthesis packet when ready → await `FROM_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_*`
+3. **Do not** Production deploy, Production env rollout, Stripe live, or push to `main` without explicit human gate
 
 ---
 
-## Codex — on request
+## Maker (Cursor) — active for integration verification
 
-- Cockpit sync after provider milestones (record each in `APPROVAL_LOG.md`)
+- Run `npm run typecheck` after merge commit
+- **No** Production deploy, push to main, SQL, secrets, Ghost Forge spend
+- Preserve homepage scope lock — no prod promotion
+
+---
+
+## Petra — pending
+
+- `TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1_20260606-135435.md` — unsent / unanswered
+- Homepage merge to production: **NO-GO** until Petra GO + Ben gate
 
 ---
 
 ## Conditions (active)
 
-- Supabase + Stripe **test** wiring is the slice — operator checklist order
-- No Stripe **live** until test webhook + checkout pass
-- No Ghost Forge spend (Gate 05 PAUSE)
-- No Bellows content generation until D lane gate
-- No push / deploy / SQL / secrets from automation
+- Gate 05 / Ghost Forge: **PAUSE**
+- No Stripe **live** until separate live-mode gates
+- No push / deploy / SQL / secrets from automation without explicit approval
+- Crucible + live verification remain preview-blocked
 
 ---
 
@@ -62,4 +67,4 @@
 
 ## Hard stops
 
-no deploy | no push | no SQL | no secrets | no Ghost Forge | no Education Forge worker | no external Aeye Send unless separately requested
+no Production deploy | no Production env rollout | no push to main | no SQL | no secrets | no Ghost Forge | no Stripe live | no live verification | no matching work

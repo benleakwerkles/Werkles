@@ -2,21 +2,32 @@
 
 ## Effective gate
 
-`[IN PROGRESS: SUPABASE_AUTH_STRIPE_TEST_WIRING]`
+`[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]`
 
 ## Active writer
 
-**Ben (Operator)** — Supabase Auth + Stripe test wiring per `foreman/gates/OAUTH_STRIPE_OPERATOR_CHECKLIST.md`.
+**Ben (Operator)** — review merged rescue branch locally. Production rollout remains a separate human gate.
 
-**Maker (Cursor)** — **parked** for provider consoles and secret entry. Mechanical prep only when scoped.
+**Maker (Cursor)** — integrate `origin/main` @ `0c727a2` into `rescue/sally-dirty-worktree-2026-06-01`. Homepage + dispatch lanes preserved.
 
-**Petra (Comptroller)** — APP_INFRA-01 human gate **closed** (Ben APPROVE). GATE_05 **PAUSE**. UI_COMMIT **OPEN**.
+**Petra (Comptroller)** — homepage synthesis handoff pending (`TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1_*`). GATE_05 **PAUSE**.
 
-**Codex** — cockpit sync on request after provider milestones.
+**Codex** — cockpit sync on request.
 
-## Deliverable
+## Deliverables on this branch
 
-APP_INFRA-01 **APPROVED** — `foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_REVIEW.md` · app `02bf718`.
+| Lane | Status |
+|------|--------|
+| APP_INFRA on main @ `0c727a2` | Merged into rescue branch |
+| SUPABASE_AUTH_STRIPE Preview proof | **PASS** (recorded) |
+| Homepage rewrite v1 | Local lane — preserved |
+| Autonomous dispatch proofs | Local lane — preserved |
+
+## Preview gates (split model — from main)
+
+- **Auth / Stripe test wiring:** enabled (`AUTH_STRIPE_TEST_WIRING_ENABLED = true`)
+- **Crucible / live verification:** blocked (`APP_INFRA_PREVIEW_CRUCIBLE = true`)
+- **Production / live Stripe:** human gates — not opened
 
 ## Gate 05 / Ghost Forge
 
@@ -24,7 +35,8 @@ APP_INFRA-01 **APPROVED** — `foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_R
 
 ## Preview
 
-http://localhost:3000 or https://werkles.com (`APP_INFRA_PREVIEW = true` until Ben flips for test wiring)
+- Local: http://localhost:3000
+- Production: https://werkles.com — rollout **not** authorized by this merge
 
 ## Foreman
 

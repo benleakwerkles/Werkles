@@ -1,50 +1,50 @@
 # Operator Dashboard
 
-- **Current phase:** Supabase Auth + Stripe test wiring
-- **Current step:** `foreman/gates/OAUTH_STRIPE_OPERATOR_CHECKLIST.md`
-- **Current risk level:** MEDIUM (provider consoles; Ben-only secrets)
-- **Effective gate:** `[IN PROGRESS: SUPABASE_AUTH_STRIPE_TEST_WIRING]`
+- **Current phase:** Sally rescue branch — main integration complete; local lanes preserved
+- **Current step:** Review merged branch; Petra homepage synthesis pending
+- **Current risk level:** MEDIUM (production rollout still gated)
+- **Effective gate:** `[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]`
 
-## Petra crew-checkin
+## Main @ 0c727a2 (integrated)
 
-**GO_WITH_CONDITIONS** — APP_INFRA-01 is the slice. Infrastructure and visual exploration are **not** the next action.
+| Check | Result |
+|-------|--------|
+| APP_INFRA surfaces | On main |
+| Auth / First Weld | Preview PASS |
+| Stripe test checkout + webhook | Preview PASS |
+| Billing portal + cancel | Preview PASS |
+| Crucible blocked | PASS |
+| Split preview gates | Adopted |
 
-| Petra line | Status |
-|------------|--------|
-| GATE_05 | **PAUSE** |
-| UI_COMMIT | **OPEN** |
-| APP_INFRA-01 | **APPROVED** (2026-06-03) |
-| Codex | Cockpit sync only |
+**Production:** untouched — rollout is a **separate** human gate.
 
-## Review packet
+## Sally rescue lanes (preserved)
 
-**`foreman/reviews/APP_INFRA_01_FUNCTIONAL_SURFACE_REVIEW.md`**
+- Homepage rewrite v1 + stock preview + Ender visual tests
+- Autonomous dispatch + homepage discovery proofs
 
-Ben **APPROVED** preview-gated functional surfaces (commit `02bf718`).
+## Preview gates
+
+| Surface | Gate |
+|---------|------|
+| Login / signup / checkout / billing portal | Test wiring **enabled** |
+| Crucible / live verification | **Blocked** |
+| Stripe live / Production env | **Blocked** |
 
 ## Ben — next hands
 
-1. `foreman/gates/OAUTH_STRIPE_OPERATOR_CHECKLIST.md` — Supabase redirect URLs + keys
-2. Stripe test products, webhook, test checkout
-3. Record each provider milestone in `foreman/gates/APPROVAL_LOG.md`
+1. Local walkthrough — http://localhost:3000
+2. Petra homepage synthesis when ready
+3. **Do not** change Production env or deploy Production without explicit rollout gate
 
 ## APPLY / PUSH / DEPLOY
 
-**No** — all blocked.
+**No** Production deploy · **No** Production env · **No** push to main without human gate
 
 ## Plain English
 
-APP_INFRA-01 closed with preview-safe surfaces approved. Next slice is Supabase + Stripe **test** wiring (operator checklist). Ghost Forge stays parked.
+Main's auth/Stripe test wiring is now on the rescue branch alongside Sally's homepage and dispatch work. Preview proof passed on main. Production and live modes stay closed.
 
-## Imagery doctrine (wired — not active gate)
+## Imagery doctrine
 
-**`foreman/IMAGERY_DIRECTION.md`** is canonical. Viable with restrained grammar — transformation via cards, props, formation states, subtle motion; **not** morphing.
-
-| Artifact | Path |
-|----------|------|
-| Doctrine | `foreman/IMAGERY_DIRECTION.md` |
-| Ghost Forge prompts | `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` (Gate 05 **PAUSE**) |
-| Ender wire packet | `foreman/handoffs/outbox/TO_ENDER_IMAGERY_DIRECTION_WIRE_v0.1.md` |
-| Dashboard card | Foreman @ :4317 — Imagery Doctrine |
-
-**No new assets.** **UI_COMMIT OPEN.** Gate 05 spend still **PAUSE**.
+See `foreman/IMAGERY_DIRECTION.md`. Gate 05 spend still **PAUSE**.
