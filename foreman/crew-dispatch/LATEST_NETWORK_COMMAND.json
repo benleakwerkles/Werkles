@@ -1,0 +1,82 @@
+{
+  "ok": true,
+  "command": "ROLE_AWARENESS_SYNC",
+  "version": "v0.1",
+  "issued_at": "2026-05-31T16:50:21.024Z",
+  "timestamp_slug": "20260531-1650",
+  "masterCommandFile": "foreman/handoffs/outbox/RELAY_NETWORK_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+  "cousins": [
+    {
+      "cousinId": "PETRA",
+      "name": "Petra",
+      "platform": "ChatGPT",
+      "edgeTabIndex": 1,
+      "packetId": "TO_PETRA_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650",
+      "packetFile": "TO_PETRA_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "packetPath": "foreman/handoffs/outbox/TO_PETRA_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "pasteBlockSuffix": "PETRA_NETWORK_PASTE_BLOCK.txt",
+      "pastePath": "foreman/handoffs/outbox/PETRA_NETWORK_PASTE_BLOCK.txt",
+      "nextActionHashTrunc": "2000c1e3352c..."
+    },
+    {
+      "cousinId": "SKYBRO",
+      "name": "Skybro",
+      "platform": "Gemini",
+      "edgeTabIndex": 2,
+      "packetId": "TO_SKYBRO_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650",
+      "packetFile": "TO_SKYBRO_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "packetPath": "foreman/handoffs/outbox/TO_SKYBRO_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "pasteBlockSuffix": "SKYBRO_NETWORK_PASTE_BLOCK.txt",
+      "pastePath": "foreman/handoffs/outbox/SKYBRO_NETWORK_PASTE_BLOCK.txt",
+      "nextActionHashTrunc": "2000c1e3352c..."
+    },
+    {
+      "cousinId": "ENDER",
+      "name": "Ender",
+      "platform": "Claude",
+      "edgeTabIndex": 3,
+      "packetId": "TO_ENDER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650",
+      "packetFile": "TO_ENDER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "packetPath": "foreman/handoffs/outbox/TO_ENDER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "pasteBlockSuffix": "ENDER_NETWORK_PASTE_BLOCK.txt",
+      "pastePath": "foreman/handoffs/outbox/ENDER_NETWORK_PASTE_BLOCK.txt",
+      "nextActionHashTrunc": "2000c1e3352c..."
+    },
+    {
+      "cousinId": "BEAN",
+      "name": "Bean",
+      "platform": "DeepSeek",
+      "edgeTabIndex": 4,
+      "packetId": "TO_BEAN_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650",
+      "packetFile": "TO_BEAN_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "packetPath": "foreman/handoffs/outbox/TO_BEAN_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "pasteBlockSuffix": "BEAN_NETWORK_PASTE_BLOCK.txt",
+      "pastePath": "foreman/handoffs/outbox/BEAN_NETWORK_PASTE_BLOCK.txt",
+      "nextActionHashTrunc": "2000c1e3352c..."
+    },
+    {
+      "cousinId": "COMPUTER",
+      "name": "Computer",
+      "platform": "Perplexity",
+      "edgeTabIndex": 5,
+      "packetId": "TO_COMPUTER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650",
+      "packetFile": "TO_COMPUTER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "packetPath": "foreman/handoffs/outbox/TO_COMPUTER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260531-1650.md",
+      "pasteBlockSuffix": "COMPUTER_NETWORK_PASTE_BLOCK.txt",
+      "pastePath": "foreman/handoffs/outbox/COMPUTER_NETWORK_PASTE_BLOCK.txt",
+      "nextActionHashTrunc": "2000c1e3352c..."
+    }
+  ],
+  "doctrine": {
+    "stopsBeforeSend": true,
+    "humanSendOnly": true,
+    "noAutoMerge": true,
+    "responseInbox": "foreman/handoffs/inbox/",
+    "responseTemplate": "foreman/templates/FROM_COUSIN_RESPONSE_TEMPLATE.md",
+    "intakeScript": "foreman/crew-dispatch/crew-response-intake.mjs",
+    "cockpitSourceOfTruth": [
+      "foreman/NEXT_ACTION.md",
+      "foreman/CURRENT_STATE.md"
+    ]
+  }
+}

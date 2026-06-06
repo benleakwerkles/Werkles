@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO",
+  "cousin": "SKYBRO",
+  "startedAt": "2026-06-06T04:33:29.024Z",
+  "finishedAt": "2026-06-06T04:35:43.246Z",
+  "status": "PASS",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043329.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\SKYBRO_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    },
+    {
+      "step": "preflight",
+      "ok": true,
+      "mode": "sandbox_available",
+      "errors": []
+    },
+    {
+      "step": "send",
+      "ok": true,
+      "status": "RECEIVED",
+      "error": null,
+      "receivedToken": true,
+      "tokenMatchKind": "primary",
+      "profileMode": "profile",
+      "sendSelector": "button[aria-label=\"Send message\"]",
+      "scrapedPreview": "AUTONOMOUS_ROUND_TRIP_RECEIVED\nThe Werkles homepage transition shifts from a static content delivery model to a dynamic, edge-cached orchestration layer that prioritizes low-latency service discovery for autonomous relay nodes."
+    },
+    {
+      "step": "inbox_capture",
+      "ok": true,
+      "file": "FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md",
+      "path": "foreman\\handoffs\\inbox\\FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md"
+    },
+    {
+      "step": "inbox_validate",
+      "ok": true,
+      "fileCount": 1,
+      "errors": []
+    },
+    {
+      "step": "mark_sent",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "from": "TO_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043329.md",
+        "to": "2026-06-06T04-35-43-228Z__TO_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043329.md"
+      }
+    },
+    {
+      "step": "intake_process",
+      "ok": true,
+      "moved": [
+        {
+          "from": "FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md",
+          "to": "2026-06-06T04-35-43-237Z__FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md"
+        }
+      ],
+      "message": "Processed 1 file(s) to inbox/processed/ — never auto-merged"
+    }
+  ],
+  "error": null,
+  "tokenMatched": true,
+  "tokenMatchKind": "primary",
+  "scrapedText": "AUTONOMOUS_ROUND_TRIP_RECEIVED\nThe Werkles homepage transition shifts from a static content delivery model to a dynamic, edge-cached orchestration layer that prioritizes low-latency service discovery for autonomous relay nodes.",
+  "profileMode": "profile",
+  "batch": null,
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043329.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\SKYBRO_PASTE_BLOCK.txt",
+    "inboxResponse": "foreman\\handoffs\\inbox\\FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md",
+    "proofManifest": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_SKYBRO_PROOF.json",
+    "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-35-43-237Z__FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md",
+    "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-35-43-237Z__FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md.summary.json"
+  }
+}

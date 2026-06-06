@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "AUTONOMOUS_ROUND_TRIP_TEST",
+  "cousin": "ENDER",
+  "startedAt": "2026-06-06T04:09:45.523Z",
+  "finishedAt": "2026-06-06T04:09:45.582Z",
+  "status": "GENERATE_ONLY",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-040945.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    }
+  ],
+  "error": null,
+  "tokenMatched": null,
+  "tokenMatchKind": null,
+  "scrapedText": null,
+  "profileMode": null,
+  "batch": null,
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-040945.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt",
+    "inboxResponse": null,
+    "proofManifest": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_PROOF.json"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
+  "cousin": "COMPUTER",
+  "startedAt": "2026-06-06T13:52:16.728Z",
+  "finishedAt": "2026-06-06T13:54:35.158Z",
+  "status": "PASS",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\COMPUTER_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    },
+    {
+      "step": "preflight",
+      "ok": true,
+      "mode": "sandbox_available",
+      "errors": []
+    },
+    {
+      "step": "send",
+      "ok": true,
+      "status": "REPLY_SHORT_TOKEN",
+      "error": null,
+      "receivedToken": false,
+      "tokenMatchKind": "short_line",
+      "profileMode": "profile",
+      "sendSelector": "button[aria-label=\"Submit\"]",
+      "scrapedPreview": "RECEIVED\n\nTop 3 homepage problems\n\nThe homepage likely does not answer the three core questions fast enough: what Werkles does, who it is for, and why it matters. Strong SaaS hero sections are built around a clear problem and a benefit-driven headline, not clever wording.\nblendb2b\n+1\n\nIt may be light on visible trust signals, which weakens credibility on first visit. Common credibility elements in"
+    },
+    {
+      "step": "inbox_capture",
+      "ok": true,
+      "file": "FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+      "path": "foreman\\handoffs\\inbox\\FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md"
+    },
+    {
+      "step": "inbox_validate",
+      "ok": true,
+      "fileCount": 1,
+      "errors": []
+    },
+    {
+      "step": "mark_sent",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "from": "TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216.md",
+        "to": "2026-06-06T13-54-35-139Z__TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216.md"
+      }
+    },
+    {
+      "step": "intake_process",
+      "ok": true,
+      "moved": [
+        {
+          "from": "FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+          "to": "2026-06-06T13-54-35-149Z__FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md"
+        }
+      ],
+      "message": "Processed 1 file(s) to inbox/processed/ — never auto-merged"
+    }
+  ],
+  "error": null,
+  "tokenMatched": false,
+  "tokenMatchKind": "short_line",
+  "scrapedText": "RECEIVED\n\nTop 3 homepage problems\n\nThe homepage likely does not answer the three core questions fast enough: what Werkles does, who it is for, and why it matters. Strong SaaS hero sections are built around a clear problem and a benefit-driven headline, not clever wording.\nblendb2b\n+1\n\nIt may be light on visible trust signals, which weakens credibility on first visit. Common credibility elements include client logos, authentic testimonials, security or compliance badges, clear contact details, and proof points like case studies or certifications.\nweamse\n+2\n\nThe page may not do enough to benchmark itself against category norms. Competitor analysis typically looks at design clarity, usability, content quality, and technical/SEO performance, so a homepage that lacks these cues can feel less mature than peers.\nbigdropinc\n+1\n\nTop 3 homepage opportunities\n\nTighten the hero to make the value proposition immediately legible. The best-performing SaaS heroes use a concise headline, short subheadline, supporting visual, and a prominent CTA that explains what happens next.\nlandingrabbit\n+1\n\nAdd more proof near the top of the page. Recognizable customer logos, specific testimonials, and measurable outcomes help visitors verify the claims quickly and reduce friction.\nlinkedin\n+1\n\nImprove comparison value by signaling category fit and differentiation. Clear positioning, use-case language, and concrete benefits help visitors understand why Werkles is the better choice versus alternatives.\nsenuto\n+1\n\nRecommended hero message\n\n“Werkles helps teams [primary outcome] with a simpler, faster way to [core job to be done].”\n\nOne thing not to change\n\nKeep the overall visual simplicity if the current homepage is already clean. A tidy, easy-to-scan layout and mobile-friendly design are themselves credibility signals and should not be sacrificed for extra content.\npixsym",
+  "profileMode": "profile",
+  "batch": null,
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\COMPUTER_PASTE_BLOCK.txt",
+    "inboxResponse": "foreman\\handoffs\\inbox\\FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+    "proofManifest": "foreman\\crew-dispatch\\WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_COMPUTER.json",
+    "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-54-35-149Z__FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+    "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-54-35-149Z__FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md.summary.json"
+  }
+}

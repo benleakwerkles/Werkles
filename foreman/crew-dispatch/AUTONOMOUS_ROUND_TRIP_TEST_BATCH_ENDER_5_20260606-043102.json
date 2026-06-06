@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "AUTONOMOUS_ROUND_TRIP_TEST",
+  "cousin": "ENDER",
+  "startedAt": "2026-06-06T04:31:02.413Z",
+  "finishedAt": "2026-06-06T04:33:15.919Z",
+  "status": "PASS",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043102.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    },
+    {
+      "step": "preflight",
+      "ok": true,
+      "mode": "sandbox_available",
+      "errors": []
+    },
+    {
+      "step": "send",
+      "ok": true,
+      "status": "RECEIVED",
+      "error": null,
+      "receivedToken": true,
+      "tokenMatchKind": "primary",
+      "profileMode": "profile",
+      "sendSelector": "button[aria-label=\"Send message\"]",
+      "scrapedPreview": "Claude responded: AUTONOMOUSROUNDTRIP_RECEIVED\n\nAUTONOMOUS_ROUND_TRIP_RECEIVED\n\nThe Werkles crucible interface uses a deep obsidian background with amber accent highlights to evoke the heat of the forge.\n\n\n\n\n\n\n"
+    },
+    {
+      "step": "inbox_capture",
+      "ok": true,
+      "file": "FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md",
+      "path": "foreman\\handoffs\\inbox\\FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md"
+    },
+    {
+      "step": "inbox_validate",
+      "ok": true,
+      "fileCount": 1,
+      "errors": []
+    },
+    {
+      "step": "mark_sent",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "from": "TO_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043102.md",
+        "to": "2026-06-06T04-33-15-904Z__TO_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043102.md"
+      }
+    },
+    {
+      "step": "intake_process",
+      "ok": true,
+      "moved": [
+        {
+          "from": "FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md",
+          "to": "2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md"
+        }
+      ],
+      "message": "Processed 1 file(s) to inbox/processed/ — never auto-merged"
+    }
+  ],
+  "error": null,
+  "tokenMatched": true,
+  "tokenMatchKind": "primary",
+  "scrapedText": "Claude responded: AUTONOMOUSROUNDTRIP_RECEIVED\n\nAUTONOMOUS_ROUND_TRIP_RECEIVED\n\nThe Werkles crucible interface uses a deep obsidian background with amber accent highlights to evoke the heat of the forge.\n\n\n\n\n\n\n",
+  "profileMode": "profile",
+  "batch": {
+    "run": 5,
+    "of": 5
+  },
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_v1_20260606-043102.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt",
+    "inboxResponse": "foreman\\handoffs\\inbox\\FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md",
+    "proofManifest": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_TEST_BATCH_ENDER_5_20260606-043102.json",
+    "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md",
+    "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md.summary.json"
+  }
+}

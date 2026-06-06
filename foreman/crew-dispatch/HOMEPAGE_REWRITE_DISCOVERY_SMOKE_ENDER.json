@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST",
+  "cousin": "ENDER",
+  "startedAt": "2026-06-06T04:35:49.581Z",
+  "finishedAt": "2026-06-06T04:38:03.584Z",
+  "status": "PASS",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_v1_20260606-043549.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    },
+    {
+      "step": "preflight",
+      "ok": true,
+      "mode": "sandbox_available",
+      "errors": []
+    },
+    {
+      "step": "send",
+      "ok": true,
+      "status": "REPLY_SHORT_TOKEN",
+      "error": null,
+      "receivedToken": false,
+      "tokenMatchKind": "short_line",
+      "profileMode": "profile",
+      "sendSelector": "button[aria-label=\"Send message\"]",
+      "scrapedPreview": "Claude responded: RECEIVED\n\nRECEIVED\n\nENDER — Product / UX lens: hero, crucible gate, brand tone.\n\nMy role is to evaluate and reshape the homepage through the user's first-contact experience — ensuring the hero immediately communicates value, the crucible gate (the moment a visitor decides to stay or leave) is frictionless and compelling, and the brand tone is consistent, human, and differentiated"
+    },
+    {
+      "step": "inbox_capture",
+      "ok": true,
+      "file": "FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md",
+      "path": "foreman\\handoffs\\inbox\\FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md"
+    },
+    {
+      "step": "inbox_validate",
+      "ok": true,
+      "fileCount": 1,
+      "errors": []
+    },
+    {
+      "step": "mark_sent",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "from": "TO_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_v1_20260606-043549.md",
+        "to": "2026-06-06T04-38-03-566Z__TO_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_v1_20260606-043549.md"
+      }
+    },
+    {
+      "step": "intake_process",
+      "ok": true,
+      "moved": [
+        {
+          "from": "FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md",
+          "to": "2026-06-06T04-38-03-576Z__FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md"
+        }
+      ],
+      "message": "Processed 1 file(s) to inbox/processed/ — never auto-merged"
+    }
+  ],
+  "error": null,
+  "tokenMatched": false,
+  "tokenMatchKind": "short_line",
+  "scrapedText": "Claude responded: RECEIVED\n\nRECEIVED\n\nENDER — Product / UX lens: hero, crucible gate, brand tone.\n\nMy role is to evaluate and reshape the homepage through the user's first-contact experience — ensuring the hero immediately communicates value, the crucible gate (the moment a visitor decides to stay or leave) is frictionless and compelling, and the brand tone is consistent, human, and differentiated throughout.\n\nStanding by.\n\n\n\n\n\n\n",
+  "profileMode": "profile",
+  "batch": null,
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_v1_20260606-043549.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt",
+    "inboxResponse": "foreman\\handoffs\\inbox\\FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md",
+    "proofManifest": "foreman\\crew-dispatch\\HOMEPAGE_REWRITE_DISCOVERY_SMOKE_ENDER.json",
+    "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-38-03-576Z__FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md",
+    "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-38-03-576Z__FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md.summary.json"
+  }
+}

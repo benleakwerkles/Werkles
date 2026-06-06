@@ -10,6 +10,10 @@
     "typecheck": "tsc --noEmit",
     "relay:install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/foreman/install-relay-courier.ps1",
     "relay:self-test": "node scripts/foreman/relay-courier.mjs self-test",
+    "AUTONOMOUS_ROUND_TRIP_TEST": "node scripts/foreman/autonomous-round-trip-test.mjs --execute",
+    "AUTONOMOUS_ROUND_TRIP_SKYBRO": "node scripts/foreman/autonomous-round-trip-skybro.mjs --execute",
+    "HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST": "node scripts/foreman/homepage-rewrite-discovery-smoke-test.mjs --execute",
+    "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW": "node scripts/foreman/werkles-homepage-discovery-full-crew.mjs --execute",
     "foreman": "node scripts/foreman/foreman-control-server.mjs"
   },
   "dependencies": {
