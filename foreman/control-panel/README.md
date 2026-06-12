@@ -41,8 +41,19 @@ The console also renders **SoleDash** — Inbox / Outbox / Receipts — to answe
 
 - **Read-only, file-derived** from `foreman/handoffs/outbox/` and `foreman/handoffs/inbox/`. Metadata only (filename, parsed actor, mtime, state) — **packet bodies are never read into the UI**.
 - **Outbox** = files in `handoffs/outbox/` (default state `Received`), newest first. **Inbox** = files in `handoffs/inbox/` (default state `Response Incoming`). **Receipts** derive from state (Complete→Delivered, Failed→Failed, else Awaiting).
-- States are **V1 defaults, not a live feed** (labeled as such in the UI).
-- Endpoints (read-only JSON): `GET /outbox`, `GET /inbox`, `GET /receipts`.
+- States are **V1 defaults** unless set in the optional sidecar (below). Not a live feed.
+- **Summary strip:** SoleDash shows counts (Outbox/Inbox totals, receipt buckets, outbox state counts).
+- Endpoints (read-only JSON): `GET /outbox`, `GET /inbox`, `GET /receipts`, `GET /summary`.
+
+### Optional status sidecar (read-only)
+
+Create `foreman/handoffs/soledash-status.json` to set real states without routing/automation:
+
+```json
+{ "TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.2.md": "Complete", "CODEX_PASTE_BLOCK.txt": "Failed" }
+```
+
+Keys are packet filenames; values must be one of the six states. The server **reads** this file (no writes); receipts then reflect it (Complete→Delivered, Failed→Failed, else Awaiting). If the file is absent or invalid, defaults apply.
 
 ### Naming note
 
