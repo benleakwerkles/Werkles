@@ -33,6 +33,9 @@ const PORT = Number(process.env.FOREMAN_CONTROL_PORT || 4317);
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUTBOX_DIR = path.join(REPO_ROOT, "foreman", "handoffs", "outbox");
 const INBOX_DIR = path.join(REPO_ROOT, "foreman", "handoffs", "inbox");
+// Optional, read-only status sidecar: { "<packet filename>": "Complete" | ... }.
+// Lets the operator/feed set real states without routing or automation.
+const STATUS_SIDECAR = path.join(REPO_ROOT, "foreman", "handoffs", "soledash-status.json");
 
 // Gate types -> badge styling
 //   SAFE_LINK  : open/read only
@@ -169,6 +172,23 @@ function statusSectionHtml() {
 // Lists packet files in foreman/handoffs/{outbox,inbox}. Metadata only — file
 // BODIES ARE NEVER READ into the UI (secret-boundary discipline). States are
 // V1 defaults (file-derived), not a live feed; labeled as such in the UI.
+// Read-only status overrides from the optional sidecar JSON. Maps packet
+// filename -> state. Invalid/missing file => no overrides.
+function getStatusOverrides() {
+  try {
+    const raw = fs.readFileSync(STATUS_SIDECAR, "utf8");
+    const obj = JSON.parse(raw);
+    const valid = new Set(Object.values(STATE));
+    const out = {};
+    for (const [k, v] of Object.entries(obj)) {
+      if (valid.has(v)) out[k] = v;
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
 function readPacketDir(dir, kind) {
   let entries;
   try {
@@ -176,6 +196,7 @@ function readPacketDir(dir, kind) {
   } catch {
     return [];
   }
+  const overrides = getStatusOverrides();
   return entries
     .filter((e) => e.isFile() && !e.name.startsWith(".") && /\.(md|txt)$/i.test(e.name))
     .map((e) => {
@@ -185,8 +206,9 @@ function readPacketDir(dir, kind) {
       const base = e.name.replace(/\.(md|txt)$/i, "");
       const m = base.match(/^(TO|FROM)_([A-Za-z0-9]+)/);
       const actor = m ? m[2] : "\u2014";
-      // V1 default states: outbox items "Received", inbox items "Response Incoming".
-      const state = kind === "inbox" ? STATE.INCOMING : STATE.RECEIVED;
+      // V1 default states: outbox "Received", inbox "Response Incoming";
+      // overridden by the optional read-only status sidecar if present.
+      const state = overrides[e.name] || (kind === "inbox" ? STATE.INCOMING : STATE.RECEIVED);
       return {
         id: e.name,
         actor,
@@ -241,11 +263,39 @@ function receiptBuckets() {
   return bucket("Delivered") + bucket("Failed") + bucket("Awaiting");
 }
 
+// Summary counts: outbox by state + receipts by bucket. Read-only.
+function getSummary() {
+  const outbox = getOutbox();
+  const byState = {};
+  Object.values(STATE).forEach((s) => { byState[s] = 0; });
+  outbox.forEach((p) => { byState[p.state] = (byState[p.state] || 0) + 1; });
+  const receipts = { Delivered: 0, Failed: 0, Awaiting: 0 };
+  getReceipts().forEach((r) => { receipts[r.status] = (receipts[r.status] || 0) + 1; });
+  return { outboxTotal: outbox.length, inboxTotal: getInbox().length, byState, receipts };
+}
+
+function summaryStripHtml() {
+  const s = getSummary();
+  const chips = Object.entries(s.byState)
+    .filter(([, n]) => n > 0)
+    .map(([st, n]) => `${stateChip(st)}<span class="sd-strip-n">${n}</span>`)
+    .join("");
+  const stateChipsHtml = chips || '<span class="sd-empty">no outbox state counts</span>';
+  return `
+    <div class="sd-strip">
+      <span class="sd-strip-item">Outbox <b>${s.outboxTotal}</b></span>
+      <span class="sd-strip-item">Inbox <b>${s.inboxTotal}</b></span>
+      <span class="sd-strip-item">Receipts \u2014 Delivered <b>${s.receipts.Delivered}</b> \u00b7 Failed <b>${s.receipts.Failed}</b> \u00b7 Awaiting <b>${s.receipts.Awaiting}</b></span>
+      <span class="sd-strip-states">${stateChipsHtml}</span>
+    </div>`;
+}
+
 function soledashHtml() {
   return `
     <section class="section soledash">
       <h2>SoleDash \u2014 Inbox / Outbox / Receipts</h2>
-      <p class="section-note">Read-only, file-derived from <code>foreman/handoffs/</code>. V1 default states (not a live feed). Metadata only \u2014 packet bodies are not read.</p>
+      <p class="section-note">Read-only, file-derived from <code>foreman/handoffs/</code>. States default unless set in the optional <code>soledash-status.json</code> sidecar (no live feed, no automation). Metadata only \u2014 packet bodies are not read.</p>
+      ${summaryStripHtml()}
       <div class="sd-grid">
         <div class="sd-col">
           <h3>Inbox <span class="sd-count">${getInbox().length}</span></h3>
@@ -368,6 +418,10 @@ function pageHtml() {
   .sd-count { font-size:11px; background:#3a2f22; color:#e8c79a; border-radius:999px; padding:1px 8px; }
   .sd-empty { color:#776a57; font-size:12px; font-style:italic; padding:4px 8px; }
   .sd-bucket { margin-bottom:10px; }
+  .sd-strip { display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin:0 0 12px; padding:8px 10px; background:#231c15; border-radius:8px; font-size:12px; color:#cdbfa9; }
+  .sd-strip-item b { color:#f3ead9; }
+  .sd-strip-states { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .sd-strip-n { color:#e8c79a; font-weight:700; margin-right:4px; }
 </style></head>
 <body>
 <header>
@@ -419,6 +473,11 @@ const server = http.createServer((req, res) => {
   if (req.method === "GET" && req.url === "/receipts") {
     res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
     res.end(JSON.stringify({ ok: true, items: getReceipts() }));
+    return;
+  }
+  if (req.method === "GET" && req.url === "/summary") {
+    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
+    res.end(JSON.stringify({ ok: true, ...getSummary() }));
     return;
   }
   res.writeHead(404, { "Content-Type": "text/plain" });
