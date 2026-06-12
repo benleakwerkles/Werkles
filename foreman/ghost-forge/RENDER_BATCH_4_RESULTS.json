@@ -1,0 +1,67 @@
+﻿{
+    "run_id":  "RENDER_BATCH_4_20260606-195949",
+    "results":  [
+                    {
+                        "shot_id":  "icon-v3-lane-connector-arch",
+                        "status":  "completed",
+                        "batch_id":  "49d821ca-6e55-4a1d-b9be-4e05f18dfb1b",
+                        "path":  "public/assets/draft/icons-v3/werkles-icon-v3-lane-connector-arch.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "49d821ca-6e55-4a1d-b9be-4e05f18dfb1b/app-icon/05524161-d44b-4043-90e8-8efef2a657fe.png"
+                    },
+                    {
+                        "shot_id":  "icon-v3-lane-backer-foundation",
+                        "status":  "completed",
+                        "batch_id":  "732e230b-d130-4645-819d-1b8ee16e204e",
+                        "path":  "public/assets/draft/icons-v3/werkles-icon-v3-lane-backer-foundation.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "732e230b-d130-4645-819d-1b8ee16e204e/app-icon/47101673-24b4-49f8-a168-fcc0668861ff.png"
+                    },
+                    {
+                        "shot_id":  "squibb-bellows-bust-host",
+                        "status":  "completed",
+                        "batch_id":  "c5b6ca73-ba16-490c-bcc9-c69f158a3aba",
+                        "path":  "public/assets/draft/squibb-bellows-v1/werkles-squibb-bellows-bust-host-v1.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "c5b6ca73-ba16-490c-bcc9-c69f158a3aba/hero-background/9d2e2a33-c1ac-4fdf-98f1-a7a621bc0dd3.png"
+                    },
+                    {
+                        "shot_id":  "squibb-bellows-lesson-card",
+                        "status":  "completed",
+                        "batch_id":  "a2591f64-63e8-4ecc-9132-58a53dfa30e1",
+                        "path":  "public/assets/draft/squibb-bellows-v1/werkles-squibb-bellows-lesson-card-v1.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "a2591f64-63e8-4ecc-9132-58a53dfa30e1/hero-background/260ea4f3-3aa2-4f00-a9df-31e52227a383.png"
+                    },
+                    {
+                        "shot_id":  "squibb-bellows-workshop-desk",
+                        "status":  "completed",
+                        "batch_id":  "b35bfa6c-c279-4dab-acda-4af302ff8981",
+                        "path":  "public/assets/draft/squibb-bellows-v1/werkles-squibb-bellows-workshop-desk-v1.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "b35bfa6c-c279-4dab-acda-4af302ff8981/hero-background/b8c5713f-0b65-4b60-b24f-b417e7ed3bc7.png"
+                    },
+                    {
+                        "shot_id":  "space-d06-bakery-prep-quiet",
+                        "status":  "completed",
+                        "batch_id":  "d3d86b9d-34c8-46a5-8ee0-8a3c9f3b1339",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d06-bakery-prep-quiet.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "d3d86b9d-34c8-46a5-8ee0-8a3c9f3b1339/hero-background/7c8275b2-5601-4725-9894-d18834bc949c.png"
+                    },
+                    {
+                        "shot_id":  "space-d07-workshop-pegboard",
+                        "status":  "completed",
+                        "batch_id":  "694a956d-b842-4940-8b2e-8f419d6de942",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d07-workshop-pegboard.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "694a956d-b842-4940-8b2e-8f419d6de942/hero-background/bf985b5e-7a5e-4ca0-a72a-074f47392927.png"
+                    }
+                ],
+    "total_estimated_cost_usd":  1.4,
+    "gate":  "RENDER_BATCH_4_OPERATOR_GO",
+    "operator_phrase":  "matching icons + Squibb Bellows + more Space",
+    "completed_at":  "2026-06-06T23:59:49.5146839Z",
+    "completed_count":  7,
+    "shot_count":  7
+}

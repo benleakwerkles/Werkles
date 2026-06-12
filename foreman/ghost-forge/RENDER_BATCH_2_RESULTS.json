@@ -1,0 +1,67 @@
+﻿{
+    "results":  [
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "icon-lane-spark-ember",
+                        "path":  "public/assets/draft/icons-v1/werkles-icon-lane-spark-ember-v1.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "icon-lane-builder-square",
+                        "path":  "public/assets/draft/icons-v1/werkles-icon-lane-builder-framing-square-v1.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "icon-lane-worker-glove",
+                        "path":  "public/assets/draft/icons-v1/werkles-icon-lane-worker-glove-v1.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "icon-lane-operator-dial",
+                        "path":  "public/assets/draft/icons-v1/werkles-icon-lane-operator-dial-v1.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "icon-lane-backer-dog",
+                        "path":  "public/assets/draft/icons-v1/werkles-icon-lane-backer-dog-token-v1.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "icon-lane-connector-bridge",
+                        "path":  "public/assets/draft/icons-v1/werkles-icon-lane-connector-bridge-v1.png",
+                        "batch_id":  "7ae35d83-974a-46df-a47c-a0b69aad3ade",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "space-d03-tool-at-rest",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d03-tool-at-rest.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "forge-a04-three-at-plan",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-forge-a04-three-at-plan.png",
+                        "status":  "completed"
+                    },
+                    {
+                        "estimated_cost_usd":  0.2,
+                        "shot_id":  "forge-a05-nearly-finished-pair",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-forge-a05-nearly-finished-pair.png",
+                        "status":  "completed"
+                    }
+                ],
+    "total_estimated_cost_usd":  1.8,
+    "gate":  "RENDER_BATCH_2_OPERATOR_GO",
+    "completed_at":  "2026-06-06T22:40:28.3749374Z",
+    "operator_phrase":  "next Render batch - icons, Spaces, Arc 3 Werkles",
+    "completed_count":  9,
+    "run_id":  "RENDER_BATCH_2_20260606-183958",
+    "rate_limit_note":  "429 after 5 rapid submits; resumed after hourly window + manual poll for connector-bridge batch 7ae35d83",
+    "shot_count":  9
+}

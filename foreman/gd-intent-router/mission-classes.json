@@ -1,0 +1,283 @@
+{
+  "schemaVersion": "gd-intent-router-mission-classes/v1",
+  "description": "Ben issues mission class → GD resolves cousins. Outcomes, not cousins.",
+  "humanConsumableOutputRule": "HUMAN_CONSUMABLE_OUTPUT_RULE_V1",
+  "hgApprovalLevels": {
+    "HG_NONE": "Discovery / draft only — no gate record required",
+    "HG_RECORD": "Record verdict in APPROVAL_LOG when synthesis lands",
+    "HG_OPERATOR": "Operator must approve before any implementation",
+    "HG_BLOCKING": "Synthesis cannot recommend PROCEED without explicit gate clearance"
+  },
+  "missionClasses": {
+    "HOMEPAGE_VISUAL_NARRATIVE": {
+      "label": "Homepage visual narrative",
+      "description": "Four-beat visual story for homepage/signup/proof — Spark → Space → Forge → Foundry. Discovery not deploy.",
+      "recipients": ["ENDER", "SKYBRO", "COMPUTER"],
+      "synthesisLead": "COMPUTER",
+      "hgApprovalLevel": "HG_OPERATOR",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "visualBeats": [
+        {
+          "id": "spark",
+          "title": "The Spark",
+          "beat": "Individual alone with idea/problem"
+        },
+        {
+          "id": "space",
+          "title": "The Space",
+          "beat": "Empty or underused future space"
+        },
+        {
+          "id": "forge",
+          "title": "The Forge",
+          "beat": "Lanes meeting and assembling"
+        },
+        {
+          "id": "foundry",
+          "title": "The Foundry",
+          "beat": "People creating real outcomes/products inside those spaces"
+        }
+      ],
+      "foundryExamples": [
+        "test flight",
+        "custom cupcake batch",
+        "high-tech cleanroom team",
+        "service vans",
+        "working shop floor",
+        "finished product"
+      ],
+      "readFirst": [
+        "foreman/WERKLES_HOMEPAGE_REWRITE_SCOPE_LOCK.md",
+        "foreman/IMAGERY_DIRECTION.md",
+        "foreman/DESIGN_SYSTEM.md",
+        "foreman/ghost-forge/WERKLES_RENDER_BATCH_1.md",
+        "foreman/NEXT_ACTION.md"
+      ],
+      "cousinLenses": {
+        "ENDER": "Homepage, signup, and proof visual rhythm — how the four beats land in layout, lane cards, formation sequence, and hero restraint. Iron Palette only.",
+        "SKYBRO": "Narrative language and emotional arc — before/after story, beachhead clarity, voice that carries Spark → Foundry without fantasy.",
+        "COMPUTER": "Competitor and differentiation sanity check — cited patterns, trust/proof norms, category fit vs crowded SaaS homepage clichés."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "GD_RECEIPT line (exact token from packet)",
+        "Beat-by-beat read (Spark / Space / Forge / Foundry)",
+        "Top 3 visual narrative risks",
+        "Top 3 render/scene opportunities",
+        "One recommended hero visual beat",
+        "One thing not to change"
+      ]
+    },
+    "CAPITAL_ALLOCATION": {
+      "label": "Capital allocation",
+      "description": "Budget posture, spend gates, runway tradeoffs — verdict not execution.",
+      "recipients": ["PETRA", "COMPUTER"],
+      "synthesisLead": "PETRA",
+      "hgApprovalLevel": "HG_BLOCKING",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "foreman/BUDGET.md",
+        "foreman/HUMAN_GATES.md",
+        "foreman/LANES.md",
+        "company/WERKLES_MONETIZATION.md",
+        "foreman/NEXT_ACTION.md"
+      ],
+      "cousinLenses": {
+        "PETRA": "Comptroller verdict — GO/NO-GO/CONDITIONAL, slice choice, gate posture.",
+        "COMPUTER": "Market comps, pricing patterns, cited spend benchmarks."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "Verdict block (GO / NO-GO / CONDITIONAL)",
+        "Top 3 risks",
+        "One explicit stop line"
+      ]
+    },
+    "UX_REVIEW": {
+      "label": "UX review",
+      "description": "Focused UX/brand review — single cousin, fast turnaround.",
+      "recipients": ["ENDER"],
+      "synthesisLead": "ENDER",
+      "hgApprovalLevel": "HG_RECORD",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "company/WERKLES_UX_LAW.md",
+        "foreman/DESIGN_SYSTEM.md",
+        "foreman/SITE_STYLE_APPROVED_v0.6.md"
+      ],
+      "cousinLenses": {
+        "ENDER": "UX law, Iron Palette, brand mark authority, cringe filters."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "PASS / PATCH / NO-GO",
+        "Top 3 UX issues",
+        "One recommended fix priority"
+      ]
+    },
+    "TRUST_COMPLIANCE_AUDIT": {
+      "label": "Trust & compliance audit",
+      "description": "Hostile read on trust, billing, data posture — audit not deploy.",
+      "recipients": ["BEAN", "PETRA"],
+      "synthesisLead": "PETRA",
+      "hgApprovalLevel": "HG_OPERATOR",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "company/WERKLES_TRUST_AND_COMPLIANCE.md",
+        "foreman/HUMAN_GATES.md",
+        "foreman/LANES.md"
+      ],
+      "cousinLenses": {
+        "BEAN": "Hostile audit — overreach, missing gates, deploy/push traps.",
+        "PETRA": "Comptroller routing — which gates block, verdict on proceed."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "Audit findings (severity tagged)",
+        "Human gates triggered",
+        "Explicit do-not-ship list"
+      ]
+    },
+    "INFRA_OPS_PREP": {
+      "label": "Infra ops prep",
+      "description": "Provider navigation prep, ops checklist — stops before login/OAuth/deploy.",
+      "recipients": ["SKYBRO", "COMPUTER"],
+      "synthesisLead": "SKYBRO",
+      "hgApprovalLevel": "HG_OPERATOR",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "foreman/BUDGET.md",
+        "foreman/HUMAN_GATES.md",
+        "foreman/NEXT_ACTION.md",
+        "foreman/CURRENT_STATE.md"
+      ],
+      "cousinLenses": {
+        "SKYBRO": "Infra lane — provider steps, stop-before-send checklist.",
+        "COMPUTER": "Current-world provider docs, cited setup patterns."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "Prep checklist",
+        "Stop lines (login/OAuth/deploy)",
+        "Estimated human gates"
+      ]
+    },
+    "COMPTROLLER_VERDICT": {
+      "label": "Comptroller verdict",
+      "description": "Petra-only scope verdict — implementation routing, not patches.",
+      "recipients": ["PETRA"],
+      "synthesisLead": "PETRA",
+      "hgApprovalLevel": "HG_BLOCKING",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "foreman/NEXT_ACTION.md",
+        "foreman/CURRENT_STATE.md",
+        "foreman/HUMAN_GATES.md",
+        "foreman/LANES.md",
+        "company/WERKLES_CONSTITUTION.md"
+      ],
+      "cousinLenses": {
+        "PETRA": "GO/NO-GO/CONDITIONAL — slice choice, gate map, crew routing."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "Verdict block",
+        "Effective gate",
+        "Next cousin routing (if any)"
+      ]
+    },
+    "DOCTRINE_SYNTHESIS": {
+      "label": "Doctrine synthesis",
+      "description": "Research + comptroller alignment on open doctrine questions.",
+      "recipients": ["COMPUTER", "PETRA"],
+      "synthesisLead": "COMPUTER",
+      "hgApprovalLevel": "HG_RECORD",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "foreman/AI_COUSINS_PROTOCOL.md",
+        "company/WERKLES_OPEN_QUESTIONS.md",
+        "company/WERKLES_PRODUCT_THESIS.md"
+      ],
+      "cousinLenses": {
+        "COMPUTER": "Cited research, current-world checks, synthesis draft.",
+        "PETRA": "Comptroller alignment — does synthesis create new gates?"
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "Synthesis draft",
+        "Open questions remaining",
+        "Citations or UNKNOWN markers"
+      ]
+    },
+    "BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK": {
+      "label": "Ben entrepreneurship dossier for Sherlock",
+      "description": "Consolidated commercial-pattern packet for external analysis — proven vs assumed, no deploy.",
+      "recipients": ["PETRA", "SKYBRO", "COMPUTER", "ENDER"],
+      "synthesisLead": "PETRA",
+      "hgApprovalLevel": "HG_NONE",
+      "dispatchClass": "AUTO_LOAD_HUMAN_SEND",
+      "readFirst": [
+        "foreman/finance/entities.json",
+        "foreman/gd-intent-router/GD_PRODUCT_IP_CAPTURE_V1.md",
+        "company/WERKLES_PRODUCT_THESIS.md",
+        "company/WERKLES_MONETIZATION.md",
+        "foreman/source_material/BELLOWS_MASTER_SOURCE_FROM_BEN.md",
+        "foreman/COMMINGLING_UNTANGLING_PLAYBOOK.md",
+        "AGENTS.md"
+      ],
+      "ventureContext": [
+        "Kind Sir / construction / concrete / insulation",
+        "real estate investing",
+        "Werkles",
+        "GimpDash / GD intent router",
+        "Valley Vanguard / Valley Microfutures",
+        "prior creative/writing pattern (Bellows)",
+        "failure/scam cleanup from KS Construction (operator context — repo may lack detail)",
+        "preference against Ben as copy/paste mule",
+        "near-term revenue and proof need"
+      ],
+      "cousinLenses": {
+        "PETRA": "Risk, sequencing, fatal flaws — what is proven vs assumed across ventures. Comptroller read on entity sprawl, gate posture, revenue timing.",
+        "SKYBRO": "Founder narrative, pattern recognition, category/opportunity framing — how ventures connect or conflict.",
+        "COMPUTER": "Market comparables, monetization paths, current product categories — cite or mark UNKNOWN.",
+        "ENDER": "Productization, UX/service packaging — how proven capability becomes something people can buy or use."
+      },
+      "responseRequired": [
+        "RECEIVED line",
+        "GD_RECEIPT line (exact token from packet)",
+        "Q1: Repeating pattern across Ben's ventures",
+        "Q2: Unusually strong capability",
+        "Q3: Weak capability or support needed",
+        "Q4: Business model best fit for proven capability",
+        "Q5: What Ben should stop doing",
+        "Q6: What Ben should test next in the real world",
+        "Evidence citations or UNKNOWN markers — no invented facts"
+      ]
+    },
+    "THREAD_REFRESH_PACKET": {
+      "label": "Thread refresh packet",
+      "description": "Human-consumable cockpit handoff for a fresh AI thread — generated from repo truth, no cousin routing.",
+      "generationMode": "COCKPIT_DIRECT",
+      "recipients": [],
+      "synthesisLead": null,
+      "hgApprovalLevel": "HG_NONE",
+      "dispatchClass": "NONE",
+      "cockpitSources": [
+        "foreman/HUMAN_GATES.md",
+        "foreman/LANES.md",
+        "foreman/BUDGET.md",
+        "foreman/NEXT_ACTION.md",
+        "foreman/CURRENT_STATE.md",
+        "foreman/gates/APPROVAL_LOG.md"
+      ],
+      "outputArtifact": "THREAD_REFRESH_PACKET.md",
+      "readFirst": [
+        "foreman/NEXT_ACTION.md",
+        "foreman/CURRENT_STATE.md",
+        "foreman/HUMAN_GATES.md",
+        "foreman/LANES.md"
+      ],
+      "responseRequired": []
+    }
+  }
+}

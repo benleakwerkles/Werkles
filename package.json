@@ -14,7 +14,15 @@
     "AUTONOMOUS_ROUND_TRIP_SKYBRO": "node scripts/foreman/autonomous-round-trip-skybro.mjs --execute",
     "HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST": "node scripts/foreman/homepage-rewrite-discovery-smoke-test.mjs --execute",
     "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW": "node scripts/foreman/werkles-homepage-discovery-full-crew.mjs --execute",
-    "foreman": "node scripts/foreman/foreman-control-server.mjs"
+    "foreman": "node scripts/foreman/foreman-control-server.mjs",
+    "gd:list": "node foreman/gd-intent-router/gd-intent-router.mjs list",
+    "gd:route": "node foreman/gd-intent-router/gd-intent-router.mjs route",
+    "gd:generate": "node foreman/gd-intent-router/gd-intent-router.mjs generate",
+    "gd:collect": "node foreman/gd-intent-router/gd-intent-router.mjs collect",
+    "gd:synthesize": "node foreman/gd-intent-router/gd-intent-router.mjs synthesize",
+    "gd:runs": "node foreman/gd-intent-router/gd-intent-router.mjs runs",
+    "gd:thread-refresh": "node foreman/gd-intent-router/gd-intent-router.mjs thread-refresh",
+    "gd:gimpdash": "node -e \"require('child_process').execSync('start http://127.0.0.1:4317/#gimpdash',{stdio:'inherit',shell:true})\""
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

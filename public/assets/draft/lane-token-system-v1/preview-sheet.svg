@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 640" fill="none">
+  <rect width="920" height="640" fill="#ebe2d4"/>
+  <text x="28" y="36" font-family="system-ui,sans-serif" font-size="18" font-weight="600" fill="#2c231d">WERKLES_LANE_TOKEN_SYSTEM_V1</text>
+  <text x="28" y="56" font-family="system-ui,sans-serif" font-size="11" fill="#5c4a3a">Primary (recommended) � brass/copper on cream � 64 / 32 / 24px</text>
+
+  <g transform="translate(28,78)">
+    <text x="0" y="0" font-family="system-ui,sans-serif" font-size="10" fill="#9f6633" font-weight="600">PRIMARY SET  COPPER</text>
+    <g transform="translate(0,16)">
+      <image href="primary/spark-ember-copper.svg" x="0" y="0" width="56" height="56"/><text x="0" y="68" font-size="9" fill="#5c4a3a">Spark</text>
+      <image href="primary/builder-framing-square-copper.svg" x="72" y="0" width="56" height="56"/><text x="72" y="68" font-size="9" fill="#5c4a3a">Builder</text>
+      <image href="primary/worker-glove-copper.svg" x="144" y="0" width="56" height="56"/><text x="144" y="68" font-size="9" fill="#5c4a3a">Worker</text>
+      <image href="primary/operator-dial-copper.svg" x="216" y="0" width="56" height="56"/><text x="216" y="68" font-size="9" fill="#5c4a3a">Operator</text>
+      <image href="primary/backer-dog-token-copper.svg" x="288" y="0" width="56" height="56"/><text x="288" y="68" font-size="9" fill="#5c4a3a">Backer</text>
+      <image href="primary/connector-bridge-copper.svg" x="360" y="0" width="56" height="56"/><text x="360" y="68" font-size="9" fill="#5c4a3a">Connector</text>
+    </g>
+  </g>
+
+  <g transform="translate(28,200)">
+    <text x="0" y="0" font-family="system-ui,sans-serif" font-size="10" fill="#9f6633" font-weight="600">ALTERNATE SET  COPPER</text>
+    <g transform="translate(0,16)">
+      <image href="alternate/spark-match-copper.svg" x="0" y="0" width="56" height="56"/>
+      <image href="alternate/builder-blueprint-block-copper.svg" x="72" y="0" width="56" height="56"/>
+      <image href="alternate/worker-boot-copper.svg" x="144" y="0" width="56" height="56"/>
+      <image href="alternate/operator-clipboard-copper.svg" x="216" y="0" width="56" height="56"/>
+      <image href="alternate/backer-foundation-block-copper.svg" x="288" y="0" width="56" height="56"/>
+      <image href="alternate/connector-compass-copper.svg" x="360" y="0" width="56" height="56"/>
+    </g>
+  </g>
+
+  <g transform="translate(28,310)">
+    <text x="0" y="0" font-size="10" fill="#9f6633" font-weight="600">PRIMARY  MONO SCALE LADDER</text>
+    <g transform="translate(0,20)">
+      <image href="primary/spark-ember-mono.svg" x="0" y="0" width="64" height="64"/>
+      <image href="primary/spark-ember-mono.svg" x="80" y="16" width="32" height="32"/>
+      <image href="primary/spark-ember-mono.svg" x="128" y="20" width="24" height="24"/>
+      <text x="0" y="78" font-size="9" fill="#5c4a3a">Spark</text>
+      <image href="primary/builder-framing-square-mono.svg" x="180" y="0" width="64" height="64"/>
+      <image href="primary/builder-framing-square-mono.svg" x="260" y="16" width="32" height="32"/>
+      <image href="primary/builder-framing-square-mono.svg" x="308" y="20" width="24" height="24"/>
+      <text x="180" y="78" font-size="9" fill="#5c4a3a">Builder</text>
+      <image href="primary/worker-glove-mono.svg" x="360" y="0" width="64" height="64"/>
+      <image href="primary/worker-glove-mono.svg" x="440" y="16" width="32" height="32"/>
+      <image href="primary/worker-glove-mono.svg" x="488" y="20" width="24" height="24"/>
+      <text x="360" y="78" font-size="9" fill="#5c4a3a">Worker</text>
+      <image href="primary/operator-dial-mono.svg" x="540" y="0" width="64" height="64"/>
+      <image href="primary/operator-dial-mono.svg" x="620" y="16" width="32" height="32"/>
+      <image href="primary/operator-dial-mono.svg" x="668" y="20" width="24" height="24"/>
+      <text x="540" y="78" font-size="9" fill="#5c4a3a">Operator</text>
+      <image href="primary/backer-dog-token-mono.svg" x="720" y="0" width="64" height="64"/>
+      <image href="primary/backer-dog-token-mono.svg" x="800" y="16" width="32" height="32"/>
+      <image href="primary/backer-dog-token-mono.svg" x="848" y="20" width="24" height="24"/>
+      <text x="720" y="78" font-size="9" fill="#5c4a3a">Backer</text>
+    </g>
+    <g transform="translate(0,110)">
+      <image href="primary/connector-bridge-mono.svg" x="0" y="0" width="64" height="64"/>
+      <image href="primary/connector-bridge-mono.svg" x="80" y="16" width="32" height="32"/>
+      <image href="primary/connector-bridge-mono.svg" x="128" y="20" width="24" height="24"/>
+      <text x="0" y="78" font-size="9" fill="#5c4a3a">Connector</text>
+    </g>
+  </g>
+
+  <g transform="translate(28,530)">
+    <rect width="860" height="88" rx="6" fill="#fff6e8" stroke="#c08b52"/>
+    <text x="12" y="22" font-size="10" fill="#7a4f2b" font-weight="600">Small-size risks</text>
+    <text x="12" y="40" font-size="9" fill="#5c4a3a">Primary backer dog: borderline at 24px. Alternate compass + match: fail at 24px.</text>
+    <text x="12" y="56" font-size="9" fill="#5c4a3a">Strongest: framing square, dial, bridge, ember, foundation block, boot.</text>
+  </g>
+</svg>

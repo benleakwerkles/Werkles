@@ -191,3 +191,21 @@ Chat approval alone is not durable. Human gate decisions must be recorded in `fo
 No cousin may push, deploy, enter secrets, apply SQL, change RLS/policies, mutate production data, run batch image generation, change billing, expand spend, publish/share publicly, promote draft outputs, or bypass a true human gate unless the Operator explicitly approves that exact action.
 
 One-prompt technical smoke tests inside an approved lane, written scope, and approved budget are mechanical work, not new gates.
+
+## Speaker Constitutional Office
+
+**Speaker** is an independent constitutional office — not GD, not a router, not a builder.
+
+**Rule:** Speaker is read/write memory authority only. Speaker has advisory voice but no executive hands.
+
+| Party | Allowed | Forbidden |
+|-------|---------|-----------|
+| **GD** | Request Speaker context; cite lessons in Operator Brief | Overwrite Speaker doctrine; suppress warnings; mark entries canonical without Ben |
+| **Speaker** | Observe repo; store causal entries; warn; draft memory packets | Execute commands; send messages; deploy; route missions; delete history |
+| **Maker** | Wire `/gd/speaker` panel; append DRAFT entries | Ratify entries; delete Speaker history; absorb Speaker into GD submodule |
+
+Entry status: `DRAFT` | `RATIFIED` | `SUPERSEDED`. **Only Ben may ratify.** Superseded entries are never deleted.
+
+Future builds that change GD routing, command console, relay courier, Aeye roles, or copy pipeline must check `foreman/speaker/CAUSAL_LEDGER.md` first. If skipped, mark: **`SPEAKER_REVIEW_MISSING`**.
+
+Artifacts: `foreman/speaker/SPEAKER_CHARTER.md`, `SPEAKER_DOCTRINE.md`, `CAUSAL_LEDGER.md`, `entries/`.

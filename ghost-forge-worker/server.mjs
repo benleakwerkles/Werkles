@@ -17,6 +17,7 @@ const {
   SUPABASE_BUCKET = "ghost-forge",
   MAX_PROMPTS_PER_BATCH = "50",
   MAX_BATCH_REQUESTS_PER_HOUR = "10",
+  GHOST_FORGE_SKIP_RATE_LIMIT = "0",
   DAILY_BUDGET_USD = "25.00",
   DEFAULT_COST_PER_IMAGE_USD = "0.09",
   MODEL_COSTS_JSON = "{}",
@@ -50,6 +51,7 @@ for (const [key, value] of Object.entries(requiredEnv)) {
 const config = {
   maxPromptsPerBatch: parsePositiveInt(MAX_PROMPTS_PER_BATCH, "MAX_PROMPTS_PER_BATCH"),
   maxBatchRequestsPerHour: parsePositiveInt(MAX_BATCH_REQUESTS_PER_HOUR, "MAX_BATCH_REQUESTS_PER_HOUR"),
+  skipRateLimit: ["1", "true", "yes"].includes(String(GHOST_FORGE_SKIP_RATE_LIMIT).toLowerCase()),
   dailyBudgetUsd: parsePositiveNumber(DAILY_BUDGET_USD, "DAILY_BUDGET_USD"),
   defaultCostPerImageUsd: parsePositiveNumber(DEFAULT_COST_PER_IMAGE_USD, "DEFAULT_COST_PER_IMAGE_USD"),
   modelCosts: parseModelCosts(MODEL_COSTS_JSON),
@@ -85,6 +87,7 @@ app.get("/health", (_req, res) => {
     renderer: "replicate",
     daily_budget_usd: config.dailyBudgetUsd,
     max_batch_requests_per_hour: config.maxBatchRequestsPerHour,
+    skip_rate_limit: config.skipRateLimit,
     default_cost_per_image_usd: config.defaultCostPerImageUsd
   });
 });
@@ -97,7 +100,7 @@ app.post("/batch/create", async (req, res) => {
     const preflightImageCost = estimateImageCostForRequest(request);
 
     await checkDailyImageBudget(preflightImageCost);
-    enforceBatchRequestRateLimit();
+    enforceBatchRequestRateLimit(req);
     await reserveClaudeSpend(config.defaultClaudeCostPerRequestUsd);
 
     const claudeResult = await generatePromptsWithClaude(request);
@@ -129,10 +132,20 @@ app.post("/batch/create", async (req, res) => {
     });
   } catch (error) {
     logError("POST /batch/create failed", error);
-    res.status(error.statusCode || 500).json({
+    const payload = {
       ok: false,
       error: error.message || "Internal error"
-    });
+    };
+
+    if (error.statusCode === 429) {
+      payload.rate_limit = error.rateLimit || getBatchRateLimitStatus();
+      payload.retry_after_seconds = error.retryAfterSeconds ?? payload.rate_limit.retry_after_seconds;
+      payload.retry_after_minutes = error.retryAfterMinutes ?? payload.rate_limit.retry_after_minutes;
+      payload.operator_note =
+        "Hourly batch cap — not a crash. Page building on localhost is unaffected. Set GHOST_FORGE_SKIP_RATE_LIMIT=1 on Render to lift, or wait for window reset.";
+    }
+
+    res.status(error.statusCode || 500).json(payload);
   }
 });
 
@@ -309,6 +322,49 @@ app.post("/batch/preflight", async (req, res) => {
     });
   } catch (error) {
     logError("POST /batch/preflight failed", error);
+    res.status(error.statusCode || 500).json({
+      ok: false,
+      error: error.message || "Internal error"
+    });
+  }
+});
+
+app.get("/diagnostics/rate-limit", async (req, res) => {
+  try {
+    assertInternalAuth(req);
+    res.json({
+      ok: true,
+      checked_at: new Date().toISOString(),
+      ...getBatchRateLimitStatus()
+    });
+  } catch (error) {
+    logError("GET /diagnostics/rate-limit failed", error);
+    res.status(error.statusCode || 500).json({
+      ok: false,
+      error: error.message || "Internal error"
+    });
+  }
+});
+
+app.post("/diagnostics/rate-limit/reset", async (req, res) => {
+  try {
+    assertInternalAuth(req);
+    if (!config.skipRateLimit) {
+      const error = new Error("Rate limit reset requires GHOST_FORGE_SKIP_RATE_LIMIT=1 on the worker.");
+      error.statusCode = 403;
+      throw error;
+    }
+
+    const cleared = batchRequestWindow.length;
+    batchRequestWindow.length = 0;
+
+    res.json({
+      ok: true,
+      cleared_requests: cleared,
+      ...getBatchRateLimitStatus()
+    });
+  } catch (error) {
+    logError("POST /diagnostics/rate-limit/reset failed", error);
     res.status(error.statusCode || 500).json({
       ok: false,
       error: error.message || "Internal error"
@@ -1098,17 +1154,50 @@ function costPerImageForModel(model) {
   return config.defaultCostPerImageUsd;
 }
 
-function enforceBatchRequestRateLimit() {
-  const now = Date.now();
+function pruneBatchRequestWindow(now = Date.now()) {
   const oneHourAgo = now - 60 * 60 * 1000;
 
   while (batchRequestWindow.length && batchRequestWindow[0] < oneHourAgo) {
     batchRequestWindow.shift();
   }
+}
 
-  if (batchRequestWindow.length >= config.maxBatchRequestsPerHour) {
+function getBatchRateLimitStatus(now = Date.now()) {
+  pruneBatchRequestWindow(now);
+
+  const oldest = batchRequestWindow[0] || null;
+  const retryAfterMs = oldest ? Math.max(0, oldest + 60 * 60 * 1000 - now) : 0;
+
+  return {
+    max_batch_requests_per_hour: config.maxBatchRequestsPerHour,
+    requests_in_window: batchRequestWindow.length,
+    remaining_requests: Math.max(0, config.maxBatchRequestsPerHour - batchRequestWindow.length),
+    window_resets_at: oldest ? new Date(oldest + 60 * 60 * 1000).toISOString() : null,
+    retry_after_seconds: Math.ceil(retryAfterMs / 1000),
+    retry_after_minutes: Math.ceil(retryAfterMs / 60000),
+    skip_rate_limit: config.skipRateLimit
+  };
+}
+
+function shouldSkipBatchRateLimit(_req) {
+  return config.skipRateLimit;
+}
+
+function enforceBatchRequestRateLimit(req) {
+  if (shouldSkipBatchRateLimit(req)) {
+    return;
+  }
+
+  const now = Date.now();
+  pruneBatchRequestWindow(now);
+  const status = getBatchRateLimitStatus(now);
+
+  if (status.requests_in_window >= config.maxBatchRequestsPerHour) {
     const error = new Error("Ghost Forge batch request rate limit exceeded.");
     error.statusCode = 429;
+    error.retryAfterSeconds = status.retry_after_seconds;
+    error.retryAfterMinutes = status.retry_after_minutes;
+    error.rateLimit = status;
     throw error;
   }
 

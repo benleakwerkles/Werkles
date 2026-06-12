@@ -12,6 +12,8 @@ import crypto from "node:crypto";
 import { spawn } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { verifyAllRelayTabDestinations } from "./relay-courier-lib.mjs";
+import { classifyGdCommand, formatGdCommandVerdict } from "../../foreman/gd-intent-router/gd-command-governor.mjs";
+import { buildSpeakerStatus, draftSpeakerEntry } from "../../foreman/speaker/speaker-lib.mjs";
 
 const REPO_ROOT = "C:\\Users\\benle\\Desktop\\github\\Werkles";
 const PORT = 4317;
@@ -64,6 +66,10 @@ const IMAGERY_DIRECTION = path.join(REPO_ROOT, "foreman", "IMAGERY_DIRECTION.md"
 const IMAGERY_PROMPT_TEMPLATE = path.join(REPO_ROOT, "foreman", "ghost-forge", "IMAGERY_PROMPT_TEMPLATE.md");
 const ENDER_IMAGERY_WIRE_PACKET = path.join(REPO_ROOT, "foreman", "handoffs", "outbox", "TO_ENDER_IMAGERY_DIRECTION_WIRE_v0.1.md");
 const CREW_PACKET_GENERATOR = path.join(REPO_ROOT, "foreman", "crew-dispatch", "crew-packet-generator.mjs");
+const GD_ROUTER_MJS = path.join(REPO_ROOT, "foreman", "gd-intent-router", "gd-intent-router.mjs");
+const THREAD_REFRESH_PACKET = path.join(REPO_ROOT, "foreman", "handoffs", "outbox", "THREAD_REFRESH_PACKET.md");
+const GD_MISSION_CLASSES = path.join(REPO_ROOT, "foreman", "gd-intent-router", "mission-classes.json");
+const GD_RUNS_DIR = path.join(REPO_ROOT, "foreman", "gd-intent-router", "runs");
 
 const COUSIN_BY_ROLE = {
   petra: "PETRA",
@@ -409,6 +415,31 @@ function probeForemanHealth() {
     });
     req.on("error", () => resolve(false));
     req.setTimeout(2500, () => {
+      req.destroy();
+      resolve(false);
+    });
+  });
+}
+
+function probeGimpDashRoute() {
+  return new Promise((resolve) => {
+    const req = http.get(`http://${HOST}:${PORT}/`, (res) => {
+      let body = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk) => {
+        body += chunk;
+      });
+      res.on("end", () => {
+        const integrated =
+          res.statusCode === 200 &&
+          body.includes('id="gimpdash"') &&
+          body.includes('id="gd-intent-input"') &&
+          body.includes('id="gd-route-btn"');
+        resolve(integrated);
+      });
+    });
+    req.on("error", () => resolve(false));
+    req.setTimeout(4000, () => {
       req.destroy();
       resolve(false);
     });
@@ -1150,6 +1181,8 @@ function buildStatus() {
     edgeBay: loadEdgeBayStatus(relay),
     activeAgentSnippet: readText(PATHS.activeAgent, 10).text,
     budgetSnippet: readText(PATHS.budget, 10).text,
+    gd: buildGdStatus(),
+    speaker: buildSpeakerStatus(REPO_ROOT),
   };
 }
 
@@ -1460,6 +1493,268 @@ function startNetworkCourierWalk(options = {}) {
   };
 }
 
+function loadGdMissionClasses() {
+  if (!fs.existsSync(GD_MISSION_CLASSES)) return [];
+  try {
+    const registry = JSON.parse(fs.readFileSync(GD_MISSION_CLASSES, "utf8"));
+    return Object.entries(registry.missionClasses || {}).map(([id, def]) => ({
+      id,
+      label: def.label,
+      generationMode: def.generationMode || null,
+      recipients: def.recipients || [],
+    }));
+  } catch {
+    return [];
+  }
+}
+
+function listGdRunsBrief() {
+  if (!fs.existsSync(GD_RUNS_DIR)) return [];
+  return fs
+    .readdirSync(GD_RUNS_DIR)
+    .filter((name) => fs.existsSync(path.join(GD_RUNS_DIR, name, "run-manifest.json")))
+    .sort()
+    .reverse()
+    .slice(0, 12)
+    .map((runId) => {
+      try {
+        const m = JSON.parse(fs.readFileSync(path.join(GD_RUNS_DIR, runId, "run-manifest.json"), "utf8"));
+        return { runId, missionClass: m.missionClass, status: m.status };
+      } catch {
+        return { runId, missionClass: "?", status: "?" };
+      }
+    });
+}
+
+function loadThreadRefreshPreview() {
+  if (!fs.existsSync(THREAD_REFRESH_PACKET)) {
+    return { exists: false };
+  }
+  const stat = fs.statSync(THREAD_REFRESH_PACKET);
+  const text = fs.readFileSync(THREAD_REFRESH_PACKET, "utf8");
+  let runId = null;
+  const m = text.match(/\*\*Run:\*\* `(GD_RUN_[^`]+)`/);
+  if (m) runId = m[1];
+  return {
+    exists: true,
+    chars: text.length,
+    modifiedAt: stat.mtime.toISOString(),
+    runId,
+    preview: text.slice(0, 2400) + (text.length > 2400 ? "\n\n… (truncated — open file for full packet)" : ""),
+    path: rel(THREAD_REFRESH_PACKET),
+  };
+}
+
+function buildGdStatus() {
+  return {
+    ok: true,
+    missionClasses: loadGdMissionClasses(),
+    runs: listGdRunsBrief(),
+    threadRefresh: loadThreadRefreshPreview(),
+    homeAnchor: `http://${HOST}:${PORT}/#gimpdash`,
+  };
+}
+
+function speakerStatusBadge(status) {
+  if (status === "RATIFIED") return `<span class="gd-ready">RATIFIED</span>`;
+  if (status === "SUPERSEDED") return `<span class="muted">SUPERSEDED</span>`;
+  return `<span class="warn-pill">DRAFT</span>`;
+}
+
+function formatSpeakerPanelCard(speaker) {
+  const counts = speaker?.counts || { draft: 0, ratified: 0, superseded: 0 };
+  const entryRows =
+    (speaker?.entries || [])
+      .slice(0, 16)
+      .map(
+        (e) =>
+          `<tr><td>${speakerStatusBadge(e.status)}</td><td><code>${esc(e.id)}</code></td><td>${esc(e.title)}</td><td>${esc((e.tags || []).slice(0, 3).join(", "))}</td></tr>`
+      )
+      .join("") || '<tr><td colspan="4" class="muted">No entries yet</td></tr>';
+
+  const warningRows =
+    (speaker?.warnings || [])
+      .slice(0, 10)
+      .map(
+        (e) =>
+          `<li><strong>${esc(e.title)}</strong> <span class="muted">(${esc(e.status)})</span> — ${esc((e.warning_triggers || []).slice(0, 2).join("; ") || "—")}</li>`
+      )
+      .join("") || '<li class="muted">No warnings indexed</li>';
+
+  const roleChips = (speaker?.roleRegistry?.roles || [])
+    .slice(0, 14)
+    .map((r) => `<span class="warn-pill" style="margin:2px 4px 2px 0;display:inline-block">${esc(r)}</span>`)
+    .join("") || '<span class="muted">Registry not loaded</span>';
+
+  return `
+  <div class="plow" id="gd-speaker" style="margin-top:16px">
+    <h2>Speaker</h2>
+    <p class="lead">Independent constitutional office · <strong>why we believe this</strong> · causal memory · no executive hands</p>
+    <p class="muted">GD consults Speaker. GD does not own Speaker. Only Ben ratifies. Not a summarizer — causal memory.</p>
+
+    <div class="banner ok-banner" style="margin-bottom:10px;font-size:.92rem">
+      ${counts.draft} draft · ${counts.ratified} ratified · ${counts.superseded} superseded
+      · integration <code>foreman/speaker/GD_SPEAKER_CONSTITUTIONAL_INTEGRATION_V0.md</code>
+    </div>
+
+    <details open>
+      <summary><strong>Aeye role registry</strong> <span class="muted">· cultural memory Speaker monitors</span></summary>
+      <div style="margin-top:10px;line-height:1.8">${roleChips}</div>
+      <div class="actions" style="margin-top:8px">
+        <button type="button" class="btn" data-action="open-speaker-role-registry">Open Role Registry</button>
+        <button type="button" class="btn" data-action="open-speaker-integration">Open Integration V0</button>
+      </div>
+    </details>
+
+    <details open style="margin-top:10px">
+      <summary><strong>Causal ledger</strong> <span class="muted">· ${counts.draft + counts.ratified + counts.superseded} entries</span></summary>
+      <table class="gd-table" id="speaker-entries-table" style="margin-top:10px">
+        <thead><tr><th>Status</th><th>ID</th><th>Title</th><th>Tags</th></tr></thead>
+        <tbody>${entryRows}</tbody>
+      </table>
+    </details>
+
+    <details open style="margin-top:10px">
+      <summary><strong>Warnings &amp; lessons</strong> <span class="muted">· interrupt signatures</span></summary>
+      <ul id="speaker-warnings-list" style="margin:10px 0 0 1rem;font-size:.92rem">${warningRows}</ul>
+    </details>
+
+    <details style="margin-top:10px">
+      <summary><strong>Draft new entry</strong> <span class="muted">· DRAFT only — ten-field template</span></summary>
+      <div class="gd-governor" style="margin-top:10px">
+        <input id="speaker-draft-title" type="text" placeholder="Title (required)" style="width:100%;margin-bottom:8px;padding:8px" />
+        <textarea id="speaker-draft-event" rows="2" placeholder="Event — what happened?" style="width:100%;margin-bottom:8px;padding:8px"></textarea>
+        <textarea id="speaker-draft-context" rows="2" placeholder="Context — what was around it?" style="width:100%;margin-bottom:8px;padding:8px"></textarea>
+        <textarea id="speaker-draft-lesson" rows="4" placeholder="Lesson learned (required)" style="width:100%;margin-bottom:8px;padding:8px"></textarea>
+        <textarea id="speaker-draft-why" rows="2" placeholder="Why it happened — preserve cause, not slogans" style="width:100%;margin-bottom:8px;padding:8px"></textarea>
+        <input id="speaker-draft-triggers" type="text" placeholder="Future warning triggers (comma-separated)" style="width:100%;margin-bottom:8px;padding:8px" />
+        <div class="actions" style="margin-top:10px">
+          <button type="button" class="btn primary" id="speaker-draft-btn">Save DRAFT entry</button>
+          <button type="button" class="btn" data-action="open-speaker-charter">Open Charter</button>
+          <button type="button" class="btn" data-action="open-speaker-ledger">Open Ledger</button>
+          <button type="button" class="btn" data-action="open-speaker-template">Open Template</button>
+        </div>
+        <p class="muted" id="speaker-draft-meta" style="margin-top:8px">Writes <code>foreman/speaker/entries/DRAFT_*.md</code> · Ben ratifies · never auto-send</p>
+      </div>
+    </details>
+
+    <p class="muted" style="margin-top:12px;margin-bottom:0">
+      Route <code>/gd/speaker</code> → this panel · No SQL · No secrets · No canonicalize without Ben
+    </p>
+  </div>`;
+}
+
+function formatGimpDashHomeCard(gd) {
+  const tr = gd?.threadRefresh || {};
+  const meta = tr.exists
+    ? `<span class="gd-ready">Ready</span> · ${tr.chars} chars · ${esc(tr.modifiedAt || "")}` +
+      (tr.runId ? ` · run <code>${esc(tr.runId)}</code>` : "")
+    : "No packet yet — click Generate Thread Refresh Packet.";
+
+  const missionRows =
+    (gd?.missionClasses || [])
+      .map((m) => {
+        const mode =
+          m.generationMode === "COCKPIT_DIRECT"
+            ? "cockpit direct"
+            : m.recipients?.length
+              ? m.recipients.join(", ")
+              : "—";
+        return `<tr><td><code>${esc(m.id)}</code></td><td>${esc(m.label)}</td><td>${esc(mode)}</td></tr>`;
+      })
+      .join("") || '<tr><td colspan="3" class="muted">None</td></tr>';
+
+  const runRows =
+    (gd?.runs || [])
+      .slice(0, 8)
+      .map(
+        (r) =>
+          `<tr><td><code>${esc(r.runId)}</code></td><td>${esc(r.missionClass)}</td><td>${esc(r.status)}</td></tr>`
+      )
+      .join("") || '<tr><td colspan="3" class="muted">No runs yet</td></tr>';
+
+  return `
+  <div class="plow" id="gimpdash" style="margin-top:16px">
+    <h2>GimpDash</h2>
+    <p class="lead">One console · state what you want · GD governs topic and crew routing by role · <code>HUMAN_CONSUMABLE_OUTPUT_RULE_V1</code></p>
+
+    <div class="gd-governor gd-hero">
+      <h3>What do you want to do?</h3>
+      <p class="muted">Plain language only. No crew picking. Governor routes Aeyes by seat — not Gmail In / Gmail Out.</p>
+      <textarea id="gd-intent-input" rows="7" placeholder="State your intent in plain language.
+
+Examples:
+• Review homepage visual narrative — four beats, no deploy
+• Thread refresh for a new Cursor session
+• Import rent roll and check capital allocation posture
+• Wire documentary nav icons locally, typecheck only"></textarea>
+      <div class="actions" style="margin-top:10px">
+        <button type="button" class="btn hero primary" id="gd-route-btn">Route intent</button>
+        <button type="button" class="btn" id="gd-copy-governor-brief" disabled>Copy governor brief</button>
+      </div>
+      <div id="gd-governor-output" class="gd-governor-output hidden"></div>
+    </div>
+
+    <details style="margin-top:14px">
+      <summary><strong>Thread refresh artifact</strong> <span class="muted">· cockpit-direct when governor routes thread refresh</span></summary>
+      <p class="muted" style="margin-top:10px">Generate <code>THREAD_REFRESH_PACKET.md</code> from repo truth — paste into a fresh ChatGPT thread.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="gd-thread-refresh">Generate Thread Refresh Packet</button>
+        <button type="button" class="btn" data-action="copy-thread-refresh-packet">Copy to Clipboard</button>
+        <button type="button" class="btn" data-action="open-thread-refresh-packet">Open Output File</button>
+      </div>
+      <p class="muted" style="margin-top:12px" id="gd-output-meta">${meta}</p>
+      <pre id="gd-packet-preview" class="gd-preview"${tr.exists ? "" : " hidden"}>${tr.exists ? esc(tr.preview) : ""}</pre>
+    </details>
+
+    <details open style="margin-top:14px">
+      <summary><strong>Mission classes</strong> <span class="muted">· cousin-routed: <code>npm run gd:generate</code></span></summary>
+      <table class="gd-table" id="gd-mission-table" style="margin-top:10px">
+        <thead><tr><th>Class</th><th>Label</th><th>Mode</th></tr></thead>
+        <tbody>${missionRows}</tbody>
+      </table>
+    </details>
+
+    <details open style="margin-top:10px">
+      <summary><strong>Recent GD runs</strong></summary>
+      <table class="gd-table" id="gd-runs-table" style="margin-top:10px">
+        <thead><tr><th>Run</th><th>Mission</th><th>Status</th></tr></thead>
+        <tbody>${runRows}</tbody>
+      </table>
+    </details>
+
+    <p class="muted" style="margin-top:12px;margin-bottom:0">
+      Output: <code>foreman/handoffs/outbox/THREAD_REFRESH_PACKET.md</code> · CLI: <code>npm run gd:thread-refresh</code>
+      · <a href="#gd-speaker">Speaker window</a> (separate office)
+    </p>
+  </div>`;
+}
+
+async function generateThreadRefreshPacketAction() {
+  const stdout = await runNodeScript(GD_ROUTER_MJS, ["thread-refresh"]);
+  let parsed = {};
+  try {
+    parsed = JSON.parse(stdout);
+  } catch {
+    parsed = { runId: "unknown" };
+  }
+  if (!fs.existsSync(THREAD_REFRESH_PACKET)) {
+    throw new Error("THREAD_REFRESH_PACKET.md not written — check gd-intent-router");
+  }
+  const text = fs.readFileSync(THREAD_REFRESH_PACKET, "utf8");
+  await copyToClipboard(text);
+  await openPath(THREAD_REFRESH_PACKET);
+  return {
+    success: true,
+    ok: true,
+    message: `Thread refresh packet generated (${text.length} chars) — copied to clipboard. Paste into a fresh ChatGPT thread.`,
+    successLabel: "Generated",
+    file: rel(THREAD_REFRESH_PACKET),
+    runId: parsed.runId,
+    chars: text.length,
+  };
+}
+
 async function handleAction(action) {
   switch (action) {
     case "refresh-crew-dispatch": {
@@ -1481,6 +1776,71 @@ async function handleAction(action) {
       return generatePacket("bean");
     case "generate-computer":
       return generatePacket("computer");
+    case "gd-thread-refresh":
+      return generateThreadRefreshPacketAction();
+    case "open-gimpdash":
+      await openPath(`http://${HOST}:${PORT}/#gimpdash`);
+      return {
+        success: true,
+        message: "GimpDash section opened on Foreman home",
+        successLabel: "Opened",
+        url: `http://${HOST}:${PORT}/#gimpdash`,
+      };
+    case "open-speaker-panel":
+      await openPath(`http://${HOST}:${PORT}/#gd-speaker`);
+      return {
+        success: true,
+        message: "Speaker panel opened on Foreman home",
+        successLabel: "Opened",
+        url: `http://${HOST}:${PORT}/#gd-speaker`,
+      };
+    case "open-speaker-charter": {
+      const charter = path.join(REPO_ROOT, "foreman", "speaker", "SPEAKER_CHARTER.md");
+      await openPath(charter);
+      return { success: true, message: "Speaker charter opened", successLabel: "Opened", file: rel(charter) };
+    }
+    case "open-speaker-role-registry": {
+      const registry = path.join(REPO_ROOT, "foreman", "speaker", "AEYE_ROLE_REGISTRY.md");
+      await openPath(registry);
+      return { ok: true, message: "Opened role registry", path: registry };
+    }
+    case "open-speaker-integration": {
+      const integration = path.join(REPO_ROOT, "foreman", "speaker", "GD_SPEAKER_CONSTITUTIONAL_INTEGRATION_V0.md");
+      await openPath(integration);
+      return { ok: true, message: "Opened integration V0", path: integration };
+    }
+    case "open-speaker-template": {
+      const template = path.join(REPO_ROOT, "foreman", "speaker", "SPEAKER_PACKET_TEMPLATE.md");
+      await openPath(template);
+      return { ok: true, message: "Opened packet template", path: template };
+    }
+    case "open-speaker-ledger": {
+      const ledger = path.join(REPO_ROOT, "foreman", "speaker", "CAUSAL_LEDGER.md");
+      await openPath(ledger);
+      return { success: true, message: "Causal ledger opened", successLabel: "Opened", file: rel(ledger) };
+    }
+    case "open-thread-refresh-packet":
+      if (!fs.existsSync(THREAD_REFRESH_PACKET)) {
+        throw new Error("No thread refresh packet yet — click Generate Thread Refresh Packet first");
+      }
+      await openPath(THREAD_REFRESH_PACKET);
+      return {
+        success: true,
+        message: "Thread refresh packet opened",
+        successLabel: "Opened",
+        file: rel(THREAD_REFRESH_PACKET),
+      };
+    case "copy-thread-refresh-packet":
+      if (!fs.existsSync(THREAD_REFRESH_PACKET)) {
+        throw new Error("No thread refresh packet yet — click Generate Thread Refresh Packet first");
+      }
+      await copyToClipboard(fs.readFileSync(THREAD_REFRESH_PACKET, "utf8"));
+      return {
+        success: true,
+        message: "THREAD_REFRESH_PACKET.md copied to clipboard",
+        successLabel: "Copied",
+        file: rel(THREAD_REFRESH_PACKET),
+      };
     case "open-outbox":
       await openFolder(PATHS.outbox);
       return { success: true, message: "Outbox opened", successLabel: "Opened", folder: rel(PATHS.outbox) };
@@ -1853,8 +2213,10 @@ function renderPage(status, localToken, theme) {
     .relay-status { margin-top: 8px; }
     #toast { position: fixed; bottom: 20px; right: 20px; max-width: 420px; padding: 12px 14px; border-radius: 10px; background: var(--ink); color: var(--paper); display: none; z-index: 9; }
     #toast.error { background: var(--stop); color: var(--paper); }
-    #modal { position: fixed; inset: 0; background: color-mix(in srgb, var(--ink) 45%, transparent); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 8; }
-    #modal .panel { background: var(--paper); max-width: 900px; width: 100%; max-height: 85vh; overflow: auto; border-radius: 12px; padding: 18px; }
+    #modal { position: fixed; inset: 0; background: color-mix(in srgb, var(--ink) 18%, transparent); display: none; align-items: flex-start; justify-content: center; padding: 72px 20px 20px; z-index: 8; pointer-events: none; }
+    #modal.open { pointer-events: auto; }
+    #modal .panel { background: var(--paper); max-width: 900px; width: 100%; max-height: 78vh; overflow: auto; border-radius: 12px; padding: 18px; border: 1px solid color-mix(in srgb, var(--copper) 28%, transparent); box-shadow: 0 12px 40px rgba(44,35,29,.12); pointer-events: auto; }
+    #modal .panel .modal-hint { margin: 0 0 10px; font-size: .82rem; color: var(--muted); }
     ul { margin: 8px 0 0 18px; }
     .muted { color: var(--ink-muted); font-size: .88rem; }
     textarea { width: 100%; min-height: 120px; padding: 10px; border-radius: 8px; border: 1px solid var(--panel-border); background: var(--paper); color: var(--ink); font-family: Consolas, monospace; font-size: .85rem; }
@@ -1865,6 +2227,27 @@ function renderPage(status, localToken, theme) {
     .btn.hero { font-size: 1.05rem; padding: 14px 20px; font-weight: 700; }
     .btn.hero.primary { background: color-mix(in srgb, var(--copper) 22%, var(--paper)); border-width: 2px; }
     .load-row .btn { min-width: 118px; }
+    .gd-hero { background: color-mix(in srgb, var(--copper) 6%, var(--paper)); border: 1px solid color-mix(in srgb, var(--copper) 35%, transparent); border-radius: 12px; padding: 14px 16px; margin-top: 12px; }
+    .gd-hero h3 { margin: 0 0 8px; font-size: 1rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-muted); }
+    .gd-preview { background: rgba(44,35,29,.05); border-radius: 8px; padding: 12px; overflow: auto; max-height: 280px; font-size: .82rem; line-height: 1.45; white-space: pre-wrap; margin-top: 10px; }
+    .gd-preview.hidden { display: none; }
+    .gd-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .gd-table th, .gd-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--panel-border); vertical-align: top; }
+    .gd-table th { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-muted); }
+    .gd-ready { color: var(--ok); font-weight: 600; }
+    .gd-governor textarea { min-height: 140px; font-family: inherit; font-size: .95rem; line-height: 1.45; margin-top: 8px; }
+    .gd-governor-output { margin-top: 14px; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--copper) 25%, transparent); }
+    .gd-governor-output.hidden { display: none; }
+    .gd-governor-output h4 { margin: 14px 0 6px; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-muted); }
+    .gd-verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 12px 0; }
+    .gd-verdict-card { background: var(--paper); border: 1px solid var(--panel-border); border-radius: 10px; padding: 10px 12px; }
+    .gd-verdict-card .gd-k { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-muted); margin-bottom: 4px; }
+    .gd-verdict-card .gd-v { display: block; font-weight: 700; font-size: .92rem; }
+    .gd-verdict-no-go { border-color: color-mix(in srgb, var(--danger, #b42318) 45%, transparent); background: color-mix(in srgb, var(--danger, #b42318) 6%, var(--paper)); }
+    .gd-verdict-review { border-color: color-mix(in srgb, var(--copper) 55%, transparent); }
+    .gd-verdict-draft { border-color: color-mix(in srgb, var(--ok) 35%, transparent); }
+    .gd-crew-list { margin: 6px 0 0 18px; padding: 0; }
+    .gd-crew-list li { margin-bottom: 6px; }
   </style>
 </head>
 <body>
@@ -1898,6 +2281,10 @@ function renderPage(status, localToken, theme) {
     <div class="muted">Current gate</div>
     <code>${esc(status.gate)}</code>
   </div>
+
+  ${formatGimpDashHomeCard(status.gd)}
+
+  ${formatSpeakerPanelCard(status.speaker)}
 
   <div class="grid">
     <div class="card">
@@ -2020,7 +2407,7 @@ function renderPage(status, localToken, theme) {
     <div class="actions">${blockedButtons}</div>
   </div>
 
-  <div id="modal"><div class="panel"><h2 id="modal-title"></h2><pre id="modal-body"></pre><button type="button" class="btn" id="modal-close">Close</button></div></div>
+  <div id="modal"><div class="panel"><p class="modal-hint" id="modal-hint">Cockpit reference — not an error. Click outside or Close to keep working.</p><h2 id="modal-title"></h2><pre id="modal-body"></pre><button type="button" class="btn" id="modal-close">Close</button></div></div>
   <div id="toast"></div>
 
   <script>
@@ -2030,7 +2417,12 @@ function renderPage(status, localToken, theme) {
     const modal = document.getElementById('modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
-    document.getElementById('modal-close').onclick = () => modal.style.display = 'none';
+    function closeModal() {
+      modal.style.display = 'none';
+      modal.classList.remove('open');
+    }
+    document.getElementById('modal-close').onclick = closeModal;
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
     function showToast(msg, isError) {
       toast.textContent = msg;
@@ -2094,11 +2486,16 @@ function renderPage(status, localToken, theme) {
           modalTitle.textContent = data.title || 'Cockpit';
           modalBody.textContent = data.content;
           modal.style.display = 'flex';
+          modal.classList.add('open');
         }
 
         if (['refresh-crew-dispatch','generate-petra','generate-skybro','generate-ender','generate-bean','generate-computer','refresh-finance-dashboard','crew-relay-process','crew-relay-validate'].includes(action)) {
           setTimeout(() => location.reload(), 900);
           return;
+        }
+
+        if (['gd-thread-refresh','copy-thread-refresh-packet','open-thread-refresh-packet'].includes(action)) {
+          await refreshGimpDashPanel();
         }
 
         setTimeout(() => resetButton(btn, original), 1800);
@@ -2113,6 +2510,187 @@ function renderPage(status, localToken, theme) {
     document.querySelectorAll('[data-action]').forEach(btn => {
       btn.addEventListener('click', () => runAction(btn.dataset.action, btn));
     });
+
+    async function refreshGimpDashPanel() {
+      try {
+        const res = await fetch('/api/gd/status');
+        const data = await res.json();
+        const meta = document.getElementById('gd-output-meta');
+        const preview = document.getElementById('gd-packet-preview');
+        if (!meta || !preview) return;
+
+        if (data.threadRefresh?.exists) {
+          meta.innerHTML = '<span class="gd-ready">Ready</span> · ' + data.threadRefresh.chars + ' chars · ' +
+            (data.threadRefresh.modifiedAt || '') +
+            (data.threadRefresh.runId ? ' · run <code>' + data.threadRefresh.runId + '</code>' : '');
+          preview.hidden = false;
+          preview.textContent = data.threadRefresh.preview || '';
+        } else {
+          meta.textContent = 'No packet yet — route thread refresh intent or click Generate.';
+          preview.hidden = true;
+          preview.textContent = '';
+        }
+
+        const mt = document.querySelector('#gd-mission-table tbody');
+        if (mt) {
+          mt.innerHTML = (data.missionClasses || []).map(m => {
+            const mode = m.generationMode === 'COCKPIT_DIRECT' ? 'cockpit direct' : (m.recipients?.length ? m.recipients.join(', ') : '—');
+            return '<tr><td><code>' + m.id + '</code></td><td>' + m.label + '</td><td>' + mode + '</td></tr>';
+          }).join('') || '<tr><td colspan="3" class="muted">None</td></tr>';
+        }
+
+        const rt = document.querySelector('#gd-runs-table tbody');
+        if (rt) {
+          rt.innerHTML = (data.runs || []).slice(0, 8).map(r =>
+            '<tr><td><code>' + r.runId + '</code></td><td>' + r.missionClass + '</td><td>' + r.status + '</td></tr>'
+          ).join('') || '<tr><td colspan="3" class="muted">No runs yet</td></tr>';
+        }
+      } catch (e) {
+        showToast('GimpDash refresh failed: ' + (e.message || String(e)), true);
+      }
+    }
+
+    function escGovernorHtml(s) {
+      return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function renderGovernorOutput(result, formatted) {
+      const out = document.getElementById('gd-governor-output');
+      const copyBtn = document.getElementById('gd-copy-governor-brief');
+      if (!out || !result) return;
+
+      const verdictClass = result.verdict === 'NO_GO'
+        ? 'gd-verdict-no-go'
+        : result.verdict === 'HUMAN_REVIEW_REQUIRED'
+          ? 'gd-verdict-review'
+          : 'gd-verdict-draft';
+
+      const crewHtml = (result.routedCrew || []).map(function (c) {
+        const lens = c.lens ? ' · <span class="muted">' + escGovernorHtml(c.lens) + '</span>' : '';
+        return '<li><strong>' + escGovernorHtml(c.label) + '</strong> · ' +
+          escGovernorHtml(c.seat) + ' · ' + escGovernorHtml(c.platform) + lens + '</li>';
+      }).join('') || '<li class="muted">Cockpit direct — no cousin packets</li>';
+
+      const hardStopsHtml = (result.hardStops || []).map(function (h) {
+        return '<li>' + escGovernorHtml(h) + '</li>';
+      }).join('');
+
+      const threadRefreshCta = result.missionClass === 'THREAD_REFRESH_PACKET' && result.verdict !== 'NO_GO'
+        ? '<div class="actions" style="margin-top:10px"><button type="button" class="btn primary" data-action="gd-thread-refresh">Generate Thread Refresh Packet</button></div>'
+        : '';
+
+      out.innerHTML =
+        '<div class="gd-verdict-grid">' +
+          '<div class="gd-verdict-card ' + verdictClass + '"><span class="gd-k">Verdict</span><span class="gd-v">' + escGovernorHtml(result.verdict) + '</span></div>' +
+          '<div class="gd-verdict-card"><span class="gd-k">Topic</span><span class="gd-v">' + escGovernorHtml(result.missionLabel) + '</span><span class="muted">' + escGovernorHtml(result.missionClass) + '</span></div>' +
+          '<div class="gd-verdict-card"><span class="gd-k">Risk</span><span class="gd-v">' + escGovernorHtml(result.risk) + '</span></div>' +
+          '<div class="gd-verdict-card"><span class="gd-k">Human gate</span><span class="gd-v">' + (result.humanGate ? 'Yes' : 'No') + '</span><span class="muted">' + escGovernorHtml(result.humanGateLevel) + '</span></div>' +
+        '</div>' +
+        '<p class="muted">' + escGovernorHtml(result.missionDescription || '') + '</p>' +
+        '<h4>Auto-routed crew</h4><ul class="gd-crew-list">' + crewHtml + '</ul>' +
+        '<h4>Hard stops</h4><ul>' + hardStopsHtml + '</ul>' +
+        '<p><strong>Next:</strong> ' + escGovernorHtml(result.nextAction) + '</p>' +
+        threadRefreshCta +
+        '<h4>Draft packet</h4><pre class="gd-preview">' + escGovernorHtml(result.generatedPacket) + '</pre>' +
+        '<details><summary><strong>Full export</strong></summary><pre class="gd-preview">' + escGovernorHtml(formatted) + '</pre></details>';
+
+      out.classList.remove('hidden');
+      if (copyBtn) {
+        copyBtn.disabled = false;
+        copyBtn.dataset.brief = formatted || '';
+      }
+
+      out.querySelectorAll('[data-action]').forEach(function (btn) {
+        btn.addEventListener('click', function () { runAction(btn.dataset.action, btn); });
+      });
+    }
+
+    async function routeGovernorIntent() {
+      const input = document.getElementById('gd-intent-input');
+      const btn = document.getElementById('gd-route-btn');
+      if (!input || !btn) return;
+
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.classList.add('btn-pending');
+      btn.textContent = 'Routing...';
+
+      try {
+        const { res, data } = await postJson('/api/gd/route-intent', { intent: input.value || '' });
+        if (!res.ok || !data.ok) {
+          showToast(data.error || 'Governor routing failed', true);
+          return;
+        }
+        renderGovernorOutput(data.result, data.formatted);
+        showToast('Governor routed: ' + (data.result?.missionClass || '—'), false);
+      } catch (e) {
+        showToast(e.message || String(e), true);
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('btn-pending');
+        btn.textContent = original;
+      }
+    }
+
+    const gdRouteBtn = document.getElementById('gd-route-btn');
+    if (gdRouteBtn) gdRouteBtn.addEventListener('click', routeGovernorIntent);
+
+    const gdCopyBriefBtn = document.getElementById('gd-copy-governor-brief');
+    if (gdCopyBriefBtn) {
+      gdCopyBriefBtn.addEventListener('click', async function () {
+        const brief = this.dataset.brief;
+        if (!brief) return;
+        try {
+          await navigator.clipboard.writeText(brief);
+          showToast('Governor brief copied', false);
+        } catch (e) {
+          showToast('Copy failed — select Full export manually', true);
+        }
+      });
+    }
+
+    if (location.hash === '#gimpdash') {
+      document.getElementById('gimpdash')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (location.hash === '#gd-speaker') {
+      document.getElementById('gd-speaker')?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const speakerDraftBtn = document.getElementById('speaker-draft-btn');
+    if (speakerDraftBtn) {
+      speakerDraftBtn.addEventListener('click', async function () {
+        const title = document.getElementById('speaker-draft-title')?.value || '';
+        const event = document.getElementById('speaker-draft-event')?.value || '';
+        const context = document.getElementById('speaker-draft-context')?.value || '';
+        const lesson = document.getElementById('speaker-draft-lesson')?.value || '';
+        const why = document.getElementById('speaker-draft-why')?.value || '';
+        const warning_triggers = document.getElementById('speaker-draft-triggers')?.value || '';
+        const original = speakerDraftBtn.textContent;
+        speakerDraftBtn.disabled = true;
+        speakerDraftBtn.textContent = 'Saving...';
+        try {
+          const { res, data } = await postJson('/api/gd/speaker/draft', {
+            title,
+            event,
+            context,
+            lesson,
+            why,
+            warning_triggers,
+          });
+          if (!res.ok || !data.ok) {
+            showToast(data.error || 'Speaker draft failed', true);
+            return;
+          }
+          showToast(data.message || 'DRAFT saved', false);
+          setTimeout(() => location.reload(), 600);
+        } catch (e) {
+          showToast(e.message || String(e), true);
+        } finally {
+          speakerDraftBtn.disabled = false;
+          speakerDraftBtn.textContent = original;
+        }
+      });
+    }
 
     async function runRelay(path, btn, original) {
       btn.disabled = true;
@@ -2264,6 +2842,26 @@ function openBrowser() {
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://${HOST}:${PORT}`);
 
+  if (req.method === "GET" && url.pathname === "/api/gd/status") {
+    return sendJson(res, 200, buildGdStatus());
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/gd/speaker") {
+    return sendJson(res, 200, buildSpeakerStatus(REPO_ROOT));
+  }
+
+  if (req.method === "GET" && (url.pathname === "/gd" || url.pathname === "/gimpdash")) {
+    res.writeHead(302, { Location: "/#gimpdash" });
+    res.end();
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/gd/speaker") {
+    res.writeHead(302, { Location: "/#gd-speaker" });
+    res.end();
+    return;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/status") {
     return sendJson(res, 200, buildStatus());
   }
@@ -2283,6 +2881,31 @@ const server = http.createServer(async (req, res) => {
   if (req.method === "POST") {
     if (!verifyLocalToken(req)) {
       return rejectUnauthorized(res);
+    }
+
+    if (url.pathname === "/api/gd/route-intent") {
+      try {
+        const body = await readBody(req);
+        const intent = typeof body.intent === "string" ? body.intent : "";
+        const result = classifyGdCommand(intent);
+        return sendJson(res, 200, {
+          ok: true,
+          result,
+          formatted: formatGdCommandVerdict(result),
+        });
+      } catch (err) {
+        return sendJson(res, 500, { ok: false, error: err.message || String(err) });
+      }
+    }
+
+    if (url.pathname === "/api/gd/speaker/draft") {
+      try {
+        const body = await readBody(req);
+        const saved = draftSpeakerEntry(REPO_ROOT, body);
+        return sendJson(res, 200, saved);
+      } catch (err) {
+        return sendJson(res, 400, { ok: false, error: err.message || String(err) });
+      }
     }
 
     if (url.pathname === "/api/action") {
@@ -2383,14 +3006,37 @@ async function main() {
   console.log("Starting Foreman Control Panel...");
   ensureControlPanelDir();
   ensureLocalToken();
-  const portState = await ensurePortAvailable();
+  let portState = await ensurePortAvailable();
 
   if (portState === "already_running") {
-    if (!process.argv.includes("--no-browser")) {
-      openBrowser();
+    const gdOk = await probeGimpDashRoute();
+    if (gdOk) {
+      if (!process.argv.includes("--no-browser")) {
+        openBrowser();
+      }
+      console.log("Reused existing server. Close its terminal window to stop Foreman.");
+      return;
     }
-    console.log("Reused existing server. Close its terminal window to stop Foreman.");
-    return;
+
+    console.log("Foreman is running but GimpDash routes are missing — restarting with updated server...");
+    const listenerPid = await getListeningPid(PORT);
+    if (listenerPid) {
+      const pidRecord = loadPidRecord();
+      const commandLine = await getProcessCommandLine(listenerPid);
+      const isKnownForeman =
+        (pidRecord && pidRecord.pid === listenerPid) || isForemanControlProcess(commandLine);
+      if (!isKnownForeman) {
+        throw new Error(
+          `HUMAN GATE REQUIRED: port ${PORT} occupied by PID ${listenerPid} without GimpDash routes. Close manually.`
+        );
+      }
+      await killProcess(listenerPid);
+      await sleep(600);
+      if (await getListeningPid(PORT)) {
+        throw new Error(`HUMAN GATE REQUIRED: port ${PORT} still occupied after Foreman restart.`);
+      }
+    }
+    portState = "free";
   }
 
   server.listen(PORT, HOST, () => {

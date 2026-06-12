@@ -44,7 +44,7 @@
   border-left: 3px solid var(--vs-lane-accent, var(--werkles-iron));
   border-radius: calc(var(--radius) - 2px);
   background: var(--vs-card-bg);
-  color: var(--werkles-text-primary);
+  color: var(--werkles-ink-on-dark);
   min-height: 168px;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
@@ -61,7 +61,7 @@
 
 .vs-profile-card--undeclared .vs-profile-card__role-outline {
   border-style: dashed;
-  color: var(--werkles-text-muted);
+  color: var(--werkles-ink-muted-on-dark);
 }
 
 .vs-profile-card--lane-chosen {
@@ -90,7 +90,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--werkles-text-muted);
+  color: var(--werkles-ink-muted-on-dark);
 }
 
 .vs-profile-card__name {
@@ -103,7 +103,7 @@
 .vs-profile-card__meta {
   margin: 2px 0 0;
   font-size: 0.82rem;
-  color: var(--werkles-text-secondary);
+  color: var(--werkles-ink-secondary-on-dark);
 }
 
 .vs-profile-card__role-stamp {
@@ -115,7 +115,7 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--werkles-text-primary);
+  color: var(--werkles-ink-on-dark);
   background: rgba(59, 52, 42, 0.55);
 }
 
@@ -132,11 +132,11 @@
 .vs-profile-card__current {
   margin: 0;
   font-size: 0.84rem;
-  color: var(--werkles-text-secondary);
+  color: var(--werkles-ink-secondary-on-dark);
 }
 
 .vs-profile-card__current span {
-  color: var(--werkles-text-muted);
+  color: var(--werkles-ink-muted-on-dark);
   margin-right: 6px;
 }
 
@@ -158,7 +158,7 @@
   padding: 2px 6px;
   border: 1px solid rgba(224, 181, 105, 0.45);
   border-radius: 4px;
-  color: var(--werkles-text-primary);
+  color: var(--werkles-ink-on-dark);
 }
 
 .vs-profile-card__skills {
@@ -175,7 +175,7 @@
   padding: 2px 7px;
   border: 1px solid rgba(159, 102, 51, 0.35);
   border-radius: 999px;
-  color: var(--werkles-text-secondary);
+  color: var(--werkles-ink-secondary-on-dark);
   background: rgba(44, 35, 29, 0.45);
 }
 
@@ -189,12 +189,12 @@
 
 .vs-profile-card__details dt {
   margin: 0;
-  color: var(--werkles-text-muted);
+  color: var(--werkles-ink-muted-on-dark);
 }
 
 .vs-profile-card__details dd {
   margin: 0;
-  color: var(--werkles-text-secondary);
+  color: var(--werkles-ink-secondary-on-dark);
 }
 
 .vs-profile-card__formed-frame {
@@ -206,6 +206,63 @@
 }
 
 /* —— Stock preview (Unsplash / Pexels placeholders) —— */
+.render-batch-gallery {
+  margin: 22px;
+  padding: 22px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-cockpit-panel);
+  box-shadow: 0 14px 36px rgba(44, 35, 29, 0.08);
+}
+
+.render-batch-gallery__header {
+  max-width: 52rem;
+  margin-bottom: 16px;
+}
+
+.render-batch-gallery__lede {
+  margin-top: 8px;
+  color: var(--werkles-ink-muted-on-paper);
+}
+
+.render-batch-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.render-batch-gallery__tile {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.render-batch-gallery__frame {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid rgba(159, 102, 51, 0.28);
+}
+
+.render-batch-gallery__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.render-batch-gallery__tile figcaption {
+  display: grid;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--werkles-ink-muted-on-paper);
+}
+
+.render-batch-gallery__tile figcaption strong {
+  color: var(--werkles-ink-on-paper);
+  font-size: 0.84rem;
+}
+
 .stock-preview-badge {
   margin: 10px 0 0;
   padding: 8px 12px;
@@ -236,6 +293,30 @@
 .vs-lane-card__header {
   display: grid;
   gap: 2px;
+}
+
+.vs-lane-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.vs-lane-card__token {
+  margin: 0;
+  flex-shrink: 0;
+  padding: 4px;
+  border-radius: 8px;
+  background: rgba(246, 239, 229, 0.12);
+  border: 1px solid rgba(192, 139, 82, 0.35);
+}
+
+.vs-lane-card__token img {
+  display: block;
+}
+
+.vs-lane-card--stock-preview .vs-lane-card__header {
+  padding-top: 14px;
 }
 
 .vs-lane-card__code {
@@ -288,6 +369,82 @@
 
 .vs-lane-card--stock-preview .vs-lane-card__attributes {
   padding-bottom: 14px;
+}
+
+/* —— Lane token preview —— */
+.vs-section--lane-tokens {
+  border: 1px dashed rgba(159, 102, 51, 0.4);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: rgba(255, 252, 247, 0.55);
+}
+
+.vs-token-compare {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .vs-token-compare {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.vs-token-compare__set--ghost-forge {
+  grid-column: 1 / -1;
+}
+
+.vs-token-compare__hint {
+  margin: 0 0 10px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--werkles-ink-muted-on-paper);
+}
+
+.vs-token-strip__photo {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.vs-token-compare__set h3 {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--werkles-copper);
+}
+
+.vs-token-strip {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vs-token-strip li {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 8px;
+  background: var(--werkles-workshop-paper);
+  border: 1px solid rgba(159, 102, 51, 0.28);
+}
+
+.vs-token-strip span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--werkles-ink-on-paper);
+}
+
+.vs-token-strip small {
+  font-size: 0.65rem;
+  color: var(--werkles-ink-muted-on-paper);
 }
 
 .vs-lane-card__photo {

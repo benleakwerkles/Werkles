@@ -23,6 +23,8 @@ When courier runs: **COURIER RUNNING — DO NOT CLICK EDGE**
 - **Stops before Send** — CLASS B default; CLASS A only for locked templates
 - **No deploy, push, SQL, secrets, Ghost Forge, Education Forge, auto-merge**
 - Blocked actions → **HUMAN GATE REQUIRED**
+- Cockpit modal (gate/budget text) → **informational only** — lighter overlay, click outside to dismiss; not an error state
+- Ghost Forge hourly cap → `foreman/ghost-forge/OPERATOR_RATE_LIMIT.md` (not a page-building blocker)
 - Localhost only (`127.0.0.1:4317`)
 
 ## Components
@@ -46,6 +48,31 @@ Refresh Crew Dispatch · Generate * Packet · Copy paste blocks · Open Outbox/I
 ## Finance Command v0.1
 
 Dashboard card — local scaffold only. Never moves money. See `foreman/finance/FINANCE_COMMAND_README.md`.
+
+## GimpDash (GD Intent Router)
+
+**URL:** http://127.0.0.1:4317/#gimpdash (section on Foreman home — scrolls automatically)
+
+| Action | Where |
+|--------|--------|
+| Generate `THREAD_REFRESH_PACKET.md` | GimpDash section → **Generate Thread Refresh Packet** |
+| CLI | `npm run gd:thread-refresh` |
+| Output | `foreman/handoffs/outbox/THREAD_REFRESH_PACKET.md` |
+| Launcher | Double-click `gimpdash.cmd` (opens Foreman + scrolls to GimpDash) |
+
+Legacy `/gd` redirects to `/#gimpdash`.
+
+## Speaker (constitutional office)
+
+**URL:** http://127.0.0.1:4317/#gd-speaker · Next redirect: `/gd/speaker`
+
+Independent memory office — GD consults, does not own. Panel displays ledger, warnings, DRAFT entry form only. Ben ratifies.
+
+| File | Role |
+|------|------|
+| `foreman/speaker/SPEAKER_CHARTER.md` | Office charter |
+| `foreman/speaker/CAUSAL_LEDGER.md` | Entry index |
+| `foreman/speaker/entries/` | Causal entries (never deleted) |
 
 ## Imagery doctrine (wired)
 

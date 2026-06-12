@@ -1,0 +1,33 @@
+﻿{
+    "run":  "Squibb",
+    "total_estimated_cost_usd":  0.8,
+    "gate":  "SALLY_FINAL_V2_OPERATOR_GO",
+    "completed_count":  4,
+    "shot_count":  4,
+    "results":  [
+                    {
+                        "shot_id":  "squibb-v3-bust-cutout",
+                        "status":  "completed",
+                        "batch_id":  "30840620-4db4-4cad-b023-d1e6eb974e2e",
+                        "path":  "public/assets/draft/squibb-classy-v3/werkles-squibb-v3-bust-cutout.png"
+                    },
+                    {
+                        "shot_id":  "squibb-v3-scout-point",
+                        "status":  "completed",
+                        "batch_id":  "27c40329-388f-41ac-bc13-4b29d9418a6f",
+                        "path":  "public/assets/draft/squibb-classy-v3/werkles-squibb-v3-scout-point.png"
+                    },
+                    {
+                        "shot_id":  "squibb-v3-workshop-host",
+                        "status":  "completed",
+                        "batch_id":  "bda4cdfd-66a6-4b66-8331-ce7537f11098",
+                        "path":  "public/assets/draft/squibb-classy-v3/werkles-squibb-v3-workshop-host.png"
+                    },
+                    {
+                        "shot_id":  "squibb-v3-profile-silhouette",
+                        "status":  "completed",
+                        "batch_id":  "12a019d6-2015-4524-8377-40afc0ca1ad0",
+                        "path":  "public/assets/draft/squibb-classy-v3/werkles-squibb-v3-profile-silhouette.png"
+                    }
+                ]
+}

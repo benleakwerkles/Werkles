@@ -1,8 +1,41 @@
 # Werkles Imagery Direction — Protagonist Without Cringe
 
-Status: **direction locked** (2026-05-31)  
+Status: **direction locked** (2026-05-31); **arc refined** (2026-06-08)  
 Scope: marketing imagery, hero art, lane cards, pairing visuals, Ghost Forge prompts when Gate 05 resumes  
-Companion: `foreman/SITE_STYLE_APPROVED_v0.6.md` · `company/WERKLES_BRAND_VOICE.md` · `foreman/DESIGN_SYSTEM.md`
+Companion: `foreman/SITE_STYLE_APPROVED_v0.6.md` · `company/WERKLES_BRAND_VOICE.md` · `foreman/DESIGN_SYSTEM.md` · `foreman/handoffs/inbox/FROM_ENDER_IMAGERY_AND_UX_FOR_MAKER_1.md`
+
+---
+
+## Arc shift — "Anyone can be anything" (2026-06-08)
+
+Prior passes ran on "people can change." Current arc runs on **anyone can be anything** — bolder, easier to get wrong. The credibility rule applies to every frame:
+
+- Never show possibility without **concrete, reachable means**.
+- **Real ordinary people** make "anyone" believable (not hoodie founders).
+- **Closer/cheaper than you thought** reveals make "anything" believable (credit union yes, used oven in budget).
+
+### Five UX beats (distinct from four-act Spark / Space / Forge / Foundry renders)
+
+| Beat | Feeling | Imagery priority |
+|------|---------|------------------|
+| **Lost** | Understood, not reduced | One person, unnamed need, dim industrial-real |
+| **Searching** | Maybe not what I came for | Same person, off-path notice; Squibb notices |
+| **Discovery** | Real need — reachable | Door; affordable oven; lender handshake |
+| **Formation** | Safe to act, not alone | Verified partner / lender / seller |
+| **Momentum** | Beginning, more to become | Running business; same person further along |
+
+### Discovery categories (shot weight)
+
+Give **Money** and **Equipment** extra weight — they turn dreams into numbers a real person can hit.
+
+- **People** — partner, mentor, friend at kitchen table
+- **Money** — credit union, local lender (not VC)
+- **Space** — place to build, within reach
+- **Equipment** — used commercial gear, cheaper than assumed
+
+### Render batch hold
+
+Gate 05 remains **PAUSE**. Next Ghost Forge batch should follow this arc — missing-piece reveals, not three-partner join-up poster. Shot list TBD with Ben approval.
 
 ---
 
@@ -50,6 +83,21 @@ Yes:
 | **Luxury posturing** | No watches-as-hero, no champagne, no penthouse-as-identity. |
 
 If it feels like **advertisement for confidence** instead of **evidence of work**, reject it.
+
+---
+
+## Four-act homepage posture (Spark / Space / Forge / Foundry)
+
+Recorded 2026-06-06 — Ben render-order approval. Full shot lists: `foreman/ghost-forge/WERKLES_HOMEPAGE_SHOT_ARCHITECTURE_v1.md`.
+
+| Act | People | Focal point | Camera |
+|-----|--------|-------------|--------|
+| **Spark** | One person | Thought-in-progress on specific work | No eye contact; hopeful reality, not melancholy |
+| **Space** | None | Inhabited room — one trace of recent/imminent use | Environmental; not abandonment, not listing |
+| **Forge** | Two+ assembling | Shared work / plan | No eye contact; no presenting gesture |
+| **Foundry** | Founder may appear | **Work earns gravity** — maker in frame, not posed | Same Forge posture rules |
+
+**Foundry founder rule:** Founder present, not posed. Work remains focal. *The maker is still in the frame, but the work has earned its own gravity.*
 
 ---
 

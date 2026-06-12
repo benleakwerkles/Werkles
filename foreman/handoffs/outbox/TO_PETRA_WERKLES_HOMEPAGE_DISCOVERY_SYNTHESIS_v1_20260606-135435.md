@@ -1,5 +1,8 @@
 # To Petra (Comptroller): Werkles homepage discovery synthesis
 
+> **Operator Brief (read first):** `foreman/handoffs/outbox/OPERATOR_BRIEF_WERKLES_HOMEPAGE_DISCOVERY_v1.md`  
+> Ben can paste Section 4 to Petra without opening this file. Rule: `HUMAN_CONSUMABLE_OUTPUT_RULE_V1.md`
+
 ## Status
 
 **PETRA SYNTHESIS HANDOFF** — generated 2026-06-06T13:54:35.175Z.

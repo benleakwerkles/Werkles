@@ -3,19 +3,27 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { InfraPreviewBanner } from "@/components/foundry/infra-preview-banner";
+import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
+import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
+import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
-import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
+import { getClientAccessToken } from "@/lib/client-auth";
 
 type Plan = "monthly" | "annual";
 
 export default function MembershipPage() {
-  const preview = isAuthStripeTestBlocked();
+  const previewBlocked = isAuthStripeTestBlocked();
+  const devPreview = shouldUseDevPreviewAuth();
   const [status, setStatus] = useState(
-    preview ? copy.infraPreview.membershipCheckout : "Choose your dues. Stripe handles the brass register."
+    previewBlocked
+      ? copy.infraPreview.membershipCheckout
+      : devPreview
+        ? copy.localPreview.membershipIdle
+        : "Choose your dues. Stripe handles the brass register."
   );
   const [highlightPlan, setHighlightPlan] = useState<Plan | null>(null);
 
@@ -29,23 +37,29 @@ export default function MembershipPage() {
       setHighlightPlan(plan);
       const planLabel = plan === "annual" ? copy.membership.annual : copy.membership.monthly;
       setStatus(
-        preview
+        previewBlocked
           ? `${copy.infraPreview.membershipCheckout} Highlighting ${planLabel}.`
-          : `Showing ${planLabel} from pricing.`
+          : devPreview
+            ? `${copy.localPreview.membershipIdle} Highlighting ${planLabel}.`
+            : `Showing ${planLabel} from dues.`
       );
     }
-  }, [preview]);
+  }, [previewBlocked, devPreview]);
 
   async function startCheckout(plan: Plan) {
-    if (preview) {
+    if (previewBlocked) {
       setStatus(copy.infraPreview.membershipCheckout);
       return;
     }
 
+    if (devPreview) {
+      setStatus(copy.localPreview.membershipCheckoutMock);
+      window.location.href = `/membership/success?preview=1&plan=${plan}`;
+      return;
+    }
+
     setStatus("Opening Stripe checkout.");
-    const supabase = getSupabaseBrowser();
-    const { data } = await supabase.auth.getSession();
-    const token = data.session?.access_token;
+    const token = await getClientAccessToken();
 
     if (!token) {
       setStatus("Log in before paying dues.");
@@ -72,23 +86,44 @@ export default function MembershipPage() {
 
   const monthlyFeatured = highlightPlan === null || highlightPlan === "monthly";
   const annualFeatured = highlightPlan === "annual";
+  const checkoutLabel = previewBlocked
+    ? "Checkout disabled (preview)"
+    : devPreview
+      ? "Mock checkout (preview)"
+      : copy.membership.checkout;
 
   return (
     <CockpitShell>
       <main className={`dashboard-main membership-page ${routeAtmosphere.membership}`}>
-      <nav className="dashboard-nav" aria-label="Membership navigation">
+      <NarrativeJourneyRail currentSlug="/proof" />
+      <nav className="dashboard-nav" aria-label="Foundry navigation">
         <Link href="/">Home</Link>
-        <Link href="/pricing">Pricing</Link>
-        <Link href="/dashboard">Match deck</Link>
+        <Link href="/pricing">{copy.nav.pricing}</Link>
+        <Link href="/login">{copy.nav.login}</Link>
         <Link href="/onboarding">Onboarding</Link>
       </nav>
 
-      <InfraPreviewBanner detail={copy.infraPreview.membershipCheckout} />
+      <RouteUnlockBanner blockedDetail={copy.infraPreview.membershipCheckout} />
 
-      <section className="membership-hero">
-        <p className="eyebrow">{copy.membership.eyebrow}</p>
-        <h1>{copy.membership.headline}</h1>
-        <p>{copy.membership.subhead}</p>
+      <section className="tier2-page-header">
+        <div className="tier2-page-header__copy membership-hero">
+          <p className="eyebrow">{copy.membership.eyebrow}</p>
+          <h1>{copy.membership.headline}</h1>
+          <p>{copy.membership.subhead}</p>
+          <p className="muted">{copy.membership.disclaimer}</p>
+        </div>
+        <Tier2PageVisual page="membership" featured forgeBand />
+      </section>
+
+      <Tier2PageVisual page="membership" iconRail showAttribution={false} />
+
+      <section className="ops-card membership-unlocks" aria-label="What Foundry Dues unlock">
+        <h2>What membership unlocks</h2>
+        <ul>
+          {copy.membership.unlocks.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
       </section>
 
       <section className="membership-grid" aria-label="Foundry Dues plans">
@@ -108,10 +143,10 @@ export default function MembershipPage() {
           <button
             className="button button-light"
             type="button"
-            disabled={preview}
+            disabled={previewBlocked}
             onClick={() => startCheckout("monthly")}
           >
-            {preview ? "Checkout disabled (preview)" : copy.membership.checkout}
+            {checkoutLabel}
           </button>
         </article>
 
@@ -124,10 +159,10 @@ export default function MembershipPage() {
           <button
             className="button button-dark"
             type="button"
-            disabled={preview}
+            disabled={previewBlocked}
             onClick={() => startCheckout("annual")}
           >
-            {preview ? "Checkout disabled (preview)" : "Start The Long Run"}
+            {checkoutLabel}
           </button>
         </article>
       </section>
@@ -135,6 +170,7 @@ export default function MembershipPage() {
       <section className="ops-card membership-trust">
         <h2>{copy.membership.trustHeadline}</h2>
         <p>{copy.membership.trust}</p>
+        <p className="membership-squibb-hint">{copy.squibb.membership}</p>
         <p className="status-line" role="status">{status}</p>
       </section>
       </main>

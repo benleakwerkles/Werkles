@@ -1,9 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { copy } from "@/lib/copy";
+import { getDevPreviewUser, shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
+import { getClientAccessToken } from "@/lib/client-auth";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
+import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
 
 type Phase = "first-weld" | "doors" | "quick-weld" | "blueprint";
 
@@ -20,6 +25,9 @@ export default function OnboardingPage() {
   const [busy, setBusy] = useState(false);
 
   async function currentUser() {
+    const devUser = getDevPreviewUser();
+    if (devUser) return devUser;
+
     const supabase = getSupabaseBrowser();
     const { data } = await supabase.auth.getUser();
     return data.user;
@@ -41,9 +49,13 @@ export default function OnboardingPage() {
         return;
       }
 
-      const supabase = getSupabaseBrowser();
-      const { data: sessionData } = await supabase.auth.getSession();
-      const token = sessionData.session?.access_token;
+      if (shouldUseDevPreviewAuth()) {
+        setStatus(`${copy.onboarding.saved} Pick a door below, or go straight to Foundry Dues.`);
+        setPhase("doors");
+        return;
+      }
+
+      const token = await getClientAccessToken();
 
       if (!token) {
         setStatus(copy.onboarding.loginRequired);
@@ -86,6 +98,11 @@ export default function OnboardingPage() {
       return;
     }
 
+    if (shouldUseDevPreviewAuth()) {
+      window.location.href = "/dashboard/profile";
+      return;
+    }
+
     const { error } = await getSupabaseBrowser()
       .from("profiles")
       .update({ profile_depth: profileDepth })
@@ -108,6 +125,12 @@ export default function OnboardingPage() {
     if (!user) {
       setBusy(false);
       setStatus("Log in before saving.");
+      return;
+    }
+
+    if (shouldUseDevPreviewAuth()) {
+      setBusy(false);
+      window.location.href = "/dashboard/profile";
       return;
     }
 
@@ -152,6 +175,12 @@ export default function OnboardingPage() {
       return;
     }
 
+    if (shouldUseDevPreviewAuth()) {
+      setBusy(false);
+      window.location.href = "/dashboard/profile";
+      return;
+    }
+
     const { error } = await getSupabaseBrowser()
       .from("profiles")
       .update({
@@ -172,6 +201,7 @@ export default function OnboardingPage() {
 
   return (
     <main className="dashboard-main onboarding-page">
+      <NarrativeJourneyRail currentSlug="/formation" />
       <nav className="dashboard-nav" aria-label="Onboarding navigation">
         <Link href="/">Home</Link>
         <Link href="/membership">Foundry Dues</Link>
@@ -179,9 +209,22 @@ export default function OnboardingPage() {
       </nav>
 
       <section className="onboarding-hero">
+        {NARRATIVE_V1_WIRE_ENABLED ? (
+          <figure className="onboarding-hero__forge-photo">
+            <Image
+              src={narrativeV1Assets.forgeA03HalfBuiltPair}
+              alt="Forge beat — two lanes on the plan"
+              width={720}
+              height={405}
+              className="onboarding-hero__photo"
+            />
+          </figure>
+        ) : null}
+        <div>
         <p className="eyebrow">{copy.brand}</p>
         <h1>{copy.onboarding.headline}</h1>
         <p>{copy.onboarding.subhead}</p>
+        </div>
       </section>
 
       {phase === "first-weld" && (

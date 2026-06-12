@@ -1,14 +1,14 @@
 ﻿# Crew Dispatch Dashboard v2
 
-Generated: 2026-05-31T14:49:49Z
+Generated: 2026-06-06T21:39:55Z
 
 **Stops before Send:** YES - clipboard + open files only.
 
 ## Cockpit hashes
 
-- **dashboardGeneratedAt:** 2026-05-31T14:49:49Z
-- **currentStateHash:** 393aeabdaa4c51a1d0f96bf7432700189d9b65f957bbd569098bc1e0317f3f96
-- **nextActionHash:** 3ed2f59fec8e60713c4f30b77aef7f75ada43cd6069476c1a9db07e4964ad095
+- **dashboardGeneratedAt:** 2026-06-06T21:39:55Z
+- **currentStateHash:** 78e580fb3019107585768920e8d2f5fc289e6533f4b1716081bea719d772242a
+- **nextActionHash:** 94079e397d128caa098fa565aae799d0fa6e8737e2a2bfc6264113d40023c7f5
 - **main HEAD:** 60f74c8
 
 ## Stale warnings
@@ -20,15 +20,15 @@ Generated: 2026-05-31T14:49:49Z
 
 ## Cockpit
 
-- **Next action:** [AWAITING HUMAN GATE: APP_INFRA_01_FUNCTIONAL_SURFACE_REVIEW]
+- **Next action:** [IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]
 - **Morale preview:** https://werkles.com
 - **Local preview:** http://localhost:3000
 
 ## Crew status
 
 - **Petra** (ChatGPT Comptroller): `prepared_not_sent` - Clipboard loaded - paste manually. Send blocked.
-  - Packet: `TO_PETRA_CREW_CHECKIN_v2_20260531-1049.md`
-  - Prepared: 2026-05-31T14:49:49Z
+  - Packet: `TO_PETRA_CREW_CHECKIN_v2_20260606-1739.md`
+  - Prepared: 2026-06-06T21:39:55Z
 - **Codex** (Foreman): `idle` - Awaiting dispatch
 - **Maker** (Cursor bounded writer): `idle` - Awaiting dispatch
 - **Ender** (Claude UX / brand): `idle` - Awaiting dispatch

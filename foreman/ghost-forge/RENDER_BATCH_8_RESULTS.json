@@ -1,0 +1,41 @@
+﻿{
+    "run_id":  "RENDER_BATCH_8_20260607-160445",
+    "results":  [
+                    {
+                        "shot_id":  "tier2-icon-spark-hybrid",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\icons-hybrid-v1\\werkles-tier2-icon-spark-hybrid.png"
+                    },
+                    {
+                        "shot_id":  "tier2-icon-builder-hybrid",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\icons-hybrid-v1\\werkles-tier2-icon-builder-hybrid.png"
+                    },
+                    {
+                        "shot_id":  "tier2-icon-worker-hybrid",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\icons-hybrid-v1\\werkles-tier2-icon-worker-hybrid.png"
+                    },
+                    {
+                        "shot_id":  "tier2-icon-operator-hybrid",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\icons-hybrid-v1\\werkles-tier2-icon-operator-hybrid.png"
+                    },
+                    {
+                        "shot_id":  "tier2-icon-backer-hybrid",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\icons-hybrid-v1\\werkles-tier2-icon-backer-hybrid.png"
+                    },
+                    {
+                        "shot_id":  "tier2-icon-connector-hybrid",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\icons-hybrid-v1\\werkles-tier2-icon-connector-hybrid.png"
+                    }
+                ],
+    "total_estimated_cost_usd":  0,
+    "gate":  "RENDER_BATCH_8_OPERATOR_GO",
+    "operator_phrase":  "tier-2 hybrid transparent prop icons",
+    "completed_at":  "2026-06-07T20:04:45.9655620Z",
+    "completed_count":  0,
+    "shot_count":  6
+}

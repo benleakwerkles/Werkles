@@ -1,0 +1,32 @@
+﻿{
+    "run_id":  "SALLY_FINAL_Reveals_20260610-183021",
+    "results":  [
+                    {
+                        "shot_id":  "reveal-formation-lender-handshake",
+                        "status":  "completed",
+                        "batch_id":  "47bfe45a-c705-4d06-a457-e0c69a109188",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-reveal-formation-lender.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "reveal-space-small-bay",
+                        "status":  "completed",
+                        "batch_id":  "9a612139-c7bb-4f45-80ff-13fca574acf7",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-reveal-space-small-bay.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "reveal-people-kitchen-table",
+                        "status":  "completed",
+                        "batch_id":  "204f27c0-49ab-4adc-ba14-ab859f8e9d2a",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-reveal-people-kitchen-table.png",
+                        "estimated_cost_usd":  0.2
+                    }
+                ],
+    "run":  "Reveals",
+    "total_estimated_cost_usd":  0.6,
+    "gate":  "SALLY_FINAL_ANYONE_OPERATOR_GO",
+    "completed_at":  "2026-06-10T22:30:21.4288380Z",
+    "completed_count":  3,
+    "shot_count":  3
+}

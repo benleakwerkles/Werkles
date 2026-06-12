@@ -1,8 +1,10 @@
-import { STOCK_PREVIEW_ENABLED } from "@/lib/stock-preview-imagery";
+import { RENDER_BATCH_1_ENABLED, renderBatch1AttributionNote } from "@/lib/render-batch-1-imagery";
+import { STOCK_PREVIEW_ENABLED, stockPreviewAttributionNote } from "@/lib/stock-preview-imagery";
 import { laneDefinitions } from "@/lib/visual-system/lanes";
 import { profileCardShowcase } from "@/lib/visual-system/profile-cards";
 import { FormationSequence } from "./formation-sequence";
 import { LaneCard } from "./lane-card";
+import { LaneTokenPreviewSection } from "./lane-token-preview-section";
 import { ProfileCard } from "./profile-card";
 import { StockPreviewBadge } from "./stock-preview-badge";
 
@@ -27,7 +29,7 @@ export function EnderVisualTestsSection() {
 
       <section
         id="lanes"
-        className={`vs-section${STOCK_PREVIEW_ENABLED ? " vs-section--stock-preview" : ""}`}
+        className={`vs-section${RENDER_BATCH_1_ENABLED || STOCK_PREVIEW_ENABLED ? " vs-section--stock-preview" : ""}`}
         aria-labelledby="lanesTitle"
       >
         <div className="vs-section__intro">
@@ -36,11 +38,19 @@ export function EnderVisualTestsSection() {
           <p className="vs-section__lede">
             Six lanes — definition plus three attributes. Color coding within Iron Palette. No fantasy
             archetypes, no game UI, no construction-only framing.
-            {STOCK_PREVIEW_ENABLED
-              ? " Editorial workplace photos preview the people-direction shift — environments, not game art."
-              : null}
+            {RENDER_BATCH_1_ENABLED
+              ? " Render Batch 1 human-first scenes — documentary realism, not game art."
+              : STOCK_PREVIEW_ENABLED
+                ? " Editorial workplace photos preview the people-direction shift — environments, not game art."
+                : null}
           </p>
-          {STOCK_PREVIEW_ENABLED ? <StockPreviewBadge /> : null}
+          {RENDER_BATCH_1_ENABLED ? (
+            <p className="stock-preview-badge" role="note">
+              {renderBatch1AttributionNote}
+            </p>
+          ) : STOCK_PREVIEW_ENABLED ? (
+            <StockPreviewBadge />
+          ) : null}
         </div>
         <div className="vs-lane-grid">
           {laneDefinitions.map((lane) => (
@@ -48,6 +58,8 @@ export function EnderVisualTestsSection() {
           ))}
         </div>
       </section>
+
+      <LaneTokenPreviewSection />
 
       <section id="formation" className="vs-section" aria-labelledby="formationTitle">
         <div className="vs-section__intro">
@@ -57,7 +69,13 @@ export function EnderVisualTestsSection() {
             Solo with ghost slots, partial formation with precise lines, Werkle formed with dossier
             frame. Cards and outlines only — no puzzle pieces, gears, or handshakes.
           </p>
-          {STOCK_PREVIEW_ENABLED ? <StockPreviewBadge /> : null}
+          {RENDER_BATCH_1_ENABLED ? (
+            <p className="stock-preview-badge" role="note">
+              {renderBatch1AttributionNote}
+            </p>
+          ) : STOCK_PREVIEW_ENABLED ? (
+            <StockPreviewBadge />
+          ) : null}
         </div>
         <FormationSequence />
       </section>

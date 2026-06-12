@@ -33,8 +33,11 @@ sandbox/
 # Ghost Forge import scratch (Cursor workspace paths — not repo assets)
 public/assets/draft/ghost-forge/_import/
 
-# Education Forge generated output
-foreman/education-forge-output/
+# Finance import inbox — raw CSV/PDF exports (may contain sensitive rows)
+foreman/finance/imports/inbox/**
+!foreman/finance/imports/inbox/.gitkeep
+foreman/finance/staging/
+
 
 # Dispatch console runtime snapshots (regenerated locally)
 foreman/crew-dispatch-console/DISPATCH_DASHBOARD.json

@@ -1,0 +1,22 @@
+{
+  "router": "GD_INTENT_ROUTER_V1",
+  "runId": "GD_RUN_THREAD_REFRESH_PACKET_20260607-174516",
+  "missionClass": "THREAD_REFRESH_PACKET",
+  "missionLabel": "Thread refresh packet",
+  "generationMode": "COCKPIT_DIRECT",
+  "recipients": [],
+  "createdAt": "2026-06-07T17:45:16.080Z",
+  "status": "COMPLETE",
+  "output": {
+    "latest": "foreman/handoffs/outbox/THREAD_REFRESH_PACKET.md",
+    "runPacket": "foreman/gd-intent-router/runs/GD_RUN_THREAD_REFRESH_PACKET_20260607-174516/THREAD_REFRESH_PACKET.md"
+  },
+  "cockpitSources": [
+    "foreman/HUMAN_GATES.md",
+    "foreman/LANES.md",
+    "foreman/BUDGET.md",
+    "foreman/NEXT_ACTION.md",
+    "foreman/CURRENT_STATE.md",
+    "foreman/gates/APPROVAL_LOG.md"
+  ]
+}

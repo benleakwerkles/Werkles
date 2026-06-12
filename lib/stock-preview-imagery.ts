@@ -1,7 +1,7 @@
 import type { FormationPhase, LaneId } from "@/lib/visual-system/types";
 
 /** Toggle editorial stock placeholders site-wide (preview only — Ghost Forge replaces). */
-export const STOCK_PREVIEW_ENABLED = true;
+export const STOCK_PREVIEW_ENABLED = false;
 
 export type StockPreviewAsset = {
   path: string;

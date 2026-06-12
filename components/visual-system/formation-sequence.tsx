@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { RENDER_BATCH_1_ENABLED, renderBatch1Formation } from "@/lib/render-batch-1-imagery";
 import { STOCK_PREVIEW_ENABLED, stockPreviewFormation } from "@/lib/stock-preview-imagery";
 import { laneDisplayOrder, laneById } from "@/lib/visual-system/lanes";
 import type { FormationPhase } from "@/lib/visual-system/types";
@@ -68,7 +69,13 @@ export function FormationSequence() {
 
   const filled = filledByPhase[phase];
   const ghosts = ghostSlotsByPhase[phase];
-  const backdrop = STOCK_PREVIEW_ENABLED ? stockPreviewFormation[phase] : null;
+  const renderBackdrop = RENDER_BATCH_1_ENABLED ? renderBatch1Formation[phase] : null;
+  const stockBackdrop = !renderBackdrop && STOCK_PREVIEW_ENABLED ? stockPreviewFormation[phase] : null;
+  const backdrop = renderBackdrop
+    ? { path: renderBackdrop.path, scene: renderBackdrop.title }
+    : stockBackdrop
+      ? { path: stockBackdrop.path, scene: stockBackdrop.scene }
+      : null;
 
   return (
     <section

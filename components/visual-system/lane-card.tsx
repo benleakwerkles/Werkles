@@ -1,4 +1,9 @@
-import { STOCK_PREVIEW_ENABLED, stockPreviewByLane } from "@/lib/stock-preview-imagery";
+import Image from "next/image";
+
+import {
+  documentaryLaneIcons,
+  documentaryLanePhotos
+} from "@/lib/documentary-lane-imagery";
 import type { LaneDefinition } from "@/lib/visual-system/types";
 
 type LaneCardProps = {
@@ -6,25 +11,37 @@ type LaneCardProps = {
 };
 
 export function LaneCard({ lane }: LaneCardProps) {
-  const preview = STOCK_PREVIEW_ENABLED ? stockPreviewByLane[lane.id] : null;
+  const photo = documentaryLanePhotos[lane.id];
+  const icon = documentaryLaneIcons[lane.id];
 
   return (
     <article
-      className={`vs-lane-card${preview ? " vs-lane-card--stock-preview" : ""}`}
+      className="vs-lane-card vs-lane-card--documentary"
       style={{ ["--vs-lane-accent" as string]: `var(${lane.accentVar})` }}
       aria-labelledby={`lane-${lane.id}-title`}
     >
-      {preview ? (
-        <figure className="vs-lane-card__photo">
-          <img src={preview.path} alt="" loading="lazy" decoding="async" />
-          <figcaption>{preview.scene}</figcaption>
-        </figure>
-      ) : null}
+      <figure className="vs-lane-card__photo">
+        <Image
+          src={photo.path}
+          alt={photo.alt}
+          width={640}
+          height={360}
+          className="vs-lane-card__photo-img"
+        />
+        <figcaption>{photo.caption}</figcaption>
+      </figure>
       <header className="vs-lane-card__header">
-        <p className="vs-lane-card__code">Lane</p>
-        <h3 id={`lane-${lane.id}-title`} className="vs-lane-card__title">
-          {lane.title}
-        </h3>
+        <div className="vs-lane-card__title-row">
+          <div>
+            <p className="vs-lane-card__code">Lane</p>
+            <h3 id={`lane-${lane.id}-title`} className="vs-lane-card__title">
+              {lane.title}
+            </h3>
+          </div>
+          <figure className="vs-lane-card__token" aria-hidden="true">
+            <img src={icon.path} alt="" width={48} height={48} decoding="async" />
+          </figure>
+        </div>
       </header>
       <p className="vs-lane-card__definition">{lane.definition}</p>
       <ul className="vs-lane-card__attributes" aria-label={`${lane.title} attributes`}>

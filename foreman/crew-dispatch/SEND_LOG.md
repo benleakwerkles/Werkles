@@ -116,3 +116,6 @@ See `AEYE_RELAY_AUTOSEND.md`.
 
 ## 2026-06-06T13:54:35.156Z
 - WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW COMPUTER PASS — foreman\crew-dispatch\WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_COMPUTER.json
+
+## 2026-06-07T17:48:07.604Z
+- AUTO_SEND eligible PETRA — policy permits but Send NOT automated (doctrine: human Send unless future Playwright send gate opened)
