@@ -14,6 +14,26 @@ A `CURSOR_CLOUD_CONTAINER` cousin may inspect `/workspace`, GitHub branches/PRs,
 
 Full rules and the merge/push/deploy evidence-locality requirement: `foreman/EXECUTION_CONTEXT_RULES.md`.
 
+## LOCAL HANDS READBACK (mandatory)
+
+**Hard crew rule.** Not a suggestion.
+
+Any **hands-capable** cousin — including Maker, Dink, or any future local operator — must begin **every local work session** with a **LOCAL HANDS READBACK** before:
+
+- editing files
+- running migrations
+- installing packages
+- switching branches
+- merging
+- pushing
+- starting dev servers
+
+Required readback: machine name, repo path, git branch, latest commit hash, working tree status, terminal availability, localhost running yes/no, port in use.
+
+Purpose: prevent Ben from having to ask which repo, branch, machine, or workspace the agent is inside.
+
+Canonical format and gate: `foreman/EXECUTION_CONTEXT_RULES.md`. Constitutional authority: `company/WERKLES_CONSTITUTION.md` Article X.
+
 ## Source Hierarchy
 
 1. Operator instruction
