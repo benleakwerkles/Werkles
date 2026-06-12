@@ -6,6 +6,8 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 
 **Registry rule:** Do not rename machines by guess. Do not mark **Doss** PASS without a live Doss readback (`LOCAL_DOSS_WINDOWS` or a confirmed Windows hostname). Update this file after every LOCAL HANDS READBACK that changes branch, commit, path, or localhost state.
 
+> **BLDer** (Builder) was an earlier **laptop** build surface. It is **not** the same physical machine as **Betsy** (desktop). Retire BLDer references to historical context only unless the Operator rebinds.
+
 ---
 
 ## Machine registry
@@ -14,7 +16,7 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 |------------|------------------|-------------------|----------------|----------------|------------|-----------|----------|
 | **Sally** | `DESKTOP-SJSJMNK` | `C:\Users\benle\Desktop\github\Werkles` | `rescue/sally-dirty-worktree-2026-06-01` | `8ba905b` | **mirror forge** | `:3000` running on host (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK`; historical: `foreman/reviews/WORKTREE_STABILIZATION_2026-06-01.md`, `FROM_DINK_BETSY_SETUP_RECORD_V1.md` |
 | **Sally** *(second surface, same host)* | `DESKTOP-SJSJMNK` | `C:\Dev\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | `437792b` | **mirror forge** (snapshot lane) | shares host `:3000` (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK` |
-| **Betsy** | `DESKTOP-KTBH0LA` | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **primary forge** (intended) | **UNKNOWN** | Operator prior readback only — **no live readback this session** |
+| **Betsy** | `DESKTOP-KTBH0LA` | `C:\Users\Ben Leak\Desktop\github\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | *(see live readback)* | **primary forge** | `:3000` when dev server running | Operator readback 2026-06-12 on `DESKTOP-KTBH0LA`; baseline `foreman/BETSY_BASELINE_v1.md` |
 | **Doss** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNASSIGNED** | **UNKNOWN** | **NOT PROVEN** — awaiting `LOCAL_DOSS_WINDOWS` readback or confirmed hostname |
 | **Atlas** | **UNKNOWN** | vault path per `foreman/ATLAS_MACHINE_PLAN.md` | n/a (not a git writer) | n/a | **archive forge** | n/a | Plan doc only — no live readback recorded |
 
@@ -27,11 +29,13 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 
 **Localhost on `DESKTOP-SJSJMNK`:** `127.0.0.1:3000` listening (live). Foreman/GD default `4317` not observed listening at last readback.
 
-### Betsy (unverified live)
+### Betsy (live 2026-06-12, host `DESKTOP-KTBH0LA`)
 
-Operator reports `DESKTOP-KTBH0LA` as Betsy from a prior readback. Dink handoff `FROM_DINK_BETSY_SETUP_RECORD_V1.md` explicitly states **`DESKTOP-SJSJMNK` is not confirmed Betsy**. Treat Betsy repo path, branch, commit, and localhost as **UNKNOWN** until a readback is taken **on `DESKTOP-KTBH0LA`**.
+| Path | Branch | Commit | Working tree | Notes |
+|------|--------|--------|--------------|-------|
+| `C:\Users\Ben Leak\Desktop\github\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | *(see live readback)* | verify at session start | Primary build desktop; Windows user `Ben Leak`. Baseline: `foreman/BETSY_BASELINE_v1.md`. |
 
-Intended primary path per Dink critical-path note: `C:\Users\benle\Desktop\github\Werkles` **on Betsy** — not verified.
+**Rename pending:** Betsy still uses the factory Windows hostname. Operator may rename the PC to `Betsy` in Windows Settings. Update this table when the hostname changes.
 
 ### Doss (unproven machine)
 
@@ -46,7 +50,7 @@ Intended primary path per Dink critical-path note: `C:\Users\benle\Desktop\githu
 ## Unresolved identity conflicts
 
 1. **Two Werkles clones on Sally (`DESKTOP-SJSJMNK`)** — rescue mirror at Desktop path vs clean snapshot at `C:\Dev\Werkles`. Same host, different branches/commits. Operator must name which surface is canonical for each task.
-2. **Betsy hostname vs Sally hostname** — prior Operator readback maps Betsy → `DESKTOP-KTBH0LA`; live session and Dink records map Sally work to `DESKTOP-SJSJMNK`. These are **different hosts**; do not collapse them without Operator confirmation.
+2. **Betsy hostname vs Sally hostname** — Betsy → `DESKTOP-KTBH0LA`; Sally work → `DESKTOP-SJSJMNK`. These are **different hosts**; do not collapse them without Operator confirmation.
 3. **Doss: machine vs operator role** — live handoff files use "Doss" as a crew operator name. Physical machine mapping (hostname, repo path, forge role) is **still unknown**.
 4. **BLDer legacy name** — earlier docs reference **BLDer** (Builder). Relationship to Betsy is unconfirmed. Do not alias BLDer → Betsy without Operator say-so.
 
@@ -116,4 +120,4 @@ When taking LOCAL HANDS READBACK on any forge machine, update the registry row f
 6. localhost running yes/no and port
 7. Evidence source: `live readback YYYY-MM-DD` or cite handoff path
 
-**Last registry readback:** 2026-06-12 — `DESKTOP-SJSJMNK` (Sally), Maker session, paths above.
+**Last registry readback:** 2026-06-12 — `DESKTOP-SJSJMNK` (Sally) and `DESKTOP-KTBH0LA` (Betsy), paths above.

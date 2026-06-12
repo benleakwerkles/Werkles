@@ -1,0 +1,204 @@
+.sole-dash-layout {
+  min-height: 100vh;
+  background: #0f1419;
+  color: #e8edf2;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.sole-dash-layout body {
+  margin: 0;
+}
+
+.soledash-root {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.soledash-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #2a3544;
+}
+
+.soledash-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: #8fa3b8;
+  margin: 0 0 0.35rem;
+}
+
+.soledash-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f4c56a;
+}
+
+.soledash-tagline {
+  margin: 0.35rem 0 0;
+  color: #b8c5d4;
+}
+
+.soledash-speaker-note {
+  max-width: 18rem;
+  font-size: 0.85rem;
+  color: #8fa3b8;
+  margin: 0;
+  align-self: center;
+}
+
+.soledash-panel {
+  background: #161d27;
+  border: 1px solid #2a3544;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.soledash-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8fd4ff;
+}
+
+.soledash-panel h3 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.soledash-readback {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.soledash-kv dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8fa3b8;
+  margin: 0;
+}
+
+.soledash-kv dd {
+  margin: 0.15rem 0 0.5rem;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.soledash-gate {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: #2a2210;
+  color: #f4c56a;
+  font-family: Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.soledash-why,
+.soledash-muted,
+.soledash-stops {
+  color: #b8c5d4;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.soledash-gate-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.soledash-gate-btn {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #3d4f66;
+  background: #1e2836;
+  color: #c5d4e3;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: default;
+  opacity: 0.85;
+}
+
+.soledash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.soledash-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.soledash-list li {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #243040;
+}
+
+.soledash-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.soledash-meta {
+  display: block;
+  font-size: 0.72rem;
+  color: #7d91a8;
+  margin: 0.2rem 0;
+}
+
+.soledash-excerpt {
+  margin: 0.35rem 0 0;
+  padding: 0.55rem 0.65rem;
+  background: #0f1419;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #a8b8c8;
+  max-height: 8rem;
+  overflow: auto;
+}
+
+.soledash-footer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #7d91a8;
+}
+
+.soledash-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.soledash-sources .ok {
+  color: #7dcea0;
+}
+
+.soledash-sources .missing {
+  color: #e07a7a;
+}
