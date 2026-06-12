@@ -1,4 +1,4 @@
-# Foreman Control Panel (GimpDash)
+# Foreman Control Panel — SoleDash
 
 A small, read-only local console that renders the **Human Gates Console** — clickable cards for APP_INFRA preview routes, repo/PRs, and provider dashboards.
 
@@ -28,12 +28,25 @@ Gate types (color-coded):
 
 Links that are not project-exact are tagged **GENERIC LINK**.
 
-## GD Status Layer (V1)
+## Status Layer (V1)
 
-The console renders a **GD Status Layer** at the top: crew/task entries with a current state chip and a legend. Visible states: **Received, Thinking, Blocked, Failed, Response Incoming, Complete** ("Thinking" and "Response Incoming" pulse; respects `prefers-reduced-motion`).
+The console renders a **Status Layer** at the top: crew/task entries with a current state chip and a legend. Visible states: **Received, Thinking, Blocked, Failed, Response Incoming, Complete** ("Thinking" and "Response Incoming" pulse; respects `prefers-reduced-motion`).
 
 - V1 uses a sample feed (`statusItems` in `scripts/foreman/foreman-control-server.mjs`) — UI only; wire to a real source later.
 - `GET /status` returns the status model as read-only JSON for future polling.
+
+## SoleDash Inbox / Outbox / Receipts (V1)
+
+The console also renders **SoleDash** — Inbox / Outbox / Receipts — to answer "I sent something; what happened?"
+
+- **Read-only, file-derived** from `foreman/handoffs/outbox/` and `foreman/handoffs/inbox/`. Metadata only (filename, parsed actor, mtime, state) — **packet bodies are never read into the UI**.
+- **Outbox** = files in `handoffs/outbox/` (default state `Received`), newest first. **Inbox** = files in `handoffs/inbox/` (default state `Response Incoming`). **Receipts** derive from state (Complete→Delivered, Failed→Failed, else Awaiting).
+- States are **V1 defaults, not a live feed** (labeled as such in the UI).
+- Endpoints (read-only JSON): `GET /outbox`, `GET /inbox`, `GET /receipts`.
+
+### Naming note
+
+**SoleDash** is the visible UI name for this command console. **GD** is legacy/internal shorthand only (e.g., internal variable/comment naming). **GimpDash is deprecated** and should not appear in visible UI. All visible surfaces use **SoleDash**.
 
 ## Safety (by construction)
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * Foreman Control Panel — GimpDash local console.
+ * Foreman Control Panel — SoleDash local console.
+ * (Naming: "SoleDash" is the visible UI name. "GD" is legacy/internal shorthand only.
+ *  "GimpDash" is deprecated and should not appear in visible UI.)
  *
  * Serves a read-only "Human Gates Console" at http://127.0.0.1:4317 so the
  * Operator can click directly into APP_INFRA preview routes, repo/PRs, and
@@ -19,9 +21,18 @@
  */
 
 import http from "node:http";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const HOST = "127.0.0.1";
 const PORT = Number(process.env.FOREMAN_CONTROL_PORT || 4317);
+
+// Repo root (this file is at scripts/foreman/). Used for the file-derived
+// SoleDash Inbox/Outbox feed. Read-only.
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+const OUTBOX_DIR = path.join(REPO_ROOT, "foreman", "handoffs", "outbox");
+const INBOX_DIR = path.join(REPO_ROOT, "foreman", "handoffs", "inbox");
 
 // Gate types -> badge styling
 //   SAFE_LINK  : open/read only
@@ -92,7 +103,7 @@ const sections = [
   {
     title: "Aeye / Crew",
     cards: [
-      { name: "Foreman Control Panel", href: "http://127.0.0.1:4317", purpose: "This console (GimpDash)", gate: GATE.SAFE, exact: true, openSafe: true, status: "running" },
+      { name: "Foreman Control Panel", href: "http://127.0.0.1:4317", purpose: "This console (SoleDash)", gate: GATE.SAFE, exact: true, openSafe: true, status: "running" },
       { name: "Edge Aeye Crew Bay launcher", path: "(launcher status — not wired in repo)", purpose: "Crew bay launch status", gate: GATE.SAFE, exact: false, openSafe: false, status: "status only — not implemented in repo" },
       { name: "Outbox folder", path: "foreman/handoffs/outbox/", purpose: "Outbound crew packets", gate: GATE.SAFE, exact: true, openSafe: false, status: "path shown (local open not supported)" },
       { name: "Inbox folder", path: "foreman/handoffs/inbox/", purpose: "Inbound crew packets", gate: GATE.SAFE, exact: true, openSafe: false, status: "path shown (local open not supported)" }
@@ -114,8 +125,8 @@ const STATE = {
 
 // Sample status entries demonstrating each state. Replace/feed later.
 const statusItems = [
-  { actor: "Maker (Cursor)", state: STATE.COMPLETE, detail: "GimpDash Human Gates Console shipped" },
-  { actor: "GD Status Layer", state: STATE.INCOMING, detail: "rendering live states" },
+  { actor: "Maker (Cursor)", state: STATE.COMPLETE, detail: "SoleDash Human Gates Console shipped" },
+  { actor: "Status Layer", state: STATE.INCOMING, detail: "rendering live states" },
   { actor: "Petra (Comptroller)", state: STATE.THINKING, detail: "APP_INFRA slice verdict" },
   { actor: "Ghost Forge", state: STATE.BLOCKED, detail: "Gate 05 paused (28 remaining)" },
   { actor: "Codex (Foreman)", state: STATE.RECEIVED, detail: "awaiting next packet" },
@@ -147,10 +158,111 @@ function statusSectionHtml() {
   const legend = Object.keys(STATE_META).map((st) => stateChip(st)).join(" ");
   return `
     <section class="section status-layer">
-      <h2>GD Status Layer</h2>
+      <h2>Status Layer</h2>
       <p class="section-note">Live crew/task states. V1 sample feed — UI only.</p>
       <div class="status-legend">${legend}</div>
       <div class="status-list">${rows}</div>
+    </section>`;
+}
+
+// --- SoleDash Inbox / Outbox / Receipts V1 (read-only, file-derived) ----
+// Lists packet files in foreman/handoffs/{outbox,inbox}. Metadata only — file
+// BODIES ARE NEVER READ into the UI (secret-boundary discipline). States are
+// V1 defaults (file-derived), not a live feed; labeled as such in the UI.
+function readPacketDir(dir, kind) {
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+  return entries
+    .filter((e) => e.isFile() && !e.name.startsWith(".") && /\.(md|txt)$/i.test(e.name))
+    .map((e) => {
+      const full = path.join(dir, e.name);
+      let time = null;
+      try { time = fs.statSync(full).mtime.toISOString(); } catch { /* ignore */ }
+      const base = e.name.replace(/\.(md|txt)$/i, "");
+      const m = base.match(/^(TO|FROM)_([A-Za-z0-9]+)/);
+      const actor = m ? m[2] : "\u2014";
+      // V1 default states: outbox items "Received", inbox items "Response Incoming".
+      const state = kind === "inbox" ? STATE.INCOMING : STATE.RECEIVED;
+      return {
+        id: e.name,
+        actor,
+        subject: base,
+        time,
+        state,
+        sourcePath: path.posix.join("foreman/handoffs", kind, e.name)
+      };
+    })
+    .sort((a, b) => String(b.time || "").localeCompare(String(a.time || "")));
+}
+
+function getOutbox() { return readPacketDir(OUTBOX_DIR, "outbox"); }
+function getInbox() { return readPacketDir(INBOX_DIR, "inbox"); }
+
+// Receipts derive from outbox state: Complete->Delivered, Failed->Failed, else Awaiting.
+function getReceipts() {
+  return getOutbox().map((p) => ({
+    packetId: p.id,
+    destination: p.actor,
+    status: p.state === STATE.COMPLETE ? "Delivered" : p.state === STATE.FAILED ? "Failed" : "Awaiting",
+    lastUpdate: p.time
+  }));
+}
+
+function fmtTime(t) {
+  return t ? esc(t.replace("T", " ").replace(/\..*$/, " UTC")) : "\u2014";
+}
+
+function packetRows(items) {
+  if (!items.length) return `<div class="sd-empty">Nothing here yet.</div>`;
+  return items.map((p) => `
+      <div class="sd-row">
+        <span class="sd-actor">${esc(p.actor)}</span>
+        <span class="sd-subject" title="${esc(p.sourcePath)}">${esc(p.subject)}</span>
+        <span class="sd-time">${fmtTime(p.time)}</span>
+        ${stateChip(p.state)}
+      </div>`).join("");
+}
+
+function receiptBuckets() {
+  const r = getReceipts();
+  const by = { Delivered: [], Failed: [], Awaiting: [] };
+  r.forEach((x) => { (by[x.status] || by.Awaiting).push(x); });
+  const bucket = (name) => {
+    const list = by[name] || [];
+    const rows = list.length
+      ? list.map((x) => `<div class="sd-row"><span class="sd-actor">${esc(x.destination)}</span><span class="sd-subject">${esc(x.packetId)}</span><span class="sd-time">${fmtTime(x.lastUpdate)}</span></div>`).join("")
+      : `<div class="sd-empty">none</div>`;
+    return `<div class="sd-bucket"><h3>${name} <span class="sd-count">${list.length}</span></h3>${rows}</div>`;
+  };
+  return bucket("Delivered") + bucket("Failed") + bucket("Awaiting");
+}
+
+function soledashHtml() {
+  return `
+    <section class="section soledash">
+      <h2>SoleDash \u2014 Inbox / Outbox / Receipts</h2>
+      <p class="section-note">Read-only, file-derived from <code>foreman/handoffs/</code>. V1 default states (not a live feed). Metadata only \u2014 packet bodies are not read.</p>
+      <div class="sd-grid">
+        <div class="sd-col">
+          <h3>Inbox <span class="sd-count">${getInbox().length}</span></h3>
+          <div class="sd-note">responses received \u00b7 newest first</div>
+          <div class="sd-list">${packetRows(getInbox())}</div>
+        </div>
+        <div class="sd-col">
+          <h3>Outbox <span class="sd-count">${getOutbox().length}</span></h3>
+          <div class="sd-note">packets sent \u00b7 newest first</div>
+          <div class="sd-list">${packetRows(getOutbox())}</div>
+        </div>
+        <div class="sd-col">
+          <h3>Receipts</h3>
+          <div class="sd-note">delivered \u00b7 failed \u00b7 awaiting</div>
+          <div class="sd-list">${receiptBuckets()}</div>
+        </div>
+      </div>
     </section>`;
 }
 
@@ -200,7 +312,7 @@ function pageHtml() {
   return `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GimpDash — Human Gates Console</title>
+<title>SoleDash — Operator Command Console</title>
 <style>
   :root { color-scheme: light dark; }
   body { font: 15px/1.5 system-ui, sans-serif; margin: 0; background: #14110e; color: #efe7da; }
@@ -243,10 +355,23 @@ function pageHtml() {
   .state-pulse { animation: gdpulse 1.4s ease-in-out infinite; }
   @keyframes gdpulse { 0%,100% { opacity:1; } 50% { opacity:.55; } }
   @media (prefers-reduced-motion: reduce) { .state-pulse { animation: none; } }
+  /* SoleDash Inbox/Outbox/Receipts */
+  .soledash { background:#1b1610; border:1px solid #3a2f22; border-radius:10px; padding:14px 16px; }
+  .sd-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:14px; }
+  .sd-col h3, .sd-bucket h3 { font-size:14px; color:#e8c79a; margin:0 0 2px; }
+  .sd-note { font-size:12px; color:#a99b85; margin-bottom:8px; }
+  .sd-list { display:flex; flex-direction:column; gap:6px; }
+  .sd-row { display:flex; align-items:center; gap:10px; padding:6px 8px; border-radius:8px; background:#231c15; }
+  .sd-actor { min-width:90px; font-weight:600; color:#f3ead9; font-size:13px; }
+  .sd-subject { flex:1; color:#cdbfa9; font-size:12px; word-break:break-all; }
+  .sd-time { color:#8a7d68; font-size:11px; white-space:nowrap; }
+  .sd-count { font-size:11px; background:#3a2f22; color:#e8c79a; border-radius:999px; padding:1px 8px; }
+  .sd-empty { color:#776a57; font-size:12px; font-style:italic; padding:4px 8px; }
+  .sd-bucket { margin-bottom:10px; }
 </style></head>
 <body>
 <header>
-  <h1>GimpDash — Human Gates Console</h1>
+  <h1>SoleDash — Operator Command Console</h1>
   <div class="labels">
     <div><b>Provider may require login.</b></div>
     <div><b>Opening a dashboard is allowed. Changing settings may be a human gate.</b></div>
@@ -257,7 +382,7 @@ function pageHtml() {
     </div>
   </div>
 </header>
-<main>${statusSectionHtml()}${body}</main>
+<main>${statusSectionHtml()}${soledashHtml()}${body}</main>
 <footer>
   Read-only console. No secrets are stored or displayed. No provider API calls, deploys, pushes, or SQL are performed by this page.
   Generated by <code>scripts/foreman/foreman-control-server.mjs</code>.
@@ -281,11 +406,26 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify({ ok: true, states: Object.values(STATE), items: statusItems }));
     return;
   }
+  if (req.method === "GET" && req.url === "/outbox") {
+    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
+    res.end(JSON.stringify({ ok: true, items: getOutbox() }));
+    return;
+  }
+  if (req.method === "GET" && req.url === "/inbox") {
+    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
+    res.end(JSON.stringify({ ok: true, items: getInbox() }));
+    return;
+  }
+  if (req.method === "GET" && req.url === "/receipts") {
+    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
+    res.end(JSON.stringify({ ok: true, items: getReceipts() }));
+    return;
+  }
   res.writeHead(404, { "Content-Type": "text/plain" });
   res.end("Not found");
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`Foreman Control Panel (GimpDash) on http://${HOST}:${PORT}`);
+  console.log(`Foreman Control Panel (SoleDash) on http://${HOST}:${PORT}`);
   console.log("Read-only Human Gates Console. No secrets, no provider calls, no deploys.");
 });
