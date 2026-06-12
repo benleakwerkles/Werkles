@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * Foreman Control Panel — GimpDash local console.
+ * Foreman Control Panel — SoleDash local console.
+ * (Naming: "SoleDash" is the visible UI name. "GD" is legacy/internal shorthand only.
+ *  "GimpDash" is deprecated and should not appear in visible UI.)
  *
  * Serves a read-only "Human Gates Console" at http://127.0.0.1:4317 so the
  * Operator can click directly into APP_INFRA preview routes, repo/PRs, and
@@ -101,7 +103,7 @@ const sections = [
   {
     title: "Aeye / Crew",
     cards: [
-      { name: "Foreman Control Panel", href: "http://127.0.0.1:4317", purpose: "This console (GimpDash)", gate: GATE.SAFE, exact: true, openSafe: true, status: "running" },
+      { name: "Foreman Control Panel", href: "http://127.0.0.1:4317", purpose: "This console (SoleDash)", gate: GATE.SAFE, exact: true, openSafe: true, status: "running" },
       { name: "Edge Aeye Crew Bay launcher", path: "(launcher status — not wired in repo)", purpose: "Crew bay launch status", gate: GATE.SAFE, exact: false, openSafe: false, status: "status only — not implemented in repo" },
       { name: "Outbox folder", path: "foreman/handoffs/outbox/", purpose: "Outbound crew packets", gate: GATE.SAFE, exact: true, openSafe: false, status: "path shown (local open not supported)" },
       { name: "Inbox folder", path: "foreman/handoffs/inbox/", purpose: "Inbound crew packets", gate: GATE.SAFE, exact: true, openSafe: false, status: "path shown (local open not supported)" }
@@ -123,8 +125,8 @@ const STATE = {
 
 // Sample status entries demonstrating each state. Replace/feed later.
 const statusItems = [
-  { actor: "Maker (Cursor)", state: STATE.COMPLETE, detail: "GimpDash Human Gates Console shipped" },
-  { actor: "GD Status Layer", state: STATE.INCOMING, detail: "rendering live states" },
+  { actor: "Maker (Cursor)", state: STATE.COMPLETE, detail: "SoleDash Human Gates Console shipped" },
+  { actor: "Status Layer", state: STATE.INCOMING, detail: "rendering live states" },
   { actor: "Petra (Comptroller)", state: STATE.THINKING, detail: "APP_INFRA slice verdict" },
   { actor: "Ghost Forge", state: STATE.BLOCKED, detail: "Gate 05 paused (28 remaining)" },
   { actor: "Codex (Foreman)", state: STATE.RECEIVED, detail: "awaiting next packet" },
@@ -156,7 +158,7 @@ function statusSectionHtml() {
   const legend = Object.keys(STATE_META).map((st) => stateChip(st)).join(" ");
   return `
     <section class="section status-layer">
-      <h2>GD Status Layer</h2>
+      <h2>Status Layer</h2>
       <p class="section-note">Live crew/task states. V1 sample feed — UI only.</p>
       <div class="status-legend">${legend}</div>
       <div class="status-list">${rows}</div>
@@ -310,7 +312,7 @@ function pageHtml() {
   return `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GimpDash — Human Gates Console</title>
+<title>SoleDash — Operator Command Console</title>
 <style>
   :root { color-scheme: light dark; }
   body { font: 15px/1.5 system-ui, sans-serif; margin: 0; background: #14110e; color: #efe7da; }
@@ -369,7 +371,7 @@ function pageHtml() {
 </style></head>
 <body>
 <header>
-  <h1>GimpDash — Human Gates Console</h1>
+  <h1>SoleDash — Operator Command Console</h1>
   <div class="labels">
     <div><b>Provider may require login.</b></div>
     <div><b>Opening a dashboard is allowed. Changing settings may be a human gate.</b></div>
@@ -424,6 +426,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`Foreman Control Panel (GimpDash) on http://${HOST}:${PORT}`);
+  console.log(`Foreman Control Panel (SoleDash) on http://${HOST}:${PORT}`);
   console.log("Read-only Human Gates Console. No secrets, no provider calls, no deploys.");
 });

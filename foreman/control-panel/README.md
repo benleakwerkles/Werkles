@@ -1,4 +1,4 @@
-# Foreman Control Panel (GimpDash)
+# Foreman Control Panel — SoleDash
 
 A small, read-only local console that renders the **Human Gates Console** — clickable cards for APP_INFRA preview routes, repo/PRs, and provider dashboards.
 
@@ -28,9 +28,9 @@ Gate types (color-coded):
 
 Links that are not project-exact are tagged **GENERIC LINK**.
 
-## GD Status Layer (V1)
+## Status Layer (V1)
 
-The console renders a **GD Status Layer** at the top: crew/task entries with a current state chip and a legend. Visible states: **Received, Thinking, Blocked, Failed, Response Incoming, Complete** ("Thinking" and "Response Incoming" pulse; respects `prefers-reduced-motion`).
+The console renders a **Status Layer** at the top: crew/task entries with a current state chip and a legend. Visible states: **Received, Thinking, Blocked, Failed, Response Incoming, Complete** ("Thinking" and "Response Incoming" pulse; respects `prefers-reduced-motion`).
 
 - V1 uses a sample feed (`statusItems` in `scripts/foreman/foreman-control-server.mjs`) — UI only; wire to a real source later.
 - `GET /status` returns the status model as read-only JSON for future polling.
@@ -46,7 +46,7 @@ The console also renders **SoleDash** — Inbox / Outbox / Receipts — to answe
 
 ### Naming note
 
-**SoleDash** is the UI label for this command console. **GD / GimpDash** remain only as legacy/internal naming (e.g., the "GD Status Layer" section and internal variables). New UI surfaces use **SoleDash**.
+**SoleDash** is the visible UI name for this command console. **GD** is legacy/internal shorthand only (e.g., internal variable/comment naming). **GimpDash is deprecated** and should not appear in visible UI. All visible surfaces use **SoleDash**.
 
 ## Safety (by construction)
 
