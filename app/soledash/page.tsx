@@ -5,7 +5,7 @@ import { loadSoleDashData } from "@/lib/soledash/cockpit-data";
 
 export const metadata: Metadata = {
   title: "SoleDash | Werkles Operator Cockpit",
-  description: "Local operator cockpit — today's mission before you start directing.",
+  description: "Canonical operator cockpit v1 — today's mission before you start directing.",
   robots: { index: false, follow: false }
 };
 

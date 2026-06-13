@@ -6,12 +6,29 @@ import path from "node:path";
 import "server-only";
 
 const ROOT = process.cwd();
+const STATUS_DIR = path.join(ROOT, "foreman", "soledash");
+const STATUS_FILE = path.join(STATUS_DIR, "LAST_LOCALHOST_STATUS.json");
 
 export type HandoffEntry = {
   name: string;
   relPath: string;
   modifiedAt: string;
   excerpt: string;
+};
+
+export type LocalhostStatusRecord = {
+  ok: boolean;
+  port: string;
+  checkedAt: string;
+  url: string;
+  httpStatus: number;
+};
+
+export type CrewBlock = {
+  id: string;
+  label: string;
+  note: string;
+  outbox: HandoffEntry[];
 };
 
 export type SoleDashData = {
@@ -23,9 +40,6 @@ export type SoleDashData = {
     commit: string;
     commitSubject: string;
     workingTree: string;
-    terminal: string;
-    localhost: string;
-    port: string;
     executionContext: string;
   };
   mission: {
@@ -35,19 +49,87 @@ export type SoleDashData = {
     hardStops: string[];
   };
   humanGate: {
-    summary: string;
-    labels: ["APPROVE", "REDIRECT", "DEFER"];
+    effectiveGate: string;
+    labels: readonly string[];
     note: string;
+    conflictPrecedence: string[];
+    benMustApprove: string[];
+    activeConditions: string[];
+    doctrineRef: string;
   };
-  crew: {
-    maker: { label: string; items: HandoffEntry[]; note: string };
-    dink: { label: string; items: HandoffEntry[]; note: string };
-    ender: { label: string; items: HandoffEntry[]; note: string };
-    petra: { label: string; items: HandoffEntry[]; note: string };
+  localhost: {
+    current: LocalhostStatusRecord;
+    lastSuccess: LocalhostStatusRecord | null;
   };
+  crew: CrewBlock[];
+  outbox: HandoffEntry[];
+  inbox: HandoffEntry[];
   receipts: HandoffEntry[];
+  plumbing: {
+    foreman: string;
+    gimpdash: string;
+    speaker: string;
+  };
   sources: { path: string; loaded: boolean }[];
 };
+
+const CREW_DEFINITIONS: {
+  id: string;
+  label: string;
+  protocolHeading: RegExp;
+  outboxFilter: RegExp;
+  fallbackNote: string;
+}[] = [
+  {
+    id: "maker",
+    label: "Maker (Cursor)",
+    protocolHeading: /### Codex \/ Foreman|Maker/i,
+    outboxFilter: /^TO_(CURSOR|MAKER|CODEX)_/i,
+    fallbackNote: "Bounded app/UI implementation on local build machine."
+  },
+  {
+    id: "dink",
+    label: "Dink (local hands)",
+    protocolHeading: /LOCAL HANDS READBACK/i,
+    outboxFilter: /^TO_DINK_/i,
+    fallbackNote: "Local hands operator — LOCAL HANDS READBACK required at session start."
+  },
+  {
+    id: "petra",
+    label: "Petra (Comptroller)",
+    protocolHeading: /### ChatGPT \/ Comptroller/i,
+    outboxFilter: /^TO_PETRA_/i,
+    fallbackNote: "Scope, gates, GO/NO-GO, lane law."
+  },
+  {
+    id: "ender",
+    label: "Ender (Claude)",
+    protocolHeading: /### Claude \/ Ender/i,
+    outboxFilter: /^TO_ENDER_/i,
+    fallbackNote: "Prose, UX flows, narrative structure, product language."
+  },
+  {
+    id: "skybro",
+    label: "Skybro (Gemini)",
+    protocolHeading: /### Gemini \/ Skybro/i,
+    outboxFilter: /^TO_SKYBRO_/i,
+    fallbackNote: "Architecture and product exploration."
+  },
+  {
+    id: "bean",
+    label: "Bean (DeepSeek)",
+    protocolHeading: /### DeepSeek \/ Bean/i,
+    outboxFilter: /^TO_BEAN_/i,
+    fallbackNote: "Adversarial audit — engineering, compliance, exploit paths."
+  },
+  {
+    id: "thufir",
+    label: "Thufir (Computer / Perplexity)",
+    protocolHeading: /### Perplexity \/ Computer/i,
+    outboxFilter: /^TO_COMPUTER_/i,
+    fallbackNote: "Research and current-world checks — vendors, docs, pricing, policy."
+  }
+];
 
 function readRepoFile(relPath: string): string | null {
   try {
@@ -65,34 +147,73 @@ function git(args: string[]): string {
   }
 }
 
-function excerpt(text: string, max = 280): string {
+function excerpt(text: string, max = 220): string {
   const flat = text.replace(/\r\n/g, "\n").trim();
   const slice = flat.slice(0, max);
   return flat.length > max ? `${slice}…` : slice;
 }
 
-function listHandoffs(
-  subdir: "inbox" | "outbox",
+function listHandoffsInDir(
+  absDir: string,
+  relPrefix: string,
   filter: (name: string) => boolean,
-  limit = 4
+  limit = 6
 ): HandoffEntry[] {
-  const dir = path.join(ROOT, "foreman", "handoffs", subdir);
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(absDir)) return [];
 
   return fs
-    .readdirSync(dir)
+    .readdirSync(absDir)
     .filter((name) => name.endsWith(".md") && filter(name))
     .map((name) => {
-      const abs = path.join(dir, name);
+      const abs = path.join(absDir, name);
       const stat = fs.statSync(abs);
       const raw = fs.readFileSync(abs, "utf8");
       return {
         name,
-        relPath: `foreman/handoffs/${subdir}/${name}`,
+        relPath: `${relPrefix}/${name}`,
         modifiedAt: stat.mtime.toISOString(),
         excerpt: excerpt(raw)
       };
     })
+    .sort((a, b) => b.modifiedAt.localeCompare(a.modifiedAt))
+    .slice(0, limit);
+}
+
+function listOutbox(filter: (name: string) => boolean, limit = 6): HandoffEntry[] {
+  return listHandoffsInDir(
+    path.join(ROOT, "foreman", "handoffs", "outbox"),
+    "foreman/handoffs/outbox",
+    filter,
+    limit
+  );
+}
+
+function listInbox(filter: (name: string) => boolean, limit = 6): HandoffEntry[] {
+  return listHandoffsInDir(
+    path.join(ROOT, "foreman", "handoffs", "inbox"),
+    "foreman/handoffs/inbox",
+    filter,
+    limit
+  );
+}
+
+function listAllOutbox(limit = 10): HandoffEntry[] {
+  return listOutbox((name) => /^TO_[A-Z]/i.test(name) && !name.startsWith("OPEN_"), limit);
+}
+
+function listAllInbox(limit = 10): HandoffEntry[] {
+  return listInbox((name) => !["README.md", "FROM_CURSOR_READ_ME.md"].includes(name), limit);
+}
+
+function listReceipts(limit = 10): HandoffEntry[] {
+  const inbox = listInbox((name) => /^FROM_/i.test(name), limit);
+  const processed = listHandoffsInDir(
+    path.join(ROOT, "foreman", "handoffs", "inbox", "processed"),
+    "foreman/handoffs/inbox/processed",
+    (name) => /^FROM_/i.test(name) || name.includes("__FROM_"),
+    limit
+  );
+  return [...inbox, ...processed]
     .sort((a, b) => b.modifiedAt.localeCompare(a.modifiedAt))
     .slice(0, limit);
 }
@@ -128,8 +249,7 @@ function parseMission(nextAction: string | null): { title: string; why: string; 
     "Review Operator next hands in foreman/NEXT_ACTION.md";
 
   const why =
-    benBlock?.[0].match(/Primary lane:[^\n]+/i)?.[0] ??
-    nextAction.match(/\| Homepage rewrite v1 \|[^\n]+/i)?.[0] ??
+    benBlock?.[0].match(/Primary lane:[^\n]+/i)?.[0]?.replace(/^Primary lane:\s*/i, "") ??
     "Keeps localhost build lanes moving while production gates stay closed.";
 
   const hardStopsBlock = nextAction.match(/## Hard stops[\s\S]*?(?=##|$)/i)?.[0] ?? "";
@@ -142,19 +262,109 @@ function parseMission(nextAction: string | null): { title: string; why: string; 
   return { title: primary, why, hardStops };
 }
 
-async function probeLocalhost(): Promise<{ running: boolean; port: string }> {
-  for (const port of ["3000", "3001"]) {
-    try {
-      const res = await fetch(`http://127.0.0.1:${port}/soledash`, {
-        signal: AbortSignal.timeout(1200),
-        cache: "no-store"
-      });
-      if (res.ok || res.status < 500) return { running: true, port };
-    } catch {
-      /* try next port */
-    }
+function parseMarkdownBullets(section: string | null | undefined): string[] {
+  if (!section) return [];
+  return section
+    .split("\n")
+    .map((line) => line.replace(/^-\s+/, "").trim())
+    .filter((line) => line.length > 0 && !line.startsWith("#"));
+}
+
+function parseNumberedList(section: string | null | undefined): string[] {
+  if (!section) return [];
+  return section
+    .split("\n")
+    .map((line) => line.replace(/^\d+\.\s+/, "").trim())
+    .filter((line) => line.length > 0 && !line.startsWith("#"));
+}
+
+function parseHumanGateContext(humanGates: string | null, nextAction: string | null, effectiveGate: string) {
+  const precedenceBlock = humanGates?.match(/## Conflict Precedence[\s\S]*?(?=##|$)/i)?.[0];
+  const approveBlock = humanGates?.match(/## Ben Must Approve[\s\S]*?(?=##|$)/i)?.[0];
+  const conditionsBlock = nextAction?.match(/## Conditions \(active\)[\s\S]*?(?=##|$)/i)?.[0];
+
+  return {
+    effectiveGate,
+    labels: ["APPROVE", "REDIRECT", "DEFER"],
+    note: "v1 read-only. Buttons label Operator intent — write-back wiring is a later gate.",
+    conflictPrecedence: parseNumberedList(precedenceBlock),
+    benMustApprove: parseMarkdownBullets(approveBlock),
+    activeConditions: parseMarkdownBullets(conditionsBlock),
+    doctrineRef: "foreman/HUMAN_GATES.md"
+  };
+}
+
+function readLastSuccess(): LocalhostStatusRecord | null {
+  try {
+    const raw = JSON.parse(fs.readFileSync(STATUS_FILE, "utf8")) as { lastSuccess?: LocalhostStatusRecord };
+    return raw.lastSuccess ?? null;
+  } catch {
+    return null;
   }
-  return { running: false, port: "none" };
+}
+
+function writeLastSuccess(record: LocalhostStatusRecord) {
+  try {
+    fs.mkdirSync(STATUS_DIR, { recursive: true });
+    fs.writeFileSync(
+      STATUS_FILE,
+      JSON.stringify({ lastSuccess: record, updatedAt: record.checkedAt }, null, 2),
+      "utf8"
+    );
+  } catch {
+    /* local status file is best-effort */
+  }
+}
+
+async function probeLocalhost(): Promise<{ current: LocalhostStatusRecord; lastSuccess: LocalhostStatusRecord | null }> {
+  const port = process.env.PORT?.trim() || "3000";
+  const url = `http://127.0.0.1:${port}/`;
+  const checkedAt = new Date().toISOString();
+  const lastSuccess = readLastSuccess();
+
+  try {
+    const res = await fetch(url, {
+      method: "HEAD",
+      signal: AbortSignal.timeout(1200),
+      cache: "no-store"
+    });
+    const ok = res.ok || res.status < 500;
+    const current: LocalhostStatusRecord = {
+      ok,
+      port,
+      checkedAt,
+      url: `http://localhost:${port}/`,
+      httpStatus: res.status
+    };
+    if (ok) writeLastSuccess(current);
+    return { current, lastSuccess: ok ? current : lastSuccess };
+  } catch {
+    return {
+      current: { ok: false, port, checkedAt, url: `http://localhost:${port}/`, httpStatus: 0 },
+      lastSuccess
+    };
+  }
+}
+
+function buildCrewBlocks(cousins: string | null, nextAction: string | null): CrewBlock[] {
+  return CREW_DEFINITIONS.map((def) => {
+    const protocolSection = cousins?.match(
+      new RegExp(`${def.protocolHeading.source}[\\s\\S]*?(?=###|$)`, "i")
+    )?.[0];
+    const nextSection =
+      def.id === "maker"
+        ? nextAction?.match(/## Maker \(Cursor\)[\s\S]*?(?=##|$)/i)?.[0]
+        : def.id === "dink"
+          ? cousins?.match(/LOCAL HANDS READBACK[\s\S]*?(?=##|$)/i)?.[0]
+          : null;
+
+    return {
+      id: def.id,
+      label: def.label,
+      note: excerpt(nextSection ?? protocolSection ?? def.fallbackNote, 200),
+      outbox: listOutbox((name) => def.outboxFilter.test(name), 3)
+    };
+  });
 }
 
 export async function loadSoleDashData(): Promise<SoleDashData> {
@@ -162,7 +372,6 @@ export async function loadSoleDashData(): Promise<SoleDashData> {
   const humanGates = readRepoFile("foreman/HUMAN_GATES.md");
   const topology = readRepoFile("foreman/MACHINE_TOPOLOGY.md");
   const cousins = readRepoFile("foreman/AI_COUSINS_PROTOCOL.md");
-  const executionRules = readRepoFile("foreman/EXECUTION_CONTEXT_RULES.md");
 
   const branch = git(["branch", "--show-current"]) || "UNKNOWN";
   const commit = git(["rev-parse", "HEAD"]) || "UNKNOWN";
@@ -178,14 +387,6 @@ export async function loadSoleDashData(): Promise<SoleDashData> {
   const missionParsed = parseMission(nextAction);
   const effectiveGate = parseEffectiveGate(nextAction);
 
-  const makerNote =
-    nextAction?.match(/## Maker \(Cursor\)[\s\S]*?(?=##|$)/i)?.[0]?.trim().slice(0, 400) ??
-    "Maker (Cursor) — bounded app/UI on local build machine.";
-
-  const dinkNote =
-    executionRules?.match(/Any \*\*hands-capable\*\* agent[\s\S]*?before taking any action/m)?.[0]?.slice(0, 320) ??
-    "Dink — local hands operator; LOCAL HANDS READBACK required at session start.";
-
   return {
     readback: {
       machine: host,
@@ -195,9 +396,6 @@ export async function loadSoleDashData(): Promise<SoleDashData> {
       commit,
       commitSubject,
       workingTree,
-      terminal: "available (Next.js server)",
-      localhost: localhost.running ? "running" : "not running",
-      port: localhost.port,
       executionContext: "LOCAL_SALLY_WINDOWS"
     },
     mission: {
@@ -206,34 +404,17 @@ export async function loadSoleDashData(): Promise<SoleDashData> {
       why: missionParsed.why,
       hardStops: missionParsed.hardStops
     },
-    humanGate: {
-      summary: excerpt(humanGates ?? "foreman/HUMAN_GATES.md unavailable.", 520),
-      labels: ["APPROVE", "REDIRECT", "DEFER"],
-      note: `v0 read-only. Current gate: ${effectiveGate}. Buttons label intent — wire to cockpit later.`
+    humanGate: parseHumanGateContext(humanGates, nextAction, effectiveGate),
+    localhost,
+    crew: buildCrewBlocks(cousins, nextAction),
+    outbox: listAllOutbox(12),
+    inbox: listAllInbox(10),
+    receipts: listReceipts(12),
+    plumbing: {
+      foreman: "http://127.0.0.1:4317",
+      gimpdash: "http://127.0.0.1:4317/#gimpdash",
+      speaker: "http://127.0.0.1:4317/#gd-speaker"
     },
-    crew: {
-      maker: {
-        label: "Maker (Cursor)",
-        items: listHandoffs("outbox", (n) => /TO_CURSOR|TO_MAKER|TO_CODEX|OPEN_THIS/i.test(n)),
-        note: excerpt(makerNote, 360)
-      },
-      dink: {
-        label: "Dink (local hands)",
-        items: listHandoffs("outbox", (n) => /TO_DINK|DINK/i.test(n)),
-        note: excerpt(dinkNote, 360)
-      },
-      ender: {
-        label: "Ender (Claude)",
-        items: listHandoffs("outbox", (n) => /^TO_ENDER_/i.test(n)),
-        note: excerpt(cousins?.match(/### Claude \/ Ender[\s\S]*?(?=###|$)/i)?.[0] ?? "", 280)
-      },
-      petra: {
-        label: "Petra (Comptroller)",
-        items: listHandoffs("outbox", (n) => /^TO_PETRA_/i.test(n)),
-        note: excerpt(cousins?.match(/### ChatGPT \/ Comptroller[\s\S]*?(?=###|$)/i)?.[0] ?? "", 280)
-      }
-    },
-    receipts: listHandoffs("inbox", (n) => /^FROM_/i.test(n), 8),
     sources: [
       { path: "foreman/NEXT_ACTION.md", loaded: Boolean(nextAction) },
       { path: "foreman/HUMAN_GATES.md", loaded: Boolean(humanGates) },
@@ -241,7 +422,7 @@ export async function loadSoleDashData(): Promise<SoleDashData> {
       { path: "foreman/handoffs/inbox/", loaded: fs.existsSync(path.join(ROOT, "foreman/handoffs/inbox")) },
       { path: "foreman/handoffs/outbox/", loaded: fs.existsSync(path.join(ROOT, "foreman/handoffs/outbox")) },
       { path: "foreman/AI_COUSINS_PROTOCOL.md", loaded: Boolean(cousins) },
-      { path: "foreman/EXECUTION_CONTEXT_RULES.md", loaded: Boolean(executionRules) }
+      { path: "foreman/EXECUTION_CONTEXT_RULES.md", loaded: Boolean(readRepoFile("foreman/EXECUTION_CONTEXT_RULES.md")) }
     ]
   };
 }

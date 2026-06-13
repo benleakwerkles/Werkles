@@ -866,18 +866,21 @@ async function pinDesktopShortcuts() {
 
   const foremanShortcut = path.join(desktop, "Werkles - Foreman Dashboard.cmd");
   const bayShortcut = path.join(desktop, "Werkles - Aeye Crew Bay.cmd");
+  const soledashShortcut = path.join(desktop, "Werkles - SoleDash.cmd");
 
   const foremanBody = `@echo off\r\ntitle Werkles Foreman Dashboard\r\ncall "${path.join(REPO_ROOT, "foreman-control.cmd")}"\r\n`;
   const bayBody = `@echo off\r\ntitle Werkles Aeye Crew Bay\r\ncall "${OPEN_AEYE_CREW_CMD}"\r\n`;
+  const soledashBody = `@echo off\r\ntitle Werkles SoleDash\r\ncall "${path.join(REPO_ROOT, "soledash.cmd")}"\r\n`;
 
   fs.writeFileSync(foremanShortcut, foremanBody, "utf8");
   fs.writeFileSync(bayShortcut, bayBody, "utf8");
+  fs.writeFileSync(soledashShortcut, soledashBody, "utf8");
 
   return {
     success: true,
-    message: "Desktop shortcuts created — double-click Werkles - Foreman Dashboard",
+    message: "Desktop shortcuts created — Foreman Dashboard, Aeye Crew Bay, SoleDash",
     successLabel: "Pinned",
-    shortcuts: [foremanShortcut, bayShortcut],
+    shortcuts: [foremanShortcut, bayShortcut, soledashShortcut],
   };
 }
 

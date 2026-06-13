@@ -115,6 +115,58 @@
   line-height: 1.45;
 }
 
+.soledash-subhead {
+  margin: 1rem 0 0.4rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8fa3b8;
+}
+
+.soledash-bullets {
+  margin: 0.25rem 0 0;
+  padding-left: 1.1rem;
+  color: #b8c5d4;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.soledash-bullets--compact li {
+  margin-bottom: 0.25rem;
+}
+
+.soledash-ref {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+}
+
+.soledash-ref a {
+  color: #8fd4ff;
+}
+
+.soledash-ok {
+  color: #7dcea0;
+  font-size: 0.9rem;
+}
+
+.soledash-warn {
+  color: #f0a878;
+  font-size: 0.9rem;
+}
+
+.soledash-crew-card {
+  background: #0f1419;
+  border: 1px solid #243040;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.soledash-crew-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.88rem;
+  color: #f4c56a;
+}
+
 .soledash-gate-buttons {
   display: flex;
   gap: 0.5rem;
