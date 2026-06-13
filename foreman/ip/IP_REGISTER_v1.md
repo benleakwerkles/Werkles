@@ -30,6 +30,9 @@ Authority: Operator inventory — not legal counsel, not trademark advice, not f
 | **Foundry Dues** | Membership product name | APPROX 2026 (monetization v0.2) | active | Legal label: membership subscription; nav label "Dues" | `company/WERKLES_MONETIZATION.md`, `lib/site-nav.ts`, `/membership` |
 | **Human Gate** | Governance doctrine term | APPROX 2026-05 (cockpit era) | active | Authority/judgment/money/credentials/production moves requiring Ben; cockpit anchor | `foreman/HUMAN_GATES.md`, `company/WERKLES_CONSTITUTION.md` |
 | **Leverage Matching** | Matching doctrine (working name) | UNKNOWN in repo | experimental | **Naming drift:** repo canon uses **Match Stacking**, **Need Translation**, **Not-Matching Matching** — not exact string "Leverage Matching" | `company/WERKLES_MATCH_STACKING_AND_NEED_TRANSLATION_V0.md`, `foreman/speaker/entries/DRAFT_20260608-not-matching-matching.md` |
+| **Leverage Diagnosis** | Operator doctrine term | UNKNOWN in repo | experimental | Record-only seed term for diagnosing highest-leverage constraint or next move; no legal conclusion | `foreman/ip/IP_REGISTER_v1.md` |
+| **Leverage Inventory** | Operator doctrine term | UNKNOWN in repo | experimental | Record-only seed term for inventorying available leverage assets, constraints, and moves; no legal conclusion | `foreman/ip/IP_REGISTER_v1.md` |
+| **Leverage Hypothesis Testing** | Operator doctrine term | UNKNOWN in repo | experimental | Record-only seed term for testing leverage assumptions before committing effort; no legal conclusion | `foreman/ip/IP_REGISTER_v1.md` |
 | **Ghost Forge** | Internal image worker | APPROX 2026-05-27 (approved lanes) | active | Cloud image batch worker; Render service `werkles-ghost-forge1`; human-gated spend | `ghost-forge-worker/README.md`, `foreman/LANES.md`, `foreman/gates/APPROVAL_LOG.md` |
 | **Ender** | AI cousin seat (Claude) | APPROX 2026-05-30 (role sync packets) | active | Art direction, experience, emotional arc; internal seat name | `foreman/AI_COUSINS_PROTOCOL.md`, `foreman/speaker/AEYE_ROLE_REGISTRY.md` |
 | **Petra** | AI cousin seat (ChatGPT Comptroller) | APPROX 2026-05-30 | active | Scope, GO/NO-GO, gates, red team | `foreman/AI_COUSINS_PROTOCOL.md`, `foreman/speaker/AEYE_ROLE_REGISTRY.md` |
@@ -170,6 +173,7 @@ Authority: Operator inventory — not legal counsel, not trademark advice, not f
 | Date | Change | Author |
 |------|--------|--------|
 | 2026-06-13 | v1 created — seed entries + repo discoveries | Maker (Cursor) |
+| 2026-06-13 | v1 finalized — added missing leverage doctrine seed entries | Foreman local hands |
 
 ---
 
@@ -177,11 +181,11 @@ Authority: Operator inventory — not legal counsel, not trademark advice, not f
 
 | Section | Seed entries | Additional discoveries | Total rows |
 |---------|--------------|------------------------|------------|
-| Product Names | 19 | 15 | 34 |
+| Product Names | 22 | 15 | 37 |
 | Systems & Frameworks | 8 | 10 | 18 |
 | Product Concepts | 8 | 7 | 15 |
 | Visual / Brand Assets | 7 | 8 | 15 |
 | Open Questions | 4 | 8 | 12 |
-| **Grand total** | **46** | **48** | **94** |
+| **Grand total** | **49** | **48** | **97** |
 
 *Counts are inventory rows, not legal claims.*
