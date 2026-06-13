@@ -1,5 +1,6 @@
-import type { WorkItem, WorkLane } from "@/lib/soledash/v12-workflow";
 import type { HandoffEntry, SoleDashData } from "@/lib/soledash/cockpit-data";
+import { LEVERAGE_MISSION_CARD } from "@/lib/soledash/leverage-mission-card";
+import type { WorkItem, WorkLane } from "@/lib/soledash/v12-workflow";
 
 const LANE_LABELS: Record<WorkLane, string> = {
   act: "Act",
@@ -116,6 +117,24 @@ export function SoleDashDashboard({ data }: { data: SoleDashData }) {
         <p className="soledash-since__line">
           <strong>{sinceLastVisit.sinceLabel}:</strong> {sinceLastVisit.summary}
         </p>
+      </section>
+
+      <section
+        className="soledash-panel soledash-strategic-frame"
+        aria-labelledby="strategicFrameTitle"
+      >
+        <p className="soledash-strategic-frame__eyebrow">
+          Leverage Mission Card · {LEVERAGE_MISSION_CARD.version}
+        </p>
+        <h2 id="strategicFrameTitle">{LEVERAGE_MISSION_CARD.title}</h2>
+        <p className="soledash-muted soledash-strategic-frame__subtitle">
+          {LEVERAGE_MISSION_CARD.subtitle}
+        </p>
+        <ol className="soledash-strategic-frame__list">
+          {LEVERAGE_MISSION_CARD.bullets.map((bullet) => (
+            <li key={bullet.id}>{bullet.text}</li>
+          ))}
+        </ol>
       </section>
 
       {squibb ? (

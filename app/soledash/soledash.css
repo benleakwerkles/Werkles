@@ -145,6 +145,37 @@
   color: #c5d4e3;
 }
 
+.soledash-strategic-frame {
+  border-color: #3a4a5e;
+  background: linear-gradient(160deg, #141c28 0%, #121820 100%);
+}
+
+.soledash-strategic-frame__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7a8fa6;
+}
+
+.soledash-strategic-frame__subtitle {
+  margin: -0.35rem 0 0.75rem;
+  font-size: 0.85rem;
+}
+
+.soledash-strategic-frame__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.soledash-strategic-frame__list li {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #dce6f0;
+}
+
 .soledash-squibb {
   margin-bottom: 1rem;
   padding: 0.65rem 0.85rem;
