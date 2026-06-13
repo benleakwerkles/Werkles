@@ -10,9 +10,44 @@ Ben is the Operator and decision-maker. Ben is not the manual coding labor, dash
 
 Every cousin must report its execution context before making any file-system, repo-state, environment, runtime, or deployment claim. Allowed contexts: `LOCAL_SALLY_WINDOWS`, `CURSOR_CLOUD_CONTAINER`, `CODEX_LOCAL`, `COWORK_BROWSER`, `UNKNOWN`.
 
+Machine names are canonical. Hostnames are evidence. Agent names are roles. Runtimes are tools.
+
+Ownership is attributed to cousin role, not runtime. Use `Dink @ Doss via Codex Desktop`, not `Codex did it`.
+
+No artifact is valid unless it reports:
+
+- cousin role
+- machine name
+- hostname
+- repo path
+- branch
+- commit
+- execution runtime
+
+If cousin role, machine, branch, or runtime is ambiguous, stop and perform LOCAL HANDS READBACK before creating architecture artifacts.
+
+Do not create duplicate doctrine artifacts under different machine names.
+
+Future packets must use the format: `Cousin @ Machine — Mission`.
+
+Example: `Dink @ Doss — Speaker Diagnostic Flow`.
+
+Doss is the canonical mobile/mirror forge. BLDer is retired as a machine name. Hostname `BLDER` remains evidence for Doss. Formerly referenced as BLDer.
+
 A `CURSOR_CLOUD_CONTAINER` cousin may inspect `/workspace`, GitHub branches/PRs, committed/pushed state, and cloud build/typecheck results — but must not claim to inspect Windows desktop folders, Sally local `.env` files, Sally localhost/dev server, or Sally uncommitted changes. When local evidence is required, it requests a `LOCAL_SALLY_WINDOWS` check instead of guessing.
 
 Full rules and the merge/push/deploy evidence-locality requirement: `foreman/EXECUTION_CONTEXT_RULES.md`.
+
+## Feed Routing Table
+
+| Feed | Primary work |
+|------|--------------|
+| Maker @ Betsy | UI / UX / surfaces / SoleDash / Bellows display |
+| Dink @ Doss | Speaker doctrine / diagnostic flow / leverage inventory |
+| Skybro @ Doss | Thesis / conceptual frameworks / naming only when asked |
+| Dink @ Sally or Codex runtime @ Sally | Architecture / schemas / infrastructure |
+| Bean @ Sally | Hostile audit / failure modes |
+| Petra | Synthesis / red-team / GO-NO-GO |
 
 ## LOCAL HANDS READBACK (mandatory)
 
@@ -28,7 +63,7 @@ Any **hands-capable** cousin — including Maker, Dink, or any future local oper
 - pushing
 - starting dev servers
 
-Required readback: machine name, repo path, git branch, latest commit hash, working tree status, terminal availability, localhost running yes/no, port in use.
+Required readback: cousin role, machine name, hostname, repo path, git branch, latest commit hash, working tree status, execution runtime, terminal availability, localhost running yes/no, port in use.
 
 Purpose: prevent Ben from having to ask which repo, branch, machine, or workspace the agent is inside.
 

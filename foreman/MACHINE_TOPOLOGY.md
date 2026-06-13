@@ -4,7 +4,11 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 
 **Source of truth is the GitHub repo `benleakwerkles/Werkles1` (`main`), not any single machine.** Machines are work surfaces; the repo is canon.
 
-**Registry rule:** Do not rename machines by guess. Update this file after every LOCAL HANDS READBACK that changes branch, commit, path, or localhost state. **Doss** is confirmed as hostname `BLDER` (Operator alias: Doss / BLDER) unless Ben later renames it.
+**Registry rule:** Do not rename machines by guess. Update this file after every LOCAL HANDS READBACK that changes branch, commit, path, or localhost state. **Doss** is the canonical machine name for hostname `BLDER`. Formerly referenced as BLDer.
+
+**Naming rule:** Machine names are canonical. Hostnames are evidence. Agent names are roles. Runtimes are tools.
+
+**Doss note:** Doss is the canonical mobile/mirror forge. BLDer is retired as a machine name.
 
 ---
 
@@ -15,7 +19,7 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 | **Sally** | `DESKTOP-SJSJMNK` | `C:\Users\benle\Desktop\github\Werkles` | `rescue/sally-dirty-worktree-2026-06-01` | `8ba905b` | **mirror forge** | `:3000` running on host (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK`; historical: `foreman/reviews/WORKTREE_STABILIZATION_2026-06-01.md`, `FROM_DINK_BETSY_SETUP_RECORD_V1.md` |
 | **Sally** *(second surface, same host)* | `DESKTOP-SJSJMNK` | `C:\Dev\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | `437792b` | **mirror forge** (snapshot lane) | shares host `:3000` (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK` |
 | **Betsy** | `DESKTOP-KTBH0LA` | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **primary forge** (intended) | **UNKNOWN** | Operator prior readback only — **no live readback this session** |
-| **Doss / BLDER** | `BLDER` | `C:\Users\BenLeak\Desktop\github\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | `8411561` | **mirror/mobile forge** | `/soledash` → Foreman `:4317` (200 OK) | Live readback 2026-06-12 on `BLDER`; launcher `C:\Users\BenLeak\Desktop\soledash.cmd` |
+| **Doss** | `BLDER` | `C:\Users\BenLeak\Desktop\github\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | `8411561` | **mirror/mobile forge** | `/soledash` → Foreman `:4317` (200 OK) | Live readback 2026-06-12 on hostname `BLDER`; formerly referenced as BLDer; launcher `C:\Users\BenLeak\Desktop\soledash.cmd` |
 | **Atlas** | **UNKNOWN** | vault path per `foreman/ATLAS_MACHINE_PLAN.md` | n/a (not a git writer) | n/a | **archive forge** | n/a | Plan doc only — no live readback recorded |
 
 ### Sally work-surface detail (live 2026-06-12, host `DESKTOP-SJSJMNK`)
@@ -33,11 +37,11 @@ Operator reports `DESKTOP-KTBH0LA` as Betsy from a prior readback. Dink handoff 
 
 Intended primary path per Dink critical-path note: `C:\Users\benle\Desktop\github\Werkles` **on Betsy** — not verified.
 
-### Doss / BLDER (live 2026-06-12, host `BLDER`)
+### Doss (live 2026-06-12, hostname `BLDER`)
 
 | Field | Value |
 |-------|-------|
-| Human name | **Doss / BLDER** (Operator alias — `BLDER` = Doss unless Ben later renames) |
+| Human name | **Doss** |
 | Windows hostname | `BLDER` |
 | Primary repo path | `C:\Users\BenLeak\Desktop\github\Werkles` |
 | Branch | `snapshot/sally-good-werkles-2026-06-12` |
@@ -46,7 +50,9 @@ Intended primary path per Dink critical-path note: `C:\Users\benle\Desktop\githu
 | Launcher | `C:\Users\BenLeak\Desktop\soledash.cmd` |
 | Localhost | `http://localhost:3000/soledash` redirects to Foreman cockpit at `:4317` — **200 OK** |
 
-**Localhost on `BLDER`:** `:3000` (Werkles dev) and `:4317` (Foreman / SoleDash cockpit) verified live 2026-06-12.
+**Alias history:** Formerly referenced as BLDer.
+
+**Localhost on hostname `BLDER`:** `:3000` (Werkles dev) and `:4317` (Foreman / SoleDash cockpit) verified live 2026-06-12.
 
 ---
 
@@ -54,7 +60,7 @@ Intended primary path per Dink critical-path note: `C:\Users\benle\Desktop\githu
 
 1. **Two Werkles clones on Sally (`DESKTOP-SJSJMNK`)** — rescue mirror at Desktop path vs clean snapshot at `C:\Dev\Werkles`. Same host, different branches/commits. Operator must name which surface is canonical for each task.
 2. **Betsy hostname vs Sally hostname** — prior Operator readback maps Betsy → `DESKTOP-KTBH0LA`; live session and Dink records map Sally work to `DESKTOP-SJSJMNK`. These are **different hosts**; do not collapse them without Operator confirmation.
-3. **Doss / BLDER alias** — Operator confirms **`BLDER` = Doss** (mirror/mobile forge). Do not alias BLDER → Betsy. Ben may rename the machine later; update this registry when that happens.
+3. **Doss canonical name** — Doss is the canonical mobile/mirror forge. Hostname `BLDER` is evidence only. Formerly referenced as BLDer. Do not alias Doss to Betsy.
 
 ---
 
@@ -64,7 +70,7 @@ Intended primary path per Dink critical-path note: `C:\Users\benle\Desktop\githu
 |------|---------|-----------------|
 | **primary forge** | Main app/UI build, local dev server, primary commits | Betsy (when live-verified) |
 | **mirror forge** | Relay/coordination, rescue lanes, snapshot lanes, crew bay | Sally |
-| **mirror/mobile forge** | Portable mirror surface; snapshot lane + SoleDash launcher | Doss / BLDER |
+| **mirror/mobile forge** | Portable mirror surface; snapshot lane + SoleDash launcher | Doss |
 | **archive forge** | Backups, asset vault, non-critical jobs — not canon writer | Atlas |
 
 Legacy permission matrix (unchanged intent):
@@ -73,7 +79,7 @@ Legacy permission matrix (unchanged intent):
 |------|------------------|----------------|------------------------------------|
 | **Sally** | No (mirrors repo) | Only when named in `foreman/ACTIVE_AGENT.md` | No automatically — human gates apply |
 | **Betsy** | No (mirrors repo) | Yes, when named active writer | Push/deploy/SQL/secrets remain human gates |
-| **Doss / BLDER** | No (mirrors repo) | Snapshot lane when named | No automatically — human gates apply |
+| **Doss** | No (mirrors repo) | Snapshot lane when named | No automatically — human gates apply |
 | **Atlas** | **No** | **No** | **No** |
 
 ---
@@ -102,7 +108,7 @@ Atlas **may** be used for:
 |-------------------|------------------------------|-------------------------------------|
 | Sally (`DESKTOP-SJSJMNK`) | `LOCAL_SALLY_WINDOWS` | `DESKTOP-SJSJMNK` |
 | Betsy (`DESKTOP-KTBH0LA` when verified) | `LOCAL_SALLY_WINDOWS`-class (declare **Betsy** + hostname) | `DESKTOP-KTBH0LA` |
-| Doss / BLDER (`BLDER`) | `LOCAL_DOSS_WINDOWS` | `BLDER` |
+| Doss (hostname `BLDER`) | `LOCAL_DOSS_WINDOWS` | `Doss`; hostname field must report `BLDER` |
 | Atlas (vault box) | local context, archive-only — declare `ATLAS` intent | confirmed hostname only |
 | Cursor Cloud Agent | `CURSOR_CLOUD_CONTAINER` | n/a |
 | Codex | `CODEX_LOCAL` (must declare local vs sandboxed) | declare actual hostname |
@@ -124,4 +130,4 @@ When taking LOCAL HANDS READBACK on any forge machine, update the registry row f
 6. localhost running yes/no and port
 7. Evidence source: `live readback YYYY-MM-DD` or cite handoff path
 
-**Last registry readback:** 2026-06-12 — `BLDER` (Doss / BLDER), SoleDash v0 install session, path above.
+**Last registry readback:** 2026-06-12 — Doss on hostname `BLDER`, SoleDash v0 install session, path above. Formerly referenced as BLDer.
