@@ -1,0 +1,131 @@
+{
+  "schema_version": "AUTOMATICA_ROUTE_MAP.v0.1",
+  "updated_at": "2026-06-15T19:35:00Z",
+  "updated_by": "Dink on Doss",
+  "purpose": "Wire real receipt-writing relay paths behind Maker Automatica cards.",
+  "receipt_contract": [
+    "decision",
+    "why",
+    "evidence",
+    "assumption",
+    "blocker",
+    "next_action",
+    "confidence"
+  ],
+  "command_shape": "python foreman/soledash/automatica/run_automatica_route.py <route_id>",
+  "routes": [
+    {
+      "route_id": "spanzee_remote_check",
+      "card_label": "SPANZEE REMOTE CHECK",
+      "target_owner": "Dink2",
+      "target_machine": "Spanzee",
+      "handler": "spanzee_remote_check",
+      "creates_action_type": "remote_access_probe",
+      "command": "python foreman/soledash/automatica/run_automatica_route.py spanzee_remote_check",
+      "receipt_prefix": "automatica_spanzee_remote_check",
+      "must_answer": [
+        "reachable yes/no",
+        "SSH listening yes/no",
+        "remote access method available yes/no",
+        "blocker"
+      ],
+      "gate_policy": {
+        "credentials_allowed": false,
+        "public_ports_allowed": false,
+        "router_changes_allowed": false
+      }
+    },
+    {
+      "route_id": "ui_cleanup_across_screens",
+      "card_label": "UI CLEANUP ACROSS SCREENS",
+      "target_owner": "Dink + Ender",
+      "target_machine": "Betsy/Doss/Sally/Spanzee",
+      "handler": "ui_cleanup_across_screens",
+      "creates_action_type": "operator_ui_audit",
+      "command": "python foreman/soledash/automatica/run_automatica_route.py ui_cleanup_across_screens",
+      "receipt_prefix": "automatica_ui_cleanup_across_screens",
+      "must_answer": [
+        "PowerToys/FancyZones status",
+        "monitor layout status",
+        "startup/shortcut gaps",
+        "top UI friction"
+      ],
+      "gate_policy": {
+        "credentials_allowed": false,
+        "destructive_changes_allowed": false,
+        "coding_training_allowed": false
+      }
+    },
+    {
+      "route_id": "kindsir_com_cleanup",
+      "card_label": "KINDSIR.COM CLEANUP",
+      "target_owner": "Maker / Ender",
+      "target_machine": "Betsy or active Maker surface",
+      "handler": "kindsir_com_cleanup",
+      "creates_action_type": "site_cleanup_plan",
+      "command": "python foreman/soledash/automatica/run_automatica_route.py kindsir_com_cleanup",
+      "receipt_prefix": "automatica_kindsir_com_cleanup",
+      "must_answer": [
+        "current site state",
+        "top 5 cleanup actions",
+        "files/pages touched or proposed"
+      ],
+      "gate_policy": {
+        "production_deploy_allowed": false,
+        "payment_changes_allowed": false,
+        "destructive_changes_allowed": false
+      }
+    },
+    {
+      "route_id": "kind_sir_sue_research",
+      "card_label": "KIND SIR SUE RESEARCH",
+      "target_owner": "Thufir / Skybro",
+      "target_machine": "Research surface",
+      "handler": "kind_sir_sue_research",
+      "creates_action_type": "research_probe",
+      "command": "python foreman/soledash/automatica/run_automatica_route.py kind_sir_sue_research",
+      "receipt_prefix": "automatica_kind_sir_sue_research",
+      "must_answer": [
+        "what SUE means in this context if ambiguous",
+        "research findings",
+        "next action"
+      ],
+      "gate_policy": {
+        "credentials_allowed": false,
+        "paid_research_tools_allowed": false,
+        "public_posting_allowed": false
+      }
+    },
+    {
+      "route_id": "kind_sir_grading_research",
+      "card_label": "KIND SIR GRADING RESEARCH",
+      "target_owner": "Thufir / Skybro",
+      "target_machine": "Research surface",
+      "handler": "kind_sir_grading_research",
+      "creates_action_type": "market_research_probe",
+      "command": "python foreman/soledash/automatica/run_automatica_route.py kind_sir_grading_research",
+      "receipt_prefix": "automatica_kind_sir_grading_research",
+      "must_answer": [
+        "market/search findings",
+        "competitor or service examples",
+        "recommended next action"
+      ],
+      "gate_policy": {
+        "credentials_allowed": false,
+        "paid_tools_allowed": false,
+        "production_changes_allowed": false
+      }
+    }
+  ],
+  "maker_integration": {
+    "render_cards_from": "routes",
+    "button_command_field": "command",
+    "receipt_folder": "foreman/soledash/receipts",
+    "action_folder": "foreman/soledash/actions",
+    "show_blocker_when_receipt_status_is": [
+      "blocked",
+      "failed",
+      "partial"
+    ]
+  }
+}

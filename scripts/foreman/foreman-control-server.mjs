@@ -10,12 +10,12 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { spawn } from "node:child_process";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { verifyAllRelayTabDestinations } from "./relay-courier-lib.mjs";
 import { classifyGdCommand, formatGdCommandVerdict } from "../../foreman/gd-intent-router/gd-command-governor.mjs";
 import { buildSpeakerStatus, draftSpeakerEntry } from "../../foreman/speaker/speaker-lib.mjs";
 
-const REPO_ROOT = "C:\\Users\\benle\\Desktop\\github\\Werkles";
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const PORT = 4317;
 const HOST = "127.0.0.1";
 const CONTROL_PANEL_DIR = path.join(REPO_ROOT, "foreman", "control-panel");
@@ -70,6 +70,10 @@ const GD_ROUTER_MJS = path.join(REPO_ROOT, "foreman", "gd-intent-router", "gd-in
 const THREAD_REFRESH_PACKET = path.join(REPO_ROOT, "foreman", "handoffs", "outbox", "THREAD_REFRESH_PACKET.md");
 const GD_MISSION_CLASSES = path.join(REPO_ROOT, "foreman", "gd-intent-router", "mission-classes.json");
 const GD_RUNS_DIR = path.join(REPO_ROOT, "foreman", "gd-intent-router", "runs");
+const AUTOMATICA_ROUTE_MAP = path.join(REPO_ROOT, "foreman", "soledash", "AUTOMATICA_ROUTE_MAP.json");
+const AUTOMATICA_RUNNER = path.join(REPO_ROOT, "foreman", "soledash", "automatica", "run_automatica_route.py");
+const AUTOMATICA_ACTIONS_DIR = path.join(REPO_ROOT, "foreman", "soledash", "actions");
+const AUTOMATICA_RECEIPTS_DIR = path.join(REPO_ROOT, "foreman", "soledash", "receipts");
 
 const COUSIN_BY_ROLE = {
   petra: "PETRA",
@@ -1179,6 +1183,7 @@ function buildStatus() {
     finance: loadFinanceDashboard(),
     relay,
     edgeBay: loadEdgeBayStatus(relay),
+    automatica: buildAutomaticaStatus(),
     activeAgentSnippet: readText(PATHS.activeAgent, 10).text,
     budgetSnippet: readText(PATHS.budget, 10).text,
     gd: buildGdStatus(),
@@ -1555,6 +1560,164 @@ function buildGdStatus() {
   };
 }
 
+function loadAutomaticaRouteMap() {
+  const routeMap = loadJson(AUTOMATICA_ROUTE_MAP);
+  return routeMap?.routes || [];
+}
+
+function listAutomaticaReceipts(route) {
+  if (!route?.receipt_prefix || !fs.existsSync(AUTOMATICA_RECEIPTS_DIR)) return [];
+  return fs
+    .readdirSync(AUTOMATICA_RECEIPTS_DIR)
+    .filter((name) => name.startsWith(`${route.receipt_prefix}_`) && name.endsWith(".json"))
+    .map((name) => {
+      const filePath = path.join(AUTOMATICA_RECEIPTS_DIR, name);
+      const stat = fs.statSync(filePath);
+      return { name, path: filePath, mtimeMs: stat.mtimeMs, mtime: stat.mtime.toISOString() };
+    })
+    .sort((a, b) => b.mtimeMs - a.mtimeMs);
+}
+
+function readLatestAutomaticaReceipt(route) {
+  const latest = listAutomaticaReceipts(route)[0];
+  if (!latest) return null;
+  const receipt = loadJson(latest.path);
+  if (!receipt) return null;
+  return { ...receipt, absolutePath: latest.path, relativePath: rel(latest.path), modifiedAt: latest.mtime };
+}
+
+function automaticaStateFromReceipt(receipt) {
+  if (!receipt) return "READY";
+  if (receipt.status === "failed") return "EXPLODED";
+  if (receipt.status === "blocked") return "BLOCKED";
+  return "RECEIPT RETURNED";
+}
+
+function buildAutomaticaStatus() {
+  const routes = loadAutomaticaRouteMap();
+  return {
+    ok: true,
+    routeMapPath: rel(AUTOMATICA_ROUTE_MAP),
+    runnerPath: rel(AUTOMATICA_RUNNER),
+    states: ["READY", "FIRED", "SENT", "WORKING", "BLOCKED", "RECEIPT RETURNED", "EXPLODED"],
+    routes: routes.map((route) => {
+      const receipt = readLatestAutomaticaReceipt(route);
+      const blocker = receipt?.blocker || "none";
+      return {
+        route_id: route.route_id,
+        card_label: route.card_label,
+        target_owner: route.target_owner,
+        target_machine: route.target_machine,
+        command: route.command,
+        state: automaticaStateFromReceipt(receipt),
+        receipt_status: receipt?.status || null,
+        last_update: receipt?.created_at || receipt?.modifiedAt || null,
+        blocker,
+        receipt_path: receipt?.relativePath || null,
+        action_path: receipt?.action_path || null,
+        decision: receipt?.decision || null,
+        confidence: receipt?.confidence || null,
+      };
+    }),
+  };
+}
+
+function writeAutomaticaPacket(route, state, extra = {}) {
+  fs.mkdirSync(AUTOMATICA_ACTIONS_DIR, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+  const actionId = extra.action_id || `automatica_fire_${route.route_id}_${stamp}`;
+  const packetPath = path.join(AUTOMATICA_ACTIONS_DIR, `${actionId}.json`);
+  const packet = {
+    schema_version: "AUTOMATICA_FIRE_PACKET.v0.1",
+    action_id: actionId,
+    route_id: route.route_id,
+    card_label: route.card_label,
+    target_owner: route.target_owner,
+    target_machine: route.target_machine,
+    state,
+    created_at: extra.created_at || new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    command: route.command,
+    blocker: extra.blocker || "none",
+    receipt_path: extra.receipt_path || null,
+    route_attempted: Boolean(extra.route_attempted),
+  };
+  fs.writeFileSync(packetPath, JSON.stringify(packet, null, 2), "utf8");
+  return { actionId, packetPath, packet };
+}
+
+async function runAutomaticaRoute(route) {
+  try {
+    const stdout = await runCommand("python", [AUTOMATICA_RUNNER, route.route_id], { cwd: REPO_ROOT });
+    return { ok: true, stdout, stderr: "", code: 0 };
+  } catch (err) {
+    return { ok: false, stdout: "", stderr: err.message || String(err), code: 1 };
+  }
+}
+
+async function fireAutomaticaRoute(routeId) {
+  const route = loadAutomaticaRouteMap().find((r) => r.route_id === routeId);
+  if (!route) throw new Error(`Unknown Automatica route: ${routeId}`);
+
+  const fired = writeAutomaticaPacket(route, "FIRED", { route_attempted: false });
+  writeAutomaticaPacket(route, "SENT", { action_id: fired.actionId, created_at: fired.packet.created_at });
+  writeAutomaticaPacket(route, "WORKING", { action_id: fired.actionId, created_at: fired.packet.created_at, route_attempted: true });
+
+  const run = await runAutomaticaRoute(route);
+  let receipt = readLatestAutomaticaReceipt(route);
+  if (!run.ok && !receipt) {
+    receipt = {
+      status: "failed",
+      decision: "route_exploded",
+      blocker: run.stderr || "Automatica runner failed before writing route receipt.",
+      next_action: "Dink should inspect the Automatica runner and rerun this card.",
+      confidence: "high",
+      created_at: new Date().toISOString(),
+    };
+  }
+
+  const state = automaticaStateFromReceipt(receipt);
+  const finalPacket = writeAutomaticaPacket(route, state, {
+    action_id: fired.actionId,
+    created_at: fired.packet.created_at,
+    route_attempted: true,
+    blocker: receipt?.blocker || (run.ok ? "none" : run.stderr),
+    receipt_path: receipt?.relativePath || null,
+  });
+
+  return {
+    ok: run.ok || Boolean(receipt),
+    success: run.ok || Boolean(receipt),
+    route_id: route.route_id,
+    card_label: route.card_label,
+    state,
+    packet_path: rel(finalPacket.packetPath),
+    receipt_path: receipt?.relativePath || null,
+    blocker: receipt?.blocker || (run.ok ? "none" : run.stderr),
+    last_update: receipt?.created_at || new Date().toISOString(),
+    receipt_status: receipt?.status || null,
+    decision: receipt?.decision || null,
+    next_action: receipt?.next_action || null,
+    stdout: run.stdout,
+    stderr: run.stderr,
+    successLabel: state,
+    message: `${route.card_label}: ${state}`,
+  };
+}
+
+function readAutomaticaReceiptForRoute(routeId) {
+  const route = loadAutomaticaRouteMap().find((r) => r.route_id === routeId);
+  if (!route) throw new Error(`Unknown Automatica route: ${routeId}`);
+  const receipt = readLatestAutomaticaReceipt(route);
+  if (!receipt) throw new Error(`No receipt yet for ${route.card_label}`);
+  return {
+    ok: true,
+    title: `${route.card_label} receipt`,
+    path: receipt.relativePath,
+    content: fs.readFileSync(receipt.absolutePath, "utf8"),
+  };
+}
+
 function speakerStatusBadge(status) {
   if (status === "RATIFIED") return `<span class="gd-ready">RATIFIED</span>`;
   if (status === "SUPERSEDED") return `<span class="muted">SUPERSEDED</span>`;
@@ -1641,6 +1804,45 @@ function formatSpeakerPanelCard(speaker) {
     <p class="muted" style="margin-top:12px;margin-bottom:0">
       Route <code>/gd/speaker</code> → this panel · No SQL · No secrets · No canonicalize without Ben
     </p>
+  </div>`;
+}
+
+function formatAutomaticaRelayCards(automatica) {
+  const routes = automatica?.routes || [];
+  const cards =
+    routes
+      .map((route) => {
+        const canOpenReceipt = Boolean(route.receipt_path);
+        const blocker = route.blocker || "none";
+        return `
+      <section class="automatica-card" data-automatica-card="${esc(route.route_id)}" data-state="${esc(route.state || "READY")}">
+        <div class="automatica-card-head">
+          <h3>${esc(route.card_label)}</h3>
+          <span class="automatica-state" data-automatica-state>${esc(route.state || "READY")}</span>
+        </div>
+        <dl class="automatica-meta">
+          <div><dt>Target</dt><dd>${esc(route.target_owner)} / ${esc(route.target_machine)}</dd></div>
+          <div><dt>Last update</dt><dd data-automatica-last-update>${esc(route.last_update || "never")}</dd></div>
+          <div><dt>Blocker</dt><dd data-automatica-blocker>${esc(blocker)}</dd></div>
+          <div><dt>Packet</dt><dd><code data-automatica-packet>${esc(route.action_path || "not fired")}</code></dd></div>
+          <div><dt>Receipt</dt><dd><code data-automatica-receipt>${esc(route.receipt_path || "none yet")}</code></dd></div>
+        </dl>
+        <div class="actions">
+          <button type="button" class="btn hero primary" data-automatica-fire="${esc(route.route_id)}">FIRE</button>
+          <button type="button" class="btn" data-automatica-open="${esc(route.route_id)}" ${canOpenReceipt ? "" : "disabled"}>OPEN RECEIPT</button>
+        </div>
+      </section>`;
+      })
+      .join("");
+
+  return `
+  <div class="plow" id="automatica">
+    <h2>Automatica Live Relay</h2>
+    <p class="lead">Real local route cards. FIRE writes a packet, attempts the route, and returns receipt/blocker to the same card.</p>
+    <div class="automatica-state-row">
+      ${(automatica?.states || []).map((state) => `<span>${esc(state)}</span>`).join("")}
+    </div>
+    <div class="automatica-grid">${cards || '<p class="muted">No Automatica routes loaded.</p>'}</div>
   </div>`;
 }
 
@@ -2173,7 +2375,7 @@ function renderPage(status, localToken, theme) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Foreman Control Panel</title>
+  <title>SoleDash / LightTrip</title>
   <style>
     /* Synced from lib/design-tokens.ts + app/globals.css — see foreman/control-panel/TOKENS_SYNC.md */
     :root {
@@ -2226,6 +2428,24 @@ function renderPage(status, localToken, theme) {
     .plow .lead { margin: 0 0 16px; font-size: 1rem; color: var(--ink-muted); }
     .btn.hero { font-size: 1.05rem; padding: 14px 20px; font-weight: 700; }
     .btn.hero.primary { background: color-mix(in srgb, var(--copper) 22%, var(--paper)); border-width: 2px; }
+    .automatica-state-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; }
+    .automatica-state-row span { border: 1px solid var(--panel-border); border-radius: 999px; padding: 4px 8px; font-size: .72rem; color: var(--ink-muted); background: var(--paper); }
+    .automatica-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 12px; }
+    .automatica-card { background: var(--paper); border: 1px solid color-mix(in srgb, var(--copper) 28%, transparent); border-radius: 8px; padding: 14px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }
+    .automatica-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+    .automatica-card h3 { margin: 0; font-size: .95rem; line-height: 1.2; color: var(--ink); letter-spacing: 0; }
+    .automatica-state { border: 1px solid color-mix(in srgb, var(--copper) 35%, transparent); border-radius: 999px; padding: 4px 8px; font-size: .68rem; font-weight: 700; white-space: nowrap; color: var(--ink); background: color-mix(in srgb, var(--copper) 9%, var(--paper)); }
+    .automatica-card[data-state="BLOCKED"] .automatica-state,
+    .automatica-card[data-state="EXPLODED"] .automatica-state { border-color: color-mix(in srgb, var(--stop) 40%, transparent); color: var(--stop); background: color-mix(in srgb, var(--stop) 7%, var(--paper)); }
+    .automatica-card[data-state="RECEIPT RETURNED"] .automatica-state { border-color: color-mix(in srgb, var(--ok) 40%, transparent); color: color-mix(in srgb, var(--ok) 72%, var(--ink)); background: color-mix(in srgb, var(--ok) 9%, var(--paper)); }
+    .automatica-card[data-state="WORKING"] .automatica-state,
+    .automatica-card[data-state="FIRED"] .automatica-state,
+    .automatica-card[data-state="SENT"] .automatica-state { border-color: color-mix(in srgb, var(--wait) 55%, transparent); color: color-mix(in srgb, var(--wait) 70%, var(--ink)); background: color-mix(in srgb, var(--wait) 10%, var(--paper)); }
+    .automatica-meta { margin: 0 0 12px; display: grid; gap: 8px; }
+    .automatica-meta div { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 8px; }
+    .automatica-meta dt { color: var(--ink-muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; }
+    .automatica-meta dd { margin: 0; min-width: 0; font-size: .84rem; line-height: 1.35; overflow-wrap: anywhere; }
+    .automatica-meta code { font-size: .76rem; }
     .load-row .btn { min-width: 118px; }
     .gd-hero { background: color-mix(in srgb, var(--copper) 6%, var(--paper)); border: 1px solid color-mix(in srgb, var(--copper) 35%, transparent); border-radius: 12px; padding: 14px 16px; margin-top: 12px; }
     .gd-hero h3 { margin: 0 0 8px; font-size: 1rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-muted); }
@@ -2251,8 +2471,8 @@ function renderPage(status, localToken, theme) {
   </style>
 </head>
 <body>
-  <h1>Foreman Control Panel</h1>
-  <p class="sub">Ben's operator dashboard · ${esc(status.generatedAt)} · <strong>Stops before Send</strong></p>
+  <h1>SoleDash / LightTrip</h1>
+  <p class="sub">Foreman Control Panel · Ben's operator dashboard · ${esc(status.generatedAt)} · <strong>Stops before Send</strong></p>
   <div class="banner ok-banner" style="margin-bottom:16px">
     <strong>This panel:</strong> <code>http://${HOST}:${PORT}</code> &nbsp;|&nbsp;
     <strong>Not this:</strong> <code>http://localhost:3000</code> (Werkles app preview — run <code>npm run dev</code> separately)
@@ -2281,6 +2501,8 @@ function renderPage(status, localToken, theme) {
     <div class="muted">Current gate</div>
     <code>${esc(status.gate)}</code>
   </div>
+
+  ${formatAutomaticaRelayCards(status.automatica)}
 
   ${formatGimpDashHomeCard(status.gd)}
 
@@ -2509,6 +2731,88 @@ function renderPage(status, localToken, theme) {
 
     document.querySelectorAll('[data-action]').forEach(btn => {
       btn.addEventListener('click', () => runAction(btn.dataset.action, btn));
+    });
+
+    function setAutomaticaCardState(routeId, state, detail) {
+      const card = document.querySelector('[data-automatica-card="' + routeId + '"]');
+      if (!card) return;
+      card.dataset.state = state;
+      const stateEl = card.querySelector('[data-automatica-state]');
+      const blockerEl = card.querySelector('[data-automatica-blocker]');
+      const updateEl = card.querySelector('[data-automatica-last-update]');
+      const packetEl = card.querySelector('[data-automatica-packet]');
+      const receiptEl = card.querySelector('[data-automatica-receipt]');
+      const openBtn = card.querySelector('[data-automatica-open]');
+      if (stateEl) stateEl.textContent = state;
+      if (detail?.blocker && blockerEl) blockerEl.textContent = detail.blocker;
+      if (detail?.last_update && updateEl) updateEl.textContent = detail.last_update;
+      if (detail?.packet_path && packetEl) packetEl.textContent = detail.packet_path;
+      if (detail?.receipt_path && receiptEl) receiptEl.textContent = detail.receipt_path;
+      if (openBtn && detail?.receipt_path) openBtn.disabled = false;
+    }
+
+    async function fireAutomatica(routeId, btn) {
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.classList.add('btn-pending');
+      btn.textContent = 'FIRED';
+      setAutomaticaCardState(routeId, 'FIRED', { blocker: 'route packet requested' });
+      await new Promise(resolve => setTimeout(resolve, 120));
+      setAutomaticaCardState(routeId, 'SENT', { blocker: 'packet written; route dispatching' });
+      await new Promise(resolve => setTimeout(resolve, 120));
+      setAutomaticaCardState(routeId, 'WORKING', { blocker: 'route running' });
+
+      try {
+        const { res, data } = await postJson('/api/automatica/fire', { routeId });
+        const finalState = data.state || (res.ok ? 'RECEIPT RETURNED' : 'EXPLODED');
+        setAutomaticaCardState(routeId, finalState, data);
+        btn.classList.remove('btn-pending');
+        btn.classList.add(res.ok && data.ok ? 'btn-success' : 'btn-failed');
+        btn.textContent = finalState;
+        showToast(data.message || (routeId + ': ' + finalState), !(res.ok && data.ok));
+      } catch (e) {
+        setAutomaticaCardState(routeId, 'EXPLODED', { blocker: e.message || String(e), last_update: new Date().toISOString() });
+        btn.classList.remove('btn-pending');
+        btn.classList.add('btn-failed');
+        btn.textContent = 'EXPLODED';
+        showToast(e.message || String(e), true);
+      } finally {
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.classList.remove('btn-pending', 'btn-success', 'btn-failed');
+          btn.textContent = original;
+        }, 1800);
+      }
+    }
+
+    async function openAutomaticaReceipt(routeId, btn) {
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Opening...';
+      try {
+        const { res, data } = await postJson('/api/automatica/receipt', { routeId });
+        if (!res.ok || !data.ok) {
+          showToast(data.error || 'No receipt available', true);
+          return;
+        }
+        modalTitle.textContent = data.title || 'Automatica receipt';
+        modalBody.textContent = data.content || '';
+        modal.style.display = 'flex';
+        modal.classList.add('open');
+        showToast('Opened ' + data.path, false);
+      } catch (e) {
+        showToast(e.message || String(e), true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = original;
+      }
+    }
+
+    document.querySelectorAll('[data-automatica-fire]').forEach(btn => {
+      btn.addEventListener('click', () => fireAutomatica(btn.dataset.automaticaFire, btn));
+    });
+    document.querySelectorAll('[data-automatica-open]').forEach(btn => {
+      btn.addEventListener('click', () => openAutomaticaReceipt(btn.dataset.automaticaOpen, btn));
     });
 
     async function refreshGimpDashPanel() {
@@ -2866,6 +3170,10 @@ const server = http.createServer(async (req, res) => {
     return sendJson(res, 200, buildStatus());
   }
 
+  if (req.method === "GET" && url.pathname === "/api/automatica/status") {
+    return sendJson(res, 200, buildAutomaticaStatus());
+  }
+
   if (req.method === "GET" && url.pathname === "/api/relay/status") {
     return sendJson(res, 200, loadRelayStatusSync());
   }
@@ -2905,6 +3213,33 @@ const server = http.createServer(async (req, res) => {
         return sendJson(res, 200, saved);
       } catch (err) {
         return sendJson(res, 400, { ok: false, error: err.message || String(err) });
+      }
+    }
+
+    if (url.pathname === "/api/automatica/fire") {
+      try {
+        const body = await readBody(req);
+        if (!body.routeId) return sendJson(res, 400, { ok: false, success: false, error: "Missing routeId" });
+        const result = await fireAutomaticaRoute(body.routeId);
+        return sendJson(res, 200, result);
+      } catch (err) {
+        return sendJson(res, 500, {
+          ok: false,
+          success: false,
+          state: "EXPLODED",
+          blocker: err.message || String(err),
+          error: err.message || String(err),
+        });
+      }
+    }
+
+    if (url.pathname === "/api/automatica/receipt") {
+      try {
+        const body = await readBody(req);
+        if (!body.routeId) return sendJson(res, 400, { ok: false, success: false, error: "Missing routeId" });
+        return sendJson(res, 200, readAutomaticaReceiptForRoute(body.routeId));
+      } catch (err) {
+        return sendJson(res, 404, { ok: false, success: false, error: err.message || String(err) });
       }
     }
 
