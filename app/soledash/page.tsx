@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 
-import { SoleDashDashboard } from "@/components/soledash/soledash-dashboard";
+import { DecisionSurface } from "@/components/soledash/decision-surface";
 import { loadSoleDashData } from "@/lib/soledash/cockpit-data";
+import { buildMegaWorkHomeView } from "@/lib/soledash/megawork-home/build-view";
 
 export const metadata: Metadata = {
-  title: "SoleDash | Werkles Operator Cockpit",
-  description: "Canonical operator cockpit v1.2 — needs you now, posture, work lanes, crew handoffs.",
+  title: "Starship Explode | AEYE",
+  description: "MegaWork Home Cockpit — operator surface on Betsy.",
   robots: { index: false, follow: false }
 };
 
@@ -13,5 +14,6 @@ export const dynamic = "force-dynamic";
 
 export default async function SoleDashPage() {
   const data = await loadSoleDashData();
-  return <SoleDashDashboard data={data} />;
+  const homeView = buildMegaWorkHomeView(data.machineCard.werklesName);
+  return <DecisionSurface initialView={homeView.decisionView} homeView={homeView} />;
 }

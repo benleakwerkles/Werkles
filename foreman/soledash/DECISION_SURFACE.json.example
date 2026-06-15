@@ -1,0 +1,137 @@
+{
+  "schema_version": "soledash-protocol-v0.1",
+  "generated_at": "2026-06-14T00:00:00.000Z",
+  "generated_by": "dink-example",
+  "mission": {
+    "id": "example_mission",
+    "label": "Phase 0 · Mule Elimination",
+    "summary": "Example mission frame from Dink"
+  },
+  "current_churn": {
+    "summary": "Example: what burns Operator cycles right now",
+    "current_threat": "Example: what could derail the thread",
+    "next_decision": "Example: title of frontier proposal"
+  },
+  "thread_health": {
+    "status": "healthy",
+    "detail": null
+  },
+  "queue_brain": {
+    "active_owner": null,
+    "waiting_report": null,
+    "blocker": null,
+    "recommended_next_action": null
+  },
+  "frontier_override": {
+    "machine_recommends": {
+      "action_code": "P0-A002",
+      "proposal_id": "prop_example_002",
+      "title": "Doss Stability Investigation"
+    },
+    "operator_selected": {
+      "action_code": "P0-A001",
+      "proposal_id": "prop_example_001",
+      "title": "Workstation Uniformization"
+    },
+    "current_source": "OPERATOR",
+    "queue_badge": "MIXED"
+  },
+  "proposal": {
+    "id": "prop_example_001",
+    "action_code": "P0-A001",
+    "title": "Workstation Uniformization",
+    "summary": "One-line decision ask.",
+    "queue_behind": 1,
+    "evidence_status": "OBSERVED"
+  },
+  "frontier_queue": [
+    {
+      "rank": 1,
+      "final_rank": 1,
+      "machine_rank": 2,
+      "operator_rank": 1,
+      "rank_source": "OPERATOR",
+      "action_code": "P0-A001",
+      "proposal_id": "prop_example_001",
+      "title": "Workstation Uniformization",
+      "evidence_status": "OBSERVED",
+      "weight": 0.78,
+      "weight_label": "frontier"
+    },
+    {
+      "rank": 2,
+      "final_rank": 2,
+      "machine_rank": 1,
+      "operator_rank": 2,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A002",
+      "proposal_id": "prop_example_002",
+      "title": "Doss Stability Investigation",
+      "evidence_status": "HYPOTHESIS",
+      "weight": 0.92,
+      "weight_label": "queued"
+    }
+  ],
+  "rationale": {
+    "why_this_exists": "",
+    "assumption": "",
+    "evidence": "",
+    "alternative_rejected": "",
+    "why_rejected": "",
+    "risk": "",
+    "why_now": "",
+    "test": "",
+    "owner": "",
+    "confidence": ""
+  },
+  "human_gate": {
+    "classification": "unclassified",
+    "operator_prompt": "Gate classification (Dink supplies prompt)",
+    "operator_line": "Dink supplies classification line",
+    "detail": null,
+    "transport_gap": null
+  },
+  "decision": {
+    "buttons": [
+      { "id": "yea", "label": "YEA", "enabled": true, "reason_disabled": null, "route_owner": null },
+      { "id": "nay", "label": "NAY", "enabled": true, "reason_disabled": null, "route_owner": null },
+      {
+        "id": "needs_research",
+        "label": "NEEDS RESEARCH",
+        "enabled": true,
+        "reason_disabled": null,
+        "route_owner": "Thufir"
+      },
+      {
+        "id": "kill_test",
+        "label": "KILL TEST",
+        "enabled": true,
+        "reason_disabled": null,
+        "route_owner": "Bean"
+      },
+      {
+        "id": "human_reality",
+        "label": "HUMAN REALITY",
+        "enabled": true,
+        "reason_disabled": null,
+        "route_owner": "Ender"
+      },
+      { "id": "more_info", "label": "EXPAND WHY", "enabled": true, "reason_disabled": null, "route_owner": null }
+    ],
+    "if_clicked": "Dink describes click outcomes here"
+  },
+  "decision_receipt": {
+    "receipt_id": null,
+    "kind": null,
+    "last_action": null,
+    "outcome": null,
+    "next_state": null,
+    "written_to": null
+  },
+  "operator_chat": {
+    "placeholder": "Operator intent…",
+    "entries": [],
+    "pending_route": null
+  },
+  "throughput_log": []
+}

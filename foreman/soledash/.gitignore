@@ -1,3 +1,18 @@
-# Runtime local machine state (SoleDash v1+).
-LAST_LOCALHOST_STATUS.json
-OPERATOR_SESSION.json
+# SoleDash runtime state (v1 command surface)
+
+COMMAND_STATE.json
+
+DECISION_LOG.jsonl
+
+ACTION_RECEIPTS.jsonl
+
+receipts/
+
+actions/
+
+outbound/
+
+automatica/packets/
+
+automatica/receipts/
+

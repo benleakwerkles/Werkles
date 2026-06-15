@@ -1,0 +1,5 @@
+{
+  "endpoint_url": "",
+  "outbound_dir": "foreman/soledash/outbound/petra",
+  "response_timeout_ms": 15000
+}

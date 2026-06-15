@@ -34,5 +34,8 @@ if errorlevel 1 (
 :open
 echo Opening SoleDash at %URL%
 start "" "%URL%"
+echo.
+echo Desktop icon: run scripts\foreman\install-soledash-desktop-shortcut.ps1
+echo Or in Edge: open %URL% then Install SoleDash as app
 echo SoleDash launcher done. Dev server port: %PORT%
 exit /b 0

@@ -1,4 +1,5 @@
 import type { HandoffEntry, SoleDashData } from "@/lib/soledash/cockpit-data";
+import { CONCIERGE_TEST_CASE_CARD } from "@/lib/soledash/concierge-test-case-card";
 import { LEVERAGE_MISSION_CARD } from "@/lib/soledash/leverage-mission-card";
 import type { WorkItem, WorkLane } from "@/lib/soledash/v12-workflow";
 
@@ -135,6 +136,23 @@ export function SoleDashDashboard({ data }: { data: SoleDashData }) {
             <li key={bullet.id}>{bullet.text}</li>
           ))}
         </ol>
+      </section>
+
+      <section
+        className="soledash-panel soledash-test-case"
+        aria-labelledby="conciergeTestCaseTitle"
+      >
+        <p className="soledash-test-case__eyebrow">Concierge Test Case · #{CONCIERGE_TEST_CASE_CARD.version}</p>
+        <h2 id="conciergeTestCaseTitle">{CONCIERGE_TEST_CASE_CARD.title}</h2>
+        <p className="soledash-test-case__label">Input</p>
+        <blockquote className="soledash-test-case__input">
+          &ldquo;{CONCIERGE_TEST_CASE_CARD.input}&rdquo;
+        </blockquote>
+        <ul className="soledash-test-case__statuses">
+          {CONCIERGE_TEST_CASE_CARD.statuses.map((status) => (
+            <li key={status.id}>{status.text}</li>
+          ))}
+        </ul>
       </section>
 
       {squibb ? (
