@@ -7,15 +7,14 @@ export function MobileOperatorStrip({
   frontierTitle,
   waitingGatesCount,
   waitingGatesHint,
-  blockerHeadline,
-  humanGate
+  blockerHeadline
 }: {
   frontierCode: string;
   frontierTitle: string;
   waitingGatesCount: number;
   waitingGatesHint: string | null;
   blockerHeadline: string | null;
-  humanGate: HumanGate;
+  humanGate?: HumanGate;
 }) {
   return (
     <section className="sd-mobile-strip" aria-label="Mobile operator status">
@@ -25,23 +24,20 @@ export function MobileOperatorStrip({
           <span className="sd-mobile-strip__code">{frontierCode}</span>
           <span className="sd-mobile-strip__detail">{frontierTitle}</span>
         </div>
-        <div
-          className={`sd-mobile-strip__chip ${waitingGatesCount > 0 ? "sd-mobile-strip__chip--alert" : ""}`}
-        >
-          <span className="sd-mobile-strip__label">Human gates</span>
-          <span className="sd-mobile-strip__num">{waitingGatesCount}</span>
-          {waitingGatesHint ? (
-            <span className="sd-mobile-strip__detail">{waitingGatesHint}</span>
-          ) : null}
-        </div>
+        {waitingGatesCount > 0 ? (
+          <div className="sd-mobile-strip__chip sd-mobile-strip__chip--alert">
+            <span className="sd-mobile-strip__label">Human gates</span>
+            <span className="sd-mobile-strip__num">{waitingGatesCount}</span>
+            {waitingGatesHint ? (
+              <span className="sd-mobile-strip__detail">{waitingGatesHint}</span>
+            ) : null}
+          </div>
+        ) : null}
       </div>
       {blockerHeadline ? (
         <p className="sd-mobile-strip__blocker" role="alert">
           Blocker: {blockerHeadline}
         </p>
-      ) : null}
-      {humanGate.operator_line ? (
-        <p className="sd-mobile-strip__gate">{humanGate.operator_line}</p>
       ) : null}
     </section>
   );

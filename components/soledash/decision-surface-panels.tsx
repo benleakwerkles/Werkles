@@ -8,6 +8,10 @@ import type {
   Rationale
 } from "@/protocol/index";
 
+import { ProvenanceLabel } from "@/components/soledash/provenance-label";
+import { provenanceFromReceiptEntry } from "@/lib/soledash/provenance/compute";
+import type { Provenance } from "@/lib/soledash/provenance/types";
+
 import type { RealityMode } from "@/lib/soledash/decision-surface/reality-mode";
 
 function formatTime(iso: string): string {
@@ -39,25 +43,36 @@ export function CurrentRealityBanner({
   );
 }
 
+/** @deprecated Legacy panels — never emits cosmetic LIVE; use ProvenanceLabel */
 export function HonestyBadge({
   live,
   simulated,
-  compact
+  compact,
+  updatedAt
 }: {
   live: boolean;
   simulated?: boolean;
   compact?: boolean;
+  updatedAt?: string;
 }) {
-  const label = simulated ? "SIMULATED" : live ? "LIVE" : "MOCK";
-  const tone = simulated ? "simulated" : live ? "live" : "mock";
-  return (
-    <span
-      className={`fm-honesty fm-honesty--${tone} ${compact ? "fm-honesty--compact" : ""}`}
-      aria-label={simulated ? "Simulated file-backed data" : live ? "Live protocol data" : "Mock placeholder data"}
-    >
-      {label}
-    </span>
-  );
+  const provenance: Provenance = simulated
+    ? {
+        source: "FILE",
+        updatedAt: updatedAt ?? new Date().toISOString(),
+        detail: "simulated file-backed row"
+      }
+    : live
+      ? {
+          source: "FILE",
+          updatedAt: updatedAt ?? new Date().toISOString(),
+          detail: "dink file row — LIVE label removed; see ProvenanceLabel"
+        }
+      : {
+          source: "LOCAL",
+          updatedAt: updatedAt ?? new Date().toISOString(),
+          detail: "mock or offline row"
+        };
+  return <ProvenanceLabel provenance={provenance} compact={compact} />;
 }
 
 export function CurrentBlockerPanel({ blocker, dataLive }: { blocker: CurrentBlocker; dataLive: boolean }) {
@@ -124,9 +139,7 @@ export function ReceiptCenterPanel({
                     <span className="fm-receipt-row__mock">SIMULATED</span>
                   ) : pinned.mock ? (
                     <span className="fm-receipt-row__mock">MOCK</span>
-                  ) : (
-                    <span className="fm-receipt-pin__live">LIVE</span>
-                  )}
+                  ) : null}
                   {pinned.mock_test ? (
                     <span className="fm-receipt-row__mock-test">MOCK TEST</span>
                   ) : null}
@@ -136,6 +149,7 @@ export function ReceiptCenterPanel({
                 {pinned.receipt_link ? (
                   <p className="fm-mono fm-receipt-pin__link">{pinned.receipt_link}</p>
                 ) : null}
+                <ProvenanceLabel provenance={provenanceFromReceiptEntry(pinned)} compact />
               </div>
             </div>
           ) : null}

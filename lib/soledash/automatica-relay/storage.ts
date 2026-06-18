@@ -1,7 +1,11 @@
+import "server-only";
+
 import fs from "node:fs";
 import path from "node:path";
 
 import { dispatchBuild } from "@/lib/soledash/command-surface/dispatch";
+import { cardById } from "./cards";
+import { evaluateArtifactGate } from "./artifacts";
 import type { RelayCardDef, RelayCardState, RelayPacket, RelayReceipt } from "./types";
 
 const ROOT = process.cwd();
@@ -49,8 +53,38 @@ export function writeRelayReceipt(receipt: RelayReceipt): string {
   return rel(file);
 }
 
+function normalizeRelayReceipt(receipt: RelayReceipt | null): RelayReceipt | null {
+  if (!receipt) return null;
+  const card = cardById(receipt.card_id);
+  if (!card) return receipt;
+
+  const withDefaults: RelayReceipt = {
+    ...receipt,
+    ARTIFACT_REQUIRED: receipt.ARTIFACT_REQUIRED ?? card.ARTIFACT_REQUIRED,
+    artifacts: receipt.artifacts ?? [],
+    artifact_gate: receipt.artifact_gate ?? evaluateArtifactGate(card, receipt)
+  };
+  const artifactGate = evaluateArtifactGate(card, withDefaults);
+  const missingRequiredArtifact =
+    withDefaults.status === "RECEIPT RETURNED" && card.ARTIFACT_REQUIRED && !artifactGate.passed;
+
+  return {
+    ...withDefaults,
+    status: missingRequiredArtifact ? "BLOCKED" : withDefaults.status,
+    success: missingRequiredArtifact ? false : withDefaults.success,
+    blocker: missingRequiredArtifact ? artifactGate.blocker : withDefaults.blocker,
+    next_action: missingRequiredArtifact
+      ? "Attach screenshot, screen recording, URL, commit hash, receipt file, diff, or generated report"
+      : withDefaults.next_action,
+    next_missing_integration: missingRequiredArtifact
+      ? "Artifact delivery pipeline requires tangible proof before RECEIPT RETURNED"
+      : withDefaults.next_missing_integration,
+    artifact_gate: artifactGate
+  };
+}
+
 export function readRelayReceipt(packetId: string): RelayReceipt | null {
-  return readJson<RelayReceipt>(path.join(RECEIPTS_DIR, `${packetId}.json`));
+  return normalizeRelayReceipt(readJson<RelayReceipt>(path.join(RECEIPTS_DIR, `${packetId}.json`)));
 }
 
 export function latestRunForCard(cardId: string): {
@@ -82,7 +116,7 @@ export function latestRunForCard(cardId: string): {
   }
 
   const receiptPath = path.join(RECEIPTS_DIR, `${latestPacket.packet_id}.json`);
-  const receipt = fs.existsSync(receiptPath) ? readJson<RelayReceipt>(receiptPath) : null;
+  const receipt = fs.existsSync(receiptPath) ? normalizeRelayReceipt(readJson<RelayReceipt>(receiptPath)) : null;
 
   return {
     packet: latestPacket,
@@ -135,9 +169,11 @@ export function resolveCardState(
   packetId: string | null;
   packetPath: string | null;
   receiptPath: string | null;
+  artifactGate: ReturnType<typeof evaluateArtifactGate>;
   live: boolean;
 } {
   const routeConnected = isRouteConnected(card);
+  const noReceiptGate = evaluateArtifactGate(card, null);
 
   if (!run.receipt && !run.packet) {
     return {
@@ -149,6 +185,7 @@ export function resolveCardState(
       packetId: null,
       packetPath: null,
       receiptPath: null,
+      artifactGate: noReceiptGate,
       live: routeConnected
     };
   }
@@ -157,16 +194,24 @@ export function resolveCardState(
   const packet = run.packet;
 
   if (receipt) {
+    const artifactGate = evaluateArtifactGate(card, receipt);
+    const missingRequiredArtifact =
+      receipt.status === "RECEIPT RETURNED" && card.ARTIFACT_REQUIRED && !artifactGate.passed;
+    const state = missingRequiredArtifact ? "BLOCKED" : receipt.status;
+
     return {
-      state: receipt.status,
+      state,
       lastUpdate: receipt.updated_at,
-      nextAction: receipt.next_action,
-      blocker: receipt.blocker,
+      nextAction: missingRequiredArtifact
+        ? "Attach screenshot, screen recording, URL, commit hash, receipt file, diff, or generated report"
+        : receipt.next_action,
+      blocker: missingRequiredArtifact ? artifactGate.blocker : receipt.blocker,
       routeConnected: receipt.route_connected,
       packetId: receipt.packet_id,
       packetPath: receipt.packet_path,
       receiptPath: receipt.receipt_path,
-      live: receipt.route_connected && receipt.success
+      artifactGate,
+      live: state === "RECEIPT RETURNED" && receipt.route_connected && receipt.success && artifactGate.passed
     };
   }
 
@@ -179,6 +224,7 @@ export function resolveCardState(
     packetId: packet?.packet_id ?? null,
     packetPath: run.packetPath,
     receiptPath: null,
+    artifactGate: noReceiptGate,
     live: false
   };
 }

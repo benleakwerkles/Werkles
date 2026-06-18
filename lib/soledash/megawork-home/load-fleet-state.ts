@@ -72,7 +72,7 @@ export function loadFleetState(): FleetStateLoadResult {
     if (!parsed) continue;
 
     const machines = parsed.machines
-      .filter((m): m is Partial<FleetStateMachineEntry> & { id: FleetMachineId } =>
+      .filter((m) =>
         Boolean(m?.id && ["betsy", "doss", "sally", "spanzee"].includes(m.id))
       )
       .map(normalizeEntry);

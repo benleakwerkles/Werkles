@@ -19,6 +19,7 @@ const COUSIN_IDS = new Set<CousinId>([
 const ALIAS: Record<string, CousinId> = {
   MAKER: "MAKER",
   DINK: "DINK",
+  PETRA: "PETRA",
   ENDER: "ENDER",
   BEAN: "BEAN",
   SKYBRO: "SKYBRO",

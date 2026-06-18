@@ -230,6 +230,39 @@ export function CommandLayerShell({
   );
 }
 
+export function DirectYeaNay({
+  busy,
+  activeAction,
+  onYea,
+  onNay
+}: {
+  busy: boolean;
+  activeAction: string | null;
+  onYea: () => void;
+  onNay: () => void;
+}) {
+  return (
+    <div className="sd-guard sd-guard--idle" aria-label="Decision buttons">
+      <button
+        type="button"
+        className="sd-guard__btn sd-guard__btn--yea"
+        disabled={busy}
+        onClick={onYea}
+      >
+        {busy && activeAction === "yea" ? "Sending…" : "YEA"}
+      </button>
+      <button
+        type="button"
+        className="sd-guard__btn sd-guard__btn--nay"
+        disabled={busy}
+        onClick={onNay}
+      >
+        {busy && activeAction === "nay" ? "Declining…" : "NAY"}
+      </button>
+    </div>
+  );
+}
+
 export function GuardedYeaNay({
   busy,
   activeAction,

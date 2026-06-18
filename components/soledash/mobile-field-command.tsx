@@ -3,12 +3,18 @@
 import { useState } from "react";
 
 import type {
+  ActionLifecycle,
   DecisionButton,
+  DecisionReceipt,
   HumanGate,
   ReceiptCenterEntry,
   ReceiptCenterStatus
 } from "@/protocol/index";
 
+import { formatRelayReceiptReadable } from "@/lib/soledash/automatica-relay/relay-receipt-format";
+import { useRelayCards } from "@/lib/soledash/automatica-relay/use-relay-cards";
+import { RelayCardSurface } from "@/components/soledash/relay-card-surface";
+import type { GateTier } from "@/lib/soledash/human-gate/types";
 import type { ReactionEntry } from "@/lib/soledash/options-deck/types";
 
 function formatTime(iso: string): string {
@@ -30,19 +36,19 @@ export function MobileFrontierPanel({
   frontierCode,
   frontierTitle,
   proposalSummary,
+  evidenceStatus,
   waitingGatesCount,
   waitingGatesHint,
   blockerHeadline,
-  humanGate,
   reactions
 }: {
   frontierCode: string;
   frontierTitle: string;
   proposalSummary: string | null;
+  evidenceStatus: string | null;
   waitingGatesCount: number;
   waitingGatesHint: string | null;
   blockerHeadline: string | null;
-  humanGate: HumanGate;
   reactions: ReactionEntry[];
 }) {
   const moved = reactions.slice(0, 3);
@@ -52,19 +58,17 @@ export function MobileFrontierPanel({
       <p className="sd-mfc-frontier__eyebrow">Active mission</p>
       <p className="sd-mfc-frontier__code">{frontierCode}</p>
       <h2 className="sd-mfc-frontier__title">{frontierTitle}</h2>
+      {evidenceStatus ? (
+        <p className="sd-mfc-frontier__evidence">{evidenceStatus.replace(/_/g, " ")}</p>
+      ) : null}
       {proposalSummary ? (
-        <p className="sd-mfc-frontier__waiting">
-          <span className="sd-mfc-frontier__waiting-label">Waiting on Ben</span>
-          {proposalSummary}
-        </p>
+        <p className="sd-mfc-frontier__summary">{proposalSummary}</p>
       ) : null}
       {waitingGatesCount > 0 ? (
         <div className="sd-mfc-frontier__gates sd-mfc-frontier__gates--alert">
           <span className="sd-mfc-frontier__gates-num">{waitingGatesCount}</span>
-          <span>{waitingGatesHint ?? humanGate.operator_prompt}</span>
+          <span>{waitingGatesHint ?? "Human gate waiting"}</span>
         </div>
-      ) : humanGate.operator_line ? (
-        <p className="sd-mfc-frontier__gate-line">{humanGate.operator_line}</p>
       ) : null}
       {blockerHeadline ? (
         <p className="sd-mfc-frontier__blocker" role="alert">
@@ -85,6 +89,170 @@ export function MobileFrontierPanel({
         </div>
       ) : null}
     </section>
+  );
+}
+
+export function MobileCommandActions({
+  busy,
+  activeAction,
+  gateTier,
+  routeButtons,
+  onYea,
+  onNay,
+  onRouteAction
+}: {
+  busy: boolean;
+  activeAction: string | null;
+  gateTier: GateTier;
+  routeButtons: DecisionButton[];
+  onYea: () => void;
+  onNay: () => void;
+  onRouteAction: (actionId: string) => void;
+}) {
+  const routes = routeButtons.filter((b) => b.enabled);
+
+  return (
+    <section className="sd-mfc-actions" aria-label="Frontier actions">
+      <p className="sd-mfc-actions__label">Command</p>
+      {gateTier !== "red" ? (
+        <div className="sd-mfc-actions__yea-nay">
+          <button
+            type="button"
+            className="sd-mfc-actions__btn sd-mfc-actions__btn--yea"
+            disabled={busy}
+            onClick={onYea}
+          >
+            {busy && activeAction === "yea" ? "Sending…" : "YEA"}
+          </button>
+          <button
+            type="button"
+            className="sd-mfc-actions__btn sd-mfc-actions__btn--nay"
+            disabled={busy}
+            onClick={onNay}
+          >
+            {busy && activeAction === "nay" ? "Declining…" : "NAY"}
+          </button>
+        </div>
+      ) : (
+        <p className="sd-mfc-actions__red-hint">Use Human Gate card above to approve or reject.</p>
+      )}
+      {gateTier === "blue" ? (
+        <p className="sd-mfc-actions__blue-hint">Receipt appears after execution.</p>
+      ) : null}
+      {routes.length > 0 ? (
+        <div className="sd-mfc-actions__routes">
+          {routes.map((slot) => (
+            <button
+              key={slot.id}
+              type="button"
+              className={`sd-mfc-actions__btn sd-mfc-actions__btn--route sd-mfc-actions__btn--${slot.id.replace(/_/g, "-")}`}
+              disabled={busy || !slot.enabled}
+              title={slot.reason_disabled ?? (slot.route_owner ? `Routes to ${slot.route_owner}` : undefined)}
+              onClick={() => onRouteAction(slot.id)}
+            >
+              {busy && activeAction === slot.id ? "…" : slot.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+export function MobileLatestReceipt({
+  entries,
+  lifecycle,
+  receipt,
+  gateTier
+}: {
+  entries: ReceiptCenterEntry[];
+  lifecycle: ActionLifecycle;
+  receipt: DecisionReceipt;
+  gateTier: GateTier;
+}) {
+  const latest = entries[0];
+  const hasLifecycle = lifecycle.phase !== "idle" && lifecycle.phase !== "resolved";
+  const hasReceipt = Boolean(receipt.last_action || receipt.outcome || latest);
+
+  if (!hasLifecycle && !hasReceipt) return null;
+
+  return (
+    <section className="sd-mfc-latest" aria-label="Latest receipt">
+      <p className="sd-mfc-latest__label">
+        {gateTier === "blue" ? "Latest · receipt after execution" : "Latest"}
+      </p>
+      {hasLifecycle ? (
+        <p className={`sd-mfc-latest__phase sd-mfc-latest__phase--${lifecycle.phase}`}>
+          {lifecycle.message}
+        </p>
+      ) : null}
+      {receipt.outcome ? <p className="sd-mfc-latest__outcome">{receipt.outcome}</p> : null}
+      {latest ? (
+        <p className="sd-mfc-latest__row">
+          <span className={`sd-mfc-receipts__status sd-mfc-receipts__status--${statusSlug(latest.status)}`}>
+            {latest.status}
+          </span>
+          <span className="sd-mfc-latest__target">{latest.target}</span>
+          <span className="sd-mfc-latest__time">{formatTime(latest.last_update)}</span>
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function RelayReceiptModal({
+  receipt,
+  onClose
+}: {
+  receipt: Record<string, unknown>;
+  onClose: () => void;
+}) {
+  return (
+    <div className="auto-relay__modal-backdrop" role="presentation" onClick={onClose}>
+      <div
+        className="auto-relay__modal sd-mfc-relay__modal"
+        role="dialog"
+        aria-label="Relay receipt"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="auto-relay__modal-head">
+          <h3>Relay receipt</h3>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
+        </div>
+        <dl className="auto-relay__receipt-readable">
+          {formatRelayReceiptReadable(receipt).map((row) => (
+            <div key={row.label}>
+              <dt>{row.label}</dt>
+              <dd>{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  );
+}
+
+export function MobileRelayCardList({ onRefresh }: { onRefresh?: () => void | Promise<void> }) {
+  const { cards, loading, busyId, runAction, fetchReceipt } = useRelayCards(onRefresh);
+  const [receiptModal, setReceiptModal] = useState<Record<string, unknown> | null>(null);
+
+  return (
+    <RelayCardSurface
+      cards={cards}
+      loading={loading}
+      busy={busyId !== null}
+      onAction={async (cardId, action, cousin) => {
+        await runAction(cardId, action, cousin);
+      }}
+      onOpenReceipt={(card) => {
+        if (!card.packetId) return;
+        void fetchReceipt(card.packetId).then((r) => r && setReceiptModal(r));
+      }}
+      receiptModal={receiptModal}
+      onCloseReceipt={() => setReceiptModal(null)}
+    />
   );
 }
 
@@ -238,7 +406,7 @@ export function MobileReceiptList({ entries }: { entries: ReceiptCenterEntry[] }
         <span className="sd-mfc-receipts__count">{entries.length}</span>
       </div>
       {list.length === 0 ? (
-        <p className="sd-mfc-receipts__empty">No receipts yet — fire a card or use Hands.</p>
+        <p className="sd-mfc-receipts__empty">No receipts yet — fire a relay card or dispatch frontier.</p>
       ) : (
         <ul className="sd-mfc-receipts__list">
           {list.map((entry) => (

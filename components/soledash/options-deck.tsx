@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 
 import type { DecisionButton, FrontierQueueItem, Proposal } from "@/protocol/index";
 import { cardButtons } from "@/lib/soledash/options-deck/card-actions";
-import { buildCompanyOptions, verbLabel, type OptionVerb } from "@/lib/soledash/options-deck/build-options";
+import { buildCompanyOptions, verbLabel } from "@/lib/soledash/options-deck/build-options";
+import type { OptionVerb } from "@/lib/soledash/options-deck/types";
 import { salvoAllowed } from "@/lib/soledash/options-deck/conflicts";
-import { lifecycleLabel } from "@/lib/soledash/options-deck/lifecycle";
+import { isActionableDeckCard } from "@/lib/soledash/options-deck/filter-cards";
+import { cardTypeLabel, isTerminalDeckState, lifecycleLabel } from "@/lib/soledash/options-deck/lifecycle";
 import type {
   CompanyOption,
   OptionBoardState,
@@ -19,7 +21,6 @@ import { COUSIN_TARGETS, type OperatorCousinTarget } from "@/lib/soledash/option
 const SALVO_VERBS: OptionVerb[] = [
   "dispatch",
   "yea",
-  "nay",
   "needs_research",
   "kill_test",
   "human_reality",
@@ -115,9 +116,25 @@ export function OptionsDeck({
     return () => clearInterval(timer);
   }, []);
 
-  const selectedOptions = options.filter((o) => selected.has(o.id));
-  const salvoCheck = salvoAllowed(selectedOptions, options);
-  const attentionWeight = options
+  const activeOptions = useMemo(() => {
+    return options.filter((o) => {
+      if (!isActionableDeckCard(o)) return false;
+      const lifecycle = boardStates[o.id]?.lifecycle ?? "proposed";
+      return !isTerminalDeckState(lifecycle);
+    });
+  }, [options, boardStates]);
+
+  const historyOptions = useMemo(() => {
+    return options.filter((o) => {
+      if (!isActionableDeckCard(o)) return false;
+      const lifecycle = boardStates[o.id]?.lifecycle ?? "proposed";
+      return isTerminalDeckState(lifecycle);
+    });
+  }, [options, boardStates]);
+
+  const selectedOptions = activeOptions.filter((o) => selected.has(o.id));
+  const salvoCheck = salvoAllowed(selectedOptions, activeOptions, salvoVerb);
+  const attentionWeight = activeOptions
     .filter((o) => boardStates[o.id]?.lifecycle === "proposed" && o.score != null)
     .reduce((sum, o) => sum + (o.score ?? 0), 0);
 
@@ -132,11 +149,11 @@ export function OptionsDeck({
 
   const allConflicts = useMemo(() => {
     const hints = new Set<string>();
-    for (const o of options) {
+    for (const o of activeOptions) {
       for (const h of o.conflictHints) hints.add(h);
     }
     return Array.from(hints);
-  }, [options]);
+  }, [activeOptions]);
 
   function toggle(id: string) {
     setSelected((prev) => {
@@ -147,7 +164,7 @@ export function OptionsDeck({
     });
   }
 
-  const visible = compact ? options.slice(0, 6) : options;
+  const visible = compact ? activeOptions.slice(0, 6) : activeOptions;
 
   return (
     <section className={`sx-deck ${compact ? "sx-deck--compact" : ""}`} aria-label="Company options market">
@@ -156,8 +173,7 @@ export function OptionsDeck({
           <p className="sx-deck__eyebrow">Starship Explode</p>
           <h2 className="sx-deck__title">{compact ? "Options market" : "Company options market"}</h2>
           <p className="sx-deck__hint">
-            Multiple real options · multi-fire when they do not conflict · board updates from receipts, not
-            expectations.
+            Intent proposals only · approve, reject, and route verbs on cards · outcomes move to history.
           </p>
         </div>
         <div className="sx-deck__arbitrage" aria-label="Opportunity cost">
@@ -259,6 +275,28 @@ export function OptionsDeck({
         ))}
       </div>
 
+      {!compact && historyOptions.length > 0 ? (
+        <div className="sx-deck__history" aria-label="Deck history">
+          <p className="sx-deck__history-label">History — not active deck</p>
+          <ul className="sx-deck__history-list">
+            {historyOptions.map((option) => {
+              const board = boardStates[option.id];
+              const lifecycle = board?.lifecycle ?? "proposed";
+              return (
+                <li key={option.id} className={`sx-deck__history-item sx-deck__history-item--${lifecycle}`}>
+                  <span className="sx-deck__history-code">{option.code}</span>
+                  <span className="sx-deck__history-title">{option.title}</span>
+                  <span className="sx-deck__history-state">{lifecycleLabel(lifecycle)}</span>
+                  {board?.actualResult ? (
+                    <span className="sx-deck__history-detail">{board.actualResult}</span>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+
       {!compact ? <ReactionFeed entries={reactions} /> : null}
     </section>
   );
@@ -295,11 +333,12 @@ function OptionCard({
             type="checkbox"
             checked={selected}
             disabled={!option.enabled || busy || lifecycle !== "proposed"}
-            title={lifecycle !== "proposed" ? "Already fired — cannot multi-select" : undefined}
+            title={lifecycle !== "proposed" ? "Already acted on — cannot multi-select" : undefined}
             onChange={onToggle}
           />
           <span className="sx-card__code">{option.code}</span>
         </label>
+        <span className="sx-card__type">{cardTypeLabel(option.cardType)}</span>
         <span className={`sx-card__lifecycle sx-card__lifecycle--${lifecycle}`}>{lifecycleLabel(lifecycle)}</span>
       </div>
 

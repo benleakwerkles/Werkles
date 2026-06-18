@@ -10,21 +10,36 @@ export type OptionVerb =
   | "make_frontier"
   | "hold";
 
-/** Implementation truth — not theatrical */
+/** Actionable deck card types — not decision outcomes */
+export type DeckCardType =
+  | "intent_proposal"
+  | "relay_task"
+  | "human_gate"
+  | "receipt"
+  | "blocker"
+  | "contradiction_warning"
+  | "resource_conflict"
+  | "focus_theft_incident";
+
+/** Card state — NAY/REJECT is a state, never a card */
 export type OptionLifecycleState =
   | "proposed"
+  | "approved"
+  | "rejected"
+  | "needs_research"
+  | "kill_test"
   | "fired"
   | "working"
   | "blocked"
-  | "returned"
+  | "receipt_returned"
   | "exploded"
-  | "escaped";
+  | "parked";
 
 export type OptionRisk = "low" | "medium" | "high" | "unknown";
 
 export type CompanyOption = {
   id: string;
-  kind: "frontier" | "queue" | "route" | "play";
+  cardType: DeckCardType;
   code: string;
   title: string;
   summary: string | null;
@@ -42,9 +57,8 @@ export type CompanyOption = {
   isActiveFrontier: boolean;
   enabled: boolean;
   disabledReason: string | null;
-  /** Competing option ids */
+  frontierSlotId: string | null;
   conflictsWith: string[];
-  /** Human-readable tension lines */
   conflictHints: string[];
   consumesAgent: boolean;
   consumesFrontier: boolean;

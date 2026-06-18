@@ -1,0 +1,19 @@
+{
+  "id": "production_deploy_approval_prompt",
+  "origin": "swatter_inbox",
+  "source": "self-test-red",
+  "prompt": "production deploy approval prompt",
+  "received_at": "2026-06-17T07:56:48.925Z",
+  "decided_at": "2026-06-17T07:56:59.371Z",
+  "approval_class": "RED",
+  "candidate_id": "production_deploy",
+  "candidate_label": "production deploy",
+  "matched_pattern": "production deploy",
+  "hard_stop": true,
+  "reason": "Hard stop: production deploy. Ben must see this.",
+  "action": "SURFACED_TO_BEN",
+  "execution": null,
+  "decision_path": "foreman/soledash/approval-swatter-alpha/red/2026-06-17T07-56-59-371Z__red__production_deploy_approval_prompt.json",
+  "receipt_path": null,
+  "original_path": "foreman/soledash/approval-swatter-alpha/red/originals/2026-06-17T07-56-59-372Z__2026-06-17T07-56-48-925Z__production_deploy_approval_prompt.json"
+}

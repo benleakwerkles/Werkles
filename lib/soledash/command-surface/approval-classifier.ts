@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { lookupApprovalPolicy } from "./approval-policy";
 import type { ApprovalClassification, ApprovalVerdict } from "./types";
 
 const ROOT = process.cwd();
@@ -58,6 +59,10 @@ function hardStopBlocks(text: string): string[] {
   });
 }
 
+function hardStopMatches(text: string): string[] {
+  return hardStopBlocks(text).map((s) => s.slice(0, 40));
+}
+
 export function classifyApprovalAction(actionText: string): ApprovalClassification {
   const text = actionText.trim();
   const matchedSignals: string[] = [];
@@ -66,11 +71,19 @@ export function classifyApprovalAction(actionText: string): ApprovalClassificati
   if (!text) {
     return {
       verdict: "AMBIGUOUS",
+      approvalClass: null,
+      approvalPolicyId: null,
+      receiptRequired: false,
       confidence: "high",
-      reasons: ["Empty action — paste what the cousin or system is asking to do."],
+      reasons: ["Empty action - paste what the cousin or system is asking to do."],
       matchedSignals: [],
-      operatorLine: "AMBIGUOUS — no action text."
+      operatorLine: "AMBIGUOUS - no action text."
     };
+  }
+
+  const policy = lookupApprovalPolicy(text);
+  if (policy) {
+    matchedSignals.push(`policy:${policy.approvalClass}:${policy.candidateId}`);
   }
 
   for (const { re, label } of BLOCKED_PATTERNS) {
@@ -91,6 +104,9 @@ export function classifyApprovalAction(actionText: string): ApprovalClassificati
   const hasBlocked = matchedSignals.some((s) => s.startsWith("blocked:"));
   const hasGate = matchedSignals.some((s) => s.startsWith("gate:") || s.startsWith("hard_stop:"));
   const hasSafe = matchedSignals.some((s) => s.startsWith("safe:"));
+  const hasPolicyGreen = policy?.approvalClass === "GREEN";
+  const hasPolicyBlue = policy?.approvalClass === "BLUE";
+  const hasPolicyRed = policy?.approvalClass === "RED";
 
   let verdict: ApprovalVerdict;
   let confidence: ApprovalClassification["confidence"] = "medium";
@@ -99,36 +115,55 @@ export function classifyApprovalAction(actionText: string): ApprovalClassificati
     verdict = "BLOCKED";
     reasons.push("Action matches blocked or forbidden patterns.");
     confidence = "high";
-  } else if (hasGate && hasSafe) {
-    verdict = "AMBIGUOUS";
-    reasons.push("Mixed signals — both mechanical proof and human-gate triggers detected.");
-    confidence = "medium";
-  } else if (hasGate) {
+  } else if (hasPolicyRed || hasGate) {
     verdict = "TRUE_HUMAN_GATE";
-    reasons.push("Requires Ben approval per foreman/HUMAN_GATES.md.");
+    reasons.push(
+      hasPolicyRed && policy
+        ? `RED policy match: ${policy.candidateLabel}. Requires Ben approval every time.`
+        : "Requires Ben approval per foreman/HUMAN_GATES.md."
+    );
+    confidence = "high";
+  } else if (hasPolicyBlue && policy) {
+    verdict = "SAFE_MECHANICAL";
+    reasons.push(`BLUE policy match: ${policy.candidateLabel}. Execute and write receipt.`);
+    confidence = "high";
+  } else if (hasPolicyGreen && policy) {
+    verdict = "SAFE_MECHANICAL";
+    reasons.push(`GREEN policy match: ${policy.candidateLabel}. Execute automatically.`);
     confidence = "high";
   } else if (hasSafe) {
     verdict = "SAFE_MECHANICAL";
-    reasons.push("Routine technical proof inside approved scope — proceed without Operator gate.");
+    reasons.push("Routine technical proof inside approved scope - proceed without Operator gate.");
     confidence = matchedSignals.filter((s) => s.startsWith("safe:")).length > 1 ? "high" : "medium";
   } else {
     verdict = "AMBIGUOUS";
-    reasons.push("No strong match — check foreman/HUMAN_GATES.md before proceeding.");
+    reasons.push("No strong match - check foreman/HUMAN_GATES.md before proceeding.");
     confidence = "low";
   }
 
   const operatorLine =
-    verdict === "SAFE_MECHANICAL"
-      ? "PROCEED: not a human gate."
-      : verdict === "TRUE_HUMAN_GATE"
-        ? "STOP: HUMAN GATE."
-        : verdict === "BLOCKED"
-          ? "BLOCKED — do not proceed."
-          : "AMBIGUOUS — Operator review required.";
+    policy && verdict === "SAFE_MECHANICAL" && policy.approvalClass === "BLUE"
+      ? "PROCEED: BLUE approved class - execute and receipt."
+      : policy && verdict === "SAFE_MECHANICAL" && policy.approvalClass === "GREEN"
+        ? "PROCEED: GREEN approved class - execute automatically."
+        : policy && verdict === "TRUE_HUMAN_GATE" && policy.approvalClass === "RED"
+          ? "STOP: RED approved class requires Ben approval every time."
+          : verdict === "SAFE_MECHANICAL"
+            ? "PROCEED: not a human gate."
+            : verdict === "TRUE_HUMAN_GATE"
+              ? "STOP: HUMAN GATE."
+              : verdict === "BLOCKED"
+                ? "BLOCKED - do not proceed."
+                : "AMBIGUOUS - Operator review required.";
 
-  return { verdict, confidence, reasons, matchedSignals, operatorLine };
-}
-
-function hardStopMatches(text: string): string[] {
-  return hardStopBlocks(text).map((s) => s.slice(0, 40));
+  return {
+    verdict,
+    approvalClass: policy?.approvalClass ?? null,
+    approvalPolicyId: policy?.candidateId ?? null,
+    receiptRequired: policy?.receiptRequired ?? false,
+    confidence,
+    reasons,
+    matchedSignals,
+    operatorLine
+  };
 }

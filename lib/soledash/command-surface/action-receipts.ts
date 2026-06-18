@@ -19,6 +19,8 @@ export const ACTION_RECEIPTS_PATH = "foreman/soledash/ACTION_RECEIPTS.jsonl";
 export type ExecutionHint = {
   autoExecutable: boolean;
   verdict: ApprovalVerdict;
+  approvalClass: "GREEN" | "BLUE" | "RED" | null;
+  receiptRequired: boolean;
   reason: string | null;
 };
 
@@ -27,6 +29,8 @@ export function executionHintFor(missionText: string): ExecutionHint {
   return {
     autoExecutable: gate.verdict === "SAFE_MECHANICAL",
     verdict: gate.verdict,
+    approvalClass: gate.approvalClass,
+    receiptRequired: gate.receiptRequired,
     reason:
       gate.verdict === "TRUE_HUMAN_GATE" || gate.verdict === "BLOCKED"
         ? `${gate.operatorLine} ${gate.reasons.join(" ")}`.trim()

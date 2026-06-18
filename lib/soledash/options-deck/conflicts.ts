@@ -1,76 +1,57 @@
-import type { CompanyOption, ConflictReport } from "./types";
+import { conflictVerbs, pairResourceConflict } from "./resources";
+import type { CompanyOption, ConflictReport, OptionVerb } from "./types";
 
 function pairKey(a: string, b: string): string {
   return a < b ? `${a}|${b}` : `${b}|${a}`;
 }
 
-export function detectConflicts(options: CompanyOption[]): ConflictReport[] {
+function detectPairConflict(
+  a: CompanyOption,
+  b: CompanyOption,
+  salvoVerb?: OptionVerb
+): ConflictReport | null {
+  if (
+    a.cardType === "intent_proposal" &&
+    b.cardType === "intent_proposal" &&
+    !a.isActiveFrontier &&
+    !b.isActiveFrontier
+  ) {
+    return {
+      optionIds: [a.id, b.id],
+      kind: "frontier",
+      message: `Only one frontier — choosing ${a.code} defers ${b.code}.`
+    };
+  }
+
+  if (salvoVerb) {
+    const hit = pairResourceConflict(a, salvoVerb, b, salvoVerb);
+    return hit ? { optionIds: [a.id, b.id], ...hit } : null;
+  }
+
+  for (const verbA of conflictVerbs(a)) {
+    for (const verbB of conflictVerbs(b)) {
+      const hit = pairResourceConflict(a, verbA, b, verbB);
+      if (hit) return { optionIds: [a.id, b.id], ...hit };
+    }
+  }
+
+  return null;
+}
+
+export function detectConflicts(options: CompanyOption[], salvoVerb?: OptionVerb): ConflictReport[] {
   const reports: ConflictReport[] = [];
   const seen = new Set<string>();
-
-  function add(report: ConflictReport) {
-    const key = pairKey(report.optionIds[0], report.optionIds[1]);
-    if (seen.has(key)) return;
-    seen.add(key);
-    reports.push(report);
-  }
 
   for (let i = 0; i < options.length; i++) {
     for (let j = i + 1; j < options.length; j++) {
       const a = options[i];
       const b = options[j];
-
-      if (a.consumesAgent && b.consumesAgent && a.target === b.target) {
-        add({
-          optionIds: [a.id, b.id],
-          kind: "agent",
-          message: `Sending ${a.target} on “${shortTitle(a.title)}” delays “${shortTitle(b.title)}”.`
-        });
-      }
-
-      if (a.consumesFrontier && b.consumesFrontier) {
-        if (a.id.includes("yea") && b.id.includes("nay")) {
-          add({
-            optionIds: [a.id, b.id],
-            kind: "exclusive",
-            message: "YEA and NAY on the same frontier — pick one."
-          });
-        } else if (a.id.includes("nay") && b.id.includes("yea")) {
-          add({
-            optionIds: [a.id, b.id],
-            kind: "exclusive",
-            message: "YEA and NAY on the same frontier — pick one."
-          });
-        } else if (
-          a.kind === "queue" &&
-          b.kind === "queue" &&
-          !a.isActiveFrontier &&
-          !b.isActiveFrontier
-        ) {
-          add({
-            optionIds: [a.id, b.id],
-            kind: "frontier",
-            message: `Only one frontier — choosing ${a.code} defers ${b.code}.`
-          });
-        } else if (a.isActiveFrontier && b.isActiveFrontier && a.id !== b.id) {
-          add({
-            optionIds: [a.id, b.id],
-            kind: "frontier",
-            message: "Both compete for operator attention on the active frontier."
-          });
-        }
-      }
-
-      if (
-        (a.id.includes("kill_test") || b.id.includes("kill_test")) &&
-        (a.id.includes("yea") || b.id.includes("yea"))
-      ) {
-        add({
-          optionIds: [a.id, b.id],
-          kind: "exclusive",
-          message: "Kill test and YEA on the same lane — kill test may explode the frontier."
-        });
-      }
+      const hit = detectPairConflict(a, b, salvoVerb);
+      if (!hit) continue;
+      const key = pairKey(hit.optionIds[0], hit.optionIds[1]);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      reports.push(hit);
     }
   }
 
@@ -100,17 +81,20 @@ export function attachConflicts(options: CompanyOption[]): CompanyOption[] {
 
 export function selectionConflicts(
   selected: CompanyOption[],
-  all: CompanyOption[]
+  all: CompanyOption[],
+  salvoVerb?: OptionVerb
 ): ConflictReport[] {
   const ids = new Set(selected.map((s) => s.id));
-  return detectConflicts(all).filter((r) => ids.has(r.optionIds[0]) && ids.has(r.optionIds[1]));
+  return detectConflicts(all, salvoVerb).filter(
+    (r) => ids.has(r.optionIds[0]) && ids.has(r.optionIds[1])
+  );
 }
 
-function shortTitle(title: string): string {
-  return title.length > 36 ? `${title.slice(0, 34)}…` : title;
-}
-
-export function salvoAllowed(selected: CompanyOption[], all: CompanyOption[]): {
+export function salvoAllowed(
+  selected: CompanyOption[],
+  all: CompanyOption[],
+  salvoVerb?: OptionVerb
+): {
   allowed: boolean;
   conflicts: ConflictReport[];
   reason: string | null;
@@ -118,7 +102,7 @@ export function salvoAllowed(selected: CompanyOption[], all: CompanyOption[]): {
   if (selected.length <= 1) {
     return { allowed: true, conflicts: [], reason: null };
   }
-  const conflicts = selectionConflicts(selected, all);
+  const conflicts = selectionConflicts(selected, all, salvoVerb);
   if (conflicts.length === 0) {
     return { allowed: true, conflicts: [], reason: null };
   }

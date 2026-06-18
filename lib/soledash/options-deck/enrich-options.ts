@@ -32,26 +32,9 @@ function scoreToTimeCost(score: number | null): number {
 
 function expectedForQueue(item: FrontierQueueItem, isActive: boolean): string {
   if (isActive) {
-    return "YEA advances frontier · cousin dispatch + receipt on disk";
+    return "Approve advances frontier · cousin dispatch + receipt on disk";
   }
   return "Make frontier · defers current operator rank";
-}
-
-function expectedForVerb(verb: string, target: string): string {
-  switch (verb) {
-    case "needs_research":
-      return `Thufir research lane · handoff receipt`;
-    case "kill_test":
-      return `Bean kill test · may explode option if invalid`;
-    case "human_reality":
-      return `Ender human-reality check · gate if true stop`;
-    case "yea":
-      return "Frontier YEA · action + receipt files";
-    case "nay":
-      return "Frontier dropped · next queue item surfaces";
-    default:
-      return `Route to ${target}`;
-  }
 }
 
 export function enrichOption(
@@ -76,18 +59,13 @@ export function enrichOption(
 ): CompanyOption {
   const target = base.suggestedCousin;
   const evidence = ctx.evidenceStatus ?? "UNKNOWN";
-  const action =
-    base.kind === "route"
-      ? base.title
-      : base.isActiveFrontier
-        ? "Frontier decision"
-        : "Queue option";
+  const action = base.isActiveFrontier ? "Active frontier proposal" : "Queued intent proposal";
 
   let expectedResult = base.summary ?? "Operator dispatch";
-  if (base.kind === "queue") {
+  if (base.cardType === "intent_proposal") {
     expectedResult = expectedForQueue(
       {
-        proposal_id: base.id.replace("queue:", ""),
+        proposal_id: base.id.replace("proposal:", ""),
         title: base.title,
         rank: 0,
         evidence_status: evidence,
@@ -96,12 +74,6 @@ export function enrichOption(
       } as FrontierQueueItem,
       base.isActiveFrontier
     );
-  } else if (base.kind === "play") {
-    expectedResult = base.id.includes("nay")
-      ? expectedForVerb("nay", target)
-      : expectedForVerb("yea", target);
-  } else if (base.kind === "route") {
-    expectedResult = expectedForVerb(base.id.replace("route:", ""), target);
   }
 
   if (ctx.machineFrontierTitle && !base.isActiveFrontier && base.score != null && base.score >= 0.85) {
@@ -118,8 +90,9 @@ export function enrichOption(
     confidence: ctx.rationale?.confidence ?? evidenceToConfidence(evidence),
     conflictsWith: [],
     conflictHints: [],
-    consumesAgent: base.verbs.includes("dispatch") || base.verbs.includes("yea"),
-    consumesFrontier: base.isActiveFrontier || base.verbs.includes("make_frontier") || base.verbs.includes("yea")
+    frontierSlotId: base.frontierSlotId ?? null,
+    consumesAgent: base.verbs.some((v) => v === "dispatch" || v === "yea" || v === "make_frontier"),
+    consumesFrontier: base.verbs.some((v) => v === "yea" || v === "dispatch" || v === "nay" || v === "make_frontier")
   };
 }
 

@@ -10,6 +10,12 @@
     "typecheck": "tsc --noEmit",
     "relay:install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/foreman/install-relay-courier.ps1",
     "relay:self-test": "node scripts/foreman/relay-courier.mjs self-test",
+    "approval:watch": "node scripts/foreman/background-approval-swatter-alpha.mjs watch",
+    "approval:once": "node scripts/foreman/background-approval-swatter-alpha.mjs once",
+    "approval:self-test": "node scripts/foreman/background-approval-swatter-alpha.mjs self-test",
+    "shakespeare": "node scripts/foreman/shakespeare-v0.mjs classify",
+    "shakespeare:raw": "node scripts/foreman/shakespeare-v0.mjs raw",
+    "shakespeare:self-test": "node scripts/foreman/shakespeare-v0.mjs self-test",
     "AUTONOMOUS_ROUND_TRIP_TEST": "node scripts/foreman/autonomous-round-trip-test.mjs --execute",
     "AUTONOMOUS_ROUND_TRIP_SKYBRO": "node scripts/foreman/autonomous-round-trip-skybro.mjs --execute",
     "HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST": "node scripts/foreman/homepage-rewrite-discovery-smoke-test.mjs --execute",
@@ -22,7 +28,9 @@
     "gd:synthesize": "node foreman/gd-intent-router/gd-intent-router.mjs synthesize",
     "gd:runs": "node foreman/gd-intent-router/gd-intent-router.mjs runs",
     "gd:thread-refresh": "node foreman/gd-intent-router/gd-intent-router.mjs thread-refresh",
-    "gd:gimpdash": "node -e \"require('child_process').execSync('start http://127.0.0.1:4317/#gimpdash',{stdio:'inherit',shell:true})\""
+    "gd:gimpdash": "node -e \"require('child_process').execSync('start http://127.0.0.1:4317/#gimpdash',{stdio:'inherit',shell:true})\"",
+    "test:options-deck": "npx --yes tsx scripts/soledash/options-deck-conflicts-smoke.ts",
+    "test:human-gate": "npx --yes tsx scripts/soledash/human-gate-tiers-smoke.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

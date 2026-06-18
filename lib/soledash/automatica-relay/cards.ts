@@ -8,6 +8,7 @@ export const RELAY_CARDS: RelayCardDef[] = [
     targetComputer: "Spanzee",
     taskType: "remote_health_check",
     expectedReceipt: "Spanzee reachability + fleet slot sync receipt",
+    ARTIFACT_REQUIRED: true,
     routeKind: "spanzee_remote",
     cousin: null,
     missionText:
@@ -21,6 +22,7 @@ export const RELAY_CARDS: RelayCardDef[] = [
     targetComputer: "Betsy",
     taskType: "ui_cleanup",
     expectedReceipt: "Maker outbox packet + SoleDash receipt link",
+    ARTIFACT_REQUIRED: true,
     routeKind: "cousin_outbox",
     cousin: "MAKER",
     missionText:
@@ -34,6 +36,7 @@ export const RELAY_CARDS: RelayCardDef[] = [
     targetComputer: "Betsy (Edge)",
     taskType: "site_cleanup_audit",
     expectedReceipt: "Ender outbox packet + audit receipt path",
+    ARTIFACT_REQUIRED: true,
     routeKind: "cousin_outbox",
     cousin: "ENDER",
     missionText:
@@ -47,6 +50,7 @@ export const RELAY_CARDS: RelayCardDef[] = [
     targetComputer: "Betsy",
     taskType: "research_verdict",
     expectedReceipt: "Petra outbox packet + comptroller receipt",
+    ARTIFACT_REQUIRED: true,
     routeKind: "cousin_outbox",
     cousin: "PETRA",
     missionText:
@@ -60,6 +64,7 @@ export const RELAY_CARDS: RelayCardDef[] = [
     targetComputer: "Betsy",
     taskType: "grading_research",
     expectedReceipt: "Petra grading scope receipt + routing note",
+    ARTIFACT_REQUIRED: true,
     routeKind: "cousin_outbox",
     cousin: "PETRA",
     missionText:

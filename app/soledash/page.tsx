@@ -5,8 +5,8 @@ import { loadSoleDashData } from "@/lib/soledash/cockpit-data";
 import { buildMegaWorkHomeView } from "@/lib/soledash/megawork-home/build-view";
 
 export const metadata: Metadata = {
-  title: "Starship Explode | AEYE",
-  description: "MegaWork Home Cockpit — operator surface on Betsy.",
+  title: "SoleDash Command | AEYE",
+  description: "Guillotine command surface — frontier, working, receipts.",
   robots: { index: false, follow: false }
 };
 

@@ -7,7 +7,28 @@ export type RelayCardState =
   | "RECEIPT RETURNED"
   | "EXPLODED";
 
+export type {
+  RelayArtifact,
+  RelayArtifactGate,
+  RelayArtifactKind,
+  RelayCardNotes,
+  RelayReceiptStrip,
+  RelayCardActionKind,
+  RelayFailureContext,
+  RelayResultTranslation
+} from "./artifact-types";
+import type {
+  RelayArtifact,
+  RelayArtifactGate,
+  RelayCardNotes,
+  RelayReceiptStrip,
+  RelayFailureContext,
+  RelayResultTranslation
+} from "./artifact-types";
+
 export type RelayRouteKind = "cousin_outbox" | "petra_composer" | "spanzee_remote" | "none";
+
+export type RelayCardCousin = "MAKER" | "ENDER" | "PETRA" | "DINK" | "BEAN" | null;
 
 export type RelayCardId =
   | "spanzee_remote_check"
@@ -23,8 +44,9 @@ export type RelayCardDef = {
   targetComputer: string;
   taskType: string;
   expectedReceipt: string;
+  ARTIFACT_REQUIRED: boolean;
   routeKind: RelayRouteKind;
-  cousin: "MAKER" | "ENDER" | "PETRA" | "DINK" | null;
+  cousin: RelayCardCousin;
   missionText: string;
   nextActionReady: string;
 };
@@ -37,6 +59,7 @@ export type RelayPacket = {
   target: string;
   task: string;
   expected_receipt: string;
+  ARTIFACT_REQUIRED: boolean;
   status: RelayCardState;
   mission_text: string;
 };
@@ -55,8 +78,13 @@ export type RelayReceipt = {
   blocker: string | null;
   route_connected: boolean;
   error: string | null;
+  stdout?: string | null;
+  stderr?: string | null;
   next_action: string;
   next_missing_integration: string;
+  ARTIFACT_REQUIRED: boolean;
+  artifact_gate: RelayArtifactGate;
+  artifacts: RelayArtifact[];
 };
 
 export type RelayCardView = RelayCardDef & {
@@ -69,6 +97,18 @@ export type RelayCardView = RelayCardDef & {
   packetPath: string | null;
   receiptPath: string | null;
   live: boolean;
+  artifactGate: RelayArtifactGate;
+  /** Display owner — cousin override or target agent */
+  owner: string;
+  confidence: string;
+  /** Proof-first artifacts — inspect before notes */
+  artifacts: RelayArtifact[];
+  receipt: RelayReceiptStrip;
+  notes: RelayCardNotes;
+  /** Populated when the last run failed — gates retry until operator opens failure output */
+  failureContext: RelayFailureContext | null;
+  /** Plain-English read of the last run — raw paths collapsed underneath */
+  resultTranslation: RelayResultTranslation;
 };
 
 export type RelayFireResult = {

@@ -1,0 +1,78 @@
+{
+  "id": "mwb_local_restart_recovery",
+  "origin": "swatter_inbox",
+  "source": "self-test-blue",
+  "prompt": "MWB local restart recovery",
+  "received_at": "2026-06-17T07:56:48.924Z",
+  "decided_at": "2026-06-17T07:56:48.931Z",
+  "approval_class": "BLUE",
+  "candidate_id": "codex_mwb_local_restart_recovery",
+  "candidate_label": "Codex Mouse Without Borders local restart recovery",
+  "matched_pattern": "MWB local restart recovery",
+  "hard_stop": false,
+  "reason": "Registry BLUE: Codex Mouse Without Borders local restart recovery.",
+  "action": "AUTO_APPROVED_EXECUTED_RECEIPT",
+  "execution": {
+    "ok": true,
+    "executor": "codex_mwb_local_restart_recovery",
+    "command_summary": "Stop known MWB processes, relaunch known MWB executable, verify localhost 15100/15101.",
+    "parsed": {
+      "Exe": "C:\\Program Files (x86)\\Microsoft Garage\\Mouse without Borders\\MouseWithoutBorders.exe",
+      "Before": [
+        {
+          "Id": 5092,
+          "ProcessName": "MouseWithoutBorders",
+          "Path": null
+        },
+        {
+          "Id": 7724,
+          "ProcessName": "MouseWithoutBorders",
+          "Path": null
+        },
+        {
+          "Id": 28340,
+          "ProcessName": "MouseWithoutBordersHelper",
+          "Path": "C:\\Program Files (x86)\\Microsoft Garage\\Mouse without Borders\\MousewithoutBordersHelper.exe"
+        }
+      ],
+      "After": [
+        {
+          "Id": 5092,
+          "ProcessName": "MouseWithoutBorders",
+          "Path": null
+        },
+        {
+          "Id": 7724,
+          "ProcessName": "MouseWithoutBorders",
+          "Path": null
+        },
+        {
+          "Id": 35900,
+          "ProcessName": "MouseWithoutBordersHelper",
+          "Path": "C:\\Program Files (x86)\\Microsoft Garage\\Mouse without Borders\\MousewithoutBordersHelper.exe"
+        }
+      ],
+      "Ports": [
+        {
+          "Port": 15100,
+          "Open": true
+        },
+        {
+          "Port": 15101,
+          "Open": true
+        }
+      ]
+    },
+    "result": {
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "{\r\n    \"Exe\":  \"C:\\\\Program Files (x86)\\\\Microsoft Garage\\\\Mouse without Borders\\\\MouseWithoutBorders.exe\",\r\n    \"Before\":  [\r\n                   {\r\n                       \"Id\":  5092,\r\n                       \"ProcessName\":  \"MouseWithoutBorders\",\r\n                       \"Path\":  null\r\n                   },\r\n                   {\r\n                       \"Id\":  7724,\r\n                       \"ProcessName\":  \"MouseWithoutBorders\",\r\n                       \"Path\":  null\r\n                   },\r\n                   {\r\n                       \"Id\":  28340,\r\n                       \"ProcessName\":  \"MouseWithoutBordersHelper\",\r\n                       \"Path\":  \"C:\\\\Program Files (x86)\\\\Microsoft Garage\\\\Mouse without Borders\\\\MousewithoutBordersHelper.exe\"\r\n                   }\r\n               ],\r\n    \"After\":  [\r\n                  {\r\n                      \"Id\":  5092,\r\n                      \"ProcessName\":  \"MouseWithoutBorders\",\r\n                      \"Path\":  null\r\n                  },\r\n                  {\r\n                      \"Id\":  7724,\r\n                      \"ProcessName\":  \"MouseWithoutBorders\",\r\n                      \"Path\":  null\r\n                  },\r\n                  {\r\n                      \"Id\":  35900,\r\n                      \"ProcessName\":  \"MouseWithoutBordersHelper\",\r\n                      \"Path\":  \"C:\\\\Program Files (x86)\\\\Microsoft Garage\\\\Mouse without Borders\\\\MousewithoutBordersHelper.exe\"\r\n                  }\r\n              ],\r\n    \"Ports\":  [\r\n                  {\r\n                      \"Port\":  15100,\r\n                      \"Open\":  true\r\n                  },\r\n                  {\r\n                      \"Port\":  15101,\r\n                      \"Open\":  true\r\n                  }\r\n              ]\r\n}\r\n",
+      "stderr": ""
+    },
+    "blocker": null
+  },
+  "decision_path": "foreman/soledash/approval-swatter-alpha/processed/2026-06-17T07-56-59-367Z__blue__mwb_local_restart_recovery.json",
+  "receipt_path": "foreman/soledash/approval-swatter-alpha/receipts/2026-06-17T07-56-59-368Z__blue__mwb_local_restart_recovery.json",
+  "original_path": "foreman/soledash/approval-swatter-alpha/processed/originals/2026-06-17T07-56-59-369Z__2026-06-17T07-56-48-924Z__mwb_local_restart_recovery.json"
+}

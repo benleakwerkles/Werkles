@@ -1,4 +1,5 @@
 export type ApprovalVerdict = "SAFE_MECHANICAL" | "TRUE_HUMAN_GATE" | "BLOCKED" | "AMBIGUOUS";
+export type ApprovalPolicyClass = "GREEN" | "BLUE" | "RED";
 
 export type CousinId =
   | "MAKER"
@@ -72,6 +73,9 @@ export type MissionPacket = {
 
 export type ApprovalClassification = {
   verdict: ApprovalVerdict;
+  approvalClass: ApprovalPolicyClass | null;
+  approvalPolicyId: string | null;
+  receiptRequired: boolean;
   confidence: "high" | "medium" | "low";
   reasons: string[];
   matchedSignals: string[];

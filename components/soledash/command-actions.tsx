@@ -1,7 +1,10 @@
 "use client";
 
 import type { DecisionButton } from "@/protocol/index";
-import { GuardedYeaNay } from "@/components/soledash/ambient-command-layers";
+import { DirectYeaNay } from "@/components/soledash/ambient-command-layers";
+import { ProvenanceLabel } from "@/components/soledash/provenance-label";
+import type { GateTier } from "@/lib/soledash/human-gate/types";
+import type { Provenance } from "@/lib/soledash/provenance/types";
 
 function buttonVariant(slot: DecisionButton): string {
   switch (slot.id) {
@@ -57,27 +60,27 @@ function RouteButton({
 export function CommandActionsPanel({
   busy,
   activeAction,
-  yeaPendingConfirm,
+  gateTier,
   routeButtons,
   unavailable,
   onYeaClick,
-  onYeaConfirm,
-  onYeaCancel,
   onNay,
   onRouteAction,
-  onSendPacket
+  onSendPacket,
+  hidePacket = false,
+  provenance
 }: {
   busy: boolean;
   activeAction: string | null;
-  yeaPendingConfirm: boolean;
+  gateTier: GateTier;
   routeButtons: DecisionButton[];
   unavailable: boolean;
   onYeaClick: () => void;
-  onYeaConfirm: () => void;
-  onYeaCancel: () => void;
   onNay: () => void;
   onRouteAction: (actionId: string, routeOwner: string | null) => void;
   onSendPacket: () => void;
+  hidePacket?: boolean;
+  provenance?: Provenance;
 }) {
   const packetDisabled = unavailable;
   const packetReason = unavailable ? "Live payload unavailable" : null;
@@ -85,17 +88,19 @@ export function CommandActionsPanel({
   return (
     <section className="sd-cmd-actions" aria-label="Command actions">
       <p className="sd-cmd-actions__label">Command</p>
-      <div className="sd-cmd-actions__approve" aria-label="Approve or reject">
-        <GuardedYeaNay
-          busy={busy}
-          activeAction={activeAction}
-          yeaPendingConfirm={yeaPendingConfirm}
-          onYeaClick={onYeaClick}
-          onYeaConfirm={onYeaConfirm}
-          onYeaCancel={onYeaCancel}
-          onNay={onNay}
-        />
-      </div>
+      {provenance ? <ProvenanceLabel provenance={provenance} compact className="sd-cmd-actions__prov" /> : null}
+      {gateTier === "red" ? null : (
+        <div className="sd-cmd-actions__approve" aria-label="Approve or reject">
+          {gateTier === "green" ? (
+            <DirectYeaNay busy={busy} activeAction={activeAction} onYea={onYeaClick} onNay={onNay} />
+          ) : (
+            <>
+              <DirectYeaNay busy={busy} activeAction={activeAction} onYea={onYeaClick} onNay={onNay} />
+              <p className="sd-cmd-actions__blue-hint">Receipt appears after execution — no pre-approval card.</p>
+            </>
+          )}
+        </div>
+      )}
 
       <div className="sd-cmd-actions__routes" aria-label="Route to cousin">
         {routeButtons.map((slot) => (
@@ -115,20 +120,22 @@ export function CommandActionsPanel({
         </p>
       ) : null}
 
-      <div className="sd-cmd-actions__packet">
-        <button
-          type="button"
-          className="fm-btn fm-btn--accent"
-          disabled={busy || packetDisabled}
-          title={packetReason ?? "Focus operator bar — enter text and pick a cousin"}
-          onClick={onSendPacket}
-        >
-          Send packet
-        </button>
-        <p className="sd-cmd-actions__packet-hint">
-          Enter text in the operator bar, then Send to Maker / Dink / Ender / Bean / Thufir / Skybro.
-        </p>
-      </div>
+      {!hidePacket ? (
+        <div className="sd-cmd-actions__packet">
+          <button
+            type="button"
+            className="fm-btn fm-btn--accent"
+            disabled={busy || packetDisabled}
+            title={packetReason ?? "Focus operator bar — enter text and pick a cousin"}
+            onClick={onSendPacket}
+          >
+            Send packet
+          </button>
+          <p className="sd-cmd-actions__packet-hint">
+            Enter text in the operator bar, then Send to Maker / Dink / Ender / Bean / Thufir / Skybro.
+          </p>
+        </div>
+      ) : null}
     </section>
   );
 }

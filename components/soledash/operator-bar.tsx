@@ -63,13 +63,15 @@ export function OperatorBar({
           </span>
         </div>
 
-        <div
-          className={`sd-operator-bar__chip sd-operator-bar__chip--gates ${waitingGatesCount > 0 ? "sd-operator-bar__chip--alert" : ""}`}
-          title={waitingGatesHint ?? undefined}
-        >
-          <span className="sd-operator-bar__chip-label">Waiting gates</span>
-          <span className="sd-operator-bar__chip-num">{waitingGatesCount}</span>
-        </div>
+        {waitingGatesCount > 0 ? (
+          <div
+            className="sd-operator-bar__chip sd-operator-bar__chip--gates sd-operator-bar__chip--alert"
+            title={waitingGatesHint ?? undefined}
+          >
+            <span className="sd-operator-bar__chip-label">Waiting gates</span>
+            <span className="sd-operator-bar__chip-num">{waitingGatesCount}</span>
+          </div>
+        ) : null}
 
         <div className={`sd-operator-bar__dispatch sd-operator-bar__dispatch--${dispatchStatus.tone}`}>
           <span className="sd-operator-bar__dispatch-label">Dispatch</span>

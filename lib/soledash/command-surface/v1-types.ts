@@ -88,6 +88,8 @@ export type ActionReceipt = {
 export type ExecutionHintView = {
   autoExecutable: boolean;
   verdict: ApprovalVerdict;
+  approvalClass?: "GREEN" | "BLUE" | "RED" | null;
+  receiptRequired?: boolean;
   reason: string | null;
 };
 

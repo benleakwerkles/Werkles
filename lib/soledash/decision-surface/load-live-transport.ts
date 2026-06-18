@@ -52,7 +52,7 @@ function sortByUpdatedAt<T extends { updated_at: string }>(items: T[]): T[] {
 
 export function loadTransportReceipts(surfaceMock: boolean): ReceiptCenterEntry[] {
   const files = listJsonFiles(RECEIPTS_DIR);
-  const parsed: TransportReceiptFile[] = [];
+  const parsed: Array<TransportReceiptFile & { mock_test?: boolean }> = [];
 
   for (const file of files) {
     const raw = readJsonFile<TransportReceiptFile>(file);

@@ -9,7 +9,6 @@ import type {
   DecisionReceipt,
   DecisionSurfaceView,
   FrontierQueueItem,
-  HumanGate,
   MegaWorkHomeView,
   MockTestFailureMode,
   MockTestResult,
@@ -54,13 +53,20 @@ import {
 } from "@/components/soledash/megawork-home-panels";
 import { CommandActionsPanel } from "@/components/soledash/command-actions";
 import { OperatorBar, type DispatchStatus, type OperatorCousinTarget } from "@/components/soledash/operator-bar";
-import { PetraEmptyLinkFire } from "@/components/soledash/petra-empty-link-fire";
-import { AutomaticaRelayGrid } from "@/components/soledash/automatica-relay-grid";
+import { SoleDashHome } from "@/components/soledash/sole-dash-home";
+import { IntentRouterPanel } from "@/components/soledash/intent-router-panel";
+import { FocusTheftReportCard } from "@/components/soledash/focus-theft-report-card";
+import { PermissionFlyPanel } from "@/components/soledash/permission-fly-panel";
+import { DispatchMatrixPanel } from "@/components/soledash/dispatch-matrix-panel";
+import { WisdomWatcherPanel } from "@/components/soledash/wisdom-watcher-panel";
+import { IntentMemoryPanelView } from "@/components/soledash/intent-memory-panel";
+import { HumanGatePanel } from "@/components/soledash/human-gate-panel";
+import { MobileSdSurface } from "@/components/soledash/mobile-sd-surface";
+import { resolveHumanGate } from "@/lib/soledash/human-gate/tiers";
+import type { IntentMemoryPanel } from "@/lib/soledash/intent-memory/types";
 import {
-  MobileFrontierPanel,
-  MobileHandsPanel,
-  MobileReceiptList
-} from "@/components/soledash/mobile-field-command";
+  MobileOperatorStrip
+} from "@/components/soledash/mobile-operator-strip";
 import { MockTestBanner, MockTestHarness } from "@/components/soledash/mock-test-harness";
 import {
   executeMockTest,
@@ -262,26 +268,6 @@ function ExpandWhyPanel({ rationale }: { rationale: Rationale }) {
   );
 }
 
-function HumanGateDetail({ gate }: { gate: HumanGate }) {
-  const slug = gate.classification.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-
-  return (
-    <div className={`ds-gate ds-gate--${slug}`}>
-      <p className="ds-gate__prompt">{gate.operator_prompt}</p>
-      <p className="ds-gate__class">{gate.classification}</p>
-      <p className="ds-gate__line">{gate.operator_line}</p>
-      {gate.detail ? <p className="ds-gate__detail">{gate.detail}</p> : null}
-      {gate.transport_gap ? (
-        <div className="ds-gap">
-          <p className="ds-gap__line">{gate.transport_gap.headline}</p>
-          <p className="ds-gap__detail">{gate.transport_gap.reason}</p>
-          {gate.transport_gap.manual_step ? <p className="ds-gap__step">{gate.transport_gap.manual_step}</p> : null}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
 function ReceiptBlock({ receipt, mock }: { receipt: DecisionReceipt; mock?: boolean }) {
   if (!receipt.last_action && !receipt.outcome && !receipt.next_state) {
     return null;
@@ -437,7 +423,6 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
   const [busy, setBusy] = useState(false);
   const [activeAction, setActiveAction] = useState<string | null>(null);
   const [whyOpen, setWhyOpen] = useState(false);
-  const [gateOpen, setGateOpen] = useState(false);
   const [receiptSearch, setReceiptSearch] = useState("");
   const [fleet, setFleet] = useState(homeView?.fleet ?? []);
   const [fleetStateLoaded, setFleetStateLoaded] = useState(false);
@@ -457,7 +442,6 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
   const [commandOpen, setCommandOpen] = useState(false);
   const [leavePointOpen, setLeavePointOpen] = useState(false);
   const [leavePoints, setLeavePoints] = useState<LeavePointEntry[]>([]);
-  const [yeaPendingConfirm, setYeaPendingConfirm] = useState(false);
   const [mockFailureMode, setMockFailureMode] = useState<MockTestFailureMode>("success");
   const [lastMockTest, setLastMockTest] = useState<MockTestResult | null>(() => loadLastMockTest());
   const [sessionReceipts, setSessionReceipts] = useState<ReceiptCenterEntry[]>([]);
@@ -471,6 +455,7 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
   const [salvoSlots, setSalvoSlots] = useState<SalvoSlot[]>([]);
   const [reactions, setReactions] = useState<ReactionEntry[]>([]);
   const [optionBoardStates, setOptionBoardStates] = useState<Record<string, OptionBoardState>>({});
+  const [intentMemoryPanel, setIntentMemoryPanel] = useState<IntentMemoryPanel | null>(null);
   const knownReceiptKeysRef = useRef<Set<string>>(new Set());
   const mobileHandReasonRef = useRef("");
   const operatorBarInputRef = useRef<HTMLTextAreaElement>(null);
@@ -615,7 +600,6 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
           onDecisionReceipt: setReceipt
         });
         if (route === "hands_gate") {
-          setGateOpen(true);
           gateSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         }
         setTimeout(() => void refresh(), 600);
@@ -625,7 +609,6 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
       } finally {
         setBusy(false);
         setActiveAction(null);
-        setYeaPendingConfirm(false);
       }
     })();
   }
@@ -683,13 +666,11 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
     setLeavePoints(next);
     setLeavePointOpen(false);
     setCommandOpen(false);
-    setYeaPendingConfirm(false);
   }
 
   function skipLeavePoint() {
     setLeavePointOpen(false);
     setCommandOpen(false);
-    setYeaPendingConfirm(false);
   }
 
   function focusOperatorBar() {
@@ -761,7 +742,7 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
     }
 
     if (verb === "make_frontier") {
-      const proposalId = option.id.replace(/^queue:/, "");
+      const proposalId = option.id.replace(/^proposal:/, "");
       if (!proposalId.startsWith("prop_")) {
         return { ok: false, detail: "Invalid queue option", tone: "bad" };
       }
@@ -777,11 +758,11 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
     }
 
     if (verb === "yea") {
-      if (yeaPendingConfirm) {
-        return { ok: false, detail: "YEA confirm already open", tone: "bad" };
+      if (gateResolution.tier === "red") {
+        return { ok: false, detail: "Use RED Human Gate card to approve", tone: "warn" };
       }
-      handleGuardedYea();
-      return { ok: true, detail: "YEA confirm armed", tone: "warn" };
+      runAction("yea");
+      return { ok: true, detail: "YEA dispatched", tone: "ok" };
     }
 
     const actionId =
@@ -826,9 +807,9 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
           const existing = next[compId];
           if (existing && existing.lifecycle !== "proposed") continue;
           next[compId] = {
-            lifecycle: "escaped",
-            expectedResult: existing?.expectedResult ?? "Competing option",
-            actualResult: `Deferred — ${option.code} fired first`,
+            lifecycle: "parked",
+            expectedResult: existing?.expectedResult ?? "Competing proposal",
+            actualResult: `Parked — ${option.code} advanced first`,
             firedVerb: null,
             firedAt: null,
             dimmedReason: option.conflictHints[0] ?? `Choosing ${option.code} changed this option's odds`
@@ -878,9 +859,13 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
         receiptHint: null
       });
       pushReaction(
-        result.ok ? `${verbLabelFromVerb(verb)} · ${option.code}` : `Failed · ${option.code}`,
+        verb === "nay" && result.ok
+          ? `Rejected · ${option.code}`
+          : result.ok
+            ? `${verbLabelFromVerb(verb)} · ${option.code}`
+            : `Failed · ${option.code}`,
         result.detail,
-        result.tone === "bad" ? "bad" : result.tone === "warn" ? "warn" : "ok",
+        verb === "nay" && result.ok ? "info" : result.tone === "bad" ? "bad" : result.tone === "warn" ? "warn" : "ok",
         "salvo"
       );
       setDispatchStatus({
@@ -908,7 +893,8 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
         unavailable,
         rationale: payload.rationale ?? null,
         machineFrontierTitle: machineFrontier?.title ?? null
-      })
+      }),
+      verb
     );
     if (!gate.allowed) {
       pushReaction("Salvo blocked", gate.reason ?? "Conflicting selection", "bad", "salvo");
@@ -1029,16 +1015,11 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
     }
   }
 
-  function handleGuardedYea(reason?: string) {
+  function handleFrontierYea(reason?: string) {
     if (reason !== undefined) mobileHandReasonRef.current = reason;
-    setYeaPendingConfirm(true);
-  }
-
-  function handleYeaConfirm() {
-    setYeaPendingConfirm(false);
     const note = mobileHandReasonRef.current;
     mobileHandReasonRef.current = "";
-    runAction("yea", null, note);
+    runAction("yea", null, note || reason);
   }
 
   async function sendToPetra() {
@@ -1079,29 +1060,36 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
       ...prev,
       { entry_type: "message", message: { role: "operator", text, at } }
     ]);
-    setChatInput("");
     setBusy(true);
     setChatSubmitting(true);
-    setDispatchStatus({ label: "Sending intent…", detail: null, tone: "busy" });
+    setDispatchStatus({ label: "Reading intent memory…", detail: null, tone: "busy" });
 
     try {
-      const res = await fetch("/api/soledash/v1/decision-surface/chat", {
+      openCommand();
+      const res = await fetch("/api/soledash/v1/intent-memory", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, proposal_id: proposal?.id ?? null })
       });
       const data = await res.json();
-      if (data.entry) setChatEntries((prev) => [...prev, data.entry]);
-      if (data.decision_receipt) setReceipt(data.decision_receipt);
-      setDispatchStatus({
-        label: "Intent logged",
-        detail: data.decision_receipt?.outcome ?? "Chat transport complete",
-        tone: "ok"
-      });
-      await refresh();
+      if (data.panel) {
+        setIntentMemoryPanel(data.panel as IntentMemoryPanel);
+        setChatInput("");
+        setDispatchStatus({
+          label: "Intent Memory ready",
+          detail: "Review context, then CONTINUE to dispatch",
+          tone: "ok"
+        });
+      } else {
+        setDispatchStatus({
+          label: "Intent memory failed",
+          detail: data.error ?? "Could not interpret intent",
+          tone: "bad"
+        });
+      }
     } catch (err) {
       setDispatchStatus({
-        label: "Chat failed",
+        label: "Intent memory failed",
         detail: err instanceof Error ? err.message : "Network error",
         tone: "bad"
       });
@@ -1110,6 +1098,16 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
       setChatSubmitting(false);
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
+  }
+
+  function handleIntentMemoryDone(detail: string, ok: boolean) {
+    setIntentMemoryPanel(null);
+    setDispatchStatus({
+      label: ok ? "Intent dispatched" : "Intent blocked",
+      detail,
+      tone: ok ? "ok" : "bad"
+    });
+    if (ok) void refresh();
   }
 
   const decideButtons = payload.decision.buttons
@@ -1140,17 +1138,15 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
     for (const entry of mergedReceipts) {
       const key = entry.receipt_link ?? `${entry.action_id}:${entry.last_update}:${entry.target}`;
       if (!prev.has(key)) {
-        setReactions((r) => [
-          {
-            id: `rx_${key}`,
-            at: entry.last_update,
-            headline: entry.status,
-            detail: entry.target,
-            tone: entry.simulated || entry.mock ? "warn" : "ok",
-            source: "receipt"
-          },
-          ...r
-        ].slice(0, 12));
+        const reaction: ReactionEntry = {
+          id: `rx_${key}`,
+          at: entry.last_update,
+          headline: entry.status,
+          detail: entry.target,
+          tone: entry.simulated || entry.mock ? "warn" : "ok",
+          source: "receipt"
+        };
+        setReactions((r) => [reaction, ...r].slice(0, 12));
 
         setOptionBoardStates((states) => {
           const next = { ...states };
@@ -1194,19 +1190,19 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
     Boolean(blocker.headline && !blocker.headline.includes("No current_blocker")) ||
     payload.thread_health.status.toLowerCase().includes("block");
 
+  const gateResolution = resolveHumanGate(payload.human_gate, {
+    mockMode,
+    showMockTest: showMockTestMode
+  });
+
   function countWaitingHumanGates(): { count: number; hint: string | null } {
-    const gate = payload.human_gate;
-    const cls = gate.classification.toLowerCase();
-    const waiting =
-      Boolean(gate.transport_gap) ||
-      cls.includes("human_gate") ||
-      cls.includes("red") ||
-      cls.includes("waiting") ||
-      cls.includes("stop");
-    if (waiting) {
-      return { count: 1, hint: gate.operator_line ?? gate.operator_prompt };
+    if (gateResolution.tier !== "red" || !gateResolution.redCard) {
+      return { count: 0, hint: null };
     }
-    return { count: 0, hint: gate.operator_line };
+    return {
+      count: 1,
+      hint: gateResolution.redCard.consequence ?? gateResolution.gate.operator_line
+    };
   }
 
   const waitingGates = countWaitingHumanGates();
@@ -1215,557 +1211,41 @@ export function DecisionSurface({ initialView, homeView = null }: DecisionSurfac
   const chatDisabled = unavailable;
   const chatDisabledReason = unavailable ? "Live payload unavailable" : null;
 
-  const optionsDeckProps = {
-    queue,
-    proposal,
-    routeButtons,
-    unavailable,
-    chatDraft: chatInput,
-    pollSeconds: POLL_MS / 1000,
-    lastRefresh,
-    salvoSlots,
-    reactions,
-    boardStates: optionBoardStates,
-    rationale: payload.rationale ?? null,
-    machineFrontierTitle: machineFrontier?.title ?? null,
-    busy,
-    onFireOption: (option: CompanyOption, verb: OptionVerb, target: OperatorCousinTarget) =>
-      void fireOption(option, verb, target),
-    onFireSalvo: (options: CompanyOption[], verb: OptionVerb, target: OperatorCousinTarget) =>
-      void fireSalvo(options, verb, target)
-  };
-
   return (
-    <div className={`fm-root ${isHome ? "mw-home mw-ambient-command mw-with-operator-bar" : ""}`}>
-      {!isHome ? (
-        <CurrentRealityBanner
-          mode={realityMode}
-          detail={realityModeDetail(realityMode, payload)}
-        />
-      ) : null}
-
+    <div className={`fm-root ${isHome ? "mw-home sd-guillotine-root-wrap" : ""}`}>
       {isHome && homeView ? (
-        <div className="mw-shell">
-          {leavePointOpen ? (
-            <LeavePointTracker
-              open
-              onSubmit={finishLeavePoint}
-              onSkip={skipLeavePoint}
-            />
-          ) : !commandOpen ? (
-            <>
-              <AmbientLayer
-                mission={homeView.current_mission}
-                realityMode={realityMode}
-                proposal={proposal}
-                frontier={frontier}
-                fleet={fleet.length ? fleet : homeView.fleet}
-                receiptCount={mergedReceipts.length}
-                queueCount={queue.length}
-                hasBlocker={hasBlocker}
-                blockerHeadline={hasBlocker ? blocker.headline : null}
-                postureTone={posture.tone}
-                onOpenCommand={openCommand}
-                leavePoints={leavePoints}
-                refreshing={refreshing}
-                onRefresh={() => void refresh()}
-              />
-              <div className="sd-mobile-hide">
-                <OptionsDeck compact {...optionsDeckProps} />
-              </div>
-            </>
-          ) : (
-            <CommandLayerShell onReturnToPorch={requestReturnToPorch}>
-              {showMockTestMode ? <MockTestBanner show /> : null}
-
-              <div className="sd-mobile-only">
-                <MobileFrontierPanel
-                  frontierCode={operatorFrontierCode}
-                  frontierTitle={operatorFrontierTitle}
-                  proposalSummary={proposal?.summary ?? null}
-                  waitingGatesCount={waitingGates.count}
-                  waitingGatesHint={waitingGates.hint}
-                  blockerHeadline={hasBlocker ? blocker.headline : null}
-                  humanGate={payload.human_gate}
-                  reactions={reactions}
-                />
-
-                <MobileHandsPanel
-                  humanGate={payload.human_gate}
-                  busy={busy}
-                  activeAction={activeAction}
-                  yeaPendingConfirm={yeaPendingConfirm}
-                  routeButtons={routeButtons}
-                  unavailable={unavailable}
-                  onApprove={(reason) => handleGuardedYea(reason)}
-                  onReject={(reason) => runAction("nay", null, reason)}
-                  onNeedsResearch={(reason) => runAction("needs_research", null, reason)}
-                  onKillTest={(reason) => runAction("kill_test", null, reason)}
-                  onYeaConfirm={(reason) => {
-                    mobileHandReasonRef.current = reason;
-                    handleYeaConfirm();
-                  }}
-                  onYeaCancel={() => {
-                    mobileHandReasonRef.current = "";
-                    setYeaPendingConfirm(false);
-                  }}
-                />
-              </div>
-
-              <div className="sd-mobile-hide">
-                <FleetRow
-                  fleet={fleet.length ? fleet : homeView.fleet}
-                  fleetStateLoaded={fleetStateLoaded}
-                />
-              </div>
-
-              {unavailable ? (
-                <section className="fm-unavailable" aria-label="Live payload unavailable">
-                  <h2 className="fm-unavailable__title">LIVE PAYLOAD UNAVAILABLE</h2>
-                  <p className="fm-unavailable__detail">{view.load_error ?? payload.human_gate.detail}</p>
-                </section>
-              ) : null}
-
-              <div className="sd-mobile-hide">
-                <CurrentBlockerPanel blocker={blocker} dataLive={dataLive && !unavailable} />
-              </div>
-
-              <AutomaticaRelayGrid onRefresh={refresh} />
-
-              <div className="sd-mobile-only">
-                <MobileReceiptList entries={mergedReceipts} />
-              </div>
-
-              <div className="sd-mobile-hide">
-                <OptionsDeck {...optionsDeckProps} />
-              </div>
-
-              <section className="fm-frontier fm-frontier--command sd-mobile-hide" aria-label="Single frontier">
-                <div className="fm-frontier__head">
-                  <p className="fm-frontier__label">Frontier</p>
-                  <HonestyBadge live={dataLive && !unavailable} compact />
-                  <span className={`sd-cmd-reality sd-cmd-reality--${realityMode.toLowerCase().replace(/\s+/g, "-")}`}>
-                    {realityMode}
-                  </span>
-                </div>
-                {proposal && !unavailable ? (
-                  <>
-                    {proposal.action_code ? (
-                      <p className="fm-frontier__code">{proposal.action_code}</p>
-                    ) : null}
-                    <h1 className="fm-frontier__title">{proposal.title}</h1>
-                    <EvidenceStatusLine status={proposal.evidence_status} />
-                    <p className="fm-frontier__ask">{proposal.summary}</p>
-                    <CommandActionsPanel
-                      busy={busy}
-                      activeAction={activeAction}
-                      yeaPendingConfirm={yeaPendingConfirm}
-                      routeButtons={routeButtons}
-                      unavailable={unavailable}
-                      onYeaClick={handleGuardedYea}
-                      onYeaConfirm={handleYeaConfirm}
-                      onYeaCancel={() => setYeaPendingConfirm(false)}
-                      onNay={() => runAction("nay")}
-                      onRouteAction={(actionId) => runAction(actionId)}
-                      onSendPacket={focusOperatorBar}
-                    />
-                    <CompactReceiptRail
-                      entries={mergedReceipts}
-                      lifecycle={actionLifecycle}
-                      receipt={receipt}
-                    />
-                    <ActionStatusRail lifecycle={actionLifecycle} />
-                  </>
-                ) : (
-                  <p className="fm-frontier__idle">No frontier — use queue panel below to pick one.</p>
-                )}
-              </section>
-
-              <div className="sd-mobile-hide">
-                <ReceiptSearchBar
-                  value={receiptSearch}
-                  onChange={setReceiptSearch}
-                  resultCount={filteredReceipts.length}
-                  totalCount={mergedReceipts.length}
-                />
-
-                <ReceiptCenterPanel
-                  entries={filteredReceipts}
-                  dataLive={dataLive}
-                  unavailable={unavailable}
-                />
-
-                {!unavailable ? (
-                  <FrontierComparisonPanel
-                    operatorFrontier={frontier}
-                    machineFrontier={machineFrontier}
-                    source={frontierSource}
-                    dataLive={dataLive}
-                  />
-                ) : null}
-
-                {!unavailable ? (
-                  <QueueVisibilityPanel
-                    frontier={frontier}
-                    machineFrontier={machineFrontier}
-                    top3Alternatives={top3Alternatives}
-                    machineWhyNumberOne={machineWhy}
-                    dataLive={dataLive}
-                  />
-                ) : null}
-
-                {queue.length > 0 && !unavailable ? (
-                  <section ref={queueSectionRef} className="mw-queue-anchor">
-                    <QueueOverridePanel
-                      items={queue}
-                      activeId={proposal?.id ?? null}
-                      busy={queueBusy || busy}
-                      inspectedId={inspectedId}
-                      dataLive={dataLive}
-                      onInspect={handleInspect}
-                      onMakeFrontier={runQueueAction}
-                    />
-                    {overrideReceipt ? (
-                      <p className="fm-rank__receipt fm-rank__receipt--standalone">{overrideReceipt}</p>
-                    ) : null}
-                    {inspectedItem ? (
-                      <InspectDetail item={inspectedItem} rationale={payload.rationale} dataLive={dataLive} />
-                    ) : null}
-                  </section>
-                ) : null}
-
-                <section className="mw-chat" aria-label="Operator chat log">
-                  <h2 className="mw-chat__heading">Operator Chat</h2>
-                  <p className="mw-chat__bar-hint">Compose in the operator bar below — this panel shows receipts.</p>
-                  <div className="mw-chat__log ds-chat__log">
-                    {chatEntries.length === 0 && !petraReceipt ? (
-                      <p className="ds-muted ds-chat__empty">No chat entries yet.</p>
-                    ) : (
-                      chatEntries.map((entry, i) => <ChatEntry key={i} entry={entry} />)
-                    )}
-                    {petraReceipt ? <PetraTransportReceipt envelope={petraReceipt} /> : null}
-                    <div ref={chatEndRef} />
-                  </div>
-                </section>
-
-                <nav className="fm-tiers fm-tiers--command" aria-label="Second-tier panels">
-                  {showMockTestMode ? (
-                    <TierPanel summary="Mock test harness (dev only)">
-                      <MockTestHarness
-                        busy={busy}
-                        failureMode={mockFailureMode}
-                        onFailureModeChange={setMockFailureMode}
-                        lastResult={lastMockTest}
-                        onRunTest={(route) => runMockTestRoute(route, null, route)}
-                      />
-                    </TierPanel>
-                  ) : null}
-                  <TierPanel summary={`Churn — ${churnPreview}${payload.current_churn.summary.length > 72 ? "…" : ""}`}>
-                    <dl className="fm-dl">
-                      <div>
-                        <dt>Current churn</dt>
-                        <dd>{payload.current_churn.summary}</dd>
-                      </div>
-                    </dl>
-                  </TierPanel>
-                  <section ref={gateSectionRef} className="mw-gate-anchor">
-                    <TierPanel summary="Gate detail" defaultOpen={gateOpen}>
-                      <HumanGateDetail gate={payload.human_gate} />
-                    </TierPanel>
-                  </section>
-                </nav>
-              </div>
-            </CommandLayerShell>
-          )}
-
-        </div>
-      ) : (
-        <>
-          <MockTestBanner show={showMockTestMode} />
-          <MockTestHarness
-            busy={busy}
-            failureMode={mockFailureMode}
-            onFailureModeChange={setMockFailureMode}
-            lastResult={lastMockTest}
-            onRunTest={(route) => runMockTestRoute(route, null, route)}
-          />
-          <MissionPosture
-            view={view}
-            lastRefresh={lastRefresh}
-            refreshing={refreshing}
-            onRefresh={() => void refresh()}
-          />
-
-          {unavailable ? (
-            <section className="fm-unavailable" aria-label="Live payload unavailable">
-              <h2 className="fm-unavailable__title">LIVE PAYLOAD UNAVAILABLE</h2>
-              <p className="fm-unavailable__detail">{view.load_error ?? payload.human_gate.detail}</p>
-              <p className="fm-unavailable__hint">
-                Expected: foreman/soledash/DECISION_SURFACE.json with live_transport contract, plus
-                receipts/ and actions/ directories.
-              </p>
-            </section>
-          ) : null}
-
-          <CurrentBlockerPanel blocker={blocker} dataLive={dataLive && !unavailable} />
-
-          <ReceiptCenterPanel
-            entries={mergedReceipts}
-            dataLive={dataLive}
-            unavailable={unavailable}
-          />
-
-          {!unavailable ? (
-            <FrontierComparisonPanel
-              operatorFrontier={frontier}
-              machineFrontier={machineFrontier}
-              source={frontierSource}
-              dataLive={dataLive}
-            />
-          ) : null}
-
-          {!unavailable ? (
-            <QueueVisibilityPanel
-              frontier={frontier}
-              machineFrontier={machineFrontier}
-              top3Alternatives={top3Alternatives}
-              machineWhyNumberOne={machineWhy}
-              dataLive={dataLive}
-            />
-          ) : null}
-
-          {queue.length > 0 && !unavailable ? (
-            <section ref={queueSectionRef} className="mw-queue-anchor">
-              <QueueOverridePanel
-                items={queue}
-                activeId={proposal?.id ?? null}
-                busy={queueBusy || busy}
-                inspectedId={inspectedId}
-                dataLive={dataLive}
-                onInspect={handleInspect}
-                onMakeFrontier={runQueueAction}
-              />
-              {overrideReceipt ? (
-                <p className="fm-rank__receipt fm-rank__receipt--standalone">{overrideReceipt}</p>
-              ) : null}
-              {inspectedItem ? (
-                <InspectDetail item={inspectedItem} rationale={payload.rationale} dataLive={dataLive} />
-              ) : null}
-            </section>
-          ) : null}
-
-          <section className="fm-frontier" aria-label="Single frontier">
-            <div className="fm-frontier__head">
-              <p className="fm-frontier__label">Frontier #1</p>
-              <HonestyBadge live={dataLive && !unavailable} compact />
-            </div>
-            {proposal && !unavailable ? (
-              <>
-                {proposal.action_code ? (
-                  <p className="fm-frontier__code">{proposal.action_code}</p>
-                ) : null}
-                <h1 className="fm-frontier__title">{proposal.title}</h1>
-                <EvidenceStatusLine status={proposal.evidence_status} />
-                <p className="fm-frontier__ask">{proposal.summary}</p>
-                <p className="fm-frontier__gate-line">{payload.human_gate.operator_line}</p>
-                <div className="fm-frontier__actions fm-frontier__actions--decide" aria-label="Decision buttons">
-                  {decideButtons.map((slot) => (
-                    <FrontierButton
-                      key={slot.id}
-                      slot={slot}
-                      busy={busy}
-                      activeAction={activeAction}
-                      onClick={() => runAction(slot.id, slot.route_owner ?? null)}
-                    />
-                  ))}
-                </div>
-                {routeButtons.length > 0 ? (
-                  <div className="fm-frontier__actions fm-frontier__actions--route" aria-label="Route buttons">
-                    {routeButtons.map((slot) => (
-                      <FrontierButton
-                        key={slot.id}
-                        slot={slot}
-                        busy={busy}
-                        activeAction={activeAction}
-                        onClick={() => runAction(slot.id, slot.route_owner ?? null)}
-                      />
-                    ))}
-                  </div>
-                ) : null}
-                {!routeButtons.some((b) => b.enabled) && !unavailable ? (
-                  <p className="fm-frontier__route-hint">
-                    Route buttons disabled — Dink must enable NEEDS RESEARCH, KILL TEST, or HUMAN REALITY in protocol.
-                  </p>
-                ) : null}
-                <ActionStatusRail lifecycle={actionLifecycle} />
-                <ReceiptBlock receipt={receipt} mock={actionLifecycle.mock ?? mockMode} />
-                {payload.rationale ? (
-                  <button type="button" className="fm-frontier__why-link" onClick={() => setWhyOpen(true)}>
-                    Why this?
-                  </button>
-                ) : null}
-              </>
-            ) : (
-              <p className="fm-frontier__idle">No frontier decision — Dink sets proposal null when idle.</p>
-            )}
-          </section>
-
-          <section className="fm-command" aria-label="Operator command">
-            <h2 className="fm-command__heading">Talk to the machine</h2>
-            <p className="fm-command__hint">
-              Send logs intent here. Send to Petra delivers to your ChatGPT tab. Try <strong>next</strong> to
-              advance frontier.
-            </p>
-            <div className="ds-chat__log">
-              {chatEntries.length === 0 && !petraReceipt ? (
-                <p className="ds-muted ds-chat__empty">Say something — the interface responds with receipts.</p>
-              ) : (
-                chatEntries.map((entry, i) => <ChatEntry key={i} entry={entry} />)
-              )}
-              {petraReceipt ? <PetraTransportReceipt envelope={petraReceipt} /> : null}
-              <div ref={chatEndRef} />
-            </div>
-            <div className="ds-chat__compose">
-              <textarea
-                className="ds-chat__input"
-                rows={3}
-                placeholder={payload.operator_chat.placeholder}
-                value={chatInput}
-                disabled={busy}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    void sendChat();
-                  }
-                }}
-              />
-              <div className="fm-chat__actions">
-                <button
-                  type="button"
-                  className="fm-btn fm-btn--accent"
-                  disabled={busy || !chatInput.trim()}
-                  onClick={() => void sendChat()}
-                >
-                  {chatSubmitting ? "Sending…" : "Send"}
-                </button>
-                <button
-                  type="button"
-                  className="fm-btn fm-btn--petra"
-                  disabled={busy || !chatInput.trim()}
-                  onClick={() => void sendToPetra()}
-                >
-                  {chatSubmitting ? "Delivering…" : "Send to Petra"}
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <nav className="fm-tiers" aria-label="Second-tier panels">
-            <TierPanel summary={`Churn — ${churnPreview}${payload.current_churn.summary.length > 72 ? "…" : ""}`}>
-              <dl className="fm-dl">
-                <div>
-                  <dt>Current churn</dt>
-                  <dd>{payload.current_churn.summary}</dd>
-                </div>
-                <div>
-                  <dt>Current threat</dt>
-                  <dd>{payload.current_churn.current_threat}</dd>
-                </div>
-                <div>
-                  <dt>Next after this</dt>
-                  <dd>{payload.current_churn.next_decision}</dd>
-                </div>
-              </dl>
-              <dl className="fm-dl fm-dl--queue">
-                <div>
-                  <dt>Active owner</dt>
-                  <dd>{payload.queue_brain.active_owner ?? "—"}</dd>
-                </div>
-                <div>
-                  <dt>Waiting report</dt>
-                  <dd>{payload.queue_brain.waiting_report ?? "—"}</dd>
-                </div>
-                <div>
-                  <dt>Blocker</dt>
-                  <dd>{payload.queue_brain.blocker ?? "—"}</dd>
-                </div>
-                <div>
-                  <dt>Recommended next</dt>
-                  <dd>{payload.queue_brain.recommended_next_action ?? "—"}</dd>
-                </div>
-              </dl>
-            </TierPanel>
-
-            <TierPanel summary={`Thread health — ${payload.thread_health.status}`}>
-              <dl className="fm-dl">
-                <div>
-                  <dt>Status</dt>
-                  <dd>{payload.thread_health.status}</dd>
-                </div>
-                {payload.thread_health.detail ? (
-                  <div>
-                    <dt>Detail</dt>
-                    <dd>{payload.thread_health.detail}</dd>
-                  </div>
-                ) : null}
-              </dl>
-            </TierPanel>
-
-            {payload.rationale ? (
-              <details className="fm-tier" open={whyOpen}>
-                <summary>Expand why</summary>
-                <div className="fm-tier__body">
-                  <ExpandWhyPanel rationale={payload.rationale} />
-                </div>
-              </details>
-            ) : null}
-
-            <section ref={gateSectionRef} className="mw-gate-anchor">
-              <TierPanel summary="Gate detail" defaultOpen={gateOpen}>
-                <HumanGateDetail gate={payload.human_gate} />
-              </TierPanel>
-            </section>
-
-            {payload.throughput_log && payload.throughput_log.length > 0 ? (
-              <TierPanel summary="Throughput">
-                <ul className="ds-inst-list">
-                  {payload.throughput_log.map((entry, i) => (
-                    <li key={i}>
-                      {entry.label} — {entry.detail}
-                    </li>
-                  ))}
-                </ul>
-              </TierPanel>
-            ) : null}
-          </nav>
-        </>
-      )}
-
-      {isHome && homeView ? (
-        <>
-          <div className="sd-live-fire-anchor">
-            <PetraEmptyLinkFire busy={busy || chatSubmitting} onRefresh={refresh} />
-          </div>
-          <OperatorBar
+        <SoleDashHome
+          view={view}
+          gate={gateResolution}
+          routeButtons={routeButtons}
+          unavailable={unavailable}
+          hasBlocker={hasBlocker}
+          busy={busy}
+          activeAction={activeAction}
+          refreshing={refreshing}
+          lastRefresh={lastRefresh}
+          mergedReceipts={mergedReceipts}
+          actionLifecycle={actionLifecycle}
+          decisionReceipt={receipt}
+          proposal={proposal}
+          frontier={frontier}
+          blocker={blocker}
           frontierCode={operatorFrontierCode}
           frontierTitle={operatorFrontierTitle}
-          waitingGatesCount={waitingGates.count}
-          waitingGatesHint={waitingGates.hint}
-          chatInput={chatInput}
-          chatPlaceholder={payload.operator_chat.placeholder}
-          chatDisabled={chatDisabled}
-          chatDisabledReason={chatDisabledReason}
-          busy={busy || chatSubmitting}
-          dispatchStatus={dispatchStatus}
-          inputRef={operatorBarInputRef}
-          onChatInputChange={setChatInput}
-          onSendChat={() => void sendChat()}
-          onSendToCousin={(cousin) => void sendToCousin(cousin)}
-          onOpenCommand={commandOpen ? undefined : openCommand}
+          onRefresh={() => void refresh()}
+          onYea={() => handleFrontierYea()}
+          onNay={() => runAction("nay")}
+          onRouteAction={(actionId) => runAction(actionId)}
+          onGateApprove={() => runAction("yea")}
+          onGateReject={() => runAction("nay")}
+          onGateDefer={() => runAction("defer")}
         />
-        </>
-      ) : null}
+      ) : (
+        <p className="sd-guill-section__empty" role="status">
+          SoleDash home view unavailable — open /soledash.
+        </p>
+      )}
+
     </div>
   );
 }
