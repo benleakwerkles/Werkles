@@ -8,6 +8,7 @@ export type SiteIconId =
   | "nav-how"
   | "nav-proof"
   | "nav-dues"
+  | "nav-bellows"
   | "nav-deck"
   | "step-dossier"
   | "step-fit"
@@ -44,6 +45,7 @@ export const siteIcons: Record<SiteIconId, SiteIconRecord> = {
   "nav-how": { id: "nav-how", filename: "icon-step-dossier-v0.1.png", publicPath: `${iconRoot}/icon-step-dossier-v0.1.png` },
   "nav-proof": { id: "nav-proof", filename: "icon-proof-v0.1.png", publicPath: `${iconRoot}/icon-proof-v0.1.png` },
   "nav-dues": { id: "nav-dues", filename: "icon-dues-v0.1.png", publicPath: `${iconRoot}/icon-dues-v0.1.png` },
+  "nav-bellows": { id: "nav-bellows", filename: "icon-dossier-v0.1.png", publicPath: `${iconRoot}/icon-dossier-v0.1.png` },
   "nav-deck": { id: "nav-deck", filename: "icon-deck-v0.1.png", publicPath: `${iconRoot}/icon-deck-v0.1.png` },
   "step-dossier": { id: "step-dossier", filename: "icon-step-dossier-v0.1.png", publicPath: `${iconRoot}/icon-step-dossier-v0.1.png` },
   "step-fit": { id: "step-fit", filename: "icon-step-fit-v0.1.png", publicPath: `${iconRoot}/icon-step-fit-v0.1.png` },

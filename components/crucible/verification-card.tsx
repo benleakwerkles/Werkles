@@ -1,5 +1,6 @@
 import type { CrucibleCheck, CrucibleState } from "@/lib/crucible";
 import { crucibleStateCopy } from "@/lib/crucible";
+import { copy } from "@/lib/copy";
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { crucibleIconId } from "@/lib/site-icons";
 
@@ -39,9 +40,9 @@ export function VerificationCard({
         onClick={() => onStart?.(check)}
       >
         {previewDisabled
-          ? "Sandbox action disabled in preview"
+          ? copy.infraPreview.sandboxActionDisabled
           : busy
-            ? "Inspecting..."
+            ? copy.crucible.inspectingStatus
             : check.cta}
       </button>
     </article>

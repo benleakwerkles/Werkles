@@ -1,0 +1,15 @@
+﻿{
+    "run":  "Hero",
+    "total_estimated_cost_usd":  0.2,
+    "gate":  "SALLY_FINAL_V2_OPERATOR_GO",
+    "completed_count":  1,
+    "shot_count":  1,
+    "results":  [
+                    {
+                        "shot_id":  "story-v2-hero-wide",
+                        "status":  "completed",
+                        "batch_id":  "56b2bb4f-aef6-4beb-849e-0e31f23587bc",
+                        "path":  "public/assets/draft/anyone-narrative-v2/werkles-story-v2-hero-wide.png"
+                    }
+                ]
+}

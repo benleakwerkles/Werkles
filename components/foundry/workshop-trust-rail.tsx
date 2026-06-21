@@ -1,37 +1,23 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { copy } from "@/lib/copy";
-import { getWorkshopMomentCopy } from "@/lib/workshop-moment";
+import Link from "next/link";
 
-const railPhrases = [
-  copy.hero.trustLine,
-  copy.trust.headline,
-  copy.hero.brandPromise,
-  "Proof signals. Private knocks.",
-  "Built on Trust.",
-  "Inspect the deck before the knock."
-];
+import { copy } from "@/lib/copy";
 
 export function WorkshopTrustRail() {
-  const [momentLine, setMomentLine] = useState(copy.trust.headline);
-
-  useEffect(() => {
-    setMomentLine(getWorkshopMomentCopy().trustRail);
-  }, []);
-
-  const track = useMemo(
-    () => [...railPhrases, momentLine, ...railPhrases, momentLine],
-    [momentLine]
-  );
+  const { door } = copy.home.anyone;
 
   return (
-    <div className="workshop-trust-rail" aria-hidden="true">
-      <div className="workshop-trust-rail__track">
-        {track.map((phrase, index) => (
-          <span key={`${phrase}-${index}`}>{phrase}</span>
-        ))}
+    <section className="hero-fold-trust" aria-labelledby="doorTitle">
+      <div className="hero-fold-trust__intro">
+        <p className="eyebrow">{door.eyebrow}</p>
+        <h2 id="doorTitle">{door.headline}</h2>
+        <p>{door.body}</p>
+        <p className="hero-fold-trust__supporting">{door.closing}</p>
+        <Link className="button button-outline" href="/spark">
+          {door.cta}
+        </Link>
       </div>
-    </div>
+    </section>
   );
 }

@@ -12,9 +12,9 @@ Record decisions in `foreman/gates/APPROVAL_LOG.md`. Never paste secrets into ch
 ## Session order
 
 1. [x] APP_INFRA-01 verdict recorded (APPROVE 2026-06-03)
-2. [x] Supabase Auth URL config + keys → Vercel (Preview)
-3. [x] Stripe **test mode** — products/prices → webhook → secrets → test checkout (Preview PASS 2026-06-01)
-4. [ ] Stripe **live mode** — only after test webhook + checkout pass
+2. [x] Supabase Auth URL config + keys → Vercel (**Preview** — PASS 2026-06-01)
+3. [x] Stripe **test mode** — products/prices → webhook → secrets → test checkout (**Preview** PASS 2026-06-01)
+4. [ ] Stripe **live mode** — only after test webhook + checkout pass (**Production rollout gated**)
 5. [ ] Crucible providers (Stripe Identity, etc.) — separate later gate
 
 ---

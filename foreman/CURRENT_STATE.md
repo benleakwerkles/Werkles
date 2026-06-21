@@ -1,20 +1,19 @@
 ﻿# Current State
 
-Status: synced 2026-06-01 (SUPABASE_AUTH_STRIPE_TEST_WIRING Preview proof PASS)
+Status: synced 2026-06-06 (`SALLY_MERGE_SAFETY_PROTOCOL` — main merged into rescue branch)
 
 ## Effective gate
 
-`[AWAITING HUMAN GATE: SUPABASE_AUTH_STRIPE_MERGE_TO_MAIN]`
+`[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]`
 
-## SUPABASE_AUTH_STRIPE_TEST_WIRING (Preview proof closed)
+## Main integration
 
-- **Verdict:** **PASS** (2026-06-01) — `foreman/gates/APPROVAL_LOG.md`
-- **Branch:** `supabase-auth-stripe-test-wiring` @ `29d0b4c`
-- **Preview:** https://werkles1-git-supabase-auth-stripe-test-wiring-werkles.vercel.app
-- **PR #8:** open — **not merged**
-- **Production:** untouched
+- **APP_INFRA** landed on `origin/main` @ `0c727a2`
+- **SUPABASE_AUTH_STRIPE_TEST_WIRING** Preview proof: **PASS** (2026-06-01) — `foreman/gates/APPROVAL_LOG.md`
+- **Split preview gates:** auth/Stripe test wiring enabled; crucible blocked; live Stripe/live verification blocked
+- **Production rollout:** still gated — no Production env changes from this merge
 
-### Preview proof summary
+### Preview proof summary (main)
 
 | Step | Result |
 |------|--------|
@@ -26,14 +25,19 @@ Status: synced 2026-06-01 (SUPABASE_AUTH_STRIPE_TEST_WIRING Preview proof PASS)
 | Cancel → revoke | PASS |
 | Crucible blocked | PASS |
 
+## Sally rescue lane work (local branch)
+
+| Lane | Artifacts |
+|------|-----------|
+| Homepage rewrite v1 | `foreman/WERKLES_HOMEPAGE_REWRITE_SCOPE_LOCK.md`, hero/trust rail, visual-system, stock preview |
+| Dispatch | Autonomous round-trip proofs, homepage discovery full crew, Petra handoff packet |
+| Imagery doctrine | `foreman/IMAGERY_DIRECTION.md`, Ender visual tests review |
+
+**Petra homepage synthesis:** `TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1_*` — prepared, not yet answered.
+
 ## APP_INFRA-01 (closed)
 
 - **Ben verdict:** **APPROVE** (2026-06-03) — `foreman/gates/APPROVAL_LOG.md`
-- **App on main:** preview-safe surfaces merged via PR #7
-
-## Production
-
-- **Live:** https://werkles.com — **not** on wiring branch; no Production env changes this gate
 
 ## Ghost Forge / Gate 05
 
@@ -41,4 +45,4 @@ Status: synced 2026-06-01 (SUPABASE_AUTH_STRIPE_TEST_WIRING Preview proof PASS)
 
 ## Hard stops
 
-no Production deploy | no Production env | no merge without human gate | no SQL | no secrets | no Ghost Forge | no matching work
+no Production deploy | no Production env rollout | no push to main without human gate | no SQL | no secrets | no Ghost Forge spend | no Stripe live | no live verification

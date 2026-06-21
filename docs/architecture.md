@@ -190,3 +190,11 @@ Initial admin emails:
 - `ben.leak@kindsir.com`
 
 After those people create Supabase Auth accounts and profiles, run `supabase/admin_bootstrap.sql`. The script maps emails to `auth.users` UUIDs and inserts matching profile IDs into `public.admin_users`. RLS policies continue to use `public.admin_users` only.
+
+## Product Surfaces And Routes
+
+Public route planning lives in `foreman/SITE_MAP.md`.
+
+**Bellows** (`/bellows`) is the Werkles learning and education product surface — anti-guru lessons, SOPs, templates, and honest operator knowledge. Squibb is the guide/host inside Bellows. Do not call Bellows a background worker or use “Blog” as a synonym unless referring to public marketing posts.
+
+**Education Forge** (`education-forge/`) is the internal curriculum drafting worker. It does not publish to `/bellows` without human review and separate approval.

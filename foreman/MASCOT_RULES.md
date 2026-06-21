@@ -26,9 +26,11 @@ Internal filenames may remain `brass-foreman-*.png` until a rename pass; UI copy
 
 Workflow: `public/assets/mascot/README.md` → cutout → drop PNGs → tell Foreman **`ASSETS_LANDED`**.
 
-## Education / Bellows
+## Bellows (public learning surface)
 
-Squibb in `education-forge/` is the **same character** — helpful, reality-checking, never snide, never selling trust.
+Squibb hosts **Bellows** at `/bellows` — the Werkles learning area for anti-guru lessons, SOPs, templates, and honest operator knowledge. Same character as Crucible: helpful, reality-checking, never snide, never selling trust.
+
+Internal draft worker: **Education Forge** (`education-forge/`) — not Bellows, not a public route.
 
 ## Ghost Forge
 

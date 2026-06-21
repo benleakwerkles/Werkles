@@ -48,7 +48,7 @@ $env:GHOST_FORGE_API_KEY = "your-key-here"   # local session only
 
 Script submits **one** icon, polls batch status, prints Supabase `storage_path` when complete. Copy PNG from Supabase into `public/assets/draft/icons/` with the exact filename from the batch manifest.
 
-Repeat for operator, backer, connector, spark — **wait 60s between calls** if you hit 429.
+Repeat for operator, backer, connector, spark — on 429, **stop** (fail-fast). Do not auto-sleep 30+ minutes. Lift: `foreman/ghost-forge/OPERATOR_RATE_LIMIT.md`.
 
 ---
 

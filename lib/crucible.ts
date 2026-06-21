@@ -1,4 +1,5 @@
 import { pricing } from "@/lib/pricing";
+import { copy } from "@/lib/copy";
 
 export type CrucibleState =
   | "not_started"
@@ -14,24 +15,24 @@ export type CrucibleState =
   | "unavailable";
 
 export const crucibleStateCopy: Record<CrucibleState, string> = {
-  not_started: "No steel inspected yet.",
-  membership_required: "Foundry Dues unlocks this workflow. It does not buy the result.",
-  payment_required: "This check passes through provider cost plus the published handling fee.",
-  ready_to_start: "Ready for inspection.",
-  provider_redirect: "The provider handles the sensitive parts. Werkles waits for the receipt.",
-  pending: "Inspecting the steel.",
-  verified: "Claim checked. Receipt filed.",
-  failed: "Something did not hold. Fix the claim or pull it out.",
-  expired: "This proof has gone cold. Refresh it before leaning on it.",
-  manual_review: "This one needs human eyes.",
-  unavailable: "The forge is not wired for this check yet."
+  not_started: "Not started",
+  membership_required: "Members only",
+  payment_required: "Needs a paid plan",
+  ready_to_start: "Ready to verify",
+  provider_redirect: "Continue with the provider — Werkles waits for the receipt.",
+  pending: "Checking…",
+  verified: "Verified",
+  failed: "Couldn't verify",
+  expired: "Needs renewing",
+  manual_review: "Under review",
+  unavailable: "Not available yet"
 };
 
 export const crucibleTrustCopy = [
-  "Membership unlocks access to our verification providers. It does not unlock verification itself.",
-  "Werkles cannot make anyone trustworthy. We make claims harder to fake.",
+  copy.crucible.principle,
+  copy.proofDisclaimer,
   "Paid status alone is not a proof signal.",
-  "We store receipts and statuses, not raw sensitive material."
+  copy.crucible.storesDefault
 ] as const;
 
 export const crucibleChecks = pricing.crucible.map((check) => {
@@ -48,10 +49,10 @@ export const crucibleChecks = pricing.crucible.map((check) => {
           : null,
     stores:
       check.key === "funds"
-        ? "Receipt and status only. No account numbers."
+        ? copy.crucible.storesFunds
         : check.key === "identity"
-          ? "Receipt and status only. No ID images."
-          : "Receipt and status only when provider wiring is approved."
+          ? copy.crucible.storesIdentity
+          : copy.crucible.storesDefault
   };
 });
 

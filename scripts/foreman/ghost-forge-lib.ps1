@@ -119,6 +119,136 @@ function Invoke-GhostForgeApi {
   }
 }
 
+function Get-GhostForgeAuthHeaders {
+  param(
+    [hashtable]$Extra = @{},
+
+    [switch]$Force
+  )
+
+  if (-not $env:GHOST_FORGE_API_KEY) {
+    throw "GHOST_FORGE_API_KEY is required. Set it in ghost-forge-worker\.env (never paste in chat)."
+  }
+
+  $headers = @{
+    Authorization  = "Bearer $env:GHOST_FORGE_API_KEY"
+    "Content-Type" = "application/json"
+  }
+
+  foreach ($key in $Extra.Keys) {
+    $headers[$key] = $Extra[$key]
+  }
+
+  if ($Force) {
+    $headers["X-Ghost-Forge-Skip-Rate-Limit"] = "1"
+  }
+
+  return $headers
+}
+
+function Get-GhostForgeRateLimitDiagnostics {
+  param([hashtable]$Headers = (Get-GhostForgeAuthHeaders))
+
+  $response = Invoke-GhostForgeApi -Method GET -Path "/diagnostics/rate-limit" -Headers $Headers -TimeoutSec 30
+  if (-not $response.Ok) {
+    return $null
+  }
+
+  return $response.Json
+}
+
+function Write-GhostForgeRateLimitOperatorNote {
+  param(
+    [object]$CreateResponse,
+    [switch]$Force
+  )
+
+  $retryMin = $null
+  $retrySec = $null
+
+  if ($CreateResponse.Json) {
+    $retryMin = $CreateResponse.Json.retry_after_minutes
+    $retrySec = $CreateResponse.Json.retry_after_seconds
+  }
+
+  if (-not $retryMin -and $CreateResponse.Body) {
+    try {
+      $parsed = $CreateResponse.Body | ConvertFrom-Json
+      $retryMin = $parsed.retry_after_minutes
+      $retrySec = $parsed.retry_after_seconds
+    } catch {
+      $parsed = $null
+    }
+  }
+
+  if ($retryMin) {
+    Write-Host "HOURLY CAP (429) - not an error. Retry in ~$retryMin min (${retrySec}s), or lift on Render: GHOST_FORGE_SKIP_RATE_LIMIT=1 then redeploy/restart."
+  } else {
+    Write-Host "HOURLY CAP (429) - not an error. Check GET /diagnostics/rate-limit or restart Render worker to clear in-memory window."
+  }
+
+  if ($Force) {
+    Write-Host "Force was set but worker still returned 429. Enable GHOST_FORGE_SKIP_RATE_LIMIT=1 on Render, redeploy, then re-run with -Force."
+  } else {
+    Write-Host "To lift when ready: Render env GHOST_FORGE_SKIP_RATE_LIMIT=1 + restart. Scripts: -Force after lift. Page work on localhost needs no wait."
+  }
+}
+
+function Test-GhostForgeCreateResponse {
+  param(
+    [Parameter(Mandatory = $true)]
+    [pscustomobject]$CreateResponse,
+
+    [Parameter(Mandatory = $true)]
+    [string]$ShotId,
+
+    [scriptblock]$OnLog,
+
+    [switch]$Force
+  )
+
+  if ($CreateResponse.StatusCode -eq 402) {
+    & $OnLog "STOP $ShotId - 402 budget exceeded"
+    return [pscustomobject]@{ stop = $true; result = [pscustomobject]@{ shot_id = $ShotId; status = "402_budget" } }
+  }
+
+  if ($CreateResponse.StatusCode -eq 429) {
+    Write-GhostForgeRateLimitOperatorNote -CreateResponse $CreateResponse -Force:$Force
+    & $OnLog "RATE_LIMIT $ShotId - hourly cap (429). Fail-fast - operator decides when to retry."
+    return [pscustomobject]@{
+      stop = $true
+      result = [pscustomobject]@{
+        shot_id = $ShotId
+        status = "429_rate_limit"
+        http = 429
+      }
+    }
+  }
+
+  if (-not $CreateResponse.Ok) {
+    & $OnLog "FAIL $ShotId - batch/create $($CreateResponse.StatusCode): $($CreateResponse.Body)"
+    return [pscustomobject]@{
+      stop = $true
+      result = [pscustomobject]@{
+        shot_id = $ShotId
+        status = "create_failed"
+        http = $CreateResponse.StatusCode
+      }
+    }
+  }
+
+  $create = $CreateResponse.Json
+  if (-not $create.ok) {
+    & $OnLog "FAIL $ShotId - ok=false"
+    return [pscustomobject]@{
+      stop = $true
+      result = [pscustomobject]@{ shot_id = $ShotId; status = "create_rejected" }
+    }
+  }
+
+  return [pscustomobject]@{ stop = $false; create = $create }
+}
+
 function Save-GhostForgeDownload {
   param(
     [Parameter(Mandatory = $true)]

@@ -197,7 +197,8 @@ const proofLabels = {
 };
 
 const requiredProof = ["licenseFront", "licenseBack", "faceCapture", "phone"];
-const platformDisclaimer = "Werkles is a partner discovery and verification platform. We do not facilitate any securities transaction, loan, investment, or sale of business. Werkles never holds or transmits funds.";
+const platformDisclaimer =
+  "Werkles is a local discovery and introductions prototype. Deals, lending, securities, ownership documents, and regulated checks still need real legal and financial review.";
 
 const storageKeys = {
   profile: "werkles.profile.v5",
@@ -385,7 +386,7 @@ function scoreProfile(user, candidate) {
 
   const roleScore = complementaryRoles(user.role, candidate.role);
   score += roleScore;
-  if (roleScore >= 14) reasons.push(`${roleLabels[user.role]} fits ${roleLabels[candidate.role].toLowerCase()}`);
+  if (roleScore >= 14) reasons.push("Your lane may unlock their next move");
 
   if (user.industry === candidate.industry) {
     score += 18;
@@ -421,12 +422,12 @@ function scoreProfile(user, candidate) {
     reasons.push(`your ${money(user.capitalAvailable)} can fund the ask`);
   } else if (candidate.capitalNeeded > 0 && user.capitalAvailable >= candidate.capitalNeeded * 0.5) {
     score += 8;
-    reasons.push("partial money fit");
+    reasons.push("partial capital path");
   }
 
   if (user.capitalNeeded > 0 && candidate.capitalAvailable >= user.capitalNeeded) {
     score += 14;
-    reasons.push("candidate can fund your ask");
+    reasons.push("candidate may cover your capital gap");
   }
 
   if (candidate.verified.length >= 4) {
@@ -497,7 +498,7 @@ function renderCandidate() {
     candidateCard.innerHTML = `
       <div class="candidate-empty">
         <div>
-          <h3>No fit. Keep building.</h3>
+          <h3>No potential here. Keep building.</h3>
           <p>You reached the end of this deck. Adjust the filters, search a different arena, or restart the deck.</p>
           <button class="button button-dark" type="button" data-restart-deck>Restart deck</button>
         </div>
@@ -508,7 +509,7 @@ function renderCandidate() {
   }
 
   if (!profile) {
-    candidateCard.innerHTML = `<div class="candidate-empty">No matches found. Loosen the filters or search for another trade.</div>`;
+    candidateCard.innerHTML = `<div class="candidate-empty">Nothing surfaced for that search yet.</div>`;
     drawGraph([]);
     return;
   }
@@ -580,7 +581,8 @@ function renderIntroQueue() {
 
   if (!queued.length) {
     introQueue.className = "intro-queue empty";
-    introQueue.textContent = "No intro requests yet.";
+    introQueue.textContent =
+      "No intros queued yet. Start in Discover, save the people with real potential, then request an intro when the next conversation has earned it.";
     return;
   }
 
@@ -692,7 +694,7 @@ function buildBrief() {
     `Proof signals: ${profile.verified.map((proof) => proofLabels[proof] || proof).join(", ") || "none selected"}`,
     "",
     "Top matches:",
-    ...topMatches.map((match) => `- ${match.name}: ${match.score}% fit, ${roleLabels[match.role]}, ${industryLabels[match.industry]}`)
+    ...topMatches.map((match) => `- ${match.name}: ${match.score}% potential, ${roleLabels[match.role]}, ${industryLabels[match.industry]}`)
   ].join("\n");
 }
 

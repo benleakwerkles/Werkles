@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { crucibleChecks, crucibleTrustCopy, type CrucibleCheck } from "@/lib/crucible";
+import { crucibleChecks, crucibleTrustCopy } from "@/lib/crucible";
 import { copy } from "@/lib/copy";
 import { isAppInfraPreview } from "@/lib/app-infra-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
@@ -11,23 +11,23 @@ import { VerificationCard } from "./verification-card";
 export function CruciblePanel() {
   const preview = isAppInfraPreview();
   const [status, setStatus] = useState(
-    preview ? copy.infraPreview.crucible : "Ready for inspection."
+    preview ? copy.infraPreview.crucible : copy.crucible.readyStatus
   );
   const [busyKey, setBusyKey] = useState<string | null>(null);
 
-  async function startCheck(check: CrucibleCheck) {
+  async function startCheck(check: (typeof crucibleChecks)[number]) {
     if (preview) {
       setStatus(copy.infraPreview.sandboxActionDisabled);
       return;
     }
 
     if (!check.route) {
-      setStatus("The forge is not wired for this check yet.");
+      setStatus(copy.crucible.unavailableStatus);
       return;
     }
 
     setBusyKey(check.key);
-    setStatus("Inspecting the steel.");
+    setStatus(copy.crucible.inspectingStatus);
 
     try {
       const supabase = getSupabaseBrowser();
@@ -35,7 +35,7 @@ export function CruciblePanel() {
       const token = data.session?.access_token;
 
       if (!token) {
-        setStatus("Log in before asking the inspectors to swing the hammer.");
+        setStatus(copy.crucible.loginRequired);
         return;
       }
 
@@ -46,9 +46,9 @@ export function CruciblePanel() {
         }
       });
       const payload = await response.json().catch(() => ({}));
-      setStatus(payload.error || payload.label || "Claim check prepared.");
+      setStatus(payload.error || payload.label || copy.crucible.claimPrepared);
     } catch (error) {
-      setStatus(error instanceof Error ? error.message : "Something did not hold.");
+      setStatus(error instanceof Error ? error.message : copy.crucible.genericError);
     } finally {
       setBusyKey(null);
     }
@@ -65,15 +65,29 @@ export function CruciblePanel() {
 
       <div className="ops-card crucible-hero-card workshop-facet--chem">
         <div className="card-heading">
-          <p>{copy.uiPass.cockpitEyebrow}</p>
-          <h1>Trust is not for sale. The workflow is.</h1>
+          <p>{copy.crucible.pageEyebrow}</p>
+          <h1>{copy.crucible.pageHeadline}</h1>
         </div>
+        <p>{copy.crucible.intro}</p>
+        <p className="muted">{copy.crucible.principle}</p>
         <div className="gate-list" aria-label="Crucible trust rules">
           {crucibleTrustCopy.map((line) => (
             <span key={line}>{line}</span>
           ))}
         </div>
         <p className="status-line" role="status">{status}</p>
+        <p className="crucible-squibb-hint">{copy.squibb.crucible}</p>
+      </div>
+
+      <div className="crucible-state-grid" aria-label="Crucible workflow states">
+        {copy.crucible.workflowStates.map((state) => (
+          <article key={state.key} className="ops-card crucible-state-card">
+            <h2>{state.title}</h2>
+            <p>{state.summary}</p>
+            <p className="muted">{state.memberNote}</p>
+            <span className="tag">{state.cta}</span>
+          </article>
+        ))}
       </div>
 
       <div className="crucible-grid">

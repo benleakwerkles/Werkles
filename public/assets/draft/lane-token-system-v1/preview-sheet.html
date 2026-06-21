@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Werkles Lane Token System v1</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px; font-family: system-ui, sans-serif; background: #ebe2d4; color: #2c231d; }
+    h1 { margin: 0 0 4px; font-size: 1.15rem; }
+    .sub { margin: 0 0 18px; font-size: 0.82rem; color: #5c4a3a; }
+    .pill { display: inline-block; background: #f6efe5; border: 1px solid #9f6633; border-radius: 999px; padding: 3px 10px; font-size: 11px; margin-bottom: 22px; }
+    section { margin-bottom: 34px; }
+    h2 { margin: 0 0 10px; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9f6633; }
+    .row { display: flex; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+    .label { width: 92px; font-size: 11px; color: #5c4a3a; }
+    .cell { text-align: center; }
+    .cell span { display: block; font-size: 9px; color: #685141; margin-top: 2px; }
+    .cell img { display: block; }
+    .s64 img { width: 64px; height: 64px; }
+    .s32 img { width: 32px; height: 32px; }
+    .s24 img { width: 24px; height: 24px; }
+    .set-strip { display: flex; gap: 10px; flex-wrap: wrap; padding: 14px; background: #f6efe5; border: 1px solid rgba(159,102,51,.35); border-radius: 10px; }
+    .set-strip .token { text-align: center; }
+    .set-strip img { width: 56px; height: 56px; }
+    .set-strip span { display: block; font-size: 9px; margin-top: 4px; color: #5c4a3a; }
+    .warn { font-size: 11px; color: #7a4f2b; background: #fff6e8; border: 1px solid #c08b52; border-radius: 6px; padding: 10px 12px; max-width: 720px; }
+  </style>
+</head>
+<body>
+  <h1>WERKLES_LANE_TOKEN_SYSTEM_V1</h1>
+  <p class="sub">Monopoly-style brass tokens · workshop foundry · six frozen lanes · hand-authored SVG</p>
+  <div class="pill">Recommended: Primary set</div>
+
+  <section>
+    <h2>Primary set — all six (copper)</h2>
+    <div class="set-strip" id="primary-strip"></div>
+  </section>
+
+  <section>
+    <h2>Alternate set — all six (copper)</h2>
+    <div class="set-strip" id="alternate-strip"></div>
+  </section>
+
+  <section>
+    <h2>Primary — scale ladder (mono + copper)</h2>
+    <div id="primary-ladder"></div>
+  </section>
+
+  <section>
+    <h2>Alternate — scale ladder (mono + copper)</h2>
+    <div id="alternate-ladder"></div>
+  </section>
+
+  <section>
+    <h2>Small-size risk notes</h2>
+    <div class="warn" id="risk-notes"></div>
+  </section>
+
+  <script>
+    const lanes = [
+      { id: "spark", label: "Spark" },
+      { id: "builder", label: "Builder" },
+      { id: "worker", label: "Worker" },
+      { id: "operator", label: "Operator" },
+      { id: "backer", label: "Backer" },
+      { id: "connector", label: "Connector" },
+    ];
+    const primary = {
+      spark: "spark-ember",
+      builder: "builder-framing-square",
+      worker: "worker-glove",
+      operator: "operator-dial",
+      backer: "backer-dog-token",
+      connector: "connector-bridge",
+    };
+    const alternate = {
+      spark: "spark-match",
+      builder: "builder-blueprint-block",
+      worker: "worker-boot",
+      operator: "operator-clipboard",
+      backer: "backer-foundation-block",
+      connector: "connector-compass",
+    };
+    const sizes = [
+      { cls: "s64", label: "64px" },
+      { cls: "s32", label: "32px" },
+      { cls: "s24", label: "24px" },
+    ];
+    function strip(el, set, folder) {
+      lanes.forEach(({ id, label }) => {
+        const d = document.createElement("div");
+        d.className = "token";
+        d.innerHTML = `<img src="${folder}/${set[id]}-copper.svg" alt="" /><span>${label}</span>`;
+        el.appendChild(d);
+      });
+    }
+    function ladder(container, set, folder, setName) {
+      lanes.forEach(({ id, label }) => {
+        ["mono", "copper"].forEach((variant) => {
+          const row = document.createElement("div");
+          row.className = "row";
+          row.innerHTML = `<div class="label">${label}<br>${variant}</div>`;
+          sizes.forEach((s) => {
+            const c = document.createElement("div");
+            c.className = `cell ${s.cls}`;
+            c.innerHTML = `<img src="${folder}/${set[id]}-${variant}.svg" alt="" /><span>${s.label}</span>`;
+            row.appendChild(c);
+          });
+          container.appendChild(row);
+        });
+      });
+    }
+    strip(document.getElementById("primary-strip"), primary, "primary");
+    strip(document.getElementById("alternate-strip"), alternate, "alternate");
+    ladder(document.getElementById("primary-ladder"), primary, "primary");
+    ladder(document.getElementById("alternate-ladder"), alternate, "alternate");
+    document.getElementById("risk-notes").innerHTML = `
+      <strong>Watch at 24px:</strong> Primary backer dog token (Monopoly stamp read needs context);
+      alternate connector compass (thin legs); alternate spark match (flame nub).<br>
+      <strong>Strong at 24px:</strong> Primary framing square, dial, bridge, ember; alternate foundation block, boot, clipboard.
+    `;
+  </script>
+</body>
+</html>

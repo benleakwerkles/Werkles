@@ -74,7 +74,7 @@ export function IconFallback({ icon }: { icon: SiteIconId }) {
     );
   }
 
-  if (icon === "nav-how" || icon === "step-dossier" || icon === "icon-dossier") {
+  if (icon === "nav-how" || icon === "nav-bellows" || icon === "step-dossier" || icon === "icon-dossier") {
     return (
       <IconBase>
         <rect x="9" y="8" width="14" height="16" rx="2" fill={ink} stroke={brass} strokeWidth="1.5" />

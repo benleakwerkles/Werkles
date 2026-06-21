@@ -1,0 +1,37 @@
+{
+  "template": "AUTONOMOUS_ROUND_TRIP_TEST",
+  "cousin": "ENDER",
+  "requested": 5,
+  "passed": 5,
+  "failed": 0,
+  "consecutiveAtEnd": 5,
+  "allPass": true,
+  "results": [
+    {
+      "run": 1,
+      "status": "PASS",
+      "proof": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_TEST_BATCH_ENDER_1_20260606-042135.json"
+    },
+    {
+      "run": 2,
+      "status": "PASS",
+      "proof": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_TEST_BATCH_ENDER_2_20260606-042357.json"
+    },
+    {
+      "run": 3,
+      "status": "PASS",
+      "proof": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_TEST_BATCH_ENDER_3_20260606-042620.json"
+    },
+    {
+      "run": 4,
+      "status": "PASS",
+      "proof": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_TEST_BATCH_ENDER_4_20260606-042841.json"
+    },
+    {
+      "run": 5,
+      "status": "PASS",
+      "proof": "foreman\\crew-dispatch\\AUTONOMOUS_ROUND_TRIP_TEST_BATCH_ENDER_5_20260606-043102.json"
+    }
+  ],
+  "finishedAt": "2026-06-06T04:33:15.925Z"
+}

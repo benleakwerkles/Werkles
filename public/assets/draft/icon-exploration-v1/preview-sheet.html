@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Werkles Icon Exploration v1 — Preview Sheet</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, sans-serif;
+      background: #ebe4da;
+      color: #2c231d;
+    }
+    h1 { font-size: 1.25rem; font-weight: 600; margin: 0 0 8px; }
+    p { margin: 0 0 24px; color: #5a4f45; font-size: 0.875rem; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9f6633; margin: 0 0 12px; }
+    .grid { display: grid; gap: 16px; }
+    .row { display: flex; align-items: end; gap: 24px; flex-wrap: wrap; }
+    .cell { text-align: center; }
+    .cell span { display: block; font-size: 10px; color: #5a4f45; margin-top: 4px; }
+    .cell img { display: block; image-rendering: pixelated; }
+    .large img { width: 96px; height: 96px; }
+    .s64 img { width: 64px; height: 64px; }
+    .s32 img { width: 32px; height: 32px; }
+    .s16 img { width: 16px; height: 16px; }
+    .badge {
+      display: inline-block;
+      background: #f6efe5;
+      border: 1px solid #c08b52;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 11px;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>WERKLES_ICON_EXPLORATION_V1</h1>
+  <p>Vector draft marks · cream/copper + mono · not production · separate from photo renders</p>
+  <div class="badge">Recommended: Network Marks</div>
+
+  <section>
+    <h2>Primary families — mono</h2>
+    <div class="row" id="primaries"></div>
+  </section>
+
+  <section>
+    <h2>Primary families — copper on cream</h2>
+    <div class="row" id="primaries-copper"></div>
+  </section>
+
+  <section>
+    <h2>Five-piece W assembly</h2>
+    <div class="row" id="five-piece"></div>
+  </section>
+
+  <section>
+    <h2>Network lane set (recommended family)</h2>
+    <div class="row" id="lanes-network"></div>
+  </section>
+
+  <section>
+    <h2>Scale ladder — Network primary</h2>
+    <div class="row" id="scale-ladder"></div>
+  </section>
+
+  <section>
+    <h2>Favicon candidates</h2>
+    <div class="row" id="favicons"></div>
+  </section>
+
+  <script>
+    const sizes = [
+      { cls: "large", label: "96px" },
+      { cls: "s64", label: "64px" },
+      { cls: "s32", label: "32px" },
+      { cls: "s16", label: "16px" },
+    ];
+
+    function cell(src, label, cls) {
+      const d = document.createElement("div");
+      d.className = `cell ${cls}`;
+      d.innerHTML = `<img src="${src}" alt="" /><span>${label}</span>`;
+      return d;
+    }
+
+    function addRow(container, src, name) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.style.marginBottom = "16px";
+      const title = document.createElement("div");
+      title.style.width = "120px";
+      title.style.fontSize = "12px";
+      title.textContent = name;
+      row.appendChild(title);
+      sizes.forEach((s) => row.appendChild(cell(src, s.label, s.cls)));
+      container.appendChild(row);
+    }
+
+    const primaries = [
+      ["Operator", "operator-marks/mark-primary-mono.svg"],
+      ["Network", "network-marks/mark-primary-mono.svg"],
+      ["Foundry", "foundry-marks/mark-primary-mono.svg"],
+    ];
+    primaries.forEach(([n, p]) => addRow(document.getElementById("primaries"), p, n));
+
+    const primariesCopper = [
+      ["Operator", "operator-marks/mark-primary-copper.svg"],
+      ["Network", "network-marks/mark-primary-copper.svg"],
+      ["Foundry", "foundry-marks/mark-primary-copper.svg"],
+    ];
+    primariesCopper.forEach(([n, p]) =>
+      addRow(document.getElementById("primaries-copper"), p, n)
+    );
+
+    const five = [
+      ["Separated", "five-piece-assembly/pieces-separated.svg"],
+      ["Assembled W", "five-piece-assembly/assembled-w-mono.svg"],
+      ["Assembled copper", "five-piece-assembly/assembled-w-copper.svg"],
+    ];
+    five.forEach(([n, p]) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      const title = document.createElement("div");
+      title.style.width = "120px";
+      title.style.fontSize = "12px";
+      title.textContent = n;
+      row.appendChild(title);
+      const c = cell(p, "view", "large");
+      if (p.includes("separated")) c.querySelector("img").style.width = "240px";
+      row.appendChild(c);
+      document.getElementById("five-piece").appendChild(row);
+    });
+
+    const lanes = ["spark", "builder", "operator", "backer", "connector"];
+    lanes.forEach((lane) =>
+      addRow(
+        document.getElementById("lanes-network"),
+        `lanes-network/lane-${lane}-mono.svg`,
+        lane
+      )
+    );
+
+    addRow(
+      document.getElementById("scale-ladder"),
+      "network-marks/mark-primary-mono.svg",
+      "Network"
+    );
+
+    const favs = [
+      ["Network mono", "favicon-candidates/network-favicon-mono.svg"],
+      ["Network copper", "favicon-candidates/network-favicon-copper.svg"],
+      ["Operator", "favicon-candidates/operator-favicon-mono.svg"],
+      ["Foundry", "favicon-candidates/foundry-favicon-mono.svg"],
+      ["Five-piece W", "favicon-candidates/five-piece-favicon-mono.svg"],
+    ];
+    favs.forEach(([n, p]) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      const title = document.createElement("div");
+      title.style.width = "120px";
+      title.style.fontSize = "12px";
+      title.textContent = n;
+      row.appendChild(title);
+      [96, 64, 32, 16].forEach((px) => {
+        const d = document.createElement("div");
+        d.className = "cell";
+        d.innerHTML = `<img src="${p}" width="${px}" height="${px}" alt="" /><span>${px}px</span>`;
+        row.appendChild(d);
+      });
+      document.getElementById("favicons").appendChild(row);
+    });
+  </script>
+</body>
+</html>

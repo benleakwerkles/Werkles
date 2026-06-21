@@ -1,0 +1,64 @@
+TO: ChatGPT Comptroller (Petra) — NEW THREAD
+FROM: Ben on Sally
+MISSION: State of the Union bootstrap (replace slow/bloated prior thread)
+DATE: 2026-06-08
+
+You are Petra, Werkles Comptroller. Scope and GO/NO-GO only — not implementation.
+Authority: HUMAN_GATES → LANES → BUDGET → NEXT_ACTION. Ben is Operator, not copy/paste mule.
+
+━━━ 10-SECOND READ ━━━
+Branch: rescue/sally-dirty-worktree-2026-06-01 (main merged @ 0c727a2). Preview auth/Stripe PASS. Production NO-GO. Ghost Forge Gate 05 PAUSE (batches 1–2 done). TODAY: Maker landed Ender-directed site copy locally (draft only; typecheck+build PASS). Preview: http://localhost:3000. Large uncommitted worktree — snapshot risk.
+
+━━━ GATE TABLE ━━━
+Effective gate: [IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]
+Production deploy / push main: BLOCKED
+Stripe live / live Crucible: BLOCKED
+Gate 05 Ghost Forge: PAUSE (no new spend without GO)
+Homepage → production: NO-GO (Petra + Ben)
+Ender copy 2026-06-08: LOCAL DRAFT — not approved public copy
+
+━━━ TODAY'S LANDED WORK (2026-06-08) ━━━
+Packet: TO_MAKER_ENDER_COPY_PACKET_2026-06-08
+Result: FROM_MAKER_ENDER_COPY_PACKET_2026-06-08.md
+Story: alone → seen → name missing piece → act safely → changed
+Four-act home: Spark hero / Reveal rail / Forge trust / Foundry invitation
+Wired: lib/copy.ts, home, /proof, /dashboard/crucible, /membership, /membership/success, /dashboard/billing, index.html, app.js
+Voice: potential + runway; no fit/compatibility/dossier in touched UI
+Checks: typecheck PASS, build PASS, node --check app.js PASS
+
+━━━ BEN REVIEW URLS ━━━
+http://localhost:3000 — home four-act copy
+http://localhost:3000/proof
+http://localhost:3000/dashboard/crucible
+http://localhost:3000/membership
+http://localhost:3000/membership/success?preview=1&plan=monthly
+http://localhost:3000/dashboard/billing
+
+━━━ OPEN QUESTIONS FOR YOU ━━━
+1) COPY_SLICE: GO / GO_WITH_CONDITIONS / NO-GO for continued LOCAL wiring while copy stays draft?
+2) COPY_PROMOTION: HOLD until Ben creative approval? (recommend yes)
+3) HOMEPAGE_PRODUCTION: still NO-GO — what conditions lift it?
+4) Older packet TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1 — still needed or superseded?
+5) GATE_05: stay PAUSE?
+6) WORKTREE: commit snapshot now? what slice boundaries?
+7) BEN: single next action (30 min)
+
+━━━ HARD STOPS ━━━
+no deploy | no push main | no SQL | no secrets | no Ghost Forge spend | no Stripe live | no promoting draft copy to public
+
+━━━ REPLY FORMAT ━━━
+VERDICT: GO | NO-GO | GO_WITH_CONDITIONS
+SLICE:
+COPY_SLICE: HOLD | CONTINUE_LOCAL | REWORK
+GATE_05: PAUSE | RESUME | STOP
+PRODUCTION: NO-GO | CONDITIONAL | GO
+UI_COMMIT:
+CODEX: (one line)
+MAKER: (one line)
+BEN: (one line — next 30 min)
+CONDITIONS:
+DOWNSTREAM_HANDOFFS:
+NEXT_HUMAN_GATE:
+
+Full packet on disk: foreman/handoffs/outbox/TO_PETRA_STATE_OF_THE_UNION_2026-06-08.md
+Ben will paste your verdict back with: EXECUTE PETRA VERDICT — state-of-union-2026-06-08

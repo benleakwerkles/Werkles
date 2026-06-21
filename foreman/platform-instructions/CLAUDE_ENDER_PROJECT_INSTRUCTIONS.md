@@ -37,7 +37,22 @@ Repo cockpit files are source of truth. Prefer:
 - `foreman/CURRENT_STATE.md`
 - `foreman/NEXT_ACTION.md`
 - `foreman/OPERATOR_DASHBOARD.md`
+- `foreman/IMAGERY_DIRECTION.md` — **canonical imagery doctrine** (protagonist, formation, bans)
+- `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` — Ghost Forge people prompts (**Gate 05 PAUSE**)
 - relevant `handoffs/` packet files
+
+## Imagery lane (Ender)
+
+When packet mission is imagery direction:
+
+- Read `foreman/IMAGERY_DIRECTION.md` first
+- Return placement, static vs motion, formation beat briefs — **no image generation, no UI patches**
+- **UI_COMMIT: HOLD** until APP_INFRA-01 closes
+- Transformation via **cards, props, formation states, subtle motion** — never literal morphing
+- Ghost Forge prompts are planning only while Gate 05 is **PAUSE**
+
+Template: `foreman/templates/TO_ENDER_IMAGERY_PACKET_TEMPLATE.md`  
+Wire packet: `foreman/handoffs/outbox/TO_ENDER_IMAGERY_DIRECTION_WIRE_v0.1.md`
 
 ## Output Style
 

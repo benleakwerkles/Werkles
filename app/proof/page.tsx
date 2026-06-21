@@ -1,29 +1,56 @@
-import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { readStaticBody } from "@/lib/static-page";
-import { crucibleTrustCopy } from "@/lib/crucible";
+import Link from "next/link";
+
+import { SiteHeader } from "@/components/foundry/site-header";
+import { NarrativeActPageLayout } from "@/components/narrative/narrative-act-page-layout";
+import { NarrativePhotoGallery } from "@/components/narrative/narrative-photo-gallery";
+import { ProofDoctrineSection } from "@/components/narrative/proof-doctrine-section";
 import { copy } from "@/lib/copy";
-import { routeAtmosphere } from "@/lib/workshop-facets";
-import { pricing } from "@/lib/pricing";
+import { narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
+import { forgeV2Gallery } from "@/lib/render-batch-3-imagery";
+import { getNarrativeAct } from "@/lib/narrative-arc";
+
+const foundryProofGallery = [
+  {
+    id: "foundry-b02",
+    title: "Finished product on bench",
+    caption: "Canonical Act IV — outcome carries the weight.",
+    path: narrativeV1Assets.foundryB02FinishedProduct
+  },
+  ...forgeV2Gallery.map((item) => ({
+    id: item.id,
+    title: item.title,
+    caption: item.caption,
+    path: item.path
+  }))
+];
 
 export default function ProofPage() {
+  const act = getNarrativeAct("/proof");
+  if (!act) return null;
+
   return (
-    <CockpitShell className="proof-cockpit">
-      <div className="static-proof-shell" dangerouslySetInnerHTML={{ __html: readStaticBody("proof.html") }} />
-      <main className={`proof-main ${routeAtmosphere.proof}`}>
-        <section className="proof-warning proof-boundary">
-          <div>
-            <p className="eyebrow">{copy.uiPass.cockpitEyebrow}</p>
-            <h2>{copy.uiPass.proofAtmosphere}</h2>
-            <p className="trust-badge">Pricing source: {pricing.source}</p>
-          </div>
-          <div className="gate-list" aria-label="Crucible proof rules">
-            {crucibleTrustCopy.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-            <span>Maximum handling fee: $5 per check.</span>
-          </div>
-        </section>
-      </main>
-    </CockpitShell>
+    <>
+      <SiteHeader />
+      <NarrativeActPageLayout act={act}>
+        <NarrativePhotoGallery title="Foundry beat library" items={foundryProofGallery} />
+        <ProofDoctrineSection />
+        {act.nextSlug ? (
+          <section className="narrative-act-body panel">
+            <h2>After proof — learn the floor</h2>
+            <p>
+              Bellows sits next in the arc. Squibb hosts operator lessons without guru fog once you know what signal
+              to inspect.
+            </p>
+            <Link className="button button-light" href={act.nextSlug}>
+              Continue → {act.nextLabel}
+            </Link>
+          </section>
+        ) : null}
+      </NarrativeActPageLayout>
+      <footer className="site-footer">
+        <p>{copy.proofDisclaimer}</p>
+        <p>{copy.disclaimer}</p>
+      </footer>
+    </>
   );
 }

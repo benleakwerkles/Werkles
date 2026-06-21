@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "gd-intent-router-cousin-assignment/v1",
+  "description": "Mission class → cousin recipients. Derived from mission-classes.json; stable lookup for GD router.",
+  "cousins": {
+    "PETRA": { "label": "Petra", "platform": "ChatGPT", "seat": "Comptroller" },
+    "SKYBRO": { "label": "Skybro", "platform": "Gemini", "seat": "Infra / ops" },
+    "ENDER": { "label": "Ender", "platform": "Claude", "seat": "Product / UX" },
+    "BEAN": { "label": "Bean", "platform": "DeepSeek", "seat": "Hostile audit" },
+    "COMPUTER": { "label": "Computer", "platform": "Perplexity", "seat": "Doctrine / research" }
+  },
+  "assignments": {
+    "HOMEPAGE_VISUAL_NARRATIVE": ["ENDER", "SKYBRO", "COMPUTER"],
+    "PRODUCT_COPY_PASS": ["ENDER", "SKYBRO"],
+    "CAPITAL_ALLOCATION": ["PETRA", "COMPUTER"],
+    "UX_REVIEW": ["ENDER"],
+    "TRUST_COMPLIANCE_AUDIT": ["BEAN", "PETRA"],
+    "INFRA_OPS_PREP": ["SKYBRO", "COMPUTER"],
+    "COMPTROLLER_VERDICT": ["PETRA"],
+    "DOCTRINE_SYNTHESIS": ["COMPUTER", "PETRA"],
+    "BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK": ["PETRA", "SKYBRO", "COMPUTER", "ENDER"],
+    "THREAD_REFRESH_PACKET": []
+  }
+}

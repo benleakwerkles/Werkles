@@ -1,0 +1,46 @@
+﻿{
+    "run_id":  "SALLY_FINAL_Narrative_20260610-182201",
+    "results":  [
+                    {
+                        "shot_id":  "arc-searching-electrician-notice",
+                        "status":  "completed",
+                        "batch_id":  "b2a07e5c-c2bf-4778-8d8b-5e7f4bd9bc5f",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-arc-searching-electrician.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "arc-discovery-credit-union",
+                        "status":  "completed",
+                        "batch_id":  "2a1dd863-8612-4816-b3be-68c970525a6b",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-arc-discovery-credit-union.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "arc-momentum-bakery-running",
+                        "status":  "completed",
+                        "batch_id":  "0e1fa4ce-4530-48cc-ad75-d575827e44fe",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-arc-momentum-bakery-line.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "arc-discovery-used-oven",
+                        "status":  "completed",
+                        "batch_id":  "c60d0587-db9d-4c21-9e67-ded6f7fbc710",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-arc-discovery-used-oven.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "arc-lost-baker-thinking",
+                        "status":  "completed",
+                        "batch_id":  "9984cf69-4592-4b6c-8e0a-77f397eff1f1",
+                        "path":  "public/assets/draft/anyone-narrative-v1/werkles-anyone-arc-lost-baker-thinking.png",
+                        "estimated_cost_usd":  0.2
+                    }
+                ],
+    "run":  "Narrative",
+    "total_estimated_cost_usd":  1.0,
+    "gate":  "SALLY_FINAL_ANYONE_OPERATOR_GO",
+    "completed_at":  "2026-06-10T22:22:01.5189699Z",
+    "completed_count":  5,
+    "shot_count":  5
+}

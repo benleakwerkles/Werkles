@@ -41,7 +41,7 @@ App inventory mirror: `lib/draft-asset-inventory.ts`
 
 | Name | Lane | Status |
 |------|------|--------|
-| **Squibb** | Education / Bellows voice (`education-forge/`) | **copy + rules only** — no PNG in repo |
+| **Squibb** | Bellows host + Crucible foreman (`/bellows`, `/dashboard/crucible`) | **copy + rules only** — no PNG in repo |
 | **Brass** (Crucible foreman) | Product mascot (`public/assets/mascot/`) | **blocked on manual cutout** from `coolowl.png` per `public/assets/mascot/README.md` |
 | Old helper avatar | brand mark (legacy) | not in repo |
 

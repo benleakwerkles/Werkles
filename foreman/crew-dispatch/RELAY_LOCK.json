@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "pid": null,
+  "startedAt": "2026-06-07T17:47:53.779Z",
+  "completedAt": "2026-06-07T17:48:07.614Z",
+  "courierRunId": "19324728-1f02-4d7c-80c6-0b6dd0298273",
+  "cousin": "PETRA",
+  "packetFile": "TO_PETRA_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260607-1747.md",
+  "message": "Loaded — AUTO_SEND class",
+  "updatedAt": "2026-06-07T17:48:07.615Z",
+  "error": null
+}

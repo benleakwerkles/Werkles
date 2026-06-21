@@ -3,6 +3,8 @@
  * Crucible verification stays preview-blocked while auth + subscription test wiring runs.
  */
 
+import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
+
 /** Crucible UI + verification POST routes — blocked until a later gate. */
 export const APP_INFRA_PREVIEW_CRUCIBLE = true;
 
@@ -14,6 +16,7 @@ export function isCruciblePreview(): boolean {
 }
 
 export function isAuthStripeTestBlocked(): boolean {
+  if (isLocalRoutePreviewUnlocked()) return false;
   return !AUTH_STRIPE_TEST_WIRING_ENABLED;
 }
 

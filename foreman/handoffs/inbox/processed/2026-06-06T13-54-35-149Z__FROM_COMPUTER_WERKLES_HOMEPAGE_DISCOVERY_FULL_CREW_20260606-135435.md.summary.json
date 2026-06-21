@@ -1,0 +1,13 @@
+{
+  "processed_at": "2026-06-06T13:54:35.152Z",
+  "file": "FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+  "status": "OK",
+  "cousin": "COMPUTER",
+  "verdict": "WERKLES_HOMEPAGE_DISCOVERY_ACK",
+  "confidence": "HIGH",
+  "benReview": false,
+  "warnings": [],
+  "errors": [],
+  "stale": false,
+  "auto_merge": false
+}

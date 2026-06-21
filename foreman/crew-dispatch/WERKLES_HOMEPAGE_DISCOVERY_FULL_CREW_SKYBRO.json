@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
+  "cousin": "SKYBRO",
+  "startedAt": "2026-06-06T13:50:02.777Z",
+  "finishedAt": "2026-06-06T13:52:16.723Z",
+  "status": "PASS",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135002.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\SKYBRO_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    },
+    {
+      "step": "preflight",
+      "ok": true,
+      "mode": "sandbox_available",
+      "errors": []
+    },
+    {
+      "step": "send",
+      "ok": true,
+      "status": "REPLY_SHORT_TOKEN",
+      "error": null,
+      "receivedToken": false,
+      "tokenMatchKind": "short_line",
+      "profileMode": "profile",
+      "sendSelector": "button[aria-label=\"Send message\"]",
+      "scrapedPreview": "RECEIVED\n\nTop 3 Homepage Problems\n\nThe \"Everything for Everyone\" Trap: The current layout tries to speak to every possible audience segment simultaneously. By failing to pick a clear primary beachhead user, the messaging becomes diluted, forcing visitors to dig to figure out if the platform is actually built for them.\n\nFeature-First vs. Value-First: The narrative leans heavily on how Werkles works"
+    },
+    {
+      "step": "inbox_capture",
+      "ok": true,
+      "file": "FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md",
+      "path": "foreman\\handoffs\\inbox\\FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md"
+    },
+    {
+      "step": "inbox_validate",
+      "ok": true,
+      "fileCount": 1,
+      "errors": []
+    },
+    {
+      "step": "mark_sent",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "from": "TO_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135002.md",
+        "to": "2026-06-06T13-52-16-706Z__TO_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135002.md"
+      }
+    },
+    {
+      "step": "intake_process",
+      "ok": true,
+      "moved": [
+        {
+          "from": "FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md",
+          "to": "2026-06-06T13-52-16-713Z__FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md"
+        }
+      ],
+      "message": "Processed 1 file(s) to inbox/processed/ — never auto-merged"
+    }
+  ],
+  "error": null,
+  "tokenMatched": false,
+  "tokenMatchKind": "short_line",
+  "scrapedText": "RECEIVED\n\nTop 3 Homepage Problems\n\nThe \"Everything for Everyone\" Trap: The current layout tries to speak to every possible audience segment simultaneously. By failing to pick a clear primary beachhead user, the messaging becomes diluted, forcing visitors to dig to figure out if the platform is actually built for them.\n\nFeature-First vs. Value-First: The narrative leans heavily on how Werkles works (the mechanics, the tools, the ecosystem) rather than why it matters. It describes a utility instead of defining a new, undeniable category.\n\nWeak Alternatative Differentiation: The positioning doesn't sharply draw the line between Werkles and legacy alternatives. Without a clear \"us vs. them\" narrative arc, prospects will naturally bucket Werkles into an existing, crowded software category where it doesn't belong.\n\nTop 3 Homepage Opportunities\n\nOwn the Category Narrative: Frame Werkles not just as a tool, but as the definitive operating system for a specific, emerging way of working. Define the \"Before\" (fragmented, frustrating) and the \"After\" (seamless, empowered) to establish a high-stakes story arc.\n\nThe \"Full Crew\" Social Proof: Lean heavily into the collective power of the community or ecosystem. Showing the momentum of the \"Full Crew\" gives individual users the psychological safety of joining a movement rather than adopting an unproven tool.\n\nA Radical, Outcome-Driven Hero Section: Rebuild the fold to immediately call out the exact pain point Werkles eliminates. A bold, polarizing statement will instantly filter in high-intent users and weed out looky-loos.\n\nOne Recommended Hero Message\n\nThe chaos ends where your crew begins.\nStop hacking together fragile workflows. Werkles gives your entire team the unified ecosystem to build, scale, and own your collective momentum—all in one place.\n\nOne Thing Not to Change\n\nThe Underlying Authenticity: Do not sanitize the voice. The \"Full Crew\" energy and the distinct, slightly unconventional personality woven into the brand's DNA are its greatest defense against generic corporate competitors. Keep the grit; just sharpen the focus.",
+  "profileMode": "profile",
+  "batch": null,
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135002.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\SKYBRO_PASTE_BLOCK.txt",
+    "inboxResponse": "foreman\\handoffs\\inbox\\FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md",
+    "proofManifest": "foreman\\crew-dispatch\\WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_SKYBRO.json",
+    "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-52-16-713Z__FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md",
+    "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-52-16-713Z__FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md.summary.json"
+  }
+}

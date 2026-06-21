@@ -1,6 +1,12 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
+import { hasSupabasePublicEnv } from "@/lib/local-route-preview";
+
 let browserClient: SupabaseClient | undefined;
+
+export function hasSupabaseBrowserConfig() {
+  return hasSupabasePublicEnv();
+}
 
 export function getSupabaseBrowser() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;

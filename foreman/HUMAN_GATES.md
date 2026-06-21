@@ -97,6 +97,7 @@ Tier 1 includes:
 
 - doctrine/protocol changes
 - automation authority changes
+- Speaker entry ratification (`foreman/speaker/entries/` — Ben only)
 - budget/spend approvals
 - batch generation approvals
 - deploy/release approvals
