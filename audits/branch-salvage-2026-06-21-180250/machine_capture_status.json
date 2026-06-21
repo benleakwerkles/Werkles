@@ -1,0 +1,62 @@
+{
+  "audit_branch": "audit/branch-salvage-map-2026-06-21-180250",
+  "generated_from": "Doss",
+  "generated_on": "2026-06-21",
+  "rules": {
+    "no_product_merge": true,
+    "no_deletion": true,
+    "no_cleanup": true,
+    "preserve_every_branch_until_petra_go": true
+  },
+  "realities": [
+    {
+      "machine": "Doss",
+      "capture_status": "CAPTURED",
+      "branch": "snapshot/sally-good-werkles-2026-06-12",
+      "commit": "4adebb2dfaf2fc2dae3284f24969eebe8b7adf6f",
+      "status_file": "doss_worktree_status.txt",
+      "notes": "Dirty working tree captured. Local preview and screenshots captured."
+    },
+    {
+      "machine": "Betsy",
+      "capture_status": "PARTIAL",
+      "branch": "origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+      "commit": "8e70a25547988b8b4820fa3c79fd85e07eddfe1a",
+      "status_file": null,
+      "notes": "GitHub salvage branch captured. Betsy-local worktree status remains CAPTURE_REQUIRED."
+    },
+    {
+      "machine": "Sally",
+      "capture_status": "PARTIAL",
+      "branch": "origin/rescue/sally-dirty-worktree-2026-06-01",
+      "commit": "745dc1b2a58a15c2adaf8ddaa3a99838570c9766",
+      "status_file": null,
+      "notes": "GitHub rescue branch captured. Sally-local worktree status remains CAPTURE_REQUIRED."
+    },
+    {
+      "machine": "Spanzee",
+      "capture_status": "BLOCKED",
+      "branch": null,
+      "commit": null,
+      "status_file": null,
+      "notes": "No Git worktree captured. Doss SoleDash reports Spanzee Remote Check blocked."
+    },
+    {
+      "machine": "GitHub",
+      "capture_status": "CAPTURED",
+      "branch": "all visible origin branches",
+      "commit": null,
+      "status_file": "github_remote_divergence_from_main.tsv",
+      "notes": "Remote refs captured after final fetch."
+    },
+    {
+      "machine": "Vercel",
+      "capture_status": "PARTIAL",
+      "branch": "UNVERIFIED",
+      "commit": "UNVERIFIED",
+      "status_file": null,
+      "notes": "Public production screenshot captured. Authenticated Vercel inspect still required for production commit."
+    }
+  ]
+}
+

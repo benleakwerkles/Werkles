@@ -1,0 +1,36 @@
+﻿  main                                                                0c727a2461f274f8990063ab9ee06b799a1890ed chore(cockpit): record SUPABASE_AUTH_STRIPE Preview proof PASS
+* snapshot/sally-good-werkles-2026-06-12                              4adebb2dfaf2fc2dae3284f24969eebe8b7adf6f [ahead 9, behind 9] Wire Automatica relay cards
+  remotes/origin/HEAD                                                 -> origin/main
+  remotes/origin/app-infra-01-approved-clean                          12215b75f434ac30f9e18357fddb5491fe20ad51 chore(cockpit): record APP_INFRA approval and next gate
+  remotes/origin/cursor/atlas-machine-role-eeea                       4964d80eaf7e2a20b8d3b34e23e2eb42d502ef00 topology: add Atlas archive/vault machine role + mirror script scaffold
+  remotes/origin/cursor/concierge-console-v1-eeea                     32d24be76cc1232a7882a8039bf32d3b88e12228 research: Werkles Concierge Console V1 — minimum software support for 20-user discovery
+  remotes/origin/cursor/concierge-sheet-spec-v1-eeea                  a8bb720f6ad1d7b51f36e9380915471461af6578 research: 20-User Concierge Sheet Spec V1 (Google Sheet / Airtable structure)
+  remotes/origin/cursor/dink-non-human-gate-agent-c25f                ad8a47a5ce8001cdfda9e1133a7b4d30d405824a Add one sentence product description test
+  remotes/origin/cursor/doss-baseline-v1-eeea                         03aed4b800395d5aa36a5695e3a10d121076f054 doss: rename baseline scaffold to LOCAL setup command packet; retarget 437792b; mark NOT AUDITED
+  remotes/origin/cursor/doss-local-dev-launcher-eeea                  769eac6b12dcfd2dcc1bbbbbdda169144320062d dev: add one-path Windows local dev launcher (start-werkles.cmd) + README
+  remotes/origin/cursor/execution-context-doctrine-eeea               0992a3f56bdf801114df187a21d53ad6fba60d56 doctrine: add Execution Context reporting rules across cockpit
+  remotes/origin/cursor/gd-status-layer-v1-eeea                       dc47322c030bc474adbee611fcfe0d66456667e2 gd: add Status Layer V1 to GimpDash console (UI only)
+  remotes/origin/cursor/gimpdash-human-gates-console-eeea             594f045432ac8f677d3fc30723a5909e215fd1f2 gimpdash: add Human Gates Console (Foreman Control Panel @ :4317)
+  remotes/origin/cursor/goop-cycle-pvp-9b25                           2ed3902888cafabe5f9b88565a13308f7508be4d Add human portraits, textures, and named Den fighters
+  remotes/origin/cursor/post-merge-cockpit-cleanup-eeea               5ce5f1b148e4c67ac01cfff632776603bce547d6 cockpit: patch NEXT_ACTION imagery + APP_INFRA lines (PR #4 pre-merge)
+  remotes/origin/cursor/recommendation-card-v1-eeea                   2fac6ae10dbe7b822d9e084d8ecd4af482c56146 research: Recommendation Card V1 — user-facing concierge card (6-section format)
+  remotes/origin/cursor/refresh-cockpit-dashboard-eeea                578b4868a9037f69251a032ff6bfb3d6be997844 cockpit: lock 'Gimp Dash' name; add clickable Human Gates list with provider links
+  remotes/origin/cursor/soledash-build-continue-eeea                  aa3b3120277949b80a67ee9f73efb28ca003f658 soledash: continue V1 — optional status sidecar + summary strip + /summary (read-only)
+  remotes/origin/cursor/soledash-culture-safety-surface-v1-eeea       e875737881af97fd8b837eb7a6a2527960f38784 research: SoleDash Culture-Safety Surface V1 (design only)
+  remotes/origin/cursor/soledash-field-mode-v1-eeea                   f883e55eb4938f35c5ca8d082e205dc18ad9e65d soledash: add mobile Field Mode (/field) — thumb-first read-only field view
+  remotes/origin/cursor/soledash-inbox-outbox-build-v1-eeea           3c25087332ddb1a53ce2bf9ed97f3f2f6d2e8182 soledash: naming pass — SoleDash visible, GD internal, GimpDash deprecated
+  remotes/origin/cursor/soledash-inbox-outbox-v1-eeea                 00477b20e5f80606ce55888ce88a326eb5a2e4b0 soledash: Inbox/Outbox/Receipts V1 concept + UI plan (design doc only)
+  remotes/origin/cursor/soledash-onboarding-surface-v1-eeea           4e920a58a5a3b69da2568d26392bf1982d10ed1d soledash: onboarding surface V1 — zero-context cousin panel proposal (design only)
+  remotes/origin/cursor/soledash-screen-inventory-v1-eeea             0a933cdb09eb8b23d665f2f847d5f903db51b33b research: SoleDash Screen Inventory V1 (one-page map)
+  remotes/origin/cursor/user1-journey-map-v1-eeea                     2b8c79ba7eee80da044bb7f10cec4e02b9524e43 research: User #1 Journey Map V1 (homepage -> first recommendation)
+  remotes/origin/cursor/werkles-testable-claims-v1-eeea               8a6c93196f1d0b2883208371909915f17cadf6de research: Werkles Testable Claims V1 — top 10 embedded assumptions + cheapest tests
+  remotes/origin/cursor/wizard-of-oz-test-v1-eeea                     8919b07972e38db37a23c5d1b7a2ef275b390f59 research: Wizard-of-Oz Concierge Test V1 (smallest 30-day discovery test)
+  remotes/origin/cursor/wonka-den-mood-reference-9b25                 f32084eccb950625931ba0ba62c4be127585bd7f Add Wonka Den mood reference and draft preview shell
+  remotes/origin/cursor/woz-operator-console-v1-eeea                  c5d8bc50b98def7b84ca3dc9ec4bb98263612b91 research: WoZ Operator Console V1 — minimum human-operated console for 20 users
+  remotes/origin/ghost-forge-one-prompt-test                          7b8da425423091070e9a591d64f0952010f2ecdb Fix Ghost Forge webhook base URL
+  remotes/origin/main                                                 0c727a2461f274f8990063ab9ee06b799a1890ed chore(cockpit): record SUPABASE_AUTH_STRIPE Preview proof PASS
+  remotes/origin/preview/wonka-den-safe-preview-20260618              dc6829580ec1ede8c864a9a9051efb02ec874c00 Preview SoleDash Wonka Den safe executor
+  remotes/origin/rescue/sally-dirty-worktree-2026-06-01               745dc1b2a58a15c2adaf8ddaa3a99838570c9766 feat(foreman): operator UX reset with relay courier and crew dispatch
+  remotes/origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12 8e70a25547988b8b4820fa3c79fd85e07eddfe1a Add SoleDash mobile field command surface for away-from-desk operator work.
+  remotes/origin/snapshot/sally-good-werkles-2026-06-12               ffccad027151e3e1759209c4fc28d985d7c9ce9b Ship SoleDash Automatica relay cards live for operator FIRE testing.
+  remotes/origin/supabase-auth-stripe-test-wiring                     0c727a2461f274f8990063ab9ee06b799a1890ed chore(cockpit): record SUPABASE_AUTH_STRIPE Preview proof PASS

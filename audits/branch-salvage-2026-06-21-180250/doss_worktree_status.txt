@@ -1,0 +1,39 @@
+﻿## snapshot/sally-good-werkles-2026-06-12...origin/snapshot/sally-good-werkles-2026-06-12 [ahead 9, behind 9]
+ M foreman/MACHINE_TOPOLOGY.md
+ D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_COMPUTER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md
+ D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_ENDER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md
+ D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_PETRA_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md
+ D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_SKYBRO_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md
+ D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/synthesis/FROM_GD_SYNTHESIS_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md
+ M foreman/soledash/automatica/run_automatica_route.py
+ M foreman/speaker/SPEAKER_CHARTER.md
+ M scripts/foreman/foreman-control-server.mjs
+?? app/soledash/
+?? foreman/MULE_ELIMINATION_MAP_v1.md
+?? foreman/NUGGETS_OF_WISDOM_TOP_25.md
+?? foreman/machines/DOSS_SLEEP_MWB_DISCONNECT_V1.md
+?? foreman/nuggets_of_wisdom_top_25.json
+?? foreman/overseer/
+?? foreman/soledash/ACTIVE_TASK.json
+?? foreman/soledash/AUTOMATICA_APPROVALS.json
+?? foreman/soledash/CRAWLER_PEARLS.json
+?? foreman/soledash/FLEET_STATE.json
+?? foreman/soledash/MACHINE_HEALTH.json
+?? foreman/soledash/PROJECT_LOCKS.json
+?? foreman/soledash/SWATTER_EVENT_STREAM.json
+?? foreman/soledash/WORK_QUEUE.json
+?? foreman/soledash/actions/
+?? foreman/soledash/mobile/
+?? foreman/soledash/receipts/
+?? foreman/speaker/HYPOTHESIS_LIBRARY_v1.md
+?? foreman/speaker/RECOMMENDATION_CONSTITUTION_V1.md
+?? foreman/speaker/SPEAKER_DIAGNOSTIC_FLOW_v1.md
+?? foreman/speaker/SPEAKER_USER_1_PROTOCOL.md
+?? foreman/speaker/USER_QUALIFICATION_PROTOCOL_v1.md
+?? foreman/speaker/USER_QUALIFICATION_RUBRIC_v1.md
+?? foreman/wisdom/
+?? return-to-work.cmd
+?? scripts/foreman/doss-disable-modern-standby.ps1
+?? scripts/foreman/return-to-work.ps1
+?? scripts/foreman/start-soledash-mobile-readonly.ps1
+?? scripts/wisdom-watcher.py
