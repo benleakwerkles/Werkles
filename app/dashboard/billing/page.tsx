@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
@@ -27,7 +28,7 @@ export default function BillingPage() {
   const preview = isAuthStripeTestBlocked();
   const [profile, setProfile] = useState<BillingProfile | null>(preview ? PREVIEW_PROFILE : null);
   const [status, setStatus] = useState(
-    preview ? copy.dashboard.billing.previewShell : copy.dashboard.billing.idle
+    preview ? copy.dashboard.billing.disabledReason : copy.dashboard.billing.idle
   );
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function BillingPage() {
         const { data: userData } = await supabase.auth.getUser();
 
         if (!userData.user) {
-          setStatus("Log in to inspect billing.");
+          setStatus(copy.dashboard.billing.loginRequired);
           return;
         }
 
@@ -55,9 +56,9 @@ export default function BillingPage() {
         }
 
         setProfile(data || {});
-        setStatus("Billing profile loaded.");
+        setStatus(copy.dashboard.billing.profileLoaded);
       } catch (error) {
-        setStatus(error instanceof Error ? error.message : "The register is not wired yet.");
+        setStatus(error instanceof Error ? error.message : copy.dashboard.billing.portalFailed);
       }
     }
 
@@ -66,11 +67,11 @@ export default function BillingPage() {
 
   async function openPortal() {
     if (preview) {
-      setStatus(copy.dashboard.billing.portalBlocked);
+      setStatus(copy.dashboard.billing.disabledReason);
       return;
     }
 
-    setStatus("Opening the billing portal.");
+    setStatus(copy.dashboard.billing.openingPortal);
 
     try {
       const supabase = getSupabaseBrowser();
@@ -78,7 +79,7 @@ export default function BillingPage() {
       const token = data.session?.access_token;
 
       if (!token) {
-        setStatus("Log in to open the billing portal.");
+        setStatus(copy.dashboard.billing.loginRequired);
         return;
       }
 
@@ -91,7 +92,7 @@ export default function BillingPage() {
       const payload = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        setStatus(payload.error || "Billing portal could not open.");
+        setStatus(payload.error || copy.dashboard.billing.portalFailed);
         return;
       }
 
@@ -100,32 +101,45 @@ export default function BillingPage() {
         return;
       }
 
-      setStatus("Billing portal returned no URL.");
+      setStatus(copy.dashboard.billing.portalNoUrl);
     } catch (error) {
-      setStatus(error instanceof Error ? error.message : "Billing portal could not open.");
+      setStatus(error instanceof Error ? error.message : copy.dashboard.billing.portalFailed);
     }
   }
+
+  const tier = profile?.membership_tier || copy.dashboard.billing.tierFree;
+  const subStatus = profile?.subscription_status || copy.dashboard.billing.statusNone;
+  const customerLabel = profile?.stripe_customer_id
+    ? copy.dashboard.billing.customerLinked
+    : copy.dashboard.billing.customerNotLinked;
 
   return (
     <CockpitShell>
       <main className={`dashboard-main ${routeAtmosphere.billing}`}>
       <nav className="dashboard-nav" aria-label="Billing navigation">
-        <Link href="/dashboard">Match deck</Link>
-        <Link href="/membership">Membership</Link>
-        <Link href="/pricing">Pricing</Link>
-        <Link href="/dashboard/crucible">Crucible</Link>
+        <Link href="/dashboard">{copy.nav.workbench}</Link>
+        <Link href="/membership">{copy.nav.membership}</Link>
+        <Link href="/pricing">{copy.nav.pricing}</Link>
+        <Link href="/dashboard/crucible">{copy.nav.crucible}</Link>
       </nav>
+
+      <div className="tier2-visual-band">
+        <Tier2PageVisual page="billing" featured iconRail />
+      </div>
 
       <section className="ops-card billing-panel">
         <div className="card-heading">
           <p>{copy.dashboard.billing.kicker}</p>
           <h1>{copy.dashboard.billing.headline}</h1>
         </div>
-        {preview ? <p className="muted">{copy.dashboard.billing.previewShell}</p> : null}
+        <p>{copy.dashboard.billing.summary}</p>
+        {preview ? <p className="muted">{copy.dashboard.billing.disabledReason}</p> : null}
         <div className="trust-state-strip">
-          <span>Tier: {profile?.membership_tier || "free"}</span>
-          <span>Status: {profile?.subscription_status || "none"}</span>
-          <span>Customer: {profile?.stripe_customer_id ? "linked" : "not linked"}</span>
+          <span>
+            {copy.dashboard.billing.tierLabel}: {tier}
+          </span>
+          <span>Status: {subStatus}</span>
+          <span>{customerLabel}</span>
         </div>
         <p>
           Monthly Foundry Dues are {pricing.foundryDues.monthly.displayPrice}. The Long Run is{" "}
@@ -136,11 +150,20 @@ export default function BillingPage() {
           Current period end:{" "}
           {profile?.current_period_end
             ? new Date(profile.current_period_end).toLocaleDateString()
-            : "not set"}
+            : copy.dashboard.billing.periodEndUnset}
         </p>
-        <button className="button button-outline" type="button" onClick={openPortal} disabled={preview}>
-          Open billing portal
-        </button>
+        <div className="billing-actions">
+          <button className="button button-dark" type="button" disabled={preview}>
+            {copy.dashboard.billing.checkoutCta}
+          </button>
+          <button className="button button-outline" type="button" onClick={openPortal} disabled={preview}>
+            {copy.dashboard.billing.portalCta}
+          </button>
+          <button className="button button-outline" type="button" disabled={preview}>
+            {copy.dashboard.billing.downloadCta}
+          </button>
+        </div>
+        <p className="billing-squibb-hint">{copy.squibb.billing}</p>
         <p className="status-line" role="status">{status}</p>
       </section>
       </main>

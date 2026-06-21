@@ -7,9 +7,9 @@
     <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
     <meta
       name="description"
-      content="Werkles helps builders, operators, backers, connectors, and sparks find the missing piece for a real business."
+      content="Find what your build is really missing. Werkles helps Main Street builders find the partner, place, proof, money, or next opening they did not know to ask for."
     >
-    <title>Werkles | Business partner matching</title>
+    <title>Werkles | Find what the work is missing</title>
     <link rel="icon" href="assets/werkles-app-icon-board.png">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -19,37 +19,31 @@
         <img class="brand-wordmark" src="assets/werkles-word-only.png" alt="Werkles">
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#people">People</a>
-        <a href="#matchboard">Matches</a>
-        <a href="#profile">Profile</a>
+        <a href="#matchboard">Discover</a>
+        <a href="#intros">Intros</a>
         <a href="proof.html">Proof</a>
-        <a href="#beta">Beta</a>
       </nav>
-      <a class="header-cta" href="#profile">Enter the Foundry</a>
+      <a class="header-cta" href="#profile">Sign in</a>
     </header>
 
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Mythic capitalism for people with invoices due</p>
-          <h1>Find the missing piece before the machine eats you.</h1>
-          <p>
-            Private partner discovery for builders, operators, backers, connectors, and sparks
-            putting real businesses together.
-          </p>
-          <p class="hero-promise">Create with trust. Build to <strong>thrive.</strong></p>
+          <p class="eyebrow">For the founder who can feel the gap</p>
+          <h1>Something is missing. It may not be what you think.</h1>
+          <p>Find what the work is missing.</p>
           <div class="hero-actions">
-            <a class="button button-light" href="#profile">Enter the Foundry</a>
-            <a class="button button-ghost" href="#matchboard">See the match deck</a>
+            <a class="button button-light" href="#matchboard">Find the missing piece</a>
+            <a class="button button-ghost" href="proof.html">See how proof works</a>
           </div>
-          <p class="hero-trust">Verified profiles. Private introductions. No public shouting into the void.</p>
+          <p class="hero-trust">Proof clears the runway. Private introductions. No public shouting into the void.</p>
         </div>
 
         <aside class="hero-card" aria-label="Werkles people-first signal">
           <img class="brand-plate" src="assets/werkles-brand-plate.png" alt="Create with trust. Build to thrive. Built on Trust.">
           <div class="hero-card-copy">
             <strong id="heroMatchScore">86%</strong>
-            <span>Built on Trust</span>
+            <span>Runway</span>
           </div>
           <div class="mini-people" aria-hidden="true">
             <span>B</span>
@@ -102,8 +96,8 @@
 
       <section id="matchboard" class="matchboard" aria-labelledby="matchTitle">
         <div class="section-heading">
-          <p>Matchboard</p>
-          <h2 id="matchTitle">No crowds. One possible partner at a time.</h2>
+          <p>Discovery</p>
+          <h2 id="matchTitle">Potential worth exploring</h2>
         </div>
 
         <div class="match-layout">
@@ -133,7 +127,7 @@
           <article class="candidate-card" id="candidateCard" aria-live="polite"></article>
 
           <aside class="deal-panel" aria-labelledby="dealPanelTitle">
-            <h2 id="dealPanelTitle">Human fit map</h2>
+            <h2 id="dealPanelTitle">Need Map</h2>
             <canvas id="matchGraph" width="520" height="320" aria-label="Visual map of top partner matches"></canvas>
             <div class="deck-buttons">
               <button class="round-action" id="prevMatch" type="button" aria-label="Previous match">Back</button>
@@ -146,8 +140,8 @@
 
       <section id="profile" class="profile-studio" aria-labelledby="profileTitle">
         <div class="section-heading">
-          <p>Your Signal</p>
-          <h2 id="profileTitle">Name what you bring. Name what you need.</h2>
+          <p>What is on the table</p>
+          <h2 id="profileTitle">What are you working with?</h2>
         </div>
 
         <form id="profileForm" class="profile-grid">
@@ -167,7 +161,7 @@
           </label>
 
           <label class="field">
-            <span>Lane</span>
+            <span>Your lane</span>
             <select id="role">
               <option value="builder">Builder</option>
               <option value="operator">Operator</option>
@@ -178,7 +172,7 @@
           </label>
 
           <label class="field">
-            <span>Arena</span>
+            <span>Primary arena</span>
             <select id="industry">
               <option value="plumbing">Plumbing</option>
               <option value="hvac">HVAC</option>
@@ -206,19 +200,19 @@
           </label>
 
           <label class="field money-field">
-            <span>Money you can risk</span>
+            <span>Capital you can put to work</span>
             <output id="capitalAvailableValue">$50k</output>
             <input id="capitalAvailable" type="range" min="0" max="250000" step="5000" value="50000">
           </label>
 
           <label class="field money-field">
-            <span>Money you need</span>
+            <span>Capital the move may need</span>
             <output id="capitalNeededValue">$0</output>
             <input id="capitalNeeded" type="range" min="0" max="250000" step="5000" value="0">
           </label>
 
           <fieldset class="chip-grid">
-            <legend>Value on the table</legend>
+            <legend>Skills on the table</legend>
             <label><input type="checkbox" name="skills" value="field" checked> Field work</label>
             <label><input type="checkbox" name="skills" value="license"> License</label>
             <label><input type="checkbox" name="skills" value="sales" checked> Sales</label>
@@ -233,7 +227,7 @@
           </fieldset>
 
           <fieldset class="chip-grid">
-            <legend>What you want to build toward</legend>
+            <legend>What could change</legend>
             <label><input type="checkbox" name="goals" value="leave" checked> Leave employer</label>
             <label><input type="checkbox" name="goals" value="start" checked> Start shop</label>
             <label><input type="checkbox" name="goals" value="scale"> Scale shop</label>
@@ -299,7 +293,7 @@
               <input id="betaEmail" type="email" placeholder="you@example.com" required>
             </label>
             <label class="field">
-              <span>Lane</span>
+              <span>Your lane</span>
               <select id="betaRole">
                 <option value="builder">Builder</option>
                 <option value="operator">Operator</option>
@@ -316,7 +310,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Werkles is a partner discovery and verification platform. We do not facilitate any securities transaction, loan, investment, or sale of business. Werkles never holds or transmits funds.</p>
+      <p>Werkles is a local discovery and introductions prototype. Deals, lending, securities, ownership documents, and regulated checks still need real legal and financial review.</p>
     </footer>
 
     <script src="app.js"></script>

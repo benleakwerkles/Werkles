@@ -8,11 +8,17 @@
 | **Petra** | ChatGPT Comptroller in Cockpit/Ayes. Scope, gates, GO/NO-GO — not implementation. |
 | **Ghost Forge** | Cloud worker on Render (`werkles-ghost-forge1`). Image generation happens there, not on Sally. |
 
-**Sally's job tonight:** run the launcher script, paste into Codex, wait for PNGs on disk.  
-**Codex's job:** hit Ghost Forge, save icons to `public/assets/draft/icons/`.  
-**Maker's job (after):** wire icons when Ben says `ASSETS_LANDED v0.2`.
+**Primary launcher (v2):** [Crew Dispatch Console](../crew-dispatch-console/DISPATCH_CONSOLE_v2.md)
 
-Do not run local image generation on Sally (no SD, no ComfyUI, no batch GPU).
+**OPEN THIS (latest packet):** [LATEST_DISPATCH.md](../crew-dispatch-console/LATEST_DISPATCH.md) · [OPEN_THIS_PACKET.md](OPEN_THIS_PACKET.md)
+
+```powershell
+cd C:\Users\benle\Desktop\github\Werkles
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\foreman\crew-dispatch-console.ps1 -Action OpenLatest
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\foreman\crew-dispatch-console.ps1 -Action Prepare -Mission crew-checkin -Role petra
+```
+
+Stops before Send — clipboard + open files only.
 
 ---
 

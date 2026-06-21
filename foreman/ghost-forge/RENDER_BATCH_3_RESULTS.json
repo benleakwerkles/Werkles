@@ -1,0 +1,75 @@
+﻿{
+    "run_id":  "RENDER_BATCH_3_20260606-192400",
+    "results":  [
+                    {
+                        "shot_id":  "icon-v2-operator-keyring",
+                        "status":  "completed",
+                        "batch_id":  "a74b6c27-7607-43af-ab4d-b5b684992706",
+                        "path":  "public/assets/draft/icons-v2/werkles-icon-v2-lane-operator-keyring.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "a74b6c27-7607-43af-ab4d-b5b684992706/hero-background/6c9b7832-a39a-41b6-a9c1-25273a067cb7.png"
+                    },
+                    {
+                        "shot_id":  "icon-v2-backer-ingot",
+                        "status":  "completed",
+                        "batch_id":  "7cbc1683-fbb3-4afa-b489-f056834cbefa",
+                        "path":  "public/assets/draft/icons-v2/werkles-icon-v2-lane-backer-ingot-stack.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "7cbc1683-fbb3-4afa-b489-f056834cbefa/hero-background/ba6448ec-8d17-4f96-a699-ca0860c4883b.png"
+                    },
+                    {
+                        "shot_id":  "icon-v2-connector-rings",
+                        "status":  "completed",
+                        "batch_id":  "33e34c4f-4284-46ad-92f2-4eb42527c0f7",
+                        "path":  "public/assets/draft/icons-v2/werkles-icon-v2-lane-connector-rings.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "33e34c4f-4284-46ad-92f2-4eb42527c0f7/hero-background/95d8c9c2-6de0-482a-a031-0fa062465a65.png"
+                    },
+                    {
+                        "shot_id":  "space-d04-reception-quiet",
+                        "status":  "completed",
+                        "batch_id":  "afc3e4d3-0196-4d46-bdaf-9cbc221886a4",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d04-reception-quiet.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "afc3e4d3-0196-4d46-bdaf-9cbc221886a4/hero-background/6b0e2e94-b0a2-4185-8571-a5c38d808e0e.png"
+                    },
+                    {
+                        "shot_id":  "space-d05-van-dawn",
+                        "status":  "completed",
+                        "batch_id":  "79f340c8-8fb1-4620-950a-daf171205434",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d05-van-dawn.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "79f340c8-8fb1-4620-950a-daf171205434/hero-background/4b9cd456-4e12-41dd-8632-b74a53b1f089.png"
+                    },
+                    {
+                        "shot_id":  "space-d02-materials-staged",
+                        "status":  "completed",
+                        "batch_id":  "6e16573a-149a-436f-8f7b-a1a1498e94e2",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d02-materials-staged.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "6e16573a-149a-436f-8f7b-a1a1498e94e2/hero-background/e92b9e4c-721d-43a7-ac98-168f76146ed8.png"
+                    },
+                    {
+                        "shot_id":  "forge-a06-builder-operator-plan",
+                        "status":  "completed",
+                        "batch_id":  "a0c1cd83-cd5e-492e-acd5-b53f9a8d9708",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-forge-a06-builder-operator-plan.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "a0c1cd83-cd5e-492e-acd5-b53f9a8d9708/hero-background/d535ed7c-6543-4cf1-9ccb-19d457289273.png"
+                    },
+                    {
+                        "shot_id":  "forge-a07-connector-intro-table",
+                        "status":  "completed",
+                        "batch_id":  "22860f83-6061-4b2f-88e4-7de78bf9abc4",
+                        "path":  "public/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-forge-a07-connector-intro-table.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "22860f83-6061-4b2f-88e4-7de78bf9abc4/hero-background/8abfc3cb-2b97-4b65-a83b-2e1269825844.png"
+                    }
+                ],
+    "total_estimated_cost_usd":  1.6,
+    "gate":  "RENDER_BATCH_3_OPERATOR_GO",
+    "operator_phrase":  "restart Ghost Forge icons narrative human direction + more Spaces + Act Three",
+    "completed_at":  "2026-06-06T23:24:00.0087410Z",
+    "completed_count":  8,
+    "shot_count":  8
+}

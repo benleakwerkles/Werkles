@@ -1,22 +1,22 @@
 import type { CSSProperties } from "react";
 import { getWorkshopVisitorBucket } from "@/lib/workshop-moment";
 
-/** Draft atmosphere PNGs — rotation pool only; not final brand lock. */
+/** Documentary narrative plates only — gen-1 ghost-forge fantasy/workshop interiors retired. */
 export const workshopAtmospherePlates = {
   foundry: [
-    "/assets/draft/ghost-forge/werkles-draft-hero-foundry-v0.2.png",
-    "/assets/draft/ghost-forge/werkles-draft-hero-foundry-v0.1.png",
-    "/assets/draft/ghost-forge/werkles-draft-workshop-interior-ben-pass.png",
-    "/assets/draft/ghost-forge/werkles-draft-conservatory-ben-pass.png"
+    "/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-foundry-b02-finished-product.png",
+    "/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-forge-a05-nearly-finished-pair.png",
+    "/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-forge-a06-builder-operator-plan.png"
   ],
   proof: [
-    "/assets/draft/ghost-forge/werkles-draft-proof-trust-v0.2.png",
-    "/assets/draft/ghost-forge/werkles-draft-proof-trust-v0.1.png"
+    "/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-foundry-b02-finished-product.png",
+    "/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d03-tool-at-rest.png",
+    "/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-space-d01-before-opening.png"
   ],
   workshop: [
-    "/assets/draft/ghost-forge/werkles-draft-workshop-interior-ben-pass.png",
-    "/assets/draft/ghost-forge/werkles-draft-hero-foundry-v0.2.png",
-    "/assets/draft/ghost-forge/werkles-draft-conservatory-ben-pass.png"
+    "/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-forge-a03-half-built-pair.png",
+    "/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d04-reception-quiet.png",
+    "/assets/draft/homepage-narrative-v2/werkles-homepage-narrative-space-d07-workshop-pegboard.png"
   ]
 } as const;
 

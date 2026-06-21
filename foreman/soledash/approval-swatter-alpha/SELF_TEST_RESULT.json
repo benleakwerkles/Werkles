@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "timestamp": "2026-06-17T07:56:59.373Z",
+  "counts": {
+    "green": 1,
+    "blue": 1,
+    "red": 1
+  },
+  "decisions": [
+    {
+      "id": "local_read_approval_prompt_local_read_a_local_workstation_note",
+      "origin": "swatter_inbox",
+      "approval_class": "GREEN",
+      "action": "AUTO_APPROVED_SILENT",
+      "policy_id": "file_reads",
+      "reason": "Registry GREEN: file reads.",
+      "decision_path": "foreman/soledash/approval-swatter-alpha/processed/2026-06-17T07-56-48-928Z__green__local_read_approval_prompt_local_read_a_local_workstation_note.json",
+      "receipt_path": null,
+      "blocker": null
+    },
+    {
+      "id": "mwb_local_restart_recovery",
+      "origin": "swatter_inbox",
+      "approval_class": "BLUE",
+      "action": "AUTO_APPROVED_EXECUTED_RECEIPT",
+      "policy_id": "codex_mwb_local_restart_recovery",
+      "reason": "Registry BLUE: Codex Mouse Without Borders local restart recovery.",
+      "decision_path": "foreman/soledash/approval-swatter-alpha/processed/2026-06-17T07-56-59-367Z__blue__mwb_local_restart_recovery.json",
+      "receipt_path": "foreman/soledash/approval-swatter-alpha/receipts/2026-06-17T07-56-59-368Z__blue__mwb_local_restart_recovery.json",
+      "blocker": null
+    },
+    {
+      "id": "production_deploy_approval_prompt",
+      "origin": "swatter_inbox",
+      "approval_class": "RED",
+      "action": "SURFACED_TO_BEN",
+      "policy_id": "production_deploy",
+      "reason": "Hard stop: production deploy. Ben must see this.",
+      "decision_path": "foreman/soledash/approval-swatter-alpha/red/2026-06-17T07-56-59-371Z__red__production_deploy_approval_prompt.json",
+      "receipt_path": null,
+      "blocker": null
+    }
+  ],
+  "registry_error": null,
+  "blue_blockers": [],
+  "paths": {
+    "inbox": "foreman/soledash/approval-swatter-alpha/inbox",
+    "processed": "foreman/soledash/approval-swatter-alpha/processed",
+    "red": "foreman/soledash/approval-swatter-alpha/red",
+    "receipts": "foreman/soledash/approval-swatter-alpha/receipts",
+    "result": "foreman/soledash/approval-swatter-alpha/BACKGROUND_APPROVAL_SWATTER_ALPHA_RESULT.json"
+  }
+}

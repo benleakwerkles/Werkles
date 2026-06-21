@@ -21,6 +21,7 @@ export const routeAtmosphere = {
   pricing: "workshop-route--pricing",
   membership: "workshop-route--membership",
   proof: "workshop-route--proof",
+  bellows: "workshop-route--bellows",
   dashboard: "workshop-route--dashboard",
   crucible: "workshop-route--crucible",
   billing: "workshop-route--billing",

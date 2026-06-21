@@ -1,39 +1,53 @@
 import Link from "next/link";
 import { copy } from "@/lib/copy";
-import { WorkshopGreeter } from "@/components/foundry/workshop-greeter";
+import { HeroCopyBlock } from "@/components/foundry/hero-copy-block";
 import { WorkshopMomentEyebrow } from "@/components/foundry/workshop-moment-eyebrow";
+import { ANYONE_NARRATIVE_V2_ENABLED } from "@/lib/anyone-narrative-v2-imagery";
+import { ANYONE_NARRATIVE_WIRE_ENABLED } from "@/lib/anyone-narrative-imagery";
+import { NARRATIVE_V1_WIRE_ENABLED } from "@/lib/homepage-narrative-imagery";
+import { RENDER_BATCH_1_ENABLED } from "@/lib/render-batch-1-imagery";
+import { STOCK_PREVIEW_ENABLED } from "@/lib/stock-preview-imagery";
 
 export function HeroStatic() {
+  const { artifact } = copy.home;
+  const heroImageryClass = ANYONE_NARRATIVE_V2_ENABLED
+    ? " hero--story-v2"
+    : ANYONE_NARRATIVE_WIRE_ENABLED
+      ? " hero--anyone-narrative"
+      : NARRATIVE_V1_WIRE_ENABLED
+      ? " hero--narrative-v1"
+      : RENDER_BATCH_1_ENABLED
+      ? " hero--render-batch-1"
+      : STOCK_PREVIEW_ENABLED
+        ? " hero--stock-preview"
+        : "";
+
   return (
-    <section className="hero hero--draft-v01">
+    <section className={`hero hero--draft-v01 hero--rewrite-v1${heroImageryClass}`}>
       <div className="hero-copy">
         <WorkshopMomentEyebrow />
-        <h1>{copy.hero.headline}</h1>
-        <p>{copy.hero.subhead}</p>
-        <p className="hero-promise">{copy.hero.brandPromise}</p>
+        <HeroCopyBlock />
         <div className="hero-actions">
-          <Link className="button button-light" href="/signup">{copy.hero.primaryCta}</Link>
-          <Link className="button button-ghost" href="#how">{copy.hero.secondaryCta}</Link>
+          <Link className="button button-light" href="/signup">
+            {copy.hero.primaryCta}
+          </Link>
+          <Link className="button button-ghost" href="/proof">
+            {copy.hero.secondaryCta}
+          </Link>
         </div>
-        <p className="hero-trust">{copy.hero.trustLine}</p>
+        <p className="hero-trust-line">{copy.hero.trustLine}</p>
+        <p className="hero-signup-preview">{copy.hero.signupPreview}</p>
       </div>
 
-      <aside className="hero-card" aria-label="Werkles people-first signal">
-        <WorkshopGreeter size="md" className="hero-card-greeter" />
-        <div className="hero-trust-plate" role="img" aria-label={copy.trust.badge}>
-          <span className="hero-trust-plate__promise">{copy.hero.brandPromise}</span>
-          <strong className="hero-trust-plate__badge">{copy.trust.badge}</strong>
+      <aside className="hero-artifact" aria-label="Example Werkles output">
+        <p className="hero-artifact__label">{artifact.label}</p>
+        <div className="hero-artifact__plate">
+          <strong className="hero-artifact__title">{artifact.title}</strong>
+          <p className="hero-artifact__means">{artifact.meansLine}</p>
+          <p className="hero-artifact__body">{artifact.body}</p>
+          <span className="hero-artifact__badge">{copy.trust.badge}</span>
         </div>
-        <div className="hero-card-copy">
-          <strong>v0.3</strong>
-          <span>{copy.uiPass.cockpitEyebrow}</span>
-        </div>
-        <div className="mini-people" aria-hidden="true">
-          <span>B</span>
-          <span>O</span>
-          <span>C</span>
-          <span>+</span>
-        </div>
+        <p className="hero-artifact__note">{artifact.note}</p>
       </aside>
     </section>
   );

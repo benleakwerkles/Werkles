@@ -1,0 +1,19 @@
+{
+  "lastSession": {
+    "task": "Build pages",
+    "tool": "Cursor / Maker",
+    "commit": "8e70a2554798 — Add SoleDash mobile field command surface for away-from-desk operator work.",
+    "receipt": "FROM_COMPUTER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+    "timestamp": "2026-06-18T01:03:37.703Z",
+    "status": "blocked",
+    "branch": "preview/wonka-den-safe-preview-20260618",
+    "hostname": "Betsy"
+  },
+  "updatedAt": "2026-06-18T01:03:37.703Z",
+  "lastVisit": {
+    "timestamp": "2026-06-18T01:03:37.702Z",
+    "commit": "8e70a25547988b8b4820fa3c79fd85e07eddfe1a",
+    "receiptCount": 12,
+    "urgentGateCount": 10
+  }
+}

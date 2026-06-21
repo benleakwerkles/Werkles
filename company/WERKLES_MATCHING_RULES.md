@@ -2,6 +2,11 @@
 
 Status: v0.2 review draft
 
+**Architecture (formation + need translation):** `company/WERKLES_MATCH_STACKING_AND_NEED_TRANSLATION_V0.md`  
+**Codebase gap audit:** `foreman/reviews/MATCH_STACK_SCHEMA_AUDIT_V0.md`
+
+Werkles is a need-translation and formation system. Matching is one internal mechanism — not the product definition.
+
 ## Article VII - Matching Law
 
 Werkles matching must be explainable.

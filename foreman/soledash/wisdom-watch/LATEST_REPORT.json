@@ -1,0 +1,57 @@
+{
+  "report_id": "wisdom_watch_1781569153583",
+  "title": "Wisdom Watch — current work conflict scan",
+  "generated_at": "2026-06-16T00:19:13.583Z",
+  "report_path": "foreman/soledash/wisdom-watch/LATEST_REPORT.json",
+  "markdown_path": "foreman/soledash/wisdom-watch/LATEST_REPORT.md",
+  "risks": [
+    {
+      "id": "ww_maker_file_lane",
+      "summary": "Maker reading Dink-owned live files before cousin auto-dispatch is wired",
+      "severity": "high",
+      "source_doctrine": "foreman/speaker/SPEAKER_DOCTRINE.md — wire-only passes forbidden",
+      "conflicting_task": "P0-A001 · Workstation Uniformization (blocker_maker_live_file_integration_v0_1)",
+      "recommended_correction": "Hold live Maker dispatch on Dink files; keep mock receipts honest until Dink wires transport gap."
+    },
+    {
+      "id": "ww_courier_thread_blind",
+      "summary": "Relay / Petra transport without thread registry — packets may land shallow",
+      "severity": "high",
+      "source_doctrine": "foreman/speaker/entries/DRAFT_20260608-thread-registry.md",
+      "conflicting_task": "Automatica relay cards + Focus Thief / Mobile SD fire surface",
+      "recommended_correction": "Do not trust auto-send; attach thread identity in outbox before cousin paste."
+    },
+    {
+      "id": "ww_frontier_operator_machine_split",
+      "summary": "Operator frontier diverges from machine rank — attention cost hidden",
+      "severity": "medium",
+      "source_doctrine": "foreman/speaker/entries/DRAFT_20260607-human-adaptation-thesis.md",
+      "conflicting_task": "Operator: Workstation Uniformization vs Machine: Doss Stability Investigation",
+      "recommended_correction": "Explicit override receipt when keeping P0-A001 over machine P0-A002; surface delay cost in dispatch matrix."
+    },
+    {
+      "id": "ww_compression_handoffs",
+      "summary": "SoleDash feature velocity risks compressing causal doctrine into slogans",
+      "severity": "medium",
+      "source_doctrine": "foreman/speaker/entries/DRAFT_20260608-ai-compression-soul-loss.md",
+      "conflicting_task": "Mobile field command + wisdom/focus panels shipping fast",
+      "recommended_correction": "Handoffs must cite cause → effect → lesson; no one-paragraph 'wire-only' summaries to Petra/Bean."
+    },
+    {
+      "id": "ww_tool_mortality_context",
+      "summary": "Critical context still lives in chat if Dink/Maker lanes stall",
+      "severity": "medium",
+      "source_doctrine": "foreman/speaker/entries/DRAFT_20260608-tool-mortality.md",
+      "conflicting_task": "Maker must read Dink-owned files only — cousin auto-dispatch and external receipt transport still pending.",
+      "recommended_correction": "Write watch reports and receipts to foreman/soledash/ — repo memory survives tool death."
+    },
+    {
+      "id": "ww_mock_partial_live",
+      "summary": "Partial-live mock transport can look like success without external proof",
+      "severity": "low",
+      "source_doctrine": "foreman/HUMAN_GATES.md + SoleDash honesty badges",
+      "conflicting_task": "MOCK TEST MODE banner on Command layer",
+      "recommended_correction": "Keep SIM/MOCK labels on receipts; never hide transport_gap from operator."
+    }
+  ]
+}

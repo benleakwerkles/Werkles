@@ -1,0 +1,10 @@
+{
+  "lastSuccess": {
+    "ok": true,
+    "port": "3000",
+    "checkedAt": "2026-06-18T00:48:30.062Z",
+    "url": "http://localhost:3000/",
+    "httpStatus": 200
+  },
+  "updatedAt": "2026-06-18T00:48:30.062Z"
+}

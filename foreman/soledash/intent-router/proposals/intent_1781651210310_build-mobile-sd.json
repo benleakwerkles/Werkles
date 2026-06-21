@@ -1,0 +1,154 @@
+{
+  "id": "intent_1781651210310_build-mobile-sd",
+  "createdAt": "2026-06-16T23:06:50.310Z",
+  "updatedAt": "2026-06-16T23:06:50.310Z",
+  "rawIntent": "Build Mobile SD",
+  "interpretedIntent": "Build mobile SoleDash access and surface proof",
+  "category": "mobile field command",
+  "requiredCapability": "mobile access infrastructure plus the responsive SoleDash surface",
+  "selectedAeyes": {
+    "primary": "DINK",
+    "support": [
+      "MAKER"
+    ],
+    "label": "Dink primary, Maker support"
+  },
+  "selectedMachine": "Betsy",
+  "selectedMachineId": "betsy",
+  "whySelected": [
+    "Mobile access is infrastructure first: Dink owns relay, automation, mobile access, fleet, and approval memory.",
+    "The mobile SoleDash surface is UI: Maker supports responsive layout and visual implementation.",
+    "Betsy is the observed primary forge with localhost evidence, while Doss still has an identity blocker."
+  ],
+  "alternativesRejected": [
+    "Maker primary rejected: mobile surface needs Maker support, but mobile access/routing is infrastructure first.",
+    "Doss rejected: machine identity is blocked until LOCAL_DOSS_WINDOWS readback.",
+    "Petra rejected: no GO/NO-GO gate is needed before a reversible local packet."
+  ],
+  "expectedReceipt": "mobile URL, mobile screenshot, access method, blockers",
+  "confidence": "high",
+  "availability": {
+    "aeyes": [
+      {
+        "id": "MAKER",
+        "label": "Maker",
+        "availability": "busy",
+        "busy_on": "Workstation Uniformization (Betsy)",
+        "source": "FLEET_STATE"
+      },
+      {
+        "id": "DINK",
+        "label": "Dink",
+        "availability": "busy",
+        "busy_on": "Doss Stability Investigation (Doss)",
+        "source": "FLEET_STATE"
+      },
+      {
+        "id": "ENDER",
+        "label": "Ender",
+        "availability": "available",
+        "busy_on": null,
+        "source": "no assignment signal"
+      },
+      {
+        "id": "BEAN",
+        "label": "Bean",
+        "availability": "available",
+        "busy_on": null,
+        "source": "no assignment signal"
+      },
+      {
+        "id": "THUFIR",
+        "label": "Thufir",
+        "availability": "available",
+        "busy_on": null,
+        "source": "no assignment signal"
+      },
+      {
+        "id": "SKYBRO",
+        "label": "Skybro",
+        "availability": "available",
+        "busy_on": null,
+        "source": "no assignment signal"
+      },
+      {
+        "id": "PETRA",
+        "label": "Petra",
+        "availability": "available",
+        "busy_on": null,
+        "source": "no assignment signal"
+      }
+    ],
+    "primaryAeyeAvailability": "busy",
+    "activeAssignments": [
+      "Maker: Workstation Uniformization (Betsy)",
+      "Dink: Doss Stability Investigation (Doss)",
+      "Betsy: Workstation Uniformization",
+      "Doss: Doss Stability Investigation"
+    ],
+    "knownBlockers": [
+      "Doss: Machine identity unproven — awaiting LOCAL_DOSS_WINDOWS readback",
+      "Sally: No receipt path in FLEET_STATE yet",
+      "Spanzee: Spanzee node not instrumented",
+      "Maker: Workstation Uniformization (Betsy)",
+      "Dink: Doss Stability Investigation (Doss)"
+    ],
+    "selectedMachine": {
+      "id": "betsy",
+      "label": "Betsy",
+      "hostname": "LOCAL_SALLY_WINDOWS",
+      "status": "LIVE",
+      "evidenceStatus": "OBSERVED",
+      "activeCousins": "Maker @ Betsy",
+      "currentTask": "Workstation Uniformization",
+      "blocker": null,
+      "routeLive": true
+    },
+    "alternatives": [
+      {
+        "id": "doss",
+        "label": "Doss",
+        "hostname": "DOSS_HOSTNAME",
+        "status": "PARTIAL LIVE",
+        "evidenceStatus": "HYPOTHESIS",
+        "activeCousins": "Dink / Doss",
+        "currentTask": "Doss Stability Investigation",
+        "blocker": "Machine identity unproven — awaiting LOCAL_DOSS_WINDOWS readback",
+        "routeLive": false
+      },
+      {
+        "id": "sally",
+        "label": "Sally",
+        "hostname": "DESKTOP-SJSJMNK",
+        "status": "LIVE",
+        "evidenceStatus": "OBSERVED",
+        "activeCousins": "Mirror forge",
+        "currentTask": "UNKNOWN",
+        "blocker": "No receipt path in FLEET_STATE yet",
+        "routeLive": false
+      },
+      {
+        "id": "spanzee",
+        "label": "Spanzee",
+        "hostname": "UNKNOWN",
+        "status": "UNKNOWN",
+        "evidenceStatus": "UNKNOWN",
+        "activeCousins": "UNKNOWN",
+        "currentTask": null,
+        "blocker": "Spanzee node not instrumented",
+        "routeLive": false
+      }
+    ],
+    "localhost": {
+      "ok": true,
+      "port": "3002",
+      "url": "http://localhost:3002/",
+      "checkedAt": "2026-06-16T21:17:47.245Z"
+    },
+    "routeMode": "blocked"
+  },
+  "state": "PROPOSED",
+  "packetPath": null,
+  "receipt": null,
+  "nextDecision": null
+}

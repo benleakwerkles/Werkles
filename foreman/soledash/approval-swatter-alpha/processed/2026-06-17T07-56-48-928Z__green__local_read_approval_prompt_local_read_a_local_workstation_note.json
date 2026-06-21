@@ -1,0 +1,19 @@
+{
+  "id": "local_read_approval_prompt_local_read_a_local_workstation_note",
+  "origin": "swatter_inbox",
+  "source": "self-test-green",
+  "prompt": "local read approval prompt: local read a local workstation note",
+  "received_at": "2026-06-17T07:56:48.923Z",
+  "decided_at": "2026-06-17T07:56:48.928Z",
+  "approval_class": "GREEN",
+  "candidate_id": "file_reads",
+  "candidate_label": "file reads",
+  "matched_pattern": "local read",
+  "hard_stop": false,
+  "reason": "Registry GREEN: file reads.",
+  "action": "AUTO_APPROVED_SILENT",
+  "execution": null,
+  "decision_path": "foreman/soledash/approval-swatter-alpha/processed/2026-06-17T07-56-48-928Z__green__local_read_approval_prompt_local_read_a_local_workstation_note.json",
+  "receipt_path": null,
+  "original_path": "foreman/soledash/approval-swatter-alpha/processed/originals/2026-06-17T07-56-48-929Z__2026-06-17T07-56-48-923Z__local_read_approval_prompt_local_read_a_local_workstation_note.json"
+}

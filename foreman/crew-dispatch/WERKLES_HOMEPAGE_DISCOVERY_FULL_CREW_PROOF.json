@@ -1,0 +1,45 @@
+{
+  "template": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
+  "startedAt": "2026-06-06T13:47:38.995Z",
+  "finishedAt": "2026-06-06T13:54:35.186Z",
+  "status": "PASS",
+  "passed": 3,
+  "failed": 0,
+  "results": [
+    {
+      "cousin": "ENDER",
+      "lens": "UX / structure / conversion — hero clarity, crucible gate, signup flow, visual hierarchy",
+      "status": "PASS",
+      "failureKind": null,
+      "inboxResponse": "foreman\\handoffs\\inbox\\FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+      "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-50-02-750Z__FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+      "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-50-02-750Z__FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md.summary.json",
+      "proof": "foreman/crew-dispatch/WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_ENDER.json"
+    },
+    {
+      "cousin": "SKYBRO",
+      "lens": "Positioning / narrative / category — what Werkles is, who it's for, story arc vs alternatives",
+      "status": "PASS",
+      "failureKind": null,
+      "inboxResponse": "foreman\\handoffs\\inbox\\FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md",
+      "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-52-16-713Z__FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md",
+      "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-52-16-713Z__FROM_SKYBRO_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135216.md.summary.json",
+      "proof": "foreman/crew-dispatch/WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_SKYBRO.json"
+    },
+    {
+      "cousin": "COMPUTER",
+      "lens": "Market / competitor / trust — category norms, competitor homepages, credibility signals, citations",
+      "status": "PASS",
+      "failureKind": null,
+      "inboxResponse": "foreman\\handoffs\\inbox\\FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+      "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-54-35-149Z__FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md",
+      "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-54-35-149Z__FROM_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135435.md.summary.json",
+      "proof": "foreman/crew-dispatch/WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_COMPUTER.json"
+    }
+  ],
+  "petraHandoff": {
+    "packet": "foreman\\handoffs\\outbox\\TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1_20260606-135435.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\PETRA_PASTE_BLOCK.txt",
+    "manifest": "foreman/crew-dispatch/WERKLES_HOMEPAGE_DISCOVERY_PETRA_HANDOFF.json"
+  }
+}

@@ -1,0 +1,39 @@
+﻿{
+    "run":  "Story",
+    "total_estimated_cost_usd":  1.0,
+    "gate":  "SALLY_FINAL_V2_OPERATOR_GO",
+    "completed_count":  5,
+    "shot_count":  5,
+    "results":  [
+                    {
+                        "shot_id":  "story-v2-beat01-wrong-need",
+                        "status":  "completed",
+                        "batch_id":  "cb7f13aa-5bad-4ff9-ad9d-7aa39f87c066",
+                        "path":  "public/assets/draft/anyone-narrative-v2/werkles-story-v2-beat01-wrong-need.png"
+                    },
+                    {
+                        "shot_id":  "story-v2-beat05-shop-open",
+                        "status":  "completed",
+                        "batch_id":  "5a7d2474-07fc-47cc-8404-64f9c113aeca",
+                        "path":  "public/assets/draft/anyone-narrative-v2/werkles-story-v2-beat05-shop-open.png"
+                    },
+                    {
+                        "shot_id":  "story-v2-beat03-money-reveal",
+                        "status":  "completed",
+                        "batch_id":  "336555b4-7202-4bee-a832-82a529c2d964",
+                        "path":  "public/assets/draft/anyone-narrative-v2/werkles-story-v2-beat03-money-reveal.png"
+                    },
+                    {
+                        "shot_id":  "story-v2-beat04-equipment-reveal",
+                        "status":  "completed",
+                        "batch_id":  "d09a2cc0-cc6d-44d7-9abd-9d7b96b0aa54",
+                        "path":  "public/assets/draft/anyone-narrative-v2/werkles-story-v2-beat04-equipment-reveal.png"
+                    },
+                    {
+                        "shot_id":  "story-v2-beat02-squibb-moment",
+                        "status":  "completed",
+                        "batch_id":  "a764852f-984f-4f06-a565-490e360ebf59",
+                        "path":  "public/assets/draft/anyone-narrative-v2/werkles-story-v2-beat02-squibb-moment.png"
+                    }
+                ]
+}

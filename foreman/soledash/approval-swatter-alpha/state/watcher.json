@@ -1,0 +1,7 @@
+{
+  "pid": 6244,
+  "started_at": "2026-06-17T08:07:28.120Z",
+  "interval_ms": 1500,
+  "inbox": "foreman/soledash/approval-swatter-alpha/inbox",
+  "permission_fly_registry": "foreman/soledash/permission-fly/registry.json"
+}

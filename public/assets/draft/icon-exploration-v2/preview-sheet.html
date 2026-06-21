@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Werkles Icon Exploration v2 — Preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px; font-family: system-ui, sans-serif; background: #ebe2d4; color: #2c231d; }
+    h1 { margin: 0 0 6px; font-size: 1.2rem; }
+    .sub { margin: 0 0 20px; color: #5c4a3a; font-size: 0.85rem; }
+    .pill { display: inline-block; background: #f6efe5; border: 1px solid #9f6633; border-radius: 999px; padding: 3px 10px; font-size: 11px; margin-bottom: 20px; }
+    section { margin-bottom: 36px; }
+    h2 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9f6633; margin: 0 0 10px; }
+    .row { display: flex; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+    .label { width: 110px; font-size: 12px; color: #5c4a3a; }
+    .cell { text-align: center; }
+    .cell span { display: block; font-size: 10px; color: #685141; margin-top: 3px; }
+    .cell img { display: block; image-rendering: auto; }
+    .lg img { width: 96px; height: 96px; }
+    .m64 img { width: 64px; height: 64px; }
+    .m32 img { width: 32px; height: 32px; }
+    .m16 img { width: 16px; height: 16px; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card { background: #f6efe5; border: 1px solid rgba(159,102,51,.35); border-radius: 8px; padding: 14px; }
+    .card h3 { margin: 0 0 8px; font-size: 12px; color: #9f6633; }
+    .dark { background: #191817; }
+  </style>
+</head>
+<body>
+  <h1>WERKLES_ICON_EXPLORATION_V2</h1>
+  <p class="sub">Retry after v1 · hand-authored SVG · aligned to wordmark + style-line copper icons · no AI PNG</p>
+  <div class="pill">Recommended: Operator Marks (interlocking W)</div>
+
+  <section>
+    <h2>v1 vs v2 — operator primary</h2>
+    <div class="compare">
+      <div class="card"><h3>v1 (rejected)</h3><img src="../icon-exploration-v1/operator-marks/mark-primary-mono.svg" width="96" height="96" alt="" /></div>
+      <div class="card"><h3>v2</h3><img src="operator-marks/mark-primary-mono.svg" width="96" height="96" alt="" /></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Primary families</h2>
+    <div id="primaries"></div>
+  </section>
+
+  <section>
+    <h2>Brand duochrome (app icon grammar)</h2>
+    <div class="row">
+      <div class="label">Operator W</div>
+      <div class="cell lg"><img src="operator-marks/mark-primary-duochrome.svg" alt="" /><span>96px</span></div>
+      <div class="cell m64"><img src="operator-marks/mark-primary-duochrome.svg" alt="" /><span>64px</span></div>
+      <div class="cell m32"><img src="operator-marks/mark-primary-duochrome.svg" alt="" /><span>32px</span></div>
+      <div class="cell m16"><img src="operator-marks/mark-primary-duochrome.svg" alt="" /><span>16px</span></div>
+      <div class="cell lg dark" style="padding:8px;border-radius:8px"><img src="operator-marks/mark-primary-duochrome.svg" alt="" /><span>on dark</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Operator lane set (recommended)</h2>
+    <div id="lanes"></div>
+  </section>
+
+  <section>
+    <h2>Five-piece W assembly</h2>
+    <div class="row">
+      <div class="label">Separated</div>
+      <img src="five-piece-assembly/pieces-separated.svg" height="56" alt="" />
+    </div>
+    <div class="row">
+      <div class="label">Assembled</div>
+      <div class="cell lg"><img src="five-piece-assembly/assembled-w-mono.svg" alt="" /><span>mono</span></div>
+      <div class="cell lg"><img src="five-piece-assembly/assembled-w-duochrome.svg" alt="" /><span>duochrome</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Favicon candidates</h2>
+    <div id="favicons"></div>
+  </section>
+
+  <script>
+    const sizes = [
+      { cls: "lg", label: "96px" },
+      { cls: "m64", label: "64px" },
+      { cls: "m32", label: "32px" },
+      { cls: "m16", label: "16px" },
+    ];
+    function ladder(container, src, name, extra) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<div class="label">${name}</div>`;
+      sizes.forEach((s) => {
+        const c = document.createElement("div");
+        c.className = `cell ${s.cls}`;
+        c.innerHTML = `<img src="${src}" alt="" /><span>${s.label}</span>`;
+        row.appendChild(c);
+      });
+      if (extra) row.appendChild(extra);
+      container.appendChild(row);
+    }
+    const primaries = [
+      ["Operator mono", "operator-marks/mark-primary-mono.svg"],
+      ["Operator copper", "operator-marks/mark-primary-copper.svg"],
+      ["Network mono", "network-marks/mark-primary-mono.svg"],
+      ["Foundry mono", "foundry-marks/mark-primary-mono.svg"],
+    ];
+    primaries.forEach(([n, p]) => ladder(document.getElementById("primaries"), p, n));
+    ["spark", "builder", "operator", "backer", "connector"].forEach((lane) =>
+      ladder(document.getElementById("lanes"), `lanes-operator/lane-${lane}-copper.svg`, lane)
+    );
+    [
+      ["Operator duochrome", "favicon-candidates/operator-duochrome-favicon.svg"],
+      ["Operator copper", "favicon-candidates/operator-copper-favicon.svg"],
+      ["Network mono", "favicon-candidates/network-mono-favicon.svg"],
+    ].forEach(([n, p]) => ladder(document.getElementById("favicons"), p, n));
+  </script>
+</body>
+</html>

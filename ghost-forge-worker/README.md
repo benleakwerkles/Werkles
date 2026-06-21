@@ -141,6 +141,7 @@ curl -X POST "$PUBLIC_BASE_URL/batch/create" \
 - `DEFAULT_COST_PER_IMAGE_USD` must be set conservatively. Unknown model costs fall back to this value and emit a warning.
 - Prefer `MODEL_COSTS_JSON` for every model you allow, for example `{"ideogram-ai/ideogram-v3-quality":0.09}`.
 - Claude request limiting is per worker process through `MAX_BATCH_REQUESTS_PER_HOUR`, plus daily estimated Claude spend in Supabase.
+- Operator hourly lift (not a human gate): set `GHOST_FORGE_SKIP_RATE_LIMIT=1` on Render, redeploy/restart. Status: `GET /diagnostics/rate-limit`. See `foreman/ghost-forge/OPERATOR_RATE_LIMIT.md`.
 - Cost estimates are conservative scaffolding, not invoice-grade accounting.
 - Use an Anthropic model name available to the configured Anthropic account for `ANTHROPIC_MODEL`. The default is `claude-haiku-4-5-20251001`, which was returned by the account's `/v1/models` endpoint during the first Ghost Forge setup.
 

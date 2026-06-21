@@ -14,6 +14,26 @@ A `CURSOR_CLOUD_CONTAINER` cousin may inspect `/workspace`, GitHub branches/PRs,
 
 Full rules and the merge/push/deploy evidence-locality requirement: `foreman/EXECUTION_CONTEXT_RULES.md`.
 
+## LOCAL HANDS READBACK (mandatory)
+
+**Hard crew rule.** Not a suggestion.
+
+Any **hands-capable** cousin — including Maker, Dink, or any future local operator — must begin **every local work session** with a **LOCAL HANDS READBACK** before:
+
+- editing files
+- running migrations
+- installing packages
+- switching branches
+- merging
+- pushing
+- starting dev servers
+
+Required readback: machine name, repo path, git branch, latest commit hash, working tree status, terminal availability, localhost running yes/no, port in use.
+
+Purpose: prevent Ben from having to ask which repo, branch, machine, or workspace the agent is inside.
+
+Canonical format and gate: `foreman/EXECUTION_CONTEXT_RULES.md`. Constitutional authority: `company/WERKLES_CONSTITUTION.md` Article X.
+
 ## Source Hierarchy
 
 1. Operator instruction
@@ -191,3 +211,21 @@ Chat approval alone is not durable. Human gate decisions must be recorded in `fo
 No cousin may push, deploy, enter secrets, apply SQL, change RLS/policies, mutate production data, run batch image generation, change billing, expand spend, publish/share publicly, promote draft outputs, or bypass a true human gate unless the Operator explicitly approves that exact action.
 
 One-prompt technical smoke tests inside an approved lane, written scope, and approved budget are mechanical work, not new gates.
+
+## Speaker Constitutional Office
+
+**Speaker** is an independent constitutional office — not GD, not a router, not a builder.
+
+**Rule:** Speaker is read/write memory authority only. Speaker has advisory voice but no executive hands.
+
+| Party | Allowed | Forbidden |
+|-------|---------|-----------|
+| **GD** | Request Speaker context; cite lessons in Operator Brief | Overwrite Speaker doctrine; suppress warnings; mark entries canonical without Ben |
+| **Speaker** | Observe repo; store causal entries; warn; draft memory packets | Execute commands; send messages; deploy; route missions; delete history |
+| **Maker** | Wire `/gd/speaker` panel; append DRAFT entries | Ratify entries; delete Speaker history; absorb Speaker into GD submodule |
+
+Entry status: `DRAFT` | `RATIFIED` | `SUPERSEDED`. **Only Ben may ratify.** Superseded entries are never deleted.
+
+Future builds that change GD routing, command console, relay courier, Aeye roles, or copy pipeline must check `foreman/speaker/CAUSAL_LEDGER.md` first. If skipped, mark: **`SPEAKER_REVIEW_MISSING`**.
+
+Artifacts: `foreman/speaker/SPEAKER_CHARTER.md`, `SPEAKER_DOCTRINE.md`, `CAUSAL_LEDGER.md`, `entries/`.

@@ -1,0 +1,51 @@
+﻿{
+    "run_id":  "RENDER_BATCH_6_20260607-003605",
+    "results":  [
+                    {
+                        "shot_id":  "nav-icon-spark-transparent",
+                        "status":  "completed",
+                        "batch_id":  "4662ef19-fac5-43c4-945d-bd43d64009cf",
+                        "path":  "public/assets/draft/icons-nav-transparent-v1/werkles-nav-icon-spark-transparent.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "4662ef19-fac5-43c4-945d-bd43d64009cf/nav-icon-spark-transparent/4bcde2ba-938a-4bd2-a4c0-f89ad53e43bd.png"
+                    },
+                    {
+                        "shot_id":  "nav-icon-builder-transparent",
+                        "status":  "completed",
+                        "batch_id":  "91cbf7ed-805b-429a-8f6d-cce63dfa7bfe",
+                        "path":  "public/assets/draft/icons-nav-transparent-v1/werkles-nav-icon-builder-transparent.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "91cbf7ed-805b-429a-8f6d-cce63dfa7bfe/nav-icon/2f590389-5632-4815-9827-4164fd548218.png"
+                    },
+                    {
+                        "shot_id":  "nav-icon-worker-transparent",
+                        "status":  "completed",
+                        "batch_id":  "8287ddd9-5f81-4503-b504-c134b32cb272",
+                        "path":  "public/assets/draft/icons-nav-transparent-v1/werkles-nav-icon-worker-transparent.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "8287ddd9-5f81-4503-b504-c134b32cb272/nav-icon-worker-transparent/29509d92-b6c7-4cf0-9274-b9802b3e18ef.png"
+                    },
+                    {
+                        "shot_id":  "nav-icon-backer-transparent",
+                        "status":  "completed",
+                        "batch_id":  "bf56de34-d4f9-4bab-8cbc-4372690d8fa2",
+                        "path":  "public/assets/draft/icons-nav-transparent-v1/werkles-nav-icon-backer-transparent.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "bf56de34-d4f9-4bab-8cbc-4372690d8fa2/nav-icon/6f842c1a-3261-4b06-b054-77768e17aa4c.png"
+                    },
+                    {
+                        "shot_id":  "nav-icon-connector-transparent",
+                        "status":  "completed",
+                        "batch_id":  "d957b9d3-f128-447e-bc5a-092fd4559800",
+                        "path":  "public/assets/draft/icons-nav-transparent-v1/werkles-nav-icon-connector-transparent.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "d957b9d3-f128-447e-bc5a-092fd4559800/nav-icon-connector/16b47da1-eef8-4f42-80c6-9e86f5312634.png"
+                    }
+                ],
+    "total_estimated_cost_usd":  1.0,
+    "gate":  "RENDER_BATCH_6_OPERATOR_GO",
+    "operator_phrase":  "transparent nav documentary icons",
+    "completed_at":  "2026-06-07T04:36:05.3799169Z",
+    "completed_count":  5,
+    "shot_count":  5
+}

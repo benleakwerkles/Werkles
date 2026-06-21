@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "autonomous-round-trip-proof/v1",
+  "template": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
+  "cousin": "ENDER",
+  "startedAt": "2026-06-06T13:47:38.998Z",
+  "finishedAt": "2026-06-06T13:50:02.770Z",
+  "status": "PASS",
+  "failureKind": null,
+  "steps": [
+    {
+      "step": "generate",
+      "ok": true,
+      "packet": "TO_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-134739.md",
+      "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt"
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "dispatchClass": "AUTONOMOUS_ROUND_TRIP_TEST",
+      "errors": [],
+      "warnings": [
+        "AUTONOMOUS_ROUND_TRIP_TEST — production send doctrine unchanged; explicit flag only"
+      ]
+    },
+    {
+      "step": "preflight",
+      "ok": true,
+      "mode": "sandbox_available",
+      "errors": []
+    },
+    {
+      "step": "send",
+      "ok": true,
+      "status": "REPLY_SHORT_TOKEN",
+      "error": null,
+      "receivedToken": false,
+      "tokenMatchKind": "short_line",
+      "profileMode": "profile",
+      "sendSelector": "button[aria-label=\"Send message\"]",
+      "scrapedPreview": "Claude responded: RECEIVED\n\nRECEIVED\n\nTop 3 Homepage Problems\n\nHero message is doing too much. If it's trying to explain what Werkles is while also converting a visitor, it's failing at both. First-time visitors need one clear answer to \"what happens when I sign up?\" before anything else.\nThe crucible gate has no preview. Asking someone to commit to a process (account creation, waitlist, form) bef"
+    },
+    {
+      "step": "inbox_capture",
+      "ok": true,
+      "file": "FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+      "path": "foreman\\handoffs\\inbox\\FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md"
+    },
+    {
+      "step": "inbox_validate",
+      "ok": true,
+      "fileCount": 1,
+      "errors": []
+    },
+    {
+      "step": "mark_sent",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "from": "TO_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-134739.md",
+        "to": "2026-06-06T13-50-02-729Z__TO_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-134739.md"
+      }
+    },
+    {
+      "step": "intake_process",
+      "ok": true,
+      "moved": [
+        {
+          "from": "FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+          "to": "2026-06-06T13-50-02-750Z__FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md"
+        }
+      ],
+      "message": "Processed 1 file(s) to inbox/processed/ — never auto-merged"
+    }
+  ],
+  "error": null,
+  "tokenMatched": false,
+  "tokenMatchKind": "short_line",
+  "scrapedText": "Claude responded: RECEIVED\n\nRECEIVED\n\nTop 3 Homepage Problems\n\nHero message is doing too much. If it's trying to explain what Werkles is while also converting a visitor, it's failing at both. First-time visitors need one clear answer to \"what happens when I sign up?\" before anything else.\nThe crucible gate has no preview. Asking someone to commit to a process (account creation, waitlist, form) before they've seen any artifact of the work creates friction that kills curiosity-driven signups. The gate needs a taste on the near side of it.\nVisual hierarchy isn't earning the scroll. If the fold doesn't create an unanswered question, visitors won't move. A hero that explains too completely gives people permission to leave satisfied.\n\nTop 3 Homepage Opportunities\n\nShow one real output. A single compelling example of what Werkles produces — anonymized, stylized, whatever — does more conversion work than any headline. Make the artifact the argument.\nName the \"before\" state explicitly. The people you want feel a specific frustration right now. If the hero names that frustration precisely, they self-select in. Specificity beats aspiration every time.\nThe signup flow can be a personality moment. Most signup flows are dead air. Werkles has a chance to make the onboarding questions feel like the product has already started — that first interaction sets the tone for everything downstream.\n\nRecommended Hero Message\n\n\"You already know what the problem is. Werkles is what you do about it.\"\n\nLean, confrontational, assumes a smart visitor. Pairs with a single output artifact below it that shows — not tells — what \"doing something about it\" looks like.\n\nOne Thing Not to Change\n\nWhatever is making people lean forward right now — the name, a visual, a specific line of copy that's already earning attention. Before optimizing anything, find the one element that's already working and protect it. Redesigns most often fail by fixing things that weren't broken while leaving the real problems untouched.\n\n\n\n\n\n\n",
+  "profileMode": "profile",
+  "batch": null,
+  "artifacts": {
+    "outboxPacket": "foreman\\handoffs\\outbox\\TO_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-134739.md",
+    "pasteBlock": "foreman\\handoffs\\outbox\\ENDER_PASTE_BLOCK.txt",
+    "inboxResponse": "foreman\\handoffs\\inbox\\FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+    "proofManifest": "foreman\\crew-dispatch\\WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_ENDER.json",
+    "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-50-02-750Z__FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md",
+    "processedSummary": "foreman\\handoffs\\inbox\\processed\\2026-06-06T13-50-02-750Z__FROM_ENDER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_20260606-135002.md.summary.json"
+  }
+}

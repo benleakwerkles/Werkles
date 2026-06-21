@@ -1,6 +1,8 @@
-# Learning Corner Draft Template
+# Education Forge Draft Template
 
-Status: draft only  
+> **Deprecated naming:** this document used Bellows to mean autonomous text worker. Current naming: Bellows is the learning area; background content worker should be called Education Forge / Curriculum Forge / Content Forge.
+
+Status: draft only (Education Forge output — not live `/bellows` until human publish gate)
 Human review required: yes  
 Advice boundary: educational content only; not financial, legal, tax, or investment advice
 
