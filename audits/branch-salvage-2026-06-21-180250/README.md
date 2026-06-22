@@ -47,6 +47,10 @@ The goal is to give Ben one GitHub branch where the current branch map, machine 
 
 ## Review Files
 
+- `branch_preview_index.md` - live local preview URL index for previewable branches.
+- `branch_preview_manifest.json` - raw route-check manifest for those previews.
+- `persistent_preview_processes.json` - process/port receipt for the currently running local preview fleet.
+- `preview_branch_classification.tsv` - all GitHub-visible branches classified as previewable or docs/research-only.
 - `branch_salvage_audit_tinkerden_intake.md` - human-readable salvage map.
 - `ref_inventory.tsv` - local and GitHub-visible refs from Doss after final fetch.
 - `github_remote_divergence_from_main.tsv` - every GitHub remote branch compared with `origin/main`.
@@ -55,6 +59,18 @@ The goal is to give Ben one GitHub branch where the current branch map, machine 
 - `all_refs_recent_log.txt` - recent decorated log across visible refs.
 - `machine_capture_status.json` - machine-by-machine audit status.
 - `screenshots/` - Vercel and Doss SoleDash/Foreman screenshots.
+
+## Live Local Preview Index
+
+Open `branch_preview_index.md` from this folder for the active local preview URLs. The URLs are `127.0.0.1` ports on Doss, so they are meant to be opened from this same machine.
+
+Preview summary:
+
+- 12 preview-relevant branch surfaces were launched locally.
+- 11 preview groups are fully green.
+- `origin/preview/wonka-den-safe-preview-20260618` is live, but `/proof/den` returns 404; its root, `/soledash`, and Foreman preview are OK.
+- 21 other visible refs are classified as docs/research-only or no local app preview.
+- Foreman previews use uncommitted preview-only port shims so multiple branches can run at once without fighting over port 4317.
 
 ## Screenshot Index
 
@@ -71,4 +87,3 @@ The goal is to give Ben one GitHub branch where the current branch map, machine 
 ## Safe Next Step
 
 Review this branch on GitHub first. Then capture Betsy, Sally, and Spanzee local worktrees directly before any consolidation merge. After that, create reviewed pull requests by smallest salvage unit.
-

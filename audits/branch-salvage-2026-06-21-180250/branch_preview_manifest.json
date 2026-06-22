@@ -1,0 +1,626 @@
+{
+  "generated_at": "2026-06-22T01:07:39.812Z",
+  "source_repo": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles",
+  "preview_root": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008",
+  "mirror": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\werkles.git",
+  "note": "Local audit previews. Foreman previews use an uncommitted copied launcher only to assign unique ports.",
+  "previews": [
+    {
+      "slug": "main",
+      "ref": "origin/main",
+      "commit": "0c727a2461f274f8990063ab9ee06b799a1890ed",
+      "kind": "next",
+      "nextPort": 3200,
+      "foremanPort": null,
+      "routes": [
+        "/"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\main",
+      "next_url": "http://127.0.0.1:3200/",
+      "foreman_url": null,
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3200,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\main-next-3200.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\main-next-3200.err.log"
+      },
+      "foreman_process": null,
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3200/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3200/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "goop-cycle-pvp",
+      "ref": "origin/cursor/goop-cycle-pvp-9b25",
+      "commit": "2ed3902888cafabe5f9b88565a13308f7508be4d",
+      "kind": "next",
+      "nextPort": 3201,
+      "foremanPort": null,
+      "routes": [
+        "/proof/den",
+        "/proof/goop-cycle"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\goop-cycle-pvp",
+      "next_url": "http://127.0.0.1:3201/",
+      "foreman_url": null,
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3201,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\goop-cycle-pvp-next-3201.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\goop-cycle-pvp-next-3201.err.log"
+      },
+      "foreman_process": null,
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3201/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3201/",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3201/proof/den",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3201/proof/den",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3201/proof/goop-cycle",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3201/proof/goop-cycle",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "wonka-den-mood",
+      "ref": "origin/cursor/wonka-den-mood-reference-9b25",
+      "commit": "f32084eccb950625931ba0ba62c4be127585bd7f",
+      "kind": "next",
+      "nextPort": 3202,
+      "foremanPort": null,
+      "routes": [
+        "/proof/den"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\wonka-den-mood",
+      "next_url": "http://127.0.0.1:3202/",
+      "foreman_url": null,
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3202,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-mood-next-3202.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-mood-next-3202.err.log"
+      },
+      "foreman_process": null,
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3202/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3202/",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3202/proof/den",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3202/proof/den",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "wonka-den-safe-preview",
+      "ref": "origin/preview/wonka-den-safe-preview-20260618",
+      "commit": "dc6829580ec1ede8c864a9a9051efb02ec874c00",
+      "kind": "next+foreman",
+      "nextPort": 3203,
+      "foremanPort": 4406,
+      "routes": [
+        "/",
+        "/soledash",
+        "/proof/den"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\wonka-den-safe-preview",
+      "next_url": "http://127.0.0.1:3203/",
+      "foreman_url": "http://127.0.0.1:4406/",
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3203,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-next-3203.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-next-3203.err.log"
+      },
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4406,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-foreman-4406.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-foreman-4406.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3203/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3203/",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3203/soledash",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3203/soledash",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3203/proof/den",
+          "ok": false,
+          "status": 404,
+          "final_url": "http://127.0.0.1:3203/proof/den",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:4406/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4406/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "sally-rescue",
+      "ref": "origin/rescue/sally-dirty-worktree-2026-06-01",
+      "commit": "745dc1b2a58a15c2adaf8ddaa3a99838570c9766",
+      "kind": "next+foreman",
+      "nextPort": 3204,
+      "foremanPort": 4407,
+      "routes": [
+        "/"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\sally-rescue",
+      "next_url": "http://127.0.0.1:3204/",
+      "foreman_url": "http://127.0.0.1:4407/",
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3204,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-next-3204.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-next-3204.err.log"
+      },
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4407,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-foreman-4407.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-foreman-4407.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3204/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3204/",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:4407/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4407/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "betsy-salvage",
+      "ref": "origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+      "commit": "8e70a25547988b8b4820fa3c79fd85e07eddfe1a",
+      "kind": "next+foreman",
+      "nextPort": 3205,
+      "foremanPort": 4408,
+      "routes": [
+        "/",
+        "/soledash"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\betsy-salvage",
+      "next_url": "http://127.0.0.1:3205/",
+      "foreman_url": "http://127.0.0.1:4408/",
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3205,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-next-3205.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-next-3205.err.log"
+      },
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4408,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-foreman-4408.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-foreman-4408.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3205/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3205/",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3205/soledash",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3205/soledash",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:4408/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4408/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "remote-snapshot",
+      "ref": "origin/snapshot/sally-good-werkles-2026-06-12",
+      "commit": "ffccad027151e3e1759209c4fc28d985d7c9ce9b",
+      "kind": "next+foreman",
+      "nextPort": 3206,
+      "foremanPort": 4409,
+      "routes": [
+        "/",
+        "/soledash"
+      ],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\remote-snapshot",
+      "next_url": "http://127.0.0.1:3206/",
+      "foreman_url": "http://127.0.0.1:4409/",
+      "next_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 3206,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-next-3206.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-next-3206.err.log"
+      },
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4409,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-foreman-4409.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-foreman-4409.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:3206/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3206/",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:3206/soledash",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:3206/soledash",
+          "error": null
+        },
+        {
+          "url": "http://127.0.0.1:4409/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4409/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "gd-status-layer",
+      "ref": "origin/cursor/gd-status-layer-v1-eeea",
+      "commit": "dc47322c030bc474adbee611fcfe0d66456667e2",
+      "kind": "foreman",
+      "nextPort": null,
+      "foremanPort": 4401,
+      "routes": [],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\gd-status-layer",
+      "next_url": null,
+      "foreman_url": "http://127.0.0.1:4401/",
+      "next_process": null,
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4401,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gd-status-layer-foreman-4401.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gd-status-layer-foreman-4401.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:4401/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4401/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "gimpdash-human-gates",
+      "ref": "origin/cursor/gimpdash-human-gates-console-eeea",
+      "commit": "594f045432ac8f677d3fc30723a5909e215fd1f2",
+      "kind": "foreman",
+      "nextPort": null,
+      "foremanPort": 4402,
+      "routes": [],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\gimpdash-human-gates",
+      "next_url": null,
+      "foreman_url": "http://127.0.0.1:4402/",
+      "next_process": null,
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4402,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gimpdash-human-gates-foreman-4402.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gimpdash-human-gates-foreman-4402.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:4402/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4402/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "soledash-build-continue",
+      "ref": "origin/cursor/soledash-build-continue-eeea",
+      "commit": "aa3b3120277949b80a67ee9f73efb28ca003f658",
+      "kind": "foreman",
+      "nextPort": null,
+      "foremanPort": 4403,
+      "routes": [],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\soledash-build-continue",
+      "next_url": null,
+      "foreman_url": "http://127.0.0.1:4403/",
+      "next_process": null,
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4403,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-build-continue-foreman-4403.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-build-continue-foreman-4403.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:4403/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4403/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "soledash-field-mode",
+      "ref": "origin/cursor/soledash-field-mode-v1-eeea",
+      "commit": "f883e55eb4938f35c5ca8d082e205dc18ad9e65d",
+      "kind": "foreman",
+      "nextPort": null,
+      "foremanPort": 4404,
+      "routes": [],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\soledash-field-mode",
+      "next_url": null,
+      "foreman_url": "http://127.0.0.1:4404/",
+      "next_process": null,
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4404,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-field-mode-foreman-4404.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-field-mode-foreman-4404.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:4404/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4404/",
+          "error": null
+        }
+      ]
+    },
+    {
+      "slug": "soledash-inbox-outbox-build",
+      "ref": "origin/cursor/soledash-inbox-outbox-build-v1-eeea",
+      "commit": "3c25087332ddb1a53ce2bf9ed97f3f2f6d2e8182",
+      "kind": "foreman",
+      "nextPort": null,
+      "foremanPort": 4405,
+      "routes": [],
+      "worktree": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\soledash-inbox-outbox-build",
+      "next_url": null,
+      "foreman_url": "http://127.0.0.1:4405/",
+      "next_process": null,
+      "foreman_process": {
+        "status": "already_listening",
+        "pid": null,
+        "port": 4405,
+        "log": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-inbox-outbox-build-foreman-4405.out.log",
+        "err": "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-inbox-outbox-build-foreman-4405.err.log"
+      },
+      "checks": [
+        {
+          "url": "http://127.0.0.1:4405/",
+          "ok": true,
+          "status": 200,
+          "final_url": "http://127.0.0.1:4405/",
+          "error": null
+        }
+      ]
+    }
+  ],
+  "docs_only_or_no_preview_refs": [
+    {
+      "ref": "origin/app-infra-01-approved-clean",
+      "commit": "12215b75f434ac30f9e18357fddb5491fe20ad51",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "chore(cockpit): record APP_INFRA approval and next gate"
+    },
+    {
+      "ref": "origin/cursor/atlas-machine-role-eeea",
+      "commit": "4964d80eaf7e2a20b8d3b34e23e2eb42d502ef00",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "topology: add Atlas archive/vault machine role + mirror script scaffold"
+    },
+    {
+      "ref": "origin/cursor/concierge-console-v1-eeea",
+      "commit": "32d24be76cc1232a7882a8039bf32d3b88e12228",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: Werkles Concierge Console V1 — minimum software support for 20-user discovery"
+    },
+    {
+      "ref": "origin/cursor/concierge-sheet-spec-v1-eeea",
+      "commit": "a8bb720f6ad1d7b51f36e9380915471461af6578",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: 20-User Concierge Sheet Spec V1 (Google Sheet / Airtable structure)"
+    },
+    {
+      "ref": "origin/cursor/dink-non-human-gate-agent-c25f",
+      "commit": "ad8a47a5ce8001cdfda9e1133a7b4d30d405824a",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "Add one sentence product description test"
+    },
+    {
+      "ref": "origin/cursor/doss-baseline-v1-eeea",
+      "commit": "03aed4b800395d5aa36a5695e3a10d121076f054",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "doss: rename baseline scaffold to LOCAL setup command packet; retarget 437792b; mark NOT AUDITED"
+    },
+    {
+      "ref": "origin/cursor/doss-local-dev-launcher-eeea",
+      "commit": "769eac6b12dcfd2dcc1bbbbbdda169144320062d",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "dev: add one-path Windows local dev launcher (start-werkles.cmd) + README"
+    },
+    {
+      "ref": "origin/cursor/execution-context-doctrine-eeea",
+      "commit": "0992a3f56bdf801114df187a21d53ad6fba60d56",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "doctrine: add Execution Context reporting rules across cockpit"
+    },
+    {
+      "ref": "origin/cursor/post-merge-cockpit-cleanup-eeea",
+      "commit": "5ce5f1b148e4c67ac01cfff632776603bce547d6",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "cockpit: patch NEXT_ACTION imagery + APP_INFRA lines (PR #4 pre-merge)"
+    },
+    {
+      "ref": "origin/cursor/recommendation-card-v1-eeea",
+      "commit": "2fac6ae10dbe7b822d9e084d8ecd4af482c56146",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: Recommendation Card V1 — user-facing concierge card (6-section format)"
+    },
+    {
+      "ref": "origin/cursor/refresh-cockpit-dashboard-eeea",
+      "commit": "578b4868a9037f69251a032ff6bfb3d6be997844",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "cockpit: lock 'Gimp Dash' name; add clickable Human Gates list with provider links"
+    },
+    {
+      "ref": "origin/cursor/soledash-culture-safety-surface-v1-eeea",
+      "commit": "e875737881af97fd8b837eb7a6a2527960f38784",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: SoleDash Culture-Safety Surface V1 (design only)"
+    },
+    {
+      "ref": "origin/cursor/soledash-inbox-outbox-v1-eeea",
+      "commit": "00477b20e5f80606ce55888ce88a326eb5a2e4b0",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "soledash: Inbox/Outbox/Receipts V1 concept + UI plan (design doc only)"
+    },
+    {
+      "ref": "origin/cursor/soledash-onboarding-surface-v1-eeea",
+      "commit": "4e920a58a5a3b69da2568d26392bf1982d10ed1d",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "soledash: onboarding surface V1 — zero-context cousin panel proposal (design only)"
+    },
+    {
+      "ref": "origin/cursor/soledash-screen-inventory-v1-eeea",
+      "commit": "0a933cdb09eb8b23d665f2f847d5f903db51b33b",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: SoleDash Screen Inventory V1 (one-page map)"
+    },
+    {
+      "ref": "origin/cursor/user1-journey-map-v1-eeea",
+      "commit": "2b8c79ba7eee80da044bb7f10cec4e02b9524e43",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: User #1 Journey Map V1 (homepage -> first recommendation)"
+    },
+    {
+      "ref": "origin/cursor/werkles-testable-claims-v1-eeea",
+      "commit": "8a6c93196f1d0b2883208371909915f17cadf6de",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: Werkles Testable Claims V1 — top 10 embedded assumptions + cheapest tests"
+    },
+    {
+      "ref": "origin/cursor/wizard-of-oz-test-v1-eeea",
+      "commit": "8919b07972e38db37a23c5d1b7a2ef275b390f59",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: Wizard-of-Oz Concierge Test V1 (smallest 30-day discovery test)"
+    },
+    {
+      "ref": "origin/cursor/woz-operator-console-v1-eeea",
+      "commit": "c5d8bc50b98def7b84ca3dc9ec4bb98263612b91",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "research: WoZ Operator Console V1 — minimum human-operated console for 20 users"
+    },
+    {
+      "ref": "origin/ghost-forge-one-prompt-test",
+      "commit": "7b8da425423091070e9a591d64f0952010f2ecdb",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "Fix Ghost Forge webhook base URL"
+    },
+    {
+      "ref": "origin/supabase-auth-stripe-test-wiring",
+      "commit": "0c727a2461f274f8990063ab9ee06b799a1890ed",
+      "preview_relevant": "no",
+      "preview_kind": "docs/research",
+      "subject": "chore(cockpit): record SUPABASE_AUTH_STRIPE Preview proof PASS"
+    }
+  ]
+}

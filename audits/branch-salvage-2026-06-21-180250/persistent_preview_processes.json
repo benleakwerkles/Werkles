@@ -1,0 +1,159 @@
+﻿{
+    "generated_at":  "2026-06-21T21:06:32.8694743-04:00",
+    "preview_root":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008",
+    "processes":  [
+                      {
+                          "slug":  "main",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3200,
+                          "pid":  17712,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\main-next-3200.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\main-next-3200.persistent.err.log"
+                      },
+                      {
+                          "slug":  "goop-cycle-pvp",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3201,
+                          "pid":  10568,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\goop-cycle-pvp-next-3201.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\goop-cycle-pvp-next-3201.persistent.err.log"
+                      },
+                      {
+                          "slug":  "wonka-den-mood",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3202,
+                          "pid":  23664,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-mood-next-3202.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-mood-next-3202.persistent.err.log"
+                      },
+                      {
+                          "slug":  "wonka-den-safe-preview",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3203,
+                          "pid":  27272,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-next-3203.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-next-3203.persistent.err.log"
+                      },
+                      {
+                          "slug":  "wonka-den-safe-preview",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4406,
+                          "pid":  29692,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\wonka-den-safe-preview\\scripts\\foreman\\foreman-control-server-preview-4406.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-foreman-4406.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\wonka-den-safe-preview-foreman-4406.persistent.err.log"
+                      },
+                      {
+                          "slug":  "sally-rescue",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3204,
+                          "pid":  24508,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-next-3204.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-next-3204.persistent.err.log"
+                      },
+                      {
+                          "slug":  "sally-rescue",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4407,
+                          "pid":  10400,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\sally-rescue\\scripts\\foreman\\foreman-control-server-preview-4407.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-foreman-4407.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\sally-rescue-foreman-4407.persistent.err.log"
+                      },
+                      {
+                          "slug":  "betsy-salvage",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3205,
+                          "pid":  31292,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-next-3205.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-next-3205.persistent.err.log"
+                      },
+                      {
+                          "slug":  "betsy-salvage",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4408,
+                          "pid":  29592,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\betsy-salvage\\scripts\\foreman\\foreman-control-server-preview-4408.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-foreman-4408.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\betsy-salvage-foreman-4408.persistent.err.log"
+                      },
+                      {
+                          "slug":  "remote-snapshot",
+                          "type":  "next",
+                          "status":  "started",
+                          "port":  3206,
+                          "pid":  30116,
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-next-3206.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-next-3206.persistent.err.log"
+                      },
+                      {
+                          "slug":  "remote-snapshot",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4409,
+                          "pid":  31592,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\remote-snapshot\\scripts\\foreman\\foreman-control-server-preview-4409.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-foreman-4409.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\remote-snapshot-foreman-4409.persistent.err.log"
+                      },
+                      {
+                          "slug":  "gd-status-layer",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4401,
+                          "pid":  8068,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\gd-status-layer\\scripts\\foreman\\foreman-control-server-preview-4401.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gd-status-layer-foreman-4401.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gd-status-layer-foreman-4401.persistent.err.log"
+                      },
+                      {
+                          "slug":  "gimpdash-human-gates",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4402,
+                          "pid":  27204,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\gimpdash-human-gates\\scripts\\foreman\\foreman-control-server-preview-4402.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gimpdash-human-gates-foreman-4402.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\gimpdash-human-gates-foreman-4402.persistent.err.log"
+                      },
+                      {
+                          "slug":  "soledash-build-continue",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4403,
+                          "pid":  23536,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\soledash-build-continue\\scripts\\foreman\\foreman-control-server-preview-4403.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-build-continue-foreman-4403.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-build-continue-foreman-4403.persistent.err.log"
+                      },
+                      {
+                          "slug":  "soledash-field-mode",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4404,
+                          "pid":  15372,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\soledash-field-mode\\scripts\\foreman\\foreman-control-server-preview-4404.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-field-mode-foreman-4404.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-field-mode-foreman-4404.persistent.err.log"
+                      },
+                      {
+                          "slug":  "soledash-inbox-outbox-build",
+                          "type":  "foreman",
+                          "status":  "started",
+                          "port":  4405,
+                          "pid":  22856,
+                          "launcher":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\soledash-inbox-outbox-build\\scripts\\foreman\\foreman-control-server-preview-4405.mjs",
+                          "out":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-inbox-outbox-build-foreman-4405.persistent.out.log",
+                          "err":  "C:\\Users\\BenLeak\\Documents\\Codex\\wp\\previews-20260621-183008\\logs\\soledash-inbox-outbox-build-foreman-4405.persistent.err.log"
+                      }
+                  ]
+}
