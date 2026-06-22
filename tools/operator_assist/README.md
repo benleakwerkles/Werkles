@@ -29,7 +29,22 @@ Add `GEMINI_API_KEY` or `OPENAI_API_KEY` to `.env` if you want vision analysis. 
 Ben must add `GEMINI_API_KEY` or `OPENAI_API_KEY` to local `.env`.
 Do not commit `.env`.
 
-## Commands
+## One-Click Launchers
+
+Double-click:
+
+- `launchers\Operator Assist Snapshot.cmd`
+- `launchers\Operator Assist Packet.cmd`
+
+Snapshot creates `.env` from `.env.example` if needed. If no key is present, it opens `.env` and this README so the setup gate is visible.
+
+## No-Mule Completion Rule
+
+Completion must return an executable artifact, shortcut, button, or receipt. Returning instructions for Ben to type is not a valid completion state for GREEN local tasks.
+
+## Maintainer CLI
+
+These commands exist for development and receipt checks, but operator completion should prefer the launchers above:
 
 ```powershell
 npm run snapshot
