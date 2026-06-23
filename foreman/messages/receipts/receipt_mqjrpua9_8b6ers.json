@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_mqjrpua9_8b6ers",
+  "packet_id": "packet_integrity_duplicate_mqjrpu1r_ranxs",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "RECEIVED",
+  "message": "Dink@Betsy received this task.",
+  "created_at": "2026-06-18T17:22:43.473Z"
+}

@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_mqkau3fh_g7tgbi",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_mqkatapc",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Make everything look really pretty for the parade"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-19T02:17:54.653Z"
+}

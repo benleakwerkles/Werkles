@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_mqk8ud7u_yrmmkj",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_mqk8ud7s",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "build my swatter"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-19T01:22:08.106Z"
+}

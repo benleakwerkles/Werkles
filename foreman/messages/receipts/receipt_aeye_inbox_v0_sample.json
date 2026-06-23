@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_aeye_inbox_v0_sample",
+  "packet_id": "packet_aeye_inbox_v0_sample",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "RECEIVED",
+  "message": "Dink@Betsy received this task.",
+  "created_at": "2026-06-18T17:10:00.000Z"
+}

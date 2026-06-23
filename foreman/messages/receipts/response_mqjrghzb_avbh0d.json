@@ -1,0 +1,9 @@
+{
+  "receipt_id": "response_mqjrghzb_avbh0d",
+  "packet_id": "packet_mqjrghzb_3ewd4t",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "RECEIVED",
+  "message": "Dink@Betsy received this task.",
+  "created_at": "2026-06-18T17:15:27.623Z"
+}

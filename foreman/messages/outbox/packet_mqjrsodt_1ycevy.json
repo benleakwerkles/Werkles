@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_mqjrsodt_1ycevy",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_wd_live_fire_api",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "ping"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-18T17:24:55.793Z"
+}

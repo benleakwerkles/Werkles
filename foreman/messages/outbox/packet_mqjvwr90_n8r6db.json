@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_mqjvwr90_n8r6db",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "truth_test_direct_mqjvwqyx",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "SEND_BUTTON_TRUTH_TEST direct API probe"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-18T19:20:04.596Z"
+}

@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_mqjujyd4_20gv5i",
+  "packet_id": "packet_health_ping_1781808127370",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Dink@Betsy received ping",
+  "created_at": "2026-06-18T18:42:07.672Z"
+}

@@ -1,0 +1,17 @@
+{
+  "packet_id": "packet_mqldu4bh_uc0yg5",
+  "origin_surface": "TinkerDen Packet Launcher",
+  "origin_card_id": "tinkerden_card_mqldu4bd",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "sender": "Dink@Betsy",
+    "target": "Dink@Betsy",
+    "destination_type": "aeye_inbox_v0",
+    "mission": "CREATE_MASTER_PLAN_MD",
+    "artifact": "WERKLES_MASTER_PLAN_V1.md",
+    "task_text": "MISSION: CREATE_MASTER_PLAN_MD\nArtifact: WERKLES_MASTER_PLAN_V1.md"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-19T20:29:40.829Z"
+}

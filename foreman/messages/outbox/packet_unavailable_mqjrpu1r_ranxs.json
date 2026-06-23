@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_unavailable_mqjrpu1r_ranxs",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_mqjrpu9n_z76zaa",
+  "target_aeye": "Dink",
+  "target_machine": "Spanzee",
+  "payload": {
+    "task_text": "ping"
+  },
+  "status": "PENDING_RECIPIENT_AVAILABILITY",
+  "created_at": "2026-06-18T17:22:43.451Z"
+}
