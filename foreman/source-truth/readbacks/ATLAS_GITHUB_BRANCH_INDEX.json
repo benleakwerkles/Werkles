@@ -1,6 +1,6 @@
 {
   "index_id": "ATLAS_GITHUB_BRANCH_INDEX",
-  "created_at": "2026-06-27T20:07:19.019Z",
+  "created_at": "2026-06-27T20:11:00.089Z",
   "organ": "Atlas",
   "source_truth_statement": "GitHub origin/main is canonical. Other GitHub branches are candidate, audit, preview, or preservation evidence until human-gated promotion.",
   "remote": "origin",
@@ -271,7 +271,7 @@
     {
       "branch": "source-truth/atlas-speaker-v0-20260627",
       "ref": "refs/heads/source-truth/atlas-speaker-v0-20260627",
-      "hash": "df3fff03893a8fc63700f7a5cfb16372ca0adf79",
+      "hash": "dae083f62d1ac2cefecc9bd1c59d4ce0b55b5c8b",
       "classification": "SOURCE_TRUTH_REVIEW",
       "canonical": false
     },

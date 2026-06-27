@@ -17,3 +17,6 @@ function run(script) {
 run("atlas-source-truth-readback.mjs");
 run("atlas-github-branch-index.mjs");
 run("speaker-truth-mirror.mjs");
+run("nerdkle-production-input-readback.mjs");
+run("frontier-bootloader-readback.mjs");
+run("speaker-frontier-mirror.mjs");

@@ -1,0 +1,13 @@
+{
+  "receipt_id": "NERDKLE_BOOTLOADER_FRONTIER_READBACK_RECEIPT",
+  "mission": "NERDKLE_BOOTLOADER_FRONTIER_READBACK",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T20:11:00.289Z",
+  "status": "ARTIFACT",
+  "frontier_status": "BLOCKER",
+  "readback_path": "foreman/source-truth/readbacks/NERDKLE_BOOTLOADER_FRONTIER_READBACK.json",
+  "readback_hash": "1610312B9AA70FCF7AD2E5ADBB35F8D013C5C0BE3397BA727034046CD7257A9B",
+  "readback_byte_count": 1815,
+  "blocker_count": 1,
+  "completed_packet_count": 0
+}

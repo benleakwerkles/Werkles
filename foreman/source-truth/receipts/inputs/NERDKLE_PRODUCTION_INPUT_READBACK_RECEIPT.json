@@ -1,0 +1,13 @@
+{
+  "receipt_id": "NERDKLE_PRODUCTION_INPUT_READBACK_RECEIPT",
+  "mission": "NERDKLE_PRODUCTION_INPUT_READBACK",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T20:11:00.221Z",
+  "status": "ARTIFACT",
+  "readback_status": "BLOCKER",
+  "readback_path": "foreman/source-truth/readbacks/NERDKLE_PRODUCTION_INPUT_READBACK.json",
+  "readback_hash": "70C397E87A03421CF34E3211771A200898FEB5BC3D5A086452F0F24C57F1D116",
+  "readback_byte_count": 3580,
+  "blocker_count": 2,
+  "canonical_promotion": "NO"
+}

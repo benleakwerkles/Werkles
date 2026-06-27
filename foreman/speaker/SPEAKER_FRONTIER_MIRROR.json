@@ -1,0 +1,51 @@
+{
+  "mirror_id": "SPEAKER_FRONTIER_MIRROR",
+  "created_at": "2026-06-27T20:11:00.370Z",
+  "organ": "Speaker",
+  "status": "ARTIFACT",
+  "frontier_status": "BLOCKER",
+  "frontier_path": "foreman/source-truth/shared_frontier.json",
+  "frontier_hash": "D890BF7DA1A941406F2CE01C18D826A9231D344A28857A1E5C1738B6BAB552D9",
+  "bootloader_readback_path": "foreman/source-truth/readbacks/NERDKLE_BOOTLOADER_FRONTIER_READBACK.json",
+  "bootloader_readback_hash": "1610312B9AA70FCF7AD2E5ADBB35F8D013C5C0BE3397BA727034046CD7257A9B",
+  "rationale": "Speaker mirrors the frontier warning so tomorrow's Aeye does not start from chat memory.",
+  "warnings": [
+    "Daily memory is blocked until production circulation.db exists.",
+    "Do not invent completed packets while completed_packet_count is 0.",
+    "Do not treat a review branch as canonical source truth."
+  ],
+  "blockers": [
+    {
+      "blocker_id": "CIRCULATION_DB_MISSING",
+      "missing_path": "C:\\tinkarden\\server\\circulation.db",
+      "mission": "BIRD_0036_SWANSON_DAILY_STATE_SNAPSHOT",
+      "next_action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
+      "next_owner": "Swanson@Doss",
+      "owner": "Swanson@Doss",
+      "source_table": null,
+      "status": "BLOCKER",
+      "timestamp": "2026-06-27T20:06:53.683Z"
+    }
+  ],
+  "next_actions": [
+    {
+      "owner": "Swanson@Doss",
+      "action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
+      "blocker_id": "CIRCULATION_DB_MISSING",
+      "missing_path": "C:\\tinkarden\\server\\circulation.db"
+    }
+  ],
+  "speaker_boundaries": {
+    "may": [
+      "mirror rationale",
+      "warn on drift",
+      "point to source-truth files"
+    ],
+    "may_not": [
+      "create production database",
+      "promote branches",
+      "execute work",
+      "delete receipts"
+    ]
+  }
+}

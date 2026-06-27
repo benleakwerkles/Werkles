@@ -14,7 +14,10 @@
     "truth:pulse": "node scripts/foreman/source-truth-pulse.mjs --write",
     "truth:guard": "node scripts/foreman/source-truth-guard.mjs",
     "memory:sleep-cycle": "node scripts/foreman/sleep_cycle.js",
-    "truth:ci": "node --check scripts/foreman/atlas-source-truth-readback.mjs && node --check scripts/foreman/atlas-github-branch-index.mjs && node --check scripts/foreman/speaker-truth-mirror.mjs && node --check scripts/foreman/source-truth-pulse.mjs && node --check scripts/foreman/source-truth-guard.mjs && node --check scripts/foreman/sleep_cycle.js && node scripts/foreman/source-truth-guard.mjs && node scripts/foreman/atlas-source-truth-readback.mjs && node scripts/foreman/atlas-github-branch-index.mjs && node scripts/foreman/speaker-truth-mirror.mjs"
+    "inputs:readback": "node scripts/foreman/nerdkle-production-input-readback.mjs --write",
+    "memory:bootloader": "node scripts/foreman/frontier-bootloader-readback.mjs --write",
+    "truth:frontier-speaker": "node scripts/foreman/speaker-frontier-mirror.mjs --write",
+    "truth:ci": "node --check scripts/foreman/atlas-source-truth-readback.mjs && node --check scripts/foreman/atlas-github-branch-index.mjs && node --check scripts/foreman/speaker-truth-mirror.mjs && node --check scripts/foreman/source-truth-pulse.mjs && node --check scripts/foreman/source-truth-guard.mjs && node --check scripts/foreman/sleep_cycle.js && node --check scripts/foreman/nerdkle-production-input-readback.mjs && node --check scripts/foreman/frontier-bootloader-readback.mjs && node --check scripts/foreman/speaker-frontier-mirror.mjs && node scripts/foreman/source-truth-guard.mjs && node scripts/foreman/atlas-source-truth-readback.mjs && node scripts/foreman/atlas-github-branch-index.mjs && node scripts/foreman/speaker-truth-mirror.mjs && node scripts/foreman/nerdkle-production-input-readback.mjs && node scripts/foreman/frontier-bootloader-readback.mjs && node scripts/foreman/speaker-frontier-mirror.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
