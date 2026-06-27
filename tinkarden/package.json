@@ -1,0 +1,27 @@
+{
+  "name": "tinkarden-local-nervous-system",
+  "version": "0.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "brainstem": "node nervous_system/brainstem.js",
+    "crawler": "node nervous_system/crawler.js",
+    "daemon:watchdog": "node nervous_system/daemon_watchdog.js",
+    "daemon:watchdog:once": "node nervous_system/daemon_watchdog.js --once",
+    "api": "node server/index.js",
+    "pm2:start": "pm2 start ecosystem.config.js --update-env",
+    "pm2:status": "pm2 status",
+    "fleyes": "node nervous_system/fleyes.js --once",
+    "fleyes:self-test": "node nervous_system/fleyes.js --self-test",
+    "fleyes:daemon": "node nervous_system/fleyes.js --daemon",
+    "ender:apoptosis": "node nervous_system/ender_apoptosis.js --once",
+    "ender:apoptosis:self-test": "node nervous_system/ender_apoptosis.js --self-test",
+    "ender:apoptosis:daemon": "node nervous_system/ender_apoptosis.js --daemon"
+  },
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "fastify": "^5.8.5",
+    "node-cron": "^4.2.1",
+    "pm2": "^7.0.1"
+  }
+}

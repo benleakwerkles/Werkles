@@ -1,0 +1,41 @@
+{
+  "mirror_id": "SPEAKER_DAEMON_HEALTH_MIRROR",
+  "created_at": "2026-06-27T20:30:00.000Z",
+  "organ": "Speaker",
+  "status": "ARTIFACT",
+  "source_readback_path": "foreman/source-truth/readbacks/DAEMON_HEALTH_SOURCE_TRUTH_READBACK.json",
+  "source_readback_hash": "ED42F3A8D5A8E8C6B5FAC246821A8AD61AE932161FA2CF2CD84D83DCA929AF92",
+  "rationale": "Speaker mirrors daemon health so future Aeyes do not mistake local PM2 uptime, source preservation, and reboot persistence for the same kind of proof.",
+  "current_truth": [
+    "Doss local PM2 has brainstem, index, crawler, ender_apoptosis, and daemon_watchdog online.",
+    "The daemon source files are now preserved under tinkarden/ on the GitHub review branch.",
+    "The human preview loads at http://127.0.0.1:3339/.",
+    "The Fastify health route answers at http://127.0.0.1:3339/health.",
+    "Windows boot startup persistence is not configured and remains human-gated.",
+    "origin/main remains canonical; this review branch is auditable evidence only."
+  ],
+  "warnings": [
+    "Do not call PM2 saved dump proof of reboot survival.",
+    "Do not call local daemon health proof of canonical promotion.",
+    "Do not hide existing Fleyes friction when daemon status is OK.",
+    "Do not make Ben rediscover which process owns daemon health."
+  ],
+  "human_gate": {
+    "gate": "WINDOWS_STARTUP_SERVICE",
+    "required": true,
+    "reason": "Startup persistence changes Doss boot behavior."
+  },
+  "speaker_boundaries": {
+    "may": [
+      "mirror daemon health rationale",
+      "warn on false proof",
+      "point to source-truth readbacks"
+    ],
+    "may_not": [
+      "install Windows services",
+      "promote canonical",
+      "delete PM2 processes",
+      "declare full organism life"
+    ]
+  }
+}

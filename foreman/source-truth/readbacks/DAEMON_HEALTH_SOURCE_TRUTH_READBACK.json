@@ -1,0 +1,136 @@
+{
+  "readback_id": "DAEMON_HEALTH_SOURCE_TRUTH_READBACK",
+  "packet_id": "BIRD_0039_SWANSON_DAEMON_HEALTH_MONITOR",
+  "created_at": "2026-06-27T20:30:00.000Z",
+  "owner": "Swanson@Doss",
+  "machine": "Doss",
+  "status": "ARTIFACT",
+  "source_truth_branch": "source-truth/atlas-speaker-v0-20260627",
+  "canonical_branch": "origin/main",
+  "canonical_promotion": "NO",
+  "local_runtime": {
+    "root": "C:\\tinkarden",
+    "pm2_dump_path": "C:\\Users\\BenLeak\\.pm2\\dump.pm2",
+    "pm2_status": "ALL_CORE_ORGANS_ONLINE",
+    "preview_url": "http://127.0.0.1:3339/",
+    "preview_status": "PASS",
+    "preview_title": "Nerdkle Daemon Health",
+    "preview_body_proof": "Daemon OK, Friction FRICTION_DETECTED, Daemon Fractures 0, Core Organs visible.",
+    "fastify_health_url": "http://127.0.0.1:3339/health",
+    "fastify_health_status": "OK",
+    "daemon_health_path": "C:\\tinkarden\\nervous_system\\daemon_health.json",
+    "daemon_health_hash": "D8198BEEA1E1ED2EDAEEC0DFB70285F17CD85FC5FCD9F993B1C980F01C223FFE",
+    "frictional_heat_path": "C:\\tinkarden\\nervous_system\\frictional_heat.json",
+    "frictional_heat_hash": "D4C14A625111BC3F474AD7A1C376F7D469A2F41BF9AF9901F4CECA1D97C29B26",
+    "current_daemon_status": "OK",
+    "current_daemon_fracture_count": 0
+  },
+  "pm2_processes": [
+    {
+      "name": "brainstem",
+      "status": "online",
+      "script": "C:\\tinkarden\\nervous_system\\brainstem.js",
+      "restarts": 0,
+      "unstable_restarts": 0
+    },
+    {
+      "name": "index",
+      "status": "online",
+      "script": "C:\\tinkarden\\server\\index.js",
+      "restarts": 1,
+      "unstable_restarts": 0
+    },
+    {
+      "name": "crawler",
+      "status": "online",
+      "script": "C:\\tinkarden\\nervous_system\\crawler.js",
+      "restarts": 0,
+      "unstable_restarts": 0
+    },
+    {
+      "name": "ender_apoptosis",
+      "status": "online",
+      "script": "C:\\tinkarden\\nervous_system\\ender_apoptosis.js",
+      "restarts": 0,
+      "unstable_restarts": 0
+    },
+    {
+      "name": "daemon_watchdog",
+      "status": "online",
+      "script": "C:\\tinkarden\\nervous_system\\daemon_watchdog.js",
+      "restarts": 1,
+      "unstable_restarts": 0
+    }
+  ],
+  "github_preserved_files": [
+    {
+      "path": "tinkarden/ecosystem.config.js",
+      "byte_count": 1866,
+      "sha256": "476CB152B3446FF83E014FE7C28E8A34C79E49461C006DF4627623D0CBDB4868"
+    },
+    {
+      "path": "tinkarden/package.json",
+      "byte_count": 1052,
+      "sha256": "8F98A8B90A6DB1691403AEDC4C67EE90D11606A7CDDD2A886712E112B23FB98E"
+    },
+    {
+      "path": "tinkarden/package-lock.json",
+      "byte_count": 62024,
+      "sha256": "925DE3D46287AB842616B1F7B0F00FC65B3E1C17327C3E66A2B4EF66A6932449"
+    },
+    {
+      "path": "tinkarden/nervous_system/brainstem.js",
+      "byte_count": 1593,
+      "sha256": "696898B87F3E0F828351F169BFFB6A6AE194F98D788A7F9E74F71D9AF471310E"
+    },
+    {
+      "path": "tinkarden/nervous_system/crawler.js",
+      "byte_count": 4298,
+      "sha256": "39BE855D163946824EDEE8BD18DE9919066A42ACDAAB3782A02215DC1385AA2A"
+    },
+    {
+      "path": "tinkarden/nervous_system/daemon_watchdog.js",
+      "byte_count": 4881,
+      "sha256": "35F57100D49BCC7E72FA167091C68768B09CA07CA9B03682BB95FCDB2217B548"
+    },
+    {
+      "path": "tinkarden/nervous_system/ender_apoptosis.js",
+      "byte_count": 17571,
+      "sha256": "26A8489C0CAC49DD3A2EC46A37EA90C749A0CB4226730848C165B6AB5C16B309"
+    },
+    {
+      "path": "tinkarden/nervous_system/fleyes.js",
+      "byte_count": 16661,
+      "sha256": "9B2F8598057CA36917FA39F31E745349CB6E835E1B1B79569012735ED2445EC2"
+    },
+    {
+      "path": "tinkarden/nervous_system/swateyes.js",
+      "byte_count": 3819,
+      "sha256": "2F04F8FCD500C55D387C8BF595F0EF5A7C23B3C6E2F11D633BA86A30BFAE9BE4"
+    },
+    {
+      "path": "tinkarden/nervous_system/swateyes.test.js",
+      "byte_count": 1402,
+      "sha256": "EB9E2AEE14E357E17FF48F47073967A06E0693F2E2C9A0D05298CDF3F1B3EA20"
+    },
+    {
+      "path": "tinkarden/server/index.js",
+      "byte_count": 6136,
+      "sha256": "1DCEA216B368F465863955F7A69A04A48E29D8DAFF4A4C34F1B288D2E5A06A7F"
+    }
+  ],
+  "blockers": [
+    {
+      "blocker_id": "WINDOWS_STARTUP_SERVICE_NOT_CONFIGURED",
+      "status": "HUMAN_GATE_REQUIRED",
+      "reason": "Configuring PM2 resurrection at Windows boot changes machine startup behavior.",
+      "next_action": "Operator approves or rejects Windows startup persistence."
+    }
+  ],
+  "false_claim_guard": [
+    "Do not call this canonical promotion.",
+    "Do not call PM2 saved dump proof of reboot survival.",
+    "Do not call daemon health proof of automatic assimilation.",
+    "Do not hide Fleyes friction just because daemon status is OK."
+  ]
+}

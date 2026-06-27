@@ -1,0 +1,21 @@
+{
+  "receipt_id": "DAEMON_HEALTH_SOURCE_TRUTH_RECEIPT",
+  "packet_id": "BIRD_0039_SWANSON_DAEMON_HEALTH_MONITOR",
+  "created_at": "2026-06-27T20:30:00.000Z",
+  "owner": "Swanson@Doss",
+  "status": "ARTIFACT",
+  "readback_path": "foreman/source-truth/readbacks/DAEMON_HEALTH_SOURCE_TRUTH_READBACK.json",
+  "readback_hash": "ED42F3A8D5A8E8C6B5FAC246821A8AD61AE932161FA2CF2CD84D83DCA929AF92",
+  "artifact_root": "tinkarden/",
+  "local_runtime_root": "C:\\tinkarden",
+  "pm2_status": "ALL_CORE_ORGANS_ONLINE",
+  "preview_url": "http://127.0.0.1:3339/",
+  "preview_status": "PASS",
+  "daemon_health_status": "OK",
+  "daemon_fracture_count": 0,
+  "github_preserved_file_count": 11,
+  "canonical_promotion": "NO",
+  "startup_persistence": "BLOCKED_BY_HUMAN_GATE",
+  "raw_receipts_deleted": false,
+  "ben_action_required": "Only if Ben wants Windows startup persistence enabled."
+}
