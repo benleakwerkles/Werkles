@@ -1,40 +1,20 @@
 {
   "mirror_id": "SPEAKER_FRONTIER_MIRROR",
-  "created_at": "2026-06-27T20:11:34.949Z",
+  "created_at": "2026-06-27T20:18:09.632Z",
   "organ": "Speaker",
   "status": "ARTIFACT",
-  "frontier_status": "BLOCKER",
+  "frontier_status": "ARTIFACT",
   "frontier_path": "foreman/source-truth/shared_frontier.json",
-  "frontier_hash": "D890BF7DA1A941406F2CE01C18D826A9231D344A28857A1E5C1738B6BAB552D9",
+  "frontier_hash": "C108EE6D73B301C96F31C59A5A498B1E38E4F4AC3837049C76B201EDBD15CB19",
   "bootloader_readback_path": "foreman/source-truth/readbacks/NERDKLE_BOOTLOADER_FRONTIER_READBACK.json",
-  "bootloader_readback_hash": "B08A4C3C1B5C2C78B2CC503C682EB90BA1AD242BF8AED7A29DE0971FF9C2AF74",
+  "bootloader_readback_hash": "F6516F58F6200A792EA985090AFC4C06CA109D62C082B9D706BD052458ECABC3",
   "rationale": "Speaker mirrors the frontier warning so tomorrow's Aeye does not start from chat memory.",
   "warnings": [
-    "Daily memory is blocked until production circulation.db exists.",
     "Do not invent completed packets while completed_packet_count is 0.",
     "Do not treat a review branch as canonical source truth."
   ],
-  "blockers": [
-    {
-      "blocker_id": "CIRCULATION_DB_MISSING",
-      "missing_path": "C:\\tinkarden\\server\\circulation.db",
-      "mission": "BIRD_0036_SWANSON_DAILY_STATE_SNAPSHOT",
-      "next_action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
-      "next_owner": "Swanson@Doss",
-      "owner": "Swanson@Doss",
-      "source_table": null,
-      "status": "BLOCKER",
-      "timestamp": "2026-06-27T20:06:53.683Z"
-    }
-  ],
-  "next_actions": [
-    {
-      "owner": "Swanson@Doss",
-      "action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
-      "blocker_id": "CIRCULATION_DB_MISSING",
-      "missing_path": "C:\\tinkarden\\server\\circulation.db"
-    }
-  ],
+  "blockers": [],
+  "next_actions": [],
   "speaker_boundaries": {
     "may": [
       "mirror rationale",

@@ -1,43 +1,24 @@
 {
   "readback_id": "NERDKLE_BOOTLOADER_FRONTIER_READBACK",
-  "created_at": "2026-06-27T20:11:34.875Z",
+  "created_at": "2026-06-27T20:17:42.611Z",
   "owner": "Swanson@Doss",
   "machine": "Doss",
   "status": "ARTIFACT",
-  "frontier_status": "BLOCKER",
+  "frontier_status": "ARTIFACT",
   "frontier_path": "foreman/source-truth/shared_frontier.json",
-  "frontier_hash": "D890BF7DA1A941406F2CE01C18D826A9231D344A28857A1E5C1738B6BAB552D9",
+  "frontier_hash": "C108EE6D73B301C96F31C59A5A498B1E38E4F4AC3837049C76B201EDBD15CB19",
   "bootloader_rule": "Read shared_frontier.json before starting new Nerdkle work.",
   "next_bootloader": {
     "date": "2026-06-27",
-    "status": "BLOCKER",
+    "status": "ARTIFACT",
     "read_this_first": "foreman/source-truth/shared_frontier.json",
     "completed_packet_count": 0,
-    "blocker_count": 1,
-    "warning": "Daily state snapshot exists, but live ledger readback is blocked."
+    "blocker_count": 0,
+    "warning": "Daily state snapshot read back today's ledger."
   },
   "completed_packets": [],
-  "blockers": [
-    {
-      "blocker_id": "CIRCULATION_DB_MISSING",
-      "missing_path": "C:\\tinkarden\\server\\circulation.db",
-      "mission": "BIRD_0036_SWANSON_DAILY_STATE_SNAPSHOT",
-      "next_action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
-      "next_owner": "Swanson@Doss",
-      "owner": "Swanson@Doss",
-      "source_table": null,
-      "status": "BLOCKER",
-      "timestamp": "2026-06-27T20:06:53.683Z"
-    }
-  ],
-  "next_actions": [
-    {
-      "owner": "Swanson@Doss",
-      "action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
-      "blocker_id": "CIRCULATION_DB_MISSING",
-      "missing_path": "C:\\tinkarden\\server\\circulation.db"
-    }
-  ],
+  "blockers": [],
+  "next_actions": [],
   "false_start_guard": [
     "Do not start tomorrow from chat memory.",
     "Do not call daily memory complete while frontier_status is BLOCKER.",

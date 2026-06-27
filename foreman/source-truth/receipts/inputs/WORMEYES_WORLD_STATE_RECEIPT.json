@@ -1,0 +1,14 @@
+{
+  "receipt_id": "WORMEYES_WORLD_STATE_RECEIPT",
+  "mission": "WORMEYES_WORLD_STATE",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T20:17:09.375Z",
+  "status": "ARTIFACT",
+  "output_path": "C:\\tinkarden\\world_state.json",
+  "output_hash": "726A5350D20B1DAB7B58C9ED3833043013C0E95B32150C6F552F8B7FC0369852",
+  "output_byte_count": 59075,
+  "readback_path": "foreman/source-truth/readbacks/WORMEYES_WORLD_STATE_READBACK.json",
+  "readback_hash": "2AB6AC69574387939C46E9F9F66F08764E3BA74953ED91264BE4E08ED174A840",
+  "changed_file_count": 65,
+  "fake_work_created": false
+}

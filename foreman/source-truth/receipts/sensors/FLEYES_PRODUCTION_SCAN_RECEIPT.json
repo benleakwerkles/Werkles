@@ -1,0 +1,20 @@
+{
+  "receipt_id": "FLEYES_PRODUCTION_SCAN_RECEIPT",
+  "mission": "BIRD_0025_SWANSON_FLEYE_MULE_SENSOR",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T20:18:42.308Z",
+  "status": "ARTIFACT",
+  "readback_path": "foreman/source-truth/readbacks/FLEYES_PRODUCTION_SCAN_READBACK.json",
+  "readback_hash": "893395B6FEC3A6286BB409C71D49F5D60188FD2C28C65F07B9F1FDF1350426C0",
+  "readback_byte_count": 1500,
+  "artifact_path": "C:\\tinkarden\\nervous_system\\frictional_heat.json",
+  "artifact_hash": "23BE8B4EE81DD7F48E79E399C67B21A137D96FD48838257155B7F6479A4D5682",
+  "artifact_byte_count": 43611,
+  "source_db_path": "C:\\tinkarden\\server\\circulation.db",
+  "source_db_hash": "A242D092160DD4A9B6191C42D8E2EDC329C871641AC2BF526E318A4D351C9725",
+  "world_state_path": "C:\\tinkarden\\world_state.json",
+  "world_state_hash": "726A5350D20B1DAB7B58C9ED3833043013C0E95B32150C6F552F8B7FC0369852",
+  "proof_level": "LOCAL_SENSOR_READBACK_PROVEN",
+  "canonical_readiness": "NO",
+  "raw_receipts_deleted": false
+}

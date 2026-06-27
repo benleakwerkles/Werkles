@@ -1,0 +1,15 @@
+{
+  "receipt_id": "NERDKLE_PRODUCTION_INPUT_BOOTSTRAP_RECEIPT",
+  "mission": "NERDKLE_PRODUCTION_INPUT_BOOTSTRAP",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T20:17:08.963Z",
+  "status": "ARTIFACT",
+  "db_path": "C:\\tinkarden\\server\\circulation.db",
+  "db_sha256": "A242D092160DD4A9B6191C42D8E2EDC329C871641AC2BF526E318A4D351C9725",
+  "db_byte_count": 28672,
+  "readback_path": "foreman/source-truth/readbacks/NERDKLE_PRODUCTION_INPUT_BOOTSTRAP_READBACK.json",
+  "readback_hash": "4BA93294CEBF05E979C8799A73C39009864617846AE0E44C58F183072FDBDCD2",
+  "readback_byte_count": 1760,
+  "fake_receipts_created": false,
+  "rows_inserted_as_work": 0
+}

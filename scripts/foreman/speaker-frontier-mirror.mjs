@@ -38,6 +38,13 @@ const bootloader = existsSync(bootloaderPath)
       })),
     };
 const blockers = bootloader.blockers || [];
+const warnings = [
+  "Do not invent completed packets while completed_packet_count is 0.",
+  "Do not treat a review branch as canonical source truth.",
+];
+if (blockers.length > 0) {
+  warnings.unshift("Daily memory is blocked until production circulation.db exists.");
+}
 const ymd = new Date().toISOString().slice(0, 10).replace(/-/g, "");
 const entryId = `DRAFT_${ymd}-frontier-blocked-on-production-ledger`;
 const speakerDir = repoPath("foreman", "speaker");
@@ -57,11 +64,7 @@ const mirror = {
   bootloader_readback_path: rel(bootloaderPath),
   bootloader_readback_hash: existsSync(bootloaderPath) ? sha256File(bootloaderPath) : null,
   rationale: "Speaker mirrors the frontier warning so tomorrow's Aeye does not start from chat memory.",
-  warnings: [
-    "Daily memory is blocked until production circulation.db exists.",
-    "Do not invent completed packets while completed_packet_count is 0.",
-    "Do not treat a review branch as canonical source truth.",
-  ],
+  warnings,
   blockers,
   next_actions: bootloader.next_actions || [],
   speaker_boundaries: {
