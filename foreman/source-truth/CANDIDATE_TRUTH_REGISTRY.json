@@ -39,6 +39,64 @@
         "Human review",
         "Human merge gate"
       ]
+    },
+    {
+      "name": "NMCLR Proof Body Preserve V0",
+      "branch": "nerdkle/nmclr-proof-body-preserve-v0-20260627",
+      "classification": "PRESERVED_ONLY_NOT_CANONICAL",
+      "canonical": false,
+      "purpose": "Preserve the Doss-local NMCLR proof body candidate on GitHub for review.",
+      "remote_hash": "f14227352ce7820f9e12b135f559d706691e85da",
+      "proof_available": [
+        "NMCLR_PROOF_BODY_GITHUB_PRESERVATION_RECEIPT",
+        "NMCLR_PROOF_BODY_GITHUB_PRESERVATION_READBACK",
+        "recursive file hash D54D28717A6A7365EA299D72412AC732222B1B077367388EEDEBE4C3CCE66200"
+      ],
+      "missing_before_main": [
+        "Human review",
+        "Branch-specific NMCLR execution proof from this branch",
+        "Lineage receipt",
+        "Human merge gate"
+      ]
+    },
+    {
+      "name": "Nerdkle Receipt Crawler V0",
+      "branch": "nerdkle/receipt-crawler-v0-20260627",
+      "classification": "PRESERVED_ONLY_NOT_CANONICAL",
+      "canonical": false,
+      "purpose": "Preserve the receipt crawler candidate that moves successful LiveReceipt rows into the Speaker queue.",
+      "remote_hash": "312e0f811cf8ad46fac1774ee325ff349fcc3012",
+      "proof_available": [
+        "RECEIPT_CRAWLER_PRESERVATION_RECEIPT",
+        "synthetic LiveReceipt self-test"
+      ],
+      "missing_before_main": [
+        "Production circulation.db path",
+        "Production LiveReceipt row movement proof",
+        "Speaker queue Markdown file hash from real receipt",
+        "Human merge gate"
+      ]
+    },
+    {
+      "name": "Nerdkle Nervous System Organs V0",
+      "branch": "nerdkle/nervous-system-organs-v0-20260627",
+      "classification": "PRESERVED_ONLY_NOT_CANONICAL",
+      "canonical": false,
+      "purpose": "Preserve Swateyes, Fleyes, and Ender apoptosis as deterministic nervous-system organ candidates.",
+      "remote_hash": "47aa50c73c8ab0eda37d2e591cb956cca363b79d",
+      "proof_available": [
+        "NERDKLE_NERVOUS_SYSTEM_ORGANS_PRESERVATION_RECEIPT",
+        "NERDKLE_NERVOUS_SYSTEM_ORGANS_READBACK",
+        "Swateyes destructive delete -> FRACTURE",
+        "Fleyes fixture STALLED/CHURN",
+        "Ender fixture stale dry_run deletion plus quarantine"
+      ],
+      "missing_before_main": [
+        "Production circulation.db path",
+        "Production Wormeyes world_state.json",
+        "Production outbox readback",
+        "Human merge gate"
+      ]
     }
   ],
   "local_only_evidence": [

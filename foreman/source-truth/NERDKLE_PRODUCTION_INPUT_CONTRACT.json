@@ -1,0 +1,91 @@
+{
+  "contract_id": "NERDKLE_PRODUCTION_INPUT_CONTRACT_V0",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T19:31:00.000Z",
+  "status": "BLOCKED_ON_REAL_INPUTS",
+  "purpose": "Define the exact production surfaces required before fixture-proven Nerdkle organs can be called production organism behavior.",
+  "source_truth_rule": "GitHub origin/main remains canonical. Review branches and local daemons are evidence only until human-gated promotion.",
+  "required_surfaces": [
+    {
+      "surface": "production_circulation_db",
+      "canonical_path": "C:\\tinkarden\\server\\circulation.db",
+      "alternate_env": [
+        "CIRCULATION_DB",
+        "RECEIPT_CRAWLER_DB",
+        "FLEYES_CIRCULATION_DB",
+        "ENDER_CIRCULATION_DB"
+      ],
+      "required_tables": [
+        "LiveReceipt",
+        "shadow_cache"
+      ],
+      "required_columns": {
+        "LiveReceipt": [
+          "status",
+          "ASSIMILATED"
+        ],
+        "shadow_cache": [
+          "state/status/kind/type",
+          "created_at/timestamp",
+          "operator_signature"
+        ]
+      },
+      "current_status": "MISSING_ON_DOSS",
+      "blocked_organs": [
+        "receipt crawler production movement",
+        "Fleyes STALLED production scan",
+        "Ender production filtration"
+      ]
+    },
+    {
+      "surface": "wormeyes_world_state",
+      "canonical_path": "C:\\tinkarden\\world_state.json",
+      "alternate_env": [
+        "WORLD_STATE_PATH",
+        "FLEYES_WORLD_STATE"
+      ],
+      "required_fields": [
+        "files[]",
+        "path/file/relative_path",
+        "status/git_status/state",
+        "uncommitted_since/modified_since/modified_at/timestamp"
+      ],
+      "current_status": "MISSING_ON_DOSS",
+      "blocked_organs": [
+        "Fleyes CHURN production scan"
+      ]
+    },
+    {
+      "surface": "speaker_queue",
+      "canonical_path": "C:\\tinkarden\\intake\\speaker_queue",
+      "required_behavior": "Receipt crawler writes timestamped Markdown files here.",
+      "current_status": "PRESENT_ON_DOSS",
+      "blocked_organs": []
+    },
+    {
+      "surface": "outbox",
+      "canonical_path": "C:\\foreman\\handoffs\\outbox",
+      "fallback_path": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\foreman\\handoffs\\outbox",
+      "required_behavior": "Ender apoptosis flags unread packets older than 7 days into quarantine_list.json for manual Operator review.",
+      "current_status": "PRIMARY_MISSING_FALLBACK_PRESENT_ON_DOSS",
+      "blocked_organs": [
+        "Ender production quarantine from primary outbox"
+      ]
+    }
+  ],
+  "production_go_threshold": [
+    "At least one real LiveReceipt SUCCESS row is moved to speaker_queue and the same row remains in SQLite with ASSIMILATED true.",
+    "Fleyes scans real circulation.db and real world_state.json and writes frictional_heat.json from production inputs.",
+    "Ender scans real circulation.db and production outbox; any deletion or quarantine is logged to filtration_log.txt.",
+    "No docs/ deletion occurs without operator_signature.",
+    "All proof artifacts include path, byte_count, and sha256."
+  ],
+  "false_go_cases": [
+    "Fixture proof is described as production proof.",
+    "DB_MISSING is described as healthy no-friction state.",
+    "A sent packet is described as a receipt.",
+    "A quarantine list is treated as deletion approval.",
+    "A local daemon running against fixture paths is treated as canonical organism life."
+  ],
+  "next_packet": "NEXT_NERDKLE_PRODUCTION_INPUTS_BIRD"
+}

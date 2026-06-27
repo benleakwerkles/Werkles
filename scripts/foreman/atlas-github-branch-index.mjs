@@ -33,6 +33,7 @@ function classifyBranch(branch) {
   if (branch === "main") return "CANONICAL_SOURCE_TRUTH";
   if (branch.startsWith("source-truth/")) return "SOURCE_TRUTH_REVIEW";
   if (branch.startsWith("book/")) return "MANUSCRIPT_REVIEW";
+  if (branch.startsWith("nerdkle/")) return "NERDKLE_REVIEW";
   if (branch.startsWith("audit/")) return "AUDIT_EVIDENCE";
   if (branch.startsWith("preview/")) return "PREVIEW_EVIDENCE";
   if (branch.startsWith("salvage/")) return "PRESERVATION_EVIDENCE";

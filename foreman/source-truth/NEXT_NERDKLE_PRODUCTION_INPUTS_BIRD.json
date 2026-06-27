@@ -1,0 +1,41 @@
+{
+  "packet_id": "NEXT_NERDKLE_PRODUCTION_INPUTS_BIRD",
+  "created_at": "2026-06-27T19:31:00.000Z",
+  "owner": "Swanson@Doss",
+  "stream": "NERDKLE / SHARED REALITY / PRODUCTION INPUTS",
+  "status": "BLOCKER_TO_NEXT_PACKET",
+  "context": "Nerdkle organs are preserved on GitHub and fixture-tested, but production input surfaces are missing or not pointed at the running daemons.",
+  "next_action": "Locate or create the real production input surfaces without using fixture proof as production proof.",
+  "required_evidence": [
+    {
+      "surface": "circulation.db",
+      "proof": "Path exists, SQLite readback lists LiveReceipt and shadow_cache schema, and one real row can be selected without mutation."
+    },
+    {
+      "surface": "world_state.json",
+      "proof": "Path exists, JSON parses, and at least one file-status row shape is documented."
+    },
+    {
+      "surface": "speaker_queue",
+      "proof": "Directory exists and can receive a timestamped Markdown receipt from crawler."
+    },
+    {
+      "surface": "outbox",
+      "proof": "Canonical or fallback outbox exists and unread/read marker rules are documented."
+    }
+  ],
+  "pass_condition": [
+    "A production input readback receipt is written under foreman/source-truth/receipts.",
+    "No destructive production mutation occurs during discovery.",
+    "Any later Ender deletion remains separately human-gated if docs/ is involved."
+  ],
+  "failure_condition": [
+    "Ben has to remember where the DB lives.",
+    "Fixture proof is treated as production proof.",
+    "A daemon keeps running against fixture paths without a visible blocker."
+  ],
+  "destination": [
+    "TinkerDen Intake",
+    "Speaker"
+  ]
+}
