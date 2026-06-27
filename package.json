@@ -13,7 +13,8 @@
     "truth:speaker": "node scripts/foreman/speaker-truth-mirror.mjs --write",
     "truth:pulse": "node scripts/foreman/source-truth-pulse.mjs --write",
     "truth:guard": "node scripts/foreman/source-truth-guard.mjs",
-    "truth:ci": "node --check scripts/foreman/atlas-source-truth-readback.mjs && node --check scripts/foreman/atlas-github-branch-index.mjs && node --check scripts/foreman/speaker-truth-mirror.mjs && node --check scripts/foreman/source-truth-pulse.mjs && node --check scripts/foreman/source-truth-guard.mjs && node scripts/foreman/source-truth-guard.mjs && node scripts/foreman/atlas-source-truth-readback.mjs && node scripts/foreman/atlas-github-branch-index.mjs && node scripts/foreman/speaker-truth-mirror.mjs"
+    "memory:sleep-cycle": "node scripts/foreman/sleep_cycle.js",
+    "truth:ci": "node --check scripts/foreman/atlas-source-truth-readback.mjs && node --check scripts/foreman/atlas-github-branch-index.mjs && node --check scripts/foreman/speaker-truth-mirror.mjs && node --check scripts/foreman/source-truth-pulse.mjs && node --check scripts/foreman/source-truth-guard.mjs && node --check scripts/foreman/sleep_cycle.js && node scripts/foreman/source-truth-guard.mjs && node scripts/foreman/atlas-source-truth-readback.mjs && node scripts/foreman/atlas-github-branch-index.mjs && node scripts/foreman/speaker-truth-mirror.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
