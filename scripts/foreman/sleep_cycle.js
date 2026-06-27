@@ -420,11 +420,12 @@ function writeReceipt(receiptDir, snapshot, frontierPath) {
 }
 
 function git(args, options = {}) {
-  return execFileSync("git", args, {
+  const output = execFileSync("git", args, {
     cwd: REPO_ROOT,
     encoding: "utf8",
     stdio: options.stdio || ["ignore", "pipe", "pipe"],
-  }).trim();
+  });
+  return typeof output === "string" ? output.trim() : "";
 }
 
 function commitState(paths, snapshot) {

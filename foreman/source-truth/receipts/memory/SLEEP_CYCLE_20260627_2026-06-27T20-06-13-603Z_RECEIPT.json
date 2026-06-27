@@ -1,0 +1,14 @@
+{
+  "blocker_count": 1,
+  "circulation_db": null,
+  "commit_expected": true,
+  "completed_packet_count": 0,
+  "created_at": "2026-06-27T20:06:13.605Z",
+  "frontier_path": "C:\\Users\\BenLeak\\Documents\\Codex\\2026-06-20\\to-swanson-doss-mission-branch-truth\\work\\source-truth-atlas-speaker-v0\\foreman\\source-truth\\shared_frontier.json",
+  "frontier_sha256": "40198376F9BEEA768BF7DB5F4FA1A75605B46C99CEE549EE2240AA098EFD39DD",
+  "owner": "Swanson@Doss",
+  "packet_id": "BIRD_0036_SWANSON_DAILY_STATE_SNAPSHOT",
+  "raw_receipts_deleted": false,
+  "receipt_id": "SLEEP_CYCLE_20260627_2026-06-27T20-06-13-603Z_RECEIPT",
+  "status": "BLOCKER"
+}
