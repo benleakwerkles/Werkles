@@ -12,13 +12,13 @@
         "owner": "Swanson@Doss",
         "source_table": null,
         "status": "BLOCKER",
-        "timestamp": "2026-06-27T20:06:13.603Z"
+        "timestamp": "2026-06-27T20:06:53.683Z"
       }
     ],
     "built_today": [],
     "circulation_db": null,
     "completed_packet_count": 0,
-    "created_at": "2026-06-27T20:06:13.603Z",
+    "created_at": "2026-06-27T20:06:53.683Z",
     "date": "2026-06-27",
     "machine": "Doss",
     "owner": "Swanson@Doss",
@@ -26,7 +26,7 @@
     "query_status": "BLOCKER",
     "raw_receipts_deleted": false,
     "rule": "Sleep cycle aggregates today's ledger into shared_frontier.json. It does not delete raw receipts.",
-    "snapshot_id": "SLEEP_CYCLE_20260627_2026-06-27T20-06-13-603Z",
+    "snapshot_id": "SLEEP_CYCLE_20260627_2026-06-27T20-06-53-683Z",
     "status": "BLOCKER",
     "stream": "INFRASTRUCTURE / MEMORY",
     "table_summaries": [],
@@ -68,6 +68,40 @@
       "warnings": [
         "circulation.db was not found; no daily packet rows were queried."
       ]
+    },
+    {
+      "blocker_count": 1,
+      "blocking_next_day": [
+        {
+          "blocker_id": "CIRCULATION_DB_MISSING",
+          "missing_path": "C:\\tinkarden\\server\\circulation.db",
+          "mission": "BIRD_0036_SWANSON_DAILY_STATE_SNAPSHOT",
+          "next_action": "Create or point SLEEP_CYCLE_DB/CIRCULATION_DB at the real production circulation.db before claiming daily action readback.",
+          "next_owner": "Swanson@Doss",
+          "owner": "Swanson@Doss",
+          "source_table": null,
+          "status": "BLOCKER",
+          "timestamp": "2026-06-27T20:06:53.683Z"
+        }
+      ],
+      "built_today": [],
+      "circulation_db": null,
+      "completed_packet_count": 0,
+      "created_at": "2026-06-27T20:06:53.683Z",
+      "date": "2026-06-27",
+      "machine": "Doss",
+      "owner": "Swanson@Doss",
+      "packet_id": "BIRD_0036_SWANSON_DAILY_STATE_SNAPSHOT",
+      "query_status": "BLOCKER",
+      "raw_receipts_deleted": false,
+      "rule": "Sleep cycle aggregates today's ledger into shared_frontier.json. It does not delete raw receipts.",
+      "snapshot_id": "SLEEP_CYCLE_20260627_2026-06-27T20-06-53-683Z",
+      "status": "BLOCKER",
+      "stream": "INFRASTRUCTURE / MEMORY",
+      "table_summaries": [],
+      "warnings": [
+        "circulation.db was not found; no daily packet rows were queried."
+      ]
     }
   ],
   "frontier_id": "SHARED_FRONTIER_V0",
@@ -83,7 +117,7 @@
         "owner": "Swanson@Doss",
         "source_table": null,
         "status": "BLOCKER",
-        "timestamp": "2026-06-27T20:06:13.603Z"
+        "timestamp": "2026-06-27T20:06:53.683Z"
       }
     ],
     "completed_packet_count": 0,
@@ -94,5 +128,5 @@
   },
   "owner": "Swanson@Doss",
   "source_truth_rule": "GitHub origin/main remains canonical. Review branches and local runs are evidence until human-gated promotion.",
-  "updated_at": "2026-06-27T20:06:13.603Z"
+  "updated_at": "2026-06-27T20:06:53.683Z"
 }
