@@ -1,0 +1,246 @@
+{
+  "schema_version": "assimilation_decision_rules_v1",
+  "generated_at": "2026-06-25",
+  "mission": "ASSIMILATION_DECISION_RULES_V1",
+  "objective": "Complete the missing step between lesson and behavior.",
+  "question": "What qualifies a lesson to permanently change organism behavior?",
+  "core_rule": "A lesson may permanently change organism behavior only after repeated receipt-verified observations support it, no unresolved contradiction defeats it, no operator override blocks it, and the resulting behavior rule is written as a durable artifact that future execution can cite.",
+  "permanent_means": "Default organism behavior until explicitly superseded, expired, or operator-revoked. Permanent does not mean irreversible or impossible to update.",
+  "chain": [
+    {
+      "stage": "Observation",
+      "definition": "A receipt-backed event, failure, blocker, or successful action that can be read and hashed.",
+      "minimum_fields": [
+        "observation_id",
+        "observed_at",
+        "source_receipt_path",
+        "source_receipt_hash",
+        "event_type",
+        "failure_signature",
+        "actor",
+        "surface",
+        "status"
+      ],
+      "entry_status": "OBSERVED",
+      "cannot_advance_if": [
+        "source_receipt_path is missing",
+        "source_receipt_hash is missing",
+        "receipt cannot be read",
+        "status is invented from chat or memory only"
+      ]
+    },
+    {
+      "stage": "Candidate Lesson",
+      "definition": "A proposed lesson extracted from one or more observations. It is not yet a behavior rule.",
+      "minimum_fields": [
+        "candidate_lesson_id",
+        "lesson_text",
+        "source_observation_ids",
+        "failure_signature_hash",
+        "proposed_behavior_delta",
+        "scope",
+        "risk_level"
+      ],
+      "entry_status": "LESSON_CANDIDATE",
+      "cannot_advance_if": [
+        "lesson does not cite observations",
+        "lesson is too broad for the source evidence",
+        "proposed behavior delta is missing",
+        "scope is undefined"
+      ]
+    },
+    {
+      "stage": "Validation Threshold",
+      "definition": "The gate that decides whether a candidate lesson is strong enough to become behavior.",
+      "requirements": {
+        "repetition_threshold": {
+          "minimum_matching_observations": 2,
+          "matching_rule": "Observations match when they share the same failure_signature_hash or an operator-approved equivalence key.",
+          "dedupe_rule": "Two identical failures produce one behavior rule with evidence_count = 2, not two rules."
+        },
+        "contradiction_check": {
+          "required": true,
+          "check_surfaces": [
+            "existing behavior rules",
+            "operator decisions",
+            "human gate receipts",
+            "later correction receipts",
+            "contradictory successful executions"
+          ],
+          "pass_condition": "No unresolved contradictory receipt or rule defeats the candidate.",
+          "if_contradicted": "BLOCKED_CONTRADICTION"
+        },
+        "operator_override": {
+          "required": true,
+          "allowed_values": [
+            "ALLOW",
+            "NARROW_SCOPE",
+            "BLOCK",
+            "REVOKE",
+            "REQUIRE_HUMAN_GATE"
+          ],
+          "default_if_absent": "ALLOW_FOR_LOW_RISK_REVERSIBLE_BEHAVIOR_ONLY",
+          "irreversible_or_high_consequence_default": "REQUIRE_HUMAN_GATE"
+        },
+        "receipt_verification": {
+          "required": true,
+          "minimum_verified_receipts": 2,
+          "pass_condition": "Each supporting observation has a readable receipt path and stable hash, and each hash is recorded in the validation record.",
+          "if_unverified": "BLOCKED_RECEIPT_VERIFICATION"
+        }
+      },
+      "entry_status": "VALIDATION_PENDING",
+      "passing_status": "VALIDATED_FOR_ASSIMILATION"
+    },
+    {
+      "stage": "Assimilation",
+      "definition": "The act of writing the validated lesson into a durable behavior rule artifact.",
+      "minimum_fields": [
+        "assimilation_id",
+        "candidate_lesson_id",
+        "supporting_observation_ids",
+        "supporting_receipt_hashes",
+        "validation_status",
+        "operator_override_status",
+        "behavior_rule_id",
+        "behavior_rule_path",
+        "assimilated_at"
+      ],
+      "entry_status": "ASSIMILATION_READY",
+      "passing_status": "ASSIMILATED",
+      "cannot_advance_if": [
+        "validation_status is not VALIDATED_FOR_ASSIMILATION",
+        "operator_override_status is BLOCK or REVOKE",
+        "behavior_rule_path is missing",
+        "behavior rule has no trigger or action"
+      ]
+    },
+    {
+      "stage": "Behavior Rule",
+      "definition": "A durable rule that future packets and executions must consult.",
+      "minimum_fields": [
+        "behavior_rule_id",
+        "rule_text",
+        "trigger",
+        "action",
+        "scope",
+        "risk_level",
+        "source_lesson_id",
+        "source_receipt_hashes",
+        "evidence_count",
+        "human_gate_required",
+        "created_at",
+        "supersession_condition"
+      ],
+      "entry_status": "BEHAVIOR_RULE_ACTIVE",
+      "supersession_condition": "May be superseded by operator override, stronger contradictory receipts, failed future execution, or a narrower replacement rule."
+    },
+    {
+      "stage": "Future Execution",
+      "definition": "A later packet or action behaves differently because it cites and follows the behavior rule.",
+      "minimum_fields": [
+        "future_execution_id",
+        "packet_id",
+        "behavior_rule_id",
+        "before_behavior",
+        "after_behavior",
+        "changed_decision_or_action",
+        "proof_artifact_path",
+        "proof_artifact_hash"
+      ],
+      "entry_status": "FUTURE_EXECUTION_PROOF_REQUIRED",
+      "passing_status": "BEHAVIOR_CHANGE_PROVEN"
+    }
+  ],
+  "qualification_rule": {
+    "name": "lesson_to_permanent_behavior_rule",
+    "if": [
+      "candidate_lesson.source_observation_ids.length >= 2",
+      "all supporting observations have matching failure_signature_hash or approved equivalence key",
+      "all supporting observations have receipt verification PASS",
+      "contradiction_check.status == PASS",
+      "operator_override.status in ['ALLOW', 'NARROW_SCOPE']",
+      "proposed_behavior_delta is scoped and executable",
+      "human_gate.status == APPROVED when action is irreversible or high consequence"
+    ],
+    "then": [
+      "create exactly one behavior_rule",
+      "set behavior_rule.evidence_count to number of matching verified observations",
+      "write behavior_rule to durable file-backed surface",
+      "future packets in scope must cite behavior_rule_id",
+      "future execution must produce proof_artifact_path before BEHAVIOR_CHANGE_PROVEN"
+    ],
+    "else": [
+      "leave as LESSON_CANDIDATE or BLOCKED",
+      "record missing threshold in blockers",
+      "do not change future behavior"
+    ]
+  },
+  "two_identical_failures_pass_case": {
+    "packet_a_failure_1": {
+      "observation_status": "OBSERVED",
+      "receipt_verification": "PASS",
+      "failure_signature_hash": "same_hash"
+    },
+    "packet_a_failure_2": {
+      "observation_status": "OBSERVED",
+      "receipt_verification": "PASS",
+      "failure_signature_hash": "same_hash"
+    },
+    "candidate_lesson": {
+      "status": "VALIDATED_FOR_ASSIMILATION",
+      "repetition_threshold": "PASS",
+      "contradiction_check": "PASS",
+      "operator_override": "ALLOW",
+      "receipt_verification": "PASS"
+    },
+    "result": {
+      "behavior_rules_created": 1,
+      "evidence_count": 2,
+      "status": "BEHAVIOR_RULE_ACTIVE",
+      "future_execution_requirement": "Next in-scope packet must cite behavior_rule_id and produce proof artifact showing changed behavior."
+    }
+  },
+  "blocking_statuses": [
+    "BLOCKED_REPETITION_THRESHOLD",
+    "BLOCKED_CONTRADICTION",
+    "BLOCKED_OPERATOR_OVERRIDE",
+    "BLOCKED_RECEIPT_VERIFICATION",
+    "BLOCKED_HUMAN_GATE",
+    "BLOCKED_SCOPE_TOO_BROAD",
+    "BLOCKED_NO_FUTURE_EXECUTION_PROOF_PATH"
+  ],
+  "human_gate_policy": {
+    "required_for": [
+      "irreversible action",
+      "destructive action",
+      "git commit",
+      "git push",
+      "git merge",
+      "branch deletion",
+      "production deploy",
+      "database migration",
+      "secret or account change",
+      "financial or billing action",
+      "canonical truth promotion",
+      "doctrine or permanent manuscript promotion"
+    ],
+    "not_required_for": [
+      "low-risk local warning",
+      "reversible checklist addition",
+      "draft-only packet template note",
+      "candidate lesson record",
+      "non-executing review prompt"
+    ]
+  },
+  "no_go": [
+    "Do not assimilate a single failure into permanent behavior.",
+    "Do not assimilate without receipt hashes.",
+    "Do not assimilate when contradiction is unresolved.",
+    "Do not assimilate against operator override.",
+    "Do not assimilate irreversible or high-consequence behavior without Human Gate approval.",
+    "Do not claim future behavior changed until a later packet/action cites the behavior_rule_id and produces a proof artifact."
+  ],
+  "natural_death_condition": "This rule evaluation ends when it writes one behavior rule, writes a blocked validation record, or writes a rejected candidate record. It does not remain alive as a watcher or daemon.",
+  "pass_condition": "Two identical receipt-verified failures produce one durable behavior change."
+}

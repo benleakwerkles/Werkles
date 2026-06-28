@@ -1,0 +1,252 @@
+{
+  "receipt_id": "SWANSON_REMOTE_ALIGNMENT",
+  "packet_id": "BIRD_0108_SWANSON_REMOTE_ALIGNMENT_MATRIX",
+  "producer": "Swanson@Doss",
+  "owner": "Comptroller",
+  "stream": "INFRASTRUCTURE / REPO TRUTH",
+  "status": "ARTIFACT",
+  "created_at": "2026-06-27T22:16:00Z",
+  "purpose": "Blueprint for anchoring C:\\speaker to a GitHub origin and resolving the Werkles ahead/behind split without data loss.",
+  "hard_rules": [
+    "Do not push yet.",
+    "Do not pull into a dirty worktree.",
+    "Do not merge remote history over uncommitted local files.",
+    "Do not delete local sqlite state.",
+    "Do not use git clean, reset --hard, checkout --, or force-push.",
+    "Any git commit, git push, git merge, package install, secret/key change, or irreversible mutation remains a Human Gate."
+  ],
+  "live_evidence": {
+    "speaker": {
+      "path": "C:\\speaker",
+      "branch": "main",
+      "head": "44a907ce4d1bedca02f6d96a1c739ae5eb30845c",
+      "origin_remote_configured": false,
+      "dirty_item_count": 20,
+      "status_summary": [
+        "?? .husky/",
+        "?? LOCKS/",
+        "?? README.md",
+        "?? action_capsules/",
+        "?? atlas/",
+        "?? bin/",
+        "?? bootloader/",
+        "?? bootpacks/",
+        "?? db/",
+        "?? doctrine/",
+        "?? e2e/",
+        "?? ender/",
+        "?? graveyard/",
+        "?? logs/",
+        "?? receipts/",
+        "?? schemas/",
+        "?? speaker-ingest.sh",
+        "?? speaker.sqlite",
+        "?? test_v0_organism.sh",
+        "?? verify_hardware.sh"
+      ],
+      "sqlite_state": {
+        "path": "C:\\speaker\\speaker.sqlite",
+        "byte_count": 53248,
+        "sha256": "6012D375127D04B0C70803077564681647D2C250A823FFC0E951B46C2F0DAFBD",
+        "merge_policy": "preserve as binary local state before any remote alignment; do not overwrite during remote mapping"
+      }
+    },
+    "werkles": {
+      "path": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles",
+      "branch": "snapshot/sally-good-werkles-2026-06-12",
+      "head": "4adebb2dfaf2fc2dae3284f24969eebe8b7adf6f",
+      "upstream": "origin/snapshot/sally-good-werkles-2026-06-12",
+      "remote_origin": "https://github.com/benleakwerkles/Werkles1.git",
+      "ahead_count": 9,
+      "behind_count": 9,
+      "dirty_item_count": 63,
+      "local_only_commits": [
+        "4adebb2 Wire Automatica relay cards",
+        "5d0addf Add master plan proposal engine",
+        "43d5db4 Add Aeye workstation standard v1.1",
+        "09702a0 Add Google Drive workstation standard",
+        "9e29f6f Canonicalize Doss machine protocol",
+        "069b925 Add Aeye workstation conformity report",
+        "c16ecb6 Add Speaker falsification constitution",
+        "614918c Add leverage inventory framework",
+        "6dc44df docs(foreman): register Doss/BLDER as mirror/mobile forge"
+      ],
+      "upstream_only_commits": [
+        "ffccad0 Ship SoleDash Automatica relay cards live for operator FIRE testing.",
+        "3aa11f6 Finalize IP register v1",
+        "8bb73f2 feat(squibb): Concierge Walkthrough v0 test-case-0",
+        "e62fbc7 feat(soledash): add Current Strategic Frame leverage card v0",
+        "a96e931 feat(soledash): v1.2 needs-you-now operator workflow",
+        "a2e995d docs(ip): add IP_REGISTER_v1 ecosystem inventory",
+        "52193ae feat(soledash): v1.1 operator workflow UX",
+        "0977264 feat(soledash): canonical v1 operator cockpit for all machines",
+        "fc54a17 feat(soledash): add v0 operator cockpit route and desktop launcher"
+      ]
+    }
+  },
+  "speaker_remote_tracking_matrix": {
+    "required_operator_input": [
+      {
+        "name": "SPEAKER_SOURCE_TRUTH_REMOTE",
+        "description": "Exact GitHub remote URL selected by Ben/Comptroller for C:\\speaker.",
+        "example": "git@github.com:<owner>/<speaker-repo>.git",
+        "status": "MISSING"
+      }
+    ],
+    "phase_0_preserve_before_remote": {
+      "goal": "Freeze local filesystem and sqlite state before remote mapping.",
+      "commands": [
+        "git -C C:\\speaker status --short --branch > C:\\speaker\\receipts\\staged\\speaker-status-pre-origin-<STAMP>.txt",
+        "git -C C:\\speaker rev-parse HEAD > C:\\speaker\\receipts\\staged\\speaker-head-pre-origin-<STAMP>.txt",
+        "Get-FileHash -Algorithm SHA256 C:\\speaker\\speaker.sqlite > C:\\speaker\\receipts\\staged\\speaker-sqlite-pre-origin-<STAMP>.sha256.txt",
+        "Copy-Item -LiteralPath C:\\speaker\\speaker.sqlite -Destination C:\\speaker\\receipts\\staged\\speaker.sqlite.pre-origin.<STAMP>.bak -ErrorAction Stop",
+        "Compress-Archive -Path C:\\speaker\\speaker.sqlite,C:\\speaker\\receipts,C:\\speaker\\db,C:\\speaker\\bin,C:\\speaker\\bootloader,C:\\speaker\\atlas -DestinationPath C:\\speaker\\receipts\\staged\\speaker-filesystem-pre-origin-<STAMP>.zip -Force",
+        "git -C C:\\speaker bundle create C:\\speaker\\receipts\\staged\\speaker-git-history-pre-origin-<STAMP>.bundle --all"
+      ],
+      "pass_condition": "A filesystem zip, sqlite backup/hash, git bundle, and status text exist before origin is added.",
+      "failure_condition": "If any preservation artifact fails, stop before adding origin."
+    },
+    "phase_1_map_remote_without_merge": {
+      "goal": "Attach remote tracking metadata only; do not pull, merge, or push.",
+      "commands": [
+        "git -C C:\\speaker remote add origin <SPEAKER_SOURCE_TRUTH_REMOTE>",
+        "git -C C:\\speaker remote -v",
+        "git -C C:\\speaker fetch origin --prune --tags",
+        "git -C C:\\speaker ls-remote --heads origin",
+        "git -C C:\\speaker branch --show-current",
+        "git -C C:\\speaker status --short --branch"
+      ],
+      "pass_condition": "origin appears in git remote -v and fetch completes without modifying the worktree.",
+      "failure_condition": "If origin already exists with a different URL, stop and require Comptroller decision; do not overwrite with remote set-url automatically."
+    },
+    "phase_2_compare_remote_default": {
+      "goal": "Compare local main to remote default branch without importing remote files into dirty local state.",
+      "commands": [
+        "git -C C:\\speaker remote show origin",
+        "git -C C:\\speaker rev-parse main",
+        "git -C C:\\speaker rev-parse origin/main",
+        "git -C C:\\speaker log --left-right --cherry-pick --oneline main...origin/main",
+        "git -C C:\\speaker diff --name-status main...origin/main"
+      ],
+      "pass_condition": "A comparison report exists showing whether remote is empty, identical, ahead, behind, or divergent.",
+      "failure_condition": "If origin/main does not exist, classify remote as empty_or_nonstandard and require branch selection before push."
+    },
+    "phase_3_alignment_branch_only_after_review": {
+      "goal": "Create a local reconcile branch only after preservation and remote comparison are proven.",
+      "commands": [
+        "git -C C:\\speaker switch -c reconcile/speaker-doss-origin-map-<STAMP>",
+        "git -C C:\\speaker add -N .",
+        "git -C C:\\speaker diff --stat",
+        "git -C C:\\speaker status --short --branch"
+      ],
+      "pass_condition": "A reconcile branch exists with all local files still present and no remote merge applied.",
+      "failure_condition": "If branch creation fails or local files disappear, stop and restore from preservation artifacts."
+    },
+    "explicitly_forbidden_commands": [
+      "git -C C:\\speaker pull",
+      "git -C C:\\speaker merge origin/main",
+      "git -C C:\\speaker rebase origin/main",
+      "git -C C:\\speaker reset --hard",
+      "git -C C:\\speaker clean -fd",
+      "git -C C:\\speaker push",
+      "git -C C:\\speaker push --force"
+    ]
+  },
+  "werkles_conflict_resolution_protocol": {
+    "classification": "DIVERGED_DIRTY_WORKTREE",
+    "why_rebase_is_currently_blocked": [
+      "Werkles has 9 local commits not on upstream.",
+      "Werkles has 9 upstream commits not in local HEAD.",
+      "Werkles has 63 dirty worktree items.",
+      "Running rebase or pull before preserving dirty files risks overwriting or entangling uncommitted work."
+    ],
+    "phase_0_preserve_dirty_state": {
+      "commands": [
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles status --short --branch > C:\\speaker\\receipts\\staged\\werkles-status-pre-rebase-<STAMP>.txt",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles diff > C:\\speaker\\receipts\\staged\\werkles-tracked-diff-pre-rebase-<STAMP>.patch",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles diff --cached > C:\\speaker\\receipts\\staged\\werkles-staged-diff-pre-rebase-<STAMP>.patch",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles ls-files --others --exclude-standard > C:\\speaker\\receipts\\staged\\werkles-untracked-files-pre-rebase-<STAMP>.txt",
+        "Compress-Archive -Path C:\\Users\\BenLeak\\Desktop\\github\\Werkles -DestinationPath C:\\speaker\\receipts\\staged\\werkles-worktree-pre-rebase-<STAMP>.zip -Force",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles stash push --include-untracked -m BIRD_0108_PRE_REBASE_PRESERVE_<STAMP>"
+      ],
+      "pass_condition": "Patch files, untracked manifest, worktree archive, and stash entry exist.",
+      "failure_condition": "If stash or archive fails, do not fetch/rebase."
+    },
+    "phase_1_fetch_and_count": {
+      "commands": [
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles fetch origin --prune",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles rev-list --left-right --count HEAD...@{u}",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles log --left-right --cherry-pick --oneline HEAD...@{u}"
+      ],
+      "pass_condition": "Ahead/behind count is still understood after fetch.",
+      "failure_condition": "If upstream changes again mid-operation, regenerate the matrix before rebase."
+    },
+    "phase_2_create_rebase_safety_branch": {
+      "commands": [
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles switch -c reconcile/werkles-ahead9-behind9-<STAMP>",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles branch preserve/werkles-pre-rebase-<STAMP> HEAD"
+      ],
+      "pass_condition": "Both reconcile and preserve branches point to the pre-rebase local HEAD.",
+      "failure_condition": "If branch creation fails, stop and do not rebase."
+    },
+    "phase_3_non_destructive_rebase": {
+      "commands": [
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles rebase --rebase-merges --empty=keep @{u}"
+      ],
+      "conflict_parameters": [
+        "Resolve conflicts file-by-file; never use blanket ours/theirs.",
+        "For deleted receipt files, preserve if they are the only durable proof and require explicit Comptroller review before accepting deletion.",
+        "For package.json, inspect dependency and script changes manually.",
+        "For foreman/soledash and foreman/speaker files, prefer semantic merge with receipt references retained.",
+        "After each resolved conflict: git add <file>; git rebase --continue.",
+        "If resolution becomes unclear: git rebase --abort; restore from preserve branch/stash/archive."
+      ],
+      "pass_condition": "Rebase completes on reconcile branch with no lost files and tests/readbacks selected by Comptroller pass.",
+      "failure_condition": "Any ambiguous receipt deletion, schema mutation, or source-truth conflict stops the rebase for human review."
+    },
+    "phase_4_restore_dirty_work_and_validate": {
+      "commands": [
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles stash list",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles stash apply stash^{/BIRD_0108_PRE_REBASE_PRESERVE_<STAMP>}",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles status --short --branch",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles rev-list --left-right --count HEAD...@{u}",
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles diff --name-status"
+      ],
+      "pass_condition": "Dirty local work is restored onto the reconciled branch and no expected file class is missing.",
+      "failure_condition": "If stash apply conflicts, resolve as worktree conflicts and do not push."
+    },
+    "phase_5_push_valve_only_after_human_gate": {
+      "commands": [
+        "git -C C:\\Users\\BenLeak\\Desktop\\github\\Werkles push origin HEAD:refs/heads/reconcile/werkles-ahead9-behind9-<STAMP>"
+      ],
+      "requires": [
+        "Human Gate approval",
+        "preserve branch exists",
+        "stash/archive proof exists",
+        "rebase completion receipt exists",
+        "no unresolved conflicts",
+        "no unreviewed deletion of receipt/proof files"
+      ]
+    }
+  },
+  "release_valve_status": {
+    "speaker_push_ready": false,
+    "werkles_push_ready": false,
+    "canonical_push_allowed": false,
+    "blockers": [
+      "C:\\speaker origin remote missing",
+      "C:\\speaker dirty/untracked state not preserved into a pre-origin archive yet",
+      "C:\\speaker signing key and operator public key lock still missing",
+      "Werkles dirty worktree has 63 items",
+      "Werkles branch is ahead 9 and behind 9",
+      "Comptroller has not selected Speaker GitHub Source Truth remote"
+    ]
+  },
+  "comptroller_review_questions": [
+    "What exact GitHub repo URL should become C:\\speaker origin?",
+    "Should C:\\speaker remain a standalone repo or become a folder inside Werkles?",
+    "Should speaker.sqlite be tracked, ignored, or replaced by deterministic migrations plus receipt logs?",
+    "Which Werkles side owns Automatica relay cards when local and remote commits conflict?",
+    "Are deleted gd-intent-router receipt files allowed to stay deleted, or must they be preserved as durable proof?"
+  ]
+}

@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TinkerDen Working Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8efe0;
+      --muted: #c8bba8;
+      --faint: #8f806f;
+      --bg: #11100e;
+      --panel: rgba(31, 26, 21, 0.94);
+      --panel-soft: rgba(42, 35, 28, 0.82);
+      --line: rgba(246, 224, 188, 0.18);
+      --line-strong: rgba(246, 224, 188, 0.34);
+      --lamp: #e8b35f;
+      --paper: #f1e1c6;
+      --paper-ink: #2d241c;
+      --green: #89d79a;
+      --red: #e98673;
+      --blue: #8fb7e9;
+      --amber: #e5be72;
+      --violet: #b89bff;
+      --shadow: rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        linear-gradient(180deg, rgba(16, 14, 12, 0.86), rgba(12, 11, 10, 0.98)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 90px),
+        linear-gradient(110deg, #16110e 0%, #211711 42%, #141414 100%);
+    }
+
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    button:hover,
+    button:focus-visible {
+      border-color: rgba(232, 179, 95, 0.72);
+      outline: none;
+      background: rgba(232, 179, 95, 0.12);
+    }
+
+    .shell {
+      min-height: 100vh;
+      padding: 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .shell:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(232, 179, 95, 0.13), transparent 28%),
+        linear-gradient(180deg, rgba(255, 243, 210, 0.06), transparent 40%);
+      mix-blend-mode: screen;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      max-width: 1500px;
+      margin: 0 auto 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand h1 {
+      margin: 0 0 6px;
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 0;
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .source-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.22);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .workspace {
+      max-width: 1500px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.9fr) minmax(360px, 1.25fr) minmax(300px, 1fr);
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .room {
+      min-height: 620px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 18px 42px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+    }
+
+    .room-kicker {
+      margin: 0 0 5px;
+      color: var(--lamp);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .room-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .room-map {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--paper);
+      font-weight: 800;
+    }
+
+    .room-body {
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+      flex: 1;
+      align-content: start;
+    }
+
+    .paper {
+      color: var(--paper-ink);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.38), rgba(255,255,255,0)),
+        var(--paper);
+      border: 1px solid rgba(92, 65, 34, 0.32);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+    }
+
+    .paper h2,
+    .paper h3,
+    .paper p {
+      margin-top: 0;
+    }
+
+    .paper h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .paper h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .paper p {
+      line-height: 1.45;
+    }
+
+    .facts {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .facts div {
+      padding-top: 10px;
+      border-top: 1px solid rgba(45, 36, 28, 0.18);
+    }
+
+    .facts dt {
+      color: #715338;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .facts dd {
+      margin: 4px 0 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .moves {
+      display: grid;
+      gap: 10px;
+    }
+
+    .move {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+
+    .move.is-active {
+      border-color: rgba(232, 179, 95, 0.72);
+      background: rgba(80, 58, 35, 0.7);
+    }
+
+    .move-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .move h3 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .score {
+      flex: 0 0 auto;
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .move p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.38;
+      font-size: 14px;
+    }
+
+    .move button {
+      justify-self: start;
+      padding: 8px 10px;
+      font-weight: 700;
+    }
+
+    .queue {
+      display: grid;
+      gap: 8px;
+    }
+
+    .queue-row {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) auto;
+      gap: 9px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .queue-rank {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      color: #1d1712;
+      background: var(--paper);
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .queue-name {
+      overflow: hidden;
+    }
+
+    .queue-name strong {
+      display: block;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .queue-name span {
+      display: block;
+      color: var(--faint);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .state-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .state-pill.frontier {
+      color: var(--green);
+      border-color: rgba(137, 215, 154, 0.42);
+    }
+
+    .state-pill.deferred {
+      color: var(--blue);
+      border-color: rgba(143, 183, 233, 0.44);
+    }
+
+    .state-pill.killed {
+      color: var(--red);
+      border-color: rgba(233, 134, 115, 0.44);
+    }
+
+    .decision-panel {
+      display: grid;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .decision-panel h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .decision-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.38;
+    }
+
+    .decision-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .decision-buttons button {
+      min-height: 46px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .decision-buttons .proceed {
+      color: #152216;
+      background: var(--green);
+      border-color: rgba(137, 215, 154, 0.86);
+    }
+
+    .decision-buttons .defer {
+      color: #111b28;
+      background: var(--blue);
+      border-color: rgba(143, 183, 233, 0.86);
+    }
+
+    .decision-buttons .kill {
+      color: #28120d;
+      background: var(--red);
+      border-color: rgba(233, 134, 115, 0.86);
+    }
+
+    .execution-log,
+    .receipts {
+      display: grid;
+      gap: 8px;
+      max-height: 230px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .receipt {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .receipt strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .receipt span {
+      display: block;
+      margin-top: 3px;
+      color: var(--faint);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .source-rack {
+      max-width: 1500px;
+      margin: 14px auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .source-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(21, 18, 15, 0.88);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      min-height: 130px;
+    }
+
+    .source-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88) contrast(1.04);
+    }
+
+    .source-card div {
+      padding: 14px;
+    }
+
+    .source-card h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .source-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .source-card code {
+      display: block;
+      margin-top: 9px;
+      color: var(--amber);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .notes {
+      display: grid;
+      gap: 8px;
+    }
+
+    .notes label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .notes textarea {
+      width: 100%;
+      min-height: 78px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(0,0,0,0.24);
+      padding: 10px;
+    }
+
+    .fine-print {
+      max-width: 1500px;
+      margin: 12px auto 0;
+      color: var(--faint);
+      font-size: 12px;
+      line-height: 1.45;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1180px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .room {
+        min-height: auto;
+      }
+
+      .source-rack {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 14px;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .source-tags {
+        justify-content: flex-start;
+      }
+
+      .decision-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .source-card {
+        grid-template-columns: 1fr;
+      }
+
+      .source-card img {
+        height: 170px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <h1>TinkerDen</h1>
+        <p>A fused working preview: Den atmosphere from Goop Cycle, operator truth mechanics from Wonka Safe Preview. Mission Control explains why, Bridge shows now, Engine Room lets the operator choose.</p>
+      </div>
+      <div class="source-tags" aria-label="Preview provenance">
+        <span class="tag">Source: Swanson@Doss</span>
+        <span class="tag">Destination: TinkerDen Intake</span>
+        <span class="tag">Status: Preview Only</span>
+      </div>
+    </header>
+
+    <section class="workspace" aria-label="TinkerDen rooms">
+      <article class="room" aria-labelledby="mission-control-title">
+        <div class="room-head">
+          <div>
+            <p class="room-kicker">WHY</p>
+            <h2 class="room-title" id="mission-control-title">Mission Control</h2>
+          </div>
+          <span class="room-map">WHY</span>
+        </div>
+        <div class="room-body">
+          <section class="paper" aria-label="Active rationale">
+            <h2 id="why-title">Put the organism in one room</h2>
+            <p id="why-summary">The operator should see why a move matters before choosing action. No project board, no dashboard grid, no hidden queue.</p>
+            <dl class="facts">
+              <div>
+                <dt>Why this exists</dt>
+                <dd id="why-exists">TinkerDen needs the Den mood and the SoleDash decision mechanics in one humane surface.</dd>
+              </div>
+              <div>
+                <dt>Why now</dt>
+                <dd id="why-now">Branch truth found the pieces split across two realities. This preview tests the intended merge shape without touching either branch.</dd>
+              </div>
+              <div>
+                <dt>Evidence</dt>
+                <dd id="why-evidence">Wonka Safe Preview has receipts, queue, rationale, and execution routes. Goop Cycle has the strongest Den visual language.</dd>
+              </div>
+              <div>
+                <dt>Rejected shape</dt>
+                <dd id="why-reject">Do not turn this into PM software. The operator chooses consequence, not status columns.</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="receipts" id="receipts" aria-label="Visible receipts"></section>
+        </div>
+      </article>
+
+      <article class="room" aria-labelledby="bridge-title">
+        <div class="room-head">
+          <div>
+            <p class="room-kicker">NOW</p>
+            <h2 class="room-title" id="bridge-title">Bridge</h2>
+          </div>
+          <span class="room-map">NOW</span>
+        </div>
+        <div class="room-body">
+          <section aria-label="Organism proposed moves">
+            <p class="room-kicker">Organism Proposes Top 3 Moves</p>
+            <div class="moves" id="moves"></div>
+          </section>
+
+          <section aria-label="Queue visible">
+            <p class="room-kicker">Queue Visible</p>
+            <div class="queue" id="queue"></div>
+          </section>
+        </div>
+      </article>
+
+      <article class="room" aria-labelledby="engine-room-title">
+        <div class="room-head">
+          <div>
+            <p class="room-kicker">EXECUTION</p>
+            <h2 class="room-title" id="engine-room-title">Engine Room</h2>
+          </div>
+          <span class="room-map">DO</span>
+        </div>
+        <div class="room-body">
+          <section class="decision-panel" aria-label="Operator decision">
+            <h2 id="active-move-title">Put the organism in one room</h2>
+            <p id="active-move-detail">Selected move waits for operator consequence.</p>
+            <div class="decision-buttons">
+              <button class="proceed" type="button" data-decision="PROCEED">PROCEED</button>
+              <button class="defer" type="button" data-decision="DEFER">DEFER</button>
+              <button class="kill" type="button" data-decision="KILL">KILL</button>
+            </div>
+          </section>
+
+          <section aria-label="Execution log">
+            <p class="room-kicker">Execution Receipts</p>
+            <div class="execution-log" id="execution-log"></div>
+          </section>
+
+          <section class="notes" aria-label="Operator notes">
+            <label for="operator-notes">Operator notes</label>
+            <textarea id="operator-notes" placeholder="Keep, steal, or kill notes stay local to this preview."></textarea>
+          </section>
+        </div>
+      </article>
+    </section>
+
+    <section class="source-rack" aria-label="Source artifacts">
+      <article class="source-card">
+        <img src="live_preview_health_screenshots/04-preview-wonka-den-safe-preview-20260618-3203.png" alt="Wonka Safe Preview screenshot receipt">
+        <div>
+          <h2>Operational Piece</h2>
+          <p>Receipts, queue visibility, rationale fields, frontier, human gate surfaces, and execution routes.</p>
+          <code>origin/preview/wonka-den-safe-preview-20260618</code>
+        </div>
+      </article>
+      <article class="source-card">
+        <img src="live_preview_health_screenshots/02-cursor-goop-cycle-pvp-9b25-3201.png" alt="Goop Cycle Den screenshot receipt">
+        <div>
+          <h2>Visual Piece</h2>
+          <p>Den shell, mood tokens, workshop atmosphere, and the strongest TinkerDen-style product lane.</p>
+          <code>origin/cursor/goop-cycle-pvp-9b25</code>
+        </div>
+      </article>
+    </section>
+
+    <p class="fine-print">
+      This is a working preview, not a merge. It copies intent from both branches into a single reviewable surface in the mission truth folder. No source branch was deleted, cleaned, or merged.
+    </p>
+  </main>
+
+  <script>
+    const moves = [
+      {
+        id: "organism-room",
+        title: "Put the organism in one room",
+        score: 0.94,
+        status: "frontier",
+        owner: "Swanson@Doss",
+        detail: "Fuse Mission Control, Bridge, and Engine Room into one operator surface.",
+        exists: "The Den mood and Decision Surface are split across branches.",
+        now: "Ben needs a reviewable shape before any merge work.",
+        evidence: "Wonka Safe Preview has queue and receipts. Goop Cycle has the Den lane.",
+        reject: "A generic dashboard would bury consequence behind layout."
+      },
+      {
+        id: "receipt-rail",
+        title: "Make receipts impossible to miss",
+        score: 0.88,
+        status: "queued",
+        owner: "Dink",
+        detail: "Pin the newest receipt beside the reason for action, not in a separate report.",
+        exists: "Trust comes from visible proof, not from optimistic labels.",
+        now: "The salvage audit already produced screenshot and branch receipts.",
+        evidence: "ReceiptCenterPanel and branch health screenshots are available.",
+        reject: "Do not hide receipts behind MORE INFO."
+      },
+      {
+        id: "operator-consequence",
+        title: "Reduce the choice to consequence",
+        score: 0.81,
+        status: "queued",
+        owner: "Petra",
+        detail: "Operator chooses PROCEED, DEFER, or KILL after seeing why, now, and execution impact.",
+        exists: "The current surfaces use YEA/NAY/DEFER and route buttons, but Ben named the consequence triad.",
+        now: "A preview can test the triad before any protocol rename.",
+        evidence: "Command surfaces already dispatch, defer, and kill tests in nearby vocabulary.",
+        reject: "Do not add another approval console."
+      }
+    ];
+
+    let selectedId = moves[0].id;
+    const receiptSeed = [
+      {
+        id: "receipt-branch-truth",
+        title: "Branch truth located split TinkerDen pieces",
+        path: "outputs/find_the_lost_tinkerden.md",
+        state: "resolved"
+      },
+      {
+        id: "receipt-wonka-safe",
+        title: "Operational source pinned",
+        path: "live_preview_health_screenshots/04-preview-wonka-den-safe-preview-20260618-3203.png",
+        state: "visible"
+      },
+      {
+        id: "receipt-goop-den",
+        title: "Visual source pinned",
+        path: "live_preview_health_screenshots/02-cursor-goop-cycle-pvp-9b25-3201.png",
+        state: "visible"
+      }
+    ];
+    const receipts = [...receiptSeed];
+
+    function activeMove() {
+      return moves.find((move) => move.id === selectedId) || moves[0];
+    }
+
+    function renderWhy() {
+      const move = activeMove();
+      document.getElementById("why-title").textContent = move.title;
+      document.getElementById("why-summary").textContent = move.detail;
+      document.getElementById("why-exists").textContent = move.exists;
+      document.getElementById("why-now").textContent = move.now;
+      document.getElementById("why-evidence").textContent = move.evidence;
+      document.getElementById("why-reject").textContent = move.reject;
+      document.getElementById("active-move-title").textContent = move.title;
+      document.getElementById("active-move-detail").textContent = move.detail;
+    }
+
+    function renderMoves() {
+      const container = document.getElementById("moves");
+      container.innerHTML = "";
+      moves.forEach((move, index) => {
+        const el = document.createElement("article");
+        el.className = "move" + (move.id === selectedId ? " is-active" : "");
+        el.innerHTML = `
+          <div class="move-title">
+            <h3>${index + 1}. ${move.title}</h3>
+            <span class="score">${move.score.toFixed(2)}</span>
+          </div>
+          <p>${move.detail}</p>
+          <button type="button" data-select="${move.id}">${move.id === selectedId ? "Selected" : "Inspect"}</button>
+        `;
+        container.appendChild(el);
+      });
+      container.querySelectorAll("button[data-select]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedId = button.getAttribute("data-select");
+          renderAll();
+        });
+      });
+    }
+
+    function renderQueue() {
+      const container = document.getElementById("queue");
+      container.innerHTML = "";
+      moves.forEach((move, index) => {
+        const el = document.createElement("div");
+        el.className = "queue-row";
+        el.innerHTML = `
+          <span class="queue-rank">${index + 1}</span>
+          <span class="queue-name"><strong>${move.title}</strong><span>owner ${move.owner}</span></span>
+          <span class="state-pill ${move.status}">${move.status}</span>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    function renderReceipts() {
+      const receiptPanel = document.getElementById("receipts");
+      const logPanel = document.getElementById("execution-log");
+      const receiptHtml = receipts.slice().reverse().map((receipt) => `
+        <article class="receipt">
+          <strong>${receipt.title}</strong>
+          <span>${receipt.state} | ${receipt.id}</span>
+          <span>${receipt.path}</span>
+        </article>
+      `).join("");
+      receiptPanel.innerHTML = receiptHtml;
+      logPanel.innerHTML = receiptHtml;
+    }
+
+    function decide(decision) {
+      const move = activeMove();
+      if (decision === "PROCEED") {
+        move.status = "frontier";
+        moves.filter((item) => item.id !== move.id && item.status === "frontier").forEach((item) => {
+          item.status = "queued";
+        });
+      }
+      if (decision === "DEFER") move.status = "deferred";
+      if (decision === "KILL") move.status = "killed";
+      receipts.push({
+        id: `receipt-${Date.now()}`,
+        title: `${decision}: ${move.title}`,
+        path: "local-preview://operator-decision",
+        state: decision.toLowerCase()
+      });
+      renderAll();
+    }
+
+    function restoreNotes() {
+      const notes = document.getElementById("operator-notes");
+      notes.value = localStorage.getItem("tinkerden-preview-notes") || "";
+      notes.addEventListener("input", () => {
+        localStorage.setItem("tinkerden-preview-notes", notes.value);
+      });
+    }
+
+    function renderAll() {
+      renderWhy();
+      renderMoves();
+      renderQueue();
+      renderReceipts();
+    }
+
+    document.querySelectorAll("button[data-decision]").forEach((button) => {
+      button.addEventListener("click", () => decide(button.getAttribute("data-decision")));
+    });
+
+    restoreNotes();
+    renderAll();
+  </script>
+</body>
+</html>

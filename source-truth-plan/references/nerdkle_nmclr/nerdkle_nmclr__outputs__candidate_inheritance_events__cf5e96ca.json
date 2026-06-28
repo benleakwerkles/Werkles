@@ -1,0 +1,24 @@
+{
+  "schema_version": "INHERITANCE_EVENT_CANDIDATE_DETECTOR_V0",
+  "generated_at": "2026-06-23T10:54:32.6970073-04:00",
+  "status": "UNVERIFIED_CANDIDATES_ONLY",
+  "source_query": "outputs/SUCCESSFUL_INHERITANCE_QUERY_V0.md",
+  "promotion_allowed": false,
+  "doctrine_allowed": false,
+  "assimilation_allowed": false,
+  "candidate_inheritance_events": [
+    {
+      "artifact_id": "outputs/RECEIPT_TRUST_MODEL_AUDIT.md",
+      "reader": "Swanson@Doss",
+      "author": "Swanson@Doss",
+      "derived_artifact": "outputs/SUCCESSFUL_INHERITANCE_EVENT_V0_SPEC.md",
+      "confidence": "MEDIUM",
+      "missing_proof": [
+        "No separate durable ReadEvent artifact was filed for the source read.",
+        "No separate durable DerivedActionEvent artifact was filed for the middle action.",
+        "Write proof is local-file creation/readback only, not receiver-side TinkerDen or Speaker readback.",
+        "Evidence is plausible from content lineage but not sufficient for promotion to successful inheritance."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "receipt_id": "SWANSON_DOSS_BOOK_NERDKLE_SOURCE_TRUTH_PLAN_ASSEMBLY",
+  "generated_at": "2026-06-28T03:04:21.724Z",
+  "status": "ARTIFACT",
+  "repository": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "source-truth/atlas-speaker-v0-20260627",
+  "plan_root": "source-truth-plan",
+  "files_copied": 86,
+  "categories": {
+    "book": 14,
+    "nerdkle_nmclr": 27,
+    "tinkerden_medulla": 11,
+    "speaker_atlas": 19,
+    "implementation": 15
+  },
+  "chatlog_index": {
+    "repo_path": "source-truth-plan/references/chatlog_hits/CHATLOG_KEYWORD_INDEX.jsonl",
+    "hit_count": 48,
+    "scanned_file_count": 6,
+    "source_root": "C:/Users/BenLeak/.codex/sessions"
+  },
+  "missing_priority_sources": [
+    {
+      "source_path": "C:/Users/Ben Leak/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    },
+    {
+      "source_path": "C:/Users/BenLeak/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    },
+    {
+      "source_path": "C:/Users/BenLeak/OneDrive/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    },
+    {
+      "source_path": "C:/Users/Ben Leak/OneDrive/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    }
+  ],
+  "missing_count": 0
+}

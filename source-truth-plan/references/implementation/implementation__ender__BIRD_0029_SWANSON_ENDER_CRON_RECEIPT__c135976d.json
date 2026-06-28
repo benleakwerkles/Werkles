@@ -1,0 +1,106 @@
+{
+  "receipt_id": "BIRD_0029_SWANSON_ENDER_CRON_RECEIPT",
+  "packet_id": "BIRD_0029_SWANSON_ENDER_CRON",
+  "owner": "Swanson@Doss",
+  "stream": "INFRASTRUCTURE / LYMPHATIC SYSTEM",
+  "created_at": "2026-06-27T15:25:10.6694509-04:00",
+  "returned_status": "ARTIFACT_WITH_PRODUCTION_DB_BLOCKER",
+  "artifact": {
+    "script_path": "C:\\tinkarden\\nervous_system\\ender_apoptosis.js",
+    "script_sha256": "26A8489C0CAC49DD3A2EC46A37EA90C749A0CB4226730848C165B6AB5C16B309",
+    "filtration_log_path": "C:\\tinkarden\\nervous_system\\filtration_log.txt",
+    "filtration_log_sha256": "C18FA65F70C0F2429B9F12AAAE9B605C3AB885F0B0F9441324ECC77231F3E27A",
+    "quarantine_list_path": "C:\\tinkarden\\nervous_system\\quarantine_list.json",
+    "quarantine_list_sha256": "35D5F0856D60AFD2B5FC93A054AF3FE913D955E107B17A516A94A0CB9A21DAB2",
+    "package_json_sha256": "F9244EB7B4AFE1F8FC8E97C6AFDB2A63978E77C50739ADFE5EBB9014903B1759",
+    "package_lock_sha256": "EFFBA02971585B9B3FAB8ACC833856E342BB1275AF0A5A8CC43E715C770729FC"
+  },
+  "schedule": {
+    "default_cron": "0 3 * * 5",
+    "default_meaning": "Every Friday at 3:00 AM",
+    "operator_override_used_for_proof": "*/5 * * * *",
+    "operator_override_argument": "--operator-interval-minutes 5",
+    "node_cron_dependency": "node-cron"
+  },
+  "daemon": {
+    "status": "RUNNING",
+    "pid": 7544,
+    "command": "node nervous_system\\ender_apoptosis.js --daemon --operator-interval-minutes 5 --db C:\\tinkarden\\nervous_system\\fixtures\\ender_apoptosis\\circulation.db --outbox C:\\tinkarden\\nervous_system\\fixtures\\ender_apoptosis\\foreman\\handoffs\\outbox --quarantine C:\\tinkarden\\nervous_system\\quarantine_list.json --log C:\\tinkarden\\nervous_system\\filtration_log.txt",
+    "stdout_log": "C:\\tinkarden\\logs\\ender-apoptosis-20260627-152440.out.log",
+    "stderr_log": "C:\\tinkarden\\logs\\ender-apoptosis-20260627-152440.err.log"
+  },
+  "filtration_proof": {
+    "fixture_db_path": "C:\\tinkarden\\nervous_system\\fixtures\\ender_apoptosis\\circulation.db",
+    "fixture_db_sha256_after_deletion": "286C5CF43F02E2D54777D04B74768839EC2A5F241451FE3E58F35E544FA74B08",
+    "deleted_dry_run_rows": [
+      {
+        "id": "PERSISTENT_DRY_RUN_STALE_001",
+        "age_hours": 72.01,
+        "source": "shadow_cache"
+      }
+    ],
+    "rows_after": [
+      {
+        "id": "PERSISTENT_DRY_RUN_FRESH_001",
+        "state": "dry_run",
+        "target_path": "tmp/fresh.json"
+      }
+    ],
+    "quarantined_packets": [
+      {
+        "name": "PERSISTENT_UNREAD_PACKET_OLD.md",
+        "age_days": 8,
+        "sha256": "0134083D11C195363D159DDB339694701C39F2C36FC89061A83ED952438E7BAE",
+        "reason": "unread outbox packet older than 7 days"
+      }
+    ],
+    "sample_log_lines": [
+      "[DELETE_DRY_RUN] rowid=1 id=PERSISTENT_DRY_RUN_STALE_001 age_hours=72.01",
+      "[QUARANTINE_PACKET] path=C:\\tinkarden\\nervous_system\\fixtures\\ender_apoptosis\\foreman\\handoffs\\outbox\\PERSISTENT_UNREAD_PACKET_OLD.md age_days=8 sha256=0134083D11C195363D159DDB339694701C39F2C36FC89061A83ED952438E7BAE",
+      "[RUN_END] deleted=1 quarantined=1"
+    ]
+  },
+  "human_gate_guard": {
+    "rule": "Rows referencing docs/ are skipped unless operator_signature is present.",
+    "self_test_proof": "DOCS_DRY_RUN_001 remained after self-test with reason HUMAN_GATE_REQUIRED_FOR_DOCS."
+  },
+  "production_status": {
+    "production_db": "C:\\tinkarden\\server\\circulation.db",
+    "production_db_exists": false,
+    "production_outbox_primary": "C:\\foreman\\handoffs\\outbox",
+    "production_outbox_primary_exists": false,
+    "repo_outbox_fallback": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\foreman\\handoffs\\outbox",
+    "repo_outbox_fallback_exists": true,
+    "note": "The cron process is currently running against a persistent fixture because the production circulation.db path does not exist."
+  },
+  "verification": [
+    {
+      "command": "node --check C:\\tinkarden\\nervous_system\\ender_apoptosis.js",
+      "status": "PASS"
+    },
+    {
+      "command": "npm.cmd run ender:apoptosis:self-test",
+      "status": "PASS",
+      "result": "Deleted one stale dry_run, quarantined one old unread packet, skipped docs dry_run behind Human Gate."
+    },
+    {
+      "command": "node nervous_system\\ender_apoptosis.js --daemon --operator-interval-minutes 5 ...",
+      "status": "PASS",
+      "result": "Daemon logged FILTRATION_ACTION with deleted_rows=1 and quarantined_packets=1."
+    },
+    {
+      "command": "SQLite readback after daemon run",
+      "status": "PASS",
+      "result": "Only PERSISTENT_DRY_RUN_FRESH_001 remains in shadow_cache."
+    }
+  ],
+  "not_claimed": [
+    "No production dry_run rows were deleted because C:\\tinkarden\\server\\circulation.db is missing.",
+    "No docs/doctrine artifact was deleted.",
+    "No quarantined packet was deleted; quarantine is for manual Operator review."
+  ],
+  "next_required_proof": {
+    "owner": "Swanson@Doss",
+    "action": "Point ENDER_CIRCULATION_DB at the real /tinkarden/server/circulation.db when it exists, then capture a production filtration_log.txt line."
+  }
+}

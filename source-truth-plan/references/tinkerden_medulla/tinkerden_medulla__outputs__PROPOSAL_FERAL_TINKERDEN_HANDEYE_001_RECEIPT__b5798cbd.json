@@ -1,0 +1,132 @@
+{
+  "receipt_id": "PROPOSAL_FERAL_TINKERDEN_HANDEYE_001_RECEIPT",
+  "packet_id": "PROPOSAL_FERAL_TINKERDEN_HANDEYE_001",
+  "created_at": "2026-06-28T02:49:04Z",
+  "machine": "Doss",
+  "owner": "Swanson@Doss",
+  "stream": "BUILD / CONTRACT SURFACE",
+  "returned_status": "ARTIFACT",
+  "summary": "Implemented static, stateless Feral/TinkerDen contract endpoints on the live C:\\tinkarden Fastify server. The endpoints validate JSON, do not call git/speakerctl/code execution paths, and only shadow_merge writes inert JSON into the allowed Speaker staging directories.",
+  "server_surface": {
+    "root": "C:\\tinkarden",
+    "git_status": "NOT_A_GIT_REPOSITORY",
+    "live_url": "http://127.0.0.1:3339/",
+    "pm2_process": "index",
+    "pm2_status_after_restart": "online",
+    "pm2_pid_after_restart": 39348
+  },
+  "endpoint_script_routers": [
+    {
+      "path": "C:\\tinkarden\\server\\feral_contract_routes.js",
+      "byte_count": 7498,
+      "sha256": "BBA63CC03A3CDD94328EB894DF5A3921D500AA1C9FCF82831E12AF077ED01514",
+      "role": "Static Feral/TinkerDen contract route module"
+    },
+    {
+      "path": "C:\\tinkarden\\server\\index.js",
+      "byte_count": 35998,
+      "sha256": "90830CC3160CAF59074A17B105496413EC02D853E4522040D757E76845544E86",
+      "role": "Live Fastify server entrypoint with contract router registration"
+    }
+  ],
+  "routes_added": [
+    {
+      "method": "POST",
+      "path": "/v1/action/dry_run",
+      "validation": "Requires source_anchor_hash, target_paths, proposed_delta_vectors. Rejects unknown top-level fields.",
+      "side_effects": "NONE",
+      "returned_fields": [
+        "status",
+        "side_effects",
+        "source_anchor_hash",
+        "target_paths_count",
+        "proposed_delta_vector_count",
+        "predicted_tree_hash",
+        "dry_run_token"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/action/shadow_merge",
+      "validation": "Requires dry_run_token and target_staging_directory. Rejects targets outside /speaker/doctrine/staged/ and /speaker/receipts/staged/.",
+      "side_effects": "Writes inert JSON only into the selected allowed staging directory.",
+      "returned_fields": [
+        "status",
+        "artifact_path",
+        "byte_count",
+        "sha256",
+        "target_staging_directory"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/receipt/:id",
+      "validation": "Requires literal id matching ^[A-Za-z0-9._-]{1,160}$.",
+      "side_effects": "Read-only",
+      "not_found_behavior": "404 Not Found with no guessing, fuzzy search, or synthetic receipt"
+    }
+  ],
+  "curl_verification": {
+    "invalid_dry_run": {
+      "log_path": "C:\\speaker\\logs\\feral_contract_invalid_dry_run_curl.txt",
+      "http_status": 400,
+      "sha256": "3390AA738ED1FCDEFEDD9E599138618F2060590653EF10A63AAECBDC70C27116",
+      "proof": "Fastify schema rejected body missing source_anchor_hash."
+    },
+    "valid_dry_run": {
+      "log_path": "C:\\speaker\\logs\\feral_contract_valid_dry_run_curl.txt",
+      "http_status": 200,
+      "sha256": "4B18AB5E410C2263559956D1014F55D87BF61F32A4665D3C43E4ABE3E52EDAF5",
+      "status": "DRY_RUN_PREDICTED",
+      "predicted_tree_hash": "3594BE83C98996D86D3F8E59E1D4FC0C00D9DEF5B2A3A5CCC9C922C2D14232E9",
+      "dry_run_token": "DRYRUN_3594BE83C98996D86D3F8E59E1D4FC0C"
+    },
+    "shadow_merge": {
+      "log_path": "C:\\speaker\\logs\\feral_contract_shadow_merge_curl.txt",
+      "http_status": 201,
+      "sha256": "55147DB73E4A8EB70EE6E6C90095360BD7F942255088E8E92FE25AF13BCE898D",
+      "status": "SHADOW_MERGE_STAGED",
+      "artifact_path": "C:\\speaker\\receipts\\staged\\SHADOW_MERGE_DRYRUN_3594BE83C98996D86D3F8E59E1D4FC0C_20260628024839.json",
+      "artifact_byte_count": 359,
+      "artifact_sha256": "458BA4DCFE3E0F424064A16C0B3986727F55C2EBA5F0BAD5DAEB9F4229DEC4D2"
+    },
+    "bad_shadow_merge_target": {
+      "log_path": "C:\\speaker\\logs\\feral_contract_bad_shadow_merge_curl.txt",
+      "http_status": 400,
+      "sha256": "EA4B27DEB7C11113757532D1DB1ADA3CB0F53B2CADDB3EBBEC694A840249B1C0",
+      "proof": "Target outside allowed staging directories rejected."
+    },
+    "receipt_lookup_found": {
+      "log_path": "C:\\speaker\\logs\\feral_contract_receipt_found_curl.txt",
+      "http_status": 200,
+      "sha256": "F959013725A1B5ED98794DAD16145F7F594C6503C0F388085D292648329781E8",
+      "looked_up_id": "ATLAS_SQLITE_V0_2_MIGRATION_RECEIPT"
+    },
+    "receipt_lookup_missing": {
+      "log_path": "C:\\speaker\\logs\\feral_contract_receipt_missing_curl.txt",
+      "http_status": 404,
+      "sha256": "A2EABA44381DD4DA5E4FEB9AC56107E46BC9828A9954DE89B5E921B47025807B",
+      "looked_up_id": "NO_SUCH_RECEIPT_0130",
+      "proof": "Missing literal id returned 404 instead of guessed data."
+    }
+  },
+  "guardrails_verified": {
+    "database_writes": false,
+    "git_push_or_merge_connected": false,
+    "speakerctl_connected": false,
+    "signature_injection": false,
+    "canonical_status_flip": false,
+    "shadow_merge_allowed_write_roots": [
+      "C:\\speaker\\doctrine\\staged",
+      "C:\\speaker\\receipts\\staged"
+    ]
+  },
+  "syntax_verification": {
+    "node_check_feral_contract_routes": "PASS",
+    "node_check_index": "PASS"
+  },
+  "blocked_or_not_done": [
+    "No Git commit was created because C:\\tinkarden is not a Git repository.",
+    "The UI was not changed; this packet requested backend contract stubs only."
+  ]
+}

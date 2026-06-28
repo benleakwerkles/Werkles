@@ -1,0 +1,59 @@
+{
+  "receipt_id": "G_SPRINT_20260627_SOURCE_TRUTH_ATLAS_SPEAKER_RECEIPT",
+  "mission": "G",
+  "owner": "Swanson@Doss",
+  "created_at": "2026-06-27T13:54:19.4278153-04:00",
+  "status": "ARTIFACT",
+  "canonical_source_truth": {
+    "repository": "https://github.com/benleakwerkles/Werkles1.git",
+    "branch": "main",
+    "remote_hash": "0c727a2461f274f8990063ab9ee06b799a1890ed"
+  },
+  "github_review_branch": {
+    "branch": "source-truth/atlas-speaker-v0-20260627",
+    "remote_hash": "f26b1aa5eab30872281656dea1897148c2221a24",
+    "url": "https://github.com/benleakwerkles/Werkles1/tree/source-truth/atlas-speaker-v0-20260627",
+    "classification": "GITHUB_REVIEW_BRANCH_NOT_CANONICAL"
+  },
+  "moves": [
+    {
+      "move": 1,
+      "name": "Source truth guard",
+      "artifact": "scripts/foreman/source-truth-guard.mjs",
+      "hash": "C01C094158AAA1429649471E0910080A39B33B279A75E0406D6CF5FAE8F2EEE5",
+      "proof": "npm.cmd run truth:ci returned ACK from SOURCE_TRUTH_GUARD",
+      "mule_labor_removed": "Aeyes no longer need Ben to explain whether a local branch is canonical."
+    },
+    {
+      "move": 2,
+      "name": "Aeye source truth boot packet",
+      "artifact": "foreman/source-truth/AEYE_SOURCE_TRUTH_BOOT_PACKET.md",
+      "hash": "73E9E243C62F883D442328A3E8FFD1AFE8E8946BAC76B3236573AB4EBF9CD400",
+      "next_packet": "foreman/source-truth/NEXT_SOURCE_TRUTH_PACKET.json",
+      "next_packet_hash": "37D17A3377685577C54E2036F6CF1B8E9ABE69D80D2C4A503C04EBF3E23DF5D1",
+      "mule_labor_removed": "Aeyes get a reusable boot instruction instead of asking Ben to re-state source-truth rules."
+    },
+    {
+      "move": 3,
+      "name": "GitHub source truth CI",
+      "artifact": ".github/workflows/source-truth-pulse.yml",
+      "hash": "683A6A4C7233A6AC879D48475833DD2848467DBFEDD229833E8F3A0AF307F44F",
+      "proof": "Workflow added to run npm run truth:ci on PRs and manual dispatch.",
+      "mule_labor_removed": "GitHub can verify Atlas/Speaker source-truth scripts before merge."
+    }
+  ],
+  "commands_verified": [
+    "npm.cmd run truth:pulse",
+    "npm.cmd run truth:ci",
+    "git push",
+    "git ls-remote origin refs/heads/source-truth/atlas-speaker-v0-20260627",
+    "git ls-remote origin refs/heads/main"
+  ],
+  "rules_preserved": [
+    "origin/main remains canonical.",
+    "review branch is candidate truth, not canonical.",
+    "Atlas reads and mirrors truth; it does not promote.",
+    "Speaker mirrors rationale; it does not route or execute."
+  ],
+  "remaining_human_gate": "Review/merge source-truth/atlas-speaker-v0-20260627 into main if accepted."
+}

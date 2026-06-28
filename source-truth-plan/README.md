@@ -1,0 +1,25 @@
+# Source Truth Plan: The Book / Nerdkle / Great Plan
+
+Generated: 2026-06-28T03:04:21.724Z
+
+This folder is the current GitHub-backed review surface for the material Ben keeps having to reconstruct: The Book, Nerdkle/NMCLR, Speaker/Atlas, TinkerDen/Medulla, Feral cockpit membrane, and the proof/receipt discipline that ties them together.
+
+## Current Truth
+
+- GitHub repo: https://github.com/benleakwerkles/Werkles1.git
+- Branch: `source-truth/atlas-speaker-v0-20260627`
+- Status: review branch, not canonical main
+- Canonical gate: merge/review into `origin/main` after Ben/Petra approval
+
+## What Is Included
+
+- `SOURCE_OF_TRUTH_PLAN.md` - the build-from-this spine.
+- `BOOK_NERDKLE_GREAT_PLAN_CANONICAL_MAP.md` - stream split and best-current source map.
+- `SOURCE_MATERIAL_MANIFEST.json` - exact copied files with hashes.
+- `MISSING_SOURCE_GAPS.md` - gaps, including the Betsy desktop folder that is not visible from Doss.
+- `NEXT_PACKETS.md` - the next concrete packets to finish source recovery.
+- `references/` - copied source docs, receipts, scripts, specs, and bounded chatlog index.
+
+## Hard Boundary
+
+This is source-truth assembly, not a claim that the whole organism is running. Manuscript doctrine cannot prove automation. Build specs cannot be treated as working software. Feral proof cannot canonize NMCLR. NMCLR proof cannot canonize Feral.

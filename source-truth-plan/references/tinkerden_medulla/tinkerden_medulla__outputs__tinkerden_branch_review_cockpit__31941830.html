@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TinkerDen Branch Review Cockpit</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101112;
+      --ink: #f7f0e4;
+      --muted: #c8bdac;
+      --faint: #8e8375;
+      --panel: rgba(28, 27, 25, 0.94);
+      --panel-soft: rgba(38, 37, 34, 0.9);
+      --paper: #f2e4c9;
+      --paper-ink: #2a261f;
+      --line: rgba(242, 228, 201, 0.18);
+      --line-strong: rgba(242, 228, 201, 0.34);
+      --lamp: #e7bd70;
+      --sage: #8fcaa3;
+      --blue: #8db4e8;
+      --coral: #ee8d7c;
+      --violet: #b7a0f2;
+      --shadow: rgba(0, 0, 0, 0.36);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        linear-gradient(180deg, rgba(16, 17, 18, 0.9), rgba(13, 13, 14, 0.98)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.022) 0 1px, transparent 1px 84px),
+        linear-gradient(115deg, #111719 0%, #1c1b18 48%, #15161d 100%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.055);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 800;
+      padding: 8px 11px;
+      white-space: nowrap;
+    }
+
+    button:hover,
+    button:focus-visible,
+    .button:hover,
+    .button:focus-visible {
+      outline: none;
+      border-color: rgba(231, 189, 112, 0.72);
+      background: rgba(231, 189, 112, 0.12);
+    }
+
+    .shell {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .static-demotion-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+      border: 2px solid rgba(238, 141, 124, 0.82);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, rgba(238, 141, 124, 0.24), rgba(231, 189, 112, 0.12)),
+        rgba(28, 18, 16, 0.96);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+      padding: 14px;
+    }
+
+    .static-demotion-banner strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff6e7;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+
+    .static-demotion-banner p {
+      margin: 0;
+      color: var(--paper);
+      line-height: 1.42;
+    }
+
+    .static-demotion-banner .demotion-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .static-demotion-banner .button {
+      border-color: rgba(255, 246, 231, 0.48);
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 7px;
+      font-size: clamp(34px, 5vw, 72px);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      max-width: 540px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.24);
+      font-size: 12px;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.92fr) minmax(420px, 1.24fr) minmax(320px, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 18px 42px var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+    }
+
+    .kicker {
+      margin: 0 0 5px;
+      color: var(--lamp);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .stamp {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--paper);
+      background: rgba(0,0,0,0.2);
+      font-weight: 900;
+    }
+
+    .body {
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .paper {
+      color: var(--paper-ink);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.38), rgba(255,255,255,0)),
+        var(--paper);
+      border: 1px solid rgba(63, 48, 27, 0.28);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .paper h2,
+    .paper p,
+    .paper ul {
+      margin-top: 0;
+    }
+
+    .paper h2 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .paper p,
+    .paper li {
+      line-height: 1.42;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .button.primary {
+      color: #1c1710;
+      background: var(--lamp);
+      border-color: rgba(231, 189, 112, 0.9);
+    }
+
+    .button.packet {
+      color: #111a18;
+      background: var(--sage);
+      border-color: rgba(143, 202, 163, 0.9);
+    }
+
+    .button.explain {
+      color: #111723;
+      background: var(--blue);
+      border-color: rgba(141, 180, 232, 0.9);
+    }
+
+    .move-list,
+    .packet-list,
+    .engine-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .move,
+    .packet,
+    .engine-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-soft);
+      padding: 12px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .move h3,
+    .packet h3,
+    .engine-item h3 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .move p,
+    .packet p,
+    .engine-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.38;
+      font-size: 14px;
+    }
+
+    .move-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .score {
+      flex: 0 0 auto;
+      color: var(--lamp);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 7px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .receipt-slot {
+      min-height: 40px;
+      border: 1px dashed rgba(242, 228, 201, 0.24);
+      border-radius: var(--radius);
+      color: var(--faint);
+      padding: 8px;
+      font-size: 12px;
+      line-height: 1.35;
+      background: rgba(0,0,0,0.16);
+    }
+
+    .receipt-slot.filled {
+      color: var(--ink);
+      border-style: solid;
+      border-color: rgba(143, 202, 163, 0.38);
+    }
+
+    .human-gates {
+      margin-bottom: 14px;
+    }
+
+    .packet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .branch-section {
+      margin-top: 14px;
+    }
+
+    .branch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .branch-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(27, 27, 25, 0.92);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 620px;
+    }
+
+    .branch-card.priority {
+      border-color: rgba(231, 189, 112, 0.46);
+      box-shadow: inset 0 0 0 1px rgba(231, 189, 112, 0.11);
+    }
+
+    .branch-head {
+      padding: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .branch-head h3 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .branch-meta {
+      color: var(--faint);
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .decision {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .decision.keep,
+    .decision.merge {
+      color: var(--sage);
+      border-color: rgba(143, 202, 163, 0.46);
+    }
+
+    .decision.salvage,
+    .decision.steal {
+      color: var(--lamp);
+      border-color: rgba(231, 189, 112, 0.48);
+    }
+
+    .decision.kill {
+      color: var(--coral);
+      border-color: rgba(238, 141, 124, 0.48);
+    }
+
+    .shot {
+      height: 190px;
+      background: rgba(0,0,0,0.18);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.94) contrast(1.03);
+    }
+
+    .branch-body {
+      padding: 13px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .purpose {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.38;
+      font-size: 14px;
+    }
+
+    .mini {
+      display: grid;
+      gap: 3px;
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .mini strong {
+      color: var(--ink);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .mark-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .mark-row button {
+      min-height: 36px;
+      font-size: 12px;
+    }
+
+    .mark-row .keep {
+      color: #111d15;
+      background: var(--sage);
+    }
+
+    .mark-row .kill {
+      color: #2a120d;
+      background: var(--coral);
+    }
+
+    .mark-row .steal {
+      color: #21180a;
+      background: var(--lamp);
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .note label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 66px;
+      resize: vertical;
+      color: var(--ink);
+      background: rgba(0,0,0,0.22);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 8px;
+    }
+
+    .branch-foot {
+      display: grid;
+      gap: 8px;
+      padding: 13px;
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,0.12);
+    }
+
+    .fine {
+      margin: 14px 0 0;
+      color: var(--faint);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 1220px) {
+      .top-grid,
+      .branch-grid,
+      .packet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .branch-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        padding: 14px;
+      }
+
+      .static-demotion-banner,
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .static-demotion-banner .demotion-links {
+        justify-content: flex-start;
+      }
+
+      .tags {
+        justify-content: flex-start;
+      }
+
+      .notes,
+      .mark-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="static-demotion-banner" aria-label="Static audit surface notice">
+      <div>
+        <strong>STATIC AUDIT SURFACE - NOT ACTIVE COMMAND CENTER</strong>
+        <p>This page is for review only. It does not dispatch work, merge branches, delete branches, or execute packets. Canonical active <code>/tinkerden</code> route is not verified on Doss yet.</p>
+      </div>
+      <div class="demotion-links" aria-label="Static surface reference links">
+        <a class="button packet" href="KEEP_KILL_STEAL_MERGE_ACTION_MODEL.md" target="_blank" rel="noreferrer">Action Model</a>
+        <a class="button explain" href="ACTIVE_COCKPIT_DELIVERY_AUDIT.md" target="_blank" rel="noreferrer">Delivery Audit</a>
+      </div>
+    </section>
+
+    <header class="hero">
+      <div>
+        <h1>TinkerDen Cockpit</h1>
+        <p>The Betsy review cockpit is now the seed of TinkerDen: human names first, screenshots visible, buttons for consequence, packets close to decisions, and receipts waiting in the room.</p>
+      </div>
+      <div class="tags" aria-label="Context">
+        <span class="tag">Source: Swanson@Doss</span>
+        <span class="tag">Review Surface: Betsy</span>
+        <span class="tag">Ports and hashes hidden in metadata only</span>
+      </div>
+    </header>
+
+    <section class="top-grid" aria-label="Priority rooms">
+      <article class="section" aria-labelledby="mission-control">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Mission Control - WHY</p>
+            <h2 class="section-title" id="mission-control">Why This Cockpit Exists</h2>
+          </div>
+          <span class="stamp">WHY</span>
+        </div>
+        <div class="body">
+          <div class="paper">
+            <h2>Cockpit becomes TinkerDen when it stops being a branch table.</h2>
+            <p>Ben should inspect named realities, decide what to keep, kill, or steal, and see packets and receipts without tracking ports, hashes, or PM status columns.</p>
+            <ul>
+              <li>Human names are primary.</li>
+              <li>Screenshots carry the visual review load.</li>
+              <li>Human Gates stay packaged decisions.</li>
+              <li>Receipt slots show what is still local versus file-backed.</li>
+            </ul>
+          </div>
+          <div class="link-row">
+            <a class="button primary" href="tinkerden_working_preview.html" target="_blank" rel="noreferrer">Open TinkerDen Preview</a>
+            <a class="button explain" href="find_the_lost_tinkerden.md" target="_blank" rel="noreferrer">Why These Pieces</a>
+            <a class="button explain" href="branch_preview_decision_layer.md" target="_blank" rel="noreferrer">Decision Layer</a>
+          </div>
+          <div class="receipt-slot filled">Seed receipt: tinkerden_working_preview_receipt.md</div>
+        </div>
+      </article>
+
+      <article class="section" aria-labelledby="bridge">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Bridge - NOW / Top 3 Moves</p>
+            <h2 class="section-title" id="bridge">What Ben Should Inspect Next</h2>
+          </div>
+          <span class="stamp">NOW</span>
+        </div>
+        <div class="body">
+          <div class="move-list" id="move-list"></div>
+        </div>
+      </article>
+
+      <article class="section" aria-labelledby="engine-room">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Engine Room - EXECUTION</p>
+            <h2 class="section-title" id="engine-room">Packets And Receipt Slots</h2>
+          </div>
+          <span class="stamp">DO</span>
+        </div>
+        <div class="body">
+          <div class="engine-list">
+            <div class="engine-item">
+              <h3>Open preview, then mark consequence.</h3>
+              <p>KEEP / KILL / STEAL buttons write a local receipt in this browser. They do not merge, delete, or clean anything.</p>
+              <div class="receipt-slot" id="global-receipt">Waiting for a branch mark.</div>
+            </div>
+            <div class="engine-item">
+              <h3>Receipt-backed source truth</h3>
+              <p>The working files live in outputs. The source branches remain preserved in their own preview worktrees.</p>
+              <div class="link-row">
+                <a class="button explain" href="betsy_branch_review_cockpit_receipt.md" target="_blank" rel="noreferrer">Betsy Review Receipt</a>
+                <a class="button explain" href="live_preview_health_receipt.md" target="_blank" rel="noreferrer">Health Receipt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section human-gates" aria-labelledby="human-gates">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Human Gates - Packaged Decisions</p>
+          <h2 class="section-title" id="human-gates">Gate Packets Stay Near The Choice</h2>
+        </div>
+        <span class="stamp">GATE</span>
+      </div>
+      <div class="body">
+        <div class="packet-grid" id="packet-grid"></div>
+      </div>
+    </section>
+
+    <section class="section branch-section" aria-labelledby="branch-vulture">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Branch Vulture Review - KEEP / KILL / STEAL</p>
+          <h2 class="section-title" id="branch-vulture">Preview Cards</h2>
+        </div>
+        <span class="stamp">STEAL</span>
+      </div>
+      <div class="body">
+        <div class="branch-grid" id="branch-grid"></div>
+      </div>
+    </section>
+
+    <p class="fine">No merge. No delete. No cleanup. This cockpit is a review surface served from Doss outputs at 10.1.10.8:18080. Browser-local notes and mark receipts are useful for review, but not durable until wired to a file-backed receiver.</p>
+  </main>
+
+  <script>
+    const topMoves = [
+      {
+        title: "Use the fused TinkerDen preview as the product shape",
+        score: "0.94",
+        detail: "Mission Control, Bridge, Engine Room, Top 3 Moves, receipt slots, and consequence buttons now exist in one reviewable preview.",
+        action: "Open preview",
+        href: "tinkerden_working_preview.html",
+        packet: "human_gate_packets/GATE_TINKERDEN_BASE_PICK.md"
+      },
+      {
+        title: "Review the three highest-value salvage lanes first",
+        score: "0.88",
+        detail: "Goop Cycle for Den feel, Wonka Safe for receipts and execution, Betsy Snapshot for focused mobile/field pieces.",
+        action: "Jump to cards",
+        href: "#branch-vulture",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md"
+      },
+      {
+        title: "Keep Human Gates packaged by consequence",
+        score: "0.84",
+        detail: "Human Gates should be decisions with risk and outcome, not prompts scattered across tools or another approval console.",
+        action: "Open Human Gates",
+        href: "http://10.1.10.8:4402/",
+        packet: "human_gate_packets/GATE_HUMAN_GATE_SEMANTICS.md"
+      }
+    ];
+
+    const packets = [
+      {
+        title: "TinkerDen Base Pick",
+        href: "human_gate_packets/GATE_TINKERDEN_BASE_PICK.md",
+        detail: "Choose whether the fused cockpit preview becomes the working product direction.",
+        recommendation: "PROCEED"
+      },
+      {
+        title: "Human Gate Semantics",
+        href: "human_gate_packets/GATE_HUMAN_GATE_SEMANTICS.md",
+        detail: "Keep true gates tied to consequence and scope, not prompt presence.",
+        recommendation: "PROCEED"
+      },
+      {
+        title: "Branch Vulture Review",
+        href: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        detail: "Use KEEP / KILL / STEAL as review marks before Petra issues GO.",
+        recommendation: "PROCEED WITH NOTES"
+      }
+    ];
+
+    const branches = [
+      {
+        id: "field-mode",
+        human: "Field Mode",
+        priority: true,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/soledash-field-mode-v1-eeea",
+        preview: "http://10.1.10.8:4404/",
+        screenshot: "live_preview_health_screenshots/15-cursor-soledash-field-mode-v1-eeea-4404.png",
+        purpose: "Thumb-first command surface for away-from-desk review.",
+        structure: "Foreman-server UI fragment; compare with Betsy Snapshot mobile field components.",
+        risk: "MEDIUM",
+        recommendation: "STEAL concept if it beats Betsy Snapshot in hand review.",
+        decisionClass: "steal",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "inbox-outbox",
+        human: "Inbox / Outbox",
+        priority: true,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/soledash-inbox-outbox-build-v1-eeea",
+        preview: "http://10.1.10.8:4405/",
+        screenshot: "live_preview_health_screenshots/16-cursor-soledash-inbox-outbox-build-v1-eeea-4405.png",
+        purpose: "Inbox, outbox, and receipt language for operational flow.",
+        structure: "Foreman server branch plus handoff docs; likely copy/language salvage.",
+        risk: "MEDIUM",
+        recommendation: "STEAL wording and workflow labels; do not merge as base.",
+        decisionClass: "steal",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "human-gates-card",
+        human: "Human Gates",
+        priority: true,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/gimpdash-human-gates-console-eeea",
+        preview: "http://10.1.10.8:4402/",
+        screenshot: "live_preview_health_screenshots/13-cursor-gimpdash-human-gates-console-eeea-4402.png",
+        purpose: "Human Gate classification and consequence review.",
+        structure: "Foreman server/control panel branch for Human Gates console.",
+        risk: "MEDIUM",
+        recommendation: "SALVAGE semantics, not prompt-presence approval habits.",
+        decisionClass: "salvage",
+        packet: "human_gate_packets/GATE_HUMAN_GATE_SEMANTICS.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "goop-cycle",
+        human: "Goop Cycle",
+        priority: true,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/goop-cycle-pvp-9b25",
+        preview: "http://10.1.10.8:3201/proof/den",
+        screenshot: "live_preview_health_screenshots/02-cursor-goop-cycle-pvp-9b25-3201.png",
+        purpose: "Strongest Den/TinkerDen visual lane and Goop Cycle product loop.",
+        structure: "Den shell, Den scene, Goop Cycle pages, APIs, libs, and migration.",
+        risk: "MEDIUM",
+        recommendation: "KEEP as separate Den lane; use for TinkerDen feel.",
+        decisionClass: "merge",
+        packet: "human_gate_packets/GATE_TINKERDEN_BASE_PICK.md",
+        explanation: "find_the_lost_tinkerden.md"
+      },
+      {
+        id: "wonka-safe",
+        human: "Wonka Safe Preview",
+        priority: true,
+        source: "Cursor@Doss",
+        origin: "origin/preview/wonka-den-safe-preview-20260618",
+        preview: "http://10.1.10.8:3203/",
+        screenshot: "live_preview_health_screenshots/04-preview-wonka-den-safe-preview-20260618-3203.png",
+        purpose: "Advanced SoleDash/Wonka surface with receipts, permission, focus, and safe execution pieces.",
+        structure: "Large branch with panels, API route, receipt graph helpers, and stateful files.",
+        risk: "HIGH",
+        recommendation: "SALVAGE modules; do not merge whole branch.",
+        decisionClass: "salvage",
+        packet: "human_gate_packets/GATE_TINKERDEN_BASE_PICK.md",
+        explanation: "find_the_lost_tinkerden.md"
+      },
+      {
+        id: "betsy-snapshot",
+        human: "Betsy Snapshot",
+        priority: true,
+        source: "Betsy@Betsy, reviewed by Swanson@Doss",
+        origin: "origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+        preview: "http://10.1.10.8:3205/soledash",
+        screenshot: "live_preview_health_screenshots/08-salvage-betsy-snapshot-sally-good-werkles-2026-06-12-3205.png",
+        purpose: "Focused mobile SoleDash field command salvage.",
+        structure: "Small 6-file delta for mobile field command, operator strip, layout/CSS, and decision surface.",
+        risk: "LOW delta, HIGH whole branch",
+        recommendation: "KEEP as focused merge candidate after base choice.",
+        decisionClass: "merge",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "mainline",
+        human: "Mainline",
+        priority: false,
+        source: "Swanson@Doss",
+        origin: "origin/main",
+        preview: "http://10.1.10.8:3200/",
+        screenshot: "live_preview_health_screenshots/01-main-3200.png",
+        purpose: "Canonical baseline to compare against, not a salvage target.",
+        structure: "Stable Next app baseline.",
+        risk: "LOW",
+        recommendation: "KEEP as canonical base.",
+        decisionClass: "keep",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "wonka-mood",
+        human: "Wonka Mood",
+        priority: false,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/wonka-den-mood-reference-9b25",
+        preview: "http://10.1.10.8:3202/proof/den",
+        screenshot: "live_preview_health_screenshots/03-cursor-wonka-den-mood-reference-9b25-3202.png",
+        purpose: "Static Den mood shell and atmosphere reference.",
+        structure: "Den page, shell, scene, atmosphere tokens, and mood doc.",
+        risk: "LOW",
+        recommendation: "STEAL mood doc if not fully superseded by Goop Cycle.",
+        decisionClass: "steal",
+        packet: "human_gate_packets/GATE_TINKERDEN_BASE_PICK.md",
+        explanation: "find_the_lost_tinkerden.md"
+      },
+      {
+        id: "sally-rescue",
+        human: "Sally Rescue",
+        priority: false,
+        source: "Sally@Sally, reviewed by Swanson@Doss",
+        origin: "origin/rescue/sally-dirty-worktree-2026-06-01",
+        preview: "http://10.1.10.8:3204/",
+        screenshot: "live_preview_health_screenshots/06-rescue-sally-dirty-worktree-2026-06-01-3204.png",
+        purpose: "Older operational primitives: Foreman control, crew dispatch, relay, finance.",
+        structure: "Scripts, relay libraries, finance data, Foreman control panel.",
+        risk: "HIGH",
+        recommendation: "SALVAGE operational primitives only after recapture.",
+        decisionClass: "salvage",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "sally-snapshot",
+        human: "Sally Snapshot",
+        priority: false,
+        source: "Sally@Sally, reviewed by Swanson@Doss",
+        origin: "origin/snapshot/sally-good-werkles-2026-06-12",
+        preview: "http://10.1.10.8:3206/soledash",
+        screenshot: "live_preview_health_screenshots/10-snapshot-sally-good-werkles-2026-06-12-3206.png",
+        purpose: "Broad SoleDash/GD/Foreman base candidate.",
+        structure: "Large app surface with SoleDash, GD router, Foreman server, assets, and receipts.",
+        risk: "HIGH",
+        recommendation: "KEEP as module source; never fast-forward wholesale.",
+        decisionClass: "merge",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "status-layer",
+        human: "Status Layer",
+        priority: false,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/gd-status-layer-v1-eeea",
+        preview: "http://10.1.10.8:4401/",
+        screenshot: "live_preview_health_screenshots/12-cursor-gd-status-layer-v1-eeea-4401.png",
+        purpose: "Status strip placement in Foreman/GimpDash.",
+        structure: "Small Foreman-server branch with status-layer docs.",
+        risk: "MEDIUM",
+        recommendation: "KILL later after confirming supersession.",
+        decisionClass: "kill",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      },
+      {
+        id: "build-continue",
+        human: "Build Continue",
+        priority: false,
+        source: "Cursor@Doss",
+        origin: "origin/cursor/soledash-build-continue-eeea",
+        preview: "http://10.1.10.8:4403/",
+        screenshot: "live_preview_health_screenshots/14-cursor-soledash-build-continue-eeea-4403.png",
+        purpose: "Continuation surface for build workflow state.",
+        structure: "Foreman server variant with summary/status sidecar ideas.",
+        risk: "MEDIUM",
+        recommendation: "STEAL workflow language if not superseded.",
+        decisionClass: "steal",
+        packet: "human_gate_packets/GATE_BRANCH_VULTURE_REVIEW.md",
+        explanation: "branch_preview_decision_layer.md"
+      }
+    ];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function noteKey(id, kind) {
+      return `tinkerden-cockpit:${id}:${kind}`;
+    }
+
+    function receiptKey(id) {
+      return `tinkerden-cockpit:${id}:receipt`;
+    }
+
+    function renderMoves() {
+      const target = document.getElementById("move-list");
+      target.innerHTML = topMoves.map((move, index) => `
+        <article class="move">
+          <div class="move-top">
+            <h3>${index + 1}. ${escapeHtml(move.title)}</h3>
+            <span class="score">${escapeHtml(move.score)}</span>
+          </div>
+          <p>${escapeHtml(move.detail)}</p>
+          <div class="link-row">
+            <a class="button primary" href="${escapeHtml(move.href)}" target="_blank" rel="noreferrer">${escapeHtml(move.action)}</a>
+            <a class="button packet" href="${escapeHtml(move.packet)}" target="_blank" rel="noreferrer">Human Gate Packet</a>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderPackets() {
+      const target = document.getElementById("packet-grid");
+      target.innerHTML = packets.map((packet) => `
+        <article class="packet">
+          <h3>${escapeHtml(packet.title)}</h3>
+          <p>${escapeHtml(packet.detail)}</p>
+          <div class="decision salvage">${escapeHtml(packet.recommendation)}</div>
+          <div class="link-row">
+            <a class="button packet" href="${escapeHtml(packet.href)}" target="_blank" rel="noreferrer">Open Packet</a>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderBranches() {
+      const target = document.getElementById("branch-grid");
+      target.innerHTML = branches.map((branch) => {
+        const storedReceipt = localStorage.getItem(receiptKey(branch.id));
+        return `
+          <article class="branch-card ${branch.priority ? "priority" : ""}" data-branch="${escapeHtml(branch.id)}">
+            <div class="branch-head">
+              <div>
+                <h3>${escapeHtml(branch.human)}</h3>
+                <div class="branch-meta">Source: ${escapeHtml(branch.source)}</div>
+                <div class="branch-meta">Branch Origin: ${escapeHtml(branch.origin)}</div>
+              </div>
+              <span class="decision ${escapeHtml(branch.decisionClass)}">${escapeHtml(branch.recommendation.split(" ")[0])}</span>
+            </div>
+            <div class="shot"><img src="${escapeHtml(branch.screenshot)}" alt="${escapeHtml(branch.human)} screenshot"></div>
+            <div class="branch-body">
+              <p class="purpose">${escapeHtml(branch.purpose)}</p>
+              <div class="mini"><strong>Plain-English Structure</strong><span>${escapeHtml(branch.structure)}</span></div>
+              <div class="mini"><strong>Merge Risk</strong><span>${escapeHtml(branch.risk)}</span></div>
+              <div class="mini"><strong>Petra Recommendation</strong><span>${escapeHtml(branch.recommendation)}</span></div>
+              <div class="actions">
+                <a class="button primary" href="${escapeHtml(branch.preview)}" target="_blank" rel="noreferrer">Open Preview</a>
+                <a class="button packet" href="${escapeHtml(branch.packet)}" target="_blank" rel="noreferrer">Gate Packet</a>
+                <a class="button explain" href="${escapeHtml(branch.explanation)}" target="_blank" rel="noreferrer">Explanation</a>
+              </div>
+              <div class="mark-row">
+                <button class="keep" type="button" data-mark="KEEP" data-id="${escapeHtml(branch.id)}">KEEP</button>
+                <button class="kill" type="button" data-mark="KILL" data-id="${escapeHtml(branch.id)}">KILL</button>
+                <button class="steal" type="button" data-mark="STEAL" data-id="${escapeHtml(branch.id)}">STEAL</button>
+              </div>
+            </div>
+            <div class="branch-foot">
+              <div class="receipt-slot ${storedReceipt ? "filled" : ""}" data-receipt="${escapeHtml(branch.id)}">${storedReceipt ? escapeHtml(storedReceipt) : "Receipt slot waiting for Ben review mark."}</div>
+              <div class="notes">
+                ${["KEEP", "KILL", "STEAL"].map((kind) => `
+                  <div class="note">
+                    <label>${kind}</label>
+                    <textarea data-note="${kind}" data-id="${escapeHtml(branch.id)}" placeholder="${kind} notes for ${escapeHtml(branch.human)}">${escapeHtml(localStorage.getItem(noteKey(branch.id, kind)) || "")}</textarea>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      target.querySelectorAll("textarea[data-note]").forEach((field) => {
+        field.addEventListener("input", () => {
+          localStorage.setItem(noteKey(field.dataset.id, field.dataset.note), field.value);
+        });
+      });
+
+      target.querySelectorAll("button[data-mark]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const branch = branches.find((item) => item.id === button.dataset.id);
+          const stamp = new Date().toLocaleString();
+          const text = `${button.dataset.mark}: ${branch.human} marked locally at ${stamp}. Not file-backed yet.`;
+          localStorage.setItem(receiptKey(branch.id), text);
+          const slot = target.querySelector(`[data-receipt="${CSS.escape(branch.id)}"]`);
+          if (slot) {
+            slot.textContent = text;
+            slot.classList.add("filled");
+          }
+          document.getElementById("global-receipt").textContent = text;
+          document.getElementById("global-receipt").classList.add("filled");
+        });
+      });
+    }
+
+    renderMoves();
+    renderPackets();
+    renderBranches();
+  </script>
+</body>
+</html>

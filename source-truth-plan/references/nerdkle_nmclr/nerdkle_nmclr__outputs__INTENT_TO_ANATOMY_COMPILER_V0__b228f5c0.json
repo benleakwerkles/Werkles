@@ -1,0 +1,132 @@
+{
+  "schema_version": "intent_to_anatomy_compiler_v0",
+  "generated_at": "2026-06-24",
+  "mission": "INTENT_TO_ANATOMY_COMPILER_V0",
+  "operator_intent": "Find the hidden threads between these five disparate research papers.",
+  "decision": "CONDITIONAL_GO",
+  "overall_risk_level": "MEDIUM",
+  "anatomy_proposal": {
+    "required_organs": [
+      {
+        "organ": "sensory membrane",
+        "reason": "The organism must first know exactly which five papers are in scope and whether their text can be read.",
+        "failure_prevented": "Wrong corpus, missing paper, duplicate paper, stale file, invented source, or analysis before source boundaries are proven.",
+        "risk_level": "LOW",
+        "human_gates_required": [],
+        "proof_required": "SOURCE_MANIFEST_RECEIPT with exactly five paper entries including path_or_url, title, hash_or_stable_id, readable_text_status, and extraction_method."
+      },
+      {
+        "organ": "breathing",
+        "reason": "The work needs intake, process, and exhale proof so the synthesis is not just a chat claim.",
+        "failure_prevented": "False delivery, false intake, unprovable processing, or output that cannot be tied back to the five source papers.",
+        "risk_level": "LOW",
+        "human_gates_required": [],
+        "proof_required": "NMCLR respiratory receipt showing paper intake, synthesis process, and written output/readback."
+      },
+      {
+        "organ": "muscle",
+        "reason": "The organism must perform the comparison work and write a durable hidden-thread artifact.",
+        "failure_prevented": "Intent-only analysis, no artifact, no work log, or no packet-work-artifact chain.",
+        "risk_level": "MEDIUM",
+        "human_gates_required": [],
+        "proof_required": "NMCLR muscle receipt proving packet -> comparison work -> hidden_threads artifact."
+      },
+      {
+        "organ": "immune",
+        "reason": "Hidden-thread work is vulnerable to attractive but unsupported patterns, so each proposed thread needs evidence checks.",
+        "failure_prevented": "Hallucinated connections, overfit themes, false equivalence across papers, or unsupported synthesis.",
+        "risk_level": "MEDIUM",
+        "human_gates_required": [],
+        "proof_required": "EVIDENCE_CHECK_RECEIPT requiring every hidden thread to cite at least two source papers and include evidence snippets or section references."
+      }
+    ],
+    "excluded_organs": [
+      {
+        "organ": "nerves",
+        "reason": "No watcher/event detection is required for a one-time provided corpus.",
+        "reconsider_if": "The papers arrive asynchronously in a watched folder or inbox."
+      },
+      {
+        "organ": "circulation",
+        "reason": "No multi-machine or multi-surface routing is required for local synthesis.",
+        "reconsider_if": "The source papers or outputs must move between TinkerDen, Speaker, Sally, Betsy, or another receiver."
+      },
+      {
+        "organ": "metabolism",
+        "reason": "The intent asks for a synthesis artifact, not future behavior change from a prior receipt.",
+        "reconsider_if": "A later packet must behave differently because of this synthesis."
+      },
+      {
+        "organ": "assimilation",
+        "reason": "No doctrine, behavior, or inheritance promotion is requested.",
+        "reconsider_if": "The hidden-thread output must become a reusable rule, chapter, protocol, or future action behavior."
+      },
+      {
+        "organ": "attraction",
+        "reason": "For V0, candidate relationship discovery can live inside the muscle comparison step without spawning a separate organ.",
+        "reconsider_if": "The system must continuously rank or pull related sources across a growing library."
+      },
+      {
+        "organ": "endocrine",
+        "reason": "No global priority, mood, timing, or system-wide modulation is required.",
+        "reconsider_if": "The intent should change urgency, tone, or resource allocation across the organism."
+      },
+      {
+        "organ": "morphogenesis",
+        "reason": "No new structure, UI, workflow, or organism shape is required.",
+        "reconsider_if": "The result demands a new durable research-workflow form or interface."
+      },
+      {
+        "organ": "memory consolidation",
+        "reason": "The output does not need to be promoted into long-term memory for V0.",
+        "reconsider_if": "The hidden threads must become durable memory, doctrine, or reusable research context."
+      },
+      {
+        "organ": "wormeyes",
+        "reason": "The intent names five papers, not open-ended web or corpus crawling.",
+        "reconsider_if": "The operator asks to discover additional papers, citations, or external threads."
+      }
+    ],
+    "human_gates_required": [
+      {
+        "gate": "PRIVATE_OR_RESTRICTED_SOURCE_GATE",
+        "required_if": "The five papers require credentials, paid access, private storage, or contain sensitive material.",
+        "reason": "Accessing or exporting restricted material changes privacy/account/legal exposure."
+      },
+      {
+        "gate": "PUBLISH_OR_SHARE_GATE",
+        "required_if": "The synthesis will be sent, published, committed, or shared outside the local workspace.",
+        "reason": "Exhale beyond local proof changes external/shared state."
+      },
+      {
+        "gate": "CANONICAL_ASSIMILATION_GATE",
+        "required_if": "The synthesis is promoted into doctrine, manuscript, memory, protocol, or canonical truth.",
+        "reason": "Assimilation changes future behavior and requires operator approval."
+      }
+    ],
+    "termination_condition": {
+      "natural_death": "Stop after either a BLOCKED_SOURCE_MANIFEST receipt is written, or after one hidden_threads synthesis artifact and one proof receipt are written and read back.",
+      "success_state": "SYNTHESIS_COMPLETE",
+      "blocked_state": "BLOCKED_SOURCE_MANIFEST",
+      "no_background_life": "No watcher, crawler, dashboard, or recurring process remains alive after the proof receipt."
+    },
+    "first_executable_proof_step": {
+      "step_id": "SOURCE_MANIFEST_RECEIPT",
+      "action": "Create a read-only manifest for the five papers before analysis.",
+      "inputs_required": "Five paper paths, URLs, or uploaded artifacts.",
+      "success_condition": "Exactly five readable source entries exist with title, path_or_url, hash_or_stable_id, extraction_status, and timestamp.",
+      "reject_condition": "Fewer than five readable papers, unresolvable sources, duplicate sources, missing hash/stable id, or no extraction path.",
+      "output_artifact": "source_manifest_receipt.json"
+    }
+  },
+  "pass_fail_assessment": {
+    "pass": true,
+    "reason": "The compiler proposed a restrained anatomy plan with required organs only, explicit exclusions, Human Gates, natural death condition, and a first proof step.",
+    "fail_conditions_avoided": [
+      "Did not propose all organs.",
+      "Each proposed organ prevents a specific failure.",
+      "Includes termination condition.",
+      "Includes first executable proof step."
+    ]
+  }
+}

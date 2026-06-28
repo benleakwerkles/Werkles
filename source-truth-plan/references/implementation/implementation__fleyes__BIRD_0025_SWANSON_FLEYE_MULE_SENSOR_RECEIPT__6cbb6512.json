@@ -1,0 +1,116 @@
+{
+  "receipt_id": "BIRD_0025_SWANSON_FLEYE_MULE_SENSOR_RECEIPT",
+  "packet_id": "BIRD_0025_SWANSON_FLEYE_MULE_SENSOR",
+  "owner": "Swanson@Doss",
+  "stream": "INFRASTRUCTURE / LYMPHATIC SYSTEM",
+  "created_at": "2026-06-27T15:21:10.2690972-04:00",
+  "returned_status": "ARTIFACT_WITH_LIVE_INPUT_BLOCKER",
+  "artifact": {
+    "script_path": "C:\\tinkarden\\nervous_system\\fleyes.js",
+    "script_sha256": "9B2F8598057CA36917FA39F31E745349CB6E835E1B1B79569012735ED2445EC2",
+    "frictional_heat_path": "C:\\tinkarden\\nervous_system\\frictional_heat.json",
+    "frictional_heat_sha256": "AB6E8EC99893B4DBDF775158134D85685E58EA153C439027C32AE0D4389E3255",
+    "node_package_path": "C:\\tinkarden\\package.json",
+    "node_package_sha256": "B73550C13FF1CFCE824C0D8048BC992BE290672888FD2799A3F1A0DCCEB79837",
+    "package_lock_sha256": "EFFBA02971585B9B3FAB8ACC833856E342BB1275AF0A5A8CC43E715C770729FC"
+  },
+  "deterministic_rules": {
+    "STALLED": "shadow_cache row where kind/type/action is shadow_merge, status waits on operator_signature, operator_signature is empty, and wait age > 15 minutes",
+    "CHURN": "world_state file marked modified/uncommitted/dirty/changed and uncommitted age > 30 minutes",
+    "surgery": "disabled; Fleyes reports only"
+  },
+  "proof_artifact_summary": {
+    "status": "FRICTION_DETECTED",
+    "stalled_count": 1,
+    "churn_count": 1,
+    "total_flags": 2,
+    "flags": [
+      {
+        "flag": "STALLED",
+        "id": "SELF_TEST_SHADOW_MERGE_001",
+        "source": "shadow_cache",
+        "kind": "shadow_merge",
+        "status": "waiting_on_operator_signature",
+        "waiting_minutes": 20.45,
+        "threshold_minutes": 15,
+        "rule": "shadow_merge waiting on operator_signature for > 15 minutes"
+      },
+      {
+        "flag": "CHURN",
+        "source": "world_state.json",
+        "path": "foreman/source-truth/receipt.md",
+        "status": "modified",
+        "uncommitted_minutes": 45.45,
+        "threshold_minutes": 30,
+        "rule": "modified but uncommitted for > 30 minutes"
+      }
+    ]
+  },
+  "node_cron": {
+    "dependency": "node-cron",
+    "install_status": "PASS",
+    "audit": "0 vulnerabilities",
+    "schedule": "*/5 * * * *",
+    "process_status": "RUNNING",
+    "pid": 37892,
+    "command": "node nervous_system\\fleyes.js --daemon --db C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\circulation.db --world-state C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\world_state.json --output C:\\tinkarden\\nervous_system\\frictional_heat.json",
+    "stdout_log": "C:\\tinkarden\\logs\\fleyes-20260627-152041.out.log",
+    "first_logged_scan": {
+      "status": "FRICTION_DETECTED",
+      "event": "FLEYES_SCAN",
+      "generated_at": "2026-06-27T19:20:41.228Z",
+      "stalled_count": 1,
+      "churn_count": 1,
+      "total_flags": 2
+    }
+  },
+  "fixture": {
+    "reason": "Real circulation.db and world_state.json were not present on Doss, so proof used a persistent delayed-receipt fixture.",
+    "db_path": "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\circulation.db",
+    "db_sha256": "C5D95E1A6084DA9C7D35FD3A498D85A3515A0C4CA84E5AD96F4789790A9CF7BC",
+    "world_state_path": "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\world_state.json",
+    "world_state_sha256": "6B563512802B39501990645F2858C7211DCB4461FE40B9FE348B08EB5BC925C4"
+  },
+  "live_input_readback": {
+    "output_path": "C:\\tinkarden\\nervous_system\\frictional_heat_live_readback.json",
+    "status": "NO_FRICTION_DETECTED",
+    "circulation_db": "MISSING",
+    "world_state_json": "MISSING",
+    "note": "This is not a no-pain production verdict; it means the live input surfaces are missing."
+  },
+  "verification": [
+    {
+      "command": "node --check C:\\tinkarden\\nervous_system\\fleyes.js",
+      "status": "PASS"
+    },
+    {
+      "command": "npm.cmd install",
+      "status": "PASS",
+      "result": "node-cron installed; 0 vulnerabilities"
+    },
+    {
+      "command": "npm.cmd run fleyes:self-test",
+      "status": "PASS",
+      "result": "Generated frictional_heat.json with STALLED and CHURN flags"
+    },
+    {
+      "command": "node C:\\tinkarden\\nervous_system\\fleyes.js --db fixture --world-state fixture --output frictional_heat.json --once",
+      "status": "PASS",
+      "result": "FRICTION_DETECTED with stalled_count 1 and churn_count 1"
+    },
+    {
+      "command": "Start-Process node nervous_system\\fleyes.js --daemon ...",
+      "status": "PASS",
+      "result": "node-cron daemon running as PID 37892"
+    }
+  ],
+  "not_claimed": [
+    "No stalled production shadow_merge was observed because production circulation.db is missing.",
+    "No production CHURN was observed because production world_state.json is missing.",
+    "Fleyes did not delete, merge, heal, approve, or mutate any task."
+  ],
+  "next_required_proof": {
+    "owner": "Swanson@Doss",
+    "action": "Point FLEYES_CIRCULATION_DB and FLEYES_WORLD_STATE at the real Wormeyes/ledger sources, then verify frictional_heat.json from production inputs."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "organism_version": "V0.1.0",
+  "master_plan_nodes": {
+    "chapter_1_nerve_bus": {
+      "status": "BUILDING",
+      "active_blockers": [],
+      "thinker_inputs": []
+    },
+    "chapter_2_sovereignty_gate": {
+      "status": "PAUSED",
+      "active_blockers": [
+        "KEYRING_MISSING"
+      ],
+      "thinker_inputs": []
+    },
+    "chapter_3_autonomic_metabolism": {
+      "status": "PROPOSED",
+      "active_blockers": [],
+      "thinker_inputs": []
+    }
+  }
+}

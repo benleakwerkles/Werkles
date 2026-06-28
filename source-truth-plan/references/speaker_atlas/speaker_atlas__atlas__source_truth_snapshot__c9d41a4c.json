@@ -1,0 +1,168 @@
+{
+  "snapshot_id": "ATLAS_SOURCE_TRUTH_20260627T223630Z",
+  "created_at": "2026-06-27T22:36:30.604Z",
+  "machine": "Doss",
+  "owner": "Swanson@Doss",
+  "purpose": "Make GitHub-vs-local source truth visible before Nerdkle/Speaker/Atlas promotion.",
+  "github_main_hash": "0c727a2461f274f8990063ab9ee06b799a1890ed",
+  "source_truth_ruling": "NO_GO_GITHUB_CANONICAL_PROMOTION",
+  "repos": [
+    {
+      "name": "Speaker",
+      "role": "deterministic memory renderer / receipt gate",
+      "path": "C:\\speaker",
+      "remoteBranchesToCheck": [
+        "main"
+      ],
+      "exists": true,
+      "git_repo": true,
+      "canonical_physical_path": "C:\\speaker",
+      "current_branch": "main",
+      "head": "44a907ce4d1bedca02f6d96a1c739ae5eb30845c",
+      "remotes": [],
+      "upstream": null,
+      "status": {
+        "counts": {
+          "total": 20,
+          "modified": 0,
+          "deleted": 0,
+          "added": 0,
+          "renamed": 0,
+          "untracked": 20,
+          "other": 0
+        },
+        "lines": [
+          "?? .husky/",
+          "?? LOCKS/",
+          "?? README.md",
+          "?? action_capsules/",
+          "?? atlas/",
+          "?? bin/",
+          "?? bootloader/",
+          "?? bootpacks/",
+          "?? db/",
+          "?? doctrine/",
+          "?? e2e/",
+          "?? ender/",
+          "?? graveyard/",
+          "?? logs/",
+          "?? receipts/",
+          "?? schemas/",
+          "?? speaker-ingest.sh",
+          "?? speaker.sqlite",
+          "?? test_v0_organism.sh",
+          "?? verify_hardware.sh"
+        ]
+      },
+      "github_remote_refs": [],
+      "proof_level": "LOCAL_ONLY_NOT_CANONICAL",
+      "blockers": [
+        "No origin remote; cannot prove GitHub source truth for this repo.",
+        "Dirty worktree: 20 changed/untracked entries."
+      ]
+    },
+    {
+      "name": "Werkles",
+      "role": "current GitHub-hosted project surface",
+      "path": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles",
+      "remoteBranchesToCheck": [
+        "main",
+        "snapshot/sally-good-werkles-2026-06-12",
+        "salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+        "audit/branch-salvage-map-2026-06-21-180250"
+      ],
+      "exists": true,
+      "git_repo": true,
+      "canonical_physical_path": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles",
+      "current_branch": "snapshot/sally-good-werkles-2026-06-12",
+      "head": "4adebb2dfaf2fc2dae3284f24969eebe8b7adf6f",
+      "remotes": [
+        "origin\thttps://github.com/benleakwerkles/Werkles1.git (fetch)",
+        "origin\thttps://github.com/benleakwerkles/Werkles1.git (push)"
+      ],
+      "upstream": {
+        "upstream": "origin/snapshot/sally-good-werkles-2026-06-12",
+        "ahead": 9,
+        "behind": 9
+      },
+      "status": {
+        "counts": {
+          "total": 20,
+          "modified": 14,
+          "deleted": 5,
+          "added": 0,
+          "renamed": 0,
+          "untracked": 1,
+          "other": 0
+        },
+        "lines": [
+          "M foreman/AI_COUSINS_PROTOCOL.md",
+          " M foreman/MACHINE_TOPOLOGY.md",
+          " M foreman/crew-dispatch-console/dispatch-config.json",
+          " M foreman/crew-dispatch/crew-network-roles.json",
+          " M foreman/crew-dispatch/crew-packet-generator.mjs",
+          " M foreman/crew-dispatch/crew-role-cards.json",
+          " M foreman/crew-dispatch/dispatch-policy.json",
+          " M foreman/gd-intent-router/cousin-assignment.json",
+          " M foreman/gd-intent-router/gd-intent-router-lib.mjs",
+          " D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_COMPUTER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          " D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_ENDER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          " D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_PETRA_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          " D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/receipts/FROM_SKYBRO_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          " D foreman/gd-intent-router/runs/GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245/synthesis/FROM_GD_SYNTHESIS_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          " M foreman/soledash/automatica/run_automatica_route.py",
+          " M foreman/speaker/SPEAKER_CHARTER.md",
+          " M package.json",
+          " M scripts/foreman/autonomous-round-trip-lib.mjs",
+          " M scripts/foreman/foreman-control-server.mjs",
+          "?? logs/"
+        ]
+      },
+      "github_remote_refs": [
+        {
+          "branch": "main",
+          "found": true,
+          "hash": "0c727a2461f274f8990063ab9ee06b799a1890ed",
+          "ref": "refs/heads/main"
+        },
+        {
+          "branch": "snapshot/sally-good-werkles-2026-06-12",
+          "found": true,
+          "hash": "ffccad027151e3e1759209c4fc28d985d7c9ce9b",
+          "ref": "refs/heads/snapshot/sally-good-werkles-2026-06-12"
+        },
+        {
+          "branch": "salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+          "found": true,
+          "hash": "8e70a25547988b8b4820fa3c79fd85e07eddfe1a",
+          "ref": "refs/heads/salvage/betsy/snapshot/sally-good-werkles-2026-06-12"
+        },
+        {
+          "branch": "audit/branch-salvage-map-2026-06-21-180250",
+          "found": true,
+          "hash": "f4cf645e8121099a594bc7e6b7639e59b8d5e486",
+          "ref": "refs/heads/audit/branch-salvage-map-2026-06-21-180250"
+        }
+      ],
+      "proof_level": "GITHUB_REMOTE_PROVEN_LOCAL_NOT_CANONICAL",
+      "blockers": [
+        "Dirty worktree: 20 changed/untracked entries.",
+        "Diverged from upstream origin/snapshot/sally-good-werkles-2026-06-12: ahead 9, behind 9."
+      ]
+    }
+  ],
+  "global_blockers": [
+    "Speaker: No origin remote; cannot prove GitHub source truth for this repo.",
+    "Speaker: Dirty worktree: 20 changed/untracked entries.",
+    "Werkles: Dirty worktree: 20 changed/untracked entries.",
+    "Werkles: Diverged from upstream origin/snapshot/sally-good-werkles-2026-06-12: ahead 9, behind 9."
+  ],
+  "next_smallest_safe_action": "Choose the GitHub canonical location for Speaker/Atlas, then commit and push only the audited source-truth subset from a clean branch.",
+  "do_not_claim": [
+    "Local Speaker is canonical on GitHub",
+    "Dirty Werkles snapshot is canonical",
+    "Atlas has solved source truth synchronization"
+  ],
+  "tree_hash": "6CC3DF028148452E7D9EE9638091168786533AC961477055B76926330707BBA0",
+  "artifact_path": "C:\\speaker\\atlas\\source_truth_snapshot.json"
+}

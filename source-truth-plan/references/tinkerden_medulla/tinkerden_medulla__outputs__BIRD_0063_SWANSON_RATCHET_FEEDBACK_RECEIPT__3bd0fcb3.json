@@ -1,0 +1,61 @@
+{
+  "receipt_id": "BIRD_0063_SWANSON_RATCHET_FEEDBACK_RECEIPT",
+  "packet_id": "BIRD_0063_SWANSON_RATCHET_FEEDBACK",
+  "stream": "INFRASTRUCTURE / METABOLISM",
+  "owner": "Swanson@Doss",
+  "status": "ARTIFACT",
+  "created_at": "2026-06-27T20:52:26.8157852Z",
+  "artifacts": {
+    "backend_file": "C:\\tinkarden\\server\\index.js",
+    "backend_file_sha256": "A169D7DFD4882B83B347A8ECFCCC2ECE5C82C8107525712B7A76E11FAEDBAC8B",
+    "speaker_raw_inbox": "C:\\speaker\\receipts\\raw\\inbox",
+    "decision_receipt_path": "C:\\speaker\\receipts\\raw\\inbox\\RATCHET_DECISION_KILL_20260627205209_6B0D3D64.json",
+    "decision_receipt_sha256": "D812E69E6D2F26728532756A29871865D484BC734CDFB01A637739A172EFD88B",
+    "local_url": "http://127.0.0.1:3339/"
+  },
+  "implementation": {
+    "route_added": "POST /v1/action/ratchet_feedback",
+    "ui_surface_updated": "Feral Membrane recommendation card on http://127.0.0.1:3339/",
+    "buttons_present": [
+      "PROCEED",
+      "DEFER",
+      "KILL"
+    ],
+    "defer_kill_reason_required": true,
+    "silent_kill_guard": "HTTP 400 when decision=KILL is posted without reason",
+    "receipt_destination": "C:\\speaker\\receipts\\raw\\inbox"
+  },
+  "ui_click_proof": {
+    "action_clicked": "KILL",
+    "reason_entered": "Bad recommendation for BIRD_0063 proof: kill must create inheritance receipt.",
+    "visible_status_after_submit": "KILL receipt written: RATCHET_DECISION_KILL_20260627205209_6B0D3D64",
+    "browser_surface": "in-app browser at http://127.0.0.1:3339/"
+  },
+  "decision_receipt_readback": {
+    "receipt_id": "RATCHET_DECISION_KILL_20260627205209_6B0D3D64",
+    "receipt_type": "DECISION",
+    "type": "DECISION",
+    "packet_id": "FERAL_MEMBRANE_LOCAL_RECOMMENDATION_001",
+    "mission": "BIRD_0063_SWANSON_RATCHET_FEEDBACK",
+    "producer": "FeralMembrane@Doss",
+    "owner": "Speaker",
+    "status": "ARTIFACT",
+    "decision": "KILL",
+    "reason": "Bad recommendation for BIRD_0063 proof: kill must create inheritance receipt.",
+    "operator_approval_receipt_id": "OPERATOR_APPROVAL_RATCHET_DECISION_KILL_20260627205209_6B0D3D64",
+    "created_at": "2026-06-27T20:52:09.236Z"
+  },
+  "verification": {
+    "node_check_index_js": "PASS",
+    "pm2_index_status": "online",
+    "pm2_index_pid": 27036,
+    "no_reason_kill_status": 400,
+    "readback_method": "in-app browser click plus PowerShell Get-Content and Get-FileHash"
+  },
+  "evidence": {
+    "artifact_path": "C:\\speaker\\receipts\\raw\\inbox\\RATCHET_DECISION_KILL_20260627205209_6B0D3D64.json",
+    "artifact_sha256": "D812E69E6D2F26728532756A29871865D484BC734CDFB01A637739A172EFD88B",
+    "backend_path": "C:\\tinkarden\\server\\index.js"
+  },
+  "blockers": []
+}

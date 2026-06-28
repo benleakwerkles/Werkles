@@ -1,0 +1,143 @@
+{
+  "sensor": "FLEYES_MULE_SENSOR_V0",
+  "packet_id": "BIRD_0025_SWANSON_FLEYE_MULE_SENSOR",
+  "generated_at": "2026-06-28T03:00:00.014Z",
+  "status": "FRICTION_DETECTED",
+  "flags": [
+    {
+      "flag": "STALLED",
+      "source": "shadow_cache",
+      "rowid": 1,
+      "id": "SELF_TEST_SHADOW_MERGE_001",
+      "kind": "shadow_merge",
+      "status": "waiting_on_operator_signature",
+      "waiting_minutes": 479.76,
+      "threshold_minutes": 15,
+      "operator_signature": null,
+      "waiting_since": "2026-06-27T19:00:14.194Z",
+      "rule": "shadow_merge waiting on operator_signature for > 15 minutes"
+    },
+    {
+      "flag": "CHURN",
+      "source": "world_state.json",
+      "path": "foreman/source-truth/receipt.md",
+      "status": "modified",
+      "uncommitted_minutes": 504.76,
+      "threshold_minutes": 30,
+      "modified_since": "2026-06-27T18:35:14.194Z",
+      "rule": "modified but uncommitted for > 30 minutes"
+    }
+  ],
+  "summary": {
+    "stalled_count": 1,
+    "churn_count": 1,
+    "total_flags": 2,
+    "daemon_fracture_count": 0
+  },
+  "sources": {
+    "circulation_db": {
+      "selected_path": "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\circulation.db",
+      "exists": true,
+      "candidates": [
+        "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\circulation.db"
+      ],
+      "readback": {
+        "source": "circulation.db",
+        "path": "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\circulation.db",
+        "status": "OK",
+        "rows_scanned": 1,
+        "flags": [
+          {
+            "flag": "STALLED",
+            "source": "shadow_cache",
+            "rowid": 1,
+            "id": "SELF_TEST_SHADOW_MERGE_001",
+            "kind": "shadow_merge",
+            "status": "waiting_on_operator_signature",
+            "waiting_minutes": 479.76,
+            "threshold_minutes": 15,
+            "operator_signature": null,
+            "waiting_since": "2026-06-27T19:00:14.194Z",
+            "rule": "shadow_merge waiting on operator_signature for > 15 minutes"
+          }
+        ]
+      }
+    },
+    "world_state_json": {
+      "selected_path": "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\world_state.json",
+      "exists": true,
+      "candidates": [
+        "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\world_state.json"
+      ],
+      "readback": {
+        "source": "world_state.json",
+        "path": "C:\\tinkarden\\nervous_system\\fixtures\\delayed_receipt\\world_state.json",
+        "status": "OK",
+        "files_scanned": 1,
+        "flags": [
+          {
+            "flag": "CHURN",
+            "source": "world_state.json",
+            "path": "foreman/source-truth/receipt.md",
+            "status": "modified",
+            "uncommitted_minutes": 504.76,
+            "threshold_minutes": 30,
+            "modified_since": "2026-06-27T18:35:14.194Z",
+            "rule": "modified but uncommitted for > 30 minutes"
+          }
+        ]
+      }
+    }
+  },
+  "rules": [
+    "STALLED = shadow_cache row where kind/type/action is shadow_merge, status waits on operator_signature, operator_signature is empty, and wait age > 15 minutes.",
+    "CHURN = world_state file marked modified/uncommitted/dirty/changed and uncommitted age > 30 minutes.",
+    "Fleyes reports pain only. It does not delete, merge, heal, approve, or mutate tasks."
+  ],
+  "daemon_watchdog": {
+    "sensor": "DAEMON_HEALTH_MONITOR",
+    "packet_id": "BIRD_0039_SWANSON_DAEMON_HEALTH_MONITOR",
+    "generated_at": "2026-06-28T03:04:18.916Z",
+    "status": "OK",
+    "core_organs": [
+      {
+        "name": "brainstem",
+        "status": "ONLINE",
+        "fracture": false,
+        "pid": 19820,
+        "restarts": 0,
+        "unstable_restarts": 0,
+        "pm2_status": "online"
+      },
+      {
+        "name": "index",
+        "status": "ONLINE",
+        "fracture": false,
+        "pid": 39348,
+        "restarts": 9,
+        "unstable_restarts": 0,
+        "pm2_status": "online"
+      },
+      {
+        "name": "crawler",
+        "status": "ONLINE",
+        "fracture": false,
+        "pid": 6948,
+        "restarts": 0,
+        "unstable_restarts": 0,
+        "pm2_status": "online"
+      },
+      {
+        "name": "ender_apoptosis",
+        "status": "ONLINE",
+        "fracture": false,
+        "pid": 33644,
+        "restarts": 0,
+        "unstable_restarts": 0,
+        "pm2_status": "online"
+      }
+    ],
+    "rule": "FRACTURE when a core PM2 organ is missing, stopped, errored, or exceeds unstable restart threshold."
+  },
+  "daemon_updated_at": "2026-06-28T03:04:18.916Z"
+}

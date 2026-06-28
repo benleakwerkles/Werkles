@@ -1,0 +1,88 @@
+{
+  "receipt_id": "BIRD_0130_SWANSON_ATLAS_CORE_DEPLOY_RECEIPT",
+  "packet_id": "BIRD_0130_SWANSON_ATLAS_CORE_DEPLOY",
+  "created_at": "2026-06-27T22:37:24Z",
+  "machine": "Doss",
+  "owner": "Swanson@Doss",
+  "stream": "INFRASTRUCTURE / REPO TRUTH",
+  "returned_status": "ARTIFACT",
+  "summary": "Atlas source truth core was filed, executed, persisted to SQLite v0.2 tables, and committed as a concrete Speaker artifact. Canonical promotion remains NO because Speaker has no origin remote and both Speaker/Werkles have unclean state.",
+  "committed_artifacts": {
+    "repo": "C:\\speaker",
+    "commit": "e0bb93936fdefae96acd128244957313f47203dd",
+    "commit_subject": "Deploy Atlas source truth core",
+    "files_committed": [
+      "C:\\speaker\\bin\\atlas-source-truth.js",
+      "C:\\speaker\\atlas\\source_truth_snapshot.json",
+      "C:\\speaker\\receipts\\staged\\ATLAS_SQLITE_V0_2_MIGRATION_RECEIPT.json"
+    ]
+  },
+  "atlas_engine": {
+    "path": "C:\\speaker\\bin\\atlas-source-truth.js",
+    "sha256": "3ED4EE1D30E2736A04A4F52B05C6B9F6D8A4412E68EAC0115F95F75D771E345B",
+    "node_check": "PASS",
+    "native_state_sources": [
+      "git branch --show-current",
+      "git rev-parse HEAD",
+      "git status --porcelain=v1",
+      "git remote -v",
+      "git rev-parse @{u}",
+      "git rev-list --left-right --count HEAD...<upstream>",
+      "git ls-remote origin refs/heads/<branch>"
+    ],
+    "persistence_layer": "node:sqlite DatabaseSync writes snapshot_log and cross_verification_log rows into C:\\speaker\\db\\speaker.sqlite"
+  },
+  "sqlite_v0_2_migration": {
+    "db_path": "C:\\speaker\\db\\speaker.sqlite",
+    "db_sha256": "0592221788CED6F68C6B257982B2BD559BDEDFE86CEA8B73DCB79F1114A197AE",
+    "tables_verified": [
+      "cross_verification_log",
+      "snapshot_log",
+      "trust_anchor"
+    ],
+    "latest_snapshot_row": {
+      "id": "ATLAS_SOURCE_TRUTH_20260627T223630Z",
+      "timestamp": "2026-06-27T22:36:30.604Z",
+      "tree_hash": "6CC3DF028148452E7D9EE9638091168786533AC961477055B76926330707BBA0",
+      "git_status_count": 40
+    },
+    "latest_cross_verification_row": {
+      "id": "SELF_ATLAS_SOURCE_TRUTH_20260627T223630Z",
+      "verifying_machine": "Doss",
+      "computed_hash": "6CC3DF028148452E7D9EE9638091168786533AC961477055B76926330707BBA0",
+      "match_verdict": "SELF_MATCH"
+    },
+    "trust_anchor_count": 0,
+    "trust_anchor_note": "The trust_anchor table exists, but no trust anchor row was inserted because C:\\speaker\\LOCKS\\operator_pubkey.asc was not present; C:\\speaker\\LOCKS contains only README.md."
+  },
+  "runtime_artifacts": {
+    "snapshot_path": "C:\\speaker\\atlas\\source_truth_snapshot.json",
+    "snapshot_sha256": "5467AFFE5CE5A33C37E27BB2BC2B1353501675A32E15B2551284B41BBE7F4207",
+    "migration_receipt_path": "C:\\speaker\\receipts\\staged\\ATLAS_SQLITE_V0_2_MIGRATION_RECEIPT.json",
+    "migration_receipt_sha256": "A3A6B968157ACB05F78E13BECC1B8EE34117E779E14206C7658311F0B8C6E77C",
+    "execution_log_path": "C:\\speaker\\logs\\atlas_source_truth_v0_2_deploy.log",
+    "execution_log_sha256": "787E8A250B9E8D67848353754686EA4AE49F28777B5499A112D663EE208E2181"
+  },
+  "source_truth_ruling": {
+    "github_main_hash": "0c727a2461f274f8990063ab9ee06b799a1890ed",
+    "atlas_snapshot_tree_hash": "6CC3DF028148452E7D9EE9638091168786533AC961477055B76926330707BBA0",
+    "canonical_readiness": "NO",
+    "blockers": [
+      "Speaker has no origin remote configured.",
+      "Speaker still has untracked local surfaces outside this focused commit.",
+      "Werkles remains dirty.",
+      "Werkles remains diverged from origin/snapshot/sally-good-werkles-2026-06-12: ahead 9, behind 9.",
+      "No operator_pubkey.asc trust anchor exists at C:\\speaker\\LOCKS\\operator_pubkey.asc."
+    ]
+  },
+  "do_not_claim": [
+    "Do not claim Atlas solved source truth synchronization.",
+    "Do not claim Speaker is canonical on GitHub.",
+    "Do not claim dirty Werkles is canonical.",
+    "Do not claim trust_anchor has a pinned operator key until operator_pubkey.asc is present and recorded."
+  ],
+  "next_best_packet": {
+    "packet_id": "BIRD_0131_SWANSON_ATLAS_TRUST_ANCHOR_BIND",
+    "mission": "Place or verify the operator public key at C:\\speaker\\LOCKS\\operator_pubkey.asc, rerun atlas-source-truth.js, and verify trust_anchor receives a pinned hash/fingerprint row."
+  }
+}

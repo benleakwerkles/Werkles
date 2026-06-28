@@ -1,0 +1,20 @@
+{
+  "receipt_id": "NERDKLE_PULSE_RECEIPT",
+  "packet_id": "PULSE_TEST_001",
+  "owner": "Swanson@Betsy",
+  "status_transition": {
+    "from": "SENT / UNPROVEN",
+    "to": "ACK"
+  },
+  "artifact_path": "C:\\Users\\BenLeak\\Documents\\Codex\\2026-06-20\\to-swanson-doss-mission-branch-truth\\outputs\\nerdkle_pulse_v0\\artifacts\\PULSE_TEST_001_ACK_ARTIFACT.md",
+  "timestamp": "2026-06-26T16:34:00-04:00",
+  "failure_point": null,
+  "scope": "local pulse-test harness only",
+  "not_claimed": [
+    "full Organism",
+    "Feral",
+    "TinkerDen UI",
+    "anatomy doctrine",
+    "delivery beyond local filesystem"
+  ]
+}

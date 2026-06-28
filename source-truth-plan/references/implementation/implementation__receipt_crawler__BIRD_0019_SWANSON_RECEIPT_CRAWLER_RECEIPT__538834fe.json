@@ -1,0 +1,118 @@
+{
+  "receipt_id": "BIRD_0019_SWANSON_RECEIPT_CRAWLER_RECEIPT",
+  "packet_id": "BIRD_0019_SWANSON_RECEIPT_CRAWLER",
+  "owner": "Swanson@Doss",
+  "stream": "INFRASTRUCTURE / NERVOUS SYSTEM",
+  "created_at": "2026-06-27T15:12:13.5050439-04:00",
+  "returned_status": "ARTIFACT_WITH_LIVE_LEDGER_BLOCKER",
+  "artifact": {
+    "crawler_path": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\scripts\\foreman\\crawler.js",
+    "crawler_sha256": "077799F171F21C1E2921D4E5BB9655389359F089A69E0F2BBE22B96D2AE4FDBD",
+    "launcher_path": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\scripts\\foreman\\start-receipt-crawler.ps1",
+    "launcher_sha256": "A762BC7B955EB13F3B08193DFA2B23C95C2E51C8AA724CD4DB43A8BC0790DBD7",
+    "package_json_sha256_after_script_registration": "41F52FBEB653BBAE6D7377B3841A20CF18BD22BAC573F2F2D9F2301D2390364D",
+    "npm_scripts_added": [
+      "receipt:crawler",
+      "receipt:crawler:self-test"
+    ]
+  },
+  "behavior_built": {
+    "poll_interval_ms": 60000,
+    "source_table": "LiveReceipt",
+    "selection_rule": "status SUCCESS and ASSIMILATED false/null/empty/no/unproven",
+    "output_queue_default": "C:\\tinkarden\\intake\\speaker_queue",
+    "output_format": "timestamped Markdown file",
+    "row_update": "UPDATE LiveReceipt SET ASSIMILATED = TRUE WHERE rowid = ?",
+    "delete_original_sqlite_row": false
+  },
+  "background_process": {
+    "status": "ALREADY_RUNNING",
+    "pid": 28396,
+    "command": "\"C:\\Program Files\\nodejs\\node.exe\" scripts\\foreman\\crawler.js --interval-ms 60000 ",
+    "stdout_log": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\logs\\receipt-crawler\\crawler-20260627-151101.out.log",
+    "stderr_log": "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\logs\\receipt-crawler\\crawler-20260627-151101.err.log",
+    "latest_stdout_events": [
+      {
+        "status": "ACK",
+        "event": "CRAWLER_STARTED",
+        "interval_ms": 60000,
+        "db_candidates": [
+          "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\circulation.db",
+          "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\data\\organism\\circulation.db",
+          "C:\\tinkarden\\circulation.db"
+        ],
+        "queue_dir": "C:\\tinkarden\\intake\\speaker_queue",
+        "logged_at": "2026-06-27T19:11:01.417Z"
+      },
+      {
+        "status": "BLOCKER",
+        "event": "DB_MISSING",
+        "message": "circulation.db not found",
+        "moved_count": 0,
+        "logged_at": "2026-06-27T19:12:01.426Z"
+      }
+    ]
+  },
+  "self_test_proof": {
+    "status": "ARTIFACT",
+    "event": "SELF_TEST_PASS",
+    "db_path": "C:\\Users\\BenLeak\\AppData\\Local\\Temp\\receipt-crawler-self-test-7q3Lme\\circulation.db",
+    "queue_dir": "C:\\Users\\BenLeak\\AppData\\Local\\Temp\\receipt-crawler-self-test-7q3Lme\\tinkarden\\intake\\speaker_queue",
+    "receipt_id": "SELF_TEST_RECEIPT_001",
+    "moved_count": 1,
+    "target_path": "C:\\Users\\BenLeak\\AppData\\Local\\Temp\\receipt-crawler-self-test-7q3Lme\\tinkarden\\intake\\speaker_queue\\2026-06-27T19-11-01-678Z__SELF_TEST_RECEIPT_001.md",
+    "target_sha256": "0968774C511BE5BDE04C2E32883F23EAAB4B85F03B6CC95CED7BBBAA6FA9F6F1",
+    "status_transition": "SUCCESS / UNASSIMILATED -> SUCCESS / ASSIMILATED",
+    "rows_after": [
+      {
+        "id": "SELF_TEST_RECEIPT_001",
+        "status": "SUCCESS",
+        "ASSIMILATED": 1
+      }
+    ]
+  },
+  "live_ledger_status": {
+    "circulation_db_found": false,
+    "speaker_queue_created": true,
+    "speaker_queue_path": "C:\\tinkarden\\intake\\speaker_queue",
+    "live_receipt_moved": false,
+    "searched_paths": [
+      "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\circulation.db",
+      "C:\\Users\\BenLeak\\Desktop\\github\\Werkles\\data\\organism\\circulation.db",
+      "C:\\tinkarden\\circulation.db",
+      "C:\\Users\\BenLeak recursive search",
+      "C:\\ recursive search, first-pass"
+    ],
+    "blocker": "The live circulation.db SQLite ledger is not present on Doss at the expected or discovered paths, so no real LiveReceipt row could be moved yet."
+  },
+  "verification": [
+    {
+      "command": "node --check scripts\\foreman\\crawler.js",
+      "status": "PASS"
+    },
+    {
+      "command": "npm.cmd run receipt:crawler:self-test",
+      "status": "PASS",
+      "proof": "SELF_TEST_PASS with one Markdown receipt written and ASSIMILATED set to 1"
+    },
+    {
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\start-receipt-crawler.ps1",
+      "status": "PASS",
+      "proof": "ALREADY_RUNNING pid 28396"
+    },
+    {
+      "command": "PowerShell parser check for start-receipt-crawler.ps1",
+      "status": "PASS",
+      "proof": "PS_PARSE_OK"
+    }
+  ],
+  "not_claimed": [
+    "No live production LiveReceipt was moved because circulation.db is missing.",
+    "No original SQLite row is deleted by the crawler.",
+    "No assimilation meaning is invented; the script only writes the receipt to the Speaker queue and flips ASSIMILATED."
+  ],
+  "next_required_proof": {
+    "owner": "Swanson@Doss",
+    "action": "Point CIRCULATION_DB or RECEIPT_CRAWLER_DB at the real circulation.db, or place it at one of the default paths, then watch the running daemon log a real RECEIPT_MOVED event."
+  }
+}

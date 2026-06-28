@@ -1,0 +1,821 @@
+{
+  "generated_at": "2026-06-28T03:04:21.724Z",
+  "repository": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "source-truth/atlas-speaker-v0-20260627",
+  "status": "GITHUB_REVIEW_BRANCH_NOT_CANONICAL",
+  "purpose": "Single file-backed Source Truth Plan for The Book, Nerdkle/NMCLR, Speaker/Atlas, and TinkerDen/Medulla build references.",
+  "source_counts": {
+    "book": 14,
+    "nerdkle_nmclr": 27,
+    "tinkerden_medulla": 11,
+    "speaker_atlas": 19,
+    "implementation": 15
+  },
+  "chatlog_index": {
+    "repo_path": "source-truth-plan/references/chatlog_hits/CHATLOG_KEYWORD_INDEX.jsonl",
+    "hit_count": 48,
+    "scanned_file_count": 6,
+    "source_root": "C:/Users/BenLeak/.codex/sessions"
+  },
+  "missing_priority_sources": [
+    {
+      "source_path": "C:/Users/Ben Leak/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    },
+    {
+      "source_path": "C:/Users/BenLeak/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    },
+    {
+      "source_path": "C:/Users/BenLeak/OneDrive/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    },
+    {
+      "source_path": "C:/Users/Ben Leak/OneDrive/Desktop/Nerdkle The Book",
+      "status": "MISSING_ON_DOSS"
+    }
+  ],
+  "missing_or_unresolved_sources": [],
+  "proof_boundary": [
+    "This folder is a source-truth plan and evidence bundle, not proof that full automation is built.",
+    "origin/main remains canonical until reviewed and merged.",
+    "Betsy desktop source is not included until the folder is transferred or mounted on Doss.",
+    "Chatlog index is discovery evidence only; durable source material must still be copied into repo-backed files."
+  ],
+  "files": [
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/BOOK_INTEGRATION_MAP_V0.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__BOOK_INTEGRATION_MAP_V0__81fb34af.md",
+      "byte_count": 23214,
+      "sha256": "bd721f83956e446e280993da10d772059b484c1344d0851378a90579a79d61a9",
+      "modified_time": "2026-06-26T22:03:15.946Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/SWANSON_DOSS_BOOK_INTEGRATION_MAP_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/book/book__outputs__SWANSON_DOSS_BOOK_INTEGRATION_MAP_RECEIPT__6afb3c20.json",
+      "byte_count": 7971,
+      "sha256": "e8ac6dbca8b32e81074a6d12c71fcbc8c7be5cb9cf595c86417fb73253b80010",
+      "modified_time": "2026-06-26T22:03:32.473Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/MANUSCRIPT_SPINE_AUDIT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_SPINE_AUDIT__1b6fedac.md",
+      "byte_count": 6122,
+      "sha256": "9bd8ded156fd7a2cc5d5f7721b0be2ac506b8a55b738abeb6ea498a7c054e6a1",
+      "modified_time": "2026-06-23T06:09:01.126Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/MANUSCRIPT_CONTINUITY_AUDIT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_CONTINUITY_AUDIT__13f1265c.md",
+      "byte_count": 6551,
+      "sha256": "faf2726b4b8ea3e34f67f73e2cc373940ddefd7a3e4b813384a12ab4abf6b94b",
+      "modified_time": "2026-06-23T05:01:22.284Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/MANUSCRIPT_CONTINUITY_AUDIT_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_CONTINUITY_AUDIT_RECEIPT__2ff6288a.md",
+      "byte_count": 3138,
+      "sha256": "8458359e03d25b76d02b923363fd991afdb72677c779748f9153c728a11f9954",
+      "modified_time": "2026-06-23T05:01:49.795Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/MANUSCRIPT_STRUCTURE_AUDIT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_STRUCTURE_AUDIT__46ed62ed.md",
+      "byte_count": 10086,
+      "sha256": "d622d5c7e967ab877f545482e08ab65f00687560c22fc084f8a3554f73423afd",
+      "modified_time": "2026-06-23T04:57:08.620Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/MANUSCRIPT_V1_RELEASE_AUDIT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_V1_RELEASE_AUDIT__7d1f42c4.md",
+      "byte_count": 5951,
+      "sha256": "fde867a7f0444f24985639b11115d6d93a912f7b6792911e6184255c763acbb4",
+      "modified_time": "2026-06-23T05:44:24.225Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/MANUSCRIPT_GAP_AUDIT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_GAP_AUDIT__f26c2b6f.md",
+      "byte_count": 9819,
+      "sha256": "fc59f74f2b742a081acf8631d31bc1cc42329d8ff49a93d05b81298069d70119",
+      "modified_time": "2026-06-23T04:48:10.534Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/CHAPTER_LINEAGE_LEDGER.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__CHAPTER_LINEAGE_LEDGER__70563174.md",
+      "byte_count": 7355,
+      "sha256": "2c428e6375dc7fd75487eef27073bdb80d72cdef14719896157101af80176804",
+      "modified_time": "2026-06-23T04:35:56.489Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/CHAPTER_OWNERSHIP_MAP.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__CHAPTER_OWNERSHIP_MAP__dcbcd70d.md",
+      "byte_count": 8731,
+      "sha256": "59ec25f72840c2f44aa5df1fe4c0578e3b87da3a527a4614e57052c2c350037d",
+      "modified_time": "2026-06-23T04:59:26.012Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/inheritance_chain_audit_receipt.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__inheritance_chain_audit_receipt__89c95467.md",
+      "byte_count": 10838,
+      "sha256": "7b50f15bc147a2e9812a16ea9ded100303a08acff0e2af8f2c11d3a024e4b443",
+      "modified_time": "2026-06-23T04:09:31.227Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/THESIS_DEFINITION_AUDIT.md",
+      "repo_path": "source-truth-plan/references/book/book__outputs__THESIS_DEFINITION_AUDIT__e610648e.md",
+      "byte_count": 4274,
+      "sha256": "303704423d7a2e6fe0803430acf3f4d42adf65a17da61e96d0df7f222e11a465",
+      "modified_time": "2026-06-23T06:06:23.885Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/work/MANUSCRIPT_SOURCE_BUNDLE_TO_ENDER_20260623/source_files/speaker/sublime-design/the_sublime_design_v0.md",
+      "repo_path": "source-truth-plan/references/book/book__sublime-design__the_sublime_design_v0__891bf617.md",
+      "byte_count": 1580,
+      "sha256": "f832f8e0d233f854f2eb237ca7d90f2dacea622bcb3f7f71bc621c383b13eb37",
+      "modified_time": "2026-06-20T05:55:44.722Z",
+      "copied": true
+    },
+    {
+      "category": "book",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/work/MANUSCRIPT_SOURCE_BUNDLE_TO_ENDER_20260623/source_files/speaker/genome/tinkularity_genome_v0.md",
+      "repo_path": "source-truth-plan/references/book/book__genome__tinkularity_genome_v0__b4dd2d20.md",
+      "byte_count": 5831,
+      "sha256": "fd5ef309bee13c344f3f275f932c9f45091cf7d21f3705ffd046158ada9b17d3",
+      "modified_time": "2026-06-20T05:52:25.987Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NEUROCIRCULYMPHATIC_V0_SPEC.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NEUROCIRCULYMPHATIC_V0_SPEC__a5ec3627.md",
+      "byte_count": 8144,
+      "sha256": "763af670cf857e1c0a13e16ff337617f41897d705d8d08c14e83cb7cfd3f997d",
+      "modified_time": "2026-06-23T06:43:16.193Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NEUROCIRCULYMPHATIC_V0_BOUNDARY.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NEUROCIRCULYMPHATIC_V0_BOUNDARY__57ac07ba.md",
+      "byte_count": 7647,
+      "sha256": "fe2ed3c6b7b2c396c0c58e23c3125a0d42eea4e795b301725f7d055076c99d25",
+      "modified_time": "2026-06-23T06:35:33.597Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NMCLR_RESPIRATORY_RECEIPT_STANDARD.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_RESPIRATORY_RECEIPT_STANDARD__c449ecbd.md",
+      "byte_count": 5920,
+      "sha256": "9e10bc5ea48dc9b0154e1e7935bf80c9d4773a9c625d36dc27d19f871699f9d0",
+      "modified_time": "2026-06-24T00:21:19.166Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NMCLR_MUSCLE_RECEIPT_STANDARD.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_MUSCLE_RECEIPT_STANDARD__daaff01a.md",
+      "byte_count": 5712,
+      "sha256": "bb292b7923262d153d8352a047b6010522fc196398f1f0d9995503b49e4d07f6",
+      "modified_time": "2026-06-24T00:22:48.857Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NMCLR_METABOLISM_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_METABOLISM_RECEIPT__df492514.md",
+      "byte_count": 3741,
+      "sha256": "b801fc8d2b097fbf9597cb3f62feca9b8ce537e6a445161a060ea7902d66c189",
+      "modified_time": "2026-06-24T02:03:04.755Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NMCLR_METABOLISM_V0.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_METABOLISM_V0__e4f6a052.md",
+      "byte_count": 5648,
+      "sha256": "ee6542089407572880eb0ab426713b2dc573be87ce32384f7fb285dbbffdc3d3",
+      "modified_time": "2026-06-24T00:49:15.397Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NMCLR_METABOLISM_PROOF_CHAIN.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_METABOLISM_PROOF_CHAIN__e14cdb89.md",
+      "byte_count": 1635,
+      "sha256": "fafe94ba242aa94d593967924d746d9890758429f8c0ed2f08590f0575cc2abe",
+      "modified_time": "2026-06-24T03:13:30.066Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/ASSIMILATION_V0_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__ASSIMILATION_V0_RECEIPT__148dd086.md",
+      "byte_count": 5452,
+      "sha256": "5d1fbb3f6893959ef6d044fad44ff8d410a2e950acc94c0b2c3e6b63da05d922",
+      "modified_time": "2026-06-24T03:16:12.207Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/assimilation_rule.json",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__assimilation_rule__871f2451.json",
+      "byte_count": 9510,
+      "sha256": "05e0c784ba5a3b614629b3ebbcb4bca8884ea45a210a7f82fd9a96c98d364497",
+      "modified_time": "2026-06-25T04:47:13.476Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/INTENT_TO_ANATOMY_COMPILER_V0_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__INTENT_TO_ANATOMY_COMPILER_V0_RECEIPT__69885470.md",
+      "byte_count": 3904,
+      "sha256": "252fc0ef87b86abbbdd7bb16b5c5c7602d86a0b28bfc5212683c8e34cf8222ff",
+      "modified_time": "2026-06-25T03:39:37.046Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/INTENT_TO_ANATOMY_COMPILER_V0.json",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__INTENT_TO_ANATOMY_COMPILER_V0__b228f5c0.json",
+      "byte_count": 7109,
+      "sha256": "b518946d8f7350c874c6de343a285330ebf1ba72d540064b7a6fb2beaaf507b3",
+      "modified_time": "2026-06-25T03:39:37.044Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/CREATOR_OPERATOR_MODEL_V0.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__CREATOR_OPERATOR_MODEL_V0__49b06538.md",
+      "byte_count": 6358,
+      "sha256": "495947fccb5afd4f195ed4e3d44275dd2ab3826e20e26e653c6659a364a84dab",
+      "modified_time": "2026-06-24T00:42:12.816Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/CREATOR_OPERATOR_ORGANISM_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__CREATOR_OPERATOR_ORGANISM_RECEIPT__141aca1e.md",
+      "byte_count": 4090,
+      "sha256": "aec9762d7280eb0685879532b64b3885b025a0f8062f98b04d1cff9e66cbeb80",
+      "modified_time": "2026-06-24T00:48:24.812Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/SUCCESSFUL_INHERITANCE_EVENT_V0.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__SUCCESSFUL_INHERITANCE_EVENT_V0__e9e7fe0b.md",
+      "byte_count": 8438,
+      "sha256": "8228189706eebed14a385dad4d474e71227b199ddd45c704c8b542639fc8697d",
+      "modified_time": "2026-06-23T14:41:00.366Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/SUCCESSFUL_INHERITANCE_EVENT_V0_SPEC.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__SUCCESSFUL_INHERITANCE_EVENT_V0_SPEC__7e8f5076.md",
+      "byte_count": 7651,
+      "sha256": "387c23b98414b9de5994fde3a3560b35ffbc760a36e03ffd6e84617da274c244",
+      "modified_time": "2026-06-23T14:46:59.880Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/SUCCESSFUL_INHERITANCE_QUERY_V0.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__SUCCESSFUL_INHERITANCE_QUERY_V0__d2de49a1.md",
+      "byte_count": 9687,
+      "sha256": "4f8d970d5b15ea32901e16cb37f5bb46e4618fc6e89d6988cc7bb51d372dfc96",
+      "modified_time": "2026-06-23T14:50:29.606Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/INHERITANCE_EVENT_CANDIDATE_DETECTOR_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__INHERITANCE_EVENT_CANDIDATE_DETECTOR_RECEIPT__36ee14ed.md",
+      "byte_count": 5795,
+      "sha256": "76ab2bc53a56fbcd02361d8d251a92cd469aa2f4dce4d21ce57cf8d1f13b2c39",
+      "modified_time": "2026-06-23T14:55:05.248Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/candidate_inheritance_events.json",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__candidate_inheritance_events__cf5e96ca.json",
+      "byte_count": 1033,
+      "sha256": "f26a7c517a65ab5c6ff3d2fbfff35430fa572c1b5d26b5eb1e68c144965312f6",
+      "modified_time": "2026-06-23T14:55:05.139Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/NERDKLE_HANDOFF_TO_FUCKO_RECEIPT_20260626-162718.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NERDKLE_HANDOFF_TO_FUCKO_RECEIPT_20260626-162718__a5c11aee.md",
+      "byte_count": 2647,
+      "sha256": "3439fd9deb4c0898529a232dcc2c2b5961d42fd8b1b6f9b868805f6865351c72",
+      "modified_time": "2026-06-26T20:28:48.456Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/nerdkle_pulse_v0/PULSE_TEST_001.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__nerdkle_pulse_v0__PULSE_TEST_001__d31a3dc4.md",
+      "byte_count": 831,
+      "sha256": "e5fb75c18205d6987dabea0e6982b2fd0bbd9cf7ca22bc23a2c0ed40d538e600",
+      "modified_time": "2026-06-26T20:31:28.593Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/nerdkle_pulse_v0/artifacts/PULSE_TEST_001_ACK_ARTIFACT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__artifacts__PULSE_TEST_001_ACK_ARTIFACT__95d66f11.md",
+      "byte_count": 341,
+      "sha256": "c379763a9fa0b08102d0613f27c3d25afb6abeff9ae3521535e34b2d68ad8877",
+      "modified_time": "2026-06-26T20:31:28.594Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/nerdkle_pulse_v0/receipts/NERDKLE_PULSE_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__receipts__NERDKLE_PULSE_RECEIPT__414d15bb.json",
+      "byte_count": 615,
+      "sha256": "edb92f63b709d756a1104ac7cc6377cb3bdf47017fd30e2708b2e70c104c2057",
+      "modified_time": "2026-06-26T20:31:28.595Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/dink_doss_nerdkle_receipt_dry_run/NERDKLE_DRY_RECEIPT_001.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__dink_doss_nerdkle_receipt_dry_run__NERDKLE_DRY_RECEIPT_001__f326362e.md",
+      "byte_count": 739,
+      "sha256": "ecbccb6ed1f13c94249e4abd2e8660c0416e77e52536a7f5d615568f120cb007",
+      "modified_time": "2026-06-26T20:33:49.063Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/dink_doss_nerdkle_receipt_dry_run/NERDKLE_DRY_BIRD_001.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__dink_doss_nerdkle_receipt_dry_run__NERDKLE_DRY_BIRD_001__91754420.md",
+      "byte_count": 667,
+      "sha256": "7f0dd3197c87a2690b49217ed91213b4823ce214bcf8c383257705f5207afa87",
+      "modified_time": "2026-06-26T20:33:49.061Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/nmclr_filesystem_snapshot/NMCLR_SPEC_BUILD_FS_SNAPSHOT_V0.json",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__nmclr_filesystem_snapshot__NMCLR_SPEC_BUILD_FS_SNAPSHOT_V0__822789f6.json",
+      "byte_count": 7317,
+      "sha256": "7a8b3f38733fae65e17f15b8fc5fc80a5bad998057512f3b7b66e243734e79c0",
+      "modified_time": "2026-06-26T22:13:08.095Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/nmclr_preservation/SWANSON_DOSS_NMCLR_PRESERVATION_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__nmclr_preservation__SWANSON_DOSS_NMCLR_PRESERVATION_RECEIPT__e1e1b554.json",
+      "byte_count": 3019,
+      "sha256": "914393cf5149a293054d2a8c62425f07aa3c2b3e58547ce1cbbe4c288fafb33b",
+      "modified_time": "2026-06-26T22:14:21.869Z",
+      "copied": true
+    },
+    {
+      "category": "nerdkle_nmclr",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/branch_collision/BEAN_SPANZEE_BRANCH_COLLISION_ATTACK_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__branch_collision__BEAN_SPANZEE_BRANCH_COLLISION_ATTACK_RECEIPT__e49f8a0f.md",
+      "byte_count": 6059,
+      "sha256": "13014dc2a31596ed5c0486d5900e7f9a881977936947c4f60723e1caa5d6cb4c",
+      "modified_time": "2026-06-26T22:11:14.225Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/find_the_lost_tinkerden.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__find_the_lost_tinkerden__e14dc97f.md",
+      "byte_count": 4806,
+      "sha256": "685c6d32fcc32606e4304bdd96b4fb5d458c789c2f8aed7fbe3b86e279d78b3c",
+      "modified_time": "2026-06-22T03:56:41.839Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/tinkerden_working_preview.html",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__tinkerden_working_preview__9f0d9288.html",
+      "byte_count": 24413,
+      "sha256": "dce29e3ab1772e0fcd9df249129fd60948b848959062cde7fae5fe4ca0a7fd5e",
+      "modified_time": "2026-06-22T05:01:09.234Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/tinkerden_working_preview_receipt.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__tinkerden_working_preview_receipt__06702eb8.md",
+      "byte_count": 2245,
+      "sha256": "78205ee09af209b94350bb28b73f6401292dfc8dd07f30399a873136f2b51e87",
+      "modified_time": "2026-06-22T05:04:02.352Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/tinkerden_branch_review_cockpit.html",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__tinkerden_branch_review_cockpit__31941830.html",
+      "byte_count": 35032,
+      "sha256": "282f86b27a4770f92e8629793cfba85a86d15a1a42dc9ad6b226779545d4ad00",
+      "modified_time": "2026-06-23T19:45:01.272Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/tinkerden_branch_review_cockpit_receipt.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__tinkerden_branch_review_cockpit_receipt__6baa5331.md",
+      "byte_count": 2034,
+      "sha256": "eb95ab107f2c369122b983baafeab61f98aca792309235b623d66113c609ab91",
+      "modified_time": "2026-06-22T05:20:06.213Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/TINKERDEN_SPOF_FREEZE_NOTICE.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__TINKERDEN_SPOF_FREEZE_NOTICE__b66ea2b0.md",
+      "byte_count": 4272,
+      "sha256": "5585b7e744f01aa261d62c0775067595fcbbc2f6c9bc0b701cd6d937738a79dd",
+      "modified_time": "2026-06-23T03:26:13.211Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/TINKERDEN_FREEZE_STATUS_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__TINKERDEN_FREEZE_STATUS_RECEIPT__1baba6b4.md",
+      "byte_count": 3846,
+      "sha256": "5aa8f6f3fcd66dfb7514dbdbb658e031739b65e4152fcd20c4c1575ee026c7b2",
+      "modified_time": "2026-06-23T03:26:13.090Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/UPDATED_TINKERDEN_FREEZE_STATUS_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__UPDATED_TINKERDEN_FREEZE_STATUS_RECEIPT__fab8a1c9.md",
+      "byte_count": 2990,
+      "sha256": "673e83b365209a0d45dcd869aca20e6eba8661866dc0ea03963698c09d65e956",
+      "modified_time": "2026-06-23T03:26:12.940Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/tinkerden_spof_preservation_receipt.md",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__tinkerden_spof_preservation_receipt__5229bad5.md",
+      "byte_count": 5505,
+      "sha256": "e7b0952f263253d318705f9c0900cca0d1d0299ef4f91df6c554938bfeca8986",
+      "modified_time": "2026-06-23T02:35:25.478Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/PROPOSAL_FERAL_TINKERDEN_HANDEYE_001_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__PROPOSAL_FERAL_TINKERDEN_HANDEYE_001_RECEIPT__b5798cbd.json",
+      "byte_count": 5420,
+      "sha256": "bca929235265e63c7f29f14b346142311dcaec01309a4278bd6f20960cbbe260",
+      "modified_time": "2026-06-28T02:49:30.150Z",
+      "copied": true
+    },
+    {
+      "category": "tinkerden_medulla",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/BIRD_0063_SWANSON_RATCHET_FEEDBACK_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/tinkerden_medulla/tinkerden_medulla__outputs__BIRD_0063_SWANSON_RATCHET_FEEDBACK_RECEIPT__3bd0fcb3.json",
+      "byte_count": 2688,
+      "sha256": "292ccfd27b3d63d6b876e2741dbc94a9a029b8a5f38df7e613ff3b9b224195ad",
+      "modified_time": "2026-06-27T20:52:45.245Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/atlas_truth_receipt.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__outputs__atlas_truth_receipt__4e89e0d0.md",
+      "byte_count": 10955,
+      "sha256": "6e1b71f1707f7a8483daaa8a3620f56be04a016dcb9ecbd5744fe6d183429758",
+      "modified_time": "2026-06-23T02:01:10.377Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/BIRD_0130_SWANSON_ATLAS_CORE_DEPLOY_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__outputs__BIRD_0130_SWANSON_ATLAS_CORE_DEPLOY_RECEIPT__8366a0b5.json",
+      "byte_count": 4351,
+      "sha256": "47e1daf21b9f07febb25d692bedd549a166f920abb0362ff989e0e345452a83c",
+      "modified_time": "2026-06-27T22:37:44.505Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/RECEIPT_TRUST_MODEL_AUDIT.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__outputs__RECEIPT_TRUST_MODEL_AUDIT__3678388e.md",
+      "byte_count": 6889,
+      "sha256": "4108ff9919971f59e125a724be9e5eea568535c2d4b97aaef1c5077f92214ffb",
+      "modified_time": "2026-06-23T05:40:47.867Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/FALSE_DELIVERY_AUDIT.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__outputs__FALSE_DELIVERY_AUDIT__e1404f12.md",
+      "byte_count": 6502,
+      "sha256": "33cf91014fc67f3b9134efff8fdb79b5b43705f0f12d0f48f37aa48b6d450fec",
+      "modified_time": "2026-06-23T05:21:55.782Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/aeye_feed/AEYE_FEED_PACKET_0001_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__aeye_feed__AEYE_FEED_PACKET_0001_RECEIPT__9f7e1d08.md",
+      "byte_count": 1605,
+      "sha256": "67331ec187c4cb7671a6106d7164fdc03423f289d11ee930871e29b296e84d55",
+      "modified_time": "2026-06-26T08:00:43.565Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/g_sprints/G_SPRINT_20260627_SOURCE_TRUTH_ATLAS_SPEAKER_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__g_sprints__G_SPRINT_20260627_SOURCE_TRUTH_ATLAS_SPEAKER_RECEIPT__425a31f0.json",
+      "byte_count": 2595,
+      "sha256": "32a507fda4d6e2bfc97fec4814cc531649419362074806e8e58b5b8d20b4d9dc",
+      "modified_time": "2026-06-27T17:54:34.093Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/receipt_crawler/BIRD_0019_SWANSON_RECEIPT_CRAWLER_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/implementation/implementation__receipt_crawler__BIRD_0019_SWANSON_RECEIPT_CRAWLER_RECEIPT__538834fe.json",
+      "byte_count": 5199,
+      "sha256": "62eb47470098c0b4cd0565c09a04f0dd7c2765e9b408821e37e9d0cb8e3d41f1",
+      "modified_time": "2026-06-27T19:12:59.774Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/swateyes/BIRD_0022_SWANSON_SWATEYES_CLASSIFIER_RECEIPT.md",
+      "repo_path": "source-truth-plan/references/implementation/implementation__swateyes__BIRD_0022_SWANSON_SWATEYES_CLASSIFIER_RECEIPT__7e6bda96.md",
+      "byte_count": 6002,
+      "sha256": "88a1dbcd247122d3757199c968428484283f70e186027cf26d423248c0bf9642",
+      "modified_time": "2026-06-27T19:17:50.056Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/fleyes/BIRD_0025_SWANSON_FLEYE_MULE_SENSOR_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/implementation/implementation__fleyes__BIRD_0025_SWANSON_FLEYE_MULE_SENSOR_RECEIPT__6cbb6512.json",
+      "byte_count": 5049,
+      "sha256": "da3c2d5c9834f2d9981866f9551675fc97c83821f89bd31dd467a055d941b343",
+      "modified_time": "2026-06-27T19:21:35.650Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/Users/BenLeak/Documents/Codex/2026-06-20/to-swanson-doss-mission-branch-truth/outputs/ender/BIRD_0029_SWANSON_ENDER_CRON_RECEIPT.json",
+      "repo_path": "source-truth-plan/references/implementation/implementation__ender__BIRD_0029_SWANSON_ENDER_CRON_RECEIPT__c135976d.json",
+      "byte_count": 5103,
+      "sha256": "4482ed864026e10fb923c24160ffcd9d1c81f4539f23e5d043d509e711ae5100",
+      "modified_time": "2026-06-27T19:25:35.516Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/README.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__speaker__README__81a7ec4d.md",
+      "byte_count": 2159,
+      "sha256": "34c627b836ad5ab80413399331db5fc27acb3b0bd265284a4fc408d757b94c73",
+      "modified_time": "2026-06-27T21:03:28.557Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/atlas/SOURCE_TRUTH_GITHUB_DECISION_PACKET.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__atlas__SOURCE_TRUTH_GITHUB_DECISION_PACKET__0be76100.md",
+      "byte_count": 2028,
+      "sha256": "909e7de8c96701bd8f9461fbc6346d7bbf224cfeabc39ccf6e444f26e6418381",
+      "modified_time": "2026-06-27T21:52:58.017Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/atlas/CANONICAL_SOURCE_TRUTH_NEXT_PACKET.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__atlas__CANONICAL_SOURCE_TRUTH_NEXT_PACKET__0cb0bb50.md",
+      "byte_count": 1251,
+      "sha256": "d847645be264d4bec1b056f818036c2653c5a969f3c83e4ced5918cca002532e",
+      "modified_time": "2026-06-27T21:08:30.047Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/atlas/source_truth_snapshot.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__atlas__source_truth_snapshot__c9d41a4c.json",
+      "byte_count": 7101,
+      "sha256": "5467affe5ce5a33c37e27bb2bc2b1353501675a32e15b2551284b41bbe7f4207",
+      "modified_time": "2026-06-27T22:36:32.205Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bin/atlas-source-truth.js",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__bin__atlas-source-truth__ee2edafc.js",
+      "byte_count": 13546,
+      "sha256": "3ed4ee1d30e2736a04a4f52b05c6b9f6d8a4412e68eac0115f95f75d771e345b",
+      "modified_time": "2026-06-27T22:36:21.069Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bin/speakerctl.js",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__bin__speakerctl__67b3880c.js",
+      "byte_count": 69197,
+      "sha256": "1ba4fbe5155934e58445e251062b43d78e32ceec849465d2f3fd11cf0ef4b1d9",
+      "modified_time": "2026-06-27T22:12:14.953Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bin/git-snapshot.sh",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__bin__git-snapshot__562fdede.sh",
+      "byte_count": 2521,
+      "sha256": "e7721da8603bedcc6f624b3220092150d2016580617e2c7500f623917141acf8",
+      "modified_time": "2026-06-27T21:30:16.707Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bin/validate-fences.js",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__bin__validate-fences__85adb0e0.js",
+      "byte_count": 6034,
+      "sha256": "0098c8495d60cb60f074d51ed869c3cb0a94c1714d9ec58d9122ee0af2acbe55",
+      "modified_time": "2026-06-27T22:14:15.293Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bootloader/templates/CURRENT_REPO_STATE.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__templates__CURRENT_REPO_STATE__9082f1fb.md",
+      "byte_count": 6967,
+      "sha256": "1c01f30fd0974b659dda68e65a521e79ee1acbc752bd9e4efb72288c7c8efb5e",
+      "modified_time": "2026-06-27T22:00:38.828Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bootpacks/out/Skybro.Betsy.BOOTPACK.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__out__Skybro.Betsy.BOOTPACK__f8344054.md",
+      "byte_count": 10089,
+      "sha256": "0f5044481ab14c952cec280edcb1871a6128a3a907d250731884ac0136ed0f7f",
+      "modified_time": "2026-06-27T22:00:38.185Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/schemas/receipt.schema.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__schemas__receipt.schema__c9f590cc.json",
+      "byte_count": 1018,
+      "sha256": "a31bb6472cf9a34d41d27c432d5c093cc476acba62f9e245f4176b8cfc6afb1f",
+      "modified_time": "2026-06-27T20:37:08.143Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/db/master_plan_progress.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__db__master_plan_progress__0aab7ee7.json",
+      "byte_count": 473,
+      "sha256": "a3d951eb50c2f4029edc38f2f62fea275aaf804e68abd77c016b99d53e154ede",
+      "modified_time": "2026-06-27T22:04:07.115Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/receipts/staged/SWANSON_REMOTE_ALIGNMENT.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__staged__SWANSON_REMOTE_ALIGNMENT__18dc6ad9.json",
+      "byte_count": 13739,
+      "sha256": "29a2214fc674cfb3b7650a0a301c58372d07c5a9390929a91f860bfde1b6a2ba",
+      "modified_time": "2026-06-27T22:06:25.032Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/ecosystem.config.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__tinkarden__ecosystem.config__a03fa76f.js",
+      "byte_count": 2244,
+      "sha256": "4b38394e3023ba9dd54c4166019807eb9b1f390281906cef8d6fe5c84d7e9fb8",
+      "modified_time": "2026-06-27T21:03:43.657Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/server/index.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__server__index__457d3dcd.js",
+      "byte_count": 35998,
+      "sha256": "90830cc3160caf59074a17b105496413ec02d853e4522040d757e76845544e86",
+      "modified_time": "2026-06-28T02:47:27.060Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/server/feral_contract_routes.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__server__feral_contract_routes__1c5d3d48.js",
+      "byte_count": 7498,
+      "sha256": "bba63cc03a3cdd94328eb894df5a3921d500aa1c9fcf82831e12af077ed01514",
+      "modified_time": "2026-06-28T02:47:19.430Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/brainstem.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__brainstem__a4b26dfc.js",
+      "byte_count": 1593,
+      "sha256": "696898b87f3e0f828351f169bffb6a6ae194f98d788a7f9e74f71d9af471310e",
+      "modified_time": "2026-06-27T20:22:54.763Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/crawler.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__crawler__dae042bb.js",
+      "byte_count": 4298,
+      "sha256": "39be855d163946824edee8bd18de9919066a42acdaab3782a02215dc1385aa2a",
+      "modified_time": "2026-06-27T20:23:25.777Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/daemon_watchdog.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__daemon_watchdog__eee898d1.js",
+      "byte_count": 4881,
+      "sha256": "35f57100d49bcc7e72fa167091c68768b09ca07ca9b03682bb95fcdb2217b548",
+      "modified_time": "2026-06-27T20:25:04.917Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/ender_apoptosis.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__ender_apoptosis__454095f6.js",
+      "byte_count": 17571,
+      "sha256": "26a8489c0cac49dd3a2ec46a37ea90c749a0cb4226730848c165b6ab5c16b309",
+      "modified_time": "2026-06-27T19:24:30.798Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/fleyes.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__fleyes__b6f3511d.js",
+      "byte_count": 16661,
+      "sha256": "9b2f8598057ca36917fa39f31e745349cb6e835e1b1b79569012735ed2445ec2",
+      "modified_time": "2026-06-27T19:19:35.194Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/swateyes.js",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__swateyes__e5b9b6f5.js",
+      "byte_count": 3819,
+      "sha256": "2f04f8fcd500c55d387c8bf595f0ef5a7c23b3c6e2f11d633ba86a30bfae9be4",
+      "modified_time": "2026-06-27T19:16:57.661Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/nervous_system/frictional_heat.json",
+      "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__frictional_heat__a7814221.json",
+      "byte_count": 4606,
+      "sha256": "2f93bb2a0bb9613ec88f9683acc3456df5bdba6be92c691c95ba39e5c4378736",
+      "modified_time": "2026-06-28T03:04:19.827Z",
+      "copied": true
+    },
+    {
+      "category": "implementation",
+      "source_path": "C:/tinkarden/world_state.json",
+      "repo_path": "source-truth-plan/references/implementation/implementation__tinkarden__world_state__732f8587.json",
+      "byte_count": 59075,
+      "sha256": "726a5350d20b1dab7b58c9ed3833043013c0e95b32150c6f552f8b7fc0369852",
+      "modified_time": "2026-06-27T20:17:09.372Z",
+      "copied": true
+    }
+  ]
+}
