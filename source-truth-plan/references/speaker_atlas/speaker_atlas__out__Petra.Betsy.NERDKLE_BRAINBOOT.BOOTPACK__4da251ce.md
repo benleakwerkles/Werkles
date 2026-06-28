@@ -1,26 +1,26 @@
 ---
-BOOTPACK_RENDER_ID: 65d3e9f2-4b63-4a8c-817a-df814706517a
-AEYE: Skybro
+BOOTPACK_RENDER_ID: 2d0a4195-ad0a-49b1-bab0-9bb1aab623f5
+AEYE: Petra
 MACHINE: Betsy
-STREAM: DEFAULT
-RENDERED_AT: 2026-06-28T03:18:19.675Z
+STREAM: NERDKLE_BRAINBOOT
+RENDERED_AT: 2026-06-28T03:18:20.502Z
 SOURCE: Speaker deterministic bootloader
 SPEAKER_IS_ACTIVE_LLM: false
 SPEAKER_IS_AEYE: false
 SPEAKER_IS_PROCESS_AT_RUNTIME: false
 SQLITE_INDEX: /speaker/db/speaker.sqlite
-TOKEN_BUDGET: 6000
+TOKEN_BUDGET: 9000
 ---
-# Skybro@Betsy Bootpack
+# Petra@Betsy Bootpack
 
-PROFILE_ID: Skybro.Betsy
-BOOTPACK_RENDER_ID: 65d3e9f2-4b63-4a8c-817a-df814706517a
-AEYE: Skybro
+PROFILE_ID: Petra.Betsy
+BOOTPACK_RENDER_ID: 2d0a4195-ad0a-49b1-bab0-9bb1aab623f5
+AEYE: Petra
 MACHINE: Betsy
-STREAM: DEFAULT
-PROFILE_PATH: C:\speaker\bootloader\profiles\Skybro.Betsy.json
+STREAM: NERDKLE_BRAINBOOT
+PROFILE_PATH: C:\speaker\bootloader\profiles\Petra.Betsy.json
 SPEAKER_DB: C:\speaker\speaker.sqlite
-RENDERED_AT: 2026-06-28T03:18:19.675Z
+RENDERED_AT: 2026-06-28T03:18:20.502Z
 SPEAKER_IS_ACTIVE_LLM: false
 SPEAKER_IS_AEYE: false
 SPEAKER_IS_PROCESS_AT_RUNTIME: false
@@ -30,7 +30,7 @@ SPEAKER_IS_PROCESS_AT_RUNTIME: false
 
 Purpose: give each new Aeye session the same source-truth base without making Ben paste a reboot packet by hand.
 
-TARGET_AEYE: Skybro
+TARGET_AEYE: Petra
 TARGET_MACHINE: Betsy
 SOURCE_TRUTH_PLAN_URL: https://github.com/benleakwerkles/Werkles1/tree/source-truth/atlas-speaker-v0-20260627/source-truth-plan
 LOCAL_SOURCE_TRUTH_PLAN_ROOT: C:\Users\BenLeak\Documents\Codex\2026-06-20\to-swanson-doss-mission-branch-truth\work\source-truth-atlas-speaker-v0\source-truth-plan
@@ -336,8 +336,8 @@ Doss cannot currently see it under these checked paths:
 
 # CURRENT REPO STATE
 
-SNAPSHOT_ID: GIT_SNAPSHOT_2026-06-28T03:18:19Z
-GENERATED_AT: 2026-06-28T03:18:19Z
+SNAPSHOT_ID: GIT_SNAPSHOT_2026-06-28T03:18:20Z
+GENERATED_AT: 2026-06-28T03:18:20Z
 PRODUCER: Swanson@Doss
 SOURCE: local git clone
 TARGET_REPO: /c/Users/BenLeak/Desktop/github/Werkles
@@ -488,7 +488,7 @@ This file is static context for Skybro. It is not GitHub login, not a token, and
 
 ## Render Report
 
-- token_budget: 6000
+- token_budget: 9000
 - budget_mode: approximate_4_chars_per_token
 - receipts_included: 4
 - receipts_truncated_oldest: 0

@@ -16,6 +16,8 @@ const SPEAKER_DB_PATH = path.join(SPEAKER_ROOT, "speaker.sqlite");
 const BOOTPACK_PROFILE_DIR = path.join(SPEAKER_ROOT, "bootloader", "profiles");
 const BOOTPACK_TEMPLATE_DIR = path.join(SPEAKER_ROOT, "bootloader", "templates");
 const CURRENT_REPO_STATE_TEMPLATE_PATH = path.join(BOOTPACK_TEMPLATE_DIR, "CURRENT_REPO_STATE.md");
+const SOURCE_TRUTH_PLAN_ROOT = process.env.SOURCE_TRUTH_PLAN_ROOT || "C:\\Users\\BenLeak\\Documents\\Codex\\2026-06-20\\to-swanson-doss-mission-branch-truth\\work\\source-truth-atlas-speaker-v0\\source-truth-plan";
+const SOURCE_TRUTH_PLAN_URL = process.env.SOURCE_TRUTH_PLAN_URL || "https://github.com/benleakwerkles/Werkles1/tree/source-truth/atlas-speaker-v0-20260627/source-truth-plan";
 const BOOTPACK_OUT_DIR = path.join(SPEAKER_ROOT, "bootpacks", "out");
 const GIT_SNAPSHOT_SCRIPT_PATH = path.join(SPEAKER_ROOT, "bin", "git-snapshot.sh");
 const GIT_BASH_PATH = "C:\\Program Files\\Git\\bin\\bash.exe";
@@ -31,6 +33,7 @@ const DISALLOWED_STATUS_WORDS = new Set(["fixed", "done", "handled", "working", 
 const BOOTPACK_SQLITE_INDEX_LOCK_PATH = "/speaker/db/speaker.sqlite";
 const ALLOWED_BOOTPACK_PRIORITY_KEYS = new Set([
   "header",
+  "source_truth_brainboot",
   "active_topology_locks",
   "boundary_rules",
   "current_repo_state",
@@ -653,6 +656,93 @@ function renderCurrentRepoState() {
   ].join("\n");
 }
 
+function safeBrainbootFileRead(relativePath, maxChars = 2400) {
+  const absolutePath = path.join(SOURCE_TRUTH_PLAN_ROOT, relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    return {
+      relative_path: relativePath,
+      absolute_path: absolutePath,
+      exists: false,
+      sha256: null,
+      excerpt: "MISSING",
+    };
+  }
+
+  const raw = fs.readFileSync(absolutePath);
+  return {
+    relative_path: relativePath,
+    absolute_path: absolutePath,
+    exists: true,
+    byte_count: raw.length,
+    sha256: sha256Buffer(raw),
+    excerpt: raw.toString("utf8").trim().slice(0, maxChars),
+  };
+}
+
+function renderSourceTruthBrainboot(profile) {
+  const keyFiles = [
+    "README.md",
+    "BOOTPACK_SOURCE_TRUTH.md",
+    "SOURCE_OF_TRUTH_PLAN.md",
+    "BOOK_NERDKLE_GREAT_PLAN_CANONICAL_MAP.md",
+    "NEXT_PACKETS.md",
+    "MISSING_SOURCE_GAPS.md",
+    "ASSEMBLY_RECEIPT.json",
+  ];
+  const readbacks = keyFiles.map((file) => safeBrainbootFileRead(file, file.endsWith(".json") ? 1200 : 2200));
+  const missing = readbacks.filter((entry) => !entry.exists).map((entry) => entry.relative_path);
+  const lines = [
+    "## Session Nerdkle Brainboot",
+    "",
+    "Purpose: give each new Aeye session the same source-truth base without making Ben paste a reboot packet by hand.",
+    "",
+    `TARGET_AEYE: ${profile.aeye}`,
+    `TARGET_MACHINE: ${profile.machine}`,
+    `SOURCE_TRUTH_PLAN_URL: ${SOURCE_TRUTH_PLAN_URL}`,
+    `LOCAL_SOURCE_TRUTH_PLAN_ROOT: ${SOURCE_TRUTH_PLAN_ROOT}`,
+    `READBACK_STATUS: ${missing.length === 0 ? "SOURCE_TRUTH_READBACK_OK" : "SOURCE_TRUTH_READBACK_PARTIAL"}`,
+    "",
+    "Operating rules:",
+    "- Treat this Brainboot section as the session base point.",
+    "- Do not trust chat memory over repo-backed source-truth files.",
+    "- If memory conflicts with source-truth-plan files, the files win.",
+    "- If a required source is missing, report the gap instead of inventing continuity.",
+    "- Do not call this canonical main until the review branch is accepted and merged.",
+    "- Use SOURCE_MATERIAL_MANIFEST.json for evidence lookup instead of asking Ben to remember paths.",
+    "",
+    "Read order:",
+    "1. README.md",
+    "2. SOURCE_OF_TRUTH_PLAN.md",
+    "3. BOOK_NERDKLE_GREAT_PLAN_CANONICAL_MAP.md",
+    "4. NEXT_PACKETS.md",
+    "5. SOURCE_MATERIAL_MANIFEST.json when exact evidence is needed",
+    "",
+    "Source-truth file readback:",
+  ];
+
+  for (const entry of readbacks) {
+    lines.push(`- ${entry.relative_path}: ${entry.exists ? `FOUND sha256=${entry.sha256}` : "MISSING"}`);
+  }
+
+  if (missing.length) {
+    lines.push("");
+    lines.push(`BLOCKER: Missing Brainboot files: ${missing.join(", ")}`);
+  }
+
+  lines.push("");
+  lines.push("Key excerpts:");
+  for (const entry of readbacks.filter((item) => item.exists)) {
+    lines.push("");
+    lines.push(`### ${entry.relative_path}`);
+    lines.push("");
+    lines.push("```text");
+    lines.push(entry.excerpt);
+    lines.push("```");
+  }
+
+  return lines.join("\n");
+}
+
 function toGitBashPath(filePath) {
   const resolved = path.resolve(filePath);
   const drive = resolved.slice(0, 1).toLowerCase();
@@ -745,6 +835,7 @@ function renderBootpack(targetArg) {
 
   const sections = new Map();
   sections.set("header", renderHeader(profile, profilePath, renderId, startedAt));
+  sections.set("source_truth_brainboot", renderSourceTruthBrainboot(profile));
   sections.set("active_topology_locks", renderTopologyLocks(topologyLocks));
   sections.set("boundary_rules", renderBoundaryRules(boundaryRules));
   sections.set("current_repo_state", renderCurrentRepoState());

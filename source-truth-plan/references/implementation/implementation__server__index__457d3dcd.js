@@ -20,6 +20,7 @@ const GIT_BASH_PATH = process.env.GIT_BASH_PATH || "C:\\Program Files\\Git\\bin\
 const GIT_SNAPSHOT_SCRIPT_PATH = process.env.GIT_SNAPSHOT_SCRIPT_PATH || "C:\\speaker\\bin\\git-snapshot.sh";
 const CURRENT_REPO_STATE_PATH = process.env.CURRENT_REPO_STATE_PATH || "C:\\speaker\\bootloader\\templates\\CURRENT_REPO_STATE.md";
 const SKYBRO_BOOTPACK_PATH = process.env.SKYBRO_BOOTPACK_PATH || "C:\\speaker\\bootpacks\\out\\Skybro.Betsy.BOOTPACK.md";
+const PETRA_BOOTPACK_PATH = process.env.PETRA_BOOTPACK_PATH || "C:\\speaker\\bootpacks\\out\\Petra.Betsy.NERDKLE_BRAINBOOT.BOOTPACK.md";
 
 function existsWithHashTarget(filePath) {
   return {
@@ -417,7 +418,7 @@ fastify.get("/", async (_request, reply) => {
       <div class="bench-actions">
         <button type="button" id="ingest-inbox-button" data-testid="ingest-inbox-button">INGEST RAW RECEIPTS</button>
         <button type="button" id="refresh-repo-button" data-testid="refresh-repo-button">REFRESH REPO SNAPSHOT</button>
-        <button type="button" id="render-bootpack-button" data-testid="render-bootpack-button">RENDER SKYBRO BOOTPACK</button>
+        <button type="button" id="render-bootpack-button" data-testid="render-bootpack-button">SESSION NERDKLE BRAINBOOT</button>
       </div>
       <div id="operator-workbench-status" class="artifact-readback" data-testid="operator-workbench-status">
         <strong>Ready.</strong> Choose a safe muscle to produce a readback.
@@ -573,7 +574,9 @@ fastify.get("/", async (_request, reply) => {
       runWorkbenchAction("Repo snapshot refresh", "/v1/action/refresh_repo_state");
     });
     document.getElementById("render-bootpack-button").addEventListener("click", () => {
-      runWorkbenchAction("Skybro bootpack render", "/v1/action/render_bootpack", { target: "Skybro.Betsy" });
+      runWorkbenchAction("Session Nerdkle Brainboot", "/v1/action/render_brainboot", {
+        targets: ["Skybro.Betsy", "Petra.Betsy"]
+      });
     });
 
     function classifyStreamEvent(event) {
@@ -769,6 +772,59 @@ fastify.post("/v1/action/render_bootpack", async (request, reply) => {
       artifact: artifactPath ? fileReadback(artifactPath) : null,
       result,
       error: run.ok ? null : run.error,
+    });
+});
+
+fastify.post("/v1/action/render_brainboot", async (request, reply) => {
+  const requestedTargets = Array.isArray(request.body?.targets) ? request.body.targets : ["Skybro.Betsy", "Petra.Betsy"];
+  const targets = requestedTargets
+    .map((target) => String(target || "").trim())
+    .filter(Boolean);
+  if (targets.length === 0 || targets.length > 5) {
+    return reply.code(400).send({
+      status: "BRAINBOOT_RENDER_BLOCKED",
+      error: "targets must contain 1-5 Aeye.Machine values",
+    });
+  }
+
+  const results = [];
+  for (const target of targets) {
+    if (!/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(target)) {
+      results.push({
+        target,
+        status: "BOOTPACK_RENDER_BLOCKED",
+        error: "target must be Aeye.Machine",
+      });
+      continue;
+    }
+    const run = runSpeakerctlJson(["render-bootpack", target]);
+    const result = run.result || {
+      status: "SPEAKERCTL_OUTPUT_UNPARSEABLE",
+      stdout: run.stdout,
+    };
+    const artifactPath = result.output_path
+      || (target === "Skybro.Betsy" ? SKYBRO_BOOTPACK_PATH : null)
+      || (target === "Petra.Betsy" ? PETRA_BOOTPACK_PATH : null);
+    results.push({
+      target,
+      status: run.ok ? "BOOTPACK_RENDERED" : "BOOTPACK_RENDER_BLOCKED",
+      artifact_path: artifactPath,
+      artifact: artifactPath ? fileReadback(artifactPath) : null,
+      result,
+      error: run.ok ? null : run.error,
+    });
+  }
+
+  const blocked = results.filter((result) => result.status !== "BOOTPACK_RENDERED");
+  return reply
+    .code(blocked.length ? 409 : 200)
+    .header("cache-control", "no-store")
+    .send({
+      status: blocked.length ? "BRAINBOOT_RENDER_PARTIAL" : "BRAINBOOT_RENDERED",
+      targets,
+      results,
+      blocked,
+      rule: "Session Nerdkle Brainboot renders file-backed bootpacks from Speaker source-truth readback. It does not promote canonical state.",
     });
 });
 

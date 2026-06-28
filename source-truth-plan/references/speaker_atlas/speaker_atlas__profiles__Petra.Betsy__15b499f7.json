@@ -1,0 +1,16 @@
+{
+  "profile_id": "Petra.Betsy",
+  "aeye": "Petra",
+  "machine": "Betsy",
+  "stream": "NERDKLE_BRAINBOOT",
+  "token_budget": 9000,
+  "receipt_limit": 15,
+  "priority_order": [
+    "header",
+    "source_truth_brainboot",
+    "current_repo_state",
+    "active_topology_locks",
+    "boundary_rules",
+    "recent_artifact_receipts"
+  ]
+}

@@ -7,6 +7,7 @@ This local Speaker gate validates raw JSON receipts without using an LLM.
 ```powershell
 node C:\speaker\bin\speakerctl.js ingest C:\path\to\receipt.json
 node C:\speaker\bin\speakerctl.js render-bootpack Skybro.Betsy
+node C:\speaker\bin\speakerctl.js render-bootpack Petra.Betsy
 node C:\speaker\bin\speakerctl.js queue-apoptosis <receipt_id>
 node C:\speaker\bin\speakerctl.js export-apoptosis <queue_id>
 node C:\speaker\bin\speakerctl.js apply-apoptosis C:\path\to\apoptosis_patch.json C:\path\to\operator_approval_receipt.json
@@ -24,6 +25,9 @@ node C:\speaker\bin\speakerctl.js apply-apoptosis C:\path\to\apoptosis_patch.jso
   `C:\speaker\bootpacks\out\`.
 - Bootpack rendering follows the profile `priority_order` only; unknown priority
   keys are blockers, not guesses.
+- The `source_truth_brainboot` bootpack section reads the GitHub-backed
+  `source-truth-plan` and injects the Session Nerdkle Brainboot into each
+  rendered Aeye bootpack.
 - Apoptosis commands queue a receipt, export an Ender bundle, require a
   pre-written patch plus Operator Approval Receipt, and then write the
   `graveyard_ledger`.

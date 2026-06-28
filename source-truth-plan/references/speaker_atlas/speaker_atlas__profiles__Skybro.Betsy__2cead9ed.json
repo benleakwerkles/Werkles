@@ -1,0 +1,16 @@
+{
+  "profile_id": "Skybro.Betsy",
+  "aeye": "Skybro",
+  "machine": "Betsy",
+  "stream": "",
+  "token_budget": 6000,
+  "receipt_limit": 25,
+  "priority_order": [
+    "header",
+    "source_truth_brainboot",
+    "current_repo_state",
+    "active_topology_locks",
+    "boundary_rules",
+    "recent_artifact_receipts"
+  ]
+}

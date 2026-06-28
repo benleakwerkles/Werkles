@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T03:04:21.724Z",
+  "generated_at": "2026-06-28T03:18:25.997Z",
   "repository": "https://github.com/benleakwerkles/Werkles1.git",
   "branch": "source-truth/atlas-speaker-v0-20260627",
   "status": "GITHUB_REVIEW_BRANCH_NOT_CANONICAL",
@@ -8,7 +8,7 @@
     "book": 14,
     "nerdkle_nmclr": 27,
     "tinkerden_medulla": 11,
-    "speaker_atlas": 19,
+    "speaker_atlas": 22,
     "implementation": 15
   },
   "chatlog_index": {
@@ -605,9 +605,9 @@
       "category": "speaker_atlas",
       "source_path": "C:/speaker/README.md",
       "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__speaker__README__81a7ec4d.md",
-      "byte_count": 2159,
-      "sha256": "34c627b836ad5ab80413399331db5fc27acb3b0bd265284a4fc408d757b94c73",
-      "modified_time": "2026-06-27T21:03:28.557Z",
+      "byte_count": 2393,
+      "sha256": "880959aaf9c0bae7c23ac1dd120f5ea65fdb8dde2105aabd4158ce467577cf19",
+      "modified_time": "2026-06-28T03:16:35.212Z",
       "copied": true
     },
     {
@@ -650,9 +650,9 @@
       "category": "speaker_atlas",
       "source_path": "C:/speaker/bin/speakerctl.js",
       "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__bin__speakerctl__67b3880c.js",
-      "byte_count": 69197,
-      "sha256": "1ba4fbe5155934e58445e251062b43d78e32ceec849465d2f3fd11cf0ef4b1d9",
-      "modified_time": "2026-06-27T22:12:14.953Z",
+      "byte_count": 72675,
+      "sha256": "adb95294bd1ea584ec9bacfeb711ad777ae2df94c48d31314be369ab37f27657",
+      "modified_time": "2026-06-28T03:18:13.196Z",
       "copied": true
     },
     {
@@ -677,18 +677,45 @@
       "category": "speaker_atlas",
       "source_path": "C:/speaker/bootloader/templates/CURRENT_REPO_STATE.md",
       "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__templates__CURRENT_REPO_STATE__9082f1fb.md",
-      "byte_count": 6967,
-      "sha256": "1c01f30fd0974b659dda68e65a521e79ee1acbc752bd9e4efb72288c7c8efb5e",
-      "modified_time": "2026-06-27T22:00:38.828Z",
+      "byte_count": 5360,
+      "sha256": "9292abec7086325ed1faa20c5508950cc16bc8773f0d201d766892578999d71b",
+      "modified_time": "2026-06-28T03:18:21.106Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bootloader/profiles/Skybro.Betsy.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__profiles__Skybro.Betsy__2cead9ed.json",
+      "byte_count": 319,
+      "sha256": "cd300d2af382fde1adf96ac4e119936ad77d3a878d56de109b178a9f064c06bf",
+      "modified_time": "2026-06-28T03:15:29.428Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bootloader/profiles/Petra.Betsy.json",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__profiles__Petra.Betsy__15b499f7.json",
+      "byte_count": 334,
+      "sha256": "4b2d0ee75f431d2b05c8e8b652aa53c6b156597b9f6859f9f944e54b0adc8086",
+      "modified_time": "2026-06-28T03:15:29.429Z",
       "copied": true
     },
     {
       "category": "speaker_atlas",
       "source_path": "C:/speaker/bootpacks/out/Skybro.Betsy.BOOTPACK.md",
       "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__out__Skybro.Betsy.BOOTPACK__f8344054.md",
-      "byte_count": 10089,
-      "sha256": "0f5044481ab14c952cec280edcb1871a6128a3a907d250731884ac0136ed0f7f",
-      "modified_time": "2026-06-27T22:00:38.185Z",
+      "byte_count": 20730,
+      "sha256": "fc307610c0e2b9fd58e48131e397ca10ee62dd56c12f4a8f67586b7a0e40dfad",
+      "modified_time": "2026-06-28T03:18:20.419Z",
+      "copied": true
+    },
+    {
+      "category": "speaker_atlas",
+      "source_path": "C:/speaker/bootpacks/out/Petra.Betsy.NERDKLE_BRAINBOOT.BOOTPACK.md",
+      "repo_path": "source-truth-plan/references/speaker_atlas/speaker_atlas__out__Petra.Betsy.NERDKLE_BRAINBOOT.BOOTPACK__4da251ce.md",
+      "byte_count": 20744,
+      "sha256": "c5067b2bcdb62be210d87f34d51f6c307f0c74f7f03e8f57178dd3a6d496a814",
+      "modified_time": "2026-06-28T03:18:21.191Z",
       "copied": true
     },
     {
@@ -731,9 +758,9 @@
       "category": "implementation",
       "source_path": "C:/tinkarden/server/index.js",
       "repo_path": "source-truth-plan/references/implementation/implementation__server__index__457d3dcd.js",
-      "byte_count": 35998,
-      "sha256": "90830cc3160caf59074a17b105496413ec02d853e4522040d757e76845544e86",
-      "modified_time": "2026-06-28T02:47:27.060Z",
+      "byte_count": 38055,
+      "sha256": "524e2d5ab54f2d87faf53b1fd5d76a0f028ad1dfc962fda4da228f09f25cb325",
+      "modified_time": "2026-06-28T03:15:44.767Z",
       "copied": true
     },
     {
@@ -803,9 +830,9 @@
       "category": "implementation",
       "source_path": "C:/tinkarden/nervous_system/frictional_heat.json",
       "repo_path": "source-truth-plan/references/implementation/implementation__nervous_system__frictional_heat__a7814221.json",
-      "byte_count": 4606,
-      "sha256": "2f93bb2a0bb9613ec88f9683acc3456df5bdba6be92c691c95ba39e5c4378736",
-      "modified_time": "2026-06-28T03:04:19.827Z",
+      "byte_count": 4607,
+      "sha256": "b23099fe57c2ca8a8c33cd535fd879d0cf2a59cc8fd91740ab4a3e6a862f3289",
+      "modified_time": "2026-06-28T03:18:20.068Z",
       "copied": true
     },
     {

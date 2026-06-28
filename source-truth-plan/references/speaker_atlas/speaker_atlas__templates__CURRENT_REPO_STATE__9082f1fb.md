@@ -1,7 +1,7 @@
 # CURRENT REPO STATE
 
-SNAPSHOT_ID: GIT_SNAPSHOT_2026-06-27T22:00:38Z
-GENERATED_AT: 2026-06-27T22:00:38Z
+SNAPSHOT_ID: GIT_SNAPSHOT_2026-06-28T03:18:20Z
+GENERATED_AT: 2026-06-28T03:18:20Z
 PRODUCER: Swanson@Doss
 SOURCE: local git clone
 TARGET_REPO: /c/Users/BenLeak/Desktop/github/Werkles
@@ -26,6 +26,7 @@ origin	https://github.com/benleakwerkles/Werkles1.git (push)
 + book/architecture-stream-split-v0-20260627
   main
 + nerdkle/nmclr-proof-body-preserve-v0-20260627
+  preserve/werkles-pre-rebase-BIRD_0125-20260627T221543Z
 * snapshot/sally-good-werkles-2026-06-12
 + source-truth/atlas-speaker-v0-20260627
   remotes/origin/HEAD -> origin/main
@@ -102,50 +103,7 @@ origin	https://github.com/benleakwerkles/Werkles1.git (push)
  M package.json
  M scripts/foreman/autonomous-round-trip-lib.mjs
  M scripts/foreman/foreman-control-server.mjs
-?? NMCLR/
-?? app/api/tinkerden/
-?? app/soledash/
-?? app/tinkerden/
-?? book/
-?? data/
-?? foreman/MULE_ELIMINATION_MAP_v1.md
-?? foreman/NUGGETS_OF_WISDOM_TOP_25.md
-?? foreman/change-capsules/
-?? foreman/handoffs/inbox/AEYE_FEED_PACKET_0001_BIRDS_CARRY_MOMENTUM.md
-?? foreman/handoffs/outbox/FROM_MAKER_AEYE_FEED_PACKET_0001_RECEIPT.md
-?? foreman/handoffs/outbox/FROM_MAKER_EXECUTION_ASSEMBLER_V0_RECEIPT.md
-?? foreman/handoffs/outbox/TO_SPEAKER_VALIDATE_AEYE_FEED_PACKET_0001_BIRDS_DOCTRINE.md
-?? foreman/machines/DOSS_SLEEP_MWB_DISCONNECT_V1.md
-?? foreman/maker/
-?? foreman/nuggets_of_wisdom_top_25.json
-?? foreman/overseer/
-?? foreman/soledash/ACTIVE_TASK.json
-?? foreman/soledash/AUTOMATICA_APPROVALS.json
-?? foreman/soledash/CRAWLER_PEARLS.json
-?? foreman/soledash/FLEET_STATE.json
-?? foreman/soledash/MACHINE_HEALTH.json
-?? foreman/soledash/PROJECT_LOCKS.json
-?? foreman/soledash/SWATTER_EVENT_STREAM.json
-?? foreman/soledash/WORK_QUEUE.json
-?? foreman/soledash/actions/
-?? foreman/soledash/mobile/
-?? foreman/soledash/receipts/
-?? foreman/speaker/HYPOTHESIS_LIBRARY_v1.md
-?? foreman/speaker/RECOMMENDATION_CONSTITUTION_V1.md
-?? foreman/speaker/SPEAKER_DIAGNOSTIC_FLOW_v1.md
-?? foreman/speaker/SPEAKER_USER_1_PROTOCOL.md
-?? foreman/speaker/USER_QUALIFICATION_PROTOCOL_v1.md
-?? foreman/speaker/USER_QUALIFICATION_RUBRIC_v1.md
-?? foreman/wisdom/
 ?? logs/
-?? return-to-work.cmd
-?? scripts/foreman/crawler.js
-?? scripts/foreman/doss-disable-modern-standby.ps1
-?? scripts/foreman/packet-relay-ready-proof.mjs
-?? scripts/foreman/return-to-work.ps1
-?? scripts/foreman/start-receipt-crawler.ps1
-?? scripts/foreman/start-soledash-mobile-readonly.ps1
-?? scripts/wisdom-watcher.py
 ```
 
 ## Bootloader Note

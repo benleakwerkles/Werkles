@@ -1,16 +1,16 @@
 {
   "receipt_id": "SWANSON_DOSS_BOOK_NERDKLE_SOURCE_TRUTH_PLAN_ASSEMBLY",
-  "generated_at": "2026-06-28T03:04:21.724Z",
+  "generated_at": "2026-06-28T03:18:25.997Z",
   "status": "ARTIFACT",
   "repository": "https://github.com/benleakwerkles/Werkles1.git",
   "branch": "source-truth/atlas-speaker-v0-20260627",
   "plan_root": "source-truth-plan",
-  "files_copied": 86,
+  "files_copied": 89,
   "categories": {
     "book": 14,
     "nerdkle_nmclr": 27,
     "tinkerden_medulla": 11,
-    "speaker_atlas": 19,
+    "speaker_atlas": 22,
     "implementation": 15
   },
   "chatlog_index": {
