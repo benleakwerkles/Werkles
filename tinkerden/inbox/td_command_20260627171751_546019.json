@@ -1,0 +1,20 @@
+{
+  "schema": "tinkerden_command_packet_v0",
+  "packet_id": "td_command_20260627171751_546019",
+  "title": "TinkerDen command surface command",
+  "created_at": "2026-06-27T17:17:51.955Z",
+  "source": "TinkerDen@Betsy",
+  "target": "Dink@Betsy",
+  "target_machine": "Betsy",
+  "command": "FOOD_1 command surface first bite proof: return ACK if receiver read hash matches packet hash.",
+  "status": "PACKET_WRITTEN",
+  "packet_type": "COMMAND",
+  "required_return": "ACK / BLOCKER / ARTIFACT",
+  "proof_rule": "Receiver must read the packet file and match the sender-side SHA-256 file hash before ACK.",
+  "required_surfaces": {
+    "inbox": "tinkerden/inbox",
+    "receipts": "tinkerden/receipts",
+    "recommendation_cards": "tinkerden/recommendations/recommendation_cards.json",
+    "decision_ledger": "tinkerden/feedback/decision-ledger.jsonl"
+  }
+}

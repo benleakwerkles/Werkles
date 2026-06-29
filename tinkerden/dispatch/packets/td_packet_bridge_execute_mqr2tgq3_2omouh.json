@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mqr2tgq3_2omouh",
+    "created_at": "2026-06-23T20:07:51.531Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Promote Bridge to the default TinkerDen surface.",
+    "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "bridge_move_001",
+    "operator_selection": "MERGE",
+    "recommendation": "PROCEED",
+    "composite_score": 84,
+    "operator_reason": null,
+    "why_now": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+    "recommended_because": "It removes dashboard creep from the first screen and gives Ben one choice surface."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

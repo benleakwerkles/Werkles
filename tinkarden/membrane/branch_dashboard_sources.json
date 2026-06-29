@@ -1,0 +1,507 @@
+{
+  "generated_at": "2026-06-28T19:44:00-04:00",
+  "scan_scope": {
+    "repo_root": "C:/Users/Ben Leak/Desktop/github/Werkles",
+    "refs_scanned": 40,
+    "worktrees_scanned": 3,
+    "salvage_bundles_scanned": 2,
+    "current_checkout_surfaces_scanned": 13,
+    "commands_used": [
+      "git worktree list --porcelain",
+      "git for-each-ref --format refs/heads refs/remotes",
+      "git ls-tree -r --name-only <ref>",
+      "rg --files",
+      "rg -n dashboard source strings",
+      "Select-String salvage_queue diffs"
+    ]
+  },
+  "summary": {
+    "total_sources": 27,
+    "current_checkout": 13,
+    "git_refs": 9,
+    "worktrees": 3,
+    "salvage_bundles": 2,
+    "visual_references": 2
+  },
+  "sources": [
+    {
+      "id": "current_feral_membrane_flight_deck",
+      "title": "Feral Membrane / TinkerDen Flight Deck",
+      "source_type": "current_checkout",
+      "status": "LIVE_SURFACE",
+      "origin": "current dirty checkout",
+      "path": "tinkarden/membrane/app/page.tsx",
+      "route": "http://127.0.0.1:3339/",
+      "files_count": 23,
+      "positive_functionality": "Live membrane view, drift log, action conveyor, optional packets, Swanson relay placeholders, final assembly buttons, and momentum taps.",
+      "merge_question": "Keep as the merge staging shell, but stop treating it as the only source.",
+      "preview_status": "rendered_live",
+      "representative_files": [
+        "tinkarden/membrane/app/page.tsx",
+        "tinkarden/membrane/app/VelocityFlightDeck.tsx",
+        "tinkarden/membrane/app/FinalAssemblyWorkbench.tsx",
+        "tinkarden/membrane/app/TopThreeOptionalPackets.tsx",
+        "tinkarden/membrane/app/CommandDashRelay.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_bridge",
+      "title": "TinkerDen Bridge",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/page.tsx",
+      "route": "/tinkerden",
+      "files_count": 1,
+      "positive_functionality": "Current frontier, Top 3 Moves, command surface, receipt pickup, canonical receipt lane, and Human Gate selection that records no spawned action.",
+      "merge_question": "Bring the human-readable Top Three Moves and receipt pickup into the final membrane without hiding the gate semantics.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/page.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_mission_control",
+      "title": "TinkerDen Mission Control",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/mission-control/page.tsx",
+      "route": "/tinkerden/mission-control",
+      "files_count": 1,
+      "positive_functionality": "WHY surface: destination, source material, current frontier, success conditions, and non-goals.",
+      "merge_question": "Keep as the human orientation lane so the membrane is not only a status wall.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/mission-control/page.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_inbox",
+      "title": "TinkerDen Command Inbox",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/inbox/page.tsx",
+      "route": "/tinkerden/inbox",
+      "files_count": 2,
+      "positive_functionality": "File-backed command issue form, latest command packets, and answer proof lane.",
+      "merge_question": "Use as the button-success proof source for packet issue and return states.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/inbox/page.tsx",
+        "app/tinkerden/inbox/command-surface-client.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_receipts",
+      "title": "TinkerDen Receipts",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/receipts/page.tsx",
+      "route": "/tinkerden/receipts",
+      "files_count": 1,
+      "positive_functionality": "Returned ACK / BLOCKER / ARTIFACT receipts with latest return and receipt history.",
+      "merge_question": "Use this as the receipt drawer candidate, not a fake success strip.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/receipts/page.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_relay_proof",
+      "title": "TinkerDen Relay Proof",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/relay-proof/page.tsx",
+      "route": "/tinkerden/relay-proof",
+      "files_count": 1,
+      "positive_functionality": "Stable proof-chain route for command packet, thread receipt, returned answer, and source/destination flags.",
+      "merge_question": "Keep as the visible proof route for the response-back-to-origin problem.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/relay-proof/page.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_human_gates",
+      "title": "Active Human Gates",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/human-gates/page.tsx",
+      "route": "/tinkerden/human-gates",
+      "files_count": 1,
+      "positive_functionality": "Ben-only authority surface for active gate records and durable operator decisions.",
+      "merge_question": "Clarify this against the YubiKey expectation: YubiKey can prove identity, but this route records the operator decision.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/human-gates/page.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_intake",
+      "title": "TinkerDen Intake / Chat to Card",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/intake/page.tsx",
+      "route": "/tinkerden/intake",
+      "files_count": 2,
+      "positive_functionality": "Creates a TinkerDen packet card without hand-built markdown packet construction.",
+      "merge_question": "Keep the packet-card creation affordance if the final membrane needs operator packet drafting.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/intake/page.tsx",
+        "app/tinkerden/intake/tinkerden-intake-form.tsx"
+      ]
+    },
+    {
+      "id": "current_tinkerden_autopaste",
+      "title": "TinkerDen Packet Relay Copy Block",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/tinkerden/autopaste/page.tsx",
+      "route": "/tinkerden/autopaste",
+      "files_count": 3,
+      "positive_functionality": "Clipboard-ready Aeye packet relay blocks and autopaste event handling.",
+      "merge_question": "Use as the manual relay fallback when automated relay is unavailable.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/tinkerden/autopaste/page.tsx",
+        "app/tinkerden/autopaste/autopaste-client.tsx",
+        "app/api/tinkerden/autopaste/route.ts"
+      ]
+    },
+    {
+      "id": "current_thinkit_origin_dash",
+      "title": "ThinkIt Origin Dash",
+      "source_type": "current_checkout",
+      "status": "ROUTE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "app/thinkit/page.tsx",
+      "route": "/thinkit",
+      "files_count": 1,
+      "positive_functionality": "Question routing queue plus latest returned answer from ThinkIt-originated relays.",
+      "merge_question": "Keep as the return-to-origin witness once Swanson's relay page lands.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "app/thinkit/page.tsx"
+      ]
+    },
+    {
+      "id": "current_static_packet_launcher",
+      "title": "Static TinkerDen Packet Launcher",
+      "source_type": "current_checkout",
+      "status": "STATIC_PREVIEW",
+      "origin": "current dirty checkout",
+      "path": "public/tinkerden-packet-launcher.html",
+      "route": "/tinkerden-packet-launcher.html",
+      "files_count": 1,
+      "positive_functionality": "Standalone packet launcher HTML with artifact card and packet proof layout.",
+      "merge_question": "Keep as visual and interaction reference for a durable launcher card.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "public/tinkerden-packet-launcher.html"
+      ]
+    },
+    {
+      "id": "current_medulla_command_surface",
+      "title": "Medulla Command Surface V0",
+      "source_type": "current_checkout",
+      "status": "SUBSTRATE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "tinkarden/medulla_command_surface/MEDULLA_COMMAND_SURFACE_V0.md",
+      "route": null,
+      "files_count": 3,
+      "positive_functionality": "Command object, receipt event object, lifecycle states, proof boundary, and forbidden crossings.",
+      "merge_question": "Use for exact lifecycle language and receipt states in the final relay page.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "tinkarden/medulla_command_surface/MEDULLA_COMMAND_SURFACE_V0.md",
+        "tinkarden/medulla_command_surface/command_surface_schema.json",
+        "tinkarden/medulla_command_surface/receipt_event_schema.json"
+      ]
+    },
+    {
+      "id": "current_medulla_runtime",
+      "title": "Medulla Runtime",
+      "source_type": "current_checkout",
+      "status": "SUBSTRATE_SOURCE",
+      "origin": "current dirty checkout",
+      "path": "tinkarden/medulla/medulla.js",
+      "route": null,
+      "files_count": 1,
+      "positive_functionality": "Runtime substrate candidate for event circulation outside the visual membrane.",
+      "merge_question": "Inspect before merging any live relay action semantics.",
+      "preview_status": "source_indexed",
+      "representative_files": [
+        "tinkarden/medulla/medulla.js"
+      ]
+    },
+    {
+      "id": "ref_preserve_packet_engine_local",
+      "title": "Preserve TinkerDen Packet Engine / Wonka Den",
+      "source_type": "git_ref",
+      "status": "BRANCH_VARIANT",
+      "origin": "preserve/tinkerden-packet-engine-20260622",
+      "path": "git ref preserve/tinkerden-packet-engine-20260622",
+      "route": "/soledash when checked out",
+      "files_count": 249,
+      "positive_functionality": "Largest local branch source: Wonka Den metadata, DecisionSurface, workbench-first panel, Aeye loop, receipt drawer, relay cards, and command surface pieces.",
+      "merge_question": "Primary merge candidate for Swanson's functional relay page and packet/receipt plumbing.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/workbench-first-panel.tsx",
+        "components/soledash/receipt-drawer.tsx",
+        "app/api/soledash/v1/wonka-den/aeye-loop/route.ts",
+        "lib/soledash/aeye-inbox-v0/protocol.ts"
+      ]
+    },
+    {
+      "id": "ref_preview_wonka_safe_local",
+      "title": "Wonka Den Safe Preview",
+      "source_type": "git_ref",
+      "status": "BRANCH_VARIANT",
+      "origin": "preview/wonka-den-safe-preview-20260618",
+      "path": "git ref preview/wonka-den-safe-preview-20260618",
+      "route": "/soledash when checked out",
+      "files_count": 247,
+      "positive_functionality": "Safe executor preview branch with Wonka Den route, relay cards, command surface, and receipt UI material.",
+      "merge_question": "Compare against preserve branch for less-broken button success semantics.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/command-surface.tsx",
+        "components/soledash/duck-command-strip.tsx",
+        "components/soledash/receipt-drawer.tsx"
+      ]
+    },
+    {
+      "id": "ref_sally_good_salvage_local",
+      "title": "Sally Good Salvage Snapshot",
+      "source_type": "git_ref",
+      "status": "BRANCH_VARIANT",
+      "origin": "salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+      "path": "git ref salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+      "route": "/soledash when checked out",
+      "files_count": 87,
+      "positive_functionality": "Older SoleDash OS, mobile field command, options deck, automatics relay grid, and command/receipt routes.",
+      "merge_question": "Mine for the earlier positive functionality that felt live before the current breakage.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/soledash-dashboard.tsx",
+        "components/soledash/mobile-field-command.tsx",
+        "components/soledash/automatica-relay-grid.tsx"
+      ]
+    },
+    {
+      "id": "ref_sally_good_snapshot_local",
+      "title": "Sally Good Snapshot",
+      "source_type": "git_ref",
+      "status": "BRANCH_VARIANT",
+      "origin": "snapshot/sally-good-werkles-2026-06-12",
+      "path": "git ref snapshot/sally-good-werkles-2026-06-12",
+      "route": "/soledash when checked out",
+      "files_count": 87,
+      "positive_functionality": "Same Sally-good functional family captured as a named snapshot branch.",
+      "merge_question": "Use as a duplicate cross-check against salvage/betsy before deciding what dies.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/soledash-dashboard.tsx",
+        "components/soledash/command-surface.tsx",
+        "foreman/soledash/DECISION_SURFACE_CONTRACT.md"
+      ]
+    },
+    {
+      "id": "ref_origin_preserve_packet_engine",
+      "title": "Origin Preserve Packet Engine Mirror",
+      "source_type": "git_ref",
+      "status": "REMOTE_MIRROR",
+      "origin": "origin/preserve/tinkerden-packet-engine-20260622",
+      "path": "git ref origin/preserve/tinkerden-packet-engine-20260622",
+      "route": null,
+      "files_count": 249,
+      "positive_functionality": "Remote mirror of the preserve packet engine branch with the same large Wonka/SoleDash source set.",
+      "merge_question": "Keep as remote parity check for the primary preserve branch.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/workbench-first-panel.tsx",
+        "app/api/soledash/v1/wonka-den/aeye-loop/route.ts"
+      ]
+    },
+    {
+      "id": "ref_origin_preview_wonka_safe",
+      "title": "Origin Wonka Safe Preview",
+      "source_type": "git_ref",
+      "status": "REMOTE_MIRROR",
+      "origin": "origin/preview/wonka-den-safe-preview-20260618",
+      "path": "git ref origin/preview/wonka-den-safe-preview-20260618",
+      "route": null,
+      "files_count": 247,
+      "positive_functionality": "Remote Wonka safe preview with route and safe executor lineage.",
+      "merge_question": "Compare commit divergence before trusting local preview branch behavior.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/command-surface.tsx",
+        "components/soledash/duck-command-strip.tsx"
+      ]
+    },
+    {
+      "id": "ref_origin_sally_good_salvage",
+      "title": "Origin Sally Good Salvage Mirror",
+      "source_type": "git_ref",
+      "status": "REMOTE_MIRROR",
+      "origin": "origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+      "path": "git ref origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12",
+      "route": null,
+      "files_count": 87,
+      "positive_functionality": "Remote mirror of the Sally-good salvage branch.",
+      "merge_question": "Use as remote parity check before merging local salvage material.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/soledash-dashboard.tsx",
+        "components/soledash/mobile-field-command.tsx"
+      ]
+    },
+    {
+      "id": "ref_origin_sally_good_snapshot",
+      "title": "Origin Sally Good Snapshot",
+      "source_type": "git_ref",
+      "status": "REMOTE_MIRROR",
+      "origin": "origin/snapshot/sally-good-werkles-2026-06-12",
+      "path": "git ref origin/snapshot/sally-good-werkles-2026-06-12",
+      "route": null,
+      "files_count": 85,
+      "positive_functionality": "Remote snapshot of the older SoleDash Automatica relay-card surface.",
+      "merge_question": "Check differences against the local 87-file snapshot before deciding what dies.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "app/soledash/page.tsx",
+        "components/soledash/soledash-dashboard.tsx",
+        "components/soledash/automatica-relay-grid.tsx"
+      ]
+    },
+    {
+      "id": "worktree_salvage_betsy_sally_good",
+      "title": "Detached Worktree / Salvage Betsy Sally Good",
+      "source_type": "worktree",
+      "status": "WORKTREE_VARIANT",
+      "origin": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good",
+      "path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good",
+      "route": "worktree has .next/server/app/soledash/page.js",
+      "files_count": 97,
+      "positive_functionality": "Detached runnable-looking snapshot with built .next app artifacts, SoleDash page, state routes, packet routes, receipt routes, and mobile field command.",
+      "merge_question": "Use this as the strongest candidate for recovering working older behavior.",
+      "preview_status": "indexed_from_worktree",
+      "representative_files": [
+        ".next/server/app/soledash/page.js",
+        "app/soledash/page.tsx",
+        "app/api/soledash/v1/packet/route.ts",
+        "app/api/soledash/v1/automatica-relay/fire/route.ts",
+        "components/soledash/mobile-field-command.tsx"
+      ]
+    },
+    {
+      "id": "worktree_snapshot_sally_good",
+      "title": "Detached Worktree / Snapshot Sally Good",
+      "source_type": "worktree",
+      "status": "WORKTREE_VARIANT",
+      "origin": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/snapshot-sally-good",
+      "path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/snapshot-sally-good",
+      "route": "worktree has .next/server/app/soledash/page.js",
+      "files_count": 95,
+      "positive_functionality": "Detached snapshot with built .next app artifacts and similar SoleDash command/relay material.",
+      "merge_question": "Use as a second runnable-looking baseline for what worked before it broke.",
+      "preview_status": "indexed_from_worktree",
+      "representative_files": [
+        ".next/server/app/soledash/page.js",
+        "app/soledash/page.tsx",
+        "app/api/soledash/v1/state/route.ts",
+        "components/soledash/soledash-dashboard.tsx",
+        "components/soledash/options-deck.tsx"
+      ]
+    },
+    {
+      "id": "worktree_wonka_mood_reference",
+      "title": "Detached Worktree / Wonka Mood Reference",
+      "source_type": "worktree",
+      "status": "VISUAL_REFERENCE",
+      "origin": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25",
+      "path": "foreman/design/wonka_den_mood_preview.html",
+      "route": "static HTML in detached worktree",
+      "files_count": 2,
+      "positive_functionality": "Visual direction source: Wonka Den mood, physical desk/lamp workshop ideas, inspect-sheet pacing, and non-dashboard genre notes.",
+      "merge_question": "Reference for visual feel only; do not let it replace functional relay proof.",
+      "preview_status": "indexed_from_worktree",
+      "representative_files": [
+        "foreman/design/WONKA_DEN_MOOD_REFERENCE.md",
+        "foreman/design/wonka_den_mood_preview.html"
+      ]
+    },
+    {
+      "id": "ref_origin_goop_wonka_mood",
+      "title": "Origin Wonka Mood Reference",
+      "source_type": "git_ref",
+      "status": "VISUAL_REFERENCE",
+      "origin": "origin/cursor/wonka-den-mood-reference-9b25",
+      "path": "git ref origin/cursor/wonka-den-mood-reference-9b25",
+      "route": null,
+      "files_count": 2,
+      "positive_functionality": "Remote branch containing the Wonka mood reference and draft preview shell.",
+      "merge_question": "Keep as remote visual provenance for the detached mood worktree.",
+      "preview_status": "indexed_from_git_ref",
+      "representative_files": [
+        "foreman/design/WONKA_DEN_MOOD_REFERENCE.md",
+        "foreman/design/wonka_den_mood_preview.html"
+      ]
+    },
+    {
+      "id": "salvage_queue_preserve_20260627204538",
+      "title": "Salvage Bundle 20260627204538",
+      "source_type": "salvage_bundle",
+      "status": "SALVAGE_BUNDLE",
+      "origin": "tinkarden/intake/salvage_queue",
+      "path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.diff",
+      "route": null,
+      "files_count": 5,
+      "positive_functionality": "Patch bundle for preserve branch containing TinkerDen return cards, receipt pickup, relay choice, Wonka Den metadata, and workbench-first CSS.",
+      "merge_question": "Read as an actionable recovery patch bundle, not merely archive clutter.",
+      "preview_status": "indexed_from_salvage_diff",
+      "representative_files": [
+        "salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.json",
+        "salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.diff",
+        "salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.status.txt",
+        "salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.THUFIR_VALIDATION_REQUEST.md"
+      ]
+    },
+    {
+      "id": "salvage_queue_preserve_20260627204400",
+      "title": "Salvage Bundle 20260627204400",
+      "source_type": "salvage_bundle",
+      "status": "SALVAGE_BUNDLE",
+      "origin": "tinkarden/intake/salvage_queue",
+      "path": "tinkarden/intake/salvage_queue/salvage_20260627204400_preserve-tinkerden-packet-engine-20260622.diff",
+      "route": null,
+      "files_count": 5,
+      "positive_functionality": "Earlier preserve branch salvage capture with nearly the same Wonka/TinkerDen recovery material.",
+      "merge_question": "Use for diff comparison against the newer salvage bundle before final keep/die calls.",
+      "preview_status": "indexed_from_salvage_diff",
+      "representative_files": [
+        "salvage_20260627204400_preserve-tinkerden-packet-engine-20260622.json",
+        "salvage_20260627204400_preserve-tinkerden-packet-engine-20260622.diff",
+        "salvage_20260627204400_preserve-tinkerden-packet-engine-20260622.status.txt",
+        "salvage_20260627204400_preserve-tinkerden-packet-engine-20260622.THUFIR_VALIDATION_REQUEST.md"
+      ]
+    }
+  ]
+}

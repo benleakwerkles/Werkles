@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mqrfbw04_gkkt9b",
+    "created_at": "2026-06-24T01:58:06.532Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Add more recommendation metrics before decisions.",
+    "why": "There is pressure to make the chooser feel smarter.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "bridge_move_003",
+    "operator_selection": "KEEP",
+    "recommendation": "KILL",
+    "composite_score": 28,
+    "operator_reason": null,
+    "why_now": "There is pressure to make the chooser feel smarter.",
+    "recommended_because": "The current visible sub-scores are enough for a V0 command choice; extra scoring now risks AI hope and dashboard bloat."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "destination_directory_v0",
+  "generated_by": "Dink@Betsy",
+  "generated_at": "2026-06-19T00:00:00.000Z",
+  "source": "foreman/messages/DESTINATION_DIRECTORY.json",
+  "routing_rule": "Packet launchers may only target entries where verified is true and status is available. Free-text routing is not allowed.",
+  "destinations": [
+    {
+      "id": "dink_betsy_aeye_inbox_v0",
+      "label": "Dink@Betsy",
+      "aeye": "Dink",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Dink@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    },
+    {
+      "id": "maker_betsy_aeye_inbox_v0",
+      "label": "Maker@Betsy",
+      "aeye": "Maker",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Maker@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    },
+    {
+      "id": "skybro_betsy_aeye_inbox_v0",
+      "label": "Skybro@Betsy",
+      "aeye": "Skybro",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Skybro@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    },
+    {
+      "id": "bean_betsy_aeye_inbox_v0",
+      "label": "Bean@Betsy",
+      "aeye": "Bean",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Bean@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    },
+    {
+      "id": "ender_betsy_aeye_inbox_v0",
+      "label": "Ender@Betsy",
+      "aeye": "Ender",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Ender@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    },
+    {
+      "id": "thufir_betsy_aeye_inbox_v0",
+      "label": "Thufir@Betsy",
+      "aeye": "Thufir",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Thufir@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    },
+    {
+      "id": "petra_betsy_aeye_inbox_v0",
+      "label": "Petra@Betsy",
+      "aeye": "Petra",
+      "machine": "Betsy",
+      "destination_type": "aeye_inbox_v0",
+      "verified": true,
+      "status": "available",
+      "evidence": "Aeye inbox v0 local filesystem custody accepts Petra@Betsy and returns linked ACK receipts. Independent model execution is not implied.",
+      "outbox_dir": "foreman/messages/outbox",
+      "inbox_dir": "foreman/messages/inbox",
+      "receipt_dir": "foreman/messages/receipts"
+    }
+  ]
+}

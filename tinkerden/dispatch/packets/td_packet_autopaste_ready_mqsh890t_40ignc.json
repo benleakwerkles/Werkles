@@ -1,0 +1,49 @@
+{
+  "schema": "tinkerden_bridge_autopaste_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_autopaste_ready_mqsh890t_40ignc",
+    "created_at": "2026-06-24T19:39:02.188Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Fix PowerToys Workspaces failure.",
+    "why": "PowerToys WorkspacesLauncher.exe requires a workspace id, but TinkerPit was launching it with no id.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Target focused. Paste/send now.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "AUTOPASTE_READY"
+  },
+  "bridge_card": {
+    "card_id": "powertoys_workspaces_fix_probe",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 80,
+    "operator_reason": null,
+    "why_now": "PowerToys WorkspacesLauncher.exe requires a workspace id, but TinkerPit was launching it with no id.",
+    "recommended_because": "Use PowerToys.WorkspacesLauncherUI.exe as the configured no-id Workspaces target, then stop with clipboard loaded."
+  },
+  "workspace_target": {
+    "id": "maker_betsy_powertoys_workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces UI",
+    "target": "C:\\Users\\Ben Leak\\AppData\\Local\\PowerToys\\PowerToys.WorkspacesLauncherUI.exe",
+    "mode": "process",
+    "args": [],
+    "window_title": "",
+    "configured": true
+  },
+  "autopaste_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: Fix PowerToys Workspaces failure.\n\nOBJECTIVE:\nUse PowerToys.WorkspacesLauncherUI.exe as the configured no-id Workspaces target, then stop with clipboard loaded.\n\nPACKET:\npacket_id: td_packet_autopaste_ready_mqsh890t_40ignc\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 80\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nPowerToys WorkspacesLauncher.exe requires a workspace id, but TinkerPit was launching it with no id.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces UI (configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "AUTOPASTE_READY",
+  "operator_instruction": "Target focused. Paste/send now.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

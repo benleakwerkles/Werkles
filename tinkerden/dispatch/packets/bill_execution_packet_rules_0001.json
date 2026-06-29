@@ -1,0 +1,44 @@
+{
+  "schema": "tinkerden_dispatch_packet_v0",
+  "message_type": "rule_packet",
+  "courier_class": "Birdeyes",
+  "packet_id": "BILL_EXECUTION_PACKET_RULES_0001",
+  "packet": {
+    "packet_id": "BILL_EXECUTION_PACKET_RULES_0001",
+    "created_at": "2026-06-26T08:07:32.251Z"
+  },
+  "title": "BILL_EXECUTION_PACKET_RULES",
+  "created_at": "2026-06-26T08:07:32.251Z",
+  "source": "Ben@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "UNASSIGNED_MACHINE",
+  "action": "REGISTER_BILL_EXECUTION_RULES",
+  "packet_type": "bill_execution_policy",
+  "risk_tier": "FRACTURE",
+  "status": "BROADCAST_READY",
+  "receipt_slot": "data/tinkerden/receipts/receipt_bill_execution_packet_rules_0001.json",
+  "internal_destination": "TinkerDen Intake",
+  "mission": "Execute only after packet is complete.",
+  "objective": "Prevent bill-payment mule work without letting Aeyes improvise financial, legal, accounting, or entity-classification decisions.",
+  "task": "Before bill execution, verify packet completeness and apply the hard DO NOT and REQUIRED RECEIPT rules.",
+  "return": [
+    "confirmation number",
+    "timestamp",
+    "amount paid",
+    "pay-from account",
+    "vendor balance after payment",
+    "screenshot or PDF if available",
+    "blocker if blocked"
+  ],
+  "rules": [
+    "Do not change autopay without explicit Ben approval.",
+    "Do not pay from wrong entity account.",
+    "Do not classify 1954 Castleway as 100% business without allocation.",
+    "Do not classify shared software as 100% business without proration.",
+    "Do not mark paid without receipt.",
+    "If blocked, return blocker, not silence."
+  ],
+  "doctrine_path": "cockpit/doctrines/bill_execution_packet_rules.md",
+  "source_text_path": "data/tinkerden/outbox/bill_execution_packet_rules_0001.md",
+  "structured_packet_path": "data/tinkerden/outbox/bill_execution_packet_rules_0001.json"
+}

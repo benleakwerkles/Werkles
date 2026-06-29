@@ -1,0 +1,72 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_operator_decision_summary_20260628191957_adbfa5",
+  "idea_id": "operator_decision_summary",
+  "title": "Operator decision summary",
+  "status": "DECISION_SUMMARY_BUILT",
+  "output": "Decision coverage across merge, keep, and let-die lanes.",
+  "why": "The operator needs to see what has been chosen and what is still open.",
+  "next": "Use this before Swanson consumes the handoff manifest.",
+  "payload": {
+    "decision_coverage": [
+      {
+        "module_id": "thinkit-origin-return",
+        "title": "Origin return receipt",
+        "current_state": "KEEP",
+        "decision": "UNDECIDED",
+        "decision_path": null,
+        "action_required": true
+      },
+      {
+        "module_id": "tinkerden-command-receipts",
+        "title": "Command intake and receipts",
+        "current_state": "KEEP",
+        "decision": "UNDECIDED",
+        "decision_path": null,
+        "action_required": true
+      },
+      {
+        "module_id": "wonka-aeye-loop",
+        "title": "Aeye loop file transport",
+        "current_state": "KEEP",
+        "decision": "UNDECIDED",
+        "decision_path": null,
+        "action_required": true
+      },
+      {
+        "module_id": "feral-membrane-motion",
+        "title": "Optional packets and motion",
+        "current_state": "KEEP",
+        "decision": "UNDECIDED",
+        "decision_path": null,
+        "action_required": true
+      },
+      {
+        "module_id": "swanson-attached-relay",
+        "title": "Functional relay attachment",
+        "current_state": "ATTACHED",
+        "decision": "UNDECIDED",
+        "decision_path": null,
+        "action_required": true
+      }
+    ],
+    "open_decisions": [
+      "thinkit-origin-return",
+      "tinkerden-command-receipts",
+      "wonka-aeye-loop",
+      "feral-membrane-motion",
+      "swanson-attached-relay"
+    ],
+    "decision_log_path": "tinkarden/membrane/final_assembly_decisions.jsonl"
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_operator_decision_summary_20260628191957_adbfa5.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T19:19:57.575Z",
+  "sha256": "86557caae20fcf540e4fc30989f2e867bc4b9f09ffce29a29bdb646cb85159a6"
+}

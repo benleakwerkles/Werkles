@@ -1,0 +1,23 @@
+{
+  "schema": "feral_membrane_momentum_tap_v0",
+  "event_type": "momentum_tap",
+  "tap_id": "momentum_tap_20260628095807_ca3310",
+  "capsule_id": "receipts/raw/inbox/BIRD_0093_WATCH_PROBE_RECEIPT_2.json",
+  "origin": "Dink@Betsy",
+  "source_path": "receipts/raw/inbox/BIRD_0093_WATCH_PROBE_RECEIPT_2.json",
+  "target_mutations": [
+    "receipts/raw/inbox/BIRD_0093_WATCH_PROBE_RECEIPT_2.json"
+  ],
+  "previous_status": "AWAITING_MOMENTUM_TAP",
+  "status": "MOMENTUM_TAPPED",
+  "awaiting": "SWANSON_FUNCTIONAL_RELAY_MERGE",
+  "note": "Operator momentum tap recorded. No target file mutation performed by this tap.",
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "pending_until": "functional relay page exists",
+    "tap_log_path": "tinkarden/membrane/momentum_taps.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-28T09:58:07.964Z",
+  "capsule_hash": "7185689223a6a225f204bc2dcb43b1c75f83d75caf171d2e3598725a5d5cc0e9"
+}

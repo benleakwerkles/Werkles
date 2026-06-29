@@ -1,0 +1,127 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_button_relay_smoke_pack_20260628231155_d3193b",
+  "idea_id": "button_relay_smoke_pack",
+  "title": "Button relay smoke pack",
+  "status": "BUTTON_RELAY_SMOKE_PACK_BUILT",
+  "output": "A concrete smoke-test matrix for every visible action button and the receipt it should write.",
+  "why": "Buttons must visibly relay success or blocker state; decorative buttons are not enough.",
+  "next": "Run these checks before trusting the merged Command Dash or Swanson page.",
+  "payload": {
+    "smoke_pack_scope": "Visible Feral Membrane and Swanson relay controls only.",
+    "button_contracts": [
+      {
+        "surface": "Version Preview Wall",
+        "buttons": [
+          "KEEP",
+          "STEAL PARTS",
+          "LET DIE"
+        ],
+        "endpoint": "/api/version-preview/decision",
+        "writes": [
+          "tinkarden/membrane/version_preview_decisions/*.json",
+          "tinkarden/membrane/version_preview_decisions.jsonl",
+          "speaker/logs/interface-notify.jsonl"
+        ],
+        "success_signal": "<version title>: <decision> saved.",
+        "blocker_signal": "BLOCKER: <error>"
+      },
+      {
+        "surface": "Final Assembly Decision Previews",
+        "buttons": [
+          "Merge",
+          "Keep",
+          "Let Die"
+        ],
+        "endpoint": "/api/final-assembly/decision",
+        "writes": [
+          "tinkarden/membrane/final_assembly_decisions/{module_id}.json",
+          "tinkarden/membrane/final_assembly_decisions.jsonl",
+          "speaker/logs/interface-notify.jsonl"
+        ],
+        "success_signal": "Receipt written: tinkarden/membrane/final_assembly_decisions/{module_id}.json",
+        "blocker_signal": "Decision receipt failed."
+      },
+      {
+        "surface": "G / Next Three Builds",
+        "buttons": [
+          "Build receipt",
+          "Rebuild receipt"
+        ],
+        "endpoint": "/api/final-assembly/next-best-idea",
+        "writes": [
+          "tinkarden/membrane/next_best_ideas/*.json",
+          "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+          "speaker/logs/interface-notify.jsonl"
+        ],
+        "success_signal": "Built: tinkarden/membrane/next_best_ideas/*.json",
+        "blocker_signal": "Next-three build failed."
+      },
+      {
+        "surface": "Top 3 Optional Packets",
+        "buttons": [
+          "Create optional packet"
+        ],
+        "endpoint": "/api/top-three/optional-packet",
+        "writes": [
+          "tinkarden/membrane/optional_packets/*.json",
+          "tinkarden/membrane/optional_packets.jsonl",
+          "speaker/logs/interface-notify.jsonl"
+        ],
+        "success_signal": "Optional packet receipt path should be visible on the card.",
+        "blocker_signal": "Optional packet creation error should be visible on the card."
+      },
+      {
+        "surface": "Transaction Conveyor Belt",
+        "buttons": [
+          "Momentum Tap"
+        ],
+        "endpoint": "/api/velocity/momentum-tap",
+        "writes": [
+          "tinkarden/membrane/momentum_taps/*.json",
+          "tinkarden/membrane/momentum_taps.jsonl",
+          "speaker/logs/interface-notify.jsonl"
+        ],
+        "success_signal": "Momentum tapped",
+        "blocker_signal": "Momentum tap blocker should name the failed write."
+      },
+      {
+        "surface": "Swanson Functional Relay",
+        "buttons": [
+          "KEEP",
+          "KILL",
+          "STEAL",
+          "MERGE"
+        ],
+        "endpoint": "/api/swanson/functional-relay",
+        "writes": [
+          "tinkerden/dispatch/packets/*.json",
+          "data/tinkerden/receipts/*.json",
+          "tinkarden/membrane/swanson_functional_relays.jsonl",
+          "speaker/logs/interface-notify.jsonl"
+        ],
+        "success_signal": "PACKET_RELAY_COMPLETE with no_auto_send=true.",
+        "blocker_signal": "KEEP_KILL_STEAL_MERGE_REQUIRED or route error."
+      }
+    ],
+    "current_log_counts": {
+      "version_preview_decisions": 0,
+      "final_assembly_decisions": 0,
+      "optional_packets": 3,
+      "momentum_taps": 7,
+      "swanson_relays": 1
+    },
+    "pass_rule": "A button passes only when the UI shows success and a durable receipt/log record exists.",
+    "merge_boundary": "Smoke tests cover dashboard/site controls only. No unrelated source material belongs in this action lane."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_button_relay_smoke_pack_20260628231155_d3193b.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T23:11:55.704Z",
+  "sha256": "76ff21480fa17c8f646a93adedc7625a8209dbedf6be897a201b33f2bb0c58ee"
+}

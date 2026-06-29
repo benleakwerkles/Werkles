@@ -1,0 +1,14 @@
+{
+  "name": "@werkles/tinkerden-medulla-v0",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Medulla V0 chokidar loop for TinkerDen inbox packets.",
+  "type": "commonjs",
+  "scripts": {
+    "medulla": "node medulla.js watch",
+    "medulla:test": "node medulla.js test"
+  },
+  "dependencies": {
+    "chokidar": "^5.0.0"
+  }
+}

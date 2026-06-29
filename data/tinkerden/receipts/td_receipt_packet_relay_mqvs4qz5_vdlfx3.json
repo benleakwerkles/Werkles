@@ -1,0 +1,33 @@
+{
+  "schema": "tinkerden_packet_relay_receipt_v1",
+  "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+  "relay_id": "td_relay_mqvs4qz5_vt4bzy",
+  "receipt_id": "td_receipt_packet_relay_mqvs4qz5_vdlfx3",
+  "linked_packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+  "mission": "Promote Bridge to the default TinkerDen surface.",
+  "producer": "PacketRelaySystem@Betsy",
+  "status_guess": "RECEIPT_ASSIMILATED",
+  "proof_reference": "data/tinkerden/receipts/td_receipt_packet_relay_mqvs4qz5_vdlfx3.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs4qz5_82qlyz.json",
+  "relay_event_path": "data/organism/events.jsonl",
+  "timestamp": "2026-06-27T03:07:33.140Z",
+  "receipt": {
+    "receipt_id": "td_receipt_packet_relay_mqvs4qz5_vdlfx3",
+    "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+    "returned_by": "PacketRelaySystem@Betsy",
+    "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs4qz5_82qlyz.json",
+    "summary": "Packet Relay System completed relay td_relay_mqvs4qz5_vt4bzy for td_packet_relay_ready_mqvs4qz5_82qlyz",
+    "proof": "Packet Relay event td_relay_mqvs4qz5_vt4bzy landed with sha256 ef3e558dbca9aab212f1d8b8e63dd878ef68682c271d057ab19b431dbf8fb3a5.",
+    "blockers": "none",
+    "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+    "timestamp": "2026-06-27T03:07:33.140Z"
+  },
+  "evidence": {
+    "relay_event_type": "packet_relay_ready",
+    "relay_status": "PACKET_RELAY_COMPLETE",
+    "relay_timestamp": "2026-06-27T03:07:33.140Z",
+    "packet_sha256": "ef3e558dbca9aab212f1d8b8e63dd878ef68682c271d057ab19b431dbf8fb3a5",
+    "packet_size_bytes": 3020,
+    "operator_selection": "KEEP"
+  }
+}

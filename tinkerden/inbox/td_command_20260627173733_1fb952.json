@@ -1,0 +1,24 @@
+{
+  "schema": "tinkerden_command_packet_v0",
+  "packet_id": "td_command_20260627173733_1fb952",
+  "title": "TinkerDen command surface command",
+  "created_at": "2026-06-27T17:37:33.653Z",
+  "source": "TinkerDen@Betsy",
+  "target": "Dink@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "destination_id": "dink_betsy_aeye_inbox_v0",
+  "destination_type": "aeye_inbox_v0",
+  "internal_destination": "foreman/messages/inbox",
+  "command": "G1 API smoke: command surface destination selector must produce ACK receipt.",
+  "status": "PACKET_WRITTEN",
+  "packet_type": "COMMAND",
+  "required_return": "ACK / BLOCKER / ARTIFACT",
+  "proof_rule": "Receiver must read the packet file and match the sender-side SHA-256 file hash before ACK.",
+  "required_surfaces": {
+    "inbox": "tinkerden/inbox",
+    "receipts": "tinkerden/receipts",
+    "recommendation_cards": "tinkerden/recommendations/recommendation_cards.json",
+    "decision_ledger": "tinkerden/feedback/decision-ledger.jsonl"
+  }
+}

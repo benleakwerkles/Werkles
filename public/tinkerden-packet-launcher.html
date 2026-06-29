@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TinkerDen Packet Launcher</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #10151b;
+        color: #edf4f8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 10% 0%, rgba(232, 168, 0, 0.18), transparent 34%),
+          linear-gradient(160deg, #111820 0%, #241a14 56%, #10151b 100%);
+      }
+
+      main {
+        width: min(1120px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 32px 0;
+        display: grid;
+        gap: 16px;
+      }
+
+      header {
+        display: grid;
+        gap: 6px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: #e8a800;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(40px, 8vw, 76px);
+        line-height: 0.96;
+        color: #f3dcc0;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 0;
+        color: #cdd9e2;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .launcher {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        border: 2px solid rgba(232, 168, 0, 0.82);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(255, 236, 210, 0.1), rgba(0, 0, 0, 0.2)),
+          rgba(0, 0, 0, 0.24);
+        box-shadow: 0 20px 44px rgba(0, 0, 0, 0.36);
+      }
+
+      .callout {
+        width: fit-content;
+        margin: 0;
+        padding: 8px 10px;
+        border: 1px solid rgba(126, 255, 176, 0.58);
+        border-radius: 8px;
+        color: #f4fff8;
+        background: rgba(8, 32, 24, 0.64);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .packet-grid,
+      .status-grid,
+      .receipt-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+      }
+
+      .status-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .receipt-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cell {
+        min-width: 0;
+        padding: 10px;
+        border: 1px solid rgba(143, 212, 255, 0.38);
+        border-radius: 8px;
+        background: rgba(8, 18, 28, 0.58);
+      }
+
+      .status-grid .cell,
+      .receipt-grid .cell {
+        border-color: rgba(126, 255, 176, 0.38);
+        background: rgba(4, 24, 16, 0.5);
+      }
+
+      dt {
+        margin: 0;
+        color: #8fd4ff;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      dd {
+        margin: 4px 0 0;
+        color: #f4fbff;
+        font-size: 14px;
+        font-weight: 850;
+        line-height: 1.3;
+        overflow-wrap: break-word;
+      }
+
+      label {
+        color: #8fd4ff;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid rgba(232, 168, 0, 0.54);
+        background: #081018;
+        color: #f3dcc0;
+        font: inherit;
+        line-height: 1.45;
+      }
+
+      select {
+        min-height: 48px;
+        cursor: pointer;
+      }
+
+      textarea {
+        min-height: 92px;
+        resize: vertical;
+      }
+
+      textarea[readonly] {
+        border-color: rgba(143, 212, 255, 0.46);
+        color: #f4fbff;
+      }
+
+      .directory-picker {
+        display: grid;
+        gap: 6px;
+      }
+
+      .send-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(190px, 260px);
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      button {
+        min-height: 92px;
+        border: 2px solid rgba(126, 255, 176, 0.95);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(96, 226, 145, 0.68), rgba(33, 136, 77, 0.82)),
+          #0a321f;
+        color: #fff;
+        font-size: clamp(18px, 3vw, 24px);
+        font-weight: 950;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.72;
+      }
+
+      .receipt-grid[hidden] {
+        display: none;
+      }
+
+      .error {
+        margin: 0;
+        padding: 10px;
+        border: 1px solid rgba(255, 128, 128, 0.44);
+        border-radius: 8px;
+        background: rgba(80, 10, 10, 0.25);
+        color: #ffc9c9;
+      }
+
+      .error[hidden] {
+        display: none;
+      }
+
+      code {
+        font-family: Consolas, "SFMono-Regular", monospace;
+      }
+
+      @media (max-width: 760px) {
+        .packet-grid,
+        .status-grid,
+        .receipt-grid,
+        .send-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Wonka Den - TinkerDen</p>
+        <h1>Packet Launcher</h1>
+        <p class="lead">
+          One approval writes the packet to a verified directory destination and returns an arrival receipt on screen.
+        </p>
+      </header>
+
+      <section class="launcher" aria-label="TinkerDen Packet Launcher">
+        <p class="callout">Destination Directory - verified targets only</p>
+
+        <dl class="packet-grid" aria-label="TinkerDen artifact card">
+          <div class="cell">
+            <dt>artifact</dt>
+            <dd>THE_GREAT_WORK_V0_2.md</dd>
+          </div>
+          <div class="cell">
+            <dt>source</dt>
+            <dd>foreman/source_material/THE_GREAT_WORK_V0_2.md</dd>
+          </div>
+          <div class="cell">
+            <dt>timestamp</dt>
+            <dd>2026-06-19T16:42:15.5850182-04:00</dd>
+          </div>
+          <div class="cell">
+            <dt>status</dt>
+            <dd>EXISTS</dd>
+          </div>
+        </dl>
+
+        <dl class="packet-grid" aria-label="First packet card">
+          <div class="cell">
+            <dt>from</dt>
+            <dd>Dink@Betsy</dd>
+          </div>
+          <div class="cell">
+            <dt>mission</dt>
+            <dd>CREATE_MASTER_PLAN_MD</dd>
+          </div>
+          <div class="cell">
+            <dt>target</dt>
+            <dd id="target-label">Loading Destination Directory</dd>
+          </div>
+          <div class="cell">
+            <dt>destination</dt>
+            <dd id="destination-type">Loading</dd>
+          </div>
+          <div class="cell">
+            <dt>directory</dt>
+            <dd id="directory-source">foreman/messages/DESTINATION_DIRECTORY.json</dd>
+          </div>
+          <div class="cell">
+            <dt>verified</dt>
+            <dd id="directory-count">Loading verified destinations</dd>
+          </div>
+          <div class="cell">
+            <dt>artifact</dt>
+            <dd>WERKLES_MASTER_PLAN_V1.md</dd>
+          </div>
+        </dl>
+
+        <div class="directory-picker">
+          <label for="destination-select">Verified destination</label>
+          <select id="destination-select" disabled>
+            <option>Loading Destination Directory...</option>
+          </select>
+        </div>
+
+        <div class="send-row">
+          <textarea id="payload" readonly>MISSION: CREATE_MASTER_PLAN_MD
+Artifact: WERKLES_MASTER_PLAN_V1.md</textarea>
+          <button id="send" type="button" disabled>Approve / Send</button>
+        </div>
+
+        <dl class="status-grid" aria-label="TinkerDen packet proof">
+          <div class="cell">
+            <dt>packet written</dt>
+            <dd id="written">WAITING - Destination Directory loading</dd>
+          </div>
+          <div class="cell">
+            <dt>target receives</dt>
+            <dd id="received">READY - not sent yet</dd>
+          </div>
+          <div class="cell">
+            <dt>arrival receipt</dt>
+            <dd id="arrival">NO - no arrival receipt yet</dd>
+          </div>
+        </dl>
+
+        <p class="error" id="error" hidden></p>
+
+        <dl class="receipt-grid" id="receipt-grid" aria-label="Returned proof" hidden>
+          <div class="cell">
+            <dt>packet_id</dt>
+            <dd><code id="packet-id"></code></dd>
+          </div>
+          <div class="cell">
+            <dt>assigned_to</dt>
+            <dd id="assigned-to"></dd>
+          </div>
+          <div class="cell">
+            <dt>destination_type</dt>
+            <dd id="receipt-destination-type">aeye_inbox_v0</dd>
+          </div>
+          <div class="cell">
+            <dt>artifact</dt>
+            <dd>WERKLES_MASTER_PLAN_V1.md</dd>
+          </div>
+          <div class="cell">
+            <dt>receipt_id</dt>
+            <dd><code id="receipt-id"></code></dd>
+          </div>
+          <div class="cell">
+            <dt>inbox_file</dt>
+            <dd id="inbox-file"></dd>
+          </div>
+          <div class="cell">
+            <dt>receipt_file</dt>
+            <dd id="receipt-file"></dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <script>
+      const payload = document.querySelector("#payload");
+      const button = document.querySelector("#send");
+      const error = document.querySelector("#error");
+      const receiptGrid = document.querySelector("#receipt-grid");
+      const destinationSelect = document.querySelector("#destination-select");
+      let destinations = [];
+
+      const setText = (id, value) => {
+        document.querySelector(id).textContent = value;
+      };
+
+      const selectedDestination = () => destinations.find((destination) => destination.id === destinationSelect.value);
+
+      const applyDestination = (destination) => {
+        if (!destination) {
+          setText("#target-label", "NO VERIFIED TARGET");
+          setText("#destination-type", "NO VERIFIED DESTINATION");
+          setText("#directory-count", "0 verified destinations");
+          button.disabled = true;
+          return;
+        }
+
+        setText("#target-label", destination.label);
+        setText("#destination-type", destination.destination_type);
+        setText("#receipt-destination-type", destination.destination_type);
+        setText("#directory-count", `${destinations.length} verified destination${destinations.length === 1 ? "" : "s"}`);
+        button.disabled = false;
+      };
+
+      async function loadDestinationDirectory() {
+        try {
+          const response = await fetch("/api/soledash/v1/wonka-den/aeye-loop");
+          const data = await response.json();
+          if (!response.ok || !data.ok || !Array.isArray(data.destinations)) {
+            throw new Error(data.error || "Destination Directory unavailable.");
+          }
+
+          destinations = data.destinations;
+          setText("#directory-source", data.source || "foreman/messages/DESTINATION_DIRECTORY.json");
+          destinationSelect.innerHTML = "";
+
+          if (destinations.length === 0) {
+            destinationSelect.add(new Option("No verified destinations", ""));
+            applyDestination(null);
+            setText("#written", "BLOCKED - no verified destination");
+            return;
+          }
+
+          destinations.forEach((destination) => {
+            destinationSelect.add(new Option(destination.label, destination.id));
+          });
+          destinationSelect.disabled = false;
+          applyDestination(destinations[0]);
+          setText("#written", "READY - packet not written yet");
+        } catch (err) {
+          error.textContent = err instanceof Error ? err.message : "Destination Directory unavailable.";
+          error.hidden = false;
+          destinationSelect.innerHTML = "";
+          destinationSelect.add(new Option("Destination Directory unavailable", ""));
+          applyDestination(null);
+          setText("#written", "BLOCKED - Destination Directory unavailable");
+        }
+      }
+
+      destinationSelect.addEventListener("change", () => {
+        applyDestination(selectedDestination());
+      });
+
+      button.addEventListener("click", async () => {
+        const destination = selectedDestination();
+        if (!destination) {
+          error.textContent = "No verified destination selected.";
+          error.hidden = false;
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = "Sending...";
+        error.hidden = true;
+        setText("#written", "SENDING - writing packet");
+        setText("#received", "WAITING - packet not received yet");
+        setText("#arrival", "WAITING - no receipt yet");
+
+        try {
+          const response = await fetch("/api/soledash/v1/wonka-den/aeye-loop", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              origin_surface: "TinkerDen Packet Launcher",
+              origin_card_id: `tinkerden_card_${Date.now().toString(36)}`,
+              destination_id: destination.id,
+              payload: {
+                sender: "Dink@Betsy",
+                directory_source: "foreman/messages/DESTINATION_DIRECTORY.json",
+                destination_id: destination.id,
+                target: destination.label,
+                destination_type: destination.destination_type,
+                mission: "CREATE_MASTER_PLAN_MD",
+                artifact: "WERKLES_MASTER_PLAN_V1.md",
+                task_text: payload.value.trim()
+              },
+              receipt_message: `${destination.label} received CREATE_MASTER_PLAN_MD for WERKLES_MASTER_PLAN_V1.md.`
+            })
+          });
+          const data = await response.json();
+          if (!response.ok || !data.ok || !data.packet || !data.response) {
+            throw new Error(data.error || "Packet send failed.");
+          }
+
+          setText("#written", `WRITTEN - ${data.packet.packet_id}`);
+          setText("#received", `RECEIVED - ${data.packet.target_aeye}@${data.packet.target_machine}`);
+          setText("#arrival", `ARRIVED - ${data.response.response_id}`);
+          setText("#packet-id", data.packet.packet_id);
+          setText("#assigned-to", `${data.packet.target_aeye}@${data.packet.target_machine}`);
+          setText("#receipt-destination-type", (data.directory_destination && data.directory_destination.destination_type) || destination.destination_type);
+          setText("#receipt-id", data.response.response_id);
+          setText("#inbox-file", data.paths && data.paths.message_inbox ? data.paths.message_inbox : "no inbox file returned");
+          setText("#receipt-file", data.paths && data.paths.message_receipt ? data.paths.message_receipt : "no receipt file returned");
+          receiptGrid.hidden = false;
+          button.textContent = "Sent";
+        } catch (err) {
+          error.textContent = err instanceof Error ? err.message : "Packet send failed.";
+          error.hidden = false;
+          setText("#written", "FAILED - packet not confirmed");
+          setText("#received", "FAILED - target not confirmed");
+          setText("#arrival", "FAILED - no receipt");
+          button.textContent = "Retry";
+          button.disabled = false;
+        }
+      });
+
+      loadDestinationDirectory();
+    </script>
+  </body>
+</html>

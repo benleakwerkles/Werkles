@@ -1,0 +1,33 @@
+{
+  "schema": "tinkerden_packet_relay_receipt_v1",
+  "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+  "relay_id": "td_relay_mqvs56cw_7zmniz",
+  "receipt_id": "td_receipt_packet_relay_mqvs56cw_ppy7s9",
+  "linked_packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+  "mission": "Move transport queues into Engine Room.",
+  "producer": "PacketRelaySystem@Betsy",
+  "status_guess": "RECEIPT_ASSIMILATED",
+  "proof_reference": "data/tinkerden/receipts/td_receipt_packet_relay_mqvs56cw_ppy7s9.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs56cw_yl50ow.json",
+  "relay_event_path": "data/organism/events.jsonl",
+  "timestamp": "2026-06-27T03:07:53.075Z",
+  "receipt": {
+    "receipt_id": "td_receipt_packet_relay_mqvs56cw_ppy7s9",
+    "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+    "returned_by": "PacketRelaySystem@Betsy",
+    "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs56cw_yl50ow.json",
+    "summary": "Packet Relay System completed relay td_relay_mqvs56cw_7zmniz for td_packet_relay_ready_mqvs56cw_yl50ow",
+    "proof": "Packet Relay event td_relay_mqvs56cw_7zmniz landed with sha256 7efbf4cc037dacc80f39260a7dbc6d809a98ebcc09e2e1fce8f01ab3832fa6f4.",
+    "blockers": "none",
+    "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+    "timestamp": "2026-06-27T03:07:53.075Z"
+  },
+  "evidence": {
+    "relay_event_type": "packet_relay_ready",
+    "relay_status": "PACKET_RELAY_COMPLETE",
+    "relay_timestamp": "2026-06-27T03:07:53.075Z",
+    "packet_sha256": "7efbf4cc037dacc80f39260a7dbc6d809a98ebcc09e2e1fce8f01ab3832fa6f4",
+    "packet_size_bytes": 2884,
+    "operator_selection": "KEEP"
+  }
+}

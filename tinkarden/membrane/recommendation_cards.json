@@ -1,0 +1,23 @@
+[
+  {
+    "id": "top3_001_feral_membrane_bridge",
+    "title": "Wire Medulla Top 3 output into the Feral Membrane card lane.",
+    "why": "Doctrine: TinkerDen is a command center, not a task manager. Shared frontier focus is \"HALT PERIPHERAL BUILD. Executing Frankenstein Correction. Building the Memory Bootloader and API Wrapper so the Aeyes automatically ingest the Book and current state before they boot. Ben will no longer manually upload context.\", with locked lanes Infrastructure, Maker, Dink, Swanson.",
+    "target_aeye": "Dink@Betsy",
+    "risk_class": "MOSQUITO"
+  },
+  {
+    "id": "top3_002_preserve_dirty_branch_reality",
+    "title": "Preserve the current branch reality before expanding the membrane surface.",
+    "why": "Friction: repo state on preserve/tinkerden-packet-engine-20260622 has 181 dirty entries (55 modified, 126 untracked); branch reality doctrine requires preserving useful mutations before merge, cleanup, or wider construction.",
+    "target_aeye": "Dink@Betsy",
+    "risk_class": "WOUND"
+  },
+  {
+    "id": "top3_003_convert_birds_to_receipts",
+    "title": "Convert active Birds into receipt, blocker, or next-packet outcomes.",
+    "why": "Doctrine: Birds carry momentum and Ben is not the bus. Shared frontier packets in flight: BIRD_0034, BIRD_0035, BIRD_0036. Handoff note to Sally: Sally, stop validating the UI. If the brain doesn't load on boot, the organism is dead. Your new target: Ensure Speaker's doctrine files are perfectly formatted so Maker's bootloader.js can concatenate them without parsing errors..",
+    "target_aeye": "Skybro@Sally",
+    "risk_class": "GNAT"
+  }
+]

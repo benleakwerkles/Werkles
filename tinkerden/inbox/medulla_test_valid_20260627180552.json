@@ -1,0 +1,14 @@
+{
+  "schema": "tinkerden_command_packet_v0",
+  "packet_id": "medulla_test_valid_20260627180552",
+  "title": "Medulla V0 valid packet test",
+  "created_at": "2026-06-27T18:05:52.917Z",
+  "source": "TinkerDen@Betsy",
+  "target": "Dink@Betsy",
+  "target_machine": "Betsy",
+  "stream": "FERAL / TINKERDEN",
+  "command": "MEDULLA V0 test: produce ACK receipt and pending operator recommendation card.",
+  "packet_type": "COMMAND",
+  "receipt_required": "ACK",
+  "required_return": "ACK / BLOCKER / ARTIFACT"
+}

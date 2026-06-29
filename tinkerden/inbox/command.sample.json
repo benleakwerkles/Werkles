@@ -1,0 +1,29 @@
+{
+  "packet_id": "FOOD_2_TINKERDEN_INBOX_CONTRACT_BUILD_2026-06-27_SAMPLE_MAKER_MEDULLA_V0",
+  "created_at": "2026-06-27T18:15:00.000Z",
+  "from": "TinkerDen Bridge",
+  "target": "Maker@Betsy",
+  "stream": "FERAL / TINKERDEN",
+  "mission": "Implement the smallest Medulla V0 filesystem loop required by TinkerDen Bridge.",
+  "context": "Primary build is TinkerDen Bridge V0 plus Medulla V0. Ben needs commands issued from TinkerDen / ThinkIt to produce ACK, BLOCKER, or ARTIFACT receipts without Ben manually carrying packets.",
+  "do": [
+    "Read tinkerden/inbox/README.md.",
+    "Use tinkerden/inbox as the command packet source.",
+    "Use tinkerden/receipts as the receiver receipt destination.",
+    "Use tinkerden/recommendations/recommendation_cards.json as the recommendation card output.",
+    "Use tinkerden/feedback/decision-ledger.jsonl as the decision ledger output.",
+    "Implement or update tinkerden/medulla/medulla.js for the Medulla V0 filesystem loop.",
+    "Return a receipt in tinkerden/receipts that preserves this packet_id as source_packet_id."
+  ],
+  "do_not": [
+    "Do not build Nerdkle or NMCLR.",
+    "Do not create MQTT work.",
+    "Do not create vector DB work.",
+    "Do not assign anything to Ender@Sally.",
+    "Do not assign a machine without an Aeye.",
+    "Do not claim sent, posted, queued, or written as proof.",
+    "Do not call this sample file proof of runtime behavior."
+  ],
+  "output_required": "Concrete Medulla V0 implementation artifact at tinkerden/medulla/medulla.js plus a linked receipt in tinkerden/receipts, or a BLOCKER naming the exact missing repo, path, input, or human gate.",
+  "receipt_required": "ARTIFACT"
+}

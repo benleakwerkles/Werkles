@@ -1,0 +1,9 @@
+{
+  "schema": "tinkerden_command_packet_v0",
+  "packet_id": "medulla_test_malformed_20260627180552",
+  "created_at": "2026-06-27T18:05:52.917Z",
+  "source": "TinkerDen@Betsy",
+  "target": "Unknown@Nowhere",
+  "receipt_required": "MAYBE",
+  "required_return": "ACK / BLOCKER / ARTIFACT"
+}

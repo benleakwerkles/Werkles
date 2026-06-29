@@ -1,0 +1,27 @@
+{
+  "schema": "tinkerden_receipt_v0",
+  "receipt_id": "receipt_dink_unassigned_machine_packet_0001",
+  "packet_id": "DINK_UNASSIGNED_MACHINE_PACKET_0001",
+  "linked_packet_id": "DINK_UNASSIGNED_MACHINE_PACKET_0001",
+  "mission": "Execute prepared mechanical work.",
+  "producer": "Dink@Betsy",
+  "status_guess": "RECEIPT_ATTACHED",
+  "timestamp": "2026-06-26T08:05:39.222Z",
+  "path": "data/tinkerden/receipts/receipt_dink_unassigned_machine_packet_0001.json",
+  "proof_reference": "data/tinkerden/receipts/receipt_dink_unassigned_machine_packet_0001.json",
+  "source_text_path": "data/tinkerden/outbox/dink_unassigned_machine_packet_0001_execute_prepared_mechanical_work.md",
+  "artifacts": [
+    "data/tinkerden/outbox/dink_unassigned_machine_packet_0001_execute_prepared_mechanical_work.md",
+    "data/tinkerden/outbox/dink_unassigned_machine_packet_0001_execute_prepared_mechanical_work.json",
+    "tinkerden/dispatch/packets/dink_unassigned_machine_packet_0001.json"
+  ],
+  "result": "DINK@UNASSIGNED_MACHINE activation packet was preserved and placed in TinkerDen dispatch inventory.",
+  "visibility": {
+    "tinkerden_dispatch_packet": true,
+    "receipt_lane_visible": true,
+    "external_action_executed": false
+  },
+  "failure_point": null,
+  "screenshot_or_confirmation": "Not applicable; no external portal/work item was executed from this activation packet.",
+  "blocker": null
+}

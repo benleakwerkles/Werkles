@@ -1,0 +1,12 @@
+{
+  "message_type": "birdie_packet",
+  "courier_class": "Birdeyes",
+  "packet_id": "birdie_packet_sent_example_001",
+  "sent_at": "2026-06-20T23:52:00.000Z",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "mission": "Broadcast a sent packet and wait for a receipt.",
+  "status": "SENT",
+  "receipt_required": true,
+  "return_destination": "data/tinkerden/receipts"
+}

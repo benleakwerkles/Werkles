@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mqsnru5r_g5znqg",
+    "created_at": "2026-06-24T22:42:13.742Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "RECEIPT_JOIN_REPAIR proof execution",
+    "why": "Packet Lane and Receipt Lane need the same canonical execution record keyed by packet_id.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "receipt_join_repair_probe",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 91,
+    "operator_reason": null,
+    "why_now": "Packet Lane and Receipt Lane need the same canonical execution record keyed by packet_id.",
+    "recommended_because": "This proves execute -> packet -> relay -> receipt -> execution update -> bidirectional UI links."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

@@ -1,0 +1,243 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_live_review_agenda_20260628231508_d341ae",
+  "idea_id": "live_review_agenda",
+  "title": "Live review agenda",
+  "status": "LIVE_REVIEW_AGENDA_BUILT",
+  "output": "An ordered operator agenda for deciding what to merge, keep, steal, repair, or let die.",
+  "why": "The gathered previews need to become a real-time review path, not a scrolling archive.",
+  "next": "Use this as the conversation order while choosing final dashboard parts.",
+  "payload": {
+    "agenda_scope": "Dashboard/site merge review only.",
+    "version_review_order": [
+      {
+        "order": 1,
+        "version_id": "command_dash_aeye_evidence",
+        "title": "Command Dash Aeye Evidence",
+        "family": "TinkerDen command surface",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Issue command panel",
+          "Aeye outbox / inbox / receipt custody fields",
+          "Packet left, received, answered, returned lane"
+        ],
+        "source_path": "app/tinkerden/inbox/page.tsx",
+        "evidence_path": "foreman/receipts/COMMAND_DASH_TO_AEYE_RELAY_BEAST_RECEIPT.md",
+        "boundary": "Captured from the live main Werkles app on port 3340."
+      },
+      {
+        "order": 2,
+        "version_id": "sally_good_soledash",
+        "title": "Sally Good SoleDash",
+        "family": "Detached Sally-good worktree",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Action queue layout",
+          "Mock-test receipt mode",
+          "Options market and active mission framing"
+        ],
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good/app/soledash/page.tsx",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good/components/soledash/command-surface.tsx",
+        "boundary": "Running from detached worktree on port 3341; it is not the same as Command Dash Aeye evidence."
+      },
+      {
+        "order": 3,
+        "version_id": "current_feral_membrane",
+        "title": "Current Feral Membrane",
+        "family": "Tinkarden membrane",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Source gathering gallery",
+          "Momentum conveyor",
+          "Final assembly decision controls"
+        ],
+        "source_path": "tinkarden/membrane/app/page.tsx",
+        "evidence_path": "tinkarden/membrane/branch_dashboard_sources.json",
+        "boundary": "This is the currently running preview; it is not proof that all source families are merged."
+      },
+      {
+        "order": 4,
+        "version_id": "current_tinkerden_bridge",
+        "title": "TinkerDen Bridge",
+        "family": "Current TinkerDen route",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Top 3 Moves surface",
+          "Receipt pickup",
+          "Human Gate explanation lane"
+        ],
+        "source_path": "app/tinkerden/page.tsx",
+        "evidence_path": "tinkerden/feedback/decision-ledger.jsonl",
+        "boundary": "Captured from current dirty checkout on port 3340."
+      },
+      {
+        "order": 5,
+        "version_id": "thinkit_command_dash",
+        "title": "ThinkIt Command Dash",
+        "family": "ThinkIt origin return",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Question routing queue",
+          "Latest returned answer",
+          "Origin return readback"
+        ],
+        "source_path": "app/thinkit/page.tsx",
+        "evidence_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+        "boundary": "Captured from current dirty checkout on port 3340."
+      },
+      {
+        "order": 6,
+        "version_id": "command_dash_proof_chain",
+        "title": "Command Dash Proof Chain",
+        "family": "TinkerDen relay proof",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Latest ARTIFACT card",
+          "Thread receipt",
+          "Origin return flags"
+        ],
+        "source_path": "app/tinkerden/relay-proof/page.tsx",
+        "evidence_path": "tinkerden/aeye-relay/receipts",
+        "boundary": "Live route is visually dark in the current theme, but the proof chain content is present."
+      },
+      {
+        "order": 7,
+        "version_id": "current_soledash_blocked",
+        "title": "Current SoleDash / Wonka Route",
+        "family": "Current checkout Wonka route",
+        "status": "BLOCKED_RUNTIME",
+        "operator_question": "Repair before merge, keep as blocker evidence, or let die?",
+        "suggested_action": "REPAIR_BEFORE_MERGE_OR_LET_DIE",
+        "useful_parts": [
+          "DecisionSurface wiring",
+          "Wonka Den metadata",
+          "Target route for Swanson merge"
+        ],
+        "source_path": "app/soledash/page.tsx",
+        "evidence_path": "work/werkles-3340.out.log",
+        "boundary": "Captured state showed the app's empty-bench/404 surface, not a working Wonka dashboard."
+      },
+      {
+        "order": 8,
+        "version_id": "static_packet_launcher",
+        "title": "Static Packet Launcher",
+        "family": "Wonka Den / TinkerDen static launcher",
+        "status": "LIVE_SCREENSHOT",
+        "operator_question": "Keep as visible behavior, steal parts, or let die?",
+        "suggested_action": "KEEP_OR_STEAL_PARTS",
+        "useful_parts": [
+          "Single artifact card",
+          "Destination directory framing",
+          "Packet proof layout"
+        ],
+        "source_path": "public/tinkerden-packet-launcher.html",
+        "evidence_path": "public/tinkerden-packet-launcher.html",
+        "boundary": "Static preview; not the merged live relay implementation."
+      },
+      {
+        "order": 9,
+        "version_id": "wonka_mood_reference",
+        "title": "Wonka Mood Reference",
+        "family": "Visual reference",
+        "status": "SOURCE_ONLY",
+        "operator_question": "Keep as reference material, steal specific parts, or let die?",
+        "suggested_action": "SOURCE_ONLY_REVIEW",
+        "useful_parts": [
+          "Lamp-desk framing",
+          "Inspect-sheet pacing",
+          "Physical workshop metaphor"
+        ],
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/WONKA_DEN_MOOD_REFERENCE.md",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/wonka_den_mood_preview.html",
+        "boundary": "Indexed source only in this preview wall; not a live functional route."
+      },
+      {
+        "order": 10,
+        "version_id": "preserve_salvage_bundle",
+        "title": "Preserve Salvage Bundle",
+        "family": "Patch recovery source",
+        "status": "SOURCE_ONLY",
+        "operator_question": "Keep as reference material, steal specific parts, or let die?",
+        "suggested_action": "SOURCE_ONLY_REVIEW",
+        "useful_parts": [
+          "Workbench-first CSS",
+          "Receipt pickup styling",
+          "Relay choice controls"
+        ],
+        "source_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.diff",
+        "evidence_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.status.txt",
+        "boundary": "Patch bundle is indexed for merge review; it is not rendered as a route."
+      }
+    ],
+    "open_module_decisions": [
+      {
+        "module_id": "thinkit-origin-return",
+        "title": "Origin return receipt",
+        "system": "ThinkIt",
+        "current_state": "KEEP",
+        "proof_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+        "required_choice": "MERGE / KEEP / LET_DIE"
+      },
+      {
+        "module_id": "tinkerden-command-receipts",
+        "title": "Command intake and receipts",
+        "system": "TinkerDen",
+        "current_state": "KEEP",
+        "proof_path": "tinkerden/receipts",
+        "required_choice": "MERGE / KEEP / LET_DIE"
+      },
+      {
+        "module_id": "wonka-aeye-loop",
+        "title": "Aeye loop file transport",
+        "system": "Wonka Den / TinkerDen",
+        "current_state": "KEEP",
+        "proof_path": "foreman/soledash/wonka-den/aeye-loop/responses",
+        "required_choice": "MERGE / KEEP / LET_DIE"
+      },
+      {
+        "module_id": "feral-membrane-motion",
+        "title": "Optional packets and motion",
+        "system": "Feral Membrane",
+        "current_state": "KEEP",
+        "proof_path": "tinkarden/membrane/optional_packets.jsonl",
+        "required_choice": "MERGE / KEEP / LET_DIE"
+      },
+      {
+        "module_id": "swanson-attached-relay",
+        "title": "Functional relay attachment",
+        "system": "Swanson",
+        "current_state": "ATTACHED",
+        "proof_path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "required_choice": "MERGE / KEEP / LET_DIE"
+      }
+    ],
+    "current_receipt_counts": {
+      "version_preview_decisions": 0,
+      "final_assembly_decisions": 0,
+      "swanson_relays": 1
+    },
+    "next_human_move": "Start at order 1, decide Keep / Steal Parts / Let Die for each version, then record module-level Merge / Keep / Let Die choices."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_live_review_agenda_20260628231508_d341ae.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T23:15:08.400Z",
+  "sha256": "0bcafac63201c36c0e1ba5dfd1942fc64b8f93fdeb61aa5ab9c5b15203e0203a"
+}

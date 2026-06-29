@@ -1,0 +1,13 @@
+{
+  "packet_id": "td_packet_relay_ready_mqt1ldj6_ar6mdb",
+  "relay_id": "td_relay_mqt1ldj6_oam0kw",
+  "receipt_id": "td_receipt_packet_relay_mqt1ldj6_y1x6ku",
+  "relay_status": "PACKET_RELAY_COMPLETE",
+  "receipt_status": "RECEIPT_CREATED",
+  "created_at": "2026-06-25T05:09:06.875Z",
+  "owner": "Maker@Betsy",
+  "mission": "PACKET_RELAY_SYSTEM_RECEIPTS_V1 proof",
+  "artifact_path": "data/tinkerden/receipts/td_receipt_packet_relay_mqt1ldj6_y1x6ku.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqt1ldj6_ar6mdb.json",
+  "receipt_path": "data/tinkerden/receipts/td_receipt_packet_relay_mqt1ldj6_y1x6ku.json"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "tinkerden_real_aeye_relay_response_v0",
+  "relay_id": "real_aeye_relay_20260628044120_dffa0d",
+  "thread_id": "019f0c88-6487-7b70-961a-9b3a87058beb",
+  "status": "ARTIFACT",
+  "answer_text": "ARTIFACT\nPACKET_ID: td_command_20260628044120_989084\nREAL_RELAY_ID: real_aeye_relay_20260628044120_dffa0d\nTHREAD_ROLE: separate Codex Aeye proof thread\nRECEIVED: YES\nANSWER: This separate Codex Aeye proof thread received the UI-originated packet and is answering it in this status block.",
+  "created_at": "2026-06-28T04:41:55.138Z"
+}

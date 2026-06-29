@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_dispatch_receipt_v0",
+  "receipt_id": "td_receipt_bridge_execute_mqvs4uve_iu3c6d",
+  "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+  "linked_packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+  "mission": "Promote Bridge to the default TinkerDen surface.",
+  "producer": "TinkerDen@Betsy",
+  "status_guess": "DISPATCH_ACKNOWLEDGED",
+  "proof_reference": "data/tinkerden/receipts/td_receipt_bridge_execute_mqvs4uve_iu3c6d.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs4uv9_7m0bfo.json",
+  "relay_event_path": "data/organism/events.jsonl",
+  "timestamp": "2026-06-27T03:07:38.186Z",
+  "receipt": {
+    "receipt_id": "td_receipt_bridge_execute_mqvs4uve_iu3c6d",
+    "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+    "returned_by": "TinkerDen@Betsy",
+    "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs4uv9_7m0bfo.json",
+    "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+    "proof": "Packet was written and packet_dispatched relay event landed with sha256 58e5d7b2e7de7a0e60e35b3e2f98c64de96d79eeccd7fb24c6ae46da00da3569.",
+    "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+    "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+    "timestamp": "2026-06-27T03:07:38.186Z"
+  },
+  "evidence": {
+    "relay_event_type": "packet_dispatched",
+    "relay_timestamp": "2026-06-27T03:07:38.185Z",
+    "packet_sha256": "58e5d7b2e7de7a0e60e35b3e2f98c64de96d79eeccd7fb24c6ae46da00da3569",
+    "packet_size_bytes": 1239,
+    "operator_selection": "KEEP"
+  }
+}

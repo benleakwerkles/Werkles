@@ -1,0 +1,50 @@
+{
+  "schema": "tinkerden_bridge_autopaste_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_autopaste_ready_mqrhsc3k_ybtxzc",
+    "created_at": "2026-06-24T03:06:53.118Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+    "why": "PowerToys Workspaces error final probe.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Workspace focus not configured. Packet copied only.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "AUTOPASTE_READY"
+  },
+  "bridge_card": {
+    "card_id": "packet_tinkerpit_trace_20260623210158990",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 80,
+    "operator_reason": null,
+    "why_now": "PowerToys Workspaces error final probe.",
+    "recommended_because": "Confirm TinkerPit reports missing workspace id instead of launching Workspaces incorrectly."
+  },
+  "workspace_target": {
+    "id": "maker_betsy_powertoys_workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces",
+    "target": "C:\\Users\\Ben Leak\\AppData\\Local\\PowerToys\\PowerToys.WorkspacesLauncher.exe",
+    "mode": "process",
+    "args": [],
+    "window_title": "",
+    "configured": false,
+    "configuration_error": "PowerToys WorkspacesLauncher requires a workspace id argument."
+  },
+  "autopaste_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: TINKERPIT_RELAY_SUPPORT_V0\n\nOBJECTIVE:\nConfirm TinkerPit reports missing workspace id instead of launching Workspaces incorrectly.\n\nPACKET:\npacket_id: td_packet_autopaste_ready_mqrhsc3k_ybtxzc\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 80\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nPowerToys Workspaces error final probe.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces (not configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "AUTOPASTE_READY",
+  "operator_instruction": "Workspace focus not configured. Packet copied only.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

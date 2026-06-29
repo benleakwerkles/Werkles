@@ -1,0 +1,28 @@
+{
+  "schema": "tinkerden_receipt_v0",
+  "receipt_id": "receipt_bill_execution_packet_rules_0001",
+  "packet_id": "BILL_EXECUTION_PACKET_RULES_0001",
+  "linked_packet_id": "BILL_EXECUTION_PACKET_RULES_0001",
+  "mission": "Execute only after packet is complete.",
+  "producer": "Dink@Betsy",
+  "status_guess": "RECEIPT_ATTACHED",
+  "timestamp": "2026-06-26T08:07:32.251Z",
+  "path": "data/tinkerden/receipts/receipt_bill_execution_packet_rules_0001.json",
+  "proof_reference": "data/tinkerden/receipts/receipt_bill_execution_packet_rules_0001.json",
+  "source_text_path": "data/tinkerden/outbox/bill_execution_packet_rules_0001.md",
+  "artifacts": [
+    "cockpit/doctrines/bill_execution_packet_rules.md",
+    "data/tinkerden/outbox/bill_execution_packet_rules_0001.md",
+    "data/tinkerden/outbox/bill_execution_packet_rules_0001.json",
+    "tinkerden/dispatch/packets/bill_execution_packet_rules_0001.json"
+  ],
+  "result": "Bill execution packet rules were preserved as cockpit doctrine and placed in TinkerDen dispatch inventory.",
+  "visibility": {
+    "cockpit_doctrine": true,
+    "tinkerden_dispatch_packet": true,
+    "receipt_lane_visible": true,
+    "bill_payment_executed": false
+  },
+  "failure_point": null,
+  "blocker": null
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "tinkerden_medulla_v0_receipt",
+  "receipt_id": "medulla_blocker_20260627175953_ed1070",
+  "packet_id": "medulla_test_malformed_20260627175953",
+  "linked_packet_id": "medulla_test_malformed_20260627175953",
+  "packet_path": "tinkerden/inbox/medulla_test_malformed_20260627175953.json",
+  "packet_hash": "758299c8bce9d526c3d53866c953b28f8f5d9829c3e210ed03e4a09e88479171",
+  "producer": "Maker@Betsy",
+  "stream": "FERAL / TINKERDEN",
+  "status_guess": "BLOCKER",
+  "timestamp": "2026-06-27T17:59:53.863Z",
+  "path": "tinkerden/receipts/medulla_blocker_20260627175953_ed1070.json",
+  "validation_errors": [
+    "command or mission is required",
+    "target must be a known Aeye@Machine lane, got Unknown@Nowhere"
+  ],
+  "no_shell_execution": true,
+  "no_autonomous_routing": true,
+  "note": "Packet parse or schema validation failed."
+}

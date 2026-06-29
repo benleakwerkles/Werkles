@@ -1,0 +1,13 @@
+{
+  "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+  "relay_id": "td_relay_mqul2hd5_cv88pm",
+  "receipt_id": "td_receipt_packet_relay_mqul2hd5_bmxnfe",
+  "relay_status": "PACKET_RELAY_COMPLETE",
+  "receipt_status": "RECEIPT_ASSIMILATED",
+  "created_at": "2026-06-26T07:02:03.879Z",
+  "owner": "Maker@Betsy",
+  "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0 proof packet",
+  "artifact_path": "data/tinkerden/receipts/td_receipt_packet_relay_mqul2hd5_bmxnfe.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqul2hd5_9diaia.json",
+  "receipt_path": "data/tinkerden/receipts/td_receipt_packet_relay_mqul2hd5_bmxnfe.json"
+}

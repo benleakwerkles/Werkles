@@ -1,0 +1,23 @@
+{
+  "schema": "workspace_destination_directory_v0",
+  "updated_at": "2026-06-26T00:00:00.000Z",
+  "destinations": [
+    {
+      "id": "maker_betsy",
+      "aeye": "Maker",
+      "machine": "Betsy",
+      "endpoint": "http://127.0.0.1:4877",
+      "verified": true,
+      "transport": "local_http_or_cli",
+      "workspace_targets": [
+        {
+          "id": "maker_betsy_powertoys_workspaces",
+          "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+          "type": "powertoys_workspace_self_heal",
+          "workspace_id": "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+          "local_only": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "tinkerden_workspace_relay_request_v0",
+  "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+  "relay_id": "td_relay_mqul2hd5_cv88pm",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0 proof packet",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqul2hd5_9diaia.json",
+  "packet": {
+    "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+    "created_at": "2026-06-26T07:02:03.879Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0 proof packet",
+    "why": "Prove one click can hand a TinkerDen packet to the Betsy machine runner.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Relay complete. Target focused. Paste/send now.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "RELAY_READY"
+  },
+  "workspace_target": {
+    "id": "maker_betsy_powertoys_workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+    "target": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "mode": "process",
+    "args": [
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+      "-WorkspaceId",
+      "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+    ],
+    "window_title": "",
+    "configured": true
+  },
+  "packet_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: TINKERDEN_WORKSPACE_RELAY_BETSY_V0 proof packet\n\nOBJECTIVE:\nBetsy-only workspace relay needs clipboard, PowerToys workspace focus, and visible receipt proof.\n\nPACKET:\npacket_id: td_packet_relay_ready_mqul2hd5_9diaia\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 100\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nProve one click can hand a TinkerDen packet to the Betsy machine runner.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces Self-Heal (configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually."
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_dispatch_receipt_v0",
+  "receipt_id": "td_receipt_bridge_execute_mqvs598r_jvdhyc",
+  "packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+  "linked_packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+  "mission": "Move transport queues into Engine Room.",
+  "producer": "TinkerDen@Betsy",
+  "status_guess": "DISPATCH_ACKNOWLEDGED",
+  "proof_reference": "data/tinkerden/receipts/td_receipt_bridge_execute_mqvs598r_jvdhyc.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs598n_lkaeww.json",
+  "relay_event_path": "data/organism/events.jsonl",
+  "timestamp": "2026-06-27T03:07:56.811Z",
+  "receipt": {
+    "receipt_id": "td_receipt_bridge_execute_mqvs598r_jvdhyc",
+    "packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+    "returned_by": "TinkerDen@Betsy",
+    "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs598n_lkaeww.json",
+    "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs598n_lkaeww",
+    "proof": "Packet was written and packet_dispatched relay event landed with sha256 4fad2dd0d5657987f559bab6b993352df887c9461cad4eb2bee4c7cecdb7d126.",
+    "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+    "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+    "timestamp": "2026-06-27T03:07:56.811Z"
+  },
+  "evidence": {
+    "relay_event_type": "packet_dispatched",
+    "relay_timestamp": "2026-06-27T03:07:56.810Z",
+    "packet_sha256": "4fad2dd0d5657987f559bab6b993352df887c9461cad4eb2bee4c7cecdb7d126",
+    "packet_size_bytes": 1147,
+    "operator_selection": "KEEP"
+  }
+}

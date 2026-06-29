@@ -1,0 +1,20 @@
+{
+  "receipt_id": "receipt_prove_receipt_lane_td_packet_bridge_execute_mqsh7d3b_660yl8",
+  "linked_packet_id": "td_packet_bridge_execute_mqsh7d3b_660yl8",
+  "mission": "Prove Receipt Lane: Click -> Execute -> Packet -> Relay -> Receipt -> Visible row.",
+  "producer": "Dink@Betsy",
+  "status_guess": "ACKNOWLEDGED",
+  "proof_reference": "data/tinkerden/receipts/receipt_prove_receipt_lane_td_packet_bridge_execute_mqsh7d3b_660yl8.json",
+  "timestamp": "2026-06-24T19:38:33.000Z",
+  "evidence": {
+    "click_path": "KEEP then EXECUTE clicked in /tinkerden for bridge_move_001",
+    "packet_path": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqsh7d3b_660yl8.json",
+    "relay_event_path": "data/organism/events.jsonl",
+    "relay_event_type": "packet_dispatched",
+    "relay_timestamp": "2026-06-24T19:38:20.818Z",
+    "packet_sha256": "6d3871fbb3212ac6298c12a80fc2427cee9be78a169e99fdfc4f8243ad6a15d5",
+    "packet_size_bytes": 1239,
+    "operator_selection": "KEEP",
+    "ui_state_after_execute": "AWAITING_RECEIPT"
+  }
+}

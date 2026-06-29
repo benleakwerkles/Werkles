@@ -1,0 +1,47 @@
+{
+  "schema": "tinkerden_workspace_relay_receipt_v0",
+  "receipt_id": "workspace_relay_receipt_mqvrzxhj_2715oj",
+  "packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+  "linked_packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+  "mission": "Promote Bridge to the default TinkerDen surface.",
+  "producer": "MachineRunner@Betsy",
+  "status_guess": "READY_FOR_AEYE",
+  "timestamp": "2026-06-27T03:03:52.612Z",
+  "proof_reference": "data/tinkerden/receipts/workspace_relay_receipt_mqvrzxhj_2715oj.json",
+  "runner_receipt_path": "tinkerden/machine-runner/receipts/Betsy/workspace_relay_receipt_mqvrzxhj_2715oj.json",
+  "packet_inbox_path": "tinkerden/machine-runner/inbox/Betsy/td_packet_relay_ready_mqvrzxev_gcuhww.json",
+  "event_path": "data/organism/events.jsonl",
+  "clipboard": {
+    "set": true,
+    "verified": true
+  },
+  "workspace": {
+    "target": {
+      "id": "maker_betsy_powertoys_workspaces",
+      "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+      "target": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "mode": "process",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+        "-WorkspaceId",
+        "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+      ],
+      "window_title": "",
+      "configured": true
+    },
+    "attempted": true,
+    "focused": true,
+    "status": "WORKSPACE_FOCUSED",
+    "detail": "PROCESS_COMPLETED"
+  },
+  "guardrails": [
+    "No auto-send.",
+    "No browser credential control.",
+    "No account automation.",
+    "Local clipboard and workspace focus only."
+  ]
+}

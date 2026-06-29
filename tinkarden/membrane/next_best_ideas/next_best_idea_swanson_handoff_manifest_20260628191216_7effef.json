@@ -1,0 +1,80 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_swanson_handoff_manifest_20260628191216_7effef",
+  "idea_id": "swanson_handoff_manifest",
+  "title": "Swanson handoff manifest",
+  "status": "HANDOFF_MANIFEST_BUILT",
+  "output": "Current candidate lanes, proof paths, merge states, and open operator choices.",
+  "why": "Swanson should consume an explicit contract instead of inferring from UI layout.",
+  "next": "Feed this manifest into the final Swanson relay merge review.",
+  "payload": {
+    "manifest_modules": [
+      {
+        "id": "thinkit-origin-return",
+        "title": "Origin return receipt",
+        "system": "ThinkIt",
+        "status": "ORIGIN_RETURN_PROVEN",
+        "merge_state": "KEEP",
+        "proof_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+        "next_action": "Keep origin-dash readback and expose it in the final receipt lane."
+      },
+      {
+        "id": "tinkerden-command-receipts",
+        "title": "Command intake and receipts",
+        "system": "TinkerDen",
+        "status": "PACKET_RECEIPT_FLOW_PROVEN",
+        "merge_state": "KEEP",
+        "proof_path": "tinkerden/receipts",
+        "next_action": "Keep packet_id to receipt_id custody visible in the final dashboard."
+      },
+      {
+        "id": "wonka-aeye-loop",
+        "title": "Aeye loop file transport",
+        "system": "Wonka Den / TinkerDen",
+        "status": "FILE_BACKED_LOOP_PROVEN",
+        "merge_state": "KEEP",
+        "proof_path": "foreman/soledash/wonka-den/aeye-loop/responses",
+        "next_action": "Carry forward the file-backed packet/write/receipt pattern, not just the layout."
+      },
+      {
+        "id": "feral-membrane-motion",
+        "title": "Optional packets and motion",
+        "system": "Feral Membrane",
+        "status": "MOMENTUM_LANE_PROVEN",
+        "merge_state": "KEEP",
+        "proof_path": "tinkarden/membrane/optional_packets.jsonl",
+        "next_action": "Keep Top 3 food as selectable packet material, then review final operator language live."
+      },
+      {
+        "id": "swanson-attached-relay",
+        "title": "Functional relay attachment",
+        "system": "Swanson",
+        "status": "PACKET_RELAY_COMPLETE",
+        "merge_state": "ATTACHED",
+        "proof_path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "next_action": "Use this as the live-review bridge; do not call it final until approved."
+      }
+    ],
+    "merge_contract": {
+      "required_operator_decisions": [
+        "thinkit-origin-return",
+        "tinkerden-command-receipts",
+        "wonka-aeye-loop",
+        "feral-membrane-motion",
+        "swanson-attached-relay"
+      ],
+      "no_auto_merge": true,
+      "final_consumer": "Swanson functional relay page"
+    }
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_swanson_handoff_manifest_20260628191216_7effef.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T19:12:16.900Z",
+  "sha256": "9052da5abd26ed892fb9841e51417c44af851647cbccf1f993ff2434f3561bcc"
+}

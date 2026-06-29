@@ -1,0 +1,13 @@
+{
+  "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+  "relay_id": "NO_RELAY",
+  "receipt_id": "td_receipt_bridge_execute_mqvs4uve_iu3c6d",
+  "relay_status": "RELAY_DISPATCHED",
+  "receipt_status": "RECEIPT_LINKED",
+  "created_at": "2026-06-27T03:07:38.181Z",
+  "owner": "Maker@Betsy",
+  "mission": "Promote Bridge to the default TinkerDen surface.",
+  "artifact_path": "data/tinkerden/receipts/td_receipt_bridge_execute_mqvs4uve_iu3c6d.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs4uv9_7m0bfo.json",
+  "receipt_path": "data/tinkerden/receipts/td_receipt_bridge_execute_mqvs4uve_iu3c6d.json"
+}

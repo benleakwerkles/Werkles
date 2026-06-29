@@ -1,0 +1,36 @@
+{
+  "schema": "feral_membrane_top_three_optional_packet_v0",
+  "event_type": "optional_packet_created",
+  "packet_id": "optional_packet_top3_002_preserve_dirty_branch_reality_20260628100724_00bfb9",
+  "card_id": "top3_002_preserve_dirty_branch_reality",
+  "title": "Preserve the current branch reality before expanding the membrane surface.",
+  "mission": "Preserve the current branch reality before expanding the membrane surface.",
+  "why": "Friction: repo state on preserve/tinkerden-packet-engine-20260622 has 181 dirty entries (55 modified, 126 untracked); branch reality doctrine requires preserving useful mutations before merge, cleanup, or wider construction.",
+  "recommendation": "",
+  "food_sources": [
+    "Petra",
+    "Skybro"
+  ],
+  "source_path": "tinkarden/membrane/recommendation_cards.json",
+  "target_aeye": "Dink@Betsy",
+  "risk_class": "WOUND",
+  "status": "OPTIONAL_PACKET_CREATED",
+  "awaiting": "MOMENTUM_TAP",
+  "operator_choice_required": true,
+  "note": "Petra/Skybro food was copied into an optional packet. No target file mutation or relay execution happened here.",
+  "target_mutations": [
+    "optional packet for Dink@Betsy"
+  ],
+  "momentum_velocity_churn": {
+    "created_by": "Operator Top 3 packet choice",
+    "next_allowed_action": "Momentum Tap",
+    "execution_state": "not executed"
+  },
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "packet_log_path": "tinkarden/membrane/optional_packets.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-28T10:07:24.240Z",
+  "card_hash": "88ce39351699b2aff402ba1e45f9db1864b03391f86fd6c4c99fbd0585f1b86a"
+}

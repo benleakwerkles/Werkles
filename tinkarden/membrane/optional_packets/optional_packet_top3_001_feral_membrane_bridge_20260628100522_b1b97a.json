@@ -1,0 +1,36 @@
+{
+  "schema": "feral_membrane_top_three_optional_packet_v0",
+  "event_type": "optional_packet_created",
+  "packet_id": "optional_packet_top3_001_feral_membrane_bridge_20260628100522_b1b97a",
+  "card_id": "top3_001_feral_membrane_bridge",
+  "title": "Wire Medulla Top 3 output into the Feral Membrane card lane.",
+  "mission": "Wire Medulla Top 3 output into the Feral Membrane card lane.",
+  "why": "Doctrine: TinkerDen is a command center, not a task manager. Shared frontier focus is \"HALT PERIPHERAL BUILD. Executing Frankenstein Correction. Building the Memory Bootloader and API Wrapper so the Aeyes automatically ingest the Book and current state before they boot. Ben will no longer manually upload context.\", with locked lanes Infrastructure, Maker, Dink, Swanson.",
+  "recommendation": "",
+  "food_sources": [
+    "Petra",
+    "Skybro"
+  ],
+  "source_path": "tinkarden/membrane/recommendation_cards.json",
+  "target_aeye": "Dink@Betsy",
+  "risk_class": "MOSQUITO",
+  "status": "OPTIONAL_PACKET_CREATED",
+  "awaiting": "MOMENTUM_TAP",
+  "operator_choice_required": true,
+  "note": "Petra/Skybro food was copied into an optional packet. No target file mutation or relay execution happened here.",
+  "target_mutations": [
+    "optional packet for Dink@Betsy"
+  ],
+  "momentum_velocity_churn": {
+    "created_by": "Operator Top 3 packet choice",
+    "next_allowed_action": "Momentum Tap",
+    "execution_state": "not executed"
+  },
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "packet_log_path": "tinkarden/membrane/optional_packets.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-28T10:05:22.734Z",
+  "card_hash": "4c25601fec61857594fdeae5bc75998ead47d6ee8a6c1c0fa3cfde63ecdac589"
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_success_signal_index_20260628231508_3f0c62",
+  "idea_id": "success_signal_index",
+  "title": "Success signal index",
+  "status": "SUCCESS_SIGNAL_INDEX_BUILT",
+  "output": "A receipt-backed index of which buttons and lanes currently have durable success signals.",
+  "why": "The operator should see which controls are proven, empty, blocked, or still only proposed.",
+  "next": "Use this to pick the next button smoke test or repair target.",
+  "payload": {
+    "signal_scope": "Receipt-backed UI and relay actions.",
+    "signals": [
+      {
+        "label": "Version preview decisions",
+        "path": "tinkarden/membrane/version_preview_decisions.jsonl",
+        "count": 0,
+        "latest_event": "none",
+        "latest_status": "none",
+        "latest_title": "none",
+        "latest_artifact": "none",
+        "has_signal": false
+      },
+      {
+        "label": "Final assembly decisions",
+        "path": "tinkarden/membrane/final_assembly_decisions.jsonl",
+        "count": 0,
+        "latest_event": "none",
+        "latest_status": "none",
+        "latest_title": "none",
+        "latest_artifact": "none",
+        "has_signal": false
+      },
+      {
+        "label": "Optional packets",
+        "path": "tinkarden/membrane/optional_packets.jsonl",
+        "count": 3,
+        "latest_event": "optional_packet_created",
+        "latest_status": "OPTIONAL_PACKET_CREATED",
+        "latest_title": "Convert active Birds into receipt, blocker, or next-packet outcomes.",
+        "latest_artifact": "tinkarden/membrane/optional_packets/optional_packet_top3_003_convert_birds_to_receipts_20260628100733_f8fb1a.json",
+        "has_signal": true
+      },
+      {
+        "label": "Momentum taps",
+        "path": "tinkarden/membrane/momentum_taps.jsonl",
+        "count": 7,
+        "latest_event": "momentum_tap",
+        "latest_status": "MOMENTUM_TAPPED",
+        "latest_title": "none",
+        "latest_artifact": "tinkarden/membrane/momentum_taps/momentum_tap_20260628095807_ca3310.json",
+        "has_signal": true
+      },
+      {
+        "label": "Swanson relays",
+        "path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "count": 1,
+        "latest_event": "swanson_functional_relay",
+        "latest_status": "PACKET_RELAY_COMPLETE",
+        "latest_title": "td_packet_swanson_20260628101612_0461b8",
+        "latest_artifact": "data/tinkerden/receipts/td_receipt_swanson_20260628101612_3c74e0.json",
+        "has_signal": true
+      },
+      {
+        "label": "G next-best builds",
+        "path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+        "count": 11,
+        "latest_event": "final_assembly_next_best_idea_built",
+        "latest_status": "MERGE_CANDIDATE_MATRIX_BUILT",
+        "latest_title": "Merge candidate matrix",
+        "latest_artifact": "tinkarden/membrane/next_best_ideas/next_best_idea_merge_candidate_matrix_20260628231508_ebd411.json",
+        "has_signal": true
+      }
+    ],
+    "missing_success_signals": [
+      "Version preview decisions",
+      "Final assembly decisions"
+    ],
+    "next_repair_or_test": "Generate a durable receipt for: Version preview decisions.",
+    "swanson_relay_truth": {
+      "relay_id": "swanson_relay_20260628101612_b066a5",
+      "status": "PACKET_RELAY_COMPLETE",
+      "clipboard_verified": true,
+      "no_auto_send": true,
+      "receipt_path": "data/tinkerden/receipts/td_receipt_swanson_20260628101612_3c74e0.json"
+    },
+    "pass_rule": "A lane is functional only when the UI reports success and the matching log or receipt path exists."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_success_signal_index_20260628231508_3f0c62.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T23:15:08.483Z",
+  "sha256": "3a5d8c4fa451e9d1f5bd3b9c1dcb47a846e9d726edaf60e92d7cdf3b00e73dbb"
+}

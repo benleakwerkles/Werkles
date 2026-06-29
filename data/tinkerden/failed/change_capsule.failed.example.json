@@ -1,0 +1,11 @@
+{
+  "message_type": "change_capsule",
+  "capsule_id": "change_capsule_failed_example_001",
+  "courier_class": "Swateyes",
+  "title": "Dead-click behavior flagged",
+  "what_changed": "A transport action failed to produce a visible receipt.",
+  "why_it_matters": "No-receipt behavior is poisonous to TinkerDen memory.",
+  "status": "FLAGGED",
+  "timestamp": "2026-06-20T23:55:00.000Z",
+  "proof_reference": "data/tinkerden/failed/change_capsule.failed.example.json"
+}

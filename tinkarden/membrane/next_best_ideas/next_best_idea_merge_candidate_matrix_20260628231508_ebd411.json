@@ -1,0 +1,197 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_merge_candidate_matrix_20260628231508_ebd411",
+  "idea_id": "merge_candidate_matrix",
+  "title": "Merge candidate matrix",
+  "status": "MERGE_CANDIDATE_MATRIX_BUILT",
+  "output": "A version-to-module map that shows where each gathered surface belongs in the final site merge.",
+  "why": "The final merge needs source family alignment before Swanson or the Command Dash consumes anything.",
+  "next": "Use this to choose which source owns each final UI behavior.",
+  "payload": {
+    "matrix_scope": "Gathered route previews mapped to final assembly modules.",
+    "candidates": [
+      {
+        "version_id": "command_dash_aeye_evidence",
+        "title": "Command Dash Aeye Evidence",
+        "family": "TinkerDen command surface",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "tinkerden-command-receipts",
+        "module_title": "Command intake and receipts",
+        "module_state": "KEEP",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Issue command panel",
+          "Aeye outbox / inbox / receipt custody fields",
+          "Packet left, received, answered, returned lane"
+        ],
+        "source_path": "app/tinkerden/inbox/page.tsx",
+        "evidence_path": "foreman/receipts/COMMAND_DASH_TO_AEYE_RELAY_BEAST_RECEIPT.md"
+      },
+      {
+        "version_id": "command_dash_proof_chain",
+        "title": "Command Dash Proof Chain",
+        "family": "TinkerDen relay proof",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "tinkerden-command-receipts",
+        "module_title": "Command intake and receipts",
+        "module_state": "KEEP",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Latest ARTIFACT card",
+          "Thread receipt",
+          "Origin return flags"
+        ],
+        "source_path": "app/tinkerden/relay-proof/page.tsx",
+        "evidence_path": "tinkerden/aeye-relay/receipts"
+      },
+      {
+        "version_id": "current_tinkerden_bridge",
+        "title": "TinkerDen Bridge",
+        "family": "Current TinkerDen route",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "tinkerden-command-receipts",
+        "module_title": "Command intake and receipts",
+        "module_state": "KEEP",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Top 3 Moves surface",
+          "Receipt pickup",
+          "Human Gate explanation lane"
+        ],
+        "source_path": "app/tinkerden/page.tsx",
+        "evidence_path": "tinkerden/feedback/decision-ledger.jsonl"
+      },
+      {
+        "version_id": "thinkit_command_dash",
+        "title": "ThinkIt Command Dash",
+        "family": "ThinkIt origin return",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "thinkit-origin-return",
+        "module_title": "Origin return receipt",
+        "module_state": "KEEP",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Question routing queue",
+          "Latest returned answer",
+          "Origin return readback"
+        ],
+        "source_path": "app/thinkit/page.tsx",
+        "evidence_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy"
+      },
+      {
+        "version_id": "static_packet_launcher",
+        "title": "Static Packet Launcher",
+        "family": "Wonka Den / TinkerDen static launcher",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "wonka-aeye-loop",
+        "module_title": "Aeye loop file transport",
+        "module_state": "KEEP",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Single artifact card",
+          "Destination directory framing",
+          "Packet proof layout"
+        ],
+        "source_path": "public/tinkerden-packet-launcher.html",
+        "evidence_path": "public/tinkerden-packet-launcher.html"
+      },
+      {
+        "version_id": "sally_good_soledash",
+        "title": "Sally Good SoleDash",
+        "family": "Detached Sally-good worktree",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "swanson-attached-relay",
+        "module_title": "Functional relay attachment",
+        "module_state": "ATTACHED",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Action queue layout",
+          "Mock-test receipt mode",
+          "Options market and active mission framing"
+        ],
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good/app/soledash/page.tsx",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good/components/soledash/command-surface.tsx"
+      },
+      {
+        "version_id": "current_feral_membrane",
+        "title": "Current Feral Membrane",
+        "family": "Tinkarden membrane",
+        "status": "LIVE_SCREENSHOT",
+        "maps_to_module": "feral-membrane-motion",
+        "module_title": "Optional packets and motion",
+        "module_state": "KEEP",
+        "merge_readiness": "CAN_REVIEW_NOW",
+        "useful_parts": [
+          "Source gathering gallery",
+          "Momentum conveyor",
+          "Final assembly decision controls"
+        ],
+        "source_path": "tinkarden/membrane/app/page.tsx",
+        "evidence_path": "tinkarden/membrane/branch_dashboard_sources.json"
+      },
+      {
+        "version_id": "current_soledash_blocked",
+        "title": "Current SoleDash / Wonka Route",
+        "family": "Current checkout Wonka route",
+        "status": "BLOCKED_RUNTIME",
+        "maps_to_module": "swanson-attached-relay",
+        "module_title": "Functional relay attachment",
+        "module_state": "ATTACHED",
+        "merge_readiness": "REPAIR_OR_REJECT",
+        "useful_parts": [
+          "DecisionSurface wiring",
+          "Wonka Den metadata",
+          "Target route for Swanson merge"
+        ],
+        "source_path": "app/soledash/page.tsx",
+        "evidence_path": "work/werkles-3340.out.log"
+      },
+      {
+        "version_id": "wonka_mood_reference",
+        "title": "Wonka Mood Reference",
+        "family": "Visual reference",
+        "status": "SOURCE_ONLY",
+        "maps_to_module": "wonka-aeye-loop",
+        "module_title": "Aeye loop file transport",
+        "module_state": "KEEP",
+        "merge_readiness": "REFERENCE_ONLY",
+        "useful_parts": [
+          "Lamp-desk framing",
+          "Inspect-sheet pacing",
+          "Physical workshop metaphor"
+        ],
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/WONKA_DEN_MOOD_REFERENCE.md",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/wonka_den_mood_preview.html"
+      },
+      {
+        "version_id": "preserve_salvage_bundle",
+        "title": "Preserve Salvage Bundle",
+        "family": "Patch recovery source",
+        "status": "SOURCE_ONLY",
+        "maps_to_module": "tinkerden-command-receipts",
+        "module_title": "Command intake and receipts",
+        "module_state": "KEEP",
+        "merge_readiness": "REFERENCE_ONLY",
+        "useful_parts": [
+          "Workbench-first CSS",
+          "Receipt pickup styling",
+          "Relay choice controls"
+        ],
+        "source_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.diff",
+        "evidence_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.status.txt"
+      }
+    ],
+    "unresolved_modules": [],
+    "merge_boundary": "Use this matrix to assign site behavior ownership only."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_merge_candidate_matrix_20260628231508_ebd411.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T23:15:08.463Z",
+  "sha256": "7af560b0f2939c438a50b71702402ec0e14ed4f01c00102ebb0957537f77d5c9"
+}

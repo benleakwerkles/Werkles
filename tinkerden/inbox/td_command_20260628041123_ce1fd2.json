@@ -1,0 +1,40 @@
+{
+  "schema": "tinkerden_command_packet_v0",
+  "packet_id": "td_command_20260628041123_ce1fd2",
+  "title": "TinkerDen command surface command",
+  "created_at": "2026-06-28T04:11:23.452Z",
+  "from": "Cursor Relay Proof",
+  "source": "Cursor Relay Proof",
+  "target": "Dink@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "destination_id": "dink_betsy_aeye_inbox_v0",
+  "destination_type": "aeye_inbox_v0",
+  "internal_destination": "foreman/messages/inbox",
+  "stream": "COMMAND DASH / AEYE RELAY",
+  "command": "BEAST_PROOF: direct Command Dash to Aeye relay proof through shared TinkerDen command surface library.",
+  "status": "PACKET_WRITTEN",
+  "packet_type": "BEAST_PROOF",
+  "mission": "BEAST_PROOF: direct Command Dash to Aeye relay proof through shared TinkerDen command surface library.",
+  "context": "Issued from Command Dash. Relay must write a linked Aeye inbox packet and return ACK / BLOCKER / ARTIFACT.",
+  "do": [
+    "Read this command packet.",
+    "Write linked Aeye inbox custody files.",
+    "Return a receipt linked to packet_id."
+  ],
+  "do_not": [
+    "Do not call sender-side write proof.",
+    "Do not use free-text routing.",
+    "Do not auto-send outside the local filesystem relay."
+  ],
+  "output_required": "A linked receipt with packet hash and Aeye relay custody paths.",
+  "receipt_required": "ACK",
+  "required_return": "ACK / BLOCKER / ARTIFACT",
+  "proof_rule": "Receiver must read the packet file and match the sender-side SHA-256 file hash before ACK.",
+  "required_surfaces": {
+    "inbox": "tinkerden/inbox",
+    "receipts": "tinkerden/receipts",
+    "recommendation_cards": "tinkerden/recommendations/recommendation_cards.json",
+    "decision_ledger": "tinkerden/feedback/decision-ledger.jsonl"
+  }
+}

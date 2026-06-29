@@ -1,0 +1,56 @@
+[
+  {
+    "id": "drift_uncommitted_churn_a368f58cef",
+    "timestamp": "2026-06-27T19:20:09.392Z",
+    "sensor": "Wormeyes",
+    "severity": "WOUND",
+    "code": "UNCOMMITTED_CHURN",
+    "message": "Branch preserve/tinkerden-packet-engine-20260622 has 181 dirty entries (55 modified, 126 untracked).",
+    "source_path": "tinkarden/nervous_system/world_state.json"
+  },
+  {
+    "id": "drift_untracked_churn_e75e8cce2e",
+    "timestamp": "2026-06-27T19:20:09.392Z",
+    "sensor": "Wormeyes",
+    "severity": "WOUND",
+    "code": "UNTRACKED_CHURN",
+    "message": "Wormeyes reports 126 untracked entries that are not yet preserved.",
+    "source_path": "tinkarden/nervous_system/world_state.json"
+  },
+  {
+    "id": "drift_stalled_files_f1e26a059f",
+    "timestamp": "2026-06-27T19:20:09.392Z",
+    "sensor": "Wormeyes",
+    "severity": "MOSQUITO",
+    "code": "STALLED_FILES",
+    "message": "handoffs has 20 stale files in the latest directory scan.",
+    "source_path": "tinkarden/nervous_system/world_state.json"
+  },
+  {
+    "id": "drift_stalled_files_05ee42cbf5",
+    "timestamp": "2026-06-27T19:20:09.392Z",
+    "sensor": "Wormeyes",
+    "severity": "WOUND",
+    "code": "STALLED_FILES",
+    "message": "foreman/handoffs has 183 stale files in the latest directory scan.",
+    "source_path": "tinkarden/nervous_system/world_state.json"
+  },
+  {
+    "id": "drift_port_not_listening_27d8af2912",
+    "timestamp": "2026-06-27T19:20:09.392Z",
+    "sensor": "Wormeyes",
+    "severity": "WOUND",
+    "code": "PORT_NOT_LISTENING",
+    "message": "Port 3000 has no confirmed listener in Wormeyes output.",
+    "source_path": "tinkarden/nervous_system/world_state.json"
+  },
+  {
+    "id": "drift_frictional_heat_missing_570737598a",
+    "timestamp": "2026-06-27T19:20:09.392Z",
+    "sensor": "Fleyes",
+    "severity": "WOUND",
+    "code": "FRICTIONAL_HEAT_MISSING",
+    "message": "frictional_heat.json not found in tinkarden/nervous_system/frictional_heat.json or tinkarden/membrane/frictional_heat.json",
+    "source_path": "tinkarden/nervous_system/frictional_heat.json"
+  }
+]

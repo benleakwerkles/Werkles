@@ -1,0 +1,33 @@
+{
+  "schema": "tinkerden_packet_relay_receipt_v1",
+  "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+  "relay_id": "td_relay_mqul2hd5_cv88pm",
+  "receipt_id": "td_receipt_packet_relay_mqul2hd5_bmxnfe",
+  "linked_packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+  "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0 proof packet",
+  "producer": "PacketRelaySystem@Betsy",
+  "status_guess": "RECEIPT_ASSIMILATED",
+  "proof_reference": "data/tinkerden/receipts/td_receipt_packet_relay_mqul2hd5_bmxnfe.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqul2hd5_9diaia.json",
+  "relay_event_path": "data/organism/events.jsonl",
+  "timestamp": "2026-06-26T07:02:03.886Z",
+  "receipt": {
+    "receipt_id": "td_receipt_packet_relay_mqul2hd5_bmxnfe",
+    "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+    "returned_by": "PacketRelaySystem@Betsy",
+    "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqul2hd5_9diaia.json",
+    "summary": "Packet Relay System completed relay td_relay_mqul2hd5_cv88pm for td_packet_relay_ready_mqul2hd5_9diaia",
+    "proof": "Packet Relay event td_relay_mqul2hd5_cv88pm landed with sha256 994f3cb6a4dc58947224435631176ffcaa46512e2401fa0237927aefdd238014.",
+    "blockers": "none",
+    "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+    "timestamp": "2026-06-26T07:02:03.886Z"
+  },
+  "evidence": {
+    "relay_event_type": "packet_relay_ready",
+    "relay_status": "PACKET_RELAY_COMPLETE",
+    "relay_timestamp": "2026-06-26T07:02:03.886Z",
+    "packet_sha256": "994f3cb6a4dc58947224435631176ffcaa46512e2401fa0237927aefdd238014",
+    "packet_size_bytes": 2933,
+    "operator_selection": "KEEP"
+  }
+}

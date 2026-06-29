@@ -1,0 +1,9 @@
+{
+  "packet_id": "packet_mqjlssmj_c2vz8r",
+  "origin_card_id": "origin_card_acceptance",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "task_text": "ping Dink",
+  "created_at": "2026-06-18T14:37:03.595Z",
+  "status": "SENT"
+}

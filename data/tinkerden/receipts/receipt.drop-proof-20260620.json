@@ -1,0 +1,12 @@
+{
+  "message_type": "receipt",
+  "receipt_id": "receipt_drop_proof_20260620_1951",
+  "origin_type": "SYSTEM",
+  "origin_actor": "FilesystemDropProof",
+  "origin_machine": "Betsy",
+  "packet_id": "birdie_packet_example_001",
+  "returned_by": "FilesystemDropProof@Betsy",
+  "summary": "Dropped JSON receipt appeared in the TinkerDen Receipt Inbox without being copied from chat.",
+  "timestamp": "2026-06-20T23:51:30.000Z",
+  "proof_reference": "data/tinkerden/receipts/receipt.drop-proof-20260620.json"
+}

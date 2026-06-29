@@ -1,0 +1,50 @@
+{
+  "schema": "tinkerden_bridge_autopaste_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_autopaste_ready_mqrhqhhr_8s3xgb",
+    "created_at": "2026-06-24T03:05:26.797Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+    "why": "PowerToys Workspaces error probe.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Target focused. Paste/send now.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "AUTOPASTE_READY"
+  },
+  "bridge_card": {
+    "card_id": "packet_tinkerpit_trace_20260623210158990",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 80,
+    "operator_reason": null,
+    "why_now": "PowerToys Workspaces error probe.",
+    "recommended_because": "Verify AutoPaste relay does not launch Workspaces without a workspace id."
+  },
+  "workspace_target": {
+    "id": "maker_betsy_powertoys_workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces",
+    "target": "C:\\Users\\Ben Leak\\AppData\\Local\\PowerToys\\PowerToys.WorkspacesLauncher.exe",
+    "mode": "process",
+    "args": [],
+    "window_title": "",
+    "configured": false,
+    "configuration_error": "PowerToys WorkspacesLauncher requires a workspace id argument."
+  },
+  "autopaste_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: TINKERPIT_RELAY_SUPPORT_V0\n\nOBJECTIVE:\nVerify AutoPaste relay does not launch Workspaces without a workspace id.\n\nPACKET:\npacket_id: td_packet_autopaste_ready_mqrhqhhr_8s3xgb\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 80\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nPowerToys Workspaces error probe.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces (not configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "AUTOPASTE_READY",
+  "operator_instruction": "Target focused. Paste/send now.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

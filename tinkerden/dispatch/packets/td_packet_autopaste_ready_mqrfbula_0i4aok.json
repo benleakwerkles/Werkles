@@ -1,0 +1,46 @@
+{
+  "schema": "tinkerden_bridge_autopaste_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_autopaste_ready_mqrfbula_0i4aok",
+    "created_at": "2026-06-24T01:58:04.702Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Add more recommendation metrics before decisions.",
+    "why": "There is pressure to make the chooser feel smarter.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Target focused. Paste/send now.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "AUTOPASTE_READY"
+  },
+  "bridge_card": {
+    "card_id": "bridge_move_003",
+    "operator_selection": "KEEP",
+    "recommendation": "KILL",
+    "composite_score": 28,
+    "operator_reason": null,
+    "why_now": "There is pressure to make the chooser feel smarter.",
+    "recommended_because": "The current visible sub-scores are enough for a V0 command choice; extra scoring now risks AI hope and dashboard bloat."
+  },
+  "workspace_target": {
+    "id": "maker-betsy-powertoys-workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces Launcher",
+    "target": "C:\\Users\\Ben Leak\\AppData\\Local\\PowerToys\\PowerToys.WorkspacesLauncher.exe",
+    "configured": true
+  },
+  "autopaste_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: Add more recommendation metrics before decisions.\n\nOBJECTIVE:\nThe current visible sub-scores are enough for a V0 command choice; extra scoring now risks AI hope and dashboard bloat.\n\nPACKET:\npacket_id: td_packet_autopaste_ready_mqrfbula_0i4aok\noperator_selection: KEEP\nrecommendation: KILL\ncomposite_score: 28\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nThere is pressure to make the chooser feel smarter.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces Launcher (configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "AUTOPASTE_READY",
+  "operator_instruction": "Target focused. Paste/send now.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "receipt_id": "artifact_sample_food_2_tinkerden_inbox_contract_build_2026_06_27",
+  "source_packet_id": "FOOD_2_TINKERDEN_INBOX_CONTRACT_BUILD_2026-06-27_SAMPLE_MAKER_MEDULLA_V0",
+  "status": "ARTIFACT",
+  "created_at": "2026-06-27T18:15:00.000Z",
+  "from": "Maker@Betsy",
+  "evidence": {
+    "custody": "Receiver read the command packet and returned the requested artifact.",
+    "artifact_path": "tinkerden/medulla/medulla.js",
+    "blocker": null
+  },
+  "notes": "ARTIFACT requires a concrete artifact path or result. A sample receipt is not proof of runtime behavior."
+}

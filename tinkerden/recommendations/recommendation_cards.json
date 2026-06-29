@@ -1,0 +1,148 @@
+{
+  "schema": "tinkerden_medulla_v0_recommendation_cards",
+  "generated_at": "2026-06-27T18:05:52.921Z",
+  "heartbeat": {
+    "timestamp": "2026-06-27T18:05:52.921Z",
+    "process": "medulla_v0_chokidar_loop",
+    "mode": "inbox_packet_to_receipt_and_recommendation_card"
+  },
+  "stale_after_minutes": 720,
+  "stale_at": "2026-06-28T06:05:52.921Z",
+  "stale_warning": "STALE if generated_at is older than 720 minutes.",
+  "source_rule": "Medulla V0 is one Node process using Chokidar only. It does not call AI, route autonomously, or execute packet commands.",
+  "current_frontier": {
+    "title": "Turn inbox packets into receipts and Top 3 Moves.",
+    "summary": "Medulla watches tinkerden/inbox/*.json, validates packets, writes ACK/BLOCKER receipts, and surfaces pending operator decisions."
+  },
+  "cards": [
+    {
+      "card_id": "medulla_card_medulla_test_valid_20260627180552",
+      "source_packet_id": "medulla_test_valid_20260627180552",
+      "target": "Dink@Betsy",
+      "stream": "FERAL / TINKERDEN",
+      "mission": "MEDULLA V0 test: produce ACK receipt and pending operator recommendation card.",
+      "recommended_next_action": "Return ACK / BLOCKER / ARTIFACT for medulla_test_valid_20260627180552.",
+      "risk_flags": [
+        "NO_SHELL_EXECUTION",
+        "NO_AUTONOMOUS_ROUTING",
+        "SENDER_WRITE_IS_NOT_DELIVERY_PROOF"
+      ],
+      "created_at": "2026-06-27T18:05:52.921Z",
+      "status": "pending_operator_decision",
+      "move": "MEDULLA V0 test: produce ACK receipt and pending operator recommendation card.",
+      "why_now": "A valid inbox packet arrived and needs visible operator-facing handling.",
+      "recommended_because": "Medulla V0 only surfaces the next inspectable action; it does not execute the packet.",
+      "scores": {
+        "momentum_gain": 6,
+        "mule_labor_reduction": 7,
+        "cooperation_gain": 6,
+        "continuity_gain": 7,
+        "capacity_gain": 5
+      },
+      "composite_score": 62,
+      "reversibility_gate": "PASS",
+      "risk_extraction_flag": "LOW",
+      "swateyes": {
+        "tier": "GREEN",
+        "confidence": 0.7
+      },
+      "recommendation": "DEFER",
+      "scoring_basis": {
+        "deterministic": true,
+        "no_ai": true,
+        "no_hidden_judgment": true,
+        "formula": "valid_packet ? fixed_placeholder_surface_score : no_card",
+        "inputs": {
+          "packet_id": "medulla_test_valid_20260627180552",
+          "target": "Dink@Betsy",
+          "command_length": 78
+        }
+      },
+      "hidden_judgment": false
+    },
+    {
+      "card_id": "medulla_card_medulla_test_valid_20260627175953",
+      "source_packet_id": "medulla_test_valid_20260627175953",
+      "target": "Dink@Betsy",
+      "stream": "FERAL / TINKERDEN",
+      "mission": "MEDULLA V0 test: produce ACK receipt and pending operator recommendation card.",
+      "recommended_next_action": "Return ACK / BLOCKER / ARTIFACT for medulla_test_valid_20260627175953.",
+      "risk_flags": [
+        "NO_SHELL_EXECUTION",
+        "NO_AUTONOMOUS_ROUTING",
+        "SENDER_WRITE_IS_NOT_DELIVERY_PROOF"
+      ],
+      "created_at": "2026-06-27T17:59:53.860Z",
+      "status": "pending_operator_decision",
+      "move": "MEDULLA V0 test: produce ACK receipt and pending operator recommendation card.",
+      "why_now": "A valid inbox packet arrived and needs visible operator-facing handling.",
+      "recommended_because": "Medulla V0 only surfaces the next inspectable action; it does not execute the packet.",
+      "scores": {
+        "momentum_gain": 6,
+        "mule_labor_reduction": 7,
+        "cooperation_gain": 6,
+        "continuity_gain": 7,
+        "capacity_gain": 5
+      },
+      "composite_score": 62,
+      "reversibility_gate": "PASS",
+      "risk_extraction_flag": "LOW",
+      "swateyes": {
+        "tier": "GREEN",
+        "confidence": 0.7
+      },
+      "recommendation": "DEFER",
+      "scoring_basis": {
+        "deterministic": true,
+        "no_ai": true,
+        "no_hidden_judgment": true,
+        "formula": "valid_packet ? fixed_placeholder_surface_score : no_card",
+        "inputs": {
+          "packet_id": "medulla_test_valid_20260627175953",
+          "target": "Dink@Betsy",
+          "command_length": 78
+        }
+      },
+      "hidden_judgment": false
+    },
+    {
+      "card_id": "medulla_v0_move_001",
+      "move": "Use the command inbox as the first TinkerDen command surface.",
+      "why_now": "The command surface already writes a packet, verifies a receiver hash read, and displays an ACK receipt.",
+      "recommended_because": "It reduces mule labor without treating sender-side write as delivery proof.",
+      "scores": {
+        "momentum_gain": 8,
+        "mule_labor_reduction": 8,
+        "cooperation_gain": 6,
+        "continuity_gain": 8,
+        "capacity_gain": 6
+      },
+      "composite_score": 100,
+      "reversibility_gate": "PASS",
+      "risk_extraction_flag": "LOW",
+      "swateyes": {
+        "tier": "GREEN",
+        "confidence": 0.84
+      },
+      "recommendation": "PROCEED",
+      "scoring_basis": {
+        "deterministic": true,
+        "no_ai": true,
+        "formula": "operator_facing*18 + file_backed*18 + receipt_visible*18 + scope_small*16 - risk_penalty*20 - min(PROCEED,3)*2",
+        "inputs": {
+          "operator_facing": 2,
+          "file_backed": 2,
+          "receipt_visible": 2,
+          "scope_small": 2,
+          "risk_penalty": 0
+        },
+        "decision_counts": {
+          "PROCEED": 2,
+          "DEFER": 0,
+          "KILL": 0
+        }
+      },
+      "hidden_judgment": false
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "tinkerden_packet_relay_receipt_v1",
+  "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+  "relay_id": "td_relay_mqvs57ud_0uqnre",
+  "receipt_id": "td_receipt_packet_relay_mqvs57ud_cgb0g2",
+  "linked_packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+  "mission": "Move transport queues into Engine Room.",
+  "producer": "PacketRelaySystem@Betsy",
+  "status_guess": "RECEIPT_ASSIMILATED",
+  "proof_reference": "data/tinkerden/receipts/td_receipt_packet_relay_mqvs57ud_cgb0g2.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs57ud_wixx70.json",
+  "relay_event_path": "data/organism/events.jsonl",
+  "timestamp": "2026-06-27T03:07:55.002Z",
+  "receipt": {
+    "receipt_id": "td_receipt_packet_relay_mqvs57ud_cgb0g2",
+    "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+    "returned_by": "PacketRelaySystem@Betsy",
+    "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs57ud_wixx70.json",
+    "summary": "Packet Relay System completed relay td_relay_mqvs57ud_0uqnre for td_packet_relay_ready_mqvs57ud_wixx70",
+    "proof": "Packet Relay event td_relay_mqvs57ud_0uqnre landed with sha256 6464e35c6ad104294fbc27886647fcf1011a7e5f766695128274262ed6ac62a5.",
+    "blockers": "none",
+    "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+    "timestamp": "2026-06-27T03:07:55.002Z"
+  },
+  "evidence": {
+    "relay_event_type": "packet_relay_ready",
+    "relay_status": "PACKET_RELAY_COMPLETE",
+    "relay_timestamp": "2026-06-27T03:07:55.002Z",
+    "packet_sha256": "6464e35c6ad104294fbc27886647fcf1011a7e5f766695128274262ed6ac62a5",
+    "packet_size_bytes": 2884,
+    "operator_selection": "KEEP"
+  }
+}

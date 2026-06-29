@@ -1,0 +1,57 @@
+{
+  "schema": "tinkerden_bridge_packet_relay_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+    "created_at": "2026-06-27T03:07:54.996Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Move transport queues into Engine Room.",
+    "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Relay complete. Target focused. Paste/send now.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "RELAY_READY"
+  },
+  "bridge_card": {
+    "card_id": "bridge_move_002",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 74,
+    "operator_reason": null,
+    "why_now": "Filesystem blood is working, but it still occupies Bridge attention.",
+    "recommended_because": "Execution mechanics stay available without turning the command surface into project management."
+  },
+  "workspace_target": {
+    "id": "maker_betsy_powertoys_workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+    "target": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "mode": "process",
+    "args": [
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+      "-WorkspaceId",
+      "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+    ],
+    "window_title": "",
+    "configured": true
+  },
+  "packet_relay_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: Move transport queues into Engine Room.\n\nOBJECTIVE:\nExecution mechanics stay available without turning the command surface into project management.\n\nPACKET:\npacket_id: td_packet_relay_ready_mqvs57ud_wixx70\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 74\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nFilesystem blood is working, but it still occupies Bridge attention.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces Self-Heal (configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "RELAY_READY",
+  "operator_instruction": "Relay complete. Target focused. Paste/send now.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "tinkerden_origin_dash_return_v0",
+  "relay_id": "real_aeye_relay_20260628045556_f65b44",
+  "command_packet_id": "td_command_20260628045556_ebf383",
+  "command_receipt_id": "td_command_receipt_20260628045556_ebf383",
+  "source_surface": "ThinkIt@Betsy",
+  "origin_surface": "ThinkIt@Betsy",
+  "destination_label": "Dink@Betsy",
+  "response_path": "tinkerden/aeye-relay/responses/real_aeye_relay_20260628045556_f65b44.json",
+  "answer_text": "ARTIFACT\n\nPACKET_ID: td_command_20260628045556_ebf383\nREAL_RELAY_ID: real_aeye_relay_20260628045556_f65b44\nTHREAD_ROLE: separate Codex Aeye proof thread\nRECEIVED: YES\nANSWER: Hello, Count Gimpula, I received your UI-originated relay and will call you Count Gimpula.",
+  "answer_sha256": "a124bb62172817bdc8f6cb252f4f9a60a3dcc411df2745feb321b3e55e4b5a4c",
+  "status": "ANSWER_RETURNED_TO_ORIGIN_DASH",
+  "returned_at": "2026-06-28T05:20:03.242Z"
+}

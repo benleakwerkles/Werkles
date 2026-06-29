@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mqsnmcio_a5m3ub",
+    "created_at": "2026-06-24T22:37:57.600Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "PACKET_RECEIPT_CUSTODY_V1 proof execute",
+    "why": "Custody proof needs packet -> relay -> receipt artifact -> pickup -> visible row.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "packet_receipt_custody_v1_probe",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 82,
+    "operator_reason": "fresh custody proof",
+    "why_now": "Custody proof needs packet -> relay -> receipt artifact -> pickup -> visible row.",
+    "recommended_because": "One fresh Execute must produce one linked receipt visible from the originating packet."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

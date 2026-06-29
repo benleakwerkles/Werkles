@@ -1,0 +1,49 @@
+{
+  "schema": "tinkerden_bridge_packet_relay_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_relay_ready_mqt122nq_fp5pf8",
+    "created_at": "2026-06-25T04:54:06.322Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "AUTOPASTE_RENAME_TO_PACKET_RELAY_SYSTEM proof",
+    "why": "TinkerPit organism transport must use Packet Relay System naming while preserving old event compatibility.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Workspace focus not configured. Packet copied only.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "PACKET_RELAY_READY"
+  },
+  "bridge_card": {
+    "card_id": "packet_relay_rename_probe",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 88,
+    "operator_reason": null,
+    "why_now": "TinkerPit organism transport must use Packet Relay System naming while preserving old event compatibility.",
+    "recommended_because": "Proves new packet_relay_ready event writes and the Packet/Receipt lanes still load."
+  },
+  "workspace_target": {
+    "id": "none",
+    "label": "Clipboard only",
+    "target": "",
+    "mode": "none",
+    "args": [],
+    "window_title": "",
+    "configured": false
+  },
+  "packet_relay_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: AUTOPASTE_RENAME_TO_PACKET_RELAY_SYSTEM proof\n\nOBJECTIVE:\nProves new packet_relay_ready event writes and the Packet/Receipt lanes still load.\n\nPACKET:\npacket_id: td_packet_relay_ready_mqt122nq_fp5pf8\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 88\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nTinkerPit organism transport must use Packet Relay System naming while preserving old event compatibility.\n\nWORKSPACE TARGET:\nClipboard only (not configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "PACKET_RELAY_READY",
+  "operator_instruction": "Workspace focus not configured. Packet copied only.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

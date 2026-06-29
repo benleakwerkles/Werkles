@@ -1,0 +1,80 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_swanson_merge_checklist_20260628191957_2d8939",
+  "idea_id": "swanson_merge_checklist",
+  "title": "Swanson merge checklist",
+  "status": "SWANSON_MERGE_CHECKLIST_BUILT",
+  "output": "A pre-merge checklist for Swanson's final relay page.",
+  "why": "Swanson should only become canonical after receipt, decision, and guardrail checks pass.",
+  "next": "Run this immediately before the final functional relay merge.",
+  "payload": {
+    "checklist": [
+      {
+        "gate": "candidate_manifest_exists",
+        "pass": true,
+        "evidence_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl"
+      },
+      {
+        "gate": "operator_decisions_recorded",
+        "pass": false,
+        "evidence_path": "tinkarden/membrane/final_assembly_decisions.jsonl",
+        "open_count": 5
+      },
+      {
+        "gate": "swanson_relay_log_exists",
+        "pass": true,
+        "evidence_path": "tinkarden/membrane/swanson_functional_relays.jsonl"
+      },
+      {
+        "gate": "no_auto_send_guardrail",
+        "pass": true,
+        "evidence": "G artifacts and Swanson relay records declare no_auto_send."
+      }
+    ],
+    "required_sources": [
+      {
+        "path": "tinkarden/membrane/optional_packets.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 5585,
+        "updated_at": "2026-06-28T10:07:33.586Z"
+      },
+      {
+        "path": "tinkarden/membrane/momentum_taps.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 6828,
+        "updated_at": "2026-06-28T09:58:07.966Z"
+      },
+      {
+        "path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 1187,
+        "updated_at": "2026-06-28T10:16:12.713Z"
+      },
+      {
+        "path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 8619,
+        "updated_at": "2026-06-28T19:19:57.577Z"
+      },
+      {
+        "path": "tinkarden/membrane/final_assembly_decisions.jsonl",
+        "exists": false,
+        "kind": "missing"
+      }
+    ]
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_swanson_merge_checklist_20260628191957_2d8939.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T19:19:57.801Z",
+  "sha256": "014916763d763c2c8655402ac6660935437187a07bcf2c82990fa693e4d7b240"
+}

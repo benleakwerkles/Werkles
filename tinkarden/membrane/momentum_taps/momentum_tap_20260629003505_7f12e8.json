@@ -1,0 +1,23 @@
+{
+  "schema": "feral_membrane_momentum_tap_v0",
+  "event_type": "momentum_tap",
+  "tap_id": "momentum_tap_20260629003505_7f12e8",
+  "capsule_id": "optional_packet_top3_001_feral_membrane_bridge_20260628100522_b1b97a",
+  "origin": "Top 3 Petra/Skybro food",
+  "source_path": "tinkarden/membrane/optional_packets/optional_packet_top3_001_feral_membrane_bridge_20260628100522_b1b97a.json",
+  "target_mutations": [
+    "optional packet for Dink@Betsy"
+  ],
+  "previous_status": "OPTIONAL_PACKET_CREATED",
+  "status": "MOMENTUM_TAPPED",
+  "awaiting": "SWANSON_FUNCTIONAL_RELAY_MERGE",
+  "note": "Operator momentum tap recorded. No target file mutation performed by this tap.",
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "pending_until": "functional relay page exists",
+    "tap_log_path": "tinkarden/membrane/momentum_taps.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-29T00:35:05.234Z",
+  "capsule_hash": "1af38ef5053ac688f3f533021fd14726b654f6c57db7d58bb75e14f499b56d6a"
+}

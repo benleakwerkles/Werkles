@@ -1,0 +1,12 @@
+{
+  "message_type": "receipt",
+  "receipt_id": "receipt_transport_example_001",
+  "origin_type": "SYSTEM",
+  "origin_actor": "TinkerDenFilesystem",
+  "origin_machine": "Betsy",
+  "packet_id": "birdie_packet_sent_example_001",
+  "returned_by": "TinkerDenFilesystem@Betsy",
+  "summary": "Filesystem receipt example proves the Receipt Inbox can read courier returns from disk.",
+  "timestamp": "2026-06-20T23:53:00.000Z",
+  "proof_reference": "data/tinkerden/receipts/receipt.example.json"
+}

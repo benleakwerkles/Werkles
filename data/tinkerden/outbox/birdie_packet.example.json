@@ -1,0 +1,12 @@
+{
+  "message_type": "birdie_packet",
+  "courier_class": "Birdeyes",
+  "packet_id": "birdie_packet_example_001",
+  "created_at": "2026-06-20T23:51:00.000Z",
+  "target_aeye": "Dink",
+  "target_machine": "Sally",
+  "mission": "Carry this outbound dispatch packet from TinkerDen to the next working surface.",
+  "purpose": "Prove filesystem outbox packets can surface in Dispatch Queue without chat copy/paste.",
+  "status": "DRAFT",
+  "return_destination": "data/tinkerden/receipts"
+}

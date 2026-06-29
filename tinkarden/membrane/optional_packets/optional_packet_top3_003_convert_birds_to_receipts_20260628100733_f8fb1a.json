@@ -1,0 +1,36 @@
+{
+  "schema": "feral_membrane_top_three_optional_packet_v0",
+  "event_type": "optional_packet_created",
+  "packet_id": "optional_packet_top3_003_convert_birds_to_receipts_20260628100733_f8fb1a",
+  "card_id": "top3_003_convert_birds_to_receipts",
+  "title": "Convert active Birds into receipt, blocker, or next-packet outcomes.",
+  "mission": "Convert active Birds into receipt, blocker, or next-packet outcomes.",
+  "why": "Doctrine: Birds carry momentum and Ben is not the bus. Shared frontier packets in flight: BIRD_0034, BIRD_0035, BIRD_0036. Handoff note to Sally: Sally, stop validating the UI. If the brain doesn't load on boot, the organism is dead. Your new target: Ensure Speaker's doctrine files are perfectly formatted so Maker's bootloader.js can concatenate them without parsing errors..",
+  "recommendation": "",
+  "food_sources": [
+    "Petra",
+    "Skybro"
+  ],
+  "source_path": "tinkarden/membrane/recommendation_cards.json",
+  "target_aeye": "Skybro@Sally",
+  "risk_class": "GNAT",
+  "status": "OPTIONAL_PACKET_CREATED",
+  "awaiting": "MOMENTUM_TAP",
+  "operator_choice_required": true,
+  "note": "Petra/Skybro food was copied into an optional packet. No target file mutation or relay execution happened here.",
+  "target_mutations": [
+    "optional packet for Skybro@Sally"
+  ],
+  "momentum_velocity_churn": {
+    "created_by": "Operator Top 3 packet choice",
+    "next_allowed_action": "Momentum Tap",
+    "execution_state": "not executed"
+  },
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "packet_log_path": "tinkarden/membrane/optional_packets.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-28T10:07:33.584Z",
+  "card_hash": "116de863c4bf7927f13c78f5404e27df4e0f3c5d8fff745ed0cf3c5bbd116def"
+}

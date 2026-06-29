@@ -1,0 +1,13 @@
+{
+  "receipt_id": "blocker_sample_food_2_tinkerden_inbox_contract_build_2026_06_27",
+  "source_packet_id": "FOOD_2_TINKERDEN_INBOX_CONTRACT_BUILD_2026-06-27_SAMPLE_MAKER_MEDULLA_V0",
+  "status": "BLOCKER",
+  "created_at": "2026-06-27T18:15:00.000Z",
+  "from": "Maker@Betsy",
+  "evidence": {
+    "custody": "Receiver read the command packet but cannot execute.",
+    "artifact_path": null,
+    "blocker": "Missing writable path: tinkerden/medulla/medulla.js"
+  },
+  "notes": "A BLOCKER must name the exact missing repo, path, input, access, or human gate."
+}

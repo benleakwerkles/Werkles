@@ -1,0 +1,6 @@
+{
+  "delivery_id": "delivery_verification_smoke_v0",
+  "receiver_readback_path": "data\\organism\\delivery-verification-test\\receiver\\packet.txt",
+  "source_hash": "ac6c13073337b09f68e11e4fab6ab30eb0dbc827d21f92151d1ab6ab1b1cdd21",
+  "receiver_hash": "ac6c13073337b09f68e11e4fab6ab30eb0dbc827d21f92151d1ab6ab1b1cdd21"
+}

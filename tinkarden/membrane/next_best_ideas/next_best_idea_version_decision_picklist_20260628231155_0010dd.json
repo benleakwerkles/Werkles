@@ -1,0 +1,253 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_version_decision_picklist_20260628231155_0010dd",
+  "idea_id": "version_decision_picklist",
+  "title": "Version decision picklist",
+  "status": "VERSION_DECISION_PICKLIST_BUILT",
+  "output": "A site-only picklist for Keep, Steal Parts, or Let Die decisions across gathered dashboard versions.",
+  "why": "The operator needs the gathered previews turned into explicit choices before any final merge.",
+  "next": "Use this as the live review call sheet for the version wall.",
+  "payload": {
+    "source_manifest_path": "tinkarden/membrane/version_preview_manifest.json",
+    "version_count": 10,
+    "picklist": [
+      {
+        "version_id": "command_dash_aeye_evidence",
+        "title": "Command Dash Aeye Evidence",
+        "family": "TinkerDen command surface",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3340/tinkerden/inbox",
+        "source_path": "app/tinkerden/inbox/page.tsx",
+        "evidence_path": "foreman/receipts/COMMAND_DASH_TO_AEYE_RELAY_BEAST_RECEIPT.md",
+        "useful_parts": [
+          "Issue command panel",
+          "Aeye outbox / inbox / receipt custody fields",
+          "Packet left, received, answered, returned lane"
+        ],
+        "human_meaning": "This is the evidence Sally's Dink was pointing at: write a command, relay it to verified Aeye custody, and show returned ACK / BLOCKER / ARTIFACT fields.",
+        "boundary": "Captured from the live main Werkles app on port 3340."
+      },
+      {
+        "version_id": "command_dash_proof_chain",
+        "title": "Command Dash Proof Chain",
+        "family": "TinkerDen relay proof",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3340/tinkerden/relay-proof",
+        "source_path": "app/tinkerden/relay-proof/page.tsx",
+        "evidence_path": "tinkerden/aeye-relay/receipts",
+        "useful_parts": [
+          "Latest ARTIFACT card",
+          "Thread receipt",
+          "Origin return flags"
+        ],
+        "human_meaning": "Shows the latest real relay receipt and answer returned to the origin surface.",
+        "boundary": "Live route is visually dark in the current theme, but the proof chain content is present."
+      },
+      {
+        "version_id": "current_tinkerden_bridge",
+        "title": "TinkerDen Bridge",
+        "family": "Current TinkerDen route",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3340/tinkerden",
+        "source_path": "app/tinkerden/page.tsx",
+        "evidence_path": "tinkerden/feedback/decision-ledger.jsonl",
+        "useful_parts": [
+          "Top 3 Moves surface",
+          "Receipt pickup",
+          "Human Gate explanation lane"
+        ],
+        "human_meaning": "This is the human-facing bridge with Top 3 Moves, receipt pickup, command console, and Human Gate lane.",
+        "boundary": "Captured from current dirty checkout on port 3340."
+      },
+      {
+        "version_id": "thinkit_command_dash",
+        "title": "ThinkIt Command Dash",
+        "family": "ThinkIt origin return",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3340/thinkit",
+        "source_path": "app/thinkit/page.tsx",
+        "evidence_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+        "useful_parts": [
+          "Question routing queue",
+          "Latest returned answer",
+          "Origin return readback"
+        ],
+        "human_meaning": "Shows questions routed through verified Aeye destinations and the latest answer returned to origin.",
+        "boundary": "Captured from current dirty checkout on port 3340."
+      },
+      {
+        "version_id": "static_packet_launcher",
+        "title": "Static Packet Launcher",
+        "family": "Wonka Den / TinkerDen static launcher",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3340/tinkerden-packet-launcher.html",
+        "source_path": "public/tinkerden-packet-launcher.html",
+        "evidence_path": "public/tinkerden-packet-launcher.html",
+        "useful_parts": [
+          "Single artifact card",
+          "Destination directory framing",
+          "Packet proof layout"
+        ],
+        "human_meaning": "Standalone packet launcher visual with a direct artifact card and receipt proof layout.",
+        "boundary": "Static preview; not the merged live relay implementation."
+      },
+      {
+        "version_id": "sally_good_soledash",
+        "title": "Sally Good SoleDash",
+        "family": "Detached Sally-good worktree",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3341/soledash",
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good/app/soledash/page.tsx",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/salvage-betsy-sally-good/components/soledash/command-surface.tsx",
+        "useful_parts": [
+          "Action queue layout",
+          "Mock-test receipt mode",
+          "Options market and active mission framing"
+        ],
+        "human_meaning": "This is the older visual/function family Sally's side is showing: mock-test mode, active mission, options market, and action buttons.",
+        "boundary": "Running from detached worktree on port 3341; it is not the same as Command Dash Aeye evidence."
+      },
+      {
+        "version_id": "current_feral_membrane",
+        "title": "Current Feral Membrane",
+        "family": "Tinkarden membrane",
+        "status": "LIVE_SCREENSHOT",
+        "suggested_operator_action": "KEEP_OR_STEAL_PARTS",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3339/",
+        "source_path": "tinkarden/membrane/app/page.tsx",
+        "evidence_path": "tinkarden/membrane/branch_dashboard_sources.json",
+        "useful_parts": [
+          "Source gathering gallery",
+          "Momentum conveyor",
+          "Final assembly decision controls"
+        ],
+        "human_meaning": "Current merge staging shell with gathered sources, final assembly, velocity conveyor, and command relay.",
+        "boundary": "This is the currently running preview; it is not proof that all source families are merged."
+      },
+      {
+        "version_id": "current_soledash_blocked",
+        "title": "Current SoleDash / Wonka Route",
+        "family": "Current checkout Wonka route",
+        "status": "BLOCKED_RUNTIME",
+        "suggested_operator_action": "REPAIR_BEFORE_MERGE_OR_LET_DIE",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": "http://127.0.0.1:3340/soledash",
+        "source_path": "app/soledash/page.tsx",
+        "evidence_path": "work/werkles-3340.out.log",
+        "useful_parts": [
+          "DecisionSurface wiring",
+          "Wonka Den metadata",
+          "Target route for Swanson merge"
+        ],
+        "human_meaning": "This is the route that should become Swanson's functional relay merge target, but the current route did not render as a working dashboard during this capture.",
+        "boundary": "Captured state showed the app's empty-bench/404 surface, not a working Wonka dashboard."
+      },
+      {
+        "version_id": "wonka_mood_reference",
+        "title": "Wonka Mood Reference",
+        "family": "Visual reference",
+        "status": "SOURCE_ONLY",
+        "suggested_operator_action": "SOURCE_ONLY_REVIEW",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": null,
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/WONKA_DEN_MOOD_REFERENCE.md",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/wonka_den_mood_preview.html",
+        "useful_parts": [
+          "Lamp-desk framing",
+          "Inspect-sheet pacing",
+          "Physical workshop metaphor"
+        ],
+        "human_meaning": "Visual mood source for a den/workshop feel; useful for atmosphere but not relay proof.",
+        "boundary": "Indexed source only in this preview wall; not a live functional route."
+      },
+      {
+        "version_id": "preserve_salvage_bundle",
+        "title": "Preserve Salvage Bundle",
+        "family": "Patch recovery source",
+        "status": "SOURCE_ONLY",
+        "suggested_operator_action": "SOURCE_ONLY_REVIEW",
+        "available_buttons": [
+          "KEEP",
+          "STEAL_PARTS",
+          "LET_DIE"
+        ],
+        "source_url": null,
+        "source_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.diff",
+        "evidence_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.status.txt",
+        "useful_parts": [
+          "Workbench-first CSS",
+          "Receipt pickup styling",
+          "Relay choice controls"
+        ],
+        "human_meaning": "Recovery bundle containing TinkerDen return cards, receipt pickup, relay choice, Wonka metadata, and workbench-first CSS.",
+        "boundary": "Patch bundle is indexed for merge review; it is not rendered as a route."
+      }
+    ],
+    "decision_receipts": {
+      "endpoint": "/api/version-preview/decision",
+      "log_path": "tinkarden/membrane/version_preview_decisions.jsonl",
+      "speaker_event_path": "speaker/logs/interface-notify.jsonl",
+      "success_copy": "<title>: <decision> saved."
+    },
+    "merge_boundary": "Dashboard/site preview decisions only. Do not consume or mutate unrelated source material."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_version_decision_picklist_20260628231155_0010dd.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T23:11:55.329Z",
+  "sha256": "107fcd30b03a8d9a931d14eda02cf1d791d34c02f672ec4dc57afdd31854df5e"
+}

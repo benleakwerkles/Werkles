@@ -1,0 +1,28 @@
+{
+  "schema": "tinkerden_real_aeye_relay_request_v0",
+  "relay_id": "real_aeye_relay_20260628045556_f65b44",
+  "created_at": "2026-06-28T04:55:56.562Z",
+  "status": "WAITING_FOR_CODEX_THREAD_BRIDGE",
+  "source_surface": "ThinkIt@Betsy",
+  "destination_id": "dink_betsy_aeye_inbox_v0",
+  "destination_label": "Dink@Betsy",
+  "stream": "THINKIT / COGNITIVE RELAY",
+  "command": "Hello, call me Count Gimpula",
+  "command_packet_id": "td_command_20260628045556_ebf383",
+  "command_receipt_id": "td_command_receipt_20260628045556_ebf383",
+  "aeye_receipt_id": "aeye_td_command_receipt_20260628045556_ebf383",
+  "command_packet_path": "tinkerden/inbox/td_command_20260628045556_ebf383.json",
+  "command_receipt_path": "tinkerden/receipts/td_command_receipt_20260628045556_ebf383.json",
+  "success_criteria": [
+    "A. new chat in any Aeye anywhere",
+    "B. new query",
+    "C. activity originating from Nerdkle Organism prompting",
+    "D. proof packet left",
+    "E. proof packet was received",
+    "F. proof packet was answered",
+    "G. proof answer was received"
+  ],
+  "bridge_required": true,
+  "node_runtime_can_create_codex_thread": false,
+  "limitation": "Next.js/Node can queue the relay request, but a Codex thread bridge or future authenticated daemon must create/read the actual Aeye chat."
+}

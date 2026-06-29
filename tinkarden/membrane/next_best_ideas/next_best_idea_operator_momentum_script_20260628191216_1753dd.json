@@ -1,0 +1,35 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_operator_momentum_script_20260628191216_1753dd",
+  "idea_id": "operator_momentum_script",
+  "title": "Operator momentum script",
+  "status": "MOMENTUM_SCRIPT_BUILT",
+  "output": "A human click path from Top Three food through optional packets, momentum taps, and Swanson relay.",
+  "why": "The operator should know what the conveyor belt does before tapping momentum.",
+  "next": "Use this as the live rehearsal script for the final page.",
+  "payload": {
+    "script_steps": [
+      "Pick one Top Three move as food.",
+      "Build an optional packet from that move.",
+      "Momentum Tap the staged capsule.",
+      "Send it through Swanson functional relay only after the operator approves paste/send.",
+      "Return receipt to TinkerDen and Speaker."
+    ],
+    "expected_sources": [
+      "tinkarden/membrane/recommendation_cards.json",
+      "tinkarden/membrane/optional_packets.jsonl",
+      "tinkarden/membrane/momentum_taps.jsonl",
+      "tinkarden/membrane/swanson_functional_relays.jsonl"
+    ]
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_operator_momentum_script_20260628191216_1753dd.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T19:12:16.929Z",
+  "sha256": "4c6c74d83b795ebd6a5bed8c7d942e6c061b5c1f2811d80ce15459f50a13a7e1"
+}

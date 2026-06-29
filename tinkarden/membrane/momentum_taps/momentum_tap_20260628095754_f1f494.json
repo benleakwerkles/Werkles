@@ -1,0 +1,23 @@
+{
+  "schema": "feral_membrane_momentum_tap_v0",
+  "event_type": "momentum_tap",
+  "tap_id": "momentum_tap_20260628095754_f1f494",
+  "capsule_id": "BIRD_0122_TEST",
+  "origin": "Clipboard@Betsy",
+  "source_path": "speaker/logs/interface-notify.jsonl",
+  "target_mutations": [
+    "speaker/receipts/raw/inbox/BIRD_0122_TEST.json"
+  ],
+  "previous_status": "CLIPBOARD_INGEST_SUCCESSFUL",
+  "status": "MOMENTUM_TAPPED",
+  "awaiting": "SWANSON_FUNCTIONAL_RELAY_MERGE",
+  "note": "Operator momentum tap recorded. No target file mutation performed by this tap.",
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "pending_until": "functional relay page exists",
+    "tap_log_path": "tinkarden/membrane/momentum_taps.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-28T09:57:54.602Z",
+  "capsule_hash": "a20792c823dbe87881409b20642a2125d1b9233af56f866c3952c0e24be3c24d"
+}

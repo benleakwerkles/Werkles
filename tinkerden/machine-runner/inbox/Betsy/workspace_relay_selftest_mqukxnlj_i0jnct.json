@@ -1,0 +1,28 @@
+{
+  "schema": "tinkerden_machine_runner_packet_v0",
+  "received_at": "2026-06-26T06:58:18.679Z",
+  "local_machine": "Betsy",
+  "packet_id": "workspace_relay_selftest_mqukxnlj_i0jnct",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0_SELF_TEST",
+  "packet_path_from_tinkerden": "UNKNOWN",
+  "workspace_target": {
+    "id": "maker_betsy_powertoys_workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+    "mode": "process",
+    "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "args": [
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+      "-WorkspaceId",
+      "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+    ],
+    "window_title": "",
+    "configured": true
+  },
+  "packet_text": "TO: Dink@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: TINKERDEN_WORKSPACE_RELAY_BETSY_V0_SELF_TEST\n\nTASK:\nProve machine runner can set clipboard, launch/focus workspace target, and write receipt.\n\nRETURN:\nReceipt to data/tinkerden/receipts\n\nRULES:\n- No auto-send.\n- Local proof only."
+}

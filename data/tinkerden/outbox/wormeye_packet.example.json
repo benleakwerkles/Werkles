@@ -1,0 +1,12 @@
+{
+  "message_type": "wormeye_packet",
+  "courier_class": "Wormeyes",
+  "packet_id": "wormeye_packet_example_001",
+  "created_at": "2026-06-20T23:51:00.000Z",
+  "target_aeye": "Wormeye",
+  "target_machine": "Betsy",
+  "mission": "Crawl transport folders for stale packets, missing receipts, and forgotten artifacts.",
+  "purpose": "Expose missing-return behavior before work disappears.",
+  "status": "DRAFT",
+  "return_destination": "data/tinkerden/receipts"
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "tinkerden_dispatch_packet_v0",
+  "message_type": "aeye_feed_packet",
+  "courier_class": "Birdeyes",
+  "packet_id": "AEYE_FEED_PACKET_0001",
+  "packet": {
+    "packet_id": "AEYE_FEED_PACKET_0001",
+    "created_at": "2026-06-26T07:59:35.925Z"
+  },
+  "title": "BIRDS CARRY MOMENTUM",
+  "created_at": "2026-06-26T07:59:35.925Z",
+  "source": "Ben@Betsy",
+  "target_aeye": "All Aeyes",
+  "target_machine": "Fleet",
+  "action": "BROADCAST",
+  "packet_type": "doctrine_feed",
+  "risk_tier": "LOW",
+  "status": "BROADCAST_READY",
+  "receipt_slot": "data/tinkerden/receipts/receipt_aeye_feed_packet_0001.json",
+  "internal_destination": "TinkerDen Intake",
+  "mission": "BIRDS CARRY MOMENTUM",
+  "objective": "Make incomplete work generate its own successor artifact so Ben is not the bus.",
+  "task": "Adopt Bird discipline: every incomplete mission returns a receipt, blocker, or next packet.",
+  "return": [
+    "receipt",
+    "blocker",
+    "next_packet"
+  ],
+  "rules": [
+    "Never hand Ben vague status.",
+    "Do not say done without proof.",
+    "If context is missing, emit a blocker.",
+    "If work is incomplete but routed, emit the next packet.",
+    "If work is complete, attach the receipt."
+  ],
+  "source_text_path": "data/tinkerden/outbox/aeye_feed_packet_0001_birds_carry_momentum.md",
+  "structured_packet_path": "data/tinkerden/outbox/aeye_feed_packet_0001_birds_carry_momentum.json"
+}

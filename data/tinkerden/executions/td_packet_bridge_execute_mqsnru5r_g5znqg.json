@@ -1,0 +1,12 @@
+{
+  "packet_id": "td_packet_bridge_execute_mqsnru5r_g5znqg",
+  "receipt_id": "td_receipt_bridge_execute_mqsnru67_h703vk",
+  "relay_status": "RELAY_DISPATCHED",
+  "receipt_status": "RECEIPT_LINKED",
+  "created_at": "2026-06-24T22:42:13.742Z",
+  "owner": "Maker@Betsy",
+  "mission": "RECEIPT_JOIN_REPAIR proof execution",
+  "artifact_path": "data/tinkerden/receipts/td_receipt_bridge_execute_mqsnru67_h703vk.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqsnru5r_g5znqg.json",
+  "receipt_path": "data/tinkerden/receipts/td_receipt_bridge_execute_mqsnru67_h703vk.json"
+}

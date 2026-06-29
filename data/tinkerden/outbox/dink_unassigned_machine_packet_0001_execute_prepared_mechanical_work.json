@@ -1,0 +1,39 @@
+{
+  "message_type": "activation_packet",
+  "courier_class": "Birdeyes",
+  "packet_id": "DINK_UNASSIGNED_MACHINE_PACKET_0001",
+  "title": "EXECUTE PREPARED MECHANICAL WORK",
+  "created_at": "2026-06-26T08:05:39.222Z",
+  "source": "Ben@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "UNASSIGNED_MACHINE",
+  "packet_type": "mechanical_execution_activation",
+  "risk_tier": "CONDITIONAL",
+  "status": "BROADCAST_READY",
+  "receipt_required": true,
+  "receipt_slot": "data/tinkerden/receipts/receipt_dink_unassigned_machine_packet_0001.json",
+  "return_destination": "data/tinkerden/receipts",
+  "mission": "Execute prepared mechanical work.",
+  "activation_rule": "Use the packet. Do the clicks, forms, retrieval, file moves, portal work, or assembly.",
+  "allowed_work": [
+    "clicks",
+    "forms",
+    "retrieval",
+    "file moves",
+    "portal work",
+    "assembly"
+  ],
+  "required_output": [
+    "action completed",
+    "receipt attached",
+    "failure point",
+    "screenshot/confirmation if applicable"
+  ],
+  "hard_boundaries": [
+    "Do not improvise financial decisions.",
+    "Do not improvise legal decisions.",
+    "Do not improvise strategic decisions.",
+    "Escalate gates."
+  ],
+  "source_text_path": "data/tinkerden/outbox/dink_unassigned_machine_packet_0001_execute_prepared_mechanical_work.md"
+}

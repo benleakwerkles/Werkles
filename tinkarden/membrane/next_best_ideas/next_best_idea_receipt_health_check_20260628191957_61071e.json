@@ -1,0 +1,124 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_receipt_health_check_20260628191957_61071e",
+  "idea_id": "receipt_health_check",
+  "title": "Receipt health check",
+  "status": "RECEIPT_HEALTH_CHECK_BUILT",
+  "output": "A proof-path health report for every candidate lane.",
+  "why": "Proof paths need to exist before the UI treats a lane as merge-ready.",
+  "next": "Fix or mark source-missing paths before final merge.",
+  "payload": {
+    "module_health": [
+      {
+        "module_id": "thinkit-origin-return",
+        "title": "Origin return receipt",
+        "state": "KEEP",
+        "proof": {
+          "path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+          "exists": true,
+          "kind": "directory",
+          "size_bytes": null,
+          "updated_at": "2026-06-28T05:20:03.244Z"
+        },
+        "merge_ready_from_path_health": true
+      },
+      {
+        "module_id": "tinkerden-command-receipts",
+        "title": "Command intake and receipts",
+        "state": "KEEP",
+        "proof": {
+          "path": "tinkerden/receipts",
+          "exists": true,
+          "kind": "directory",
+          "size_bytes": null,
+          "updated_at": "2026-06-28T10:06:37.500Z"
+        },
+        "merge_ready_from_path_health": true
+      },
+      {
+        "module_id": "wonka-aeye-loop",
+        "title": "Aeye loop file transport",
+        "state": "KEEP",
+        "proof": {
+          "path": "foreman/soledash/wonka-den/aeye-loop/responses",
+          "exists": true,
+          "kind": "directory",
+          "size_bytes": null,
+          "updated_at": "2026-06-27T03:01:23.387Z"
+        },
+        "merge_ready_from_path_health": true
+      },
+      {
+        "module_id": "feral-membrane-motion",
+        "title": "Optional packets and motion",
+        "state": "KEEP",
+        "proof": {
+          "path": "tinkarden/membrane/optional_packets.jsonl",
+          "exists": true,
+          "kind": "file",
+          "size_bytes": 5585,
+          "updated_at": "2026-06-28T10:07:33.586Z"
+        },
+        "merge_ready_from_path_health": true
+      },
+      {
+        "module_id": "swanson-attached-relay",
+        "title": "Functional relay attachment",
+        "state": "ATTACHED",
+        "proof": {
+          "path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+          "exists": true,
+          "kind": "file",
+          "size_bytes": 1187,
+          "updated_at": "2026-06-28T10:16:12.713Z"
+        },
+        "merge_ready_from_path_health": true
+      }
+    ],
+    "log_health": [
+      {
+        "path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 10837,
+        "updated_at": "2026-06-28T19:19:57.804Z"
+      },
+      {
+        "path": "tinkarden/membrane/final_assembly_decisions.jsonl",
+        "exists": false,
+        "kind": "missing"
+      },
+      {
+        "path": "tinkarden/membrane/optional_packets.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 5585,
+        "updated_at": "2026-06-28T10:07:33.586Z"
+      },
+      {
+        "path": "tinkarden/membrane/momentum_taps.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 6828,
+        "updated_at": "2026-06-28T09:58:07.966Z"
+      },
+      {
+        "path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "exists": true,
+        "kind": "file",
+        "size_bytes": 1187,
+        "updated_at": "2026-06-28T10:16:12.713Z"
+      }
+    ]
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_receipt_health_check_20260628191957_61071e.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T19:19:57.823Z",
+  "sha256": "9e7d462f21a8920fb9e7c4f20fc58d366409583f35b1b82e61173535b1ac2d73"
+}

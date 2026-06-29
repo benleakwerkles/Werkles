@@ -1,0 +1,23 @@
+{
+  "schema": "feral_membrane_momentum_tap_v0",
+  "event_type": "momentum_tap",
+  "tap_id": "momentum_tap_20260628095729_c9161a",
+  "capsule_id": "MAKER_SPEAKER_CLEANUP_PROOF.json",
+  "origin": "Dink@Betsy",
+  "source_path": "speaker/receipts/staged/MAKER_SPEAKER_CLEANUP_PROOF.json",
+  "target_mutations": [
+    "speaker/receipts/staged/MAKER_SPEAKER_CLEANUP_PROOF.json"
+  ],
+  "previous_status": "AWAITING_MOMENTUM_TAP",
+  "status": "MOMENTUM_TAPPED",
+  "awaiting": "SWANSON_FUNCTIONAL_RELAY_MERGE",
+  "note": "Operator momentum tap recorded. No target file mutation performed by this tap.",
+  "swanson_merge_contract": {
+    "expected_consumer": "Swanson functional relay page",
+    "pending_until": "functional relay page exists",
+    "tap_log_path": "tinkarden/membrane/momentum_taps.jsonl",
+    "interface_event_path": "speaker/logs/interface-notify.jsonl"
+  },
+  "created_at": "2026-06-28T09:57:29.468Z",
+  "capsule_hash": "54bc2a91fc226b5df62c39cc40920b88bf371d488c45b3e239bb6fb0d50b6e44"
+}

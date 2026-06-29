@@ -1,0 +1,27 @@
+{
+  "schema": "tinkerden_command_receipt_v0",
+  "receipt_id": "td_command_receipt_20260627172403_daa8f7",
+  "packet_id": "td_command_20260627172403_daa8f7",
+  "linked_packet_id": "td_command_20260627172403_daa8f7",
+  "mission": "FOOD_1 bite proof: one command becomes one packet and one ACK receipt without treating sent as proof.",
+  "producer": "Dink@Betsy",
+  "status_guess": "ACK",
+  "timestamp": "2026-06-27T17:24:03.644Z",
+  "path": "tinkerden/receipts/td_command_receipt_20260627172403_daa8f7.json",
+  "proof_reference": "tinkerden/receipts/td_command_receipt_20260627172403_daa8f7.json",
+  "packet_path": "tinkerden/inbox/td_command_20260627172403_daa8f7.json",
+  "packet_hash": "fb8cf9519050135c8db18c7b3292564a1eaaea161c7e33af3880da4afa926e60",
+  "receiver_read_hash": "fb8cf9519050135c8db18c7b3292564a1eaaea161c7e33af3880da4afa926e60",
+  "receiver_hash_match": true,
+  "first_return": "ACK",
+  "missing_receiver_proof": null,
+  "required_surfaces": {
+    "inbox": "tinkerden/inbox",
+    "receipts": "tinkerden/receipts",
+    "recommendation_cards": "tinkerden/recommendations/recommendation_cards.json",
+    "decision_ledger": "tinkerden/feedback/decision-ledger.jsonl",
+    "recommendation_cards_exists": true,
+    "decision_ledger_exists": true
+  },
+  "limitation": "Betsy-local receiver shim only; no cross-machine Aeye process is proven by this ACK."
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "build_accountability_receipt_v0",
+  "receipt_id": "DINK_BETSY_NO_BUILD_RECEIPT",
+  "packet_id": "FOOD_1_DINK_BETSY_NO_BUILD_RECEIPT_CHASER",
+  "linked_packet_id": "FOOD_1_DINK_BETSY_NO_BUILD_RECEIPT_CHASER",
+  "mission": "Return the missing receipt explaining why Dink@Betsy has produced no build today.",
+  "owner": "Dink@Betsy",
+  "stream": "BUILD ACCOUNTABILITY / BETSY",
+  "producer": "Dink@Betsy",
+  "status_guess": "ACK_NO_BUILD",
+  "timestamp": "2026-06-26T21:19:29.516Z",
+  "path": "data/tinkerden/receipts/DINK_BETSY_NO_BUILD_RECEIPT.json",
+  "proof_reference": "foreman/receipts/DINK_BETSY_NO_BUILD_RECEIPT.md",
+  "classification": "ACK_NO_BUILD",
+  "confirmation": "No NMCLR build artifact was produced today by Dink@Betsy.",
+  "last_packet_received": "FOOD_1 - DINK@BETSY_NO_BUILD_RECEIPT_CHASER",
+  "last_registered_dispatch_packet_before_this_receipt": "BILL_EXECUTION_PACKET_RULES_0001",
+  "first_missing_proof_link": "No NMCLR build packet is joined to a work log and artifact.",
+  "proof_standard": "NMCLR muscle proof requires packet -> work -> artifact, causally joined by receipt.",
+  "not_motion": [
+    "assignment",
+    "intent",
+    "chat",
+    "working",
+    "file presence alone"
+  ],
+  "next_smallest_buildable_testable_step": "Create one NMCLR proof-chain fixture with packet_id, work log, artifact path, artifact hash, timestamp, and receipt tying packet -> work -> artifact.",
+  "ben_action": "None.",
+  "blocker": null,
+  "artifact": null
+}

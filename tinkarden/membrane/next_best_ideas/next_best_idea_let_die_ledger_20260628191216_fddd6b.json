@@ -1,0 +1,60 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_let_die_ledger_20260628191216_fddd6b",
+  "idea_id": "let_die_ledger",
+  "title": "Let-die ledger",
+  "status": "LET_DIE_LEDGER_BUILT",
+  "output": "A retirement ledger for lanes that should leave the final UI while proof remains preserved.",
+  "why": "Killed ideas should be auditable, not invisible.",
+  "next": "Append operator Let Die choices here before removing any lane from the final surface.",
+  "payload": {
+    "retirement_candidates": [
+      {
+        "module_id": "thinkit-origin-return",
+        "title": "Origin return receipt",
+        "proof_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+        "current_state": "KEEP",
+        "retirement_rule": "Retire only after an operator Let Die decision receipt exists."
+      },
+      {
+        "module_id": "tinkerden-command-receipts",
+        "title": "Command intake and receipts",
+        "proof_path": "tinkerden/receipts",
+        "current_state": "KEEP",
+        "retirement_rule": "Retire only after an operator Let Die decision receipt exists."
+      },
+      {
+        "module_id": "wonka-aeye-loop",
+        "title": "Aeye loop file transport",
+        "proof_path": "foreman/soledash/wonka-den/aeye-loop/responses",
+        "current_state": "KEEP",
+        "retirement_rule": "Retire only after an operator Let Die decision receipt exists."
+      },
+      {
+        "module_id": "feral-membrane-motion",
+        "title": "Optional packets and motion",
+        "proof_path": "tinkarden/membrane/optional_packets.jsonl",
+        "current_state": "KEEP",
+        "retirement_rule": "Retire only after an operator Let Die decision receipt exists."
+      },
+      {
+        "module_id": "swanson-attached-relay",
+        "title": "Functional relay attachment",
+        "proof_path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "current_state": "ATTACHED",
+        "retirement_rule": "Retire only after an operator Let Die decision receipt exists."
+      }
+    ],
+    "preservation_rule": "Do not delete proof paths as part of UI pruning."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_let_die_ledger_20260628191216_fddd6b.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T19:12:16.943Z",
+  "sha256": "154d1aa7acaa6f1d7a7550c76f1cc2f87773d252caeb59e903d1b7d3b51d40b8"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mqrfb457_qw815s",
+    "created_at": "2026-06-24T01:57:30.427Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Move transport queues into Engine Room.",
+    "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "bridge_move_002",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 74,
+    "operator_reason": null,
+    "why_now": "Filesystem blood is working, but it still occupies Bridge attention.",
+    "recommended_because": "Execution mechanics stay available without turning the command surface into project management."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

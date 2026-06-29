@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mqsnil0f_mnyar0",
+    "created_at": "2026-06-24T22:35:01.983Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "PACKET_TO_RECEIPT_LINKAGE_FIX proof execute",
+    "why": "Executed command chooser packets need matching dispatch receipts with packet_id linkage.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "packet_to_receipt_linkage_fix_probe",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 80,
+    "operator_reason": "fresh proof for packet receipt linkage",
+    "why_now": "Executed command chooser packets need matching dispatch receipts with packet_id linkage.",
+    "recommended_because": "This proves packet -> relay event -> receipt artifact -> Receipt Lane row."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

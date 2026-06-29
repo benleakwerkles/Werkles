@@ -1,0 +1,46 @@
+{
+  "schema": "tinkerden_bridge_autopaste_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_autopaste_ready_mqrfb18f_27y4mv",
+    "created_at": "2026-06-24T01:57:26.655Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "Move transport queues into Engine Room.",
+    "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "Target focused. Paste/send now.",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "AUTOPASTE_READY"
+  },
+  "bridge_card": {
+    "card_id": "bridge_move_002",
+    "operator_selection": "KEEP",
+    "recommendation": "PROCEED",
+    "composite_score": 74,
+    "operator_reason": null,
+    "why_now": "Filesystem blood is working, but it still occupies Bridge attention.",
+    "recommended_because": "Execution mechanics stay available without turning the command surface into project management."
+  },
+  "workspace_target": {
+    "id": "maker-betsy-powertoys-workspaces",
+    "label": "Maker@Betsy PowerToys Workspaces Launcher",
+    "target": "C:\\Users\\Ben Leak\\AppData\\Local\\PowerToys\\PowerToys.WorkspacesLauncher.exe",
+    "configured": true
+  },
+  "autopaste_text": "TO: Maker@Betsy\nFROM: TinkerDen@Betsy\n\nMISSION: Move transport queues into Engine Room.\n\nOBJECTIVE:\nExecution mechanics stay available without turning the command surface into project management.\n\nPACKET:\npacket_id: td_packet_autopaste_ready_mqrfb18f_27y4mv\noperator_selection: KEEP\nrecommendation: PROCEED\ncomposite_score: 74\nreturn_destination: TinkerDen Intake\nreceipt_required: Y\n\nTASK:\nFilesystem blood is working, but it still occupies Bridge attention.\n\nWORKSPACE TARGET:\nMaker@Betsy PowerToys Workspaces Launcher (configured)\n\nRETURN:\nReceipt to TinkerDen Intake / Speaker. Include packet_id and proof path.\n\nRULES:\n- No account automation.\n- No unauthorized auto-send.\n- No browser credential control.\n- No fake delivery.\n- Clipboard + workspace focus only in V0.\n- Operator must paste/send manually.",
+  "status": "AUTOPASTE_READY",
+  "operator_instruction": "Target focused. Paste/send now.",
+  "guardrails": [
+    "No account automation.",
+    "No unauthorized auto-send.",
+    "No browser credential control.",
+    "No fake delivery.",
+    "Clipboard + workspace focus only in V0.",
+    "Operator must paste/send manually."
+  ]
+}

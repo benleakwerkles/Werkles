@@ -1,0 +1,147 @@
+{
+  "schema": "feral_membrane_next_best_idea_build_v0",
+  "event_type": "final_assembly_next_best_idea_built",
+  "build_id": "next_best_idea_swanson_adapter_contract_20260628231155_416408",
+  "idea_id": "swanson_adapter_contract",
+  "title": "Swanson adapter contract",
+  "status": "SWANSON_ADAPTER_CONTRACT_BUILT",
+  "output": "A site-only adapter map from membrane decisions, packets, taps, and relays into Swanson's functional page.",
+  "why": "Swanson should consume explicit dashboard receipts and logs, not unrelated source material or inferred UI state.",
+  "next": "Use this as the integration contract when Swanson's functional relay build lands.",
+  "payload": {
+    "adapter_id": "site_review_to_swanson_functional_relay",
+    "target_consumer": "Swanson functional relay page",
+    "required_inputs": [
+      {
+        "name": "version preview decisions",
+        "path": "tinkarden/membrane/version_preview_decisions.jsonl",
+        "event_type": "version_preview_decision",
+        "current_count": 0
+      },
+      {
+        "name": "final assembly decisions",
+        "path": "tinkarden/membrane/final_assembly_decisions.jsonl",
+        "event_type": "final_assembly_decision",
+        "current_count": 0
+      },
+      {
+        "name": "optional packets",
+        "path": "tinkarden/membrane/optional_packets.jsonl",
+        "event_type": "optional_packet_created",
+        "current_count": 3
+      },
+      {
+        "name": "momentum taps",
+        "path": "tinkarden/membrane/momentum_taps.jsonl",
+        "event_type": "momentum_tap",
+        "current_count": 7
+      },
+      {
+        "name": "Swanson relay receipts",
+        "path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "event_type": "swanson_functional_relay",
+        "current_count": 1
+      }
+    ],
+    "required_outputs": [
+      "Show selected version/module decisions before relay.",
+      "Show packet_id, relay_id, receipt_id, and receipt_path after Swanson relay.",
+      "Show clipboard_verified and no_auto_send instead of claiming an external send.",
+      "Show source-missing or blocked route state when a candidate path cannot be proven."
+    ],
+    "open_final_assembly_decisions": [
+      {
+        "module_id": "thinkit-origin-return",
+        "title": "Origin return receipt",
+        "proof_path": "tinkerden/aeye-relay/origin-dash/ThinkIt_Betsy",
+        "required_buttons": [
+          "MERGE",
+          "KEEP",
+          "LET_DIE"
+        ]
+      },
+      {
+        "module_id": "tinkerden-command-receipts",
+        "title": "Command intake and receipts",
+        "proof_path": "tinkerden/receipts",
+        "required_buttons": [
+          "MERGE",
+          "KEEP",
+          "LET_DIE"
+        ]
+      },
+      {
+        "module_id": "wonka-aeye-loop",
+        "title": "Aeye loop file transport",
+        "proof_path": "foreman/soledash/wonka-den/aeye-loop/responses",
+        "required_buttons": [
+          "MERGE",
+          "KEEP",
+          "LET_DIE"
+        ]
+      },
+      {
+        "module_id": "feral-membrane-motion",
+        "title": "Optional packets and motion",
+        "proof_path": "tinkarden/membrane/optional_packets.jsonl",
+        "required_buttons": [
+          "MERGE",
+          "KEEP",
+          "LET_DIE"
+        ]
+      },
+      {
+        "module_id": "swanson-attached-relay",
+        "title": "Functional relay attachment",
+        "proof_path": "tinkarden/membrane/swanson_functional_relays.jsonl",
+        "required_buttons": [
+          "MERGE",
+          "KEEP",
+          "LET_DIE"
+        ]
+      }
+    ],
+    "blocked_or_source_only_versions": [
+      {
+        "version_id": "current_soledash_blocked",
+        "title": "Current SoleDash / Wonka Route",
+        "status": "BLOCKED_RUNTIME",
+        "source_path": "app/soledash/page.tsx",
+        "evidence_path": "work/werkles-3340.out.log",
+        "action": "REPAIR_BEFORE_MERGE_OR_LET_DIE"
+      },
+      {
+        "version_id": "wonka_mood_reference",
+        "title": "Wonka Mood Reference",
+        "status": "SOURCE_ONLY",
+        "source_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/WONKA_DEN_MOOD_REFERENCE.md",
+        "evidence_path": "C:/Users/Ben Leak/Desktop/github/Werkles-visual-compare-20260621/cursor-goop-cycle-pvp-9b25/foreman/design/wonka_den_mood_preview.html",
+        "action": "SOURCE_ONLY_REVIEW"
+      },
+      {
+        "version_id": "preserve_salvage_bundle",
+        "title": "Preserve Salvage Bundle",
+        "status": "SOURCE_ONLY",
+        "source_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.diff",
+        "evidence_path": "tinkarden/intake/salvage_queue/salvage_20260627204538_preserve-tinkerden-packet-engine-20260622.status.txt",
+        "action": "SOURCE_ONLY_REVIEW"
+      }
+    ],
+    "swanson_guardrails": [
+      "No auto-send.",
+      "No account automation.",
+      "Operator must approve paste/send manually.",
+      "Independent source-material tracks stay separate from this adapter."
+    ],
+    "merge_boundary": "This contract adapts site/dashboard receipts into Swanson. It must not read from independent source-material folders."
+  },
+  "module_count": 5,
+  "artifact_path": "tinkarden/membrane/next_best_ideas/next_best_idea_swanson_adapter_contract_20260628231155_416408.json",
+  "build_log_path": "tinkarden/membrane/final_assembly_next_best_ideas.jsonl",
+  "event_path": "speaker/logs/interface-notify.jsonl",
+  "operator_command": "G = build your next three best ideas",
+  "no_code_merge_performed": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-28T23:11:55.730Z",
+  "sha256": "80367d6b3c9191c1f02f2bbce1afdedfc0cd3540af5c9a9959ea6ae46a31ebf7"
+}

@@ -1,0 +1,13 @@
+{
+  "packet_id": "td_packet_relay_ready_mqvs551c_4z3yl2",
+  "relay_id": "td_relay_mqvs551c_6peofl",
+  "receipt_id": "td_receipt_packet_relay_mqvs551c_jo6ggz",
+  "relay_status": "PACKET_RELAY_COMPLETE",
+  "receipt_status": "RECEIPT_ASSIMILATED",
+  "created_at": "2026-06-27T03:07:51.359Z",
+  "owner": "Maker@Betsy",
+  "mission": "Move transport queues into Engine Room.",
+  "artifact_path": "data/tinkerden/receipts/td_receipt_packet_relay_mqvs551c_jo6ggz.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs551c_4z3yl2.json",
+  "receipt_path": "data/tinkerden/receipts/td_receipt_packet_relay_mqvs551c_jo6ggz.json"
+}

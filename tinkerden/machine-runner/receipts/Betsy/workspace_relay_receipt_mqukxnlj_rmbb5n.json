@@ -1,0 +1,47 @@
+{
+  "schema": "tinkerden_workspace_relay_receipt_v0",
+  "receipt_id": "workspace_relay_receipt_mqukxnlj_rmbb5n",
+  "packet_id": "workspace_relay_selftest_mqukxnlj_i0jnct",
+  "linked_packet_id": "workspace_relay_selftest_mqukxnlj_i0jnct",
+  "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0_SELF_TEST",
+  "producer": "MachineRunner@Betsy",
+  "status_guess": "READY_FOR_AEYE",
+  "timestamp": "2026-06-26T06:58:23.979Z",
+  "proof_reference": "data/tinkerden/receipts/workspace_relay_receipt_mqukxnlj_rmbb5n.json",
+  "runner_receipt_path": "tinkerden/machine-runner/receipts/Betsy/workspace_relay_receipt_mqukxnlj_rmbb5n.json",
+  "packet_inbox_path": "tinkerden/machine-runner/inbox/Betsy/workspace_relay_selftest_mqukxnlj_i0jnct.json",
+  "event_path": "data/organism/events.jsonl",
+  "clipboard": {
+    "set": true,
+    "verified": true
+  },
+  "workspace": {
+    "target": {
+      "id": "maker_betsy_powertoys_workspaces",
+      "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+      "mode": "process",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+        "-WorkspaceId",
+        "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+      ],
+      "window_title": "",
+      "configured": true
+    },
+    "attempted": true,
+    "focused": true,
+    "status": "WORKSPACE_FOCUSED",
+    "detail": "PROCESS_COMPLETED"
+  },
+  "guardrails": [
+    "No auto-send.",
+    "No browser credential control.",
+    "No account automation.",
+    "Local clipboard and workspace focus only."
+  ]
+}

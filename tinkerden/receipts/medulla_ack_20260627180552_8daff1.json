@@ -1,0 +1,17 @@
+{
+  "schema": "tinkerden_medulla_v0_receipt",
+  "receipt_id": "medulla_ack_20260627180552_8daff1",
+  "packet_id": "medulla_test_valid_20260627180552",
+  "linked_packet_id": "medulla_test_valid_20260627180552",
+  "packet_path": "tinkerden/inbox/medulla_test_valid_20260627180552.json",
+  "packet_hash": "f1fbcf86e99625d9e49c425fea26223edcd6e7f2d86b05b9135ba0faa22b07e1",
+  "producer": "Maker@Betsy",
+  "stream": "FERAL / TINKERDEN",
+  "status_guess": "ACK",
+  "timestamp": "2026-06-27T18:05:52.920Z",
+  "path": "tinkerden/receipts/medulla_ack_20260627180552_8daff1.json",
+  "validation_errors": [],
+  "no_shell_execution": true,
+  "no_autonomous_routing": true,
+  "note": "Packet parsed and passed Medulla V0 basic schema validation."
+}

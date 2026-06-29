@@ -1,0 +1,33 @@
+{
+    "schema":  "powertoys_workspaces_proof_loop_receipt_v1",
+    "receipt_id":  "workspace_launch_complete_20260625050132200",
+    "mission":  "WORKSPACES_PROOF_LOOP_V1",
+    "producer":  "Dink@Betsy",
+    "status_guess":  "WORKSPACE_LAUNCH_COMPLETE",
+    "timestamp":  "2026-06-25T05:01:32.208Z",
+    "proof_reference":  "data/tinkerden/receipts/workspace_launch_complete_20260625050132200.json",
+    "linked_packet_id":  "WORKSPACES_PROOF_LOOP_V1",
+    "event_type":  "workspace_launch_complete",
+    "workspace_id":  "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+    "workspace_name":  "Betsy Autopaste Workspace",
+    "launch_workspace_id":  "{7783BC01-679D-4681-A6C8-0465957D1A2B}",
+    "launch_workspace_name":  "Betsy Autopaste Workspace [Self-Heal]",
+    "blocking_application":  "UNKNOWN",
+    "action":  "None",
+    "result":  "Running",
+    "detail":  "Workspace launcher exited before timeout.",
+    "app_results":  [
+                        {
+                            "workspace_id":  "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+                            "launch_workspace_id":  "{7783BC01-679D-4681-A6C8-0465957D1A2B}",
+                            "app_name":  "Google Chrome / chrome.exe",
+                            "app_path":  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                            "title":  "ChatGPT - Werkles1.1 - Google Chrome",
+                            "launch_start":  null,
+                            "launch_end":  null,
+                            "result":  "SKIPPED",
+                            "elapsed_ms":  null,
+                            "detail":  "launch_timeout"
+                        }
+                    ]
+}

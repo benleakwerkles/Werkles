@@ -1,0 +1,12 @@
+{
+  "message_type": "swateye_packet",
+  "courier_class": "Swateyes",
+  "packet_id": "swateye_packet_example_001",
+  "created_at": "2026-06-20T23:51:00.000Z",
+  "target_aeye": "Swateye",
+  "target_machine": "Betsy",
+  "mission": "Flag poisonous, unsafe, dead-click, or no-receipt behavior in the TinkerDen loop.",
+  "purpose": "Keep unsafe transport behavior visible before it becomes trusted workflow.",
+  "status": "DRAFT",
+  "return_destination": "data/tinkerden/failed"
+}
