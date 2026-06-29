@@ -1,11 +1,11 @@
 {
   "status": "ELWOOD_THINKIT_STATUS_READY",
-  "status_id": "ELWOOD_THINKIT_STATUS_1782708797711_55219BB8",
-  "generated_at": "2026-06-29T04:53:17.711Z",
-  "source": "ThinkIt deterministic Elwood status exporter",
+  "status_id": "ELWOOD_THINKIT_STATUS_1782710082992_C742B96B",
+  "generated_at": "2026-06-29T05:14:42.993Z",
+  "source": "ThinkIt deterministic Operator/Harvey status exporter",
   "current_coordinates": {
     "active_book_focus": "Foreword copy",
-    "active_code_focus": "ThinkIt relay, Elwood status mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.",
+    "active_code_focus": "ThinkIt relay, Harvey state mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.",
     "active_project_lane": "Oddly Godly on Spanzee",
     "active_project_question": "Oddly Godly on Spanzee: what can run on AUTO G, and what still needs a leash?",
     "thinkit_last_known_location": "http://10.1.10.8:3342/thinkit",
@@ -37,20 +37,20 @@
     ]
   },
   "relay": {
-    "target_count": 15,
-    "round_trip_proven": 3,
-    "waiting_for_receiver": 11,
+    "target_count": 16,
+    "round_trip_proven": 14,
+    "waiting_for_receiver": 0,
     "file_inbox_waiting": 0,
-    "returned_blocker": 0,
+    "returned_blocker": 1,
     "held": 0,
     "local_only": 1,
-    "queued_for_bridge": 13,
-    "sent_to_thread": 52,
+    "queued_for_bridge": 1,
+    "sent_to_thread": 65,
     "blocked": 0,
     "bridge_status": "ACTIVE",
     "bridge_schedule": "FREQ=MINUTELY;INTERVAL=30",
     "latest_return_status": "COMPLETED",
-    "latest_return_packet": "UNIVERSAL_OPERATOR_MESSAGE_ENDER.SPANZEE_20260629042941_9C8B4670"
+    "latest_return_packet": "THINKIT_TARGET_PING_SKYBRO.SALLY_20260629051154_A55B23EF"
   },
   "book": {
     "chapter_count": 71,
@@ -61,6 +61,22 @@
     "source_repo_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book"
   },
   "recent_decisions": [
+    {
+      "decision_id": "NEXT_THREE_1782710060801_698601",
+      "created_at": "2026-06-29T05:14:20.802Z",
+      "lane_id": "oddly_godly",
+      "project": "Oddly Godly on Spanzee",
+      "move_id": "oddly_godly_001_spanzee_route",
+      "move_title": "Map the Spanzee route before pretending AUTO G exists.",
+      "choice": "KILL",
+      "operator_note": "Rejected because the last Oddly Godly send did not visibly land in Spanzee. Replace with a proof-first move tied to actual receiver receipts.",
+      "target": "Bean.Spanzee",
+      "packet_type": "ODDLY_GODLY_SPANZEE_ROUTE",
+      "proof_required": "Receiver thread, command path, source folder/repo, response path, and blocker list.",
+      "source_state_path": "C:\\wt\\stbook\\data\\thinkit\\next_three_projects.json",
+      "replacement_move_id": "oddly_godly_004_spanzee_inbound_proof",
+      "replacement_reason": "Operator killed the prior idea. ThinkIt replaced it with a project-tied candidate from the deterministic backlog."
+    },
     {
       "decision_id": "NEXT_THREE_1782707754241_73b9a9",
       "created_at": "2026-06-29T04:35:54.241Z",
@@ -130,25 +146,10 @@
       "packet_type": "KIND_SIR_NEXT_REVENUE_MOVE",
       "proof_required": "Three candidates, one recommendation, one test Ben can accept or reject.",
       "source_state_path": "C:\\wt\\stbook\\data\\thinkit\\next_three_projects.json"
-    },
-    {
-      "decision_id": "NEXT_THREE_1782706043828_50eaac",
-      "created_at": "2026-06-29T04:07:23.829Z",
-      "lane_id": "oddly_godly",
-      "project": "Oddly Godly on Spanzee",
-      "move_id": "oddly_godly_001_spanzee_route",
-      "move_title": "Map the Spanzee command route before AUTO G.",
-      "choice": "ACCEPT",
-      "operator_note": "Cool. Move this forward with receiver-side proof, or return the exact blocker.\n",
-      "target": "Petra.Betsy",
-      "packet_type": "ODDLY_GODLY_SPANZEE_ROUTE_MAP",
-      "proof_required": "Receiver path or BLOCKER, command path or BLOCKER, and whether Ben is required.",
-      "source_state_path": "C:\\wt\\stbook\\data\\thinkit\\next_three_projects.json"
     }
   ],
   "proof_gaps": [
-    "13 packet(s) are queued for the Codex thread bridge; queued is not delivery.",
-    "11 target(s) are waiting for receiver-side proof."
+    "1 packet(s) are queued for the Codex thread bridge; queued is not delivery."
   ],
   "raw_readback": {
     "coverage_status": "AEYE_RELAY_COVERAGE_STATUS",

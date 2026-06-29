@@ -393,6 +393,95 @@ function summarizePackets(value: unknown) {
     .join(", ");
 }
 
+function bridgeItemsForTarget(items: unknown[], target: string, packetType = "") {
+  return items
+    .map((item) => asRecord(item))
+    .filter((item): item is JsonRecord => {
+      if (!item) return false;
+      const itemTarget = asText(item.target, "");
+      const packetId = asText(item.packet_id, "");
+      return itemTarget === target && (!packetType || packetId.startsWith(packetType));
+    });
+}
+
+function latestBridgeItem(items: unknown[], target: string, packetType = "") {
+  return bridgeItemsForTarget(items, target, packetType)[0] ?? null;
+}
+
+function latestDecisionForMove(decisions: JsonRecord[], moveId: string) {
+  return decisions.find((decision) => asText(decision.move_id, "") === moveId) ?? null;
+}
+
+function moveDeliveryState({
+  coverageRecord,
+  queuedItem,
+  sentItem,
+  packetType
+}: {
+  coverageRecord: JsonRecord | null;
+  queuedItem: JsonRecord | null;
+  sentItem: JsonRecord | null;
+  packetType: string;
+}) {
+  const latestPacket = asText(coverageRecord?.latest_packet_id, "");
+  const completion = asText(coverageRecord?.latest_completion_state, "");
+  const coverage = asText(coverageRecord?.coverage, "");
+  const matchesLatestPacket = Boolean(packetType && latestPacket.startsWith(packetType));
+
+  if (coverage === "ROUND_TRIP_PROVEN" && matchesLatestPacket) {
+    return {
+      label: "Answered",
+      tone: "proven",
+      meaning: "The receiver wrote COMPLETED proof for this move.",
+      packet: latestPacket,
+      proof: asText(coverageRecord?.latest_receiver_receipt_id, "Receiver receipt not read back.")
+    };
+  }
+  if (completion === "QUEUED_FOR_CODEX_THREAD_SEND" && matchesLatestPacket) {
+    return {
+      label: "Queued, not sent",
+      tone: "waiting",
+      meaning: "ThinkIt created the packet, but the thread bridge has not posted it into the Aeye chat yet.",
+      packet: latestPacket,
+      proof: asText(coverageRecord?.proof_gap, "Receiver-side proof is still missing.")
+    };
+  }
+  if (sentItem) {
+    return {
+      label: "Sent to receiver chat",
+      tone: "waiting",
+      meaning: "The bridge posted this packet to the mapped Codex receiver thread. ThinkIt is waiting for RECEIVED and COMPLETED/BLOCKER.",
+      packet: asText(sentItem.packet_id, "Sent packet"),
+      proof: asText(sentItem.sent_path, "Sent proof path not read back.")
+    };
+  }
+  if (queuedItem) {
+    return {
+      label: "Queued, not sent",
+      tone: "waiting",
+      meaning: "ThinkIt created the packet, but the bridge actuator has not posted it into the Aeye chat yet.",
+      packet: asText(queuedItem.packet_id, "Queued packet"),
+      proof: asText(queuedItem.queue_path, "Queue proof path not read back.")
+    };
+  }
+  if (coverageRecord && matchesLatestPacket) {
+    return {
+      label: statusLabel(coverage || "WAITING_FOR_RECEIVER"),
+      tone: statusTone(coverage || "WAITING_FOR_RECEIVER"),
+      meaning: asText(coverageRecord.proof_gap, "Packet exists, but receiver-side completion has not returned yet."),
+      packet: latestPacket,
+      proof: asText(coverageRecord.latest_receiver_receipt_id, "No receiver receipt yet.")
+    };
+  }
+  return {
+    label: "Idea only",
+    tone: "unwired",
+    meaning: "No packet for this move has been read back yet. Accept/Modify/Kill only records your decision; Queue Packet is the courier step.",
+    packet: "No packet for this move",
+    proof: "No receiver proof yet."
+  };
+}
+
 function isRouteHeld(status: string) {
   return status === "HELD_BY_TOPOLOGY" || status === "LOCAL_CONTROL_THREAD" || status === "ALIAS_TO_SWANSON";
 }
@@ -946,8 +1035,8 @@ export default function SwansonRelayControl() {
     });
   }
 
-  function dispatchMomentumMove(lane: JsonRecord, move: JsonRecord) {
-    return runAction("Send Next Three Packet", "/api/thinkit/swanson/relay/dispatch", {
+  function momentumDispatchPayload(lane: JsonRecord, move: JsonRecord) {
+    return {
       packet_type: asText(move.packet_type, "MOMENTUM_NEXT_MOVE"),
       target: asText(move.target, "Petra.Betsy"),
       title: `${asText(lane.project, "Project")}: ${asText(move.title, "Next move")}`,
@@ -979,7 +1068,65 @@ export default function SwansonRelayControl() {
         "2. Return COMPLETED with an artifact/report, or BLOCKER with exact missing proof.",
         "3. Do not call SENT success."
       ].join("\n")
-    });
+    };
+  }
+
+  function dispatchMomentumMove(lane: JsonRecord, move: JsonRecord) {
+    return runAction("Queue Next Three Packet", "/api/thinkit/swanson/relay/dispatch", momentumDispatchPayload(lane, move));
+  }
+
+  async function decideAndDispatchMomentumMove(lane: JsonRecord, move: JsonRecord, choice: string) {
+    const label = `${humanLabel(choice)} + Queue`;
+    setActionPending(label);
+    setError(null);
+    try {
+      const decisionPayload = {
+        action: "DECISION",
+        lane_id: asText(lane.lane_id, ""),
+        move_id: asText(move.move_id, ""),
+        choice,
+        note: momentumNote
+      };
+      const decisionResponse = await postJson("/api/thinkit/momentum/next_three", decisionPayload);
+      const dispatchResponse = await postJson("/api/thinkit/swanson/relay/dispatch", momentumDispatchPayload(lane, move));
+      const ok =
+        decisionResponse.statusCode >= 200 &&
+        decisionResponse.statusCode < 300 &&
+        dispatchResponse.statusCode >= 200 &&
+        dispatchResponse.statusCode < 300;
+      setMomentum(decisionResponse.result);
+      setLastAction({
+        label,
+        endpoint: "POST /api/thinkit/momentum/next_three + POST /api/thinkit/swanson/relay/dispatch",
+        timestamp: new Date().toISOString(),
+        ok,
+        statusCode: ok ? 201 : 207,
+        result: {
+          status: ok ? "NEXT_THREE_DECISION_AND_PACKET_QUEUED" : "NEXT_THREE_DECISION_AND_PACKET_PARTIAL",
+          decision: decisionResponse.result?.decision,
+          dispatch: dispatchResponse.result,
+          proof_boundary: "This queues/sends work into the bridge path. It is not receiver proof until RECEIVED then COMPLETED or BLOCKER returns."
+        },
+        error: ok
+          ? undefined
+          : asText(decisionResponse.result?.error ?? dispatchResponse.result?.error, "Decision or dispatch failed")
+      });
+      await refresh(`${label} returned`);
+    } catch (actionError) {
+      const message = actionError instanceof Error ? actionError.message : "Decision plus queue failed";
+      setLastAction({
+        label,
+        endpoint: "POST /api/thinkit/momentum/next_three + POST /api/thinkit/swanson/relay/dispatch",
+        timestamp: new Date().toISOString(),
+        ok: false,
+        statusCode: 0,
+        result: null,
+        error: message
+      });
+      setError(message);
+    } finally {
+      setActionPending(null);
+    }
   }
 
   async function dispatchMomentumGroup(label: string, lane: JsonRecord, move: JsonRecord, targets: string[], rolePrompt: string) {
@@ -1210,20 +1357,20 @@ export default function SwansonRelayControl() {
           <small>decisions available / open decision cards</small>
         </button>
         <button type="button" className="thinkit-relay__metric-card" onClick={() => scrollToDashboardSection("thinkit-elwood-status")}>
-          <span>Elwood status</span>
+          <span>Operator / Harvey status</span>
           <strong>{asText(elwoodStatus?.status, "NO_STATUS").replace("ELWOOD_THINKIT_", "")}</strong>
-          <small>paper trail for Aeye Brainboot</small>
+          <small>Operator seat, organism state, Brainboot paper trail</small>
         </button>
       </div>
 
-      <section id="thinkit-elwood-status" className="thinkit-relay__elwood" aria-label="Elwood ThinkIt status paper trail">
+      <section id="thinkit-elwood-status" className="thinkit-relay__elwood" aria-label="Operator and Harvey ThinkIt status paper trail">
         <header>
           <div>
-            <p className="td-bridge__eyebrow">Elwood / faceless Operator clerk</p>
-            <h3>ThinkIt is leaving a paper trail now.</h3>
+            <p className="td-bridge__eyebrow">Elwood Operator seat / Harvey organism state</p>
+            <h3>ThinkIt is leaving a paper trail Harvey can boot from.</h3>
             <p>
-              Elwood does not decide or pretend to be an Aeye. It writes ThinkIt status, Brainboot context, and proof gaps to files that Skybro and Petra can read
-              without Ben re-teaching the project state.
+              Elwood is the well-intentioned human Operator role. Harvey is the Nerdkle organism we are building. ThinkIt writes Harvey&apos;s status, Brainboot
+              context, and proof gaps to files that Skybro and Petra can read without Ben re-teaching the project state.
             </p>
           </div>
           <span>{asText(elwoodStatus?.status, "NO_ELWOOD_READBACK")}</span>
@@ -1278,7 +1425,7 @@ export default function SwansonRelayControl() {
               ))}
             </ul>
           ) : (
-            <p>No Elwood proof gaps read back yet.</p>
+            <p>No Operator/Harvey proof gaps read back yet.</p>
           )}
         </div>
       </section>
@@ -1289,8 +1436,8 @@ export default function SwansonRelayControl() {
             <p className="td-bridge__eyebrow">Momentum / intention machinery</p>
             <h3>Next Three Projects</h3>
             <p>
-              Pick a project lane, accept, modify, kill, or send one of the proposed moves. This is the blunt instrument until Nerdkle can compute the next move
-              from richer state.
+              Pick a project lane, accept, modify, kill, or send one of the proposed moves. If you kill a bad idea, ThinkIt replaces it with a grounded candidate
+              tied to the repo, relay, book, Speaker, current proof gaps, or an active project lane.
             </p>
           </div>
           <button
@@ -1301,6 +1448,16 @@ export default function SwansonRelayControl() {
             {actionPending === "Refresh Next Three" ? "Building" : "G: Build Next Three"}
           </button>
         </header>
+
+        <div className="thinkit-relay__queue-truth" data-has-queue={queued.length > 0 ? "true" : "false"}>
+          <strong>{queued.length > 0 ? `${queued.length} packet(s) waiting for the thread bridge` : "No packets waiting for the thread bridge"}</strong>
+          <span>
+            {queued.length > 0
+              ? "This means ThinkIt made work, but those Aeyes have not received it until the bridge posts into their receiver chats."
+              : "The current bridge queue is empty. New packets still need receiver-side RECEIVED and COMPLETED/BLOCKER proof."}
+          </span>
+          <small>Bridge cadence: {asText(valueAt(snapshot.threadBridge, ["actuator", "schedule"]), "unknown")}.</small>
+        </div>
 
         <div className="thinkit-relay__momentum-layout">
           <div className="thinkit-relay__momentum-main">
@@ -1357,16 +1514,42 @@ export default function SwansonRelayControl() {
             </article>
 
             <div className="thinkit-relay__momentum-moves">
-              {selectedMomentumMoves.map((move, index) => (
-                <article key={asText(move.move_id, `move-${index}`)} className="thinkit-relay__momentum-card">
+              {selectedMomentumMoves.map((move, index) => {
+                const moveId = asText(move.move_id, `move-${index}`);
+                const moveTarget = asText(move.target, "Petra.Betsy");
+                const packetType = asText(move.packet_type, "MOMENTUM_NEXT_MOVE");
+                const latestDecision = latestDecisionForMove(recentMomentumDecisions, moveId);
+                const coverageRecord = rosterRows.find((row) => row.target === moveTarget)?.coverageRecord ?? null;
+                const queuedItem = latestBridgeItem(queued, moveTarget, packetType);
+                const sentItem = latestBridgeItem(sent, moveTarget, packetType);
+                const deliveryState = moveDeliveryState({ coverageRecord, queuedItem, sentItem, packetType });
+                return (
+                <article key={moveId} className="thinkit-relay__momentum-card">
                   <header>
                     <div>
                       <span>Move {index + 1}</span>
                       <strong>{asText(move.title, "Untitled move")}</strong>
                     </div>
-                    <small>{humanTargetName(asText(move.target, "Petra.Betsy"))}</small>
+                    <small>{humanTargetName(moveTarget)}</small>
                   </header>
                   <p>{asText(move.why, "No why field read back.")}</p>
+                  <div className="thinkit-relay__move-proof" data-tone={deliveryState.tone}>
+                    <article>
+                      <span>Idea decision</span>
+                      <strong>{latestDecision ? humanLabel(latestDecision.choice, "Decision") : "No decision yet"}</strong>
+                      <small>{latestDecision ? asText(latestDecision.created_at, "No decision timestamp") : "Accept, Modify, or Kill records this part only."}</small>
+                    </article>
+                    <article>
+                      <span>Courier state</span>
+                      <strong>{deliveryState.label}</strong>
+                      <small>{deliveryState.meaning}</small>
+                    </article>
+                    <article>
+                      <span>Packet / proof</span>
+                      <strong>{deliveryState.packet}</strong>
+                      <small>{deliveryState.proof}</small>
+                    </article>
+                  </div>
                   <dl>
                     <div>
                       <dt>Command</dt>
@@ -1395,16 +1578,30 @@ export default function SwansonRelayControl() {
                   </dl>
                   <div className="thinkit-relay__momentum-buttons">
                     <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void recordMomentumDecision(selectedMomentumLane ?? {}, move, "ACCEPT")}>
-                      Accept
+                      Accept Idea
+                    </button>
+                    <button
+                      type="button"
+                      disabled={actionPending !== null || !selectedMomentumLane}
+                      onClick={() => void decideAndDispatchMomentumMove(selectedMomentumLane ?? {}, move, "ACCEPT")}
+                    >
+                      {actionPending === "Accept + Queue" ? "Queueing" : "Accept + Queue"}
                     </button>
                     <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void recordMomentumDecision(selectedMomentumLane ?? {}, move, "MODIFY")}>
-                      Modify
+                      Modify Idea
+                    </button>
+                    <button
+                      type="button"
+                      disabled={actionPending !== null || !selectedMomentumLane}
+                      onClick={() => void decideAndDispatchMomentumMove(selectedMomentumLane ?? {}, move, "MODIFY")}
+                    >
+                      {actionPending === "Modify + Queue" ? "Queueing" : "Modify + Queue"}
                     </button>
                     <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void recordMomentumDecision(selectedMomentumLane ?? {}, move, "KILL")}>
-                      Kill
+                      Kill + Replace
                     </button>
                     <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void dispatchMomentumMove(selectedMomentumLane ?? {}, move)}>
-                      {actionPending === "Send Next Three Packet" ? "Sending" : "Send Packet"}
+                      {actionPending === "Queue Next Three Packet" ? "Queueing" : "Queue Packet"}
                     </button>
                     <button
                       type="button"
@@ -1438,7 +1635,8 @@ export default function SwansonRelayControl() {
                     </button>
                   </div>
                 </article>
-              ))}
+                );
+              })}
               {selectedMomentumMoves.length === 0 ? <p>No Next Three moves read back for this lane yet.</p> : null}
             </div>
           </div>

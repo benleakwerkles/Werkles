@@ -1,7 +1,7 @@
 {
   "schema": "thinkit_next_three_projects_v1",
-  "updated_at": "2026-06-29T04:20:00.000Z",
-  "principle": "ThinkIt should not hand Ben robot packet sludge. It should say what we are thinking of doing next, who should build it, who should challenge it, and what proof comes back.",
+  "updated_at": "2026-06-29T05:14:54.486Z",
+  "principle": "Next Three must be generated from current repo, relay, book, Speaker, or project-lane state. If an idea cannot name an existing path, receiver, proof gap, current chapter, or active lane, it is not valid.",
   "workflow": {
     "builder_team_name": "Doozers",
     "builder_team_note": "The Fraggle Rock builders are the Doozers. Here, Doozers means the cowork/build lane: Maker, Dink, and Ender when Ender is cutting, filtering, or shaping work.",
@@ -126,9 +126,9 @@
     },
     {
       "lane_id": "nerdkle",
-      "project": "Nerdkle",
-      "question": "Nerdkle: what makes the organism more real today?",
-      "state": "Nerdkle has relay, book source truth, Speaker pieces, and ThinkIt. The next move should improve shared memory, proof, or routing.",
+      "project": "Harvey / Nerdkle",
+      "question": "Harvey: what makes the organism more real today?",
+      "state": "Harvey has relay, book source truth, Speaker pieces, and ThinkIt. The next move should improve shared memory, proof, or routing.",
       "default_mode": "Doozers build the next mechanism; reviewers decide whether it prevents drift or just adds machinery.",
       "moves": [
         {
@@ -180,30 +180,36 @@
       "default_mode": "Doozers map the route; reviewers decide whether Spanzee can safely run without Ben steering every step.",
       "moves": [
         {
-          "move_id": "oddly_godly_001_spanzee_route",
-          "title": "Map the Spanzee route before pretending AUTO G exists.",
+          "move_id": "oddly_godly_004_spanzee_inbound_proof",
+          "title": "Show actual Spanzee receiver proof before more Oddly Godly work.",
           "target": "Bean.Spanzee",
-          "packet_type": "ODDLY_GODLY_SPANZEE_ROUTE",
-          "why": "If ThinkIt cannot see where packets go and how responses return, Oddly Godly will become another hidden ghost lane.",
-          "command": "Return the current Spanzee receiver, command surface, repo/folder location if any, and missing access.",
-          "doozer_question": "What path or command can a builder use without Ben explaining it again?",
-          "review_question": "What proof is still missing before this lane can run on a timer or AUTO G?",
-          "proof_required": "Receiver thread, command path, source folder/repo, response path, and blocker list.",
+          "packet_type": "ODDLY_GODLY_SPANZEE_INBOUND_PROOF",
+          "why": "The last Oddly Godly send did not visibly land. The next move is not more ideas; it is proving where Spanzee did or did not receive work.",
+          "command": "Return the exact Spanzee receipt state for Oddly Godly: sent packet id, receiver thread/inbox, received receipt, completed/blocker receipt, and missing proof.",
+          "doozer_question": "What route actually exists for Oddly Godly on Spanzee?",
+          "review_question": "What would make this a false-motion candidate?",
+          "proof_required": "Packet id, receiver surface, receipt path/id, and missing-proof list.",
           "risk": "MEDIUM",
-          "human_gate": "Ben gates any new remote-control setup."
+          "human_gate": "Ben gates any new Spanzee remote setup.",
+          "generated_at": "2026-06-29T05:14:20.801Z",
+          "replacement_for": "oddly_godly_001_spanzee_route",
+          "replacement_reason": "Operator killed the prior idea. ThinkIt replaced it with a project-tied candidate from the deterministic backlog."
         },
         {
-          "move_id": "oddly_godly_002_first_packet",
-          "title": "Write the first Oddly Godly work packet like a Bird.",
-          "target": "Maker.Betsy",
-          "packet_type": "ODDLY_GODLY_FIRST_BIRD",
-          "why": "The lane needs one mission-carrying packet with context, owner, next action, evidence, destination, and failure condition.",
-          "command": "Draft the first Oddly Godly Bird packet for Spanzee, but mark any unproven destination as a blocker.",
-          "doozer_question": "What can be packaged cleanly enough that Spanzee can work without Ben carrying context?",
-          "review_question": "Does this packet have a real owner, proof requirement, and stop condition?",
-          "proof_required": "Packet draft plus destination proof or explicit blocker.",
-          "risk": "LOW",
-          "human_gate": "Ben approves first send."
+          "move_id": "oddly_godly_005_auto_g_dry_run",
+          "title": "Run Oddly Godly AUTO G as a dry-run plan only.",
+          "target": "Computer.Spanzee",
+          "packet_type": "ODDLY_GODLY_AUTO_G_DRY_RUN",
+          "why": "AUTO G should not touch real remote work until route, command surface, proof return, and stop rules are known.",
+          "command": "Produce a dry-run AUTO G plan: one proposed command, no execution, expected artifact, stop condition, and what proof would permit a live run.",
+          "doozer_question": "What could run automatically without mutating remote state?",
+          "review_question": "What is the exact no-go condition that stops AUTO G?",
+          "proof_required": "Dry-run plan, no-execution statement, stop rule, and live-run gate.",
+          "risk": "MEDIUM",
+          "human_gate": "Any live AUTO G activation remains Operator-approved.",
+          "generated_at": "2026-06-29T05:14:54.486Z",
+          "replacement_for": "oddly_godly_002_first_packet",
+          "replacement_reason": "Operator killed the prior idea. ThinkIt replaced it with a project-tied candidate from the deterministic backlog."
         },
         {
           "move_id": "oddly_godly_003_auto_g_boundary",

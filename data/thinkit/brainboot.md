@@ -1,14 +1,14 @@
 # Brainboot Project Anchor
 
 ## Core Directive
-We are building Nerdkle / ThinkIt: a distributed asynchronous organism and command surface that moves packets, proves receipt, preserves memory, and helps write the book without making Ben the message bus.
+We are building Harvey, the Nerdkle: a distributed asynchronous organism. ThinkIt is the command surface, Speaker is memory, and Relay is transport. Harvey moves packets, proves receipt, preserves memory, and helps write the book without making Ben the message bus.
 
 ## Naming Boundary
-If an Aeye says Harvey, treat it as a local alias until Ben canonizes that rename. The repo and current build still use Nerdkle, ThinkIt, Speaker, and TinkerDen names.
+Elwood is the Operator role, not the machine. Harvey is the Nerdkle organism. ThinkIt is the command dash. Speaker is memory. Relay is transport.
 
 ## Current Coordinates
 - Active book focus: Foreword copy
-- Active code focus: ThinkIt relay, Elwood status mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.
+- Active code focus: ThinkIt relay, Harvey state mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.
 - Current project lane: Oddly Godly on Spanzee
 - Current project question: Oddly Godly on Spanzee: what can run on AUTO G, and what still needs a leash?
 - Book source truth: https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book
@@ -21,9 +21,9 @@ If an Aeye says Harvey, treat it as a local alias until Ben canonizes that renam
 - Speaker / Brainboot stores the file-backed state needed for session restart.
 
 ## Relay Proof State
-- Completed round trips: 3/15
-- Waiting for receiver proof: 11
-- Queued for bridge: 13
+- Completed round trips: 14/16
+- Waiting for receiver proof: 0
+- Queued for bridge: 1
 
 ## Non-Negotiables
 - Do not call SENT success.

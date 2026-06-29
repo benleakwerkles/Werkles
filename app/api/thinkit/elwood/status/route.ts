@@ -128,13 +128,13 @@ function buildHumanStatus(snapshot: JsonRecord) {
     "---",
     `ELWOOD_STATUS_RENDER_ID: ${asText(snapshot.status_id, "UNKNOWN")}`,
     `RENDERED_AT: ${asText(snapshot.generated_at, nowIso())}`,
-    "SOURCE: ThinkIt deterministic Elwood status exporter",
+    "SOURCE: ThinkIt deterministic Operator/Harvey status exporter",
     "SPEAKER_IS_ACTIVE_LLM: false",
     "---",
     "",
     "# ThinkIt Status Log",
     "",
-    "Elwood is the faceless Operator clerk: it does not think, decide, or speak for an Aeye. It writes the current ThinkIt state to durable files so Skybro, Petra, and the rest of the mesh can read the same room when they wake up.",
+    "Elwood is the Operator seat: the well-intentioned human command role. Harvey is the Nerdkle organism under construction. ThinkIt writes Harvey's current state, proof gaps, and next work to durable files so Skybro, Petra, and the rest of the mesh can read the same room when they wake up.",
     "",
     "## Current Coordinates",
     `- Active book focus: ${asText(coordinates.active_book_focus, "Unknown")}`,
@@ -187,10 +187,10 @@ function buildBrainboot(snapshot: JsonRecord) {
     "# Brainboot Project Anchor",
     "",
     "## Core Directive",
-    "We are building Nerdkle / ThinkIt: a distributed asynchronous organism and command surface that moves packets, proves receipt, preserves memory, and helps write the book without making Ben the message bus.",
+    "We are building Harvey, the Nerdkle: a distributed asynchronous organism. ThinkIt is the command surface, Speaker is memory, and Relay is transport. Harvey moves packets, proves receipt, preserves memory, and helps write the book without making Ben the message bus.",
     "",
     "## Naming Boundary",
-    "If an Aeye says Harvey, treat it as a local alias until Ben canonizes that rename. The repo and current build still use Nerdkle, ThinkIt, Speaker, and TinkerDen names.",
+    "Elwood is the Operator role, not the machine. Harvey is the Nerdkle organism. ThinkIt is the command dash. Speaker is memory. Relay is transport.",
     "",
     "## Current Coordinates",
     `- Active book focus: ${asText(coordinates.active_book_focus, "Unknown")}`,
@@ -219,7 +219,15 @@ function buildBrainboot(snapshot: JsonRecord) {
   ].join("\n");
 }
 
-async function buildElwoodStatus() {
+async function maybeHashFile(filePath: string) {
+  try {
+    return await sha256File(filePath);
+  } catch {
+    return null;
+  }
+}
+
+async function buildElwoodStatus({ persistRepo = false } = {}) {
   await fs.mkdir(DATA_DIR, { recursive: true });
 
   const [nextThree, momentumState, recentDecisions, coverageRead, threadBridgeRead, bookCourierRead, originReturnRead] = await Promise.all([
@@ -258,12 +266,12 @@ async function buildElwoodStatus() {
     status: "ELWOOD_THINKIT_STATUS_READY",
     status_id: `ELWOOD_THINKIT_STATUS_${Date.now()}_${crypto.randomBytes(4).toString("hex").toUpperCase()}`,
     generated_at: nowIso(),
-    source: "ThinkIt deterministic Elwood status exporter",
+    source: "ThinkIt deterministic Operator/Harvey status exporter",
     current_coordinates: {
       active_book_focus: asText(valueAt(bookCourier, ["next_uncompleted_chapter", "title"]) ?? valueAt(bookCourier, ["next_unsent_chapter", "title"]), "No active chapter read back"),
-      active_code_focus: "ThinkIt relay, Elwood status mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.",
-      active_project_lane: asText(activeLane.project, "Nerdkle"),
-      active_project_question: asText(activeLane.question, "Nerdkle: what makes the organism more real today?"),
+      active_code_focus: "ThinkIt relay, Harvey state mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.",
+      active_project_lane: asText(activeLane.project, "Harvey / Nerdkle"),
+      active_project_question: asText(activeLane.question, "Harvey: what makes the organism more real today?"),
       thinkit_last_known_location: "http://10.1.10.8:3342/thinkit",
       book_source_truth: "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book"
     },
@@ -315,22 +323,33 @@ async function buildElwoodStatus() {
   const brainboot = buildBrainboot(snapshot);
   const jsonText = `${JSON.stringify(snapshot, null, 2)}\n`;
 
-  await Promise.all([
-    fs.writeFile(STATUS_JSON_PATH, jsonText, "utf8"),
-    fs.writeFile(STATUS_MD_PATH, `${humanStatus}\n`, "utf8"),
-    fs.writeFile(BRAINBOOT_MD_PATH, `${brainboot}\n`, "utf8"),
-    fs.appendFile(STATUS_LOG_PATH, `${JSON.stringify({ status_id: snapshot.status_id, generated_at: snapshot.generated_at, sha256: sha256Text(jsonText) })}\n`, "utf8"),
+  const writes = [
     fs.mkdir(path.dirname(SPEAKER_THINKIT_STATUS_PATH), { recursive: true }).then(() => fs.writeFile(SPEAKER_THINKIT_STATUS_PATH, `${humanStatus}\n`, "utf8")),
     fs.mkdir(path.dirname(SPEAKER_ELWOOD_JSON_PATH), { recursive: true }).then(() => fs.writeFile(SPEAKER_ELWOOD_JSON_PATH, jsonText, "utf8")),
     fs.mkdir(path.dirname(SPEAKER_BRAINBOOT_PATH), { recursive: true }).then(() => fs.writeFile(SPEAKER_BRAINBOOT_PATH, `${brainboot}\n`, "utf8"))
-  ]);
+  ];
+
+  if (persistRepo) {
+    writes.push(
+      fs.writeFile(STATUS_JSON_PATH, jsonText, "utf8"),
+      fs.writeFile(STATUS_MD_PATH, `${humanStatus}\n`, "utf8"),
+      fs.writeFile(BRAINBOOT_MD_PATH, `${brainboot}\n`, "utf8"),
+      fs.appendFile(STATUS_LOG_PATH, `${JSON.stringify({ status_id: snapshot.status_id, generated_at: snapshot.generated_at, sha256: sha256Text(jsonText) })}\n`, "utf8")
+    );
+  }
+
+  await Promise.all(writes);
 
   return {
     ...snapshot,
+    persist_repo: persistRepo,
     hashes: {
-      repo_json_sha256: await sha256File(STATUS_JSON_PATH),
-      repo_markdown_sha256: await sha256File(STATUS_MD_PATH),
-      repo_brainboot_sha256: await sha256File(BRAINBOOT_MD_PATH),
+      computed_json_sha256: sha256Text(jsonText),
+      computed_markdown_sha256: sha256Text(`${humanStatus}\n`),
+      computed_brainboot_sha256: sha256Text(`${brainboot}\n`),
+      repo_json_sha256: await maybeHashFile(STATUS_JSON_PATH),
+      repo_markdown_sha256: await maybeHashFile(STATUS_MD_PATH),
+      repo_brainboot_sha256: await maybeHashFile(BRAINBOOT_MD_PATH),
       speaker_markdown_sha256: await sha256File(SPEAKER_THINKIT_STATUS_PATH),
       speaker_json_sha256: await sha256File(SPEAKER_ELWOOD_JSON_PATH),
       speaker_brainboot_sha256: await sha256File(SPEAKER_BRAINBOOT_PATH)
@@ -338,9 +357,10 @@ async function buildElwoodStatus() {
   };
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    return NextResponse.json(await buildElwoodStatus());
+    const url = new URL(request.url);
+    return NextResponse.json(await buildElwoodStatus({ persistRepo: url.searchParams.get("persist_repo") === "1" }));
   } catch (error) {
     return NextResponse.json(
       {
