@@ -1,0 +1,76 @@
+{
+  "receipt_id": "SWANSON_DOSS_BOOK_SOURCE_POINTER_LOCK_RECEIPT_20260629",
+  "created_at": "2026-06-29T00:20:00-04:00",
+  "status": "ARTIFACT",
+  "operator_pointer_received": {
+    "repo": "https://github.com/benleakwerkles/Werkles1.git",
+    "branch": "main",
+    "folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+    "folder": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/",
+    "current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
+    "book_add_commit": "49349a638625ce85bad3c449d1bab5e734ae118f",
+    "file_count": 120,
+    "use_as": "raw source material / editing reference, not replacement source-truth plan"
+  },
+  "local_readback": {
+    "clone_root": "C:\\wt\\stbook",
+    "doss_clone_head": "93947e39602c1873aea1deb568f27591a70c9fb1",
+    "doss_clone_branch": "source-truth/book-import-metadata-20260628",
+    "doss_clone_remote": "https://github.com/benleakwerkles/Werkles1.git",
+    "book_add_is_ancestor_of_current_main": true,
+    "book_folder_file_count": 120,
+    "import_boundary_exists": true
+  },
+  "files_updated": [
+    {
+      "path": "C:\\speaker\\bin\\speakerctl.js",
+      "purpose": "Bootpack generator now defaults to GitHub main/source-truth-plan instead of the older temporary source-truth branch.",
+      "sha256": "4E267B0044A4988C1729A87877F6E4A8E9E29502EC0BCF6E2911FE76774FC798"
+    },
+    {
+      "path": "C:\\speaker\\db\\source_truth_pointers.json",
+      "purpose": "Machine-readable pointer for Aeyes naming the exact main branch book folder and raw-reference boundary.",
+      "sha256": "C173DDF21A43A53E4FF83BB3172EA08167C3689506521CCE9CD47A2D0C73517E"
+    },
+    {
+      "path": "C:\\speaker\\bootpacks\\out\\Skybro.Betsy.BOOTPACK.md",
+      "purpose": "Rendered Skybro bootpack now includes the main source-truth pointer and Nerdkle Book raw-reference URL.",
+      "sha256": "270251EDB03E56D715ABFC676BAC86DC8B9B56CC1C884F96D8C126D4D00354F6"
+    },
+    {
+      "path": "C:\\speaker\\bootpacks\\out\\Petra.Betsy.NERDKLE_BRAINBOOT.BOOTPACK.md",
+      "purpose": "Rendered Petra bootpack now includes the main source-truth pointer and Nerdkle Book raw-reference URL.",
+      "sha256": "BE5E78BDE0D9B4DE3B07A29E4243096F6ADC2B6C983279AE12CB791FBB456DD6"
+    }
+  ],
+  "relay_dash_readback": {
+    "endpoint": "GET http://127.0.0.1:3339/v1/book/chapters",
+    "status": "BOOK_CHAPTERS_READY",
+    "source_repo_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+    "chapter_count": 71
+  },
+  "bootpack_readback": {
+    "Skybro.Betsy": {
+      "contains_source_truth_plan_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan",
+      "contains_book_folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+      "contains_current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
+      "contains_raw_reference_boundary": true
+    },
+    "Petra.Betsy": {
+      "contains_source_truth_plan_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan",
+      "contains_book_folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+      "contains_current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
+      "contains_raw_reference_boundary": true
+    }
+  },
+  "aeye_instruction_locked": [
+    "Use the Nerdkle Book folder as raw source material and editing reference until Skybro finishes the complete architecture.",
+    "Do not treat the raw book folder as a replacement source-truth plan.",
+    "If chat memory conflicts with GitHub main source-truth-plan files, GitHub main wins.",
+    "If a chapter packet names a source path, verify file hash or report BLOCKER instead of asking Ben to paste the chapter."
+  ],
+  "remaining_gap": [
+    "This updates Doss/Speaker bootpack and Relay Dash local surfaces. Any already-open Aeye chat must receive a new Brainboot or relay packet before it can see the updated pointer.",
+    "This does not replace Skybro's future complete architecture; it pins the interim raw source folder for reference and chapter-edit courier work."
+  ]
+}

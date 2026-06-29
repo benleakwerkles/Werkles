@@ -1,0 +1,79 @@
+{
+  "receipt_id": "SWANSON_DOSS_THINKIT_RELAY_MERGE_PREP_RECEIPT_20260629",
+  "created_at": "2026-06-29T00:49:00-04:00",
+  "status": "ARTIFACT",
+  "mission": "Prepare Swanson Relay Build for merge with Feral Membrane Main Dash. Official merged main name: ThinkIt.",
+  "official_names": {
+    "merged_product_name": "ThinkIt",
+    "incoming_command_dash_name": "Feral Membrane Main Dash",
+    "incoming_command_dash_owner": "Dink@Betsy",
+    "relay_module_name": "Swanson Relay Build",
+    "relay_module_owner": "Swanson@Doss"
+  },
+  "live_endpoints_added": [
+    {
+      "method": "GET",
+      "path": "/v1/thinkit/relay_merge_contract",
+      "purpose": "Machine-readable relay-side integration contract for ThinkIt."
+    },
+    {
+      "method": "POST",
+      "path": "/v1/thinkit/write_relay_merge_contract",
+      "purpose": "Writes the current relay merge contract to disk for Dink@Betsy / ThinkIt merger."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "C:\\speaker\\aeye_relay\\merge\\THINKIT_RELAY_MERGE_CONTRACT.json",
+      "sha256": "3542ED556D0D750170C42B745CCF2C25207C3EEB23AC90AE37C0562110E8C267",
+      "purpose": "Machine-readable contract: endpoints, proof states, button mapping, readiness, and relay/file readbacks."
+    },
+    {
+      "path": "C:\\speaker\\aeye_relay\\merge\\THINKIT_RELAY_MERGE_HANDOFF.md",
+      "sha256": "8956012DC6AEC594D9B40AD7594C97240B8AD49CE2C7E9764791D56304A768CE",
+      "purpose": "Human-readable handoff for Dink@Betsy merge work."
+    },
+    {
+      "path": "C:\\tinkarden\\server\\index.js",
+      "sha256": "0B852E695581BD2984B62D8557AD3948D49E7F8F406842A6056713F92A1B9995",
+      "purpose": "Live Relay Dash server now exposes ThinkIt merge contract endpoints."
+    }
+  ],
+  "verification": {
+    "syntax_check": "node --check C:\\tinkarden\\server\\index.js PASS",
+    "server_restart": "PM2 index online after restart",
+    "contract_endpoint_status": "THINKIT_RELAY_MERGE_READY",
+    "write_endpoint_status": "THINKIT_RELAY_MERGE_CONTRACT_WRITTEN",
+    "merge_recommendation": "GO",
+    "routable_targets": 8,
+    "round_trip_proven_targets": 8,
+    "held_targets": 1,
+    "local_only_targets": 1,
+    "latest_origin_return_packet": "BOOK_CHAPTER_EDIT_SKYBRO.BETSY_20260628232327_C97603B0",
+    "latest_origin_return_status": "COMPLETED_RECEIPT_PROVEN",
+    "latest_origin_return_receipt_sha256": "F0847F833BC9187214F94748C7A3BBDDF2CAA41AADDDA5E0C04167D490CFEED2"
+  },
+  "thinkit_merge_rule": "ThinkIt may use Relay Build as transport only if UI actions preserve the packet -> queued/sent -> RECEIVED -> COMPLETED/BLOCKER -> origin return proof chain.",
+  "proof_boundary": {
+    "not_success": [
+      "CREATED_LOCAL_ONLY",
+      "QUEUED_FOR_CODEX_THREAD_SEND",
+      "SENT_TO_CODEX_THREAD",
+      "FILE_INBOX_WAITING_FOR_RECEIVER",
+      "SENT_UNACKNOWLEDGED"
+    ],
+    "terminal_success": [
+      "COMPLETED_RECEIPT_PROVEN",
+      "RETURNED_TO_ORIGIN_DASH"
+    ],
+    "terminal_blocker": [
+      "BLOCKER_RECEIPT_PROVEN",
+      "RETURNED_BLOCKER"
+    ]
+  },
+  "cautions": [
+    "Ender.Sally remains held by topology and should not receive work.",
+    "Swanson.Doss is local-only and should not be routed through the Aeye thread bridge.",
+    "The merge contract prepares Relay Build for ThinkIt. It does not merge Dink@Betsy's Feral Membrane Main Dash code by itself."
+  ]
+}

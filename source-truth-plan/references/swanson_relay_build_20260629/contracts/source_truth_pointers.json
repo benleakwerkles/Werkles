@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-06-29T00:09:00-04:00",
+  "source": "Ben operator-provided GitHub readback, verified by Doss local clone readback",
+  "current_primary_source_truth": {
+    "repo": "https://github.com/benleakwerkles/Werkles1.git",
+    "branch": "main",
+    "current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
+    "source_truth_plan_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan",
+    "local_readback_root": "C:\\wt\\stbook\\source-truth-plan",
+    "use_as": "source-truth plan and bootpack baseline"
+  },
+  "nerdkle_book_raw_reference": {
+    "folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+    "repo": "https://github.com/benleakwerkles/Werkles1.git",
+    "branch": "main",
+    "folder": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/",
+    "current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
+    "book_add_commit": "49349a638625ce85bad3c449d1bab5e734ae118f",
+    "book_add_is_ancestor_of_current_origin_main": true,
+    "file_count": 120,
+    "local_readback_root": "C:\\wt\\stbook\\source-truth-plan\\references\\betsy_desktop_nerdkle_the_book",
+    "import_boundary": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/README_IMPORT_BOUNDARY.md",
+    "use_as": "raw source material / editing reference, not replacement source-truth plan"
+  },
+  "aeye_instruction": [
+    "Use the Nerdkle Book folder as raw source material and editing reference until Skybro finishes the complete architecture.",
+    "Do not treat the raw book folder as a replacement source-truth plan.",
+    "If chat memory conflicts with GitHub main source-truth-plan files, GitHub main wins.",
+    "If a chapter packet names a source path, verify file hash or report BLOCKER instead of asking Ben to paste the chapter."
+  ],
+  "proof": {
+    "doss_clone_head": "93947e39602c1873aea1deb568f27591a70c9fb1",
+    "doss_clone_branch": "source-truth/book-import-metadata-20260628",
+    "doss_clone_remote": "https://github.com/benleakwerkles/Werkles1.git",
+    "folder_count_readback": 120,
+    "import_boundary_exists": true
+  }
+}

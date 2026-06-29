@@ -1,0 +1,60 @@
+﻿{
+    "manifest_id":  "SWANSON_RELAY_BUILD_20260629_MANIFEST",
+    "generated_at":  "2026-06-29T00:53:18.8587130Z",
+    "repo":  "https://github.com/benleakwerkles/Werkles1.git",
+    "branch":  "thinkit/relay-build-snapshot-20260629-0050",
+    "base_commit":  "b62e3b19700d5b1a487f08bbeb8c131a92188896",
+    "destination_folder":  "source-truth-plan/references/swanson_relay_build_20260629/",
+    "purpose":  "Auditable GitHub snapshot of Swanson Relay Build prepared for ThinkIt merge with Feral Membrane Main Dash",
+    "proof_boundary":  "Reference snapshot only. Runtime proof still lives in receiver receipts and origin return endpoints.",
+    "files":  [
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/contracts/source_truth_pointers.json",
+                      "byte_count":  2177,
+                      "sha256":  "C173DDF21A43A53E4FF83BB3172EA08167C3689506521CCE9CD47A2D0C73517E",
+                      "modified_time":  "2026-06-29T00:17:41.5048435Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/contracts/THINKIT_RELAY_MERGE_CONTRACT.json",
+                      "byte_count":  14463,
+                      "sha256":  "3542ED556D0D750170C42B745CCF2C25207C3EEB23AC90AE37C0562110E8C267",
+                      "modified_time":  "2026-06-29T00:46:22.8316409Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/contracts/THINKIT_RELAY_MERGE_HANDOFF.md",
+                      "byte_count":  2615,
+                      "sha256":  "8956012DC6AEC594D9B40AD7594C97240B8AD49CE2C7E9764791D56304A768CE",
+                      "modified_time":  "2026-06-29T00:46:45.6695302Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/implementation/speakerctl.js",
+                      "byte_count":  73641,
+                      "sha256":  "4E267B0044A4988C1729A87877F6E4A8E9E29502EC0BCF6E2911FE76774FC798",
+                      "modified_time":  "2026-06-29T00:18:31.8304693Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/implementation/tinkarden_server_index.js",
+                      "byte_count":  340612,
+                      "sha256":  "0B852E695581BD2984B62D8557AD3948D49E7F8F406842A6056713F92A1B9995",
+                      "modified_time":  "2026-06-29T00:45:47.9675317Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/README.md",
+                      "byte_count":  1994,
+                      "sha256":  "4C1063422BEE7FC0CF5D01621389C98A7BC48609EFA028EAEAE216950BC8121D",
+                      "modified_time":  "2026-06-29T00:53:05.8329936Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/receipts/SWANSON_DOSS_BOOK_SOURCE_POINTER_LOCK_RECEIPT_20260629.json",
+                      "byte_count":  4297,
+                      "sha256":  "8E78E0CA83BD29C2BDA35136C527E9B8F726A5FE0D6F011839804CF2890A6A8D",
+                      "modified_time":  "2026-06-29T00:19:22.8374231Z"
+                  },
+                  {
+                      "relative_path":  "source-truth-plan/references/swanson_relay_build_20260629/receipts/SWANSON_DOSS_THINKIT_RELAY_MERGE_PREP_RECEIPT_20260629.json",
+                      "byte_count":  3337,
+                      "sha256":  "2669D78E6E41C720976B2C7AD621FE49E6398FF13FD47A89DAC959B35C4967DD",
+                      "modified_time":  "2026-06-29T00:47:24.5705571Z"
+                  }
+              ]
+}
