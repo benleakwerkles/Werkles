@@ -1,8 +1,13 @@
 {
   "schema": "thinkit_next_three_projects_v1",
   "updated_at": "2026-06-29T05:14:54.486Z",
-  "principle": "Next Three must be generated from current repo, relay, book, Speaker, or project-lane state. If an idea cannot name an existing path, receiver, proof gap, current chapter, or active lane, it is not valid.",
+  "principle": "Next Three must be generated from current repo, relay, book, Speaker, or project-lane state. G defaults to the main Werkles build lane and must not productize the latest operator errand. If an idea cannot name an existing path, receiver, proof gap, current chapter, or active lane, it is not valid.",
   "workflow": {
+    "primary_lane_id": "werkles",
+    "main_lane_ids": [
+      "werkles"
+    ],
+    "optional_lane_note": "Kind Sir, Nerdkle, and Oddly Godly are optional side lanes. They are visible only when the operator asks for side-lane context; they are not the default G target.",
     "builder_team_name": "Doozers",
     "builder_team_note": "The Fraggle Rock builders are the Doozers. Here, Doozers means the cowork/build lane: Maker, Dink, and Ender when Ender is cutting, filtering, or shaping work.",
     "doozer_targets": [

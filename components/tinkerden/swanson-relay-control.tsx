@@ -562,7 +562,8 @@ export default function SwansonRelayControl() {
     "Return one useful status delta: what you received, what changed on your side, what is blocked, and what ThinkIt should decide next."
   );
   const [momentum, setMomentum] = useState<JsonRecord | null>(null);
-  const [selectedMomentumLaneId, setSelectedMomentumLaneId] = useState("nerdkle");
+  const [selectedMomentumLaneId, setSelectedMomentumLaneId] = useState("werkles");
+  const [showOptionalMomentumLanes, setShowOptionalMomentumLanes] = useState(false);
   const [momentumNote, setMomentumNote] = useState(
     "Cool. Move this forward with receiver-side proof, or return the exact blocker."
   );
@@ -747,11 +748,21 @@ export default function SwansonRelayControl() {
   const bridgeStatus = asText(actuator?.status ?? valueAt(snapshot.threadBridge, ["actuator", "status"]), "UNKNOWN");
   const momentumLanes = useMemo(() => asArray(momentum?.lanes).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item)), [momentum]);
   const momentumWorkflow = asRecord(momentum?.workflow);
+  const primaryMomentumLaneId = asText(momentumWorkflow?.primary_lane_id, "werkles");
+  const mainMomentumLaneIds = useMemo(
+    () => asArray(momentumWorkflow?.main_lane_ids).map((item) => asText(item, "")).filter(Boolean),
+    [momentumWorkflow]
+  );
+  const mainMomentumLaneIdSet = useMemo(() => new Set(mainMomentumLaneIds.length > 0 ? mainMomentumLaneIds : [primaryMomentumLaneId]), [mainMomentumLaneIds, primaryMomentumLaneId]);
+  const visibleMomentumLanes = useMemo(
+    () => (showOptionalMomentumLanes ? momentumLanes : momentumLanes.filter((lane) => mainMomentumLaneIdSet.has(asText(lane.lane_id, "")))),
+    [momentumLanes, mainMomentumLaneIdSet, showOptionalMomentumLanes]
+  );
   const doozerTargets = useMemo(() => asArray(momentumWorkflow?.doozer_targets).map((item) => asText(item, "")).filter(Boolean), [momentumWorkflow]);
   const reviewerTargets = useMemo(() => asArray(momentumWorkflow?.review_targets).map((item) => asText(item, "")).filter(Boolean), [momentumWorkflow]);
   const selectedMomentumLane = useMemo(
-    () => momentumLanes.find((lane) => asText(lane.lane_id, "") === selectedMomentumLaneId) ?? momentumLanes[0] ?? null,
-    [momentumLanes, selectedMomentumLaneId]
+    () => momentumLanes.find((lane) => asText(lane.lane_id, "") === selectedMomentumLaneId) ?? visibleMomentumLanes[0] ?? momentumLanes[0] ?? null,
+    [momentumLanes, selectedMomentumLaneId, visibleMomentumLanes]
   );
   const selectedMomentumMoves = useMemo(
     () => asArray(selectedMomentumLane?.moves).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item)),
@@ -847,10 +858,15 @@ export default function SwansonRelayControl() {
   }, [defaultChapterId, selectedChapterId]);
 
   useEffect(() => {
-    if ((!selectedMomentumLaneId || !selectedMomentumLane) && momentumLanes[0]) {
-      setSelectedMomentumLaneId(asText(momentumLanes[0].lane_id, "nerdkle"));
+    const preferredLane =
+      momentumLanes.find((lane) => asText(lane.lane_id, "") === primaryMomentumLaneId) ??
+      visibleMomentumLanes[0] ??
+      momentumLanes[0] ??
+      null;
+    if (preferredLane && (!selectedMomentumLaneId || !selectedMomentumLane || (!showOptionalMomentumLanes && !mainMomentumLaneIdSet.has(selectedMomentumLaneId)))) {
+      setSelectedMomentumLaneId(asText(preferredLane.lane_id, "werkles"));
     }
-  }, [momentumLanes, selectedMomentumLane, selectedMomentumLaneId]);
+  }, [mainMomentumLaneIdSet, momentumLanes, primaryMomentumLaneId, selectedMomentumLane, selectedMomentumLaneId, showOptionalMomentumLanes, visibleMomentumLanes]);
 
   useEffect(() => {
     if (!selectedBookReportId && defaultBookReportId) setSelectedBookReportId(defaultBookReportId);
@@ -1460,8 +1476,8 @@ export default function SwansonRelayControl() {
             <p className="td-bridge__eyebrow">Momentum / intention machinery</p>
             <h3>Next Three Projects</h3>
             <p>
-              Pick a project lane, accept, modify, kill, or send one of the proposed moves. If you kill a bad idea, ThinkIt replaces it with a grounded candidate
-              tied to the repo, relay, book, Speaker, current proof gaps, or an active project lane.
+              G starts on the Werkles build lane: button truth, source-truth visibility, and merge hygiene. If you kill a bad idea, ThinkIt replaces it with a
+              grounded candidate tied to the repo, relay, book, Speaker, current proof gaps, or an active project lane.
             </p>
           </div>
           <button
@@ -1486,21 +1502,38 @@ export default function SwansonRelayControl() {
         <div className="thinkit-relay__momentum-layout">
           <div className="thinkit-relay__momentum-main">
             <div className="thinkit-relay__lane-tabs" role="tablist" aria-label="Project lanes">
-              {momentumLanes.map((lane) => {
+              {visibleMomentumLanes.map((lane) => {
                 const laneId = asText(lane.lane_id, "unknown");
                 const selected = laneId === asText(selectedMomentumLane?.lane_id, "");
+                const isMainLane = mainMomentumLaneIdSet.has(laneId);
                 return (
                   <button
                     key={laneId}
                     type="button"
                     data-selected={selected ? "true" : "false"}
+                    data-main-lane={isMainLane ? "true" : "false"}
                     onClick={() => setSelectedMomentumLaneId(laneId)}
                   >
                     {asText(lane.project, laneId)}
                   </button>
                 );
               })}
+              {momentumLanes.length > visibleMomentumLanes.length ? (
+                <button type="button" data-selected="false" data-main-lane="false" onClick={() => setShowOptionalMomentumLanes(true)}>
+                  Show optional lanes
+                </button>
+              ) : null}
+              {showOptionalMomentumLanes ? (
+                <button type="button" data-selected="false" data-main-lane="false" onClick={() => setShowOptionalMomentumLanes(false)}>
+                  Hide optional lanes
+                </button>
+              ) : null}
             </div>
+            <p className="thinkit-relay__lane-note">
+              {showOptionalMomentumLanes
+                ? asText(momentumWorkflow?.optional_lane_note, "Optional side lanes are visible.")
+                : "Main build focus: Werkles. Optional side lanes are parked."}
+            </p>
 
             <div className="thinkit-relay__momentum-flow" aria-label="Doozer proposal and reviewer sign-off loop">
               <article>

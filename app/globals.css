@@ -2730,6 +2730,22 @@ main .proof-warning.proof-boundary .workshop-band {
   color: #014b42;
 }
 
+.thinkit-relay__lane-tabs button[data-main-lane="false"] {
+  color: #6b5845;
+  background: rgba(255, 250, 241, 0.58);
+}
+
+.thinkit-relay__lane-note {
+  margin: -4px 0 0;
+  border: 1px solid rgba(112, 73, 38, 0.14);
+  border-radius: 7px;
+  background: rgba(255, 250, 241, 0.76);
+  padding: 9px 10px;
+  color: #5c4a3a;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
 .thinkit-relay__momentum-question,
 .thinkit-relay__momentum-card,
 .thinkit-relay__speaker-readback,
