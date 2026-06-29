@@ -53,6 +53,78 @@ function asArray(value: unknown) {
   return Array.isArray(value) ? value : [];
 }
 
+function asRecord(value: unknown): JsonRecord | null {
+  return value && typeof value === "object" ? (value as JsonRecord) : null;
+}
+
+function humanTargetName(target: string) {
+  if (!target || target === "UNKNOWN_TARGET") return "Unknown receiver";
+  return target.replace(".", "@");
+}
+
+function findReceiver(threadBridge: JsonRecord | null, target: string) {
+  const targetThreads = asArray(valueAt(threadBridge, ["known_target_threads"]));
+  const fromList = targetThreads.find((item) => asText(asRecord(item)?.target, "") === target);
+  if (fromList) return asRecord(fromList);
+
+  const knownTarget = valueAt(threadBridge, ["known_targets", target]);
+  return asRecord(knownTarget);
+}
+
+function receiverTitle(threadBridge: JsonRecord | null, target: string) {
+  const receiver = findReceiver(threadBridge, target);
+  return asText(receiver?.title, humanTargetName(target));
+}
+
+function receiverSurface(receiver: JsonRecord | null) {
+  const mode = asText(receiver?.relay_mode, "");
+  const status = asText(receiver?.route_status, "");
+  if (mode === "CODEX_THREAD_BRIDGE") return "Codex receiver thread";
+  if (mode === "FILE_INBOX_LAN") return "LAN receiver inbox";
+  if (mode === "DO_NOT_ROUTE" || status === "HELD_BY_TOPOLOGY") return "Held by routing rules";
+  if (mode === "LOCAL_ONLY") return "Local control thread";
+  return "Receiver surface";
+}
+
+function receiverInstruction(receiver: JsonRecord | null, target: string) {
+  const title = asText(receiver?.title, humanTargetName(target));
+  const mode = asText(receiver?.relay_mode, "");
+  const inboxUrl = asText(receiver?.file_inbox_url, "");
+  if (mode === "CODEX_THREAD_BRIDGE") {
+    return `Continue directly in the Codex thread named "${title}". ThinkIt is showing the receipt that thread wrote back.`;
+  }
+  if (inboxUrl && inboxUrl !== "UNKNOWN") {
+    return `Open the receiver inbox for ${humanTargetName(target)}. ThinkIt is waiting for that inbox to write back.`;
+  }
+  return "This return is file-backed. ThinkIt can show the proof, but no friendly receiver surface is linked yet.";
+}
+
+function humanLabel(value: unknown, fallback = "Review") {
+  return asText(value, fallback).replaceAll("_", " ").toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function humanizeTargetText(value: unknown, target: string, fallback: string) {
+  return asText(value, fallback).replaceAll(target, humanTargetName(target));
+}
+
+function returnedWorkHeadline(record: JsonRecord, target: string) {
+  const channel = asText(record.channel, "");
+  const advancement = asText(record.advancement_type, "");
+  const packet = asText(record.packet_id, "");
+  const receiver = humanTargetName(target);
+
+  if (advancement === "SESSION_BOOTSTRAP" || channel === "brainboot") {
+    return `${receiver} finished Brainboot and is ready for the next move.`;
+  }
+  if (packet.startsWith("BOOK_CHAPTER_EDIT")) {
+    return `${receiver} returned a book edit.`;
+  }
+  if (asText(record.answer_status, "") === "COMPLETED") {
+    return `${receiver} returned a completed answer.`;
+  }
+  return `${receiver} returned work for review.`;
+}
+
 function summarizePackets(value: unknown) {
   const packets = asArray(value);
   return packets
@@ -167,7 +239,10 @@ export default function SwansonRelayControl() {
   const actuator = valueAt(snapshot.coverage, ["actuator"]) as JsonRecord | null;
   const queued = asArray(valueAt(snapshot.threadBridge, ["queued"]));
   const blocked = asArray(valueAt(snapshot.threadBridge, ["blocked"]));
-  const actionable = valueAt(snapshot.actionableReturns, ["actionable_returns", "items"]) ?? valueAt(snapshot.actionableReturns, ["items"]);
+  const actionable =
+    valueAt(snapshot.actionableReturns, ["actionable_returns", "actionable"]) ??
+    valueAt(snapshot.actionableReturns, ["actionable_returns", "items"]) ??
+    valueAt(snapshot.actionableReturns, ["items"]);
   const actionables = asArray(actionable);
 
   const contractStatus = asText(snapshot.contract?.status, "NO_CONTRACT");
@@ -185,6 +260,11 @@ export default function SwansonRelayControl() {
   const latestTarget = asText(latest?.target ?? latest?.destination_label, "UNKNOWN_TARGET");
   const latestStatus = asText(latest?.packet_status ?? latest?.answer_status ?? latest?.origin_readback_status ?? latest?.status, "UNKNOWN_STATUS");
   const latestAnswer = asText(latest?.answer_evidence ?? latest?.answer_text, "No returned answer has been read back yet.");
+  const latestReceiver = findReceiver(snapshot.threadBridge, latestTarget);
+  const latestReceiverTitle = receiverTitle(snapshot.threadBridge, latestTarget);
+  const latestReceiptId = asText(latest?.receiver_receipt_id, "NO_RECEIPT_YET");
+  const latestReceiptPath = asText(latest?.receiver_receipt_path, "No receipt file read back yet.");
+  const latestSourcePacketPath = asText(latest?.source_packet_path, "No source packet path read back yet.");
 
   const actionSummary = useMemo(() => {
     if (!lastAction?.result) return "No action result yet.";
@@ -219,7 +299,7 @@ export default function SwansonRelayControl() {
         <article>
           <span>Latest return</span>
           <strong>{latestStatus}</strong>
-          <small>{latestTarget}</small>
+          <small>{humanTargetName(latestTarget)}</small>
         </article>
         <article>
           <span>Action cards</span>
@@ -300,7 +380,74 @@ export default function SwansonRelayControl() {
           <h3>Latest returned answer on the origin dash</h3>
           <code>{latestPacket}</code>
         </header>
+        <div className="thinkit-relay__provenance" aria-label="Where the latest answer came from">
+          <article>
+            <span>Answered by</span>
+            <strong>{latestReceiverTitle}</strong>
+            <small>{receiverSurface(latestReceiver)}</small>
+          </article>
+          <article>
+            <span>Where to continue</span>
+            <strong>{humanTargetName(latestTarget)}</strong>
+            <small>{receiverInstruction(latestReceiver, latestTarget)}</small>
+          </article>
+          <article>
+            <span>Proof ThinkIt read</span>
+            <strong>{latestReceiptId}</strong>
+            <small>{latestReceiptPath}</small>
+          </article>
+          <article>
+            <span>Original packet</span>
+            <strong>{latestPacket}</strong>
+            <small>{latestSourcePacketPath}</small>
+          </article>
+        </div>
         <p>{latestAnswer}</p>
+      </section>
+
+      <section className="thinkit-relay__actions" aria-label="Returned work waiting on operator decision">
+        <header>
+          <h3>Returned work waiting on you</h3>
+          <span>{actionables.length} usable return(s)</span>
+        </header>
+        <div className="thinkit-relay__action-list">
+          {actionables.slice(0, 4).map((item, index) => {
+            const record = asRecord(item) ?? {};
+            const itemTarget = asText(record.target, "UNKNOWN_TARGET");
+            const itemPacket = asText(record.packet_id, `RETURN_${index + 1}`);
+            const itemReceiver = findReceiver(snapshot.threadBridge, itemTarget);
+            return (
+              <article key={itemPacket}>
+                <header>
+                  <div>
+                    <strong>{returnedWorkHeadline(record, itemTarget)}</strong>
+                    <small>{receiverTitle(snapshot.threadBridge, itemTarget)} / {receiverSurface(itemReceiver)}</small>
+                  </div>
+                  <span>{humanLabel(record.recommendation, "Review")}</span>
+                </header>
+                <dl>
+                  <div>
+                    <dt>What advanced</dt>
+                    <dd>{humanizeTargetText(record.advanced, itemTarget, "The receiver returned a terminal proof receipt.")}</dd>
+                  </div>
+                  <div>
+                    <dt>What this helps decide</dt>
+                    <dd>{humanizeTargetText(record.helps_decide, itemTarget, "Review whether this return needs a next packet, assimilation, or no action.")}</dd>
+                  </div>
+                  <div>
+                    <dt>Your useful choices</dt>
+                    <dd>{asArray(record.operator_choices).map((choice) => humanLabel(choice)).join(" / ") || "Review / Hold"}</dd>
+                  </div>
+                  <div>
+                    <dt>Receipt</dt>
+                    <dd>{asText(record.receiver_receipt_id, "NO_RECEIPT_ID")}</dd>
+                  </div>
+                </dl>
+              </article>
+            );
+          })}
+          {actionables.length === 0 ? <p>No returned work is waiting on an operator decision right now.</p> : null}
+        </div>
       </section>
 
       <section className="thinkit-relay__result" aria-label="Last relay action result">
