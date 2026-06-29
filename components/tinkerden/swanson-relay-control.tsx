@@ -129,6 +129,16 @@ function clippedText(value: unknown, maxLength = 7000) {
   return `${text.slice(0, maxLength)}\n\n[clipped for dashboard packet size; see receiver receipt for full text]`;
 }
 
+function chapterOptionLabel(chapter: JsonRecord) {
+  const chapterNumber = chapter.chapter_number === null ? "Source" : `Ch ${asText(chapter.chapter_number, "?")}`;
+  return `${chapterNumber} - ${asText(chapter.title, "Untitled chapter")} (${asText(chapter.extension, "file")})`;
+}
+
+function packetChapterLabel(packet: JsonRecord | null, fallback = "No chapter packet selected") {
+  if (!packet) return fallback;
+  return asText(packet.chapter_title ?? packet.title, fallback);
+}
+
 function parseEvidenceSections(value: unknown) {
   const sections: Record<string, string> = {};
   let currentKey = "";
@@ -416,6 +426,10 @@ export default function SwansonRelayControl() {
     "Edit this chapter from source truth. Return access gaps, continuity issues, a recommended edit, and any cousin-editor packets you need ThinkIt to route next."
   );
   const [selectedBookReportId, setSelectedBookReportId] = useState("");
+  const [selectedIncomingId, setSelectedIncomingId] = useState("");
+  const [incomingReplyText, setIncomingReplyText] = useState(
+    "Acknowledge this return, name the next useful move, and tell ThinkIt what proof should come back."
+  );
   const [threadScope, setThreadScope] = useState("main receiver lane");
   const [universalBody, setUniversalBody] = useState(
     "Return one useful status delta: what you received, what changed on your side, what is blocked, and what ThinkIt should decide next."
@@ -514,9 +528,34 @@ export default function SwansonRelayControl() {
   );
   const bookChapters = asArray(valueAt(snapshot.bookChapters, ["chapters"]));
   const bookPackets = asArray(valueAt(snapshot.bookCourier, ["latest_book_packets"]));
+  const bookPacketRecords = useMemo(() => bookPackets.map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item)), [bookPackets]);
+  const bookPacketById = useMemo(() => {
+    const packetMap = new Map<string, JsonRecord>();
+    for (const packet of bookPacketRecords) {
+      const packetId = asText(packet.packet_id, "");
+      if (packetId) packetMap.set(packetId, packet);
+    }
+    return packetMap;
+  }, [bookPacketRecords]);
   const nextUnsentChapter = asRecord(valueAt(snapshot.bookCourier, ["next_unsent_chapter"]));
   const nextUncompletedChapter = asRecord(valueAt(snapshot.bookCourier, ["next_uncompleted_chapter"]));
   const defaultChapterId = asText(nextUnsentChapter?.chapter_id ?? asRecord(bookChapters[0])?.chapter_id, "");
+  const selectedChapter = useMemo(
+    () => bookChapters.map((item) => asRecord(item)).find((chapter) => asText(chapter?.chapter_id, "") === selectedChapterId) ?? asRecord(bookChapters[0]) ?? null,
+    [bookChapters, selectedChapterId]
+  );
+  const selectedChapterPacket = useMemo(
+    () => bookPacketRecords.find((packet) => asText(packet.chapter_id, "") === selectedChapterId) ?? null,
+    [bookPacketRecords, selectedChapterId]
+  );
+  const selectedChapterReports = useMemo(
+    () =>
+      bookReturnRecords.filter((record) => {
+        const packet = bookPacketById.get(asText(record.packet_id, ""));
+        return asText(packet?.chapter_id, "") === selectedChapterId;
+      }),
+    [bookReturnRecords, bookPacketById, selectedChapterId]
+  );
   const rosterRows = useMemo(() => buildAeyeRoster(snapshot.coverage), [snapshot.coverage]);
   const rosterByMachine = useMemo(() => {
     return rosterRows.reduce<Record<string, AeyeRosterRow[]>>((groups, row) => {
@@ -573,15 +612,39 @@ export default function SwansonRelayControl() {
   const selectedEnderRow = rosterRows.find((row) => row.target === enderTarget) ?? null;
   const selectedEnderReceiver = findReceiver(snapshot.threadBridge, enderTarget);
   const selectedEnderCanRoute = isRoutableReceiver(selectedEnderReceiver, selectedEnderRow ?? undefined);
-  const defaultBookReportId = asText(bookReturnRecords[0]?.packet_id, "");
+  const defaultBookReportId = asText(selectedChapterReports[0]?.packet_id, "");
   const selectedBookReport =
-    bookReturnRecords.find((record) => asText(record.packet_id, "") === selectedBookReportId) ?? bookReturnRecords[0] ?? null;
+    selectedChapterReports.find((record) => asText(record.packet_id, "") === selectedBookReportId) ??
+    selectedChapterReports[0] ??
+    null;
   const selectedBookReportPacketId = asText(selectedBookReport?.packet_id, "NO_BOOK_REPORT_SELECTED");
+  const selectedBookPacket = bookPacketById.get(selectedBookReportPacketId) ?? selectedChapterPacket;
   const selectedBookReportTarget = asText(selectedBookReport?.target, "Skybro.Betsy");
   const selectedBookReportReceipt = asText(selectedBookReport?.receiver_receipt_id, "NO_RECEIPT_SELECTED");
   const selectedBookReportEvidence = parseEvidenceSections(selectedBookReport?.evidence);
-  const selectedBookReportChapter = selectedBookReportEvidence.chapter_read || "No chapter readback selected yet.";
+  const selectedChapterTitle = asText(selectedChapter?.title, packetChapterLabel(selectedBookPacket, "No chapter selected"));
+  const selectedChapterSource = asText(selectedChapter?.github_url ?? selectedChapter?.repo_path ?? selectedChapter?.local_path, "No source path read back yet.");
+  const selectedBookReportChapter = selectedBookReportEvidence.chapter_read || selectedChapterTitle;
   const selectedBookReportRecommendation = selectedBookReportEvidence.recommended_next_edit || "No recommended edit has been parsed yet.";
+  const selectedIncoming =
+    actionables.find((item) => asText(asRecord(item)?.packet_id, "") === selectedIncomingId) ??
+    actionables[0] ??
+    null;
+  const selectedIncomingRecord = asRecord(selectedIncoming);
+  const selectedIncomingPacketId = asText(selectedIncomingRecord?.packet_id, "NO_INCOMING_SELECTED");
+  const selectedIncomingTarget = asText(selectedIncomingRecord?.target, "UNKNOWN_TARGET");
+  const selectedIncomingReceipt = asText(selectedIncomingRecord?.receiver_receipt_id, "NO_RECEIPT_SELECTED");
+  const selectedIncomingHeadline = selectedIncomingRecord ? returnedWorkHeadline(selectedIncomingRecord, selectedIncomingTarget) : "No incoming return selected.";
+  const selectedIncomingChange = humanizeTargetText(
+    selectedIncomingRecord?.advanced,
+    selectedIncomingTarget,
+    "No state-change summary was attached to this return."
+  );
+  const selectedIncomingDecision = humanizeTargetText(
+    selectedIncomingRecord?.helps_decide,
+    selectedIncomingTarget,
+    "No decision prompt was attached to this return."
+  );
 
   useEffect(() => {
     if (!selectedChapterId && defaultChapterId) setSelectedChapterId(defaultChapterId);
@@ -590,6 +653,19 @@ export default function SwansonRelayControl() {
   useEffect(() => {
     if (!selectedBookReportId && defaultBookReportId) setSelectedBookReportId(defaultBookReportId);
   }, [defaultBookReportId, selectedBookReportId]);
+
+  useEffect(() => {
+    const reportPacket = selectedBookReportId ? bookPacketById.get(selectedBookReportId) : null;
+    if (reportPacket && asText(reportPacket.chapter_id, "") !== selectedChapterId) {
+      setSelectedBookReportId(defaultBookReportId);
+    }
+  }, [bookPacketById, defaultBookReportId, selectedBookReportId, selectedChapterId]);
+
+  useEffect(() => {
+    const firstIncomingId = asText(asRecord(actionables[0])?.packet_id, "");
+    const stillExists = actionables.some((item) => asText(asRecord(item)?.packet_id, "") === selectedIncomingId);
+    if ((!selectedIncomingId || !stillExists) && firstIncomingId) setSelectedIncomingId(firstIncomingId);
+  }, [actionables, selectedIncomingId]);
 
   const actionSummary = useMemo(() => {
     if (!lastAction?.result) return "No action result yet.";
@@ -650,8 +726,51 @@ export default function SwansonRelayControl() {
   }
 
   function selectReportAndOpenWorkbench(packetId: string) {
+    const packet = bookPacketById.get(packetId);
+    const chapterId = asText(packet?.chapter_id, "");
+    if (chapterId) setSelectedChapterId(chapterId);
     setSelectedBookReportId(packetId);
     window.setTimeout(() => scrollToDashboardSection("thinkit-chapter-workbench"), 0);
+  }
+
+  function selectIncomingAndOpen(packetId: string) {
+    setSelectedIncomingId(packetId);
+    if (packetId.startsWith("BOOK_CHAPTER_EDIT")) {
+      const packet = bookPacketById.get(packetId);
+      const chapterId = asText(packet?.chapter_id, "");
+      if (chapterId) setSelectedChapterId(chapterId);
+      setSelectedBookReportId(packetId);
+      window.setTimeout(() => scrollToDashboardSection("thinkit-chapter-workbench"), 0);
+      return;
+    }
+    window.setTimeout(() => scrollToDashboardSection("thinkit-incoming-work"), 0);
+  }
+
+  function dispatchIncomingReply(label: string, destination: string, packetType: string, title: string, body: string) {
+    return runAction(label, "/api/thinkit/swanson/relay/dispatch", {
+      packet_type: packetType,
+      target: destination,
+      title,
+      body: [
+        `Thread scope: ${threadScope}`,
+        `Origin return packet: ${selectedIncomingPacketId}`,
+        `Origin receipt: ${selectedIncomingReceipt}`,
+        `Return came from: ${humanTargetName(selectedIncomingTarget)}`,
+        "",
+        "Operator/ThinkIt response:",
+        body,
+        "",
+        "Return requirements:",
+        "1. Write RECEIVED first.",
+        "2. Return COMPLETED with the answer/artifact, or BLOCKER with exact missing proof.",
+        "3. Do not call SENT success."
+      ].join("\n")
+    });
+  }
+
+  function recordIncomingDecision(label: string, choice: string) {
+    if (!selectedIncomingRecord) return Promise.resolve();
+    return recordActionableRecordDecision(selectedIncomingRecord, choice);
   }
 
   function recordActionableRecordDecision(record: JsonRecord, choice: string) {
@@ -816,6 +935,139 @@ export default function SwansonRelayControl() {
           <small>decisions available / open decision cards</small>
         </button>
       </div>
+
+      <section id="thinkit-incoming-work" className="thinkit-relay__incoming" aria-label="Incoming work and replies">
+        <header>
+          <div>
+            <p className="td-bridge__eyebrow">Incoming work / returned answers</p>
+            <h3>This is where the Aeyes answer back.</h3>
+            <p>
+              Returned receipts become workable cards here. Pick one, read what changed, then reply, route a follow-up, assimilate, or hold it.
+            </p>
+          </div>
+          <strong>{actionables.length} incoming</strong>
+        </header>
+
+        <label className="thinkit-relay__incoming-picker">
+          <span>Incoming return to work on</span>
+          <select value={selectedIncomingId} onChange={(event) => selectIncomingAndOpen(event.target.value)} disabled={actionables.length === 0}>
+            {actionables.length === 0 ? (
+              <option value="">No incoming returns yet</option>
+            ) : (
+              actionables.slice(0, 40).map((item) => {
+                const record = asRecord(item) ?? {};
+                const packetId = asText(record.packet_id, "UNKNOWN_PACKET");
+                const itemTarget = asText(record.target, "UNKNOWN_TARGET");
+                return (
+                  <option key={packetId} value={packetId}>
+                    {returnedWorkHeadline(record, itemTarget)} / {asText(record.receiver_receipt_id, "no receipt id")}
+                  </option>
+                );
+              })
+            )}
+          </select>
+        </label>
+
+        <div className="thinkit-relay__incoming-grid">
+          <div className="thinkit-relay__incoming-list">
+            {actionables.slice(0, 10).map((item) => {
+              const record = asRecord(item) ?? {};
+              const packetId = asText(record.packet_id, "UNKNOWN_PACKET");
+              const itemTarget = asText(record.target, "UNKNOWN_TARGET");
+              const selected = packetId === selectedIncomingPacketId;
+              return (
+                <button
+                  key={packetId}
+                  type="button"
+                  data-packet-id={packetId}
+                  data-selected={selected ? "true" : "false"}
+                  onClick={() => selectIncomingAndOpen(packetId)}
+                >
+                  <span>{returnedWorkHeadline(record, itemTarget)}</span>
+                  <small>{humanTargetName(itemTarget)} / {asText(record.receiver_receipt_id, "no receipt id")}</small>
+                </button>
+              );
+            })}
+            {actionables.length === 0 ? <p>No incoming returns read back yet.</p> : null}
+          </div>
+
+          <article className="thinkit-relay__incoming-detail">
+            <header>
+              <div>
+                <h4>{selectedIncomingHeadline}</h4>
+                <p>{selectedIncomingDecision}</p>
+              </div>
+              <span>{humanTargetName(selectedIncomingTarget)}</span>
+            </header>
+            <dl className="thinkit-relay__workbench-proof">
+              <div>
+                <dt>Receiver surface</dt>
+                <dd>{receiverSurface(findReceiver(snapshot.threadBridge, selectedIncomingTarget))}</dd>
+              </div>
+              <div>
+                <dt>Thread / inbox</dt>
+                <dd>{receiverTitle(snapshot.threadBridge, selectedIncomingTarget)}</dd>
+              </div>
+              <div>
+                <dt>Receipt</dt>
+                <dd>{selectedIncomingReceipt}</dd>
+              </div>
+              <div>
+                <dt>Source packet</dt>
+                <dd>{selectedIncomingPacketId}</dd>
+              </div>
+            </dl>
+            <div className="thinkit-relay__incoming-copy">
+              <strong>What changed</strong>
+              <p>{selectedIncomingChange}</p>
+              <strong>Evidence</strong>
+              <p>{clippedText(selectedIncomingRecord?.evidence, 1800) || "No evidence excerpt read back yet."}</p>
+            </div>
+            <label>
+              <span>Reply / next instruction</span>
+              <textarea rows={4} value={incomingReplyText} onChange={(event) => setIncomingReplyText(event.target.value)} />
+            </label>
+            <div className="thinkit-relay__incoming-buttons">
+              <button
+                type="button"
+                disabled={actionPending !== null || !selectedIncomingRecord}
+                onClick={() =>
+                  void dispatchIncomingReply(
+                    "Reply to Aeye",
+                    selectedIncomingTarget,
+                    "THINKIT_OPERATOR_REPLY",
+                    `ThinkIt reply: ${selectedIncomingPacketId}`,
+                    incomingReplyText
+                  )
+                }
+              >
+                {actionPending === "Reply to Aeye" ? "Sending" : "Reply To This Aeye"}
+              </button>
+              <button
+                type="button"
+                disabled={actionPending !== null || !selectedIncomingRecord}
+                onClick={() =>
+                  void dispatchIncomingReply(
+                    "Ask Petra To Interpret",
+                    "Petra.Betsy",
+                    "INCOMING_RETURN_INTERPRETATION",
+                    `Interpret return: ${selectedIncomingPacketId}`,
+                    `Turn this return into a dashboard-readable state delta and one recommended next move.\n\n${incomingReplyText}`
+                  )
+                }
+              >
+                {actionPending === "Ask Petra To Interpret" ? "Routing" : "Ask Petra To Interpret"}
+              </button>
+              <button type="button" disabled={actionPending !== null || !selectedIncomingRecord} onClick={() => void recordIncomingDecision("Assimilate Return", "ASSIMILATE")}>
+                {actionPending === "Assimilate Return" ? "Recording" : "Assimilate"}
+              </button>
+              <button type="button" disabled={actionPending !== null || !selectedIncomingRecord} onClick={() => void recordIncomingDecision("Hold Return", "HOLD")}>
+                {actionPending === "Hold Return" ? "Recording" : "Hold"}
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <section id="thinkit-thread-bridge-panel" className="thinkit-relay__bridge-panel" aria-label="Thread bridge controls">
         <header>
@@ -1026,10 +1278,9 @@ export default function SwansonRelayControl() {
               {bookChapters.slice(0, 120).map((item) => {
                 const chapter = asRecord(item) ?? {};
                 const chapterId = asText(chapter.chapter_id, "");
-                const chapterNumber = chapter.chapter_number === null ? "Source" : `Ch ${asText(chapter.chapter_number, "?")}`;
                 return (
                   <option key={chapterId} value={chapterId}>
-                    {chapterNumber} - {asText(chapter.title, "Untitled chapter")} ({asText(chapter.extension, "file")})
+                    {chapterOptionLabel(chapter)}
                   </option>
                 );
               })}
@@ -1058,6 +1309,16 @@ export default function SwansonRelayControl() {
         <div className="thinkit-relay__book-buttons">
           <button type="button" disabled={loading || actionPending !== null} onClick={() => void refresh("Book courier refreshed")}>
             Refresh Book State
+          </button>
+          <button
+            type="button"
+            disabled={!selectedChapterId}
+            onClick={() => {
+              setSelectedBookReportId(defaultBookReportId);
+              window.setTimeout(() => scrollToDashboardSection("thinkit-chapter-workbench"), 0);
+            }}
+          >
+            Open Selected Chapter
           </button>
           <button
             type="button"
@@ -1107,21 +1368,44 @@ export default function SwansonRelayControl() {
         <section id="thinkit-chapter-workbench" className="thinkit-relay__workbench" aria-label="Chapter workbench">
           <header>
             <div>
-              <p className="td-bridge__eyebrow">Chapter workbench / returned report</p>
-              <h4>Read the report, then choose the next editorial move.</h4>
+              <p className="td-bridge__eyebrow">Chapter workbench / source plus returns</p>
+              <h4>{selectedChapterTitle}</h4>
               <p>
-                This is the handoff room: Skybro's returned report is visible here, and the buttons below route the next packet or record a hold without
-                making you carry text between Aeyes.
+                This is the handoff room for the selected chapter. It shows the source, the latest packet state, and any returned report for this exact chapter.
               </p>
             </div>
             <label>
+              <span>Workbench chapter</span>
+              <select
+                value={selectedChapterId}
+                onChange={(event) => {
+                  setSelectedChapterId(event.target.value);
+                  setSelectedBookReportId("");
+                }}
+              >
+                {bookChapters.slice(0, 120).map((item) => {
+                  const chapter = asRecord(item) ?? {};
+                  const chapterId = asText(chapter.chapter_id, "");
+                  return (
+                    <option key={chapterId} value={chapterId}>
+                      {chapterOptionLabel(chapter)}
+                    </option>
+                  );
+                })}
+              </select>
+            </label>
+            <label>
               <span>Returned report</span>
-              <select value={selectedBookReportId} onChange={(event) => setSelectedBookReportId(event.target.value)}>
-                {bookReturnRecords.map((record) => (
-                  <option key={asText(record.packet_id, "UNKNOWN_REPORT")} value={asText(record.packet_id, "")}>
-                    {asText(record.receiver_receipt_id, asText(record.packet_id, "Book report"))}
-                  </option>
-                ))}
+              <select value={selectedBookReportId} onChange={(event) => setSelectedBookReportId(event.target.value)} disabled={selectedChapterReports.length === 0}>
+                {selectedChapterReports.length === 0 ? (
+                  <option value="">No return for this chapter yet</option>
+                ) : (
+                  selectedChapterReports.map((record) => (
+                    <option key={asText(record.packet_id, "UNKNOWN_REPORT")} value={asText(record.packet_id, "")}>
+                      {asText(record.receiver_receipt_id, asText(record.packet_id, "Book report"))}
+                    </option>
+                  ))
+                )}
               </select>
             </label>
           </header>
@@ -1129,42 +1413,72 @@ export default function SwansonRelayControl() {
           <dl className="thinkit-relay__workbench-proof">
             <div>
               <dt>Chapter</dt>
-              <dd>{selectedBookReportChapter}</dd>
+              <dd>{selectedChapterTitle}</dd>
             </div>
             <div>
-              <dt>Returned by</dt>
-              <dd>{humanTargetName(selectedBookReportTarget)}</dd>
+              <dt>Source</dt>
+              <dd>{selectedChapterSource}</dd>
             </div>
             <div>
-              <dt>Receipt</dt>
-              <dd>{selectedBookReportReceipt}</dd>
+              <dt>Packet state</dt>
+              <dd>{asText(selectedBookPacket?.status, "No packet sent for this chapter yet")}</dd>
             </div>
             <div>
-              <dt>Source packet</dt>
-              <dd>{selectedBookReportPacketId}</dd>
+              <dt>Returned receipt</dt>
+              <dd>{selectedBookReport ? selectedBookReportReceipt : "No returned receipt for this chapter yet"}</dd>
             </div>
           </dl>
 
           <div className="thinkit-relay__workbench-sections">
             <article>
+              <span>Selected source</span>
+              <p>
+                {selectedChapter
+                  ? `${chapterOptionLabel(selectedChapter)}\n${asText(selectedChapter.repo_path, "No repo path")}\nsha256: ${asText(selectedChapter.sha256, "No hash")}`
+                  : "No chapter selected."}
+              </p>
+            </article>
+            <article>
+              <span>Returned by</span>
+              <p>
+                {selectedBookReport
+                  ? `${humanTargetName(selectedBookReportTarget)}\n${receiverInstruction(findReceiver(snapshot.threadBridge, selectedBookReportTarget), selectedBookReportTarget)}`
+                  : "No Aeye has returned a report for this selected chapter yet."}
+              </p>
+            </article>
+            <article>
               <span>What works</span>
-              <p>{selectedBookReportEvidence.what_works || "No what_works field parsed yet."}</p>
+              <p>{selectedBookReportEvidence.what_works || "No returned what_works field for this chapter yet."}</p>
             </article>
             <article>
               <span>Continuity issues</span>
-              <p>{selectedBookReportEvidence.continuity_issues || "No continuity_issues field parsed yet."}</p>
+              <p>{selectedBookReportEvidence.continuity_issues || "No returned continuity_issues field for this chapter yet."}</p>
             </article>
             <article>
               <span>Recommended edit</span>
-              <p>{selectedBookReportRecommendation}</p>
+              <p>{selectedBookReport ? selectedBookReportRecommendation : "Send this chapter, wait for the receiver receipt, or route a source review packet."}</p>
             </article>
             <article>
               <span>Risk / conflict</span>
-              <p>{selectedBookReportEvidence.risk_conflict || "No risk_conflict field parsed yet."}</p>
+              <p>{selectedBookReportEvidence.risk_conflict || "No returned risk_conflict field for this chapter yet."}</p>
             </article>
           </div>
 
           <div className="thinkit-relay__workbench-buttons">
+            <button
+              type="button"
+              disabled={actionPending !== null || !selectedChapterId}
+              onClick={() =>
+                void runAction("Send Selected Chapter", "/api/thinkit/swanson/book/dispatch_chapter", {
+                  target,
+                  chapter_id: selectedChapterId,
+                  editing_mode: bookEditingMode,
+                  operator_note: bookOperatorNote
+                })
+              }
+            >
+              {actionPending === "Send Selected Chapter" ? "Sending" : "Send This Chapter"}
+            </button>
             <button
               type="button"
               disabled={actionPending !== null || !selectedBookReport}
