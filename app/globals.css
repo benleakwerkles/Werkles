@@ -3647,6 +3647,134 @@ main .proof-warning.proof-boundary .workshop-band {
   grid-column: 1 / -1;
 }
 
+.operator-page {
+  display: grid;
+  gap: 18px;
+}
+
+.operator-page .dashboard-nav {
+  align-items: center;
+}
+
+.operator-hero {
+  display: grid;
+  gap: 12px;
+}
+
+.operator-hero h1 {
+  max-width: 820px;
+}
+
+.operator-hero p:not(.eyebrow) {
+  max-width: 760px;
+}
+
+.operator-page .operations-grid__cards {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 360px));
+}
+
+.operator-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.operator-metric-card {
+  display: grid;
+  gap: 10px;
+}
+
+.operator-metric-card h2 {
+  margin: 0;
+  color: var(--werkles-ink-on-paper);
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+  line-height: 1;
+}
+
+.operator-readback-card,
+.operator-table-card {
+  display: grid;
+  gap: 14px;
+}
+
+.operator-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.operator-link-row .button,
+.operator-page .ops-card .button {
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+}
+
+.operator-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: 8px;
+  background: rgba(255, 252, 247, 0.6);
+}
+
+.operator-table {
+  width: 100%;
+  min-width: 740px;
+  border-collapse: collapse;
+  color: var(--werkles-ink-on-paper);
+  font-size: 0.92rem;
+}
+
+.operator-table th,
+.operator-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(159, 102, 51, 0.18);
+  text-align: left;
+  vertical-align: top;
+}
+
+.operator-table th {
+  color: var(--werkles-copper);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.operator-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.operator-table td:nth-child(2),
+.operator-table td:nth-child(4) {
+  white-space: nowrap;
+}
+
+.status-pill {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.status-pill--good {
+  color: var(--werkles-teal-deep);
+  background: rgba(24, 197, 174, 0.12);
+}
+
+.status-pill--warn {
+  color: #7c3f00;
+  background: rgba(246, 173, 85, 0.18);
+}
+
 @media (max-width: 920px) {
   .thinkit-relay__header,
   .thinkit-relay__metrics,
@@ -3677,6 +3805,7 @@ main .proof-warning.proof-boundary .workshop-band {
   .thinkit-relay__action-list dl,
   .thinkit-relay__roster-card dl,
   .thinkit-relay__book-packets dl,
+  .operator-summary-grid,
   .td-command-console header,
   .td-command-console__form {
     grid-template-columns: 1fr;
