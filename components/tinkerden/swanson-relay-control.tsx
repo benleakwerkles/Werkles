@@ -430,6 +430,9 @@ export default function SwansonRelayControl() {
   const [incomingReplyText, setIncomingReplyText] = useState(
     "Acknowledge this return, name the next useful move, and tell ThinkIt what proof should come back."
   );
+  const [chapterText, setChapterText] = useState<JsonRecord | null>(null);
+  const [chapterTextLoading, setChapterTextLoading] = useState(false);
+  const [chapterTextError, setChapterTextError] = useState<string | null>(null);
   const [threadScope, setThreadScope] = useState("main receiver lane");
   const [universalBody, setUniversalBody] = useState(
     "Return one useful status delta: what you received, what changed on your side, what is blocked, and what ThinkIt should decide next."
@@ -645,6 +648,16 @@ export default function SwansonRelayControl() {
     selectedIncomingTarget,
     "No decision prompt was attached to this return."
   );
+  const chapterTextBody = asText(chapterText?.text, "");
+  const chapterTextParagraphs = asArray(chapterText?.paragraphs);
+  const chapterTextStatus = chapterTextLoading
+    ? "Loading chapter text"
+    : chapterTextError
+      ? "Chapter text blocked"
+      : asText(chapterText?.extraction_status, "No chapter text loaded");
+  const chapterTextMethod = asText(chapterText?.extraction_method, "No extraction method read back yet.");
+  const chapterTextCharacters = asNumber(chapterText?.character_count);
+  const chapterTextParagraphCount = asNumber(chapterText?.paragraph_count, chapterTextParagraphs.length);
 
   useEffect(() => {
     if (!selectedChapterId && defaultChapterId) setSelectedChapterId(defaultChapterId);
@@ -666,6 +679,34 @@ export default function SwansonRelayControl() {
     const stillExists = actionables.some((item) => asText(asRecord(item)?.packet_id, "") === selectedIncomingId);
     if ((!selectedIncomingId || !stillExists) && firstIncomingId) setSelectedIncomingId(firstIncomingId);
   }, [actionables, selectedIncomingId]);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadChapterText() {
+      if (!selectedChapterId) {
+        setChapterText(null);
+        setChapterTextError(null);
+        return;
+      }
+      setChapterTextLoading(true);
+      setChapterTextError(null);
+      try {
+        const result = await readJson(`/api/thinkit/book/chapter_text?chapter_id=${encodeURIComponent(selectedChapterId)}`);
+        if (!cancelled) setChapterText(result);
+      } catch (loadError) {
+        if (!cancelled) {
+          setChapterText(null);
+          setChapterTextError(loadError instanceof Error ? loadError.message : "Chapter text extraction failed");
+        }
+      } finally {
+        if (!cancelled) setChapterTextLoading(false);
+      }
+    }
+    void loadChapterText();
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedChapterId]);
 
   const actionSummary = useMemo(() => {
     if (!lastAction?.result) return "No action result yet.";
@@ -1428,6 +1469,33 @@ export default function SwansonRelayControl() {
               <dd>{selectedBookReport ? selectedBookReportReceipt : "No returned receipt for this chapter yet"}</dd>
             </div>
           </dl>
+
+          <section className="thinkit-relay__chapter-reader" aria-label="Actual chapter text">
+            <header>
+              <div>
+                <p className="td-bridge__eyebrow">Actual chapter text</p>
+                <h5>{chapterTextStatus}</h5>
+                <p>
+                  {chapterTextMethod} / {chapterTextParagraphCount} paragraph(s) / {chapterTextCharacters} character(s)
+                </p>
+              </div>
+              <a href={selectedChapterSource} target="_blank" rel="noreferrer">
+                Open Source
+              </a>
+            </header>
+            {chapterTextError ? <p className="thinkit-relay__reader-error">{chapterTextError}</p> : null}
+            {chapterTextBody ? (
+              <div className="thinkit-relay__chapter-text">
+                {chapterTextParagraphs.length > 0
+                  ? chapterTextParagraphs.map((paragraph, index) => <p key={`${selectedChapterId}-${index}`}>{asText(paragraph, "")}</p>)
+                  : <p>{chapterTextBody}</p>}
+              </div>
+            ) : (
+              <p className="thinkit-relay__reader-empty">
+                {chapterTextLoading ? "Reading the source-truth chapter file..." : "No extracted chapter text is available for this file yet."}
+              </p>
+            )}
+          </section>
 
           <div className="thinkit-relay__workbench-sections">
             <article>

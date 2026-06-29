@@ -3004,6 +3004,67 @@ main .proof-warning.proof-boundary .workshop-band {
   gap: 10px;
 }
 
+.thinkit-relay__chapter-reader {
+  display: grid;
+  gap: 10px;
+  border: 1px solid rgba(42, 86, 113, 0.2);
+  border-radius: 7px;
+  background: #f8fbff;
+  padding: 12px;
+}
+
+.thinkit-relay__chapter-reader > header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.thinkit-relay__chapter-reader h5 {
+  margin: 0;
+  color: #1b2f3d;
+  font-size: 0.96rem;
+}
+
+.thinkit-relay__chapter-reader a {
+  border: 1px solid rgba(42, 86, 113, 0.24);
+  border-radius: 999px;
+  background: rgba(42, 86, 113, 0.08);
+  padding: 7px 10px;
+  color: #244b63;
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.thinkit-relay__chapter-text {
+  max-height: 520px;
+  overflow: auto;
+  border: 1px solid rgba(42, 86, 113, 0.16);
+  border-radius: 6px;
+  background: #fff;
+  padding: 18px;
+  color: #1e2528;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.68;
+}
+
+.thinkit-relay__chapter-text p {
+  margin: 0 0 1em;
+  color: #1e2528;
+}
+
+.thinkit-relay__reader-error,
+.thinkit-relay__reader-empty {
+  margin: 0;
+  color: #6c4d31;
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
 .thinkit-relay__workbench-sections article {
   min-width: 0;
   border: 1px solid rgba(112, 73, 38, 0.14);
