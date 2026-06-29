@@ -68,6 +68,13 @@ const AEYE_THREAD_TARGET_LABELS = {
   "Skybro.Betsy": "Skybro@Betsy LIVE Relay Receiver",
   "Petra.Betsy": "Petra@Betsy LIVE Relay Receiver",
 };
+const AEYE_HOME_THREAD_POLICY = {
+  status: "HOME_THREAD_REUSE_REQUIRED",
+  name: "Sticky receiver chats",
+  rule: "Reuse the mapped receiver thread for each Aeye until an explicit rotation receipt exists.",
+  rotation_gate: "A new thread id is blocked unless route_rotation_requested is true and rotation_reason explains why the old chat degraded.",
+  operator_meaning: "ThinkIt should not create new Aeye chats by default. Packets continue inside the same receiver chat so that chat can carry working memory.",
+};
 
 function existsWithHashTarget(filePath) {
   return {
@@ -752,11 +759,15 @@ function threadTargetDetails() {
       route_status: threadId ? "MAPPED_TO_CODEX_THREAD" : detail.route_status || "NO_THREAD_MAPPING",
       availability: detail.availability || (threadId ? "AVAILABLE_IF_ACTUATOR_ACTIVE" : "UNVERIFIED"),
       relay_mode: relayMode,
+      home_thread_id: threadId || null,
+      home_thread_title: detail.title || AEYE_THREAD_TARGET_LABELS[target] || target,
+      home_thread_policy: threadId ? AEYE_HOME_THREAD_POLICY.status : "NO_HOME_THREAD_BOUND",
+      rotation_requires_reason: Boolean(threadId),
       actuator: threadId ? "Codex send_message_to_thread" : relayMode === "FILE_INBOX_LAN" ? "LAN file inbox receiver page" : detail.actuator || "No active actuator",
       file_inbox_url: relayMode === "FILE_INBOX_LAN" ? fileInboxUrlForTarget(target) : null,
       file_inbox_dir: relayMode === "FILE_INBOX_LAN" ? fileInboxDirForTarget(target) : null,
       proof_rule: threadId
-        ? "The dashboard can queue work, but this Codex thread bridge must post it into the target chat before the Aeye can receive it."
+        ? "The dashboard can queue work, but this Codex thread bridge must post it into the mapped home chat before the Aeye can receive it. New chats require an explicit rotation receipt."
         : relayMode === "FILE_INBOX_LAN"
           ? "The dashboard can place work in the LAN receiver inbox, but completion still requires the receiver page to write RECEIVED then COMPLETED or BLOCKER."
         : detail.proof_rule || "This target cannot receive chat packets until a real receiver thread mapping exists.",
@@ -824,6 +835,8 @@ function routableRelayTargets() {
 
 function packetThreadPrompt(packet, channel) {
   const label = channel === "brainboot" ? "Brainboot" : "Relay";
+  const targetConfig = targetConfigForTarget(packet.target);
+  const homeThreadTitle = targetConfig.title || AEYE_THREAD_TARGET_LABELS[packet.target] || packet.target;
   return [
     `PACKET_ID: ${packet.packet_id}`,
     `TO: ${packet.target}`,
@@ -831,6 +844,11 @@ function packetThreadPrompt(packet, channel) {
     "STREAM: AEYE RELAY / THREAD BRIDGE",
     "",
     `MISSION: Receive and answer this ${label} packet without making Ben the courier.`,
+    "",
+    "HOME THREAD RULE:",
+    `This packet is being delivered inside the standing receiver chat named "${homeThreadTitle}".`,
+    "Do not create a new chat for this packet.",
+    "If this receiver chat is degraded, return BLOCKER: THREAD_ROTATION_REQUIRED with the reason and stop; do not silently rotate.",
     "",
     "SOURCE:",
     packet.receive_url || "NO_RECEIVER_URL",
@@ -867,6 +885,11 @@ function enqueueThreadBridgePacket(packet, channel) {
     packet_id: packet.packet_id,
     target: packet.target,
     thread_id: threadId,
+    home_thread_id: threadId,
+    home_thread_title: targetConfig.title || AEYE_THREAD_TARGET_LABELS[packet.target] || packet.target,
+    home_thread_policy: threadId ? AEYE_HOME_THREAD_POLICY.status : "NO_HOME_THREAD_BOUND",
+    thread_reuse_required: Boolean(threadId),
+    rotation_requires_operator_reason: Boolean(threadId),
     source_packet_path: sourcePacketPath,
     receive_url: packet.receive_url || null,
     status: threadId ? "QUEUED_FOR_CODEX_THREAD_SEND" : relayMode === "FILE_INBOX_LAN" ? "FILE_INBOX_WAITING_FOR_RECEIVER" : "NO_THREAD_MAPPING",
@@ -946,6 +969,8 @@ function enqueueThreadBridgePacket(packet, channel) {
     packet_id: packet.packet_id,
     target: packet.target,
     thread_id: threadId,
+    home_thread_id: threadId,
+    home_thread_policy: AEYE_HOME_THREAD_POLICY.status,
     channel,
     queue_path: queuePath,
     created_at: createdAt,
@@ -983,6 +1008,7 @@ function threadBridgeStatus(limit = 30) {
     root: AEYE_THREAD_BRIDGE_DIR,
     targets_path: AEYE_THREAD_TARGETS_PATH,
     actuator,
+    home_thread_policy: AEYE_HOME_THREAD_POLICY,
     known_targets: readThreadTargets(),
     known_target_threads: threadTargetDetails(),
     queued,
@@ -993,7 +1019,7 @@ function threadBridgeStatus(limit = 30) {
     operator_warning: !actuator.active && queued.length
       ? "QUEUED_WITH_BRIDGE_PAUSED: these packets are not in Aeye chats yet."
       : null,
-    rule: "Queued means the dashboard produced work only. Sent means send_message_to_thread was called for the mapped Codex chat. Receiver proof still requires RECEIVED then COMPLETED or BLOCKER.",
+    rule: "Queued means the dashboard produced work only. Sent means send_message_to_thread was called for the mapped home Codex chat. Receiver proof still requires RECEIVED then COMPLETED or BLOCKER. New receiver chats are not created unless a rotation receipt is explicit.",
   };
 }
 
@@ -1597,6 +1623,14 @@ function validateReceiverThreadId(threadId) {
   return /^[A-Za-z0-9-]{12,90}$/.test(String(threadId || ""));
 }
 
+function receiverThreadRotationRequested(payload) {
+  return payload?.route_rotation_requested === true || payload?.rotation_requested === true || payload?.rotate === true;
+}
+
+function receiverThreadRotationReason(payload) {
+  return String(payload?.rotation_reason || payload?.reason || "").trim();
+}
+
 function writeThreadTargets(targets) {
   ensureDir(path.dirname(AEYE_THREAD_TARGETS_PATH));
   fs.writeFileSync(AEYE_THREAD_TARGETS_PATH, `${JSON.stringify(targets, null, 2)}\n`, "utf8");
@@ -1625,9 +1659,36 @@ function registerReceiverThread(payload) {
     error.statusCode = 409;
     throw error;
   }
+  const existingThreadId = String(currentConfig.thread_id || "").trim();
+  if (existingThreadId && existingThreadId === threadId) {
+    return {
+      status: "AEYE_RECEIVER_HOME_THREAD_ALREADY_BOUND",
+      target,
+      thread_id: threadId,
+      title: currentConfig.title || title || `${target} LIVE Relay Receiver`,
+      home_thread_policy: AEYE_HOME_THREAD_POLICY,
+      proof_rule: "No new chat was created. This target already uses the requested standing receiver chat.",
+      target_threads_path: AEYE_THREAD_TARGETS_PATH,
+      target_threads_sha256: fileReadback(AEYE_THREAD_TARGETS_PATH).sha256,
+    };
+  }
+  const rotationRequested = receiverThreadRotationRequested(payload);
+  const rotationReason = receiverThreadRotationReason(payload);
+  if (existingThreadId && existingThreadId !== threadId && (!rotationRequested || rotationReason.length < 12)) {
+    const error = new Error(`HOME_THREAD_ROTATION_REQUIRES_OPERATOR_REASON: ${target} already has a mapped receiver chat; provide route_rotation_requested=true and rotation_reason before replacing it.`);
+    error.statusCode = 409;
+    error.details = {
+      target,
+      existing_thread_id: existingThreadId,
+      proposed_thread_id: threadId,
+      home_thread_policy: AEYE_HOME_THREAD_POLICY,
+    };
+    throw error;
+  }
   const createdAt = new Date().toISOString();
   const stamp = createdAt.replace(/[-:.TZ]/g, "").slice(0, 14);
-  const receiptId = `RECEIVER_THREAD_BINDING_${safeReceiptStem(target).toUpperCase()}_${stamp}`;
+  const bindingMode = existingThreadId ? "HOME_THREAD_ROTATION" : "INITIAL_HOME_THREAD_BINDING";
+  const receiptId = `${existingThreadId ? "RECEIVER_THREAD_ROTATION" : "RECEIVER_THREAD_BINDING"}_${safeReceiptStem(target).toUpperCase()}_${stamp}`;
   const nextConfig = {
     ...currentConfig,
     thread_id: threadId,
@@ -1635,21 +1696,34 @@ function registerReceiverThread(payload) {
     route_status: "MAPPED_TO_CODEX_THREAD",
     availability: "AVAILABLE_IF_ACTUATOR_ACTIVE",
     relay_mode: "CODEX_THREAD_BRIDGE",
-    proof_rule: "Dashboard queue is not delivery. Delivery begins only after the Codex thread bridge posts into this mapped receiver chat and the receiver writes RECEIVED.",
+    proof_rule: "Dashboard queue is not delivery. Delivery begins only after the Codex thread bridge posts into this mapped home chat and the receiver writes RECEIVED. New chats require explicit rotation.",
+    home_thread_policy: AEYE_HOME_THREAD_POLICY.status,
+    thread_reuse_required: true,
+    rotation_requires_operator_reason: true,
     bound_at: createdAt,
     binding_receipt_id: receiptId,
   };
+  if (existingThreadId) {
+    nextConfig.rotated_from_thread_id = existingThreadId;
+    nextConfig.rotated_at = createdAt;
+    nextConfig.rotation_reason = rotationReason;
+  }
   const previousConfig = targets[target];
   targets[target] = nextConfig;
   writeThreadTargets(targets);
   ensureDir(AEYE_THREAD_BINDING_DIR);
   const receipt = {
     receipt_id: receiptId,
-    receipt_type: "AEYE_RECEIVER_THREAD_BINDING",
+    receipt_type: existingThreadId ? "AEYE_RECEIVER_THREAD_ROTATION" : "AEYE_RECEIVER_THREAD_BINDING",
     status: "MAPPING_RECORDED_UNVERIFIED",
+    binding_mode: bindingMode,
     created_at: createdAt,
     target,
     thread_id: threadId,
+    previous_thread_id: existingThreadId || null,
+    rotation_requested: rotationRequested,
+    rotation_reason: rotationReason || null,
+    home_thread_policy: AEYE_HOME_THREAD_POLICY,
     previous_config: previousConfig,
     next_config: nextConfig,
     note,
@@ -1662,16 +1736,18 @@ function registerReceiverThread(payload) {
   fs.writeFileSync(receiptPath, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
   const readback = fileReadback(receiptPath);
   appendJsonl(AEYE_THREAD_BINDING_LEDGER_PATH, {
-    event: "AEYE_RECEIVER_THREAD_BOUND",
+    event: existingThreadId ? "AEYE_RECEIVER_THREAD_ROTATED" : "AEYE_RECEIVER_THREAD_BOUND",
     receipt_id: receiptId,
     target,
     thread_id: threadId,
+    previous_thread_id: existingThreadId || null,
+    binding_mode: bindingMode,
     receipt_path: receiptPath,
     receipt_sha256: readback.sha256,
     created_at: createdAt,
   });
   return {
-    status: "AEYE_RECEIVER_THREAD_BINDING_WRITTEN",
+    status: existingThreadId ? "AEYE_RECEIVER_THREAD_ROTATION_WRITTEN" : "AEYE_RECEIVER_THREAD_BINDING_WRITTEN",
     receipt,
     receipt_path: receiptPath,
     receipt_sha256: readback.sha256,
@@ -6221,6 +6297,7 @@ fastify.post("/v1/relay/register_receiver_thread", async (request, reply) => {
       .send({
         status: "AEYE_RECEIVER_THREAD_BINDING_BLOCKED",
         error: error.message,
+        details: error.details || null,
       });
   }
 });

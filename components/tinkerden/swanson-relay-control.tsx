@@ -82,6 +82,24 @@ function receiverTitle(threadBridge: JsonRecord | null, target: string) {
   return asText(receiver?.title, humanTargetName(target));
 }
 
+function receiverHomeThreadName(receiver: JsonRecord | null, target: string) {
+  const title = asText(receiver?.home_thread_title ?? receiver?.title, "");
+  return title || `${humanTargetName(target)} standing receiver chat`;
+}
+
+function receiverMemoryRule(receiver: JsonRecord | null) {
+  const policy = asText(receiver?.home_thread_policy, "");
+  const mode = asText(receiver?.relay_mode, "");
+  if (mode === "CODEX_THREAD_BRIDGE" && policy === "HOME_THREAD_REUSE_REQUIRED") {
+    return "Reuse this standing chat until a rotation receipt says why it changed.";
+  }
+  if (mode === "CODEX_THREAD_BRIDGE") {
+    return "Use the mapped receiver chat; do not create a new chat silently.";
+  }
+  if (mode === "FILE_INBOX_LAN") return "Use the LAN inbox until a receiver chat is bound.";
+  return "No standing receiver chat is available yet.";
+}
+
 function receiverSurface(receiver: JsonRecord | null) {
   const mode = asText(receiver?.relay_mode, "");
   const status = asText(receiver?.route_status, "");
@@ -97,7 +115,7 @@ function receiverInstruction(receiver: JsonRecord | null, target: string) {
   const mode = asText(receiver?.relay_mode, "");
   const inboxUrl = asText(receiver?.file_inbox_url, "");
   if (mode === "CODEX_THREAD_BRIDGE") {
-    return `Continue directly in the Codex thread named "${title}". ThinkIt is showing the receipt that thread wrote back.`;
+    return `Continue in the standing receiver chat named "${title}". ThinkIt reuses that chat until an explicit rotation receipt says why it changed.`;
   }
   if (inboxUrl && inboxUrl !== "UNKNOWN") {
     return `Open the receiver inbox for ${humanTargetName(target)}. ThinkIt is waiting for that inbox to write back.`;
@@ -650,6 +668,12 @@ export default function SwansonRelayControl() {
   const queued = asArray(valueAt(snapshot.threadBridge, ["queued"]));
   const sent = asArray(valueAt(snapshot.threadBridge, ["sent"]));
   const blocked = asArray(valueAt(snapshot.threadBridge, ["blocked"]));
+  const knownTargetThreads = asArray(valueAt(snapshot.threadBridge, ["known_target_threads"]));
+  const homeThreadPolicy = asRecord(valueAt(snapshot.threadBridge, ["home_thread_policy"]));
+  const homeThreadCount = knownTargetThreads.filter((item) => {
+    const record = asRecord(item);
+    return Boolean(asText(record?.home_thread_id ?? record?.thread_id, ""));
+  }).length;
   const actionable =
     valueAt(snapshot.actionableReturns, ["actionable_returns", "actionable"]) ??
     valueAt(snapshot.actionableReturns, ["actionable_returns", "items"]) ??
@@ -1758,8 +1782,8 @@ export default function SwansonRelayControl() {
                 <dd>{receiverSurface(findReceiver(snapshot.threadBridge, selectedIncomingTarget))}</dd>
               </div>
               <div>
-                <dt>Thread / inbox</dt>
-                <dd>{receiverTitle(snapshot.threadBridge, selectedIncomingTarget)}</dd>
+                <dt>Standing chat / inbox</dt>
+                <dd>{receiverHomeThreadName(findReceiver(snapshot.threadBridge, selectedIncomingTarget), selectedIncomingTarget)}</dd>
               </div>
               <div>
                 <dt>Receipt</dt>
@@ -1828,8 +1852,8 @@ export default function SwansonRelayControl() {
             <p className="td-bridge__eyebrow">Thread bridge / receiver lanes</p>
             <h3>Send, chase, or request a missing receiver from here.</h3>
             <p>
-              The bridge currently maps one receiver lane per Aeye. The <strong>Thread scope</strong> field is carried inside packets until ThinkIt has true
-              multi-thread routing per Aeye.
+              The bridge uses one standing receiver chat per Aeye. New packets continue in that same chat so the receiver can keep working memory.
+              A new chat is a rotation event, not the default.
             </p>
           </div>
           <a href="http://10.1.10.8:3339/relay/receiver_bootstrap" target="_blank" rel="noreferrer">
@@ -1854,6 +1878,26 @@ export default function SwansonRelayControl() {
             <dd>{connectedRelayRows.length}</dd>
           </div>
         </dl>
+        <div className="thinkit-relay__home-thread-policy">
+          <article>
+            <span>Standing receiver chats</span>
+            <strong>{homeThreadCount}</strong>
+            <small>{asText(homeThreadPolicy?.status, "HOME_THREAD_REUSE_REQUIRED")}</small>
+          </article>
+          <p>
+            {asText(
+              homeThreadPolicy?.operator_meaning,
+              "ThinkIt should not create new Aeye chats by default. Packets continue inside the same receiver chat so that chat can carry working memory."
+            )}
+          </p>
+          <small>
+            Rotation rule:{" "}
+            {asText(
+              homeThreadPolicy?.rotation_gate,
+              "A new thread id is blocked unless the old chat is explicitly rotated with a reason."
+            )}
+          </small>
+        </div>
         <div className="thinkit-relay__bridge-actions">
           <button type="button" disabled={actionPending !== null} onClick={() => void runAction("Run Chaser Once", "/api/thinkit/swanson/relay/run_chaser", {})}>
             {actionPending === "Run Chaser Once" ? "Chasing" : "Run Chaser Once"}
@@ -1950,6 +1994,14 @@ export default function SwansonRelayControl() {
                           <div>
                             <dt>Receiver surface</dt>
                             <dd>{readableSurface === "Codex receiver thread" ? receiverName : readableSurface}</dd>
+                          </div>
+                          <div>
+                            <dt>Standing chat</dt>
+                            <dd>{receiverHomeThreadName(receiver, row.target)}</dd>
+                          </div>
+                          <div>
+                            <dt>Memory rule</dt>
+                            <dd>{receiverMemoryRule(receiver)}</dd>
                           </div>
                           <div>
                             <dt>Last response</dt>
