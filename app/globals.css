@@ -3577,6 +3577,47 @@ main .proof-warning.proof-boundary .workshop-band {
   gap: 10px;
 }
 
+.thinkit-relay__workbench-send-lane,
+.thinkit-relay__workbench-after-return {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(67, 102, 83, 0.22);
+  background: #f3f8f0;
+}
+
+.thinkit-relay__workbench-send-lane strong,
+.thinkit-relay__workbench-after-return strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #253427;
+  font-size: 0.88rem;
+}
+
+.thinkit-relay__workbench-send-lane p,
+.thinkit-relay__workbench-after-return p {
+  margin: 0;
+  color: #4f634e;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.thinkit-relay__workbench-send-lane button {
+  min-width: 180px;
+  border-color: #214f37;
+  background: #214f37;
+  color: #fff;
+}
+
+.thinkit-relay__workbench-after-return {
+  margin-top: 10px;
+  grid-template-columns: minmax(0, 1fr);
+  border-color: rgba(111, 96, 76, 0.22);
+  background: #f8f2e8;
+}
+
 .thinkit-relay__workbench-note {
   margin: 0;
   color: #5c4a3a;

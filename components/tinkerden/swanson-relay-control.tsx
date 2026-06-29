@@ -730,17 +730,18 @@ export default function SwansonRelayControl() {
     () => bookChapters.map((item) => asRecord(item)).find((chapter) => asText(chapter?.chapter_id, "") === selectedChapterId) ?? asRecord(bookChapters[0]) ?? null,
     [bookChapters, selectedChapterId]
   );
+  const effectiveSelectedChapterId = asText(selectedChapter?.chapter_id, selectedChapterId || defaultChapterId);
   const selectedChapterPacket = useMemo(
-    () => bookPacketRecords.find((packet) => asText(packet.chapter_id, "") === selectedChapterId) ?? null,
-    [bookPacketRecords, selectedChapterId]
+    () => bookPacketRecords.find((packet) => asText(packet.chapter_id, "") === effectiveSelectedChapterId) ?? null,
+    [bookPacketRecords, effectiveSelectedChapterId]
   );
   const selectedChapterReports = useMemo(
     () =>
       bookReturnRecords.filter((record) => {
         const packet = bookPacketById.get(asText(record.packet_id, ""));
-        return asText(packet?.chapter_id, "") === selectedChapterId;
+        return asText(packet?.chapter_id, "") === effectiveSelectedChapterId;
       }),
-    [bookReturnRecords, bookPacketById, selectedChapterId]
+    [bookReturnRecords, bookPacketById, effectiveSelectedChapterId]
   );
   const rosterRows = useMemo(() => buildAeyeRoster(snapshot.coverage), [snapshot.coverage]);
   const rosterByMachine = useMemo(() => {
@@ -907,10 +908,10 @@ export default function SwansonRelayControl() {
 
   useEffect(() => {
     const reportPacket = selectedBookReportId ? bookPacketById.get(selectedBookReportId) : null;
-    if (reportPacket && asText(reportPacket.chapter_id, "") !== selectedChapterId) {
+    if (reportPacket && asText(reportPacket.chapter_id, "") !== effectiveSelectedChapterId) {
       setSelectedBookReportId(defaultBookReportId);
     }
-  }, [bookPacketById, defaultBookReportId, selectedBookReportId, selectedChapterId]);
+  }, [bookPacketById, defaultBookReportId, effectiveSelectedChapterId, selectedBookReportId]);
 
   useEffect(() => {
     const firstIncomingId = asText(asRecord(actionables[0])?.packet_id, "");
@@ -921,7 +922,7 @@ export default function SwansonRelayControl() {
   useEffect(() => {
     let cancelled = false;
     async function loadChapterText() {
-      if (!selectedChapterId) {
+      if (!effectiveSelectedChapterId) {
         setChapterText(null);
         setChapterTextError(null);
         return;
@@ -929,7 +930,7 @@ export default function SwansonRelayControl() {
       setChapterTextLoading(true);
       setChapterTextError(null);
       try {
-        const result = await readJson(`/api/thinkit/book/chapter_text?chapter_id=${encodeURIComponent(selectedChapterId)}`);
+        const result = await readJson(`/api/thinkit/book/chapter_text?chapter_id=${encodeURIComponent(effectiveSelectedChapterId)}`);
         if (!cancelled) setChapterText(result);
       } catch (loadError) {
         if (!cancelled) {
@@ -944,7 +945,7 @@ export default function SwansonRelayControl() {
     return () => {
       cancelled = true;
     };
-  }, [selectedChapterId]);
+  }, [effectiveSelectedChapterId]);
 
   const actionSummary = useMemo(() => {
     if (!lastAction?.result) return "No action result yet.";
@@ -2159,7 +2160,7 @@ export default function SwansonRelayControl() {
         <div className="thinkit-relay__book-form">
           <label>
             <span>Chapter to send</span>
-            <select value={selectedChapterId} onChange={(event) => setSelectedChapterId(event.target.value)}>
+            <select value={effectiveSelectedChapterId} onChange={(event) => setSelectedChapterId(event.target.value)}>
               {bookChapters.slice(0, 120).map((item) => {
                 const chapter = asRecord(item) ?? {};
                 const chapterId = asText(chapter.chapter_id, "");
@@ -2197,7 +2198,7 @@ export default function SwansonRelayControl() {
           </button>
           <button
             type="button"
-            disabled={!selectedChapterId}
+            disabled={!effectiveSelectedChapterId}
             onClick={() => {
               setSelectedBookReportId(defaultBookReportId);
               window.setTimeout(() => scrollToDashboardSection("thinkit-chapter-workbench"), 0);
@@ -2207,17 +2208,17 @@ export default function SwansonRelayControl() {
           </button>
           <button
             type="button"
-            disabled={actionPending !== null || !selectedChapterId}
+            disabled={actionPending !== null || !effectiveSelectedChapterId}
             onClick={() =>
               void runAction("Send Selected Chapter", "/api/thinkit/swanson/book/dispatch_chapter", {
                 target,
-                chapter_id: selectedChapterId,
+                chapter_id: effectiveSelectedChapterId,
                 editing_mode: bookEditingMode,
                 operator_note: bookOperatorNote
               })
             }
           >
-            {actionPending === "Send Selected Chapter" ? "Queueing" : "Queue Selected Chapter"}
+            {actionPending === "Send Selected Chapter" ? "Queueing" : `Queue Chapter To ${humanTargetName(target)}`}
           </button>
           <button
             type="button"
@@ -2271,7 +2272,7 @@ export default function SwansonRelayControl() {
             <label>
               <span>Workbench chapter</span>
               <select
-                value={selectedChapterId}
+                value={effectiveSelectedChapterId}
                 onChange={(event) => {
                   setSelectedChapterId(event.target.value);
                   setSelectedBookReportId("");
@@ -2352,7 +2353,7 @@ export default function SwansonRelayControl() {
             {chapterTextBody ? (
               <div className="thinkit-relay__chapter-text">
                 {chapterTextParagraphs.length > 0
-                  ? chapterTextParagraphs.map((paragraph, index) => <p key={`${selectedChapterId}-${index}`}>{asText(paragraph, "")}</p>)
+                  ? chapterTextParagraphs.map((paragraph, index) => <p key={`${effectiveSelectedChapterId}-${index}`}>{asText(paragraph, "")}</p>)
                   : <p>{chapterTextBody}</p>}
               </div>
             ) : (
@@ -2397,21 +2398,39 @@ export default function SwansonRelayControl() {
             </article>
           </div>
 
-          <div className="thinkit-relay__workbench-buttons">
+          <div className="thinkit-relay__workbench-send-lane">
+            <div>
+              <strong>Send this chapter to {humanTargetName(target)}</strong>
+              <p>
+                This creates the chapter packet and queues it for the standing receiver chat. The chapter is not done until a returned receipt appears below.
+              </p>
+            </div>
             <button
               type="button"
-              disabled={actionPending !== null || !selectedChapterId}
+              disabled={actionPending !== null || !effectiveSelectedChapterId}
               onClick={() =>
                 void runAction("Send Selected Chapter", "/api/thinkit/swanson/book/dispatch_chapter", {
                   target,
-                  chapter_id: selectedChapterId,
+                  chapter_id: effectiveSelectedChapterId,
                   editing_mode: bookEditingMode,
                   operator_note: bookOperatorNote
                 })
               }
             >
-              {actionPending === "Send Selected Chapter" ? "Sending" : "Send This Chapter"}
+              {actionPending === "Send Selected Chapter" ? "Sending" : `Send To ${humanTargetName(target)}`}
             </button>
+          </div>
+
+          <div className="thinkit-relay__workbench-after-return">
+            <strong>After a returned receipt</strong>
+            <p>
+              {selectedBookReport
+                ? "A returned report is selected. These buttons can now record your decision or route editor cousin follow-ups."
+                : "These controls unlock after Skybro returns a receipt for this selected chapter. Until then, the correct move is the send button above."}
+            </p>
+          </div>
+
+          <div className="thinkit-relay__workbench-buttons">
             <button
               type="button"
               disabled={actionPending !== null || !selectedBookReport}
