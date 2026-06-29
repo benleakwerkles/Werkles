@@ -111,6 +111,42 @@ function humanizeTargetText(value: unknown, target: string, fallback: string) {
   return asText(value, fallback).replaceAll(target, humanTargetName(target));
 }
 
+const evidenceSectionKeys = new Set([
+  "source_access",
+  "editing_mode",
+  "chapter_read",
+  "what_works",
+  "access_gaps",
+  "continuity_issues",
+  "developmental_edit",
+  "risk_conflict",
+  "recommended_next_edit"
+]);
+
+function clippedText(value: unknown, maxLength = 7000) {
+  const text = asText(value, "");
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength)}\n\n[clipped for dashboard packet size; see receiver receipt for full text]`;
+}
+
+function parseEvidenceSections(value: unknown) {
+  const sections: Record<string, string> = {};
+  let currentKey = "";
+  for (const line of asText(value, "").split(/\r?\n/)) {
+    const match = line.match(/^([a-z_]+):\s*(.*)$/i);
+    const key = match?.[1]?.toLowerCase() ?? "";
+    if (key && evidenceSectionKeys.has(key)) {
+      currentKey = key;
+      sections[currentKey] = match?.[2]?.trim() ?? "";
+      continue;
+    }
+    if (currentKey) {
+      sections[currentKey] = `${sections[currentKey]}${sections[currentKey] ? "\n" : ""}${line}`.trim();
+    }
+  }
+  return sections;
+}
+
 function returnedWorkHeadline(record: JsonRecord, target: string) {
   const channel = asText(record.channel, "");
   const advancement = asText(record.advancement_type, "");
@@ -347,6 +383,7 @@ export default function SwansonRelayControl() {
   const [bookOperatorNote, setBookOperatorNote] = useState(
     "Edit this chapter from source truth. Return access gaps, continuity issues, a recommended edit, and any cousin-editor packets you need ThinkIt to route next."
   );
+  const [selectedBookReportId, setSelectedBookReportId] = useState("");
 
   async function refresh(reason = "Relay state refreshed") {
     setLoading(true);
@@ -428,6 +465,13 @@ export default function SwansonRelayControl() {
     valueAt(snapshot.actionableReturns, ["actionable_returns", "items"]) ??
     valueAt(snapshot.actionableReturns, ["items"]);
   const actionables = asArray(actionable);
+  const bookReturnRecords = useMemo(
+    () =>
+      actionables
+        .map((item) => asRecord(item))
+        .filter((item): item is JsonRecord => Boolean(item) && asText(item?.packet_id, "").startsWith("BOOK_CHAPTER_EDIT")),
+    [actionables]
+  );
   const bookChapters = asArray(valueAt(snapshot.bookChapters, ["chapters"]));
   const bookPackets = asArray(valueAt(snapshot.bookCourier, ["latest_book_packets"]));
   const nextUnsentChapter = asRecord(valueAt(snapshot.bookCourier, ["next_unsent_chapter"]));
@@ -473,15 +517,77 @@ export default function SwansonRelayControl() {
   const bookSourceUrl = asText(valueAt(snapshot.bookCourier, ["source_repo_url"]) ?? valueAt(snapshot.bookChapters, ["source_repo_url"]), "No source URL read back yet.");
   const nextUnsentTitle = asText(nextUnsentChapter?.title, "No next unsent chapter read back yet.");
   const nextUncompletedTitle = asText(nextUncompletedChapter?.title, "No next unfinished chapter read back yet.");
+  const defaultBookReportId = asText(bookReturnRecords[0]?.packet_id, "");
+  const selectedBookReport =
+    bookReturnRecords.find((record) => asText(record.packet_id, "") === selectedBookReportId) ?? bookReturnRecords[0] ?? null;
+  const selectedBookReportPacketId = asText(selectedBookReport?.packet_id, "NO_BOOK_REPORT_SELECTED");
+  const selectedBookReportTarget = asText(selectedBookReport?.target, "Skybro.Betsy");
+  const selectedBookReportReceipt = asText(selectedBookReport?.receiver_receipt_id, "NO_RECEIPT_SELECTED");
+  const selectedBookReportEvidence = parseEvidenceSections(selectedBookReport?.evidence);
+  const selectedBookReportChapter = selectedBookReportEvidence.chapter_read || "No chapter readback selected yet.";
+  const selectedBookReportRecommendation = selectedBookReportEvidence.recommended_next_edit || "No recommended edit has been parsed yet.";
 
   useEffect(() => {
     if (!selectedChapterId && defaultChapterId) setSelectedChapterId(defaultChapterId);
   }, [defaultChapterId, selectedChapterId]);
 
+  useEffect(() => {
+    if (!selectedBookReportId && defaultBookReportId) setSelectedBookReportId(defaultBookReportId);
+  }, [defaultBookReportId, selectedBookReportId]);
+
   const actionSummary = useMemo(() => {
     if (!lastAction?.result) return "No action result yet.";
     return JSON.stringify(lastAction.result, null, 2).slice(0, 2200);
   }, [lastAction]);
+
+  function selectedBookFollowupBody(instruction: string) {
+    return [
+      "MISSION: Continue Nerdkle book work from a returned Skybro chapter report without making Ben the courier.",
+      "",
+      `Source returned packet: ${selectedBookReportPacketId}`,
+      `Receiver receipt: ${selectedBookReportReceipt}`,
+      `Original receiver: ${humanTargetName(selectedBookReportTarget)}`,
+      `Chapter read: ${selectedBookReportChapter}`,
+      "",
+      `Operator instruction: ${instruction}`,
+      "",
+      "Skybro report fields:",
+      `what_works: ${selectedBookReportEvidence.what_works || "No what_works field parsed."}`,
+      `continuity_issues: ${selectedBookReportEvidence.continuity_issues || "No continuity_issues field parsed."}`,
+      `developmental_edit: ${selectedBookReportEvidence.developmental_edit || "No developmental_edit field parsed."}`,
+      `risk_conflict: ${selectedBookReportEvidence.risk_conflict || "No risk_conflict field parsed."}`,
+      `recommended_next_edit: ${selectedBookReportRecommendation}`,
+      "",
+      "Full evidence excerpt:",
+      clippedText(selectedBookReport?.evidence),
+      "",
+      "Return requirements:",
+      "1. Write RECEIVED first.",
+      "2. Return COMPLETED with a usable editorial report or artifact, or BLOCKER with exact missing proof.",
+      "3. Do not ask Ben to restate the chapter or report.",
+      "4. Do not call SENT success."
+    ].join("\n");
+  }
+
+  function dispatchBookWorkbenchPacket(label: string, destination: string, packetType: string, title: string, instruction: string) {
+    return runAction(label, "/api/thinkit/swanson/relay/dispatch", {
+      packet_type: packetType,
+      target: destination,
+      title,
+      body: selectedBookFollowupBody(instruction)
+    });
+  }
+
+  function recordBookWorkbenchDecision(label: string, choice: string) {
+    return runAction(label, "/api/thinkit/swanson/relay/actionable_decision", {
+      choice,
+      target: selectedBookReportTarget,
+      source_packet_id: selectedBookReportPacketId,
+      receiver_receipt_id: selectedBookReportReceipt,
+      advanced: `Book workbench decision for ${selectedBookReportChapter}.`,
+      helps_decide: "What should happen next with this returned chapter report?"
+    });
+  }
 
   return (
     <section className="thinkit-relay" aria-label="Swanson relay control">
@@ -729,6 +835,133 @@ export default function SwansonRelayControl() {
           </article>
         </div>
 
+        <section className="thinkit-relay__workbench" aria-label="Chapter workbench">
+          <header>
+            <div>
+              <p className="td-bridge__eyebrow">Chapter workbench / returned report</p>
+              <h4>Read the report, then choose the next editorial move.</h4>
+              <p>
+                This is the handoff room: Skybro's returned report is visible here, and the buttons below route the next packet or record a hold without
+                making you carry text between Aeyes.
+              </p>
+            </div>
+            <label>
+              <span>Returned report</span>
+              <select value={selectedBookReportId} onChange={(event) => setSelectedBookReportId(event.target.value)}>
+                {bookReturnRecords.map((record) => (
+                  <option key={asText(record.packet_id, "UNKNOWN_REPORT")} value={asText(record.packet_id, "")}>
+                    {asText(record.receiver_receipt_id, asText(record.packet_id, "Book report"))}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </header>
+
+          <dl className="thinkit-relay__workbench-proof">
+            <div>
+              <dt>Chapter</dt>
+              <dd>{selectedBookReportChapter}</dd>
+            </div>
+            <div>
+              <dt>Returned by</dt>
+              <dd>{humanTargetName(selectedBookReportTarget)}</dd>
+            </div>
+            <div>
+              <dt>Receipt</dt>
+              <dd>{selectedBookReportReceipt}</dd>
+            </div>
+            <div>
+              <dt>Source packet</dt>
+              <dd>{selectedBookReportPacketId}</dd>
+            </div>
+          </dl>
+
+          <div className="thinkit-relay__workbench-sections">
+            <article>
+              <span>What works</span>
+              <p>{selectedBookReportEvidence.what_works || "No what_works field parsed yet."}</p>
+            </article>
+            <article>
+              <span>Continuity issues</span>
+              <p>{selectedBookReportEvidence.continuity_issues || "No continuity_issues field parsed yet."}</p>
+            </article>
+            <article>
+              <span>Recommended edit</span>
+              <p>{selectedBookReportRecommendation}</p>
+            </article>
+            <article>
+              <span>Risk / conflict</span>
+              <p>{selectedBookReportEvidence.risk_conflict || "No risk_conflict field parsed yet."}</p>
+            </article>
+          </div>
+
+          <div className="thinkit-relay__workbench-buttons">
+            <button
+              type="button"
+              disabled={actionPending !== null || !selectedBookReport}
+              onClick={() => void recordBookWorkbenchDecision("Accept Direction", "TRUST DIRECTION")}
+            >
+              {actionPending === "Accept Direction" ? "Recording" : "Accept Direction"}
+            </button>
+            <button
+              type="button"
+              disabled={actionPending !== null || !selectedBookReport}
+              onClick={() =>
+                void dispatchBookWorkbenchPacket(
+                  "Send to Thufir",
+                  "Thufir.Sally",
+                  "BOOK_ADVERSARIAL_EDIT_REVIEW",
+                  `Thufir review: ${selectedBookReportChapter}`,
+                  "Red-team Skybro's chapter report. Find structural weakness, duplicated purpose, missing chapter ownership, and any claim that needs proof."
+                )
+              }
+            >
+              {actionPending === "Send to Thufir" ? "Routing" : "Send to Thufir"}
+            </button>
+            <button
+              type="button"
+              disabled={actionPending !== null || !selectedBookReport}
+              onClick={() =>
+                void dispatchBookWorkbenchPacket(
+                  "Ask Bean",
+                  "Bean.Spanzee",
+                  "BOOK_RED_TEAM_CONTRADICTION_REVIEW",
+                  `Bean audit: ${selectedBookReportChapter}`,
+                  "Attack the returned chapter direction. Look for contradictions, overclaiming, doctrine fog, and where the reader will stop trusting the argument."
+                )
+              }
+            >
+              {actionPending === "Ask Bean" ? "Routing" : "Ask Bean"}
+            </button>
+            <button
+              type="button"
+              disabled={actionPending !== null || !selectedBookReport}
+              onClick={() =>
+                void dispatchBookWorkbenchPacket(
+                  "Draft Revision Packet",
+                  "Skybro.Betsy",
+                  "BOOK_REVISION_DRAFT_REQUEST",
+                  `Draft revision: ${selectedBookReportChapter}`,
+                  "Turn the accepted direction into a concrete revision plan or draft patch. Preserve the source-truth boundary and name any missing source material."
+                )
+              }
+            >
+              {actionPending === "Draft Revision Packet" ? "Routing" : "Draft Revision Packet"}
+            </button>
+            <button
+              type="button"
+              disabled={actionPending !== null || !selectedBookReport}
+              onClick={() => void recordBookWorkbenchDecision("Hold Chapter Report", "HOLD")}
+            >
+              {actionPending === "Hold Chapter Report" ? "Recording" : "Hold"}
+            </button>
+          </div>
+
+          <p className="thinkit-relay__workbench-note">
+            Accept/Hold records an operator decision. Thufir, Bean, and Draft Revision create successor packets and still require receiver receipts before they count.
+          </p>
+        </section>
+
         <div className="thinkit-relay__book-packets">
           <header>
             <h4>Latest chapter reports</h4>
@@ -764,6 +997,9 @@ export default function SwansonRelayControl() {
                     <dd>{asText(packet.updated_at, "No update timestamp")}</dd>
                   </div>
                 </dl>
+                <button type="button" onClick={() => setSelectedBookReportId(packetId)}>
+                  Open in Workbench
+                </button>
               </article>
             );
           })}

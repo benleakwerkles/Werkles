@@ -2778,6 +2778,71 @@ main .proof-warning.proof-boundary .workshop-band {
   gap: 10px;
 }
 
+.thinkit-relay__workbench {
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(2, 145, 126, 0.22);
+  border-radius: 8px;
+  background: rgba(24, 197, 174, 0.08);
+  padding: 12px;
+}
+
+.thinkit-relay__workbench > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.6fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.thinkit-relay__workbench-proof {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+
+.thinkit-relay__workbench-sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.thinkit-relay__workbench-sections article {
+  min-width: 0;
+  border: 1px solid rgba(112, 73, 38, 0.14);
+  border-radius: 7px;
+  background: #fffdf8;
+  padding: 10px;
+}
+
+.thinkit-relay__workbench-sections span {
+  display: block;
+  color: #6b5845;
+  font-size: 0.7rem;
+  font-weight: 950;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.thinkit-relay__workbench-sections p {
+  max-height: 170px;
+  overflow: auto;
+  margin-top: 7px;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+}
+
+.thinkit-relay__workbench-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.thinkit-relay__workbench-note {
+  margin: 0;
+  color: #5c4a3a;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .thinkit-relay__book-packets article header small {
   display: block;
   margin-top: 4px;
@@ -2793,6 +2858,13 @@ main .proof-warning.proof-boundary .workshop-band {
   color: #352a22;
   font-size: 0.66rem;
   font-weight: 950;
+}
+
+.thinkit-relay__book-packets article > button {
+  width: auto;
+  min-height: 34px;
+  margin-top: 10px;
+  padding: 0 10px;
 }
 
 .thinkit-relay__controls,
@@ -3136,6 +3208,10 @@ main .proof-warning.proof-boundary .workshop-band {
   .thinkit-relay__book-form,
   .thinkit-relay__book-buttons,
   .thinkit-relay__book-loop,
+  .thinkit-relay__workbench > header,
+  .thinkit-relay__workbench-proof,
+  .thinkit-relay__workbench-sections,
+  .thinkit-relay__workbench-buttons,
   .thinkit-relay__action-list dl,
   .thinkit-relay__roster-card dl,
   .thinkit-relay__book-packets dl,
