@@ -2350,3 +2350,435 @@ main .proof-warning.proof-boundary .workshop-band {
     animation: none;
   }
 }
+
+.thinkit {
+  min-height: 100vh;
+  padding: 22px;
+  color: #211a16;
+}
+
+.thinkit__hero,
+.thinkit__panel,
+.thinkit-relay {
+  margin: 16px auto;
+  width: min(1180px, 100%);
+}
+
+.thinkit__hero,
+.thinkit__panel {
+  border: 1px solid rgba(112, 73, 38, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 252, 247, 0.92);
+  box-shadow: 0 14px 34px rgba(44, 35, 29, 0.08);
+}
+
+.thinkit__hero {
+  padding: 22px;
+}
+
+.thinkit__hero h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(2rem, 4vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.thinkit__hero p {
+  max-width: 70ch;
+  color: #5c4a3a;
+  line-height: 1.55;
+}
+
+.thinkit__panel {
+  padding: 18px;
+}
+
+.thinkit__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.thinkit__card {
+  min-width: 0;
+  border: 1px solid rgba(112, 73, 38, 0.2);
+  border-radius: 8px;
+  background: #fffaf2;
+  padding: 14px;
+}
+
+.thinkit__card dl,
+.thinkit__panel dl,
+.thinkit-relay dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.thinkit__card div,
+.thinkit__panel dl div,
+.thinkit-relay dl div {
+  min-width: 0;
+}
+
+.thinkit dt,
+.thinkit-relay dt {
+  color: #745638;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.thinkit dd,
+.thinkit-relay dd {
+  margin: 0;
+  color: #2c231d;
+  overflow-wrap: anywhere;
+}
+
+.thinkit-relay {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(2, 145, 126, 0.32);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(24, 197, 174, 0.14), transparent 22rem),
+    radial-gradient(circle at 100% 8%, rgba(246, 173, 85, 0.14), transparent 18rem),
+    #fffaf2;
+  box-shadow: 0 16px 38px rgba(44, 35, 29, 0.11);
+}
+
+.thinkit-relay__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.thinkit-relay__header h2 {
+  margin: 4px 0 8px;
+  font-size: clamp(1.5rem, 3vw, 2.55rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.thinkit-relay__header p {
+  max-width: 82ch;
+  color: #5c4a3a;
+  line-height: 1.55;
+}
+
+.thinkit-relay__header strong {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border: 1px solid rgba(2, 145, 126, 0.32);
+  border-radius: 999px;
+  padding: 0 12px;
+  color: #015e51;
+  background: rgba(24, 197, 174, 0.13);
+  font-size: 0.76rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.thinkit-relay__header strong[data-state="blocked"] {
+  border-color: rgba(170, 48, 48, 0.34);
+  color: #8f2323;
+  background: rgba(170, 48, 48, 0.1);
+}
+
+.thinkit-relay__metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.thinkit-relay__metrics article,
+.thinkit-relay__return,
+.thinkit-relay__result {
+  min-width: 0;
+  border: 1px solid rgba(112, 73, 38, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 12px;
+}
+
+.thinkit-relay__metrics span,
+.thinkit-relay__metrics small {
+  display: block;
+  color: #6b5845;
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.thinkit-relay__metrics strong {
+  display: block;
+  margin: 4px 0;
+  color: #211a16;
+  font-size: 1.34rem;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.thinkit-relay__controls,
+.thinkit-relay__operator {
+  display: grid;
+  gap: 10px;
+}
+
+.thinkit-relay__controls {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.thinkit-relay button {
+  min-height: 44px;
+  border: 1px solid rgba(2, 145, 126, 0.34);
+  border-radius: 6px;
+  padding: 0 10px;
+  color: #053b35;
+  background: rgba(24, 197, 174, 0.16);
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.thinkit-relay button:hover:not(:disabled) {
+  border-color: rgba(2, 145, 126, 0.56);
+  background: rgba(24, 197, 174, 0.25);
+}
+
+.thinkit-relay button:disabled {
+  cursor: progress;
+  opacity: 0.58;
+}
+
+.thinkit-relay__operator {
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.thinkit-relay label {
+  display: grid;
+  gap: 6px;
+  color: #745638;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.thinkit-relay input,
+.thinkit-relay textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(112, 73, 38, 0.24);
+  border-radius: 6px;
+  background: #fffdf8;
+  padding: 10px;
+  color: #2c231d;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.thinkit-relay textarea {
+  resize: vertical;
+}
+
+.thinkit-relay__return header,
+.thinkit-relay__result header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.thinkit-relay__return h3,
+.thinkit-relay__result h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.thinkit-relay code {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  color: #015e51;
+  font-size: 0.78rem;
+}
+
+.thinkit-relay__return p {
+  max-height: 260px;
+  overflow: auto;
+  margin: 12px 0 0;
+  color: #3e3026;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.thinkit-relay__result dl {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.thinkit-relay__result pre {
+  max-height: 360px;
+  overflow: auto;
+  margin: 12px 0 0;
+  border: 1px solid rgba(112, 73, 38, 0.16);
+  border-radius: 6px;
+  background: #2a211b;
+  padding: 12px;
+  color: #f9ead5;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.thinkit-relay__error {
+  margin: 10px 0 0;
+  color: #8f2323;
+  font-weight: 900;
+}
+
+.td-command-console {
+  display: grid;
+  gap: 14px;
+}
+
+.td-command-console header,
+.td-command-console__form,
+.td-command-console__quick-actions,
+.td-command-console__surfaces {
+  display: grid;
+  gap: 10px;
+}
+
+.td-command-console header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+}
+
+.td-command-console__quick-actions,
+.td-command-console__surfaces {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.td-command-console__form {
+  grid-template-columns: minmax(0, 1fr) 260px auto;
+  align-items: end;
+}
+
+.td-command-console__form label {
+  display: grid;
+  gap: 6px;
+  color: #745638;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.td-command-console__form textarea,
+.td-command-console__form select {
+  min-width: 0;
+  border: 1px solid rgba(112, 73, 38, 0.24);
+  border-radius: 6px;
+  background: #fffdf8;
+  padding: 10px;
+  color: #2c231d;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.td-command-console button {
+  min-height: 40px;
+  border: 1px solid rgba(112, 73, 38, 0.24);
+  border-radius: 6px;
+  background: #fff4df;
+  color: #3e3026;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.td-command-console__form button {
+  min-height: 44px;
+  padding: 0 14px;
+  color: #fffaf2;
+  background: #015e51;
+}
+
+.td-command-console__status {
+  margin: 0;
+  border: 1px solid rgba(112, 73, 38, 0.18);
+  border-radius: 6px;
+  padding: 10px;
+  background: #fffaf2;
+  color: #4b3b30;
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.td-command-console__receipt-panel {
+  min-width: 0;
+}
+
+.td-command-console__receipt {
+  border: 1px solid rgba(112, 73, 38, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 12px;
+}
+
+.td-command-console__receipt dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.td-command-console__receipt-wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 920px) {
+  .thinkit-relay__header,
+  .thinkit-relay__metrics,
+  .thinkit-relay__operator,
+  .td-command-console header,
+  .td-command-console__form {
+    grid-template-columns: 1fr;
+  }
+
+  .thinkit-relay__controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .thinkit-relay__result dl,
+  .td-command-console__receipt dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .thinkit {
+    padding: 12px;
+  }
+
+  .thinkit-relay,
+  .thinkit__hero,
+  .thinkit__panel {
+    padding: 14px;
+  }
+
+  .thinkit-relay__controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import CommandDashClient, { type CommandDashDestination, type CommandDashQuickCommand } from "@/components/tinkerden/command-dash-client";
+import SwansonRelayControl from "@/components/tinkerden/swanson-relay-control";
 import { readTinkerdenCommandDestinations } from "@/lib/tinkerden/command-surface";
 import { listRealAeyeRelays } from "@/lib/tinkerden/real-aeye-relay";
 
@@ -98,6 +99,8 @@ export default async function ThinkItPage() {
         <h1>Thinking relay.</h1>
         <p>Questions route through the verified Aeye destination directory and return file-backed relay receipts.</p>
       </header>
+
+      <SwansonRelayControl />
 
       <section className="thinkit__panel" aria-label="ThinkIt command dash">
         <CommandDashClient
