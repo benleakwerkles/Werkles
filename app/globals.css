@@ -2613,6 +2613,7 @@ main .proof-warning.proof-boundary .workshop-band {
 .thinkit-relay__momentum-question,
 .thinkit-relay__momentum-card,
 .thinkit-relay__speaker-readback,
+.thinkit-relay__momentum-flow article,
 .thinkit-relay__speaker-surfaces article,
 .thinkit-relay__momentum-recent {
   min-width: 0;
@@ -2620,6 +2621,40 @@ main .proof-warning.proof-boundary .workshop-band {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.74);
   padding: 12px;
+}
+
+.thinkit-relay__momentum-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.thinkit-relay__momentum-flow article span,
+.thinkit-relay__momentum-flow article strong,
+.thinkit-relay__momentum-flow article small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.thinkit-relay__momentum-flow article span {
+  color: #866c52;
+  font-size: 0.7rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.thinkit-relay__momentum-flow article strong {
+  margin-top: 4px;
+  color: #211a16;
+  font-size: 0.92rem;
+  line-height: 1.22;
+}
+
+.thinkit-relay__momentum-flow article small {
+  margin-top: 8px;
+  color: #015e51;
+  font-size: 0.7rem;
+  font-weight: 900;
 }
 
 .thinkit-relay__momentum-question header span,
@@ -2662,7 +2697,7 @@ main .proof-warning.proof-boundary .workshop-band {
 .thinkit-relay__momentum-buttons,
 .thinkit-relay__speaker-buttons {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
   gap: 8px;
 }
 
@@ -3788,6 +3823,7 @@ main .proof-warning.proof-boundary .workshop-band {
   .thinkit-relay__incoming-buttons,
   .thinkit-relay__momentum-layout,
   .thinkit-relay__lane-tabs,
+  .thinkit-relay__momentum-flow,
   .thinkit-relay__momentum-card dl,
   .thinkit-relay__momentum-buttons,
   .thinkit-relay__speaker-buttons,

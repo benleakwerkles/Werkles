@@ -189,6 +189,7 @@ async function buildResponse(status = "NEXT_THREE_READY") {
     state_path: STATE_PATH,
     decisions_path: DECISIONS_PATH,
     momentum_state_path: MOMENTUM_STATE_PATH,
+    workflow: state.workflow,
     lanes: state.lanes,
     principle: state.principle,
     recent_decisions: recentDecisions,
@@ -220,12 +221,13 @@ export async function POST(request: Request) {
 
     if (action === "REFRESH_NEXT_THREE") {
       const snapshot = {
-        schema: "thinkit_momentum_state_v0",
+        schema: "thinkit_momentum_state_v1",
         updated_at: nowIso(),
         note: asText(body.note, "Operator refreshed Next Three Projects."),
         source_state_path: STATE_PATH,
         decisions_path: DECISIONS_PATH,
         speaker_root: SPEAKER_ROOT,
+        workflow: state.workflow,
         lane_count: asArray(state.lanes).length
       };
       await writeJsonFile(MOMENTUM_STATE_PATH, snapshot);

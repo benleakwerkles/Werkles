@@ -609,6 +609,9 @@ export default function SwansonRelayControl() {
   const held = asNumber(coverageSummary?.held ?? valueAt(snapshot.contract, ["current_readback", "coverage_summary", "held"]));
   const bridgeStatus = asText(actuator?.status ?? valueAt(snapshot.threadBridge, ["actuator", "status"]), "UNKNOWN");
   const momentumLanes = useMemo(() => asArray(momentum?.lanes).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item)), [momentum]);
+  const momentumWorkflow = asRecord(momentum?.workflow);
+  const doozerTargets = useMemo(() => asArray(momentumWorkflow?.doozer_targets).map((item) => asText(item, "")).filter(Boolean), [momentumWorkflow]);
+  const reviewerTargets = useMemo(() => asArray(momentumWorkflow?.review_targets).map((item) => asText(item, "")).filter(Boolean), [momentumWorkflow]);
   const selectedMomentumLane = useMemo(
     () => momentumLanes.find((lane) => asText(lane.lane_id, "") === selectedMomentumLaneId) ?? momentumLanes[0] ?? null,
     [momentumLanes, selectedMomentumLaneId]
@@ -919,15 +922,21 @@ export default function SwansonRelayControl() {
       target: asText(move.target, "Petra.Betsy"),
       title: `${asText(lane.project, "Project")}: ${asText(move.title, "Next move")}`,
       body: [
-        "MISSION: Execute or review this ThinkIt Next Three move without making Ben the courier.",
+        "MISSION: Help ThinkIt decide and move the next useful project action without making Ben the courier.",
         "",
         `Project lane: ${asText(lane.project, "Unknown project")}`,
         `Dashboard question: ${asText(lane.question, "Is this next move correct?")}`,
         `Move: ${asText(move.title, "Next move")}`,
         `Why this move: ${asText(move.why, "No why field read back.")}`,
         "",
-        "Command:",
+        "Concrete command:",
         asText(move.command, "Return ACK / BLOCKER / ARTIFACT."),
+        "",
+        "Doozer question:",
+        asText(move.doozer_question, "What should the builder/cowork lane do next?"),
+        "",
+        "Reviewer question:",
+        asText(move.review_question, "Should this move be accepted, modified, or killed?"),
         "",
         "Operator note:",
         momentumNote,
@@ -941,6 +950,82 @@ export default function SwansonRelayControl() {
         "3. Do not call SENT success."
       ].join("\n")
     });
+  }
+
+  async function dispatchMomentumGroup(label: string, lane: JsonRecord, move: JsonRecord, targets: string[], rolePrompt: string) {
+    const groupLabel = `Ask ${label}`;
+    setActionPending(groupLabel);
+    setError(null);
+    const results: JsonRecord[] = [];
+    try {
+      for (const destination of targets) {
+        const { statusCode, result } = await postJson("/api/thinkit/swanson/relay/dispatch", {
+          packet_type: `${asText(move.packet_type, "MOMENTUM_NEXT_MOVE")}_${label.toUpperCase().replaceAll(" ", "_")}`,
+          target: destination,
+          title: `${label}: ${asText(lane.project, "Project")} / ${asText(move.title, "Next move")}`,
+          body: [
+            `MISSION: ${rolePrompt}`,
+            "",
+            `Project lane: ${asText(lane.project, "Unknown project")}`,
+            `ThinkIt question: ${asText(lane.question, "What should happen next?")}`,
+            `Candidate move: ${asText(move.title, "Next move")}`,
+            `Why this is on the table: ${asText(move.why, "No why field read back.")}`,
+            "",
+            "Concrete command under review:",
+            asText(move.command, "Return ACK / BLOCKER / ARTIFACT."),
+            "",
+            "Doozer question:",
+            asText(move.doozer_question, "What should the builder/cowork lane do next?"),
+            "",
+            "Reviewer question:",
+            asText(move.review_question, "Should this move be accepted, modified, or killed?"),
+            "",
+            "Operator note:",
+            momentumNote,
+            "",
+            "Proof required:",
+            asText(move.proof_required, "Receiver-side receipt or blocker required."),
+            "",
+            "Return requirements:",
+            "1. Write RECEIVED first.",
+            "2. Return COMPLETED with ACCEPT / MODIFY / KILL and evidence, or BLOCKER with exact missing proof.",
+            "3. Do not call SENT success."
+          ].join("\n")
+        });
+        results.push({ target: destination, statusCode, result });
+      }
+
+      const ok = results.every((item) => asNumber(item.statusCode) >= 200 && asNumber(item.statusCode) < 300);
+      setLastAction({
+        label: groupLabel,
+        endpoint: "POST /v1/relay/dispatch per momentum role target",
+        timestamp: new Date().toISOString(),
+        ok,
+        statusCode: ok ? 201 : 207,
+        result: {
+          status: ok ? "MOMENTUM_GROUP_PACKETS_QUEUED" : "MOMENTUM_GROUP_PACKETS_PARTIAL",
+          group: label,
+          targets,
+          results,
+          proof_boundary: "Queued is not delivery. Each target still needs RECEIVED then COMPLETED or BLOCKER."
+        }
+      });
+      await refresh(`${groupLabel} returned`);
+    } catch (actionError) {
+      const message = actionError instanceof Error ? actionError.message : `${groupLabel} failed`;
+      setLastAction({
+        label: groupLabel,
+        endpoint: "POST /v1/relay/dispatch per momentum role target",
+        timestamp: new Date().toISOString(),
+        ok: false,
+        statusCode: 0,
+        result: { group: label, targets, results },
+        error: message
+      });
+      setError(message);
+    } finally {
+      setActionPending(null);
+    }
   }
 
   function pingAeye(row: AeyeRosterRow) {
@@ -1132,6 +1217,27 @@ export default function SwansonRelayControl() {
               })}
             </div>
 
+            <div className="thinkit-relay__momentum-flow" aria-label="Doozer proposal and reviewer sign-off loop">
+              <article>
+                <span>{asText(momentumWorkflow?.builder_team_name, "Doozers")}</span>
+                <strong>Propose and shape the next build move.</strong>
+                <p>{asText(momentumWorkflow?.builder_team_note, "Maker, Dink, and Ender propose practical work.")}</p>
+                <small>{doozerTargets.map(humanTargetName).join(" / ") || "No Doozer targets read back."}</small>
+              </article>
+              <article>
+                <span>{asText(momentumWorkflow?.review_team_name, "Reviewer cousins")}</span>
+                <strong>Sign off, modify, or kill drift.</strong>
+                <p>{asText(momentumWorkflow?.review_team_note, "Reviewers challenge the idea before it becomes momentum.")}</p>
+                <small>{reviewerTargets.map(humanTargetName).join(" / ") || "No reviewer targets read back."}</small>
+              </article>
+              <article>
+                <span>ThinkIt</span>
+                <strong>Routes and records proof.</strong>
+                <p>{asText(momentumWorkflow?.thinkit_job, "ThinkIt routes packets and refuses to call SENT success.")}</p>
+                <small>Packet {"->"} receiver proof {"->"} origin dash</small>
+              </article>
+            </div>
+
             <article className="thinkit-relay__momentum-question">
               <header>
                 <div>
@@ -1167,6 +1273,14 @@ export default function SwansonRelayControl() {
                       <dd>{asText(move.proof_required, "Receiver-side receipt or blocker required.")}</dd>
                     </div>
                     <div>
+                      <dt>Doozer ask</dt>
+                      <dd>{asText(move.doozer_question, "What should the builder/cowork lane do next?")}</dd>
+                    </div>
+                    <div>
+                      <dt>Reviewer ask</dt>
+                      <dd>{asText(move.review_question, "Should this move be accepted, modified, or killed?")}</dd>
+                    </div>
+                    <div>
                       <dt>Risk</dt>
                       <dd>{asText(move.risk, "UNKNOWN")}</dd>
                     </div>
@@ -1187,6 +1301,36 @@ export default function SwansonRelayControl() {
                     </button>
                     <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void dispatchMomentumMove(selectedMomentumLane ?? {}, move)}>
                       {actionPending === "Send Next Three Packet" ? "Sending" : "Send Packet"}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={actionPending !== null || !selectedMomentumLane || doozerTargets.length === 0}
+                      onClick={() =>
+                        void dispatchMomentumGroup(
+                          "Doozers",
+                          selectedMomentumLane ?? {},
+                          move,
+                          doozerTargets,
+                          "Doozer/cowork review: propose the smallest concrete build move, name owner, proof, and stop condition."
+                        )
+                      }
+                    >
+                      {actionPending === "Ask Doozers" ? "Asking" : "Ask Doozers"}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={actionPending !== null || !selectedMomentumLane || reviewerTargets.length === 0}
+                      onClick={() =>
+                        void dispatchMomentumGroup(
+                          "Reviewers",
+                          selectedMomentumLane ?? {},
+                          move,
+                          reviewerTargets,
+                          "Reviewer sign-off: accept, modify, or kill this proposed move and name the exact proof gap."
+                        )
+                      }
+                    >
+                      {actionPending === "Ask Reviewers" ? "Asking" : "Ask Reviewers"}
                     </button>
                   </div>
                 </article>
