@@ -1,0 +1,327 @@
+{
+  "generated_at": "2026-06-28",
+  "status": "DRAFT_SOURCE_LOCK_NO_REWRITE",
+  "mission": "CHAPTER_SOURCE_LOCK",
+  "book_lane_boundary": "Raw source material and chapter locks only. This file does not rewrite the book, promote any draft as final, or claim organism automation is built.",
+  "verified_source_state": {
+    "desktop_source_path": "C:\\Users\\Ben Leak\\Desktop\\Nerdkle The Book",
+    "repo_reference_path": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/",
+    "desktop_material_file_count": 118,
+    "repo_material_file_count": 118,
+    "repo_metadata_file_count": 2,
+    "missing_in_repo": 0,
+    "changed_against_desktop": 0,
+    "extra_material_in_repo": 0
+  },
+  "major_delta_from_prior_book_map": [
+    "The prior BOOK_INTEGRATION_MAP_V0 marked the V5 baseline and several exact chapter drafts as missing.",
+    "The Betsy Desktop import now contains THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md plus many exact per-chapter draft files.",
+    "This lock treats V5 as the current recovered chapter-spine baseline, while keeping V4 and the individual DOCX files as comparison and recovery material."
+  ],
+  "primary_baseline": {
+    "repo_path": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md",
+    "role": "current recovered Book One red-team baseline",
+    "proof_state": "repo-backed raw reference, not final publishable manuscript"
+  },
+  "secondary_baselines": [
+    {
+      "repo_path": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V4_RED_TEAM_DRAFT.md",
+      "role": "expanded V4 red-team draft with appendices and organism inserts"
+    },
+    {
+      "repo_path": "source-truth-plan/references/book/book__outputs__BOOK_INTEGRATION_MAP_V0__81fb34af.md",
+      "role": "prior integration map and risk ledger; now partially stale where Betsy import resolved missing sources"
+    }
+  ],
+  "chapter_locks": [
+    {
+      "chapter": "Foreword",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Foreword",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Foreword.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Foreword (2).docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Foreword (3).docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_SPINE_AUDIT__1b6fedac.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Do not treat the foreword variants as resolved final voice without an editorial pass."
+    },
+    {
+      "chapter": "Chapter One: The Great Separation",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter One: The Great Separation",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter One - The Human Infrastructure Problem.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter One- The Human Infrastructure Problem.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__sublime-design__the_sublime_design_v0__891bf617.md",
+      "proof_state": "source_locked_with_title_conflict",
+      "must_not_claim": "Do not erase the older Human Infrastructure Problem title; preserve it as lineage for the opening problem statement."
+    },
+    {
+      "chapter": "Chapter Two: Escape Velocity",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Two: Escape Velocity",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Escape Velocity.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_CONTINUITY_AUDIT__13f1265c.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Do not make escape velocity sound like completed automation; it is the turn from human bottleneck toward durable momentum."
+    },
+    {
+      "chapter": "Chapter Three: Automatica",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Three: Automatica",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Three - Automatica.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/implementation/",
+      "proof_state": "source_locked",
+      "must_not_claim": "Separate Automatica as doctrine/architecture from any unproven live product behavior."
+    },
+    {
+      "chapter": "Chapter Four: The Living Machine",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Four: The Living Machine",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Four - The Living Machine.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__genome__tinkularity_genome_v0__b4dd2d20.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Metaphor must stay subordinate to mechanism."
+    },
+    {
+      "chapter": "Chapter Five: The Cost of Forgetting",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Five: The Cost of Forgetting",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Cost of Forgetting.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Cost of Forgetting (1).docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__CHAPTER_LINEAGE_LEDGER__70563174.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Keep this human-consequence first; avoid making it an audit-report chapter."
+    },
+    {
+      "chapter": "Chapter Six: Inheritance",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Six: Inheritance",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Six - Inheritance.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Six- Inheritance.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__SUCCESSFUL_INHERITANCE_EVENT_V0_SPEC__7e8f5076.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Inheritance is future behavior changed by preserved meaning and proof, not merely memory or summary."
+    },
+    {
+      "chapter": "Chapter Seven: The Ratchet",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Seven: The Ratchet",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Seven - The Ratchet.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Ratchet Protocol.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__assimilation_rule__871f2451.json",
+      "proof_state": "source_locked",
+      "must_not_claim": "Ratchet is cumulative correction; do not turn it into generic productivity language."
+    },
+    {
+      "chapter": "Chapter Eight: The Dead Continue Participating",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Eight: The Dead Continue Participating",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Eight - The Dead Continue Participating.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Dead Continue Participating.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__inheritance_chain_audit_receipt__89c95467.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Keep participation anchored to preserved effects and inheritance, not mysticism."
+    },
+    {
+      "chapter": "Chapter Nine: Consciousness",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Nine: Consciousness",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twelve - Consciousness.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twelve- Consciousness.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/CHAPTER_14_CONSCIOUSNESS_NOTES.md"
+      ],
+      "architecture_support": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Skybro Neurosystem.docx",
+      "proof_state": "source_locked_with_order_conflict",
+      "must_not_claim": "Consciousness must not be treated as magic or as proof of independent Aeye agency."
+    },
+    {
+      "chapter": "Chapter Ten: Health",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Ten: Health",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Ten - Health.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Ten - Health (1).docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Health and Resilience.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_METABOLISM_V0__e4f6a052.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Health means observable repair and resilience, not a vibes-only organism state."
+    },
+    {
+      "chapter": "Chapter Eleven: Cooperation",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Eleven: Cooperation",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Eleven - Cooperation.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Eleven - Cooperation (1).docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__CHAPTER_OWNERSHIP_MAP__dcbcd70d.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Cooperation is not consent to merge sovereignty; preserve the boundary with Operator Principle."
+    },
+    {
+      "chapter": "Chapter Twelve: Sovereignty",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Twelve: Sovereignty",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Nine - Sovereignty.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Eighteen- Sovereignty.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__CHAPTER_OWNERSHIP_MAP__dcbcd70d.md",
+      "proof_state": "source_locked_with_order_conflict",
+      "must_not_claim": "Do not collapse sovereignty into cooperation or operator control."
+    },
+    {
+      "chapter": "Chapter Thirteen: Capacity",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Thirteen: Capacity",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Thirteen - Capacity.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Nineteen- Capacity.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_GAP_AUDIT__f26c2b6f.md",
+      "proof_state": "source_locked_with_order_conflict",
+      "must_not_claim": "Capacity is available power under constraints; do not make it a vague growth slogan."
+    },
+    {
+      "chapter": "Chapter Fourteen: Opportunity",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Fourteen: Opportunity",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Fourteen - Opportunity.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty-One- Opportunity.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty-One- Opportunity (1).docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__CHAPTER_OWNERSHIP_MAP__dcbcd70d.md",
+      "proof_state": "source_locked_with_duplicate_sources",
+      "must_not_claim": "Opportunity should emerge from capacity and cooperation, not become generic optimism."
+    },
+    {
+      "chapter": "Chapter Fifteen: Hope",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Fifteen: Hope",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Fifteen - Hope.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty-Two- Hope.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__THESIS_DEFINITION_AUDIT__e610648e.md",
+      "proof_state": "source_locked_with_duplicate_sources",
+      "must_not_claim": "Hope must remain disciplined by continuity and proof; no ideology drift."
+    },
+    {
+      "chapter": "Chapter Sixteen: The Hopeful Future of Intent",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Sixteen: The Hopeful Future of Intent",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Hopeful Future of Intent.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Hopeful Future of Intent (1).docx"
+      ],
+      "architecture_support": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__CREATOR_OPERATOR_MODEL_V0__49b06538.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Intent is not enough; keep the chapter tied to action, receipt, and carried consequence."
+    },
+    {
+      "chapter": "Chapter Seventeen: The Operator Principle",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Seventeen: The Operator Principle",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Seventeen - The Operator Principle.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Operator Principle.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__CREATOR_OPERATOR_MODEL_V0__49b06538.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Operator is consequence-bearing selection, not domination over organs or Aeyes."
+    },
+    {
+      "chapter": "Chapter Eighteen: The Difference Between a Garden and a Religion",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Eighteen: The Difference Between a Garden and a Religion",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Eighteen - The Difference Between a Garden and a Religion.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Difference Between a Garden and a Religion.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Interlude- The Difference Between a Garden and a Religion.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__CHAPTER_OWNERSHIP_MAP__dcbcd70d.md",
+      "proof_state": "source_locked_with_slot_conflict",
+      "must_not_claim": "Keep this as a boundary against ideology; do not let the book become a belief system."
+    },
+    {
+      "chapter": "Chapter Nineteen: The Tinkularity",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Nineteen: The Tinkularity",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Nineteen - The Tinkularity.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The Tinkularity.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/PEARL_0000_THE_TINKULARITY.md"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__genome__tinkularity_genome_v0__b4dd2d20.md",
+      "proof_state": "source_locked_with_many_variants",
+      "must_not_claim": "Tinkularity is the doctrine/model being argued, not proof that all implementation exists."
+    },
+    {
+      "chapter": "Chapter Twenty: The Test",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Twenty: The Test",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty - The Test.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty-Three- The Test.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/nerdkle_nmclr/nerdkle_nmclr__outputs__NMCLR_RESPIRATORY_RECEIPT_STANDARD__c449ecbd.md",
+      "proof_state": "source_locked_with_order_conflict",
+      "must_not_claim": "The test must be falsifiable: packet to work to artifact, intake to process to exhale, receipt to learning to future behavior."
+    },
+    {
+      "chapter": "Chapter Twenty-One: The Loop",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Twenty-One: The Loop",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty-One- The Loop.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Chapter Twenty-One- The Loop (1).docx"
+      ],
+      "architecture_support": "source-truth-plan/references/tinkerden_medulla/",
+      "proof_state": "source_locked",
+      "must_not_claim": "Do not claim loop closure without receiver receipts and observable changed behavior."
+    },
+    {
+      "chapter": "Chapter Twenty-Two: The End",
+      "primary_source": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/THE_TINKULARITY_CANONICAL_MANUSCRIPT_V5_RED_TEAM_DRAFT.md#Chapter Twenty-Two: The End",
+      "comparison_sources": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/The End.docx"
+      ],
+      "architecture_support": "source-truth-plan/references/book/book__outputs__MANUSCRIPT_V1_RELEASE_AUDIT__7d1f42c4.md",
+      "proof_state": "source_locked",
+      "must_not_claim": "Do not present Book One as release-ready until unresolved source conflicts and voice pass are resolved."
+    }
+  ],
+  "skybro_insert_candidates": [
+    {
+      "insert": "Nervous System",
+      "source_candidates": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/Skybro Neurosystem.docx",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/CHAPTER_13_THE_NERVOUS_SYSTEM_DRAFT.md",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/TO_SKYBRO_THUFIR_TECH_MAPPING_PACKET.md"
+      ],
+      "current_status": "architecture insert candidate; V5 does not currently hold it as a named chapter"
+    },
+    {
+      "insert": "Obligation of the Organs",
+      "source_candidates": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/DOCTRINE_ORGAN_OBLIGATION_LAYER.md",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/CHAPTER_DRAFT_OBLIGATION_OF_THE_ORGANS.md",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/CHANGE_CAPSULE_ORGAN_OBLIGATION_LAYER.md"
+      ],
+      "current_status": "strong source recovered; decide whether it becomes chapter, appendix, or Chapter Nineteen support"
+    },
+    {
+      "insert": "Medulla / TinkerDen",
+      "source_candidates": [
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/MEDULLA_V0_TINKERDEN_BUILD_SPEC.md",
+        "source-truth-plan/references/betsy_desktop_nerdkle_the_book/CHANGE_CAPSULE_TINKERDEN_MEDULLA_V0.md",
+        "source-truth-plan/references/tinkerden_medulla/"
+      ],
+      "current_status": "architecture support; must not be described as proven canonical command center"
+    }
+  ],
+  "next_actions": [
+    "Skybro should map Nervous System, Medulla, and Organ Obligation into existing boring technologies using TO_SKYBRO_THUFIR_TECH_MAPPING_PACKET.md.",
+    "Dink should not rewrite prose until Ben chooses whether V5 or V4 is the working editorial spine.",
+    "Swanson can verify this source lock from GitHub and hash the reference folder before any canon merge."
+  ]
+}
