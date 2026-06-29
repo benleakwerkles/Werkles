@@ -437,6 +437,11 @@ export default function SwansonRelayControl() {
   const [universalBody, setUniversalBody] = useState(
     "Return one useful status delta: what you received, what changed on your side, what is blocked, and what ThinkIt should decide next."
   );
+  const [momentum, setMomentum] = useState<JsonRecord | null>(null);
+  const [selectedMomentumLaneId, setSelectedMomentumLaneId] = useState("nerdkle");
+  const [momentumNote, setMomentumNote] = useState(
+    "Cool. Move this forward with receiver-side proof, or return the exact blocker."
+  );
   const [enderTarget, setEnderTarget] = useState("Ender.Betsy");
   const [enderInstruction, setEnderInstruction] = useState(
     "Filter this returned chapter report for what should be cut, parked, or preserved. Return a concise edit/factoring recommendation with proof gaps."
@@ -446,16 +451,36 @@ export default function SwansonRelayControl() {
     setLoading(true);
     setError(null);
     try {
-      const [contract, coverage, originReturn, threadBridge, actionableReturns, bookChapters, bookCourier] = await Promise.all([
-        readJson("/api/thinkit/swanson/thinkit/relay_merge_contract"),
-        readJson("/api/thinkit/swanson/relay/coverage"),
-        readJson("/api/thinkit/swanson/relay/origin_return"),
-        readJson("/api/thinkit/swanson/relay/thread_bridge/status?limit=12"),
-        readJson("/api/thinkit/swanson/relay/actionable_returns"),
-        readJson("/api/thinkit/swanson/book/chapters"),
-        readJson("/api/thinkit/swanson/book/courier_status?limit=12")
+      const safeRead = async (endpoint: string) => {
+        try {
+          return await readJson(endpoint);
+        } catch (readError) {
+          return {
+            ok: false,
+            status: "READBACK_BLOCKED",
+            endpoint,
+            error: readError instanceof Error ? readError.message : "Readback failed"
+          };
+        }
+      };
+      const [contract, coverage, originReturn, threadBridge, actionableReturns, bookChapters, bookCourier, momentumReadback] = await Promise.all([
+        safeRead("/api/thinkit/swanson/thinkit/relay_merge_contract"),
+        safeRead("/api/thinkit/swanson/relay/coverage"),
+        safeRead("/api/thinkit/swanson/relay/origin_return"),
+        safeRead("/api/thinkit/swanson/relay/thread_bridge/status?limit=12"),
+        safeRead("/api/thinkit/swanson/relay/actionable_returns"),
+        safeRead("/api/thinkit/swanson/book/chapters"),
+        safeRead("/api/thinkit/swanson/book/courier_status?limit=12"),
+        safeRead("/api/thinkit/momentum/next_three")
       ]);
       setSnapshot({ contract, coverage, originReturn, threadBridge, actionableReturns, bookChapters, bookCourier });
+      setMomentum(momentumReadback);
+      const blockedReadbacks = [contract, coverage, originReturn, threadBridge, actionableReturns, bookChapters, bookCourier, momentumReadback].filter(
+        (item) => asText(asRecord(item)?.status, "") === "READBACK_BLOCKED"
+      );
+      if (blockedReadbacks.length > 0) {
+        setError(`${blockedReadbacks.length} readback(s) blocked. Loaded every surface that still answered.`);
+      }
       setLastAction((current) =>
         current ?? {
           label: reason,
@@ -583,6 +608,18 @@ export default function SwansonRelayControl() {
   const targetCount = asNumber(coverageSummary?.target_count ?? valueAt(snapshot.contract, ["current_readback", "coverage_summary", "target_count"]));
   const held = asNumber(coverageSummary?.held ?? valueAt(snapshot.contract, ["current_readback", "coverage_summary", "held"]));
   const bridgeStatus = asText(actuator?.status ?? valueAt(snapshot.threadBridge, ["actuator", "status"]), "UNKNOWN");
+  const momentumLanes = useMemo(() => asArray(momentum?.lanes).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item)), [momentum]);
+  const selectedMomentumLane = useMemo(
+    () => momentumLanes.find((lane) => asText(lane.lane_id, "") === selectedMomentumLaneId) ?? momentumLanes[0] ?? null,
+    [momentumLanes, selectedMomentumLaneId]
+  );
+  const selectedMomentumMoves = useMemo(
+    () => asArray(selectedMomentumLane?.moves).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item)),
+    [selectedMomentumLane]
+  );
+  const speakerState = asRecord(valueAt(momentum, ["speaker"]));
+  const speakerSurfaces = asArray(valueAt(momentum, ["speaker", "surfaces"])).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item));
+  const recentMomentumDecisions = asArray(momentum?.recent_decisions).map((item) => asRecord(item)).filter((item): item is JsonRecord => Boolean(item));
   const latestPacket = asText(latest?.packet_id ?? latest?.relay_id, "NO_RETURN_YET");
   const latestTarget = asText(latest?.target ?? latest?.destination_label, "UNKNOWN_TARGET");
   const latestStatus = asText(latest?.packet_status ?? latest?.answer_status ?? latest?.origin_readback_status ?? latest?.status, "UNKNOWN_STATUS");
@@ -662,6 +699,12 @@ export default function SwansonRelayControl() {
   useEffect(() => {
     if (!selectedChapterId && defaultChapterId) setSelectedChapterId(defaultChapterId);
   }, [defaultChapterId, selectedChapterId]);
+
+  useEffect(() => {
+    if ((!selectedMomentumLaneId || !selectedMomentumLane) && momentumLanes[0]) {
+      setSelectedMomentumLaneId(asText(momentumLanes[0].lane_id, "nerdkle"));
+    }
+  }, [momentumLanes, selectedMomentumLane, selectedMomentumLaneId]);
 
   useEffect(() => {
     if (!selectedBookReportId && defaultBookReportId) setSelectedBookReportId(defaultBookReportId);
@@ -826,6 +869,80 @@ export default function SwansonRelayControl() {
     });
   }
 
+  async function runMomentumAction(label: string, payload: JsonRecord) {
+    setActionPending(label);
+    setError(null);
+    try {
+      const { statusCode, result } = await postJson("/api/thinkit/momentum/next_three", payload);
+      const ok = statusCode >= 200 && statusCode < 300;
+      setMomentum(result);
+      setLastAction({
+        label,
+        endpoint: "POST /api/thinkit/momentum/next_three",
+        timestamp: new Date().toISOString(),
+        ok,
+        statusCode,
+        result,
+        error: ok ? undefined : asText(result.error, "MOMENTUM_ACTION_FAILED")
+      });
+      await refresh(`${label} returned`);
+    } catch (actionError) {
+      const message = actionError instanceof Error ? actionError.message : "Momentum action failed";
+      setLastAction({
+        label,
+        endpoint: "POST /api/thinkit/momentum/next_three",
+        timestamp: new Date().toISOString(),
+        ok: false,
+        statusCode: 0,
+        result: null,
+        error: message
+      });
+      setError(message);
+    } finally {
+      setActionPending(null);
+    }
+  }
+
+  function recordMomentumDecision(lane: JsonRecord, move: JsonRecord, choice: string) {
+    return runMomentumAction(`Next Three: ${humanLabel(choice)}`, {
+      action: "DECISION",
+      lane_id: asText(lane.lane_id, ""),
+      move_id: asText(move.move_id, ""),
+      choice,
+      note: momentumNote
+    });
+  }
+
+  function dispatchMomentumMove(lane: JsonRecord, move: JsonRecord) {
+    return runAction("Send Next Three Packet", "/api/thinkit/swanson/relay/dispatch", {
+      packet_type: asText(move.packet_type, "MOMENTUM_NEXT_MOVE"),
+      target: asText(move.target, "Petra.Betsy"),
+      title: `${asText(lane.project, "Project")}: ${asText(move.title, "Next move")}`,
+      body: [
+        "MISSION: Execute or review this ThinkIt Next Three move without making Ben the courier.",
+        "",
+        `Project lane: ${asText(lane.project, "Unknown project")}`,
+        `Dashboard question: ${asText(lane.question, "Is this next move correct?")}`,
+        `Move: ${asText(move.title, "Next move")}`,
+        `Why this move: ${asText(move.why, "No why field read back.")}`,
+        "",
+        "Command:",
+        asText(move.command, "Return ACK / BLOCKER / ARTIFACT."),
+        "",
+        "Operator note:",
+        momentumNote,
+        "",
+        "Proof required:",
+        asText(move.proof_required, "Receiver-side receipt or blocker required."),
+        "",
+        "Return requirements:",
+        "1. Write RECEIVED first.",
+        "2. Return COMPLETED with an artifact/report, or BLOCKER with exact missing proof.",
+        "3. Do not call SENT success."
+      ].join("\n")
+    });
+  }
+
   function pingAeye(row: AeyeRosterRow) {
     const receiver = findReceiver(snapshot.threadBridge, row.target);
     if (!isRoutableReceiver(receiver, row)) {
@@ -976,6 +1093,155 @@ export default function SwansonRelayControl() {
           <small>decisions available / open decision cards</small>
         </button>
       </div>
+
+      <section id="thinkit-next-three-projects" className="thinkit-relay__next-three" aria-label="Next Three Projects">
+        <header>
+          <div>
+            <p className="td-bridge__eyebrow">Momentum / intention machinery</p>
+            <h3>Next Three Projects</h3>
+            <p>
+              Pick a project lane, accept, modify, kill, or send one of the proposed moves. This is the blunt instrument until Nerdkle can compute the next move
+              from richer state.
+            </p>
+          </div>
+          <button
+            type="button"
+            disabled={actionPending !== null}
+            onClick={() => void runMomentumAction("Refresh Next Three", { action: "REFRESH_NEXT_THREE", note: momentumNote })}
+          >
+            {actionPending === "Refresh Next Three" ? "Building" : "G: Build Next Three"}
+          </button>
+        </header>
+
+        <div className="thinkit-relay__momentum-layout">
+          <div className="thinkit-relay__momentum-main">
+            <div className="thinkit-relay__lane-tabs" role="tablist" aria-label="Project lanes">
+              {momentumLanes.map((lane) => {
+                const laneId = asText(lane.lane_id, "unknown");
+                const selected = laneId === asText(selectedMomentumLane?.lane_id, "");
+                return (
+                  <button
+                    key={laneId}
+                    type="button"
+                    data-selected={selected ? "true" : "false"}
+                    onClick={() => setSelectedMomentumLaneId(laneId)}
+                  >
+                    {asText(lane.project, laneId)}
+                  </button>
+                );
+              })}
+            </div>
+
+            <article className="thinkit-relay__momentum-question">
+              <header>
+                <div>
+                  <h4>{asText(selectedMomentumLane?.question, "Select a project lane.")}</h4>
+                  <p>{asText(selectedMomentumLane?.state, "No project state has been read back yet.")}</p>
+                </div>
+                <span>{asText(selectedMomentumLane?.default_mode, "Operator chooses next move.")}</span>
+              </header>
+              <label>
+                <span>Direction / modification note</span>
+                <textarea rows={3} value={momentumNote} onChange={(event) => setMomentumNote(event.target.value)} />
+              </label>
+            </article>
+
+            <div className="thinkit-relay__momentum-moves">
+              {selectedMomentumMoves.map((move, index) => (
+                <article key={asText(move.move_id, `move-${index}`)} className="thinkit-relay__momentum-card">
+                  <header>
+                    <div>
+                      <span>Move {index + 1}</span>
+                      <strong>{asText(move.title, "Untitled move")}</strong>
+                    </div>
+                    <small>{humanTargetName(asText(move.target, "Petra.Betsy"))}</small>
+                  </header>
+                  <p>{asText(move.why, "No why field read back.")}</p>
+                  <dl>
+                    <div>
+                      <dt>Command</dt>
+                      <dd>{asText(move.command, "No command read back.")}</dd>
+                    </div>
+                    <div>
+                      <dt>Proof</dt>
+                      <dd>{asText(move.proof_required, "Receiver-side receipt or blocker required.")}</dd>
+                    </div>
+                    <div>
+                      <dt>Risk</dt>
+                      <dd>{asText(move.risk, "UNKNOWN")}</dd>
+                    </div>
+                    <div>
+                      <dt>Human gate</dt>
+                      <dd>{asText(move.human_gate, "Consequence-based approval if execution changes durable state.")}</dd>
+                    </div>
+                  </dl>
+                  <div className="thinkit-relay__momentum-buttons">
+                    <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void recordMomentumDecision(selectedMomentumLane ?? {}, move, "ACCEPT")}>
+                      Accept
+                    </button>
+                    <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void recordMomentumDecision(selectedMomentumLane ?? {}, move, "MODIFY")}>
+                      Modify
+                    </button>
+                    <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void recordMomentumDecision(selectedMomentumLane ?? {}, move, "KILL")}>
+                      Kill
+                    </button>
+                    <button type="button" disabled={actionPending !== null || !selectedMomentumLane} onClick={() => void dispatchMomentumMove(selectedMomentumLane ?? {}, move)}>
+                      {actionPending === "Send Next Three Packet" ? "Sending" : "Send Packet"}
+                    </button>
+                  </div>
+                </article>
+              ))}
+              {selectedMomentumMoves.length === 0 ? <p>No Next Three moves read back for this lane yet.</p> : null}
+            </div>
+          </div>
+
+          <aside className="thinkit-relay__speaker-readback" aria-label="Speaker and Brainboot memory readback">
+            <header>
+              <div>
+                <p className="td-bridge__eyebrow">Speaker / Brainboot</p>
+                <h4>Where memory is hiding</h4>
+              </div>
+              <span>{asText(speakerState?.status, "UNKNOWN")}</span>
+            </header>
+            <p>{asText(speakerState?.memory_answer, "Speaker readback has not loaded yet.")}</p>
+            <p>{asText(speakerState?.brainboot_rule, "Brainboot proof rule has not loaded yet.")}</p>
+            <div className="thinkit-relay__speaker-surfaces">
+              {speakerSurfaces.slice(0, 9).map((surface) => (
+                <article key={asText(surface.label, asText(surface.path, ""))} data-exists={surface.exists === true ? "true" : "false"}>
+                  <strong>{humanLabel(surface.label, "Surface")}</strong>
+                  <small>{asText(surface.path, "No path")}</small>
+                  <span>
+                    {surface.exists === true
+                      ? `${asText(surface.kind, "path")} / ${asText(surface.modified_at, "no timestamp")}`
+                      : `missing / ${asText(surface.error, "no error read back")}`}
+                  </span>
+                </article>
+              ))}
+            </div>
+            <div className="thinkit-relay__speaker-buttons">
+              <button
+                type="button"
+                disabled={actionPending !== null}
+                onClick={() => void runAction("Brainboot Aeyes", "/api/thinkit/swanson/action/brainboot_dispatch", { targets: ["Skybro.Betsy", "Petra.Betsy"] })}
+              >
+                {actionPending === "Brainboot Aeyes" ? "Sending" : "Brainboot Aeyes"}
+              </button>
+              <button type="button" disabled={actionPending !== null} onClick={() => void refresh("Speaker state refreshed")}>
+                Refresh Speaker Readback
+              </button>
+            </div>
+            <div className="thinkit-relay__momentum-recent">
+              <strong>Recent choices</strong>
+              {recentMomentumDecisions.slice(0, 4).map((decision) => (
+                <p key={asText(decision.decision_id, asText(decision.created_at, ""))}>
+                  {asText(decision.project, "Project")} / {humanLabel(decision.choice, "Choice")} / {asText(decision.move_title, "Move")}
+                </p>
+              ))}
+              {recentMomentumDecisions.length === 0 ? <p>No Next Three choices recorded yet.</p> : null}
+            </div>
+          </aside>
+        </div>
+      </section>
 
       <section id="thinkit-incoming-work" className="thinkit-relay__incoming" aria-label="Incoming work and replies">
         <header>

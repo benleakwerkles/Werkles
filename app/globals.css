@@ -2498,6 +2498,7 @@ main .proof-warning.proof-boundary .workshop-band {
 }
 
 .thinkit-relay__metric-card,
+.thinkit-relay__next-three,
 .thinkit-relay__coverage,
 .thinkit-relay__book,
 .thinkit-relay__bridge-panel,
@@ -2544,6 +2545,172 @@ main .proof-warning.proof-boundary .workshop-band {
   font-size: 1.34rem;
   line-height: 1.05;
   overflow-wrap: anywhere;
+}
+
+.thinkit-relay__next-three {
+  display: grid;
+  gap: 14px;
+  border-color: rgba(2, 145, 126, 0.24);
+  background: rgba(255, 253, 248, 0.9);
+}
+
+.thinkit-relay__next-three > header,
+.thinkit-relay__momentum-question > header,
+.thinkit-relay__speaker-readback > header,
+.thinkit-relay__momentum-card > header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.thinkit-relay__next-three h3,
+.thinkit-relay__next-three h4 {
+  margin: 0;
+  color: #211a16;
+}
+
+.thinkit-relay__next-three p {
+  margin: 6px 0 0;
+  color: #4d3e32;
+  line-height: 1.48;
+}
+
+.thinkit-relay__momentum-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.thinkit-relay__momentum-main,
+.thinkit-relay__speaker-readback {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.thinkit-relay__lane-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.thinkit-relay__lane-tabs button {
+  min-height: 44px;
+  border-color: rgba(112, 73, 38, 0.2);
+  background: rgba(255, 255, 255, 0.72);
+  color: #4d3e32;
+}
+
+.thinkit-relay__lane-tabs button[data-selected="true"] {
+  border-color: rgba(2, 145, 126, 0.46);
+  background: rgba(24, 197, 174, 0.16);
+  color: #014b42;
+}
+
+.thinkit-relay__momentum-question,
+.thinkit-relay__momentum-card,
+.thinkit-relay__speaker-readback,
+.thinkit-relay__speaker-surfaces article,
+.thinkit-relay__momentum-recent {
+  min-width: 0;
+  border: 1px solid rgba(112, 73, 38, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 12px;
+}
+
+.thinkit-relay__momentum-question header span,
+.thinkit-relay__speaker-readback header span,
+.thinkit-relay__momentum-card header small {
+  border: 1px solid rgba(2, 145, 126, 0.22);
+  border-radius: 999px;
+  background: rgba(24, 197, 174, 0.1);
+  padding: 5px 8px;
+  color: #015e51;
+  font-size: 0.68rem;
+  font-weight: 950;
+}
+
+.thinkit-relay__momentum-moves {
+  display: grid;
+  gap: 10px;
+}
+
+.thinkit-relay__momentum-card > header span {
+  display: block;
+  color: #866c52;
+  font-size: 0.7rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.thinkit-relay__momentum-card > header strong {
+  display: block;
+  margin-top: 2px;
+  color: #211a16;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.thinkit-relay__momentum-card dl {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.thinkit-relay__momentum-buttons,
+.thinkit-relay__speaker-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.thinkit-relay__speaker-buttons {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.thinkit-relay__speaker-surfaces {
+  display: grid;
+  gap: 8px;
+}
+
+.thinkit-relay__speaker-surfaces article {
+  padding: 9px;
+}
+
+.thinkit-relay__speaker-surfaces article[data-exists="false"] {
+  border-color: rgba(170, 48, 48, 0.28);
+  background: rgba(170, 48, 48, 0.08);
+}
+
+.thinkit-relay__speaker-surfaces strong,
+.thinkit-relay__speaker-surfaces small,
+.thinkit-relay__speaker-surfaces span,
+.thinkit-relay__momentum-recent strong,
+.thinkit-relay__momentum-recent p {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.thinkit-relay__speaker-surfaces strong,
+.thinkit-relay__momentum-recent strong {
+  color: #211a16;
+  font-size: 0.78rem;
+}
+
+.thinkit-relay__speaker-surfaces small {
+  margin-top: 3px;
+  color: #6b5845;
+  font-size: 0.68rem;
+}
+
+.thinkit-relay__speaker-surfaces span,
+.thinkit-relay__momentum-recent p {
+  margin-top: 4px;
+  color: #4d3e32;
+  font-size: 0.72rem;
+  line-height: 1.35;
 }
 
 .thinkit-relay__bridge-panel,
@@ -3491,6 +3658,11 @@ main .proof-warning.proof-boundary .workshop-band {
   .thinkit-relay__change-readback,
   .thinkit-relay__incoming-grid,
   .thinkit-relay__incoming-buttons,
+  .thinkit-relay__momentum-layout,
+  .thinkit-relay__lane-tabs,
+  .thinkit-relay__momentum-card dl,
+  .thinkit-relay__momentum-buttons,
+  .thinkit-relay__speaker-buttons,
   .thinkit-relay__operator,
   .thinkit-relay__ender-form,
   .thinkit-relay__ender-buttons,

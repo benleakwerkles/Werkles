@@ -1,0 +1,9 @@
+{
+  "schema": "thinkit_momentum_state_v0",
+  "updated_at": "2026-06-29T03:40:42.185Z",
+  "note": "Cool. Move this forward with receiver-side proof, or return the exact blocker.",
+  "source_state_path": "C:\\wt\\stbook\\data\\thinkit\\next_three_projects.json",
+  "decisions_path": "C:\\wt\\stbook\\data\\thinkit\\next_three_decisions.jsonl",
+  "speaker_root": "C:\\speaker",
+  "lane_count": 4
+}

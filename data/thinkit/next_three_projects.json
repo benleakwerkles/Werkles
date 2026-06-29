@@ -1,0 +1,175 @@
+{
+  "schema": "thinkit_next_three_projects_v0",
+  "updated_at": "2026-06-29T00:00:00.000Z",
+  "principle": "Blunt instrument until Nerdkle catches up: propose three useful next commands per project lane, let Ben accept, modify, kill, or dispatch with one button.",
+  "lanes": [
+    {
+      "lane_id": "werkles",
+      "project": "Werkles",
+      "question": "This is what we were thinking of doing at Werkles, cool?",
+      "state": "ThinkIt relay and command dash are merged locally; next work is operability, merge hygiene, and proof clarity.",
+      "default_mode": "Operator chooses one move, ThinkIt routes the packet, receiver must return proof.",
+      "moves": [
+        {
+          "move_id": "werkles_001_operability_sweep",
+          "title": "Run a ThinkIt operability sweep before the next merge.",
+          "target": "Petra.Betsy",
+          "packet_type": "WERKLES_OPERABILITY_SWEEP",
+          "why": "The dashboard has repeatedly looked alive while buttons or receiver proof were broken. A short sweep catches fake-success before main.",
+          "command": "Verify the current ThinkIt dashboard buttons that create packets, receive returns, and record decisions. Return PASS/BLOCKER by lane.",
+          "proof_required": "Button tested, endpoint called, durable packet or decision log path, and one receiver-side receipt or explicit blocker.",
+          "risk": "LOW",
+          "human_gate": "Ben approves merge/push only after receipt readback."
+        },
+        {
+          "move_id": "werkles_002_merge_blocker_list",
+          "title": "Create the next merge blocker list.",
+          "target": "Petra.Betsy",
+          "packet_type": "WERKLES_MERGE_BLOCKER_LIST",
+          "why": "Werkles keeps splitting into useful islands. The next main push needs a tiny blocker list instead of broad confidence.",
+          "command": "Name the top three blockers to pushing the current ThinkIt state to main, with exact file or route proof.",
+          "proof_required": "Three blockers or explicit GO, each tied to a file, endpoint, or missing receipt.",
+          "risk": "MEDIUM",
+          "human_gate": "Any push to main remains Operator-approved."
+        },
+        {
+          "move_id": "werkles_003_dashboard_plain_language",
+          "title": "Make the dashboard explain what each action advances.",
+          "target": "Skybro.Betsy",
+          "packet_type": "WERKLES_DASHBOARD_LANGUAGE_REVIEW",
+          "why": "Ben needs the dashboard to answer what this does, what changed, and what decision is next without decoding system labels.",
+          "command": "Review ThinkIt labels and return a plain-English replacement map for confusing controls.",
+          "proof_required": "Replacement copy mapped to current sections and a warning if any button is still unclear or unwired.",
+          "risk": "LOW",
+          "human_gate": "Ben accepts copy changes before UI churn."
+        }
+      ]
+    },
+    {
+      "lane_id": "kind_sir",
+      "project": "Kind Sir",
+      "question": "This is what we are doing at Kind Sir, cool?",
+      "state": "Kind Sir needs a clean bridge from book/manuscript thinking into a business/product lane without becoming PM software.",
+      "default_mode": "Use Aeyes to extract one useful product/book move at a time.",
+      "moves": [
+        {
+          "move_id": "kind_sir_001_source_packet",
+          "title": "Extract the first Kind Sir source packet.",
+          "target": "Skybro.Betsy",
+          "packet_type": "KIND_SIR_SOURCE_PACKET",
+          "why": "The lane needs one source-backed artifact to stop floating as a vibe.",
+          "command": "Find or propose the first Kind Sir source packet from current book/source-truth material and say what it helps decide.",
+          "proof_required": "Source path or explicit source gap, one proposed artifact, and next decision.",
+          "risk": "LOW",
+          "human_gate": "Ben chooses whether Kind Sir gets active build attention today."
+        },
+        {
+          "move_id": "kind_sir_002_offer_gate",
+          "title": "Define the first offer gate.",
+          "target": "Petra.Betsy",
+          "packet_type": "KIND_SIR_OFFER_GATE",
+          "why": "Kind Sir should convert into a concrete yes/no decision instead of another sprawling idea stack.",
+          "command": "Return the smallest Kind Sir offer/positioning gate Ben can approve, modify, or kill.",
+          "proof_required": "One offer sentence, one target audience guess, one explicit kill condition.",
+          "risk": "MEDIUM",
+          "human_gate": "Ben approves any external-facing offer language."
+        },
+        {
+          "move_id": "kind_sir_003_next_revenue_move",
+          "title": "Name the next useful revenue/clarity move.",
+          "target": "Skybro.Betsy",
+          "packet_type": "KIND_SIR_NEXT_REVENUE_MOVE",
+          "why": "The lane needs a next move that improves real-world clarity, not internal architecture complexity.",
+          "command": "Give three candidate Kind Sir moves and recommend one with the fastest proof of usefulness.",
+          "proof_required": "Three candidates, one recommendation, one test Ben can accept or reject.",
+          "risk": "LOW",
+          "human_gate": "Ben selects the move before execution."
+        }
+      ]
+    },
+    {
+      "lane_id": "nerdkle",
+      "project": "Nerdkle",
+      "question": "This is what we are building at Nerdkle, cool?",
+      "state": "Nerdkle currently has relay proof, book source truth, and Speaker substrate pieces; next work is shared memory, receiver coverage, and Brainboot discipline.",
+      "default_mode": "Keep building relay/memory proof until all Aeyes can boot from shared state and answer back.",
+      "moves": [
+        {
+          "move_id": "nerdkle_001_brainboot_state",
+          "title": "Brainboot current state into reachable Aeyes.",
+          "target": "Petra.Betsy",
+          "packet_type": "NERDKLE_BRAINBOOT_STATE_CHECK",
+          "why": "The anti-mule core is shared starting memory. Petra should verify what Speaker thinks the current state is.",
+          "command": "Read the current Speaker/Brainboot state and return what the Aeyes should know at session start.",
+          "proof_required": "Bootpack path, Speaker path, readback timestamp, and any stale or missing state.",
+          "risk": "LOW",
+          "human_gate": "None for readback; Ben gates any canonical memory rewrite."
+        },
+        {
+          "move_id": "nerdkle_002_book_architecture_map",
+          "title": "Turn the raw Nerdkle book folder into an architecture writing map.",
+          "target": "Skybro.Betsy",
+          "packet_type": "NERDKLE_BOOK_ARCHITECTURE_MAP",
+          "why": "The book source exists now, but the project still needs a readable map from chapters to build architecture.",
+          "command": "Use the GitHub book source folder and return the next three chapters or architecture slices to work.",
+          "proof_required": "Repo URL, folder path, three chapter/slice candidates, and one recommended next writing packet.",
+          "risk": "MEDIUM",
+          "human_gate": "Ben chooses the next chapter/slice."
+        },
+        {
+          "move_id": "nerdkle_003_receiver_roster",
+          "title": "Close receiver coverage gaps across the Aeye roster.",
+          "target": "Petra.Betsy",
+          "packet_type": "NERDKLE_RECEIVER_ROSTER_GAP_CHECK",
+          "why": "ThinkIt cannot become command center if unwired Aeyes are invisible or fake-routed.",
+          "command": "Compare the known Aeye roster to current relay coverage and return a setup packet list for missing receivers.",
+          "proof_required": "Known targets, wired targets, held targets, missing targets, and one next setup packet.",
+          "risk": "MEDIUM",
+          "human_gate": "Ben gates creation of new external/user-owned threads."
+        }
+      ]
+    },
+    {
+      "lane_id": "oddly_godly",
+      "project": "Oddly Godly on Spanzee",
+      "question": "Here is what the guys are up to at Oddly Godly on Spanzee, cool?",
+      "state": "Oddly Godly should become AUTO G only after Spanzee command lines and receiver proof are mapped.",
+      "default_mode": "For now, route setup and proof packets through reachable receivers; do not pretend Spanzee is autonomous until proven.",
+      "moves": [
+        {
+          "move_id": "oddly_godly_001_spanzee_route",
+          "title": "Map the Spanzee command route before AUTO G.",
+          "target": "Petra.Betsy",
+          "packet_type": "ODDLY_GODLY_SPANZEE_ROUTE_MAP",
+          "why": "Oddly Godly cannot go auto if ThinkIt does not know the actual receiver surface and command line.",
+          "command": "Return the Spanzee receiver path, command-line path if known, and the blocker if not known.",
+          "proof_required": "Receiver path or BLOCKER, command path or BLOCKER, and whether Ben is required.",
+          "risk": "MEDIUM",
+          "human_gate": "Ben gates remote access setup if Spanzee is not already reachable."
+        },
+        {
+          "move_id": "oddly_godly_002_work_packet",
+          "title": "Draft the first Oddly Godly work packet.",
+          "target": "Skybro.Betsy",
+          "packet_type": "ODDLY_GODLY_FIRST_WORK_PACKET",
+          "why": "Once Spanzee is reachable, it should receive a clean packet instead of Ben reconstructing context.",
+          "command": "Draft a first Oddly Godly packet with context, owner, next action, evidence required, and failure condition.",
+          "proof_required": "Packet text plus destination assumptions and any missing proof.",
+          "risk": "LOW",
+          "human_gate": "Ben approves before sending to Spanzee."
+        },
+        {
+          "move_id": "oddly_godly_003_auto_g_boundary",
+          "title": "Define the AUTO G boundary for Oddly Godly.",
+          "target": "Petra.Betsy",
+          "packet_type": "ODDLY_GODLY_AUTO_G_BOUNDARY",
+          "why": "Auto work should start only when command lines, receiver, return proof, and stop conditions exist.",
+          "command": "Return the exact conditions that must be true before Oddly Godly can run AUTO G on Spanzee.",
+          "proof_required": "Checklist with GO/PARTIAL/NO-GO and proof gap per item.",
+          "risk": "HIGH",
+          "human_gate": "AUTO G activation is Operator-approved."
+        }
+      ]
+    }
+  ]
+}
