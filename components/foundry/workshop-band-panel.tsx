@@ -8,6 +8,8 @@ type WorkshopBandPanelProps = {
   tone: WorkshopBandTone;
   className?: string;
   layout?: WorkshopBandLayout;
+  /** When false, warm paper panel only — no drift background plate. */
+  atmosphere?: boolean;
   children: ReactNode;
   style?: CSSProperties;
 };
@@ -16,6 +18,7 @@ export function WorkshopBandPanel({
   tone,
   className = "",
   layout = "panel",
+  atmosphere = true,
   children,
   style
 }: WorkshopBandPanelProps) {
@@ -24,13 +27,17 @@ export function WorkshopBandPanel({
     `workshop-band--${tone}`,
     layout === "bare" ? "workshop-band--bare" : "",
     layout === "split" ? "workshop-band--split" : "",
+    !atmosphere ? "workshop-band--no-atmosphere" : "",
     className
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <div className={bandClass} style={{ ...workshopBandImageStyle(tone), ...style }}>
+    <div
+      className={bandClass}
+      style={{ ...(atmosphere ? workshopBandImageStyle(tone) : undefined), ...style }}
+    >
       {layout === "bare" ? children : <div className="workshop-band__panel">{children}</div>}
     </div>
   );

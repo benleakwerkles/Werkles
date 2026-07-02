@@ -1,0 +1,18 @@
+{
+  "template": "HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST",
+  "startedAt": "2026-06-06T04:35:49.578Z",
+  "finishedAt": "2026-06-06T04:38:03.593Z",
+  "status": "PASS",
+  "cousinsAttempted": 1,
+  "anyReceiptCaptured": true,
+  "results": [
+    {
+      "cousin": "ENDER",
+      "status": "PASS",
+      "failureKind": null,
+      "inboxResponse": "foreman\\handoffs\\inbox\\FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md",
+      "processedReceipt": "foreman\\handoffs\\inbox\\processed\\2026-06-06T04-38-03-576Z__FROM_ENDER_HOMEPAGE_REWRITE_DISCOVERY_SMOKE_TEST_20260606-043803.md",
+      "proof": "foreman/crew-dispatch/HOMEPAGE_REWRITE_DISCOVERY_SMOKE_ENDER.json"
+    }
+  ]
+}

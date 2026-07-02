@@ -1,0 +1,64 @@
+﻿{
+    "completed_at":  "2026-06-06T21:34:58.5816464Z",
+    "gate":  "RESUME_GATE_05_LIMITED_RENDER",
+    "run_id":  "HOMEPAGE_NARRATIVE_V1_20260606-173458",
+    "total_estimated_cost_usd":  1.4,
+    "results":  [
+                    {
+                        "shot_id":  "spark-c01-kitchen-table",
+                        "status":  "completed",
+                        "batch_id":  "4418227f-c008-4265-8b0b-8c92494fef7f",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-spark-c01-kitchen-table.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "4418227f-c008-4265-8b0b-8c92494fef7f/hero-background/9fd2ba0c-3248-4033-bf02-af63828d26a6.png"
+                    },
+                    {
+                        "shot_id":  "space-d01-before-opening",
+                        "status":  "completed",
+                        "batch_id":  "74bce72d-3412-4e22-a16d-abe88ba32efe",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-space-d01-before-opening.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "74bce72d-3412-4e22-a16d-abe88ba32efe/hero-background/b4bf4d93-e166-4b27-a478-dcf15a8daadc.png"
+                    },
+                    {
+                        "shot_id":  "spark-c02-before-the-day",
+                        "status":  "completed",
+                        "batch_id":  "b8a57cf3-226f-49c8-923a-4a6b4a95cd35",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-spark-c02-before-the-day.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "b8a57cf3-226f-49c8-923a-4a6b4a95cd35/hero-background/f14bf68c-ce8c-4178-a7c0-ae761e08eeb9.png"
+                    },
+                    {
+                        "shot_id":  "space-d02-half-built",
+                        "status":  "completed",
+                        "batch_id":  "603e5135-939c-4c0a-a938-96c959d261ab",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-space-d02-half-built.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "603e5135-939c-4c0a-a938-96c959d261ab/hero-background/de6e13d0-83a0-4aa8-8073-d82656c20b74.png"
+                    },
+                    {
+                        "shot_id":  "forge-a03-half-built-pair",
+                        "status":  "completed",
+                        "batch_id":  "c4d9860a-76f8-40c8-88ac-1f7934bd4ca6",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-forge-a03-half-built-pair.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "c4d9860a-76f8-40c8-88ac-1f7934bd4ca6/hero-background/b329fa2c-4baf-4196-af54-9a5f69bba455.png"
+                    },
+                    {
+                        "shot_id":  "foundry-b01-shop-floor",
+                        "status":  "completed",
+                        "batch_id":  "449817d7-1330-47af-9b6e-20835f4e0228",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-foundry-b01-shop-floor.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "449817d7-1330-47af-9b6e-20835f4e0228/hero-background/12fb1ed3-f83a-47c0-9cb6-9a4408d9b3ad.png"
+                    },
+                    {
+                        "shot_id":  "foundry-b02-finished-product",
+                        "status":  "completed",
+                        "batch_id":  "50d604a3-3665-4b10-ad25-881fefde374f",
+                        "path":  "public/assets/draft/homepage-narrative-v1/werkles-homepage-narrative-foundry-b02-finished-product.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "50d604a3-3665-4b10-ad25-881fefde374f/hero-background/ad8551e6-fcc4-48cc-9dbd-39f93f86c1d0.png"
+                    }
+                ]
+}

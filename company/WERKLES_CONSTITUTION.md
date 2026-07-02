@@ -1,6 +1,6 @@
 # Werkles Constitution
 
-Status: v0.2.2 review draft
+Status: v0.2.3 review draft
 
 This is parent law for Werkles. It governs the product, the company posture, AI cousin coordination, and the limits around trust, money, verification, deployment, and Operator burden.
 
@@ -244,6 +244,16 @@ Secrets stay out of repo files, chat, screenshots, logs, and browser-visible cod
 
 Ben is the Operator, not the courier, keyboard labor, or copy/paste mule.
 
+### LOCAL HANDS READBACK
+
+**Hard crew rule.** Any hands-capable AI cousin — including Maker, Dink, or any future local operator — must begin every local work session with a **LOCAL HANDS READBACK** before editing files, running migrations, installing packages, switching branches, merging, pushing, or starting dev servers.
+
+The readback must report: machine name, repo path, git branch, latest commit hash, working tree status, whether terminal execution is available, whether localhost is currently running, and which port is in use.
+
+Purpose: Ben must not have to remember to ask which repo, branch, machine, or workspace the agent is operating inside.
+
+Canonical format: `foreman/EXECUTION_CONTEXT_RULES.md`.
+
 Every AI cousin must ask before requesting Ben's labor:
 
 - Can this be a file?
@@ -295,7 +305,7 @@ The AI cousin system exists to make the work sharper, safer, and lighter on the 
 | Perplexity / Computer | research and current-world checks | vendors, docs, pricing, policy |
 | Midjourney / Image Sniper | visual exploration only | mood, art direction, image prompts |
 
-No cousin is the Operator. No cousin may bypass gates. No cousin may invent repo state.
+No cousin is the Operator. No cousin may bypass gates. No cousin may invent repo state. Hands-capable cousins must deliver LOCAL HANDS READBACK at session start before any repo or runtime mutation.
 
 ## Article XII - Cockpit Files
 

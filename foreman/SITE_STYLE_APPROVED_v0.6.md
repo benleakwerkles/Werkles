@@ -17,7 +17,8 @@ Implementation: `app/globals.css`, `lib/design-tokens.ts` (v0.6), `lib/workshop-
 - Individual Ghost Forge PNGs remain **draft/review** until replaced or explicitly signed off per asset
 - Tier 3 icon artwork will supersede SVG fallbacks when batch lands
 - `lib/copy.ts` — Ben may still patch voice line-by-line
+- **People / formation imagery** — see `foreman/IMAGERY_DIRECTION.md` and `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` (Gate 05 **PAUSE**; transformation via props/cards, not morphing)
 
 ## Not approved in this gate
 
-- Push, deploy, SQL, live Stripe portal, Bellows runs
+- Push, deploy, SQL, live Stripe portal, Education Forge live runs

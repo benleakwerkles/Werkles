@@ -1,0 +1,20 @@
+[AEYE RELAY — ROLE_AWARENESS_SYNC v0.1]
+
+Computer (Perplexity, Edge tab 5):
+
+You are receiving the **first network command** on the Werkles Aeye Edge relay.
+
+COMMAND: ROLE_AWARENESS_SYNC
+PACKET: TO_COMPUTER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260607-1747.md
+YOUR LANE: Synthesis, current-world checks, cited research — not unsourced deploy decisions.
+RELAY JOB: Acknowledge research lane; cite sources; stop before issuing new doctrine without Ben.
+
+STOP BEFORE SEND — Ben pasted this manually.
+
+Reply with ROLE_ACK using FROM_COMPUTER_* and required relay metadata fields:
+- VERDICT: ROLE_ACK — lane understood
+- CONFIDENCE: HIGH | LOW
+- UNKNOWNS: none | list
+- Copy nextActionHash from full packet metadata (open TO_COMPUTER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260607-1747.md on Sally if needed)
+
+Full packet on Sally: foreman/handoffs/outbox/TO_COMPUTER_RELAY_ROLE_AWARENESS_SYNC_v0.1_20260607-1747.md

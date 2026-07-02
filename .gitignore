@@ -7,6 +7,42 @@ werkles-site.zip
 netlify.toml
 server.log
 server.err.log
+logs/
+
+# Env — keep tracked examples
 .env
-.env.local
+.env.*
+!.env.example
+
+# Local overrides
+*.local
+
+# Foreman runtime / operator noise (quarantine — do not commit)
+foreman/.edge-aeye-crew-profile/
+foreman/.edge-playwright-autonomous-sandbox/
+foreman/**/.local_token
+foreman/control-panel/foreman-control.pid
+foreman/**/*.log
+foreman/**/*.png
+foreman/**/debug/
+foreman/**/tmp/
+
+# Local scratch
+sandbox/
+.cursor/
+
+# Ghost Forge import scratch (Cursor workspace paths — not repo assets)
+public/assets/draft/ghost-forge/_import/
+
+# Finance import inbox — raw CSV/PDF exports (may contain sensitive rows)
+foreman/finance/imports/inbox/**
+!foreman/finance/imports/inbox/.gitkeep
+foreman/finance/staging/
+
+
+# Dispatch console runtime snapshots (regenerated locally)
+foreman/crew-dispatch-console/DISPATCH_DASHBOARD.json
+foreman/crew-dispatch-console/LATEST_DISPATCH.json
+foreman/crew-dispatch-console/dashboard.html
+
 supabase/.temp

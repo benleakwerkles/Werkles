@@ -1,0 +1,31 @@
+﻿{
+    "run_id":  "RENDER_BATCH_7_20260607-160445",
+    "results":  [
+                    {
+                        "shot_id":  "forge-e01-garage-prototype-pair",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\tier2-forge-v1\\werkles-tier2-forge-e01-garage-prototype-pair.png"
+                    },
+                    {
+                        "shot_id":  "forge-e02-counter-service-launch",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\tier2-forge-v1\\werkles-tier2-forge-e02-counter-service-launch.png"
+                    },
+                    {
+                        "shot_id":  "forge-e03-small-product-bench",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\tier2-forge-v1\\werkles-tier2-forge-e03-small-product-bench.png"
+                    },
+                    {
+                        "shot_id":  "forge-e04-plan-table-tight",
+                        "status":  "dry_run",
+                        "path":  "C:\\Users\\benle\\Desktop\\github\\Werkles\\public\\assets\\draft\\tier2-forge-v1\\werkles-tier2-forge-e04-plan-table-tight.png"
+                    }
+                ],
+    "total_estimated_cost_usd":  0,
+    "gate":  "RENDER_BATCH_7_OPERATOR_GO",
+    "operator_phrase":  "tier-2 Act III Forge beats",
+    "completed_at":  "2026-06-07T20:04:45.9530034Z",
+    "completed_count":  0,
+    "shot_count":  4
+}

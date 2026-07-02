@@ -2,6 +2,10 @@
 
 Status: **APPROVED DIRECTION** — Ben 2026-05-28 (`one batch direction`). Execute Tier 3 icons first, then atmosphere upgrades. Mixed-facet workshop energy per `foreman/SITE_STYLE_APPROVED_v0.6.md` — not heavy industrial forge only.
 
+**Gate 05 / Ghost Forge: PAUSE** — do not execute batch prompts until separately approved. Active product gate: APP_INFRA-01.
+
+**People / formation imagery:** see `foreman/IMAGERY_DIRECTION.md` and `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` — transformation via props/cards, **not** morphing.
+
 Prior batch: `DRAFT_SITE_ASSET_BATCH_v0.1.md` (2 of 10 atmosphere plates landed)
 
 Purpose: Itemized Ghost Forge / Ideogram prompt manifest for atmosphere, wonder, and micro UI assets. Cursor owns this list; Codex Foreman executes generation one image at a time.
@@ -34,7 +38,9 @@ Suggested budget envelope for v0.2 atmosphere + icons (Foreman to confirm agains
 
 ## Global negative prompt (append to every Ghost Forge request)
 
-`readable text, letters, numbers, watermark, logo, stock photo smile, handshake cliché, pastel SaaS, crypto, fantasy portal, candy wonderland, cluttered cyberpunk, neon overload, pure white background, cartoon mascot`
+`readable text, letters, numbers, watermark, logo, stock photo smile, handshake cliché, pastel SaaS, crypto, fantasy portal, candy wonderland, cluttered cyberpunk, neon overload, pure white background, cartoon mascot, magical morphing, face morph, body transform, movie poster ensemble, celebrity likeness, copyrighted character, banking stock photo, guru on stage, melodramatic victory pose`
+
+**People prompts:** also append blocks from `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` when that tier is approved.
 
 ---
 

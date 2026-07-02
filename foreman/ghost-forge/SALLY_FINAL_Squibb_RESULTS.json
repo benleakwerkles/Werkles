@@ -1,0 +1,39 @@
+﻿{
+    "run_id":  "SALLY_FINAL_Squibb_20260610-182659",
+    "results":  [
+                    {
+                        "shot_id":  "squibb-classy-bust-neutral",
+                        "status":  "completed",
+                        "batch_id":  "c83a58b3-78d2-4f27-ad31-6ccc87d64152",
+                        "path":  "public/assets/draft/squibb-classy-v2/werkles-squibb-classy-bust-neutral-v2.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "squibb-classy-workshop-host",
+                        "status":  "completed",
+                        "batch_id":  "edaa23c7-ec1c-4fa2-82a7-5ef68d08a536",
+                        "path":  "public/assets/draft/squibb-classy-v2/werkles-squibb-classy-workshop-host-v2.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "squibb-classy-owl-profile",
+                        "status":  "completed",
+                        "batch_id":  "85dc928b-3d23-42c9-bd1e-a2a037ffb62c",
+                        "path":  "public/assets/draft/squibb-classy-v2/werkles-squibb-classy-profile-v2.png",
+                        "estimated_cost_usd":  0.2
+                    },
+                    {
+                        "shot_id":  "squibb-classy-scout-point",
+                        "status":  "completed",
+                        "batch_id":  "51dfe335-ad9e-408d-b75a-00f8d3eb0c0d",
+                        "path":  "public/assets/draft/squibb-classy-v2/werkles-squibb-classy-scout-point-v2.png",
+                        "estimated_cost_usd":  0.2
+                    }
+                ],
+    "run":  "Squibb",
+    "total_estimated_cost_usd":  0.8,
+    "gate":  "SALLY_FINAL_ANYONE_OPERATOR_GO",
+    "completed_at":  "2026-06-10T22:26:59.0671287Z",
+    "completed_count":  4,
+    "shot_count":  4
+}

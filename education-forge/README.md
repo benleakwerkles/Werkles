@@ -1,17 +1,21 @@
 # Education Forge
 
-Education Forge is the text-only staging area for Learning Corner curriculum drafts.
+> **Deprecated naming:** this document used Bellows to mean autonomous text worker. Current naming: Bellows is the learning area; background content worker should be called Education Forge / Curriculum Forge / Content Forge.
 
-Learning Corner is the Werkles education and tutorial area where Werklers learn anti-guru, de-gating, practical operator, business, and financial material. It may eventually connect to SOPs, templates, and practical paid docs, but this scaffold does not publish content or touch production pages.
+Education Forge is the **internal** text-only worker for curriculum drafts destined for the **Bellows** learning surface (`/bellows`).
 
-Squibb is the small Steampunk Owl / AI Foreman helper. Squibb is a helpful guide and anti-guru bullshit detector, not a giant mascot, not Clippy, not a cartoon chatbot, and not a sales character.
+**Bellows** is the public learning product surface at `/bellows` — where Werklers learn anti-guru, de-gating, practical operator, business, and financial material, plus SOPs and templates. See `foreman/SITE_MAP.md`.
+
+**Squibb** is the guide/host inside Bellows — helpful, reality-checking, never snide, not a sales character.
+
+Education Forge may eventually feed Bellows content after human review, but this scaffold does not publish content or touch production pages.
 
 ## Scope
 
 This scaffold may write only to:
 
 - `content/education/drafts/`
-- `foreman/bellows-output/`
+- `foreman/education-forge-output/`
 - `education-forge/`
 
 It must not write directly to:
@@ -24,11 +28,11 @@ It must not write directly to:
 
 ## Hard Stops
 
-- Do not publish Learning Corner content.
+- Do not publish Bellows content to `/bellows` or other live routes.
 - Do not deploy.
 - Do not push.
 - Do not enter or print secrets.
-- Do not run full Bellows.
+- Do not run Education Forge live without Operator gate.
 - Do not run indefinitely.
 - Do not create live Stripe products.
 - Do not apply SQL from this lane.
@@ -42,5 +46,4 @@ It must not write directly to:
 
 ## Output Standard
 
-Drafts must be original explanations with source links and a clear educational disclaimer. No financial, legal, tax, or investment advice. Human review is required before publishing.
-
+Drafts must be original explanations with source links and a clear educational disclaimer. No financial, legal, tax, or investment advice. Human review is required before publishing to Bellows.

@@ -39,3 +39,15 @@ It writes:
 
 - `foreman/speaker/SPEAKER_SOURCE_TRUTH_MIRROR.json`
 - `foreman/speaker/entries/DRAFT_YYYYMMDD-github-source-truth-is-canon.md`
+
+## Preserved Cleanup Lineage
+
+The Doss cleanup slice also preserved older Speaker constitutional language:
+
+- Speaker is independent from GD routing.
+- Speaker preserves causal memory, founder intent, lessons learned, institutional wisdom, and compression-loss warnings.
+- GD may request Speaker context, but may not overwrite Speaker doctrine, suppress Speaker warnings, mark entries canonical, or absorb Speaker into a GD submodule.
+- Speaker panels are windows into Speaker, not owners of Speaker.
+- Superseded entries are retained instead of deleted.
+
+These notes remain subordinate to the current source-truth rule above: Speaker advises and mirrors rationale, but does not route, execute, promote branches, delete history, or rewrite doctrine without source notes.

@@ -1,27 +1,45 @@
-TO: PETRA (ChatGPT Comptroller)
-FROM: Ben on Sally — Maker prepared this packet
+﻿TO: ChatGPT Comptroller
+FROM: Ben on Sally â€” Crew Dispatch Console v2
 
-Crew check-in: home UI atmosphere is stabilizing. Ready to pivot toward functionality — need Comptroller scope before Codex or Maker open APP_INFRA work.
+Mission: Crew check-in (functionality pivot)
+Petra scopes APP_INFRA slice; Codex syncs cockpit; Maker waits for verdict
 
 1) Open and follow exactly:
-   C:\Users\benle\Desktop\github\Werkles\foreman\handoffs\outbox\TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.1.md
+   C:\Users\benle\Desktop\github\Werkles\foreman\handoffs\outbox\TO_PETRA_CREW_CHECKIN_v2_20260606-1739.md
 
-2) Read cockpit sources listed in that packet (especially APP_INFRA_UX_START_PACKET, SITE_STYLE_APPROVED_v0.6, DRAFT_SITE_ASSET_RESULTS_v0.2, HUMAN_GATES, LANES, BUDGET).
+2) Read cockpit sources:
+   foreman/NEXT_ACTION.md
+   foreman/ACTIVE_AGENT.md
+   foreman/HUMAN_GATES.md
+   foreman/LANES.md
+   foreman/BUDGET.md
+   foreman/OPERATOR_DASHBOARD.md
+   foreman/CURRENT_STATE.md
+   foreman/APP_INFRA_UX_START_PACKET.md
+   foreman/SITE_STYLE_APPROVED_v0.6.md
+   foreman/ghost-forge/DRAFT_SITE_ASSET_RESULTS_v0.2.md
+   foreman/handoffs/outbox/TO_PETRA_COMPTROLLER_CREW_CHECKIN_v0.1.md
 
-3) Reply using the VERDICT block format at the bottom of the packet. Pick:
-   - first APP_INFRA slice (A–E or custom)
-   - Gate 05: RESUME | PAUSE | STOP
-   - UI commit timing
-   - whether Codex syncs cockpit + writes handoff
-   - whether Maker stays on UI or switches to your slice
+3) Reply using the VERDICT block format:
+- SLICE, GATE_05, UI_COMMIT, CODEX, MAKER
+- CONDITIONS + DOWNSTREAM_HANDOFFS + NEXT_HUMAN_GATE
 
-Context snapshot:
-- Gates 01–04 complete (16 icons + hero/proof v0.2 on disk)
-- Gate 05: 12/40 landed, stopped on Render 429
-- Header W+erkles lockup is winner — do not chase style-variant W for header
-- CURRENT_STATE.md and OPERATOR_DASHBOARD.md are stale — Codex should sync after your verdict
-- Large local diff on main — push is human gate
+Context snapshot (auto from cockpit 2026-06-06 21:39 UTC):
+[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]
 
-No deploy. No push. No SQL. No secrets in chat. No new spend unless you open it in LANES/BUDGET.
+# Active Agent
 
-When done, Ben pastes your VERDICT back to Maker or Codex on Sally.
+## Effective gate
+
+`[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]`
+
+## Active writer
+
+
+Hard stops: no deploy | no push | no SQL | no secrets in chat | no provider spend unless LANES/BUDGET open it.
+
+---
+STOP BEFORE SEND â€” Doctrine v2
+This block was copied to clipboard only. Ben must paste manually into ChatGPT / Cockpit / Ayes.
+Do NOT auto-submit, auto-send, or trigger Power Automate Send actions.
+
