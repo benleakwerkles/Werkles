@@ -6,7 +6,7 @@ Generated: 2026-06-28T03:44:11.383Z
 
 The best current source-truth surface is this GitHub-backed review branch:
 
-- Repo: https://github.com/benleakwerkles/Werkles1.git
+- Repo: https://github.com/benleakwerkles/Werkles.git
 - Branch: `source-truth/atlas-speaker-v0-20260627`
 - Folder: `source-truth-plan/`
 

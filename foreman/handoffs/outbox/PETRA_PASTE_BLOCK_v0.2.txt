@@ -16,7 +16,7 @@ Crew check-in v0.2: home UI shipped and werkles.com got a morale deploy. Ready t
    - whether Maker stays on UI or switches to your slice
 
 Verified context snapshot (2026-05-31):
-- Canonical repo = public benleakwerkles/Werkles1; private benleakwerkles/Werkles is empty.
+- Canonical repo = public benleakwerkles/Werkles; private benleakwerkles/Werkles is empty.
 - main clean at 60f74c8 (2026-05-30 werkles.com deploy); build + typecheck pass; routes 200.
 - Assets committed: 24 Tier 3 icons; Gate 05 12/40 style variants; atmosphere plates.
 - Gate 05: 28 remaining, stopped on Render 429.

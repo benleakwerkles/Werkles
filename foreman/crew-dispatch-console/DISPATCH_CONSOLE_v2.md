@@ -33,7 +33,7 @@ That is the whole operator loop: refresh cockpit into packet, copy paste block t
 Optional PowerShell (same default — no flags needed):
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\foreman\crew-dispatch-console.ps1
 ```
 

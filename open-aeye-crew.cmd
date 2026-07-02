@@ -11,7 +11,7 @@ if not exist "%EDGE_EXE%" (
   exit /b 1
 )
 
-set "REPO=C:\Users\benle\Desktop\github\Werkles"
+set "REPO=C:\Users\BenLeak\github\Werkles"
 set "PROFILE=%REPO%\foreman\.edge-aeye-crew-profile"
 
 echo Opening Werkles Aeye Crew Dispatch Bay...
@@ -27,7 +27,7 @@ start "" "%EDGE_EXE%" ^
   "https://chat.deepseek.com/" ^
   "https://www.perplexity.ai/" ^
   "http://localhost:4317" ^
-  "https://github.com/benleakwerkles/Werkles1" ^
+  "https://github.com/benleakwerkles/Werkles" ^
   "https://dashboard.render.com/" ^
   "https://supabase.com/dashboard" ^
   "https://werkles.com/"

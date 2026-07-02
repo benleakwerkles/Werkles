@@ -2,7 +2,7 @@
     "receipt_id":  "SWANSON_DOSS_BOOK_NERDKLE_SOURCE_TRUTH_PLAN_ASSEMBLY",
     "generated_at":  "2026-06-28T03:44:11.383Z",
     "status":  "ARTIFACT_UPDATED_WITH_BETSY_BOOK_RAW_REFERENCE",
-    "repository":  "https://github.com/benleakwerkles/Werkles1.git",
+    "repository":  "https://github.com/benleakwerkles/Werkles.git",
     "branch":  "source-truth/atlas-speaker-v0-20260627",
     "plan_root":  "source-truth-plan",
     "files_copied":  209,

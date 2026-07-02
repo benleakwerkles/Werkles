@@ -2,7 +2,7 @@
 
 Status: cockpit reference — **machine registry + forge roles**. Pairs with `foreman/EXECUTION_CONTEXT_RULES.md` (LOCAL HANDS READBACK required before hands-capable agents mutate repo/runtime state).
 
-**Source of truth is the GitHub repo `benleakwerkles/Werkles1` (`main`), not any single machine.** Machines are work surfaces; the repo is canon.
+**Source of truth is the GitHub repo `benleakwerkles/Werkles` (`main`), not any single machine.** Machines are work surfaces; the repo is canon.
 
 **Registry rule:** Do not rename machines by guess. Update this file after every LOCAL HANDS READBACK that changes branch, commit, path, or localhost state. **Doss** is the canonical machine name; hostname values are live readback evidence. `BLDER` is historical hostname evidence from prior Doss readbacks, not the current canonical path.
 
@@ -56,7 +56,7 @@ Recommended structure:
 
 ```text
 Code:
-C:\Users\<user>\github\Werkles1
+C:\Users\<user>\github\Werkles
 
 Retired / historical local mirrors:
 C:\Users\<user>\Desktop\github\Werkles
@@ -127,7 +127,7 @@ No workstation may:
 | **Sally** | `DESKTOP-SJSJMNK` | `C:\Users\benle\Desktop\github\Werkles` | `rescue/sally-dirty-worktree-2026-06-01` | `8ba905b` | **archive/snapshot surface** | `:3000` running on host (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK`; historical: `foreman/reviews/WORKTREE_STABILIZATION_2026-06-01.md`, `FROM_DINK_BETSY_SETUP_RECORD_V1.md` |
 | **Sally** *(second surface, same host)* | `DESKTOP-SJSJMNK` | `C:\Dev\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | `437792b` | **archive/snapshot surface** (snapshot lane) | shares host `:3000` (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK` |
 | **Betsy** | `DESKTOP-KTBH0LA` | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **primary forge** (intended) | **UNKNOWN** | Operator prior readback only — **no live readback this session** |
-| **Doss** | `Doss` | `C:\Users\BenLeak\github\Werkles1` | `main` | `0483d73` | **mobile/mirror forge + current local Werkles1 checkout** | **not checked this readback** | Live readback 2026-07-02 on hostname `Doss`; remote `https://github.com/benleakwerkles/Werkles1.git`; old `Werkles` GitHub repo delete attempted and blocked by GitHub 403 |
+| **Doss** | `Doss` | `C:\Users\BenLeak\github\Werkles` | `main` | `d447655` | **mobile/mirror forge + current local Werkles checkout** | **not checked this readback** | Live readback 2026-07-02 on hostname `Doss`; remote `https://github.com/benleakwerkles/Werkles.git`; old private `Werkles` stub renamed/archived as `Werkles-retired-delete-me-20260702` after GitHub hard-delete returned 403 |
 | **Atlas** | **UNKNOWN** | vault path per `foreman/ATLAS_MACHINE_PLAN.md` | n/a (not a git writer) | n/a | **archive forge** | n/a | Plan doc only — no live readback recorded |
 
 ### Sally work-surface detail (live 2026-06-12, host `DESKTOP-SJSJMNK`)
@@ -150,7 +150,7 @@ Intended primary path per older Dink critical-path note was `C:\Users\benle\Desk
 Current live canonical local checkout on Doss after the 2026-07-02 cleanup is:
 
 ```text
-C:\Users\BenLeak\github\Werkles1
+C:\Users\BenLeak\github\Werkles
 ```
 
 ### Doss (live 2026-07-02, hostname `Doss`)
@@ -159,20 +159,22 @@ C:\Users\BenLeak\github\Werkles1
 |-------|-------|
 | Human name | **Doss** |
 | Windows hostname | `Doss` |
-| Primary repo path | `C:\Users\BenLeak\github\Werkles1` |
+| Primary repo path | `C:\Users\BenLeak\github\Werkles` |
 | Branch | `main` |
-| Commit | `0483d73` |
-| Forge role | **mobile/mirror forge + current local Werkles1 checkout** |
+| Commit | `d447655` |
+| Forge role | **mobile/mirror forge + current local Werkles checkout** |
 | Launcher | `C:\Users\BenLeak\Desktop\soledash.cmd` |
 | Localhost | **not checked in 2026-07-02 cleanup readback** |
 
 **GitHub cleanup state (2026-07-02):**
 
-- Canonical remote: `https://github.com/benleakwerkles/Werkles1.git`
+- Canonical remote: `https://github.com/benleakwerkles/Werkles.git`
 - Canonical branch: `main`
-- Canonical commit after cleanup merge: `0483d73`
+- Canonical commit before this repository-rename directive commit: `d447655`
 - Merged and deleted remote branch: `preserve/doss-werkles-cleanup-20260630`
-- Old repo `https://github.com/benleakwerkles/Werkles.git` still exists at `726e33c` because GitHub API deletion returned `403 Forbidden` for the available credential. Treat it as obsolete until Ben deletes it in GitHub settings or grants a token with repo deletion permission.
+- Former canonical repo `https://github.com/benleakwerkles/Werkles1.git` was renamed to `https://github.com/benleakwerkles/Werkles.git`.
+- Old private stub repo was renamed and archived as `https://github.com/benleakwerkles/Werkles-retired-delete-me-20260702.git` at `726e33c` because GitHub hard-delete returned `403 Forbidden` for the available credential.
+- Doss local checkout was moved from `C:\Users\BenLeak\github\Werkles1` to `C:\Users\BenLeak\github\Werkles`; the empty local stub and old Desktop path were quarantined with `retired-local` names.
 
 **Alias history:** Formerly referenced as BLDer.
 
@@ -256,4 +258,4 @@ When taking LOCAL HANDS READBACK on any forge machine, update the registry row f
 6. localhost running yes/no and port
 7. Evidence source: `live readback YYYY-MM-DD` or cite handoff path
 
-**Last registry readback:** 2026-07-02 — Doss on hostname `Doss`, path `C:\Users\BenLeak\github\Werkles1`, branch `main`, commit `0483d73`, remote `https://github.com/benleakwerkles/Werkles1.git`. Historical 2026-06-12 readback used hostname `BLDER`.
+**Last registry readback:** 2026-07-02 — Doss on hostname `Doss`, path `C:\Users\BenLeak\github\Werkles`, branch `main`, commit `d447655`, remote `https://github.com/benleakwerkles/Werkles.git`. Historical 2026-06-12 readback used hostname `BLDER`.

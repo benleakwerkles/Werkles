@@ -41,5 +41,5 @@ Generated: 2026-06-06T21:39:55Z
 3. **Sally localhost** - http://localhost:3000
 4. **Petra (Comptroller)** - https://chatgpt.com
 5. **Codex Foreman** - https://chatgpt.com/codex
-6. **Werkles1 repo** - https://github.com/benleakwerkles/Werkles1
+6. **Werkles repo** - https://github.com/benleakwerkles/Werkles
 7. **Ghost Forge Render** - https://dashboard.render.com/web/srv-d8a8icf7f7vs73ct7ep0

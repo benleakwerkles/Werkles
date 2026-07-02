@@ -77,8 +77,8 @@
       "current_branch": "snapshot/sally-good-werkles-2026-06-12",
       "head": "4adebb2dfaf2fc2dae3284f24969eebe8b7adf6f",
       "remotes": [
-        "origin\thttps://github.com/benleakwerkles/Werkles1.git (fetch)",
-        "origin\thttps://github.com/benleakwerkles/Werkles1.git (push)"
+        "origin\thttps://github.com/benleakwerkles/Werkles.git (fetch)",
+        "origin\thttps://github.com/benleakwerkles/Werkles.git (push)"
       ],
       "upstream": {
         "upstream": "origin/snapshot/sally-good-werkles-2026-06-12",

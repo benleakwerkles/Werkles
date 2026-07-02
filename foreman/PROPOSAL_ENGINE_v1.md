@@ -9,7 +9,7 @@ Artifact validity:
 - Cousin role: Dink
 - Machine name: Doss
 - Hostname: BLDER
-- Repo path: `C:\Users\BenLeak\Desktop\github\Werkles`
+- Repo path: `C:\Users\BenLeak\github\Werkles`
 - Branch: `snapshot/sally-good-werkles-2026-06-12`
 - Commit: `43d5db4`
 - Execution runtime: Codex Desktop

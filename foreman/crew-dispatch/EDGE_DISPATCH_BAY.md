@@ -41,7 +41,7 @@ Profile: `foreman/.edge-aeye-crew-profile` (gitignored)
 | 4 | Bean / DeepSeek | https://chat.deepseek.com/ |
 | 5 | Computer / Perplexity | https://www.perplexity.ai/ |
 | 6 | Foreman Control Panel | http://localhost:4317 |
-| 7 | GitHub | https://github.com/benleakwerkles/Werkles1 |
+| 7 | GitHub | https://github.com/benleakwerkles/Werkles |
 | 8 | Render | https://dashboard.render.com/ |
 | 9 | Supabase | https://supabase.com/dashboard |
 | 10 | Werkles | https://werkles.com/ |

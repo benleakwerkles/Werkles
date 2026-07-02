@@ -8,7 +8,7 @@ const repoRoot = path.join(root, "work/source-truth-atlas-speaker-v0");
 const planRoot = path.join(repoRoot, "source-truth-plan");
 const now = new Date().toISOString();
 
-const repoUrl = "https://github.com/benleakwerkles/Werkles1.git";
+const repoUrl = "https://github.com/benleakwerkles/Werkles.git";
 const branchName = "source-truth/atlas-speaker-v0-20260627";
 
 const missingPrioritySources = [

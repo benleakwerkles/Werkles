@@ -137,7 +137,7 @@ Codex will continue mechanical prep only:
 - Confirm Render and Supabase dashboards are reachable in the controllable browser session.
 - Navigate provider UI as far as possible without requiring Ben-only authority.
 - Stage the Render Web Service setup using the known non-secret settings:
-  - Repo: `benleakwerkles/Werkles1`
+  - Repo: `benleakwerkles/Werkles`
   - Branch: `ghost-forge-one-prompt-test`
   - Root Directory: `ghost-forge-worker`
   - Build Command: `npm install`

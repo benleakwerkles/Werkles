@@ -35,7 +35,7 @@ Prerequisites (already done on prior nights):
 - `GHOST_FORGE_API_KEY` set in **your** PowerShell session only (never paste in chat)
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 
 # health
 $env:PUBLIC_BASE_URL = "https://werkles-ghost-forge1.onrender.com"

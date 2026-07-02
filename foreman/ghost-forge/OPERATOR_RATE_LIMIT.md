@@ -32,7 +32,7 @@
 4. **Run script with operator GO** (after lift or window clear):
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 .\scripts\foreman\ghost-forge-render-batch-2.ps1 -ShotIds "icon-lane-spark-ember" -Force
 ```
 

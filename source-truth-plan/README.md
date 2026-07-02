@@ -7,7 +7,7 @@ This folder is the current GitHub-backed review surface for the material Ben kee
 
 ## Current Truth
 
-- GitHub repo: https://github.com/benleakwerkles/Werkles1.git
+- GitHub repo: https://github.com/benleakwerkles/Werkles.git
 - Branch: `source-truth/atlas-speaker-v0-20260627`
 - Main hash after source-truth push: `36ad1e0c500480f4f00d8bece22fa32c8f494aa4`
 - Status: GitHub `main` is the current shared source-truth anchor; branch remains as an audit mirror.

@@ -60,7 +60,7 @@ Recommended structure:
 
 ```text
 Code:
-C:\Users\<user>\Desktop\github\Werkles
+C:\Users\<user>\github\Werkles
 
 Documents:
 Google Drive\Werkles
@@ -125,18 +125,18 @@ No workstation may:
 ### Doss
 
 - Machine name: Doss
-- Hostname: BLDER
-- Repo path if present: `C:\Users\BenLeak\Desktop\github\Werkles`
-- Branch if repo present: `snapshot/sally-good-werkles-2026-06-12`, read from `.git/HEAD`
+- Hostname: Doss (historical readbacks used `BLDER`)
+- Repo path if present: `C:\Users\BenLeak\github\Werkles`
+- Branch if repo present: `main`, read from `.git/HEAD`
 - Terminal access: yes, PowerShell 5.1.22621.2506
-- Execution context: Codex local sandbox on Doss; hostname `BLDER`; sandbox account observed as `CodexSandboxOffline`, user profile `C:\Users\BenLeak`
-- Notes: Cursor had the Werkles repo open as a local `file:///c:/Users/BenLeak/Desktop/github/Werkles` folder in the prior audit. This report only writes the conformity report file.
+- Execution context: Codex local on Doss; hostname `Doss`, user profile `C:\Users\BenLeak`
+- Notes: The 2026-07-02 cleanup moved the active Doss checkout to `C:\Users\BenLeak\github\Werkles` and quarantined the old Desktop path with a `retired-local` suffix.
 
 ### Sally
 
 - Machine name: Sally
 - Hostname: DESKTOP-SJSJMNK, from `foreman/MACHINE_TOPOLOGY.md`
-- Repo path if present: topology lists `C:\Users\benle\Desktop\github\Werkles` and `C:\Dev\Werkles`
+- Repo path if present: target path is `C:\Users\<user>\github\Werkles`; historical topology lists `C:\Users\benle\Desktop\github\Werkles` and `C:\Dev\Werkles`
 - Branch if repo present: topology lists `rescue/sally-dirty-worktree-2026-06-01` for the Desktop path and `snapshot/sally-good-werkles-2026-06-12` for `C:\Dev\Werkles`
 - Terminal access: no direct terminal access from this Doss Codex session
 - Execution context: not locally reachable from current session
@@ -252,7 +252,7 @@ No workstation may:
 Run on Betsy and Sally locally before claiming conformity:
 
 ```powershell
-$repoCandidates = @('C:\Users\BenLeak\Desktop\github\Werkles','C:\Users\benle\Desktop\github\Werkles','C:\Dev\Werkles')
+$repoCandidates = @('C:\Users\BenLeak\github\Werkles','C:\Users\benle\github\Werkles','C:\Dev\Werkles')
 [pscustomobject]@{
   Hostname = $env:COMPUTERNAME
   User = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name

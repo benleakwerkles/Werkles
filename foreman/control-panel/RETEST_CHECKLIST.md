@@ -48,7 +48,7 @@ Run on Sally after any control panel change. No deploy, push, SQL, secrets, Ghos
 ## Automated smoke (optional)
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 node scripts\foreman\foreman-control-retest.mjs
 ```
 

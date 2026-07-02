@@ -95,7 +95,7 @@ Config flags (already in JSON):
 
 Courier must target the **dispatch bay profile only**:
 
-`C:\Users\benle\Desktop\github\Werkles\foreman\.edge-aeye-crew-profile`
+`C:\Users\BenLeak\github\Werkles\foreman\.edge-aeye-crew-profile`
 
 Do not automate Ben's personal Edge profile.
 

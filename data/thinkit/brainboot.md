@@ -11,7 +11,7 @@ Elwood is the Operator role, not the machine. Harvey is the Nerdkle organism. Th
 - Active code focus: ThinkIt relay, Harvey state mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.
 - Current project lane: Oddly Godly on Spanzee
 - Current project question: Oddly Godly on Spanzee: what can run on AUTO G, and what still needs a leash?
-- Book source truth: https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book
+- Book source truth: https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book
 - ThinkIt dashboard: http://10.1.10.8:3342/thinkit
 
 ## Workflow

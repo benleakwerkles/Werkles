@@ -260,7 +260,7 @@
     "returned_answer_count": 12,
     "book_courier": {
       "status": "BOOK_COURIER_STATUS",
-      "source_repo_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+      "source_repo_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
       "chapter_count": 71,
       "completed_chapter_count": 2,
       "active_packet_count": 0

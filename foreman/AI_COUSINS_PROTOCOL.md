@@ -103,7 +103,7 @@ Recommended structure:
 
 ```text
 Code:
-C:\Users\<user>\Desktop\github\Werkles
+C:\Users\<user>\github\Werkles
 
 Documents:
 Google Drive\Werkles

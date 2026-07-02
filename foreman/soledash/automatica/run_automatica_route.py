@@ -465,7 +465,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--all", action="store_true", help="Run all routes.")
     parser.add_argument(
         "--repo-path",
-        default=r"C:\Users\BenLeak\Desktop\github\Werkles",
+        default=r"C:\Users\BenLeak\github\Werkles",
         help="Local repo path used by site cleanup route.",
     )
     parser.add_argument("--action-id", default=None, help="Stable action id allocated by the originating card.")

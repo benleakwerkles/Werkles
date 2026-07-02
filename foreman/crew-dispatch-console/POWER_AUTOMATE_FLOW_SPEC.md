@@ -49,7 +49,7 @@ Default safe action: **Refresh**
 ### 2. Run PowerShell (Sally local)
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\foreman\crew-dispatch-console.ps1 -Action @{Action} -Mission @{Mission} -Role @{Role}
 ```
 

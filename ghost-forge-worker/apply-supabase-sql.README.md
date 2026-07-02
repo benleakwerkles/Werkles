@@ -15,7 +15,7 @@ Use this when you want the least tooling.
 5. Use the local SQL file:
 
 ```text
-C:\Users\benle\Desktop\github\Werkles\ghost-forge-worker\supabase-ghost-forge.sql
+C:\Users\BenLeak\github\Werkles\ghost-forge-worker\supabase-ghost-forge.sql
 ```
 
 6. Paste or open/import that file in the editor.
@@ -48,7 +48,7 @@ This script:
 Run:
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles\ghost-forge-worker
+cd C:\Users\BenLeak\github\Werkles\ghost-forge-worker
 $env:SUPABASE_DB_URL = "set-this-privately-do-not-paste-into-chat"
 .\apply-supabase-sql.ps1
 ```

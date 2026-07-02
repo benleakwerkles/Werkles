@@ -8,7 +8,7 @@ Scope: Werkles / Nerdkle / Aeye shared reality
 
 The canonical code source truth is GitHub:
 
-- Repository: `https://github.com/benleakwerkles/Werkles1.git`
+- Repository: `https://github.com/benleakwerkles/Werkles.git`
 - Remote: `origin`
 - Branch: `main`
 

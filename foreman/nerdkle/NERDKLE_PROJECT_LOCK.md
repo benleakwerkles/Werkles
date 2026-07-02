@@ -10,7 +10,7 @@ Mission: Build Nerdkle â€” the Organism the Operator interacts with to crea
 | Field | Value |
 |-------|-------|
 | Shared branch | `feature/nerdkle-organism-v0` |
-| Repo | `C:\Users\BenLeak\Desktop\github\Werkles` |
+| Repo | `C:\Users\BenLeak\github\Werkles` |
 | Maker surface | Doss (`DOSS`) |
 | Dink surface | Sally, pending local hands readback |
 | Starting commit | `4adebb2` |
@@ -73,7 +73,7 @@ No AI. No external send. No account automation.
 Dink@Sally should first perform LOCAL HANDS READBACK, then align to:
 
 ```powershell
-cd C:\Users\BenLeak\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 git fetch origin
 git switch feature/nerdkle-organism-v0
 ```

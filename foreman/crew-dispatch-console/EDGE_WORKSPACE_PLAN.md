@@ -16,7 +16,7 @@ Microsoft Edge Workspaces keep a **fixed tab order** for the crew circuit. Tab 1
 | 3 | **Local preview** | http://localhost:3000 | Run `npm run dev` on Sally first |
 | 4 | **Petra** | ChatGPT Comptroller project | Paste only — no auto-send |
 | 5 | **Codex** | Codex Foreman thread | Paste only — no auto-send |
-| 6 | **GitHub** | https://github.com/benleakwerkles/Werkles1 | Repo truth |
+| 6 | **GitHub** | https://github.com/benleakwerkles/Werkles | Repo truth |
 | 7 | **Ghost Forge** | Render dashboard | Cloud worker — not Sally |
 
 **Outside Edge (same physical desk):**
@@ -30,7 +30,7 @@ Microsoft Edge Workspaces keep a **fixed tab order** for the crew circuit. Tab 1
 1. Run on Sally:
 
 ```powershell
-cd C:\Users\benle\Desktop\github\Werkles
+cd C:\Users\BenLeak\github\Werkles
 .\scripts\foreman\crew-dispatch-console.ps1 -Action OpenWorkspace
 ```
 
