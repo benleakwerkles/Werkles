@@ -143,6 +143,7 @@ function Set-CanonicalRemote {
 
 $githubRoot = Join-Path $UserRoot "github"
 $desktopGithubRoot = Join-Path (Join-Path $UserRoot "Desktop") "github"
+$devRoot = "C:\Dev"
 $canonicalPath = Join-Path $githubRoot "Werkles"
 $legacyPath = Join-Path $githubRoot "Werkles1"
 
@@ -152,7 +153,16 @@ if (-not $Apply) {
   Write-Host "Dry run only. Re-run with -Apply to move folders or update remotes."
 }
 
-foreach ($path in @($canonicalPath, $legacyPath, (Join-Path $desktopGithubRoot "Werkles"), (Join-Path $desktopGithubRoot "Werkles1"))) {
+$candidatePaths = @(
+  $canonicalPath,
+  $legacyPath,
+  (Join-Path $desktopGithubRoot "Werkles"),
+  (Join-Path $desktopGithubRoot "Werkles1"),
+  (Join-Path $devRoot "Werkles"),
+  (Join-Path $devRoot "Werkles1")
+)
+
+foreach ($path in $candidatePaths) {
   if (Test-Path -LiteralPath $path) {
     Set-CanonicalRemote -Path $path
   }
@@ -179,6 +189,17 @@ foreach ($desktopName in @("Werkles", "Werkles1")) {
     }
     $retiredDesktop = Join-Path $desktopGithubRoot "$desktopName-retired-local-$Stamp"
     Move-LocalPath -From $desktopPath -To $retiredDesktop -Root $desktopGithubRoot
+  }
+}
+
+foreach ($devName in @("Werkles", "Werkles1")) {
+  $devPath = Join-Path $devRoot $devName
+  if (Test-Path -LiteralPath $devPath) {
+    if ((Test-GitRepo $devPath) -and (Test-HasHead $devPath)) {
+      Write-Host "MANUAL_REVIEW dev path is a real git checkout; run the MaSheen local-folder merge packet before archiving: $devPath"
+      continue
+    }
+    Write-Host "MANUAL_REVIEW dev path exists and needs human classification before moving or archiving: $devPath"
   }
 }
 

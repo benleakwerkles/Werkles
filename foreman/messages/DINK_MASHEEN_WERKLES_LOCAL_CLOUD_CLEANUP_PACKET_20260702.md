@@ -26,6 +26,8 @@ If this packet is received outside this thread, pull the latest canonical repo f
 
 Collapse every Werkles workstation to one local source sandbox and one GitHub source destination.
 
+This is a local double-source-folder merge packet. The GitHub rename alone is not enough. The job is not complete on a machine until all local Werkles folders have been inventoried, every non-canonical folder is either retired or preserved as salvage evidence, and only one active folder remains.
+
 Canonical GitHub:
 
 ```text
@@ -39,6 +41,18 @@ C:\Users\<user>\github\Werkles
 ```
 
 No Aeye may use a second active Werkles sandbox for normal work.
+
+## Clean Machine Definition
+
+A machine is clean only when all of these are true:
+
+1. Exactly one active local Werkles source folder exists.
+2. That folder is `C:\Users\<user>\github\Werkles`.
+3. Its `origin` remote is `https://github.com/benleakwerkles/Werkles.git`.
+4. All other discovered Werkles folders are classified as `RETIRED`, `SALVAGE_BRANCH_CREATED`, `PATCH_RECEIPT_CREATED`, or `BLOCKED_FOR_HUMAN_REVIEW`.
+5. No Aeye launcher, local script, or active prompt points at `Werkles1` or `Desktop\github\Werkles`.
+
+Do not report `COMPLETE` if two local folders still look like plausible source truth.
 
 ## Forbidden Active Destinations
 
@@ -56,7 +70,7 @@ Historical folders may remain only after they are renamed with `retired-local-YY
 
 ## Required Local Merge Protocol
 
-Run this on each machine before declaring it clean:
+Run this on each machine before declaring it clean. This is the mandatory inventory of possible double-source folders:
 
 ```powershell
 $candidates = @(
@@ -83,12 +97,37 @@ foreach ($path in $candidates) {
 }
 ```
 
-Then apply these rules:
+For every real git checkout found, classify it:
+
+```powershell
+git -C <folder> remote -v
+git -C <folder> status --porcelain=v1
+git -C <folder> branch --show-current
+git -C <folder> rev-parse --short HEAD
+git -C <folder> rev-list --left-right --count origin/main...HEAD
+git -C <folder> log --oneline origin/main..HEAD
+git -C <folder> ls-files --others --exclude-standard
+```
+
+Use these classifications:
+
+| Classification | Meaning | Required action |
+|---|---|---|
+| `KEEP_CANONICAL` | The folder is `C:\Users\<user>\github\Werkles`, points at canonical GitHub, and has the chosen working state. | Keep it active. |
+| `MOVE_TO_CANONICAL` | There is only one real Werkles checkout and it is named/path-located wrong. | Move/rename it to `C:\Users\<user>\github\Werkles`. |
+| `RETIRE_DUPLICATE` | Duplicate checkout has no dirty files, no untracked files, and no unique commits versus canonical. | Rename to `*-retired-local-YYYYMMDD-HHMMSS`. |
+| `SALVAGE_REQUIRED` | Duplicate checkout has commits not present in canonical. | Fetch it into canonical and create a `salvage/local-folder-merge/...` branch before retiring. |
+| `PATCH_REQUIRED` | Duplicate checkout has dirty or untracked work. | Write patch/untracked receipts before retiring. |
+| `BLOCKED_FOR_HUMAN_REVIEW` | Two folders both contain plausible source truth and the safe winner is not obvious. | Stop and return readback. Do not archive either folder. |
+
+Then apply these rules in order:
 
 1. Keep or create the canonical folder at `C:\Users\<user>\github\Werkles`.
 2. Set every real Werkles checkout remote to `https://github.com/benleakwerkles/Werkles.git`.
-3. If a duplicate folder has no unique commits and no dirty files, rename it to `*-retired-local-YYYYMMDD-HHMMSS`.
-4. If a duplicate folder has unique commits, preserve them before archiving:
+3. If there is only one real checkout but it is in `Werkles1`, `Desktop\github\Werkles`, or `C:\Dev\Werkles`, move that checkout to the canonical path.
+4. If two or more real checkouts exist, pick `C:\Users\<user>\github\Werkles` as the active destination unless its contents are an empty stub.
+5. If a duplicate folder has no unique commits and no dirty files, rename it to `*-retired-local-YYYYMMDD-HHMMSS`.
+6. If a duplicate folder has unique commits, preserve them before archiving:
 
 ```powershell
 git -C C:\Users\<user>\github\Werkles remote add salvage-local <duplicate-folder-path>
@@ -97,7 +136,7 @@ git -C C:\Users\<user>\github\Werkles branch salvage/local-folder-merge/<machine
 git -C C:\Users\<user>\github\Werkles remote remove salvage-local
 ```
 
-5. If a duplicate folder has dirty or untracked work, create a patch and file inventory before archiving:
+7. If a duplicate folder has dirty or untracked work, create a patch and file inventory before archiving:
 
 ```powershell
 $stamp = Get-Date -Format "yyyyMMdd-HHmmss"
@@ -108,8 +147,8 @@ git -C <duplicate-folder-path> diff | Out-File "$out\worktree.patch"
 git -C <duplicate-folder-path> ls-files --others --exclude-standard | Out-File "$out\untracked.txt"
 ```
 
-6. Do not merge salvage branches into `main` without a new human gate.
-7. After cleanup, every machine must produce a readback.
+8. Do not merge salvage branches into `main` without a new human gate.
+9. After cleanup, every machine must produce a readback.
 
 ## Helper
 
@@ -129,6 +168,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-Werk
 ```
 
 If it shows `MANUAL_REVIEW`, stop and preserve the divergent folder using the salvage/patch rules above.
+
+The helper is allowed to rename empty stubs and obviously wrong-path folders. It is not allowed to decide that a real divergent checkout is disposable.
 
 ## Cloud Cleanup State
 
@@ -150,6 +191,7 @@ BRANCH:
 HEAD:
 WORKTREE_STATUS:
 DUPLICATE_PATHS_RETIRED:
+LOCAL_FOLDER_CLASSIFICATIONS:
 SALVAGE_BRANCHES_CREATED:
 PATCH_RECEIPTS_CREATED:
 BLOCKERS:
