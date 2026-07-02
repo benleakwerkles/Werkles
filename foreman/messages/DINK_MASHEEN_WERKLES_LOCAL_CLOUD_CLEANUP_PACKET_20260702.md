@@ -42,6 +42,27 @@ C:\Users\<user>\github\Werkles
 
 No Aeye may use a second active Werkles sandbox for normal work.
 
+## Observed Source-Sandbox Addresses
+
+Do not reduce this packet to a generic repo rename. These exact addresses are why the cleanup exists.
+
+| Machine / evidence source | Observed path | Observed state | Packet requirement |
+|---|---|---|---|
+| Doss live cleanup | `C:\Users\BenLeak\github\Werkles1` | Real active checkout before cleanup; merged and moved locally on Doss. | Must not reappear as active. |
+| Doss live cleanup | `C:\Users\BenLeak\github\Werkles` | Current Doss canonical checkout after cleanup. | Keep as Doss active path. |
+| Doss live cleanup | `C:\Users\BenLeak\github\Werkles-retired-local-stub-20260702-155538` | Empty local stub quarantine. | Archive only; not source. |
+| Doss live cleanup | `C:\Users\BenLeak\Desktop\github\Werkles-retired-local-20260702-155538` | Old Desktop-path quarantine; non-git on Doss at cleanup time. | Archive only; not source. |
+| Doss local branch inventory | `backup/pre-werkles-cleanup-main-20260702-152840` | Local-only safety branch at `936e3d6`. | Evidence branch only; do not merge without gate. |
+| Doss local branch inventory | `salvage/local-folder-merge/DOSS/old-werkles-inspect/main-20260702-162230` | Local-only salvage branch for old private stub at `726e33c`. | Evidence branch only; do not merge without gate. |
+| Sally topology readback | `C:\Users\benle\Desktop\github\Werkles` | Dirty rescue surface, branch `rescue/sally-dirty-worktree-2026-06-01`, commit `8ba905b`, ahead by historical readback. | Inventory and salvage before retiring or moving. |
+| Sally topology readback | `C:\Dev\Werkles` | Second same-host surface, branch `snapshot/sally-good-werkles-2026-06-12`, commit `437792b`. | Inventory and classify; do not ignore. |
+| BLD/Sally forensic review | `C:\Users\benle\Desktop\github\Werkles1` | App-only mirror / separate repo. | Inventory; retire only after proof of no unique work. |
+| BLD/Sally forensic review | `C:\Users\benle\Desktop\Werkles_DIRTY_BACKUP` | Dirty backup snapshot, possible local state/secrets. | Archive only; never commit wholesale. |
+| BLD/Sally forensic review | `C:\Users\benle\Documents\Werkles` | Stale partial copy outside GitHub path. | Archive or compare file-by-file; not source. |
+| Betsy unverified path evidence | `C:\Users\BenLeak\Desktop\github\Werkles` and `C:\Users\benle\Desktop\github\Werkles` | Prior remote/admin-share checks were blocked; exact live path unknown. | Betsy-local Dink must inventory both user spellings plus canonical path. |
+
+If a Dink finds another Werkles-looking source folder, add it to the readback. Do not assume this table is complete.
+
 ## Clean Machine Definition
 
 A machine is clean only when all of these are true:
@@ -72,12 +93,24 @@ Historical folders may remain only after they are renamed with `retired-local-YY
 
 Run this on each machine before declaring it clean. This is the mandatory inventory of possible double-source folders:
 
+Preferred receipt command:
+
+```powershell
+cd C:\Users\<user>\github\Werkles
+git pull --ff-only origin main
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1
+```
+
+If the canonical checkout does not exist yet, run the manual inventory below before cloning or moving anything.
+
 ```powershell
 $candidates = @(
   "$env:USERPROFILE\github\Werkles",
   "$env:USERPROFILE\github\Werkles1",
   "$env:USERPROFILE\Desktop\github\Werkles",
   "$env:USERPROFILE\Desktop\github\Werkles1",
+  "$env:USERPROFILE\Desktop\Werkles_DIRTY_BACKUP",
+  "$env:USERPROFILE\Documents\Werkles",
   "C:\Dev\Werkles",
   "C:\Dev\Werkles1"
 )
@@ -108,6 +141,15 @@ git -C <folder> rev-list --left-right --count origin/main...HEAD
 git -C <folder> log --oneline origin/main..HEAD
 git -C <folder> ls-files --others --exclude-standard
 ```
+
+Also inventory local-only branches in the chosen canonical checkout:
+
+```powershell
+git -C C:\Users\<user>\github\Werkles branch -vv
+git -C C:\Users\<user>\github\Werkles for-each-ref --format="%(refname:short)|%(objectname:short)|%(upstream:short)|%(subject)" refs/heads
+```
+
+Local-only `backup/...`, `salvage/...`, `rescue/...`, and `snapshot/...` branches are evidence, not active source truth, unless Ben explicitly promotes them.
 
 Use these classifications:
 
@@ -152,11 +194,12 @@ git -C <duplicate-folder-path> ls-files --others --exclude-standard | Out-File "
 
 ## Helper
 
-After inventory, run the helper from the canonical checkout in dry-run first:
+After inventory, run the helper from the canonical checkout in dry-run first. Do not run `-Apply` until the inventory receipt is created and reviewed.
 
 ```powershell
 cd C:\Users\<user>\github\Werkles
 git pull --ff-only origin main
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-WerklesDestination.ps1
 ```
 
@@ -190,8 +233,10 @@ CANONICAL_REMOTE:
 BRANCH:
 HEAD:
 WORKTREE_STATUS:
+INVENTORY_RECEIPT:
 DUPLICATE_PATHS_RETIRED:
 LOCAL_FOLDER_CLASSIFICATIONS:
+LOCAL_ONLY_BRANCHES:
 SALVAGE_BRANCHES_CREATED:
 PATCH_RECEIPTS_CREATED:
 BLOCKERS:
