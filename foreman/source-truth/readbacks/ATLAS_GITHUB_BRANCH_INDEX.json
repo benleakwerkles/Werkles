@@ -1,18 +1,18 @@
 {
   "index_id": "ATLAS_GITHUB_BRANCH_INDEX",
-  "created_at": "2026-07-02T19:40:01.067Z",
+  "created_at": "2026-07-02T20:00:36.589Z",
   "organ": "Atlas",
   "source_truth_statement": "GitHub origin/main is canonical. Other GitHub branches are candidate, audit, preview, or preservation evidence until human-gated promotion.",
   "remote": "origin",
-  "remote_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "remote_url": "https://github.com/benleakwerkles/Werkles.git",
   "canonical_branch": "main",
-  "canonical_hash": "0483d73c0e5b6ab16efb0a3d4af06dcc854d5198",
+  "canonical_hash": "50ec4c9e3716785a01657953556fe9737bc01f97",
   "branch_count": 42,
   "branches": [
     {
       "branch": "main",
       "ref": "refs/heads/main",
-      "hash": "0483d73c0e5b6ab16efb0a3d4af06dcc854d5198",
+      "hash": "50ec4c9e3716785a01657953556fe9737bc01f97",
       "classification": "CANONICAL_SOURCE_TRUTH",
       "canonical": true
     },
