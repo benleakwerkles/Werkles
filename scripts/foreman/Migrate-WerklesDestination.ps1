@@ -173,6 +173,10 @@ if (Test-Path -LiteralPath $legacyPath) {
 foreach ($desktopName in @("Werkles", "Werkles1")) {
   $desktopPath = Join-Path $desktopGithubRoot $desktopName
   if (Test-Path -LiteralPath $desktopPath) {
+    if ((Test-GitRepo $desktopPath) -and (Test-HasHead $desktopPath)) {
+      Write-Host "MANUAL_REVIEW desktop path is a real git checkout; run the MaSheen local-folder merge packet before archiving: $desktopPath"
+      continue
+    }
     $retiredDesktop = Join-Path $desktopGithubRoot "$desktopName-retired-local-$Stamp"
     Move-LocalPath -From $desktopPath -To $retiredDesktop -Root $desktopGithubRoot
   }
