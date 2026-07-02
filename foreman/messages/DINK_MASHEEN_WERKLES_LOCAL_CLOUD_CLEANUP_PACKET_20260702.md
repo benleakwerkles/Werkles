@@ -5,6 +5,23 @@ Issued: 2026-07-02
 Audience: all Dinks / Aeyes operating Werkles on Sally, Betsy, Doss, Atlas, Wonka Den, and any other MaSheen workstation
 Human gate: Ben explicitly ordered the cleanup in Codex on 2026-07-02
 
+## How To Hand This To Another Dink
+
+Ben may open this same Codex thread on Sally, Betsy, Atlas, Wonka Den, or another MaSheen workstation and say:
+
+```text
+Execute the Dink MaSheen Werkles Local + Cloud Cleanup Packet from this thread.
+Inventory local Werkles folders first. Do not delete unknown work. Preserve divergent work as salvage evidence. Converge this machine to one active folder and one GitHub remote. Return the required readback block.
+```
+
+If this packet is received in the same Codex thread, treat this thread as the continuity reference. Do not re-open the old `Werkles1` vs `Werkles` debate. The current source-truth decision is already made:
+
+- GitHub canonical repo is `https://github.com/benleakwerkles/Werkles.git`.
+- Local canonical folder target is `C:\Users\<user>\github\Werkles`.
+- Old `Werkles1` and Desktop-path working trees are migration inputs or archives, not active destinations.
+
+If this packet is received outside this thread, pull the latest canonical repo first and read this file from `foreman/messages/DINK_MASHEEN_WERKLES_LOCAL_CLOUD_CLEANUP_PACKET_20260702.md`.
+
 ## Mission
 
 Collapse every Werkles workstation to one local source sandbox and one GitHub source destination.
@@ -96,15 +113,18 @@ git -C <duplicate-folder-path> ls-files --others --exclude-standard | Out-File "
 
 ## Helper
 
-After inventory, run the helper in dry-run first:
+After inventory, run the helper from the canonical checkout in dry-run first:
 
 ```powershell
+cd C:\Users\<user>\github\Werkles
+git pull --ff-only origin main
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-WerklesDestination.ps1
 ```
 
 If the dry-run shows no `MANUAL_REVIEW`, run:
 
 ```powershell
+cd C:\Users\<user>\github\Werkles
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-WerklesDestination.ps1 -Apply
 ```
 
