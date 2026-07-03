@@ -181,7 +181,36 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">2 · Packet inbox</h2>
+      <h2 className="skypooka-section-title">2 · Queued mobile actions</h2>
+      {feed.queued_actions.length === 0 ? (
+        <div className="skypooka-empty">No queued FIRE/HOLD requests.</div>
+      ) : (
+        feed.queued_actions.map((item) => (
+          <article key={item.id} className="skypooka-card skypooka-card--action">
+            <div className="skypooka-card-top">
+              <span className="skypooka-card-name">
+                {item.action.toUpperCase()} · {item.subject}
+              </span>
+              <span className="skypooka-chip">{item.status.toUpperCase()}</span>
+            </div>
+            <div className="skypooka-meta">
+              to <b>{item.target}</b> · {formatTime(item.created_at)}
+            </div>
+            {item.acked_by ? (
+              <div className="skypooka-meta skypooka-meta--muted">
+                picked up by {item.acked_by}
+                {item.done_note ? ` — ${item.done_note}` : ""}
+              </div>
+            ) : (
+              <div className="skypooka-meta skypooka-meta--muted">
+                waiting for local pickup: <code>npm run skypooka:queue -- list</code>
+              </div>
+            )}
+          </article>
+        ))
+      )}
+
+      <h2 className="skypooka-section-title">3 · Packet inbox</h2>
       {feed.packet_inbox.length === 0 ? (
         <div className="skypooka-empty">No packets in TinkerPit inbox.</div>
       ) : (
@@ -198,7 +227,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">3 · Receipts returned</h2>
+      <h2 className="skypooka-section-title">4 · Receipts returned</h2>
       {feed.receipts.length === 0 ? (
         <div className="skypooka-empty">No receipts returned yet.</div>
       ) : (
@@ -223,7 +252,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">4 · Human gates</h2>
+      <h2 className="skypooka-section-title">5 · Human gates</h2>
       {feed.human_gates.length === 0 ? (
         <div className="skypooka-empty">No open human gates.</div>
       ) : (
@@ -241,7 +270,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">5 · Blockers</h2>
+      <h2 className="skypooka-section-title">6 · Blockers</h2>
       {feed.blockers.length === 0 ? (
         <div className="skypooka-empty">No blockers.</div>
       ) : (
@@ -256,7 +285,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">6 · Next safe actions</h2>
+      <h2 className="skypooka-section-title">7 · Next safe actions</h2>
       {feed.top_actions.length === 0 ? (
         <div className="skypooka-empty">No queued actions.</div>
       ) : (

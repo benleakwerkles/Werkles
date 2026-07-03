@@ -61,8 +61,12 @@ export type SkyPookaQueuedAction = {
   target: string;
   path: string;
   created_at: string;
-  status: "queued";
+  status: "queued" | "acked" | "done";
   source: "skypooka-mobile";
+  acked_at?: string;
+  acked_by?: string;
+  done_at?: string;
+  done_note?: string;
 };
 
 export async function listQueuedSkyPookaActions(limit = 20) {
