@@ -230,13 +230,16 @@ Each lane must define:
   - `app/api/skypooka/**`
   - `components/skypooka/**`
   - `lib/skypooka/**`
+  - `foreman/skypooka/**`
+  - `app/operator/page.tsx` (SkyPooka entry link only)
   - `foreman/LANES.md`
   - `foreman/BUDGET.md`
   - `foreman/NEXT_ACTION.md` (SkyPooka status lines only)
 - Allowed actions:
   - mobile-first responsive UI for operator field view
   - read-only aggregation of Nerdkle, human gates, handoffs, and cockpit blockers
-  - simulated FIRE/HOLD affordances when relay backend is not connected
+  - queue mobile FIRE/HOLD requests to `foreman/skypooka/*-queue/` (no live send from phone)
+  - simulated FIRE/HOLD affordances when relay queue is unavailable
   - local typecheck/build within allowed file areas
   - feature branch commits and draft PRs
 - Forbidden actions:

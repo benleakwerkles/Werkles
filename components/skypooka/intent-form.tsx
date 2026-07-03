@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
+import { useSkyPookaRefresh } from "@/components/skypooka/refresh-context";
+
 type AssembleResult = {
   ok: boolean;
   object?: {
@@ -17,6 +19,7 @@ type AssembleResult = {
 };
 
 export default function SkyPookaIntentForm() {
+  const { refreshAll } = useSkyPookaRefresh();
   const [intent, setIntent] = useState("");
   const [owner, setOwner] = useState("");
   const [busy, setBusy] = useState(false);
@@ -44,6 +47,7 @@ export default function SkyPookaIntentForm() {
       }
       setResult(payload);
       setIntent("");
+      await refreshAll();
     } catch (error) {
       setResult({
         ok: false,

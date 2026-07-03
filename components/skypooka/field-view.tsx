@@ -18,15 +18,39 @@ function formatTime(value: string) {
   });
 }
 
-function simulateFire(name: string) {
-  if (
-    !window.confirm(
-      `FIRE ${name}?\n\nRelay backend is NOT connected on this build — this will NOT actually send.`
-    )
-  ) {
-    return;
+async function queueRelayAction(input: {
+  action: "fire" | "hold";
+  card: { id: string; subject: string; target: string; path: string };
+  mode: "queue" | "simulated";
+}) {
+  if (input.mode === "simulated") {
+    if (
+      !window.confirm(
+        `${input.action.toUpperCase()} ${input.card.subject}?\n\nRelay queue is unavailable on this build — this will NOT queue or send.`
+      )
+    ) {
+      return false;
+    }
+    window.alert("SIMULATED: relay queue unavailable. Nothing was queued or sent.");
+    return false;
   }
-  window.alert("SIMULATED: no relay backend connected. Nothing was sent.");
+
+  const response = await fetch("/api/skypooka/fire-queue", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      action: input.action,
+      card_id: input.card.id,
+      subject: input.card.subject,
+      target: input.card.target,
+      path: input.card.path
+    })
+  });
+  const payload = (await response.json()) as { ok?: boolean; queue_path?: string; error?: string };
+  if (!response.ok || !payload.ok) {
+    throw new Error(payload.error ?? "Queue failed");
+  }
+  return true;
 }
 
 export default function SkyPookaFieldView() {
@@ -66,11 +90,13 @@ export default function SkyPookaFieldView() {
     <>
       {stale ? <div className="skypooka-banner">{error ?? "Showing cached field feed."}</div> : null}
 
-      {!feed.relay_backend_connected ? (
+      {feed.relay_status.mobile_fire_mode === "queue" ? (
+        <div className="skypooka-banner">{feed.relay_status.note}</div>
+      ) : (
         <div className="skypooka-banner">
-          Relay backend not connected — <b>FIRE</b> is <b>SIMULATED</b> on this build (nothing is sent).
+          Relay queue unavailable — <b>FIRE</b> and <b>HOLD</b> stay <b>SIMULATED</b> on this build.
         </div>
-      ) : null}
+      )}
 
       {feed.operator_focus ? (
         <section className="skypooka-focus" aria-label="Operator focus">
@@ -103,18 +129,46 @@ export default function SkyPookaFieldView() {
               <button
                 type="button"
                 className="skypooka-btn skypooka-btn--fire"
-                onClick={() => simulateFire(card.subject)}
+                onClick={() => {
+                  void queueRelayAction({
+                    action: "fire",
+                    card: { id: card.id, subject: card.subject, target: card.target, path: card.path },
+                    mode: feed.relay_status.mobile_fire_mode
+                  }).then((queued) => {
+                    if (queued) {
+                      setHeld((current) => ({ ...current, [card.id]: true }));
+                      void loadFeed();
+                    }
+                  }).catch((queueError) => {
+                    window.alert(queueError instanceof Error ? queueError.message : "Queue failed");
+                  });
+                }}
               >
                 FIRE
-                {!feed.relay_backend_connected ? <span className="skypooka-sim">SIM</span> : null}
+                {feed.relay_status.mobile_fire_mode === "simulated" ? (
+                  <span className="skypooka-sim">SIM</span>
+                ) : null}
               </button>
               <button
                 type="button"
                 className="skypooka-btn skypooka-btn--hold"
-                disabled={held[card.id]}
-                onClick={() => setHeld((current) => ({ ...current, [card.id]: true }))}
+                disabled={held[card.id] || card.status === "QUEUED"}
+                onClick={() => {
+                  void queueRelayAction({
+                    action: "hold",
+                    card: { id: card.id, subject: card.subject, target: card.target, path: card.path },
+                    mode: feed.relay_status.mobile_fire_mode
+                  }).then((queued) => {
+                    if (queued) {
+                      setHeld((current) => ({ ...current, [card.id]: true }));
+                      void loadFeed();
+                    }
+                  }).catch((queueError) => {
+                    window.alert(queueError instanceof Error ? queueError.message : "Queue failed");
+                  });
+                }}
               >
-                {held[card.id] ? "HELD" : "HOLD"}
+                {held[card.id] || card.status === "QUEUED" ? "QUEUED" : "HOLD"}
               </button>
               <Link
                 className="skypooka-btn skypooka-btn--open"
@@ -127,7 +181,24 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">2 · Receipts returned</h2>
+      <h2 className="skypooka-section-title">2 · Packet inbox</h2>
+      {feed.packet_inbox.length === 0 ? (
+        <div className="skypooka-empty">No packets in TinkerPit inbox.</div>
+      ) : (
+        feed.packet_inbox.map((packet) => (
+          <article key={packet.packet_id} className="skypooka-card">
+            <div className="skypooka-card-top">
+              <span className="skypooka-card-name">{packet.action}</span>
+              <span className="skypooka-chip">{packet.status}</span>
+            </div>
+            <div className="skypooka-meta">
+              {packet.packet_id} · {formatTime(packet.created_at)}
+            </div>
+          </article>
+        ))
+      )}
+
+      <h2 className="skypooka-section-title">3 · Receipts returned</h2>
       {feed.receipts.length === 0 ? (
         <div className="skypooka-empty">No receipts returned yet.</div>
       ) : (
@@ -152,7 +223,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">3 · Human gates</h2>
+      <h2 className="skypooka-section-title">4 · Human gates</h2>
       {feed.human_gates.length === 0 ? (
         <div className="skypooka-empty">No open human gates.</div>
       ) : (
@@ -170,7 +241,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">4 · Blockers</h2>
+      <h2 className="skypooka-section-title">5 · Blockers</h2>
       {feed.blockers.length === 0 ? (
         <div className="skypooka-empty">No blockers.</div>
       ) : (
@@ -185,7 +256,7 @@ export default function SkyPookaFieldView() {
         ))
       )}
 
-      <h2 className="skypooka-section-title">5 · Next safe actions</h2>
+      <h2 className="skypooka-section-title">6 · Next safe actions</h2>
       {feed.top_actions.length === 0 ? (
         <div className="skypooka-empty">No queued actions.</div>
       ) : (
@@ -205,7 +276,8 @@ export default function SkyPookaFieldView() {
 
       <p className="skypooka-legend">
         Read-only field view. States are file-derived from repo artifacts. Human gates cannot be approved from mobile.
-        Packet inbox: {feed.packet_inbox_count}. Updated {formatTime(feed.generated_at)}.
+        Packet inbox: {feed.packet_inbox_count}. Queued mobile actions: {feed.counts.queued_actions}. Updated{" "}
+        {formatTime(feed.generated_at)}.
       </p>
     </>
   );

@@ -13,6 +13,7 @@ import {
 } from "@/app/api/nerdkle/_lib";
 import { readHumanGateDashboard } from "@/lib/tinkerden/human-gates";
 import { readTinkerPitPacketInbox } from "@/lib/tinkerden/packet-inbox";
+import { listQueuedSkyPookaActions, readSkyPookaRelayStatus, type SkyPookaQueuedAction } from "@/lib/skypooka/relay-status";
 
 const INBOX_DIR = path.join(process.cwd(), "foreman", "handoffs", "inbox");
 const NEXT_ACTION_PATH = path.join(process.cwd(), "foreman", "NEXT_ACTION.md");
@@ -61,12 +62,25 @@ export type SkyPookaActionCard = {
   stage: string;
 };
 
+export type SkyPookaPacketCard = {
+  packet_id: string;
+  action: string;
+  status: string;
+  created_at: string;
+};
+
 export type SkyPookaFieldFeed = {
   ok: true;
   generated_at: string;
   product: "SkyPooka";
   tagline: "Mobile Nerdkle · Mobile Werkles";
-  relay_backend_connected: false;
+  relay_backend_connected: boolean;
+  relay_status: {
+    mobile_fire_mode: "queue" | "simulated";
+    courier_ready: boolean;
+    relay_lock_status: string | null;
+    note: string;
+  };
   effective_gate: string | null;
   operator_focus: {
     object_id: string;
@@ -79,6 +93,8 @@ export type SkyPookaFieldFeed = {
   human_gates: SkyPookaGateCard[];
   blockers: SkyPookaBlockerCard[];
   top_actions: SkyPookaActionCard[];
+  packet_inbox: SkyPookaPacketCard[];
+  queued_actions: SkyPookaQueuedAction[];
   packet_inbox_count: number;
   counts: {
     relay_cards: number;
@@ -86,6 +102,8 @@ export type SkyPookaFieldFeed = {
     human_gates: number;
     blockers: number;
     top_actions: number;
+    packet_inbox: number;
+    queued_actions: number;
   };
 };
 
@@ -257,13 +275,16 @@ async function buildTopActions(objects: Array<{ object: NerdkleObject; stage: st
 }
 
 export async function buildSkyPookaFieldFeed(): Promise<SkyPookaFieldFeed> {
-  const [objectsRaw, nextAction, humanGateDashboard, packetInbox, relayCards, receiptCards] = await Promise.all([
+  const [objectsRaw, nextAction, humanGateDashboard, packetInbox, relayCards, receiptCards, relayStatus, queuedActions] =
+    await Promise.all([
     readJsonFiles(OBJECTS_DIR),
     fs.readFile(NEXT_ACTION_PATH, "utf8").catch(() => ""),
     readHumanGateDashboard(),
     readTinkerPitPacketInbox(12),
     readHandoffCards(HANDOFF_OUTBOX_DIR, "TO", 8),
-    readHandoffCards(INBOX_DIR, "FROM", 8)
+    readHandoffCards(INBOX_DIR, "FROM", 8),
+    readSkyPookaRelayStatus(),
+    listQueuedSkyPookaActions(12)
   ]);
 
   const objects = objectsRaw.map((object) => ({
@@ -309,12 +330,27 @@ export async function buildSkyPookaFieldFeed(): Promise<SkyPookaFieldFeed> {
       : [])
   ];
 
+  const packetCards: SkyPookaPacketCard[] = packetInbox.packets.map((packet) => ({
+    packet_id: packet.packet_id,
+    action: packet.action,
+    status: packet.status,
+    created_at: packet.created_at
+  }));
+
+  const queuedCardIds = new Set(queuedActions.map((item) => item.card_id));
+
   return {
     ok: true,
     generated_at: new Date().toISOString(),
     product: "SkyPooka",
     tagline: "Mobile Nerdkle · Mobile Werkles",
-    relay_backend_connected: false,
+    relay_backend_connected: relayStatus.mobile_fire_mode === "queue",
+    relay_status: {
+      mobile_fire_mode: relayStatus.mobile_fire_mode,
+      courier_ready: relayStatus.courier_ready,
+      relay_lock_status: relayStatus.relay_lock_status,
+      note: relayStatus.note
+    },
     effective_gate: parseEffectiveGate(nextAction),
     operator_focus: focus
       ? {
@@ -324,7 +360,10 @@ export async function buildSkyPookaFieldFeed(): Promise<SkyPookaFieldFeed> {
           next_action: focus.object.next_action
         }
       : null,
-    relay_cards: relayCards,
+    relay_cards: relayCards.map((card) => ({
+      ...card,
+      status: queuedCardIds.has(card.id) ? "QUEUED" : card.status
+    })),
     receipts: receiptCards.map((card) => ({
       id: card.id,
       subject: card.subject,
@@ -336,13 +375,17 @@ export async function buildSkyPookaFieldFeed(): Promise<SkyPookaFieldFeed> {
     human_gates: humanGates,
     blockers,
     top_actions: topActions,
+    packet_inbox: packetCards,
+    queued_actions: queuedActions,
     packet_inbox_count: packetInbox.count,
     counts: {
       relay_cards: relayCards.length,
       receipts: receiptCards.length,
       human_gates: humanGates.length,
       blockers: blockers.length,
-      top_actions: topActions.length
+      top_actions: topActions.length,
+      packet_inbox: packetCards.length,
+      queued_actions: queuedActions.length
     }
   };
 }

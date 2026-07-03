@@ -21,6 +21,14 @@ export default function OperatorIndexPage() {
         <section className="operations-grid__cards">
           <article className="ops-card">
             <div className="card-heading">
+              <p>SkyPooka</p>
+              <h2>Mobile Nerdkle field console</h2>
+            </div>
+            <p>Thumb-first operator view for relay cards, gates, blockers, and safe mobile Nerdkle intake.</p>
+            <Link className="button button-outline" href="/skypooka">Open SkyPooka</Link>
+          </article>
+          <article className="ops-card">
+            <div className="card-heading">
               <p>Kind Sir</p>
               <h2>Compliance and site finishing queue</h2>
             </div>
