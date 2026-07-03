@@ -64,6 +64,29 @@ export function SkyPookaRefreshProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Battery-friendly live polling: refresh while the tab is visible,
+  // and immediately on return to the foreground.
+  useEffect(() => {
+    const POLL_MS = 30000;
+    const interval = window.setInterval(() => {
+      if (document.visibilityState === "visible" && window.navigator.onLine) {
+        void refreshAll();
+      }
+    }, POLL_MS);
+
+    const onVisible = () => {
+      if (document.visibilityState === "visible" && window.navigator.onLine) {
+        void refreshAll();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisible);
+
+    return () => {
+      window.clearInterval(interval);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [refreshAll]);
+
   const onTouchStart = useCallback((event: TouchEvent<HTMLDivElement>) => {
     if (window.scrollY > 0 || isRefreshing) return;
     touchStartY.current = event.touches[0]?.clientY ?? null;

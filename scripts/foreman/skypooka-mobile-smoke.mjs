@@ -55,6 +55,15 @@ async function waitForServer(baseUrl, timeoutMs = 90000) {
   throw new Error(`Server at ${baseUrl} did not become ready in ${timeoutMs}ms`);
 }
 
+async function portInUse(baseUrl) {
+  try {
+    await fetch(baseUrl, { cache: "no-store" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function main() {
   const { chromium } = await import("playwright");
 
@@ -66,9 +75,16 @@ async function main() {
 
   if (!baseUrl) {
     baseUrl = `http://127.0.0.1:${PORT}`;
-    const args = USE_DEV ? ["run", "dev", "--", "-p", String(PORT)] : ["run", "start", "--", "-p", String(PORT)];
+    if (await portInUse(baseUrl)) {
+      throw new Error(
+        `Port ${PORT} is already serving. A stale server would smoke-test an old build. `
+        + `Stop it, pick another port via SKYPOOKA_SMOKE_PORT, or pass --base-url to test the running server intentionally.`
+      );
+    }
+    const nextBin = path.join(REPO_ROOT, "node_modules", "next", "dist", "bin", "next");
+    const args = [nextBin, USE_DEV ? "dev" : "start", "-p", String(PORT)];
     console.log(`Starting Next.js (${USE_DEV ? "dev" : "start"}) on :${PORT}…`);
-    server = spawn("npm", args, {
+    server = spawn(process.execPath, args, {
       cwd: REPO_ROOT,
       stdio: ["ignore", "pipe", "pipe"],
       env: { ...process.env, PORT: String(PORT) }
