@@ -1,0 +1,66 @@
+packet_id: MAKER_BETSY_NERDKLE_NMCLR_PROOF_BODY_V0_2026_06_27
+schema: nmclr_claim_registry_v0
+generated_at: "2026-06-27T17:47:00Z"
+owner: Maker@Betsy
+stream: NERDKLE / NMCLR PROOF BODY
+claims:
+  - claim_id: NMCLR-STRUCTURE-001
+    claim_text: NMCLR has a first visible proof-body container with required registry, receipt index, and unproven-claims files.
+    claim_type: STRUCTURE
+    required_proof: All four requested proof-body files exist under nerdkle/nmclr_proof_body/.
+    current_status: PARTIAL
+    source_artifact: nerdkle/nmclr_proof_body/NMCLR_PROOF_BODY_V0.md
+    receipt_id: RECEIPT-NMCLR-PROOF-BODY-V0-2026-06-27
+    owner: Maker@Betsy
+    notes: Container files are created by this packet, but no independent validation has reviewed them.
+
+  - claim_id: NMCLR-CHAIN-001
+    claim_text: NMCLR can show a packet to work to artifact to receipt chain for proof claims.
+    claim_type: CHAIN
+    required_proof: A joined chain containing packet id, work log, artifact hash, and receipt id.
+    current_status: UNPROVEN
+    source_artifact: foreman/receipts/DINK_BETSY_NO_BUILD_BLOCKER_RECEIPT.md
+    receipt_id: UNKNOWN
+    owner: Maker@Betsy
+    notes: Prior blocker named the missing chain; this packet creates the body but not the full chain fixture.
+
+  - claim_id: NMCLR-BOUNDARY-001
+    claim_text: NMCLR proof body does not use Feral/TinkerDen proof to canonize NMCLR.
+    claim_type: BOUNDARY
+    required_proof: Proof-body files state forbidden crossing and avoid citing Feral/TinkerDen artifacts as NMCLR proof.
+    current_status: PARTIAL
+    source_artifact: nerdkle/nmclr_proof_body/NMCLR_PROOF_BODY_V0.md
+    receipt_id: RECEIPT-NMCLR-PROOF-BODY-V0-2026-06-27
+    owner: Maker@Betsy
+    notes: Boundary is written in V0; independent review still needed.
+
+  - claim_id: NMCLR-BOUNDARY-002
+    claim_text: NMCLR proof body does not canonize Feral/TinkerDen from NMCLR evidence.
+    claim_type: BOUNDARY
+    required_proof: Proof-body files state forbidden crossing and contain no Feral/TinkerDen architecture verdict.
+    current_status: PARTIAL
+    source_artifact: nerdkle/nmclr_proof_body/NMCLR_PROOF_BODY_V0.md
+    receipt_id: RECEIPT-NMCLR-PROOF-BODY-V0-2026-06-27
+    owner: Maker@Betsy
+    notes: Boundary is written in V0; no downstream usage has been audited.
+
+  - claim_id: NMCLR-EVIDENCE-001
+    claim_text: NMCLR has visible proof artifacts for all currently important claims.
+    claim_type: EVIDENCE
+    required_proof: Every registry claim has an inspectable artifact, receipt, owner, timestamp, and matching status.
+    current_status: UNPROVEN
+    source_artifact: nerdkle/nmclr_proof_body/nmclr_claim_registry.yaml
+    receipt_id: UNKNOWN
+    owner: Maker@Betsy
+    notes: Several claims intentionally remain UNPROVEN in V0.
+
+  - claim_id: NMCLR-GAP-001
+    claim_text: Unproven NMCLR claims are visible with missing proof and next smallest repair.
+    claim_type: GAP
+    required_proof: unproven_claims.md lists every UNPROVEN claim from the registry.
+    current_status: PARTIAL
+    source_artifact: nerdkle/nmclr_proof_body/unproven_claims.md
+    receipt_id: RECEIPT-NMCLR-PROOF-BODY-V0-2026-06-27
+    owner: Maker@Betsy
+    notes: V0 lists known unproven claims; future registry additions must keep this file synchronized.
+

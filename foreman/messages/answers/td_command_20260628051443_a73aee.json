@@ -1,0 +1,15 @@
+{
+  "schema": "nerdkle_aeye_answer_v0",
+  "packet_id": "td_command_20260628051443_a73aee",
+  "origin_surface": "FeralMembrane@Betsy",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "worker": "NerdkleAnswerWorker@Betsy",
+  "worker_pid": 47852,
+  "received_at": "2026-06-28T05:14:44.162Z",
+  "answered_at": "2026-06-28T05:14:44.162Z",
+  "source_outbox_path": "foreman/messages/outbox/td_command_20260628051443_a73aee.json",
+  "source_outbox_sha256": "f704b71aa9a0cb89c1e0f4e07c1af3473f49af3e1ac8f90c996e38d1c19c3fbe",
+  "answer_text": "NerdkleAnswerWorker@Betsy received packet td_command_20260628051443_a73aee.\nTarget: Maker@Betsy.\nReceived at: 2026-06-28T05:14:44.162Z.\n\nAnswer:\nI can act on the packet text. The requested command/query was: Call me Count Gimpula\n\nProof standard:\n- This answer was produced by a separate machine-runner process after reading foreman/messages/outbox.\n- It is not a model-chat proof and not an external Aeye UI proof.\n- It does prove packet-left, received, answered, and answer-returned inside the local Nerdkle organism transport.",
+  "answer_sha256": "f32685a814bdc10f56c45477ceb1b8193dcd8f8168f9729da80b6cc8c92f5f81"
+}

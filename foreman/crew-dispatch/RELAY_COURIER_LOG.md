@@ -216,3 +216,75 @@ Call log:
 
 ## 2026-06-07T17:48:07.600Z
 - LOAD OK PETRA tab 1 class=AUTO_SEND engine=powershell
+
+## 2026-06-15T17:39:11.470Z
+- SOLEDASH PETRA playwright CDP :9222 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+
+## 2026-06-15T17:39:11.476Z
+- SOLEDASH PETRA playwright CDP :9223 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9223
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9223
+
+
+## 2026-06-15T17:39:11.478Z
+- SOLEDASH PETRA playwright CDP :9333 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9333
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9333
+
+
+## 2026-06-15T17:39:35.701Z
+- SOLEDASH PETRA playwright CDP :9222 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+
+## 2026-06-15T17:39:35.705Z
+- SOLEDASH PETRA playwright CDP :9223 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9223
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9223
+
+
+## 2026-06-15T17:39:35.707Z
+- SOLEDASH PETRA playwright CDP :9333 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9333
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9333
+
+
+## 2026-06-15T17:40:18.847Z
+- SOLEDASH PETRA playwright CDP :9222 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+
+## 2026-06-15T17:40:18.852Z
+- SOLEDASH PETRA playwright CDP :9223 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9223
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9223
+
+
+## 2026-06-15T17:40:18.853Z
+- SOLEDASH PETRA playwright CDP :9333 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9333
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9333
+
+
+## 2026-06-16T00:20:55.704Z
+- SOLEDASH PETRA playwright CDP :9222 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+
+## 2026-06-16T00:20:55.709Z
+- SOLEDASH PETRA playwright CDP :9223 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9223
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9223
+
+
+## 2026-06-16T00:20:55.710Z
+- SOLEDASH PETRA playwright CDP :9333 skip: browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9333
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9333
+

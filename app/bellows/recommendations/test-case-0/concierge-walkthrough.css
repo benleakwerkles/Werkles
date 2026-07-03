@@ -1,0 +1,1011 @@
+/* Squibb Concierge User #0 — test-case-0 */
+
+.squibb-walkthrough-page {
+  --squibb-rec-accent: var(--werkles-owl-eye-green, #5fd178);
+  --squibb-rec-copper: var(--werkles-copper, #9f6633);
+  --concierge-symptom: var(--werkles-copper, #9f6633);
+  --concierge-hypothesis: var(--werkles-teal-bright, #18c5ae);
+  --concierge-experiment: var(--werkles-ember, #fbc368);
+  --concierge-rec: var(--squibb-rec-accent, #5fd178);
+}
+
+.squibb-walkthrough-page .squibb-rec-page__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.concierge-user-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 56rem;
+}
+
+.concierge-user-flow__hero {
+  border-left: 3px solid var(--concierge-symptom);
+}
+
+.concierge-user-flow__hero h1 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.concierge-user-flow__lead {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.concierge-user-flow--60s .concierge-user-flow__steps {
+  gap: 0.75rem;
+}
+
+.concierge-user-flow__footer {
+  border-left: 3px solid var(--werkles-ember, #fbc368);
+}
+
+.concierge-speaker-headline {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--werkles-text-primary, #f4e2b1);
+  line-height: 1.35;
+}
+
+.concierge-speaker-summary {
+  margin: 0 0 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.concierge-speaker-confidence {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.concierge-bullet-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.concierge-bullet-list li {
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-bullet-list--falsify li {
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.concierge-bullet-list--falsify li::marker {
+  color: var(--werkles-forge-orange, #c45c26);
+}
+
+.concierge-alt-chips {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.concierge-alt-chips__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--werkles-text-muted, #6d5b46);
+  font-weight: 700;
+}
+
+.concierge-alt-chips__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.concierge-alt-chip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  align-items: baseline;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+  font-size: 0.88rem;
+}
+
+.concierge-alt-chip strong {
+  color: var(--concierge-hypothesis);
+  font-size: 0.82rem;
+}
+
+.concierge-alt-chip span {
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.concierge-test-learning-inline {
+  margin: 0.75rem 0 0;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.45rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--werkles-text-secondary, #c08b52);
+  background: color-mix(in srgb, var(--squibb-rec-accent) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--squibb-rec-accent) 25%, var(--werkles-iron));
+}
+
+.concierge-flow-card--speaker {
+  border-left: 3px solid var(--concierge-hypothesis);
+}
+
+.concierge-flow-card--speaker .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-hypothesis) 22%, var(--werkles-iron));
+}
+
+.concierge-flow-card--why {
+  border-left: 3px solid color-mix(in srgb, var(--concierge-hypothesis) 70%, var(--werkles-copper));
+}
+
+.concierge-flow-card--why .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-hypothesis) 18%, var(--werkles-iron));
+}
+
+.concierge-flow-card--falsify {
+  border-left: 3px solid var(--werkles-forge-orange, #c45c26);
+}
+
+.concierge-flow-card--falsify .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--werkles-forge-orange) 22%, var(--werkles-iron));
+}
+
+.concierge-flow-card__head h2 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.squibb-gates--compact h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+}
+
+.squibb-gates__list--compact {
+  gap: 0.4rem;
+}
+
+.squibb-gates__list--compact .squibb-gate {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.55rem 0.65rem;
+}
+
+.squibb-gates__list--compact .squibb-gate strong {
+  font-size: 0.88rem;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.squibb-gates__list--compact .squibb-gate span {
+  font-size: 0.82rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.35;
+}
+
+.concierge-why-continue {
+  border-left: 3px solid var(--squibb-rec-accent);
+  background: color-mix(in srgb, var(--squibb-rec-accent) 4%, var(--werkles-workshop-night));
+}
+
+.concierge-why-continue__title {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-why-continue__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.concierge-why-continue__list li {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.concierge-flow-card-wrap {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.concierge-flow-card-wrap__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  background: color-mix(in srgb, var(--concierge-hypothesis) 22%, var(--werkles-iron));
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+/* Flow rail */
+.concierge-flow-rail {
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  background: var(--werkles-workshop-night, #191817);
+  border: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.concierge-flow-rail__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+}
+
+.concierge-flow-rail__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.concierge-flow-rail__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--squibb-rec-accent) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--squibb-rec-accent) 40%, transparent);
+}
+
+.concierge-flow-rail__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-flow-rail__arrow {
+  margin: 0 0.15rem;
+  color: var(--werkles-text-muted, #6d5b46);
+  font-size: 0.85rem;
+}
+
+.concierge-user-flow__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Flow cards */
+.concierge-flow-card {
+  position: relative;
+  margin: 0;
+}
+
+.concierge-flow-card__head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.concierge-flow-card__step {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  background: var(--werkles-iron, #3b342a);
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-flow-card__head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.concierge-flow-card__subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+.concierge-flow-card__body {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.concierge-flow-card--symptom {
+  border-left: 3px solid var(--concierge-symptom);
+}
+
+.concierge-flow-card--symptom .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-symptom) 25%, var(--werkles-iron));
+}
+
+.concierge-flow-card--hypothesis {
+  border-left: 3px solid var(--concierge-hypothesis);
+}
+
+.concierge-flow-card--hypothesis .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-hypothesis) 22%, var(--werkles-iron));
+}
+
+.concierge-flow-card--test {
+  border-left: 3px solid var(--concierge-experiment);
+}
+
+.concierge-flow-card--test .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-experiment) 22%, var(--werkles-iron));
+}
+
+.concierge-flow-card--experiment {
+  border-left: 3px solid var(--concierge-experiment);
+}
+
+.concierge-flow-card--experiment .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-experiment) 22%, var(--werkles-iron));
+}
+
+.concierge-flow-card--recommendation {
+  border-left: 3px solid var(--concierge-rec);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--concierge-rec) 6%, var(--werkles-workshop-night)) 0%,
+    var(--werkles-workshop-night, #191817) 100%
+  );
+}
+
+.concierge-flow-card--recommendation .concierge-flow-card__step {
+  background: color-mix(in srgb, var(--concierge-rec) 25%, var(--werkles-iron));
+}
+
+/* Symptom */
+.concierge-symptom__quote {
+  margin: 0 0 0.75rem;
+  padding: 1rem 1.1rem;
+  border-radius: 0.5rem;
+  background: var(--werkles-workshop-night, #191817);
+  border: 1px solid var(--werkles-iron, #3b342a);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-symptom__plain {
+  margin: 0;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+/* Leverage inventory */
+.concierge-leverage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.65rem;
+}
+
+.concierge-leverage-card {
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.concierge-leverage-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.concierge-leverage-card__head strong {
+  font-size: 0.92rem;
+}
+
+.concierge-leverage-card__status {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+}
+
+.concierge-leverage-card--have {
+  border-color: color-mix(in srgb, var(--squibb-rec-accent) 35%, var(--werkles-iron));
+}
+
+.concierge-leverage-card--have .concierge-leverage-card__status {
+  background: color-mix(in srgb, var(--squibb-rec-accent) 18%, transparent);
+  color: var(--squibb-rec-accent);
+}
+
+.concierge-leverage-card--missing {
+  border-color: color-mix(in srgb, #c66 40%, var(--werkles-iron));
+}
+
+.concierge-leverage-card--missing .concierge-leverage-card__status {
+  background: color-mix(in srgb, #c66 15%, transparent);
+  color: #e8a0a0;
+}
+
+.concierge-leverage-card--unclear {
+  border-style: dashed;
+}
+
+.concierge-leverage-card--unclear .concierge-leverage-card__status {
+  background: color-mix(in srgb, var(--werkles-ember) 15%, transparent);
+  color: var(--werkles-ember, #fbc368);
+}
+
+.concierge-leverage-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+/* Hypothesis */
+.concierge-hypothesis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.65rem;
+}
+
+.concierge-hypothesis-card {
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--concierge-hypothesis) 30%, var(--werkles-iron));
+  background: color-mix(in srgb, var(--concierge-hypothesis) 5%, var(--werkles-workshop-night));
+}
+
+.concierge-hypothesis-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.concierge-hypothesis-card__head h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-hypothesis-card__tag {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.concierge-hypothesis-card__tag--check {
+  border-color: var(--werkles-ember, #fbc368);
+  color: var(--werkles-ember, #fbc368);
+}
+
+.concierge-hypothesis-card__tag--possible {
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.concierge-hypothesis-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.45;
+}
+
+/* Your test */
+.concierge-test-action {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid color-mix(in srgb, var(--concierge-experiment) 45%, transparent);
+  background: color-mix(in srgb, var(--concierge-experiment) 8%, transparent);
+}
+
+.concierge-test-action__label {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--concierge-experiment);
+  font-weight: 700;
+}
+
+.concierge-test-action__action {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-test-action__meta {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.concierge-test-learning {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--squibb-rec-accent) 35%, var(--werkles-iron));
+  background: color-mix(in srgb, var(--squibb-rec-accent) 6%, var(--werkles-workshop-night));
+}
+
+.concierge-test-learning__label {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--squibb-rec-accent);
+  font-weight: 700;
+}
+
+.concierge-test-learning p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-test-prompts {
+  border-top: 1px solid var(--werkles-iron, #3b342a);
+  padding-top: 0.75rem;
+}
+
+.concierge-test-prompts summary {
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  margin-bottom: 0.65rem;
+}
+
+.concierge-test-prompts[open] summary {
+  margin-bottom: 0.85rem;
+}
+
+/* Experiment prompts (inside details) */
+.concierge-experiment-list {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.concierge-experiment-card {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.concierge-experiment-card__num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--concierge-experiment) 20%, transparent);
+  color: var(--concierge-experiment);
+}
+
+.concierge-experiment-card__question {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-experiment-card__why {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.concierge-experiment-action {
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid color-mix(in srgb, var(--concierge-experiment) 45%, transparent);
+  background: color-mix(in srgb, var(--concierge-experiment) 8%, transparent);
+}
+
+.concierge-experiment-action__label {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--concierge-experiment);
+  font-weight: 700;
+}
+
+.concierge-experiment-action p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Recommendation */
+.concierge-rec__headline {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 800;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.concierge-rec__summary {
+  margin: 0 0 1rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.5;
+}
+
+.concierge-rec__matching {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, #c44 8%, var(--werkles-workshop-night));
+  border: 1px solid color-mix(in srgb, #c44 35%, var(--werkles-iron));
+  font-size: 0.88rem;
+}
+
+.concierge-rec__matching-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #c44 20%, transparent);
+  color: #e8a0a0;
+}
+
+.concierge-rec__confidence {
+  margin-bottom: 1rem;
+  padding: 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.concierge-rec__before-act {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-left: 3px solid var(--werkles-ember, #fbc368);
+  font-weight: 600;
+  color: var(--werkles-ember, #fbc368);
+  font-size: 0.92rem;
+}
+
+.concierge-flow-card--recommendation .squibb-gates h3 {
+  font-size: 0.85rem;
+  margin-top: 0;
+}
+
+/* Confidence + gates (shared) */
+.squibb-confidence__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.squibb-confidence__header h3 {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.squibb-confidence__badge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.squibb-confidence__badge--high {
+  border-color: var(--squibb-rec-accent);
+  color: var(--squibb-rec-accent);
+}
+
+.squibb-confidence__badge--medium {
+  border-color: var(--werkles-ember, #fbc368);
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-confidence__badge--low {
+  border-color: color-mix(in srgb, #c66 50%, var(--werkles-iron));
+  color: #e8a0a0;
+}
+
+.squibb-confidence__score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.squibb-confidence__track {
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--werkles-iron, #3b342a);
+  overflow: hidden;
+}
+
+.squibb-confidence__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--werkles-teal-deep, #015e51),
+    var(--squibb-rec-accent)
+  );
+}
+
+.squibb-confidence__why {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.squibb-gates__summary {
+  margin: 0 0 0.5rem;
+  color: #e8a0a0;
+  font-weight: 600;
+}
+
+.squibb-gates__operator-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-gates__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.squibb-gate {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.squibb-gate--blocker {
+  border-color: color-mix(in srgb, #c44 50%, var(--werkles-iron));
+  background: color-mix(in srgb, #c44 8%, var(--werkles-workshop-night));
+}
+
+.squibb-gate--warning {
+  border-color: color-mix(in srgb, var(--werkles-ember) 45%, var(--werkles-iron));
+}
+
+.squibb-gate__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.squibb-gate__severity {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.squibb-gate__approval {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-gate__approval--auto {
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-gate p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+@media (max-width: 640px) {
+  .concierge-flow-rail__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .concierge-flow-rail__arrow {
+    display: none;
+  }
+}
+
+/* Speaker human read */
+.speaker-read {
+  border-left: 3px solid var(--concierge-hypothesis);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--concierge-hypothesis) 5%, var(--werkles-workshop-night)) 0%,
+    var(--werkles-workshop-night, #191817) 100%
+  );
+}
+
+.speaker-read__header h2 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.speaker-read__summary {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.5;
+}
+
+.speaker-read__block {
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.speaker-read__block--falsify {
+  border-top-color: color-mix(in srgb, var(--werkles-forge-orange, #c45c26) 35%, var(--werkles-iron));
+}
+
+.speaker-read__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--concierge-hypothesis);
+  font-weight: 700;
+}
+
+.speaker-read__lead {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.speaker-read__hint {
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.speaker-read__reasons {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.speaker-read__reasons li {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.speaker-read__alt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.6rem;
+}
+
+.speaker-read__alt {
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.speaker-read__alt h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+.speaker-read__alt p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.45;
+}
+
+.speaker-read__alt-would {
+  margin-top: 0.45rem !important;
+  padding-top: 0.45rem;
+  border-top: 1px dashed var(--werkles-iron, #3b342a);
+  font-size: 0.82rem !important;
+  color: var(--werkles-ember, #fbc368) !important;
+}
+
+.speaker-read__falsify {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.speaker-read__falsify li {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.speaker-read__falsify li::marker {
+  color: var(--werkles-forge-orange, #c45c26);
+}
+
+.speaker-read__confidence {
+  margin-top: 1.15rem;
+  padding: 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.speaker-read__confidence .squibb-confidence h3 {
+  font-size: 0.85rem;
+}
+
+/* Legacy speaker-transparency selectors — removed */

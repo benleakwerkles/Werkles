@@ -1,8 +1,10 @@
 @echo off
 title GimpDash — GD Intent Router
-cd /d "C:\Users\BenLeak\github\Werkles"
+set "REPO=%~dp0"
+cd /d "%REPO%"
 echo Starting / refreshing Foreman for GimpDash...
-node "C:\Users\BenLeak\github\Werkles\scripts\foreman\foreman-control-server.mjs" --no-browser
+if exist "%ProgramFiles%\nodejs\node.exe" set "PATH=%ProgramFiles%\nodejs;%PATH%"
+node "%REPO%scripts\foreman\foreman-control-server.mjs" --no-browser
 if errorlevel 1 (
   echo.
   echo GIMPDASH FAILED - see above

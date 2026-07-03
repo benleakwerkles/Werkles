@@ -1,0 +1,1671 @@
+{
+  "schema": "tinkerden_return_system_v0",
+  "updated_at": "2026-06-27T03:08:14.296Z",
+  "packets": [
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs5mqd_ndsrys",
+      "created_at": "2026-06-27T03:08:14.293Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Add more recommendation metrics before decisions.",
+      "why": "There is pressure to make the chooser feel smarter.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+      "created_at": "2026-06-27T03:07:56.807Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+      "created_at": "2026-06-27T03:07:54.996Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+      "created_at": "2026-06-27T03:07:53.071Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs551c_4z3yl2",
+      "created_at": "2026-06-27T03:07:51.359Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs4ym6_xqy326",
+      "created_at": "2026-06-27T03:07:43.038Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs4x7r_ylvzzb",
+      "created_at": "2026-06-27T03:07:41.222Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+      "created_at": "2026-06-27T03:07:38.181Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+      "created_at": "2026-06-27T03:07:33.136Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs1j7o_wyk95t",
+      "created_at": "2026-06-27T03:05:03.108Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Add more recommendation metrics before decisions.",
+      "why": "There is pressure to make the chooser feel smarter.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs1dt7_si58kk",
+      "created_at": "2026-06-27T03:04:56.107Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Add more recommendation metrics before decisions.",
+      "why": "There is pressure to make the chooser feel smarter.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs0r88_0m7ami",
+      "created_at": "2026-06-27T03:04:26.840Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs0opa_fyibld",
+      "created_at": "2026-06-27T03:04:23.565Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs0ljg_kyjue1",
+      "created_at": "2026-06-27T03:04:19.467Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqvs08um_nx4ity",
+      "created_at": "2026-06-27T03:04:03.022Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvs063r_jrac4s",
+      "created_at": "2026-06-27T03:03:59.460Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+      "created_at": "2026-06-27T03:03:48.195Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqul64f3_xp4r4m",
+      "created_at": "2026-06-26T07:04:53.725Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+      "created_at": "2026-06-26T07:02:03.879Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "TINKERDEN_WORKSPACE_RELAY_BETSY_V0 proof packet",
+      "why": "Prove one click can hand a TinkerDen packet to the Betsy machine runner.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqt1ldj6_ar6mdb",
+      "created_at": "2026-06-25T05:09:06.875Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "PACKET_RELAY_SYSTEM_RECEIPTS_V1 proof",
+      "why": "Operator must trace Intent to Receipt through Packet Relay System without searching logs.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Packet Relay complete. Receipt created and ready for assimilation.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqt17q0r_igfk92",
+      "created_at": "2026-06-25T04:58:29.879Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "PACKET_RELAY_SYSTEM_V1 proof",
+      "why": "Packet Relay System V1 must show Relay Ready status while preserving historical event compatibility.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Relay complete. Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mqt122nq_fp5pf8",
+      "created_at": "2026-06-25T04:54:06.322Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "AUTOPASTE_RENAME_TO_PACKET_RELAY_SYSTEM proof",
+      "why": "TinkerPit organism transport must use Packet Relay System naming while preserving old event compatibility.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Workspace focus not configured. Packet copied only.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "PACKET_RELAY_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqsnru5r_g5znqg",
+      "created_at": "2026-06-24T22:42:13.742Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "RECEIPT_JOIN_REPAIR proof execution",
+      "why": "Packet Lane and Receipt Lane need the same canonical execution record keyed by packet_id.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqsnmcio_a5m3ub",
+      "created_at": "2026-06-24T22:37:57.600Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "PACKET_RECEIPT_CUSTODY_V1 proof execute",
+      "why": "Custody proof needs packet -> relay -> receipt artifact -> pickup -> visible row.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqsnil0f_mnyar0",
+      "created_at": "2026-06-24T22:35:01.983Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "PACKET_TO_RECEIPT_LINKAGE_FIX proof execute",
+      "why": "Executed command chooser packets need matching dispatch receipts with packet_id linkage.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Dispatch receipt linked. Receiver proof still required.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqsh890t_40ignc",
+      "created_at": "2026-06-24T19:39:02.188Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Fix PowerToys Workspaces failure.",
+      "why": "PowerToys WorkspacesLauncher.exe requires a workspace id, but TinkerPit was launching it with no id.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqsh7d3b_660yl8",
+      "created_at": "2026-06-24T19:38:20.807Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "AWAITING_RECEIPT",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqri0xda_kqlm7q",
+      "created_at": "2026-06-24T03:13:33.933Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "PowerToys Workspaces error final probe.",
+      "why": "Confirm TinkerPit reports missing workspace id instead of launching Workspaces incorrectly.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Workspace focus not configured. Packet copied only.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqrhsc3k_ybtxzc",
+      "created_at": "2026-06-24T03:06:53.118Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+      "why": "PowerToys Workspaces error final probe.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Workspace focus not configured. Packet copied only.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqrhqhhr_8s3xgb",
+      "created_at": "2026-06-24T03:05:26.797Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+      "why": "PowerToys Workspaces error probe.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqrfifnt_5uhgdr",
+      "created_at": "2026-06-24T02:03:11.944Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqrfhqbx_3qnyit",
+      "created_at": "2026-06-24T02:02:39.112Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqrfbw04_gkkt9b",
+      "created_at": "2026-06-24T01:58:06.532Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Add more recommendation metrics before decisions.",
+      "why": "There is pressure to make the chooser feel smarter.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "AWAITING_RECEIPT",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqrfbula_0i4aok",
+      "created_at": "2026-06-24T01:58:04.702Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Add more recommendation metrics before decisions.",
+      "why": "There is pressure to make the chooser feel smarter.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqrfb457_qw815s",
+      "created_at": "2026-06-24T01:57:30.427Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "AWAITING_RECEIPT",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_autopaste_ready_mqrfb18f_27y4mv",
+      "created_at": "2026-06-24T01:57:26.655Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Move transport queues into Engine Room.",
+      "why": "Filesystem blood is working, but it still occupies Bridge attention.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Target focused. Paste/send now.",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "AUTOPASTE_READY"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqr5d3dg_427dmq",
+      "created_at": "2026-06-23T21:19:06.580Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "AWAITING_RECEIPT",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_bridge_execute_mqr2tgq3_2omouh",
+      "created_at": "2026-06-23T20:07:51.531Z",
+      "origin": "TinkerDen Bridge",
+      "assigned_to": "Maker",
+      "machine": "Betsy",
+      "mission": "Promote Bridge to the default TinkerDen surface.",
+      "why": "The operator model is now clear: Mission Control is WHY, Bridge is NOW, Engine Room is EXECUTION, Speaker is MEMORY.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Petra",
+      "return_destination": "TinkerDen Intake",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "AWAITING_RECEIPT",
+      "assimilation_destination": "Speaker + TinkerDen Intake",
+      "status": "DISPATCHED"
+    },
+    {
+      "packet_id": "td_packet_return_system_v0_bean",
+      "created_at": "2026-06-20T02:01:00.000Z",
+      "origin": "TinkerDen Inbox",
+      "assigned_to": "Bean",
+      "machine": "Sally",
+      "mission": "Review TINKERDEN_RETURN_SYSTEM_V0 and prove packets cannot disappear.",
+      "why": "Every packet sent to Bean, Ender, Maker, Dink, Skybro, or Thufir needs a return path, receipt drawer, and assimilation queue.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Daemon",
+      "return_destination": "TinkerDen Inbox",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "System build receipt posted back to TinkerDen Inbox.",
+      "assimilation_destination": "Speaker + TinkerDen Packet Ledger",
+      "status": "RECEIPT_RETURNED"
+    },
+    {
+      "packet_id": "td_packet_return_system_v0_ender_smoke",
+      "created_at": "2026-06-20T02:02:00.000Z",
+      "origin": "TinkerDen Inbox",
+      "assigned_to": "Ender",
+      "machine": "Betsy",
+      "mission": "Smoke test the TinkerDen Send Packet and Missing Receipt Watchdog flow.",
+      "why": "The page must show a real outbound packet that can be sent, tracked, escalated, receipted, validated, and assimilated.",
+      "owner": "Maker@Betsy",
+      "reviewer": "Daemon",
+      "return_destination": "TinkerDen Inbox",
+      "receipt_required": true,
+      "receipt_type": "proof",
+      "due_status": "Missing receipt escalated by watchdog",
+      "assimilation_destination": "Speaker + TinkerDen Packet Ledger",
+      "status": "MISSING_RECEIPT"
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs5mqg_fcf8d9",
+      "packet_id": "td_packet_bridge_execute_mqvs5mqd_ndsrys",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs5mqd_ndsrys.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs5mqd_ndsrys",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 e67927cfb08348491e20d63c5594a008b69691d5fc2a8a3226b1339338d7111e.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:08:14.296Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs598r_jvdhyc",
+      "packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs598n_lkaeww.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs598n_lkaeww",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 4fad2dd0d5657987f559bab6b993352df887c9461cad4eb2bee4c7cecdb7d126.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:07:56.811Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs57ud_cgb0g2",
+      "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs57ud_wixx70.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs57ud_0uqnre for td_packet_relay_ready_mqvs57ud_wixx70",
+      "proof": "Packet Relay event td_relay_mqvs57ud_0uqnre landed with sha256 6464e35c6ad104294fbc27886647fcf1011a7e5f766695128274262ed6ac62a5.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:07:55.002Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs56cw_ppy7s9",
+      "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs56cw_yl50ow.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs56cw_7zmniz for td_packet_relay_ready_mqvs56cw_yl50ow",
+      "proof": "Packet Relay event td_relay_mqvs56cw_7zmniz landed with sha256 7efbf4cc037dacc80f39260a7dbc6d809a98ebcc09e2e1fce8f01ab3832fa6f4.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:07:53.075Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs551c_jo6ggz",
+      "packet_id": "td_packet_relay_ready_mqvs551c_4z3yl2",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs551c_4z3yl2.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs551c_6peofl for td_packet_relay_ready_mqvs551c_4z3yl2",
+      "proof": "Packet Relay event td_relay_mqvs551c_6peofl landed with sha256 5680c175554892529a97441f9f23985c277e8614e2a00fc233e62a32bf60351a.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:07:51.362Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs4yma_8p7kwk",
+      "packet_id": "td_packet_bridge_execute_mqvs4ym6_xqy326",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs4ym6_xqy326.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs4ym6_xqy326",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 00158df1801e330d41ee3d51d0b9debeccb0768c27f3d900ac95d90fd48531a4.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:07:43.042Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs4x7r_4ajdnk",
+      "packet_id": "td_packet_relay_ready_mqvs4x7r_ylvzzb",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs4x7r_ylvzzb.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs4x7r_5e0npf for td_packet_relay_ready_mqvs4x7r_ylvzzb",
+      "proof": "Packet Relay event td_relay_mqvs4x7r_5e0npf landed with sha256 7a5b8dad3f22bd546a4bf885e05b00cddf11f77a401a49a1ce979df2947e4229.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:07:41.227Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs4uve_iu3c6d",
+      "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs4uv9_7m0bfo.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 58e5d7b2e7de7a0e60e35b3e2f98c64de96d79eeccd7fb24c6ae46da00da3569.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:07:38.186Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs4qz5_vdlfx3",
+      "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs4qz5_82qlyz.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs4qz5_vt4bzy for td_packet_relay_ready_mqvs4qz5_82qlyz",
+      "proof": "Packet Relay event td_relay_mqvs4qz5_vt4bzy landed with sha256 ef3e558dbca9aab212f1d8b8e63dd878ef68682c271d057ab19b431dbf8fb3a5.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:07:33.140Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs1j7u_82amd2",
+      "packet_id": "td_packet_bridge_execute_mqvs1j7o_wyk95t",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs1j7o_wyk95t.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs1j7o_wyk95t",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 96a1c6fef233a4c487707bf22803ef0b630b323b8ad2828d3ee9ffc7dc2a0959.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:05:03.114Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs1dtb_umy3ck",
+      "packet_id": "td_packet_bridge_execute_mqvs1dt7_si58kk",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs1dt7_si58kk.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs1dt7_si58kk",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 993c919e89c917a0a7b21c077ee7bce9efdb0b343b0443d406b6bd374c9ccf5b.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:04:56.111Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs0r8c_7ojp5n",
+      "packet_id": "td_packet_bridge_execute_mqvs0r88_0m7ami",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs0r88_0m7ami.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs0r88_0m7ami",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 29ab643d94181adde8fddd28d51ee48afece3d090dd1f9980f5b226eaa9abf8c.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:04:26.844Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs0opa_ckk7ya",
+      "packet_id": "td_packet_relay_ready_mqvs0opa_fyibld",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs0opa_fyibld.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs0opa_206hvk for td_packet_relay_ready_mqvs0opa_fyibld",
+      "proof": "Packet Relay event td_relay_mqvs0opa_206hvk landed with sha256 a2d0cbe5005337024b24d641f6562ceb0acf7fa9052d717e4a5c0b7945521955.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:04:23.570Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs0ljg_j88m3s",
+      "packet_id": "td_packet_relay_ready_mqvs0ljg_kyjue1",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs0ljg_kyjue1.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs0ljg_6mhj12 for td_packet_relay_ready_mqvs0ljg_kyjue1",
+      "proof": "Packet Relay event td_relay_mqvs0ljg_6mhj12 landed with sha256 d33f2cade86f15df32da1e4020e2512fa018bad4f26bc7053c9e11ea59a32a8e.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:04:19.473Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqvs08uy_820x8r",
+      "packet_id": "td_packet_bridge_execute_mqvs08um_nx4ity",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqvs08um_nx4ity.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqvs08um_nx4ity",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 3bad20b02fcd4d3c130c51b12bcb4357c59954e53eef6f7f9c1cd42a53400452.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-27T03:04:03.034Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvs063r_gio42v",
+      "packet_id": "td_packet_relay_ready_mqvs063r_jrac4s",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvs063r_jrac4s.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvs063r_s6pgwn for td_packet_relay_ready_mqvs063r_jrac4s",
+      "proof": "Packet Relay event td_relay_mqvs063r_s6pgwn landed with sha256 fa11d8c3a4900382bda0b1994deb4c40a949a63d046c52e7ffcce7114d862da0.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:03:59.471Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqvrzxev_25tlde",
+      "packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqvrzxev_gcuhww.json",
+      "summary": "Packet Relay System completed relay td_relay_mqvrzxev_fe1gfh for td_packet_relay_ready_mqvrzxev_gcuhww",
+      "proof": "Packet Relay event td_relay_mqvrzxev_fe1gfh landed with sha256 01d9ef80febe678a2b350bfa69f5bdb64d1be9e42e50d610a35557e751177503.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-27T03:03:48.209Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqul64f3_1bgh5r",
+      "packet_id": "td_packet_relay_ready_mqul64f3_xp4r4m",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqul64f3_xp4r4m.json",
+      "summary": "Packet Relay System completed relay td_relay_mqul64f3_2vbm1l for td_packet_relay_ready_mqul64f3_xp4r4m",
+      "proof": "Packet Relay event td_relay_mqul64f3_2vbm1l landed with sha256 5cb8aa70939fcaeee59b67b263ed8665b2835144f31839111758bd352771daec.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-26T07:04:53.731Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqul2hd5_bmxnfe",
+      "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqul2hd5_9diaia.json",
+      "summary": "Packet Relay System completed relay td_relay_mqul2hd5_cv88pm for td_packet_relay_ready_mqul2hd5_9diaia",
+      "proof": "Packet Relay event td_relay_mqul2hd5_cv88pm landed with sha256 994f3cb6a4dc58947224435631176ffcaa46512e2401fa0237927aefdd238014.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-26T07:02:03.886Z"
+    },
+    {
+      "receipt_id": "td_receipt_packet_relay_mqt1ldj6_y1x6ku",
+      "packet_id": "td_packet_relay_ready_mqt1ldj6_ar6mdb",
+      "returned_by": "PacketRelaySystem@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_relay_ready_mqt1ldj6_ar6mdb.json",
+      "summary": "Packet Relay System completed relay td_relay_mqt1ldj6_oam0kw for td_packet_relay_ready_mqt1ldj6_ar6mdb",
+      "proof": "Packet Relay event td_relay_mqt1ldj6_oam0kw landed with sha256 a77d952ce261832a957ec4d250fb4b7da4d2a327dc8505175cec441bcea175a0.",
+      "blockers": "none",
+      "next_recommended_action": "Trace packet -> relay -> receipt in TinkerDen custody lanes.",
+      "timestamp": "2026-06-25T05:09:06.940Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqsnru67_h703vk",
+      "packet_id": "td_packet_bridge_execute_mqsnru5r_g5znqg",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqsnru5r_g5znqg.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqsnru5r_g5znqg",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 11f56187c05097c24ca1fb70ce78b2e2753495b065ebd55356ac0b656c246ae8.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-24T22:42:13.759Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqsnmcit_463fpb",
+      "packet_id": "td_packet_bridge_execute_mqsnmcio_a5m3ub",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqsnmcio_a5m3ub.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqsnmcio_a5m3ub",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 c4d43a9706496ccea5ebf9db505a4d23df1068817e4d33d4df957a5375edcbcb.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-24T22:37:57.605Z"
+    },
+    {
+      "receipt_id": "td_receipt_bridge_execute_mqsnil3j_7xmxxw",
+      "packet_id": "td_packet_bridge_execute_mqsnil0f_mnyar0",
+      "returned_by": "TinkerDen@Betsy",
+      "artifact_link": "tinkerden/dispatch/packets/td_packet_bridge_execute_mqsnil0f_mnyar0.json",
+      "summary": "Dispatch receipt linked to td_packet_bridge_execute_mqsnil0f_mnyar0",
+      "proof": "Packet was written and packet_dispatched relay event landed with sha256 2f82e6acb9c76dd316ca8f3eac95d26e810024765933fcd34623f1380751f5fe.",
+      "blockers": "Receiver-side work receipt still requires Aeye completion proof.",
+      "next_recommended_action": "Keep packet visible in Receipt Lane until downstream receiver proof lands.",
+      "timestamp": "2026-06-24T22:35:02.095Z"
+    },
+    {
+      "receipt_id": "td_receipt_tinkerden_return_system_v0",
+      "packet_id": "td_packet_return_system_v0_bean",
+      "returned_by": "Maker@Betsy",
+      "artifact_link": "app/tinkerden",
+      "summary": "Built TinkerDen Inbox, Packet Ledger, Receipt Drawer, Assimilation Queue, and Missing Receipt Watchdog.",
+      "proof": "File-backed state at foreman/soledash/tinkerden-return-system-v0/state.json with API actions and UI columns.",
+      "blockers": "none",
+      "next_recommended_action": "Review /tinkerden and send one packet through the full lifecycle.",
+      "timestamp": "2026-06-20T02:01:00.000Z"
+    }
+  ],
+  "assimilations": [
+    {
+      "assimilation_id": "td_assimilation_mqvs57um_hrwuoe",
+      "receipt_id": "td_receipt_packet_relay_mqvs57ud_cgb0g2",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs56d3_53mro0",
+      "receipt_id": "td_receipt_packet_relay_mqvs56cw_ppy7s9",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs551j_mw4t80",
+      "receipt_id": "td_receipt_packet_relay_mqvs551c_jo6ggz",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs4x7z_eo9q10",
+      "receipt_id": "td_receipt_packet_relay_mqvs4x7r_4ajdnk",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs4qzd_hhcw01",
+      "receipt_id": "td_receipt_packet_relay_mqvs4qz5_vdlfx3",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs0opl_b1ozr2",
+      "receipt_id": "td_receipt_packet_relay_mqvs0opa_ckk7ya",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs0ljp_3c2ooz",
+      "receipt_id": "td_receipt_packet_relay_mqvs0ljg_j88m3s",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvs0647_mb07fr",
+      "receipt_id": "td_receipt_packet_relay_mqvs063r_gio42v",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqvrzxfh_mwkcm4",
+      "receipt_id": "td_receipt_packet_relay_mqvrzxev_25tlde",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqul64fc_np06p3",
+      "receipt_id": "td_receipt_packet_relay_mqul64f3_1bgh5r",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    },
+    {
+      "assimilation_id": "td_assimilation_mqul2hdf_4e6ekm",
+      "receipt_id": "td_receipt_packet_relay_mqul2hd5_bmxnfe",
+      "speaker_update_required": true,
+      "doctrine_update_required": false,
+      "registry_update_required": false,
+      "change_capsule_required": true,
+      "affected_organs": [
+        "TinkerDen Inbox",
+        "Packet Ledger",
+        "Receipt Drawer",
+        "Assimilation Queue",
+        "Speaker"
+      ],
+      "final_status": "ASSIMILATED"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "td_event_mqvs5mqk_w1p5mf",
+      "packet_id": "td_packet_bridge_execute_mqvs5mqd_ndsrys",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:08:14.300Z",
+      "details": "td_receipt_bridge_execute_mqvs5mqg_fcf8d9"
+    },
+    {
+      "event_id": "td_event_mqvs5mqd_o5apqg",
+      "packet_id": "td_packet_bridge_execute_mqvs5mqd_ndsrys",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:08:14.293Z",
+      "details": "Bridge card bridge_move_003 executed as KILL. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs598u_a1cjhz",
+      "packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:07:56.814Z",
+      "details": "td_receipt_bridge_execute_mqvs598r_jvdhyc"
+    },
+    {
+      "event_id": "td_event_mqvs598o_axolvf",
+      "packet_id": "td_packet_bridge_execute_mqvs598n_lkaeww",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:07:56.808Z",
+      "details": "Bridge card bridge_move_002 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs57um_odewnd",
+      "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:07:55.006Z",
+      "details": "td_assimilation_mqvs57um_hrwuoe"
+    },
+    {
+      "event_id": "td_event_mqvs57um_ryez4g",
+      "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:07:55.006Z",
+      "details": "td_relay_mqvs57ud_0uqnre -> td_receipt_packet_relay_mqvs57ud_cgb0g2"
+    },
+    {
+      "event_id": "td_event_mqvs57ue_clmhhb",
+      "packet_id": "td_packet_relay_ready_mqvs57ud_wixx70",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:07:54.998Z",
+      "details": "Bridge card bridge_move_002 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs56d3_v59xgp",
+      "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:07:53.079Z",
+      "details": "td_assimilation_mqvs56d3_53mro0"
+    },
+    {
+      "event_id": "td_event_mqvs56d3_rk5u48",
+      "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:07:53.079Z",
+      "details": "td_relay_mqvs56cw_7zmniz -> td_receipt_packet_relay_mqvs56cw_ppy7s9"
+    },
+    {
+      "event_id": "td_event_mqvs56cx_nn4jjm",
+      "packet_id": "td_packet_relay_ready_mqvs56cw_yl50ow",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:07:53.073Z",
+      "details": "Bridge card bridge_move_002 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs551j_e0cmo1",
+      "packet_id": "td_packet_relay_ready_mqvs551c_4z3yl2",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:07:51.367Z",
+      "details": "td_assimilation_mqvs551j_mw4t80"
+    },
+    {
+      "event_id": "td_event_mqvs551j_px6ir2",
+      "packet_id": "td_packet_relay_ready_mqvs551c_4z3yl2",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:07:51.367Z",
+      "details": "td_relay_mqvs551c_6peofl -> td_receipt_packet_relay_mqvs551c_jo6ggz"
+    },
+    {
+      "event_id": "td_event_mqvs551c_z4s7fy",
+      "packet_id": "td_packet_relay_ready_mqvs551c_4z3yl2",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:07:51.360Z",
+      "details": "Bridge card bridge_move_002 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs4ymg_r5qr99",
+      "packet_id": "td_packet_bridge_execute_mqvs4ym6_xqy326",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:07:43.048Z",
+      "details": "td_receipt_bridge_execute_mqvs4yma_8p7kwk"
+    },
+    {
+      "event_id": "td_event_mqvs4ym7_p7q9m3",
+      "packet_id": "td_packet_bridge_execute_mqvs4ym6_xqy326",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:07:43.039Z",
+      "details": "Bridge card bridge_move_001 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs4x7z_s5195p",
+      "packet_id": "td_packet_relay_ready_mqvs4x7r_ylvzzb",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:07:41.231Z",
+      "details": "td_assimilation_mqvs4x7z_eo9q10"
+    },
+    {
+      "event_id": "td_event_mqvs4x7z_la6fdy",
+      "packet_id": "td_packet_relay_ready_mqvs4x7r_ylvzzb",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:07:41.231Z",
+      "details": "td_relay_mqvs4x7r_5e0npf -> td_receipt_packet_relay_mqvs4x7r_4ajdnk"
+    },
+    {
+      "event_id": "td_event_mqvs4x7s_9bzp82",
+      "packet_id": "td_packet_relay_ready_mqvs4x7r_ylvzzb",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:07:41.224Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs4uvi_bz72ls",
+      "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:07:38.190Z",
+      "details": "td_receipt_bridge_execute_mqvs4uve_iu3c6d"
+    },
+    {
+      "event_id": "td_event_mqvs4uva_97uz4q",
+      "packet_id": "td_packet_bridge_execute_mqvs4uv9_7m0bfo",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:07:38.182Z",
+      "details": "Bridge card bridge_move_001 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs4qzd_zw7fj4",
+      "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:07:33.145Z",
+      "details": "td_assimilation_mqvs4qzd_hhcw01"
+    },
+    {
+      "event_id": "td_event_mqvs4qzd_9djaxr",
+      "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:07:33.145Z",
+      "details": "td_relay_mqvs4qz5_vt4bzy -> td_receipt_packet_relay_mqvs4qz5_vdlfx3"
+    },
+    {
+      "event_id": "td_event_mqvs4qz6_vtoyv8",
+      "packet_id": "td_packet_relay_ready_mqvs4qz5_82qlyz",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:07:33.138Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs1j7x_y9gdtp",
+      "packet_id": "td_packet_bridge_execute_mqvs1j7o_wyk95t",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:05:03.117Z",
+      "details": "td_receipt_bridge_execute_mqvs1j7u_82amd2"
+    },
+    {
+      "event_id": "td_event_mqvs1j7p_ycvxwd",
+      "packet_id": "td_packet_bridge_execute_mqvs1j7o_wyk95t",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:05:03.109Z",
+      "details": "Bridge card bridge_move_003 executed as KILL. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs1dtf_l43283",
+      "packet_id": "td_packet_bridge_execute_mqvs1dt7_si58kk",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:04:56.115Z",
+      "details": "td_receipt_bridge_execute_mqvs1dtb_umy3ck"
+    },
+    {
+      "event_id": "td_event_mqvs1dt8_mmvq2s",
+      "packet_id": "td_packet_bridge_execute_mqvs1dt7_si58kk",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:04:56.108Z",
+      "details": "Bridge card bridge_move_003 executed as KILL. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs0r8f_v01per",
+      "packet_id": "td_packet_bridge_execute_mqvs0r88_0m7ami",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:04:26.847Z",
+      "details": "td_receipt_bridge_execute_mqvs0r8c_7ojp5n"
+    },
+    {
+      "event_id": "td_event_mqvs0r89_nr0mbw",
+      "packet_id": "td_packet_bridge_execute_mqvs0r88_0m7ami",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:04:26.841Z",
+      "details": "Bridge card bridge_move_002 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs0opl_th612q",
+      "packet_id": "td_packet_relay_ready_mqvs0opa_fyibld",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:04:23.577Z",
+      "details": "td_assimilation_mqvs0opl_b1ozr2"
+    },
+    {
+      "event_id": "td_event_mqvs0opl_247k3z",
+      "packet_id": "td_packet_relay_ready_mqvs0opa_fyibld",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:04:23.577Z",
+      "details": "td_relay_mqvs0opa_206hvk -> td_receipt_packet_relay_mqvs0opa_ckk7ya"
+    },
+    {
+      "event_id": "td_event_mqvs0opa_6u09od",
+      "packet_id": "td_packet_relay_ready_mqvs0opa_fyibld",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:04:23.566Z",
+      "details": "Bridge card bridge_move_002 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs0ljp_ru5m7s",
+      "packet_id": "td_packet_relay_ready_mqvs0ljg_kyjue1",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:04:19.477Z",
+      "details": "td_assimilation_mqvs0ljp_3c2ooz"
+    },
+    {
+      "event_id": "td_event_mqvs0ljp_uodap0",
+      "packet_id": "td_packet_relay_ready_mqvs0ljg_kyjue1",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:04:19.477Z",
+      "details": "td_relay_mqvs0ljg_6mhj12 -> td_receipt_packet_relay_mqvs0ljg_j88m3s"
+    },
+    {
+      "event_id": "td_event_mqvs0ljh_hicm67",
+      "packet_id": "td_packet_relay_ready_mqvs0ljg_kyjue1",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:04:19.469Z",
+      "details": "Bridge card bridge_move_002 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvs08v6_lfde2s",
+      "packet_id": "td_packet_bridge_execute_mqvs08um_nx4ity",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-27T03:04:03.042Z",
+      "details": "td_receipt_bridge_execute_mqvs08uy_820x8r"
+    },
+    {
+      "event_id": "td_event_mqvs08uq_303ogh",
+      "packet_id": "td_packet_bridge_execute_mqvs08um_nx4ity",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-27T03:04:03.026Z",
+      "details": "Bridge card bridge_move_001 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqvs0647_yg7c03",
+      "packet_id": "td_packet_relay_ready_mqvs063r_jrac4s",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:03:59.479Z",
+      "details": "td_assimilation_mqvs0647_mb07fr"
+    },
+    {
+      "event_id": "td_event_mqvs0647_18uqfv",
+      "packet_id": "td_packet_relay_ready_mqvs063r_jrac4s",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:03:59.479Z",
+      "details": "td_relay_mqvs063r_s6pgwn -> td_receipt_packet_relay_mqvs063r_gio42v"
+    },
+    {
+      "event_id": "td_event_mqvs063t_n5m3jc",
+      "packet_id": "td_packet_relay_ready_mqvs063r_jrac4s",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:03:59.465Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqvrzxfh_13g1dj",
+      "packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-27T03:03:48.221Z",
+      "details": "td_assimilation_mqvrzxfh_mwkcm4"
+    },
+    {
+      "event_id": "td_event_mqvrzxfh_gebhum",
+      "packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-27T03:03:48.221Z",
+      "details": "td_relay_mqvrzxev_fe1gfh -> td_receipt_packet_relay_mqvrzxev_25tlde"
+    },
+    {
+      "event_id": "td_event_mqvrzxex_77xiet",
+      "packet_id": "td_packet_relay_ready_mqvrzxev_gcuhww",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-27T03:03:48.201Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqul64fc_03vvwp",
+      "packet_id": "td_packet_relay_ready_mqul64f3_xp4r4m",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-26T07:04:53.736Z",
+      "details": "td_assimilation_mqul64fc_np06p3"
+    },
+    {
+      "event_id": "td_event_mqul64fc_80leyl",
+      "packet_id": "td_packet_relay_ready_mqul64f3_xp4r4m",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-26T07:04:53.736Z",
+      "details": "td_relay_mqul64f3_2vbm1l -> td_receipt_packet_relay_mqul64f3_1bgh5r"
+    },
+    {
+      "event_id": "td_event_mqul64f4_jr9d6k",
+      "packet_id": "td_packet_relay_ready_mqul64f3_xp4r4m",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-26T07:04:53.728Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqul2hdf_1peta4",
+      "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+      "event": "RECEIPT_ASSIMILATED",
+      "timestamp": "2026-06-26T07:02:03.891Z",
+      "details": "td_assimilation_mqul2hdf_4e6ekm"
+    },
+    {
+      "event_id": "td_event_mqul2hdf_5uv6vi",
+      "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-26T07:02:03.891Z",
+      "details": "td_relay_mqul2hd5_cv88pm -> td_receipt_packet_relay_mqul2hd5_bmxnfe"
+    },
+    {
+      "event_id": "td_event_mqul2hd6_i822hg",
+      "packet_id": "td_packet_relay_ready_mqul2hd5_9diaia",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-26T07:02:03.882Z",
+      "details": "Bridge card workspace_relay_betsy_v0_probe approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqt1ldl3_0n5zf8",
+      "packet_id": "td_packet_relay_ready_mqt1ldj6_ar6mdb",
+      "event": "RELAY_RECEIPT_CREATED",
+      "timestamp": "2026-06-25T05:09:06.951Z",
+      "details": "td_relay_mqt1ldj6_oam0kw -> td_receipt_packet_relay_mqt1ldj6_y1x6ku"
+    },
+    {
+      "event_id": "td_event_mqt1ldj8_8dlcbq",
+      "packet_id": "td_packet_relay_ready_mqt1ldj6_ar6mdb",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-25T05:09:06.884Z",
+      "details": "Bridge card packet_relay_system_receipts_v1_probe approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqt17q0t_o25tqb",
+      "packet_id": "td_packet_relay_ready_mqt17q0r_igfk92",
+      "event": "RELAY_READY",
+      "timestamp": "2026-06-25T04:58:29.885Z",
+      "details": "Bridge card packet_relay_system_v1_probe approved as KEEP. Packet Relay System relay complete. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqt122ns_ytdx7w",
+      "packet_id": "td_packet_relay_ready_mqt122nq_fp5pf8",
+      "event": "PACKET_RELAY_READY",
+      "timestamp": "2026-06-25T04:54:06.328Z",
+      "details": "Bridge card packet_relay_rename_probe approved as KEEP. Packet Relay System prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqsnrubg_p0tzad",
+      "packet_id": "td_packet_bridge_execute_mqsnru5r_g5znqg",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-24T22:42:13.948Z",
+      "details": "td_receipt_bridge_execute_mqsnru67_h703vk"
+    },
+    {
+      "event_id": "td_event_mqsnru5v_ceazwm",
+      "packet_id": "td_packet_bridge_execute_mqsnru5r_g5znqg",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-24T22:42:13.747Z",
+      "details": "Bridge card receipt_join_repair_probe executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqsnmciv_57eqiu",
+      "packet_id": "td_packet_bridge_execute_mqsnmcio_a5m3ub",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-24T22:37:57.607Z",
+      "details": "td_receipt_bridge_execute_mqsnmcit_463fpb"
+    },
+    {
+      "event_id": "td_event_mqsnmcip_tae65n",
+      "packet_id": "td_packet_bridge_execute_mqsnmcio_a5m3ub",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-24T22:37:57.601Z",
+      "details": "Bridge card packet_receipt_custody_v1_probe executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqsnil79_sthitj",
+      "packet_id": "td_packet_bridge_execute_mqsnil0f_mnyar0",
+      "event": "DISPATCH_RECEIPT_LINKED",
+      "timestamp": "2026-06-24T22:35:02.229Z",
+      "details": "td_receipt_bridge_execute_mqsnil3j_7xmxxw"
+    },
+    {
+      "event_id": "td_event_mqsnil0k_k5q63n",
+      "packet_id": "td_packet_bridge_execute_mqsnil0f_mnyar0",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-24T22:35:01.988Z",
+      "details": "Bridge card packet_to_receipt_linkage_fix_probe executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqsh890u_63gj2e",
+      "packet_id": "td_packet_autopaste_ready_mqsh890t_40ignc",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T19:39:02.190Z",
+      "details": "Bridge card powertoys_workspaces_fix_probe approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqsh7d3e_vzd0je",
+      "packet_id": "td_packet_bridge_execute_mqsh7d3b_660yl8",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-24T19:38:20.810Z",
+      "details": "Bridge card bridge_move_001 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqri0xda_mmtdgu",
+      "packet_id": "td_packet_autopaste_ready_mqri0xda_kqlm7q",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T03:13:33.934Z",
+      "details": "Bridge card td_packet_autopaste_ready_mqrhsc3k_ybtxzc approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqrhsc3m_3cof2t",
+      "packet_id": "td_packet_autopaste_ready_mqrhsc3k_ybtxzc",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T03:06:53.122Z",
+      "details": "Bridge card packet_tinkerpit_trace_20260623210158990 approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqrhqhht_lpqbrs",
+      "packet_id": "td_packet_autopaste_ready_mqrhqhhr_8s3xgb",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T03:05:26.801Z",
+      "details": "Bridge card packet_tinkerpit_trace_20260623210158990 approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqrfifnu_5n8jv8",
+      "packet_id": "td_packet_autopaste_ready_mqrfifnt_5uhgdr",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T02:03:11.946Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqrfhqby_wvf2cs",
+      "packet_id": "td_packet_autopaste_ready_mqrfhqbx_3qnyit",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T02:02:39.118Z",
+      "details": "Bridge card bridge_move_001 approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqrfbw04_x0bl74",
+      "packet_id": "td_packet_bridge_execute_mqrfbw04_gkkt9b",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-24T01:58:06.532Z",
+      "details": "Bridge card bridge_move_003 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqrfbulb_ep77zc",
+      "packet_id": "td_packet_autopaste_ready_mqrfbula_0i4aok",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T01:58:04.703Z",
+      "details": "Bridge card bridge_move_003 approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqrfb45g_94w6pc",
+      "packet_id": "td_packet_bridge_execute_mqrfb457_qw815s",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-24T01:57:30.436Z",
+      "details": "Bridge card bridge_move_002 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqrfb18h_e4jdh9",
+      "packet_id": "td_packet_autopaste_ready_mqrfb18f_27y4mv",
+      "event": "AUTOPASTE_READY",
+      "timestamp": "2026-06-24T01:57:26.657Z",
+      "details": "Bridge card bridge_move_002 approved as KEEP. Clipboard packet prepared. No auto-send."
+    },
+    {
+      "event_id": "td_event_mqr5d3dh_ks677n",
+      "packet_id": "td_packet_bridge_execute_mqr5d3dg_427dmq",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-23T21:19:06.581Z",
+      "details": "Bridge card bridge_move_001 executed as KEEP. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqr2tgq4_vzt1lh",
+      "packet_id": "td_packet_bridge_execute_mqr2tgq3_2omouh",
+      "event": "PACKET_DISPATCHED_FROM_BRIDGE",
+      "timestamp": "2026-06-23T20:07:51.532Z",
+      "details": "Bridge card bridge_move_001 executed as MERGE. AWAITING_RECEIPT."
+    },
+    {
+      "event_id": "td_event_mqlpzl20_afjvvp",
+      "packet_id": "td_packet_return_system_v0_ender_smoke",
+      "event": "WATCHDOG_MISSING_RECEIPT",
+      "timestamp": "2026-06-20T02:09:51.192Z",
+      "details": "No receipt exists for SENT/WORKING packet."
+    },
+    {
+      "event_id": "td_event_mqlpzl20_zxvk0s",
+      "packet_id": "td_packet_return_system_v0_ender_smoke",
+      "event": "PACKET_SENT",
+      "timestamp": "2026-06-20T02:09:51.192Z",
+      "details": "Ender@Betsy"
+    },
+    {
+      "event_id": "td_event_tinkerden_return_system_receipt",
+      "packet_id": "td_packet_return_system_v0_bean",
+      "event": "MISSION_RECEIPT_POSTED",
+      "timestamp": "2026-06-20T02:01:00.000Z",
+      "details": "td_receipt_tinkerden_return_system_v0"
+    },
+    {
+      "event_id": "td_event_tinkerden_return_system_ender_smoke",
+      "packet_id": "td_packet_return_system_v0_ender_smoke",
+      "event": "DRAFT_CREATED",
+      "timestamp": "2026-06-20T02:02:00.000Z",
+      "details": "Ready outbound packet exposes Send Packet button on first load."
+    },
+    {
+      "event_id": "td_event_tinkerden_return_system_draft",
+      "packet_id": "td_packet_return_system_v0_bean",
+      "event": "DRAFT_CREATED",
+      "timestamp": "2026-06-20T02:01:00.000Z",
+      "details": "Seed packet proves the return system has an outbound packet to move."
+    }
+  ]
+}

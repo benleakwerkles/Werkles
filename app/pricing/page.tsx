@@ -12,10 +12,18 @@ export default function PricingPage() {
       <main className={`dashboard-main pricing-page ${routeAtmosphere.pricing}`}>
       <nav className="dashboard-nav" aria-label="Pricing navigation">
         <Link href="/">Home</Link>
-        <Link href="/membership">Foundry Dues</Link>
+        <Link href="/signup">Start free</Link>
         <Link href="/proof">Proof</Link>
-        <Link href="/signup">Enter the Foundry</Link>
+        <Link href="/membership">Foundry Dues</Link>
+        <Link href="/dashboard">Member home</Link>
       </nav>
+
+      <section className="ops-card pricing-section" aria-label="Pricing note">
+        <p className="muted">
+          Foundry Dues checkout is paused while operator payment setup finishes. Pricing stays visible so you can
+          compare plans before dues return.
+        </p>
+      </section>
 
       <section className="tier2-page-header tier2-page-header--stack">
         <div className="tier2-page-header__copy membership-hero pricing-hero">

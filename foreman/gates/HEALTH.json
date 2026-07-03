@@ -1,0 +1,15 @@
+{
+  "kind": "human_gate_health_v1",
+  "status": "PASS",
+  "generated_at": "2026-06-28T19:47:25.141Z",
+  "active_gate_count": 3,
+  "issues": [],
+  "warnings": [],
+  "paths": {
+    "active_queue_path": "foreman/gates/ACTIVE_QUEUE.json",
+    "current_gate_review_path": "foreman/reviews/CURRENT_GATE_REVIEW.html",
+    "current_gate_packet_path": "foreman/gates/CURRENT_GATE_PACKET.md",
+    "approval_log_path": "foreman/gates/APPROVAL_LOG.md",
+    "next_action_path": "foreman/NEXT_ACTION.md"
+  }
+}

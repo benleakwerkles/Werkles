@@ -1,0 +1,9 @@
+{
+  "receipt_id": "aeye_td_command_receipt_20260628043850_ff9a97",
+  "packet_id": "td_command_20260628043850_ff9a97",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Dink@Betsy accepted command custody for td_command_20260628043850_ff9a97; command packet hash 7c6abb06fe2b50287c1de16f4b07eec4a20aa925759b5248b325bae36b376573.",
+  "created_at": "2026-06-28T04:38:50.354Z"
+}

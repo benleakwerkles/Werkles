@@ -1,0 +1,30 @@
+88d261d (HEAD -> preserve/tinkerden-packet-engine-20260622) preserve tinkerden packet engine v0
+e6ba25c (preview/wonka-den-safe-preview-20260618) harden operator assist no mule completion rule
+99efdb3 operator assist v0 workspace snapshot packet helper
+dc68295 (origin/preview/wonka-den-safe-preview-20260618) Preview SoleDash Wonka Den safe executor
+8e70a25 (origin/salvage/betsy/snapshot/sally-good-werkles-2026-06-12, snapshot/sally-good-werkles-2026-06-12, salvage/betsy/snapshot/sally-good-werkles-2026-06-12) Add SoleDash mobile field command surface for away-from-desk operator work.
+ffccad0 (origin/snapshot/sally-good-werkles-2026-06-12) Ship SoleDash Automatica relay cards live for operator FIRE testing.
+3aa11f6 Finalize IP register v1
+8bb73f2 feat(squibb): Concierge Walkthrough v0 test-case-0
+e62fbc7 feat(soledash): add Current Strategic Frame leverage card v0
+a96e931 feat(soledash): v1.2 needs-you-now operator workflow
+a2e995d docs(ip): add IP_REGISTER_v1 ecosystem inventory
+52193ae feat(soledash): v1.1 operator workflow UX
+0977264 feat(soledash): canonical v1 operator cockpit for all machines
+fc54a17 feat(soledash): add v0 operator cockpit route and desktop launcher
+8411561 docs(foreman): record machine topology and clone surfaces
+437792b docs(crew): mandate LOCAL HANDS READBACK at session start
+1280361 snapshot: Sally good Werkles state 2026-06-12
+8ba905b docs(foreman): mark SALLY merge verification complete
+405d53e merge: integrate origin/main at 0c727a2 into rescue branch
+533eb14 chore: site icons, bellows scaffold, and ghost-forge docs
+daeaf3d docs(foreman): imagery doctrine, handoffs, and merge conflict report
+5aa975b feat(foreman): autonomous dispatch and homepage discovery proofs
+0d939fa feat(homepage): rewrite v1 with visual system and stock preview
+6866c0b chore(foreman): snapshot Sally work before main merge
+0c727a2 (origin/supabase-auth-stripe-test-wiring, origin/main, origin/HEAD, main) chore(cockpit): record SUPABASE_AUTH_STRIPE Preview proof PASS
+29d0b4c fix(app): read onboarding form before async React handler gap
+ffd117e fix(app): save First Weld through server API for profile upsert
+ab06dd0 fix(app): harden auth callback PKCE and email confirm errors
+597a894 feat(app): wire Supabase auth and Stripe test checkout gate
+e2b5458 Merge pull request #7 from benleakwerkles/app-infra-01-approved-clean

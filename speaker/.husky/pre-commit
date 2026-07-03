@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -eu
+
+if command -v bash >/dev/null 2>&1; then
+  bash speaker/bin/speaker-validate.sh
+else
+  sh speaker/bin/speaker-validate.sh
+fi

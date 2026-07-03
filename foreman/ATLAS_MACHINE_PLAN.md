@@ -10,7 +10,7 @@ Atlas is a **storage / archive / non-critical worker** box. It keeps copies and 
 
 Atlas must NOT:
 
-- be treated as the source of truth (canon is GitHub `Werkles` `main`)
+- be treated as the source of truth (canon is GitHub `Werkles1` `main`)
 - be the main active writer (see `foreman/ACTIVE_AGENT.md`)
 - deploy
 - push to `main` or any shared branch as the authoritative writer

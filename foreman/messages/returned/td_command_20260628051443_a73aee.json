@@ -1,0 +1,9 @@
+{
+  "schema": "nerdkle_answer_returned_v0",
+  "packet_id": "td_command_20260628051443_a73aee",
+  "returned_at": "2026-06-28T05:14:44.162Z",
+  "worker": "NerdkleAnswerWorker@Betsy",
+  "answer_path": "foreman/messages/answers/td_command_20260628051443_a73aee.json",
+  "answer_sha256": "f32685a814bdc10f56c45477ceb1b8193dcd8f8168f9729da80b6cc8c92f5f81",
+  "return_status": "ANSWER_RETURNED_TO_ORGANISM"
+}

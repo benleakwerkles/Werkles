@@ -1,0 +1,19 @@
+{
+  "id": "local_probe",
+  "origin": "swatter_inbox",
+  "source": "manual",
+  "prompt": "local probe",
+  "received_at": "2026-06-17T08:07:37.467Z",
+  "decided_at": "2026-06-17T08:07:38.677Z",
+  "approval_class": "GREEN",
+  "candidate_id": "local_health_checks",
+  "candidate_label": "local health checks",
+  "matched_pattern": "local probe",
+  "hard_stop": false,
+  "reason": "Registry GREEN: local health checks.",
+  "action": "AUTO_APPROVED_SILENT",
+  "execution": null,
+  "decision_path": "foreman/soledash/approval-swatter-alpha/processed/2026-06-17T08-07-38-677Z__green__local_probe.json",
+  "receipt_path": null,
+  "original_path": "foreman/soledash/approval-swatter-alpha/processed/originals/2026-06-17T08-07-38-678Z__2026-06-17T08-07-37-467Z__local_probe.json"
+}

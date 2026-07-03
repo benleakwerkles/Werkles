@@ -1,0 +1,250 @@
+{
+  "schema_version": "soledash-protocol-v0.1",
+  "generated_at": "2026-06-14T06:00:00.000Z",
+  "generated_by": "dink-transport-v0.1",
+  "live_transport": true,
+  "mock": false,
+  "updated_at": "2026-06-14T06:00:00.000Z",
+  "active_owner": "Maker @ Betsy",
+  "machine_why_number_one": "Highest machine score (0.92) — Doss sleep/MWB instability threatens cousin lane throughput; Dink ranks investigation before surface polish.",
+  "current_blocker": {
+    "headline": "blocker_maker_live_file_integration_v0_1",
+    "detail": "Maker must read Dink-owned files only — cousin auto-dispatch and external receipt transport still pending.",
+    "mock": false
+  },
+  "frontier": {
+    "rank": 1,
+    "final_rank": 1,
+    "machine_rank": 2,
+    "operator_rank": 1,
+    "rank_source": "OPERATOR",
+    "action_code": "P0-A001",
+    "proposal_id": "prop_workstation_uniform",
+    "title": "Workstation Uniformization",
+    "evidence_status": "OBSERVED",
+    "weight": 0.78,
+    "score": 0.78,
+    "owner": "Maker @ Betsy",
+    "weight_label": "frontier"
+  },
+  "machine_frontier": {
+    "rank": 1,
+    "final_rank": 1,
+    "machine_rank": 1,
+    "operator_rank": 2,
+    "rank_source": "MACHINE",
+    "action_code": "P0-A002",
+    "proposal_id": "prop_doss_stability",
+    "title": "Doss Stability Investigation",
+    "evidence_status": "HYPOTHESIS",
+    "weight": 0.92,
+    "score": 0.92,
+    "owner": "Dink / Doss",
+    "weight_label": "machine_frontier"
+  },
+  "top_3_alternatives": [
+    {
+      "rank": 2,
+      "final_rank": 2,
+      "machine_rank": 1,
+      "operator_rank": 2,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A002",
+      "proposal_id": "prop_doss_stability",
+      "title": "Doss Stability Investigation",
+      "evidence_status": "HYPOTHESIS",
+      "weight": 0.92,
+      "score": 0.92,
+      "owner": "Dink / Doss",
+      "weight_label": "alternative"
+    },
+    {
+      "rank": 3,
+      "final_rank": 3,
+      "machine_rank": 3,
+      "operator_rank": 3,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A003",
+      "proposal_id": "prop_response_capture",
+      "title": "Response Capture Automation",
+      "evidence_status": "OBSERVED",
+      "weight": 0.71,
+      "score": 0.71,
+      "owner": "Maker @ Betsy",
+      "weight_label": "alternative"
+    },
+    {
+      "rank": 4,
+      "final_rank": 4,
+      "machine_rank": 4,
+      "operator_rank": 4,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A007",
+      "proposal_id": "prop_receipt_transport",
+      "title": "Receipt Transport Persistence",
+      "evidence_status": "OBSERVED",
+      "weight": 0.65,
+      "score": 0.65,
+      "owner": "Dink / Doss",
+      "weight_label": "alternative"
+    }
+  ],
+  "queue_items": [
+    {
+      "rank": 1,
+      "final_rank": 1,
+      "machine_rank": 2,
+      "operator_rank": 1,
+      "rank_source": "OPERATOR",
+      "action_code": "P0-A001",
+      "proposal_id": "prop_workstation_uniform",
+      "title": "Workstation Uniformization",
+      "evidence_status": "OBSERVED",
+      "weight": 0.78,
+      "score": 0.78,
+      "owner": "Maker @ Betsy",
+      "weight_label": "frontier"
+    },
+    {
+      "rank": 2,
+      "final_rank": 2,
+      "machine_rank": 1,
+      "operator_rank": 2,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A002",
+      "proposal_id": "prop_doss_stability",
+      "title": "Doss Stability Investigation",
+      "evidence_status": "HYPOTHESIS",
+      "weight": 0.92,
+      "score": 0.92,
+      "owner": "Dink / Doss",
+      "weight_label": "queued"
+    },
+    {
+      "rank": 3,
+      "final_rank": 3,
+      "machine_rank": 3,
+      "operator_rank": 3,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A003",
+      "proposal_id": "prop_response_capture",
+      "title": "Response Capture Automation",
+      "evidence_status": "OBSERVED",
+      "weight": 0.71,
+      "score": 0.71,
+      "owner": "Maker @ Betsy",
+      "weight_label": "queued"
+    },
+    {
+      "rank": 4,
+      "final_rank": 4,
+      "machine_rank": 4,
+      "operator_rank": 4,
+      "rank_source": "MACHINE",
+      "action_code": "P0-A007",
+      "proposal_id": "prop_receipt_transport",
+      "title": "Receipt Transport Persistence",
+      "evidence_status": "OBSERVED",
+      "weight": 0.65,
+      "score": 0.65,
+      "owner": "Dink / Doss",
+      "weight_label": "queued"
+    }
+  ],
+  "mission": {
+    "id": "phase0_mule_elimination",
+    "label": "Phase 0 · Mule Elimination",
+    "summary": "Ben commands, SoleDash transports — live file reads from Dink"
+  },
+  "current_churn": {
+    "summary": "Live transport wired — SoleDash reads Dink-owned DECISION_SURFACE.json",
+    "current_threat": "Cousin auto-dispatch not yet live — actions file-backed only",
+    "next_decision": "Workstation Uniformization — operator frontier"
+  },
+  "thread_health": {
+    "status": "healthy",
+    "detail": "Live transport layer active on Betsy"
+  },
+  "queue_brain": {
+    "active_owner": "Maker @ Betsy",
+    "waiting_report": "Machine rank vs operator rank divergence visible",
+    "blocker": "blocker_maker_live_file_integration_v0_1",
+    "recommended_next_action": "P0-A001 Workstation Uniformization"
+  },
+  "proposal": {
+    "id": "prop_workstation_uniform",
+    "action_code": "P0-A001",
+    "title": "Workstation Uniformization",
+    "summary": "Standardize Betsy workstation layout — SoleDash, cousins, and foreman paths in one operator surface.",
+    "queue_behind": 3,
+    "evidence_status": "OBSERVED"
+  },
+  "rationale": {
+    "why_this_exists": "Operator overrode machine frontier — uniform surface reduces mule friction.",
+    "assumption": "One layout beats chasing Doss while workstation is fragmented.",
+    "evidence": "Live file read — machine still recommends Doss (P0-A002).",
+    "alternative_rejected": "Follow machine rank (Doss first)",
+    "why_rejected": "Ben chose workstation uniformization as frontier.",
+    "risk": "medium — override delays Doss investigation",
+    "why_now": "Live transport integration proof — Maker reads Dink files only.",
+    "test": "Receipt Center + Action Rail load from foreman/soledash/receipts/ and actions/",
+    "owner": "Operator (Ben) — override",
+    "confidence": "high — file-backed state visible"
+  },
+  "human_gate": {
+    "classification": "live_transport",
+    "operator_prompt": "Gate classification (Dink supplies prompt)",
+    "operator_line": "Live transport active — operator override on frontier.",
+    "detail": "YEA writes to Dink action/receipt files when dispatch wired.",
+    "transport_gap": null
+  },
+  "decision": {
+    "buttons": [
+      { "id": "yea", "label": "YEA", "enabled": true, "reason_disabled": null, "route_owner": null },
+      { "id": "nay", "label": "NAY", "enabled": true, "reason_disabled": null, "route_owner": null },
+      {
+        "id": "needs_research",
+        "label": "NEEDS RESEARCH",
+        "enabled": true,
+        "reason_disabled": null,
+        "route_owner": "Thufir"
+      },
+      {
+        "id": "kill_test",
+        "label": "KILL TEST",
+        "enabled": true,
+        "reason_disabled": null,
+        "route_owner": "Bean"
+      },
+      {
+        "id": "human_reality",
+        "label": "HUMAN REALITY",
+        "enabled": true,
+        "reason_disabled": null,
+        "route_owner": "Ender"
+      },
+      { "id": "more_info", "label": "EXPAND WHY", "enabled": true, "reason_disabled": null, "route_owner": null }
+    ],
+    "if_clicked": "Dink transport writes action + receipt files; SoleDash refreshes from disk."
+  },
+  "decision_receipt": {
+    "receipt_id": "act_live_yea_001",
+    "kind": "live_action",
+    "last_action": "yea",
+    "outcome": "YEA resolved — file-backed receipt",
+    "next_state": "Awaiting cousin dispatch",
+    "written_to": "foreman/soledash/receipts/rec_yea_001.json",
+    "route_owner": null
+  },
+  "operator_chat": {
+    "placeholder": "Type intent — Dink owns chat transport when live…",
+    "entries": [],
+    "pending_route": null
+  },
+  "throughput_log": [
+    { "label": "Data source", "detail": "dink-transport-v0.1" },
+    { "label": "Protocol", "detail": "soledash-protocol-v0.1" },
+    { "label": "Receipt center", "detail": "foreman/soledash/receipts/" },
+    { "label": "Action rail", "detail": "foreman/soledash/actions/" }
+  ]
+}

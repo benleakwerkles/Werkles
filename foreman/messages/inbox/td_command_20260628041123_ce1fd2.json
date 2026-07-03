@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628041123_ce1fd2",
+  "origin_surface": "Cursor Relay Proof",
+  "origin_card_id": "command_dash_td_command_20260628041123_ce1fd2",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628041123_ce1fd2",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628041123_ce1fd2.json",
+    "command_packet_hash": "9a6aa2d0e5c402ef896dd9e6ceeaaf2598d4365408eb0bd83b17cf278fa1ff7f",
+    "command": "BEAST_PROOF: direct Command Dash to Aeye relay proof through shared TinkerDen command surface library.",
+    "stream": "COMMAND DASH / AEYE RELAY",
+    "command_type": "BEAST_PROOF",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "Cursor Relay Proof",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-28T04:11:23.452Z"
+}

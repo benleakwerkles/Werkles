@@ -21,9 +21,20 @@ export default function SpacePage() {
             Every Space frame needs one sign of recent or imminent use — apron on hook, pen in gutter, tool out of
             rack. Real-estate aspiration and demolition reads both fail this act.
           </p>
-          <Link className="button button-outline" href="/">
-            Back to homepage Space beat
-          </Link>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-dark" href="/signup">
+              Start free
+            </Link>
+            <Link className="button button-outline" href="/formation">
+              See formation
+            </Link>
+            <Link className="button button-outline" href="/proof">
+              Inspect proof
+            </Link>
+            <Link className="button button-ghost" href="/">
+              Back to homepage Space beat
+            </Link>
+          </div>
         </section>
       </NarrativeActPageLayout>
       <footer className="site-footer">

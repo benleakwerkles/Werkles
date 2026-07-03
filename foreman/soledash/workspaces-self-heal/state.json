@@ -1,0 +1,18 @@
+{
+    "schema":  "powertoys_workspaces_self_heal_state_v1",
+    "workspaces":  {
+                       "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}":  {
+                                                                      "fingerprint":  "4a15798af11ec92a8968bfaeb270b0712868a6badb5f8ccb0c793a5638e8a42d",
+                                                                      "skipped_apps":  [
+                                                                                           {
+                                                                                               "application":  "Google Chrome",
+                                                                                               "application_path":  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                                                                                               "title":  "ChatGPT - Werkles1.1 - Google Chrome",
+                                                                                               "reason":  "launch_timeout",
+                                                                                               "first_seen_at":  "2026-06-25T04:57:28.756Z",
+                                                                                               "last_seen_at":  "2026-06-25T04:57:28.756Z"
+                                                                                           }
+                                                                                       ]
+                                                                  }
+                   }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "SHAKESPEARE_VERDICT_RECEIPT_V0",
+  "generated_at": "2026-06-17T18:17:34.511Z",
+  "payload": {
+    "schema": "SHAKESPEARE_V0",
+    "path": "Intent -> Classifier -> Policy -> Verdict",
+    "intent": "local read workstation note",
+    "classifier": "LOCAL_MECHANICAL_SAFE",
+    "policy": "green_local_silent_swat",
+    "verdict": "SWAT",
+    "rule": "swat_green_local_mechanical",
+    "reason": "Matched swat_green_local_mechanical.",
+    "confidence": "high — hardcoded rule match"
+  },
+  "view": {
+    "intent": "local read workstation note",
+    "verdict": "SWAT",
+    "rule": "swat_green_local_mechanical",
+    "confidence": "high — hardcoded rule match",
+    "receiptLink": null
+  }
+}

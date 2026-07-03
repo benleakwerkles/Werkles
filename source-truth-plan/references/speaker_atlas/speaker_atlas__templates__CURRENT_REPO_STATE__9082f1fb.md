@@ -15,8 +15,8 @@ SECRET_POLICY: remote URLs are sanitized for embedded credentials; no PATs or SS
 
 ```text
 + git -C /c/Users/BenLeak/Desktop/github/Werkles remote -v
-origin	https://github.com/benleakwerkles/Werkles.git (fetch)
-origin	https://github.com/benleakwerkles/Werkles.git (push)
+origin	https://github.com/benleakwerkles/Werkles1.git (fetch)
+origin	https://github.com/benleakwerkles/Werkles1.git (push)
 ```
 
 ## git branch -a

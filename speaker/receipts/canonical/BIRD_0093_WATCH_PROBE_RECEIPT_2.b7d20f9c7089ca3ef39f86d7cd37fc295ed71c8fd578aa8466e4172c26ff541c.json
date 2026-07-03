@@ -1,0 +1,11 @@
+{
+  "receipt_id": "BIRD_0093_WATCH_PROBE_RECEIPT_2",
+  "receipt_type": "ARTIFACT",
+  "timestamp": "2026-06-27T17:37:00-04:00",
+  "owner": "Maker",
+  "status": "ARTIFACT",
+  "evidence": {
+    "path": "speaker/bin/speakerctl.js",
+    "summary": "watch-substrate receipt inbox ingestion probe after scope tightening"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "queue_id": "apoptosis_queue_20260627210541_705c53c8",
+  "created_at": "2026-06-27T21:05:41.579Z",
+  "review_interval_days": 30,
+  "stale_cutoff": "2026-05-28T21:05:41.579Z",
+  "source_db": "C:/Users/BENLEA~1/AppData/Local/Temp/speaker_apoptosis_mock_179c0795ec144209b68a92cebf4b8414.sqlite",
+  "selection_rules": [
+    "duplicate doctrine_id records across indexed environments",
+    "active doctrine rows with a superseded relation edge",
+    "active doctrine rows older than the review interval"
+  ],
+  "selection_queries": {
+    "duplicateDoctrineIds": "\n    WITH doctrine_records AS (\n      SELECT\n        doctrine_id,\n        path,\n        title,\n        status,\n        updated_at,\n        CASE\n          WHEN instr(path, '/') > 0 THEN substr(path, 1, instr(path, '/') - 1)\n          ELSE 'root'\n        END AS environment\n      FROM doctrine_index\n      WHERE doctrine_id IS NOT NULL AND doctrine_id <> ''\n    )\n    SELECT\n      doctrine_id,\n      COUNT(*) AS record_count,\n      COUNT(DISTINCT environment) AS environment_count,\n      group_concat(environment || ':' || path, ' | ') AS locations,\n      MIN(updated_at) AS oldest_updated_at,\n      MAX(updated_at) AS newest_updated_at\n    FROM doctrine_records\n    GROUP BY doctrine_id\n    HAVING COUNT(*) > 1 OR COUNT(DISTINCT environment) > 1\n    ORDER BY newest_updated_at ASC, doctrine_id ASC\n  ",
+    "supersededActiveDoctrine": "\n    SELECT\n      d.doctrine_id,\n      d.path,\n      d.title,\n      d.status,\n      d.updated_at,\n      e.edge_id,\n      e.to_doctrine_id,\n      e.relation,\n      e.created_at AS edge_created_at\n    FROM doctrine_index d\n    INNER JOIN doctrine_edges e\n      ON e.from_doctrine_id = d.doctrine_id\n    WHERE UPPER(d.status) = 'ACTIVE'\n      AND LOWER(e.relation) = 'superseded'\n    ORDER BY e.created_at ASC, d.doctrine_id ASC\n  ",
+    "staleActiveDoctrine": "\n    SELECT\n      doctrine_id,\n      path,\n      title,\n      status,\n      updated_at\n    FROM doctrine_index\n    WHERE UPPER(status) = 'ACTIVE'\n      AND datetime(updated_at) < datetime(@cutoff)\n    ORDER BY datetime(updated_at) ASC, doctrine_id ASC\n  "
+  },
+  "counts": {
+    "duplicate_doctrine_id": 1,
+    "superseded_active_doctrine": 1,
+    "stale_active_doctrine": 1,
+    "total_candidates": 3
+  },
+  "candidates": [
+    {
+      "candidate_id": "apoptosis_queue_20260627210541_705c53c8_duplicate_doctrine_id_001",
+      "doctrine_id": "BIRD_0080_MOCK_DUPLICATE",
+      "selector": "duplicate_doctrine_id",
+      "reason": "Duplicate doctrine_id found across indexed environments.",
+      "status": "queued",
+      "title": null,
+      "path": null,
+      "updated_at": "2026-06-01T00:00:00.000Z",
+      "evidence": {
+        "source_query": "duplicateDoctrineIds",
+        "row": {
+          "doctrine_id": "BIRD_0080_MOCK_DUPLICATE",
+          "record_count": 2,
+          "environment_count": 2,
+          "locations": "active:active/BIRD_0080_MOCK_DUPLICATE.md | split-sally:split-sally/BIRD_0080_MOCK_DUPLICATE.md",
+          "oldest_updated_at": "2026-06-01T00:00:00.000Z",
+          "newest_updated_at": "2026-06-02T00:00:00.000Z"
+        }
+      }
+    },
+    {
+      "candidate_id": "apoptosis_queue_20260627210541_705c53c8_superseded_active_doctrine_001",
+      "doctrine_id": "BIRD_0080_MOCK_SUPERSEDED",
+      "selector": "superseded_active_doctrine",
+      "reason": "Active doctrine has an explicit superseded relation edge.",
+      "status": "queued",
+      "title": "Mock superseded doctrine",
+      "path": "active/BIRD_0080_MOCK_SUPERSEDED.md",
+      "updated_at": "2026-06-03T00:00:00.000Z",
+      "evidence": {
+        "source_query": "supersededActiveDoctrine",
+        "row": {
+          "doctrine_id": "BIRD_0080_MOCK_SUPERSEDED",
+          "path": "active/BIRD_0080_MOCK_SUPERSEDED.md",
+          "title": "Mock superseded doctrine",
+          "status": "ACTIVE",
+          "updated_at": "2026-06-03T00:00:00.000Z",
+          "edge_id": "edge_bird_0080_mock_superseded",
+          "to_doctrine_id": "BIRD_0080_MOCK_REPLACEMENT",
+          "relation": "superseded",
+          "edge_created_at": "2026-06-05T00:00:00.000Z"
+        }
+      }
+    },
+    {
+      "candidate_id": "apoptosis_queue_20260627210541_705c53c8_stale_active_doctrine_001",
+      "doctrine_id": "BIRD_0080_MOCK_STALE",
+      "selector": "stale_active_doctrine",
+      "reason": "Active doctrine is older than the configured review interval.",
+      "status": "queued",
+      "title": "Mock stale doctrine",
+      "path": "active/BIRD_0080_MOCK_STALE.md",
+      "updated_at": "2026-01-01T00:00:00.000Z",
+      "evidence": {
+        "source_query": "staleActiveDoctrine",
+        "row": {
+          "doctrine_id": "BIRD_0080_MOCK_STALE",
+          "path": "active/BIRD_0080_MOCK_STALE.md",
+          "title": "Mock stale doctrine",
+          "status": "ACTIVE",
+          "updated_at": "2026-01-01T00:00:00.000Z"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_tinkerpit_trace_20260623210158990",
+  "packet_id": "packet_tinkerpit_trace_20260623210158990",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "TINKERPIT_RELAY_SUPPORT_V0 end-to-end trace acknowledged.",
+  "created_at": "2026-06-23T21:01:58.990Z"
+}

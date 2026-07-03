@@ -1,0 +1,50 @@
+# CHOKIDAR_NEUROCIRCULYMPHATIC_V0_RECEIPT
+
+Mission: CHOKIDAR_NEUROCIRCULYMPHATIC_V0
+Created: 2026-06-23
+Status: READY
+Detected by: Maker@Betsy
+
+## Files Created/Changed
+
+- `scripts/foreman/chokidar-neurocirculymphatic-v0.mjs`
+- `package.json`
+- `package-lock.json`
+- `data/organism/events.jsonl`
+- `foreman/receipts/CHOKIDAR_NEUROCIRCULYMPHATIC_V0_TEST_RECEIPT.json`
+- `foreman/receipts/CHOKIDAR_NEUROCIRCULYMPHATIC_V0_RECEIPT.md`
+
+## Command To Run Watcher
+
+```powershell
+npm run organism:watch
+```
+
+## Watched Paths
+
+- `foreman/handoffs/outbox`
+- `foreman/handoffs/inbox`
+- `foreman/receipts`
+- `foreman/speaker/entries`
+
+Speaker note: `speaker/inbox` was not present, so the watcher uses the current Speaker intake-like folder, `foreman/speaker/entries`.
+
+## Event Sink
+
+`data/organism/events.jsonl`
+
+## Test Event Path
+
+`foreman/receipts/CHOKIDAR_NEUROCIRCULYMPHATIC_V0_TEST_RECEIPT.json`
+
+## Sample JSONL Event
+
+```json
+{"timestamp":"2026-06-23T06:24:02.767Z","event_type":"file_created","source_path":"foreman/receipts/CHOKIDAR_NEUROCIRCULYMPHATIC_V0_TEST_RECEIPT.json","file_name":"CHOKIDAR_NEUROCIRCULYMPHATIC_V0_TEST_RECEIPT.json","detected_by":"Maker@Betsy","destination_guess":"foreman_receipts","sha256":"96ff2d67959aca79bf972b717a3ff07a589bedf7f51b30afdaca877eec9ed90c","size_bytes":164}
+```
+
+## Blockers
+
+- Initial background watcher run failed under the default Windows sandbox with `Sandbox policy 'workspace_readwrite' is not supported on this system`.
+- Rerun with local filesystem permission succeeded.
+- No MQTT, vector DB, dashboard, or architecture expansion added.

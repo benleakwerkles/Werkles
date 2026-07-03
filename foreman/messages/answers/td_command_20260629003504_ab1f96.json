@@ -1,0 +1,15 @@
+{
+  "schema": "nerdkle_aeye_answer_v0",
+  "packet_id": "td_command_20260629003504_ab1f96",
+  "origin_surface": "FeralMembraneBuildSmoke@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "worker": "NerdkleAnswerWorker@Betsy",
+  "worker_pid": 47852,
+  "received_at": "2026-06-29T00:35:05.398Z",
+  "answered_at": "2026-06-29T00:35:05.399Z",
+  "source_outbox_path": "foreman/messages/outbox/td_command_20260629003504_ab1f96.json",
+  "source_outbox_sha256": "cdf5f12b4605c9b47ee2498554ec1a65a6fd4fe64e64b8b4e64d42fae1fb4b80",
+  "answer_text": "NerdkleAnswerWorker@Betsy received packet td_command_20260629003504_ab1f96.\nTarget: Dink@Betsy.\nReceived at: 2026-06-29T00:35:05.398Z.\n\nAnswer:\nI can act on the packet text. The requested command/query was: BUILD_SMOKE: verify merged command dash writes destination-backed custody receipt.\n\nProof standard:\n- This answer was produced by a separate machine-runner process after reading foreman/messages/outbox.\n- It is not a model-chat proof and not an external Aeye UI proof.\n- It does prove packet-left, received, answered, and answer-returned inside the local Nerdkle organism transport.",
+  "answer_sha256": "ff73c508436e6a9c2ac9abf6fe419780440297f8162e3f46799a2a502dad42e9"
+}

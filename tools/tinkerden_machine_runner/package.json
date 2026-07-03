@@ -1,0 +1,11 @@
+{
+  "name": "tinkerden-machine-runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node src/index.mjs serve",
+    "self-test": "node src/index.mjs self-test",
+    "handle": "node src/index.mjs handle"
+  }
+}

@@ -4,6 +4,7 @@ import BetaSignupForm from "./beta-signup-form";
 import { DraftReviewBadge } from "@/components/foundry/draft-review-badge";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { HomeValueFold } from "@/components/foundry/home-value-fold";
+import { LanesDocumentarySection } from "@/components/foundry/lanes-documentary-section";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { SquibbStoryBeat } from "@/components/foundry/squibb-story-beat";
@@ -26,8 +27,54 @@ export default function HomePage() {
 
         <HeroStatic />
         <HomeValueFold />
+        <LanesDocumentarySection />
         <SquibbStoryBeat />
         <VisualStorySection />
+
+        <section className="operations-grid" aria-labelledby="startDoorwayTitle">
+          <WorkshopBandPanel tone="foundry" layout="bare" className="operations-grid__band" atmosphere={false}>
+            <article className="ops-card">
+              <div className="card-heading">
+                <p>Start here</p>
+                <h2 id="startDoorwayTitle">Three safe doors into Werkles.</h2>
+              </div>
+              <p>
+                If you are new, start free. If you are deciding whether it is worth joining, compare pricing. If you
+                need trust before movement, inspect proof first.
+              </p>
+              <div className="trust-state-strip" aria-label="Werkles entry paths">
+                <span>Free account</span>
+                <span>Transparent pricing</span>
+                <span>Proof before trust</span>
+              </div>
+              <div className="member-selected-surface__actions">
+                <Link className="button button-dark" href="/signup">
+                  Start free
+                </Link>
+                <Link className="button button-outline" href="/pricing">
+                  Compare pricing
+                </Link>
+                <Link className="button button-outline" href="/proof">
+                  Inspect proof
+                </Link>
+              </div>
+              <p className="muted" style={{ marginTop: "1rem" }}>
+                Returning member?
+              </p>
+              <div className="member-selected-surface__actions">
+                <Link className="button button-outline" href="/login">
+                  Log in
+                </Link>
+                <Link className="button button-outline" href="/dashboard">
+                  Member home
+                </Link>
+                <Link className="button button-outline" href="/onboarding">
+                  Onboarding
+                </Link>
+              </div>
+            </article>
+          </WorkshopBandPanel>
+        </section>
 
         <section id="how" className="manifesto" aria-labelledby="howTitle">
           <WorkshopBandPanel tone="workshop" layout="split" atmosphere={false}>
@@ -97,9 +144,14 @@ export default function HomePage() {
                   <h2>{copy.home.dashboardTeaser.headline}</h2>
                 </div>
                 <p className="status-line">{copy.home.dashboardTeaser.body}</p>
-                <Link className="button button-outline" href="/membership">
-                  {copy.home.foundry.cta}
-                </Link>
+                <div className="member-selected-surface__actions">
+                  <Link className="button button-dark" href="/login">
+                    Log in
+                  </Link>
+                  <Link className="button button-outline" href="/dashboard">
+                    Member home
+                  </Link>
+                </div>
               </article>
             </div>
           </WorkshopBandPanel>

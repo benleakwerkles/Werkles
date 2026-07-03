@@ -1,0 +1,14 @@
+{
+  "environment": "production",
+  "human_gate_required": "TIER_1_HUMAN_GATE",
+  "aliases": [
+    "werkles.com",
+    "www.werkles.com",
+    "werkles.vercel.app",
+    "werkles-werkles.vercel.app"
+  ],
+  "notes": [
+    "Production-only alias source of truth.",
+    "Preview deploy guards must not load this file."
+  ]
+}

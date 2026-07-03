@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://werkles.local/speaker/schemas/receipt.schema.json",
+  "title": "Speaker Canonical Receipt V0",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "timestamp",
+    "owner",
+    "status",
+    "evidence"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "receipt_type": {
+      "type": "string",
+      "minLength": 1,
+      "enum": ["ACK", "BLOCKER", "ARTIFACT", "VALIDATION", "OPERATOR_DECISION", "CHANGE_CAPSULE"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACK", "BLOCKER", "ARTIFACT"]
+    },
+    "evidence": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "anyOf": [
+        { "required": ["path"] },
+        { "required": ["summary"] },
+        { "required": ["sha256"] }
+      ]
+    }
+  }
+}

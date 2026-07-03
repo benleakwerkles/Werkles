@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628051013_1169df",
+  "origin_surface": "FeralMembrane@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628051013_1169df",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628051013_1169df",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628051013_1169df.json",
+    "command_packet_hash": "43e6d211f2a67061faedde05c50909256b156e66994fd81c0121747633e433e7",
+    "command": "Virtualization is not available\nClaude's workspace requires hardware virtualization. Enable virtualization in your computer's BIOS/UEFI settings, then restart.",
+    "stream": "FERAL / COMMAND DASH",
+    "command_type": "MEMBRANE_COMMAND",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "FeralMembrane@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-28T05:10:13.955Z"
+}

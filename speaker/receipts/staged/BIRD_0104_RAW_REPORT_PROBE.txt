@@ -1,0 +1,4 @@
+BIRD_0104 raw staged report probe
+origin: Maker@Betsy
+target: speaker/receipts/staged/BIRD_0104_RAW_REPORT_PROBE.txt
+awaiting: plaintext copy access

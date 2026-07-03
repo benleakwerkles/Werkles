@@ -1,18 +1,18 @@
 {
   "index_id": "ATLAS_GITHUB_BRANCH_INDEX",
-  "created_at": "2026-07-02T20:00:36.589Z",
+  "created_at": "2026-06-27T20:11:34.639Z",
   "organ": "Atlas",
   "source_truth_statement": "GitHub origin/main is canonical. Other GitHub branches are candidate, audit, preview, or preservation evidence until human-gated promotion.",
   "remote": "origin",
-  "remote_url": "https://github.com/benleakwerkles/Werkles.git",
+  "remote_url": "https://github.com/benleakwerkles/Werkles1.git",
   "canonical_branch": "main",
-  "canonical_hash": "50ec4c9e3716785a01657953556fe9737bc01f97",
-  "branch_count": 42,
+  "canonical_hash": "0c727a2461f274f8990063ab9ee06b799a1890ed",
+  "branch_count": 39,
   "branches": [
     {
       "branch": "main",
       "ref": "refs/heads/main",
-      "hash": "50ec4c9e3716785a01657953556fe9737bc01f97",
+      "hash": "0c727a2461f274f8990063ab9ee06b799a1890ed",
       "classification": "CANONICAL_SOURCE_TRUTH",
       "canonical": true
     },
@@ -241,13 +241,6 @@
       "canonical": false
     },
     {
-      "branch": "preserve/tinkerden-packet-engine-20260622",
-      "ref": "refs/heads/preserve/tinkerden-packet-engine-20260622",
-      "hash": "dda5d295554e70b0a75bf4b186e569f5b7393f5a",
-      "classification": "REMOTE_BRANCH_CANDIDATE",
-      "canonical": false
-    },
-    {
       "branch": "preview/wonka-den-safe-preview-20260618",
       "ref": "refs/heads/preview/wonka-den-safe-preview-20260618",
       "hash": "dc6829580ec1ede8c864a9a9051efb02ec874c00",
@@ -278,7 +271,7 @@
     {
       "branch": "source-truth/atlas-speaker-v0-20260627",
       "ref": "refs/heads/source-truth/atlas-speaker-v0-20260627",
-      "hash": "93947e39602c1873aea1deb568f27591a70c9fb1",
+      "hash": "5e20fbc4a65c5016141c6bc37a27865a772fb3f6",
       "classification": "SOURCE_TRUTH_REVIEW",
       "canonical": false
     },
@@ -286,20 +279,6 @@
       "branch": "supabase-auth-stripe-test-wiring",
       "ref": "refs/heads/supabase-auth-stripe-test-wiring",
       "hash": "0c727a2461f274f8990063ab9ee06b799a1890ed",
-      "classification": "REMOTE_BRANCH_CANDIDATE",
-      "canonical": false
-    },
-    {
-      "branch": "thinkit/relay-build-snapshot-20260629-0050",
-      "ref": "refs/heads/thinkit/relay-build-snapshot-20260629-0050",
-      "hash": "8ac6f22cb67ad5dfc5c5fc7f5c3b8afcd7f48ce9",
-      "classification": "REMOTE_BRANCH_CANDIDATE",
-      "canonical": false
-    },
-    {
-      "branch": "werkles-maker-discovery-intake-20260629",
-      "ref": "refs/heads/werkles-maker-discovery-intake-20260629",
-      "hash": "2b7210e37143a2abf4ef9d7373663e59aa94759d",
       "classification": "REMOTE_BRANCH_CANDIDATE",
       "canonical": false
     }

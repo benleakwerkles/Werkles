@@ -1,0 +1,13 @@
+[
+  {
+    "receipt_id": "td_receipt_001",
+    "origin_type": "SYSTEM",
+    "origin_actor": "TinkerDen",
+    "origin_machine": "Betsy",
+    "packet_id": "td_packet_returned_001",
+    "returned_by": "Maker@Betsy",
+    "summary": "Receipt Drawer proves returned reports can land before assimilation.",
+    "timestamp": "2026-06-20T06:11:49.919Z",
+    "proof_reference": "data/receipts.json#td_receipt_001"
+  }
+]

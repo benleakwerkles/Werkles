@@ -41,17 +41,6 @@ Prefer:
 - `foreman/OPERATOR_DASHBOARD.md`
 - relevant `handoffs/` packet files
 
-## Repo Identity Guard
-
-For repo/project-state research, carry these identifiers:
-
-- repo: `benleakwerkles/Werkles`
-- repo id: `1242158598`
-- canonical branch: `main`
-- packet: `foreman/messages/MAKER_AEYE_REPO_SETTINGS_ALIGNMENT_PACKET_20260703.md`
-
-Computer may cite current external docs, but must not claim local machine or Codex project binding state without a provided readback.
-
 ## Output Style
 
 Return concise sourced findings, links, dates checked, risks, and recommended next actions.

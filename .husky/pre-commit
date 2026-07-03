@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+sh speaker/.husky/pre-commit
+sh scripts/foreman/swatter-receipt-floor.sh

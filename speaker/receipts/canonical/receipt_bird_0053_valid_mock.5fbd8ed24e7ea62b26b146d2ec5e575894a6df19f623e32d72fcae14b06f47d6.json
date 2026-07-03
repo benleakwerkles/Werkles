@@ -1,0 +1,13 @@
+{
+  "receipt_id": "receipt_bird_0053_valid_mock",
+  "receipt_type": "ARTIFACT",
+  "timestamp": "2026-06-27T16:35:00-04:00",
+  "owner": "Dink@Betsy",
+  "status": "ARTIFACT",
+  "evidence": {
+    "type": "file",
+    "path": "speaker/bin/speakerctl.js",
+    "summary": "Mock valid receipt for deterministic Speaker ingestion proof."
+  },
+  "notes": "This mock must canonicalize."
+}

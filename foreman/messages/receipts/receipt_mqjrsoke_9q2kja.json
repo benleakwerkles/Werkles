@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_mqjrsoke_9q2kja",
+  "packet_id": "packet_mqjrsodt_1ycevy",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Dink@Betsy received ping",
+  "created_at": "2026-06-18T17:24:56.028Z"
+}

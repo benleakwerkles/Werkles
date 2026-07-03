@@ -1,0 +1,31 @@
+{
+  "schema": "nerdkle_aeye_received_v0",
+  "packet_id": "td_command_20260628044343_06c5c5",
+  "received_at": "2026-06-28T04:43:44.719Z",
+  "worker": "NerdkleAnswerWorker@Betsy",
+  "worker_pid": 47852,
+  "source_outbox_path": "foreman/messages/outbox/td_command_20260628044343_06c5c5.json",
+  "source_status": "SENT",
+  "packet": {
+    "packet_id": "td_command_20260628044343_06c5c5",
+    "origin_surface": "NerdkleWatcherProof@Betsy",
+    "origin_card_id": "command_dash_td_command_20260628044343_06c5c5",
+    "target_aeye": "Dink",
+    "target_machine": "Betsy",
+    "payload": {
+      "schema": "tinkerden_command_aeye_relay_v0",
+      "command_packet_id": "td_command_20260628044343_06c5c5",
+      "command_packet_path": "tinkerden/inbox/td_command_20260628044343_06c5c5.json",
+      "command_packet_hash": "523ace7322827218d8ab8455e7ee0d4a41eabd8185d11de2cf9e237b8abb988a",
+      "command": "WATCHER_REAL_PROOF: This must be answered by the already-running Nerdkle answer watcher, not by the sender.",
+      "stream": "NERDKLE ORGANISM / WATCHER ANSWER LOOP",
+      "command_type": "WATCHER_REAL_PROOF",
+      "destination_id": "dink_betsy_aeye_inbox_v0",
+      "destination_label": "Dink@Betsy",
+      "source_surface": "NerdkleWatcherProof@Betsy",
+      "required_return": "ACK / BLOCKER / ARTIFACT"
+    },
+    "status": "SENT",
+    "created_at": "2026-06-28T04:43:43.725Z"
+  }
+}

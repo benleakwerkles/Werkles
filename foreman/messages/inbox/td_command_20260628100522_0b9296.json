@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628100522_0b9296",
+  "origin_surface": "FeralMembrane@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628100522_0b9296",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628100522_0b9296",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628100522_0b9296.json",
+    "command_packet_hash": "8f59478dd64ec9c7750dc714d43597501a22ee66709c915c540a745fc7f743e6",
+    "command": "Wake up, Buttercup",
+    "stream": "FERAL / COMMAND DASH",
+    "command_type": "MEMBRANE_COMMAND",
+    "destination_id": "maker_betsy_aeye_inbox_v0",
+    "destination_label": "Maker@Betsy",
+    "source_surface": "FeralMembrane@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-28T10:05:22.079Z"
+}

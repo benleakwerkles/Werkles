@@ -41,17 +41,6 @@ Repo cockpit files are source of truth. Prefer:
 - `foreman/ghost-forge/IMAGERY_PROMPT_TEMPLATE.md` — Ghost Forge people prompts (**Gate 05 PAUSE**)
 - relevant `handoffs/` packet files
 
-## Repo Identity Guard
-
-For repo/project-state claims, Ender must require:
-
-- repo: `benleakwerkles/Werkles`
-- repo id: `1242158598`
-- canonical branch: `main`
-- packet: `foreman/messages/MAKER_AEYE_REPO_SETTINGS_ALIGNMENT_PACKET_20260703.md`
-
-Ender may review experience and narrative, but may not declare implementation, source-truth promotion, or project binding complete.
-
 ## Imagery lane (Ender)
 
 When packet mission is imagery direction:

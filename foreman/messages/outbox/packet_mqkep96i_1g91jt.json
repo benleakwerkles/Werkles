@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_mqkep96i_1g91jt",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_build_here_shell_1781841958932",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "BUILD_HERE_FIRST_ACTUALLY_BUILDS shell proof task"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-19T04:06:07.290Z"
+}

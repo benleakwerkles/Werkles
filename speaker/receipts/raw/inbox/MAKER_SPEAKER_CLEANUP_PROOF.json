@@ -1,0 +1,11 @@
+{
+  "receipt_id": "RECEIPT_MAKER_CLEANUP_20260627Z",
+  "receipt_type": "ARTIFACT",
+  "timestamp": "2026-06-27T18:32:56-04:00",
+  "owner": "Maker@Betsy",
+  "status": "ARTIFACT",
+  "evidence": {
+    "summary": "Speaker cleanup proof",
+    "sha256": "4a4b765c5e1f43c290895242ea311df97ba30b7f830f0368e6be2f631526f20f"
+  }
+}

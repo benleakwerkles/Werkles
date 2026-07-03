@@ -1,0 +1,25 @@
+[
+  {
+    "packet_id": "td_packet_20260620061149_grs87",
+    "created_at": "2026-06-20T06:11:49.919Z",
+    "status": "DRAFT",
+    "title": "Chat to Card Proof",
+    "target_aeye": "Squibb",
+    "target_machine": "Betsy",
+    "mission": "Create one TinkerDen packet from a chat-style intake form.",
+    "purpose": "Eliminate markdown packet construction as a mule step.",
+    "return_destination": "TinkerDen Intake"
+  },
+  {
+    "packet_id": "td_packet_001",
+    "target": "Bean",
+    "machine": "Sally",
+    "mission": "Review the TinkerDen spinal cord packet flow."
+  },
+  {
+    "packet_id": "td_packet_002",
+    "target": "Ender",
+    "machine": "Betsy",
+    "mission": "Check whether returned receipts can be assimilated."
+  }
+]

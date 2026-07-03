@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628041731_af8ef8",
+  "origin_surface": "ThinkIt@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628041731_af8ef8",
+  "target_aeye": "Skybro",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628041731_af8ef8",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628041731_af8ef8.json",
+    "command_packet_hash": "8e8dcc9d448b8d71c5695d0b14cd6cd0a7e9f87aefa56a18c792c174e55b9de8",
+    "command": "TO: Skybro@Betsy\nFROM: ThinkIt@Betsy\nMISSION: Return one thinking-lane receipt for this question.\nQUESTION: What is the broadest product implication of the current TinkerPit merge candidate?\nRETURN: ACK / BLOCKER / ARTIFACT with receipt evidence.\nRULES: Do not execute filesystem mutations from ThinkIt. Do not call SENT proof. Return BLOCKER if this Aeye cannot act.",
+    "stream": "THINKIT / COGNITIVE RELAY",
+    "command_type": "THINKING_PACKET",
+    "destination_id": "skybro_betsy_aeye_inbox_v0",
+    "destination_label": "Skybro@Betsy",
+    "source_surface": "ThinkIt@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-28T04:17:31.206Z"
+}

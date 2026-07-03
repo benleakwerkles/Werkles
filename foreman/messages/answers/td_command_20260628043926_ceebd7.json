@@ -1,0 +1,15 @@
+{
+  "schema": "nerdkle_aeye_answer_v0",
+  "packet_id": "td_command_20260628043926_ceebd7",
+  "origin_surface": "NerdkleOrganismProof@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "worker": "NerdkleAnswerWorker@Betsy",
+  "worker_pid": 18040,
+  "received_at": "2026-06-28T04:39:27.029Z",
+  "answered_at": "2026-06-28T04:39:27.030Z",
+  "source_outbox_path": "foreman/messages/outbox/td_command_20260628043926_ceebd7.json",
+  "source_outbox_sha256": "646e6a19f7ce6cdf2bc7b8590e52dd3c538a86b377f0c4da8a00fb1e34cfc271",
+  "answer_text": "NerdkleAnswerWorker@Betsy received packet td_command_20260628043926_ceebd7.\nTarget: Dink@Betsy.\nReceived at: 2026-06-28T04:39:27.029Z.\n\nAnswer:\nI can act on the packet text. The requested command/query was: REAL_RELAY_PROOF: Nerdkle organism worker must receive this packet, generate an answer, and return answer proof.\n\nProof standard:\n- This answer was produced by a separate machine-runner process after reading foreman/messages/outbox.\n- It is not a model-chat proof and not an external Aeye UI proof.\n- It does prove packet-left, received, answered, and answer-returned inside the local Nerdkle organism transport.",
+  "answer_sha256": "122f13069a7862d249fe2fabd5de7c0ce76fd845e3513c6ec0e4c371974c5b3e"
+}

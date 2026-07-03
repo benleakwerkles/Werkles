@@ -1,8 +1,8 @@
 export const copy = {
   brand: "Werkles",
-  tagline: "Name the real bottleneck. Move on proof.",
+  tagline: "Find trusted help and move with proof.",
   longPositioning:
-    "Werkles finds the person, money, space, or equipment actually blocking your next move — then verifies before you act.",
+    "Werkles helps small business builders find the person, money, space, or equipment that can move the work forward — then verifies before they act.",
   disclaimer:
     "Foundry Dues unlock Werkles workflows. They do not guarantee trust, verification, funding, legal clearance, or partner outcomes.",
   proofDisclaimer:
@@ -49,17 +49,17 @@ export const copy = {
   },
   hero: {
     eyebrow: "For people building real businesses",
-    headline: "You know something's missing. You're probably wrong about what.",
+    headline: "Find the people and proof that move your business forward.",
     subhead:
-      "Werkles names the real bottleneck — a person, a lender, a space, or a tool — and shows you the one you can actually reach.",
+      "Werkles helps small business builders name what they need, find reachable help, and verify the facts before they rely on anyone.",
     positioning:
-      "Not matching. Not motivation. Discovery with proof before money, deals, or partnerships move.",
-    beforeState: "",
-    brandPromise: "Wrong guess costs months. Blind trust costs money.",
-    primaryCta: "Name what you think you need",
-    secondaryCta: "See what Foundry Dues open",
-    trustLine: "Itemized verification — not a fuzzy badge.",
-    signupPreview: "Free to state your need. Foundry Dues open discovery, proof, and guarded next steps."
+      "For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
+    beforeState: "People first. Trust visible. Opportunity you can actually reach.",
+    brandPromise: "People, trust, momentum, opportunity.",
+    primaryCta: "Tell us what you need",
+    secondaryCta: "See how trust is checked",
+    trustLine: "Real human help, with proof shown before you rely on it.",
+    signupPreview: "Start with one business need. Werkles turns it into a practical next move and the proof to check."
   },
   lanes: {
     builder: {

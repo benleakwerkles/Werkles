@@ -1,0 +1,22 @@
+{
+  "schema": "nerdkle_answer_receipt_v0",
+  "receipt_id": "nerdkle_answer_receipt_td_command_20260628045556_ebf383",
+  "packet_id": "td_command_20260628045556_ebf383",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ANSWER_RETURNED",
+  "message": "NerdkleAnswerWorker@Betsy received, answered, and returned packet td_command_20260628045556_ebf383.",
+  "created_at": "2026-06-28T04:55:57.113Z",
+  "source_outbox_path": "foreman/messages/outbox/td_command_20260628045556_ebf383.json",
+  "received_path": "foreman/messages/received/td_command_20260628045556_ebf383.json",
+  "answer_path": "foreman/messages/answers/td_command_20260628045556_ebf383.json",
+  "returned_path": "foreman/messages/returned/td_command_20260628045556_ebf383.json",
+  "answer_sha256": "8a04d0aed052e2b9763a1ba2a1447ed0da1cf0eb0e4677fdbca1647118de698e",
+  "proof": {
+    "packet_left": "foreman/messages/outbox/td_command_20260628045556_ebf383.json",
+    "packet_received": "foreman/messages/received/td_command_20260628045556_ebf383.json",
+    "packet_answered": "foreman/messages/answers/td_command_20260628045556_ebf383.json",
+    "answer_returned": "foreman/messages/returned/td_command_20260628045556_ebf383.json"
+  },
+  "limitation": "Local Nerdkle organism worker proof. Not external chat UI proof."
+}

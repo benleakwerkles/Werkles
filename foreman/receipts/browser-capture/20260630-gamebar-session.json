@@ -1,0 +1,9 @@
+{
+  "recording_started_at": "2026-06-30T17:30:00-04:00",
+  "method": "xbox_game_bar",
+  "start_script": "scripts/foreman/send-gamebar-record.ps1",
+  "stop_script": "scripts/foreman/stop-gamebar-record.ps1",
+  "default_capture_folder": "%USERPROFILE%\\Videos\\Captures",
+  "repo_copy_folder": "foreman/receipts/browser-capture",
+  "note": "Win+G then Win+Alt+R sent from agent shell. If no clip appears, press Win+Alt+R manually on the interactive desktop."
+}

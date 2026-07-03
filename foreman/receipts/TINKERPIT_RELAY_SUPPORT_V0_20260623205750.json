@@ -1,0 +1,18 @@
+{
+  "receipt_id": "TINKERPIT_RELAY_SUPPORT_V0_20260623205750",
+  "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+  "status": "PASS",
+  "verified_at": "2026-06-23T20:57:50.860Z",
+  "watcher": "chokidar",
+  "watched_paths": [
+    "foreman/messages/outbox",
+    "foreman/messages/inbox",
+    "foreman/messages/receipts",
+    "data/tinkerden/receipts"
+  ],
+  "observed_path": "foreman/messages/receipts/receipt_tinkerpit_chokidar_verify_20260623205750.json",
+  "observed_size_bytes": 333,
+  "observed_sha256": "3572c77d179a32ef27eb3ba9d1b84d0d9df511b622573e182465e414a082cd38",
+  "created_receipt_id": "receipt_tinkerpit_chokidar_verify_20260623205750",
+  "created_packet_id": "packet_tinkerpit_chokidar_verify_20260623205750"
+}

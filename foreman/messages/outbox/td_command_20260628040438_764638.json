@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628040438_764638",
+  "origin_surface": "CodexSmoke@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628040438_764638",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628040438_764638",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628040438_764638.json",
+    "command_packet_hash": "7b7264138f3119fb101efb447ad0dc00ec24f70985b2528bbe5adcb1e51cd4d0",
+    "command": "COMMAND_DASH_RELAY_SMOKE: return ACK custody only; prove packet to Aeye inbox to receipt linkage.",
+    "stream": "FERAL / TINKERDEN",
+    "command_type": "SMOKE_TEST",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "CodexSmoke@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-28T04:04:38.084Z"
+}

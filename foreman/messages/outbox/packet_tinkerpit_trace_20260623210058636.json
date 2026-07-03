@@ -1,0 +1,19 @@
+{
+  "packet_id": "packet_tinkerpit_trace_20260623210058636",
+  "origin_surface": "Tinkerpit Relay Support V0",
+  "origin_card_id": "origin_card_20260623210058636",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "sender": "Dink@Betsy",
+    "directory_source": "foreman/messages/DESTINATION_DIRECTORY.json",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "target": "Dink@Betsy",
+    "destination_type": "aeye_inbox_v0",
+    "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+    "artifact": "trace_report.json",
+    "task_text": "Verify receipt stream, packet trace, Chokidar dispatch event, and JSONL landing."
+  },
+  "status": "SENT",
+  "created_at": "2026-06-23T21:00:58.636Z"
+}

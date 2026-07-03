@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628051443_a73aee",
+  "origin_surface": "FeralMembrane@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628051443_a73aee",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628051443_a73aee",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628051443_a73aee.json",
+    "command_packet_hash": "9b74359e3065aa41afc56e8d84ccfadd0ea9ef85b33871cbad2daf71f5ffa1d8",
+    "command": "Call me Count Gimpula",
+    "stream": "FERAL / COMMAND DASH",
+    "command_type": "MEMBRANE_COMMAND",
+    "destination_id": "maker_betsy_aeye_inbox_v0",
+    "destination_label": "Maker@Betsy",
+    "source_surface": "FeralMembrane@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-28T05:14:43.633Z"
+}

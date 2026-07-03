@@ -1,0 +1,22 @@
+# CREDENTIAL_RELAY_RECEIPT_TEMPLATE
+
+Use this after Courtney completes or blocks a blind sign-in relay.
+
+```text
+CREDENTIAL_RELAY_RECEIPT
+REQUEST_ID:
+SERVICE:
+MACHINE:
+ACCOUNT_LABEL:
+COURTNEY_RELAY_USED: YES / NO
+PASSWORD_DISCLOSED_TO_AEYE: NO
+SECRET_STORED_IN_REPO_OR_CHAT: NO
+2FA_COMPLETED: YES / NO / NOT_REQUIRED
+YUBIKEY_TOUCHED: YES / NO / NOT_REQUIRED
+LOGIN_RESULT: SUCCESS / FAILED / BLOCKED
+VISIBLE_PROOF:
+BLOCKER:
+NEXT_ACTION:
+```
+
+If any secret was exposed, set `LOGIN_RESULT: BLOCKED`, rotate the credential, and record only the exposure class, not the secret.

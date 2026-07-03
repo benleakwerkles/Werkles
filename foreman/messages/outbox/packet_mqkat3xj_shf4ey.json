@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_mqkat3xj_shf4ey",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_mqkasijq",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Build me a pinata."
+  },
+  "status": "SENT",
+  "created_at": "2026-06-19T02:17:08.647Z"
+}

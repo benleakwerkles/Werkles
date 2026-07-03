@@ -131,31 +131,6 @@ function humanizeTargetText(value: unknown, target: string, fallback: string) {
   return asText(value, fallback).replaceAll(target, humanTargetName(target));
 }
 
-function chapterDeliveryLabel(bridgeStatus: string, packetStatus: string) {
-  const bridge = bridgeStatus.toUpperCase();
-  const packet = packetStatus.toUpperCase();
-  if (packet.includes("COMPLETED_RECEIPT_PROVEN")) return "Answered by receiver";
-  if (packet.includes("BLOCKER")) return "Receiver returned blocker";
-  if (bridge === "SENT_TO_CODEX_THREAD") return "Posted to receiver chat";
-  if (bridge === "QUEUED_FOR_CODEX_THREAD_SEND") return "Queued for bridge";
-  if (bridge === "FILE_INBOX_WAITING_FOR_RECEIVER") return "Waiting in LAN inbox";
-  if (bridge === "NO_THREAD_MAPPING") return "Blocked: no receiver chat";
-  if (bridge === "NOT_QUEUED") return "Not queued yet";
-  return humanLabel(bridgeStatus || packetStatus || "UNKNOWN_DELIVERY");
-}
-
-function chapterDeliveryMeaning(bridgeStatus: string, packetStatus: string) {
-  const bridge = bridgeStatus.toUpperCase();
-  const packet = packetStatus.toUpperCase();
-  if (packet.includes("COMPLETED_RECEIPT_PROVEN")) return "The chapter came back with receiver-side COMPLETED proof.";
-  if (packet.includes("BLOCKER")) return "The receiver answered, but returned a blocker instead of an edit.";
-  if (bridge === "SENT_TO_CODEX_THREAD") return "The packet was posted into the standing receiver chat. Now wait for RECEIVED then COMPLETED or BLOCKER.";
-  if (bridge === "QUEUED_FOR_CODEX_THREAD_SEND") return "ThinkIt created the packet, but it is not in the receiver chat yet. It waits for the thread bridge sweep or a Swanson drain.";
-  if (bridge === "FILE_INBOX_WAITING_FOR_RECEIVER") return "ThinkIt wrote the packet to a LAN inbox; the receiving surface still has to read it.";
-  if (bridge === "NO_THREAD_MAPPING") return "ThinkIt could not find a standing receiver chat for this target.";
-  return "No delivery proof has been read for this selected chapter yet.";
-}
-
 const evidenceSectionKeys = new Set([
   "source_access",
   "editing_mode",
@@ -730,18 +705,17 @@ export default function SwansonRelayControl() {
     () => bookChapters.map((item) => asRecord(item)).find((chapter) => asText(chapter?.chapter_id, "") === selectedChapterId) ?? asRecord(bookChapters[0]) ?? null,
     [bookChapters, selectedChapterId]
   );
-  const effectiveSelectedChapterId = asText(selectedChapter?.chapter_id, selectedChapterId || defaultChapterId);
   const selectedChapterPacket = useMemo(
-    () => bookPacketRecords.find((packet) => asText(packet.chapter_id, "") === effectiveSelectedChapterId) ?? null,
-    [bookPacketRecords, effectiveSelectedChapterId]
+    () => bookPacketRecords.find((packet) => asText(packet.chapter_id, "") === selectedChapterId) ?? null,
+    [bookPacketRecords, selectedChapterId]
   );
   const selectedChapterReports = useMemo(
     () =>
       bookReturnRecords.filter((record) => {
         const packet = bookPacketById.get(asText(record.packet_id, ""));
-        return asText(packet?.chapter_id, "") === effectiveSelectedChapterId;
+        return asText(packet?.chapter_id, "") === selectedChapterId;
       }),
-    [bookReturnRecords, bookPacketById, effectiveSelectedChapterId]
+    [bookReturnRecords, bookPacketById, selectedChapterId]
   );
   const rosterRows = useMemo(() => buildAeyeRoster(snapshot.coverage), [snapshot.coverage]);
   const rosterByMachine = useMemo(() => {
@@ -847,14 +821,6 @@ export default function SwansonRelayControl() {
   const selectedBookReportEvidence = parseEvidenceSections(selectedBookReport?.evidence);
   const selectedChapterTitle = asText(selectedChapter?.title, packetChapterLabel(selectedBookPacket, "No chapter selected"));
   const selectedChapterSource = asText(selectedChapter?.github_url ?? selectedChapter?.repo_path ?? selectedChapter?.local_path, "No source path read back yet.");
-  const selectedChapterPacketId = asText(selectedChapterPacket?.packet_id, "NO_PACKET_SENT_FOR_SELECTED_CHAPTER");
-  const selectedChapterPacketTarget = asText(selectedChapterPacket?.target, target);
-  const selectedChapterPacketStatus = asText(selectedChapterPacket?.status, "No packet sent for this chapter yet");
-  const selectedChapterBridgeStatus = asText(selectedChapterPacket?.thread_bridge_status, "NOT_QUEUED");
-  const selectedChapterDeliveryLabel = chapterDeliveryLabel(selectedChapterBridgeStatus, selectedChapterPacketStatus);
-  const selectedChapterDeliveryMeaning = chapterDeliveryMeaning(selectedChapterBridgeStatus, selectedChapterPacketStatus);
-  const selectedChapterReceiver = findReceiver(snapshot.threadBridge, selectedChapterPacketTarget);
-  const selectedChapterReceiverName = receiverHomeThreadName(selectedChapterReceiver, selectedChapterPacketTarget);
   const selectedBookReportChapter = selectedBookReportEvidence.chapter_read || selectedChapterTitle;
   const selectedBookReportRecommendation = selectedBookReportEvidence.recommended_next_edit || "No recommended edit has been parsed yet.";
   const selectedIncoming =
@@ -908,10 +874,10 @@ export default function SwansonRelayControl() {
 
   useEffect(() => {
     const reportPacket = selectedBookReportId ? bookPacketById.get(selectedBookReportId) : null;
-    if (reportPacket && asText(reportPacket.chapter_id, "") !== effectiveSelectedChapterId) {
+    if (reportPacket && asText(reportPacket.chapter_id, "") !== selectedChapterId) {
       setSelectedBookReportId(defaultBookReportId);
     }
-  }, [bookPacketById, defaultBookReportId, effectiveSelectedChapterId, selectedBookReportId]);
+  }, [bookPacketById, defaultBookReportId, selectedBookReportId, selectedChapterId]);
 
   useEffect(() => {
     const firstIncomingId = asText(asRecord(actionables[0])?.packet_id, "");
@@ -922,7 +888,7 @@ export default function SwansonRelayControl() {
   useEffect(() => {
     let cancelled = false;
     async function loadChapterText() {
-      if (!effectiveSelectedChapterId) {
+      if (!selectedChapterId) {
         setChapterText(null);
         setChapterTextError(null);
         return;
@@ -930,7 +896,7 @@ export default function SwansonRelayControl() {
       setChapterTextLoading(true);
       setChapterTextError(null);
       try {
-        const result = await readJson(`/api/thinkit/book/chapter_text?chapter_id=${encodeURIComponent(effectiveSelectedChapterId)}`);
+        const result = await readJson(`/api/thinkit/book/chapter_text?chapter_id=${encodeURIComponent(selectedChapterId)}`);
         if (!cancelled) setChapterText(result);
       } catch (loadError) {
         if (!cancelled) {
@@ -945,7 +911,7 @@ export default function SwansonRelayControl() {
     return () => {
       cancelled = true;
     };
-  }, [effectiveSelectedChapterId]);
+  }, [selectedChapterId]);
 
   const actionSummary = useMemo(() => {
     if (!lastAction?.result) return "No action result yet.";
@@ -2160,7 +2126,7 @@ export default function SwansonRelayControl() {
         <div className="thinkit-relay__book-form">
           <label>
             <span>Chapter to send</span>
-            <select value={effectiveSelectedChapterId} onChange={(event) => setSelectedChapterId(event.target.value)}>
+            <select value={selectedChapterId} onChange={(event) => setSelectedChapterId(event.target.value)}>
               {bookChapters.slice(0, 120).map((item) => {
                 const chapter = asRecord(item) ?? {};
                 const chapterId = asText(chapter.chapter_id, "");
@@ -2198,7 +2164,7 @@ export default function SwansonRelayControl() {
           </button>
           <button
             type="button"
-            disabled={!effectiveSelectedChapterId}
+            disabled={!selectedChapterId}
             onClick={() => {
               setSelectedBookReportId(defaultBookReportId);
               window.setTimeout(() => scrollToDashboardSection("thinkit-chapter-workbench"), 0);
@@ -2208,17 +2174,17 @@ export default function SwansonRelayControl() {
           </button>
           <button
             type="button"
-            disabled={actionPending !== null || !effectiveSelectedChapterId}
+            disabled={actionPending !== null || !selectedChapterId}
             onClick={() =>
               void runAction("Send Selected Chapter", "/api/thinkit/swanson/book/dispatch_chapter", {
                 target,
-                chapter_id: effectiveSelectedChapterId,
+                chapter_id: selectedChapterId,
                 editing_mode: bookEditingMode,
                 operator_note: bookOperatorNote
               })
             }
           >
-            {actionPending === "Send Selected Chapter" ? "Queueing" : `Queue Chapter To ${humanTargetName(target)}`}
+            {actionPending === "Send Selected Chapter" ? "Sending" : "Send Selected Chapter"}
           </button>
           <button
             type="button"
@@ -2234,15 +2200,6 @@ export default function SwansonRelayControl() {
           >
             {actionPending === "Send Next Book Chapter" ? "Sending" : "Send Next Unsent"}
           </button>
-        </div>
-
-        <div className="thinkit-relay__book-delivery" data-state={selectedChapterBridgeStatus.toLowerCase()}>
-          <strong>{selectedChapterDeliveryLabel}</strong>
-          <span>{selectedChapterDeliveryMeaning}</span>
-          <small>
-            Selected packet: {selectedChapterPacketId} / receiver: {selectedChapterReceiverName} / bridge cadence:{" "}
-            {asText(valueAt(snapshot.threadBridge, ["actuator", "schedule"]) ?? valueAt(snapshot.bookCourier, ["bridge_actuator", "schedule"]), "unknown")}
-          </small>
         </div>
 
         <div className="thinkit-relay__book-loop">
@@ -2272,7 +2229,7 @@ export default function SwansonRelayControl() {
             <label>
               <span>Workbench chapter</span>
               <select
-                value={effectiveSelectedChapterId}
+                value={selectedChapterId}
                 onChange={(event) => {
                   setSelectedChapterId(event.target.value);
                   setSelectedBookReportId("");
@@ -2316,19 +2273,7 @@ export default function SwansonRelayControl() {
             </div>
             <div>
               <dt>Packet state</dt>
-              <dd>{selectedChapterPacketStatus}</dd>
-            </div>
-            <div>
-              <dt>Delivery to Aeye</dt>
-              <dd>{selectedChapterDeliveryLabel}</dd>
-            </div>
-            <div>
-              <dt>Receiver chat</dt>
-              <dd>{selectedChapterReceiverName}</dd>
-            </div>
-            <div>
-              <dt>Packet id</dt>
-              <dd>{selectedChapterPacketId}</dd>
+              <dd>{asText(selectedBookPacket?.status, "No packet sent for this chapter yet")}</dd>
             </div>
             <div>
               <dt>Returned receipt</dt>
@@ -2353,7 +2298,7 @@ export default function SwansonRelayControl() {
             {chapterTextBody ? (
               <div className="thinkit-relay__chapter-text">
                 {chapterTextParagraphs.length > 0
-                  ? chapterTextParagraphs.map((paragraph, index) => <p key={`${effectiveSelectedChapterId}-${index}`}>{asText(paragraph, "")}</p>)
+                  ? chapterTextParagraphs.map((paragraph, index) => <p key={`${selectedChapterId}-${index}`}>{asText(paragraph, "")}</p>)
                   : <p>{chapterTextBody}</p>}
               </div>
             ) : (
@@ -2398,39 +2343,21 @@ export default function SwansonRelayControl() {
             </article>
           </div>
 
-          <div className="thinkit-relay__workbench-send-lane">
-            <div>
-              <strong>Send this chapter to {humanTargetName(target)}</strong>
-              <p>
-                This creates the chapter packet and queues it for the standing receiver chat. The chapter is not done until a returned receipt appears below.
-              </p>
-            </div>
+          <div className="thinkit-relay__workbench-buttons">
             <button
               type="button"
-              disabled={actionPending !== null || !effectiveSelectedChapterId}
+              disabled={actionPending !== null || !selectedChapterId}
               onClick={() =>
                 void runAction("Send Selected Chapter", "/api/thinkit/swanson/book/dispatch_chapter", {
                   target,
-                  chapter_id: effectiveSelectedChapterId,
+                  chapter_id: selectedChapterId,
                   editing_mode: bookEditingMode,
                   operator_note: bookOperatorNote
                 })
               }
             >
-              {actionPending === "Send Selected Chapter" ? "Sending" : `Send To ${humanTargetName(target)}`}
+              {actionPending === "Send Selected Chapter" ? "Sending" : "Send This Chapter"}
             </button>
-          </div>
-
-          <div className="thinkit-relay__workbench-after-return">
-            <strong>After a returned receipt</strong>
-            <p>
-              {selectedBookReport
-                ? "A returned report is selected. These buttons can now record your decision or route editor cousin follow-ups."
-                : "These controls unlock after Skybro returns a receipt for this selected chapter. Until then, the correct move is the send button above."}
-            </p>
-          </div>
-
-          <div className="thinkit-relay__workbench-buttons">
             <button
               type="button"
               disabled={actionPending !== null || !selectedBookReport}

@@ -1,0 +1,54 @@
+{
+  "receipt_id": "receipt_tinkerpit_relay_support_v0_return_20260623212400",
+  "packet_id": "packet_tinkerpit_trace_20260623210158990",
+  "mission": "TINKERPIT_RELAY_SUPPORT_V0",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "to": "Dink@Betsy",
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-23T21:24:00.000Z",
+  "message": "trace_report.json exists and proves receipt stream, packet trace, Chokidar dispatch event, and JSONL landing.",
+  "artifact": "foreman/receipts/trace_report.json",
+  "proof": {
+    "receipt_stream_api": {
+      "url": "http://127.0.0.1:3000/api/tinkerden/receipts",
+      "ok": true,
+      "count": 25,
+      "latest_receipt_id": "receipt_tinkerpit_trace_20260623210158990"
+    },
+    "trace_report_status": "PASS",
+    "trace_packet_id": "packet_tinkerpit_trace_20260623210158990",
+    "trace_receipt_id": "receipt_tinkerpit_trace_20260623210158990",
+    "jsonl_events": [
+      {
+        "timestamp": "2026-06-23T21:01:59.102Z",
+        "event_type": "packet_dispatched",
+        "source_path": "foreman/messages/outbox/packet_tinkerpit_trace_20260623210158990.json",
+        "file_name": "packet_tinkerpit_trace_20260623210158990.json",
+        "detected_by": "Maker@Betsy",
+        "destination_guess": "aeye_message_outbox",
+        "sha256": "d295e2f4fc5f32d5e8f9aed6a73da548b37f20a60d25bb5be7f693de29cbe0c2",
+        "size_bytes": 703
+      },
+      {
+        "timestamp": "2026-06-23T21:01:59.320Z",
+        "event_type": "packet_delivered",
+        "source_path": "foreman/messages/inbox/packet_tinkerpit_trace_20260623210158990.json",
+        "file_name": "packet_tinkerpit_trace_20260623210158990.json",
+        "detected_by": "Maker@Betsy",
+        "destination_guess": "aeye_message_inbox",
+        "sha256": "eb97ebbbd51eb8ac2f784b14361c5591cf35f47162b8ff1f1dd25c205c63129c",
+        "size_bytes": 711
+      }
+    ],
+    "chokidar_seen": true
+  },
+  "rules_observed": [
+    "No auto-send.",
+    "No account automation.",
+    "No browser control.",
+    "Clipboard/copy helper only.",
+    "Preserve packet_id: packet_tinkerpit_trace_20260623210158990"
+  ],
+  "blockers": []
+}

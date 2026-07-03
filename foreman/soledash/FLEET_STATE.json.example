@@ -1,0 +1,63 @@
+{
+  "schema_version": "fleet-state-v1",
+  "generated_at": "2026-06-15T00:00:00.000Z",
+  "generated_by": "dink",
+  "machines": [
+    {
+      "id": "betsy",
+      "display_name": "Betsy",
+      "hostname": "LOCAL_SALLY_WINDOWS",
+      "status": "LIVE",
+      "evidence_status": "OBSERVED",
+      "active_cousins": "Maker @ Betsy",
+      "current_task": "Workstation Uniformization",
+      "latest_receipt_path": "foreman/soledash/receipts/rec_yea_001.json",
+      "blocker": null,
+      "remote_path_status": "LOCAL",
+      "workstation_uniformity_status": "IN_PROGRESS",
+      "needs_operator_touch": false
+    },
+    {
+      "id": "doss",
+      "display_name": "Doss",
+      "hostname": "DOSS_HOSTNAME",
+      "status": "PARTIAL LIVE",
+      "evidence_status": "HYPOTHESIS",
+      "active_cousins": "Dink / Doss",
+      "current_task": "Doss Stability Investigation",
+      "latest_receipt_path": null,
+      "blocker": "Machine identity unproven — awaiting LOCAL_DOSS_WINDOWS readback",
+      "remote_path_status": "REACHABLE",
+      "workstation_uniformity_status": "UNKNOWN",
+      "needs_operator_touch": true
+    },
+    {
+      "id": "sally",
+      "display_name": "Sally",
+      "hostname": "DESKTOP-SJSJMNK",
+      "status": "LIVE",
+      "evidence_status": "OBSERVED",
+      "active_cousins": "Mirror forge",
+      "current_task": "UNKNOWN",
+      "latest_receipt_path": null,
+      "blocker": "No receipt path in FLEET_STATE yet",
+      "remote_path_status": "UNKNOWN",
+      "workstation_uniformity_status": "UNKNOWN",
+      "needs_operator_touch": "UNKNOWN"
+    },
+    {
+      "id": "spanzee",
+      "display_name": "Spanzee",
+      "hostname": "UNKNOWN",
+      "status": "UNKNOWN",
+      "evidence_status": "UNKNOWN",
+      "active_cousins": "UNKNOWN",
+      "current_task": null,
+      "latest_receipt_path": null,
+      "blocker": "Spanzee node not instrumented",
+      "remote_path_status": "UNKNOWN",
+      "workstation_uniformity_status": "UNKNOWN",
+      "needs_operator_touch": "UNKNOWN"
+    }
+  ]
+}

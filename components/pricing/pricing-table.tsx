@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { WorkshopPanel } from "@/components/foundry/workshop-panel";
 import { copy } from "@/lib/copy";
@@ -83,6 +85,39 @@ export function PricingTable() {
         </div>
         <p className="compliance-note">
           Membership can unlock access to workflows. It cannot buy verification. The signal only says what was checked.
+        </p>
+      </WorkshopPanel>
+
+      <WorkshopPanel facet="register" className="ops-card pricing-section">
+        <div className="card-heading card-heading--icon">
+          <SiteIcon icon="nav-proof" size="md" />
+          <div>
+            <p>How to read this page</p>
+            <h2>Start free, pay when the floor is useful.</h2>
+          </div>
+        </div>
+        <p>
+          Werkles pricing is built around reversible steps: start with the free path, inspect the proof layer, then
+          join Foundry Dues when the workshop is giving you useful direction.
+        </p>
+        <div className="trust-state-strip" aria-label="Pricing path summary">
+          <span>Free profile before dues</span>
+          <span>Proof before trust</span>
+          <span>Checks stay optional</span>
+        </div>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-dark" href="/signup">
+            Start free
+          </Link>
+          <Link className="button button-outline" href="/proof">
+            Inspect proof
+          </Link>
+          <Link className="button button-outline" href="/membership">
+            Compare Foundry Dues
+          </Link>
+        </div>
+        <p className="compliance-note">
+          Verification prices disclose possible workflow costs. They are not guarantees, legal advice, or automatic checks.
         </p>
       </WorkshopPanel>
 

@@ -1,0 +1,723 @@
+{
+  "schema": "tinkarden_wormeyes_world_state_v0",
+  "generated_at": "2026-06-27T19:13:08.110Z",
+  "observer": "Wormeyes@Betsy",
+  "mode": "observe_only",
+  "repo_root": "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles",
+  "branch": "preserve/tinkerden-packet-engine-20260622",
+  "git": {
+    "status": {
+      "command": "git status",
+      "ok": true,
+      "exit_code": 0,
+      "started_at": "2026-06-27T19:13:08.030Z",
+      "finished_at": "2026-06-27T19:13:08.064Z",
+      "stdout": "On branch preserve/tinkerden-packet-engine-20260622\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n\tmodified:   .gitignore\n\tmodified:   DEPLOY.md\n\tmodified:   app/auth/callback/page.tsx\n\tmodified:   app/bellows/page.tsx\n\tmodified:   app/bellows/recommendations/test-case-0/concierge-walkthrough.css\n\tmodified:   app/bellows/recommendations/test-case-0/page.tsx\n\tmodified:   app/dashboard/page.tsx\n\tmodified:   app/globals.css\n\tmodified:   app/login/page.tsx\n\tmodified:   app/soledash/layout.tsx\n\tmodified:   app/soledash/manifest.ts\n\tmodified:   app/soledash/page.tsx\n\tmodified:   app/soledash/soledash.css\n\tmodified:   components/foundry/route-unlock-banner.tsx\n\tmodified:   components/soledash/artifact-shelf.tsx\n\tmodified:   components/soledash/guillotine-surface.tsx\n\tmodified:   components/soledash/guillotine-working-card.tsx\n\tmodified:   components/soledash/machine-wall-health.tsx\n\tmodified:   components/soledash/next-step-panel.tsx\n\tmodified:   components/soledash/pearl-shelf-panel.tsx\n\tmodified:   components/soledash/permission-swatter-receipt-log.tsx\n\tmodified:   components/soledash/permission-swatter-scoreboard.tsx\n\tmodified:   components/soledash/wonka-den-room.tsx\n\tmodified:   components/squibb/concierge-walkthrough.tsx\n\tmodified:   components/squibb/human-gate-strip.tsx\n\tmodified:   foreman/crew-dispatch/RELAY_COURIER_LOG.md\n\tmodified:   foreman/soledash/LAST_LOCALHOST_STATUS.json\n\tmodified:   foreman/soledash/OPERATOR_SESSION.json\n\tmodified:   foreman/soledash/approval-swatter-alpha/BACKGROUND_APPROVAL_SWATTER_ALPHA_RESULT.json\n\tmodified:   foreman/speaker/CAUSAL_LEDGER.md\n\tmodified:   lib/copy.ts\n\tmodified:   lib/dev-preview-auth.ts\n\tmodified:   lib/dev-preview-session.ts\n\tmodified:   lib/hero-copy-variants.ts\n\tmodified:   lib/local-route-preview.ts\n\tmodified:   lib/pearls/v0/pearl-shelf-context.tsx\n\tmodified:   lib/pearls/v0/use-pearl-shelf.ts\n\tmodified:   lib/soledash/agent-inventory/use-agent-inventory.ts\n\tmodified:   lib/soledash/automatica-relay/artifacts.ts\n\tmodified:   lib/soledash/automatica-relay/types.ts\n\tmodified:   lib/soledash/cockpit-data.ts\n\tmodified:   lib/soledash/decision-surface/load-contract.ts\n\tmodified:   lib/soledash/decision-surface/load-live-transport.ts\n\tmodified:   lib/soledash/guillotine/build-sections.ts\n\tmodified:   lib/soledash/guillotine/send-receive-surface.ts\n\tmodified:   lib/soledash/machine-wall/build-health.ts\n\tmodified:   lib/soledash/machine-wall/types.ts\n\tmodified:   lib/soledash/permission-swatter/load-receipt-log.ts\n\tmodified:   lib/soledash/wonka-den-room/zones.ts\n\tmodified:   lib/squibb/concierge-walkthrough-test-case-0.ts\n\tmodified:   package-lock.json\n\tmodified:   package.json\n\tmodified:   protocol/index.ts\n\tmodified:   scripts/foreman/foreman-control-server.mjs\n\tmodified:   scripts/foreman/relay-courier-lib.mjs\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\t.tmp-decide.json\n\t.tmp-edit-ds.py\n\t.tmp-next-start-3000.err.log\n\t.tmp-next-start-3000.out.log\n\t.tmp-next-start-3001.err.log\n\t.tmp-next-start-3001.out.log\n\t.tmp-next-start-3002.err.log\n\t.tmp-next-start-3002.out.log\n\t.vercelignore\n\tapp/api/auth-first/\n\tapp/api/soledash/v1/self-knowledge/\n\tapp/api/speaker/\n\tapp/api/tinkerden/\n\tapp/archetypes/\n\tapp/bellows/intake/\n\tapp/bellows/recommendations/page.tsx\n\tapp/bellows/recommendations/squibb-recommendations.css\n\tapp/dashboard/member-dashboard-client.tsx\n\tapp/thinkit/\n\tapp/tinkerden/\n\tcockpit/\n\tcomponents/archetypes/\n\tcomponents/soledash/ask-the-den-panel.tsx\n\tcomponents/squibb/concierge-intake-form.tsx\n\tcomponents/squibb/evidence-section.tsx\n\tcomponents/squibb/reasoning-panel.tsx\n\tcomponents/squibb/recommendation-card.tsx\n\tcomponents/squibb/recommendation-surface.tsx\n\tcomponents/squibb/speaker-human-read-panel.tsx\n\tdata/\n\tdeploy/\n\tforeman/THUFIR_STACK_AUDIT.md\n\tforeman/WORKSTATION_2_0_STACK.md\n\tforeman/design/FERAL_RISK_STATE_HARDENING_SPEC_v1_1.md\n\tforeman/design/FERAL_TINKERDEN_WRAP_HARDENING_SPEC_v1_1.md\n\tforeman/handoffs/outbox/TO_BEAN_FERAL_RISK_STATE_FORCE_LIVE_ATTACK_20260626.md\n\tforeman/handoffs/outbox/TO_BEAN_FERAL_TINKERDEN_WRAP_FORCE_LIVE_ATTACK_20260626.md\n\tforeman/handoffs/outbox/TO_CURSOR_SOLEDASH_LINK_HANDS_CURSOR_CODEX_AND_BEAN_DEEPSEEK_PROGRA_20260614-133820.md\n\tforeman/handoffs/outbox/TO_DESIGN_DESK_FERAL_TINKERDEN_WRAP_HOLD_CLEANED_SPEC_ONLY_20260626.md\n\tforeman/handoffs/outbox/TO_DINK_FOCUS_THEFT_google_drive_20260615T224147.md\n\tforeman/handoffs/outbox/TO_DINK_SOLEDASH_BUILD_MOBILE_SOLEDASH_ACCESS_AND_SURFACE_PROOF_20260616-234425.md\n\tforeman/handoffs/outbox/TO_DINK_SOLEDASH_DOSS_SLEEP_MWB_FIX_20260614-133947.md\n\tforeman/handoffs/outbox/TO_DINK_SOLEDASH_MACHINE_STATE_CAPSULES_20260614-133956.md\n\tforeman/handoffs/outbox/TO_DINK_SOLEDASH_WORKBENCH_LIVE_FIRE_DEMO_TASK_PROVE_WORKBENCH_CR_20260618-060720.md\n\tforeman/handoffs/outbox/TO_DINK_SPANZEE_ODDLY_GODLY_DOCX_20260617.md\n\tforeman/handoffs/outbox/TO_ENDER_FERAL_RISK_STATE_LANGUAGE_CLEANUP_20260626.md\n\tforeman/handoffs/outbox/TO_ENDER_FERAL_TINKERDEN_WRAP_LANGUAGE_CLEANUP_20260626.md\n\tforeman/handoffs/outbox/TO_ENDER_SOLEDASH_AUTOMATICA_KINDSIR_COM_CLEANUP_20260615-192532.md\n\tforeman/handoffs/outbox/TO_ENDER_SOLEDASH_KINDSIR_COM_REFRESH_AUDIT_20260614-021600.md\n\tforeman/handoffs/outbox/TO_ENDER_TINKULARITY_REPETITION_AUDIT_SOURCE_SET_20260623.md\n\tforeman/handoffs/outbox/TO_PETRA_EVIDENCE_STATUS_VISIBILITY_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_FRONTIER_OVERRIDE_UI_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_INSTANT_VISUAL_NON_MULING_v0_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_REMOVE_DEFER_ROUTE_BUTTONS_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_AMBIENT_COMMAND_SPLIT_20260612.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_AUTOMATICA_KIND_SIR_GRADING_RESEARCH_20260615-193225.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_AUTOMATICA_KIND_SIR_SUE_RESEARCH_20260615-192521.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_DECISION_SURFACE_V1_SHELL_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_DINK_PROTOCOL_WIRE_v0.1_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_FLEET_STATE_LIVE_20260612.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_FRONTIER_MODE_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_KIND_SIR_SUE_VS_GRADING_REVIEW_20260614-031507.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_LIVE_TRANSPORT_WIRE_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_MEGAWORK_HOME_COCKPIT_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_MOCK_TEST_HARNESS_20260612.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_NO_GHOSTS_PASS_20260612.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_REMOVE_FAKE_FRICTION_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_SOLEDASH_STOP_FEELING_FAKE_20260614.md\n\tforeman/handoffs/outbox/TO_PETRA_STARSHIP_EXPLODE_DECISION_TENSION_20260612.md\n\tforeman/handoffs/outbox/TO_PETRA_STARSHIP_EXPLODE_EMPTY_LINK_LIVE_FIRE_20260612.md\n\tforeman/handoffs/outbox/TO_PETRA_YEA_BUTTON_VISIBLE_ACTION_20260614.md\n\tforeman/handoffs/outbox/TO_SWANSON_FERAL_RISK_STATE_SMALLEST_PROTOTYPE_20260626.md\n\tforeman/handoffs/outbox/TO_SWANSON_FERAL_TINKERDEN_WRAP_SMALLEST_PROTOTYPE_20260626.md\n\tforeman/handoffs/outbox/TO_THUFIR_FERAL_RISK_STATE_LEXICAL_GOVERNOR_VALIDATION_20260626.md\n\tforeman/handoffs/outbox/TO_THUFIR_FERAL_TINKERDEN_WRAP_LEXICAL_GOVERNOR_VALIDATION_20260626.md\n\tforeman/handoffs/outbox/assets/\n\tforeman/messages/WORKSPACE_DESTINATION_DIRECTORY.json\n\tforeman/messages/inbox/packet_mqvrwtno_nmc1h3.json\n\tforeman/messages/inbox/packet_tinkerpit_trace_20260623210058636.json\n\tforeman/messages/inbox/packet_tinkerpit_trace_20260623210158990.json\n\tforeman/messages/outbox/packet_mqvrwtno_nmc1h3.json\n\tforeman/messages/outbox/packet_tinkerpit_trace_20260623210058636.json\n\tforeman/messages/outbox/packet_tinkerpit_trace_20260623210158990.json\n\tforeman/messages/receipts/receipt_mqvrwto3_2v6y6s.json\n\tforeman/messages/receipts/receipt_tinkerpit_chokidar_verify_20260623205750.json\n\tforeman/messages/receipts/receipt_tinkerpit_relay_support_v0_return_20260623212400.json\n\tforeman/messages/receipts/receipt_tinkerpit_trace_20260623210058636.json\n\tforeman/messages/receipts/receipt_tinkerpit_trace_20260623210158990.json\n\tforeman/receipts/\n\tforeman/reviews/ENDER_HUMAN_EXPERIENCE_REVIEW_SOLEDASH_v1.md\n\tforeman/soledash/.petra-transport-pending.txt\n\tforeman/soledash/POWERToys_AUTOPASTE_HELPER_CONFIG.json\n\tforeman/soledash/SPEAKER_METABOLISM_V1.md\n\tforeman/soledash/approval-swatter-alpha/logs/\n\tforeman/soledash/approval-swatter-alpha/state/watcher.pid\n\tforeman/soledash/tinkerden-return-system-v0/\n\tforeman/soledash/wonka-den/\n\tforeman/soledash/workspaces-self-heal/\n\tforeman/source_material/THE_GREAT_WORK_V0_2.md\n\tforeman/source_material/TINKULARITY_CHAPTER_ONE_THE_HUMAN_INFRASTRUCTURE_PROBLEM.md\n\tforeman/source_material/manuscript_workbench/\n\tforeman/speaker/entries/DRAFT_20260619-tinkerden-return-system-v0.md\n\tforeman/speaker/metabolism/\n\tlib/organism/\n\tlib/soledash/guillotine/relay-rejection.ts\n\tlib/soledash/self-knowledge/\n\tlib/squibb/concierge-intake-v0.ts\n\tlib/squibb/recommendations.ts\n\tlib/squibb/speaker-transparency-test-case-0.ts\n\tlib/tinkerden-return-system-v0/\n\tlib/tinkerden/\n\tnerdkle/\n\tpublic/tinkerden-packet-launcher.html\n\tscripts/deploy/\n\tscripts/foreman/chokidar-neurocirculymphatic-v0.mjs\n\tscripts/foreman/install-soledash-desktop-shortcut.ps1\n\tscripts/foreman/powertoys-autopaste-helper.mjs\n\tscripts/foreman/powertoys-workspaces-self-heal.ps1\n\tscripts/foreman/tinkerpit-packet-inbox-v0.mjs\n\tscripts/soledash/\n\tspeaker/\n\ttinkarden/\n\ttinkerden/\n\ttools/tinkerden_machine_runner/\n\ttsc-out.txt\n\tuniformity_audit_v0.md\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+      "stderr": ""
+    },
+    "branch_show_current": {
+      "command": "git branch --show-current",
+      "ok": true,
+      "exit_code": 0,
+      "started_at": "2026-06-27T19:13:08.065Z",
+      "finished_at": "2026-06-27T19:13:08.087Z",
+      "stdout": "preserve/tinkerden-packet-engine-20260622",
+      "stderr": ""
+    },
+    "branch_list": {
+      "command": "git branch --format=%(refname:short)",
+      "ok": true,
+      "exit_code": 0,
+      "started_at": "2026-06-27T19:13:08.087Z",
+      "finished_at": "2026-06-27T19:13:08.110Z",
+      "stdout": "main\npreserve/tinkerden-packet-engine-20260622\npreview/wonka-den-safe-preview-20260618\nsalvage/betsy/snapshot/sally-good-werkles-2026-06-12\nsnapshot/sally-good-werkles-2026-06-12",
+      "stderr": ""
+    },
+    "summary": {
+      "dirty": true,
+      "dirty_count": 181,
+      "modified_count": 55,
+      "untracked_count": 126,
+      "human_status_excerpt": [
+        "On branch preserve/tinkerden-packet-engine-20260622",
+        "Changes not staged for commit:",
+        "  (use \"git add <file>...\" to update what will be committed)",
+        "  (use \"git restore <file>...\" to discard changes in working directory)",
+        "\tmodified:   .gitignore",
+        "\tmodified:   DEPLOY.md",
+        "\tmodified:   app/auth/callback/page.tsx",
+        "\tmodified:   app/bellows/page.tsx",
+        "\tmodified:   app/bellows/recommendations/test-case-0/concierge-walkthrough.css",
+        "\tmodified:   app/bellows/recommendations/test-case-0/page.tsx",
+        "\tmodified:   app/dashboard/page.tsx",
+        "\tmodified:   app/globals.css",
+        "\tmodified:   app/login/page.tsx",
+        "\tmodified:   app/soledash/layout.tsx",
+        "\tmodified:   app/soledash/manifest.ts",
+        "\tmodified:   app/soledash/page.tsx",
+        "\tmodified:   app/soledash/soledash.css",
+        "\tmodified:   components/foundry/route-unlock-banner.tsx",
+        "\tmodified:   components/soledash/artifact-shelf.tsx",
+        "\tmodified:   components/soledash/guillotine-surface.tsx",
+        "\tmodified:   components/soledash/guillotine-working-card.tsx",
+        "\tmodified:   components/soledash/machine-wall-health.tsx",
+        "\tmodified:   components/soledash/next-step-panel.tsx",
+        "\tmodified:   components/soledash/pearl-shelf-panel.tsx",
+        "\tmodified:   components/soledash/permission-swatter-receipt-log.tsx",
+        "\tmodified:   components/soledash/permission-swatter-scoreboard.tsx",
+        "\tmodified:   components/soledash/wonka-den-room.tsx",
+        "\tmodified:   components/squibb/concierge-walkthrough.tsx",
+        "\tmodified:   components/squibb/human-gate-strip.tsx",
+        "\tmodified:   foreman/crew-dispatch/RELAY_COURIER_LOG.md",
+        "\tmodified:   foreman/soledash/LAST_LOCALHOST_STATUS.json",
+        "\tmodified:   foreman/soledash/OPERATOR_SESSION.json",
+        "\tmodified:   foreman/soledash/approval-swatter-alpha/BACKGROUND_APPROVAL_SWATTER_ALPHA_RESULT.json",
+        "\tmodified:   foreman/speaker/CAUSAL_LEDGER.md",
+        "\tmodified:   lib/copy.ts",
+        "\tmodified:   lib/dev-preview-auth.ts",
+        "\tmodified:   lib/dev-preview-session.ts",
+        "\tmodified:   lib/hero-copy-variants.ts",
+        "\tmodified:   lib/local-route-preview.ts",
+        "\tmodified:   lib/pearls/v0/pearl-shelf-context.tsx",
+        "\tmodified:   lib/pearls/v0/use-pearl-shelf.ts",
+        "\tmodified:   lib/soledash/agent-inventory/use-agent-inventory.ts",
+        "\tmodified:   lib/soledash/automatica-relay/artifacts.ts",
+        "\tmodified:   lib/soledash/automatica-relay/types.ts",
+        "\tmodified:   lib/soledash/cockpit-data.ts",
+        "\tmodified:   lib/soledash/decision-surface/load-contract.ts",
+        "\tmodified:   lib/soledash/decision-surface/load-live-transport.ts",
+        "\tmodified:   lib/soledash/guillotine/build-sections.ts",
+        "\tmodified:   lib/soledash/guillotine/send-receive-surface.ts",
+        "\tmodified:   lib/soledash/machine-wall/build-health.ts",
+        "\tmodified:   lib/soledash/machine-wall/types.ts",
+        "\tmodified:   lib/soledash/permission-swatter/load-receipt-log.ts",
+        "\tmodified:   lib/soledash/wonka-den-room/zones.ts",
+        "\tmodified:   lib/squibb/concierge-walkthrough-test-case-0.ts",
+        "\tmodified:   package-lock.json",
+        "\tmodified:   package.json",
+        "\tmodified:   protocol/index.ts",
+        "\tmodified:   scripts/foreman/foreman-control-server.mjs",
+        "\tmodified:   scripts/foreman/relay-courier-lib.mjs",
+        "",
+        "Untracked files:",
+        "  (use \"git add <file>...\" to include in what will be committed)",
+        "\t.tmp-decide.json",
+        "\t.tmp-edit-ds.py",
+        "\t.tmp-next-start-3000.err.log",
+        "\t.tmp-next-start-3000.out.log",
+        "\t.tmp-next-start-3001.err.log",
+        "\t.tmp-next-start-3001.out.log",
+        "\t.tmp-next-start-3002.err.log",
+        "\t.tmp-next-start-3002.out.log",
+        "\t.vercelignore",
+        "\tapp/api/auth-first/",
+        "\tapp/api/soledash/v1/self-knowledge/",
+        "\tapp/api/speaker/",
+        "\tapp/api/tinkerden/",
+        "\tapp/archetypes/",
+        "\tapp/bellows/intake/",
+        "\tapp/bellows/recommendations/page.tsx",
+        "\tapp/bellows/recommendations/squibb-recommendations.css",
+        "\tapp/dashboard/member-dashboard-client.tsx"
+      ]
+    }
+  },
+  "ports": {
+    "note": "lsof was attempted first because it was requested; Windows port reality is captured with Get-NetTCPConnection.",
+    "active_ports_checked": [
+      3000,
+      3001,
+      3002,
+      4317
+    ],
+    "probes": [
+      {
+        "command": "lsof -i :3000",
+        "ok": false,
+        "exit_code": null,
+        "started_at": "2026-06-27T19:13:08.146Z",
+        "finished_at": "2026-06-27T19:13:08.147Z",
+        "stdout": "",
+        "stderr": "spawnSync lsof ENOENT"
+      },
+      {
+        "command": "powershell -NoProfile -Command \"Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,State,OwningProcess | ConvertTo-Json -Compress\"",
+        "ok": false,
+        "exit_code": 1,
+        "started_at": "2026-06-27T19:13:08.147Z",
+        "finished_at": "2026-06-27T19:13:08.730Z",
+        "stdout": "",
+        "stderr": "Command failed: powershell -NoProfile -Command \"Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,State,OwningProcess | ConvertTo-Json -Compress\""
+      },
+      {
+        "command": "powershell -NoProfile -Command \"Get-NetTCPConnection -LocalPort 3001 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,State,OwningProcess | ConvertTo-Json -Compress\"",
+        "ok": true,
+        "exit_code": 0,
+        "started_at": "2026-06-27T19:13:08.730Z",
+        "finished_at": "2026-06-27T19:13:09.344Z",
+        "stdout": "{\"LocalAddress\":\"::\",\"LocalPort\":3001,\"State\":2,\"OwningProcess\":52340}",
+        "stderr": ""
+      },
+      {
+        "command": "powershell -NoProfile -Command \"Get-NetTCPConnection -LocalPort 3002 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,State,OwningProcess | ConvertTo-Json -Compress\"",
+        "ok": true,
+        "exit_code": 0,
+        "started_at": "2026-06-27T19:13:09.344Z",
+        "finished_at": "2026-06-27T19:13:09.958Z",
+        "stdout": "[{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":5,\"OwningProcess\":41112},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":7,\"OwningProcess\":41112},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":2,\"OwningProcess\":41112},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":7,\"OwningProcess\":41112},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":7,\"OwningProcess\":41112},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":11,\"OwningProcess\":0},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":7,\"OwningProcess\":41112},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":3002,\"State\":7,\"OwningProcess\":41112}]",
+        "stderr": ""
+      },
+      {
+        "command": "powershell -NoProfile -Command \"Get-NetTCPConnection -LocalPort 4317 -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,State,OwningProcess | ConvertTo-Json -Compress\"",
+        "ok": true,
+        "exit_code": 0,
+        "started_at": "2026-06-27T19:13:09.958Z",
+        "finished_at": "2026-06-27T19:13:10.583Z",
+        "stdout": "{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":4317,\"State\":2,\"OwningProcess\":22124}",
+        "stderr": ""
+      }
+    ]
+  },
+  "directory_scans": [
+    {
+      "path": "handoffs",
+      "exists": true,
+      "file_count": 20,
+      "stale_count": 20,
+      "orphan_candidates": [
+        {
+          "path": "handoffs/gates/DRY-RUN-0.1-foreman-pipeline-copy-bean-audit.md",
+          "bytes": 826,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/gates/DRY-RUN-0.1-foreman-pipeline-copy-comptroller-gate.md",
+          "bytes": 804,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-0.1-foreman-pipeline-copy-bean-audit-packet.md",
+          "bytes": 11052,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-0.1-foreman-pipeline-copy-comptroller-gate-packet.md",
+          "bytes": 12687,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-0.1-foreman-pipeline-copy-handoff.md",
+          "bytes": 15020,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-faq-static-page-handoff.md",
+          "bytes": 1379,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/FOREMAN-BEAN-RE-AUDIT.md",
+          "bytes": 13796,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_CHATGPT_COMPTROLLER.md",
+          "bytes": 807,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_CLAUDE.md",
+          "bytes": 675,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_DEEPSEEK.md",
+          "bytes": 5026,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_DEEPSEEK_GHOST_FORGE_AUDIT.md",
+          "bytes": 36576,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_GEMINI.md",
+          "bytes": 675,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/received/DRY-RUN-0.1-foreman-pipeline-copy-output.md",
+          "bytes": 8531,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        }
+      ],
+      "stale_candidates": [
+        {
+          "path": "handoffs/gates/.gitkeep",
+          "bytes": 2,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/gates/DRY-RUN-0.1-foreman-pipeline-copy-bean-audit.md",
+          "bytes": 826,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/gates/DRY-RUN-0.1-foreman-pipeline-copy-bean-audit.md.sha256",
+          "bytes": 216,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/gates/DRY-RUN-0.1-foreman-pipeline-copy-comptroller-gate.md",
+          "bytes": 804,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/gates/DRY-RUN-0.1-foreman-pipeline-copy-comptroller-gate.md.sha256",
+          "bytes": 222,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/.gitkeep",
+          "bytes": 2,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-0.1-foreman-pipeline-copy-bean-audit-packet.md",
+          "bytes": 11052,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-0.1-foreman-pipeline-copy-comptroller-gate-packet.md",
+          "bytes": 12687,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-0.1-foreman-pipeline-copy-handoff.md",
+          "bytes": 15020,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/DRY-RUN-faq-static-page-handoff.md",
+          "bytes": 1379,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/FOREMAN-BEAN-RE-AUDIT.md",
+          "bytes": 13796,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_CHATGPT_COMPTROLLER.md",
+          "bytes": 807,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_CLAUDE.md",
+          "bytes": 675,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_DEEPSEEK.md",
+          "bytes": 5026,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_DEEPSEEK_GHOST_FORGE_AUDIT.md",
+          "bytes": 36576,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/pending/TO_GEMINI.md",
+          "bytes": 675,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/received/.gitkeep",
+          "bytes": 2,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/received/DRY-RUN-0.1-foreman-pipeline-copy-output.md",
+          "bytes": 8531,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/sent/.gitkeep",
+          "bytes": 2,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        },
+        {
+          "path": "handoffs/superseded/.gitkeep",
+          "bytes": 2,
+          "last_write_time": "2026-06-12T16:31:28.917Z",
+          "stale": true
+        }
+      ]
+    },
+    {
+      "path": "intake",
+      "exists": false,
+      "file_count": 0,
+      "stale_count": 0,
+      "orphan_candidates": [],
+      "stale_candidates": []
+    },
+    {
+      "path": "foreman/handoffs",
+      "exists": true,
+      "file_count": 192,
+      "stale_count": 183,
+      "orphan_candidates": [
+        {
+          "path": "foreman/handoffs/inbox/20260531-040425-drop.md",
+          "bytes": 1478,
+          "last_write_time": "2026-06-12T18:20:53.978Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/20260531-040453-drop.md",
+          "bytes": 1442,
+          "last_write_time": "2026-06-12T18:20:53.978Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_COMPUTER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 4563,
+          "last_write_time": "2026-06-12T18:20:53.978Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_COMPUTER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+          "bytes": 2330,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_CURSOR_READ_ME.md",
+          "bytes": 321,
+          "last_write_time": "2026-06-12T16:31:28.900Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_ENDER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 4016,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_ENDER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+          "bytes": 2218,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_ENDER_IMAGERY_AND_UX_FOR_MAKER_1.md",
+          "bytes": 9065,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_PETRA_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 4369,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_SKYBRO_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 3993,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_SKYBRO_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+          "bytes": 2181,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T03-59-14-866Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-0359.md",
+          "bytes": 1166,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T03-59-14-866Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-0359.md.summary.json",
+          "bytes": 481,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-23-49-799Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042349.md",
+          "bytes": 1288,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-23-49-799Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042349.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-26-12-017Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042611.md",
+          "bytes": 1309,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-26-12-017Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042611.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-28-33-522Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042833.md",
+          "bytes": 1309,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-28-33-522Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042833.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-30-54-399Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043054.md",
+          "bytes": 1316,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-30-54-399Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043054.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md",
+          "bytes": 1297,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-35-43-237Z__FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md",
+          "bytes": 1307,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-35-43-237Z__FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md.summary.json",
+          "bytes": 421,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        }
+      ],
+      "stale_candidates": [
+        {
+          "path": "foreman/handoffs/inbox/20260531-040425-drop.md",
+          "bytes": 1478,
+          "last_write_time": "2026-06-12T18:20:53.978Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/20260531-040453-drop.md",
+          "bytes": 1442,
+          "last_write_time": "2026-06-12T18:20:53.978Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_COMPUTER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 4563,
+          "last_write_time": "2026-06-12T18:20:53.978Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_COMPUTER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+          "bytes": 2330,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_CURSOR_READ_ME.md",
+          "bytes": 321,
+          "last_write_time": "2026-06-12T16:31:28.900Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_ENDER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 4016,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_ENDER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+          "bytes": 2218,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_ENDER_IMAGERY_AND_UX_FOR_MAKER_1.md",
+          "bytes": 9065,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_PETRA_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 4369,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_SKYBRO_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+          "bytes": 3993,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/FROM_SKYBRO_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+          "bytes": 2181,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/.gitkeep",
+          "bytes": 0,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T03-59-14-866Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-0359.md",
+          "bytes": 1166,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T03-59-14-866Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-0359.md.summary.json",
+          "bytes": 481,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-23-49-799Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042349.md",
+          "bytes": 1288,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-23-49-799Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042349.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-26-12-017Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042611.md",
+          "bytes": 1309,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-26-12-017Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042611.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-28-33-522Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042833.md",
+          "bytes": 1309,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-28-33-522Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-042833.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-30-54-399Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043054.md",
+          "bytes": 1316,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-30-54-399Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043054.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md",
+          "bytes": 1297,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-33-15-911Z__FROM_ENDER_AUTONOMOUS_ROUND_TRIP_TEST_20260606-043315.md.summary.json",
+          "bytes": 483,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        },
+        {
+          "path": "foreman/handoffs/inbox/processed/2026-06-06T04-35-43-237Z__FROM_SKYBRO_AUTONOMOUS_ROUND_TRIP_TEST_SKYBRO_20260606-043543.md",
+          "bytes": 1307,
+          "last_write_time": "2026-06-12T18:20:53.979Z",
+          "stale": true
+        }
+      ]
+    },
+    {
+      "path": "tinkarden/intake",
+      "exists": true,
+      "file_count": 0,
+      "stale_count": 0,
+      "orphan_candidates": [],
+      "stale_candidates": []
+    }
+  ],
+  "doctrine_limits": {
+    "no_auto_fix": true,
+    "no_merge": true,
+    "no_delete": true,
+    "observe_only": true
+  }
+}

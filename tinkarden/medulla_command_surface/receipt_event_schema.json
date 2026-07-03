@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://werkles.local/tinkarden/medulla_command_surface/receipt_event_schema.json",
+  "title": "Medulla Command Surface V0 Receipt Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "command_id",
+    "packet_id",
+    "owner",
+    "stream",
+    "status",
+    "artifact_path",
+    "blocker",
+    "timestamp",
+    "proof_type",
+    "notes"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable unique receipt identifier."
+    },
+    "command_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Command this receipt answers."
+    },
+    "packet_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Packet associated with the receipt, if any."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Aeye@Machine or owner that produced the receipt."
+    },
+    "stream": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Operational stream receiving the receipt."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACK",
+        "BLOCKER",
+        "ARTIFACT"
+      ]
+    },
+    "artifact_path": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Path to returned artifact. Required by policy when status is ARTIFACT."
+    },
+    "blocker": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Single blocker. Required by policy when status is BLOCKER."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof_type": {
+      "type": "string",
+      "enum": [
+        "RECEIVER_ACK",
+        "ARTIFACT_PATH",
+        "BLOCKER_REPORT",
+        "HASH_MATCH",
+        "SCREENSHOT",
+        "LOG_LINE"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ARTIFACT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artifact_path": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "BLOCKER"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "blocker": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

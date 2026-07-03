@@ -1,22 +1,34 @@
-import Link from "next/link";
-import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { copy } from "@/lib/copy";
-import { routeAtmosphere } from "@/lib/workshop-facets";
-import MatchDeck from "./match-deck";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function DashboardPage() {
+import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { isRuntimeRoutePreviewUnlocked } from "@/lib/local-route-preview";
+import { routeAtmosphere } from "@/lib/workshop-facets";
+import { MemberDashboardClient } from "./member-dashboard-client";
+
+const COOKIE_KEY = "werkles_dev_preview_session";
+
+function readPreviewCookie(raw: string | undefined) {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as { email?: string; userId?: string };
+    if (!parsed.email || !parsed.userId) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export default async function DashboardPage() {
+  const previewSession = readPreviewCookie((await cookies()).get(COOKIE_KEY)?.value);
+  if (isRuntimeRoutePreviewUnlocked() && !previewSession) {
+    redirect("/login?next=/dashboard");
+  }
+
   return (
-    <CockpitShell>
+    <CockpitShell showDraftBadge={false}>
       <main className={`dashboard-main ${routeAtmosphere.dashboard}`}>
-      <nav className="dashboard-nav" aria-label="Dashboard navigation">
-        <Link href="/">Home</Link>
-        <Link href="/dashboard/profile">Profile</Link>
-        <Link href="/dashboard/blueprints">{copy.dashboard.workshops.navLabel}</Link>
-        <Link href="/dashboard/intros">Intros</Link>
-        <Link href="/dashboard/crucible">Crucible</Link>
-        <Link href="/dashboard/billing">Billing</Link>
-      </nav>
-      <MatchDeck />
+        <MemberDashboardClient initialSignedIn={Boolean(previewSession)} initialEmail={previewSession?.email ?? null} />
       </main>
     </CockpitShell>
   );

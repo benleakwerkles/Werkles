@@ -24,11 +24,17 @@ export default function BellowsPage() {
             <p className="muted">{copy.bellows.host}</p>
             <p className="trust-badge">{copy.bellows.shellNote}</p>
             <div className="actions" style={{ marginTop: "1rem" }}>
+              <Link className="button button-dark" href="/bellows/intake">
+                Start concierge intake
+              </Link>
+              <Link className="button button-dark" href="/bellows/recommendations">
+                See Squibb recommendations
+              </Link>
+              <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
+                Walk through an example
+              </Link>
               <Link className="button button-outline" href="/proof">
                 Inspect proof first
-              </Link>
-              <Link className="button button-dark" href="/membership">
-                Foundry Dues
               </Link>
             </div>
           </div>
@@ -78,6 +84,26 @@ export default function BellowsPage() {
             </p>
           </section>
         ) : null}
+
+        <section className="narrative-act-body panel" aria-labelledby="bellowsPathTitle">
+          <p className="eyebrow">First useful path</p>
+          <h2 id="bellowsPathTitle">Intake first, recommendation second, proof always visible.</h2>
+          <p>
+            Bellows should not start by asking which service you want. It starts with the heaviest thing you are trying
+            to lift, formats that into a Speaker-readable packet, then shows Squibb's reversible next-step options.
+          </p>
+          <div className="actions" style={{ marginTop: "1rem" }}>
+            <Link className="button button-outline" href="/bellows/recommendations">
+              Compare recommendation types
+            </Link>
+            <Link className="button button-outline" href="/dashboard">
+              Member home
+            </Link>
+            <Link className="button button-outline" href="/proof">
+              Inspect proof
+            </Link>
+          </div>
+        </section>
 
         {foundryAct ? (
           <section className="narrative-act-body panel">

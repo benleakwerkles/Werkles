@@ -42,7 +42,7 @@ RENDER REDEPLOY DONE
 Codex will re-run:
 
 ```powershell
-cd C:\Users\BenLeak\github\Werkles
+cd C:\Users\benle\Desktop\github\Werkles
 .\scripts\foreman\ghost-forge-budget-diagnostic.ps1
 ```
 

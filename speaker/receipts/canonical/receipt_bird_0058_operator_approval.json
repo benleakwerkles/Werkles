@@ -1,0 +1,11 @@
+{
+  "receipt_id": "receipt_bird_0058_operator_approval",
+  "receipt_type": "OPERATOR_DECISION",
+  "timestamp": "2026-06-27T20:58:00-04:00",
+  "owner": "Ben",
+  "status": "ARTIFACT",
+  "evidence": {
+    "type": "operator_approval",
+    "summary": "Approval receipt fixture authorizing BIRD_0058 apoptosis proof doctrine to move to graveyard."
+  }
+}

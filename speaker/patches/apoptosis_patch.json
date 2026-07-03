@@ -1,0 +1,14 @@
+{
+  "patch_id": "BIRD_0079_VALID_APOPTOSIS_PATCH",
+  "reviewer": {
+    "aeye": "Ender",
+    "model_family": "Claude"
+  },
+  "decisions": [
+    {
+      "doctrine_id": "BIRD_0058_APOPTOSIS_PROOF",
+      "outcome": "GRAVEYARD",
+      "reason": "Validator proof keeps mortality evidence in the graveyard and confirms the indexed doctrine boundary."
+    }
+  ]
+}

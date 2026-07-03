@@ -20,9 +20,22 @@ export default function SparkPage() {
             Spark is one person with a specific opening in frame — notes, plans, half-finished thought on real work.
             Not applause, not performance — just evidence that something wants steel around it.
           </p>
-          <Link className="button button-outline" href="/signup">
-            {copy.hero.primaryCta}
-          </Link>
+          <div className="trust-state-strip" aria-label="Spark entry paths">
+            <span>Free account</span>
+            <span>Proof before trust</span>
+            <span>Onboarding when ready</span>
+          </div>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-dark" href="/signup">
+              {copy.hero.primaryCta}
+            </Link>
+            <Link className="button button-outline" href="/proof">
+              Inspect proof
+            </Link>
+            <Link className="button button-outline" href="/onboarding">
+              See onboarding
+            </Link>
+          </div>
         </section>
       </NarrativeActPageLayout>
       <footer className="site-footer">

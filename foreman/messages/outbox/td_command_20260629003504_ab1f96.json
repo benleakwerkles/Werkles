@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260629003504_ab1f96",
+  "origin_surface": "FeralMembraneBuildSmoke@Betsy",
+  "origin_card_id": "command_dash_td_command_20260629003504_ab1f96",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260629003504_ab1f96",
+    "command_packet_path": "tinkerden/inbox/td_command_20260629003504_ab1f96.json",
+    "command_packet_hash": "0339d5a3d275e2a4c5017064ffa085f6c309529f764661df16e36fe1bfd9e9ef",
+    "command": "BUILD_SMOKE: verify merged command dash writes destination-backed custody receipt.",
+    "stream": "FERAL / COMMAND DASH / BUILD SMOKE",
+    "command_type": "BUILD_SMOKE",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "FeralMembraneBuildSmoke@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-29T00:35:04.953Z"
+}

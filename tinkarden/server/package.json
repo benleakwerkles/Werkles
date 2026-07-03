@@ -1,0 +1,14 @@
+{
+  "name": "@werkles/tinkarden-feral-backend",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local Feral TinkerDen Fastify backend with SQLite circulation ledger.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.6",
+    "fastify": "^5.6.2"
+  }
+}

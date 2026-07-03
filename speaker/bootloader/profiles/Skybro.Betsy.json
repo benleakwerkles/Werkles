@@ -1,0 +1,13 @@
+{
+  "profile_id": "Skybro.Betsy",
+  "aeye": "Skybro",
+  "machine": "Betsy",
+  "stream": "BOOTPACK",
+  "token_budget": 1200,
+  "max_recent_artifact_receipts": 10,
+  "priority_order": [
+    "topology_locks",
+    "boundary_rules",
+    "recent_artifact_receipts"
+  ]
+}

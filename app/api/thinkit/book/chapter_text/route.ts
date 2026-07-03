@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 const BOOK_SOURCE_TRUTH_ROOT = path.join(process.cwd(), "source-truth-plan", "references", "betsy_desktop_nerdkle_the_book");
 const BOOK_SOURCE_TRUTH_REPO_URL =
-  "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book";
+  "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book";
 
 const BOOK_CHAPTER_NUMBER_WORDS: Record<string, number> = {
   ONE: 1,

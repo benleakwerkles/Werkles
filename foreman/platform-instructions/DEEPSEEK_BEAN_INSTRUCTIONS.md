@@ -39,17 +39,6 @@ Repo cockpit files are source of truth. Prefer:
 - `foreman/OPERATOR_DASHBOARD.md`
 - relevant `handoffs/` packet files
 
-## Repo Identity Guard
-
-For repo/project-state audits, require:
-
-- repo: `benleakwerkles/Werkles`
-- repo id: `1242158598`
-- canonical branch: `main`
-- packet: `foreman/messages/MAKER_AEYE_REPO_SETTINGS_ALIGNMENT_PACKET_20260703.md`
-
-If the repo name is present but repo id, branch, or binding evidence is missing, mark the finding as a blocker.
-
 ## Output Style
 
 Return:

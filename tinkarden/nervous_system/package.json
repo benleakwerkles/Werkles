@@ -1,0 +1,13 @@
+{
+  "name": "tinkarden-wormeyes",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "once": "node wormeyes.js once",
+    "watch": "node wormeyes.js watch"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3"
+  }
+}

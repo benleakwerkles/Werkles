@@ -1,0 +1,20 @@
+[
+  {
+    "inheritance_id": "inheritance_20260620065816_p35p1",
+    "title": "Assimilated: td_receipt_001",
+    "origin_receipt": "td_receipt_001",
+    "lesson": "Receipt Drawer proves returned reports can land before assimilation.",
+    "why_it_matters": "Learning is visible in TinkerDen Speaker Feed instead of hidden behind assimilation.",
+    "status": "ACTIVE",
+    "timestamp": "2026-06-20T06:58:16.335Z"
+  },
+  {
+    "inheritance_id": "inheritance_001",
+    "title": "No Receipt = Not Done",
+    "origin_receipt": "receipt_fs_synapse_test_001",
+    "lesson": "Work without receipts creates memory loss.",
+    "why_it_matters": "The organism cannot distinguish completed work from forgotten work.",
+    "status": "ACTIVE",
+    "timestamp": "2026-06-20T05:25:00.000Z"
+  }
+]

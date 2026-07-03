@@ -18,6 +18,7 @@ Integration: `foreman/speaker/GD_SPEAKER_CONSTITUTIONAL_INTEGRATION_V0.md`
 | `DRAFT_20260608-gd-command-console` | DRAFT | GD Command Console | 2026-06-08 | gd, operator-ux |
 | `DRAFT_20260608-ai-compression-soul-loss` | DRAFT | AI Compression / Soul Loss | 2026-06-08 | compression, causality |
 | `DRAFT_20260607-human-adaptation-thesis` | DRAFT | Human Adaptation Thesis | 2026-06-07 | operator, becoming |
+| `DRAFT_20260619-tinkerden-return-system-v0` | DRAFT | TinkerDen Return System V0 | 2026-06-19 | tinkerden, receipt, return-loop, speaker |
 
 Paths: `foreman/speaker/entries/<id>.md`
 
@@ -41,6 +42,7 @@ _None yet._
 | tool failure | Tool Mortality |
 | thread summary / slogan replaces cause | AI Compression |
 | auto-send / auto-ratify | Aeye Life Overseer, Thread Registry |
+| packet without receipt / aeye handoff disappears | TinkerDen Return System V0 |
 
 ---
 

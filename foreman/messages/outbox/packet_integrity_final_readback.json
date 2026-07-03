@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_integrity_final_readback",
+  "origin_surface": "Wonka Den",
+  "origin_card_id": "origin_card_integrity_final",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "ping Dink"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-18T17:22:28.685Z"
+}

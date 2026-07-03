@@ -1,0 +1,245 @@
+{
+  "version": 2,
+  "approvals": {
+    "mock_test_1781544688103:operator": {
+      "card_id": "mock_test_1781544688103",
+      "receipt_id": "transport:mock_test_1781544688103:2026-06-15T17:31:28.103Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-17T09:35:35.116Z",
+      "acted_by": "operator",
+      "note": null
+    },
+    "mock_test_1781536290654:operator": {
+      "card_id": "mock_test_1781536290654",
+      "receipt_id": "transport:mock_test_1781536290654:2026-06-15T15:11:30.654Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-17T09:42:39.768Z",
+      "acted_by": "operator",
+      "note": null
+    },
+    "mock_test_1781569456385:operator": {
+      "card_id": "mock_test_1781569456385",
+      "receipt_id": "transport:mock_test_1781569456385:2026-06-16T00:24:16.386Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-17T18:09:26.891Z",
+      "acted_by": "operator",
+      "note": null
+    },
+    "mock_test_1781661590307:operator": {
+      "card_id": "mock_test_1781661590307",
+      "receipt_id": "transport:mock_test_1781661590307:2026-06-17T01:59:50.307Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-17T18:10:15.420Z",
+      "acted_by": "operator",
+      "note": null
+    },
+    "mock_test_1781661594654:operator": {
+      "card_id": "mock_test_1781661594654",
+      "receipt_id": "transport:mock_test_1781661594654:2026-06-17T01:59:54.654Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-17T18:09:59.376Z",
+      "acted_by": "operator",
+      "note": null
+    },
+    "act_live_inspect_002:operator": {
+      "card_id": "act_live_inspect_002",
+      "receipt_id": "transport:act_live_inspect_002:2026-06-14T05:55:12.000Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-17T18:11:51.787Z",
+      "acted_by": "operator",
+      "note": null
+    },
+    "kindsir_com_cleanup:Ben": {
+      "card_id": "kindsir_com_cleanup",
+      "receipt_id": "relay:kindsir_com_cleanup",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:25:43.983Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "act_live_yea_001:Ben": {
+      "card_id": "act_live_yea_001",
+      "receipt_id": "decision:act_live_yea_001",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:25:55.039Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781661594654:Ben": {
+      "card_id": "mock_test_1781661594654",
+      "receipt_id": "transport:mock_test_1781661594654:2026-06-17T01:59:54.654Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:26:37.659Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781661590307:Ben": {
+      "card_id": "mock_test_1781661590307",
+      "receipt_id": "transport:mock_test_1781661590307:2026-06-17T01:59:50.307Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:26:51.154Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781569456385:Ben": {
+      "card_id": "mock_test_1781569456385",
+      "receipt_id": "transport:mock_test_1781569456385:2026-06-16T00:24:16.386Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:26:58.365Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781569323098:Ben": {
+      "card_id": "mock_test_1781569323098",
+      "receipt_id": "transport:mock_test_1781569323098:2026-06-16T00:22:03.098Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:06.203Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "lf_petra_1781569255076_oq18cw:Ben": {
+      "card_id": "lf_petra_1781569255076_oq18cw",
+      "receipt_id": "transport:lf_petra_1781569255076_oq18cw:2026-06-16T00:21:10.276Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:09.288Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "ui_cleanup_across_screens:Ben": {
+      "card_id": "ui_cleanup_across_screens",
+      "receipt_id": "relay:ui_cleanup_across_screens",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:19.109Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781545617429:Ben": {
+      "card_id": "mock_test_1781545617429",
+      "receipt_id": "transport:mock_test_1781545617429:2026-06-15T17:46:57.429Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:24.764Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "lf_petra_1781545218638_sx43qf:Ben": {
+      "card_id": "lf_petra_1781545218638_sx43qf",
+      "receipt_id": "transport:lf_petra_1781545218638_sx43qf:2026-06-15T17:40:32.634Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:41.260Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "lf_petra_1781545175500_ojadof:Ben": {
+      "card_id": "lf_petra_1781545175500_ojadof",
+      "receipt_id": "transport:lf_petra_1781545175500_ojadof:2026-06-15T17:39:49.320Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:41.261Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "lf_petra_1781545150818_nqlcj8:Ben": {
+      "card_id": "lf_petra_1781545150818_nqlcj8",
+      "receipt_id": "transport:lf_petra_1781545150818_nqlcj8:2026-06-15T17:39:25.772Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:49.300Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544751708:Ben": {
+      "card_id": "mock_test_1781544751708",
+      "receipt_id": "transport:mock_test_1781544751708:2026-06-15T17:32:31.708Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:49.301Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544742570:Ben": {
+      "card_id": "mock_test_1781544742570",
+      "receipt_id": "transport:mock_test_1781544742570:2026-06-15T17:32:22.570Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:49.301Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544689091:Ben": {
+      "card_id": "mock_test_1781544689091",
+      "receipt_id": "transport:mock_test_1781544689091:2026-06-15T17:31:29.091Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:54.532Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544688103:Ben": {
+      "card_id": "mock_test_1781544688103",
+      "receipt_id": "transport:mock_test_1781544688103:2026-06-15T17:31:28.103Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:27:54.533Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544686541:Ben": {
+      "card_id": "mock_test_1781544686541",
+      "receipt_id": "transport:mock_test_1781544686541:2026-06-15T17:31:26.541Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:28:03.689Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544684525:Ben": {
+      "card_id": "mock_test_1781544684525",
+      "receipt_id": "transport:mock_test_1781544684525:2026-06-15T17:31:24.525Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:28:29.450Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781544681800:Ben": {
+      "card_id": "mock_test_1781544681800",
+      "receipt_id": "transport:mock_test_1781544681800:2026-06-15T17:31:21.800Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:28:29.641Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "act_live_inspect_002:Ben": {
+      "card_id": "act_live_inspect_002",
+      "receipt_id": "transport:act_live_inspect_002:2026-06-14T05:55:12.000Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:29:55.211Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781534578978:Ben": {
+      "card_id": "mock_test_1781534578978",
+      "receipt_id": "transport:mock_test_1781534578978:2026-06-15T14:42:58.978Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:30:08.800Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781535935533:Ben": {
+      "card_id": "mock_test_1781535935533",
+      "receipt_id": "transport:mock_test_1781535935533:2026-06-15T15:05:35.533Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:30:08.800Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781536290654:Ben": {
+      "card_id": "mock_test_1781536290654",
+      "receipt_id": "transport:mock_test_1781536290654:2026-06-15T15:11:30.654Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:30:08.925Z",
+      "acted_by": "Ben",
+      "note": null
+    },
+    "mock_test_1781536296390:Ben": {
+      "card_id": "mock_test_1781536296390",
+      "receipt_id": "transport:mock_test_1781536296390:2026-06-15T15:11:36.390Z",
+      "disposition": "approved",
+      "acted_at": "2026-06-18T00:30:08.926Z",
+      "acted_by": "Ben",
+      "note": null
+    }
+  }
+}

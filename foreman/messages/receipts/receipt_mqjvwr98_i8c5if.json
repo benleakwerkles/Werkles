@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_mqjvwr98_i8c5if",
+  "packet_id": "packet_mqjvwr90_n8r6db",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Dink@Betsy received SEND_BUTTON_TRUTH_TEST direct API probe",
+  "created_at": "2026-06-18T19:20:04.603Z"
+}

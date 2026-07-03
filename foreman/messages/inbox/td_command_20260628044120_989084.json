@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628044120_989084",
+  "origin_surface": "ThinkIt@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628044120_989084",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628044120_989084",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628044120_989084.json",
+    "command_packet_hash": "5f3668b00f17eeea39ace169308a82d0fe15fbb031ae9b5ebc254b413da0f920",
+    "command": "UI_REAL_THREAD_BRIDGE_PROOF_20260628: create a separate Codex Aeye thread answer and return ARTIFACT with the relay id.",
+    "stream": "THINKIT / COGNITIVE RELAY",
+    "command_type": "THINKING_PACKET",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "ThinkIt@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-28T04:41:20.056Z"
+}

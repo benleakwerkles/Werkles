@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { spawn } from "node:child_process";
 import { ROOT, abs, read, exists, nowIso, byteLength, append } from "./_foreman-core.mjs";
 
 const CONFIG_REL = "foreman/crew-dispatch/relay-courier.config.json";
@@ -1171,6 +1172,214 @@ export async function runPlaywrightSelfTest() {
     launchChannel,
     humanGate: "NO SEND — self-test only; no AI tabs pasted",
     neverAutomated: cfg.fallback?.neverAutomates || ["send", "submit", "post"],
+  };
+}
+
+const PETRA_TRANSPORT_RECEIPTS = "foreman/soledash/PETRA_TRANSPORT_RECEIPTS.jsonl";
+const PETRA_TRANSPORT_PENDING = "foreman/soledash/.petra-transport-pending.txt";
+const PS1_COURIER = "foreman/crew-dispatch/crew-edge-courier.ps1";
+
+function appendPetraTransportReceipt(envelope) {
+  append(PETRA_TRANSPORT_RECEIPTS, `${JSON.stringify(envelope)}\n`);
+}
+
+async function tryPlaywrightPetraPaste(text) {
+  try {
+    const playwright = await import("playwright");
+    const platform = PLATFORM_UI.chatgpt;
+    for (const port of [9222, 9223, 9333]) {
+      let browser = null;
+      try {
+        browser = await playwright.chromium.connectOverCDP(`http://127.0.0.1:${port}`);
+        const context = browser.contexts()[0];
+        if (!context) continue;
+
+        const page = context.pages().find((p) => p.url().includes("chatgpt.com"));
+        if (!page) continue;
+
+        await page.bringToFront();
+        await page.waitForTimeout(600);
+
+        const composer = await findComposer(page, platform);
+        if (!composer) continue;
+
+        await fillComposer(page, composer, text);
+        const preview = await composer.evaluate((el) =>
+          (el.innerText || el.textContent || "").trim().slice(0, 240)
+        );
+        const snippet = text.slice(0, Math.min(40, text.length)).replace(/\s+/g, " ").trim();
+        const confirmed =
+          (snippet.length > 0 && preview.includes(snippet)) ||
+          preview.length >= Math.min(text.length, 15);
+
+        appendCourierLog(`SOLEDASH PETRA paste playwright_cdp port=${port} confirmed=${confirmed}`);
+
+        return {
+          ok: true,
+          confirmed,
+          preview,
+          transport_engine: "playwright_cdp",
+          cdp_port: port,
+        };
+      } catch (e) {
+        appendCourierLog(`SOLEDASH PETRA playwright CDP :${port} skip: ${e.message}`);
+      } finally {
+        if (browser) await browser.close().catch(() => {});
+      }
+    }
+    return { ok: false, reason: "cdp_unavailable_or_no_petra_tab" };
+  } catch (e) {
+    return { ok: false, reason: e.message || "playwright_unavailable" };
+  }
+}
+
+function runPs1PetraCourier(pastePath, ensureEdge = true) {
+  return new Promise((resolve, reject) => {
+    const ps1 = abs(PS1_COURIER);
+    const args = [
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      ps1,
+      "-RepoRoot",
+      ROOT,
+      "-CousinId",
+      "PETRA",
+      "-PasteFile",
+      pastePath,
+    ];
+    if (ensureEdge) args.push("-EnsureEdge");
+
+    const child = spawn("powershell.exe", args, { cwd: ROOT, windowsHide: true });
+    let stdout = "";
+    let stderr = "";
+    const timer = setTimeout(() => {
+      try {
+        child.kill("SIGTERM");
+      } catch {
+        /* ignore */
+      }
+      reject(new Error("Petra courier timed out after 90s"));
+    }, 90000);
+
+    child.stdout.on("data", (d) => {
+      stdout += d.toString();
+    });
+    child.stderr.on("data", (d) => {
+      stderr += d.toString();
+    });
+    child.on("error", (err) => {
+      clearTimeout(timer);
+      reject(err);
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      if (code !== 0) {
+        reject(new Error(stderr.trim() || stdout.trim() || `courier exit ${code}`));
+        return;
+      }
+      try {
+        resolve(JSON.parse(stdout.trim()));
+      } catch {
+        resolve({ ok: true, raw: stdout.trim() });
+      }
+    });
+  });
+}
+
+async function tryPsCourierPetraPaste(text) {
+  const pendingPath = abs(PETRA_TRANSPORT_PENDING);
+  fs.mkdirSync(path.dirname(pendingPath), { recursive: true });
+  fs.writeFileSync(pendingPath, text, "utf8");
+
+  try {
+    const result = await runPs1PetraCourier(pendingPath, true);
+    appendCourierLog(
+      `SOLEDASH PETRA paste powershell_courier partial=${Boolean(result.partial)} tab=${result.tabIndex}`
+    );
+    return {
+      ok: true,
+      partial: Boolean(result.partial),
+      result,
+      transport_engine: "powershell_courier",
+    };
+  } catch (e) {
+    return { ok: false, error: e.message, transport_engine: "powershell_courier" };
+  }
+}
+
+/**
+ * SoleDash v0 — paste operator text into Petra ChatGPT composer. Never auto-sends.
+ */
+export async function deliverSoleDashTextToPetra(rawText) {
+  const text = String(rawText || "").trim();
+  if (!text) {
+    return { ok: false, error: "raw_text required" };
+  }
+
+  const envelope = {
+    envelope_id: `petra_${Date.now()}`,
+    target_cousin: "Petra",
+    target_machine: "Betsy",
+    source: "SoleDash",
+    raw_text: text,
+    created_at: nowIso(),
+    delivery_status: "created",
+    delivery_attempted: false,
+    delivery_confirmed: false,
+    transport_engine: null,
+    failure_reason: null,
+    composer_preview: null,
+  };
+
+  envelope.delivery_status = "attempting";
+  envelope.delivery_attempted = true;
+
+  const pw = await tryPlaywrightPetraPaste(text);
+  if (pw.ok) {
+    envelope.delivery_status = pw.confirmed ? "confirmed" : "attempted";
+    envelope.delivery_confirmed = Boolean(pw.confirmed);
+    envelope.transport_engine = pw.transport_engine;
+    envelope.composer_preview = pw.preview || null;
+    if (!pw.confirmed) {
+      envelope.failure_reason = "Paste attempted via Playwright — verify Petra composer visually";
+    }
+    appendPetraTransportReceipt(envelope);
+    return {
+      ok: true,
+      envelope,
+      humanGate: "STOP BEFORE SEND — review Petra tab and Send manually",
+    };
+  }
+
+  const ps = await tryPsCourierPetraPaste(text);
+  if (ps.ok) {
+    envelope.delivery_status = ps.partial ? "attempted_partial" : "attempted";
+    envelope.delivery_confirmed = false;
+    envelope.transport_engine = ps.transport_engine;
+    envelope.failure_reason = ps.partial
+      ? "Edge focus partial — message on clipboard; switch to Petra tab and Ctrl+V if needed"
+      : pw.reason === "cdp_unavailable_or_no_petra_tab"
+        ? "CDP unavailable — used clipboard + tab focus paste (no auto-send)"
+        : null;
+    appendPetraTransportReceipt(envelope);
+    return {
+      ok: !ps.partial,
+      envelope,
+      humanGate: "STOP BEFORE SEND — review Petra tab and Send manually",
+      courier: ps.result,
+    };
+  }
+
+  envelope.delivery_status = "failed";
+  envelope.failure_reason = ps.error || pw.reason || "delivery failed";
+  appendPetraTransportReceipt(envelope);
+  return {
+    ok: false,
+    envelope,
+    error: envelope.failure_reason,
+    humanGate: "MANUAL REQUIRED — open Aeye Crew Bay Petra tab and paste manually",
   };
 }
 

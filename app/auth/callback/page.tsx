@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
+import { copy } from "@/lib/copy";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 function readAuthParams() {
@@ -23,7 +25,6 @@ export default function AuthCallbackPage() {
   useEffect(() => {
     async function confirmAccount() {
       const { hashParams, queryParams } = readAuthParams();
-      const supabase = getSupabaseBrowser();
 
       const hashError = hashParams.get("error");
       if (hashError) {
@@ -46,6 +47,14 @@ export default function AuthCallbackPage() {
       const queryError = queryParams.get("error");
       if (queryError) {
         setStatus(decodeAuthMessage(queryParams.get("error_description")) || queryError);
+        return;
+      }
+
+      let supabase;
+      try {
+        supabase = getSupabaseBrowser();
+      } catch (error) {
+        setStatus(error instanceof Error ? error.message : "Auth callback failed before the gate opened.");
         return;
       }
 
@@ -87,14 +96,43 @@ export default function AuthCallbackPage() {
   return (
     <main className="auth-shell">
       <section className="auth-panel">
+        <RouteUnlockBanner blockedDetail={copy.infraPreview.login} />
         <p className="eyebrow">Werkles</p>
         <h1>Opening the gate.</h1>
         <p className="status-line" role="status">
           {status}
         </p>
-        <Link className="button button-outline" href="/login">
-          Back to login
-        </Link>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-dark" href="/onboarding">
+            Continue to onboarding
+          </Link>
+          <Link className="button button-outline" href="/dashboard">
+            Member home
+          </Link>
+          <Link className="button button-outline" href="/login">
+            Back to login
+          </Link>
+        </div>
+
+        <section className="ops-card auth-doorway" aria-label="Auth recovery">
+          <div className="card-heading">
+            <p>If this page looks wrong</p>
+            <h2>Try login before you re-signup.</h2>
+          </div>
+          <ul>
+            <li>Expired confirmation link — log in with email and password; account may already be active.</li>
+            <li>No code in URL — start from signup or login, not this page directly.</li>
+            <li>Still stuck — use signup again or check Supabase email templates in operator setup.</li>
+          </ul>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-outline" href="/signup">
+              Create account
+            </Link>
+            <Link className="button button-outline" href="/proof">
+              Inspect proof
+            </Link>
+          </div>
+        </section>
       </section>
     </main>
   );

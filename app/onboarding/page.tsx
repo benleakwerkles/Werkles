@@ -204,7 +204,9 @@ export default function OnboardingPage() {
       <NarrativeJourneyRail currentSlug="/formation" />
       <nav className="dashboard-nav" aria-label="Onboarding navigation">
         <Link href="/">Home</Link>
-        <Link href="/membership">Foundry Dues</Link>
+        <Link href="/dashboard">Member home</Link>
+        <Link href="/formation">Formation</Link>
+        <Link href="/proof">Proof</Link>
         <Link href="/dashboard/profile">Profile</Link>
       </nav>
 
@@ -224,6 +226,18 @@ export default function OnboardingPage() {
         <p className="eyebrow">{copy.brand}</p>
         <h1>{copy.onboarding.headline}</h1>
         <p>{copy.onboarding.subhead}</p>
+        <p className="muted">
+          Onboarding is free. After the first weld you can open the member floor, build your profile, or compare
+          Foundry Dues — nothing here requires payment.
+        </p>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-outline" href="/formation">
+            See formation
+          </Link>
+          <Link className="button button-outline" href="/spark">
+            See spark
+          </Link>
+        </div>
         </div>
       </section>
 
@@ -260,9 +274,19 @@ export default function OnboardingPage() {
             <p>Three doors</p>
             <h2>{copy.onboarding.doorsHeadline}</h2>
           </div>
-          <div className="profile-actions">
-            <Link className="button button-light" href="/membership">
-              Continue to Foundry Dues
+          <p>
+            Pick a profile depth below, jump to the member floor, or compare Foundry Dues when you are ready. Nothing
+            here requires payment.
+          </p>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-dark" href="/dashboard">
+              Go to member home
+            </Link>
+            <Link className="button button-outline" href="/dashboard/profile">
+              Open profile
+            </Link>
+            <Link className="button button-outline" href="/membership">
+              Compare Foundry Dues
             </Link>
           </div>
           <div className="door-grid">

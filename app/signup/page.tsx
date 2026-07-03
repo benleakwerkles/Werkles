@@ -120,6 +120,49 @@ export default function SignupPage() {
           <p className="status-line" role="status">{status}</p>
         </form>
         <Link className="button button-outline" href="/login">I already have an account</Link>
+
+          <section className="ops-card auth-doorway" aria-label="What happens next">
+            <div className="card-heading">
+              <p>What happens next</p>
+              <h2>Free account first. Dues only when the floor earns it.</h2>
+            </div>
+            <p>
+              After signup you land in onboarding: lane, arena, turf, then a profile depth that fits your pace. You can
+              explore proof and pricing before paying Foundry Dues.
+            </p>
+            <div className="trust-state-strip" aria-label="Signup path">
+              <span>Onboarding</span>
+              <span>Profile</span>
+              <span>Dues optional</span>
+            </div>
+            <div className="member-selected-surface__actions">
+              <Link className="button button-outline" href="/proof">
+                Inspect proof first
+              </Link>
+              <Link className="button button-outline" href="/pricing">
+                Compare pricing
+              </Link>
+            </div>
+          </section>
+
+          <section className="ops-card auth-doorway" aria-label="After signup">
+            <div className="card-heading">
+              <p>After signup</p>
+              <h2>Check email, then onboarding.</h2>
+            </div>
+            <p>
+              If confirmation is slow or the link expired, try logging in or open the auth callback page to see the
+              exact status message from Supabase.
+            </p>
+            <div className="member-selected-surface__actions">
+              <Link className="button button-outline" href="/login">
+                Log in
+              </Link>
+              <Link className="button button-outline" href="/auth/callback">
+                Auth callback status
+              </Link>
+            </div>
+          </section>
         </div>
       </section>
     </main>

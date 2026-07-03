@@ -1,0 +1,38 @@
+{
+  "schema": "powertoys_autopaste_helper_config_v0",
+  "default_workspace_target": "maker_betsy_powertoys_workspaces",
+  "workspace_targets": {
+    "none": {
+      "mode": "none",
+      "label": "Clipboard only"
+    },
+    "maker_betsy_powertoys_workspaces": {
+      "mode": "process",
+      "enabled": true,
+      "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+        "-WorkspaceId",
+        "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+      ]
+    },
+    "example_tinkerden_window": {
+      "mode": "window_title",
+      "enabled": false,
+      "label": "Focus a visible TinkerDen window by title",
+      "window_title": "TinkerDen"
+    },
+    "example_powertoys_workspace": {
+      "mode": "process",
+      "enabled": false,
+      "label": "Launch a configured PowerToys workspace helper command",
+      "command": "PowerToys.WorkspacesLauncher.exe",
+      "args": []
+    }
+  }
+}

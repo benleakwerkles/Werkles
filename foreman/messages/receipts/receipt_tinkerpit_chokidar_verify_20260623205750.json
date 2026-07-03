@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_tinkerpit_chokidar_verify_20260623205750",
+  "packet_id": "packet_tinkerpit_chokidar_verify_20260623205750",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "TINKERPIT_RELAY_SUPPORT_V0 chokidar verification receipt.",
+  "created_at": "2026-06-23T20:57:50.676Z"
+}

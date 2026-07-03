@@ -8,6 +8,7 @@ import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
+import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 type BillingProfile = {
@@ -26,6 +27,8 @@ const PREVIEW_PROFILE: BillingProfile = {
 
 export default function BillingPage() {
   const preview = isAuthStripeTestBlocked();
+  const devPreview = shouldUseDevPreviewAuth();
+  const paymentsPaused = !devPreview && !preview;
   const [profile, setProfile] = useState<BillingProfile | null>(preview ? PREVIEW_PROFILE : null);
   const [status, setStatus] = useState(
     preview ? copy.dashboard.billing.disabledReason : copy.dashboard.billing.idle
@@ -66,6 +69,10 @@ export default function BillingPage() {
   }, [preview]);
 
   async function openPortal() {
+    if (paymentsPaused) {
+      setStatus("Customer portal is paused while operator payment setup finishes.");
+      return;
+    }
     if (preview) {
       setStatus(copy.dashboard.billing.disabledReason);
       return;
@@ -133,6 +140,9 @@ export default function BillingPage() {
           <h1>{copy.dashboard.billing.headline}</h1>
         </div>
         <p>{copy.dashboard.billing.summary}</p>
+        <p className="muted">
+          Foundry Dues checkout is paused while operator payment setup finishes. Your free member path stays open.
+        </p>
         {preview ? <p className="muted">{copy.dashboard.billing.disabledReason}</p> : null}
         <div className="trust-state-strip">
           <span>
@@ -143,8 +153,8 @@ export default function BillingPage() {
         </div>
         <p>
           Monthly Foundry Dues are {pricing.foundryDues.monthly.displayPrice}. The Long Run is{" "}
-          {pricing.foundryDues.annual.displayPrice}. Membership state changes only after the
-          Stripe webhook lands.
+          {pricing.foundryDues.annual.displayPrice}. When checkout returns, membership state will update from payment
+          confirmation — not from this page alone.
         </p>
         <p>
           Current period end:{" "}
@@ -153,11 +163,11 @@ export default function BillingPage() {
             : copy.dashboard.billing.periodEndUnset}
         </p>
         <div className="billing-actions">
-          <button className="button button-dark" type="button" disabled={preview}>
+          <Link className="button button-dark" href="/membership">
             {copy.dashboard.billing.checkoutCta}
-          </button>
-          <button className="button button-outline" type="button" onClick={openPortal} disabled={preview}>
-            {copy.dashboard.billing.portalCta}
+          </Link>
+          <button className="button button-outline" type="button" onClick={openPortal} disabled={preview || paymentsPaused}>
+            {paymentsPaused ? "Portal paused" : copy.dashboard.billing.portalCta}
           </button>
           <button className="button button-outline" type="button" disabled={preview}>
             {copy.dashboard.billing.downloadCta}
@@ -165,6 +175,28 @@ export default function BillingPage() {
         </div>
         <p className="billing-squibb-hint">{copy.squibb.billing}</p>
         <p className="status-line" role="status">{status}</p>
+      </section>
+
+      <section className="ops-card billing-panel" aria-label="Billing next steps">
+        <div className="card-heading">
+          <p>Before you upgrade</p>
+          <h2>Compare plans, then choose dues when the floor earns it.</h2>
+        </div>
+        <p>
+          Billing shows your current membership state. Foundry Dues unlock the member workshop; Crucible checks stay
+          optional and separate from dues.
+        </p>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-outline" href="/pricing">
+            Compare pricing
+          </Link>
+          <Link className="button button-outline" href="/dashboard/crucible">
+            Review Crucible checks
+          </Link>
+          <Link className="button button-outline" href="/dashboard/profile">
+            Update profile
+          </Link>
+        </div>
       </section>
       </main>
     </CockpitShell>

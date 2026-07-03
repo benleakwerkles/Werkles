@@ -37,7 +37,13 @@ export default async function MembershipSuccessPage({ searchParams }: Props) {
             </p>
             <p className="membership-squibb-hint">{copy.squibb.success}</p>
             <div className="profile-actions">
-              <Link className="button button-dark" href="/dashboard/crucible">
+              <Link className="button button-dark" href="/dashboard">
+                Member home
+              </Link>
+              <Link className="button button-outline" href="/dashboard/profile">
+                Update profile
+              </Link>
+              <Link className="button button-outline" href="/dashboard/crucible">
                 {copy.membership.successPrimaryCta}
               </Link>
               <Link className="button button-outline" href="/dashboard/billing">

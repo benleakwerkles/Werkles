@@ -1,0 +1,15 @@
+{
+  "schema": "swanson_functional_relay_receipt_v0",
+  "receipt_id": "td_receipt_swanson_20260629010936_55ab72",
+  "packet_id": "td_packet_swanson_20260629010936_d7345a",
+  "relay_id": "swanson_relay_20260629010936_74c296",
+  "source_optional_packet_id": "optional_packet_top3_001_feral_membrane_bridge_20260628100522_b1b97a",
+  "status": "PACKET_RELAY_COMPLETE",
+  "summary": "Swanson functional relay created a dispatch packet and loaded relay text to clipboard. No auto-send performed.",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_swanson_20260629010936_d7345a.json",
+  "event_path": "data/organism/events.jsonl",
+  "clipboard_set": true,
+  "clipboard_verified": true,
+  "no_auto_send": true,
+  "created_at": "2026-06-29T01:09:36.528Z"
+}

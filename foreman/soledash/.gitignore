@@ -1,0 +1,18 @@
+# SoleDash runtime state (v1 command surface)
+
+COMMAND_STATE.json
+
+DECISION_LOG.jsonl
+
+ACTION_RECEIPTS.jsonl
+
+receipts/
+
+actions/
+
+outbound/
+
+automatica/packets/
+
+automatica/receipts/
+

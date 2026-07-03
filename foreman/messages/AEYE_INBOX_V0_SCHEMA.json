@@ -1,0 +1,28 @@
+{
+  "protocol": "AEYE_INBOX_V0",
+  "root": "foreman/messages",
+  "folders": {
+    "outbox": "foreman/messages/outbox/",
+    "inbox": "foreman/messages/inbox/",
+    "receipts": "foreman/messages/receipts/"
+  },
+  "packet_schema": {
+    "packet_id": "string",
+    "origin_surface": "string",
+    "origin_card_id": "string",
+    "target_aeye": "string",
+    "target_machine": "string",
+    "payload": "object",
+    "status": "DRAFT | VALIDATED | QUEUED | SENT | RECEIVED | ACKNOWLEDGED | FAILED | REJECTED | PENDING_RECIPIENT_AVAILABILITY",
+    "created_at": "ISO-8601 string"
+  },
+  "receipt_schema": {
+    "receipt_id": "string",
+    "packet_id": "string",
+    "from_aeye": "string",
+    "from_machine": "string",
+    "status": "DRAFT | VALIDATED | QUEUED | SENT | RECEIVED | ACKNOWLEDGED | FAILED | REJECTED | PENDING_RECIPIENT_AVAILABILITY",
+    "message": "string",
+    "created_at": "ISO-8601 string"
+  }
+}

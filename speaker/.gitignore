@@ -1,0 +1,18 @@
+# Runtime Noise Filters
+*.db-journal
+*.log
+C:/speaker/logs/
+C:/speaker/bootpacks/out/
+.env.local
+node_modules/
+
+# BIRD_0124 Speaker Runtime Cleanup Filters
+/logs/
+/bootpacks/out/
+/*.db-journal
+/*.sqlite-journal
+/*.sqlite-wal
+/*.sqlite-shm
+/speaker.sqlite
+/.env.local
+/node_modules/

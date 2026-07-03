@@ -1,0 +1,13 @@
+{
+  "name": "@werkles/tinkarden-brainstem",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Physical file-watching brainstem for Tinkarden intake packets.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node brainstem.js"
+  },
+  "dependencies": {
+    "chokidar": "^5.0.0"
+  }
+}

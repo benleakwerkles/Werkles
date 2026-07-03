@@ -1,0 +1,19 @@
+{
+  "lastSession": {
+    "task": "Build pages",
+    "tool": "Cursor / Maker",
+    "commit": "88d261dce0f5 — preserve tinkerden packet engine v0",
+    "receipt": "FROM_COMPUTER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+    "timestamp": "2026-06-28T19:56:15.421Z",
+    "status": "blocked",
+    "branch": "preserve/tinkerden-packet-engine-20260622",
+    "hostname": "Betsy"
+  },
+  "updatedAt": "2026-06-28T19:56:15.422Z",
+  "lastVisit": {
+    "timestamp": "2026-06-28T19:56:15.420Z",
+    "commit": "88d261dce0f59d576ccc432d9b0c384037fd1846",
+    "receiptCount": 12,
+    "urgentGateCount": 10
+  }
+}

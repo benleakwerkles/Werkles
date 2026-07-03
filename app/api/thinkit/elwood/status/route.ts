@@ -273,7 +273,7 @@ async function buildElwoodStatus({ persistRepo = false } = {}) {
       active_project_lane: asText(activeLane.project, "Harvey / Nerdkle"),
       active_project_question: asText(activeLane.question, "Harvey: what makes the organism more real today?"),
       thinkit_last_known_location: "http://10.1.10.8:3342/thinkit",
-      book_source_truth: "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book"
+      book_source_truth: "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book"
     },
     workflow: nextThreeWorkflow,
     relay: {

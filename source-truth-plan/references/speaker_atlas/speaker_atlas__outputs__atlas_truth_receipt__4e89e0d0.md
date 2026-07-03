@@ -204,7 +204,7 @@ Canonical branch:
 
 Canonical remote:
 
-- `origin https://github.com/benleakwerkles/Werkles.git`
+- `origin https://github.com/benleakwerkles/Werkles1.git`
 
 Canonical GitHub main hash from existing audit receipt:
 

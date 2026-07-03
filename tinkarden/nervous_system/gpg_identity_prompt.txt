@@ -1,0 +1,13 @@
+BIRD_0071 GPG identity prompt for Ben
+
+GnuPG is installed on Betsy at:
+C:\Program Files\GnuPG\bin\gpg.exe
+
+Next human-gate step:
+1. Plug the YubiKey into Betsy.
+2. Confirm the signing key is visible:
+   gpg --list-secret-keys --keyid-format=long
+3. Set the Git signing key:
+   git config --global user.signingkey [KEY_ID]
+
+Do not disable commit signing if a commit fails. A failed signature is a real abort condition.

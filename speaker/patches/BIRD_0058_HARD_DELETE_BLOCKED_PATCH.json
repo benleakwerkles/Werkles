@@ -1,0 +1,7 @@
+{
+  "patch_id": "BIRD_0058_HARD_DELETE_BLOCKED_PATCH",
+  "proposed_by": "Claude",
+  "target_path": "doctrine/graveyard/BIRD_0058_APOPTOSIS_PROOF.md",
+  "outcome": "HARD_DELETE",
+  "reason": "This patch must be blocked because Speaker mortality is not erasure."
+}

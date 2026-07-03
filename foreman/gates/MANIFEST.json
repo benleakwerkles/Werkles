@@ -1,0 +1,45 @@
+{
+  "kind": "human_gate_artifact_manifest_v1",
+  "status": "PASS",
+  "generated_at": "2026-06-28T19:47:25.147Z",
+  "approval_log_path": "foreman/gates/APPROVAL_LOG.md",
+  "next_action_path": "foreman/NEXT_ACTION.md",
+  "artifacts": [
+    {
+      "path": "foreman/gates/ACTIVE_QUEUE.json",
+      "sha256": "ce70ccf2ab5e328e07e2afe4015e15c4982563dd7b8c2db5f8af68e840e7f1f2",
+      "bytes": 4643,
+      "exists": true
+    },
+    {
+      "path": "foreman/gates/HEALTH.json",
+      "sha256": "1043a3f2981ec8360a30dbc90ad31e3a0b18d8b655c85bfa2398ebe741ef611e",
+      "bytes": 496,
+      "exists": true
+    },
+    {
+      "path": "foreman/gates/CURRENT_GATE_PACKET.md",
+      "sha256": "de37f1dd773bbe5422f2940b06aa4515949e4222d961bcb95aba7669506aa60e",
+      "bytes": 3074,
+      "exists": true
+    },
+    {
+      "path": "foreman/gates/OPERATOR_BRIEF.md",
+      "sha256": "444e1ad965f03e4f5f061d991f9229a80aaf94ea4da378a4536c8c789bb96938",
+      "bytes": 954,
+      "exists": true
+    },
+    {
+      "path": "foreman/gates/AGENT_HANDOFF.json",
+      "sha256": "5d7b9e9940a7fcfd3bc7f9743c3944d3e00155a3f7992a800e45607dfded7d59",
+      "bytes": 2994,
+      "exists": true
+    },
+    {
+      "path": "foreman/reviews/CURRENT_GATE_REVIEW.html",
+      "sha256": "950f46b72e90a28d2da6f86574b89cf5a944cf189cc94246f053b3e2856d49ae",
+      "bytes": 2439,
+      "exists": true
+    }
+  ]
+}

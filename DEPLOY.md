@@ -35,9 +35,14 @@ Best long-term route:
 Best quick route from this machine once Vercel CLI is installed:
 
 ```powershell
-vercel
-vercel --prod
+npm run deploy:alias-guard -- --target preview
+vercel deploy --yes
 ```
+
+Do not attach aliases in the preview path. If an alias change is required, run the
+alias guard first and include the required `TIER_1_HUMAN_GATE` receipt. Production
+aliases live in `deploy/production-aliases.json`; preview deploy guards must not
+load that file.
 
 Typical answers:
 

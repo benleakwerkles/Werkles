@@ -18,6 +18,7 @@ type IntroRow = {
 
 export default function IntrosPage() {
   const [intros, setIntros] = useState<IntroRow[]>([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [status, setStatus] = useState(copy.dashboard.intros.idle);
 
   async function loadIntros() {
@@ -42,7 +43,8 @@ export default function IntrosPage() {
     }
 
     setIntros(result.intros || []);
-    setStatus(result.intros?.length ? copy.dashboard.intros.loaded : copy.actions.decline);
+    setHasLoaded(true);
+    setStatus(result.intros?.length ? copy.dashboard.intros.loaded : "No intros yet — profile and workshop context come first.");
   }
 
   return (
@@ -59,6 +61,17 @@ export default function IntrosPage() {
             <h1>{copy.dashboard.intros.headline}</h1>
           </div>
           <button className="button button-dark" type="button" onClick={loadIntros}>Load intros</button>
+          <p className="muted">
+            Intros connect blueprint work to people. Load the queue after your profile has lane, turf, and a clear ask.
+          </p>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-outline" href="/dashboard/profile">
+              Update profile first
+            </Link>
+            <Link className="button button-outline" href="/dashboard/blueprints">
+              Open workshops
+            </Link>
+          </div>
           <div className="intro-queue">
             {intros.map((intro) => (
               <div className="intro-item" key={intro.id}>
@@ -70,6 +83,26 @@ export default function IntrosPage() {
               </div>
             ))}
           </div>
+          {hasLoaded && intros.length === 0 ? (
+            <section className="ops-card" aria-label="Empty intros queue">
+              <div className="card-heading">
+                <p>Empty queue</p>
+                <h2>No intros yet — that is normal early on.</h2>
+              </div>
+              <p>
+                Intros appear when blueprint work is clear enough to route. Save lane, turf, and skills in profile, add
+                workshop context, then load again.
+              </p>
+              <div className="member-selected-surface__actions">
+                <Link className="button button-dark" href="/dashboard/profile">
+                  Update profile
+                </Link>
+                <Link className="button button-outline" href="/dashboard/blueprints">
+                  Open workshops
+                </Link>
+              </div>
+            </section>
+          ) : null}
           <p className="status-line" role="status">{status}</p>
         </section>
       </main>

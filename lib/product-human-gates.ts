@@ -124,6 +124,89 @@ export type ProductGateEvidenceItem = {
   redactionRule: string;
 };
 
+export type ProductGateHandoffItem = {
+  title: string;
+  detail: string;
+  route: string;
+};
+
+export type ProductGateRecapSection = {
+  title: string;
+  fields: string[];
+};
+
+export type ProductGateRisk = {
+  key: string;
+  title: string;
+  severity: "high" | "medium" | "blocked";
+  appliesTo: string[];
+  risk: string;
+  mitigation: string;
+  readySignal: string;
+};
+
+export type ProductGateBlockerStep = {
+  title: string;
+  action: string;
+  mustNotDo: string;
+};
+
+export type ProductProviderConsoleLink = {
+  provider: string;
+  title: string;
+  url: string;
+  purpose: string;
+  gate: string;
+  blockedBy: string;
+};
+
+export type ProductGateSecretEntryItem = {
+  name: string;
+  destination: string;
+  purpose: string;
+  valueRule: string;
+  proof: string;
+};
+
+export type ProductGateWebhookEvent = {
+  eventName: string;
+  mode: "test" | "live";
+  purpose: string;
+  requiredFor: string[];
+  proof: string;
+  stopIfMissing: string;
+};
+
+export type ProductGateLiveCheckoutSmokeStep = {
+  order: number;
+  title: string;
+  actor: "Ben" | "Agent" | "Both";
+  proof: string;
+  mustNotDo: string;
+};
+
+export type ProductGateProviderScopeItem = {
+  provider: string;
+  scope: string;
+  allowedPrep: string;
+  approvalNeeded: string;
+  stopCondition: string;
+};
+
+export type ProductGateFcraPolicyItem = {
+  topic: string;
+  requiredProof: string;
+  blockedAction: string;
+  owner: string;
+};
+
+export type ProductGateRolloutReadinessItem = {
+  title: string;
+  proof: string;
+  rollback: string;
+  stopCondition: string;
+};
+
 export const productGateSessionBrief: ProductGateSessionBrief = {
   preflight: [
     "Open /operator/gate-knockout, /membership, /dashboard/billing, and /dashboard/crucible locally.",
@@ -474,6 +557,78 @@ export const productGateOperatorSurfaces: ProductGateOperatorSurface[] = [
     href: "/operator/gate-knockout/evidence",
     purpose: "Maps each gate to acceptable proof, unacceptable proof, and redaction rules.",
     useWhen: "Use before filing a decision packet or receipt."
+  },
+  {
+    title: "Ben Handoff",
+    href: "/operator/gate-knockout/handoff",
+    purpose: "One-page packet for what Ben needs before sitting down to pass Human Gates.",
+    useWhen: "Use when scheduling the actual Human Gate session."
+  },
+  {
+    title: "Session Recap",
+    href: "/operator/gate-knockout/recap",
+    purpose: "Post-session template for what passed, what stayed blocked, and what changed.",
+    useWhen: "Use immediately after the Human Gate session."
+  },
+  {
+    title: "Risk Register",
+    href: "/operator/gate-knockout/risks",
+    purpose: "Remaining Stripe, provider, background-check, and production risks in one place.",
+    useWhen: "Use before declaring the site ready for live gate passage."
+  },
+  {
+    title: "Stripe Blocker",
+    href: "/operator/gate-knockout/stripe-blocked",
+    purpose: "What to do while Stripe login/password recovery blocks live product work.",
+    useWhen: "Use when Stripe auth prevents live product, webhook, or secret verification."
+  },
+  {
+    title: "Stripe Offline Prep",
+    href: "/operator/gate-knockout/stripe-offline",
+    purpose: "Names, prices, modes, and env vars to prepare before Stripe access is restored.",
+    useWhen: "Use while waiting for Stripe login to recover."
+  },
+  {
+    title: "Provider Queue",
+    href: "/operator/gate-knockout/provider-queue",
+    purpose: "External provider console links and gate blockers for Supabase, Vercel, Stripe, Plaid, Twilio, and Checkr.",
+    useWhen: "Use to keep non-Stripe provider work organized without crossing gates."
+  },
+  {
+    title: "Secret Entry Checklist",
+    href: "/operator/gate-knockout/secret-entry",
+    purpose: "Names-only checklist for private Stripe and hosting env entry.",
+    useWhen: "Use when Ben is ready to enter values privately."
+  },
+  {
+    title: "Webhook Matrix",
+    href: "/operator/gate-knockout/webhook-matrix",
+    purpose: "Test and live Stripe webhook events required for checkout and membership proof.",
+    useWhen: "Use before approving test checkout, live checkout, or production rollout."
+  },
+  {
+    title: "Live Checkout Smoke",
+    href: "/operator/gate-knockout/live-checkout-smoke",
+    purpose: "First live transaction smoke plan with Ben/agent split and hard stops.",
+    useWhen: "Use only after live Stripe products, secrets, and webhooks are approved."
+  },
+  {
+    title: "Provider Test Scope",
+    href: "/operator/gate-knockout/provider-scope",
+    purpose: "Defines exactly what provider prep is allowed before identity, funds, or background-check sessions.",
+    useWhen: "Use before any Crucible provider test or provider dashboard work."
+  },
+  {
+    title: "FCRA Policy Gate",
+    href: "/operator/gate-knockout/fcra-policy",
+    purpose: "Background-check policy blockers, required proof, and forbidden actions.",
+    useWhen: "Use before any background-check copy, consent, provider start, or result storage."
+  },
+  {
+    title: "Rollout Readiness",
+    href: "/operator/gate-knockout/rollout-readiness",
+    purpose: "Production rollout proof, rollback notes, and hard stops in one checklist.",
+    useWhen: "Use last, after upstream gates are approved or explicitly scoped out."
   }
 ];
 
@@ -696,6 +851,455 @@ export const productGateEvidenceIndex: ProductGateEvidenceItem[] = [
     acceptableProof: "Route smoke proof, rollback note, scoped-out list, and exact production approval phrase.",
     unacceptableProof: "Deploy, push, merge, SQL, production mutation, or public launch without explicit approval.",
     redactionRule: "No secrets, production data dumps, or private account payloads."
+  }
+];
+
+export const productGateHandoffItems: ProductGateHandoffItem[] = [
+  {
+    title: "Start with the scorecard",
+    detail: "Use the shortest readiness view to choose which gate Ben should review first.",
+    route: "/operator/gate-knockout/scorecard"
+  },
+  {
+    title: "Confirm dependencies",
+    detail: "Make sure no live or production gate is being reviewed before its upstream gate is settled.",
+    route: "/operator/gate-knockout/dependencies"
+  },
+  {
+    title: "Run preflight",
+    detail: "Confirm route proof, env names, provider boundaries, and production stop conditions before the session.",
+    route: "/operator/gate-knockout/preflight"
+  },
+  {
+    title: "Use the decision packet",
+    detail: "Record each outcome with proof references and redactions, not secret values or private payloads.",
+    route: "/operator/gate-knockout/decision-packet"
+  },
+  {
+    title: "Check the evidence index",
+    detail: "Do not accept proof that the evidence index marks as insufficient or unsafe.",
+    route: "/operator/gate-knockout/evidence"
+  },
+  {
+    title: "End with recap",
+    detail: "Summarize passed gates, blocked gates, scoped-out gates, and the next live-risk item.",
+    route: "/operator/gate-knockout/recap"
+  }
+];
+
+export const productGateRecapSections: ProductGateRecapSection[] = [
+  {
+    title: "Passed gates",
+    fields: ["Gate title", "Exact phrase used", "Proof reference", "What changed in product readiness"]
+  },
+  {
+    title: "Blocked gates",
+    fields: ["Gate title", "Stop condition", "Missing proof", "Owner for next proof"]
+  },
+  {
+    title: "Scoped-out gates",
+    fields: ["Gate title", "Scope decision", "What remains visible", "What remains disabled"]
+  },
+  {
+    title: "Safety confirmations",
+    fields: ["No secrets exposed", "No provider PII exposed", "No background-check artifacts stored", "No production mutation without approval"]
+  },
+  {
+    title: "Next session",
+    fields: ["Next gate to review", "Proof needed before review", "External dashboard/provider needed", "Ben-only action needed"]
+  }
+];
+
+export const productGateRiskRegister: ProductGateRisk[] = [
+  {
+    key: "webhook-membership-source",
+    title: "Webhook-backed membership state",
+    severity: "high",
+    appliesTo: ["stripe-test-checkout-webhook", "stripe-live-checkout"],
+    risk: "Checkout success without webhook-backed membership state can make paid status unreliable.",
+    mitigation: "Prove checkout and webhook receipt update profile membership state before any live checkout gate.",
+    readySignal: "Test webhook proof is accepted and billing state reflects webhook source of truth."
+  },
+  {
+    key: "live-secret-handling",
+    title: "Live secret handling",
+    severity: "high",
+    appliesTo: ["stripe-live-secret-entry", "production-rollout"],
+    risk: "Secrets pasted into chat, commits, logs, or receipts would compromise live systems.",
+    mitigation: "Ben enters values privately; agents refer only to env var names.",
+    readySignal: "Decision packet confirms names only and no values exposed."
+  },
+  {
+    key: "provider-claims",
+    title: "Provider result and trust claims",
+    severity: "medium",
+    appliesTo: ["crucible-provider-test"],
+    risk: "Product copy could imply identity/funds clearance before provider proof exists.",
+    mitigation: "Keep copy conservative and receipt-based; no guarantees or clearance language.",
+    readySignal: "Provider test scope and receipt expectations are approved."
+  },
+  {
+    key: "background-fcra",
+    title: "Background-check/FCRA compliance",
+    severity: "blocked",
+    appliesTo: ["background-fcra"],
+    risk: "Background checks without counsel/provider approval create consent, adverse-action, retention, and permitted-use exposure.",
+    mitigation: "Keep background checks blocked until counsel/provider approval exists.",
+    readySignal: "FCRA policy proof exists for consent, adverse action, retention, permitted use, and disputes."
+  },
+  {
+    key: "production-rollout-order",
+    title: "Production rollout order",
+    severity: "high",
+    appliesTo: ["production-rollout"],
+    risk: "Production launch before gates are passed or scoped out exposes unfinished money/provider/compliance behavior.",
+    mitigation: "Require route smoke proof, rollback note, scoped-out list, and APPROVE PRODUCTION ROLLOUT.",
+    readySignal: "All upstream gates are approved or scoped out and production phrase is recorded."
+  }
+];
+
+export const productStripeBlockedSteps: ProductGateBlockerStep[] = [
+  {
+    title: "Recover Stripe access manually",
+    action: "Use Stripe password/passkey/SSO recovery outside the agent. Treat login, 2FA, passkeys, and account recovery as Ben-only.",
+    mustNotDo: "Do not ask an agent to enter credentials, recovery codes, passkeys, or email links."
+  },
+  {
+    title: "Keep building local proof",
+    action: "Use pricing, membership, billing, preflight, dependency, and evidence pages to prepare every proof item that does not require Stripe login.",
+    mustNotDo: "Do not infer live Stripe approval from local readiness."
+  },
+  {
+    title: "Prepare Stripe product mapping offline",
+    action: "Use the Stripe Offline Prep page to compare product names, prices, modes, and environment variable names before opening the dashboard.",
+    mustNotDo: "Do not invent live price IDs or mark live products created before Stripe dashboard proof exists."
+  },
+  {
+    title: "Defer live gates cleanly",
+    action: "Record Stripe live products, secret entry, live checkout, and production rollout as BLOCKED until Stripe access is restored.",
+    mustNotDo: "Do not proceed to production rollout while Stripe live proof is missing."
+  }
+];
+
+export const productProviderConsoleLinks: ProductProviderConsoleLink[] = [
+  {
+    provider: "Supabase",
+    title: "Projects",
+    url: "https://supabase.com/dashboard/projects",
+    purpose: "Auth project, redirect URL, email template, and API key review.",
+    gate: "Supabase auth/url/key provider gate",
+    blockedBy: "Ben login and private key entry."
+  },
+  {
+    provider: "Vercel",
+    title: "Dashboard",
+    url: "https://vercel.com/dashboard",
+    purpose: "Private environment variable entry and production deployment settings.",
+    gate: "APPROVE SECRET ENTRY / APPROVE PRODUCTION ROLLOUT",
+    blockedBy: "Ben-only secrets and deploy approval."
+  },
+  {
+    provider: "Stripe",
+    title: "Products",
+    url: "https://dashboard.stripe.com/products",
+    purpose: "Live product and price creation after pricing review.",
+    gate: "APPROVE LIVE STRIPE PRODUCT CREATE",
+    blockedBy: "Stripe login/password recovery and test checkout proof."
+  },
+  {
+    provider: "Stripe",
+    title: "Test products",
+    url: "https://dashboard.stripe.com/test/products",
+    purpose: "Test product/price setup before live work.",
+    gate: "APPROVE STRIPE PRODUCT PREP",
+    blockedBy: "Stripe login/password recovery."
+  },
+  {
+    provider: "Stripe",
+    title: "Live webhooks",
+    url: "https://dashboard.stripe.com/webhooks",
+    purpose: "Live webhook endpoint and event subscription review.",
+    gate: "APPROVE PAID CHECKOUT GO-LIVE",
+    blockedBy: "Live secret entry and live price IDs."
+  },
+  {
+    provider: "Stripe",
+    title: "Test webhooks",
+    url: "https://dashboard.stripe.com/test/webhooks",
+    purpose: "Test webhook endpoint and event subscription proof.",
+    gate: "APPROVE PAID CHECKOUT GO-LIVE (test mode)",
+    blockedBy: "Stripe login/password recovery."
+  },
+  {
+    provider: "Stripe",
+    title: "Customer portal settings",
+    url: "https://dashboard.stripe.com/settings/billing/portal",
+    purpose: "Customer portal configuration before billing portal is live.",
+    gate: "APPROVE PAID CHECKOUT GO-LIVE",
+    blockedBy: "Stripe login and live product/customer setup."
+  },
+  {
+    provider: "Stripe Identity",
+    title: "Identity application",
+    url: "https://dashboard.stripe.com/identity/application",
+    purpose: "Identity provider test configuration.",
+    gate: "APPROVE CRUCIBLE PROVIDER TEST",
+    blockedBy: "Provider account/session approval."
+  },
+  {
+    provider: "Plaid",
+    title: "Dashboard",
+    url: "https://dashboard.plaid.com/",
+    purpose: "Funds verification provider setup for Plaid Assets.",
+    gate: "Future funds provider gate",
+    blockedBy: "Explicit Plaid setup approval and private credentials."
+  },
+  {
+    provider: "Twilio",
+    title: "Console",
+    url: "https://console.twilio.com/",
+    purpose: "Phone verification provider setup for Twilio Verify.",
+    gate: "Future phone provider gate",
+    blockedBy: "Explicit Twilio setup approval and private credentials."
+  },
+  {
+    provider: "Checkr",
+    title: "Dashboard",
+    url: "https://dashboard.checkr.com/",
+    purpose: "Reference, employment, and background-check provider setup.",
+    gate: "Background-check/FCRA provider gate",
+    blockedBy: "Counsel/provider/FCRA approval."
+  }
+];
+
+export const productGateSecretEntryItems: ProductGateSecretEntryItem[] = [
+  {
+    name: "STRIPE_SECRET_KEY",
+    destination: "Hosting environment variable",
+    purpose: "Server-side Stripe API calls.",
+    valueRule: "Secret value. Ben enters privately. Agents may only reference the variable name.",
+    proof: "Decision packet records name entered privately, never the value."
+  },
+  {
+    name: "STRIPE_WEBHOOK_SECRET",
+    destination: "Hosting environment variable",
+    purpose: "Stripe webhook signature verification.",
+    valueRule: "Secret value. Ben enters privately after webhook endpoint exists.",
+    proof: "Decision packet records webhook signing secret name entered privately."
+  },
+  ...stripeManifest.products.map((product) => ({
+    name: product.envVar,
+    destination: "Hosting environment variable",
+    purpose: `${product.name} ${product.mode} price ID (${product.displayPrice}).`,
+    valueRule: "Identifier value. Record only after Stripe dashboard proof; do not invent or guess IDs.",
+    proof: `Proof references ${product.name} and its matching Stripe price object without private payloads.`
+  })),
+  {
+    name: "STRIPE_MONTHLY_PRICE_ID",
+    destination: "Hosting environment variable",
+    purpose: "Legacy fallback for monthly Foundry Dues checkout.",
+    valueRule: "Identifier value. Keep aligned with STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID or remove after migration.",
+    proof: "Decision packet states whether legacy fallback is used or intentionally unused."
+  },
+  {
+    name: "STRIPE_YEARLY_PRICE_ID",
+    destination: "Hosting environment variable",
+    purpose: "Legacy fallback for annual Foundry Dues checkout.",
+    valueRule: "Identifier value. Keep aligned with STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID or remove after migration.",
+    proof: "Decision packet states whether legacy fallback is used or intentionally unused."
+  }
+];
+
+export const productGateWebhookEvents: ProductGateWebhookEvent[] = [
+  {
+    eventName: "checkout.session.completed",
+    mode: "test",
+    purpose: "Proves test checkout completion reaches the app before membership state changes.",
+    requiredFor: ["stripe-test-checkout-webhook"],
+    proof: "Test event receipt plus membership-state update from webhook source of truth.",
+    stopIfMissing: "Do not approve test checkout if success-page redirect is the only proof."
+  },
+  {
+    eventName: "customer.subscription.updated",
+    mode: "test",
+    purpose: "Proves test subscription changes update billing/membership state.",
+    requiredFor: ["stripe-test-checkout-webhook"],
+    proof: "Test event receipt and changed membership/billing status.",
+    stopIfMissing: "Do not approve live subscriptions if updates are not webhook-backed."
+  },
+  {
+    eventName: "customer.subscription.deleted",
+    mode: "test",
+    purpose: "Proves test cancellation or subscription end can remove or downgrade access.",
+    requiredFor: ["stripe-test-checkout-webhook"],
+    proof: "Test event receipt and downgraded membership/billing state.",
+    stopIfMissing: "Do not approve live checkout if cancellations cannot be handled."
+  },
+  {
+    eventName: "checkout.session.completed",
+    mode: "live",
+    purpose: "Proves first live checkout completion reaches the app.",
+    requiredFor: ["stripe-live-checkout", "production-rollout"],
+    proof: "Live event receipt with customer/payment identifiers redacted.",
+    stopIfMissing: "Stop live checkout and production rollout."
+  },
+  {
+    eventName: "customer.subscription.updated",
+    mode: "live",
+    purpose: "Proves live subscription changes are webhook-backed.",
+    requiredFor: ["stripe-live-checkout", "production-rollout"],
+    proof: "Live event receipt plus billing state update, with sensitive identifiers redacted.",
+    stopIfMissing: "Stop production rollout."
+  },
+  {
+    eventName: "customer.subscription.deleted",
+    mode: "live",
+    purpose: "Proves live subscription cancellation handling before public launch.",
+    requiredFor: ["stripe-live-checkout", "production-rollout"],
+    proof: "Live event receipt plus access downgrade proof, with sensitive identifiers redacted.",
+    stopIfMissing: "Stop production rollout."
+  }
+];
+
+export const productGateLiveCheckoutSmokeSteps: ProductGateLiveCheckoutSmokeStep[] = [
+  {
+    order: 1,
+    title: "Confirm all upstream Stripe gates",
+    actor: "Both",
+    proof: "Decision packet shows test checkout/webhook, live products, secret entry, and live webhook setup approved.",
+    mustNotDo: "Do not run a live payment while any upstream Stripe gate is BLOCKED or DEFERRED."
+  },
+  {
+    order: 2,
+    title: "Open membership checkout path",
+    actor: "Agent",
+    proof: "Local or staged /membership route renders the selected Foundry Dues plan.",
+    mustNotDo: "Do not submit a live payment form or enter payment details."
+  },
+  {
+    order: 3,
+    title: "Run first live transaction",
+    actor: "Ben",
+    proof: "Ben performs the live payment action after giving APPROVE PAID CHECKOUT GO-LIVE.",
+    mustNotDo: "Agents must not enter card, customer, passkey, billing, or account details."
+  },
+  {
+    order: 4,
+    title: "Verify webhook receipt",
+    actor: "Both",
+    proof: "Live checkout.session.completed receipt exists and sensitive customer/payment identifiers are redacted.",
+    mustNotDo: "Do not accept success-page redirect as sufficient proof."
+  },
+  {
+    order: 5,
+    title: "Verify membership state",
+    actor: "Both",
+    proof: "Billing/member state changes only after webhook proof.",
+    mustNotDo: "Do not manually patch membership state to fake checkout success."
+  },
+  {
+    order: 6,
+    title: "Record outcome",
+    actor: "Agent",
+    proof: "Decision packet records outcome, proof references, redactions, and next gate status.",
+    mustNotDo: "Do not paste secrets, payment details, customer PII, or private dashboard payloads."
+  }
+];
+
+export const productGateProviderScopeItems: ProductGateProviderScopeItem[] = [
+  {
+    provider: "Stripe Identity",
+    scope: "Identity re-verification proof for Crucible preview.",
+    allowedPrep: "Document provider mode, receipt expectations, pricing, and copy boundaries.",
+    approvalNeeded: "APPROVE CRUCIBLE PROVIDER TEST before any session creation or applicant flow.",
+    stopCondition: "Stop at account login, OAuth, billing, paid session, live session, or final activate/create."
+  },
+  {
+    provider: "Plaid",
+    scope: "Funds verification research and future provider queue only.",
+    allowedPrep: "Document intended proof shape and price disclosure from product copy.",
+    approvalNeeded: "A future explicit Plaid setup approval before client/app credentials or Link setup.",
+    stopCondition: "Stop at credentials, OAuth, account linking, financial data access, or paid/live product enablement."
+  },
+  {
+    provider: "Twilio Verify",
+    scope: "Phone verification research and future provider queue only.",
+    allowedPrep: "Document when phone verification would be required and what user copy would say.",
+    approvalNeeded: "A future explicit Twilio setup approval before service creation or SMS sending.",
+    stopCondition: "Stop at credentials, sender setup, billing, phone collection, or outbound message sending."
+  },
+  {
+    provider: "Checkr",
+    scope: "Reference, employment, and background-check provider planning only.",
+    allowedPrep: "Document FCRA dependencies, consent needs, adverse-action needs, and product blockers.",
+    approvalNeeded: "Counsel/provider FCRA approval plus explicit background-check provider gate.",
+    stopCondition: "Stop at package creation, candidate creation, consent collection, report order, or result storage."
+  }
+];
+
+export const productGateFcraPolicyItems: ProductGateFcraPolicyItem[] = [
+  {
+    topic: "Consent and disclosure",
+    requiredProof: "Counsel/provider-approved standalone disclosure and authorization flow.",
+    blockedAction: "Collecting background-check consent or implying consent is ready.",
+    owner: "Ben plus counsel/provider."
+  },
+  {
+    topic: "Permitted use",
+    requiredProof: "Written decision that Werkles has a lawful permitted use for each check type.",
+    blockedAction: "Starting checks, offering packages, or implying eligibility screening.",
+    owner: "Ben plus counsel/provider."
+  },
+  {
+    topic: "Adverse action",
+    requiredProof: "Pre-adverse/adverse-action process, notices, waiting period, and dispute handling.",
+    blockedAction: "Returning pass/fail labels, rejection language, or clearance claims.",
+    owner: "Ben plus counsel/provider."
+  },
+  {
+    topic: "Data retention and deletion",
+    requiredProof: "Retention, deletion, access, audit, and storage policy for reports and artifacts.",
+    blockedAction: "Storing reports, provider payloads, or sensitive background-check artifacts.",
+    owner: "Ben plus counsel/provider."
+  },
+  {
+    topic: "User-facing copy",
+    requiredProof: "Reviewed copy that says background checks are not active until the policy gate passes.",
+    blockedAction: "Marketing active background checks, trust guarantees, or legal clearance.",
+    owner: "Ben plus product/legal review."
+  }
+];
+
+export const productGateRolloutReadinessItems: ProductGateRolloutReadinessItem[] = [
+  {
+    title: "Route smoke proof",
+    proof: "Local proof exists for /, /pricing, /membership, /dashboard/billing, /dashboard/crucible, and /operator/gate-knockout.",
+    rollback: "If a route fails after rollout, revert the deploy and keep affected gate scoped out.",
+    stopCondition: "Stop production rollout if any route needed for launch fails to render."
+  },
+  {
+    title: "Gate status summary",
+    proof: "Every Stripe/provider/background-check gate is APPROVED, BLOCKED, DEFERRED, or SCOPED_OUT in the decision packet.",
+    rollback: "If a supposedly approved upstream gate lacks proof, roll back live exposure and mark it BLOCKED.",
+    stopCondition: "Stop if any upstream gate has ambiguous status."
+  },
+  {
+    title: "Secret exposure check",
+    proof: "Decision packet confirms names only and no secret values in chat, files, logs, receipts, or commits.",
+    rollback: "If a secret was exposed, rotate it before any rollout continues.",
+    stopCondition: "Stop immediately on any suspected secret exposure."
+  },
+  {
+    title: "Payment/provider scope",
+    proof: "Live payment routes are approved or disabled; provider/background-check features are approved or visibly inactive.",
+    rollback: "Disable or hide any route that implies active money/provider/compliance behavior without proof.",
+    stopCondition: "Stop if product copy implies active checks or live payment readiness without approval."
+  },
+  {
+    title: "Production approval phrase",
+    proof: "Ben gives APPROVE PRODUCTION ROLLOUT after reviewing proof and rollback notes.",
+    rollback: "Use the recorded rollback note and previous deploy reference.",
+    stopCondition: "Stop any deploy, push, merge, SQL, production mutation, or public launch without the exact phrase."
   }
 ];
 

@@ -22,7 +22,7 @@ This packet does **not** authorize deploy, push to main, merge, SQL, secrets, li
 
 ## Verified repo facts (2026-05-31)
 
-- Canonical repo: public `benleakwerkles/Werkles`. Private `benleakwerkles/Werkles` is **empty** and not canonical.
+- Canonical repo: public `benleakwerkles/Werkles1`. Private `benleakwerkles/Werkles` is **empty** and not canonical.
 - `main` clean, synced with `origin/main` at `60f74c8` (2026-05-30 werkles.com deploy).
 - App health: `npm ci`, `typecheck`, `build` pass; dev preview `200` across public + dashboard routes; homepage shows current "The Forge" v0.6 copy (not "Mythic Capitalism").
 - Committed assets: 24 Tier 3 icons; 12/40 Gate 05 style variants (4 style logo-Ws + 8 style lane icons); atmosphere plates (hero/proof v0.1+v0.2, workshop interior, conservatory).

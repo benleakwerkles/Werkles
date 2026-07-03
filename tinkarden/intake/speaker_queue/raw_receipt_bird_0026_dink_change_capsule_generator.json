@@ -1,0 +1,11 @@
+{
+  "receipt_id": "raw_receipt_bird_0026_dink_change_capsule_generator",
+  "packet_id": "BIRD_0026_DINK_CHANGE_CAPSULE_GENERATOR",
+  "timestamp": "2026-06-27T15:18:00-04:00",
+  "target_aeye": "Dink@Betsy",
+  "action_taken": "Built capsule_generator.js to scaffold Change Capsules from raw receipts",
+  "status": "ARTIFACT",
+  "artifact_path": "tinkarden/change_capsules/capsule_generator.js",
+  "source_queue": "tinkarden/intake/speaker_queue",
+  "notes": "Raw receipt fixture for proving physical conversion only. Meaning fields remain blank for Speaker/Thufir."
+}

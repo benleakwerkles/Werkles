@@ -10,7 +10,7 @@ Purpose: create the Ghost Forge worker as a separate Render Web Service from the
 4. Connect GitHub repo:
 
 ```text
-benleakwerkles/Werkles
+benleakwerkles/Werkles1
 ```
 
 5. Use these settings:

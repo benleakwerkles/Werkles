@@ -39,17 +39,6 @@ Repo cockpit files are source of truth. Prefer:
 - `foreman/OPERATOR_DASHBOARD.md`
 - relevant `handoffs/` packet files
 
-## Repo Identity Guard
-
-For Werkles repo or project-state questions, require:
-
-- repo: `benleakwerkles/Werkles`
-- repo id: `1242158598`
-- canonical branch: `main`
-- packet: `foreman/messages/MAKER_AEYE_REPO_SETTINGS_ALIGNMENT_PACKET_20260703.md`
-
-If a packet or cousin claims repo health without those identifiers, return `CONDITIONAL GO` or `NO-GO` until proven.
-
 ## Output Style
 
 Return clear findings, risk, required fixes, retest instructions, and a final verdict:

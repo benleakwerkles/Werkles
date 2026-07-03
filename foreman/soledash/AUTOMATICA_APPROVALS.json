@@ -1,0 +1,1041 @@
+{
+    "version":  "v1",
+    "name":  "AUTOMATICA_APPROVALS",
+    "updated_at":  "2026-06-17",
+    "goal":  "Reduce repeated approval prompts by classifying repeated local workstation actions as GREEN, BLUE, or RED.",
+    "inventory_path":  "foreman/soledash/PERMISSION_FLY_INVENTORY.md",
+    "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+    "policy_model_v1":  {
+                            "approved_now":  [
+                                                 1,
+                                                 2,
+                                                 5,
+                                                 7,
+                                                 8,
+                                                 9,
+                                                 10,
+                                                 17,
+                                                 20,
+                                                 21,
+                                                 23,
+                                                 24
+                                             ],
+                            "do_not_encode":  [
+                                                  15,
+                                                  19
+                                              ],
+                            "hold_for_revision":  [
+                                                      3,
+                                                      4,
+                                                      6,
+                                                      11,
+                                                      12,
+                                                      13,
+                                                      14,
+                                                      16,
+                                                      18,
+                                                      22,
+                                                      25
+                                                  ],
+                            "note":  "Only approved_now policy IDs are executable classifier candidates. do_not_encode and hold_for_revision IDs are record-only here and must not auto-execute."
+                        },
+    "policy":  {
+                   "default_class":  "RED",
+                   "precedence":  [
+                                      "RED",
+                                      "BLUE",
+                                      "GREEN"
+                                  ],
+                   "lookup_mode":  "local_text_match",
+                   "no_background_crawler":  true
+               },
+    "classes":  {
+                    "GREEN":  {
+                                  "description":  "Execute automatically after class approval.",
+                                  "approved_by_operator":  true,
+                                  "approved_at":  "2026-06-17",
+                                  "execution":  "auto_execute",
+                                  "receipt_required":  false,
+                                  "surface_to_ben":  false,
+                                  "candidates":  [
+                                                     {
+                                                         "id":  "local_health_checks",
+                                                         "label":  "local health checks",
+                                                         "patterns":  [
+                                                                          "local health check",
+                                                                          "health check",
+                                                                          "localhost check",
+                                                                          "localhost proof",
+                                                                          "local probe"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "ping_checks",
+                                                         "label":  "ping checks",
+                                                         "patterns":  [
+                                                                          "ping check",
+                                                                          "ping probe",
+                                                                          "ping "
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "ssh_probes",
+                                                         "label":  "SSH probes",
+                                                         "patterns":  [
+                                                                          "ssh probe",
+                                                                          "ssh reachability",
+                                                                          "test ssh"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "rdp_probes",
+                                                         "label":  "RDP probes",
+                                                         "patterns":  [
+                                                                          "rdp probe",
+                                                                          "rdp reachability",
+                                                                          "test rdp"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "repo_search",
+                                                         "label":  "repo search",
+                                                         "patterns":  [
+                                                                          "repo search",
+                                                                          "search repo",
+                                                                          "file search",
+                                                                          "rg ",
+                                                                          "ripgrep"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "receipt_generation",
+                                                         "label":  "receipt generation",
+                                                         "patterns":  [
+                                                                          "receipt generation",
+                                                                          "generate receipt",
+                                                                          "write receipt",
+                                                                          "receipt write"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "packet_generation",
+                                                         "label":  "packet generation",
+                                                         "patterns":  [
+                                                                          "packet generation",
+                                                                          "generate packet",
+                                                                          "write packet",
+                                                                          "packet write"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "file_reads",
+                                                         "label":  "file reads",
+                                                         "patterns":  [
+                                                                          "file read",
+                                                                          "local read",
+                                                                          "read file",
+                                                                          "read local file",
+                                                                          "get-content"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "local_status_collection",
+                                                         "label":  "local status collection",
+                                                         "patterns":  [
+                                                                          "local status",
+                                                                          "status collection",
+                                                                          "collect status",
+                                                                          "machine readback"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "local_typecheck",
+                                                         "label":  "local typecheck",
+                                                         "patterns":  [
+                                                                          "typecheck",
+                                                                          "local typecheck",
+                                                                          "npm run typecheck",
+                                                                          "tsc --noEmit"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "workstation_audits",
+                                                         "label":  "workstation audits",
+                                                         "patterns":  [
+                                                                          "workstation audit",
+                                                                          "audit workstation",
+                                                                          "workstation readback"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "route_validation",
+                                                         "label":  "route validation",
+                                                         "patterns":  [
+                                                                          "route validation",
+                                                                          "validate route",
+                                                                          "route check"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "verify_local_api_without_dispatch",
+                                                         "label":  "Verify local API without dispatch",
+                                                         "classification":  "GREEN",
+                                                         "owner":  "Dink",
+                                                         "scope":  "localhost only; read/test only; no dispatch packet fired; no external network; no credentials; no public exposure; no production mutation; no destructive write.",
+                                                         "expiry":  null,
+                                                         "rollback_fallback":  "If verification would fire a packet, call external network, require credentials, expose a port publicly, mutate production data, or write destructively, promote to RED.",
+                                                         "receipt_required":  true,
+                                                         "receipt_path":  "foreman/soledash/automatica/receipts/local-api-verification/",
+                                                         "receipt_fields":  [
+                                                                                "endpoint tested",
+                                                                                "status code",
+                                                                                "pass/fail",
+                                                                                "blocker if failed"
+                                                                            ],
+                                                         "human_gate_required":  false,
+                                                         "patterns":  [
+                                                                          "Command Approval: Do you want me to verify the intent router API on localhost:3000 without firing a dispatch packet?",
+                                                                          "verify the intent router API on localhost:3000 without firing a dispatch packet",
+                                                                          "verify local api without dispatch",
+                                                                          "verify localhost api without dispatch",
+                                                                          "verify intent router api without firing a dispatch packet",
+                                                                          "test local api without dispatch packet",
+                                                                          "localhost api read test no dispatch packet"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "startup_checks",
+                                                         "label":  "startup checks",
+                                                         "patterns":  [
+                                                                          "startup check",
+                                                                          "startup validation",
+                                                                          "check startup"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "powertoys_validation",
+                                                         "label":  "PowerToys validation",
+                                                         "patterns":  [
+                                                                          "powertoys validation",
+                                                                          "validate powertoys",
+                                                                          "powertoys check"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "cursor_settings_read",
+                                                         "label":  "Cursor settings read",
+                                                         "patterns":  [
+                                                                          "cursor settings read",
+                                                                          "check cursor settings",
+                                                                          "cursor run mode read",
+                                                                          "cursor permission status"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "vscode_status_checks",
+                                                         "label":  "VS Code status checks",
+                                                         "patterns":  [
+                                                                          "vs code status",
+                                                                          "vscode status",
+                                                                          "check vscode",
+                                                                          "check vs code"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "github_desktop_status_checks",
+                                                         "label":  "GitHub Desktop status checks",
+                                                         "patterns":  [
+                                                                          "github desktop status",
+                                                                          "check github desktop",
+                                                                          "github desktop local status"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "soledash_green_confirmations",
+                                                         "label":  "SoleDash GREEN confirmations",
+                                                         "patterns":  [
+                                                                          "soledash green confirmation",
+                                                                          "green confirmation",
+                                                                          "confirm green action",
+                                                                          "green action confirmation"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "skybro_09_silent_success_logging",
+                                                         "label":  "9 Silent Success Logging",
+                                                         "classification":  "GREEN",
+                                                         "owner":  "Dink",
+                                                         "scope":  "Log successful routine Automatica actions without surfacing a Ben interruption.",
+                                                         "expiry":  null,
+                                                         "rollback_fallback":  "If success logging becomes noisy or hides a blocker, promote the action to BLUE receipt or RED review.",
+                                                         "receipt_path":  "foreman/soledash/automatica/logs/silent-success/",
+                                                         "human_gate_required":  false,
+                                                         "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                         "source_policy_id":  9,
+                                                         "source_policy_name":  "Silent Success Logging",
+                                                         "patterns":  [
+                                                                          "silent success logging",
+                                                                          "silent success log",
+                                                                          "log silent success",
+                                                                          "success logging without prompt"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "skybro_10_tier_2_tier_3_error_aggregation",
+                                                         "label":  "10 Tier 2/Tier 3 Error Aggregation",
+                                                         "classification":  "GREEN",
+                                                         "owner":  "Dink",
+                                                         "scope":  "Aggregate non-blocking Tier 2 and Tier 3 errors into summaries instead of interrupting Ben one by one.",
+                                                         "expiry":  null,
+                                                         "rollback_fallback":  "Promote to RED if the error involves secrets, account ownership, production deploy, data loss, or Tier 1 severity.",
+                                                         "receipt_path":  "foreman/soledash/automatica/logs/error-aggregation/",
+                                                         "human_gate_required":  false,
+                                                         "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                         "source_policy_id":  10,
+                                                         "source_policy_name":  "Tier 2/Tier 3 Error Aggregation",
+                                                         "patterns":  [
+                                                                          "tier 2 tier 3 error aggregation",
+                                                                          "tier 2 error aggregation",
+                                                                          "tier 3 error aggregation",
+                                                                          "aggregate nonblocking errors",
+                                                                          "aggregate tier 2 and tier 3 errors"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "skybro_20_idle_ui_takedown",
+                                                         "label":  "20 Idle UI Takedown",
+                                                         "classification":  "GREEN",
+                                                         "owner":  "Maker",
+                                                         "scope":  "Dismiss or collapse idle local UI panels that are not active work and not holding a RED gate.",
+                                                         "expiry":  "Current UI session",
+                                                         "rollback_fallback":  "Restore the panel from local UI state if Ben returns to it or if the panel contains active input.",
+                                                         "receipt_path":  "foreman/soledash/automatica/logs/idle-ui-takedown/",
+                                                         "human_gate_required":  false,
+                                                         "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                         "source_policy_id":  20,
+                                                         "source_policy_name":  "Idle UI Takedown",
+                                                         "patterns":  [
+                                                                          "idle ui takedown",
+                                                                          "idle panel takedown",
+                                                                          "close idle ui",
+                                                                          "hide idle panel",
+                                                                          "dismiss stale ui"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "skybro_21_strict_ambient_default_mobile",
+                                                         "label":  "21 Strict Ambient Default on Mobile",
+                                                         "classification":  "GREEN",
+                                                         "owner":  "Maker",
+                                                         "scope":  "Default mobile SD to strict/quiet ambient behavior so mobile field command is not buried under ambient surfaces.",
+                                                         "expiry":  null,
+                                                         "rollback_fallback":  "Use the desktop/default ambient mode when viewport is non-mobile or Ben explicitly opens ambient layers.",
+                                                         "receipt_path":  "foreman/soledash/automatica/logs/mobile-ambient-default/",
+                                                         "human_gate_required":  false,
+                                                         "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                         "source_policy_id":  21,
+                                                         "source_policy_name":  "Strict Ambient Default on Mobile",
+                                                         "patterns":  [
+                                                                          "strict ambient default on mobile",
+                                                                          "ambient default mobile",
+                                                                          "mobile ambient default",
+                                                                          "disable ambient on mobile",
+                                                                          "mobile ambient off by default"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "id":  "skybro_23_receipt_truncation_mobile",
+                                                         "label":  "23 Receipt Truncation on Mobile",
+                                                         "classification":  "GREEN",
+                                                         "owner":  "Maker",
+                                                         "scope":  "Show truncated receipt summaries on mobile while keeping the full receipt accessible.",
+                                                         "expiry":  null,
+                                                         "rollback_fallback":  "Open the full receipt view when Ben expands details or when a RED/BLUE receipt includes blockers.",
+                                                         "receipt_path":  "foreman/soledash/automatica/logs/mobile-receipt-truncation/",
+                                                         "human_gate_required":  false,
+                                                         "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                         "source_policy_id":  23,
+                                                         "source_policy_name":  "Receipt Truncation on Mobile",
+                                                         "patterns":  [
+                                                                          "receipt truncation on mobile",
+                                                                          "mobile receipt truncation",
+                                                                          "truncate receipt on mobile",
+                                                                          "mobile receipt summary"
+                                                                      ]
+                                                     },
+                                                     {
+                                                         "patterns":  [
+                                                                          "get-process",
+                                                                          "tasklist",
+                                                                          "process inventory",
+                                                                          "process name",
+                                                                          "executable path",
+                                                                          "Win32_Process read",
+                                                                          "Get-CimInstance Win32_Process",
+                                                                          "local app status read"
+                                                                      ],
+                                                         "id":  "codex_local_process_inventory_read",
+                                                         "owner":  "Dink",
+                                                         "label":  "Codex local process inventory read",
+                                                         "scope":  "Read-only local process inventory for approved workstation recovery and sweep tasks. No process stop/start, no credentials, no remote execution.",
+                                                         "classification":  "GREEN",
+                                                         "human_gate_required":  false,
+                                                         "rollback_fallback":  "Promote to BLUE if the action starts/stops a process; promote to RED if credentials, destructive action, or public exposure is involved."
+                                                     },
+                                                     {
+                                                         "patterns":  [
+                                                                          "get-service",
+                                                                          "service inventory",
+                                                                          "service name",
+                                                                          "Get-CimInstance Win32_Service",
+                                                                          "schtasks /query",
+                                                                          "scheduled task read",
+                                                                          "task scheduler status"
+                                                                      ],
+                                                         "id":  "codex_local_service_inventory_read",
+                                                         "owner":  "Dink",
+                                                         "label":  "Codex local service inventory read",
+                                                         "scope":  "Read-only local Windows service and scheduled-task status checks for approved workstation recovery. No service mutation.",
+                                                         "classification":  "GREEN",
+                                                         "human_gate_required":  false,
+                                                         "rollback_fallback":  "Promote to BLUE for scoped local start/stop of an approved app; promote to RED for security services, unknown admin services, or credential changes."
+                                                     },
+                                                     {
+                                                         "patterns":  [
+                                                                          "Get-NetIPConfiguration",
+                                                                          "Get-NetConnectionProfile",
+                                                                          "Get-NetNeighbor",
+                                             "arp -a",
+                                             "hostname",
+                                             "LAN IP",
+                                             "network inventory",
+                                             "network profile read",
+                                             "adapter readback",
+                                             "route print"
+                                         ],
+                                                         "id":  "codex_local_network_inventory_read",
+                                                         "owner":  "Dink",
+                                                         "label":  "Codex local network inventory read",
+                                                         "scope":  "Read-only LAN and local network status checks: hostname, IP, adapter, route, neighbor, DNS readback, and network profile readback. No profile/firewall/router changes.",
+                                                         "classification":  "GREEN",
+                                                         "human_gate_required":  false,
+                                                         "rollback_fallback":  "Promote to BLUE for approved local workstation network profile writes; promote to RED for router, public firewall, DNS ownership, VPN credential, or public exposure changes."
+                                                     },
+                                                     {
+                                                         "patterns":  [
+                                                                          "Get-NetFirewallRule",
+                                                                          "Get-NetFirewallApplicationFilter",
+                                                                          "netsh advfirewall firewall show rule",
+                                                                          "firewall rule read",
+                                                                          "firewall inventory",
+                                                                          "firewall allows read"
+                                                                      ],
+                                                         "id":  "codex_local_firewall_inventory_read",
+                                                         "owner":  "Dink",
+                                                         "label":  "Codex local firewall inventory read",
+                                                         "scope":  "Read-only Windows Firewall rule/application-filter inspection for local workstation diagnosis. No rules are created, enabled, widened, or deleted.",
+                                                         "classification":  "GREEN",
+                                                         "human_gate_required":  false,
+                                                         "rollback_fallback":  "Promote to RED for inbound rule creation, public-profile exposure, router changes, or broad firewall disables."
+                                                     },
+                                                     {
+                                                         "patterns":  [
+                                                                          "Test-NetConnection",
+                                                                          "tcp port probe",
+                                                                          "LAN port probe",
+                                                                          "ports 15100 15101",
+                                                                          "ping from Betsy",
+                                                                          "TcpClient connect",
+                                                                          "reachability probe",
+                                                                          "localhost port check"
+                                                                      ],
+                                                         "id":  "codex_lan_reachability_probe_read",
+                                                         "owner":  "Dink",
+                                                         "label":  "Codex LAN reachability and port probe read",
+                                                         "scope":  "Read-only ping/TCP reachability probes to localhost or approved LAN workstation IPs. No credential attempts, no exploit probing, no firewall/router changes.",
+                                                         "classification":  "GREEN",
+                                                         "human_gate_required":  false,
+                                                         "rollback_fallback":  "Promote to RED if the target is public internet, requires credentials, opens a port, alters trust, or touches production systems."
+                                                     },
+                                                     {
+                                                         "patterns":  [
+                                                                          "startup item read",
+                                             "startup apps read",
+                                             "shortcut target read",
+                                             ".lnk inventory",
+                                             "launcher check",
+                                             "launcher path read",
+                                             "notification settings read",
+                                             "toast setting read"
+                                         ],
+                                                         "id":  "codex_launcher_startup_notification_inventory_read",
+                                                         "owner":  "Dink",
+                                                         "label":  "Codex launcher startup notification inventory read",
+                                                         "scope":  "Read-only launcher, startup item, shortcut target, and notification-setting inventory for local workstation sweeps. No setting changes.",
+                                                         "classification":  "GREEN",
+                                                         "human_gate_required":  false,
+                                                         "rollback_fallback":  "Promote to BLUE when creating/changing startup items or launchers; promote to RED for browser sensitive permissions, account changes, or installs."
+                                                     }
+                                                 ]
+                              },
+                    "BLUE":  {
+                                 "description":  "Execute automatically after class approval and write a receipt.",
+                                 "approved_by_operator":  true,
+                                 "approved_at":  "2026-06-17",
+                                 "execution":  "auto_execute_and_receipt",
+                                 "receipt_required":  true,
+                                 "surface_to_ben":  false,
+                                 "candidates":  [
+                                                    {
+                                                        "id":  "launcher_creation",
+                                                        "label":  "launcher creation",
+                                                        "patterns":  [
+                                                                         "launcher creation",
+                                                                         "create launcher",
+                                                                         "desktop launcher",
+                                                                         "shortcut creation"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "startup_app_changes",
+                                                        "label":  "startup app changes",
+                                                        "patterns":  [
+                                                                         "startup app change",
+                                                                         "startup app changes",
+                                                                         "startup folder",
+                                                                         "add startup app"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "workspace_restore",
+                                                        "label":  "workspace restore",
+                                                        "patterns":  [
+                                                                         "workspace restore",
+                                                                         "restore workspace",
+                                                                         "restore workspaces"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "fancyzones_updates",
+                                                        "label":  "FancyZones updates",
+                                                        "patterns":  [
+                                                                         "fancyzones update",
+                                                                         "fancyzones layout",
+                                                                         "update fancyzones"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "local_scheduled_tasks",
+                                                        "label":  "local scheduled tasks",
+                                                        "patterns":  [
+                                                                         "local scheduled task",
+                                                                         "scheduled task",
+                                                                         "task scheduler"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "browser_session_restoration",
+                                                        "label":  "browser session restoration",
+                                                        "patterns":  [
+                                                                         "browser session restoration",
+                                                                         "restore browser session",
+                                                                         "restore chrome session",
+                                                                         "restore edge session"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "windows_uac_approved_local_workstation_task",
+                                                        "label":  "Windows UAC approved local workstation task",
+                                                        "patterns":  [
+                                                                         "windows uac",
+                                                                         "uac prompt",
+                                                                         "approved elevation",
+                                                                         "approved admin elevation"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "terminal_elevation_local_task",
+                                                        "label":  "terminal elevation for approved local task",
+                                                        "patterns":  [
+                                                                         "terminal elevation",
+                                                                         "elevated terminal",
+                                                                         "administrator terminal",
+                                                                         "run as administrator"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "cursor_agent_run_mode",
+                                                        "label":  "Cursor agent run mode / allowlist",
+                                                        "patterns":  [
+                                                                         "cursor allowlist",
+                                                                         "cursor run mode",
+                                                                         "cursor permission prompt",
+                                                                         "cursor agent approval",
+                                                                         "cursor per-file approval"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "vscode_workspace_restore",
+                                                        "label":  "VS Code workspace restore",
+                                                        "patterns":  [
+                                                                         "vs code workspace restore",
+                                                                         "vscode workspace restore",
+                                                                         "vs code startup prompt",
+                                                                         "vscode startup prompt",
+                                                                         "workspace trust prompt"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "github_desktop_session_restore",
+                                                        "label":  "GitHub Desktop session restore",
+                                                        "patterns":  [
+                                                                         "github desktop session restore",
+                                                                         "restore github desktop",
+                                                                         "github desktop local session",
+                                                                         "github desktop startup prompt"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "ssh_known_host_receipt",
+                                                        "label":  "SSH known-host approval with receipt",
+                                                        "patterns":  [
+                                                                         "ssh known host",
+                                                                         "approved ssh fingerprint",
+                                                                         "known ssh fingerprint",
+                                                                         "ssh fleet trust"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "soledash_blue_confirmations",
+                                                        "label":  "SoleDash BLUE confirmations",
+                                                        "patterns":  [
+                                                                         "soledash blue confirmation",
+                                                                         "blue confirmation",
+                                                                         "blue action confirmation",
+                                                                         "execute and receipt confirmation"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_01_port_collision_override",
+                                                        "label":  "1 Port Collision Override",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Local development servers only; select the next approved localhost port when the preferred dev port is already occupied. Do not kill unknown processes.",
+                                                        "expiry":  "Current dev-server session",
+                                                        "rollback_fallback":  "Return to the preferred port when free; stop and surface RED if public exposure, firewall changes, or process termination is required.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/port-collision/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  1,
+                                                        "source_policy_name":  "Port Collision Override",
+                                                        "patterns":  [
+                                                                         "port collision override",
+                                                                         "localhost port collision",
+                                                                         "dev port already in use",
+                                                                         "use next local port",
+                                                                         "use next approved localhost port"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_02_dependency_sync",
+                                                        "label":  "2 Dependency Sync",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Sync dependencies only from existing repo manifests and lockfiles; no new package selection, no package upgrades by intent, no registry/security changes.",
+                                                        "expiry":  "Current branch package manifest and lockfile state",
+                                                        "rollback_fallback":  "Stop and surface RED if a new dependency, major upgrade, registry auth, install script risk, or security advisory requires a decision.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/dependency-sync/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  2,
+                                                        "source_policy_name":  "Dependency Sync",
+                                                        "patterns":  [
+                                                                         "dependency sync",
+                                                                         "sync dependencies",
+                                                                         "lockfile sync",
+                                                                         "sync from lockfile",
+                                                                         "npm ci from lockfile"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_05_no_mule_mandate",
+                                                        "label":  "5 No-Mule Mandate",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Convert repeated manual relay/copy/paste chores into packets, route cards, and receipts without asking Ben to mule context.",
+                                                        "expiry":  null,
+                                                        "rollback_fallback":  "Park the task or send to Petra if the route cannot be automated without account, MFA, secret, or production access.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/no-mule/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  5,
+                                                        "source_policy_name":  "No-Mule Mandate",
+                                                        "patterns":  [
+                                                                         "no-mule mandate",
+                                                                         "no mule mandate",
+                                                                         "stop manual mule",
+                                                                         "operator mule prevention",
+                                                                         "automate relay instead of ben copy paste"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_07_stale_queue_drop_15_min",
+                                                        "label":  "7 15-Minute Stale Queue Drop",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Drop or archive non-RED queue items that have been stale for at least 15 minutes and have no active assignment or user input.",
+                                                        "expiry":  "Per queue item after 15 minutes stale",
+                                                        "rollback_fallback":  "Archive before dropping; restore if a receipt, active route, or Ben action appears for the item.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/stale-queue-drop/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  7,
+                                                        "source_policy_name":  "15-Minute Stale Queue Drop",
+                                                        "patterns":  [
+                                                                         "15-minute stale queue drop",
+                                                                         "stale queue drop",
+                                                                         "drop stale queue",
+                                                                         "queue stale for 15 minutes",
+                                                                         "stale relay queue drop"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_08_formatting_enforcement",
+                                                        "label":  "8 Formatting Enforcement",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Maker",
+                                                        "scope":  "Apply repo-standard formatting only; no semantic edits, no dependency changes, no generated churn outside touched files.",
+                                                        "expiry":  "Current edited file set",
+                                                        "rollback_fallback":  "Stop and surface review if formatting changes behavior, expands beyond touched files, or conflicts with user edits.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/formatting-enforcement/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  8,
+                                                        "source_policy_name":  "Formatting Enforcement",
+                                                        "patterns":  [
+                                                                         "formatting enforcement",
+                                                                         "format enforcement",
+                                                                         "run formatter",
+                                                                         "apply formatting",
+                                                                         "prettier formatting"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_17_pre_commit_janitor",
+                                                        "label":  "17 Pre-Commit Janitor",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Run local cleanup, status, typecheck, formatting checks, and receipt prep before a commit decision. Do not stage, commit, push, switch, or merge.",
+                                                        "expiry":  "Current working tree state",
+                                                        "rollback_fallback":  "Stop before git state changes; surface RED if cleanup would delete files, alter secrets, install packages, or touch unrelated dirty work.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/pre-commit-janitor/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  17,
+                                                        "source_policy_name":  "Pre-Commit Janitor",
+                                                        "patterns":  [
+                                                                         "pre-commit janitor",
+                                                                         "precommit janitor",
+                                                                         "pre commit janitor",
+                                                                         "janitor before commit",
+                                                                         "pre-commit cleanup"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "skybro_24_ghost_protocol",
+                                                        "label":  "24 Ghost Protocol",
+                                                        "classification":  "BLUE",
+                                                        "owner":  "Bean",
+                                                        "scope":  "Detect and archive simulated, stale, or ghost UI/route state so it cannot masquerade as live work.",
+                                                        "expiry":  null,
+                                                        "rollback_fallback":  "Archive rather than delete; surface RED if the route may be live, user-authored, or tied to a production/account action.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/ghost-protocol/",
+                                                        "human_gate_required":  false,
+                                                        "source_model":  "FROM_SKYBRO_AUTOMATICA_POLICY_MODEL_V1.md",
+                                                        "source_policy_id":  24,
+                                                        "source_policy_name":  "Ghost Protocol",
+                                                        "patterns":  [
+                                                                         "ghost protocol",
+                                                                         "ghost card cleanup",
+                                                                         "ghost route cleanup",
+                                                                         "remove ghost route",
+                                                                         "kill fake route"
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  "codex_mwb_local_restart_recovery",
+                                                        "human_gate_required":  false,
+                                                        "classification":  "BLUE",
+                                                        "label":  "Codex Mouse Without Borders local restart recovery",
+                                                        "rollback_fallback":  "Stop and surface RED if the action requires credentials, changes the MWB key, opens firewall/router/public exposure, kills unknown processes, or needs admin control outside MWB.",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Stop/start/relaunch only the known local Mouse Without Borders executable/helper/service on Betsy for approved MWB fleet recovery. No credentials, key disclosure, firewall/router/public exposure, or unrelated process termination.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/mwb-local-restart/",
+                                                        "expiry":  "Current MWB recovery mission or recurring local MWB recovery task",
+                                                        "patterns":  [
+                                                                         "Mouse Without Borders restart",
+                                            "MouseWithoutBordersHelper restart",
+                                            "MouseWithoutBorders.exe restart",
+                                            "MWB restart",
+                                            "MWB local restart recovery",
+                                            "restart MWB on Betsy",
+                                            "restart Mouse Without Borders on Betsy",
+                                            "sc.exe start MouseWithoutBordersSvc"
+                                        ]
+                                                    },
+                                                    {
+                                                        "id":  "codex_redacted_local_ui_proof_receipt",
+                                                        "human_gate_required":  false,
+                                                        "classification":  "BLUE",
+                                                        "label":  "Codex redacted local UI proof receipt",
+                                                        "rollback_fallback":  "Stop and surface RED if screenshot contains unredactable secrets, payment/account ownership data, legal material, or cloud/private user content outside the local task.",
+                                                        "owner":  "Dink",
+                                                        "scope":  "Capture or attach local-only UI proof screenshots for approved workstation receipts only after redacting keys, tokens, passwords, account identifiers, and other secrets.",
+                                                        "receipt_path":  "foreman/soledash/automatica/receipts/redacted-local-ui-proof/",
+                                                        "expiry":  "Current local workstation receipt",
+                                                        "patterns":  [
+                                                                         "redacted screenshot",
+                                                                         "local UI screenshot",
+                                                                         "UI proof receipt",
+                                                                         "screenshot if UI visible",
+                                                                         "redacted UI proof",
+                                                                         "attach screenshot receipt"
+                                                                     ]
+                                                    }
+                                                ]
+                             },
+                    "RED":  {
+                                "description":  "Require Ben approval every time.",
+                                "approved_by_operator":  false,
+                                "execution":  "require_approval_every_time",
+                                "receipt_required":  true,
+                                "surface_to_ben":  true,
+                                "candidates":  [
+                                                   {
+                                                       "id":  "passwords",
+                                                       "label":  "passwords",
+                                                       "patterns":  [
+                                                                        "password",
+                                                                        "passcode",
+                                                                        "credential"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "mfa",
+                                                       "label":  "MFA",
+                                                       "patterns":  [
+                                                                        "mfa",
+                                                                        "2fa",
+                                                                        "one-time code",
+                                                                        "otp"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "payments",
+                                                       "label":  "payments",
+                                                       "patterns":  [
+                                                                        "payment",
+                                                                        "credit card",
+                                                                        "billing",
+                                                                        "stripe live"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "banking",
+                                                       "label":  "banking",
+                                                       "patterns":  [
+                                                                        "banking",
+                                                                        "bank account",
+                                                                        "wire transfer"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "dns",
+                                                       "label":  "DNS",
+                                                       "patterns":  [
+                                                                        "dns",
+                                                                        "nameserver",
+                                                                        "domain record"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "public_exposure",
+                                                       "label":  "public exposure",
+                                                       "patterns":  [
+                                                                        "public exposure",
+                                                                        "make public",
+                                                                        "publish publicly",
+                                                                        "public launch"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "production_deployment",
+                                                       "label":  "production deployment",
+                                                       "patterns":  [
+                                                                        "production deployment",
+                                                                        "production deploy",
+                                                                        "deploy production",
+                                                                        "live deploy"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "legal_documents",
+                                                       "label":  "legal documents",
+                                                       "patterns":  [
+                                                                        "legal document",
+                                                                        "contract",
+                                                                        "terms of service",
+                                                                        "privacy policy"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "account_ownership_changes",
+                                                       "label":  "account ownership changes",
+                                                       "patterns":  [
+                                                                        "account ownership",
+                                                                        "transfer account",
+                                                                        "owner change",
+                                                                        "change owner"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "google_drive_oauth_data_change",
+                                                       "label":  "Google Drive OAuth or data changes",
+                                                       "patterns":  [
+                                                                        "google drive oauth",
+                                                                        "google drive items removed",
+                                                                        "items removed",
+                                                                        "google drive delete",
+                                                                        "google drive permission",
+                                                                        "google drive account"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "browser_sensitive_permission",
+                                                       "label":  "browser sensitive permission prompts",
+                                                       "patterns":  [
+                                                                        "browser permission prompt",
+                                                                        "camera permission",
+                                                                        "microphone permission",
+                                                                        "location permission",
+                                                                        "notification permission",
+                                                                        "save password"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "local_firewall_public_inbound",
+                                                       "label":  "local firewall inbound/public access",
+                                                       "patterns":  [
+                                                                        "firewall prompt",
+                                                                        "local firewall prompt",
+                                                                        "inbound firewall",
+                                                                        "allow app through firewall",
+                                                                        "open firewall port",
+                                                                        "public network access"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "ssh_credentials_unknown_host",
+                                                       "label":  "SSH credentials or unknown host trust",
+                                                       "patterns":  [
+                                                                        "ssh password",
+                                                                        "ssh private key",
+                                                                        "unknown host fingerprint",
+                                                                        "new ssh host",
+                                                                        "accept ssh fingerprint"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "github_desktop_remote_changes",
+                                                       "label":  "GitHub Desktop remote/auth changes",
+                                                       "patterns":  [
+                                                                        "github desktop push",
+                                                                        "github desktop publish",
+                                                                        "github desktop auth",
+                                                                        "github desktop account"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "git_state_changes",
+                                                       "label":  "git branch or history state changes",
+                                                       "patterns":  [
+                                                                        "git checkout",
+                                                                        "git switch",
+                                                                        "git commit",
+                                                                        "git merge",
+                                                                        "git push"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "package_installs",
+                                                       "label":  "package installs",
+                                                       "patterns":  [
+                                                                        "npm install",
+                                                                        "pnpm install",
+                                                                        "yarn add",
+                                                                        "package install",
+                                                                        "install package"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "file_deletes",
+                                                       "label":  "file deletes",
+                                                       "patterns":  [
+                                                                        "delete file",
+                                                                        "delete local file",
+                                                                        "remove file",
+                                                                        "remove-item",
+                                                                        "rm -r",
+                                                                        "rm -rf",
+                                                                        "del file",
+                                                                        "erase file"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "migrations_sql",
+                                                       "label":  "migrations or SQL",
+                                                       "patterns":  [
+                                                                        "migration apply",
+                                                                        "run migration",
+                                                                        "sql apply",
+                                                                        "sql change",
+                                                                        "database migration",
+                                                                        "schema migration"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "env_secrets_changes",
+                                                       "label":  "environment or secrets changes",
+                                                       "patterns":  [
+                                                                        ".env change",
+                                                                        "env change",
+                                                                        "secret change",
+                                                                        "api key",
+                                                                        "credential change"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "windows_security_registry_bios",
+                                                       "label":  "registry, security, or BIOS changes",
+                                                       "patterns":  [
+                                                                        "registry change",
+                                                                        "security setting",
+                                                                        "bios",
+                                                                        "defender exclusion",
+                                                                        "windows security"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  "unknown_admin_installer",
+                                                       "label":  "unknown admin installer",
+                                                       "patterns":  [
+                                                                        "unknown installer",
+                                                                        "admin installer",
+                                                                        "install driver",
+                                                                        "driver install"
+                                                                    ]
+                                                   }
+                                               ]
+                            }
+                }
+}

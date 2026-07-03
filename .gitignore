@@ -7,7 +7,6 @@ werkles-site.zip
 netlify.toml
 server.log
 server.err.log
-logs/
 
 # Env — keep tracked examples
 .env
@@ -20,6 +19,8 @@ logs/
 # Foreman runtime / operator noise (quarantine — do not commit)
 foreman/.edge-aeye-crew-profile/
 foreman/.edge-playwright-autonomous-sandbox/
+foreman/receipts/browser-capture/playwright-video/
+speaker/receipts/quarantine/
 foreman/**/.local_token
 foreman/control-panel/foreman-control.pid
 foreman/**/*.log
@@ -46,3 +47,4 @@ foreman/crew-dispatch-console/LATEST_DISPATCH.json
 foreman/crew-dispatch-console/dashboard.html
 
 supabase/.temp
+.vercel

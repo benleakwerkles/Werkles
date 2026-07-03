@@ -1,0 +1,6 @@
+deploy/production-aliases.json
+deploy/*.production.json
+.tmp-*
+*.log
+tsconfig.tsbuildinfo
+.next

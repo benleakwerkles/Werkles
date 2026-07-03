@@ -1,0 +1,106 @@
+{
+  "kind": "active_human_gate_queue_v1",
+  "status": "ACTIVE",
+  "generated_at": "2026-06-28T19:47:25.137Z",
+  "source_of_truth": [
+    "foreman/HUMAN_GATES.md",
+    "foreman/LANES.md",
+    "foreman/BUDGET.md",
+    "foreman/NEXT_ACTION.md",
+    "foreman/AI_COUSINS_PROTOCOL.md"
+  ],
+  "active_gate_count": 3,
+  "current_gate_review_path": "foreman/reviews/CURRENT_GATE_REVIEW.html",
+  "approval_log_path": "foreman/gates/APPROVAL_LOG.md",
+  "next_action_path": "foreman/NEXT_ACTION.md",
+  "gates": [
+    {
+      "queue_position": 1,
+      "gate_id": "in-progress-sally-rescue-main-merge-integration",
+      "title": "[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]",
+      "tier": "TIER_2",
+      "status": "IN_PROGRESS_POINTER",
+      "source": "foreman/NEXT_ACTION.md",
+      "artifact_path": null,
+      "html_path": null,
+      "approval_phrase": "APPROVE SALLY_RESCUE_MAIN_MERGE_INTEGRATION",
+      "rejection_phrase": "REJECT SALLY_RESCUE_MAIN_MERGE_INTEGRATION",
+      "patch_phrase": "PATCH SALLY_RESCUE_MAIN_MERGE_INTEGRATION:",
+      "confidence": "LOW",
+      "unknowns": [
+        "Parsed from NEXT_ACTION effective gate."
+      ],
+      "blast_radius": [],
+      "what_remains_blocked": [
+        "No approval implied. Continue only inside approved lane limits."
+      ],
+      "created_at": "UNKNOWN"
+    },
+    {
+      "queue_position": 2,
+      "gate_id": "active-human-gates-local-surface-review",
+      "title": "ACTIVE HUMAN GATES LOCAL SURFACE REVIEW",
+      "tier": "TIER_1",
+      "status": "REVIEW_ARTIFACT_READY",
+      "source": "foreman/reviews/GATE-active-human-gates-local-surface-review-20260628-1500.md",
+      "artifact_path": "foreman/reviews/GATE-active-human-gates-local-surface-review-20260628-1500.md",
+      "html_path": "foreman/reviews/GATE-active-human-gates-local-surface-review-20260628-1500.html",
+      "approval_phrase": "APPROVE ACTIVE HUMAN GATES LOCAL SURFACE",
+      "rejection_phrase": "REJECT ACTIVE HUMAN GATES LOCAL SURFACE",
+      "patch_phrase": "PATCH ACTIVE HUMAN GATES LOCAL SURFACE:\n<notes>",
+      "confidence": "MEDIUM",
+      "unknowns": [
+        "Whether Ben wants this surface to become the primary gate queue or remain a TinkerDen lane.",
+        "Whether decision recording should later require a stronger phrase matcher per gate."
+      ],
+      "blast_radius": [
+        "Local cockpit files.",
+        "TinkerDen local UI.",
+        "foreman/reviews gate artifacts.",
+        "foreman/gates/APPROVAL_LOG.md when Ben records a decision."
+      ],
+      "what_remains_blocked": [
+        "Approving this surface as the official Human Gates workflow.",
+        "Any deploy, push, SQL, secrets, production data mutation, provider action, public launch, or spend.",
+        "Automatic promotion of review outputs to approved status."
+      ],
+      "created_at": "UNKNOWN"
+    },
+    {
+      "queue_position": 3,
+      "gate_id": "automation-authority-doctrine-review",
+      "title": "Automation Authority Doctrine",
+      "tier": "TIER_1",
+      "status": "REVIEW_ARTIFACT_READY",
+      "source": "foreman/reviews/GATE-automation-authority-doctrine-review-20260526-1745.md",
+      "artifact_path": "foreman/reviews/GATE-automation-authority-doctrine-review-20260526-1745.md",
+      "html_path": "foreman/reviews/GATE-automation-authority-doctrine-review-20260526-1745.html",
+      "approval_phrase": "APPROVE AUTOMATION AUTHORITY DOCTRINE",
+      "rejection_phrase": "REJECT AUTOMATION AUTHORITY DOCTRINE",
+      "patch_phrase": "PATCH AUTOMATION AUTHORITY DOCTRINE:\r\n<notes>",
+      "confidence": "MEDIUM",
+      "unknowns": [
+        "Whether Ben wants every doctrine/protocol change to get a Tier 1 dashboard, or only changes that materially alter automation authority.",
+        "Whether the default repair limit of 2 attempts is too high or too low.",
+        "Whether future staging deploys should remain Tier 1 or get a narrower classification."
+      ],
+      "blast_radius": [
+        "AI worker behavior",
+        "human gate classification",
+        "Cursor/Agents fly-swatter behavior",
+        "review artifact requirements",
+        "approval logging",
+        "Ghost Forge batch approval path"
+      ],
+      "what_remains_blocked": [
+        "approving automation doctrine as settled",
+        "Ghost Forge creative direction approval",
+        "Ghost Forge batch budget approval",
+        "batch/background image generation",
+        "using generated images as approved brand assets",
+        "deploy, push, SQL/schema/RLS/policy changes, secrets, billing, public launch, or production data mutation"
+      ],
+      "created_at": "UNKNOWN"
+    }
+  ]
+}

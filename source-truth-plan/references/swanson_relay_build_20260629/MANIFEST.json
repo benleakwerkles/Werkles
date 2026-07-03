@@ -1,7 +1,7 @@
 ﻿{
     "manifest_id":  "SWANSON_RELAY_BUILD_20260629_MANIFEST",
     "generated_at":  "2026-06-29T00:53:18.8587130Z",
-    "repo":  "https://github.com/benleakwerkles/Werkles.git",
+    "repo":  "https://github.com/benleakwerkles/Werkles1.git",
     "branch":  "thinkit/relay-build-snapshot-20260629-0050",
     "base_commit":  "b62e3b19700d5b1a487f08bbeb8c131a92188896",
     "destination_folder":  "source-truth-plan/references/swanson_relay_build_20260629/",

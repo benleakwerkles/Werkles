@@ -23,9 +23,20 @@ export default function FormationPage() {
             Forge is where complementary lanes share attention on a plan, fixture, or number — never the camera.
             Documentary lane cards on the homepage carry the human proof; these photographs deepen the library.
           </p>
-          <div className="narrative-act-hero__actions">
-            <Link className="button button-light" href="/onboarding">
+          <div className="trust-state-strip" aria-label="Formation entry paths">
+            <span>Pick a lane</span>
+            <span>Build profile</span>
+            <span>Proof visible</span>
+          </div>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-dark" href="/onboarding">
               Pick your lane
+            </Link>
+            <Link className="button button-outline" href="/signup">
+              Start free
+            </Link>
+            <Link className="button button-outline" href="/proof">
+              Inspect proof
             </Link>
             <Link className="button button-ghost" href="/#lanes">
               See lanes on home

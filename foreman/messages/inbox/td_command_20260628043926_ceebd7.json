@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628043926_ceebd7",
+  "origin_surface": "NerdkleOrganismProof@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628043926_ceebd7",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628043926_ceebd7",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628043926_ceebd7.json",
+    "command_packet_hash": "e2e2a82cea1b3c954f26443bc8da0106bf0bb313874d8ba5efb5701e64a745e4",
+    "command": "REAL_RELAY_PROOF: Nerdkle organism worker must receive this packet, generate an answer, and return answer proof.",
+    "stream": "NERDKLE ORGANISM / ANSWER LOOP",
+    "command_type": "REAL_RELAY_PROOF",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "NerdkleOrganismProof@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-28T04:39:26.908Z"
+}

@@ -46,7 +46,7 @@ const NERDKLE_OPERATOR_INTAKE_LEDGER_PATH = path.join(NERDKLE_OPERATOR_INTAKE_DI
 const SWANSON_OUTPUTS_DIR = process.env.SWANSON_OUTPUTS_DIR || "C:\\Users\\BenLeak\\Documents\\Codex\\2026-06-20\\to-swanson-doss-mission-branch-truth\\outputs";
 const SWANSON_BUTTON_REPAIR_RECEIPT_PATH = path.join(SWANSON_OUTPUTS_DIR, "SWANSON_DOSS_MOMENT_VELOCITY_BUTTON_REPAIR_RECEIPT.json");
 const BOOK_SOURCE_TRUTH_ROOT = process.env.BOOK_SOURCE_TRUTH_ROOT || "C:\\wt\\stbook\\source-truth-plan\\references\\betsy_desktop_nerdkle_the_book";
-const BOOK_SOURCE_TRUTH_REPO_URL = process.env.BOOK_SOURCE_TRUTH_REPO_URL || "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book";
+const BOOK_SOURCE_TRUTH_REPO_URL = process.env.BOOK_SOURCE_TRUTH_REPO_URL || "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book";
 const AEYE_THREAD_BRIDGE_DIR = path.join(AEYE_RELAY_ROOT, "thread_bridge");
 const AEYE_THREAD_BRIDGE_QUEUE_DIR = path.join(AEYE_THREAD_BRIDGE_DIR, "queue");
 const AEYE_THREAD_BRIDGE_SENT_DIR = path.join(AEYE_THREAD_BRIDGE_DIR, "sent");
@@ -460,14 +460,6 @@ function dispatchBookChapterPacket(request, payload) {
     chapter,
     chapter_count: chapters.length,
     relay_packet: packet,
-    delivery_state: packet.thread_bridge?.status || "NOT_QUEUED",
-    receiver_chat: packet.thread_bridge?.home_thread_title || target,
-    receiver_thread_id: packet.thread_bridge?.thread_id || null,
-    operator_meaning: packet.thread_bridge?.status === "QUEUED_FOR_CODEX_THREAD_SEND"
-      ? "Chapter packet was created and queued locally. It will not appear in the receiver chat until the Codex thread bridge posts it."
-      : packet.thread_bridge?.status === "SENT_TO_CODEX_THREAD"
-        ? "Chapter packet has been posted into the receiver chat. Now wait for RECEIVED then COMPLETED or BLOCKER."
-        : "Chapter packet state requires bridge/status readback before claiming delivery.",
     missing_proof: "This is queued work only until the thread bridge sends it and Skybro returns RECEIVED then COMPLETED or BLOCKER.",
   };
 }

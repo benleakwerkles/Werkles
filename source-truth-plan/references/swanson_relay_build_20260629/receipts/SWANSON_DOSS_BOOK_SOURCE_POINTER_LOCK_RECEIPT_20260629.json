@@ -3,9 +3,9 @@
   "created_at": "2026-06-29T00:20:00-04:00",
   "status": "ARTIFACT",
   "operator_pointer_received": {
-    "repo": "https://github.com/benleakwerkles/Werkles.git",
+    "repo": "https://github.com/benleakwerkles/Werkles1.git",
     "branch": "main",
-    "folder_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+    "folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
     "folder": "source-truth-plan/references/betsy_desktop_nerdkle_the_book/",
     "current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
     "book_add_commit": "49349a638625ce85bad3c449d1bab5e734ae118f",
@@ -16,7 +16,7 @@
     "clone_root": "C:\\wt\\stbook",
     "doss_clone_head": "93947e39602c1873aea1deb568f27591a70c9fb1",
     "doss_clone_branch": "source-truth/book-import-metadata-20260628",
-    "doss_clone_remote": "https://github.com/benleakwerkles/Werkles.git",
+    "doss_clone_remote": "https://github.com/benleakwerkles/Werkles1.git",
     "book_add_is_ancestor_of_current_main": true,
     "book_folder_file_count": 120,
     "import_boundary_exists": true
@@ -46,19 +46,19 @@
   "relay_dash_readback": {
     "endpoint": "GET http://127.0.0.1:3339/v1/book/chapters",
     "status": "BOOK_CHAPTERS_READY",
-    "source_repo_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+    "source_repo_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
     "chapter_count": 71
   },
   "bootpack_readback": {
     "Skybro.Betsy": {
-      "contains_source_truth_plan_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan",
-      "contains_book_folder_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+      "contains_source_truth_plan_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan",
+      "contains_book_folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
       "contains_current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
       "contains_raw_reference_boundary": true
     },
     "Petra.Betsy": {
-      "contains_source_truth_plan_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan",
-      "contains_book_folder_url": "https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
+      "contains_source_truth_plan_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan",
+      "contains_book_folder_url": "https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book",
       "contains_current_origin_main": "93947e39602c1873aea1deb568f27591a70c9fb1",
       "contains_raw_reference_boundary": true
     }

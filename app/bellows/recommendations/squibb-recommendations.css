@@ -1,0 +1,589 @@
+/* Squibb Recommendation Surface v1 — Bellows sub-route */
+
+.squibb-rec-page {
+  --squibb-rec-accent: var(--werkles-owl-eye-green, #5fd178);
+  --squibb-rec-copper: var(--werkles-copper, #9f6633);
+}
+
+.squibb-rec-page__nav {
+  margin-bottom: 1rem;
+}
+
+.squibb-rec-page__test-case-link {
+  margin: 0.5rem 0 0;
+}
+
+.squibb-rec-surface {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.squibb-rec-surface__intake-cta {
+  border-left: 3px solid var(--squibb-rec-copper);
+}
+
+.squibb-rec-surface__intake-cta p {
+  max-width: 52rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  line-height: 1.5;
+}
+
+.squibb-rec-surface__hero {
+  border-left: 3px solid var(--squibb-rec-accent);
+}
+
+.squibb-rec-surface__intro {
+  max-width: 52rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.squibb-rec-surface__context {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.squibb-rec-surface__context dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-rec-surface__context dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.05rem;
+}
+
+.squibb-rec-surface__context dd small,
+.squibb-rec-surface__context dd code {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--werkles-text-muted, #6d5b46);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.squibb-rec-surface__context dd code {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.squibb-rec-surface__squibb-note {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--squibb-rec-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--squibb-rec-accent) 35%, transparent);
+  font-style: italic;
+}
+
+.squibb-rec-source {
+  border-left: 3px solid var(--werkles-ember, #fbc368);
+}
+
+.squibb-rec-source h2 {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 1rem;
+}
+
+.squibb-rec-source pre {
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+  color: var(--werkles-text-secondary, #c08b52);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.squibb-rec-surface__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.squibb-rec-tab {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+  color: var(--werkles-text-primary, #f4e2b1);
+  cursor: pointer;
+  font: inherit;
+}
+
+.squibb-rec-tab--active {
+  border-color: var(--squibb-rec-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--squibb-rec-accent) 40%, transparent);
+}
+
+.squibb-rec-surface__layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.squibb-rec-surface__stack-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--werkles-text-muted, #6d5b46);
+  margin: 0 0 0.75rem;
+}
+
+.squibb-rec-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.squibb-rec-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-smoke, #2c231d);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.squibb-rec-card:hover {
+  border-color: var(--squibb-rec-copper);
+}
+
+.squibb-rec-card--selected {
+  border-color: var(--squibb-rec-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--squibb-rec-accent) 35%, transparent);
+}
+
+.squibb-rec-card--compact h4 {
+  font-size: 0.95rem;
+}
+
+.squibb-rec-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.squibb-rec-card__rank {
+  color: var(--squibb-rec-accent);
+  font-weight: 700;
+}
+
+.squibb-rec-card__kind {
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-rec-card__confidence {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.squibb-rec-card__confidence--high {
+  color: var(--squibb-rec-accent);
+}
+
+.squibb-rec-card__confidence--medium {
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-rec-card__confidence--low {
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-rec-card h4 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.squibb-rec-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.squibb-rec-card__flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.squibb-rec-card__flag {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--werkles-ember) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--werkles-ember) 45%, transparent);
+}
+
+.squibb-rec-card__flag--blocker {
+  background: color-mix(in srgb, #c44 18%, transparent);
+  border-color: color-mix(in srgb, #c44 45%, transparent);
+}
+
+.squibb-rec-surface__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.squibb-rec-detail__header h2 {
+  margin: 0.25rem 0;
+}
+
+.squibb-reasoning__need {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.squibb-reasoning__need dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-reasoning__need dd {
+  margin: 0.15rem 0 0;
+}
+
+.squibb-reasoning__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.squibb-reasoning__counter {
+  margin: 0.75rem 0 0;
+  padding: 0.65rem 0.85rem;
+  border-left: 3px solid var(--werkles-ember, #fbc368);
+  background: color-mix(in srgb, var(--werkles-ember) 8%, transparent);
+  font-size: 0.92rem;
+}
+
+.squibb-confidence__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.squibb-confidence__header h3 {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.squibb-confidence__badge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.squibb-confidence__badge--high {
+  border-color: var(--squibb-rec-accent);
+  color: var(--squibb-rec-accent);
+}
+
+.squibb-confidence__badge--medium {
+  border-color: var(--werkles-ember, #fbc368);
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-confidence__score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.squibb-confidence__track {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--werkles-iron, #3b342a);
+  overflow: hidden;
+}
+
+.squibb-confidence__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--werkles-teal-deep, #015e51),
+    var(--squibb-rec-accent)
+  );
+}
+
+.squibb-confidence__why {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.squibb-evidence__lead {
+  font-size: 0.9rem;
+  color: var(--werkles-text-secondary, #c08b52);
+  margin: 0 0 0.75rem;
+}
+
+.squibb-evidence__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.squibb-evidence__item {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.squibb-evidence__item--missing {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.squibb-evidence__item-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.squibb-evidence__strength {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.4rem;
+  border-radius: 999px;
+}
+
+.squibb-evidence__strength--verified {
+  background: color-mix(in srgb, var(--squibb-rec-accent) 22%, transparent);
+  color: var(--squibb-rec-accent);
+}
+
+.squibb-evidence__strength--self_reported {
+  background: color-mix(in srgb, var(--werkles-teal) 18%, transparent);
+  color: var(--werkles-teal-bright, #18c5ae);
+}
+
+.squibb-evidence__strength--inferred {
+  background: color-mix(in srgb, var(--werkles-ember) 18%, transparent);
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-evidence__strength--missing {
+  background: color-mix(in srgb, var(--werkles-text-muted) 25%, transparent);
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-evidence__source {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-gates__summary {
+  margin: 0 0 0.5rem;
+  color: #e8a0a0;
+  font-weight: 600;
+}
+
+.squibb-gates__operator-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-gates__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.squibb-gate {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+}
+
+.squibb-gate--blocker {
+  border-color: color-mix(in srgb, #c44 50%, var(--werkles-iron));
+  background: color-mix(in srgb, #c44 8%, var(--werkles-workshop-night));
+}
+
+.squibb-gate--warning {
+  border-color: color-mix(in srgb, var(--werkles-ember) 45%, var(--werkles-iron));
+}
+
+.squibb-gate__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.squibb-gate__severity {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.squibb-gate__approval {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--werkles-ember, #fbc368);
+}
+
+.squibb-gate__approval--auto {
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-gate p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.squibb-rec-detail__dispatch {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.squibb-rec-detail__dispatch dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-rec-detail__dispatch dd {
+  margin: 0.1rem 0 0;
+}
+
+.squibb-rec-detail__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.squibb-rec-detail__preview-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-rec-detail__preview-note[data-status="saving"] {
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.squibb-rec-detail__preview-note[data-status="saved"] {
+  color: var(--squibb-rec-accent);
+}
+
+.squibb-rec-detail__preview-note[data-status="error"] {
+  color: var(--werkles-forge-orange, #c45c26);
+}
+
+.squibb-rec-detail__preview-note code {
+  color: inherit;
+  font-family: Consolas, "Courier New", monospace;
+  overflow-wrap: anywhere;
+}
+
+.squibb-rec-ledger {
+  border-left: 3px solid var(--werkles-teal-bright, #18c5ae);
+}
+
+.squibb-rec-ledger__header h2 {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+}
+
+.squibb-rec-ledger__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.squibb-rec-ledger h3 {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--werkles-text-muted, #6d5b46);
+}
+
+.squibb-rec-ledger__list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.squibb-rec-ledger__item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+}
+
+.squibb-rec-ledger__item strong {
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.squibb-rec-ledger__item span,
+.squibb-rec-ledger__empty {
+  color: var(--werkles-text-muted, #6d5b46);
+  font-size: 0.82rem;
+}
+
+.squibb-rec-ledger__item code {
+  color: var(--werkles-text-secondary, #c08b52);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.76rem;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .squibb-rec-surface__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .squibb-rec-ledger__grid {
+    grid-template-columns: 1fr;
+  }
+}

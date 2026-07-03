@@ -10,140 +10,9 @@ Ben is the Operator and decision-maker. Ben is not the manual coding labor, dash
 
 Every cousin must report its execution context before making any file-system, repo-state, environment, runtime, or deployment claim. Allowed contexts: `LOCAL_SALLY_WINDOWS`, `CURSOR_CLOUD_CONTAINER`, `CODEX_LOCAL`, `COWORK_BROWSER`, `UNKNOWN`.
 
-Machine names are canonical. Hostnames are evidence. Agent names are roles. Runtimes are tools.
-
-Ownership is attributed to cousin role, not runtime. Use `Dink @ Doss via Codex Desktop`, not `Codex did it`.
-
-No artifact is valid unless it reports:
-
-- cousin role
-- machine name
-- hostname
-- repo path
-- branch
-- commit
-- execution runtime
-
-If cousin role, machine, branch, or runtime is ambiguous, stop and perform LOCAL HANDS READBACK before creating architecture artifacts.
-
-Do not create duplicate doctrine artifacts under different machine names.
-
-Future packets must use the format: `Cousin @ Machine — Mission`.
-
-Example: `Dink @ Doss — Speaker Diagnostic Flow`.
-
-Doss is the canonical mobile/mirror forge. BLDer is retired as a machine name. Hostname `BLDER` remains evidence for Doss. Formerly referenced as BLDer.
-
 A `CURSOR_CLOUD_CONTAINER` cousin may inspect `/workspace`, GitHub branches/PRs, committed/pushed state, and cloud build/typecheck results — but must not claim to inspect Windows desktop folders, Sally local `.env` files, Sally localhost/dev server, or Sally uncommitted changes. When local evidence is required, it requests a `LOCAL_SALLY_WINDOWS` check instead of guessing.
 
 Full rules and the merge/push/deploy evidence-locality requirement: `foreman/EXECUTION_CONTEXT_RULES.md`.
-
-## Feed Routing Table
-
-| Feed | Primary work |
-|------|--------------|
-| Maker @ Betsy | UI / UX / surfaces / SoleDash / Bellows display |
-| Dink @ Doss | Speaker doctrine / diagnostic flow / leverage inventory |
-| Skybro @ Doss | Thesis / conceptual frameworks / naming only when asked |
-| Dink @ Sally or Codex runtime @ Sally | Architecture / schemas / infrastructure |
-| Bean @ Sally | Hostile audit / failure modes |
-| Petra | Synthesis / red-team / GO-NO-GO |
-
-### Active Routing Lock: Ender@Sally Retired
-
-Capsule: `foreman/change-capsules/CHANGE_CAPSULE_ENDER_SALLY_RETIRED.json`
-
-Ender@Sally is retired until Sally receives a RAM upgrade and a new availability receipt clears the lock.
-
-Rules:
-
-- No new meals, packets, audits, cleanup tasks, or filtration work route to Ender@Sally.
-- Deletion/filtration work is HELD unless another Ender machine is explicitly assigned with proof of availability.
-- Prefer Swanson@Doss for topology and receipt ledgers.
-- Do not silently move Ender to another machine without proof of availability.
-- Assignment labels are not delivery proof.
-
-## Canonical Workstation Software Stack
-
-Required on Aeye workstations:
-
-- Cursor
-- Git
-- Node LTS
-- GitHub Desktop
-- Microsoft PowerToys
-- FancyZones
-- PowerToys Run
-- Text Extractor
-- Always On Top
-- Keyboard Manager
-- File Locksmith
-- Peek
-- Hosts File Editor
-- Mouse Without Borders when useful
-- Google Drive for Desktop
-
-Machine roles:
-
-- Betsy: Primary Forge
-- Doss: Mobile/Mirror Forge
-- Sally: Archive / Snapshot Surface
-
-## Google Drive Rules
-
-Google Drive = Warehouse.
-
-GitHub Repo = Factory.
-
-Drive stores documents.
-
-Git stores code.
-
-Recommended structure:
-
-```text
-Code:
-C:\Users\<user>\github\Werkles
-
-Documents:
-Google Drive\Werkles
-Google Drive\Kind Sir
-```
-
-Werkles Drive:
-
-- VDR
-- Speaker
-- Bellows
-- Images
-- Legal
-- Research
-- Handoffs
-- Investor Materials
-
-Kind Sir Drive:
-
-- Accounting
-- Contracts
-- Operations
-- HR
-- Historical Records
-
-## Guardrails
-
-No workstation may:
-
-- place repos inside Drive
-- place Drive inside repos
-- mix company archives with code workspaces
-- put the Werkles repo inside Google Drive
-- put Google Drive inside the Werkles repo
-- sync `node_modules`
-- sync `.git`
-- sync `.next`
-- sync local build artifacts
-
-Google Drive account login, sync scope changes, full business-drive mirroring, or offline pinning broad folders require explicit Operator approval.
 
 ## LOCAL HANDS READBACK (mandatory)
 
@@ -159,7 +28,7 @@ Any **hands-capable** cousin — including Maker, Dink, or any future local oper
 - pushing
 - starting dev servers
 
-Required readback: cousin role, machine name, hostname, repo path, git branch, latest commit hash, working tree status, execution runtime, terminal availability, localhost running yes/no, port in use.
+Required readback: machine name, repo path, git branch, latest commit hash, working tree status, terminal availability, localhost running yes/no, port in use.
 
 Purpose: prevent Ben from having to ask which repo, branch, machine, or workspace the agent is inside.
 

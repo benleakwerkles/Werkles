@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628043850_ff9a97",
+  "origin_surface": "CommandDashAPI@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628043850_ff9a97",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628043850_ff9a97",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628043850_ff9a97.json",
+    "command_packet_hash": "7c6abb06fe2b50287c1de16f4b07eec4a20aa925759b5248b325bae36b376573",
+    "command": "REAL_RELAY_PROOF: create a separate Codex Aeye thread reply for Command Dash and return ACK/BLOCKER/ARTIFACT with packet id.",
+    "stream": "FERAL / COMMAND DASH",
+    "command_type": "REAL_AEYE_RELAY_PROOF",
+    "destination_id": "dink_betsy_aeye_inbox_v0",
+    "destination_label": "Dink@Betsy",
+    "source_surface": "CommandDashAPI@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-06-28T04:38:50.347Z"
+}

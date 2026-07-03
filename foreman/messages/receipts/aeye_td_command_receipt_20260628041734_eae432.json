@@ -1,0 +1,9 @@
+{
+  "receipt_id": "aeye_td_command_receipt_20260628041734_eae432",
+  "packet_id": "td_command_20260628041734_eae432",
+  "from_aeye": "Skybro",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Skybro@Betsy accepted command custody for td_command_20260628041734_eae432; command packet hash 57549a1469309e343e69f0132f95acd076b794508e21e9873aad2469f62a49ae.",
+  "created_at": "2026-06-28T04:17:34.883Z"
+}

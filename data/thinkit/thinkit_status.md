@@ -13,7 +13,7 @@ Elwood is the Operator seat: the well-intentioned human command role. Harvey is 
 - Active book focus: Foreword copy
 - Active code focus: ThinkIt relay, Harvey state mirrors, Doozer/reviewer momentum loop, and round-trip proof clarity.
 - ThinkIt last known location: http://10.1.10.8:3342/thinkit
-- Source truth folder: https://github.com/benleakwerkles/Werkles/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book
+- Source truth folder: https://github.com/benleakwerkles/Werkles1/tree/main/source-truth-plan/references/betsy_desktop_nerdkle_the_book
 
 ## Relay Reality
 - Round trips completed: 14/16

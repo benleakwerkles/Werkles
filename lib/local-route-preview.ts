@@ -26,3 +26,19 @@ export function isLocalRoutePreviewUnlocked() {
   // Default unlocked in dev so Sally can walk login/membership without env juggling.
   return true;
 }
+
+export function isPreviewDeployHost(hostname: string | undefined) {
+  const host = (hostname || "").toLowerCase();
+  if (!host.endsWith(".vercel.app")) return false;
+  if (host === "werkles.vercel.app" || host === "werkles-werkles.vercel.app") return false;
+  return host.startsWith("werkles-") && host.includes("-werkles.vercel.app");
+}
+
+export function isRuntimeRoutePreviewUnlocked() {
+  if (isLocalRoutePreviewUnlocked()) return true;
+  if (process.env.VERCEL_ENV === "preview") return true;
+  if (process.env.NEXT_PUBLIC_LOCAL_ROUTE_PREVIEW === "1") return true;
+  if (process.env.NEXT_PUBLIC_VERCEL_ENV === "preview") return true;
+  if (typeof window === "undefined") return false;
+  return isPreviewDeployHost(window.location.hostname);
+}

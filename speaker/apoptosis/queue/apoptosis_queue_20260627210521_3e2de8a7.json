@@ -1,0 +1,24 @@
+{
+  "queue_id": "apoptosis_queue_20260627210521_3e2de8a7",
+  "created_at": "2026-06-27T21:05:21.880Z",
+  "review_interval_days": 30,
+  "stale_cutoff": "2026-05-28T21:05:21.880Z",
+  "source_db": "speaker.sqlite",
+  "selection_rules": [
+    "duplicate doctrine_id records across indexed environments",
+    "active doctrine rows with a superseded relation edge",
+    "active doctrine rows older than the review interval"
+  ],
+  "selection_queries": {
+    "duplicateDoctrineIds": "\n    WITH doctrine_records AS (\n      SELECT\n        doctrine_id,\n        path,\n        title,\n        status,\n        updated_at,\n        CASE\n          WHEN instr(path, '/') > 0 THEN substr(path, 1, instr(path, '/') - 1)\n          ELSE 'root'\n        END AS environment\n      FROM doctrine_index\n      WHERE doctrine_id IS NOT NULL AND doctrine_id <> ''\n    )\n    SELECT\n      doctrine_id,\n      COUNT(*) AS record_count,\n      COUNT(DISTINCT environment) AS environment_count,\n      group_concat(environment || ':' || path, ' | ') AS locations,\n      MIN(updated_at) AS oldest_updated_at,\n      MAX(updated_at) AS newest_updated_at\n    FROM doctrine_records\n    GROUP BY doctrine_id\n    HAVING COUNT(*) > 1 OR COUNT(DISTINCT environment) > 1\n    ORDER BY newest_updated_at ASC, doctrine_id ASC\n  ",
+    "supersededActiveDoctrine": "\n    SELECT\n      d.doctrine_id,\n      d.path,\n      d.title,\n      d.status,\n      d.updated_at,\n      e.edge_id,\n      e.to_doctrine_id,\n      e.relation,\n      e.created_at AS edge_created_at\n    FROM doctrine_index d\n    INNER JOIN doctrine_edges e\n      ON e.from_doctrine_id = d.doctrine_id\n    WHERE UPPER(d.status) = 'ACTIVE'\n      AND LOWER(e.relation) = 'superseded'\n    ORDER BY e.created_at ASC, d.doctrine_id ASC\n  ",
+    "staleActiveDoctrine": "\n    SELECT\n      doctrine_id,\n      path,\n      title,\n      status,\n      updated_at\n    FROM doctrine_index\n    WHERE UPPER(status) = 'ACTIVE'\n      AND datetime(updated_at) < datetime(@cutoff)\n    ORDER BY datetime(updated_at) ASC, doctrine_id ASC\n  "
+  },
+  "counts": {
+    "duplicate_doctrine_id": 0,
+    "superseded_active_doctrine": 0,
+    "stale_active_doctrine": 0,
+    "total_candidates": 0
+  },
+  "candidates": []
+}

@@ -1,0 +1,9 @@
+{
+  "receipt_id": "receipt_mqkep9f9_y96lwn",
+  "packet_id": "packet_mqkep96i_1g91jt",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Dink@Betsy received BUILD_HERE_FIRST_ACTUALLY_BUILDS shell proof task",
+  "created_at": "2026-06-19T04:06:07.543Z"
+}

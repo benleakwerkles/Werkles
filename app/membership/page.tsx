@@ -18,12 +18,15 @@ type Plan = "monthly" | "annual";
 export default function MembershipPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = shouldUseDevPreviewAuth();
+  const paymentsPaused = !devPreview && !previewBlocked;
   const [status, setStatus] = useState(
     previewBlocked
       ? copy.infraPreview.membershipCheckout
       : devPreview
         ? copy.localPreview.membershipIdle
-        : "Choose your dues. Stripe handles the brass register."
+        : paymentsPaused
+          ? "Foundry Dues checkout is paused. Compare plans and use the free member path."
+          : "Choose your dues when checkout is live."
   );
   const [highlightPlan, setHighlightPlan] = useState<Plan | null>(null);
 
@@ -47,6 +50,10 @@ export default function MembershipPage() {
   }, [previewBlocked, devPreview]);
 
   async function startCheckout(plan: Plan) {
+    if (paymentsPaused) {
+      setStatus("Foundry Dues checkout is paused while operator payment setup finishes.");
+      return;
+    }
     if (previewBlocked) {
       setStatus(copy.infraPreview.membershipCheckout);
       return;
@@ -90,7 +97,10 @@ export default function MembershipPage() {
     ? "Checkout disabled (preview)"
     : devPreview
       ? "Mock checkout (preview)"
-      : copy.membership.checkout;
+      : paymentsPaused
+        ? "Checkout paused"
+        : copy.membership.checkout;
+  const checkoutDisabled = previewBlocked || paymentsPaused;
 
   return (
     <CockpitShell>
@@ -98,9 +108,10 @@ export default function MembershipPage() {
       <NarrativeJourneyRail currentSlug="/proof" />
       <nav className="dashboard-nav" aria-label="Foundry navigation">
         <Link href="/">Home</Link>
+        <Link href="/signup">Start free</Link>
+        <Link href="/dashboard">Member home</Link>
         <Link href="/pricing">{copy.nav.pricing}</Link>
-        <Link href="/login">{copy.nav.login}</Link>
-        <Link href="/onboarding">Onboarding</Link>
+        <Link href="/proof">Proof</Link>
       </nav>
 
       <RouteUnlockBanner blockedDetail={copy.infraPreview.membershipCheckout} />
@@ -126,6 +137,28 @@ export default function MembershipPage() {
         </ul>
       </section>
 
+      <section className="ops-card membership-trust" aria-label="Try before dues">
+        <div className="card-heading">
+          <p>Before you pay</p>
+          <h2>Use the free path to see whether Werkles helps.</h2>
+        </div>
+        <p>
+          You should not need to pay just to understand the floor. Start with a free account, inspect the proof layer,
+          and only choose dues when the workshop feels worth keeping.
+        </p>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-dark" href="/signup">
+            Start free
+          </Link>
+          <Link className="button button-outline" href="/proof">
+            Inspect proof
+          </Link>
+          <Link className="button button-outline" href="/pricing">
+            Review pricing
+          </Link>
+        </div>
+      </section>
+
       <section className="membership-grid" aria-label="Foundry Dues plans">
         <article className="ops-card plan-card">
           <p className="plan-kicker">{copy.membership.plans.free.kicker}</p>
@@ -143,7 +176,7 @@ export default function MembershipPage() {
           <button
             className="button button-light"
             type="button"
-            disabled={previewBlocked}
+            disabled={checkoutDisabled}
             onClick={() => startCheckout("monthly")}
           >
             {checkoutLabel}
@@ -159,7 +192,7 @@ export default function MembershipPage() {
           <button
             className="button button-dark"
             type="button"
-            disabled={previewBlocked}
+            disabled={checkoutDisabled}
             onClick={() => startCheckout("annual")}
           >
             {checkoutLabel}
@@ -172,6 +205,28 @@ export default function MembershipPage() {
         <p>{copy.membership.trust}</p>
         <p className="membership-squibb-hint">{copy.squibb.membership}</p>
         <p className="status-line" role="status">{status}</p>
+      </section>
+
+      <section className="ops-card membership-trust" aria-label="Payments paused">
+        <div className="card-heading">
+          <p>Foundry Dues</p>
+          <h2>Payments are paused while operator setup finishes.</h2>
+        </div>
+        <p>
+          Werkles still works on the free path: account, profile, onboarding, and member surfaces stay open. Foundry
+          Dues checkout returns when payment wiring is cleared — not because the workshop stopped.
+        </p>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-dark" href="/dashboard">
+            Go to member home
+          </Link>
+          <Link className="button button-outline" href="/dashboard/profile">
+            Update profile
+          </Link>
+          <Link className="button button-outline" href="/proof">
+            Inspect proof
+          </Link>
+        </div>
       </section>
       </main>
     </CockpitShell>

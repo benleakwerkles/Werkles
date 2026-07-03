@@ -1,0 +1,6 @@
+LIVE FIRE TEST
+
+packet_id: lf_petra_1781569255076_oq18cw
+source: Starship Explode
+target: Petra
+timestamp: 2026-06-16T00:20:55.076Z

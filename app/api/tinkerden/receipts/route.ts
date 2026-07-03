@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { readTinkerdenReceiptStream } from "@/lib/tinkerden/receipt-stream";
 
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {

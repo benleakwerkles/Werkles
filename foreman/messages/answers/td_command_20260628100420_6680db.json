@@ -1,0 +1,15 @@
+{
+  "schema": "nerdkle_aeye_answer_v0",
+  "packet_id": "td_command_20260628100420_6680db",
+  "origin_surface": "FeralMembrane@Betsy",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "worker": "NerdkleAnswerWorker@Betsy",
+  "worker_pid": 47852,
+  "received_at": "2026-06-28T10:04:20.920Z",
+  "answered_at": "2026-06-28T10:04:20.920Z",
+  "source_outbox_path": "foreman/messages/outbox/td_command_20260628100420_6680db.json",
+  "source_outbox_sha256": "f1019ef9728e3410ec3105af89eb023c238a0dd5a5bf5c2a6e03b33f287263df",
+  "answer_text": "NerdkleAnswerWorker@Betsy received packet td_command_20260628100420_6680db.\nTarget: Dink@Betsy.\nReceived at: 2026-06-28T10:04:20.920Z.\n\nAnswer:\nI can act on the packet text. The requested command/query was: Wake up, Buttercup\n\nProof standard:\n- This answer was produced by a separate machine-runner process after reading foreman/messages/outbox.\n- It is not a model-chat proof and not an external Aeye UI proof.\n- It does prove packet-left, received, answered, and answer-returned inside the local Nerdkle organism transport.",
+  "answer_sha256": "7400e12c44ac0a2feeaeb6ba93953461ebd0e90f47e10a360d5cabc3433314d3"
+}

@@ -300,12 +300,41 @@ export default function ProfilePage() {
         </form>
       </section>
 
+      <section className="ops-card" aria-label="Member floor map">
+        <div className="card-heading">
+          <p>Member floor</p>
+          <h2>Profile is the anchor. Everything else hangs off it.</h2>
+        </div>
+        <p>
+          Save lane, turf, and skills here first. Then use the member surfaces to move work forward — intros, checks, and
+          proof stay separate from profile depth.
+        </p>
+        <div className="member-selected-surface__actions">
+          <Link className="button button-outline" href="/dashboard">
+            Member home
+          </Link>
+          <Link className="button button-outline" href="/dashboard/intros">
+            Intros
+          </Link>
+          <Link className="button button-outline" href="/dashboard/crucible">
+            Crucible checks
+          </Link>
+          <Link className="button button-outline" href="/proof">
+            Proof doctrine
+          </Link>
+        </div>
+      </section>
+
       <section className="ops-card verification-card">
         <div className="card-heading">
           <p>Verification Gates</p>
           <h2>{copy.dashboard.profile.verificationHeadline}</h2>
         </div>
         <p>{copy.dashboard.profile.verificationBody}</p>
+        <p className="muted">
+          Verification is optional and separate from Foundry Dues. Provider wiring may be paused — profile and Crucible
+          surfaces still show readiness without pretending a check ran.
+        </p>
         <div className="verification-actions">
           <button className="button button-outline" type="button" onClick={() => triggerVerification("identity")}>
             Prepare ID Check

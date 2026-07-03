@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "timestamp": "2026-06-18T13:21:48.601Z",
+  "counts": {
+    "green": 0,
+    "blue": 0,
+    "red": 0
+  },
+  "lifetime_totals": {
+    "green": 3,
+    "blue": 1,
+    "red": 1
+  },
+  "last_activity": {
+    "timestamp": "2026-06-17T08:07:38.679Z",
+    "decisions": [
+      {
+        "id": "local_probe",
+        "origin": "swatter_inbox",
+        "approval_class": "GREEN",
+        "action": "AUTO_APPROVED_SILENT",
+        "policy_id": "local_health_checks",
+        "reason": "Registry GREEN: local health checks.",
+        "decision_path": "foreman/soledash/approval-swatter-alpha/processed/2026-06-17T08-07-38-677Z__green__local_probe.json",
+        "receipt_path": null,
+        "blocker": null
+      }
+    ]
+  },
+  "decisions": [],
+  "registry_error": null,
+  "blue_blockers": [],
+  "paths": {
+    "inbox": "foreman/soledash/approval-swatter-alpha/inbox",
+    "processed": "foreman/soledash/approval-swatter-alpha/processed",
+    "red": "foreman/soledash/approval-swatter-alpha/red",
+    "receipts": "foreman/soledash/approval-swatter-alpha/receipts",
+    "result": "foreman/soledash/approval-swatter-alpha/BACKGROUND_APPROVAL_SWATTER_ALPHA_RESULT.json"
+  }
+}

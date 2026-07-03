@@ -1,0 +1,22 @@
+{
+  "packet_id": "td_command_20260628041804_3b10fc",
+  "origin_surface": "ThinkIt@Betsy",
+  "origin_card_id": "command_dash_td_command_20260628041804_3b10fc",
+  "target_aeye": "Skybro",
+  "target_machine": "Betsy",
+  "payload": {
+    "schema": "tinkerden_command_aeye_relay_v0",
+    "command_packet_id": "td_command_20260628041804_3b10fc",
+    "command_packet_path": "tinkerden/inbox/td_command_20260628041804_3b10fc.json",
+    "command_packet_hash": "01fcf9eedef1c131b408731f515ced6892b5e439ef0210ada5e77f752766c6c8",
+    "command": "Call me Count Gimpula",
+    "stream": "THINKIT / COGNITIVE RELAY",
+    "command_type": "THINKING_PACKET",
+    "destination_id": "skybro_betsy_aeye_inbox_v0",
+    "destination_label": "Skybro@Betsy",
+    "source_surface": "ThinkIt@Betsy",
+    "required_return": "ACK / BLOCKER / ARTIFACT"
+  },
+  "status": "SENT",
+  "created_at": "2026-06-28T04:18:04.556Z"
+}

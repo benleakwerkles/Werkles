@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://werkles.local/tinkarden/medulla_command_surface/command_surface_schema.json",
+  "title": "Medulla Command Surface V0 Command",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "command_id",
+    "operator_intent",
+    "target_surface",
+    "command_type",
+    "risk_level",
+    "gate_required",
+    "current_state",
+    "created_at",
+    "updated_at",
+    "receipt_required",
+    "parent_command_id",
+    "source_packet_id"
+  ],
+  "properties": {
+    "command_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable unique command identifier."
+    },
+    "operator_intent": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Plain-language operator intent."
+    },
+    "target_surface": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Surface or lane the command is meant to affect."
+    },
+    "command_type": {
+      "type": "string",
+      "enum": [
+        "BUILD",
+        "VALIDATE",
+        "RECEIPT",
+        "AUDIT",
+        "BLOCKER",
+        "HANDOFF",
+        "DOC"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "GNAT",
+        "MOSQUITO",
+        "WOUND",
+        "FRACTURE",
+        "POISON"
+      ]
+    },
+    "gate_required": {
+      "type": "boolean",
+      "description": "Whether this command requires an operator gate before execution."
+    },
+    "current_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "PREVIEWED",
+        "GATE_PENDING",
+        "APPROVED",
+        "WRITTEN",
+        "RECEIPT_PENDING",
+        "ACK",
+        "BLOCKER",
+        "ARTIFACT",
+        "STALE",
+        "CLOSED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "receipt_required": {
+      "type": "boolean",
+      "const": true,
+      "description": "V0 commands require receipts before completion."
+    },
+    "parent_command_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Parent command, if this command is a continuation."
+    },
+    "source_packet_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Packet that created or carried this command."
+    }
+  }
+}

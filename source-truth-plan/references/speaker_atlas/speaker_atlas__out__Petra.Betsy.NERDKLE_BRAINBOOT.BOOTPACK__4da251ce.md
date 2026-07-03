@@ -32,7 +32,7 @@ Purpose: give each new Aeye session the same source-truth base without making Be
 
 TARGET_AEYE: Petra
 TARGET_MACHINE: Betsy
-SOURCE_TRUTH_PLAN_URL: https://github.com/benleakwerkles/Werkles/tree/source-truth/atlas-speaker-v0-20260627/source-truth-plan
+SOURCE_TRUTH_PLAN_URL: https://github.com/benleakwerkles/Werkles1/tree/source-truth/atlas-speaker-v0-20260627/source-truth-plan
 LOCAL_SOURCE_TRUTH_PLAN_ROOT: C:\Users\BenLeak\Documents\Codex\2026-06-20\to-swanson-doss-mission-branch-truth\work\source-truth-atlas-speaker-v0\source-truth-plan
 READBACK_STATUS: SOURCE_TRUTH_READBACK_OK
 
@@ -73,7 +73,7 @@ This folder is the current GitHub-backed review surface for the material Ben kee
 
 ## Current Truth
 
-- GitHub repo: https://github.com/benleakwerkles/Werkles.git
+- GitHub repo: https://github.com/benleakwerkles/Werkles1.git
 - Branch: `source-truth/atlas-speaker-v0-20260627`
 - Status: review branch, not canonical main
 - Canonical gate: merge/review into `origin/main` after Ben/Petra approval
@@ -144,7 +144,7 @@ Generated: 2026-06-28T03:17:59.703Z
 
 The best current source-truth surface is this GitHub-backed review branch:
 
-- Repo: https://github.com/benleakwerkles/Werkles.git
+- Repo: https://github.com/benleakwerkles/Werkles1.git
 - Branch: `source-truth/atlas-speaker-v0-20260627`
 - Folder: `source-truth-plan/`
 
@@ -294,7 +294,7 @@ Doss cannot currently see it under these checked paths:
   "receipt_id": "SWANSON_DOSS_BOOK_NERDKLE_SOURCE_TRUTH_PLAN_ASSEMBLY",
   "generated_at": "2026-06-28T03:17:59.703Z",
   "status": "ARTIFACT",
-  "repository": "https://github.com/benleakwerkles/Werkles.git",
+  "repository": "https://github.com/benleakwerkles/Werkles1.git",
   "branch": "source-truth/atlas-speaker-v0-20260627",
   "plan_root": "source-truth-plan",
   "files_copied": 89,
@@ -351,8 +351,8 @@ SECRET_POLICY: remote URLs are sanitized for embedded credentials; no PATs or SS
 
 ```text
 + git -C /c/Users/BenLeak/Desktop/github/Werkles remote -v
-origin	https://github.com/benleakwerkles/Werkles.git (fetch)
-origin	https://github.com/benleakwerkles/Werkles.git (push)
+origin	https://github.com/benleakwerkles/Werkles1.git (fetch)
+origin	https://github.com/benleakwerkles/Werkles1.git (push)
 ```
 
 ## git branch -a

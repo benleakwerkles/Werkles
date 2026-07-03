@@ -1,0 +1,30 @@
+{
+  "receipt_id": "HARVEST_BIRD_0099_HARVEST_PROBE",
+  "receipt_type": "ARTIFACT",
+  "timestamp": "2026-06-27T21:54:26.342Z",
+  "owner": "Dink@Betsy",
+  "status": "ARTIFACT",
+  "evidence": {
+    "type": "TRANSACTION_CAPSULE",
+    "path": "doctrine/staged/BIRD_0099_HARVEST_PROBE.md",
+    "sha256": "39894cc64df6bdbf52cc744285d7cfae9f6fe34fcfa06b7b17923f3e537509ee",
+    "summary": "Autonomic harvest wrapped thinker report from Thufir@Betsy: Autonomic harvester probe"
+  },
+  "transaction_capsule": {
+    "capsule_type": "TRANSACTION_CAPSULE",
+    "capsule_id": "BIRD_0099_HARVEST_PROBE",
+    "title": "Autonomic harvester probe",
+    "thinker_node": "Thufir@Betsy",
+    "source_kind": "doctrine_staged",
+    "source_path": "doctrine/staged/BIRD_0099_HARVEST_PROBE.md",
+    "source_sha256": "39894cc64df6bdbf52cc744285d7cfae9f6fe34fcfa06b7b17923f3e537509ee",
+    "parsed_metadata": {
+      "title": "Autonomic harvester probe",
+      "owner": "Thufir@Betsy",
+      "packet_id": "BIRD_0099_HARVEST_PROBE"
+    },
+    "content_markdown": "# Autonomic harvester probe\n\nThis staged thinker report exists to prove Dink@Betsy can wrap markdown into a schema-valid transaction capsule without Ben carrying the text.\n",
+    "harvested_by": "Dink@Betsy",
+    "harvested_at": "2026-06-27T21:54:26.342Z"
+  }
+}

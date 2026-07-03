@@ -1,0 +1,4 @@
+{"event_type":"brainstem_started","timestamp":"2026-06-27T18:55:50.870Z","intake_path":"intake","processing_path":"processing","log_path":"logs/brainstem-events.jsonl"}
+{"event_type":"brainstem_started","timestamp":"2026-06-27T18:57:53.989Z","intake_path":"intake","processing_path":"processing","log_path":"logs/brainstem-events.jsonl"}
+{"event_type":"brainstem_file_moved","timestamp":"2026-06-27T18:58:06.600Z","source_path":"intake/brainstem_test_drop_20260627_1458.json","destination_path":"processing/brainstem_test_drop_20260627_1458.json","status":"MOVED_TO_PROCESSING"}
+{"event_type":"brainstem_file_moved","timestamp":"2026-06-27T19:04:21.544Z","source_path":"intake/state_broadcast_corpus_callosum_20260627_1501.json","destination_path":"processing/state_broadcast_corpus_callosum_20260627_1501.json","status":"MOVED_TO_PROCESSING"}
