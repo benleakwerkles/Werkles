@@ -2,31 +2,35 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { useSkyPookaRefreshRegistration } from "@/components/skypooka/refresh-context";
+import { fetchSkyPookaFeed } from "@/lib/skypooka/client-feed";
 import type { SkyPookaFieldFeed } from "@/lib/skypooka/feed";
 
 export default function SkyPookaGatesView() {
   const [feed, setFeed] = useState<SkyPookaFieldFeed | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [stale, setStale] = useState(false);
 
   const loadFeed = useCallback(async () => {
-    try {
-      const response = await fetch("/api/skypooka/feed", { cache: "no-store" });
-      const payload = (await response.json()) as SkyPookaFieldFeed | { ok: false; error?: string };
-      if (!response.ok || !("ok" in payload) || payload.ok !== true) {
-        throw new Error("error" in payload ? payload.error ?? "Feed failed" : "Feed failed");
-      }
-      setFeed(payload);
-      setError(null);
-    } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : "Feed failed");
+    const result = await fetchSkyPookaFeed({ offlineFallback: true });
+    if (result.feed) {
+      setFeed(result.feed);
+      setStale(result.stale);
+      setError(result.stale ? `Using cached feed — ${result.error}` : null);
+      return;
     }
+    setFeed(null);
+    setStale(false);
+    setError(result.error ?? "Feed failed");
   }, []);
+
+  useSkyPookaRefreshRegistration("gates-view", loadFeed);
 
   useEffect(() => {
     void loadFeed();
   }, [loadFeed]);
 
-  if (error) {
+  if (error && !feed) {
     return <div className="skypooka-error">SkyPooka gates error: {error}</div>;
   }
 
@@ -36,6 +40,8 @@ export default function SkyPookaGatesView() {
 
   return (
     <>
+      {stale ? <div className="skypooka-banner">{error ?? "Showing cached gate feed."}</div> : null}
+
       <div className="skypooka-banner">
         Mobile is read-only for human gates. Approval requires Ben&apos;s exact phrase on a desktop gate surface.
       </div>

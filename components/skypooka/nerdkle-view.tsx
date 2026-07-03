@@ -2,55 +2,65 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { useSkyPookaRefreshRegistration } from "@/components/skypooka/refresh-context";
+import { fetchSkyPookaFeed } from "@/lib/skypooka/client-feed";
 import type { SkyPookaFieldFeed } from "@/lib/skypooka/feed";
 
 type NerdkleSummary = {
   object_count: number;
   receipt_count: number;
   stages: Record<string, number>;
-  events_path: string;
 };
 
 export default function SkyPookaNerdkleView() {
   const [feed, setFeed] = useState<SkyPookaFieldFeed | null>(null);
   const [summary, setSummary] = useState<NerdkleSummary | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [stale, setStale] = useState(false);
 
   const load = useCallback(async () => {
+    const feedResult = await fetchSkyPookaFeed({ offlineFallback: true });
     try {
-      const [feedResponse, summaryResponse] = await Promise.all([
-        fetch("/api/skypooka/feed", { cache: "no-store" }),
-        fetch("/api/nerdkle/snapshot", { cache: "no-store" })
-      ]);
-      const feedPayload = (await feedResponse.json()) as SkyPookaFieldFeed | { ok: false; error?: string };
+      const summaryResponse = await fetch("/api/nerdkle/snapshot", { cache: "no-store" });
       const summaryPayload = (await summaryResponse.json()) as {
-        ok?: boolean;
         counts?: { objects: number; receipts: number };
         stages?: Record<string, number>;
       };
 
-      if (!feedResponse.ok || !("ok" in feedPayload) || feedPayload.ok !== true) {
-        throw new Error("error" in feedPayload ? feedPayload.error ?? "Feed failed" : "Feed failed");
+      if (feedResult.feed) {
+        setFeed(feedResult.feed);
+        setStale(feedResult.stale);
+        setError(feedResult.stale ? `Using cached feed — ${feedResult.error}` : null);
+      } else {
+        setFeed(null);
+        setError(feedResult.error ?? "Feed failed");
       }
 
-      setFeed(feedPayload);
-      setSummary({
-        object_count: summaryPayload.counts?.objects ?? 0,
-        receipt_count: summaryPayload.counts?.receipts ?? 0,
-        stages: summaryPayload.stages ?? {},
-        events_path: "data/organism/nerdkle/events.jsonl"
-      });
-      setError(null);
+      if (summaryResponse.ok) {
+        setSummary({
+          object_count: summaryPayload.counts?.objects ?? 0,
+          receipt_count: summaryPayload.counts?.receipts ?? 0,
+          stages: summaryPayload.stages ?? {}
+        });
+      }
     } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : "Load failed");
+      if (feedResult.feed) {
+        setFeed(feedResult.feed);
+        setStale(true);
+        setError(loadError instanceof Error ? loadError.message : "Partial load failed");
+      } else {
+        setError(loadError instanceof Error ? loadError.message : "Load failed");
+      }
     }
   }, []);
+
+  useSkyPookaRefreshRegistration("nerdkle-view", load);
 
   useEffect(() => {
     void load();
   }, [load]);
 
-  if (error) {
+  if (error && !feed) {
     return <div className="skypooka-error">SkyPooka Nerdkle error: {error}</div>;
   }
 
@@ -60,6 +70,8 @@ export default function SkyPookaNerdkleView() {
 
   return (
     <>
+      {stale ? <div className="skypooka-banner">{error ?? "Showing cached Nerdkle feed."}</div> : null}
+
       {feed.operator_focus ? (
         <section className="skypooka-focus" aria-label="Operator focus">
           <div className="skypooka-focus-label">Operator focus</div>
@@ -111,8 +123,8 @@ export default function SkyPookaNerdkleView() {
       )}
 
       <p className="skypooka-legend">
-        Full Nerdkle console remains at <code>/nerdkle</code>. SkyPooka keeps the mobile operator slice read-only and
-        file-derived.
+        Full Nerdkle console remains at <code>/nerdkle</code>. Use the Intent tab to create new operating objects from
+        mobile.
       </p>
     </>
   );

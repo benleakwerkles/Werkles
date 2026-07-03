@@ -4,21 +4,47 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
+import SkyPookaPwaRegister from "@/components/skypooka/pwa-register";
+import { SkyPookaRefreshProvider, useSkyPookaRefresh } from "@/components/skypooka/refresh-context";
+
 const NAV = [
   { href: "/skypooka", label: "Field", glyph: "◎" },
+  { href: "/skypooka/intent", label: "Intent", glyph: "✦" },
   { href: "/skypooka/gates", label: "Gates", glyph: "⛨" },
   { href: "/skypooka/nerdkle", label: "Nerdkle", glyph: "◉" }
 ] as const;
 
-export default function SkyPookaShell({ children }: { children: ReactNode }) {
+function SkyPookaShellInner({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const { refreshAll, isRefreshing, isOnline } = useSkyPookaRefresh();
 
   return (
     <div className="skypooka-root">
+      <SkyPookaPwaRegister />
       <div className="skypooka-shell">
         <header className="skypooka-header">
-          <h1>SkyPooka</h1>
-          <p>Mobile Nerdkle · Mobile Werkles · what moved · what needs you</p>
+          <div className="skypooka-header-row">
+            <div>
+              <h1>SkyPooka</h1>
+              <p>Mobile Nerdkle · Mobile Werkles · what moved · what needs you</p>
+            </div>
+            <button
+              type="button"
+              className="skypooka-refresh-btn"
+              onClick={() => {
+                void refreshAll();
+              }}
+              disabled={isRefreshing}
+              aria-label="Refresh SkyPooka feed"
+            >
+              {isRefreshing ? "…" : "↻"}
+            </button>
+          </div>
+          {!isOnline ? (
+            <div className="skypooka-offline-chip" role="status">
+              Offline — showing last cached feed when available
+            </div>
+          ) : null}
         </header>
         <main className="skypooka-main">{children}</main>
       </div>
@@ -39,5 +65,13 @@ export default function SkyPookaShell({ children }: { children: ReactNode }) {
         })}
       </nav>
     </div>
+  );
+}
+
+export default function SkyPookaShell({ children }: { children: ReactNode }) {
+  return (
+    <SkyPookaRefreshProvider>
+      <SkyPookaShellInner>{children}</SkyPookaShellInner>
+    </SkyPookaRefreshProvider>
   );
 }

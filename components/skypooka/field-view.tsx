@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import { useSkyPookaRefreshRegistration } from "@/components/skypooka/refresh-context";
+import { fetchSkyPookaFeed } from "@/lib/skypooka/client-feed";
 import type { SkyPookaFieldFeed } from "@/lib/skypooka/feed";
 
 function formatTime(value: string) {
@@ -30,27 +32,29 @@ function simulateFire(name: string) {
 export default function SkyPookaFieldView() {
   const [feed, setFeed] = useState<SkyPookaFieldFeed | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [stale, setStale] = useState(false);
   const [held, setHeld] = useState<Record<string, boolean>>({});
 
   const loadFeed = useCallback(async () => {
-    try {
-      const response = await fetch("/api/skypooka/feed", { cache: "no-store" });
-      const payload = (await response.json()) as SkyPookaFieldFeed | { ok: false; error?: string };
-      if (!response.ok || !("ok" in payload) || payload.ok !== true) {
-        throw new Error("error" in payload ? payload.error ?? "Feed failed" : "Feed failed");
-      }
-      setFeed(payload);
-      setError(null);
-    } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : "Feed failed");
+    const result = await fetchSkyPookaFeed({ offlineFallback: true });
+    if (result.feed) {
+      setFeed(result.feed);
+      setStale(result.stale);
+      setError(result.stale ? `Using cached feed — ${result.error}` : null);
+      return;
     }
+    setFeed(null);
+    setStale(false);
+    setError(result.error ?? "Feed failed");
   }, []);
+
+  useSkyPookaRefreshRegistration("field-view", loadFeed);
 
   useEffect(() => {
     void loadFeed();
   }, [loadFeed]);
 
-  if (error) {
+  if (error && !feed) {
     return <div className="skypooka-error">SkyPooka feed error: {error}</div>;
   }
 
@@ -60,6 +64,8 @@ export default function SkyPookaFieldView() {
 
   return (
     <>
+      {stale ? <div className="skypooka-banner">{error ?? "Showing cached field feed."}</div> : null}
+
       {!feed.relay_backend_connected ? (
         <div className="skypooka-banner">
           Relay backend not connected — <b>FIRE</b> is <b>SIMULATED</b> on this build (nothing is sent).

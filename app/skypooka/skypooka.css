@@ -207,6 +207,83 @@
   line-height: 1.5;
 }
 
+.skypooka-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.skypooka-refresh-btn {
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid #5a3a1f;
+  background: #2a241d;
+  color: #e8c79a;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.skypooka-refresh-btn:disabled {
+  opacity: 0.6;
+}
+
+.skypooka-offline-chip {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #fbe6c5;
+  background: #3a2a12;
+  border: 1px solid #8a5a00;
+  border-radius: 999px;
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+.skypooka-pull-indicator {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: #cdbfa9;
+  font-size: 12px;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.skypooka-intent-form {
+  display: grid;
+  gap: 10px;
+}
+
+.skypooka-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a99b85;
+}
+
+.skypooka-textarea,
+.skypooka-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #3a2f22;
+  background: #1e1813;
+  color: #efe7da;
+  padding: 12px 14px;
+  font: inherit;
+}
+
+.skypooka-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.skypooka-btn--full {
+  width: 100%;
+}
+
 .skypooka-nav {
   position: fixed;
   left: 0;
@@ -214,7 +291,7 @@
   bottom: 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 4px;
   padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
   background: rgba(20, 17, 14, 0.98);
