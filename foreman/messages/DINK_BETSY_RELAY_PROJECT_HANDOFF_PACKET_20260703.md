@@ -60,6 +60,43 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Assert-Werkl
 
 If the canonical checkout does not exist yet, do not guess. Inventory the probable dirty roots first using the manual dirty-root commands in `foreman/messages/DINK_MASHEEN_WERKLES_LOCAL_CLOUD_CLEANUP_PACKET_20260702.md`, then clone or move only after salvage evidence is preserved.
 
+### If These Files Are "Missing"
+
+The listed files are canonical repo files. They are not expected to exist inside old Codex receiver folders such as:
+
+```text
+C:\Users\<user>\Documents\Codex\...\dink-betsy-relay-receiver
+C:\Users\<user>\Documents\Codex\...\*-sally-relay-receiver
+C:\Users\<user>\Documents\Codex\...\execute-the-dink-masheen-werkles-local
+```
+
+Before reporting `MISSING_FILE`, return this readback:
+
+```text
+CURRENT_WORKING_DIRECTORY:
+CANONICAL_CHECKOUT_TESTED: C:\Users\<user>\github\Werkles
+CANONICAL_CHECKOUT_EXISTS: YES|NO
+CANONICAL_GIT_ROOT:
+CURRENT_REMOTE_ORIGIN:
+CURRENT_BRANCH:
+MISSING_FILE_PATHS:
+```
+
+Recovery command:
+
+```powershell
+$Repo = Join-Path $env:USERPROFILE "github\Werkles"
+if (Test-Path -LiteralPath (Join-Path $Repo ".git")) {
+  Set-Location $Repo
+  git pull --ff-only origin main
+} else {
+  Write-Host "CANONICAL_CHECKOUT_MISSING: inventory dirty roots before clone or move"
+  Write-Host "CANONICAL_REPO: https://github.com/benleakwerkles/Werkles.git"
+}
+```
+
+If `CANONICAL_CHECKOUT_EXISTS: NO`, do not call the handoff impossible and do not ask Ben to paste files. Report `CANONICAL_CHECKOUT_MISSING` and run the inventory procedure from the cleanup packet.
+
 ## Required Source Files To Read
 
 Read these from the canonical repo before taking relay action:

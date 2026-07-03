@@ -65,6 +65,46 @@ Read these before changing settings or accepting a handoff:
 
 If an agent cannot read those files, it must say exactly which files are missing instead of guessing from chat.
 
+### Missing-File Trap Door
+
+If an agent reports those files are missing, first prove where it is standing.
+
+Required readback before any `MISSING_FILE` claim:
+
+```text
+CURRENT_WORKING_DIRECTORY:
+CANONICAL_CHECKOUT_TESTED: C:\Users\<user>\github\Werkles
+CANONICAL_CHECKOUT_EXISTS: YES|NO
+CANONICAL_GIT_ROOT:
+CURRENT_REMOTE_ORIGIN:
+CURRENT_BRANCH:
+MISSING_FILE_PATHS:
+```
+
+If `CURRENT_WORKING_DIRECTORY` is a relay/projectless folder such as:
+
+```text
+C:\Users\<user>\Documents\Codex\...\*-relay-receiver
+C:\Users\<user>\Documents\Codex\...\execute-the-dink-masheen-werkles-local
+```
+
+then the files are not proven missing. The agent is in the wrong working folder for repo-relative reads.
+
+Correct recovery:
+
+```powershell
+$Repo = Join-Path $env:USERPROFILE "github\Werkles"
+if (Test-Path -LiteralPath (Join-Path $Repo ".git")) {
+  Set-Location $Repo
+  git pull --ff-only origin main
+} else {
+  Write-Host "CANONICAL_CHECKOUT_MISSING: inventory dirty roots before clone or move"
+  Write-Host "CANONICAL_REPO: https://github.com/benleakwerkles/Werkles.git"
+}
+```
+
+Only after the agent has tested the absolute canonical path may it say a source file is truly missing from the machine.
+
 ## Ben Settings Checklist
 
 These are human-account settings. A cousin may guide and verify readbacks, but must not enter credentials or click final account/security approvals without explicit permission.

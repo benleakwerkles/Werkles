@@ -109,6 +109,47 @@ Expected behavior:
 
 If the canonical checkout does not exist, do not clone first. Inventory likely dirty roots using `foreman/messages/DINK_MASHEEN_WERKLES_LOCAL_CLOUD_CLEANUP_PACKET_20260702.md`, then create/move the canonical checkout only after salvage is preserved.
 
+## If A Dink Says Required Files Are Missing
+
+Do not accept a bare `file missing` report.
+
+Most likely cause: the Dink is running in an old projectless Codex receiver folder, not in the canonical repo.
+
+Required readback:
+
+```text
+CURRENT_WORKING_DIRECTORY:
+CANONICAL_CHECKOUT_TESTED: C:\Users\<user>\github\Werkles
+CANONICAL_CHECKOUT_EXISTS: YES|NO
+CANONICAL_GIT_ROOT:
+CURRENT_REMOTE_ORIGIN:
+CURRENT_BRANCH:
+MISSING_FILE_PATHS:
+```
+
+If the current folder is under:
+
+```text
+C:\Users\<user>\Documents\Codex\...
+```
+
+then repo-relative paths like `foreman/messages/...` and `scripts/foreman/...` are not expected to exist there. The Dink must switch to the canonical checkout or report `CANONICAL_CHECKOUT_MISSING`.
+
+Bootstrap check:
+
+```powershell
+$Repo = Join-Path $env:USERPROFILE "github\Werkles"
+if (Test-Path -LiteralPath (Join-Path $Repo ".git")) {
+  Set-Location $Repo
+  git pull --ff-only origin main
+} else {
+  Write-Host "CANONICAL_CHECKOUT_MISSING: run dirty-root inventory before clone or move"
+  Write-Host "CANONICAL_REPO: https://github.com/benleakwerkles/Werkles.git"
+}
+```
+
+Only after this absolute-path test may a cousin claim that a packet-required source file is actually missing.
+
 ## Ground-Zero Verifier
 
 The verifier is:
