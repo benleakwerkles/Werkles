@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nerdkle.github_source_manifest.v0",
+  "title": "Nerdkle GitHub source manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "source_type",
+    "title",
+    "repository_url",
+    "branch",
+    "commit",
+    "packet_path",
+    "artifact_paths",
+    "canonicality",
+    "source_status",
+    "evidence_scope",
+    "proof_boundary",
+    "observed_at"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_.-]+$"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "book_architecture",
+        "nerdkle_nervous_system",
+        "nmclr_proof_body",
+        "receipt_crawler",
+        "speaker_lore",
+        "operator_note"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "packet_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_paths": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "canonicality": {
+      "type": "string",
+      "enum": [
+        "canonical",
+        "review_branch",
+        "manuscript_only",
+        "preserved_only",
+        "pending_real_inputs",
+        "blocked"
+      ]
+    },
+    "source_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_scope": {
+      "type": "string",
+      "enum": [
+        "github_remote_branch",
+        "github_local_clone",
+        "repo_artifact",
+        "operator_supplied"
+      ]
+    },
+    "proof_boundary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

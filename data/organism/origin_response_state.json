@@ -1,0 +1,10 @@
+{
+  "artifact_id": "ORIGIN_RESPONSE_RETURN_STATE_V0",
+  "updated_at": "2026-06-28T21:55:57.067Z",
+  "answer_pickup_rows_seen": 5,
+  "origin_responses_written": 5,
+  "origin_bus": "data/organism/origin_response_bus.jsonl",
+  "origin_response_index": "foreman/artifacts/origin_dash_responses.json",
+  "thinkit_answers": "foreman/artifacts/thinkit_answers.json",
+  "command_dash_state": "tinkarden/command_dash/dashboard_state.json"
+}

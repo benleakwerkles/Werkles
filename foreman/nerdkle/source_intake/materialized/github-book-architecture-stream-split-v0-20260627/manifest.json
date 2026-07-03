@@ -1,0 +1,33 @@
+{
+  "source_id": "github-book-architecture-stream-split-v0-20260627",
+  "materialized_at": "2026-06-29T01:15:44.246Z",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "book/architecture-stream-split-v0-20260627",
+  "branch_ref": "origin/book/architecture-stream-split-v0-20260627",
+  "commit": "605e353737dc4f2a2a18d11c80c328bff05a4229",
+  "canonicality": "manuscript_only",
+  "source_status": "READY_FOR_REVIEW",
+  "proof_boundary": "Manuscript doctrine cannot prove automation.",
+  "source_manifest_path": "foreman/nerdkle/source_intake/inbox/github-book-architecture-stream-split-v0-20260627.json",
+  "packet_path": "foreman/source-truth/NEXT_BOOK_ARCHITECTURE_PACKET.json",
+  "files": [
+    {
+      "original_path": "foreman/source-truth/NEXT_BOOK_ARCHITECTURE_PACKET.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/files/foreman/source-truth/NEXT_BOOK_ARCHITECTURE_PACKET.json",
+      "sha256": null,
+      "byte_count": 782
+    },
+    {
+      "original_path": "book/architecture/STREAM_SPLIT_AND_PROOF_BOUNDARIES_V0.md",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/files/book/architecture/STREAM_SPLIT_AND_PROOF_BOUNDARIES_V0.md",
+      "sha256": "497cb511eaa5a064258bc0f61e34bc58ad6a239d78c4a8bbba5f1d7eec89eac8",
+      "byte_count": 6543
+    },
+    {
+      "original_path": "scripts/foreman/check-stream-split-manuscript.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/files/scripts/foreman/check-stream-split-manuscript.mjs",
+      "sha256": "fcf40d10f29bf5c5c86bf6ba92a3fd1ccde5a859cc737b6dd4bc0beff8e376d5",
+      "byte_count": 2557
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "response_id": "origin-response-local-aeye-answer-9a046f12d027",
+  "event_type": "origin_response_delivered",
+  "evidence_scope": "local_daemon",
+  "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+  "answer_id": "local-aeye-answer-9a046f12d027",
+  "chat_id": "local-aeye-chat-thufir-sally-9a046f12d027",
+  "query_id": "local-aeye-query-9a046f12d027",
+  "source_surface": "CommandDash",
+  "source_id": "command-dash-smoke-001",
+  "source_path": "tinkarden/command_dash/inbox/command_dash_relay_smoke_001.json",
+  "target_address": "Thufir@Sally",
+  "delivered_at": "2026-06-28T21:55:57.067Z",
+  "answer_received_at": "2026-06-28T04:37:27.814Z",
+  "answer": "LOCAL_AEYE_ACK: Thufir@Sally\nPACKET_ID: AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9\nRECEIVED_AT: 2026-06-28T04:37:27.814Z\nANSWER: Received Nerdkle-originated packet and verified local daemon loop integrity.\nSOURCE_ACTION: Validate that Command Dash can reach a local Aeye inbox\nSOURCE_BODY: Local smoke packet proving Command Dash writes a canonical dispatch packet and mirrors it into an Aeye inbox.",
+  "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json",
+  "origin_dash": "CommandDash",
+  "origin_status": "ANSWERED",
+  "response_path": "tinkarden/command_dash/responses/command-dash-smoke-001.json",
+  "dashboard_state_path": "tinkarden/command_dash/dashboard_state.json"
+}

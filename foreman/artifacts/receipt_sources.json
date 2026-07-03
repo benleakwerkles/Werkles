@@ -1,0 +1,146 @@
+[
+  {
+    "path": "app/api/artifacts/v0/route.ts",
+    "receipt_type": "api_receipt_surface",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "app/api/soledash/v1/swatter/route.ts",
+    "receipt_type": "api_receipt_surface",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "app/api/soledash/v1/wonka-den/prove/route.ts",
+    "receipt_type": "api_receipt_surface",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "app/membership/success/page.tsx",
+    "receipt_type": "receipt_text_reference",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "components/soledash/permission-swatter-panel.tsx",
+    "receipt_type": "ui_receipt_surface",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "components/soledash/swatter-proof.tsx",
+    "receipt_type": "ui_receipt_surface",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "components/soledash/wonka-den-proof.tsx",
+    "receipt_type": "ui_receipt_surface",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+    "receipt_type": "artifact_registry_receipts",
+    "producer": "DINK@SALLY",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/artifacts/inheritance_detector_events.sample.json",
+    "receipt_type": "json_receipt_shape",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/artifacts/receipt_sources.json",
+    "receipt_type": "generated_receipt_source_inventory",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/artifacts/status_rail_v0.json",
+    "receipt_type": "generated_status_receipt_index",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/handoffs/GOOGLE_DRIVE_FOCUS_THEFT_RECEIPT_2026-06-15.md",
+    "receipt_type": "handoff_receipt",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/handoffs/INHERITANCE_EVENT_CANDIDATE_DETECTOR_V0_RECEIPT.md",
+    "receipt_type": "handoff_receipt",
+    "producer": "UNKNOWN",
+    "consumer": "TinkerDen Intake / Speaker"
+  },
+  {
+    "path": "foreman/handoffs/KINDSIR_SITE_UPDATE_RECEIPT_2026-06-16.md",
+    "receipt_type": "handoff_receipt",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/handoffs/RECEIPT_SURFACE_V0_RECEIPT.md",
+    "receipt_type": "handoff_receipt",
+    "producer": "Dink2@Sally",
+    "consumer": "TinkerDen Intake / Speaker"
+  },
+  {
+    "path": "foreman/handoffs/SHAKESPEARE_THREAD_VENT_V0_RECEIPT.md",
+    "receipt_type": "handoff_receipt",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/handoffs/SPANZEE_COMPLETION_REPORT_v0.1.md",
+    "receipt_type": "handoff_report_with_receipt_text",
+    "producer": "Codex Foreman on Sally",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/handoffs/SPANZEE_SHARED_SCREEN_SETUP_ATTEMPT_v0.1.md",
+    "receipt_type": "handoff_report_with_receipt_text",
+    "producer": "Codex Foreman on Sally",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "foreman/handoffs/STATUS_RAIL_V0_RECEIPT.md",
+    "receipt_type": "handoff_receipt",
+    "producer": "UNKNOWN",
+    "consumer": "TinkerDen Intake / Speaker"
+  },
+  {
+    "path": "lib/pearl-promotion-pipeline.ts",
+    "receipt_type": "library_receipt_shape",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "lib/shakespeare-thread-vent.ts",
+    "receipt_type": "library_receipt_shape",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "operator-cockpit/ENTITY_SEPARATION_RULES.md",
+    "receipt_type": "receipt_text_reference",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "scripts/build-status-rail.mjs",
+    "receipt_type": "receipt_inventory_script",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  },
+  {
+    "path": "scripts/inventory-receipt-sources.mjs",
+    "receipt_type": "receipt_inventory_script",
+    "producer": "UNKNOWN",
+    "consumer": "UNKNOWN"
+  }
+]

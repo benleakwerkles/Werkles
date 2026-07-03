@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": "user-demo",
+      "email": "demo@werkles.local",
+      "name": "Demo Operator",
+      "plan": "free"
+    }
+  ],
+  "sessions": {
+    "cb8230a3dfd9a85c824d29d7dfb1325ee0815c8fa4165d40": {
+      "userId": "user-demo",
+      "expiresAt": "2026-06-06T06:03:30.645Z"
+    }
+  },
+  "workspace": {
+    "user-demo": {
+      "shortlist": [],
+      "intros": [],
+      "proofChecks": [
+        "identity",
+        "funds"
+      ],
+      "profile": {
+        "role": "worker",
+        "industry": "plumbing",
+        "city": "Cleveland, OH",
+        "radius": 75,
+        "capitalAvailable": 50000,
+        "capitalNeeded": 0,
+        "skills": [
+          "field",
+          "sales",
+          "ops"
+        ],
+        "goals": [
+          "leave",
+          "start"
+        ]
+      }
+    }
+  },
+  "billing": {
+    "user-demo": {
+      "status": "none",
+      "stripeCustomerId": null,
+      "stripeSubscriptionId": null
+    }
+  }
+}

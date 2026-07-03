@@ -1,0 +1,15 @@
+{
+  "name": "@werkles/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local API infrastructure for Werkles auth, matching, proof, intros, and Stripe stubs",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "health": "node scripts/smoke-test.js",
+    "check": "node --check src/server.js && node --check src/router.js && node --check src/store/index.js && node --check src/domain/matching.js && node --check src/services/auth.js && node --check src/services/workspace.js && node --check src/services/billing.js && node --check scripts/smoke-test.js"
+  }
+}

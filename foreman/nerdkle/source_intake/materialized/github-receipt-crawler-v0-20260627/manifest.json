@@ -1,0 +1,51 @@
+{
+  "source_id": "github-receipt-crawler-v0-20260627",
+  "materialized_at": "2026-06-29T01:15:48.881Z",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "nerdkle/receipt-crawler-v0-20260627",
+  "branch_ref": "origin/nerdkle/receipt-crawler-v0-20260627",
+  "commit": "312e0f811cf8ad46fac1774ee325ff349fcc3012",
+  "canonicality": "pending_real_inputs",
+  "source_status": "PENDING_REAL_LEDGER",
+  "proof_boundary": "Self-test output is not production movement proof until the real circulation.db ledger is read and updated.",
+  "source_manifest_path": "foreman/nerdkle/source_intake/inbox/github-receipt-crawler-v0-20260627.json",
+  "packet_path": "foreman/source-truth/NEXT_RECEIPT_CRAWLER_PACKET.json",
+  "files": [
+    {
+      "original_path": "foreman/source-truth/NEXT_RECEIPT_CRAWLER_PACKET.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/foreman/source-truth/NEXT_RECEIPT_CRAWLER_PACKET.json",
+      "sha256": null,
+      "byte_count": 1755
+    },
+    {
+      "original_path": "scripts/foreman/crawler.js",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/scripts/foreman/crawler.js",
+      "sha256": "24711e58785c665e23c1db05ddf2ba2027ba5d79b0ed5b8b205e5f80b9d9fd68",
+      "byte_count": 12017
+    },
+    {
+      "original_path": "scripts/foreman/start-receipt-crawler.ps1",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/scripts/foreman/start-receipt-crawler.ps1",
+      "sha256": "e2caaa9488476e214a6a75621b8e3b72be49e435153dd3c88d93e7c8d56101e8",
+      "byte_count": 2145
+    },
+    {
+      "original_path": "scripts/foreman/check-receipt-crawler-preservation.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/scripts/foreman/check-receipt-crawler-preservation.mjs",
+      "sha256": "a1d3aa3e02fd6e943049bd85943e2dae786481a9ff7e10907884add79388bcf3",
+      "byte_count": 6582
+    },
+    {
+      "original_path": "foreman/source-truth/readbacks/receipt-crawler/RECEIPT_CRAWLER_PRESERVATION_READBACK.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/foreman/source-truth/readbacks/receipt-crawler/RECEIPT_CRAWLER_PRESERVATION_READBACK.json",
+      "sha256": "51d13a4b605679d85e26d4f138a560c1a5babd54b0981daeb082b7b2893c9aa2",
+      "byte_count": 5023
+    },
+    {
+      "original_path": "foreman/source-truth/receipts/receipt-crawler/RECEIPT_CRAWLER_PRESERVATION_RECEIPT.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/foreman/source-truth/receipts/receipt-crawler/RECEIPT_CRAWLER_PRESERVATION_RECEIPT.json",
+      "sha256": "31546e645479121b6034f87dfee0707e45f1e3eea18bb8b8c96bcb7c54075c5e",
+      "byte_count": 972
+    }
+  ]
+}

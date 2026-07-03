@@ -1,0 +1,21 @@
+{
+  "response_id": "origin-response-local-aeye-answer-3f3dedd6dcf9",
+  "event_type": "origin_response_delivered",
+  "evidence_scope": "local_daemon",
+  "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE",
+  "answer_id": "local-aeye-answer-3f3dedd6dcf9",
+  "chat_id": "local-aeye-chat-thufir-sally-3f3dedd6dcf9",
+  "query_id": "local-aeye-query-3f3dedd6dcf9",
+  "source_surface": "CommandDash",
+  "source_id": "command-dash-speaker-consult-001",
+  "source_path": "tinkarden/command_dash/inbox/command-dash-speaker-consult-001.json",
+  "target_address": "Thufir@Sally",
+  "delivered_at": "2026-06-28T21:55:57.067Z",
+  "answer_received_at": "2026-06-28T21:55:56.935Z",
+  "answer": "LOCAL_AEYE_ACK: Thufir@Sally\nPACKET_ID: AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE\nRECEIVED_AT: 2026-06-28T21:55:56.935Z\nANSWER: Received Nerdkle-originated packet and verified local daemon loop integrity.\nSOURCE_ACTION: Prove Speaker context is attached before a packet reaches a local Aeye\nSOURCE_BODY: Fresh kernel proof packet: consult Speaker causal memory, attach the advisory warning entries, deliver to Thufir@Sally, receive a local answer, and return it to the origin dash evidence bus.",
+  "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE.json",
+  "origin_dash": "CommandDash",
+  "origin_status": "ANSWERED",
+  "response_path": "tinkarden/command_dash/responses/command-dash-speaker-consult-001.json",
+  "dashboard_state_path": "tinkarden/command_dash/dashboard_state.json"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "artifact_id": "artifact-source-alpha",
+    "reader": "Dink@Sally",
+    "author": "Petra@Betsy",
+    "derived_artifact": "artifact-derived-beta",
+    "confidence": 0.85,
+    "missing_proof": [
+      "read_event_proof",
+      "derived_action_event_proof",
+      "write_event_proof"
+    ]
+  }
+]

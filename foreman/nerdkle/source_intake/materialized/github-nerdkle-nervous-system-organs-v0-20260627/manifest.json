@@ -1,0 +1,57 @@
+{
+  "source_id": "github-nerdkle-nervous-system-organs-v0-20260627",
+  "materialized_at": "2026-06-29T01:15:45.901Z",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "nerdkle/nervous-system-organs-v0-20260627",
+  "branch_ref": "origin/nerdkle/nervous-system-organs-v0-20260627",
+  "commit": "47aa50c73c8ab0eda37d2e591cb956cca363b79d",
+  "canonicality": "pending_real_inputs",
+  "source_status": "PENDING_REAL_INPUTS",
+  "proof_boundary": "Fixture output is not production proof; production inputs and receipts are still required.",
+  "source_manifest_path": "foreman/nerdkle/source_intake/inbox/github-nerdkle-nervous-system-organs-v0-20260627.json",
+  "packet_path": "foreman/source-truth/NEXT_NERDKLE_NERVOUS_SYSTEM_PACKET.json",
+  "files": [
+    {
+      "original_path": "foreman/source-truth/NEXT_NERDKLE_NERVOUS_SYSTEM_PACKET.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/foreman/source-truth/NEXT_NERDKLE_NERVOUS_SYSTEM_PACKET.json",
+      "sha256": null,
+      "byte_count": 1828
+    },
+    {
+      "original_path": "scripts/foreman/check-nerdkle-nervous-system-organs.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/scripts/foreman/check-nerdkle-nervous-system-organs.mjs",
+      "sha256": "42c9f61eb8cbd8bfb2a9a325efaf3b03a16f5c65120a4141b3854b38de9d081b",
+      "byte_count": 7693
+    },
+    {
+      "original_path": "foreman/source-truth/readbacks/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_READBACK.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/foreman/source-truth/readbacks/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_READBACK.json",
+      "sha256": "072da3f0213d63acb45611756cbd6ecece2ef264117f9da20882560246c1178c",
+      "byte_count": 12876
+    },
+    {
+      "original_path": "foreman/source-truth/receipts/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_PRESERVATION_RECEIPT.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/foreman/source-truth/receipts/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_PRESERVATION_RECEIPT.json",
+      "sha256": "69463ce4fecfe35f751dba31f0c63a6f6a740fe96973c39dd35fcab7042421ea",
+      "byte_count": 1135
+    },
+    {
+      "original_path": "tinkarden/nervous_system/fleyes.js",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/tinkarden/nervous_system/fleyes.js",
+      "sha256": "0caded9e6cc07190651d7ffb81005c8ea208a7808357607dad6ab831909924a2",
+      "byte_count": 16661
+    },
+    {
+      "original_path": "tinkarden/nervous_system/swateyes.js",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/tinkarden/nervous_system/swateyes.js",
+      "sha256": "688a2a8f9083656da700e57035a004870cae661394f7e9a63e385c0159f40e77",
+      "byte_count": 3819
+    },
+    {
+      "original_path": "tinkarden/nervous_system/ender_apoptosis.js",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/files/tinkarden/nervous_system/ender_apoptosis.js",
+      "sha256": "821ce59e8633baf298d5cf26ead0a0a1f06f2f00c52a2af67e4d3ce6e6863f08",
+      "byte_count": 17571
+    }
+  ]
+}

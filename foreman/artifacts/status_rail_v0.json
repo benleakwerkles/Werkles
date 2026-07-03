@@ -1,0 +1,75 @@
+{
+  "artifact_id": "status-rail-v0",
+  "generated_at": "2026-06-23T15:24:28.908Z",
+  "data_source": "receipt artifacts only",
+  "display": [
+    "DISPATCHED",
+    "RECEIVED",
+    "WORKING",
+    "BLOCKED",
+    "RECEIPT_RETURNED",
+    "UNKNOWN"
+  ],
+  "entries": [
+    {
+      "artifact_id": "agent-inventory-roster",
+      "source_receipt": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "status": "UNKNOWN",
+      "evidence": "proof absent"
+    },
+    {
+      "artifact_id": "approval-registry",
+      "source_receipt": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "status": "RECEIPT_RETURNED",
+      "evidence": "registry receipt present; status SHIPPED"
+    },
+    {
+      "artifact_id": "fleet-state",
+      "source_receipt": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "status": "UNKNOWN",
+      "evidence": "proof absent"
+    },
+    {
+      "artifact_id": "GOOGLE_DRIVE_FOCUS_THEFT_RECEIPT_2026-06-15",
+      "source_receipt": "foreman/handoffs/GOOGLE_DRIVE_FOCUS_THEFT_RECEIPT_2026-06-15.md",
+      "status": "RECEIPT_RETURNED",
+      "evidence": "Verified after the change:"
+    },
+    {
+      "artifact_id": "INHERITANCE_EVENT_CANDIDATE_DETECTOR_V0_RECEIPT",
+      "source_receipt": "foreman/handoffs/INHERITANCE_EVENT_CANDIDATE_DETECTOR_V0_RECEIPT.md",
+      "status": "RECEIPT_RETURNED",
+      "evidence": "PASS"
+    },
+    {
+      "artifact_id": "KINDSIR_SITE_UPDATE_RECEIPT_2026-06-16",
+      "source_receipt": "foreman/handoffs/KINDSIR_SITE_UPDATE_RECEIPT_2026-06-16.md",
+      "status": "BLOCKED",
+      "evidence": "## Blocked / Pending"
+    },
+    {
+      "artifact_id": "permission-swatter-v0",
+      "source_receipt": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "status": "RECEIPT_RETURNED",
+      "evidence": "registry receipt present; status SHIPPED"
+    },
+    {
+      "artifact_id": "receipt-drawer-v1",
+      "source_receipt": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "status": "RECEIPT_RETURNED",
+      "evidence": "registry receipt present; status SHIPPED"
+    },
+    {
+      "artifact_id": "SHAKESPEARE_THREAD_VENT_V0_RECEIPT",
+      "source_receipt": "foreman/handoffs/SHAKESPEARE_THREAD_VENT_V0_RECEIPT.md",
+      "status": "UNKNOWN",
+      "evidence": "proof absent"
+    },
+    {
+      "artifact_id": "swatter-v0",
+      "source_receipt": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "status": "RECEIPT_RETURNED",
+      "evidence": "registry receipt present; status SHIPPED"
+    }
+  ]
+}

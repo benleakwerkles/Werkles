@@ -1,0 +1,93 @@
+{
+  "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+  "action": "Validate that Command Dash can reach a local Aeye inbox",
+  "created_at": "2026-06-27T17:30:00-04:00",
+  "status": "NEW",
+  "source_surface": "CommandDash",
+  "source_path": "tinkarden/command_dash/inbox/command_dash_relay_smoke_001.json",
+  "source_id": "command-dash-smoke-001",
+  "target_aeye": "Thufir",
+  "target_machine": "Sally",
+  "target_address": "Thufir@Sally",
+  "lane": "Topology Validation",
+  "tags": [
+    "command-dash",
+    "relay",
+    "validation",
+    "smoke"
+  ],
+  "payload": {
+    "title": "Validate Command Dash to Aeye relay",
+    "body": "Local smoke packet proving Command Dash writes a canonical dispatch packet and mirrors it into an Aeye inbox."
+  },
+  "speaker_context": {
+    "version": "SPEAKER_CONTEXT_CONSULT_V0",
+    "consulted_at": "2026-06-28T21:55:56.738Z",
+    "evidence_scope": "local_speaker_files",
+    "office": "Speaker",
+    "advisory_only": true,
+    "ratification_rule": "Ben ratifies Speaker truth; relay only consults.",
+    "source_files": [
+      "foreman/speaker/SPEAKER_CHARTER.md",
+      "foreman/speaker/SPEAKER_DOCTRINE.md",
+      "foreman/speaker/CAUSAL_LEDGER.md",
+      "foreman/speaker/AEYE_ROLE_REGISTRY.md"
+    ],
+    "target_address": "Thufir@Sally",
+    "warning_entries": [
+      {
+        "id": "DRAFT_20260608-thread-registry",
+        "title": "Thread Registry — Courier Is Blind Without Thread Identity",
+        "status": "DRAFT",
+        "path": "foreman/speaker/entries/DRAFT_20260608-thread-registry.md",
+        "matched_triggers": [
+          "relay"
+        ]
+      },
+      {
+        "id": "DRAFT_20260608-aeye-life-overseer",
+        "title": "Aeye Life Overseer — Invite, Scope, Cannot Decide",
+        "status": "DRAFT",
+        "path": "foreman/speaker/entries/DRAFT_20260608-aeye-life-overseer.md",
+        "matched_triggers": [
+          "aeye"
+        ]
+      },
+      {
+        "id": "DRAFT_20260608-gd-command-console",
+        "title": "GD Command Console — Ben Should Not Be the Message Bus",
+        "status": "DRAFT",
+        "path": "foreman/speaker/entries/DRAFT_20260608-gd-command-console.md",
+        "matched_triggers": [
+          "kernel-default"
+        ]
+      },
+      {
+        "id": "DRAFT_20260608-ai-compression-soul-loss",
+        "title": "AI Compression Loss / Soul Loss",
+        "status": "DRAFT",
+        "path": "foreman/speaker/entries/DRAFT_20260608-ai-compression-soul-loss.md",
+        "matched_triggers": [
+          "kernel-default"
+        ]
+      },
+      {
+        "id": "DRAFT_20260607-human-adaptation-thesis",
+        "title": "Human Adaptation Thesis",
+        "status": "DRAFT",
+        "path": "foreman/speaker/entries/DRAFT_20260607-human-adaptation-thesis.md",
+        "matched_triggers": [
+          "kernel-default"
+        ]
+      }
+    ]
+  },
+  "relay": {
+    "version": "COMMAND_DASH_AEYE_RELAY_V0",
+    "relay_status": "DELIVERED_TO_LOCAL_AEYE_INBOX",
+    "dispatched_at": "2026-06-28T21:55:56.738Z",
+    "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json",
+    "mirror_packet_path": "tinkarden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json",
+    "aeye_inbox_path": "tinkarden/aeyes/Thufir@Sally/inbox/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json"
+  }
+}

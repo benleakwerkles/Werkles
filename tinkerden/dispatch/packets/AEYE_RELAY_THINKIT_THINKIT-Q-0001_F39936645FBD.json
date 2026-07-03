@@ -1,0 +1,29 @@
+{
+  "packet_id": "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+  "action": "Answer ThinkIt question",
+  "created_at": "2026-06-23T20:36:46.493Z",
+  "status": "NEW",
+  "source_surface": "ThinkIt",
+  "source_path": "foreman/artifacts/thinkit_questions.json",
+  "source_id": "thinkit-q-0001",
+  "target_aeye": "Dink",
+  "target_machine": "Sally",
+  "target_address": "Dink@Sally",
+  "lane": "",
+  "tags": [
+    "thinkit",
+    "question"
+  ],
+  "payload": {
+    "title": "What proof is required before a packet can be marked complete?",
+    "body": "What proof is required before a packet can be marked complete?"
+  },
+  "relay": {
+    "version": "COMMAND_DASH_AEYE_RELAY_V0",
+    "relay_status": "DELIVERED_TO_LOCAL_AEYE_INBOX",
+    "dispatched_at": "2026-06-28T05:20:11.165Z",
+    "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD.json",
+    "mirror_packet_path": "tinkarden/dispatch/packets/AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD.json",
+    "aeye_inbox_path": "tinkarden/aeyes/Dink@Sally/inbox/AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD.json"
+  }
+}

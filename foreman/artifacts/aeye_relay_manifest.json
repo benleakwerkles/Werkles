@@ -1,0 +1,49 @@
+{
+  "artifact_id": "COMMAND_DASH_AEYE_RELAY_V0",
+  "generated_at": "2026-06-28T21:55:56.738Z",
+  "route_map": "tinkarden/relay/aeye_routes.json",
+  "sources_seen": 4,
+  "packets_written": 4,
+  "dispatch_events_written": 4,
+  "outbound_events_written": 4,
+  "canonical_packet_dir": "tinkerden/dispatch/packets",
+  "local_packet_mirror_dir": "tinkarden/dispatch/packets",
+  "dispatch_log": "data/organism/aeye_dispatch.jsonl",
+  "outbound_bus": "data/organism/aeye_outbox.jsonl",
+  "targets": {
+    "Thufir@Sally": [
+      {
+        "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "source_surface": "CommandDash",
+        "source_id": "command-dash-canary-20260628190733",
+        "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A.json",
+        "mirror_packet_path": "tinkarden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A.json",
+        "aeye_inbox_path": "tinkarden/aeyes/Thufir@Sally/inbox/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A.json"
+      },
+      {
+        "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "source_surface": "CommandDash",
+        "source_id": "command-dash-canary-20260628191449",
+        "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4.json",
+        "mirror_packet_path": "tinkarden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4.json",
+        "aeye_inbox_path": "tinkarden/aeyes/Thufir@Sally/inbox/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4.json"
+      },
+      {
+        "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE",
+        "source_surface": "CommandDash",
+        "source_id": "command-dash-speaker-consult-001",
+        "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE.json",
+        "mirror_packet_path": "tinkarden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE.json",
+        "aeye_inbox_path": "tinkarden/aeyes/Thufir@Sally/inbox/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE.json"
+      },
+      {
+        "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "source_surface": "CommandDash",
+        "source_id": "command-dash-smoke-001",
+        "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json",
+        "mirror_packet_path": "tinkarden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json",
+        "aeye_inbox_path": "tinkarden/aeyes/Thufir@Sally/inbox/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9.json"
+      }
+    ]
+  }
+}

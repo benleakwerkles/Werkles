@@ -1,0 +1,116 @@
+{
+  "artifact_id": "NMCLR_SANDBOX_EXECUTION_PROOF",
+  "run_id": "nmclr-sandbox-20260629011740",
+  "generated_at": "2026-06-29T01:17:41.909Z",
+  "status": "PASS_NMCLR_SANDBOX_EXECUTION_PROOF",
+  "rule": "Sandbox proof only. This executes a copied materialized GitHub review-branch snapshot and does not promote NMCLR into live root.",
+  "source_id": "github-nmclr-proof-body-preserve-v0-20260627",
+  "source_build_dir": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build",
+  "run_root": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740",
+  "build_dir": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build",
+  "syntax_check": {
+    "commands": [
+      "node --check first_movement.mjs",
+      "node --check nmclr-first-slice.mjs"
+    ],
+    "status": "PASS"
+  },
+  "execution": {
+    "commands": [
+      "node first_movement.mjs",
+      "node nmclr-first-slice.mjs fixtures/packet-first-slice-sandbox-001.json"
+    ],
+    "status": "PASS",
+    "stdout": {
+      "first_movement": {
+        "pass": true,
+        "muscle": "packet -> work -> artifact",
+        "packet": "NMCLR/spec/build/fixtures/packet-causes-action.json",
+        "artifact_path": "NMCLR/spec/build/artifacts/first-artifact.json",
+        "receipt_path": "NMCLR/spec/build/receipts/receipt-packet-first-movement-001.json"
+      },
+      "first_slice": {
+        "pass": true,
+        "first_slice": {
+          "muscle": "work_item_written",
+          "breath": {
+            "intake": "packet accepted",
+            "output": "work_item_written",
+            "receipt": "receipt written"
+          },
+          "metabolism": "next_work_written"
+        },
+        "files": {
+          "packet": "fixtures/packet-first-slice-sandbox-001.json",
+          "output": "work/work-first-slice-sandbox-action.json",
+          "receipt": "receipts/receipt-packet-first-slice-sandbox-001.json",
+          "next_work": "work/next-work-from-receipt.json"
+        }
+      }
+    }
+  },
+  "causal_chain": {
+    "pass": true,
+    "missing": [],
+    "packet_id": "packet-first-slice-sandbox-001",
+    "work_id": "work-first-slice-sandbox-action",
+    "receipt_id": "receipt-packet-first-slice-sandbox-001",
+    "next_work_id": "next-work-from-receipt"
+  },
+  "movement_chain": {
+    "pass": true,
+    "missing": [],
+    "packet_id": "packet-first-movement-001",
+    "work_id": "work-first-artifact",
+    "receipt_id": "receipt-packet-first-movement-001"
+  },
+  "files": {
+    "first_movement_packet": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/fixtures/packet-causes-action.json",
+      "relative_to_run_build": "fixtures/packet-causes-action.json",
+      "byte_count": 295,
+      "sha256": "2f48ac299898fe3234bc65cc2659f37236fc48884740897df7699643038fadda"
+    },
+    "first_movement_artifact": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/artifacts/first-artifact.json",
+      "relative_to_run_build": "artifacts/first-artifact.json",
+      "byte_count": 110,
+      "sha256": "a5c2f79241d347c7e4373ef846525b8e181118a2d99e438c46186a926c0ec578"
+    },
+    "first_movement_receipt": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/receipts/receipt-packet-first-movement-001.json",
+      "relative_to_run_build": "receipts/receipt-packet-first-movement-001.json",
+      "byte_count": 315,
+      "sha256": "b2054c159b97e0873f81478324bcadceebcd2ba39cf52bdff1c8b60384e71412"
+    },
+    "first_slice_packet": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/fixtures/packet-first-slice-sandbox-001.json",
+      "relative_to_run_build": "fixtures/packet-first-slice-sandbox-001.json",
+      "byte_count": 327,
+      "sha256": "232c3d5f669deefd1a2d06b78a91e250e064a9cd5bb7cf63d1eb323d05029e28"
+    },
+    "first_slice_work": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/work/work-first-slice-sandbox-action.json",
+      "relative_to_run_build": "work/work-first-slice-sandbox-action.json",
+      "byte_count": 259,
+      "sha256": "af604c0cd7b3a8b1f1e90fbf15fee353a71cddd6e2d457b99132c524b0a6fe06"
+    },
+    "first_slice_receipt": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/receipts/receipt-packet-first-slice-sandbox-001.json",
+      "relative_to_run_build": "receipts/receipt-packet-first-slice-sandbox-001.json",
+      "byte_count": 695,
+      "sha256": "4b8d76bff2e9a052f8fd99b450dc4306885099fac4b13ed7e0eccc7020286d1d"
+    },
+    "first_slice_next_work": {
+      "path": "foreman/artifacts/nmclr_sandbox_execution/nmclr-sandbox-20260629011740/NMCLR/spec/build/work/next-work-from-receipt.json",
+      "relative_to_run_build": "work/next-work-from-receipt.json",
+      "byte_count": 292,
+      "sha256": "7a23ed887db251477cda0b8377a9f65f5eadbd5c8eb85af9f332d490a56f82df"
+    }
+  },
+  "forbidden_observed": {
+    "promoted_to_live_root": false,
+    "git_branch_promoted": false,
+    "production_data_mutated": false
+  }
+}

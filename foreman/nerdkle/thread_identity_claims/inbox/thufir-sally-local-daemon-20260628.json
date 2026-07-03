@@ -1,0 +1,19 @@
+{
+  "claim_id": "thufir-sally-local-daemon-20260628",
+  "address": "Thufir@Sally",
+  "platform": "local_file",
+  "proof_scope": "local_daemon",
+  "thread_id": "local-aeye-chat-thufir-sally-3f3dedd6dcf9",
+  "observed_at": "2026-06-28T21:55:56.935Z",
+  "evidence": [
+    {
+      "kind": "file",
+      "value": "tinkarden/aeyes/Thufir@Sally/chats/local-aeye-chat-thufir-sally-3f3dedd6dcf9.md"
+    },
+    {
+      "kind": "jsonl_event",
+      "value": "data/organism/aeye_events.jsonl:speaker_context_consulted"
+    }
+  ],
+  "notes": "Local daemon thread identity for the Speaker-consult proof packet. This does not prove an external platform thread."
+}

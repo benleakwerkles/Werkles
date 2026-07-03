@@ -1,0 +1,26 @@
+{
+  "receipt_id": "rcpt_thufir_6aa922cec64f6e6b08f52c09",
+  "receipt_type": "DECISION",
+  "created_at": "2026-06-27T22:24:16.335Z",
+  "source": {
+    "aeye": "Thufir",
+    "machine": "Sally",
+    "path": "tinkarden/validation/BIRD_0062_thufir_validation_brief.md",
+    "content_sha256": "3f47b5e5b83bcb40a6597bbcb286f23bc9a6c451e4a0e50a1557c4da8de1eb92"
+  },
+  "payload": {
+    "format": "markdown",
+    "body": "# Thufir Validation Brief - BIRD_0062\n\nAeye: Thufir\nMachine: Sally\nPacket: BIRD_0062_DINK_SALLY_COGNITIVE_RECEIPTS\n\nVALIDATION_PASSED\n\nThis local brief is a deterministic formatter proof source for Speaker receipt wrapping.\n",
+    "flags": [
+      "BIRD_0062",
+      "BIRD_0062_DINK_SALLY_COGNITIVE_RECEIPTS",
+      "VALIDATION_PASSED"
+    ]
+  },
+  "metadata": {
+    "packet_id": "BIRD_0062_DINK_SALLY_COGNITIVE_RECEIPTS",
+    "formatter": "receipt_formatter.js",
+    "schema_id": "speaker.receipt.schema.v1",
+    "input_bytes": 224
+  }
+}

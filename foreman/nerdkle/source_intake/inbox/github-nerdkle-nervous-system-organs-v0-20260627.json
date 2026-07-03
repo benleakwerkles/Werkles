@@ -1,0 +1,23 @@
+{
+  "source_id": "github-nerdkle-nervous-system-organs-v0-20260627",
+  "source_type": "nerdkle_nervous_system",
+  "title": "Nerdkle nervous system organs preservation branch",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "nerdkle/nervous-system-organs-v0-20260627",
+  "commit": "47aa50c73c8ab0eda37d2e591cb956cca363b79d",
+  "packet_path": "foreman/source-truth/NEXT_NERDKLE_NERVOUS_SYSTEM_PACKET.json",
+  "artifact_paths": [
+    "scripts/foreman/check-nerdkle-nervous-system-organs.mjs",
+    "foreman/source-truth/readbacks/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_READBACK.json",
+    "foreman/source-truth/receipts/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_PRESERVATION_RECEIPT.json",
+    "tinkarden/nervous_system/fleyes.js",
+    "tinkarden/nervous_system/swateyes.js",
+    "tinkarden/nervous_system/ender_apoptosis.js"
+  ],
+  "canonicality": "pending_real_inputs",
+  "source_status": "PENDING_REAL_INPUTS",
+  "evidence_scope": "github_remote_branch",
+  "proof_boundary": "Fixture output is not production proof; production inputs and receipts are still required.",
+  "observed_at": "2026-06-28T23:00:00-04:00",
+  "notes": "Preserved review branch with next packet, readback, and receipt boundaries."
+}

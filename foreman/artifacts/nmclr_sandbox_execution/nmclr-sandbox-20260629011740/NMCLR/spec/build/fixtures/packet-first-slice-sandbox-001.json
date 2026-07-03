@@ -1,0 +1,14 @@
+{
+  "id": "packet-first-slice-sandbox-001",
+  "cause": {
+    "type": "sandbox_execution_proof",
+    "source": "Q1_NMCLR_SANDBOX_EXECUTION_PROOF"
+  },
+  "action": {
+    "type": "write_work_item",
+    "work": {
+      "id": "work-first-slice-sandbox-action",
+      "title": "Sandbox NMCLR first-slice execution proof"
+    }
+  }
+}

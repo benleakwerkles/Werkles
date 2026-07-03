@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "policy": "Ben TOTAL project approval unlocks routine sub-step permissions inside declared lane bounds. Sub-steps never override constitutional human gates.",
+  "updated_at": "2026-06-12",
+  "projects": [
+    {
+      "id": "soledash-v0-sally-snapshot",
+      "name": "SoleDash v0 — Sally snapshot surface",
+      "status": "approved_total",
+      "approved_at": "2026-06-12",
+      "approved_by": "Ben",
+      "repo_paths": ["C:\\Dev\\Werkles"],
+      "branches": ["snapshot/sally-good-werkles-2026-06-12"],
+      "machines": ["DESKTOP-SJSJMNK"],
+      "lane_refs": ["foreman/LANES.md"],
+      "allowed_substeps": [
+        "npm install",
+        "npm run dev",
+        "npm run typecheck",
+        "npm run build",
+        "local route load",
+        "foreman doc edits",
+        "launcher cmd files",
+        "read-only git status/diff/log/fetch/pull"
+      ],
+      "forbidden_even_when_approved": [
+        "git push",
+        "git merge",
+        "deploy",
+        "sql apply",
+        "rls change",
+        "billing",
+        "secrets",
+        "provider spend",
+        "production data mutation",
+        "touch rescue clone path"
+      ]
+    },
+    {
+      "id": "matching-architecture-v1-docs",
+      "name": "Werkles Matching Architecture v1 (docs only)",
+      "status": "approved_total",
+      "approved_at": "2026-06-12",
+      "approved_by": "Ben",
+      "repo_paths": ["C:\\Dev\\Werkles"],
+      "branches": ["snapshot/sally-good-werkles-2026-06-12"],
+      "machines": ["DESKTOP-SJSJMNK"],
+      "allowed_substeps": [
+        "company law docs",
+        "foreman reviews",
+        "schema design markdown only"
+      ],
+      "forbidden_even_when_approved": [
+        "supabase migration apply",
+        "production schema change",
+        "ui implementation unless separately approved"
+      ]
+    },
+    {
+      "id": "machine-topology-registry",
+      "name": "Machine topology and LOCAL HANDS READBACK registry",
+      "status": "approved_total",
+      "approved_at": "2026-06-12",
+      "approved_by": "Ben",
+      "repo_paths": ["C:\\Dev\\Werkles"],
+      "branches": ["snapshot/sally-good-werkles-2026-06-12"],
+      "machines": ["DESKTOP-SJSJMNK"],
+      "allowed_substeps": [
+        "foreman/MACHINE_TOPOLOGY.md",
+        "foreman/EXECUTION_CONTEXT_RULES.md cross-refs"
+      ],
+      "forbidden_even_when_approved": [
+        "rename machines by guess",
+        "switch rescue branch without explicit approval"
+      ]
+    }
+  ]
+}

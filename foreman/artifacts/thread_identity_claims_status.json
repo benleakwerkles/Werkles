@@ -1,0 +1,47 @@
+{
+  "artifact_id": "THREAD_IDENTITY_CLAIMS_STATUS_V0",
+  "generated_at": "2026-06-29T01:19:08.945Z",
+  "rule": "Claims are evidence only. Local claims do not satisfy external platform identity.",
+  "claim_count": 1,
+  "accepted_count": 1,
+  "accepted_local_count": 1,
+  "accepted_external_count": 0,
+  "accepted_remote_count": 0,
+  "rejected_count": 0,
+  "registry_target_count": 4,
+  "local_identity_addresses": [
+    "Thufir@Sally"
+  ],
+  "external_identity_addresses": [],
+  "remote_identity_addresses": [],
+  "missing_external_thread_ids": [
+    "Dink@Sally",
+    "Thufir@Sally",
+    "Bean@Sally",
+    "Ender@Betsy"
+  ],
+  "status": "PASS_CLAIM_INTAKE_WITH_EXTERNAL_BLOCKERS",
+  "claims": [
+    {
+      "path": "foreman/nerdkle/thread_identity_claims/inbox/thufir-sally-local-daemon-20260628.json",
+      "claim_id": "thufir-sally-local-daemon-20260628",
+      "address": "Thufir@Sally",
+      "platform": "local_file",
+      "proof_scope": "local_daemon",
+      "thread_id": "local-aeye-chat-thufir-sally-3f3dedd6dcf9",
+      "thread_url": null,
+      "status": "ACCEPTED_LOCAL",
+      "errors": [],
+      "evidence": [
+        {
+          "kind": "file",
+          "value": "tinkarden/aeyes/Thufir@Sally/chats/local-aeye-chat-thufir-sally-3f3dedd6dcf9.md"
+        },
+        {
+          "kind": "jsonl_event",
+          "value": "data/organism/aeye_events.jsonl:speaker_context_consulted"
+        }
+      ]
+    }
+  ]
+}

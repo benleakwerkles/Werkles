@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ben Leak</title>
+  <meta name="description" content="Ben Leak builds and operates practical systems for real-world companies, local services, and AI-enabled work.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111315;
+      --muted: #60676f;
+      --paper: #f6f3ec;
+      --white: #ffffff;
+      --line: #d7d9d3;
+      --green: #264b3c;
+      --red: #a7342c;
+      --blue: #245b7a;
+      --gold: #c9a45b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 28px;
+      color: var(--white);
+      background: rgba(17,19,21,.82);
+      backdrop-filter: blur(10px);
+    }
+
+    .mark {
+      font-weight: 900;
+      letter-spacing: .08em;
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+      white-space: nowrap;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 116px 28px 56px;
+      color: var(--white);
+      isolation: isolate;
+      overflow: hidden;
+      background: #151617;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url("assets/ben-harvey-unicorn.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.84), rgba(0,0,0,.52) 42%, rgba(0,0,0,.16)),
+        linear-gradient(0deg, rgba(0,0,0,.64), rgba(0,0,0,0) 42%);
+    }
+
+    .hero-inner,
+    .wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(54px, 10vw, 118px);
+      font-weight: 900;
+    }
+
+    h2 {
+      max-width: 760px;
+      font-size: clamp(34px, 5vw, 62px);
+      font-weight: 900;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.84);
+      font-size: clamp(18px, 2vw, 23px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 1px solid currentColor;
+      font-weight: 800;
+      background: transparent;
+    }
+
+    .button.primary {
+      border-color: var(--gold);
+      color: #15120a;
+      background: var(--gold);
+    }
+
+    .band {
+      padding: 72px 28px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .band.paper {
+      background: var(--paper);
+    }
+
+    .band.dark {
+      color: var(--white);
+      background: var(--ink);
+      border-bottom: 0;
+    }
+
+    .lead {
+      max-width: 710px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .dark .lead {
+      color: rgba(255,255,255,.72);
+    }
+
+    .venture-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .venture {
+      display: flex;
+      flex-direction: column;
+      min-height: 310px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .venture-media {
+      height: 170px;
+      background: #d8d7d0;
+    }
+
+    .venture-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .venture-body p,
+    .thesis p,
+    .proof p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag {
+      align-self: flex-start;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tag.red {
+      background: var(--red);
+    }
+
+    .tag.blue {
+      background: var(--blue);
+    }
+
+    .thesis-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 36px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.18);
+    }
+
+    .thesis {
+      padding: 22px;
+      background: #171b1f;
+    }
+
+    .thesis h3 {
+      margin-bottom: 12px;
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .thesis p {
+      color: rgba(255,255,255,.72);
+    }
+
+    .proof-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 36px;
+    }
+
+    .proof-visual {
+      min-height: 490px;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ddd;
+    }
+
+    .proof-list {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .proof {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .proof h3 {
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .contact-box {
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.06);
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: rgba(255,255,255,.72);
+    }
+
+    .small {
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.52);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .site-nav {
+        position: absolute;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        min-height: 84vh;
+        padding-top: 142px;
+      }
+
+      .venture-grid,
+      .thesis-grid,
+      .proof-layout,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-visual {
+        min-height: 310px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="mark" href="#top">BEN LEAK</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#proof">Proof</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Builder / operator / owner</p>
+        <h1>Ben Leak</h1>
+        <p class="hero-copy">
+          Building practical systems where real companies, local work, and AI tooling meet.
+          Serious tools, useful operations, visible proof.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#work">Current work</a>
+          <a class="button" href="#contact">Start a conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="work">
+      <div class="wrap">
+        <p class="eyebrow">Current work</p>
+        <h2>Built from operating reality, not pitch-deck gravity.</h2>
+        <p class="lead">
+          The site should introduce Ben through the worlds he is actively shaping: Werkles,
+          Kind Sir, and the Aeye workstation network.
+        </p>
+
+        <div class="venture-grid">
+          <article class="venture">
+            <div class="venture-media">
+              <img src="assets/werkles-home.png" alt="Werkles interface preview">
+            </div>
+            <div class="venture-body">
+              <span class="tag">Werkles</span>
+              <h3>Trust infrastructure for local work</h3>
+              <p>Decision-first product work around matching, proof, verification, and serious business relationships.</p>
+            </div>
+          </article>
+
+          <article class="venture">
+            <div class="venture-media">
+              <img src="assets/kindsir-field-grid.png" alt="Kind Sir Concrete field photo grid">
+            </div>
+            <div class="venture-body">
+              <span class="tag red">Kind Sir</span>
+              <h3>Real-world operating company</h3>
+              <p>Concrete and service work gives the site a grounded business spine instead of abstract founder language.</p>
+            </div>
+          </article>
+
+          <article class="venture">
+            <div class="venture-media">
+              <img src="assets/werkles-dashboard.png" alt="Werkles dashboard preview">
+            </div>
+            <div class="venture-body">
+              <span class="tag blue">Aeyes</span>
+              <h3>Workstation network and agents</h3>
+              <p>Local-machine operations, agent lanes, and human-gated automation for getting more work done without theater.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band dark" id="thesis">
+      <div class="wrap">
+        <p class="eyebrow">Operating thesis</p>
+        <h2>Make the machine useful before making it impressive.</h2>
+        <p class="lead">
+          This first draft positions Ben as a practical builder with a bias toward proof,
+          earned trust, and systems that work in messy human conditions.
+        </p>
+        <div class="thesis-grid">
+          <article class="thesis">
+            <h3>Proof over posture</h3>
+            <p>Show the work, the receipts, and the operating state.</p>
+          </article>
+          <article class="thesis">
+            <h3>Local first</h3>
+            <p>Businesses, machines, people, and decisions close enough to verify.</p>
+          </article>
+          <article class="thesis">
+            <h3>Human gates</h3>
+            <p>Automation does not get authority where judgment is required.</p>
+          </article>
+          <article class="thesis">
+            <h3>Useful AI</h3>
+            <p>Less chatbot theater, more leverage inside real workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band paper" id="proof">
+      <div class="wrap">
+        <p class="eyebrow">Proof wall</p>
+        <h2>A personal site that can become an operating archive.</h2>
+        <p class="lead">
+          The next version can add live receipts, project notes, selected case studies,
+          and a public trail of what Ben is building.
+        </p>
+        <div class="proof-layout">
+          <div class="proof-visual">
+            <img src="assets/ben-harvey-unicorn.png" alt="Ben Leak seated beside a white unicorn">
+          </div>
+          <div class="proof-list">
+            <article class="proof">
+              <h3>Receipts</h3>
+              <p>Short, durable writeups of completed projects, fixes, launches, and operating lessons.</p>
+            </article>
+            <article class="proof">
+              <h3>Case studies</h3>
+              <p>Concrete examples from Werkles, Kind Sir, Aeye nodes, and field operations.</p>
+            </article>
+            <article class="proof">
+              <h3>Notes</h3>
+              <p>Sharp thinking in public without turning the site into a blog treadmill.</p>
+            </article>
+            <article class="proof">
+              <h3>Network</h3>
+              <p>A simple map of people, companies, and projects Ben is willing to stand behind.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band dark" id="contact">
+      <div class="wrap contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Useful conversations only.</h2>
+          <p class="lead">
+            This slot should become the clean public contact path for Ben. No private contact
+            info is included in this local draft.
+          </p>
+          <p class="small">Draft built locally on 2026-06-17. Not deployed.</p>
+        </div>
+        <div class="contact-box">
+          <p>
+            Next content pass: choose the public contact route, decide which ventures belong
+            on the front page, and replace draft copy with Ben-approved claims.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

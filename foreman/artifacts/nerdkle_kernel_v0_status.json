@@ -1,0 +1,387 @@
+{
+  "artifact_id": "NERDKLE_KERNEL_V0_STATUS",
+  "generated_at": "2026-06-29T01:19:09.121Z",
+  "overall_status": "PASS_LOCAL_WITH_EXTERNAL_BLOCKERS",
+  "rule": "Evidence-only. Missing proof is reported, not inferred.",
+  "checks": [
+    {
+      "id": "speaker_causal_memory_office",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/speaker/SPEAKER_CHARTER.md",
+        "foreman/speaker/SPEAKER_DOCTRINE.md",
+        "foreman/speaker/CAUSAL_LEDGER.md",
+        "foreman/speaker/AEYE_ROLE_REGISTRY.md",
+        "foreman/speaker/GD_SPEAKER_CONSTITUTIONAL_INTEGRATION_V0.md"
+      ],
+      "missing": []
+    },
+    {
+      "id": "thread_registry_local_routes",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/nerdkle/thread_registry.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "thread_identity_claim_intake",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/thread_identity_claims_status.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "thread_registry_external_identity",
+      "status": "PARTIAL_LOCAL",
+      "evidence": [
+        "foreman/nerdkle/thread_registry.json",
+        "foreman/artifacts/thread_identity_claims_status.json"
+      ],
+      "missing": [
+        "missing_external_thread_id:Dink@Sally",
+        "missing_external_thread_id:Thufir@Sally",
+        "missing_external_thread_id:Bean@Sally",
+        "missing_external_thread_id:Ender@Betsy"
+      ]
+    },
+    {
+      "id": "github_source_material_intake",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/nerdkle_github_source_material_status.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "github_nerdkle_review_sources",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/nerdkle_github_source_material_status.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "github_source_promotion_boundary",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/nerdkle_github_source_material_status.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "github_source_materialized_snapshots",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/nerdkle_materialized_source_status.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "github_source_work_queue",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/nerdkle_source_work_queue.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "nmclr_sandbox_execution_proof",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "foreman/artifacts/nmclr_sandbox_execution_status.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "organism_event_bus",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "data/organism/aeye_events.jsonl",
+        "data/organism/origin_response_bus.jsonl"
+      ],
+      "missing": []
+    },
+    {
+      "id": "local_aeye_return_loop",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A"
+      ],
+      "missing": []
+    },
+    {
+      "id": "speaker_schema_valid_receipts",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "speaker/receipts/raw/inbox/rcpt_thufir_6aa922cec64f6e6b08f52c09.json"
+      ],
+      "missing": []
+    },
+    {
+      "id": "speaker_consulted_before_relay",
+      "status": "PASS_LOCAL",
+      "evidence": [
+        "data/organism/aeye_events.jsonl:speaker_context_consulted"
+      ],
+      "missing": []
+    }
+  ],
+  "latest_complete_loop": {
+    "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE",
+    "target_address": "Thufir@Sally",
+    "status": "PASS_LOCAL",
+    "missing": [],
+    "evidence": {
+      "event_types": [
+        "aeye_answer_observed",
+        "aeye_chat_created",
+        "aeye_query_sent",
+        "aeye_query_visible",
+        "aeye_receipt_ack",
+        "answer_received",
+        "nerdkle_prompt_activity",
+        "packet_left_relay_boundary",
+        "speaker_context_consulted"
+      ],
+      "origin_response_id": "origin-response-local-aeye-answer-3f3dedd6dcf9",
+      "answer_id": "local-aeye-answer-3f3dedd6dcf9",
+      "chat_id": "local-aeye-chat-thufir-sally-3f3dedd6dcf9",
+      "latest_observed_at": "2026-06-28T21:55:56.935Z"
+    }
+  },
+  "loop_count": 5,
+  "complete_loop_count": 5,
+  "receipt_count": 1,
+  "valid_receipt_count": 1,
+  "thread_identity_claim_status": {
+    "status": "PASS_CLAIM_INTAKE_WITH_EXTERNAL_BLOCKERS",
+    "accepted_count": 1,
+    "accepted_external_count": 0,
+    "missing_external_thread_ids": [
+      "Dink@Sally",
+      "Thufir@Sally",
+      "Bean@Sally",
+      "Ender@Betsy"
+    ]
+  },
+  "github_source_material_status": {
+    "status": "PASS_GITHUB_SOURCE_INTAKE",
+    "verified_count": 4,
+    "blocked_count": 0,
+    "canonical_count": 0,
+    "review_branch_count": 4,
+    "source_ids": [
+      "github-book-architecture-stream-split-v0-20260627",
+      "github-nerdkle-nervous-system-organs-v0-20260627",
+      "github-nmclr-proof-body-preserve-v0-20260627",
+      "github-receipt-crawler-v0-20260627"
+    ],
+    "remaining_boundaries": [
+      {
+        "source_id": "github-book-architecture-stream-split-v0-20260627",
+        "canonicality": "manuscript_only",
+        "source_status": "READY_FOR_REVIEW",
+        "proof_boundary": "Manuscript doctrine cannot prove automation."
+      },
+      {
+        "source_id": "github-nerdkle-nervous-system-organs-v0-20260627",
+        "canonicality": "pending_real_inputs",
+        "source_status": "PENDING_REAL_INPUTS",
+        "proof_boundary": "Fixture output is not production proof; production inputs and receipts are still required."
+      },
+      {
+        "source_id": "github-nmclr-proof-body-preserve-v0-20260627",
+        "canonicality": "preserved_only",
+        "source_status": "READY_FOR_REVIEW",
+        "proof_boundary": "Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist."
+      },
+      {
+        "source_id": "github-receipt-crawler-v0-20260627",
+        "canonicality": "pending_real_inputs",
+        "source_status": "PENDING_REAL_LEDGER",
+        "proof_boundary": "Self-test output is not production movement proof until the real circulation.db ledger is read and updated."
+      }
+    ]
+  },
+  "materialized_source_status": {
+    "status": "PASS_MATERIALIZED_GITHUB_SOURCE",
+    "materialized_count": 4,
+    "materialized_root": "foreman/nerdkle/source_intake/materialized",
+    "materialized": [
+      {
+        "source_id": "github-book-architecture-stream-split-v0-20260627",
+        "status": "MATERIALIZED_SOURCE_SNAPSHOT",
+        "manifest_path": "foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/manifest.json",
+        "file_count": 3,
+        "canonicality": "manuscript_only",
+        "proof_boundary": "Manuscript doctrine cannot prove automation."
+      },
+      {
+        "source_id": "github-nerdkle-nervous-system-organs-v0-20260627",
+        "status": "MATERIALIZED_SOURCE_SNAPSHOT",
+        "manifest_path": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/manifest.json",
+        "file_count": 7,
+        "canonicality": "pending_real_inputs",
+        "proof_boundary": "Fixture output is not production proof; production inputs and receipts are still required."
+      },
+      {
+        "source_id": "github-nmclr-proof-body-preserve-v0-20260627",
+        "status": "MATERIALIZED_SOURCE_SNAPSHOT",
+        "manifest_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/manifest.json",
+        "file_count": 11,
+        "canonicality": "preserved_only",
+        "proof_boundary": "Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist."
+      },
+      {
+        "source_id": "github-receipt-crawler-v0-20260627",
+        "status": "MATERIALIZED_SOURCE_SNAPSHOT",
+        "manifest_path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/manifest.json",
+        "file_count": 6,
+        "canonicality": "pending_real_inputs",
+        "proof_boundary": "Self-test output is not production movement proof until the real circulation.db ledger is read and updated."
+      }
+    ]
+  },
+  "source_work_queue_status": {
+    "status": "PASS_SOURCE_WORK_QUEUE",
+    "next_recommended_queue_id": "Q2_NERVOUS_SYSTEM_INPUT_LOCATOR",
+    "ready_count": 2,
+    "blocked_count": 3
+  },
+  "nmclr_sandbox_execution_status": {
+    "status": "PASS_NMCLR_SANDBOX_EXECUTION_PROOF",
+    "run_id": "nmclr-sandbox-20260629011740",
+    "causal_chain": {
+      "pass": true,
+      "missing": [],
+      "packet_id": "packet-first-slice-sandbox-001",
+      "work_id": "work-first-slice-sandbox-action",
+      "receipt_id": "receipt-packet-first-slice-sandbox-001",
+      "next_work_id": "next-work-from-receipt"
+    },
+    "movement_chain": {
+      "pass": true,
+      "missing": [],
+      "packet_id": "packet-first-movement-001",
+      "work_id": "work-first-artifact",
+      "receipt_id": "receipt-packet-first-movement-001"
+    }
+  },
+  "loops": [
+    {
+      "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE",
+      "target_address": "Thufir@Sally",
+      "status": "PASS_LOCAL",
+      "missing": [],
+      "evidence": {
+        "event_types": [
+          "aeye_answer_observed",
+          "aeye_chat_created",
+          "aeye_query_sent",
+          "aeye_query_visible",
+          "aeye_receipt_ack",
+          "answer_received",
+          "nerdkle_prompt_activity",
+          "packet_left_relay_boundary",
+          "speaker_context_consulted"
+        ],
+        "origin_response_id": "origin-response-local-aeye-answer-3f3dedd6dcf9",
+        "answer_id": "local-aeye-answer-3f3dedd6dcf9",
+        "chat_id": "local-aeye-chat-thufir-sally-3f3dedd6dcf9",
+        "latest_observed_at": "2026-06-28T21:55:56.935Z"
+      }
+    },
+    {
+      "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+      "target_address": "Thufir@Sally",
+      "status": "PASS_LOCAL",
+      "missing": [],
+      "evidence": {
+        "event_types": [
+          "aeye_answer_observed",
+          "aeye_chat_created",
+          "aeye_query_sent",
+          "aeye_query_visible",
+          "aeye_receipt_ack",
+          "answer_received",
+          "nerdkle_prompt_activity",
+          "packet_left_relay_boundary"
+        ],
+        "origin_response_id": "origin-response-local-aeye-answer-3d3df8d3d351",
+        "answer_id": "local-aeye-answer-3d3df8d3d351",
+        "chat_id": "local-aeye-chat-thufir-sally-3d3df8d3d351",
+        "latest_observed_at": "2026-06-28T19:14:49.528Z"
+      }
+    },
+    {
+      "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+      "target_address": "Thufir@Sally",
+      "status": "PASS_LOCAL",
+      "missing": [],
+      "evidence": {
+        "event_types": [
+          "aeye_answer_observed",
+          "aeye_chat_created",
+          "aeye_query_sent",
+          "aeye_query_visible",
+          "aeye_receipt_ack",
+          "answer_received",
+          "nerdkle_prompt_activity",
+          "packet_left_relay_boundary"
+        ],
+        "origin_response_id": "origin-response-local-aeye-answer-92ba1cb6e789",
+        "answer_id": "local-aeye-answer-92ba1cb6e789",
+        "chat_id": "local-aeye-chat-thufir-sally-92ba1cb6e789",
+        "latest_observed_at": "2026-06-28T19:07:33.532Z"
+      }
+    },
+    {
+      "packet_id": "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+      "target_address": "Dink@Sally",
+      "status": "PASS_LOCAL",
+      "missing": [],
+      "evidence": {
+        "event_types": [
+          "aeye_answer_observed",
+          "aeye_chat_created",
+          "aeye_query_sent",
+          "aeye_query_visible",
+          "aeye_receipt_ack",
+          "answer_received",
+          "nerdkle_prompt_activity",
+          "packet_left_relay_boundary"
+        ],
+        "origin_response_id": "origin-response-local-aeye-answer-39c9d1df7483",
+        "answer_id": "local-aeye-answer-39c9d1df7483",
+        "chat_id": "local-aeye-chat-dink-sally-39c9d1df7483",
+        "latest_observed_at": "2026-06-28T04:37:27.814Z"
+      }
+    },
+    {
+      "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+      "target_address": "Thufir@Sally",
+      "status": "PASS_LOCAL",
+      "missing": [],
+      "evidence": {
+        "event_types": [
+          "aeye_answer_observed",
+          "aeye_chat_created",
+          "aeye_query_sent",
+          "aeye_query_visible",
+          "aeye_receipt_ack",
+          "answer_received",
+          "nerdkle_prompt_activity",
+          "packet_left_relay_boundary"
+        ],
+        "origin_response_id": "origin-response-local-aeye-answer-9a046f12d027",
+        "answer_id": "local-aeye-answer-9a046f12d027",
+        "chat_id": "local-aeye-chat-thufir-sally-9a046f12d027",
+        "latest_observed_at": "2026-06-28T04:37:27.814Z"
+      }
+    }
+  ]
+}

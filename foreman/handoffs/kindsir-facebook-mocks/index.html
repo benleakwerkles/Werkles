@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kind Sir Concrete Facebook Mock Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #161616;
+      --muted: #5d6468;
+      --line: #d8ddd8;
+      --field: #f4f5f2;
+      --green: #2f4a3e;
+      --gold: #d7a84b;
+      --blue: #1d5f8f;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #eef0ed;
+      line-height: 1.45;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 28px;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .04em;
+      font-size: 18px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .section {
+      min-height: 100vh;
+      padding: 56px 28px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .section:nth-of-type(2) { background: #f6f3ec; }
+    .section:nth-of-type(3) { background: #f2f5f3; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+
+    h1, h2 {
+      margin: 0;
+      letter-spacing: 0;
+      line-height: 1.05;
+    }
+
+    h1 { font-size: 56px; max-width: 720px; }
+    h2 { font-size: 42px; max-width: 760px; }
+
+    .lead {
+      max-width: 620px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 560px);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-photo {
+      min-height: 430px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 1px solid var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .button.primary {
+      border-color: var(--green);
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 34px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .proof {
+      padding: 18px;
+      background: var(--white);
+    }
+
+    .proof strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 22px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 420px minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+      margin-top: 34px;
+    }
+
+    .media-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .shot {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ddd;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .service h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .service p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .team-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 34px;
+      align-items: stretch;
+      margin-top: 34px;
+    }
+
+    .team-photo {
+      min-height: 430px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .note {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .note p {
+      margin: 0;
+      color: rgba(255,255,255,.82);
+    }
+
+    .source {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 820px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { flex-wrap: wrap; }
+      h1 { font-size: 40px; }
+      h2 { font-size: 34px; }
+      .hero, .split, .team-layout { grid-template-columns: 1fr; }
+      .hero-photo, .team-photo { min-height: 300px; }
+      .proof-strip, .card-grid { grid-template-columns: 1fr; }
+      .section { padding: 36px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">KIND SIR CONCRETE</div>
+    <nav class="nav" aria-label="Mock pages">
+      <span>Landing</span>
+      <span>Project Proof</span>
+      <span>Team Trust</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap hero">
+        <div>
+          <p class="eyebrow">Mock page 01</p>
+          <h1>We Set the Standard Since 2018</h1>
+          <p class="lead">A more direct landing page that immediately shows the crew, the trucks, and the scale of the operation before asking visitors to request a quote.</p>
+          <div class="actions">
+            <a class="button primary" href="#">Request a concrete quote</a>
+            <a class="button" href="#">See recent work</a>
+          </div>
+          <div class="proof-strip">
+            <div class="proof"><strong>GPS</strong><span>Sawing, coring, cutting, and removal.</span></div>
+            <div class="proof"><strong>Metro ATL</strong><span>Concrete work across construction sites.</span></div>
+            <div class="proof"><strong>Crew-first</strong><span>Real people and equipment above stock imagery.</span></div>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="assets/fb-cover-team.png" alt="Kind Sir Concrete crew and trucks from public Facebook page">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Mock page 02</p>
+        <h2>Project proof page with tighter service calls</h2>
+        <p class="lead">Use Facebook/public-photo material as visual proof around services instead of burying the evidence in social feeds.</p>
+        <div class="split">
+          <div class="media-stack">
+            <div class="shot"><img src="assets/fb-photo-grid.png" alt="Facebook photo grid showing Kind Sir Concrete field photos"></div>
+            <div class="shot"><img src="assets/fb-profile-work.png" alt="Kind Sir Concrete worker profile image from public Facebook page"></div>
+          </div>
+          <div class="card-grid">
+            <article class="service">
+              <h3>Flat Sawing</h3>
+              <p>Dedicated page module for saw cutting work, with job-site imagery and a short quote path.</p>
+            </article>
+            <article class="service">
+              <h3>Core Drilling</h3>
+              <p>Service card with equipment-forward photos and “send plans / request estimate” action.</p>
+            </article>
+            <article class="service">
+              <h3>Concrete Removal</h3>
+              <p>Before/after gallery slot for removal jobs, cleanup, and access constraints.</p>
+            </article>
+            <article class="service">
+              <h3>Construction Support</h3>
+              <p>General contractor-facing copy with phone number, response hours, and project intake.</p>
+            </article>
+          </div>
+        </div>
+        <p class="source">Source imagery: public Kind Sir Concrete Facebook page capture, 2026-06-17.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Mock page 03</p>
+        <h2>Community and trust page</h2>
+        <p class="lead">Turn Facebook posts into a lightweight “who we are” page: crew, community, real job photos, and proof that the company is active.</p>
+        <div class="team-layout">
+          <div class="team-photo">
+            <img src="assets/fb-post-basket.png" alt="Public Facebook post image from Kind Sir Concrete">
+          </div>
+          <aside class="note">
+            <div>
+              <h2>Built by people you can actually reach.</h2>
+              <p>Use this page for crew photos, community posts, and field snapshots. It gives the site a pulse without turning the homepage into a social feed.</p>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="#">Meet the crew</a>
+              <a class="button" href="#">Follow on Facebook</a>
+            </div>
+          </aside>
+        </div>
+        <p class="source">Draft only. Nothing here has been published to WordPress.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "reads": [
+    {
+      "event_type": "ReadEvent",
+      "artifact_id": "artifact-source-alpha",
+      "reader": "Dink@Sally",
+      "author": "Petra@Betsy",
+      "timestamp": "2026-06-23T09:00:00-04:00"
+    },
+    {
+      "event_type": "ReadEvent",
+      "artifact_id": "artifact-source-proofed",
+      "reader": "Dink@Sally",
+      "author": "Swanson",
+      "timestamp": "2026-06-23T09:30:00-04:00",
+      "proof": {
+        "receipt": "read-proof"
+      }
+    }
+  ],
+  "derived_actions": [
+    {
+      "event_type": "DerivedActionEvent",
+      "actor": "Dink@Sally",
+      "source_artifact_id": "artifact-source-alpha",
+      "derived_artifact": "artifact-derived-beta",
+      "timestamp": "2026-06-23T09:05:00-04:00"
+    },
+    {
+      "event_type": "DerivedActionEvent",
+      "actor": "Dink@Sally",
+      "source_artifact_id": "artifact-source-proofed",
+      "derived_artifact": "artifact-derived-proofed",
+      "timestamp": "2026-06-23T09:35:00-04:00",
+      "proof": {
+        "receipt": "action-proof"
+      }
+    }
+  ],
+  "writes": [
+    {
+      "event_type": "WriteEvent",
+      "artifact_id": "artifact-derived-beta",
+      "author": "Dink@Sally",
+      "derived_from": "artifact-source-alpha",
+      "timestamp": "2026-06-23T09:10:00-04:00"
+    },
+    {
+      "event_type": "WriteEvent",
+      "artifact_id": "artifact-derived-proofed",
+      "author": "Dink@Sally",
+      "derived_from": "artifact-source-proofed",
+      "timestamp": "2026-06-23T09:40:00-04:00",
+      "proof": {
+        "receipt": "write-proof"
+      }
+    }
+  ]
+}

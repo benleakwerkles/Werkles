@@ -292,7 +292,9 @@ If an action is classified as a non-gate technical proof under `foreman/HUMAN_GA
 
 ## Cursor / Maker IDE regression (2026-05-29)
 
-Known failure mode: Cursor/Maker settings may revert from **Allow Everything** to **Allowlist**. If routine non-gate actions begin prompting again, first check **Cursor Settings → Agents → Run Mode** before changing doctrine.
+Known failure mode: Cursor/Maker settings may revert from **Allow Everything** / **Run Everything** to **Allowlist**. If routine non-gate actions begin prompting again, first check **Cursor Settings → Agents → Run Mode**, then run `scripts/foreman/permission-swatter-status.ps1` before changing doctrine.
+
+**Permission Swatter v1:** `foreman/PERMISSION_SWATTER_V1.md` — Aeye Windows only; auto-clears sub-steps inside `foreman/gates/APPROVED_PROJECT_REGISTRY.json` total-approved projects. Never swats money, deploy, merge, secrets, or destructive actions.
 
 Symptoms mistaken for human gates:
 

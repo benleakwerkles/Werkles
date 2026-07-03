@@ -1,0 +1,79 @@
+[
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "aeye_chat_created",
+    "chat_id": "REPLACE_WITH_CHAT_ID"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "aeye_query_sent",
+    "query_id": "REPLACE_WITH_QUERY_ID"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "nerdkle_prompt_activity",
+    "prompt_origin": "Nerdkle Organism"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "packet_left_local_system"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "aeye_query_visible"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "aeye_receipt_ack"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "aeye_answer_observed",
+    "answer": "REPLACE_WITH_OBSERVED_ANSWER"
+  },
+  {
+    "evidence_scope": "external_platform",
+    "platform": "REPLACE_WITH_PLATFORM",
+    "packet_id": "REPLACE_WITH_PACKET_ID",
+    "target_address": "REPLACE_WITH_AEYE",
+    "proof_ref": "REPLACE_WITH_CHAT_URL_SCREENSHOT_PATH_THREAD_ID_OR_TRANSCRIPT_PATH",
+    "observed_at": "2026-06-28T19:07:24.673Z",
+    "event_type": "answer_received",
+    "answer": "REPLACE_WITH_RECEIVED_ANSWER"
+  }
+]

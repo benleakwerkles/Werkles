@@ -1,0 +1,193 @@
+﻿{
+    "status":  "PASS_TECHNICAL_PACK_WITH_LIMITATIONS",
+    "generated_at":  "2026-06-29T22:40:39.4726061Z",
+    "source_run_manifest":  "foreman/ghost-forge/GHOST_FORGE_POP_TODAY_LIVE_RESULTS_20260629.json",
+    "source_output_dir":  "public/assets/draft/oddly-godly-pop-today",
+    "technical_output_dir":  "public/assets/draft/oddly-godly-pop-today-technical",
+    "target_size":  2048,
+    "native_generation":  false,
+    "paid_provider_call":  false,
+    "image_generation_call":  false,
+    "results":  [
+                    {
+                        "asset_id":  "T1_001_WET_ASPHALT_SODIUM_LIT",
+                        "status":  "processed",
+                        "readiness":  "PROTOTYPE_MATERIAL_SEED",
+                        "usefulness":  "Useful for wet Atlanta street lookdev and prototype ground material.",
+                        "blockers":  [
+                                         "Not native 2K/4K",
+                                         "Not proven tileable",
+                                         "PBR maps are synthetic from color, not authored"
+                                     ],
+                        "source":  "public/assets/draft/oddly-godly-pop-today/T_OG_ATL_WetAsphalt_SodiumLit_Albedo.png",
+                        "outputs":  [
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/surfaces/T_OG_ATL_WetAsphalt_SodiumLit_Albedo_2048_SYNTH_UPSCALE_Albedo.png",
+                                            "bytes":  10096625,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        },
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/surfaces/T_OG_ATL_WetAsphalt_SodiumLit_Albedo_2048_SYNTH_Height.png",
+                                            "bytes":  4188578,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        },
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/surfaces/T_OG_ATL_WetAsphalt_SodiumLit_Albedo_2048_SYNTH_Roughness.png",
+                                            "bytes":  2970911,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        },
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/surfaces/T_OG_ATL_WetAsphalt_SodiumLit_Albedo_2048_SYNTH_Normal.png",
+                                            "bytes":  8411233,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        }
+                                    ]
+                    },
+                    {
+                        "asset_id":  "T1_006_GOOP_RESIDUE_OVERLAY",
+                        "status":  "processed",
+                        "readiness":  "STYLE_REFERENCE_ONLY",
+                        "usefulness":  "Useful for signature Goop color, sheen, and shape language.",
+                        "blockers":  [
+                                         "Not a clean tileable overlay",
+                                         "No usable alpha",
+                                         "Contains representational hand shape unsuitable for generic surface overlay"
+                                     ],
+                        "source":  "public/assets/draft/oddly-godly-pop-today/T_OG_ATL_GoopResidueOverlay_Color.png",
+                        "outputs":  [
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/overlays/T_OG_ATL_GoopResidueOverlay_Color_2048_REFERENCE.png",
+                                            "bytes":  9670571,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        }
+                                    ]
+                    },
+                    {
+                        "asset_id":  "T2_007_WET_PUDDLE_DECALS",
+                        "status":  "processed",
+                        "readiness":  "CONCEPT_REFERENCE_ONLY",
+                        "usefulness":  "Useful for puddle shape, sodium-orange/cyan reflection direction, and decal art direction.",
+                        "blockers":  [
+                                         "No alpha",
+                                         "Background is baked into the image",
+                                         "Not an isolated transparent decal atlas"
+                                     ],
+                        "source":  "public/assets/draft/oddly-godly-pop-today/D_OG_WetPuddles_Atlas.png",
+                        "outputs":  [
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/decals/D_OG_WetPuddles_Atlas_2048_REFERENCE.png",
+                                            "bytes":  9238609,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        }
+                                    ]
+                    },
+                    {
+                        "asset_id":  "T2_008_GOOP_SPLATTER_DECALS",
+                        "status":  "processed",
+                        "readiness":  "DECAL_CANDIDATE_SYNTH_ALPHA",
+                        "usefulness":  "Useful as first-pass Goop decal atlas after synthetic white-key alpha extraction.",
+                        "blockers":  [
+                                         "Synthetic alpha only",
+                                         "Needs hand cleanup before production",
+                                         "No emissive mask authored"
+                                     ],
+                        "source":  "public/assets/draft/oddly-godly-pop-today/D_OG_GoopSplatterResidue_Atlas.png",
+                        "outputs":  [
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/decals/D_OG_GoopSplatterResidue_Atlas_2048_SYNTH_ALPHA_CutoutCandidate.png",
+                                            "bytes":  4727724,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format32bppArgb",
+                                            "alpha_capable_format":  true,
+                                            "sampled_alpha_min":  48,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  true
+                                        },
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/decals/D_OG_GoopSplatterResidue_Atlas_2048_SYNTH_AlphaCandidate.png",
+                                            "bytes":  251257,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        }
+                                    ]
+                    },
+                    {
+                        "asset_id":  "T5_025_GOOP_FIREWORK_BURST",
+                        "status":  "processed",
+                        "readiness":  "VFX_CONCEPT_REFERENCE_ONLY",
+                        "usefulness":  "Useful for Goop firework color, silhouette, and particle direction.",
+                        "blockers":  [
+                                         "Not a true 8x8 animation sheet",
+                                         "No alpha",
+                                         "No frame progression"
+                                     ],
+                        "source":  "public/assets/draft/oddly-godly-pop-today/FX_OG_GoopBurst_8x8_ColorAlpha.png",
+                        "outputs":  [
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/vfx/FX_OG_GoopBurst_8x8_ColorAlpha_2048_REFERENCE_NotFlipbook.png",
+                                            "bytes":  7770386,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        },
+                                        {
+                                            "path":  "public/assets/draft/oddly-godly-pop-today-technical/vfx/FX_OG_GoopBurst_8x8_ColorAlpha_2048_SYNTH_GlowAlphaCandidate_NotFlipbook.png",
+                                            "bytes":  3615653,
+                                            "width":  2048,
+                                            "height":  2048,
+                                            "pixel_format":  "Format24bppRgb",
+                                            "alpha_capable_format":  false,
+                                            "sampled_alpha_min":  255,
+                                            "sampled_alpha_max":  255,
+                                            "sampled_transparency":  false
+                                        }
+                                    ]
+                    }
+                ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "work-first-slice-sandbox-action",
+  "title": "Sandbox NMCLR first-slice execution proof",
+  "status": "ready",
+  "caused_by_packet": "packet-first-slice-sandbox-001",
+  "muscle": "packet-causes-action",
+  "created_at": "2026-06-29T01:17:41.865Z"
+}

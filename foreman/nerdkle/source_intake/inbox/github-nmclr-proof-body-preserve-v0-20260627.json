@@ -1,0 +1,27 @@
+{
+  "source_id": "github-nmclr-proof-body-preserve-v0-20260627",
+  "source_type": "nmclr_proof_body",
+  "title": "NMCLR proof body preserved candidate",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "nerdkle/nmclr-proof-body-preserve-v0-20260627",
+  "commit": "f14227352ce7820f9e12b135f559d706691e85da",
+  "packet_path": "foreman/source-truth/NEXT_NMCLR_PROOF_BODY_PACKET.json",
+  "artifact_paths": [
+    "NMCLR/spec/PROOF_BODY_PRESERVATION_README.md",
+    "NMCLR/spec/build/README.md",
+    "NMCLR/spec/build/artifacts/first-artifact.json",
+    "NMCLR/spec/build/first_breath.mjs",
+    "NMCLR/spec/build/first_metabolism.mjs",
+    "NMCLR/spec/build/first_movement.mjs",
+    "NMCLR/spec/build/fixtures/packet-causes-action.json",
+    "NMCLR/spec/build/nmclr-first-slice.mjs",
+    "NMCLR/spec/build/receipts/github_preservation/NMCLR_PROOF_BODY_GITHUB_PRESERVATION_RECEIPT.json",
+    "scripts/foreman/check-nmclr-proof-body-preservation.mjs"
+  ],
+  "canonicality": "preserved_only",
+  "source_status": "READY_FOR_REVIEW",
+  "evidence_scope": "github_remote_branch",
+  "proof_boundary": "Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.",
+  "observed_at": "2026-06-28T23:00:00-04:00",
+  "notes": "Review branch preserves NMCLR proof body candidates and receipts."
+}

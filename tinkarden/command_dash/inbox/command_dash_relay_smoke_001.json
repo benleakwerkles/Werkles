@@ -1,0 +1,16 @@
+{
+  "command_id": "command-dash-smoke-001",
+  "title": "Validate Command Dash to Aeye relay",
+  "action": "Validate that Command Dash can reach a local Aeye inbox",
+  "body": "Local smoke packet proving Command Dash writes a canonical dispatch packet and mirrors it into an Aeye inbox.",
+  "lane": "Topology Validation",
+  "tags": [
+    "command-dash",
+    "relay",
+    "validation",
+    "smoke"
+  ],
+  "target_address": "Thufir@Sally",
+  "created_at": "2026-06-27T17:30:00-04:00",
+  "status": "NEW"
+}

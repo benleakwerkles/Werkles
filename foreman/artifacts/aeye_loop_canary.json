@@ -1,0 +1,56 @@
+{
+  "artifact_id": "AEYE_LOOP_CANARY_V0",
+  "generated_at": "2026-06-28T19:14:49.261Z",
+  "status": "PASS_FRESH_ORIGIN_RETURN",
+  "canary_id": "command-dash-canary-20260628191449",
+  "source_path": "tinkarden/command_dash/inbox/command-dash-canary-20260628191449.json",
+  "response_id": "origin-response-local-aeye-answer-3d3df8d3d351",
+  "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+  "origin_dash": "CommandDash",
+  "response_path": "tinkarden/command_dash/responses/command-dash-canary-20260628191449.json",
+  "returned_at": "2026-06-28T19:14:49.656Z",
+  "runs": [
+    {
+      "script": "scripts/command-dash-aeye-relay.mjs",
+      "code": 0,
+      "stdout": "wrote 3 Aeye relay packets to tinkerden/dispatch/packets\nmirrored packets to tinkarden/dispatch/packets\npublished 3 outbound bus events to data/organism/aeye_outbox.jsonl\nmanifest: foreman/artifacts/aeye_relay_manifest.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/local-aeye-daemon.mjs",
+      "code": 0,
+      "stdout": "local Aeye daemon processed 1 packet\nevent log: data/organism/aeye_events.jsonl\nanswer pickup: data/organism/aeye_answer_pickup.jsonl",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/origin-response-return.mjs",
+      "code": 0,
+      "stdout": "returned 4 Aeye answers to origin dash\norigin response bus: data/organism/origin_response_bus.jsonl\norigin response index: foreman/artifacts/origin_dash_responses.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-tinkerpit-packet-inbox.mjs",
+      "code": 0,
+      "stdout": "wrote 4 packet inbox entries to C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\packet_inbox.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-packet-status.mjs",
+      "code": 0,
+      "stdout": "wrote 4 packet status entries to C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\packet_status.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-packet-inbox-lifecycle.mjs",
+      "code": 0,
+      "stdout": "wrote 4 packet lifecycle entries to C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\packet_lifecycle.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-aeye-relay-evidence.mjs",
+      "code": 0,
+      "stdout": "wrote Aeye relay evidence to foreman/artifacts/aeye_relay_evidence.json with status PASS_LOCAL_DAEMON_FULL_RETURN_LOOP_PROVEN",
+      "stderr": ""
+    }
+  ]
+}

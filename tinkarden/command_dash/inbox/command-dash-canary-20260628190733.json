@@ -1,0 +1,16 @@
+{
+  "command_id": "command-dash-canary-20260628190733",
+  "title": "Fresh Aeye loop canary",
+  "action": "Prove a fresh Command Dash packet returns to origin dash",
+  "body": "Fresh canary generated at 2026-06-28T19:07:33.272Z. This packet must leave Command Dash, reach a local Aeye daemon, receive an answer, and return to Command Dash.",
+  "lane": "Relay Verification",
+  "tags": [
+    "command-dash",
+    "relay",
+    "canary",
+    "freshness"
+  ],
+  "target_address": "Thufir@Sally",
+  "created_at": "2026-06-28T19:07:33.272Z",
+  "status": "NEW"
+}

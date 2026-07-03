@@ -32,4 +32,6 @@ Do not enter credentials, secrets, payment information, OAuth approvals, account
 
 Every agent must report its execution context before making file-system, repo-state, environment, runtime, or deployment claims. Allowed: `LOCAL_SALLY_WINDOWS`, `CURSOR_CLOUD_CONTAINER`, `CODEX_LOCAL`, `COWORK_BROWSER`, `UNKNOWN`. A `CURSOR_CLOUD_CONTAINER` agent must not claim to inspect Windows desktop folders, Sally local `.env` files, Sally localhost/dev server, or Sally uncommitted changes; it requests a `LOCAL_SALLY_WINDOWS` check instead.
 
-Hands-capable local agents must also deliver **LOCAL HANDS READBACK** at session start (see above). Full rules: `foreman/EXECUTION_CONTEXT_RULES.md`.
+Hands-capable local agents must also deliver **LOCAL HANDS READBACK** at session start (see above). Full format and gate: `foreman/EXECUTION_CONTEXT_RULES.md`.
+
+**Permission Swatter (Aeye Windows):** `foreman/PERMISSION_SWATTER_V1.md` — sub-steps inside total-approved projects in `foreman/gates/APPROVED_PROJECT_REGISTRY.json` may proceed without treating each prompt as a new human gate. Never swat push, merge, deploy, money, secrets, or destructive actions.

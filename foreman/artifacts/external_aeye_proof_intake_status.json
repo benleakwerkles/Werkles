@@ -1,0 +1,20 @@
+{
+  "artifact_id": "EXTERNAL_AEYE_PROOF_INTAKE_STATUS_V0",
+  "updated_at": "2026-06-28T19:28:14.336Z",
+  "status": "WAITING_FOR_EXTERNAL_PROOF",
+  "external_event_rows": 0,
+  "external_events": "data/organism/aeye_external_events.jsonl",
+  "template": "foreman/artifacts/external_aeye_proof_template.json",
+  "accepted_event_types": [
+    "aeye_answer_observed",
+    "aeye_chat_created",
+    "aeye_query_sent",
+    "aeye_query_visible",
+    "aeye_receipt_ack",
+    "answer_received",
+    "nerdkle_prompt_activity",
+    "packet_left_local_system",
+    "packet_left_relay_boundary"
+  ],
+  "last_action": "status_refreshed"
+}

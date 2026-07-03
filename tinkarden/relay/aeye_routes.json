@@ -1,0 +1,40 @@
+{
+  "version": "COMMAND_DASH_AEYE_RELAY_V0",
+  "default_target": "Dink@Sally",
+  "targets": {
+    "Dink@Sally": {
+      "aeye": "Dink",
+      "machine": "Sally",
+      "inbox": "tinkarden/aeyes/Dink@Sally/inbox"
+    },
+    "Thufir@Sally": {
+      "aeye": "Thufir",
+      "machine": "Sally",
+      "inbox": "tinkarden/aeyes/Thufir@Sally/inbox"
+    },
+    "Bean@Sally": {
+      "aeye": "Bean",
+      "machine": "Sally",
+      "inbox": "tinkarden/aeyes/Bean@Sally/inbox"
+    },
+    "Ender@Betsy": {
+      "aeye": "Ender",
+      "machine": "Betsy",
+      "inbox": "tinkarden/aeyes/Ender@Betsy/inbox"
+    }
+  },
+  "rules": [
+    {
+      "target": "Thufir@Sally",
+      "match": ["validation", "validate", "pre-flight", "preflight", "gpg", "governance", "proof", "receipt"]
+    },
+    {
+      "target": "Bean@Sally",
+      "match": ["attack", "exploit", "red-team", "red team", "drift", "threat", "security"]
+    },
+    {
+      "target": "Ender@Betsy",
+      "match": ["architecture", "schema", "decision", "copy", "long-form", "longform", "apoptosis"]
+    }
+  ]
+}

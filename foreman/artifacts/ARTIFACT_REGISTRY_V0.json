@@ -1,0 +1,165 @@
+{
+  "registry_id": "artifact-registry-v0",
+  "name": "Artifact Registry V0",
+  "owner": "DINK",
+  "machine": "SALLY",
+  "created_at": "2026-06-17T05:34:27.7217184-04:00",
+  "artifacts": [
+    {
+      "artifact_id": "receipt-drawer-v1",
+      "name": "Receipt Drawer V1",
+      "owner": "DINK",
+      "machine": "SALLY",
+      "status": "SHIPPED",
+      "path": "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\wonka-den-proof.tsx",
+      "url": "http://localhost:3000/soledash",
+      "created_at": "2026-06-17T05:27:00-04:00",
+      "receipt": {
+        "route": "http://localhost:3000/soledash",
+        "api_endpoint": "http://localhost:3000/api/soledash/v1/wonka-den/prove",
+        "files": [
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\soledash\\page.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\soledash\\soledash.css",
+          "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\next-step-panel.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\wonka-den-proof.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\api\\soledash\\v1\\wonka-den\\prove\\route.ts"
+        ],
+        "sample_payload": {
+          "verdict": "SWAT",
+          "command_id": "PROVE_HOSTNAME",
+          "executed": true,
+          "machine_hostname": "SALLY",
+          "timestamp": "2026-06-17T00:00:00.000Z",
+          "stdout": "SALLY",
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "artifact_id": "swatter-v0",
+      "name": "Swatter V0",
+      "owner": "DINK",
+      "machine": "SALLY",
+      "status": "SHIPPED",
+      "path": "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\swatter-proof.tsx",
+      "url": "http://127.0.0.1:3004/soledash",
+      "created_at": "2026-06-18T23:57:04.6623770-04:00",
+      "receipt": {
+        "route": "http://127.0.0.1:3004/soledash",
+        "api_endpoint": "http://127.0.0.1:3004/api/soledash/v1/swatter",
+        "files": [
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\api\\soledash\\v1\\swatter\\route.ts",
+          "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\swatter-proof.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\next-step-panel.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\soledash\\soledash.css",
+          "C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\ARTIFACT_REGISTRY_V0.json"
+        ],
+        "command_ids": [
+          "PROBE_SWATTER",
+          "SWAT_CMD_ERROR_DIALOG",
+          "SWAT_UNRESPONSIVE_RUSTDESK_VIEWERS"
+        ],
+        "safeguards": [
+          "no free text commands",
+          "unknown command IDs return STOP",
+          "cmd.exe dialog action uses exact window title only",
+          "RustDesk action preserves service PID",
+          "RustDesk action only terminates unresponsive Remote Desktop viewer windows"
+        ],
+        "sample_payload": {
+          "verdict": "SWAT",
+          "command_id": "PROBE_SWATTER",
+          "executed": true,
+          "machine": "SALLY",
+          "timestamp": "2026-06-18T23:57:04.6623770-04:00",
+          "stdout": "SWATTER_PROBE",
+          "stderr": "",
+          "exit_code": 0,
+          "destructive": false
+        }
+      }
+    },
+    {
+      "artifact_id": "permission-swatter-v0",
+      "name": "Permission Swatter V0",
+      "owner": "DINK",
+      "machine": "SALLY",
+      "status": "SHIPPED",
+      "path": "C:\\Users\\benle\\Documents\\Werkles\\lib\\permission-swatter.ts",
+      "url": "http://127.0.0.1:3004/soledash",
+      "created_at": "2026-06-19T00:45:00-04:00",
+      "receipt": {
+        "route": "http://127.0.0.1:3004/soledash",
+        "api_endpoint": "http://127.0.0.1:3004/api/soledash/v1/permission-swatter",
+        "files": [
+          "C:\\Users\\benle\\Documents\\Werkles\\lib\\permission-swatter.ts",
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\api\\soledash\\v1\\permission-swatter\\route.ts",
+          "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\permission-swatter-panel.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\components\\soledash\\next-step-panel.tsx",
+          "C:\\Users\\benle\\Documents\\Werkles\\app\\soledash\\soledash.css",
+          "C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\ARTIFACT_REGISTRY_V0.json"
+        ],
+        "doctrine": {
+          "auto_swat_only_when": "verdict is SWAT and auto_approval_allowed is true",
+          "never_auto_approve": "HUMAN_GATE, WATCH, or STOP",
+          "true_human_gate_disposition": "ESCALATE_TO_BEN"
+        },
+        "sample_payload": {
+          "artifact_id": "permission-swatter-v0",
+          "verdict": "SWAT",
+          "disposition": "SWAT_AWAY",
+          "auto_approval_allowed": true,
+          "human_gate": false,
+          "rule_id": "NG_LOCAL_TYPECHECK"
+        }
+      }
+    },
+    {
+      "artifact_id": "approval-registry",
+      "name": "Approval Registry",
+      "owner": "Codex Foreman",
+      "machine": "SALLY",
+      "status": "SHIPPED",
+      "path": "C:\\Users\\benle\\Documents\\Werkles\\foreman\\gates\\APPROVAL_LOG.md",
+      "url": "",
+      "created_at": "2026-06-17T05:34:27.7217184-04:00",
+      "receipt": {
+        "route": "local file",
+        "api_endpoint": "http://localhost:3000/api/artifacts/v0?request=Approval%20Registry",
+        "files": [
+          "C:\\Users\\benle\\Documents\\Werkles\\foreman\\gates\\APPROVAL_LOG.md"
+        ]
+      }
+    },
+    {
+      "artifact_id": "agent-inventory-roster",
+      "name": "Agent Inventory Roster",
+      "owner": "UNKNOWN",
+      "machine": "UNKNOWN",
+      "status": "WATCH",
+      "path": "UNRESOLVED: no Agent Inventory Roster artifact found in C:\\Users\\benle\\Documents\\Werkles",
+      "url": "",
+      "created_at": "2026-06-17T05:34:27.7217184-04:00",
+      "receipt": {
+        "route": "unresolved",
+        "api_endpoint": "http://localhost:3000/api/artifacts/v0?request=Agent%20Inventory%20Roster",
+        "files": []
+      }
+    },
+    {
+      "artifact_id": "fleet-state",
+      "name": "Fleet State",
+      "owner": "UNKNOWN",
+      "machine": "UNKNOWN",
+      "status": "WATCH",
+      "path": "UNRESOLVED: no Fleet State artifact found in C:\\Users\\benle\\Documents\\Werkles",
+      "url": "",
+      "created_at": "2026-06-17T05:34:27.7217184-04:00",
+      "receipt": {
+        "route": "unresolved",
+        "api_endpoint": "http://localhost:3000/api/artifacts/v0?request=Fleet%20State",
+        "files": []
+      }
+    }
+  ]
+}

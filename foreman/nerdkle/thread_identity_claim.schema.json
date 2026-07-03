@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nerdkle.thread_identity_claim.v0",
+  "title": "Nerdkle thread identity claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "claim_id",
+    "address",
+    "platform",
+    "proof_scope",
+    "thread_id",
+    "observed_at",
+    "evidence"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_.-]{6,120}$"
+    },
+    "address": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+@[A-Za-z0-9_-]+$"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "local_file",
+        "codex_thread",
+        "chatgpt",
+        "claude",
+        "gemini",
+        "cursor",
+        "doss_remote"
+      ]
+    },
+    "proof_scope": {
+      "type": "string",
+      "enum": [
+        "local_daemon",
+        "local_codex_index",
+        "external_platform",
+        "remote_machine"
+      ]
+    },
+    "thread_id": {
+      "type": "string",
+      "minLength": 6
+    },
+    "thread_url": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string",
+      "minLength": 20
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "value"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "file",
+              "jsonl_event",
+              "codex_thread",
+              "remote_receipt",
+              "operator_observation"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

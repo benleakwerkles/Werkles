@@ -1,0 +1,190 @@
+{
+  "packet_id": "GHOST_FORGE_POP_TODAY_20260629",
+  "source_file": "C:/Users/benle/Desktop/GHOST_FORGE_IMAGERY_SHOPPING_LIST.md",
+  "generated_at": "2026-06-29T17:08:05-04:00",
+  "status": "READY_BLOCKED_BY_HUMAN_GATE",
+  "run_intent": "Prepare the first Ghost Forge / render batch that makes the current blockout pop using the five highest-impact 2D imagery assets.",
+  "scope": {
+    "asset_domain": "2D imagery only",
+    "allowed_outputs": [
+      "tileable surface textures",
+      "transparent decals",
+      "VFX flipbook frame sheet"
+    ],
+    "excluded_outputs": [
+      "3D meshes",
+      "MetaHuman assets",
+      "Unreal scene mutation",
+      "provider execution",
+      "paid image generation"
+    ]
+  },
+  "external_execution": {
+    "enabled": false,
+    "reason": "Repo cockpit currently forbids Ghost Forge runs, image generation, and paid provider calls until Ben clears the human gate.",
+    "required_gate_to_run": "Explicit Ben approval for Ghost Forge/image generation/provider execution plus any spend or provider-account action."
+  },
+  "house_style": {
+    "name": "Oddly Godly",
+    "executable_prompt_prefix": "Oddly Godly: wet Atlanta night, modern urban fantasy, grounded lived-in grimy realism, cinematic high-detail PBR material quality, sodium-orange streetlight warmth against abyss-blue and teal shadow, abyss-blue Goop with teal-cyan glow and firework-ember magic, grotesque horror-comedy edge.",
+    "style_translation_note": "The shopping list's franchise lineage is translated into generic visual goals for executable prompts so the run does not ask for copied game styles or protected characters.",
+    "palette": {
+      "sodium_orange": "#FF9E47",
+      "abyss_blue": "#1B3A6B",
+      "goop_teal_cyan": "#2EE6D6",
+      "firework_magenta": "#C24BFF",
+      "dirty_cream": "#D9CDB8",
+      "washed_black": "#0E1116"
+    },
+    "global_negative_prompt": "No real brand logos, no readable real-world text, no celebrity likeness, no copied game UI or HUD, no recognizable existing-game monsters or characters, no real license plates, no watermark, no signature, no border, fictional marks only."
+  },
+  "batch": {
+    "name": "Make It POP Today",
+    "asset_count": 5,
+    "priority_order": [
+      "T1_001_WET_ASPHALT_SODIUM_LIT",
+      "T1_006_GOOP_RESIDUE_OVERLAY",
+      "T2_007_WET_PUDDLE_DECALS",
+      "T2_008_GOOP_SPLATTER_DECALS",
+      "T5_025_GOOP_FIREWORK_BURST"
+    ],
+    "assets": [
+      {
+        "asset_id": "T1_001_WET_ASPHALT_SODIUM_LIT",
+        "shopping_list_ref": "Tier 1 #1",
+        "title": "Wet asphalt, sodium-lit",
+        "asset_kind": "tileable_surface_texture",
+        "target_use": "Primary street material under night lighting",
+        "target_resolution": "4096x4096 hero square",
+        "preferred_channels": [
+          "albedo",
+          "height",
+          "roughness_hint",
+          "normal_optional"
+        ],
+        "delivery_names": {
+          "albedo": "T_OG_ATL_WetAsphalt_SodiumLit_Albedo",
+          "height": "T_OG_ATL_WetAsphalt_SodiumLit_Height",
+          "roughness": "T_OG_ATL_WetAsphalt_SodiumLit_Roughness",
+          "normal": "T_OG_ATL_WetAsphalt_SodiumLit_Normal"
+        },
+        "prompt": "Oddly Godly: wet Atlanta night, modern urban fantasy, grounded lived-in grimy realism, cinematic high-detail PBR material quality, sodium-orange streetlight warmth against abyss-blue and teal shadow, abyss-blue Goop with teal-cyan glow and firework-ember magic, grotesque horror-comedy edge. Seamless tileable wet asphalt surface, dark rain-soaked road, shallow puddling, oil sheen, fine gravel aggregate, faint fictional lane-paint ghosting, sodium streetlight reflections, subtle abyss-blue shadow in cracks, realistic micro-scratches and tire polish, no curb, no cars, no people, no perspective camera. Output a square seamless PBR surface texture with albedo plus height and roughness cues.",
+        "negative_prompt": "No real brand logos, no readable real-world text, no celebrity likeness, no copied game UI or HUD, no recognizable existing-game monsters or characters, no real license plates, no watermark, no signature, no border, fictional marks only. Avoid obvious seams, repeating stamp patterns, clean new pavement, daytime lighting, readable road text, vehicle parts, sidewalks, buildings, or camera depth.",
+        "acceptance_checks": [
+          "Tiles seamlessly on all edges",
+          "Reads as wet asphalt at game camera distance",
+          "Contains sodium-orange highlight warmth and abyss-blue shadow",
+          "No readable real-world text or brand mark"
+        ]
+      },
+      {
+        "asset_id": "T1_006_GOOP_RESIDUE_OVERLAY",
+        "shopping_list_ref": "Tier 1 #6",
+        "title": "Goop residue overlay",
+        "asset_kind": "tileable_translucent_overlay",
+        "target_use": "Signature Oddly Godly layer over streets, walls, and props",
+        "target_resolution": "4096x4096 square with alpha if supported",
+        "preferred_channels": [
+          "albedo_or_color",
+          "opacity_alpha",
+          "emissive_mask",
+          "height_optional"
+        ],
+        "delivery_names": {
+          "color": "T_OG_ATL_GoopResidueOverlay_Color",
+          "alpha": "T_OG_ATL_GoopResidueOverlay_Alpha",
+          "emissive": "T_OG_ATL_GoopResidueOverlay_Emissive",
+          "height": "T_OG_ATL_GoopResidueOverlay_Height"
+        },
+        "prompt": "Oddly Godly: wet Atlanta night, modern urban fantasy, grounded lived-in grimy realism, cinematic high-detail PBR material quality, sodium-orange streetlight warmth against abyss-blue and teal shadow, abyss-blue Goop with teal-cyan glow and firework-ember magic, grotesque horror-comedy edge. Seamless translucent abyss-blue and teal-cyan organic residue film, wet viscous streaks, thin oily membranes, branching hand-smear shapes, embedded firework-magenta ember flecks, subtle bioluminescent rim, designed as a reusable overlay that can sit on asphalt, concrete, brick, or metal. Output square tileable overlay with alpha/opacity intent and emissive-mask intent.",
+        "negative_prompt": "No real brand logos, no readable real-world text, no celebrity likeness, no copied game UI or HUD, no recognizable existing-game monsters or characters, no real license plates, no watermark, no signature, no border, fictional marks only. Avoid creature faces, tentacle characters, readable symbols, hard black background baked into the asset, dry paint, candy colors, and obvious pattern seams.",
+        "acceptance_checks": [
+          "Distinctly signature Goop, not generic slime",
+          "Works as translucent layer over multiple materials",
+          "Has teal-cyan Goop and magenta ember accents",
+          "No recognizable creature or IP-derived form"
+        ]
+      },
+      {
+        "asset_id": "T2_007_WET_PUDDLE_DECALS",
+        "shopping_list_ref": "Tier 2 #7",
+        "title": "Wet puddle decals",
+        "asset_kind": "transparent_decal_atlas",
+        "target_use": "Streetlight reflection pools and scene wetness",
+        "target_resolution": "2048x2048 transparent PNG atlas",
+        "variant_count": "3-4 puddle shapes",
+        "preferred_channels": [
+          "color",
+          "alpha",
+          "roughness_hint"
+        ],
+        "delivery_names": {
+          "atlas": "D_OG_WetPuddles_Atlas",
+          "alpha": "D_OG_WetPuddles_Alpha"
+        },
+        "prompt": "Oddly Godly: wet Atlanta night, modern urban fantasy, grounded lived-in grimy realism, cinematic high-detail PBR material quality, sodium-orange streetlight warmth against abyss-blue and teal shadow, abyss-blue Goop with teal-cyan glow and firework-ember magic, grotesque horror-comedy edge. Transparent decal atlas of 3 to 4 irregular wet puddles for asphalt and sidewalk projection, subtle ripple rings, oil-sheen edge, sodium-orange highlight streaks, abyss-blue shadow cores, believable rainwater shapes, isolated decals with clean alpha and no baked ground surface.",
+        "negative_prompt": "No real brand logos, no readable real-world text, no celebrity likeness, no copied game UI or HUD, no recognizable existing-game monsters or characters, no real license plates, no watermark, no signature, no border, fictional marks only. Avoid full background textures, rectangular patches, obvious repeated blobs, fish-eye reflections, objects reflected in the puddles, or readable signs.",
+        "acceptance_checks": [
+          "Transparent isolated puddle shapes",
+          "At least three usable variants",
+          "Works on dark asphalt without a visible rectangular edge",
+          "Includes warm streetlight reflection and cool shadow"
+        ]
+      },
+      {
+        "asset_id": "T2_008_GOOP_SPLATTER_DECALS",
+        "shopping_list_ref": "Tier 2 #8",
+        "title": "Goop splatter and residue decals",
+        "asset_kind": "transparent_decal_atlas",
+        "target_use": "Goop drips, pools, hand smears, and ember sparks",
+        "target_resolution": "2048x2048 transparent PNG atlas",
+        "variant_count": "5-6 decal shapes",
+        "preferred_channels": [
+          "color",
+          "alpha",
+          "emissive_mask"
+        ],
+        "delivery_names": {
+          "atlas": "D_OG_GoopSplatterResidue_Atlas",
+          "alpha": "D_OG_GoopSplatterResidue_Alpha",
+          "emissive": "D_OG_GoopSplatterResidue_Emissive"
+        },
+        "prompt": "Oddly Godly: wet Atlanta night, modern urban fantasy, grounded lived-in grimy realism, cinematic high-detail PBR material quality, sodium-orange streetlight warmth against abyss-blue and teal shadow, abyss-blue Goop with teal-cyan glow and firework-ember magic, grotesque horror-comedy edge. Transparent decal atlas of 5 to 6 abyss-blue Goop splatters, drips, small pools, dragged hand-smears, and thin residue streaks, teal-cyan wet glow, firework-magenta ember sparks embedded in the fluid, high contrast edges for readable projection decals, isolated on alpha with no background.",
+        "negative_prompt": "No real brand logos, no readable real-world text, no celebrity likeness, no copied game UI or HUD, no recognizable existing-game monsters or characters, no real license plates, no watermark, no signature, no border, fictional marks only. Avoid cartoon slime, monster anatomy, readable runes, real graffiti tags, symmetrical icons, and hard rectangular backing.",
+        "acceptance_checks": [
+          "At least five distinct decal shapes",
+          "Transparent alpha isolation",
+          "Clearly abyss-blue/teal Goop with ember flecks",
+          "Not a creature, logo, or readable symbol"
+        ]
+      },
+      {
+        "asset_id": "T5_025_GOOP_FIREWORK_BURST",
+        "shopping_list_ref": "Tier 5 #25",
+        "title": "Goop firework burst",
+        "asset_kind": "vfx_flipbook_frame_sheet",
+        "target_use": "Signature magic pop for Niagara-style burst effect",
+        "target_resolution": "4096x4096 power-of-two flipbook",
+        "grid": "8x8",
+        "variant_count": "2-3 burst variants if provider supports batch variants",
+        "preferred_channels": [
+          "color",
+          "alpha",
+          "emissive_intent"
+        ],
+        "delivery_names": {
+          "flipbook": "FX_OG_GoopBurst_8x8_ColorAlpha",
+          "emissive": "FX_OG_GoopBurst_8x8_Emissive"
+        },
+        "prompt": "Oddly Godly: wet Atlanta night, modern urban fantasy, grounded lived-in grimy realism, cinematic high-detail PBR material quality, sodium-orange streetlight warmth against abyss-blue and teal shadow, abyss-blue Goop with teal-cyan glow and firework-ember magic, grotesque horror-comedy edge. Power-of-two 8x8 VFX flipbook frame sheet showing a Goop firework burst: abyss-blue core eruption, teal-cyan liquid-energy petals, firework-magenta spark trails, ember fragments, fast explosive opening into dissipating wet luminous mist, isolated on transparent alpha, suitable for a game particle system. Keep each frame centered and evenly spaced in the grid.",
+        "negative_prompt": "No real brand logos, no readable real-world text, no celebrity likeness, no copied game UI or HUD, no recognizable existing-game monsters or characters, no real license plates, no watermark, no signature, no border, fictional marks only. Avoid anime character silhouettes, magic circles with readable text, UI icons, full scene backgrounds, off-grid frames, nontransparent backing, and copyrighted monster shapes.",
+        "acceptance_checks": [
+          "8x8 flipbook grid with 64 readable frames",
+          "Transparent alpha intent",
+          "Burst reads as Goop plus fireworks, not generic explosion",
+          "Centered frames with no UI or character silhouette"
+        ]
+      }
+    ]
+  }
+}

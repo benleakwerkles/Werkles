@@ -1,0 +1,18 @@
+{
+  "command_id": "command-dash-speaker-consult-001",
+  "title": "Prove Speaker is consulted before Nerdkle relay",
+  "action": "Prove Speaker context is attached before a packet reaches a local Aeye",
+  "body": "Fresh kernel proof packet: consult Speaker causal memory, attach the advisory warning entries, deliver to Thufir@Sally, receive a local answer, and return it to the origin dash evidence bus.",
+  "lane": "Nerdkle Kernel Verification",
+  "tags": [
+    "command-dash",
+    "relay",
+    "speaker",
+    "thread-registry",
+    "kernel",
+    "proof"
+  ],
+  "target_address": "Thufir@Sally",
+  "created_at": "2026-06-28T21:45:00.000Z",
+  "status": "NEW"
+}

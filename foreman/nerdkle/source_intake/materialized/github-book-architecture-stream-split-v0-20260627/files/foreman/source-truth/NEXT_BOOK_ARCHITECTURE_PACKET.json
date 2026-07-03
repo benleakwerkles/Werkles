@@ -1,0 +1,16 @@
+{
+  "packet_id": "NEXT_BOOK_ARCHITECTURE_PACKET_20260627",
+  "owner": "Swanson@Doss",
+  "stream": "BOOK / ARCHITECTURE MANUSCRIPT",
+  "status": "READY_FOR_REVIEW",
+  "source_artifact": "book/architecture/STREAM_SPLIT_AND_PROOF_BOUNDARIES_V0.md",
+  "source_artifact_status": "MANUSCRIPT_ONLY_NOT_AUTOMATION_PROOF",
+  "next_action": "Review whether this manuscript slice should be merged to GitHub main as a boundary reference.",
+  "evidence_required": [
+    "GitHub review branch exists",
+    "STREAM_SPLIT_MANUSCRIPT_BOUNDARY_CHECK returns ARTIFACT",
+    "Human merge decision exists"
+  ],
+  "destination": "TinkerDen Intake / Speaker",
+  "failure_condition": "Any Aeye uses this manuscript slice as proof that automation, NMCLR, Feral, TinkerDen, Dink, or Maker artifacts work."
+}

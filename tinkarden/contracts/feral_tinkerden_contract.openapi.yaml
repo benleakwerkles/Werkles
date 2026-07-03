@@ -1,0 +1,654 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Feral/TinkerDen Contract Surface",
+    "version": "0.1.0",
+    "description": "Contract-only surface for BIRD #002 dry-run, shadow-merge, and immutable receipt lookup. This artifact defines no live execution path."
+  },
+  "servers": [
+    {
+      "url": "contract://feral-tinkerden",
+      "description": "Contract-only target. No live service is bound by this artifact."
+    }
+  ],
+  "x-artifact": {
+    "packet_id": "DINK_SALLY_FERAL_TINKERDEN_CONTRACT_SURFACE_V0_2026_06_26",
+    "owner": "Dink@Sally",
+    "stream": "FERAL / TINKERDEN / CONTRACT SURFACE",
+    "bird": "BIRD #002"
+  },
+  "x-safety-invariants": {
+    "dry_run_mutates_live_state": false,
+    "shadow_merge_requires_prior_dry_run_receipt": true,
+    "receipt_get_returns_immutable_data": true,
+    "destructive_actions_remain_staged_unless_receipt_trail_exists": true,
+    "silent_live_promotion_allowed": false,
+    "operator_path_live_semantics_allowed": false,
+    "autonomous_action_scoring_allowed": false,
+    "live_execution_allowed": false
+  },
+  "x-ui-event-block-field-mapping": {
+    "event_block_id": {
+      "api_schema": "Intent",
+      "api_field": "event_block_id"
+    },
+    "event_block_kind": {
+      "api_schema": "Intent",
+      "api_field": "kind"
+    },
+    "event_block_label": {
+      "api_schema": "Intent",
+      "api_field": "label"
+    },
+    "event_block_payload": {
+      "api_schema": "Intent",
+      "api_field": "payload"
+    },
+    "requested_action": {
+      "api_schema": "Action",
+      "api_field": "kind"
+    },
+    "action_target": {
+      "api_schema": "Action",
+      "api_field": "target"
+    },
+    "destructive": {
+      "api_schema": "Action",
+      "api_field": "destructive"
+    },
+    "target_branch": {
+      "api_schema": "Branch",
+      "api_field": "name"
+    },
+    "dry_run_receipt_id": {
+      "api_schema": "ShadowMergeRequest",
+      "api_field": "dry_run_receipt_id"
+    }
+  },
+  "paths": {
+    "/v1/action/dry_run": {
+      "post": {
+        "operationId": "createActionDryRun",
+        "summary": "Evaluate an action request without mutating live state.",
+        "x-contract-stage": "dry_run",
+        "x-live-mutation": false,
+        "x-live-execution": false,
+        "x-autonomous-action-scoring": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Action"
+              },
+              "examples": {
+                "stagedPatchDryRun": {
+                  "value": {
+                    "intent": {
+                      "event_block_id": "evtblk_002",
+                      "kind": "feral.event_block.intent",
+                      "label": "BIRD #002 contract check",
+                      "payload": {
+                        "source": "feral-shell"
+                      }
+                    },
+                    "kind": "stage_patch",
+                    "target": "tinkarden/contracts",
+                    "branch": {
+                      "name": "bird-002-shadow",
+                      "base": "local-contract",
+                      "mode": "shadow",
+                      "live": false
+                    },
+                    "destructive": false,
+                    "stage": "staged",
+                    "requires_receipt_trail": true,
+                    "receipt_trail": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dry-run result with a receipt id. Live state remains unchanged.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DryRunResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dry-run request rejected before any live mutation can occur.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/action/shadow_merge": {
+      "post": {
+        "operationId": "createActionShadowMerge",
+        "summary": "Merge only into a shadow branch after a prior dry-run receipt is supplied.",
+        "x-contract-stage": "shadow_merge",
+        "x-requires-prior-dry-run-receipt": true,
+        "x-live-mutation": false,
+        "x-live-execution": false,
+        "x-autonomous-action-scoring": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShadowMergeRequest"
+              },
+              "examples": {
+                "shadowMergeWithReceipt": {
+                  "value": {
+                    "dry_run_receipt_id": "rcpt_dry_run_002",
+                    "action": {
+                      "intent": {
+                        "event_block_id": "evtblk_002",
+                        "kind": "feral.event_block.intent",
+                        "label": "BIRD #002 contract check",
+                        "payload": {
+                          "source": "feral-shell"
+                        }
+                      },
+                      "kind": "stage_patch",
+                      "target": "tinkarden/contracts",
+                      "branch": {
+                        "name": "bird-002-shadow",
+                        "base": "local-contract",
+                        "mode": "shadow",
+                        "live": false
+                      },
+                      "destructive": false,
+                      "stage": "staged",
+                      "requires_receipt_trail": true,
+                      "receipt_trail": [
+                        "rcpt_dry_run_002"
+                      ]
+                    },
+                    "branch": {
+                      "name": "bird-002-shadow",
+                      "base": "local-contract",
+                      "mode": "shadow",
+                      "live": false
+                    },
+                    "mode": "shadow_merge",
+                    "apply_live": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shadow merge accepted and recorded with an immutable receipt.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowMergeResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Rejected because a required prior dry-run receipt id or field is missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResult"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Rejected because the supplied prior dry-run receipt cannot be used for this shadow merge.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/receipt/{id}": {
+      "get": {
+        "operationId": "getImmutableReceipt",
+        "summary": "Return immutable receipt data by id.",
+        "x-contract-stage": "receipt_lookup",
+        "x-receipt-mutability": "immutable",
+        "x-live-mutation": false,
+        "x-live-execution": false,
+        "x-autonomous-action-scoring": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Immutable receipt found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No receipt exists for the supplied id.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Intent": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_block_id",
+          "kind",
+          "label",
+          "payload"
+        ],
+        "properties": {
+          "event_block_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "feral.event_block.intent"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "payload": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "Action": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "intent",
+          "kind",
+          "target",
+          "branch",
+          "destructive",
+          "stage",
+          "requires_receipt_trail",
+          "receipt_trail"
+        ],
+        "properties": {
+          "intent": {
+            "$ref": "#/components/schemas/Intent"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "stage_patch",
+              "stage_contract_review",
+              "stage_receipt_lookup"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "branch": {
+            "$ref": "#/components/schemas/Branch"
+          },
+          "destructive": {
+            "type": "boolean"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "staged"
+            ]
+          },
+          "requires_receipt_trail": {
+            "type": "boolean"
+          },
+          "receipt_trail": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "destructive": {
+                  "const": true
+                }
+              },
+              "required": [
+                "destructive"
+              ]
+            },
+            "then": {
+              "required": [
+                "receipt_trail"
+              ],
+              "properties": {
+                "stage": {
+                  "const": "staged"
+                },
+                "requires_receipt_trail": {
+                  "const": true
+                },
+                "receipt_trail": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Branch": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "base",
+          "mode",
+          "live"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._/-]+$"
+          },
+          "base": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "shadow",
+              "staged"
+            ]
+          },
+          "live": {
+            "type": "boolean",
+            "const": false
+          }
+        }
+      },
+      "Receipt": {
+        "type": "object",
+        "additionalProperties": false,
+        "readOnly": true,
+        "required": [
+          "id",
+          "kind",
+          "created_at",
+          "immutable",
+          "action",
+          "friction_state",
+          "live_mutation",
+          "receipt_trail",
+          "content_hash"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "readOnly": true
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "dry_run",
+              "shadow_merge"
+            ],
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "immutable": {
+            "type": "boolean",
+            "const": true,
+            "readOnly": true
+          },
+          "action": {
+            "$ref": "#/components/schemas/Action"
+          },
+          "friction_state": {
+            "$ref": "#/components/schemas/FrictionState"
+          },
+          "dry_run_receipt_id": {
+            "type": "string",
+            "minLength": 1,
+            "readOnly": true
+          },
+          "live_mutation": {
+            "type": "boolean",
+            "const": false,
+            "readOnly": true
+          },
+          "receipt_trail": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "readOnly": true
+          },
+          "content_hash": {
+            "type": "string",
+            "minLength": 1,
+            "readOnly": true
+          }
+        }
+      },
+      "FrictionState": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "state",
+          "reasons",
+          "human_gate_required"
+        ],
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "clear",
+              "needs_receipt",
+              "blocked"
+            ]
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "human_gate_required": {
+            "type": "boolean"
+          }
+        }
+      },
+      "DryRunResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "receipt_id",
+          "receipt",
+          "friction_state",
+          "would_mutate_live_state",
+          "live_execution",
+          "staged_actions"
+        ],
+        "properties": {
+          "receipt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "receipt": {
+            "$ref": "#/components/schemas/Receipt"
+          },
+          "friction_state": {
+            "$ref": "#/components/schemas/FrictionState"
+          },
+          "would_mutate_live_state": {
+            "type": "boolean",
+            "const": false
+          },
+          "live_execution": {
+            "type": "boolean",
+            "const": false
+          },
+          "staged_actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Action"
+            }
+          }
+        }
+      },
+      "ShadowMergeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "dry_run_receipt_id",
+          "action",
+          "branch",
+          "mode",
+          "apply_live"
+        ],
+        "properties": {
+          "dry_run_receipt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "$ref": "#/components/schemas/Action"
+          },
+          "branch": {
+            "$ref": "#/components/schemas/Branch"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "shadow_merge"
+            ]
+          },
+          "apply_live": {
+            "type": "boolean",
+            "const": false
+          }
+        }
+      },
+      "ShadowMergeResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "receipt_id",
+          "receipt",
+          "merged_shadow_branch",
+          "live_execution",
+          "applied_live"
+        ],
+        "properties": {
+          "receipt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "receipt": {
+            "$ref": "#/components/schemas/Receipt"
+          },
+          "merged_shadow_branch": {
+            "$ref": "#/components/schemas/Branch"
+          },
+          "live_execution": {
+            "type": "boolean",
+            "const": false
+          },
+          "applied_live": {
+            "type": "boolean",
+            "const": false
+          }
+        }
+      },
+      "ErrorResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error",
+          "message",
+          "status",
+          "receipt_id"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "integer",
+            "minimum": 400
+          },
+          "receipt_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

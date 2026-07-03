@@ -1,0 +1,73 @@
+{
+  "event_type": "aeye_loop_supervisor_run",
+  "started_at": "2026-06-28T19:28:12.611Z",
+  "finished_at": "2026-06-28T19:28:14.960Z",
+  "status": "PASS",
+  "steps": [
+    {
+      "script": "scripts/command-dash-aeye-relay.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "wrote 3 Aeye relay packets to tinkerden/dispatch/packets\nmirrored packets to tinkarden/dispatch/packets\npublished 3 outbound bus events to data/organism/aeye_outbox.jsonl\nmanifest: foreman/artifacts/aeye_relay_manifest.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/local-aeye-daemon.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "local Aeye daemon processed 0 packets\nevent log: data/organism/aeye_events.jsonl\nanswer pickup: data/organism/aeye_answer_pickup.jsonl",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/origin-response-return.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "returned 4 Aeye answers to origin dash\norigin response bus: data/organism/origin_response_bus.jsonl\norigin response index: foreman/artifacts/origin_dash_responses.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/receipt-provenance-scan.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "PASS_RECEIPT_PROVENANCE_INDEXED: 12 candidate identities, 61 source files",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/external-aeye-proof-intake.mjs",
+      "args": [
+        "--status"
+      ],
+      "code": 0,
+      "stdout": "WAITING_FOR_EXTERNAL_PROOF",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-tinkerpit-packet-inbox.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "wrote 4 packet inbox entries to C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\packet_inbox.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-packet-status.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "wrote 4 packet status entries to C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\packet_status.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-packet-inbox-lifecycle.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "wrote 4 packet lifecycle entries to C:\\Users\\benle\\Documents\\Werkles\\foreman\\artifacts\\packet_lifecycle.json",
+      "stderr": ""
+    },
+    {
+      "script": "scripts/build-aeye-relay-evidence.mjs",
+      "args": [],
+      "code": 0,
+      "stdout": "wrote Aeye relay evidence to foreman/artifacts/aeye_relay_evidence.json with status PASS_LOCAL_DAEMON_FULL_RETURN_LOOP_PROVEN",
+      "stderr": ""
+    }
+  ]
+}

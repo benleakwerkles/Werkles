@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ghost Forge POP Today - Live Receipt</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0e1116;
+      --panel: #171b22;
+      --line: #2b323d;
+      --text: #f0eadf;
+      --muted: #b8ad9b;
+      --orange: #ff9e47;
+      --cyan: #2ee6d6;
+      --blue: #1b3a6b;
+      --magenta: #c24bff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    header {
+      display: grid;
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .pill strong { color: var(--cyan); }
+    .preview {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #090b0f;
+      display: block;
+    }
+    section {
+      margin-top: 24px;
+    }
+    h2 {
+      font-size: 17px;
+      margin: 0 0 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      color: var(--orange);
+      font-weight: 700;
+    }
+    td {
+      color: var(--text);
+      word-break: break-word;
+    }
+    .warn {
+      border-left: 3px solid var(--magenta);
+      background: #151019;
+      padding: 12px 14px;
+      color: var(--muted);
+    }
+    code {
+      color: var(--cyan);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Ghost Forge POP Today - Live Receipt</h1>
+      <div class="status">
+        <span class="pill"><strong>LIVE RUN</strong> completed</span>
+        <span class="pill"><strong>5/5</strong> submitted</span>
+        <span class="pill"><strong>5/5</strong> downloaded</span>
+        <span class="pill"><strong>$1.00</strong> estimated</span>
+        <span class="pill"><strong>QA</strong> misses recorded</span>
+      </div>
+    </header>
+
+    <img class="preview" src="ghost_forge_pop_today_contact_sheet.png" alt="Ghost Forge POP Today contact sheet">
+
+    <section>
+      <h2>Run Proof</h2>
+      <table>
+        <tbody>
+          <tr><th>Run ID</th><td><code>GHOST_FORGE_POP_TODAY_20260629-181952</code></td></tr>
+          <tr><th>Worker</th><td><code>https://werkles-ghost-forge1.onrender.com</code></td></tr>
+          <tr><th>Manifest</th><td><code>foreman/ghost-forge/GHOST_FORGE_POP_TODAY_LIVE_RESULTS_20260629.json</code></td></tr>
+          <tr><th>Receipt</th><td><code>foreman/handoffs/GHOST_FORGE_POP_TODAY_LIVE_RECEIPT_20260629.md</code></td></tr>
+          <tr><th>Output dir</th><td><code>public/assets/draft/oddly-godly-pop-today</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>QA Misses</h2>
+      <div class="warn">
+        This was a real Ghost Forge / Render run, but not a final Unreal-ready texture pass. The worker returned 1024x1024 RGB PNGs, no alpha channels, no map sets, and the VFX output is not a true 8x8 flipbook.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "status": "PASS_GHOST_FORGE_POP_TODAY_BATCH_READY_BLOCKED",
+  "generated_at": "2026-06-29T21:11:03.553Z",
+  "packet_id": "GHOST_FORGE_POP_TODAY_20260629",
+  "batch_path": "foreman/ghost-forge/GHOST_FORGE_POP_TODAY_BATCH_20260629.json",
+  "prompt_sheet_path": "foreman/ghost-forge/GHOST_FORGE_POP_TODAY_PROMPTS_20260629.md",
+  "source_file": "C:/Users/benle/Desktop/GHOST_FORGE_IMAGERY_SHOPPING_LIST.md",
+  "asset_count": 5,
+  "asset_ids": [
+    "T1_001_WET_ASPHALT_SODIUM_LIT",
+    "T1_006_GOOP_RESIDUE_OVERLAY",
+    "T2_007_WET_PUDDLE_DECALS",
+    "T2_008_GOOP_SPLATTER_DECALS",
+    "T5_025_GOOP_FIREWORK_BURST"
+  ],
+  "external_run_executed": false,
+  "human_gate_required": "Explicit Ben approval for Ghost Forge/image generation/provider execution plus any spend or provider-account action.",
+  "proof": [
+    "Parsed JSON batch",
+    "Confirmed five POP-today assets",
+    "Confirmed delivery names follow OG asset prefixes",
+    "Confirmed executable prompts avoid explicit protected-franchise lineage terms",
+    "Confirmed external execution remains disabled"
+  ],
+  "warnings": []
+}

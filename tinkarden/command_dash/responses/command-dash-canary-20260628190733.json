@@ -1,0 +1,21 @@
+{
+  "response_id": "origin-response-local-aeye-answer-92ba1cb6e789",
+  "event_type": "origin_response_delivered",
+  "evidence_scope": "local_daemon",
+  "packet_id": "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+  "answer_id": "local-aeye-answer-92ba1cb6e789",
+  "chat_id": "local-aeye-chat-thufir-sally-92ba1cb6e789",
+  "query_id": "local-aeye-query-92ba1cb6e789",
+  "source_surface": "CommandDash",
+  "source_id": "command-dash-canary-20260628190733",
+  "source_path": "tinkarden/command_dash/inbox/command-dash-canary-20260628190733.json",
+  "target_address": "Thufir@Sally",
+  "delivered_at": "2026-06-28T21:55:57.067Z",
+  "answer_received_at": "2026-06-28T19:07:33.532Z",
+  "answer": "LOCAL_AEYE_ACK: Thufir@Sally\nPACKET_ID: AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A\nRECEIVED_AT: 2026-06-28T19:07:33.532Z\nANSWER: Received Nerdkle-originated packet and verified local daemon loop integrity.\nSOURCE_ACTION: Prove a fresh Command Dash packet returns to origin dash\nSOURCE_BODY: Fresh canary generated at 2026-06-28T19:07:33.272Z. This packet must leave Command Dash, reach a local Aeye daemon, receive an answer, and return to Command Dash.",
+  "packet_path": "tinkerden/dispatch/packets/AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A.json",
+  "origin_dash": "CommandDash",
+  "origin_status": "ANSWERED",
+  "response_path": "tinkarden/command_dash/responses/command-dash-canary-20260628190733.json",
+  "dashboard_state_path": "tinkarden/command_dash/dashboard_state.json"
+}

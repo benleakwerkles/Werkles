@@ -1,0 +1,767 @@
+{
+  "artifact_id": "RECEIPT_PROVENANCE_V0",
+  "generated_at": "2026-06-28T19:28:14.220Z",
+  "status": "PASS_RECEIPT_PROVENANCE_INDEXED",
+  "note": "This is provenance evidence, not a final human attribution verdict.",
+  "top_candidates": [
+    {
+      "identity": "Dink@Sally",
+      "evidence_count": 31,
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD"
+      ],
+      "files": [
+        "data/organism/aeye_answer_pickup.jsonl",
+        "data/organism/aeye_dispatch.jsonl",
+        "data/organism/aeye_events.jsonl",
+        "data/organism/aeye_outbox.jsonl",
+        "data/organism/origin_response_bus.jsonl",
+        "foreman/artifacts/aeye_relay_evidence.json",
+        "foreman/artifacts/candidate_inheritance_events.json",
+        "foreman/artifacts/inheritance_detector_events.sample.json",
+        "foreman/artifacts/origin_dash_responses.json",
+        "foreman/artifacts/receipt_provenance.json",
+        "foreman/artifacts/receipt_sources.json",
+        "foreman/artifacts/thinkit_answers.json"
+      ]
+    },
+    {
+      "identity": "Thufir@Sally",
+      "evidence_count": 12,
+      "receipt_ids": [
+        "rcpt_thufir_6aa922cec64f6e6b08f52c09"
+      ],
+      "packet_ids": [
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD"
+      ],
+      "files": [
+        "data/organism/aeye_answer_pickup.jsonl",
+        "data/organism/aeye_dispatch.jsonl",
+        "data/organism/aeye_events.jsonl",
+        "data/organism/aeye_outbox.jsonl",
+        "data/organism/origin_response_bus.jsonl",
+        "foreman/artifacts/aeye_relay_evidence.json",
+        "foreman/artifacts/aeye_relay_manifest.json",
+        "foreman/artifacts/origin_dash_responses.json",
+        "foreman/artifacts/receipt_provenance.json",
+        "foreman/handoffs/COMMAND_DASH_AEYE_RELAY_V0_RECEIPT.md",
+        "foreman/handoffs/THUFIR_SALLY_REPAIR_2026-06-27.md",
+        "speaker/receipts/raw/inbox/rcpt_thufir_6aa922cec64f6e6b08f52c09.json"
+      ]
+    },
+    {
+      "identity": "UNKNOWN",
+      "evidence_count": 10,
+      "receipt_ids": [],
+      "packet_ids": [],
+      "files": [
+        "foreman/artifacts/receipt_sources.json",
+        "foreman/handoffs/GOOGLE_DRIVE_FOCUS_THEFT_RECEIPT_2026-06-15.md",
+        "foreman/handoffs/KINDSIR_SITE_UPDATE_RECEIPT_2026-06-16.md",
+        "foreman/handoffs/PACKET_INBOX_LIFECYCLE_V0_RECEIPT.md",
+        "foreman/handoffs/PACKET_STATUS_TRANSITIONS_V0_RECEIPT.md",
+        "foreman/handoffs/PACKET_TO_RECEIPT_TRACE_V0_RECEIPT.md",
+        "foreman/handoffs/RECEIPT_STREAM_API_V0_RECEIPT.md",
+        "foreman/handoffs/SHAKESPEARE_THREAD_VENT_V0_RECEIPT.md",
+        "foreman/handoffs/STATUS_RAIL_V0_RECEIPT.md",
+        "foreman/handoffs/TINKERPIT_PACKET_INBOX_V0_RECEIPT.md"
+      ]
+    },
+    {
+      "identity": "Dink@Betsy",
+      "evidence_count": 9,
+      "receipt_ids": [],
+      "packet_ids": [],
+      "files": [
+        "foreman/artifacts/receipt_provenance.json",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_AA_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_BB_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_CC_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_R_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_T_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_V_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_X_RECEIPT.md",
+        "foreman/handoffs/STATE_BROADCAST_2026_06_27_Z_RECEIPT.md"
+      ]
+    },
+    {
+      "identity": "Codex Foreman",
+      "evidence_count": 6,
+      "receipt_ids": [],
+      "packet_ids": [],
+      "files": [
+        "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+        "foreman/artifacts/receipt_provenance.json",
+        "foreman/artifacts/receipt_sources.json",
+        "foreman/handoffs/GIMPDASH_SPEAKER_RELAY_AUDIT_2026-06-08.md",
+        "foreman/handoffs/SPANZEE_COMPLETION_REPORT_v0.1.md",
+        "foreman/handoffs/SPANZEE_SHARED_SCREEN_SETUP_ATTEMPT_v0.1.md"
+      ]
+    },
+    {
+      "identity": "Dink2@Sally",
+      "evidence_count": 3,
+      "receipt_ids": [],
+      "packet_ids": [],
+      "files": [
+        "foreman/artifacts/receipt_provenance.json",
+        "foreman/artifacts/receipt_sources.json",
+        "foreman/handoffs/RECEIPT_SURFACE_V0_RECEIPT.md"
+      ]
+    },
+    {
+      "identity": "Nerdkle Organism",
+      "evidence_count": 2,
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD"
+      ],
+      "files": [
+        "data/organism/aeye_events.jsonl",
+        "data/organism/aeye_outbox.jsonl"
+      ]
+    },
+    {
+      "identity": "Codex Foreman on Sally",
+      "evidence_count": 1,
+      "receipt_ids": [],
+      "packet_ids": [],
+      "files": [
+        "foreman/artifacts/receipt_sources.json"
+      ]
+    }
+  ],
+  "source_count": 61,
+  "sources": [
+    {
+      "path": "data/organism/aeye_answer_pickup.jsonl",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4"
+      ]
+    },
+    {
+      "path": "data/organism/aeye_dispatch.jsonl",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9"
+      ]
+    },
+    {
+      "path": "data/organism/aeye_events.jsonl",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Dink@Sally",
+        "Nerdkle Organism",
+        "Thufir@Sally",
+        "local-aeye-daemon"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4"
+      ]
+    },
+    {
+      "path": "data/organism/aeye_loop_supervisor_state.json",
+      "evidence_type": "receipt_reference",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "data/organism/aeye_outbox.jsonl",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally",
+        "Nerdkle Organism",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9"
+      ]
+    },
+    {
+      "path": "data/organism/origin_response_bus.jsonl",
+      "evidence_type": "origin_response_receipt",
+      "identities": [
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A",
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4"
+      ]
+    },
+    {
+      "path": "foreman/artifacts/ARTIFACT_REGISTRY_V0.json",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Codex Foreman"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/aeye_loop_canary.json",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4"
+      ]
+    },
+    {
+      "path": "foreman/artifacts/aeye_relay_evidence.json",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/aeye_relay_manifest.json",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/candidate_inheritance_events.json",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/external_aeye_proof_intake_status.json",
+      "evidence_type": "receipt_reference",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/external_aeye_proof_template.json",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "REPLACE_WITH_AEYE"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID",
+        "REPLACE_WITH_PACKET_ID"
+      ]
+    },
+    {
+      "path": "foreman/artifacts/inheritance_detector_events.sample.json",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/origin_dash_responses.json",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/receipt_provenance.json",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Codex Foreman",
+        "Dink2@Sally",
+        "Dink@Betsy",
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/receipt_sources.json",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Codex Foreman",
+        "Codex Foreman on Sally",
+        "Dink2@Sally",
+        "Dink@Sally",
+        "TinkerDen Intake / Speaker",
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/status_rail_v0.json",
+      "evidence_type": "receipt_reference",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/artifacts/thinkit_answers.json",
+      "evidence_type": "origin_response_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": [
+        "AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD"
+      ]
+    },
+    {
+      "path": "foreman/artifacts/thinkit_questions.json",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/APP_INFRA_UNBLOCK_STATUS_2026-06-22.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/BIRD_0042_DINK_SALLY_VALIDATION_PIPELINE_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/BIRD_0062_DINK_SALLY_COGNITIVE_RECEIPTS_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/BIRD_0072_DINK_SALLY_KEYRING_PIN_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/BIRD_0074_DINK_SALLY_SIGNING_TOOL_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/BRIDGE_REPAIR_RESULT_2026-05-27.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/CODEX_BUILD_RESULT_2026-05-27.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/COMMAND_DASH_AEYE_RELAY_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/CURSOR_APP_INFRA_01_RESULT.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/CURSOR_BELLOWS_INFRA_RESULT_2026-05-30.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/CURSOR_PRODUCT_INFRA_RESULT_2026-05-30.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/GIMPDASH_SPEAKER_RELAY_AUDIT_2026-06-08.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Codex Foreman",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/GOOGLE_DRIVE_FOCUS_THEFT_RECEIPT_2026-06-15.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/INHERITANCE_EVENT_CANDIDATE_DETECTOR_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/KINDSIR_SITE_UPDATE_RECEIPT_2026-06-16.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/PACKET_INBOX_LIFECYCLE_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/PACKET_STATUS_TRANSITIONS_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/PACKET_TO_RECEIPT_TRACE_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/RECEIPT_STREAM_API_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/RECEIPT_SURFACE_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink2@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/SHAKESPEARE_THREAD_VENT_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/SPANZEE_COMPLETION_REPORT_v0.1.md",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Codex Foreman",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/SPANZEE_SHARED_SCREEN_SETUP_ATTEMPT_v0.1.md",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Codex Foreman"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_AA_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_BB_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_CC_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_R_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_T_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_V_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_X_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATE_BROADCAST_2026_06_27_Z_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Betsy",
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/STATUS_RAIL_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/THINKIT_QUESTION_PACKET_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/THUFIR_SALLY_REPAIR_2026-06-27.md",
+      "evidence_type": "receipt_reference",
+      "identities": [
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/TINKERPIT_PACKET_INBOX_V0_RECEIPT.md",
+      "evidence_type": "handoff_receipt",
+      "identities": [
+        "UNKNOWN"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/benleak-com/README.md",
+      "evidence_type": "receipt_reference",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/kindsir-facebook-mocks/README.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_CURSOR_BUILD_NOW.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_CURSOR_ONBOARDING.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_MAKER_ENDER_COPY_PACKET_2026-06-08.md",
+      "evidence_type": "candidate_receipt_context",
+      "identities": [
+        "Dink@Sally"
+      ],
+      "receipt_ids": [],
+      "packet_ids": []
+    },
+    {
+      "path": "speaker/receipts/raw/inbox/rcpt_thufir_6aa922cec64f6e6b08f52c09.json",
+      "evidence_type": "speaker_receipt_json",
+      "identities": [
+        "Thufir",
+        "Thufir@Sally"
+      ],
+      "receipt_ids": [
+        "rcpt_thufir_6aa922cec64f6e6b08f52c09"
+      ],
+      "packet_ids": []
+    }
+  ]
+}

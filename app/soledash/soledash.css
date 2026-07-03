@@ -1,0 +1,113 @@
+.soledash-page {
+  min-height: 100vh;
+  margin: 0;
+  background: #f5f1e8;
+  color: #17202a;
+}
+
+.next-step-panel {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.permission-swatter,
+.wonka-den-proof,
+.swatter-proof {
+  display: grid;
+  gap: 18px;
+  width: min(100%, 720px);
+}
+
+.permission-swatter {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #d9d1c2;
+}
+
+.swatter-proof {
+  padding-top: 24px;
+  border-top: 1px solid #d9d1c2;
+}
+
+.permission-swatter__input {
+  min-height: 124px;
+  resize: vertical;
+  border: 1px solid #cfc6b6;
+  border-radius: 8px;
+  background: #fffdf8;
+  color: #17202a;
+  padding: 14px;
+  font: 700 0.95rem/1.45 "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.permission-swatter__toolbar,
+.swatter-proof__toolbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.wonka-den-proof__button,
+.permission-swatter__button,
+.swatter-proof__button {
+  min-height: 52px;
+  border: 1px solid #17202a;
+  border-radius: 8px;
+  background: #17202a;
+  color: #fffdf8;
+  font: 850 1rem/1.1 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.permission-swatter__button[data-tone="danger"],
+.swatter-proof__button[data-tone="warn"] {
+  border-color: #6f4e14;
+  background: #8a5d14;
+}
+
+.swatter-proof__button[data-tone="danger"] {
+  border-color: #7f1d1d;
+  background: #8f1d1d;
+}
+
+.wonka-den-proof__button:disabled,
+.permission-swatter__button:disabled,
+.swatter-proof__button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.wonka-den-proof__drawer,
+.permission-swatter__drawer,
+.swatter-proof__drawer {
+  min-height: 216px;
+  border: 1px solid #d9d1c2;
+  border-radius: 8px;
+  background: #fffdf8;
+  box-shadow: 0 18px 50px rgba(38, 32, 24, 0.11);
+}
+
+.permission-swatter__drawer,
+.swatter-proof__drawer {
+  min-height: 320px;
+}
+
+.wonka-den-proof__drawer[data-open="false"],
+.permission-swatter__drawer[data-open="false"],
+.swatter-proof__drawer[data-open="false"] {
+  display: none;
+}
+
+.wonka-den-proof__drawer pre,
+.permission-swatter__drawer pre,
+.swatter-proof__drawer pre {
+  overflow: auto;
+  margin: 0;
+  padding: 18px;
+  white-space: pre-wrap;
+  color: #17202a;
+  font: 750 0.94rem/1.55 "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+}

@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nerdkle Work So Far</title>
+  <style>
+    :root {
+      --ink: #141414;
+      --muted: #60656f;
+      --line: #d8dde6;
+      --paper: #f7f4ec;
+      --panel: #ffffff;
+      --green: #1d7f4f;
+      --amber: #9b6515;
+      --red: #b73737;
+      --blue: #255c99;
+      --shadow: 0 10px 30px rgba(18, 24, 40, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      padding: 28px clamp(18px, 4vw, 48px) 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfaf6;
+    }
+    main { padding: 24px clamp(18px, 4vw, 48px) 48px; }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 48px); line-height: 1.02; letter-spacing: 0; }
+    h2 { margin: 0 0 14px; font-size: 19px; letter-spacing: 0; }
+    h3 { margin: 0; font-size: 15px; letter-spacing: 0; }
+    p { margin: 0; color: var(--muted); max-width: 920px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+    }
+    .topline { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+    .grid { display: grid; gap: 16px; }
+    .metrics { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin: 18px 0 24px; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 98px;
+    }
+    .metric-value { font-size: 28px; font-weight: 750; line-height: 1; }
+    .metric-label { color: var(--muted); margin-top: 8px; }
+    .metric-note { color: var(--muted); font-size: 12px; margin-top: 6px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid currentColor;
+      background: #fff;
+    }
+    .pass { color: var(--green); }
+    .partial { color: var(--amber); }
+    .block, .fail { color: var(--red); }
+    .unknown { color: var(--muted); }
+    .quiet { color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { border-top: 1px solid var(--line); text-align: left; vertical-align: top; padding: 10px; }
+    th { color: var(--muted); font-size: 12px; font-weight: 700; }
+    .source-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .source-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .queue-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .queue-card {
+      background: #fffdfa;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .source-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    h4 { margin: 10px 0 6px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0; }
+    ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    li + li { margin-top: 4px; }
+    .queue-lists { display: grid; gap: 8px; margin-top: 12px; }
+    .proof-summary {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 10px; margin: 0 0 12px; }
+    dt { color: var(--muted); }
+    dd { margin: 0; overflow-wrap: anywhere; }
+    .artifact-list { border-top: 1px solid var(--line); padding-top: 10px; display: grid; gap: 8px; }
+    .artifact-row { display: grid; grid-template-columns: 52px 1fr; gap: 8px; align-items: baseline; }
+    .artifact-row span { color: var(--green); font-size: 12px; font-weight: 800; }
+    .footer { margin-top: 18px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 760px) {
+      table { table-layout: auto; }
+      th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5) { display: none; }
+      dl { grid-template-columns: 1fr; }
+      .source-head { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topline">
+      <span class="badge pass">PASS_LOCAL_WITH_EXTERNAL_BLOCKERS</span>
+      <span class="badge pass">PASS_GITHUB_SOURCE_INTAKE</span>
+      <span class="badge pass">PASS_MATERIALIZED_GITHUB_SOURCE</span>
+      <span class="badge pass">PASS_SOURCE_WORK_QUEUE</span>
+      <span class="badge pass">PASS_NMCLR_SANDBOX_EXECUTION_PROOF</span>
+    </div>
+    <h1>Nerdkle Work So Far</h1>
+    <p>Generated from local proof artifacts at 2026-06-29T01:19:09.249Z. This page shows what exists, what was verified, and what is still blocked. It does not claim review branches are canon.</p>
+  </header>
+  <main>
+    <section class="grid metrics">
+      <div class="metric"><div class="metric-value">5</div><div class="metric-label">Complete return loops</div><div class="metric-note">packet -&gt; Aeye -&gt; answer -&gt; origin</div></div>
+      <div class="metric"><div class="metric-value">1</div><div class="metric-label">Valid Speaker receipts</div><div class="metric-note">schema-valid inbox receipts</div></div>
+      <div class="metric"><div class="metric-value">4</div><div class="metric-label">GitHub sources verified</div><div class="metric-note">branch + commit + artifact checks</div></div>
+      <div class="metric"><div class="metric-value">4</div><div class="metric-label">Local snapshots</div><div class="metric-note">read-only materialized source copies</div></div>
+      <div class="metric"><div class="metric-value">2</div><div class="metric-label">Ready queue items</div><div class="metric-note">Q2_NERVOUS_SYSTEM_INPUT_LOCATOR</div></div>
+      <div class="metric"><div class="metric-value">PASS</div><div class="metric-label">NMCLR sandbox proof</div><div class="metric-note">nmclr-sandbox-20260629011740</div></div>
+      <div class="metric"><div class="metric-value">0</div><div class="metric-label">Canonical promotions</div><div class="metric-note">must remain 0 without human gate</div></div>
+      <div class="metric"><div class="metric-value">4</div><div class="metric-label">Missing external IDs</div><div class="metric-note">external Aeye thread identity</div></div>
+    </section>
+
+    <section class="panel">
+      <h2>NMCLR Sandbox Proof</h2>
+      
+    <div class="proof-summary">
+      <div><span class="badge pass">PASS_NMCLR_SANDBOX_EXECUTION_PROOF</span></div>
+      <dl>
+        <dt>Run</dt><dd><code>nmclr-sandbox-20260629011740</code></dd>
+        <dt>Movement</dt><dd>PASS</dd>
+        <dt>Causal Chain</dt><dd>PASS</dd>
+        <dt>Boundary</dt><dd>Sandbox proof only. This executes a copied materialized GitHub review-branch snapshot and does not promote NMCLR into live root.</dd>
+      </dl>
+    </div>
+    <table>
+      <thead><tr><th>File</th><th>Path</th><th>Bytes</th><th>SHA256</th></tr></thead>
+      <tbody>
+    <tr>
+      <td>first_movement_packet</td>
+      <td><code>fixtures/packet-causes-action.json</code></td>
+      <td>295</td>
+      <td><code>2f48ac299898fe3234bc65cc2659f37236fc48884740897df7699643038fadda</code></td>
+    </tr>
+  
+    <tr>
+      <td>first_movement_artifact</td>
+      <td><code>artifacts/first-artifact.json</code></td>
+      <td>110</td>
+      <td><code>a5c2f79241d347c7e4373ef846525b8e181118a2d99e438c46186a926c0ec578</code></td>
+    </tr>
+  
+    <tr>
+      <td>first_movement_receipt</td>
+      <td><code>receipts/receipt-packet-first-movement-001.json</code></td>
+      <td>315</td>
+      <td><code>b2054c159b97e0873f81478324bcadceebcd2ba39cf52bdff1c8b60384e71412</code></td>
+    </tr>
+  
+    <tr>
+      <td>first_slice_packet</td>
+      <td><code>fixtures/packet-first-slice-sandbox-001.json</code></td>
+      <td>327</td>
+      <td><code>232c3d5f669deefd1a2d06b78a91e250e064a9cd5bb7cf63d1eb323d05029e28</code></td>
+    </tr>
+  
+    <tr>
+      <td>first_slice_work</td>
+      <td><code>work/work-first-slice-sandbox-action.json</code></td>
+      <td>259</td>
+      <td><code>af604c0cd7b3a8b1f1e90fbf15fee353a71cddd6e2d457b99132c524b0a6fe06</code></td>
+    </tr>
+  
+    <tr>
+      <td>first_slice_receipt</td>
+      <td><code>receipts/receipt-packet-first-slice-sandbox-001.json</code></td>
+      <td>695</td>
+      <td><code>4b8d76bff2e9a052f8fd99b450dc4306885099fac4b13ed7e0eccc7020286d1d</code></td>
+    </tr>
+  
+    <tr>
+      <td>first_slice_next_work</td>
+      <td><code>work/next-work-from-receipt.json</code></td>
+      <td>292</td>
+      <td><code>7a23ed887db251477cda0b8377a9f65f5eadbd5c8eb85af9f332d490a56f82df</code></td>
+    </tr>
+  </tbody>
+    </table>
+  
+    </section>
+
+    <section class="panel">
+      <h2>Next Work Queue</h2>
+      <div class="grid queue-grid">
+    <article class="queue-card">
+      <div class="source-head">
+        <h3>Q1_NMCLR_SANDBOX_EXECUTION_PROOF</h3>
+        <span class="badge unknown">COMPLETE_LOCAL_PROOF</span>
+      </div>
+      <p>Completed. Keep this as sandbox proof unless Ben opens a human promotion gate.</p>
+      <dl>
+        <dt>Source</dt><dd>github-nmclr-proof-body-preserve-v0-20260627</dd>
+        <dt>Priority</dt><dd>1</dd>
+        <dt>Boundary</dt><dd>Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.</dd>
+      </dl>
+      <div class="queue-lists">
+        <div>
+          <h4>Proof Needed</h4>
+          <ul></ul>
+        </div>
+        <div>
+          <h4>Blockers</h4>
+          <ul><li>none</li></ul>
+        </div>
+        <div>
+          <h4>Forbidden</h4>
+          <ul><li>Do not call the branch canonical.</li><li>Do not move NMCLR into live root until human promotion exists.</li></ul>
+        </div>
+      </div>
+    </article>
+  
+    <article class="queue-card">
+      <div class="source-head">
+        <h3>Q2_NERVOUS_SYSTEM_INPUT_LOCATOR</h3>
+        <span class="badge block">READY_LOCAL_PREP_BLOCKED_REAL_INPUTS</span>
+      </div>
+      <p>Build a read-only production-input locator for Swateyes, Fleyes, and Ender apoptosis before copying any organ into live paths.</p>
+      <dl>
+        <dt>Source</dt><dd>github-nerdkle-nervous-system-organs-v0-20260627</dd>
+        <dt>Priority</dt><dd>2</dd>
+        <dt>Boundary</dt><dd>Fixture output is not production proof; production inputs and receipts are still required.</dd>
+      </dl>
+      <div class="queue-lists">
+        <div>
+          <h4>Proof Needed</h4>
+          <ul><li>real action payload from Medulla or Fastify</li><li>real circulation.db containing shadow_cache</li><li>real Wormeyes world_state.json</li><li>dry-run readback with file paths, byte counts, and SHA256 hashes</li></ul>
+        </div>
+        <div>
+          <h4>Blockers</h4>
+          <ul><li>real_circulation_db</li><li>real_world_state_json</li></ul>
+        </div>
+        <div>
+          <h4>Forbidden</h4>
+          <ul><li>Do not delete doctrine.</li><li>Do not call no-input NO_FRICTION_DETECTED a healthy organism.</li><li>Do not mutate production DB rows.</li></ul>
+        </div>
+      </div>
+    </article>
+  
+    <article class="queue-card">
+      <div class="source-head">
+        <h3>Q3_RECEIPT_CRAWLER_READ_ONLY_LEDGER_AUDIT</h3>
+        <span class="badge block">BLOCKED_REAL_LEDGER</span>
+      </div>
+      <p>Build a read-only ledger audit that reports LiveReceipt schema and candidate rows before any crawler movement proof.</p>
+      <dl>
+        <dt>Source</dt><dd>github-receipt-crawler-v0-20260627</dd>
+        <dt>Priority</dt><dd>3</dd>
+        <dt>Boundary</dt><dd>Self-test output is not production movement proof until the real circulation.db ledger is read and updated.</dd>
+      </dl>
+      <div class="queue-lists">
+        <div>
+          <h4>Proof Needed</h4>
+          <ul><li>LiveReceipt table exists</li><li>status and ASSIMILATED columns exist</li><li>candidate SUCCESS / unassimilated row exists</li></ul>
+        </div>
+        <div>
+          <h4>Blockers</h4>
+          <ul><li>real_circulation_db</li><li>speaker_queue</li></ul>
+        </div>
+        <div>
+          <h4>Forbidden</h4>
+          <ul><li>Do not update ASSIMILATED in this prep step.</li><li>Do not delete SQLite history rows.</li><li>Do not call DB_MISSING a successful receipt move.</li></ul>
+        </div>
+      </div>
+    </article>
+  
+    <article class="queue-card">
+      <div class="source-head">
+        <h3>Q4_BOOK_BOUNDARY_REFERENCE</h3>
+        <span class="badge unknown">READY_REFERENCE_ONLY</span>
+      </div>
+      <p>Use the stream-split manuscript as a boundary reference in future receipts and reports, not as implementation proof.</p>
+      <dl>
+        <dt>Source</dt><dd>github-book-architecture-stream-split-v0-20260627</dd>
+        <dt>Priority</dt><dd>4</dd>
+        <dt>Boundary</dt><dd>Manuscript doctrine cannot prove automation.</dd>
+      </dl>
+      <div class="queue-lists">
+        <div>
+          <h4>Proof Needed</h4>
+          <ul><li>human merge decision before canon</li><li>quoted boundary language only when relevant</li></ul>
+        </div>
+        <div>
+          <h4>Blockers</h4>
+          <ul><li>human_merge_decision_for_canon</li></ul>
+        </div>
+        <div>
+          <h4>Forbidden</h4>
+          <ul><li>Do not use manuscript doctrine as automation proof.</li><li>Do not mark Feral, NMCLR, TinkerDen, Dink, or Maker artifacts as working because this manuscript exists.</li></ul>
+        </div>
+      </div>
+    </article>
+  </div>
+    </section>
+
+    <section class="panel">
+      <h2>Proof Checks</h2>
+      <table>
+        <thead><tr><th>Check</th><th>Status</th><th>Missing</th><th>Evidence</th></tr></thead>
+        <tbody>
+    <tr>
+      <td>speaker_causal_memory_office</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/speaker/SPEAKER_CHARTER.md</code></div><div><code>foreman/speaker/SPEAKER_DOCTRINE.md</code></div><div><code>foreman/speaker/CAUSAL_LEDGER.md</code></div><div><code>foreman/speaker/AEYE_ROLE_REGISTRY.md</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>thread_registry_local_routes</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/nerdkle/thread_registry.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>thread_identity_claim_intake</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/thread_identity_claims_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>thread_registry_external_identity</td>
+      <td><span class="badge partial">PARTIAL_LOCAL</span></td>
+      <td><code>missing_external_thread_id:Dink@Sally
+missing_external_thread_id:Thufir@Sally
+missing_external_thread_id:Bean@Sally
+missing_external_thread_id:Ender@Betsy</code></td>
+      <td><div><code>foreman/nerdkle/thread_registry.json</code></div><div><code>foreman/artifacts/thread_identity_claims_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>github_source_material_intake</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/nerdkle_github_source_material_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>github_nerdkle_review_sources</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/nerdkle_github_source_material_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>github_source_promotion_boundary</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/nerdkle_github_source_material_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>github_source_materialized_snapshots</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/nerdkle_materialized_source_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>github_source_work_queue</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/nerdkle_source_work_queue.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>nmclr_sandbox_execution_proof</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>foreman/artifacts/nmclr_sandbox_execution_status.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>organism_event_bus</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>data/organism/aeye_events.jsonl</code></div><div><code>data/organism/origin_response_bus.jsonl</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>local_aeye_return_loop</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE</code></div><div><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4</code></div><div><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>speaker_schema_valid_receipts</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>speaker/receipts/raw/inbox/rcpt_thufir_6aa922cec64f6e6b08f52c09.json</code></div></td>
+    </tr>
+  
+    <tr>
+      <td>speaker_consulted_before_relay</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td><span class="quiet">none</span></td>
+      <td><div><code>data/organism/aeye_events.jsonl:speaker_context_consulted</code></div></td>
+    </tr>
+  </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>GitHub Source Branches</h2>
+      <div class="grid source-grid">
+    <article class="source-card">
+      <div class="source-head">
+        <h3>Book architecture stream split and proof boundaries</h3>
+        <span class="badge unknown">VERIFIED_GITHUB_SOURCE</span>
+      </div>
+      <dl>
+        <dt>Branch</dt><dd><code>book/architecture-stream-split-v0-20260627</code></dd>
+        <dt>Commit</dt><dd><code>605e353737dc4f2a2a18d11c80c328bff05a4229</code></dd>
+        <dt>Canonicality</dt><dd><span class="badge unknown">manuscript_only</span></dd>
+        <dt>Boundary</dt><dd>Manuscript doctrine cannot prove automation.</dd>
+      </dl>
+      <div class="artifact-list">
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>book/architecture/STREAM_SPLIT_AND_PROOF_BOUNDARIES_V0.md</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>scripts/foreman/check-stream-split-manuscript.mjs</code>
+          </div>
+        
+      </div>
+    </article>
+  
+    <article class="source-card">
+      <div class="source-head">
+        <h3>Nerdkle nervous system organs preservation branch</h3>
+        <span class="badge unknown">VERIFIED_GITHUB_SOURCE</span>
+      </div>
+      <dl>
+        <dt>Branch</dt><dd><code>nerdkle/nervous-system-organs-v0-20260627</code></dd>
+        <dt>Commit</dt><dd><code>47aa50c73c8ab0eda37d2e591cb956cca363b79d</code></dd>
+        <dt>Canonicality</dt><dd><span class="badge unknown">pending_real_inputs</span></dd>
+        <dt>Boundary</dt><dd>Fixture output is not production proof; production inputs and receipts are still required.</dd>
+      </dl>
+      <div class="artifact-list">
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>scripts/foreman/check-nerdkle-nervous-system-organs.mjs</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>foreman/source-truth/readbacks/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_READBACK.json</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>foreman/source-truth/receipts/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_PRESERVATION_RECEIPT.json</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>tinkarden/nervous_system/fleyes.js</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>tinkarden/nervous_system/swateyes.js</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>tinkarden/nervous_system/ender_apoptosis.js</code>
+          </div>
+        
+      </div>
+    </article>
+  
+    <article class="source-card">
+      <div class="source-head">
+        <h3>NMCLR proof body preserved candidate</h3>
+        <span class="badge unknown">VERIFIED_GITHUB_SOURCE</span>
+      </div>
+      <dl>
+        <dt>Branch</dt><dd><code>nerdkle/nmclr-proof-body-preserve-v0-20260627</code></dd>
+        <dt>Commit</dt><dd><code>f14227352ce7820f9e12b135f559d706691e85da</code></dd>
+        <dt>Canonicality</dt><dd><span class="badge unknown">preserved_only</span></dd>
+        <dt>Boundary</dt><dd>Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.</dd>
+      </dl>
+      <div class="artifact-list">
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/PROOF_BODY_PRESERVATION_README.md</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/README.md</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/artifacts/first-artifact.json</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/first_breath.mjs</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/first_metabolism.mjs</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/first_movement.mjs</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/fixtures/packet-causes-action.json</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/nmclr-first-slice.mjs</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>NMCLR/spec/build/receipts/github_preservation/NMCLR_PROOF_BODY_GITHUB_PRESERVATION_RECEIPT.json</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>scripts/foreman/check-nmclr-proof-body-preservation.mjs</code>
+          </div>
+        
+      </div>
+    </article>
+  
+    <article class="source-card">
+      <div class="source-head">
+        <h3>Receipt crawler production movement proof branch</h3>
+        <span class="badge unknown">VERIFIED_GITHUB_SOURCE</span>
+      </div>
+      <dl>
+        <dt>Branch</dt><dd><code>nerdkle/receipt-crawler-v0-20260627</code></dd>
+        <dt>Commit</dt><dd><code>312e0f811cf8ad46fac1774ee325ff349fcc3012</code></dd>
+        <dt>Canonicality</dt><dd><span class="badge unknown">pending_real_inputs</span></dd>
+        <dt>Boundary</dt><dd>Self-test output is not production movement proof until the real circulation.db ledger is read and updated.</dd>
+      </dl>
+      <div class="artifact-list">
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>scripts/foreman/crawler.js</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>scripts/foreman/start-receipt-crawler.ps1</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>scripts/foreman/check-receipt-crawler-preservation.mjs</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>foreman/source-truth/readbacks/receipt-crawler/RECEIPT_CRAWLER_PRESERVATION_READBACK.json</code>
+          </div>
+        
+          <div class="artifact-row">
+            <span>OK</span>
+            <code>foreman/source-truth/receipts/receipt-crawler/RECEIPT_CRAWLER_PRESERVATION_RECEIPT.json</code>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+    </section>
+
+    <section class="panel">
+      <h2>Materialized Snapshots</h2>
+      <table>
+        <thead><tr><th>Source</th><th>Canonicality</th><th>Files</th><th>Manifest</th><th>Boundary</th></tr></thead>
+        <tbody>
+    <tr>
+      <td>github-book-architecture-stream-split-v0-20260627</td>
+      <td><span class="badge unknown">manuscript_only</span></td>
+      <td>3</td>
+      <td><a href="file:///C:/Users/benle/Documents/Werkles/foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/manifest.json">foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/manifest.json</a></td>
+      <td>Manuscript doctrine cannot prove automation.</td>
+    </tr>
+  
+    <tr>
+      <td>github-nerdkle-nervous-system-organs-v0-20260627</td>
+      <td><span class="badge unknown">pending_real_inputs</span></td>
+      <td>7</td>
+      <td><a href="file:///C:/Users/benle/Documents/Werkles/foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/manifest.json">foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/manifest.json</a></td>
+      <td>Fixture output is not production proof; production inputs and receipts are still required.</td>
+    </tr>
+  
+    <tr>
+      <td>github-nmclr-proof-body-preserve-v0-20260627</td>
+      <td><span class="badge unknown">preserved_only</span></td>
+      <td>11</td>
+      <td><a href="file:///C:/Users/benle/Documents/Werkles/foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/manifest.json">foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/manifest.json</a></td>
+      <td>Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.</td>
+    </tr>
+  
+    <tr>
+      <td>github-receipt-crawler-v0-20260627</td>
+      <td><span class="badge unknown">pending_real_inputs</span></td>
+      <td>6</td>
+      <td><a href="file:///C:/Users/benle/Documents/Werkles/foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/manifest.json">foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/manifest.json</a></td>
+      <td>Self-test output is not production movement proof until the real circulation.db ledger is read and updated.</td>
+    </tr>
+  </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Return Loop Evidence</h2>
+      <table>
+        <thead><tr><th>Packet</th><th>Target</th><th>Status</th><th>Latest</th><th>Events</th></tr></thead>
+        <tbody>
+    <tr>
+      <td><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SPEAKER-CONSULT-001_9DD5BAA0CFAE</code></td>
+      <td>Thufir@Sally</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td>2026-06-28T21:55:56.935Z</td>
+      <td>aeye_answer_observed, aeye_chat_created, aeye_query_sent, aeye_query_visible, aeye_receipt_ack, answer_received, nerdkle_prompt_activity, packet_left_relay_boundary, speaker_context_consulted</td>
+    </tr>
+  
+    <tr>
+      <td><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628191449_1DDD0230F5F4</code></td>
+      <td>Thufir@Sally</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td>2026-06-28T19:14:49.528Z</td>
+      <td>aeye_answer_observed, aeye_chat_created, aeye_query_sent, aeye_query_visible, aeye_receipt_ack, answer_received, nerdkle_prompt_activity, packet_left_relay_boundary</td>
+    </tr>
+  
+    <tr>
+      <td><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-CANARY-20260628190733_FA0A52F7613A</code></td>
+      <td>Thufir@Sally</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td>2026-06-28T19:07:33.532Z</td>
+      <td>aeye_answer_observed, aeye_chat_created, aeye_query_sent, aeye_query_visible, aeye_receipt_ack, answer_received, nerdkle_prompt_activity, packet_left_relay_boundary</td>
+    </tr>
+  
+    <tr>
+      <td><code>AEYE_RELAY_THINKIT_THINKIT-Q-0001_F39936645FBD</code></td>
+      <td>Dink@Sally</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td>2026-06-28T04:37:27.814Z</td>
+      <td>aeye_answer_observed, aeye_chat_created, aeye_query_sent, aeye_query_visible, aeye_receipt_ack, answer_received, nerdkle_prompt_activity, packet_left_relay_boundary</td>
+    </tr>
+  
+    <tr>
+      <td><code>AEYE_RELAY_COMMANDDASH_COMMAND-DASH-SMOKE-001_15A62B9E9EF9</code></td>
+      <td>Thufir@Sally</td>
+      <td><span class="badge pass">PASS_LOCAL</span></td>
+      <td>2026-06-28T04:37:27.814Z</td>
+      <td>aeye_answer_observed, aeye_chat_created, aeye_query_sent, aeye_query_visible, aeye_receipt_ack, answer_received, nerdkle_prompt_activity, packet_left_relay_boundary</td>
+    </tr>
+  </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Remaining Boundaries</h2>
+      <table>
+        <thead><tr><th>Source</th><th>Canonicality</th><th>Status</th><th>Boundary</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>github-book-architecture-stream-split-v0-20260627</td>
+            <td><span class="badge unknown">manuscript_only</span></td>
+            <td>READY_FOR_REVIEW</td>
+            <td>Manuscript doctrine cannot prove automation.</td>
+          </tr>
+        
+          <tr>
+            <td>github-nerdkle-nervous-system-organs-v0-20260627</td>
+            <td><span class="badge unknown">pending_real_inputs</span></td>
+            <td>PENDING_REAL_INPUTS</td>
+            <td>Fixture output is not production proof; production inputs and receipts are still required.</td>
+          </tr>
+        
+          <tr>
+            <td>github-nmclr-proof-body-preserve-v0-20260627</td>
+            <td><span class="badge unknown">preserved_only</span></td>
+            <td>READY_FOR_REVIEW</td>
+            <td>Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.</td>
+          </tr>
+        
+          <tr>
+            <td>github-receipt-crawler-v0-20260627</td>
+            <td><span class="badge unknown">pending_real_inputs</span></td>
+            <td>PENDING_REAL_LEDGER</td>
+            <td>Self-test output is not production movement proof until the real circulation.db ledger is read and updated.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Source Artifacts</h2>
+      <p><a href="file:///C:/Users/benle/Documents/Werkles/foreman/artifacts/nerdkle_kernel_v0_status.json">foreman/artifacts/nerdkle_kernel_v0_status.json</a> - <a href="file:///C:/Users/benle/Documents/Werkles/foreman/artifacts/nerdkle_github_source_material_status.json">foreman/artifacts/nerdkle_github_source_material_status.json</a> - <a href="file:///C:/Users/benle/Documents/Werkles/foreman/artifacts/nerdkle_materialized_source_status.json">foreman/artifacts/nerdkle_materialized_source_status.json</a> - <a href="file:///C:/Users/benle/Documents/Werkles/foreman/artifacts/nerdkle_source_work_queue.json">foreman/artifacts/nerdkle_source_work_queue.json</a> - <a href="file:///C:/Users/benle/Documents/Werkles/foreman/artifacts/nmclr_sandbox_execution_status.json">foreman/artifacts/nmclr_sandbox_execution_status.json</a> - <a href="file:///C:/Users/benle/Documents/Werkles/foreman/handoffs/NERDKLE_GITHUB_SOURCE_INTAKE_RECEIPT.md">foreman/handoffs/NERDKLE_GITHUB_SOURCE_INTAKE_RECEIPT.md</a></p>
+    </section>
+
+    <div class="footer">Generated by <code>foreman/nerdkle/build-work-so-far-report.mjs</code>.</div>
+  </main>
+</body>
+</html>

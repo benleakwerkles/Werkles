@@ -1,0 +1,23 @@
+{
+  "id": "receipt-packet-first-slice-sandbox-001",
+  "packet_id": "packet-first-slice-sandbox-001",
+  "pass": true,
+  "breath": {
+    "intake": "packet accepted",
+    "output": "work_item_written",
+    "receipt": "receipt written"
+  },
+  "output": {
+    "kind": "work_item_written",
+    "path": "work/work-first-slice-sandbox-action.json",
+    "work_item": {
+      "id": "work-first-slice-sandbox-action",
+      "title": "Sandbox NMCLR first-slice execution proof",
+      "status": "ready",
+      "caused_by_packet": "packet-first-slice-sandbox-001",
+      "muscle": "packet-causes-action",
+      "created_at": "2026-06-29T01:17:41.865Z"
+    }
+  },
+  "created_at": "2026-06-29T01:17:41.870Z"
+}

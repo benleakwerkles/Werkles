@@ -1,0 +1,19 @@
+{
+  "source_id": "github-book-architecture-stream-split-v0-20260627",
+  "source_type": "book_architecture",
+  "title": "Book architecture stream split and proof boundaries",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "book/architecture-stream-split-v0-20260627",
+  "commit": "605e353737dc4f2a2a18d11c80c328bff05a4229",
+  "packet_path": "foreman/source-truth/NEXT_BOOK_ARCHITECTURE_PACKET.json",
+  "artifact_paths": [
+    "book/architecture/STREAM_SPLIT_AND_PROOF_BOUNDARIES_V0.md",
+    "scripts/foreman/check-stream-split-manuscript.mjs"
+  ],
+  "canonicality": "manuscript_only",
+  "source_status": "READY_FOR_REVIEW",
+  "evidence_scope": "github_remote_branch",
+  "proof_boundary": "Manuscript doctrine cannot prove automation.",
+  "observed_at": "2026-06-28T23:00:00-04:00",
+  "notes": "GitHub review branch source. This is source material for boundaries, not runtime proof."
+}

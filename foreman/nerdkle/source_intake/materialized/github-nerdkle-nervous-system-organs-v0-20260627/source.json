@@ -1,0 +1,95 @@
+{
+  "manifest_path": "foreman/nerdkle/source_intake/inbox/github-nerdkle-nervous-system-organs-v0-20260627.json",
+  "source_id": "github-nerdkle-nervous-system-organs-v0-20260627",
+  "title": "Nerdkle nervous system organs preservation branch",
+  "source_type": "nerdkle_nervous_system",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "nerdkle/nervous-system-organs-v0-20260627",
+  "branch_ref": "origin/nerdkle/nervous-system-organs-v0-20260627",
+  "expected_commit": "47aa50c73c8ab0eda37d2e591cb956cca363b79d",
+  "actual_commit": "47aa50c73c8ab0eda37d2e591cb956cca363b79d",
+  "commit_match": true,
+  "canonicality": "pending_real_inputs",
+  "source_status": "PENDING_REAL_INPUTS",
+  "evidence_scope": "github_remote_branch",
+  "proof_boundary": "Fixture output is not production proof; production inputs and receipts are still required.",
+  "packet_path": "foreman/source-truth/NEXT_NERDKLE_NERVOUS_SYSTEM_PACKET.json",
+  "packet": {
+    "packet_id": "NEXT_NERDKLE_NERVOUS_SYSTEM_PRODUCTION_PROOF",
+    "created_at": "2026-06-27T19:28:00.000Z",
+    "owner": "Swanson@Doss",
+    "stream": "NERDKLE / NERVOUS SYSTEM / PRODUCTION PROOF",
+    "status": "PENDING_REAL_INPUTS",
+    "source_truth_rule": "GitHub origin/main remains canonical. This review branch preserves candidates until human-gated promotion.",
+    "mission": "Replace fixture proof with production readback for Swateyes, Fleyes, and Ender apoptosis.",
+    "required_inputs": {
+      "swateyes": "A real action payload from Medulla or Fastify before execution.",
+      "fleyes": [
+        "real circulation.db containing shadow_cache",
+        "real Wormeyes world_state.json"
+      ],
+      "ender_apoptosis": [
+        "real C:/tinkarden/server/circulation.db",
+        "real foreman/handoffs/outbox surface"
+      ]
+    },
+    "pass_conditions": [
+      "Swateyes classifies a destructive production-bound payload as FRACTURE before execution.",
+      "Fleyes produces frictional_heat.json from production inputs, not fixtures.",
+      "Ender apoptosis runs on production circulation.db and logs any dry_run deletion or NO_ACTION without touching docs/ unless operator_signature exists.",
+      "All outputs have file paths, byte counts, and SHA256 hashes."
+    ],
+    "fail_conditions": [
+      "Fixture output is described as production proof.",
+      "Any docs/ artifact is deleted without operator_signature.",
+      "Any cache row is deleted without filtration_log.txt recording it.",
+      "Any quarantined packet is deleted instead of listed for manual Operator review."
+    ],
+    "do_not": [
+      "Do not promote this branch to canonical without production proof.",
+      "Do not delete doctrine.",
+      "Do not call no-input NO_FRICTION_DETECTED a healthy organism."
+    ],
+    "next_receipt_required": "NERDKLE_NERVOUS_SYSTEM_PRODUCTION_PROOF_RECEIPT"
+  },
+  "artifact_checks": [
+    {
+      "path": "scripts/foreman/check-nerdkle-nervous-system-organs.mjs",
+      "exists": true,
+      "sha256": "42c9f61eb8cbd8bfb2a9a325efaf3b03a16f5c65120a4141b3854b38de9d081b",
+      "byte_count": 7692
+    },
+    {
+      "path": "foreman/source-truth/readbacks/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_READBACK.json",
+      "exists": true,
+      "sha256": "072da3f0213d63acb45611756cbd6ecece2ef264117f9da20882560246c1178c",
+      "byte_count": 12875
+    },
+    {
+      "path": "foreman/source-truth/receipts/nervous-system/NERDKLE_NERVOUS_SYSTEM_ORGANS_PRESERVATION_RECEIPT.json",
+      "exists": true,
+      "sha256": "69463ce4fecfe35f751dba31f0c63a6f6a740fe96973c39dd35fcab7042421ea",
+      "byte_count": 1134
+    },
+    {
+      "path": "tinkarden/nervous_system/fleyes.js",
+      "exists": true,
+      "sha256": "0caded9e6cc07190651d7ffb81005c8ea208a7808357607dad6ab831909924a2",
+      "byte_count": 16660
+    },
+    {
+      "path": "tinkarden/nervous_system/swateyes.js",
+      "exists": true,
+      "sha256": "688a2a8f9083656da700e57035a004870cae661394f7e9a63e385c0159f40e77",
+      "byte_count": 3818
+    },
+    {
+      "path": "tinkarden/nervous_system/ender_apoptosis.js",
+      "exists": true,
+      "sha256": "821ce59e8633baf298d5cf26ead0a0a1f06f2f00c52a2af67e4d3ce6e6863f08",
+      "byte_count": 17570
+    }
+  ],
+  "status": "VERIFIED_GITHUB_SOURCE",
+  "blockers": []
+}

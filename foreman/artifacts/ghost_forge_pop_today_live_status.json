@@ -1,0 +1,64 @@
+﻿{
+    "status":  "LIVE_RUN_COMPLETED_WITH_QA_MISSES",
+    "generated_at":  "2026-06-29T22:25:58.4592661Z",
+    "packet_id":  "GHOST_FORGE_POP_TODAY_20260629",
+    "run_id":  "GHOST_FORGE_POP_TODAY_20260629-181952",
+    "external_run_executed":  true,
+    "worker":  "https://werkles-ghost-forge1.onrender.com",
+    "submitted_count":  5,
+    "completed_count":  5,
+    "downloaded_count":  5,
+    "total_estimated_cost_usd":  1.0,
+    "manifest_path":  "foreman/ghost-forge/GHOST_FORGE_POP_TODAY_LIVE_RESULTS_20260629.json",
+    "receipt_path":  "foreman/handoffs/GHOST_FORGE_POP_TODAY_LIVE_RECEIPT_20260629.md",
+    "contact_sheet_path":  "foreman/artifacts/ghost_forge_pop_today_contact_sheet.png",
+    "browser_proof_path":  "foreman/artifacts/ghost_forge_pop_today_contact_sheet_browser.png",
+    "file_facts":  [
+                       {
+                           "name":  "D_OG_GoopSplatterResidue_Atlas.png",
+                           "bytes":  857175,
+                           "width":  1024,
+                           "height":  1024,
+                           "pixel_format":  "Format24bppRgb",
+                           "has_alpha":  false
+                       },
+                       {
+                           "name":  "D_OG_WetPuddles_Atlas.png",
+                           "bytes":  1801615,
+                           "width":  1024,
+                           "height":  1024,
+                           "pixel_format":  "Format24bppRgb",
+                           "has_alpha":  false
+                       },
+                       {
+                           "name":  "FX_OG_GoopBurst_8x8_ColorAlpha.png",
+                           "bytes":  1640410,
+                           "width":  1024,
+                           "height":  1024,
+                           "pixel_format":  "Format24bppRgb",
+                           "has_alpha":  false
+                       },
+                       {
+                           "name":  "T_OG_ATL_GoopResidueOverlay_Color.png",
+                           "bytes":  1813854,
+                           "width":  1024,
+                           "height":  1024,
+                           "pixel_format":  "Format24bppRgb",
+                           "has_alpha":  false
+                       },
+                       {
+                           "name":  "T_OG_ATL_WetAsphalt_SodiumLit_Albedo.png",
+                           "bytes":  2104900,
+                           "width":  1024,
+                           "height":  1024,
+                           "pixel_format":  "Format24bppRgb",
+                           "has_alpha":  false
+                       }
+                   ],
+    "qa_misses":  [
+                      "All outputs are 1024x1024, below requested 2K/4K surface target.",
+                      "All outputs are RGB PNGs with no alpha channel.",
+                      "No normal, roughness, height, alpha, or emissive companion maps were produced.",
+                      "VFX output is not a true 8x8 flipbook sheet."
+                  ]
+}

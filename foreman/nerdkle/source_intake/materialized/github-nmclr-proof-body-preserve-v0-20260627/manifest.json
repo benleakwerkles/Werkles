@@ -1,0 +1,81 @@
+{
+  "source_id": "github-nmclr-proof-body-preserve-v0-20260627",
+  "materialized_at": "2026-06-29T01:15:47.691Z",
+  "repository_url": "https://github.com/benleakwerkles/Werkles1.git",
+  "branch": "nerdkle/nmclr-proof-body-preserve-v0-20260627",
+  "branch_ref": "origin/nerdkle/nmclr-proof-body-preserve-v0-20260627",
+  "commit": "f14227352ce7820f9e12b135f559d706691e85da",
+  "canonicality": "preserved_only",
+  "source_status": "READY_FOR_REVIEW",
+  "proof_boundary": "Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.",
+  "source_manifest_path": "foreman/nerdkle/source_intake/inbox/github-nmclr-proof-body-preserve-v0-20260627.json",
+  "packet_path": "foreman/source-truth/NEXT_NMCLR_PROOF_BODY_PACKET.json",
+  "files": [
+    {
+      "original_path": "foreman/source-truth/NEXT_NMCLR_PROOF_BODY_PACKET.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/foreman/source-truth/NEXT_NMCLR_PROOF_BODY_PACKET.json",
+      "sha256": null,
+      "byte_count": 920
+    },
+    {
+      "original_path": "NMCLR/spec/PROOF_BODY_PRESERVATION_README.md",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/PROOF_BODY_PRESERVATION_README.md",
+      "sha256": "8ee178e217caf8e31cc95cb517737bace609eb8334515f85a1f1e5ec2b0be9e1",
+      "byte_count": 809
+    },
+    {
+      "original_path": "NMCLR/spec/build/README.md",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/README.md",
+      "sha256": "834b5bc7fdc8bbbf332fe27b2e23544612f812cbdea3346e3f3dae5e8616e91a",
+      "byte_count": 1790
+    },
+    {
+      "original_path": "NMCLR/spec/build/artifacts/first-artifact.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/artifacts/first-artifact.json",
+      "sha256": "d867db619a0219d738792471743143ff9812c8d295f98eb8137d5ef97a85ba3b",
+      "byte_count": 110
+    },
+    {
+      "original_path": "NMCLR/spec/build/first_breath.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/first_breath.mjs",
+      "sha256": "1f85ad3ca56569524605d87ea2d8c33996b505675e9a5fb06af93b24ac119e2f",
+      "byte_count": 3941
+    },
+    {
+      "original_path": "NMCLR/spec/build/first_metabolism.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/first_metabolism.mjs",
+      "sha256": "a0d985ed70ab78f7836248e606c50b16bd8874bf44c65688e372021ec8fce3ba",
+      "byte_count": 3545
+    },
+    {
+      "original_path": "NMCLR/spec/build/first_movement.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/first_movement.mjs",
+      "sha256": "8672cb3080c8acf82b56ae93eda7e6a087d82f00c219602fd2b83159438cc7fc",
+      "byte_count": 3904
+    },
+    {
+      "original_path": "NMCLR/spec/build/fixtures/packet-causes-action.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/fixtures/packet-causes-action.json",
+      "sha256": "7afd0e1432490c3503825a30a47db695708349e63ce1231760d5c33b8e82aeb5",
+      "byte_count": 295
+    },
+    {
+      "original_path": "NMCLR/spec/build/nmclr-first-slice.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/nmclr-first-slice.mjs",
+      "sha256": "e86f624f89bd2a623890e97164b78b0136f029461dc9f51d9430575b8de222ef",
+      "byte_count": 3608
+    },
+    {
+      "original_path": "NMCLR/spec/build/receipts/github_preservation/NMCLR_PROOF_BODY_GITHUB_PRESERVATION_RECEIPT.json",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/receipts/github_preservation/NMCLR_PROOF_BODY_GITHUB_PRESERVATION_RECEIPT.json",
+      "sha256": "caead1d15fdcdda0cf600d7b7df780b28dd0a225c2e90d4b07a6bca41741b393",
+      "byte_count": 696
+    },
+    {
+      "original_path": "scripts/foreman/check-nmclr-proof-body-preservation.mjs",
+      "materialized_path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/scripts/foreman/check-nmclr-proof-body-preservation.mjs",
+      "sha256": "9b16a3e01c02e5b58e87e4c570c77f916f4b38d5c49215a83b4ea8abe7b7c6f3",
+      "byte_count": 5274
+    }
+  ]
+}

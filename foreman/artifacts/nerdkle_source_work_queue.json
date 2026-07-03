@@ -1,0 +1,154 @@
+{
+  "artifact_id": "NERDKLE_SOURCE_WORK_QUEUE",
+  "generated_at": "2026-06-29T01:19:08.809Z",
+  "status": "PASS_SOURCE_WORK_QUEUE",
+  "rule": "Queue recommends local next slices from verified GitHub source material without promoting review branches or mutating production inputs.",
+  "next_recommended_queue_id": "Q2_NERVOUS_SYSTEM_INPUT_LOCATOR",
+  "ready_count": 2,
+  "blocked_count": 3,
+  "real_input_probe": {
+    "circulation_db": [],
+    "world_state_json": [],
+    "speaker_queue": []
+  },
+  "items": [
+    {
+      "queue_id": "Q1_NMCLR_SANDBOX_EXECUTION_PROOF",
+      "source_id": "github-nmclr-proof-body-preserve-v0-20260627",
+      "title": "NMCLR proof body preserved candidate",
+      "source_type": "nmclr_proof_body",
+      "priority": 1,
+      "queue_state": "COMPLETE_LOCAL_PROOF",
+      "source_status": "READY_FOR_REVIEW",
+      "canonicality": "preserved_only",
+      "proof_boundary": "Preserved branch is not canonical full Nerdkle proof until execution proof and human promotion exist.",
+      "materialized_manifest": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/manifest.json",
+      "recommended_next_step": "Completed. Keep this as sandbox proof unless Ben opens a human promotion gate.",
+      "proof_needed": [],
+      "blockers": [],
+      "forbidden": [
+        "Do not call the branch canonical.",
+        "Do not move NMCLR into live root until human promotion exists."
+      ],
+      "active_checks": [
+        {
+          "path": "NMCLR/spec/build/nmclr-first-slice.mjs",
+          "exists": false
+        },
+        {
+          "path": "foreman/nerdkle/source_intake/materialized/github-nmclr-proof-body-preserve-v0-20260627/files/NMCLR/spec/build/nmclr-first-slice.mjs",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "queue_id": "Q2_NERVOUS_SYSTEM_INPUT_LOCATOR",
+      "source_id": "github-nerdkle-nervous-system-organs-v0-20260627",
+      "title": "Nerdkle nervous system organs preservation branch",
+      "source_type": "nerdkle_nervous_system",
+      "priority": 2,
+      "queue_state": "READY_LOCAL_PREP_BLOCKED_REAL_INPUTS",
+      "source_status": "PENDING_REAL_INPUTS",
+      "canonicality": "pending_real_inputs",
+      "proof_boundary": "Fixture output is not production proof; production inputs and receipts are still required.",
+      "materialized_manifest": "foreman/nerdkle/source_intake/materialized/github-nerdkle-nervous-system-organs-v0-20260627/manifest.json",
+      "recommended_next_step": "Build a read-only production-input locator for Swateyes, Fleyes, and Ender apoptosis before copying any organ into live paths.",
+      "proof_needed": [
+        "real action payload from Medulla or Fastify",
+        "real circulation.db containing shadow_cache",
+        "real Wormeyes world_state.json",
+        "dry-run readback with file paths, byte counts, and SHA256 hashes"
+      ],
+      "blockers": [
+        "real_circulation_db",
+        "real_world_state_json"
+      ],
+      "forbidden": [
+        "Do not delete doctrine.",
+        "Do not call no-input NO_FRICTION_DETECTED a healthy organism.",
+        "Do not mutate production DB rows."
+      ],
+      "active_checks": [
+        {
+          "path": "tinkarden/nervous_system/fleyes.js",
+          "exists": false
+        },
+        {
+          "path": "tinkarden/nervous_system/swateyes.js",
+          "exists": false
+        },
+        {
+          "path": "tinkarden/nervous_system/ender_apoptosis.js",
+          "exists": false
+        }
+      ]
+    },
+    {
+      "queue_id": "Q3_RECEIPT_CRAWLER_READ_ONLY_LEDGER_AUDIT",
+      "source_id": "github-receipt-crawler-v0-20260627",
+      "title": "Receipt crawler production movement proof branch",
+      "source_type": "receipt_crawler",
+      "priority": 3,
+      "queue_state": "BLOCKED_REAL_LEDGER",
+      "source_status": "PENDING_REAL_LEDGER",
+      "canonicality": "pending_real_inputs",
+      "proof_boundary": "Self-test output is not production movement proof until the real circulation.db ledger is read and updated.",
+      "materialized_manifest": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/manifest.json",
+      "recommended_next_step": "Build a read-only ledger audit that reports LiveReceipt schema and candidate rows before any crawler movement proof.",
+      "proof_needed": [
+        "LiveReceipt table exists",
+        "status and ASSIMILATED columns exist",
+        "candidate SUCCESS / unassimilated row exists"
+      ],
+      "blockers": [
+        "real_circulation_db",
+        "speaker_queue"
+      ],
+      "forbidden": [
+        "Do not update ASSIMILATED in this prep step.",
+        "Do not delete SQLite history rows.",
+        "Do not call DB_MISSING a successful receipt move."
+      ],
+      "active_checks": [
+        {
+          "path": "scripts/foreman/crawler.js",
+          "exists": false
+        },
+        {
+          "path": "foreman/nerdkle/source_intake/materialized/github-receipt-crawler-v0-20260627/files/scripts/foreman/crawler.js",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "queue_id": "Q4_BOOK_BOUNDARY_REFERENCE",
+      "source_id": "github-book-architecture-stream-split-v0-20260627",
+      "title": "Book architecture stream split and proof boundaries",
+      "source_type": "book_architecture",
+      "priority": 4,
+      "queue_state": "READY_REFERENCE_ONLY",
+      "source_status": "READY_FOR_REVIEW",
+      "canonicality": "manuscript_only",
+      "proof_boundary": "Manuscript doctrine cannot prove automation.",
+      "materialized_manifest": "foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/manifest.json",
+      "recommended_next_step": "Use the stream-split manuscript as a boundary reference in future receipts and reports, not as implementation proof.",
+      "proof_needed": [
+        "human merge decision before canon",
+        "quoted boundary language only when relevant"
+      ],
+      "blockers": [
+        "human_merge_decision_for_canon"
+      ],
+      "forbidden": [
+        "Do not use manuscript doctrine as automation proof.",
+        "Do not mark Feral, NMCLR, TinkerDen, Dink, or Maker artifacts as working because this manuscript exists."
+      ],
+      "active_checks": [
+        {
+          "path": "foreman/nerdkle/source_intake/materialized/github-book-architecture-stream-split-v0-20260627/files/book/architecture/STREAM_SPLIT_AND_PROOF_BOUNDARIES_V0.md",
+          "exists": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "speaker.receipt.schema.v1",
+  "title": "Speaker raw inbox receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "created_at",
+    "source",
+    "payload",
+    "metadata"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^rcpt_[a-z0-9_]{20,}$"
+    },
+    "receipt_type": {
+      "type": "string",
+      "enum": [
+        "DECISION",
+        "ARTIFACT"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 20
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aeye",
+        "machine",
+        "path",
+        "content_sha256"
+      ],
+      "properties": {
+        "aeye": {
+          "type": "string",
+          "enum": [
+            "Thufir",
+            "Bean",
+            "Ender"
+          ]
+        },
+        "machine": {
+          "type": "string",
+          "const": "Sally"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "body",
+        "flags"
+      ],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "markdown",
+            "text"
+          ]
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]{2,}$"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_id",
+        "formatter",
+        "schema_id",
+        "input_bytes"
+      ],
+      "properties": {
+        "packet_id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9_]+$"
+        },
+        "formatter": {
+          "type": "string",
+          "enum": [
+            "receipt_formatter.js",
+            "tinker-sign.sh"
+          ]
+        },
+        "schema_id": {
+          "type": "string",
+          "const": "speaker.receipt.schema.v1"
+        },
+        "input_bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

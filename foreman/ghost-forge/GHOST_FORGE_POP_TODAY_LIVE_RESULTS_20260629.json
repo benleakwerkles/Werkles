@@ -1,0 +1,63 @@
+﻿{
+    "run_id":  "GHOST_FORGE_POP_TODAY_20260629-181952",
+    "packet_id":  "GHOST_FORGE_POP_TODAY_20260629",
+    "gate":  "GHOST_FORGE_POP_TODAY_OPERATOR_GO",
+    "operator_phrase":  "Go now, please.",
+    "started_at":  "2026-06-29T22:19:52.6353779Z",
+    "updated_at":  "2026-06-29T22:21:16.4194968Z",
+    "base_url":  "https://werkles-ghost-forge1.onrender.com",
+    "source_file":  "C:/Users/benle/Desktop/GHOST_FORGE_IMAGERY_SHOPPING_LIST.md",
+    "external_run_executed":  true,
+    "shot_count":  5,
+    "submitted_count":  5,
+    "completed_count":  5,
+    "total_estimated_cost_usd":  1.0,
+    "asset_output_dir":  "public/assets/draft/oddly-godly-pop-today",
+    "results":  [
+                    {
+                        "asset_id":  "T1_001_WET_ASPHALT_SODIUM_LIT",
+                        "status":  "completed",
+                        "batch_id":  "10edfc5a-d1ee-4f20-afa8-69061a455dbf",
+                        "path":  "public/assets/draft/oddly-godly-pop-today/T_OG_ATL_WetAsphalt_SodiumLit_Albedo.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "10edfc5a-d1ee-4f20-afa8-69061a455dbf/tileable-surface-texture/31108716-f335-41b7-bd17-74cf1e72dd62.png",
+                        "source_url_present":  true
+                    },
+                    {
+                        "asset_id":  "T1_006_GOOP_RESIDUE_OVERLAY",
+                        "status":  "completed",
+                        "batch_id":  "980240b1-bd51-440b-8a62-25ffcbf88cad",
+                        "path":  "public/assets/draft/oddly-godly-pop-today/T_OG_ATL_GoopResidueOverlay_Color.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "980240b1-bd51-440b-8a62-25ffcbf88cad/tileable-overlay-texture/8e94247e-9622-4102-9ee5-982d6b5500f1.png",
+                        "source_url_present":  true
+                    },
+                    {
+                        "asset_id":  "T2_008_GOOP_SPLATTER_DECALS",
+                        "status":  "completed",
+                        "batch_id":  "acb4c32c-b122-4219-bae7-f9aabe89ea3e",
+                        "path":  "public/assets/draft/oddly-godly-pop-today/D_OG_GoopSplatterResidue_Atlas.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "acb4c32c-b122-4219-bae7-f9aabe89ea3e/decal-atlas-transparent/5ac54492-7655-4bed-9e81-8c0866b53d0d.png",
+                        "source_url_present":  true
+                    },
+                    {
+                        "asset_id":  "T2_007_WET_PUDDLE_DECALS",
+                        "status":  "completed",
+                        "batch_id":  "776052e7-3b47-43ce-8606-929f8a7a3c36",
+                        "path":  "public/assets/draft/oddly-godly-pop-today/D_OG_WetPuddles_Atlas.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "776052e7-3b47-43ce-8606-929f8a7a3c36/transparent-decal-atlas/c56e7853-1832-42b4-b3bf-b8031220aa6e.png",
+                        "source_url_present":  true
+                    },
+                    {
+                        "asset_id":  "T5_025_GOOP_FIREWORK_BURST",
+                        "status":  "completed",
+                        "batch_id":  "9f09dd44-6464-4742-876c-a8a853819db4",
+                        "path":  "public/assets/draft/oddly-godly-pop-today/FX_OG_GoopBurst_8x8_ColorAlpha.png",
+                        "estimated_cost_usd":  0.2,
+                        "storage_path":  "9f09dd44-6464-4742-876c-a8a853819db4/vfx-flipbook-frame-sheet/14284ae9-dcc6-4072-a14a-f53f1b474cbf.png",
+                        "source_url_present":  true
+                    }
+                ]
+}
