@@ -94,6 +94,20 @@ Anchor: `lane-cursor-first-bounded-real-work`
 - Notes:
   - Blocked until Ben approves exact Cursor scope.
 
+## Lane: SkyPooka Mobile Nerdkle
+
+Anchor: `lane-skypooka-mobile-nerdkle`
+
+- Paid calls allowed: `no`
+- Max cost per test: `$0.00`
+- Max cost per run: `$0.00`
+- Daily cap: `$0.00`
+- Stop condition when budget is exceeded:
+  - Stop immediately. SkyPooka is read-only mobile UI over existing repo artifacts.
+- Notes:
+  - Approved for Cloud Agent autonomous build on feature branch.
+  - No relay send, deploy, merge, or provider spend without separate gate.
+
 ## Tier 1 Spend/Batch Gate Requirement
 
 Before any Tier 1 spend or batch gate can proceed, this file must define:

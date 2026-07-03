@@ -39,6 +39,7 @@ Snapshot: `foreman/reviews/SALLY_PRE_MERGE_SNAPSHOT_2026-06-06.md`
 ## Maker (Cursor) — active for integration verification
 
 - Run `npm run typecheck` after merge commit
+- **SkyPooka v0.1** — mobile field view at `/skypooka` (Cloud lane `cursor/skypooka-mobile-v0-233f`)
 - **No** Production deploy, push to main, SQL, secrets, Ghost Forge spend
 - Preserve homepage scope lock — no prod promotion
 - **No** auto-queued render waits or 30+ minute sleeps on 429 — fail fast; Ben decides retry
