@@ -18,6 +18,7 @@ For Betsy, Spanzee, Medullina, or any machine that has not yet run this cleanup,
 
 ```text
 After convergence, install the forward guardrail from the canonical checkout so future pushes and session starts cannot silently use Werkles1, the retired GitHub stub, or a Desktop-path Werkles checkout.
+Do the full dirty-root hunt. Do not only check the canonical folder and the obvious Werkles1 folder.
 ```
 
 If this packet is received in the same Codex thread, treat this thread as the continuity reference. Do not re-open the old `Werkles1` vs `Werkles` debate. The current source-truth decision is already made:
@@ -47,6 +48,48 @@ C:\Users\<user>\github\Werkles
 ```
 
 No Aeye may use a second active Werkles sandbox for normal work.
+
+## Dirty Root Hunt
+
+Before any folder is renamed, deleted, moved, or declared retired, run the dirty-root hunt. The point is to find the likely places where real work may be hiding.
+
+The inventory helper now checks:
+
+1. The active user profile, `C:\Users\BenLeak`, `C:\Users\benle`, `C:\Users\Ben Leak`, and every visible `C:\Users\*` profile.
+2. Under each profile:
+   - `github\Werkles`
+   - `github\Werkles1`
+   - `Desktop\github\Werkles`
+   - `Desktop\github\Werkles1`
+   - `Desktop\Werkles_DIRTY_BACKUP`
+   - `Documents\Werkles`
+   - `Documents\GitHub\Werkles`
+   - `Source\Werkles`
+   - `repos\Werkles`
+   - `dev\Werkles`
+3. Hard-root suspects:
+   - `C:\Dev\Werkles`
+   - `C:\Dev\Werkles1`
+   - `C:\wt\Werkles`
+   - `C:\wt\stbook`
+   - `C:\speaker`
+   - `C:\tinkarden`
+   - `C:\TinkerDen`
+4. A shallow recursive scan, default depth 4, under visible profile `github`, `Desktop`, `Desktop\github`, `Documents`, `Documents\GitHub`, `Source`, `repos`, `dev`, `Downloads`, plus `C:\Dev` and `C:\wt`.
+
+Why these paths matter:
+
+| Suspect | Why it is in the hunt |
+|---|---|
+| `C:\Users\BenLeak\Desktop\github\Werkles` / `C:\Users\benle\Desktop\github\Werkles` | Repeated historical active/dirty Werkles root; Betsy path was previously blocked from Doss-side proof and must be checked on Betsy itself. |
+| `C:\Users\benle\Desktop\Werkles_DIRTY_BACKUP` | Known dirty backup snapshot name; archive only unless reviewed file-by-file. |
+| `C:\Users\benle\Documents\Werkles` | Known stale partial copy outside the GitHub path. |
+| `C:\Dev\Werkles` | Known same-host second surface on Sally-style topology. |
+| `C:\speaker` | Adjacent source-truth/relay root that can contain dirty local state; not a Werkles replacement, but must not be deleted or imported wholesale. |
+| `C:\tinkarden` / `C:\TinkerDen` | Adjacent command-surface roots linked to dirty TinkerDen transport evidence; inventory only, do not commit wholesale. |
+| `C:\wt\stbook` | Known source-truth/book working tree handle; not Werkles canonical, but a local source root that must not be mistaken for disposable clutter. |
+
+The inventory receipt includes `candidate_reasons`, `status_line_count`, `untracked_count`, and bounded samples. If a root has dirty/untracked work, create full patch and untracked receipts before retirement. Do not treat a truncated inventory sample as proof that the full root was preserved.
 
 ## Forward Guardrails
 
@@ -140,7 +183,7 @@ Preferred receipt command:
 ```powershell
 cd C:\Users\<user>\github\Werkles
 git pull --ff-only origin main
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1 -ScanDepth 4
 ```
 
 If the canonical checkout does not exist yet, run the manual inventory below before cloning or moving anything.
@@ -241,7 +284,7 @@ After inventory, run the helper from the canonical checkout in dry-run first. Do
 ```powershell
 cd C:\Users\<user>\github\Werkles
 git pull --ff-only origin main
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1 -ScanDepth 4
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-WerklesDestination.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Assert-WerklesCanonical.ps1
 ```
@@ -279,6 +322,8 @@ BRANCH:
 HEAD:
 WORKTREE_STATUS:
 INVENTORY_RECEIPT:
+DIRTY_ROOT_SCAN:
+DIRTY_ROOTS_FOUND:
 GUARD_RECEIPT:
 GUARD_INSTALLED:
 DUPLICATE_PATHS_RETIRED:
