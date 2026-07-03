@@ -51,6 +51,17 @@ Technical proofs classified as non-gates in `foreman/HUMAN_GATES.md` do not trig
 
 When a true human gate is reached, classify it with `foreman/HUMAN_GATES.md` as Tier 1 or Tier 2 and follow the required artifact rule.
 
+## Repo Identity Guard
+
+Before repo or project-state claims, verify the canonical identity:
+
+- repo: `benleakwerkles/Werkles`
+- repo id: `1242158598`
+- remote: `https://github.com/benleakwerkles/Werkles.git`
+- local path: `C:\Users\<user>\github\Werkles`
+
+Read `foreman/messages/MAKER_AEYE_REPO_SETTINGS_ALIGNMENT_PACKET_20260703.md` and `foreman/messages/WERKLES_GROUND_ZERO_LOCAL_CLOUD_CODEX_CLEANUP_PACKET_20260703.md` for repo/project binding work.
+
 ## Output Style
 
 Report what changed, what was checked, what remains blocked, and the exact next human action. Keep the cockpit current.

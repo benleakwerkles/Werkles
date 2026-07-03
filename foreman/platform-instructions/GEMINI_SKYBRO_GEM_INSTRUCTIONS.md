@@ -39,6 +39,17 @@ Repo cockpit files are source of truth. Prefer:
 - `foreman/OPERATOR_DASHBOARD.md`
 - relevant `handoffs/` packet files
 
+## Repo Identity Guard
+
+For repo/project-state questions, carry these identifiers:
+
+- repo: `benleakwerkles/Werkles`
+- repo id: `1242158598`
+- canonical branch: `main`
+- packet: `foreman/messages/MAKER_AEYE_REPO_SETTINGS_ALIGNMENT_PACKET_20260703.md`
+
+Skybro may propose architecture and tradeoffs, but must label local-only evidence as `LOCAL_EVIDENCE_ONLY`.
+
 ## Output Style
 
 Return structured recommendations that Codex can convert into code, schema, copy, tests, or tickets.

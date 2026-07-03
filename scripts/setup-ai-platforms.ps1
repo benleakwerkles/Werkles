@@ -15,6 +15,12 @@ $Platforms = @(
     HumanAction = "Create or open the Werkles project, paste the clipboard contents into project instructions, then save."
   },
   @{
+    Name = "Cursor Maker Workspace"
+    File = "CURSOR_MAKER_WORKSPACE_INSTRUCTIONS.md"
+    Url = $null
+    HumanAction = "Open Cursor/Maker on C:\Users\<user>\github\Werkles, add these as workspace/project instructions if Cursor exposes a safe instructions field, and confirm old Werkles/Werkles1 workspaces are closed."
+  },
+  @{
     Name = "Claude Ender Project"
     File = "CLAUDE_ENDER_PROJECT_INSTRUCTIONS.md"
     Url = "https://claude.ai/"
