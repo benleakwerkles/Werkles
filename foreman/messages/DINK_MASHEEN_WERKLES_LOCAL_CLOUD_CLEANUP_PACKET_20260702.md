@@ -14,6 +14,12 @@ Execute the Dink MaSheen Werkles Local + Cloud Cleanup Packet from this thread.
 Inventory local Werkles folders first. Do not delete unknown work. Preserve divergent work as salvage evidence. Converge this machine to one active folder and one GitHub remote. Return the required readback block.
 ```
 
+For Betsy, Spanzee, Medullina, or any machine that has not yet run this cleanup, use the same text and add:
+
+```text
+After convergence, install the forward guardrail from the canonical checkout so future pushes and session starts cannot silently use Werkles1, the retired GitHub stub, or a Desktop-path Werkles checkout.
+```
+
 If this packet is received in the same Codex thread, treat this thread as the continuity reference. Do not re-open the old `Werkles1` vs `Werkles` debate. The current source-truth decision is already made:
 
 - GitHub canonical repo is `https://github.com/benleakwerkles/Werkles.git`.
@@ -41,6 +47,42 @@ C:\Users\<user>\github\Werkles
 ```
 
 No Aeye may use a second active Werkles sandbox for normal work.
+
+## Forward Guardrails
+
+This cleanup is not complete on a workstation until the guardrail is installed or a blocker explains why it could not be installed.
+
+From the canonical checkout:
+
+```powershell
+cd C:\Users\<user>\github\Werkles
+git pull --ff-only origin main
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Assert-WerklesCanonical.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Install-WerklesGitGuard.ps1
+```
+
+Equivalent npm commands from the canonical checkout:
+
+```powershell
+npm.cmd run guard:werkles
+npm.cmd run guard:werkles:install
+```
+
+The guardrail checks:
+
+1. The canonical checkout is `C:\Users\<user>\github\Werkles`.
+2. The only final remote is `origin = https://github.com/benleakwerkles/Werkles.git`.
+3. Forbidden active folders such as `Werkles1`, `Desktop\github\Werkles`, and `C:\Dev\Werkles` are not live git checkouts.
+4. Active launchers and prompt pointers do not route humans back to retired Werkles paths.
+5. Temporary salvage remotes are removed before work continues.
+
+`Install-WerklesGitGuard.ps1` writes a local `.git\hooks\pre-push` hook. Git hooks are local machine state, not repo state, so every workstation must install it after its cleanup. The hook blocks pushes when a blocker exists, but it does not delete or merge any work.
+
+Guard receipts are written to:
+
+```text
+C:\Users\<user>\github\Werkles-local-merge-receipts
+```
 
 ## Observed Source-Sandbox Addresses
 
@@ -201,6 +243,7 @@ cd C:\Users\<user>\github\Werkles
 git pull --ff-only origin main
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Inventory-WerklesLocalSources.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-WerklesDestination.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Assert-WerklesCanonical.ps1
 ```
 
 If the dry-run shows no `MANUAL_REVIEW`, run:
@@ -208,6 +251,8 @@ If the dry-run shows no `MANUAL_REVIEW`, run:
 ```powershell
 cd C:\Users\<user>\github\Werkles
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Migrate-WerklesDestination.ps1 -Apply
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Assert-WerklesCanonical.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\foreman\Install-WerklesGitGuard.ps1
 ```
 
 If it shows `MANUAL_REVIEW`, stop and preserve the divergent folder using the salvage/patch rules above.
@@ -234,6 +279,8 @@ BRANCH:
 HEAD:
 WORKTREE_STATUS:
 INVENTORY_RECEIPT:
+GUARD_RECEIPT:
+GUARD_INSTALLED:
 DUPLICATE_PATHS_RETIRED:
 LOCAL_FOLDER_CLASSIFICATIONS:
 LOCAL_ONLY_BRANCHES:
