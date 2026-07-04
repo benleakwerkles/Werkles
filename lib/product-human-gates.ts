@@ -160,6 +160,18 @@ export type ProductProviderConsoleLink = {
   blockedBy: string;
 };
 
+export type ProductGateSignInTier = "v0_ship" | "github_push" | "crucible_later" | "optional";
+
+export type ProductGateSignInTarget = {
+  order: number;
+  tier: ProductGateSignInTier;
+  tierLabel: string;
+  provider: string;
+  url: string;
+  gatePhrase: string | null;
+  authenticatorNote: string;
+};
+
 export type ProductGateSecretEntryItem = {
   name: string;
   destination: string;
@@ -1069,6 +1081,117 @@ export const productProviderConsoleLinks: ProductProviderConsoleLink[] = [
     purpose: "Reference, employment, and background-check provider setup.",
     gate: "Background-check/FCRA provider gate",
     blockedBy: "Counsel/provider/FCRA approval."
+  }
+];
+
+export const productGateSignInHunt: ProductGateSignInTarget[] = [
+  {
+    order: 1,
+    tier: "v0_ship",
+    tierLabel: "Ship a usable member site",
+    provider: "Supabase",
+    url: "https://supabase.com/dashboard/projects",
+    gatePhrase: "PROVIDER LOGIN DONE",
+    authenticatorNote: "Email or GitHub sign-in; 2FA if enabled on account."
+  },
+  {
+    order: 2,
+    tier: "v0_ship",
+    tierLabel: "Ship a usable member site",
+    provider: "Vercel",
+    url: "https://vercel.com/login",
+    gatePhrase: "APPROVE SECRET ENTRY",
+    authenticatorNote: "Continue with GitHub is fastest if GitHub session is already open."
+  },
+  {
+    order: 3,
+    tier: "v0_ship",
+    tierLabel: "Ship a usable member site",
+    provider: "Stripe",
+    url: "https://dashboard.stripe.com/login?redirect=%2Ftest%2Fproducts",
+    gatePhrase: "APPROVE STRIPE PRODUCT PREP",
+    authenticatorNote: "Email/password + authenticator, passkey, Google, or SSO — known blocker."
+  },
+  {
+    order: 4,
+    tier: "v0_ship",
+    tierLabel: "Ship a usable member site",
+    provider: "Stripe (test webhooks)",
+    url: "https://dashboard.stripe.com/test/webhooks",
+    gatePhrase: "APPROVE PAID CHECKOUT GO-LIVE (test mode)",
+    authenticatorNote: "Same Stripe login as above."
+  },
+  {
+    order: 5,
+    tier: "v0_ship",
+    tierLabel: "Ship a usable member site",
+    provider: "Stripe (live products)",
+    url: "https://dashboard.stripe.com/products",
+    gatePhrase: "APPROVE LIVE STRIPE PRODUCT CREATE",
+    authenticatorNote: "After test checkout + webhook proof."
+  },
+  {
+    order: 6,
+    tier: "github_push",
+    tierLabel: "Push / merge / PR",
+    provider: "GitHub (web)",
+    url: "https://github.com/login",
+    gatePhrase: null,
+    authenticatorNote: "Repo: benleakwerkles/Werkles (id 1242158598)."
+  },
+  {
+    order: 7,
+    tier: "github_push",
+    tierLabel: "Push / merge / PR",
+    provider: "GitHub CLI",
+    url: "https://cli.github.com/manual/gh_auth_login",
+    gatePhrase: null,
+    authenticatorNote: "Terminal: gh auth login — separate from web session."
+  },
+  {
+    order: 8,
+    tier: "crucible_later",
+    tierLabel: "Crucible / verification (later)",
+    provider: "Stripe Identity",
+    url: "https://dashboard.stripe.com/identity/application",
+    gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
+    authenticatorNote: "Same Stripe login."
+  },
+  {
+    order: 9,
+    tier: "crucible_later",
+    tierLabel: "Crucible / verification (later)",
+    provider: "Plaid",
+    url: "https://dashboard.plaid.com/",
+    gatePhrase: null,
+    authenticatorNote: "Explicit setup approval before credentials."
+  },
+  {
+    order: 10,
+    tier: "crucible_later",
+    tierLabel: "Crucible / verification (later)",
+    provider: "Twilio",
+    url: "https://console.twilio.com/",
+    gatePhrase: null,
+    authenticatorNote: "Explicit setup approval before SMS."
+  },
+  {
+    order: 11,
+    tier: "crucible_later",
+    tierLabel: "Crucible / verification (later)",
+    provider: "Checkr",
+    url: "https://dashboard.checkr.com/",
+    gatePhrase: null,
+    authenticatorNote: "FCRA/counsel blocked until policy proof."
+  },
+  {
+    order: 12,
+    tier: "optional",
+    tierLabel: "Optional",
+    provider: "Google Cloud",
+    url: "https://console.cloud.google.com/apis/credentials",
+    gatePhrase: null,
+    authenticatorNote: "Only if enabling Google OAuth in Supabase."
   }
 ];
 

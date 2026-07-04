@@ -46,6 +46,7 @@ export default function GateKnockoutPage() {
           <Link href="/operator/gate-knockout/stripe-blocked">Stripe Blocked</Link>
           <Link href="/operator/gate-knockout/stripe-offline">Stripe Offline</Link>
           <Link href="/operator/gate-knockout/provider-queue">Provider Queue</Link>
+          <Link href="/operator/gate-knockout/sign-in-hunt">Sign-In Hunt</Link>
           <Link href="/operator/gate-knockout/secret-entry">Secret Entry</Link>
           <Link href="/operator/gate-knockout/webhook-matrix">Webhook Matrix</Link>
           <Link href="/operator/gate-knockout/live-checkout-smoke">Live Checkout Smoke</Link>

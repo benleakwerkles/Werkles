@@ -135,6 +135,51 @@ export function MemberDashboardClient({
         </div>
       </section>
 
+      <section className="ops-card member-works-now" aria-label="What works now">
+        <div className="card-heading">
+          <p>Honest status</p>
+          <h2>What works now · what&apos;s paused</h2>
+        </div>
+        <div className="member-works-now__grid">
+          <div>
+            <h3>Works now (free)</h3>
+            <ul>
+              <li>Account, login, onboarding, and profile</li>
+              <li>Member home, workshops, and intros queue</li>
+              <li>Bellows intake and Squibb recommendations (demo + saved intake)</li>
+              <li>Proof, pricing, and narrative entry paths</li>
+            </ul>
+            <div className="member-selected-surface__actions">
+              <Link className="button button-dark" href="/bellows/intake">
+                Start intake
+              </Link>
+              <Link className="button button-outline" href="/dashboard/profile">
+                Update profile
+              </Link>
+            </div>
+          </div>
+          <div>
+            <h3>Paused (operator gates)</h3>
+            <ul>
+              <li>Foundry Dues checkout and billing portal</li>
+              <li>Live Stripe webhooks and membership state from payment</li>
+              <li>Crucible provider sessions and background checks</li>
+            </ul>
+            <p className="muted">
+              Payments pause is honest — not a broken site. The free path still moves when your record is clear.
+            </p>
+            <div className="member-selected-surface__actions">
+              <Link className="button button-outline" href="/membership">
+                See dues (paused)
+              </Link>
+              <Link className="button button-outline" href="/proof">
+                Inspect proof
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="member-next-move-card" aria-label="Your next move">
         <div className="member-next-move-card__copy">
           <p className="member-next-move-card__kicker">Your next move</p>
