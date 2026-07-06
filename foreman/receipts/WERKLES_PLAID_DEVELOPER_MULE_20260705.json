@@ -1,0 +1,22 @@
+﻿{
+    "schema":  "WERKLES_PLAID_DEVELOPER_MULE_V1",
+    "timestamp":  "2026-07-06T00:11:08.6781878-04:00",
+    "machine":  "BETSY",
+    "operator_email":  "ben.leak@kindsir.com",
+    "company":  "Werkles, Inc",
+    "country":  "US",
+    "secret_values_printed":  "NO",
+    "steps":  [
+                  {
+                      "step":  "open_plaid_dashboard",
+                      "status":  "EXECUTED",
+                      "detail":  "signup_and_keys"
+                  },
+                  {
+                      "step":  "import_plaid_keys",
+                      "status":  "BLOCKED",
+                      "detail":  "no_valid_pair_after_polling"
+                  }
+              ],
+    "overall":  "NEEDS_OPERATOR_AT_PLAID_KEYS"
+}

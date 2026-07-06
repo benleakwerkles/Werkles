@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { CruciblePanel } from "@/components/crucible/crucible-panel";
@@ -18,7 +19,9 @@ export default function CruciblePage() {
       <div className="tier2-visual-band">
         <Tier2PageVisual page="crucible" forgeBand iconRail />
       </div>
-      <CruciblePanel />
+      <Suspense fallback={<p className="muted">Loading Crucible…</p>}>
+        <CruciblePanel />
+      </Suspense>
 
       <section className="ops-card" aria-label="How Crucible checks work">
         <div className="card-heading">

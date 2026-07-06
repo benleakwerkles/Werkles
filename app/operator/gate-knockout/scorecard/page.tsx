@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 function stateLabel(state: string) {
   if (state === "ready_to_review") return "Ready to review";
+  if (state === "completed") return "Completed";
   if (state === "needs_prior_gate") return "Needs prior gate";
   if (state === "policy_blocked") return "Policy blocked";
   return "Last only";

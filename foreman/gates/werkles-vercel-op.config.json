@@ -1,0 +1,37 @@
+{
+  "schema": "WERKLES_VERCEL_OP_ENV_CONFIG_V1",
+  "vercelProject": "werkles1",
+  "tierAVariableNames": [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "STRIPE_SECRET_KEY",
+    "STRIPE_WEBHOOK_SECRET",
+    "STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID",
+    "STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID",
+    "CRON_SECRET"
+  ],
+  "publicVariableNames": [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+  ],
+  "onePasswordVault": "Werkles Automation",
+  "onePasswordItemTitle": "Werkles Vercel Secrets",
+  "onePasswordEnvironments": {
+    "preview": {
+      "environmentId": "jh555xaznxwocpm46fw76wmdny",
+      "vercelTarget": "preview"
+    },
+    "production": {
+      "environmentId": "hu6leb2xjxl4qeagverfnrxvm4",
+      "vercelTarget": "production"
+    }
+  },
+  "opRefsEnvFile": "foreman/gates/werkles-vercel-tier-a.env.oprefs",
+  "crucibleProviderVariableNames": [
+    "PLAID_CLIENT_ID",
+    "PLAID_SECRET",
+    "PLAID_ENV"
+  ],
+  "crucibleProviderOpRefsEnvFile": "foreman/gates/werkles-crucible-provider.env.oprefs"
+}

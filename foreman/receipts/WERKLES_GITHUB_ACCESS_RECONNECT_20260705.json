@@ -1,0 +1,36 @@
+{
+  "schema": "WERKLES_GITHUB_ACCESS_RECONNECT_RECEIPT_V1",
+  "status": "ACCESS_OK_FETCHED_WITH_DIRTY_WORKTREE",
+  "timestamp": "2026-07-05T20:56:44.7578241-04:00",
+  "machine": "BETSY",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "remote": {
+    "name": "origin",
+    "fetchUrl": "https://github.com/benleakwerkles/Werkles.git",
+    "pushUrl": "https://github.com/benleakwerkles/Werkles.git",
+    "githubRepo": "benleakwerkles/Werkles",
+    "accessCheck": "git ls-remote --heads origin succeeded",
+    "fetchCheck": "git fetch --prune origin succeeded",
+    "headBranch": "main"
+  },
+  "local": {
+    "currentBranch": "maker/site-g-20260703",
+    "head": "7e7be0d6552ee96efbaa89003b84e11ac6b2c39a",
+    "upstream": "origin/consolidation/werkles-unified-20260702-push",
+    "aheadOfUpstreamBy": 3,
+    "dirtyWorktree": "YES",
+    "localPathConfirmed": "YES"
+  },
+  "remoteUpdatesObserved": [
+    "origin/main advanced from ec4772c to 01fcb41",
+    "origin/cursor/medullina-1password-install-233f discovered",
+    "origin/salvage/local-folder-merge/SALLY/github-Werkles/sally-retired-local-merge-20260703 discovered"
+  ],
+  "actionsTaken": [
+    "Verified origin remote URL.",
+    "Verified remote heads are reachable.",
+    "Fetched/pruned origin refs without merging.",
+    "Did not pull, merge, reset, or push."
+  ],
+  "guardrail": "Do not pull, merge, reset, or push until the dirty worktree and branch target are intentionally gated."
+}

@@ -9,7 +9,8 @@ import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-r
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
-import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
+import { isAuthStripeTestBlocked, isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
+import { productGateTestCheckoutPreflight } from "@/lib/product-human-gates";
 import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getClientAccessToken } from "@/lib/client-auth";
 
@@ -18,15 +19,15 @@ type Plan = "monthly" | "annual";
 export default function MembershipPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = shouldUseDevPreviewAuth();
-  const paymentsPaused = !devPreview && !previewBlocked;
+  const paymentsPaused = !devPreview && isFoundryDuesCheckoutPaused();
   const [status, setStatus] = useState(
     previewBlocked
       ? copy.infraPreview.membershipCheckout
       : devPreview
         ? copy.localPreview.membershipIdle
         : paymentsPaused
-          ? "Foundry Dues checkout is paused. Compare plans and use the free member path."
-          : "Choose your dues when checkout is live."
+          ? "Foundry Dues checkout is paused while operator payment setup finishes."
+          : "Test-mode Foundry Dues checkout is open. Live keys stay gated."
   );
   const [highlightPlan, setHighlightPlan] = useState<Plan | null>(null);
 
@@ -115,6 +116,23 @@ export default function MembershipPage() {
       </nav>
 
       <RouteUnlockBanner blockedDetail={copy.infraPreview.membershipCheckout} />
+
+      {!checkoutDisabled && !devPreview ? (
+        <section className="ops-card membership-preflight" aria-label="Before you click checkout">
+          <div className="card-heading">
+            <p>Read first</p>
+            <h2>Before you click Pay</h2>
+          </div>
+          <ol>
+            {productGateTestCheckoutPreflight.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+          <p className="muted">
+            <Link href="/operator/gate-knockout/test-checkout-smoke">Full test checkout smoke runbook</Link>
+          </p>
+        </section>
+      ) : null}
 
       <section className="tier2-page-header">
         <div className="tier2-page-header__copy membership-hero">

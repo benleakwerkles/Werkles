@@ -116,8 +116,8 @@ export function MemberDashboardClient({
           <h2>Build the record before you chase the next surface.</h2>
         </div>
         <p>
-          Profile, workshops, intros, and checks each do one job. Payments are paused — the free member path still
-          moves if the record is clear.
+          Profile, workshops, intros, and checks each do one job. Foundry Dues test checkout is wired — live keys and
+          Crucible provider sessions stay gated.
         </p>
         <div className="member-selected-surface__actions">
           <Link className="button button-dark" href="/dashboard/profile">
@@ -142,12 +142,14 @@ export function MemberDashboardClient({
         </div>
         <div className="member-works-now__grid">
           <div>
-            <h3>Works now (free)</h3>
+            <h3>Works now (free + test billing)</h3>
             <ul>
               <li>Account, login, onboarding, and profile</li>
               <li>Member home, workshops, and intros queue</li>
               <li>Bellows intake and Squibb recommendations (demo + saved intake)</li>
               <li>Proof, pricing, and narrative entry paths</li>
+              <li>Test-mode Foundry Dues checkout on /membership (Stripe test keys)</li>
+              <li>Crucible Identity + Funds provider test on /dashboard/crucible (active members)</li>
             </ul>
             <div className="member-selected-surface__actions">
               <Link className="button button-dark" href="/bellows/intake">
@@ -161,16 +163,18 @@ export function MemberDashboardClient({
           <div>
             <h3>Paused (operator gates)</h3>
             <ul>
-              <li>Foundry Dues checkout and billing portal</li>
-              <li>Live Stripe webhooks and membership state from payment</li>
-              <li>Crucible provider sessions and background checks</li>
+              <li>Live Stripe keys and live checkout go-live</li>
+              <li>Phone, license, reference, employment checks — no API yet</li>
+              <li>Background checks — FCRA / counsel blocked</li>
+              <li>Push/merge to main without explicit Ben gate</li>
             </ul>
             <p className="muted">
-              Payments pause is honest — not a broken site. The free path still moves when your record is clear.
+              Crucible Identity + Funds provider test is open for active Foundry members. Other checks stay explicit
+              placeholders.
             </p>
             <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/membership">
-                See dues (paused)
+              <Link className="button button-outline" href="/dashboard/crucible">
+                Open Crucible
               </Link>
               <Link className="button button-outline" href="/proof">
                 Inspect proof

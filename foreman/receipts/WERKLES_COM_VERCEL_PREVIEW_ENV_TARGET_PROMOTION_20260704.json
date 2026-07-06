@@ -1,0 +1,41 @@
+﻿{
+    "schema":  "WERKLES_COM_VERCEL_PREVIEW_ENV_TARGET_PROMOTION_V1",
+    "status":  "PASS_PROMOTED_PREVIEW_ENV_TARGET_TO_PRODUCTION",
+    "timestamp":  "2026-07-05T00:05:25.8285038-04:00",
+    "machine":  "BETSY",
+    "fieldName":  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "dryRun":  false,
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "decryptedValueRequested":  "NO",
+    "valuePatched":  "NO",
+    "targetOnlyPatch":  "YES",
+    "projectId":  "prj_IAwxCYEv9mCNiBONFWWu99uymkoq",
+    "teamIdPresent":  true,
+    "matchingEnvCount":  1,
+    "selectedEnvIdPresent":  true,
+    "matchingEnvSummaries":  [
+                                 {
+                                     "idPresent":  true,
+                                     "target":  [
+                                                    "preview"
+                                                ],
+                                     "gitBranchPresent":  false,
+                                     "type":  "sensitive",
+                                     "decrypted":  "False",
+                                     "valueLengthPresent":  false
+                                 }
+                             ],
+    "oldTargets":  [
+                       "preview"
+                   ],
+    "newTargets":  [
+                       "preview",
+                       "production"
+                   ],
+    "patchReturnedKey":  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "patchReturnedTarget":  [
+                                "preview",
+                                "production"
+                            ]
+}

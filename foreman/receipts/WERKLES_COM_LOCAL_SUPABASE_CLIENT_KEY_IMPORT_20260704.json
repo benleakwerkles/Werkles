@@ -1,0 +1,35 @@
+﻿{
+    "schema":  "WERKLES_COM_LOCAL_SUPABASE_CLIENT_KEY_IMPORT_V1",
+    "status":  "BLOCKED_NO_VALID_CLIENT_KEY_FOUND",
+    "timestamp":  "2026-07-05T00:00:33.5890373-04:00",
+    "machine":  "BETSY",
+    "vault":  "Werkles Automation",
+    "itemTitle":  "Werkles Vercel Secrets",
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "tempSecretFilesWritten":  "NO",
+    "scannedRoots":  [
+                         "C:\\Users\\Ben Leak\\AppData\\Local\\Google\\Chrome\\User Data",
+                         "C:\\Users\\Ben Leak\\AppData\\Local\\Microsoft\\Edge\\User Data",
+                         "C:\\Users\\Ben Leak\\AppData\\Roaming\\Cursor",
+                         "C:\\Users\\Ben Leak\\AppData\\Roaming\\Code",
+                         "C:\\Users\\Ben Leak\\.config",
+                         "C:\\Users\\Ben Leak\\.codex",
+                         "C:\\Users\\Ben Leak\\.cursor",
+                         "C:\\Users\\Ben Leak\\Downloads"
+                     ],
+    "rootsMissing":  [
+                         "C:\\Users\\Ben Leak\\.vercel",
+                         "C:\\Users\\Ben Leak\\AppData\\Roaming\\vercel",
+                         "C:\\Users\\Ben Leak\\AppData\\Local\\Vercel"
+                     ],
+    "filesWithRegexHits":  11,
+    "filesRead":  17685,
+    "readErrors":  449,
+    "publishableCandidateCount":  0,
+    "anonJwtCandidateCount":  0,
+    "distinctValidCandidateCount":  0,
+    "candidateSummaries":  [
+
+                           ]
+}

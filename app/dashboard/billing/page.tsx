@@ -7,7 +7,7 @@ import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
-import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
+import { isAuthStripeTestBlocked, isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
 import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
@@ -28,7 +28,7 @@ const PREVIEW_PROFILE: BillingProfile = {
 export default function BillingPage() {
   const preview = isAuthStripeTestBlocked();
   const devPreview = shouldUseDevPreviewAuth();
-  const paymentsPaused = !devPreview && !preview;
+  const paymentsPaused = !devPreview && isFoundryDuesCheckoutPaused();
   const [profile, setProfile] = useState<BillingProfile | null>(preview ? PREVIEW_PROFILE : null);
   const [status, setStatus] = useState(
     preview ? copy.dashboard.billing.disabledReason : copy.dashboard.billing.idle
@@ -141,7 +141,9 @@ export default function BillingPage() {
         </div>
         <p>{copy.dashboard.billing.summary}</p>
         <p className="muted">
-          Foundry Dues checkout is paused while operator payment setup finishes. Your free member path stays open.
+          {paymentsPaused
+            ? "Foundry Dues checkout is paused while operator payment setup finishes. Your free member path stays open."
+            : "Test-mode billing is wired. Membership state still updates from Stripe webhooks — not from this page alone."}
         </p>
         {preview ? <p className="muted">{copy.dashboard.billing.disabledReason}</p> : null}
         <div className="trust-state-strip">

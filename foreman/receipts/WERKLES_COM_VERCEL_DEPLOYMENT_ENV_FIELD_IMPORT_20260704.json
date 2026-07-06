@@ -1,0 +1,109 @@
+﻿{
+    "schema":  "WERKLES_COM_VERCEL_DEPLOYMENT_ENV_FIELD_IMPORT_V1",
+    "status":  "BLOCKED_FIELD_NOT_AVAILABLE_FROM_DEPLOYMENT_ENV_PULL",
+    "timestamp":  "2026-07-05T00:02:09.2218063-04:00",
+    "machine":  "BETSY",
+    "fieldName":  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "deploymentLimit":  12,
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "tempSecretFilesDeleted":  "YES",
+    "attempts":  [
+                     {
+                         "deploymentUrl":  "werkles1-ogn74mep4-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-ienknullu-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-h9naerqip-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-7nofoikrq-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-a7e3k6q1v-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-clecx7wyg-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-pokqdnj6f-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-1oqm4cy0c-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-p6y5bf32z-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-ivhnipdba-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-cc6tnmnek-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     },
+                     {
+                         "deploymentUrl":  "werkles1-ja8n2uukp-werkles.vercel.app",
+                         "deploymentIdPresent":  true,
+                         "pullExitCode":  1,
+                         "envFileCreated":  false,
+                         "fieldPresent":  false,
+                         "fieldShapeValid":  false
+                     }
+                 ]
+}

@@ -1,0 +1,25 @@
+﻿{
+    "schema":  "WERKLES_COM_SUPABASE_DASHBOARD_API_KEY_IMPORT_V1",
+    "status":  "BLOCKED_OR_FAILED",
+    "timestamp":  "2026-07-05T00:55:53.8482213-04:00",
+    "machine":  "BETSY",
+    "chromeProfiles":  [
+                           "Default",
+                           "Profile 1"
+                       ],
+    "vault":  "Werkles Automation",
+    "itemTitle":  "Werkles Vercel Secrets",
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "chromeSessionValuesWrittenToRepo":  "NO",
+    "desktopOnePasswordPromptTriggered":  "NO",
+    "bearerTokenCandidateCount":  0,
+    "endpointAttempts":  [
+
+                         ],
+    "keyCandidateCount":  0,
+    "validCandidateCount":  0,
+    "fieldUpdated":  "NO",
+    "projectRef":  "ltixqticdtvztjcqmtjn",
+    "error":  "No Supabase dashboard bearer-token candidates found in Chrome storage."
+}

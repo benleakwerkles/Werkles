@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { PricingTable } from "@/components/pricing/pricing-table";
@@ -7,6 +8,8 @@ import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 
 export default function PricingPage() {
+  const checkoutPaused = isFoundryDuesCheckoutPaused();
+
   return (
     <CockpitShell>
       <main className={`dashboard-main pricing-page ${routeAtmosphere.pricing}`}>
@@ -20,8 +23,9 @@ export default function PricingPage() {
 
       <section className="ops-card pricing-section" aria-label="Pricing note">
         <p className="muted">
-          Foundry Dues checkout is paused while operator payment setup finishes. Pricing stays visible so you can
-          compare plans before dues return.
+          {checkoutPaused
+            ? "Foundry Dues checkout is paused while operator payment setup finishes. Pricing stays visible so you can compare plans before dues return."
+            : "Test-mode Foundry Dues checkout is open on /membership. Live Stripe keys and live checkout stay gated."}
         </p>
       </section>
 

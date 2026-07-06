@@ -50,6 +50,7 @@ export default function GateKnockoutPage() {
           <Link href="/operator/gate-knockout/secret-entry">Secret Entry</Link>
           <Link href="/operator/gate-knockout/webhook-matrix">Webhook Matrix</Link>
           <Link href="/operator/gate-knockout/live-checkout-smoke">Live Checkout Smoke</Link>
+          <Link href="/operator/gate-knockout/test-checkout-smoke">Test Checkout Smoke</Link>
           <Link href="/operator/gate-knockout/provider-scope">Provider Scope</Link>
           <Link href="/operator/gate-knockout/fcra-policy">FCRA Policy</Link>
           <Link href="/operator/gate-knockout/rollout-readiness">Rollout Readiness</Link>
@@ -141,6 +142,9 @@ export default function GateKnockoutPage() {
             </Link>{" "}
             <Link className="button button-outline" href="/operator/gate-knockout/webhook-matrix">
               Open webhook matrix
+            </Link>{" "}
+            <Link className="button button-outline" href="/operator/gate-knockout/test-checkout-smoke">
+              Open test checkout smoke
             </Link>{" "}
             <Link className="button button-outline" href="/operator/gate-knockout/live-checkout-smoke">
               Open live checkout smoke

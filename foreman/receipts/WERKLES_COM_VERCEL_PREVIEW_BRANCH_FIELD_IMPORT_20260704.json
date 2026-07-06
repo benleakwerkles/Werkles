@@ -1,0 +1,56 @@
+﻿{
+    "schema":  "WERKLES_COM_VERCEL_PREVIEW_BRANCH_FIELD_IMPORT_V1",
+    "status":  "BLOCKED_FIELD_NOT_INJECTED_BY_VERCEL_ENV_RUN",
+    "timestamp":  "2026-07-04T23:55:04.5364073-04:00",
+    "machine":  "BETSY",
+    "fieldName":  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "deploymentLimit":  20,
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "tempSecretFilesWritten":  "NO",
+    "attempts":  [
+                     {
+                         "branch":  "maker/site-g-20260703",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     },
+                     {
+                         "branch":  "cursor/medullina-1password-install-233f",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     },
+                     {
+                         "branch":  "cursor/skypooka-mobile-v0-233f",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     },
+                     {
+                         "branch":  "preserve/doss-werkles-cleanup-20260630",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     },
+                     {
+                         "branch":  "werkles-maker-discovery-intake-20260629",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     },
+                     {
+                         "branch":  "thinkit/relay-build-snapshot-20260629-0050",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     },
+                     {
+                         "branch":  "source-truth/atlas-speaker-v0-20260627",
+                         "exitCode":  1,
+                         "missingFromInjectedEnvironment":  true,
+                         "imported":  false
+                     }
+                 ],
+    "branchCount":  7
+}

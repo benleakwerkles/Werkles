@@ -27,14 +27,15 @@ export default function RolloutReadinessPage() {
             <h1>Rollout Readiness</h1>
           </div>
           <p>
-            Production rollout is last. Use this page to verify proof, rollback notes, and scoped-out gates before Ben
-            gives the exact production phrase. This page does not deploy, push, merge, or mutate production.
+            Production rollout for tier-A env custody completed 2026-07-05. Use this page for rollback notes and any
+            future rollout — live Stripe and lane merges stay gated.
           </p>
           <div className="gate-list" aria-label="Rollout readiness hard stops">
-            <span>Requires APPROVE PRODUCTION ROLLOUT</span>
-            <span>No deploy from local prep</span>
+            <span>Tier-A env redeploy: completed 2026-07-05</span>
+            <span>Live Stripe keys still gated</span>
+            <span>No deploy from local prep without new phrase</span>
             <span>No SQL mutation</span>
-            <span>Rollback note required</span>
+            <span>Rollback note required for future rollouts</span>
           </div>
         </section>
 

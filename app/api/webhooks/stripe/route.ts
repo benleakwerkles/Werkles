@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { mapIdentityVerificationStatus } from "@/lib/crucible-providers";
 import { getStripe } from "@/lib/stripe";
 import { getSupabaseService } from "@/lib/supabase/server";
 import { requireEnv } from "@/lib/supabase/env";
@@ -103,6 +104,27 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+  }
+
+  if (
+    event.type === "identity.verification_session.verified" ||
+    event.type === "identity.verification_session.processing" ||
+    event.type === "identity.verification_session.requires_input" ||
+    event.type === "identity.verification_session.canceled"
+  ) {
+    const session = event.data.object as Stripe.Identity.VerificationSession;
+    const userId = session.metadata?.user_id;
+    if (userId) {
+      const idStatus = mapIdentityVerificationStatus(session.status, session.livemode);
+      const { error } = await getSupabaseService()
+        .from("profiles")
+        .update({ id_status: idStatus })
+        .eq("id", userId);
+
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+      }
     }
   }
 

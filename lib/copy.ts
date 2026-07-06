@@ -544,6 +544,17 @@ export const copy = {
     loginRequired: "Log in before starting verification.",
     claimPrepared: "Verification prepared.",
     genericError: "Something went wrong. Try again.",
+    providerTestBanner:
+      "Crucible provider test — Stripe Identity and Plaid Link run in test/sandbox mode only. Background checks stay blocked.",
+    providerIdentityRedirect: "Opening Stripe Identity (test mode). Werkles stores the receipt, not your ID images.",
+    providerIdentityReturn:
+      "Returned from Stripe Identity. Status updates from webhook proof — refresh profile in a moment.",
+    providerFundsLink: "Opening Plaid Link (sandbox). Werkles stores the result, not your account numbers.",
+    providerFundsSandboxOnly:
+      "Plaid credentials not configured — sandbox stub only. Add PLAID_CLIENT_ID and PLAID_SECRET for Link test.",
+    providerFundsVerified: "Funds check recorded (sandbox).",
+    providerFundsExchangeFailed: "Plaid exchange failed. Try again or use sandbox stub.",
+    providerFundsExit: "Plaid Link closed before completion.",
     storesDefault: "We keep the result, not your documents.",
     storesFunds: "We keep the result, not your account numbers.",
     storesIdentity: "We keep the result, not your ID images.",
@@ -565,16 +576,16 @@ export const copy = {
       {
         key: "workflow_available",
         title: "Runway check available",
-        summary: "Preview the path for identity, capital, history, licenses, and references.",
-        memberNote: "This local flow is simulated until counsel and providers approve live checks.",
+        summary: "Identity uses Stripe Identity (test). Funds uses Plaid Link when configured, otherwise sandbox stub.",
+        memberNote: "Membership unlocks the workflow, not verification outcomes. No clearance or trust guarantees.",
         cta: "Continue runway check"
       },
       {
         key: "provider_pending",
         title: "Provider connection pending",
-        summary: "Identity and background vendors are not connected in this environment.",
-        memberNote: "This stays quiet and explicit until provider accounts and counsel review clear.",
-        cta: "Provider unavailable"
+        summary: "Phone, license, reference, employment, and background vendors are not wired yet.",
+        memberNote: "Identity and funds provider test paths are active for Foundry members.",
+        cta: "Other checks unavailable"
       },
       {
         key: "unavailable",

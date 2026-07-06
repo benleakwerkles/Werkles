@@ -1,6 +1,6 @@
 import { stripeManifest } from "@/lib/stripe-manifest";
 
-export type ProductHumanGateStatus = "ready_for_review" | "operator_gate" | "blocked";
+export type ProductHumanGateStatus = "ready_for_review" | "operator_gate" | "blocked" | "completed";
 
 export type ProductHumanGate = {
   key: string;
@@ -105,7 +105,7 @@ export type ProductGateDryRunStep = {
 export type ProductGateReadinessScore = {
   key: string;
   title: string;
-  state: "ready_to_review" | "needs_prior_gate" | "policy_blocked" | "last_only";
+  state: "ready_to_review" | "needs_prior_gate" | "policy_blocked" | "last_only" | "completed";
   evidence: string;
   blocker: string;
   nextAction: string;
@@ -619,6 +619,12 @@ export const productGateOperatorSurfaces: ProductGateOperatorSurface[] = [
     useWhen: "Use before approving test checkout, live checkout, or production rollout."
   },
   {
+    title: "Test Checkout Smoke",
+    href: "/operator/gate-knockout/test-checkout-smoke",
+    purpose: "Active Gate 1 checklist: test Stripe checkout, webhook proof, and membership state update.",
+    useWhen: "Use now that tier-A env is 8/8 and checkout is unpaused in test mode."
+  },
+  {
     title: "Live Checkout Smoke",
     href: "/operator/gate-knockout/live-checkout-smoke",
     purpose: "First live transaction smoke plan with Ben/agent split and hard stops.",
@@ -695,15 +701,15 @@ export const productGateDryRunSteps: ProductGateDryRunStep[] = [
     order: 2,
     title: "Confirm membership checkout readiness",
     route: "/membership",
-    proof: "Foundry Dues plans and Stripe gate readiness render in preview/mock mode.",
-    mustNotDo: "Do not switch live Stripe keys or run a live payment."
+    proof: "Foundry Dues plans render; test checkout button is enabled (tier-A env ready).",
+    mustNotDo: "Do not switch live Stripe keys or treat success-page redirect as webhook proof."
   },
   {
     order: 3,
     title: "Confirm billing readiness",
     route: "/dashboard/billing",
-    proof: "Billing state is visible and remains preview/gated unless live Stripe proof exists.",
-    mustNotDo: "Do not open live customer portal with real customer data."
+    proof: "Billing state loads; test portal path available when signed in.",
+    mustNotDo: "Do not open live customer portal or manually patch membership state."
   },
   {
     order: 4,
@@ -721,6 +727,20 @@ export const productGateDryRunSteps: ProductGateDryRunStep[] = [
   },
   {
     order: 6,
+    title: "Confirm sign-in hunt list",
+    route: "/operator/gate-knockout/sign-in-hunt",
+    proof: "Ordered provider login targets render for v0 ship tier.",
+    mustNotDo: "Do not paste credentials or secret values into chat."
+  },
+  {
+    order: 7,
+    title: "Run test checkout smoke checklist",
+    route: "/operator/gate-knockout/test-checkout-smoke",
+    proof: "Gate 1 smoke steps visible; webhook matrix linked for event names.",
+    mustNotDo: "Do not record APPROVE PAID CHECKOUT GO-LIVE (test mode) without webhook proof."
+  },
+  {
+    order: 8,
     title: "Confirm operator packet stack",
     route: "/operator/gate-knockout",
     proof: "Runbook links to dependencies, preflight, decision packet, scope planner, and dry run.",
@@ -733,9 +753,9 @@ export const productGateReadinessScores: ProductGateReadinessScore[] = [
     key: "stripe-test-checkout-webhook",
     title: "Stripe test checkout + webhook",
     state: "ready_to_review",
-    evidence: "Local membership/billing routes plus Stripe test webhook event proof.",
-    blocker: "Missing webhook-backed membership-state proof.",
-    nextAction: "Review this first; approval is test-mode only."
+    evidence: "Tier-A env 8/8 on Preview and Production; test checkout routes unpaused.",
+    blocker: "Ben must review test checkout + webhook proof before live steps.",
+    nextAction: "Run test checkout smoke from /membership; confirm webhook-backed profile update."
   },
   {
     key: "stripe-live-products",
@@ -764,10 +784,10 @@ export const productGateReadinessScores: ProductGateReadinessScore[] = [
   {
     key: "crucible-provider-test",
     title: "Crucible provider test",
-    state: "needs_prior_gate",
-    evidence: "Provider mode and receipt expectations, with no paid/live session opened automatically.",
-    blocker: "Provider account/OAuth/billing/final activation remains Ben-only.",
-    nextAction: "Clarify receipt expectations and legal/trust copy."
+    state: "ready_to_review",
+    evidence: "Sandbox Crucible unlocked; Stripe Identity redirect + webhook handlers; Plaid Link when PLAID_* env set.",
+    blocker: "Requires active Foundry membership and Stripe Identity enabled on test account.",
+    nextAction: "Run identity + funds from /dashboard/crucible; add identity.* webhook events in Stripe test dashboard."
   },
   {
     key: "background-fcra",
@@ -780,10 +800,10 @@ export const productGateReadinessScores: ProductGateReadinessScore[] = [
   {
     key: "production-rollout",
     title: "Production rollout",
-    state: "last_only",
-    evidence: "Route smoke proof, rollback note, scoped-out gates, and exact production phrase.",
-    blocker: "All upstream payment/provider gates must be approved or explicitly scoped out.",
-    nextAction: "Review only after upstream gate status is settled."
+    state: "completed",
+    evidence: "APPROVE PRODUCTION ROLLOUT recorded 2026-07-05; tier-A env redeploy live on werkles.com.",
+    blocker: "None for tier-A env redeploy. Live Stripe and Crucible remain gated.",
+    nextAction: "Next gate is test checkout webhook proof or live Stripe gates — not another env redeploy."
   }
 ];
 
@@ -1259,6 +1279,14 @@ export const productGateWebhookEvents: ProductGateWebhookEvent[] = [
     stopIfMissing: "Do not approve live checkout if cancellations cannot be handled."
   },
   {
+    eventName: "identity.verification_session.verified",
+    mode: "test",
+    purpose: "Proves Stripe Identity test session completed and updates id_status from webhook.",
+    requiredFor: ["crucible-provider-test"],
+    proof: "Test identity webhook receipt plus profile id_status sandbox_verified.",
+    stopIfMissing: "Do not treat Stripe Identity return URL alone as verification proof."
+  },
+  {
     eventName: "checkout.session.completed",
     mode: "live",
     purpose: "Proves first live checkout completion reaches the app.",
@@ -1281,6 +1309,66 @@ export const productGateWebhookEvents: ProductGateWebhookEvent[] = [
     requiredFor: ["stripe-live-checkout", "production-rollout"],
     proof: "Live event receipt plus access downgrade proof, with sensitive identifiers redacted.",
     stopIfMissing: "Stop production rollout."
+  }
+];
+
+export const productGateTestCheckoutPreflight: string[] = [
+  "Log in at /login and open /dashboard/profile once — checkout needs a dossier row.",
+  "Stripe Dashboard → Test mode ON before you open Checkout.",
+  "Confirm a test webhook targets https://werkles.com/api/webhooks/stripe with checkout + subscription events.",
+  "At Stripe Checkout use test card 4242 4242 4242 4242 — not your real card.",
+  "The success page is not proof. After paying, check Stripe webhook log and /dashboard/billing."
+];
+
+export const productGateTestCheckoutSmokeSteps: ProductGateLiveCheckoutSmokeStep[] = [
+  {
+    order: 1,
+    title: "Confirm tier-A env custody",
+    actor: "Agent",
+    proof: "Test-WerklesVercelSecretItem.ps1 PASS_ALL_FIELDS_VALID (8/8) and Vercel Preview + Production tier-A names encrypted.",
+    mustNotDo: "Do not print or paste secret values."
+  },
+  {
+    order: 2,
+    title: "Sign in as a real member",
+    actor: "Ben",
+    proof: "Supabase session opens /dashboard without dev-preview bypass.",
+    mustNotDo: "Do not use mock checkout while proving real webhook path."
+  },
+  {
+    order: 3,
+    title: "Open Foundry Dues checkout",
+    actor: "Both",
+    proof: "/membership renders plans; checkout opens Stripe test Checkout (not paused).",
+    mustNotDo: "Do not switch to live Stripe keys."
+  },
+  {
+    order: 4,
+    title: "Complete test payment",
+    actor: "Ben",
+    proof: "Stripe test card completes checkout.session.completed in test mode.",
+    mustNotDo: "Agents must not enter card or billing details."
+  },
+  {
+    order: 5,
+    title: "Verify webhook receipt",
+    actor: "Both",
+    proof: "Stripe test webhook shows checkout.session.completed (and subscription events as applicable).",
+    mustNotDo: "Do not accept /membership/success redirect alone as proof."
+  },
+  {
+    order: 6,
+    title: "Verify membership state",
+    actor: "Both",
+    proof: "/dashboard/billing shows updated membership_tier / subscription_status after webhook — not before.",
+    mustNotDo: "Do not manually patch profiles table to fake success."
+  },
+  {
+    order: 7,
+    title: "Record test-mode approval",
+    actor: "Ben",
+    proof: "Ben gives APPROVE PAID CHECKOUT GO-LIVE (test mode) after reviewing webhook-backed state.",
+    mustNotDo: "Do not infer live checkout approval from test-mode success."
   }
 ];
 
@@ -1433,8 +1521,8 @@ export const productHumanGates: ProductHumanGate[] = [
     status: "ready_for_review",
     area: "stripe",
     gatePhrase: "APPROVE PAID CHECKOUT GO-LIVE (test mode)",
-    visibleProof: "Preview proof is recorded as PASS; membership checkout and billing portal remain gated by auth, env, and webhook state.",
-    blockedUntil: "Ben reviews the test-mode checkout and confirms webhook-backed membership state.",
+    visibleProof: "Tier-A env 8/8 on Preview and Production; checkout routes unpaused in test mode.",
+    blockedUntil: "Ben reviews test-mode checkout and confirms webhook-backed membership state.",
     operatorAction: "Use test mode only. Confirm checkout session, webhook receipt, and profile subscription update before any live step."
   },
   {
@@ -1480,12 +1568,12 @@ export const productHumanGates: ProductHumanGate[] = [
   {
     key: "production-rollout",
     title: "Production rollout",
-    status: "operator_gate",
+    status: "completed",
     area: "production",
     gatePhrase: "APPROVE PRODUCTION ROLLOUT",
-    visibleProof: "Production rollout, push, deploy, SQL, secrets, live verification, and Stripe live are hard stops.",
-    blockedUntil: "Ben approves production rollout after payment/provider gates are satisfied.",
-    operatorAction: "Continue localhost/product-readiness work only. Do not deploy, push, merge, or mutate production data."
+    visibleProof: "Tier-A env redeploy completed 2026-07-05 on werkles.com. Live Stripe keys and lane merges stay gated.",
+    blockedUntil: "Completed for tier-A env rollout. Live checkout and push/merge remain separate gates.",
+    operatorAction: "Do not redeploy or mutate production without a new explicit rollout phrase."
   }
 ];
 
@@ -1600,14 +1688,14 @@ export const productGateKnockoutSteps: ProductGateKnockoutStep[] = [
     key: "crucible-provider-test",
     title: "Crucible identity/funds provider test",
     gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
-    status: "operator_gate",
+    status: "ready_for_review",
     operatorUrl: "https://dashboard.stripe.com/identity/application",
     localRoutes: ["/dashboard/crucible", "/dashboard/profile"],
-    benAction: "Approve any provider account/session setup for identity or funds testing.",
+    benAction: "Complete Stripe Identity test session and Plaid Link sandbox when credentials are configured.",
     agentPrep: [
-      "Show the local Crucible readiness state.",
-      "Clarify what receipt or provider result will count as proof.",
-      "Keep legal/trust copy conservative."
+      "Crucible sandbox unlocked; identity POST redirects to Stripe when Identity is enabled.",
+      "Funds POST opens Plaid Link when PLAID_CLIENT_ID/PLAID_SECRET are set; otherwise sandbox stub.",
+      "Add Stripe webhook events: identity.verification_session.*"
     ],
     forbiddenActions: [
       "Do not open a paid or live provider session.",
@@ -1656,29 +1744,27 @@ export const productGateKnockoutSteps: ProductGateKnockoutStep[] = [
     key: "production-rollout",
     title: "Production rollout",
     gatePhrase: "APPROVE PRODUCTION ROLLOUT",
-    status: "operator_gate",
+    status: "completed",
     operatorUrl: "https://vercel.com/dashboard",
     localRoutes: ["/", "/membership", "/dashboard/billing", "/dashboard/crucible"],
-    benAction: "Approve deploy, production rollout, and any public launch or production mutation.",
+    benAction: "Tier-A env rollout approved and redeployed 2026-07-05.",
     agentPrep: [
-      "Run route-level smoke checks.",
-      "Summarize which payment/provider gates are complete or scoped out.",
-      "Prepare rollback and verification notes."
+      "Record receipt path foreman/receipts/WERKLES_COM_PRODUCTION_ROLLOUT_20260705.md.",
+      "Keep live Stripe and lane-merge gates visibly separate.",
+      "Do not infer approval for live keys or push/merge from this completion."
     ],
     forbiddenActions: [
-      "Do not deploy, push, merge, or mutate production data.",
-      "Do not run production SQL.",
-      "Do not make public launch changes without approval."
+      "Do not redeploy production without a new explicit rollout phrase.",
+      "Do not switch to live Stripe keys from this completion alone.",
+      "Do not push or merge lanes without Ben gate."
     ],
     proofRequired: [
-      "Payment gates above are complete or explicitly scoped out.",
-      "Provider gates above are complete or explicitly scoped out.",
-      "Production env vars are configured privately.",
-      "Route smoke tests pass.",
-      "Ben approves deploy/push/production rollout."
+      "Tier-A env vars configured on Preview and Production.",
+      "Production redeploy completed with approval recorded.",
+      "Rollback note exists in rollout readiness receipt."
     ],
-    stopCondition: "No deploy, push, merge, SQL, secrets, production data mutation, or public launch without explicit approval.",
-    notes: "Production rollout is last, not a substitute for payment/provider gates."
+    stopCondition: "Stop any new production mutation without explicit approval.",
+    notes: "Completed for tier-A env custody. Test checkout review is the next payment gate."
   }
 ];
 
@@ -1688,6 +1774,7 @@ export function productHumanGatesFor(area: ProductHumanGate["area"]) {
 
 export function productGateStatusLabel(status: ProductHumanGateStatus) {
   if (status === "ready_for_review") return "Ready for Ben review";
+  if (status === "completed") return "Completed";
   if (status === "operator_gate") return "Human Gate";
   return "Blocked";
 }

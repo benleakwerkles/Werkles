@@ -1,0 +1,46 @@
+﻿{
+    "schema":  "WERKLES_COM_PUBLIC_SUPABASE_CLIENT_IMPORT_V1",
+    "status":  "PARTIAL_PASS_PUBLIC_CLIENT_FIELDS_IMPORTED",
+    "timestamp":  "2026-07-04T23:47:56.1987110-04:00",
+    "machine":  "BETSY",
+    "baseUrls":  [
+                     "https://werkles.com",
+                     "https://werkles1-ogn74mep4-werkles.vercel.app",
+                     "https://werkles1-ienknullu-werkles.vercel.app",
+                     "https://werkles1-h9naerqip-werkles.vercel.app",
+                     "https://werkles1-7nofoikrq-werkles.vercel.app"
+                 ],
+    "pagePaths":  [
+                      "/",
+                      "/login",
+                      "/signup"
+                  ],
+    "requestTimeoutSec":  8,
+    "maxAssetCount":  160,
+    "vault":  "Werkles Automation",
+    "itemTitle":  "Werkles Vercel Secrets",
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "fetchedContentWrittenToRepo":  "NO",
+    "externalMutations":  "NO",
+    "fetchedPageCount":  15,
+    "fetchedAssetCount":  160,
+    "publicServiceRoleTokenObserved":  "NO",
+    "fieldsUpdated":  [
+                          "NEXT_PUBLIC_SUPABASE_URL"
+                      ],
+    "fieldsNotUpdated":  [
+                             "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+                             "SUPABASE_SERVICE_ROLE_KEY"
+                         ],
+    "errors":  [
+                   "ASSET_CAP_REACHED:160"
+               ],
+    "urlCandidateCount":  1,
+    "anonCandidateCount":  0,
+    "publishableAnonCandidateCount":  0,
+    "publicServiceRoleCandidateCount":  0,
+    "selectedUrlPresent":  true,
+    "selectedAnonPresent":  false,
+    "selectedUrlRefMatchesAnonRef":  false
+}

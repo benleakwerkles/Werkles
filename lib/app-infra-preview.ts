@@ -5,14 +5,33 @@
 
 import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
 
-/** Crucible UI + verification POST routes — blocked until a later gate. */
-export const APP_INFRA_PREVIEW_CRUCIBLE = true;
+/** Crucible UI + verification POST routes — unlocked for sandbox + provider test (2026-07-05). */
+export const APP_INFRA_PREVIEW_CRUCIBLE = false;
+
+/** Stripe Identity + Plaid Link test wiring (test/sandbox providers only). */
+export const CRUCIBLE_PROVIDER_TEST_ENABLED = true;
 
 /** Login, signup, checkout, billing portal — enabled for test-mode wiring. */
 export const AUTH_STRIPE_TEST_WIRING_ENABLED = true;
 
+/**
+ * Tier-A Vercel + 1Password custody complete (2026-07-05).
+ * Test-mode checkout may run; live Stripe keys remain gated separately.
+ */
+export const TIER_A_PAYMENT_ENV_READY = true;
+
+/** True while operator tier-A secret entry / env sync is still in flight. */
+export function isFoundryDuesCheckoutPaused(): boolean {
+  if (isAuthStripeTestBlocked()) return true;
+  return !TIER_A_PAYMENT_ENV_READY;
+}
+
 export function isCruciblePreview(): boolean {
   return APP_INFRA_PREVIEW_CRUCIBLE;
+}
+
+export function isCrucibleProviderTestEnabled(): boolean {
+  return CRUCIBLE_PROVIDER_TEST_ENABLED && !APP_INFRA_PREVIEW_CRUCIBLE;
 }
 
 export function isAuthStripeTestBlocked(): boolean {

@@ -1,0 +1,41 @@
+﻿{
+    "schema":  "WERKLES_COM_PUBLIC_SUPABASE_CLIENT_IMPORT_V1",
+    "status":  "PARTIAL_PASS_PUBLIC_CLIENT_FIELDS_IMPORTED",
+    "timestamp":  "2026-07-04T23:28:20.3690346-04:00",
+    "machine":  "BETSY",
+    "baseUrls":  [
+                     "https://werkles.com",
+                     "https://werkles1-fkz58wf4t-werkles.vercel.app"
+                 ],
+    "pagePaths":  [
+                      "/",
+                      "/login",
+                      "/signup",
+                      "/membership"
+                  ],
+    "vault":  "Werkles Automation",
+    "itemTitle":  "Werkles Vercel Secrets",
+    "secretValuesPrinted":  "NO",
+    "secretValuesWrittenToRepo":  "NO",
+    "fetchedContentWrittenToRepo":  "NO",
+    "externalMutations":  "NO",
+    "fetchedPageCount":  8,
+    "fetchedAssetCount":  85,
+    "publicServiceRoleTokenObserved":  "NO",
+    "fieldsUpdated":  [
+                          "NEXT_PUBLIC_SUPABASE_URL"
+                      ],
+    "fieldsNotUpdated":  [
+                             "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+                             "SUPABASE_SERVICE_ROLE_KEY"
+                         ],
+    "errors":  [
+
+               ],
+    "urlCandidateCount":  1,
+    "anonCandidateCount":  0,
+    "publicServiceRoleCandidateCount":  0,
+    "selectedUrlPresent":  true,
+    "selectedAnonPresent":  false,
+    "selectedUrlRefMatchesAnonRef":  false
+}
