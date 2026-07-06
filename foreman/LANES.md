@@ -218,3 +218,42 @@ Each lane must define:
   - Stop after local typecheck/build, route smoke test, and screenshots are produced for Ben review.
 - Repair limit:
   - 2 bounded repair attempts for local UI/build issues.
+
+## Lane: SkyPooka Mobile Nerdkle
+
+- Status: `APPROVED`
+- Environment: Cursor Cloud Agent branch `cursor/skypooka-*-233f` and local preview on canonical checkout
+- Product name: SkyPooka (Mobile Nerdkle · Mobile Werkles)
+- Budget reference: `foreman/BUDGET.md#lane-skypooka-mobile-nerdkle`
+- Allowed file areas:
+  - `app/skypooka/**`
+  - `app/api/skypooka/**`
+  - `components/skypooka/**`
+  - `lib/skypooka/**`
+  - `foreman/skypooka/**`
+  - `app/operator/page.tsx` (SkyPooka entry link only)
+  - `foreman/LANES.md`
+  - `foreman/BUDGET.md`
+  - `foreman/NEXT_ACTION.md` (SkyPooka status lines only)
+- Allowed actions:
+  - mobile-first responsive UI for operator field view
+  - read-only aggregation of Nerdkle, human gates, handoffs, and cockpit blockers
+  - queue mobile FIRE/HOLD requests to `foreman/skypooka/*-queue/` (no live send from phone)
+  - simulated FIRE/HOLD affordances when relay queue is unavailable
+  - local typecheck/build within allowed file areas
+  - feature branch commits and draft PRs
+- Forbidden actions:
+  - human gate approval from mobile surfaces
+  - live relay send without explicit backend wiring and gate
+  - deploy
+  - push or merge to `main`
+  - SQL/schema/RLS/policy apply
+  - provider calls
+  - secrets
+  - Ghost Forge runs
+  - production data mutation
+  - native iOS/Android app work (ADR-001 still applies)
+- Current stop condition:
+  - Stop after `/skypooka` field view, feed API, gates tab, Nerdkle tab, and typecheck pass are ready for Ben mobile preview review.
+- Repair limit:
+  - 2 bounded repair attempts for local UI/build issues.
