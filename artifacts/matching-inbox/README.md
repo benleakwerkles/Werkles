@@ -1,6 +1,8 @@
 # Matching / Not-Matching — Artifact Inbox
 
-DROP ZONE for Heimerdinger artifacts feeding the autonomous Matching/Not-Matching engine.
+DROP ZONE for **Heimerdinker / Dink@Betsy** artifacts feeding the autonomous Matching/Not-Matching engine.
+
+**Nickname clarity:** Heimerdinker = Direwolf Dink (same seat). Mission lead packet: `foreman/handoffs/outbox/TO_HEIMERDINKER_MATCHING_MISSION_LEAD_V1_20260710.md`. Maker = build deputy.
 
 ## Full path (for the crew dropping files)
 
