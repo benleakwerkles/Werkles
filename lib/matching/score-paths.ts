@@ -15,14 +15,23 @@ type PathRule = {
 };
 
 const RULES: PathRule[] = [
-  {
-    kind: "verify_proof",
-    base: 35,
-    score: () => ({
-      points: 30,
-      reasons: ["Self-reported intake alone is not enough to rely on for money or intros."]
-    })
-  },
+  {
+    kind: "verify_proof",
+    base: 35,
+    score: (s, layer0) => {
+      const points = s.capitalSeeking ? 30 : layer0.confidence === "low" ? 20 : 0;
+      return {
+        points,
+        reasons: [
+          s.capitalSeeking
+            ? "Money or dilution paths require proof before reliance."
+            : layer0.confidence === "low"
+              ? "Low-confidence translation needs proof before a specific path can lead."
+              : "Keep proof visible without crowding out directly evidenced low-risk paths."
+        ]
+      };
+    }
+  },
   {
     kind: "find_credit_union",
     base: 0,
@@ -193,4 +202,4 @@ export function scorePaths(
 export function pathsForNotMatchDisplay(notMatch: NotMatchResult): string[] {
   return notMatch.disqualified.map((d) => `${RECOMMENDATION_KIND_LABELS[d.kind]}: ${d.reason}`);
 }
-
+

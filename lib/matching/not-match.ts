@@ -28,6 +28,21 @@ function isPartnerSymptom(signals: StructuredSignals, layer0: Layer0Translation)
   );
 }
 
+function dedupeDisqualified(
+  items: NotMatchResult["disqualified"]
+): NotMatchResult["disqualified"] {
+  const byKind = new Map<RecommendationKind, string[]>();
+  for (const item of items) {
+    const reasons = byKind.get(item.kind) ?? [];
+    if (!reasons.includes(item.reason)) reasons.push(item.reason);
+    byKind.set(item.kind, reasons);
+  }
+  return [...byKind.entries()].map(([kind, reasons]) => ({
+    kind,
+    reason: reasons.join(" Also: ")
+  }));
+}
+
 export function evaluateNotMatch(signals: StructuredSignals, layer0: Layer0Translation): NotMatchResult {
   const disqualified: NotMatchResult["disqualified"] = [];
   const warnings: string[] = [];
@@ -71,12 +86,12 @@ export function evaluateNotMatch(signals: StructuredSignals, layer0: Layer0Trans
       outcome: "proof_only",
       headline: "Multiple high-risk paths named with low confidence — proof before people or money.",
       reason: "Capital plus partnership with thin evidence triggers Rule 7 (pause / proof request).",
-      disqualified: disqualified.concat(
+      disqualified: dedupeDisqualified(disqualified.concat(
         ["find_partner", "stage_intro_candidate", "raise_capital"].map((kind) => ({
           kind: kind as RecommendationKind,
           reason: "Proof-only mode until evidence strengthens the read."
         }))
-      ),
+      )),
       warnings,
       recommendPause: false
     };
@@ -87,19 +102,20 @@ export function evaluateNotMatch(signals: StructuredSignals, layer0: Layer0Trans
     reason: "Intro staging requires translation complete + proof gaps visible (default guard)."
   });
 
-  const blocked = new Set(disqualified.map((d) => d.kind));
+  const uniqueDisqualified = dedupeDisqualified(disqualified);
+  const blocked = new Set(uniqueDisqualified.map((d) => d.kind));
   if (blocked.has("stage_intro_candidate") === false) {
     /* always keep intro guarded unless explicitly scored high later */
   }
 
   return {
-    outcome: disqualified.length >= 4 ? "proof_only" : "proceed",
+    outcome: uniqueDisqualified.length >= 4 ? "proof_only" : "proceed",
     headline:
-      disqualified.length > 0
-        ? `${disqualified.length} path(s) disqualified by not-match rules.`
+      uniqueDisqualified.length > 0
+        ? `${uniqueDisqualified.length} path(s) disqualified by not-match rules.`
         : "No hard disqualifiers — path ranking may proceed.",
     reason: "Not-match layer applied after Layer 0 translation.",
-    disqualified,
+    disqualified: uniqueDisqualified,
     warnings,
     recommendPause: false
   };
