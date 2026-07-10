@@ -11,7 +11,7 @@ if not exist "%EDGE_EXE%" (
   exit /b 1
 )
 
-set "REPO=C:\Users\benle\Desktop\github\Werkles"
+set "REPO=C:\Users\Ben Leak\github\Werkles"
 set "PROFILE=%REPO%\foreman\.edge-aeye-crew-profile"
 
 echo Opening Werkles Aeye Crew Dispatch Bay...
