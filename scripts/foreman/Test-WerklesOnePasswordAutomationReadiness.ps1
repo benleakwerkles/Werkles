@@ -1,112 +1,53 @@
-#requires -Version 5.1
-<#
-.SYNOPSIS
-  Names-only readiness audit for the Werkles 1Password automation path.
-
-.DESCRIPTION
-  Checks whether Codex can use a stored scoped service-account token without
-  invoking 1Password desktop authorization. It also records Windows Hello/NGC
-  health signals that explain why desktop integration may fall back to account
-  password prompts.
-#>
+[CmdletBinding()]
 param(
-  [string]$ReceiptPath
+    [switch]$Strict
 )
 
-$ErrorActionPreference = "Stop"
-$RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
-Set-Location -LiteralPath $RepoRoot
-. (Join-Path $PSScriptRoot "WerklesOnePasswordCredential.ps1")
+Set-StrictMode -Version 2.0
 
-if ([string]::IsNullOrWhiteSpace($ReceiptPath)) {
-  $ReceiptPath = Join-Path $RepoRoot "foreman\receipts\WERKLES_COM_1PASSWORD_AUTOMATION_READINESS_20260704.json"
-}
+. (Join-Path $PSScriptRoot 'WerklesOnePasswordCredential.ps1')
 
-$OpExe = Get-WerklesOpBinary
-$storedToken = Get-WerklesOnePasswordServiceToken
-$dsreg = (& dsregcmd /status 2>$null) -join "`n"
+$readiness = Get-WerklesOnePasswordAutomationReadiness
+$timestamp = Get-Date -Format 'yyyyMMdd-HHmmss'
+$receiptDir = Join-Path (Get-WerklesRepositoryRoot) 'foreman\receipts'
+New-Item -ItemType Directory -Path $receiptDir -Force | Out-Null
 
-function Get-DsregValue {
-  param(
-    [string]$Text,
-    [string]$Name
-  )
-
-  $match = [regex]::Match($Text, "(?m)^\s*$([regex]::Escape($Name))\s*:\s*(.+?)\s*$")
-  if ($match.Success) { return $match.Groups[1].Value.Trim() }
-  return $null
-}
-
-$helloSignals = [ordered]@{
-  NgcSet = Get-DsregValue -Text $dsreg -Name "NgcSet"
-  PolicyEnabled = Get-DsregValue -Text $dsreg -Name "PolicyEnabled"
-  PostLogonEnabled = Get-DsregValue -Text $dsreg -Name "PostLogonEnabled"
-  DeviceEligible = Get-DsregValue -Text $dsreg -Name "DeviceEligible"
-  SessionIsNotRemote = Get-DsregValue -Text $dsreg -Name "SessionIsNotRemote"
-  PreReqResult = Get-DsregValue -Text $dsreg -Name "PreReqResult"
-}
-
-$logEvidence = @()
-$logPath = Join-Path $env:LOCALAPPDATA "1Password\logs\1Password_r00001.log"
-if (Test-Path -LiteralPath $logPath) {
-  $logEvidence = @(Select-String -LiteralPath $logPath -Pattern "Windows Hello reported no support for key generation|System unlock is enabled: false|Sys auth status Disabled|authorization timeout|invoked auth prompt unlock" -CaseSensitive:$false |
-    Select-Object -Last 12 |
-    ForEach-Object { $_.Line })
-}
-
-$receipt = [ordered]@{
-  receipt_id = "WERKLES_COM_1PASSWORD_AUTOMATION_READINESS_20260704"
-  timestamp = (Get-Date).ToString("o")
-  machine = $env:COMPUTERNAME
-  repo_root = $RepoRoot.Path
-  op_binary = $OpExe
-  op_version = (& $OpExe --version)
-  op_bin_user_env = [Environment]::GetEnvironmentVariable("OP_BIN", "User")
-  op_biometric_unlock_enabled_user_env = [Environment]::GetEnvironmentVariable("OP_BIOMETRIC_UNLOCK_ENABLED", "User")
-  windows_credential_manager_target = $script:WerklesOnePasswordCredentialTarget
-  stored_service_account_token_present = -not [string]::IsNullOrWhiteSpace($storedToken)
-  windows_hello_signals = $helloSignals
-  onepassword_log_evidence_names_only = $logEvidence
-  secret_values_read = "NO"
-  secret_values_printed = "NO"
-  service_account_token_printed = "NO"
-  status = "UNKNOWN"
-}
-
-if ($receipt.stored_service_account_token_present) {
-  $env:OP_SERVICE_ACCOUNT_TOKEN = $storedToken
-  try {
-    $verify = & $OpExe item list --vault "Werkles Automation" --format json 2>&1
-    $receipt.stored_service_account_verify_exit_code = $LASTEXITCODE
-    if ($LASTEXITCODE -eq 0) {
-      $items = @($verify | ConvertFrom-Json)
-      $receipt.stored_service_account_visible_item_count = $items.Count
-      $receipt.status = "PASS_STORED_SERVICE_ACCOUNT_READY"
-    } else {
-      $receipt.status = "BLOCKED_STORED_SERVICE_ACCOUNT_FAILED"
-      $receipt.error = (($verify | Out-String).Trim() -split "`r?`n" | Select-Object -First 1)
+$receipt = [pscustomobject]@{
+    GeneratedAt = (Get-Date).ToString('o')
+    Ready = $readiness.Ready
+    Reason = $readiness.Reason
+    RepositoryRoot = $readiness.RepositoryRoot
+    MachineName = $readiness.MachineName
+    UserName = $readiness.UserName
+    Credential = $readiness.Credential
+    OnePasswordCli = $readiness.OnePasswordCli
+    OnePasswordCliCandidates = $readiness.OnePasswordCliCandidates
+    WindowsHello = $readiness.WindowsHello
+    PromptGuard = [pscustomobject]@{
+        Behavior = 'fail-fast'
+        NoStoredTokenMessage = 'OP_AUTH_SOURCE: NONE'
+        Notes = 'Automation must use OP_SERVICE_ACCOUNT_TOKEN or the Windows Credential Manager target. It will not call interactive 1Password sign-in.'
     }
-  } finally {
-    Remove-Item Env:\OP_SERVICE_ACCOUNT_TOKEN -ErrorAction SilentlyContinue
-  }
-} elseif ($helloSignals.NgcSet -eq "NO" -or $helloSignals.PreReqResult -eq "WillNotProvision") {
-  $receipt.status = "BLOCKED_WINDOWS_HELLO_NOT_PROVISIONED"
-  $receipt.error = "No stored service-account token and Windows Hello/NGC is not provisioned for this user/session."
-} else {
-  $receipt.status = "BLOCKED_NO_STORED_SERVICE_ACCOUNT_TOKEN"
-  $receipt.error = "No stored service-account token is available."
 }
 
-$receipt | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $ReceiptPath -Encoding UTF8
+$receiptPath = Join-Path $receiptDir ("WERKLES_COM_1PASSWORD_AUTOMATION_READINESS_{0}.json" -f $timestamp)
+$latestPath = Join-Path $receiptDir 'WERKLES_COM_1PASSWORD_AUTOMATION_READINESS_latest.json'
 
-[pscustomobject]@{
-  status = $receipt.status
-  op_binary = $receipt.op_binary
-  stored_service_account_token_present = $receipt.stored_service_account_token_present
-  NgcSet = $receipt.windows_hello_signals.NgcSet
-  PreReqResult = $receipt.windows_hello_signals.PreReqResult
-  token_printed = $receipt.service_account_token_printed
-  secret_values_printed = $receipt.secret_values_printed
-  receipt = $ReceiptPath
-} | ConvertTo-Json -Depth 5
+$receipt | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $receiptPath -Encoding UTF8
+$receipt | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $latestPath -Encoding UTF8
 
+if ($readiness.OnePasswordCli) {
+    Write-Host ('OP_CLI: {0}' -f $readiness.OnePasswordCli.Path)
+    Write-Host ('OP_CLI_SIGNATURE: {0}' -f $readiness.OnePasswordCli.SignatureStatus)
+} else {
+    Write-Host 'OP_CLI: MISSING_OR_UNSIGNED'
+}
+
+Write-Host ('OP_AUTH_SOURCE: {0}' -f $readiness.Credential.AuthSource)
+Write-Host ('WINDOWS_HELLO: NgcSet={0} PreReqResult={1} KeySignTest={2}' -f $readiness.WindowsHello.NgcSet, $readiness.WindowsHello.PreReqResult, $readiness.WindowsHello.KeySignTest)
+Write-Host ('PROMPT_GUARD: {0}' -f $receipt.PromptGuard.Behavior)
+Write-Host ('RECEIPT: {0}' -f $receiptPath)
+
+if ($Strict -and -not $readiness.Ready) {
+    exit 2
+}
