@@ -1,16 +1,16 @@
 import "server-only";
 
 import { appendFile, mkdir } from "node:fs/promises";
-import path from "node:path";
 import { randomUUID } from "node:crypto";
 
 import type { ShadowMatchingRun } from "@/lib/matching/types";
+import { dataPath } from "@/lib/server/writable-data-root";
 
 const SHADOW_DIR = "data/matching";
 const SHADOW_INDEX = "data/matching/shadow-runs.jsonl";
 
 function repoPath(relative: string) {
-  return path.join(process.cwd(), relative);
+  return dataPath(relative);
 }
 
 export async function persistShadowRun(run: ShadowMatchingRun): Promise<void> {

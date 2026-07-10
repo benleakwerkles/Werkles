@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 "use strict";
 
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
 /**
  * Werkles matching shadow smoke — POST discovery intakes, verify shadow_run_id.
  * No secrets printed.
  */
 
-const siteOrigin = (process.env.WERKLES_SITE_ORIGIN || "https://werkles.com").replace(/\/$/, "");
 const stamp = Date.now();
 
 const SCENARIOS = [
@@ -71,7 +73,30 @@ const SCENARIOS = [
   }
 ];
 
-async function postIntake(scenario) {
+const GOLDEN_TOP_PATHS = {
+  capital_partner: "verify_proof",
+  job_change: "find_better_job",
+  training_not_partner: "get_training"
+};
+
+async function detectSiteOrigin() {
+  const local = "http://localhost:3000";
+  try {
+    const res = await fetch(`${local}/operator/matching/shadow`, { signal: AbortSignal.timeout(3000) });
+    if (res.ok) return local;
+  } catch {
+    /* fall through */
+  }
+  return "https://werkles.com";
+}
+
+async function resolveSiteOrigin() {
+  const fromEnv = (process.env.WERKLES_SITE_ORIGIN || "").replace(/\/$/, "");
+  if (fromEnv) return fromEnv;
+  return detectSiteOrigin();
+}
+
+async function postIntake(scenario, siteOrigin) {
   const url = `${siteOrigin}/api/discovery/intake`;
   const res = await fetch(url, {
     method: "POST",
@@ -91,19 +116,69 @@ async function postIntake(scenario) {
   };
 }
 
-async function probeShadowPage() {
+async function probeShadowPage(siteOrigin) {
   const res = await fetch(`${siteOrigin}/operator/matching/shadow`);
   const html = await res.text();
   const pass = res.ok && /Shadow runs|Autonomous matching/i.test(html);
   return { name: "operator_shadow_page", pass, status: res.status, detail: pass ? "Page loads" : "Page missing expected copy" };
 }
 
+async function readLocalShadowRuns(runIds) {
+  const content = await readFile(path.join(process.cwd(), "data/matching/shadow-runs.jsonl"), "utf8");
+  const wanted = new Set(runIds);
+  return content
+    .trim()
+    .split(/\r?\n/)
+    .filter(Boolean)
+    .map((line) => JSON.parse(line))
+    .filter((run) => wanted.has(run.runId));
+}
+
+function semanticChecks(runs, intakeChecks) {
+  const scenarioByRunId = new Map(intakeChecks.map((check) => [check.shadow_run_id, check.scenario]));
+  return runs.map((run) => {
+    const scenario = scenarioByRunId.get(run.runId);
+    const topEligible = run.speaker.scoredPaths.find((candidate) => !candidate.disqualified)?.kind ?? null;
+    const disqualifiedKinds = run.notMatch.disqualified.map((item) => item.kind);
+    const expectedTopPath = GOLDEN_TOP_PATHS[scenario];
+    const partnerSuppressed =
+      scenario !== "training_not_partner" || disqualifiedKinds.includes("find_partner");
+    const deduplicated = new Set(disqualifiedKinds).size === disqualifiedKinds.length;
+    return {
+      name: `semantic_${scenario}`,
+      scenario,
+      pass: topEligible === expectedTopPath && partnerSuppressed && deduplicated,
+      shadow_run_id: run.runId,
+      expected_top_path: expectedTopPath,
+      actual_top_path: topEligible,
+      disqualified_kinds: disqualifiedKinds,
+      partner_suppressed: partnerSuppressed,
+      disqualifications_deduplicated: deduplicated
+    };
+  });
+}
+
 async function main() {
+  const siteOrigin = await resolveSiteOrigin();
   const checks = [];
   for (const scenario of SCENARIOS) {
-    checks.push(await postIntake(scenario));
+    checks.push(await postIntake(scenario, siteOrigin));
   }
-  checks.push(await probeShadowPage());
+  const intakeChecks = [...checks];
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(siteOrigin)) {
+    const runIds = intakeChecks.map((check) => check.shadow_run_id).filter(Boolean);
+    const runs = await readLocalShadowRuns(runIds);
+    checks.push(...semanticChecks(runs, intakeChecks));
+    if (runs.length !== runIds.length) {
+      checks.push({
+        name: "semantic_run_readback_count",
+        pass: false,
+        expected: runIds.length,
+        actual: runs.length
+      });
+    }
+  }
+  checks.push(await probeShadowPage(siteOrigin));
 
   const ok = checks.every((c) => c.pass);
   const out = {

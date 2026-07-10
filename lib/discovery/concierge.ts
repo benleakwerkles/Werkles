@@ -1,6 +1,7 @@
 import { appendFile, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import { dataPath } from "@/lib/server/writable-data-root";
 import {
   discoveryAssetValues,
   discoveryLaneValues,
@@ -155,7 +156,7 @@ export async function writeDiscoveryIntake(input: DiscoveryIntakeInput): Promise
   const shortId = randomUUID().slice(0, 8);
   const dateSlug = now.toISOString().slice(0, 10).replace(/-/g, "");
   const userId = `WZ-${dateSlug}-${shortId}`;
-  const dataDir = path.join(process.cwd(), "data", "discovery");
+  const dataDir = dataPath("data", "discovery");
   const recordDir = path.join(dataDir, "records");
   const recordRelativePath = path.join("data", "discovery", "records", `${userId}.md`).replaceAll("\\", "/");
   const record: DiscoveryIntakeRecord = {
@@ -169,7 +170,7 @@ export async function writeDiscoveryIntake(input: DiscoveryIntakeInput): Promise
 
   await mkdir(recordDir, { recursive: true });
   await appendFile(path.join(dataDir, "intakes.jsonl"), `${JSON.stringify(record)}\n`, "utf8");
-  await writeFile(path.join(process.cwd(), recordRelativePath), recordMarkdown(record), "utf8");
+  await writeFile(dataPath(recordRelativePath), recordMarkdown(record), "utf8");
 
   return record;
 }
