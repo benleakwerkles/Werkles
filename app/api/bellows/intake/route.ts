@@ -6,6 +6,8 @@ import {
   type ConciergeIntakeAnswers
 } from "@/lib/squibb/concierge-intake-v0";
 import { storeSpeakerIntake } from "@/lib/squibb/concierge-intake-storage";
+import { runShadowMatchingFromConcierge } from "@/lib/matching/shadow-pipeline";
+import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
 
 export const runtime = "nodejs";
 
@@ -19,7 +21,7 @@ function normalizeAnswers(value: unknown): ConciergeIntakeAnswers {
   return CONCIERGE_INTAKE_QUESTIONS.reduce<ConciergeIntakeAnswers>(
     (next, question) => ({
       ...next,
-      [question.id]: String(record[question.id] ?? "").trim()
+      [question.id]: String(record[question.id] ?? "").trim().slice(0, 600)
     }),
     { ...EMPTY_INTAKE_ANSWERS }
   );
@@ -41,9 +43,16 @@ export async function POST(request: NextRequest) {
     }
 
     const stored = await storeSpeakerIntake(answers);
+    const shadowRun = await runShadowMatchingFromConcierge(stored.intakeId, answers);
+
     return NextResponse.json({
       success: true,
-      ...stored
+      ...stored,
+      shadow_run_id: shadowRun?.runId ?? null,
+      matching_mode: isMatchingPublicEnabled() ? "autonomous" : "shadow",
+      meaning: isMatchingPublicEnabled()
+        ? "Intake processed. Speaker delivered plain facts; Squibb ranked your paths."
+        : "Intake saved. Matching engine ran in shadow mode — results visible to operator review."
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not store concierge intake.";

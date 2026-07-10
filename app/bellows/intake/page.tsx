@@ -36,11 +36,11 @@ export default function ConciergeIntakePage() {
 
         <section className="panel concierge-intake-page__guide" aria-labelledby="intakeGuideTitle">
           <p className="eyebrow">How intake works</p>
-          <h2 id="intakeGuideTitle">Symptoms in, Speaker packet out, recommendations second.</h2>
+          <h2 id="intakeGuideTitle">Symptoms in, engine out, Squibb speaks.</h2>
           <ol>
             <li>Answer symptom questions — not “what partner do you want.”</li>
-            <li>Submit to save a Speaker-readable packet for human review.</li>
-            <li>Compare ranked next steps on the Squibb recommendation surface.</li>
+            <li>Submit — matching engine runs (shadow until go-live).</li>
+            <li>Speaker facts + Squibb-ranked paths on the recommendation surface.</li>
           </ol>
         </section>
 

@@ -128,7 +128,7 @@ export const copy = {
     cta: "Join the Foundry",
     idle: "Mock-only copy. No production signup behavior is claimed here.",
     loading: "Checking…",
-    success: "Request received. We'll follow up."
+    success: "Request saved. We follow up manually — no auto-email from this form. For a full account now, use Start free (/signup) and confirm via email."
   },
   bellows: {
     eyebrow: "Bellows",

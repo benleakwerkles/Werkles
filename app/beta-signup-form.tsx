@@ -30,7 +30,7 @@ export default function BetaSignupForm() {
     }
 
     event.currentTarget.reset();
-    setStatus(copy.beta.success);
+    setStatus(result.note || copy.beta.success);
   }
 
   return (

@@ -22,10 +22,10 @@ export default function DiscoveryPage() {
         <section className="discovery-hero" aria-labelledby="discoveryTitle">
           <div>
             <p className="eyebrow">Werkles discovery intake</p>
-            <h1 id="discoveryTitle">Tell us where you are. Get one human-read next path.</h1>
+            <h1 id="discoveryTitle">Tell us where you are. Get paths ranked by the engine.</h1>
             <p>
-              This is the Maker test path: one intake, one human bottleneck read, one explained recommendation, one next action.
-              No matching engine, no scoring, no payment gate.
+              Intake feeds the Werkles hybrid matcher — deterministic scoring plus optional translation.
+              Speaker delivers plain facts; Squibb is the voice. No payment gate on this path.
             </p>
             <div className="hero-actions">
               <Link className="button button-light" href="#intake">Start intake</Link>
@@ -34,8 +34,8 @@ export default function DiscoveryPage() {
           </div>
           <aside className="discovery-hero__panel" aria-label="Human-operated promise">
             <SiteIcon icon="icon-dossier" size="lg" />
-            <strong>Human-operated first</strong>
-            <p>Software captures, stores, and surfaces. A person makes the judgment.</p>
+            <strong>Algorithm-operated</strong>
+            <p>Software scores paths. Speaker states facts. Squibb speaks. Shadow review until public flip.</p>
           </aside>
         </section>
 

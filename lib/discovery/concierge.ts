@@ -10,8 +10,8 @@ import {
   type DiscoveryIntakeRecord
 } from "@/lib/discovery/schema";
 
-function text(value: unknown): string {
-  return String(value ?? "").trim();
+function text(value: unknown, max = 800): string {
+  return String(value ?? "").trim().slice(0, max);
 }
 
 function oneOf<T extends readonly string[]>(value: unknown, allowed: T, fallback: T[number]): T[number] {
@@ -28,19 +28,19 @@ function assetList(value: unknown): DiscoveryAsset[] {
 export function normalizeDiscoveryIntake(body: unknown): DiscoveryIntakeInput {
   const record = typeof body === "object" && body !== null ? (body as Record<string, unknown>) : {};
   return {
-    name: text(record.name),
-    contact: text(record.contact),
-    situation: text(record.situation),
-    goal: text(record.goal),
-    why_now: text(record.why_now),
+    name: text(record.name, 120),
+    contact: text(record.contact, 160),
+    situation: text(record.situation, 800),
+    goal: text(record.goal, 600),
+    why_now: text(record.why_now, 600),
     assets: assetList(record.assets),
-    stated_blocker: text(record.stated_blocker),
-    tried: text(record.tried),
-    constraints: text(record.constraints),
-    one_thing: text(record.one_thing),
+    stated_blocker: text(record.stated_blocker, 600),
+    tried: text(record.tried, 600),
+    constraints: text(record.constraints, 600),
+    one_thing: text(record.one_thing, 160),
     lane: oneOf(record.lane, discoveryLaneValues, "Unsure"),
     response_speed: oneOf(record.response_speed, discoveryResponseSpeedValues, "Few days"),
-    notes: text(record.notes)
+    notes: text(record.notes, 800)
   };
 }
 

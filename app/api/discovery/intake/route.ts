@@ -4,6 +4,8 @@ import {
   validateDiscoveryIntake,
   writeDiscoveryIntake
 } from "@/lib/discovery/concierge";
+import { runShadowMatchingFromDiscovery } from "@/lib/matching/shadow-pipeline";
+import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
 
 export const runtime = "nodejs";
 
@@ -23,13 +25,18 @@ export async function POST(request: NextRequest) {
     }
 
     const record = await writeDiscoveryIntake(input);
+    const shadowRun = await runShadowMatchingFromDiscovery(record.user_id, input);
 
     return NextResponse.json({
       success: true,
       intake_id: record.user_id,
       state: record.state,
       record_path: record.record_path,
-      meaning: "Received for human review. No automated matching, scoring, or recommendation has been performed."
+      shadow_run_id: shadowRun?.runId ?? null,
+      matching_mode: isMatchingPublicEnabled() ? "autonomous" : "shadow",
+      meaning: isMatchingPublicEnabled()
+        ? "Intake processed by the Werkles matching engine. Speaker facts and Squibb paths are ready."
+        : "Intake saved. Matching engine ran in shadow mode — operator review before public delivery."
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not save discovery intake.";

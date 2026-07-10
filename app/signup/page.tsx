@@ -54,8 +54,23 @@ export default function SignupPage() {
     });
 
     if (error) {
+      const msg = error.message.toLowerCase();
+      if (msg.includes("already registered") || msg.includes("already exists")) {
+        setStatus("This email may already have an account. Try logging in instead of signing up again.");
+        return;
+      }
       setStatus(error.message);
       return;
+    }
+
+    if (data.user && !data.session) {
+      const identities = data.user.identities ?? [];
+      if (identities.length === 0) {
+        setStatus(
+          "If this email is already registered, use Log in. Otherwise check your inbox (and spam) for the confirmation link from Werkles."
+        );
+        return;
+      }
     }
 
     if (data.session) {

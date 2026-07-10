@@ -24,6 +24,8 @@ type IntakeSaveState =
     }
   | { status: "error"; message: string };
 
+const INTAKE_FIELD_MAX = 600;
+
 export function ConciergeIntakeForm() {
   const [answers, setAnswers] = useState<ConciergeIntakeAnswers>(EMPTY_INTAKE_ANSWERS);
   const [submitted, setSubmitted] = useState<SpeakerIntakePacket | null>(null);
@@ -90,18 +92,18 @@ export function ConciergeIntakeForm() {
         <p className="eyebrow">Squibb · Concierge Intake · v0</p>
         <h1>Name what you are carrying</h1>
         <p className="concierge-intake__lead">
-          Symptoms only — not solutions. We do not ask what partner or service you want. Answers
-          format into a Speaker intake packet.
+          Symptoms only — not solutions. The matching engine reads your answers; Speaker delivers plain
+          facts; Squibb is the voice on ranked paths.
         </p>
         <p className="concierge-intake__avoid" role="note">
           We will not ask: &ldquo;What partner do you need?&rdquo; or &ldquo;What service do you
           want?&rdquo;
         </p>
         <div className="gate-list" aria-label="What intake produces">
-          <span>Symptom packet</span>
-          <span>Speaker-readable summary</span>
-          <span>Recommendation-ready context</span>
-          <span>No profile or match created</span>
+          <span>Engine scoring</span>
+          <span>Speaker facts</span>
+          <span>Squibb voice</span>
+          <span>No auto-intro</span>
         </div>
       </header>
 
@@ -118,17 +120,21 @@ export function ConciergeIntakeForm() {
                 id={question.id}
                 name={question.id}
                 rows={3}
+                maxLength={INTAKE_FIELD_MAX}
                 value={answers[question.id]}
                 placeholder={question.placeholder}
                 onChange={(event) => updateField(question.id, event.target.value)}
               />
+              <p className="concierge-intake__count" aria-live="polite">
+                {answers[question.id].length}/{INTAKE_FIELD_MAX}
+              </p>
             </li>
           ))}
         </ol>
 
         <div className="concierge-intake__actions">
           <button type="submit" className="button button-dark" disabled={!canSubmit || saveState.status === "saving"}>
-            {saveState.status === "saving" ? "Saving for Speaker" : "Save Speaker packet"}
+            {saveState.status === "saving" ? "Running matcher" : "Submit intake"}
           </button>
           <p className="concierge-intake__preview-note" data-status={saveState.status} role="status">
             {saveState.message}

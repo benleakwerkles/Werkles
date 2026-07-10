@@ -1,0 +1,31 @@
+﻿{
+    "schema":  "WERKLES_SIGNUP_SMOKE_V1",
+    "timestamp":  "2026-07-10T01:56:02.323Z",
+    "machine":  "BETSY",
+    "secret_values_printed":  "NO",
+    "ok":  true,
+    "site_origin":  "https://werkles.com",
+    "test_email":  "signup-smoke+1783648558072@werkles.com",
+    "checks":  [
+                   {
+                       "name":  "signup_page_enabled",
+                       "pass":  true,
+                       "detail":  "HTTP 200 ΓÇö signup form present"
+                   },
+                   {
+                       "name":  "beta_api_post",
+                       "pass":  true,
+                       "detail":  "HTTP 200 success for signup-smoke+1783648558072@werkles.com"
+                   },
+                   {
+                       "name":  "supabase_signup_probe",
+                       "pass":  true,
+                       "detail":  "User created ΓÇö confirmation email should be sent if Supabase SMTP is configured"
+                   }
+               ],
+    "notes":  [
+                  "Homepage beta form saves to beta_signups ΓÇö no automated email (manual follow-up).",
+                  "Full account at /signup uses Supabase ΓÇö user must receive confirmation if email confirmations enabled.",
+                  "Existing members should use /login, not re-signup."
+              ]
+}

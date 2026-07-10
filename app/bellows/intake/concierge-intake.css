@@ -98,7 +98,17 @@
 .concierge-intake__hint {
   margin: 0 0 0.45rem 2.1rem;
   font-size: 0.85rem;
-  color: var(--werkles-text-muted, #6d5b46);
+  line-height: 1.5;
+  color: var(--werkles-text-secondary, #c08b52);
+}
+
+.concierge-intake__count {
+  margin: 0.3rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-align: right;
+  color: var(--werkles-text-secondary, #c08b52);
+  opacity: 0.75;
 }
 
 .concierge-intake__field textarea {

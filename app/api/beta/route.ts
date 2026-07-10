@@ -29,10 +29,20 @@ export async function POST(request: NextRequest) {
       .insert({ email, lane });
 
     if (error) {
+      const code = String(error.code || "");
+      if (code === "23505") {
+        return NextResponse.json(
+          { success: true, note: "Already on the list — we will follow up." },
+          { status: 200 }
+        );
+      }
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      note: "Saved. No automated email — use /signup for a full account with email confirmation."
+    });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not save beta signup";
     return NextResponse.json({ error: message }, { status: 500 });

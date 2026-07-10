@@ -12,6 +12,9 @@ import {
   type SquibbRecommendationSession
 } from "@/lib/squibb/recommendations";
 import type { SpeakerIntakePacket } from "@/lib/squibb/concierge-intake-v0";
+import { readLatestShadowRuns } from "@/lib/matching/shadow-pipeline";
+import { shadowRunToRecommendationSession } from "@/lib/matching/shadow-to-recommendations";
+import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
 
 function firstAnsweredSymptom(packet: SpeakerIntakePacket): string {
   return packet.symptoms.find((symptom) => symptom.answer.trim().length > 0)?.answer.trim() || packet.speakerFeed.summary;
@@ -19,7 +22,15 @@ function firstAnsweredSymptom(packet: SpeakerIntakePacket): string {
 
 export async function loadSquibbRecommendationSessionForBellows(): Promise<SquibbRecommendationSession> {
   const fallback = loadSquibbRecommendationSession();
-  const latest = await readLatestSpeakerIntake();
+  const [latest, shadowRuns] = await Promise.all([readLatestSpeakerIntake(), readLatestShadowRuns(5)]);
+
+  const matchingShadow = shadowRuns.find(
+    (run) => run.source === "bellows_concierge" && (!latest || run.intakeId === latest.stored.intakeId)
+  );
+
+  if (matchingShadow && (isMatchingPublicEnabled() || matchingShadow.mode === "shadow")) {
+    return shadowRunToRecommendationSession(matchingShadow);
+  }
 
   if (!latest) {
     return {

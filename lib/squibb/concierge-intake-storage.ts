@@ -92,7 +92,7 @@ export async function storeSpeakerIntake(answers: ConciergeIntakeAnswers): Promi
     packetPath,
     speakerEntryPath,
     indexPath: INDEX_PATH,
-    meaning: "Received for human review. No matching, scoring, profile, intro, or recommendation was created automatically."
+    meaning: "Received for matching engine processing. No profile or intro created automatically."
   };
   const indexRow = {
     ...stored,

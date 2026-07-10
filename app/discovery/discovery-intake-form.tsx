@@ -16,7 +16,7 @@ type SubmissionState =
 export function DiscoveryIntakeForm() {
   const [submission, setSubmission] = useState<SubmissionState>({
     status: "idle",
-    message: "One intake. A human reviewer reads it. No engine scores you here."
+    message: "One intake. The matching engine processes it. Speaker delivers facts; Squibb delivers voice."
   });
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -67,11 +67,11 @@ export function DiscoveryIntakeForm() {
       <div className="discovery-intake-form__grid">
         <label className="field">
           <span>Name</span>
-          <input name="name" autoComplete="name" required />
+          <input name="name" autoComplete="name" maxLength={120} required />
         </label>
         <label className="field">
           <span>Email or phone</span>
-          <input name="contact" autoComplete="email" required />
+          <input name="contact" autoComplete="email" maxLength={160} required />
         </label>
       </div>
 
@@ -80,6 +80,7 @@ export function DiscoveryIntakeForm() {
         <textarea
           name="situation"
           rows={4}
+          maxLength={800}
           required
           placeholder="Tell us the real starting point: work, project, constraint, mess, or opening."
         />
@@ -87,12 +88,12 @@ export function DiscoveryIntakeForm() {
 
       <label className="field">
         <span>What are you trying to move toward in the next 3-6 months?</span>
-        <textarea name="goal" rows={3} required />
+        <textarea name="goal" rows={3} maxLength={600} required />
       </label>
 
       <label className="field">
         <span>Why now?</span>
-        <textarea name="why_now" rows={3} />
+        <textarea name="why_now" rows={3} maxLength={600} />
       </label>
 
       <fieldset className="discovery-check-grid">
@@ -107,22 +108,22 @@ export function DiscoveryIntakeForm() {
 
       <label className="field">
         <span>What feels like the biggest thing in your way?</span>
-        <textarea name="stated_blocker" rows={3} required />
+        <textarea name="stated_blocker" rows={3} maxLength={600} required />
       </label>
 
       <label className="field">
         <span>What have you already tried, and what happened?</span>
-        <textarea name="tried" rows={3} />
+        <textarea name="tried" rows={3} maxLength={600} />
       </label>
 
       <label className="field">
         <span>What cannot change?</span>
-        <textarea name="constraints" rows={3} placeholder="Location, time, money floor or ceiling, obligations, timing, dealbreakers." />
+        <textarea name="constraints" rows={3} maxLength={600} placeholder="Location, time, money floor or ceiling, obligations, timing, dealbreakers." />
       </label>
 
       <label className="field">
         <span>If a stranger could hand you one thing right now, what would it be?</span>
-        <input name="one_thing" required />
+        <input name="one_thing" maxLength={160} required />
       </label>
 
       <div className="discovery-intake-form__grid">
@@ -146,7 +147,7 @@ export function DiscoveryIntakeForm() {
 
       <label className="field">
         <span>Anything else worth knowing?</span>
-        <textarea name="notes" rows={3} />
+        <textarea name="notes" rows={3} maxLength={800} />
       </label>
 
       <div className="discovery-intake-form__footer">
