@@ -1,9 +1,10 @@
 # Tier 1 Gate — Matching Shadow Production Path
 
-Status: `AWAITING BEN DECISION`  
-Confidence: `HIGH` on local mechanical evidence; `MEDIUM` on production behavior until deploy and live smoke  
+Status: `APPROVED — OPTION B (DURABLE PERSISTENCE FIRST)`  
+Decision recorded: `foreman/gates/APPROVAL_LOG.md` @ 2026-07-10  
+Confidence: `HIGH` on local mechanical evidence; `MEDIUM` on production behavior until schema apply + deploy + live smoke  
 Branch: `maker/site-g-20260703`  
-Current HEAD/origin: `1499d4b`
+Current HEAD/origin: `c112b84` (pre-wiring commit; durable adapter wiring follows)
 
 ## Decision
 
