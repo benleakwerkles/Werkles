@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gate — Matching Durable Schema Apply</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background:#0b1020; color:#e9edf7; }
+    body { margin:0; padding:32px; }
+    main { max-width:960px; margin:auto; }
+    section { background:#141b2f; border:1px solid #2b3655; border-radius:14px; padding:22px; margin:16px 0; }
+    h1,h2 { margin-top:0; }
+    .status { color:#ffd166; font-weight:700; }
+    .good { color:#8ce99a; } .warn { color:#ffd166; }
+    code { background:#090d18; padding:3px 6px; border-radius:5px; display:block; margin:8px 0; white-space:pre-wrap; }
+    ul { line-height:1.6; }
+  </style>
+</head>
+<body><main>
+  <h1>Matching Durable Schema Apply</h1>
+  <p class="status">Tier 1 · Awaiting Ben decision</p>
+  <p>Parent: Option B approved — durable persistence before deploy.</p>
+  <section>
+    <h2>Approve apply</h2>
+    <code>APPROVE MATCHING DURABLE SCHEMA APPLY</code>
+    <p class="warn">Creates <code>discovery_intakes</code> and <code>matching_shadow_runs</code>. Does not deploy code or flip public matching.</p>
+  </section>
+  <section>
+    <h2>Migration file</h2>
+    <p><code>supabase/migrations/00004_matching_shadow_persistence.sql</code></p>
+    <ul class="good">
+      <li>Code wired @ 056c1c2</li>
+      <li>Default remains file mode locally</li>
+      <li>Supabase mode via <code>MATCHING_STORAGE_MODE=supabase</code></li>
+    </ul>
+  </section>
+  <section>
+    <h2>After apply</h2>
+    <ol>
+      <li>Preview env: <code>MATCHING_STORAGE_MODE=supabase</code></li>
+      <li>Deploy matching branch to preview</li>
+      <li>Live smoke</li>
+      <li>Separate production deploy gate</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Reject / patch</h2>
+    <code>REJECT MATCHING DURABLE SCHEMA APPLY</code>
+    <code>PATCH MATCHING DURABLE SCHEMA GATE: &lt;instructions&gt;</code>
+  </section>
+</main></body></html>
