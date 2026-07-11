@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gate — Matching Shadow Production Path</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background:#0b1020; color:#e9edf7; }
+    body { margin:0; padding:32px; }
+    main { max-width:960px; margin:auto; }
+    section { background:#141b2f; border:1px solid #2b3655; border-radius:14px; padding:22px; margin:16px 0; }
+    h1,h2 { margin-top:0; }
+    .status { color:#ffd166; font-weight:700; }
+    .good { color:#8ce99a; } .warn { color:#ffd166; } .bad { color:#ff8787; }
+    code { background:#090d18; padding:3px 6px; border-radius:5px; }
+    .choices { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+    .choice { border:1px solid #415078; border-radius:10px; padding:16px; }
+    ul { line-height:1.6; }
+  </style>
+</head>
+<body><main>
+  <h1>Matching Shadow Production Path</h1>
+  <p class="status">Tier 1 · Awaiting Ben decision</p>
+  <section>
+    <h2>Local evidence</h2>
+    <ul class="good">
+      <li>Root typecheck PASS</li><li>Production build PASS</li><li>84/84 static pages</li>
+      <li>Operator matching route present</li><li>Semantic smoke PASS 7/7</li>
+      <li>Vercel path avoids read-only /var/task</li>
+    </ul>
+  </section>
+  <section><h2>The unresolved truth</h2>
+    <p class="warn"><code>/tmp</code> is writable, ephemeral, and instance-local. It prevents the write crash but does not prove durable or cross-instance receipt custody.</p>
+  </section>
+  <section><h2>Choose the production path</h2><div class="choices">
+    <div class="choice"><h3>A — Temporary diagnostic deploy</h3><p>Run shadow-only production diagnostics while explicitly accepting ephemeral receipts.</p><code>APPROVE MATCHING SHADOW TEMPORARY DEPLOY — EPHEMERAL RECEIPTS ACCEPTED</code></div>
+    <div class="choice"><h3>B — Durable persistence first</h3><p>Recommended. Prepare Supabase tables/RLS and return to a separate SQL/apply gate.</p><code>REQUIRE MATCHING DURABLE PERSISTENCE BEFORE DEPLOY</code></div>
+  </div></section>
+  <section><h2>Guardrails</h2><ul>
+    <li>Public and LLM matching remain OFF.</li><li>No bulk staging from the dirty worktree.</li>
+    <li>No SQL, push, deploy, secret handling, or production mutation without explicit approval.</li>
+  </ul></section>
+  <section><h2>Other decisions</h2>
+    <p><code>REJECT MATCHING SHADOW PRODUCTION PATH</code></p>
+    <p><code>PATCH MATCHING SHADOW PRODUCTION GATE: &lt;instructions&gt;</code></p>
+  </section>
+</main></body></html>
