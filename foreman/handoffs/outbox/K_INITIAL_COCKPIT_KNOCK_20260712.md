@@ -15,14 +15,18 @@ Required branch: machine-readiness-packets-20260711
 Cockpit outbox: foreman/handoffs/outbox/
 Packet index: foreman/handoffs/outbox/F_COCKPIT_PACKET_INDEX_20260712.json
 Current F packet: foreman/handoffs/outbox/F_SYSTEM_WIDE_MACHINE_READINESS_20260712.md
+Current Harvey mobilization index: foreman/handoffs/outbox/F_HARVEY_BUILD_MOBILIZATION_INDEX_20260712.json
+Current Harvey mobilization packet: foreman/handoffs/outbox/F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712.md
 
 Do not use the repository default branch for this K. Fetch or open the exact
-paths from branch machine-readiness-packets-20260711. Current verified cockpit
-branch commit when this K was refreshed: c87719930581c53d39ae1d8fc87959e6ec912bf0.
+paths from branch machine-readiness-packets-20260711 and report the commit you
+actually read in every receipt.
 
 Identify yourself as Cousin @ Machine and prove your actual hostname. Read the
-packet index, open the current F packet, and claim only assignments addressed to
-your role, machine, or capability.
+packet indexes, open the current F packets, and claim only assignments addressed
+to your role, machine, or capability. Completed readiness assignments must not be
+claimed again. Spanzee must complete `SPANZEE_WORKSPACE_CLI_BASELINE` before
+claiming `HARVEY_SPANZEE_FORGE_READBACK`.
 
 Before working, return RECEIVED with the packet ID, assignment ID, claim ID,
 cousin, machine, hostname, and execution context. If you are not actually local

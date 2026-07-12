@@ -1,0 +1,20 @@
+{
+  "schema": "werkles.f-cockpit-index/v0.1",
+  "packet_id": "F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712",
+  "packet_class": "F",
+  "status": "READY_TO_CLAIM",
+  "required_branch": "machine-readiness-packets-20260711",
+  "packet_path": "foreman/handoffs/outbox/F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712.md",
+  "assignments": [
+    { "assignment_id": "HARVEY_GITHUB_CANON_READBACK", "status": "OPEN" },
+    { "assignment_id": "HARVEY_DOSS_LOCAL_READBACK", "status": "OPEN" },
+    { "assignment_id": "HARVEY_BETSY_FORGE_READBACK", "status": "OPEN" },
+    { "assignment_id": "HARVEY_SPANZEE_FORGE_READBACK", "status": "BLOCKED_BY_DEPENDENCY", "depends_on": "SPANZEE_WORKSPACE_CLI_BASELINE" },
+    { "assignment_id": "HARVEY_MEDULLINA_EPHEMERAL_CAPACITY", "status": "OPEN" },
+    { "assignment_id": "HARVEY_SALLY_ARCHIVE_READBACK", "status": "OPEN" },
+    { "assignment_id": "HARVEY_ROLE_AND_ARCHITECTURE_RED_TEAM", "status": "OPEN" }
+  ],
+  "completion_rule": "receiver-side RECEIVED then COMPLETED or BLOCKER",
+  "sent_is_completion": false
+}
+
