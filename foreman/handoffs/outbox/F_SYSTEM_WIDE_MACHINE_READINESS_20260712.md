@@ -90,6 +90,21 @@ remembered or improvised packet.
 Eligible claimant: any hands-capable cousin actually local to Medullina.
 Known state: no fresh baseline receipt has been imported.
 
+Operator-confirmed identity:
+
+- Canonical machine: `Medullina`
+- Proven Windows hostname: `COURTNEY`
+- Machine owner: Courtney
+- Ben and Courtney both have user accounts; report the actual current user.
+
+Operating policy:
+
+- `foreman/machine-readiness/MEDULLINA_IDENTITY_AND_MINIMAL_RESIDUE_POLICY_20260712.md`
+- Cloud-first, session-only compute
+- Smallest practical storage, cache, and background-memory footprint
+- No persistent services, watchers, workers, indexers, broad sync, or package
+  installation unless a later explicit packet authorizes them
+
 Mission:
 
 1. Pull the published packet
@@ -99,8 +114,11 @@ Mission:
 3. Run only the published read-only readiness wrapper.
 4. Return `DINK_MACHINE_READINESS_RESULT` with receipt paths, SHA-256, statuses,
    and concrete blockers.
-5. If the hostname is not clearly Medullina, return
-   `BLOCKER: MEDULLINA_HOST_ALIAS_NEEDS_OPERATOR_CONFIRMATION`.
+5. Accept `HOSTNAME: COURTNEY` as operator-confirmed proof for canonical machine
+   `Medullina`; also report the actual current Windows user.
+6. If the wrapper would install, persist, sync, create large caches, clone an
+   additional repository, or start a background service, return
+   `BLOCKER: MEDULLINA_MINIMAL_RESIDUE_POLICY_CONFLICT` before that action.
 
 ### Assignment `ALL_HANDS_COCKPIT_READBACK`
 
