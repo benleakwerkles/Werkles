@@ -1,0 +1,20 @@
+{
+  "message_type": "birdie_packet",
+  "courier_class": "Birdeyes",
+  "packet_id": "KNOCK_ENDER_SPANZEE_20260712",
+  "target_aeye": "Ender",
+  "target_machine": "Spanzee",
+  "target_hostname": "SPANZEE",
+  "target_seat": "Ender@Spanzee",
+  "target_nickname": "Ender",
+  "machine_status": "AVAILABLE",
+  "seat_status": "ADDRESSABLE_UNVERIFIED_ROUTE",
+  "mission": "Retrieve and execute the current universal Werkles KNOCK.",
+  "knock_source": "foreman/handoffs/outbox/KNOCK_ALL_AEYES_20260712.md",
+  "knock_sha256": "841092969CB39B114E3E8546AB6C6F83C9665CC1DA262C7ECCCAED3971AAD83F",
+  "status": "QUEUED_FOR_COURIER",
+  "receipt_required": true,
+  "completion_rule": "Receiver-side RECEIVED then COMPLETED or BLOCKER",
+  "return_destination": "foreman/handoffs/inbox",
+  "proof_boundary": "Queued is not sent; sent is not received; received is not completed."
+}

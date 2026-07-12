@@ -1,0 +1,91 @@
+{
+  "schema": "werkles.birdeye-fleet-topology/v1",
+  "generated_at": "2026-07-12",
+  "policy": {
+    "all_machines_are_candidate_hosts": true,
+    "candidate_host_does_not_equal_verified_route": true,
+    "sent_is_completion": false,
+    "terminal_receipts": ["COMPLETED", "BLOCKER"]
+  },
+  "couriers": [
+    {
+      "name": "Birdeyes",
+      "type": "courier_class",
+      "current_role": "Packet envelopes in TinkerDen outbox/sent ledgers",
+      "autonomous_delivery": false
+    },
+    {
+      "name": "Relay Courier",
+      "type": "deterministic_browser_courier",
+      "current_role": "Verify mapping, focus Edge tab, and prepare/paste packet",
+      "autonomous_delivery": false,
+      "hard_stop": "Send remains manual under current doctrine"
+    },
+    {
+      "name": "Thread Bridge",
+      "type": "codex_thread_transport",
+      "current_role": "Queue/post packets to known Codex threads",
+      "autonomous_delivery": "historically partial",
+      "live_status_20260712": "OFFLINE_FROM_DOSS"
+    },
+    {
+      "name": "Ben",
+      "type": "human_operator",
+      "current_role": "Still the practical cross-provider Send/launch gate",
+      "target_role": "Authority only; never routine courier"
+    },
+    {
+      "name": "Wormeyes",
+      "type": "observer",
+      "current_role": "World-state observation/readback",
+      "autonomous_delivery": false
+    },
+    {
+      "name": "Swanson",
+      "type": "topology_and_receipt_steward",
+      "current_role": "Route map and receipt ledger",
+      "autonomous_delivery": false
+    }
+  ],
+  "machines": [
+    { "id": "doss", "name": "Doss", "hostname": "DOSS", "role": "Harvey home / mobile-mirror forge", "status": "AVAILABLE" },
+    { "id": "betsy", "name": "Betsy", "hostname": "Betsy", "role": "Primary forge", "status": "AVAILABLE" },
+    { "id": "spanzee", "name": "Spanzee", "hostname": "SPANZEE", "role": "Forge / Oddly Godly seat", "status": "AVAILABLE" },
+    { "id": "medullina", "name": "Medullina", "hostname": "COURTNEY", "role": "Cloud-first session-only compute", "status": "AVAILABLE_MINIMAL_RESIDUE" },
+    { "id": "sally", "name": "Sally", "hostname": "SALLY", "role": "Archive / snapshot surface", "status": "AVAILABLE_OLD_BONES" },
+    { "id": "atlas", "name": "Atlas", "hostname": "UNKNOWN", "role": "Archive forge / noncritical jobs", "status": "UNVERIFIED" }
+  ],
+  "aeyes": [
+    { "id": "petra", "name": "Petra", "role": "Comptroller / red team" },
+    { "id": "ender", "name": "Ender", "role": "Experience / art direction / review" },
+    { "id": "skybro", "name": "Skybro", "role": "Strategy / thesis / naming" },
+    { "id": "bean", "name": "Bean", "role": "Hostile audit / failure modes" },
+    { "id": "computer", "name": "Computer", "role": "Research / externals" },
+    { "id": "sherlock", "name": "Sherlock", "role": "Investigation / artifact recovery" },
+    { "id": "maker", "name": "Maker", "role": "UI / UX / surfaces" },
+    { "id": "dink", "name": "Dink", "role": "Scripts / plumbing / local hands" },
+    { "id": "thufir", "name": "Thufir", "role": "Review / continuity" },
+    { "id": "swanson", "name": "Swanson", "role": "Topology / receipt ledgers" },
+    { "id": "hume", "name": "Hume", "role": "Crawleye original" },
+    { "id": "lincoln", "name": "Lincoln", "role": "Crawleye original" },
+    { "id": "percy", "name": "Percy", "role": "Crawleye original" },
+    { "id": "doozer", "name": "Doozer", "role": "Bounded builder / worker" }
+  ],
+  "nicknames": [
+    { "seat": "Dink@Betsy", "nickname": "HeimerDinker" },
+    { "seat": "Dink@Spanzee", "nickname": "Direwolf Dink" },
+    { "seat": "Maker@Betsy", "nickname": "Lady Jessica" },
+    { "seat": "Maker@Spanzee", "nickname": "Crash Davis", "note": "Cursor on Spanzee" },
+    { "seat": "Petra@Any", "nickname": "Petra" },
+    { "seat": "Swanson@Doss", "nickname": "Swanson" }
+  ],
+  "special_status": [
+    {
+      "seat": "Ender@Sally",
+      "recorded_status": "RETIRED_UNTIL_RAM_UPGRADE",
+      "model_status": "ADDRESSABLE_SUSPENDED",
+      "rule": "Include in topology; do not claim routability or execution without fresh receipt"
+    }
+  ]
+}
+
