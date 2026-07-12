@@ -17,8 +17,17 @@
       "assignments": [
         {
           "assignment_id": "SPANZEE_CHECKOUT_DISCOVERY",
+          "status": "COMPLETED",
+          "claimant": "Cousin Codex @ Spanzee",
+          "source_commit": "ce811cc78c7dbf24183d851cbaa3e8c20af1f954",
+          "result": "CANONICAL_REMOTE_MATCH",
+          "checkout_path": "C:\\Users\\BenLeak\\Documents\\GitHub\\Werkles1"
+        },
+        {
+          "assignment_id": "SPANZEE_WORKSPACE_CLI_BASELINE",
           "status": "OPEN",
-          "claimant": null
+          "claimant": null,
+          "depends_on": "SPANZEE_CHECKOUT_DISCOVERY"
         },
         {
           "assignment_id": "MEDULLINA_FIRST_READINESS",

@@ -61,11 +61,42 @@ seat, return `BLOCKER: NOT_TARGET_MACHINE_LOCAL_CONTEXT` and stop.
 
 ## Open Assignments
 
+### Assignment `SPANZEE_WORKSPACE_CLI_BASELINE`
+
+Eligible claimant: any hands-capable cousin actually local to Spanzee.
+Dependency: `SPANZEE_CHECKOUT_DISCOVERY` completed.
+
+Proven checkout:
+
+- Path: `C:\Users\BenLeak\Documents\GitHub\Werkles1`
+- Origin: `https://github.com/benleakwerkles/Werkles.git`
+- Branch at discovery: `main`
+- HEAD at discovery: `01fcb4152d9b924cbb68cf78ecdd746cb4fffe1a`
+- Working tree at discovery: dirty — `37` entries
+
+Mission:
+
+1. Prove hostname `SPANZEE` and the exact checkout path again.
+2. Read and run the existing read-only workspace/CLI baseline from that checkout:
+   `foreman/machine-readiness/AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md` and
+   `foreman/machine-readiness/Test-AeyeWorkspaceCliBaseline.ps1`.
+3. Do not clean, reset, restore, stage, commit, switch, merge, rebase, pull, or
+   modify the 37-entry dirty tree.
+4. Do not install missing tools or submit sign-ins; report concrete blockers.
+5. Return the redacted workspace/CLI receipt path and SHA-256 plus the terminal
+   `COMPLETED` or specific `BLOCKER` state.
+
+This assignment proves workspace/CLI readiness only. It does not authorize
+repository cleanup or prove Google Password Manager/autofill state.
+
 ### Assignment `SPANZEE_CHECKOUT_DISCOVERY`
 
 Eligible claimant: any hands-capable cousin actually local to Spanzee.
 Preferred claimant: `Direwolf Dink @ Spanzee`.
 Known state: credential baseline returned; local Werkles checkout path unproven.
+
+Assignment state: `COMPLETED` by receiver receipt on 2026-07-12. Do not claim
+again unless Foreman explicitly reopens it.
 
 Mission:
 
