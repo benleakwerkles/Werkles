@@ -121,6 +121,9 @@ remembered or improvised packet.
 Eligible claimant: any hands-capable cousin actually local to Medullina.
 Known state: no fresh baseline receipt has been imported.
 
+Assignment state: `COMPLETED` by Medullina-local receiver receipt on 2026-07-12.
+Do not claim again unless Foreman explicitly reopens it.
+
 Operator-confirmed identity:
 
 - Canonical machine: `Medullina`
@@ -150,6 +153,17 @@ Mission:
 6. If the wrapper would install, persist, sync, create large caches, clone an
    additional repository, or start a background service, return
    `BLOCKER: MEDULLINA_MINIMAL_RESIDUE_POLICY_CONFLICT` before that action.
+
+Completion proof:
+
+- Hostname: `COURTNEY`
+- User: `medul`
+- Credential status: `COMPLETE`
+- Workspace/CLI status: `COMPLETE`
+- Summary SHA-256:
+  `EF3A7BC00D41EA7CEDD61401BEEF3FC051555DADED232B211B2DF3460761E9DB`
+- Minimal-residue compliance: no background processes, persistent services,
+  packages, or large caches created
 
 ### Assignment `ALL_HANDS_COCKPIT_READBACK`
 

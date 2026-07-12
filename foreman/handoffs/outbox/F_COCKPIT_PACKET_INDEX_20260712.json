@@ -31,8 +31,13 @@
         },
         {
           "assignment_id": "MEDULLINA_FIRST_READINESS",
-          "status": "OPEN",
-          "claimant": null
+          "status": "COMPLETED",
+          "claimant": "Cousin @ Medullina",
+          "source_commit": "ce811cc78c7dbf24183d851cbaa3e8c20af1f954",
+          "hostname": "COURTNEY",
+          "credential_status": "COMPLETE",
+          "workspace_cli_status": "COMPLETE",
+          "summary_sha256": "EF3A7BC00D41EA7CEDD61401BEEF3FC051555DADED232B211B2DF3460761E9DB"
         },
         {
           "assignment_id": "ALL_HANDS_COCKPIT_READBACK",
