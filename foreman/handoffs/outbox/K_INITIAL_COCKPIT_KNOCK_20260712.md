@@ -3,6 +3,9 @@
 Deprecated command name: bare `K`. Use `KNOCK` after loading
 `ALL_COUSINS_COMMAND_LANGUAGE_BOOTSTRAP_20260712.md`.
 
+Superseded universal packet:
+`foreman/handoffs/outbox/KNOCK_ALL_AEYES_20260712.md`.
+
 Knock ID: `K_INITIAL_COCKPIT_KNOCK_20260712`
 Target: all Werkles cousins, Dinks, Enders, Doozers, Makers, Computers, and other hands
 
