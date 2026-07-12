@@ -1,0 +1,19 @@
+{
+  "schema": "werkles.f-cockpit-index/v0.1",
+  "packet_id": "F_ARTIFACT_CAPABILITY_PLACEMENT_AND_INSTALL_20260712",
+  "status": "READY_TO_CLAIM",
+  "required_branch": "machine-readiness-packets-20260711",
+  "packet_path": "foreman/handoffs/outbox/F_ARTIFACT_CAPABILITY_PLACEMENT_AND_INSTALL_20260712.md",
+  "assignments": [
+    { "assignment_id": "DOSS_DOCUMENT_VERIFICATION_BASELINE", "status": "OPEN" },
+    { "assignment_id": "BETSY_ARTIFACT_FORGE_BASELINE", "status": "OPEN" },
+    { "assignment_id": "SPANZEE_ARTIFACT_CAPABILITY_AUDIT", "status": "BLOCKED_BY_DEPENDENCY", "depends_on": "SPANZEE_WORKSPACE_CLI_BASELINE" },
+    { "assignment_id": "MEDULLINA_CLOUD_ONLY_ARTIFACT_ROUTE", "status": "OPEN", "install_allowed": false },
+    { "assignment_id": "SALLY_VIEWER_ARCHIVE_ROUTE", "status": "OPEN", "install_allowed": false },
+    { "assignment_id": "EPHEMERAL_ARTIFACT_WORKER_SPEC", "status": "OPEN", "deploy_allowed": false },
+    { "assignment_id": "KIND_SIR_SPECIALIST_TOOL_DECISION", "status": "OPEN" }
+  ],
+  "completion_rule": "receiver-side RECEIVED then COMPLETED or BLOCKER",
+  "sent_is_completion": false
+}
+

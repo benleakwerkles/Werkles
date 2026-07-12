@@ -17,6 +17,17 @@ Packet index: foreman/handoffs/outbox/F_COCKPIT_PACKET_INDEX_20260712.json
 Current F packet: foreman/handoffs/outbox/F_SYSTEM_WIDE_MACHINE_READINESS_20260712.md
 Current Harvey mobilization index: foreman/handoffs/outbox/F_HARVEY_BUILD_MOBILIZATION_INDEX_20260712.json
 Current Harvey mobilization packet: foreman/handoffs/outbox/F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712.md
+Current artifact capability index: foreman/handoffs/outbox/F_ARTIFACT_CAPABILITY_INDEX_20260712.json
+Current artifact capability packet: foreman/handoffs/outbox/F_ARTIFACT_CAPABILITY_PLACEMENT_AND_INSTALL_20260712.md
+
+Machine/role-specific artifact Ks:
+
+- Doss: foreman/handoffs/outbox/K_DOSS_ARTIFACT_BASELINE_20260712.md
+- Betsy: foreman/handoffs/outbox/K_BETSY_ARTIFACT_FORGE_20260712.md
+- Spanzee: foreman/handoffs/outbox/K_SPANZEE_ARTIFACT_AUDIT_20260712.md
+- Medullina: foreman/handoffs/outbox/K_MEDULLINA_CLOUD_ARTIFACT_ROUTE_20260712.md
+- Sally: foreman/handoffs/outbox/K_SALLY_ARTIFACT_ARCHIVE_ROUTE_20260712.md
+- Doozer/cloud: foreman/handoffs/outbox/K_DOOZER_EPHEMERAL_ARTIFACT_WORKER_20260712.md
 
 Direct branch-qualified URLs for surfaces that cannot discover non-default branches:
 
