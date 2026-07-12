@@ -1,5 +1,8 @@
 # K — Initial Werkles Cockpit Knock — 2026-07-12
 
+Deprecated command name: bare `K`. Use `KNOCK` after loading
+`ALL_COUSINS_COMMAND_LANGUAGE_BOOTSTRAP_20260712.md`.
+
 Knock ID: `K_INITIAL_COCKPIT_KNOCK_20260712`
 Target: all Werkles cousins, Dinks, Enders, Doozers, Makers, Computers, and other hands
 
