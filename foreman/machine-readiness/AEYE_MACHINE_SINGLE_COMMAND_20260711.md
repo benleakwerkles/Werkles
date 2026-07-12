@@ -12,6 +12,7 @@ Use one wrapper:
 
 It runs:
 
+- `Invoke-1PasswordCliPromptStormFix.ps1`
 - `Test-AeyeMachineCredentialBaseline.ps1`
 - `Test-AeyeWorkspaceCliBaseline.ps1`
 
@@ -22,27 +23,28 @@ It also uses `rg` to print the relevant packet anchors when `rg` is installed.
 Set the nickname and paste this into PowerShell on the target machine:
 
 ```powershell
-$N="MACHINE_NICKNAME"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition" .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
+$N="MACHINE_NICKNAME"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-1PasswordCliPromptStormFix.ps1 -Nickname $N; if($LASTEXITCODE -ne 0){ throw "1Password CLI prompt-storm fix failed" }; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition|Prompt Storm" .\ONE_PASSWORD_CLI_PROMPT_STORM_FIX_20260712.md .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
 ```
 
 Examples:
 
 ```powershell
-$N="Betsy"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition" .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
+$N="Betsy"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-1PasswordCliPromptStormFix.ps1 -Nickname $N; if($LASTEXITCODE -ne 0){ throw "1Password CLI prompt-storm fix failed" }; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition|Prompt Storm" .\ONE_PASSWORD_CLI_PROMPT_STORM_FIX_20260712.md .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
 ```
 
 ```powershell
-$N="Spanzee"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition" .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
+$N="Spanzee"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-1PasswordCliPromptStormFix.ps1 -Nickname $N; if($LASTEXITCODE -ne 0){ throw "1Password CLI prompt-storm fix failed" }; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition|Prompt Storm" .\ONE_PASSWORD_CLI_PROMPT_STORM_FIX_20260712.md .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
 ```
 
 ```powershell
-$N="Medullina"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition" .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
+$N="Medullina"; $R=@("$env:USERPROFILE\Documents\1password Project","C:\Users\BenLeak\Documents\1password Project","C:\Users\Ben Leak\Documents\1password Project") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1; if(-not $R){ throw "1password Project folder not found on this machine" }; Set-Location -LiteralPath $R; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-1PasswordCliPromptStormFix.ps1 -Nickname $N; if($LASTEXITCODE -ne 0){ throw "1Password CLI prompt-storm fix failed" }; if(Get-Command rg -ErrorAction SilentlyContinue){ rg -n "COPY_PASTE|Universal No-Items|Workspace And CLI|Machine Checklist|Success Definition|Prompt Storm" .\ONE_PASSWORD_CLI_PROMPT_STORM_FIX_20260712.md .\AEYE_MACHINE_SINGLE_COMMAND_20260711.md .\AEYE_MACHINE_CREDENTIAL_BASELINE_20260711.md .\AEYE_WORKSPACE_AND_CLI_BASELINE_20260711.md .\PASSWORD_CHECKLIST_ACTIVE_QUEUE_20260711.md }; powershell -NoProfile -ExecutionPolicy Bypass -File .\Invoke-AeyeMachineReadiness.ps1 -Nickname $N
 ```
 
 ## Output
 
 The wrapper writes:
 
+- one prompt-storm fix receipt
 - one credential receipt
 - one workspace/CLI receipt
 - one combined summary receipt
@@ -65,6 +67,7 @@ It does not:
 
 - run `op account list`
 - run `op whoami`
+- run any `op` command during the prompt-storm fix
 - run `gh auth status`
 - run provider login/auth commands
 - deploy anything
