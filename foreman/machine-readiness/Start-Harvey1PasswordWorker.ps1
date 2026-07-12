@@ -3,7 +3,7 @@ param(
     [string]$QueueRoot = '.\.harvey-1password',
     [string]$OutputRoot = '.\outputs',
     [int]$PollSeconds = 5,
-    [int]$KeepAliveSeconds = 240,
+    [int]$KeepAliveSeconds = 0,
     [int]$MaxHours = 12,
     [switch]$Once,
     [switch]$Allow1PasswordCli
@@ -139,6 +139,7 @@ while ($true) {
         updated_at = $now.ToString('o')
         queue_count = @(Get-ChildItem -Path $InboxDir -Filter '*.json' -File -ErrorAction SilentlyContinue).Count
         keepalive_seconds = $KeepAliveSeconds
+        keepalive_enabled = ($KeepAliveSeconds -gt 0)
         max_hours = $MaxHours
         secret_boundary = 'does not store or enter Windows Hello PIN; relies on one user-approved 1Password CLI session'
     })
@@ -153,7 +154,7 @@ while ($true) {
         break
     }
 
-    if (($now - $lastKeepAlive).TotalSeconds -ge $KeepAliveSeconds) {
+    if ($KeepAliveSeconds -gt 0 -and ($now - $lastKeepAlive).TotalSeconds -ge $KeepAliveSeconds) {
         try {
             & op whoami --account $Account --format json *> $null
             $lastKeepAlive = $now

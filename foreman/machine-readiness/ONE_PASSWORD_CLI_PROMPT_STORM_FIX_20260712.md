@@ -49,6 +49,12 @@ Allowed CLI path, only when explicitly intended:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Start-Harvey1PasswordWorker.ps1 -Allow1PasswordCli
 ```
 
+The worker now defaults to idle/no-keepalive mode:
+
+- `KeepAliveSeconds = 0`
+- no idle `op whoami` pings
+- 1Password CLI is only touched when a real queued job is being processed
+
 or a one-process environment gate:
 
 ```powershell
