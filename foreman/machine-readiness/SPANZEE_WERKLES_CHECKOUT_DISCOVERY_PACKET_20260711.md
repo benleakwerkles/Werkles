@@ -75,7 +75,9 @@ $CandidatePaths = @(
     (Join-Path $UserHome 'Desktop\github\Werkles'),
     (Join-Path $UserHome 'Desktop\github\Werkles1'),
     (Join-Path $UserHome 'Documents\GitHub\Werkles'),
+    (Join-Path $UserHome 'Documents\GitHub\Werkles1'),
     (Join-Path $UserHome 'Documents\Werkles'),
+    (Join-Path $UserHome 'Documents\Werkles1'),
     (Join-Path $UserHome 'source\repos\Werkles'),
     (Join-Path $UserHome 'repos\Werkles'),
     (Join-Path $UserHome 'dev\Werkles'),
@@ -83,6 +85,34 @@ $CandidatePaths = @(
     'C:\Dev\Werkles1',
     'C:\wt\Werkles'
 ) | Select-Object -Unique
+
+# If the explicit set is empty, perform a bounded directory-name search under
+# the current user's common source roots. This enumerates directory paths only;
+# it does not read repository file contents.
+$ExistingExplicit = @($CandidatePaths | Where-Object {
+    Test-Path -LiteralPath $_ -PathType Container
+})
+
+if ($ExistingExplicit.Count -eq 0) {
+    $SearchRoots = @(
+        (Join-Path $UserHome 'github'),
+        (Join-Path $UserHome 'Desktop'),
+        (Join-Path $UserHome 'Documents'),
+        (Join-Path $UserHome 'source'),
+        (Join-Path $UserHome 'repos'),
+        (Join-Path $UserHome 'dev')
+    ) | Where-Object { Test-Path -LiteralPath $_ -PathType Container }
+
+    $Discovered = foreach ($Root in $SearchRoots) {
+        Get-ChildItem -LiteralPath $Root -Directory -Recurse -Depth 4 `
+            -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -match '^Werkles([._ -]?\d+)?$' } |
+            Select-Object -ExpandProperty FullName
+    }
+
+    $CandidatePaths = @($CandidatePaths) + @($Discovered) |
+        Select-Object -Unique
+}
 
 $Found = 0
 foreach ($Path in $CandidatePaths) {
