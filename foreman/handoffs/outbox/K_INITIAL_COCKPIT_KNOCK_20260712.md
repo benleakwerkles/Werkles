@@ -11,9 +11,14 @@ K
 Go to the canonical Werkles cockpit and check for F packets:
 
 Repository: benleakwerkles/Werkles
+Required branch: machine-readiness-packets-20260711
 Cockpit outbox: foreman/handoffs/outbox/
 Packet index: foreman/handoffs/outbox/F_COCKPIT_PACKET_INDEX_20260712.json
 Current F packet: foreman/handoffs/outbox/F_SYSTEM_WIDE_MACHINE_READINESS_20260712.md
+
+Do not use the repository default branch for this K. Fetch or open the exact
+paths from branch machine-readiness-packets-20260711. Current verified cockpit
+branch commit when this K was refreshed: c87719930581c53d39ae1d8fc87959e6ec912bf0.
 
 Identify yourself as Cousin @ Machine and prove your actual hostname. Read the
 packet index, open the current F packet, and claim only assignments addressed to
