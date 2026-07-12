@@ -72,6 +72,53 @@ of guessing what `GO` means.
 
 ## Canonical Cockpit Retrieval
 
+## Fleet Credential-Prompt Policy
+
+Harvey work must not turn Ben into a PIN-entry loop or allow authentication
+dialogs to steal desktop focus during unrelated work.
+
+Default on every Windows Aeye workstation:
+
+```text
+1Password > Settings > Security > Show Windows Hello prompt automatically: OFF
+1Password > Settings > Developer > Integrate with 1Password CLI: OFF
+```
+
+Rules:
+
+- No idle worker, keepalive, watcher, scheduled task, or polling loop may call
+  the personal 1Password account or trigger an unlock request.
+- No Aeye may hide, auto-approve, dismiss, or repeatedly foreground an
+  authentication prompt.
+- No Swateye, Swatter, cousin, script, or automation may memorize personal
+  passwords or use Auto-Type to type them into whichever window has focus.
+- Personal login filling is deliberate and human-triggered through the browser
+  extension, Quick Access, or another explicitly chosen 1Password action.
+- Background automation must use a separate least-privilege credential lane,
+  such as a narrowly scoped service account limited to a dedicated automation
+  vault. It must not inherit Ben's general personal-vault access.
+- An F that needs noninteractive secret access must name the exact machine,
+  worker, vault scope, allowed items/actions, lifetime, revocation path, and
+  terminal stop condition. Silence or a generic KNOCK is not authorization.
+- If a task encounters a 1Password, Windows Hello, PIN, MFA, OAuth, or provider
+  prompt that was not the explicitly requested human gate, return
+  `BLOCKER: UNEXPECTED_INTERACTIVE_CREDENTIAL_PROMPT` and stop the triggering
+  worker instead of asking Ben to keep approving prompts.
+
+Doss verified state on 2026-07-12:
+
+```text
+SHOW_WINDOWS_HELLO_PROMPT_AUTOMATICALLY: OFF
+INTEGRATE_WITH_1PASSWORD_CLI: OFF
+VAULT_CONTENT_ACCESSED_DURING_CHANGE: NO
+OP_COMMANDS_RUN_DURING_CHANGE: NO
+AUTO_TYPE_ENABLED_BY_CHANGE: NO
+```
+
+This policy prevents prompt storms. It does not claim that 1Password is unlocked,
+that a CLI or service account is ready, or that any secret-dependent job is
+authorized.
+
 ```text
 Repository: benleakwerkles/Werkles
 Branch: machine-readiness-packets-20260711
