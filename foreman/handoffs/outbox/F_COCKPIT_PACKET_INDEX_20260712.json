@@ -1,0 +1,39 @@
+{
+  "schema": "werkles.f-cockpit-index/v0.1",
+  "generated_at": "2026-07-12",
+  "status": "READY_TO_CLAIM",
+  "cockpit_outbox": "foreman/handoffs/outbox",
+  "cockpit_inbox": "foreman/handoffs/inbox",
+  "packets": [
+    {
+      "packet_id": "F_SYSTEM_WIDE_MACHINE_READINESS_20260712",
+      "packet_class": "F",
+      "path": "foreman/handoffs/outbox/F_SYSTEM_WIDE_MACHINE_READINESS_20260712.md",
+      "targets": [
+        "ALL_HANDS",
+        "SPANZEE_LOCAL_HANDS",
+        "MEDULLINA_LOCAL_HANDS"
+      ],
+      "assignments": [
+        {
+          "assignment_id": "SPANZEE_CHECKOUT_DISCOVERY",
+          "status": "OPEN",
+          "claimant": null
+        },
+        {
+          "assignment_id": "MEDULLINA_FIRST_READINESS",
+          "status": "OPEN",
+          "claimant": null
+        },
+        {
+          "assignment_id": "ALL_HANDS_COCKPIT_READBACK",
+          "status": "OPEN",
+          "claimant": null
+        }
+      ],
+      "completion_rule": "receiver-side RECEIVED then COMPLETED or BLOCKER",
+      "sent_is_completion": false
+    }
+  ]
+}
+
