@@ -48,20 +48,22 @@ async function persistSupabase(run: ShadowMatchingRun): Promise<void> {
 
   const { error } = await getSupabaseService()
     .from("matching_shadow_runs")
-    .upsert(
-      {
-        run_id: run.runId,
-        intake_id: run.intakeId,
-        source: run.source,
-        mode: run.mode,
-        engine_version: run.speaker.version,
-        created_at: run.createdAt,
-        payload: run
-      },
-      { onConflict: "run_id" }
-    );
+    .insert({
+      run_id: run.runId,
+      intake_id: run.intakeId,
+      source: run.source,
+      mode: run.mode,
+      engine_version: run.speaker.version,
+      created_at: run.createdAt,
+      payload: run
+    });
 
-  if (error) throw new Error(`Matching shadow durable write failed: ${error.message}`);
+  if (error) {
+    if (error.code === "23505") {
+      throw new Error(`Matching shadow run already exists for run_id ${run.runId}`);
+    }
+    throw new Error(`Matching shadow durable write failed: ${error.message}`);
+  }
 }
 
 export async function persistMatchingShadowRun(run: ShadowMatchingRun): Promise<void> {

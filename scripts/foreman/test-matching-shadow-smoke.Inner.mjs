@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 "use strict";
 
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-
 /**
  * Werkles matching shadow smoke — POST discovery intakes, verify shadow_run_id.
  * No secrets printed.
@@ -111,6 +108,8 @@ async function postIntake(scenario, siteOrigin) {
     status: res.status,
     intake_id: body.intake_id ?? null,
     shadow_run_id: body.shadow_run_id ?? null,
+    shadow_top_eligible_path: body.shadow_top_eligible_path ?? null,
+    shadow_disqualified_kinds: body.shadow_disqualified_kinds ?? [],
     matching_mode: body.matching_mode ?? null,
     error: body.error ?? null
   };
@@ -123,32 +122,19 @@ async function probeShadowPage(siteOrigin) {
   return { name: "operator_shadow_page", pass, status: res.status, detail: pass ? "Page loads" : "Page missing expected copy" };
 }
 
-async function readLocalShadowRuns(runIds) {
-  const content = await readFile(path.join(process.cwd(), "data/matching/shadow-runs.jsonl"), "utf8");
-  const wanted = new Set(runIds);
-  return content
-    .trim()
-    .split(/\r?\n/)
-    .filter(Boolean)
-    .map((line) => JSON.parse(line))
-    .filter((run) => wanted.has(run.runId));
-}
-
-function semanticChecks(runs, intakeChecks) {
-  const scenarioByRunId = new Map(intakeChecks.map((check) => [check.shadow_run_id, check.scenario]));
-  return runs.map((run) => {
-    const scenario = scenarioByRunId.get(run.runId);
-    const topEligible = run.speaker.scoredPaths.find((candidate) => !candidate.disqualified)?.kind ?? null;
-    const disqualifiedKinds = run.notMatch.disqualified.map((item) => item.kind);
-    const expectedTopPath = GOLDEN_TOP_PATHS[scenario];
+function semanticChecks(intakeChecks) {
+  return intakeChecks.map((check) => {
+    const expectedTopPath = GOLDEN_TOP_PATHS[check.scenario];
+    const topEligible = check.shadow_top_eligible_path ?? null;
+    const disqualifiedKinds = check.shadow_disqualified_kinds ?? [];
     const partnerSuppressed =
-      scenario !== "training_not_partner" || disqualifiedKinds.includes("find_partner");
+      check.scenario !== "training_not_partner" || disqualifiedKinds.includes("find_partner");
     const deduplicated = new Set(disqualifiedKinds).size === disqualifiedKinds.length;
     return {
-      name: `semantic_${scenario}`,
-      scenario,
+      name: `semantic_${check.scenario}`,
+      scenario: check.scenario,
       pass: topEligible === expectedTopPath && partnerSuppressed && deduplicated,
-      shadow_run_id: run.runId,
+      shadow_run_id: check.shadow_run_id,
       expected_top_path: expectedTopPath,
       actual_top_path: topEligible,
       disqualified_kinds: disqualifiedKinds,
@@ -165,19 +151,7 @@ async function main() {
     checks.push(await postIntake(scenario, siteOrigin));
   }
   const intakeChecks = [...checks];
-  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(siteOrigin)) {
-    const runIds = intakeChecks.map((check) => check.shadow_run_id).filter(Boolean);
-    const runs = await readLocalShadowRuns(runIds);
-    checks.push(...semanticChecks(runs, intakeChecks));
-    if (runs.length !== runIds.length) {
-      checks.push({
-        name: "semantic_run_readback_count",
-        pass: false,
-        expected: runIds.length,
-        actual: runs.length
-      });
-    }
-  }
+  checks.push(...semanticChecks(intakeChecks));
   checks.push(await probeShadowPage(siteOrigin));
 
   const ok = checks.every((c) => c.pass);

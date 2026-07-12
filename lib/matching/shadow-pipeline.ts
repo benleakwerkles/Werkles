@@ -14,6 +14,15 @@ import type { ShadowMatchingRun, StructuredSignals } from "@/lib/matching/types"
 
 export { readLatestShadowRuns };
 
+export function shadowRunSmokeSummary(run: ShadowMatchingRun) {
+  const topEligible = run.speaker.scoredPaths.find((candidate) => !candidate.disqualified)?.kind ?? null;
+  const disqualifiedKinds = run.notMatch.disqualified.map((item) => item.kind);
+  return {
+    shadow_top_eligible_path: topEligible,
+    shadow_disqualified_kinds: disqualifiedKinds
+  };
+}
+
 async function maybeLlmTranslate(signals: StructuredSignals): Promise<StructuredSignals> {
   if (!isMatchingLlmEnabled()) return signals;
   return signals;

@@ -3,7 +3,7 @@
 Status: `DRAFT — DO NOT EXECUTE UNTIL SCHEMA GATE APPROVED`  
 Lane: Werkles.com / G (matching shadow only)  
 Branch: `maker/site-g-20260703`  
-Prepared: 2026-07-11 (VPG8)  
+Prepared: 2026-07-11
 Parent gates: `GATE-matching-shadow-production-path-20260710` (Option B) → `GATE-matching-durable-schema-apply-20260710`
 
 ---
@@ -59,7 +59,7 @@ node scripts/foreman/test-matching-storage-mode.Inner.mjs
 .\scripts\foreman\Test-WerklesMatchingShadowSmoke.ps1 -SiteOrigin "http://localhost:3000"
 ```
 
-Latest VPG8 evidence: typecheck PASS, storage-mode 4/4 PASS, localhost smoke 7/7 PASS.
+Latest evidence: typecheck PASS, storage-mode 4/4 PASS, localhost smoke 7/7 PASS.
 
 ### Supabase (after schema gate only)
 
@@ -173,13 +173,9 @@ Receipt path: `foreman/receipts/WERKLES_MATCHING_SHADOW_SMOKE_<date>.json`
 | `training_not_partner` | HTTP 200, `shadow_run_id` present |
 | `operator_shadow_page` | HTTP 200, page contains shadow UI copy |
 
-#### Semantic golden paths (localhost only today)
+#### Semantic golden paths
 
-The smoke mule reads `data/matching/shadow-runs.jsonl` for semantic assertions. On preview with `supabase` mode, **intake + page checks are authoritative**; golden path verification requires:
-
-- Manual operator review at `/operator/matching/shadow` on preview, **or**
-- Follow-up: query `matching_shadow_runs` in Supabase (Operator dashboard — no secrets in chat), **or**
-- Future: extend smoke mule with service-role readback (not in v0 runbook)
+Smoke mule reads `shadow_top_eligible_path` and `shadow_disqualified_kinds` from the intake JSON response (works on localhost and preview). No local file or Supabase readback required.
 
 Golden expectations (Dink QA):
 
