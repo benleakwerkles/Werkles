@@ -93,11 +93,27 @@ async function resolveSiteOrigin() {
   return detectSiteOrigin();
 }
 
+function vercelProtectionBypassSecret() {
+  return (
+    process.env.WERKLES_VERCEL_PROTECTION_BYPASS_SECRET ||
+    process.env.VERCEL_AUTOMATION_BYPASS_SECRET ||
+    ""
+  ).trim();
+}
+
+function requestHeaders(extra = {}) {
+  const secret = vercelProtectionBypassSecret();
+  return {
+    ...extra,
+    ...(secret ? { "x-vercel-protection-bypass": secret } : {})
+  };
+}
+
 async function postIntake(scenario, siteOrigin) {
   const url = `${siteOrigin}/api/discovery/intake`;
   const res = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: requestHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify(scenario.body)
   });
   const body = await res.json().catch(() => ({}));
@@ -116,7 +132,9 @@ async function postIntake(scenario, siteOrigin) {
 }
 
 async function probeShadowPage(siteOrigin) {
-  const res = await fetch(`${siteOrigin}/operator/matching/shadow`);
+  const res = await fetch(`${siteOrigin}/operator/matching/shadow`, {
+    headers: requestHeaders()
+  });
   const html = await res.text();
   const pass = res.ok && /Shadow runs|Autonomous matching/i.test(html);
   return { name: "operator_shadow_page", pass, status: res.status, detail: pass ? "Page loads" : "Page missing expected copy" };
@@ -160,6 +178,7 @@ async function main() {
     schema: "WERKLES_MATCHING_SHADOW_SMOKE_V1",
     timestamp: new Date().toISOString(),
     site_origin: siteOrigin,
+    vercel_protection_bypass_used: Boolean(vercelProtectionBypassSecret()),
     checks,
     operator_review_url: `${siteOrigin}/operator/matching/shadow`,
     notes: [
