@@ -1,0 +1,51 @@
+{
+  "schema": "werkles.harvey-station-direct-dispatch-readback/v1",
+  "packet_id": "F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713",
+  "observed_at": "2026-07-13T20:14:33.3340960-04:00",
+  "source_thread_id": "019f5458-630b-75b2-85d4-04ac74c8b6a9",
+  "delivery_adapter": "CODEX_STANDING_THREAD",
+  "summary": {
+    "registered_routes": 13,
+    "dispatched": 13,
+    "received": 13,
+    "terminal": 12,
+    "completed": 0,
+    "blocked_safe": 12,
+    "waiting_on_receiver_permission": 1
+  },
+  "shared_terminal_blocker": {
+    "code": "HARVEY_STATION_REPO_BINDING_UNPROVEN",
+    "meaning": "The receiver loaded the station command language and armed the write guard, but its sandbox could not independently prove the numeric GitHub repository object ID. Repository mutations remain blocked.",
+    "bootstrap_delivery_failed": false,
+    "write_guard_worked": true
+  },
+  "handeye_receipt": {
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "command_id": "harvey_doss_1783988242863_1428300c",
+    "status": "COMPLETED",
+    "artifact_count": 13,
+    "evidence": "Retrieved 14 addressed KNOCK packets and verified cockpit F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713 with 13 artifacts on DOSS"
+  },
+  "routes": [
+    { "seat": "Dink@Betsy", "thread_id": "019f0fb9-c2b8-7fd0-99d6-1ac67a52edb7", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Petra@Betsy", "thread_id": "019f0c81-701b-7fb1-b768-b705126442be", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Skybro@Betsy", "thread_id": "019f0c7b-7571-7451-9e68-82b1b9fd79a3", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Maker@Betsy", "thread_id": "019f0fb9-f553-7151-8069-aead5b0740c2", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Ender@Betsy", "thread_id": "019f117e-639b-7ae0-ab6f-347e4d96002b", "actual_execution_machine": "Doss", "status": "RECEIVED_WAITING_ON_LOCAL_READ_APPROVAL", "blocker": "RECEIVER_PERMISSION_WAIT_NOT_A_HARVEY_HUMAN_GATE", "adapter_correction_sent": true },
+    { "seat": "Bean@Spanzee", "thread_id": "019f0fba-590f-7723-b45b-6ea352800405", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Ender@Spanzee", "thread_id": "019f117d-5a16-7f63-91d8-a5ad6c294cca", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Computer@Spanzee", "thread_id": "019f0fba-858b-7460-bc04-53f3c6fd305f", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Ender@Sally", "thread_id": "019f1182-b51b-7173-934f-5747d9194011", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Bean@Sally", "thread_id": "019f117e-3230-7080-9ef8-c9a027b7f8da", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Skybro@Sally", "thread_id": "019f11c8-608e-7c62-8520-76822183478a", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Thufir@Sally", "thread_id": "019f0fba-ad57-7530-8b45-433f271a4bde", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" },
+    { "seat": "Ender@Doss", "thread_id": "019f117e-91c5-76f3-bcd1-466adc4738f8", "actual_execution_machine": "Doss", "status": "BLOCKER", "blocker": "HARVEY_STATION_REPO_BINDING_UNPROVEN" }
+  ],
+  "unbound_surfaces": [
+    { "seat": "Demo@Betsy", "surface": "ChatGPT Work", "status": "ROUTE_UNBOUND" },
+    { "seat": "Locke@Betsy", "surface": "Codex", "status": "ROUTE_UNBOUND" },
+    { "surface": "ChatGPT mobile phone conversation", "status": "EXACT_THREAD_NOT_RETRIEVABLE_FROM_CURRENT_SESSION" }
+  ],
+  "no_mule_rule": "No route in this operation requires Ben to paste or upload the command bootstrap. Unbound or permission-stalled routes remain visible blockers."
+}

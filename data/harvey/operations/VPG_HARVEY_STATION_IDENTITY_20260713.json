@@ -1,0 +1,67 @@
+{
+  "schema": "werkles.harvey-vpg-operation/v1",
+  "operation_id": "VPG_HARVEY_STATION_IDENTITY_20260713",
+  "requested_command": "VPG",
+  "expanded_command": ["VPG VERIFY", "VPG PREPARE", "VPG GO"],
+  "created_at": "2026-07-13T20:01:56.4239712-04:00",
+  "updated_at": "2026-07-13T20:14:33.3340960-04:00",
+  "execution_context": {
+    "cousin": "Foreman @ Doss via Codex Desktop",
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "repo": "C:\\Users\\BenLeak\\github\\Werkles",
+    "branch": "main",
+    "commit": "3b407e66385a56d74a8bb8356b854c20f2494b3a",
+    "runtime": "CODEX_LOCAL"
+  },
+  "overall_status": "PARTIAL_RECEIVER_BLOCKERS",
+  "phases": [
+    {
+      "phase": "VPG VERIFY",
+      "status": "COMPLETED",
+      "evidence": "Werkles is public; the command bootstrap is absent from main but proven on an immutable packet-branch commit. Shared account context does not prove provider, repository, or adjacent-project authority."
+    },
+    {
+      "phase": "VPG PREPARE",
+      "status": "COMPLETED",
+      "evidence": "Created the station identity boundary, self-contained receiver packet, immutable public bootstrap handle, read-only preflight, and complete Harvey Handeye bundle."
+    },
+    {
+      "phase": "VPG GO",
+      "status": "COMPLETED",
+      "evidence": "Doss Handeye verified 13 station artifacts; direct KNOCK reached all 13 bound standing tasks. Twelve returned terminal fail-closed receipts and one is received but permission-stalled, with an adapter correction queued."
+    }
+  ],
+  "thread_routes": {
+    "total": 13,
+    "dispatched": 13,
+    "received": 13,
+    "terminal": 12,
+    "in_progress": 1
+  },
+  "unbound_routes": [
+    { "seat": "Demo @ Betsy via ChatGPT Work", "status": "ROUTE_UNBOUND" },
+    { "seat": "Locke @ Betsy via Codex", "status": "ROUTE_UNBOUND" },
+    { "seat": "Phone ChatGPT conversation", "status": "EXACT_THREAD_NOT_RETRIEVABLE" }
+  ],
+  "handeye_receipt": {
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "agent_id": "handeye-doss-doss",
+    "agent_version": "0.2.0",
+    "command_id": "harvey_doss_1783988242863_1428300c",
+    "status": "COMPLETED",
+    "evidence": "Retrieved 14 addressed KNOCK packets and verified cockpit F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713 with 13 artifacts on DOSS"
+  },
+  "proof_contract": {
+    "station_binding_inspect": "PASS_DOSS_EXACT_REPO_ID_1242158598",
+    "json_parse": "PASS",
+    "typecheck": "PASS",
+    "production_build": "PASS",
+    "route_load": "PASS_HTTP_200",
+    "browser_render": "PASS_IDENTITY_FIREWALL_VISIBLE",
+    "immutable_bootstrap_hash": "PASS_019B6B3F5FEE85DDFFA2153719275BFD5ED756358BD185724FBD577EA9980C34",
+    "handeye_knock": "PASS_COMPLETED_RECEIPT",
+    "standing_task_readback": "PARTIAL_12_TERMINAL_1_PERMISSION_STALLED"
+  }
+}
