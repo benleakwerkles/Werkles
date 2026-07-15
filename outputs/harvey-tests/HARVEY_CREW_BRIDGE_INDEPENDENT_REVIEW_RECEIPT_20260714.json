@@ -1,0 +1,47 @@
+{
+  "schema": "werkles.harvey-independent-review-receipt/v1",
+  "generated_at": "2026-07-14T17:09:07.9980107Z",
+  "slice_id": "HARVEY_SLICE_4_CREW_BRIDGE_20260714",
+  "scope": "SEND_DISABLED_LOCAL_STATUS_PROJECTION_ONLY",
+  "status": "GO",
+  "reviewers": [
+    {
+      "role": "Maker",
+      "review_lane": "/root/scout_harvey_bridge",
+      "verdict": "GO_FOR_LOCAL_HANDOFF_ONLY"
+    },
+    {
+      "role": "Bean",
+      "review_lane": "/root/redteam_harvey_bridge",
+      "verdict": "GO"
+    },
+    {
+      "role": "Thufir",
+      "review_lane": "/root/test_harvey_bridge",
+      "verdict": "GO"
+    }
+  ],
+  "evidence": {
+    "manifest_sha256": "e48138f02e7aeb813c3c8b57eb580ad40cf85ce943be5d19ba525f750924eee1",
+    "overlay_sha256": "f134a409c61cdfea60b36a499fa7a7727dcefa370ff6cfe5e875aacb7d357fad",
+    "overlay_file_count": 156,
+    "test_files_sha256": "b62a65d7b2a41cf876cacd8acb7139aafb3b501568073e6900d280c84890e52f",
+    "build_receipt_sha256": "7f94e3be01ee7b9c1a2504462c1d088d00fc502f4771bda7f3b8925ae753b172",
+    "api_receipt_sha256": "12dfdc40397aa8e56ddd88fbd53d214aabd378c30f7f3be5a9909ac346fa6d25",
+    "tests_passed": 72,
+    "tests_failed": 0,
+    "repo_data_unchanged": true
+  },
+  "reviewed_core_files": {
+    "lib/harvey/crew-bridge.ts": "b9bb088455d0b563220b99f95f99e8aae8830b5295aa2ae229311ac4d4c5dc61",
+    "app/api/harvey/relay-events/route.ts": "de4aa04c5b6d11fcec7e5b9c2c56049262ce90d32b7144f0db8ce9995a376122",
+    "app/harvey/HarveyRelayWall.tsx": "ea60c8e77720afdd66af8fa766a04df4af3e5cdb5fd27c975a35d14a208c4ddc"
+  },
+  "authority_boundary": {
+    "browser_credentials": "NONE",
+    "cowork_send": "DISABLED",
+    "spanzee_adapter": "NOT_ACTIVATED",
+    "runner_git_shell_execution": "NOT_PRESENT",
+    "push_merge_deploy": "NOT_AUTHORIZED"
+  }
+}

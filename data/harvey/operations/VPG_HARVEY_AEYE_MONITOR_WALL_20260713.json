@@ -1,0 +1,63 @@
+{
+  "schema": "werkles.harvey-vpg-operation/v1",
+  "operation_id": "VPG_HARVEY_AEYE_MONITOR_WALL_20260713",
+  "requested_command": "VPG",
+  "expanded_command": ["VPG VERIFY", "VPG PREPARE", "VPG GO"],
+  "created_at": "2026-07-13T17:38:12.722Z",
+  "updated_at": "2026-07-13T17:42:20.583Z",
+  "execution_context": {
+    "cousin": "Dink @ Doss via Codex Desktop",
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "repo": "C:\\Users\\BenLeak\\github\\Werkles",
+    "branch": "main",
+    "commit": "3b407e66385a56d74a8bb8356b854c20f2494b3a",
+    "runtime": "CODEX_LOCAL"
+  },
+  "overall_status": "COMPLETED_LOCAL",
+  "phases": [
+    {
+      "phase": "VPG VERIFY",
+      "status": "COMPLETED",
+      "evidence": "Twenty Aeyes reconciled against topology, workstreams, and 13 standing receiver tasks: 9 terminal readbacks, 4 in progress, Demo and Locke route-unbound."
+    },
+    {
+      "phase": "VPG PREPARE",
+      "status": "COMPLETED",
+      "evidence": "Prepared freshness telemetry, automation-versus-human action rail, and monitor-wall inclusion in the current Handeye cockpit bundle."
+    },
+    {
+      "phase": "VPG GO",
+      "status": "COMPLETED",
+      "evidence": "Typecheck and production build passed; Harvey returned HTTP 200; Doss Handeye terminally verified the six-artifact cockpit bundle including the monitor-wall truth file."
+    }
+  ],
+  "thread_routes": {
+    "total": 13,
+    "dispatched": 13,
+    "received": 9,
+    "terminal": 9,
+    "in_progress": 4
+  },
+  "unbound_routes": [
+    { "seat": "Demo @ Betsy via ChatGPT Work", "status": "ROUTE_UNBOUND" },
+    { "seat": "Locke @ Betsy via Codex", "status": "ROUTE_UNBOUND" }
+  ],
+  "handeye_receipt": {
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "agent_id": "handeye-doss-doss",
+    "agent_version": "0.2.0",
+    "command_id": "harvey_doss_1783964462052_9ff3123e",
+    "status": "COMPLETED",
+    "evidence": "Retrieved 14 addressed KNOCK packets and verified cockpit F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713 with 6 artifacts on DOSS",
+    "monitor_wall_sha256": "416ba896a74f0d2f68416068dab9b2fd611195dd360d369daff1f3d5e69bfd41"
+  },
+  "proof_contract": {
+    "typecheck": "PASS",
+    "production_build": "PASS",
+    "route_load": "PASS_HTTP_200",
+    "browser_render": "PASS_NO_WARNINGS_OR_ERRORS",
+    "handeye_knock": "PASS_COMPLETED_RECEIPT"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "werkles.harvey-station-execution-readback/v1",
+  "receipt_id": "HARVEY_STATION_EXECUTION_READBACK_20260713",
+  "observed_at": "2026-07-13T21:31:00-04:00",
+  "station_packet": {
+    "repository": "benleakwerkles/Werkles",
+    "branch": "machine-readiness-packets-20260711",
+    "commit": "7b5e0547ea0cca04c69c4812ad68a1a923f29135",
+    "raw_files_verified": 8,
+    "raw_files_failed": 0
+  },
+  "harvey_surface": {
+    "doss_local_url": "http://localhost:3000/harvey",
+    "lan_url": "http://10.1.10.8:3000/harvey",
+    "listener": "ALL_INTERFACES_TCP_3000",
+    "firewall": "ALLOW_LOCALSUBNET_TCP_3000",
+    "doss_http_status": 200,
+    "second_machine_readback": "PENDING_NO_LIVE_REMOTE_HANDEYE"
+  },
+  "doss_handeye": {
+    "command_id": "harvey_doss_1783992639196_6f094cc0",
+    "status": "COMPLETED",
+    "evidence": "Retrieved 14 addressed KNOCK packets and verified cockpit F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713 with 13 artifacts on DOSS"
+  },
+  "receiver_execution": {
+    "registered_standing_tasks": 13,
+    "public_url_knocks_sent": 13,
+    "public_url_network_approval_stalls": 13,
+    "inline_base64_knocks_sent": 13,
+    "inline_terminal_receipts": 1,
+    "inline_queued_behind_open_approval_turns": 12,
+    "terminal_receiver": "Skybro@Betsy",
+    "terminal_receiver_actual_machine": "Doss",
+    "terminal_status": "COMPLETED",
+    "delivery_adapter": "HARVEY_INLINE_BASE64",
+    "write_authority": "BLOCKED_UNTIL_REPO_BINDING_PROVEN"
+  },
+  "truth_boundary": [
+    "The station packet is publicly retrievable without Ben carrying text.",
+    "The inline adapter is receiver-proven without network or local-file approval.",
+    "The one terminal receiver executed on Doss; it is not Betsy-local proof.",
+    "Betsy, Spanzee, Medullina, and Sally still lack live Handeye heartbeats, so Harvey has no remote-machine execution channel to them yet.",
+    "A LAN listener and firewall rule do not count as second-machine reachability until a receiver on another physical machine returns proof."
+  ]
+}

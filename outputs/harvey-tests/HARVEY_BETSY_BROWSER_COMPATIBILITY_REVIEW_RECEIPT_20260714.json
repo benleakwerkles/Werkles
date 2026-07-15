@@ -1,0 +1,58 @@
+{
+  "schema": "werkles.harvey-independent-review-receipt/v1",
+  "generated_at": "2026-07-15T00:16:39.6218061Z",
+  "slice_id": "HARVEY_BETSY_BROWSER_COMPATIBILITY_20260714",
+  "scope": "LOCAL_HARVEY_PREVIEW_BROWSER_COMPATIBILITY",
+  "status": "GO_LOCAL_COMMIT_ONLY",
+  "operator_reported_failure": {
+    "machine": "Betsy",
+    "error": "crypto.randomUUID is not a function",
+    "surface": "app/harvey/HarveySallyWitness.tsx"
+  },
+  "reviewers": [
+    {
+      "role": "Bean",
+      "review_lane": "/root/bean_betsy_crypto_redteam",
+      "verdict": "GO_FOR_SECURE_FIX_AND_ADVERSARIAL_TEST_PLAN"
+    },
+    {
+      "role": "Thufir",
+      "review_lane": "/root/thufir_betsy_route",
+      "verdict": "BETSY_PREVIEW_REACHABLE_BUT_HANDEYE_ROUTE_UNBOUND"
+    },
+    {
+      "role": "Independent verifier",
+      "review_lane": "/root/independent_harvey_go",
+      "verdict": "GO_FOR_LOCAL_COMMIT_ONLY"
+    }
+  ],
+  "evidence": {
+    "manifest_sha256": "e48138f02e7aeb813c3c8b57eb580ad40cf85ce943be5d19ba525f750924eee1",
+    "overlay_sha256": "1b4e1236c1882a2166e0c8d0e61ac8310d382705450bb8673045403651e32531",
+    "overlay_file_count": 156,
+    "test_files_sha256": "bf583ef4900ac310f44c815158d6d3663e9dae4202e80c502ba09d1c24b6fd3b",
+    "build_receipt_sha256": "e5ce8429333bc1c9e70344299b4b887dbf1acde289a75aa842091a4b2c721b3a",
+    "api_receipt_sha256": "82ae4ce6b96cb22556bee417c8032d5066b735a18189004553a03e9fc26a49af",
+    "tests_passed": 73,
+    "tests_failed": 0,
+    "staged_entries_before_this_receipt": 159,
+    "unexpected_staged_entries": 0,
+    "repo_data_unchanged": true
+  },
+  "compatibility_guards": {
+    "browser_random_source": "window.crypto.getRandomValues",
+    "math_random_fallback": "ABSENT",
+    "random_uuid_required": false,
+    "missing_csprng_result": "SALLY_WITNESS_CSPRNG_UNAVAILABLE",
+    "missing_csprng_witness_posts": 0,
+    "capability_fragment_cleared": true,
+    "completion_guarded_without_page_instance_id": true,
+    "browser_page_errors": 0
+  },
+  "authority_boundary": {
+    "betsy_handeye": "UNBOUND",
+    "betsy_live_claim": false,
+    "spanzee_cowork_send": "DISABLED",
+    "push_merge_deploy": "NOT_AUTHORIZED"
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "schema": "werkles.harvey-aeye-monitor-wall/v1",
+  "updated_at": "2026-07-13T17:41:06.815Z",
+  "source_operation": "data/harvey/operations/FKVPG_HARVEY_WORKSTREAM_SYNC_20260713.json",
+  "truth_policy": {
+    "intended_seat_is_execution_proof": false,
+    "operator_report_is_machine_proof": false,
+    "sent_is_completion": false,
+    "next_shots_are_dispatched": false,
+    "secrets_allowed": false
+  },
+  "summary": {
+    "individual_aeyes": 20,
+    "standing_receiver_routes": 13,
+    "terminal_readbacks": 9,
+    "receiver_readbacks_in_progress": 4,
+    "unbound_named_routes": 2,
+    "machines_with_live_handeye": ["Doss"]
+  },
+  "current_packet": {
+    "packet_id": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+    "status": "LOCAL_READY_REMOTE_PUBLICATION_NOT_AUTHORIZED",
+    "path": "foreman/handoffs/outbox/F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713.md"
+  },
+  "action_rail": {
+    "automation_can_now": [
+      "Refresh local packet, receipt, heartbeat, and task-route evidence.",
+      "Prepare bounded next-shot packets without claiming they were dispatched.",
+      "KNOCK every machine with a live Handeye and verify terminal receipts.",
+      "Continue local Harvey UI and cockpit work without staging unrelated files."
+    ],
+    "ben_owes_now": [
+      "Nothing for this local VPG run.",
+      "Push, public publication, provider sign-in, and other human gates remain separate explicit approvals."
+    ]
+  },
+  "aeyes": [
+    {
+      "id": "heimerdinker-betsy",
+      "name": "HeimerDinker",
+      "seat": "Dink@Betsy",
+      "role": "Hands-on Werkles builder and Oddly Godly book starter",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Werkles product build; Oddly Godly: The Book",
+      "work_truth": "OPERATOR_REPORTED; current receiver proved packet visibility from Doss only",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_DINK_BETSY_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Werkles build delta", "purpose": "Return changed surfaces, test state, decisions, and the smallest bounded build.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Oddly Godly book canon map", "purpose": "Return manuscript location, outline, canon dependencies, and one bounded writing slice.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "petra-betsy",
+      "name": "Petra",
+      "seat": "Petra@Betsy standing receiver",
+      "role": "Red-team synthesis and go/no-go review",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "RECEIVER_IN_PROGRESS",
+      "current_work": "Harvey source-truth review; older open relay receipt closure before current terminal return",
+      "work_truth": "LIVE_RECEIVER_COMMENTARY; terminal receipt still pending",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "RECEIVER_IN_PROGRESS_ON_DOSS",
+      "previous_packet": "KNOCK_PETRA_BETSY_20260712",
+      "previous_packet_status": "DISPATCHED_IN_PROGRESS_HISTORY",
+      "next_shots": [
+        { "title": "Cross-workstream decision brief", "purpose": "Rank the present workstreams by evidence, leverage, collision risk, and decisions Ben actually owes.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Harvey Book go/no-go pass", "purpose": "Red-team the source inventory, outline, claims, and missing proof before more prose is produced.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "skybro-betsy",
+      "name": "Skybro",
+      "seat": "Skybro@Betsy",
+      "role": "Strategy, thesis, leverage, and positioning",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Werkles and Oddly Godly strategic review",
+      "work_truth": "ROLE_RELEVANCE_ONLY; current receiver proved packet visibility from Doss only",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_SKYBRO_BETSY_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Harvey positioning thesis", "purpose": "Define Harvey's clearest promise, wedge, and what it must refuse to become.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Werkles leverage map", "purpose": "Identify the three build moves that unlock the most downstream work without widening scope.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "lady-jessica-betsy",
+      "name": "Lady Jessica",
+      "seat": "Maker@Betsy",
+      "role": "Maker and product-interface builder",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "RECEIVER_IN_PROGRESS",
+      "current_work": "Werkles product build and Harvey interface support",
+      "work_truth": "LIVE_RECEIVER_COMMENTARY; waiting on read-only checkout access for terminal proof",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "RECEIVER_IN_PROGRESS_ON_DOSS",
+      "previous_packet": "KNOCK_MAKER_BETSY_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Harvey wall interaction pass", "purpose": "Turn the monitor wall into a compact operator surface with clear drill-down and dispatch boundaries.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Werkles mobile-first surface audit", "purpose": "Find the most damaging responsive and accessibility failures in the current product build.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "ender-betsy",
+      "name": "Ender",
+      "seat": "Ender@Betsy",
+      "role": "Human-experience and execution review",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "RECEIVER_IN_PROGRESS",
+      "current_work": "Harvey Book reader experience and Werkles experience review",
+      "work_truth": "LIVE_RECEIVER_COMMENTARY; read-only access approval is blocking terminal proof",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "RECEIVER_IN_PROGRESS_ON_DOSS",
+      "previous_packet": "KNOCK_ENDER_BETSY_20260712",
+      "previous_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "next_shots": [
+        { "title": "Harvey Book reader journey", "purpose": "Map confusion, trust, momentum, and payoff across the current book structure.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Monitor-wall human factors", "purpose": "Audit whether Ben can understand state, decide, and act without becoming the courier.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "bean-spanzee",
+      "name": "Bean",
+      "seat": "Bean@Spanzee",
+      "role": "Hostile audit and failure-mode review",
+      "intended_machine": "Spanzee",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Oddly Godly game red-team review",
+      "work_truth": "ROLE_RELEVANCE_ONLY; current receiver proved packet visibility from Doss only",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_BEAN_SPANZEE_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Oddly Godly exploit audit", "purpose": "Find game-loop, economy, save, and progression failures before the vertical slice hardens them.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Fun-killer pass", "purpose": "Identify the five mechanics or explanations most likely to make the game feel tedious or opaque.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "ender-spanzee",
+      "name": "Ender",
+      "seat": "Ender@Spanzee",
+      "role": "Player-experience, art, and canon review",
+      "intended_machine": "Spanzee",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Oddly Godly player journey and experience review",
+      "work_truth": "ROLE_RELEVANCE_ONLY; current receiver proved packet visibility from Doss only",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_ENDER_SPANZEE_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Player experience arc", "purpose": "Map the first-session emotional and mechanical arc through the next playable slice.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Art and canon cohesion", "purpose": "Check whether mechanics, language, visual identity, and world rules tell the same story.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "computer-spanzee",
+      "name": "Computer",
+      "seat": "Computer@Spanzee",
+      "role": "External research and factual constraint checking",
+      "intended_machine": "Spanzee",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Research support for Oddly Godly and Kind Sir",
+      "work_truth": "ROLE_RELEVANCE_ONLY; current receiver proved packet visibility from Doss only",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_COMPUTER_SPANZEE_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Comparable-games research", "purpose": "Return primary-source examples for progression, onboarding, and production scope relevant to Oddly Godly.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Platform constraint brief", "purpose": "Verify current engine, storefront, runtime, and accessibility constraints before architecture locks.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "ender-sally",
+      "name": "Ender",
+      "seat": "Ender@Sally",
+      "role": "Archive readability and human-experience review",
+      "intended_machine": "Sally",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND_MACHINE_HEAVY_WORK_LOCKED",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Standing readback only; Sally heavy execution remains suspended under old-bones policy",
+      "work_truth": "RECEIVER_ROUTE_WORKS_ON_DOSS; not Sally-local execution proof",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_ENDER_SALLY_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Archive readability check", "purpose": "Review lightweight Kind Sir/archive outputs without assigning heavy Sally execution.", "status": "PROPOSED_HELD_BY_MACHINE_POLICY" },
+        { "title": "Sally-safe review budget", "purpose": "Define exact CPU, memory, duration, and file-size limits for future lightweight review work.", "status": "PROPOSED_HELD_BY_MACHINE_POLICY" }
+      ]
+    },
+    {
+      "id": "bean-sally",
+      "name": "Bean",
+      "seat": "Bean@Sally",
+      "role": "Adversarial business and evidence review",
+      "intended_machine": "Sally",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Kind Sir risk and evidence review",
+      "work_truth": "ROLE_RELEVANCE_ONLY; Sally state remains operator-reported",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_BEAN_SALLY_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Morris appeal adversarial audit", "purpose": "Attack the property-tax appeal evidence, chronology, assumptions, and missing exhibits.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Kind Sir contract risk matrix", "purpose": "Rank current corporate, concrete, and insulation risks by impact, proof, and next action.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "skybro-sally",
+      "name": "Skybro",
+      "seat": "Skybro@Sally",
+      "role": "Strategy and business positioning",
+      "intended_machine": "Sally",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "RECEIVER_IN_PROGRESS",
+      "current_work": "Kind Sir strategic review; current receiver return being written",
+      "work_truth": "LIVE_RECEIVER_COMMENTARY; terminal receipt still pending",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "RECEIVER_IN_PROGRESS_ON_DOSS",
+      "previous_packet": "KNOCK_SKYBRO_SALLY_20260712",
+      "previous_packet_status": "RETRY_IN_PROGRESS_HISTORY",
+      "next_shots": [
+        { "title": "Kind Sir priority thesis", "purpose": "Rank correspondence, appeal, entity, concrete, and insulation work by urgency and leverage.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Concrete and insulation positioning", "purpose": "Clarify customer, offer, proof, differentiation, and the fastest falsifiable commercial test.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "thufir-sally",
+      "name": "Thufir",
+      "seat": "Thufir@Sally",
+      "role": "Canon, entity, chronology, and continuity keeper",
+      "intended_machine": "Sally",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Kind Sir entity and correspondence continuity",
+      "work_truth": "ROLE_RELEVANCE_ONLY; current receiver proved packet visibility from Doss only",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_THUFIR_SALLY_20260712",
+      "previous_packet_status": "COMPLETED_READBACK",
+      "next_shots": [
+        { "title": "Entity continuity ledger", "purpose": "Reconcile Kind Sir names, entities, obligations, and document ownership without renaming source terms.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Correspondence chronology", "purpose": "Build a dated, sourced timeline of emails, notices, replies, deadlines, and unresolved asks.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "ender-doss",
+      "name": "Ender",
+      "seat": "Ender@Doss",
+      "role": "Harvey operator-experience reviewer",
+      "intended_machine": "Doss",
+      "actual_execution_machine": "Doss",
+      "route_status": "STANDING_RECEIVER_BOUND",
+      "readback_status": "COMPLETED_READBACK",
+      "current_work": "Harvey command cockpit and operator journey review",
+      "work_truth": "DOSS_LOCAL_ROLE_MATCH; readback completed",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COMPLETED_READBACK_ON_DOSS",
+      "previous_packet": "KNOCK_ENDER_DOSS_20260712",
+      "previous_packet_status": "RECEIVER_HISTORY_RECORDED",
+      "next_shots": [
+        { "title": "Harvey operator journey", "purpose": "Walk the complete see-decide-dispatch-receive-close loop and name every confusing transition.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Mule-friction audit", "purpose": "Identify every remaining place Ben must copy, paste, poll, approve a non-gate, or reconcile duplicate state.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "demo-betsy",
+      "name": "Demo",
+      "seat": "ChatGPT Work@Betsy",
+      "role": "Long-form writing, synthesis, and narrative planning",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": null,
+      "route_status": "ROUTE_UNBOUND",
+      "readback_status": "NOT_DISPATCHED",
+      "current_work": "Harvey: The Book writing and synthesis",
+      "work_truth": "OPERATOR_REPORTED; no registered receiver route or machine-local receipt",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "ASSIGNMENT_READY_ROUTE_UNBOUND",
+      "previous_packet": "NONE_PROVEN",
+      "previous_packet_status": "NO_RECEIVER_HISTORY",
+      "next_shots": [
+        { "title": "Harvey Book source-of-truth outline", "purpose": "Return sources, current outline, written delta, disagreements, and missing evidence under the existing intake contract.", "status": "PROPOSED_BLOCKED_BY_ROUTE" },
+        { "title": "First complete chapter architecture", "purpose": "Propose the first chapter sequence that can be drafted without depending on unresolved canon.", "status": "PROPOSED_BLOCKED_BY_ROUTE" }
+      ]
+    },
+    {
+      "id": "locke-betsy",
+      "name": "Locke",
+      "seat": "Codex@Betsy",
+      "role": "Architecture, implementation planning, and code construction",
+      "intended_machine": "Betsy",
+      "actual_execution_machine": null,
+      "route_status": "ROUTE_UNBOUND",
+      "readback_status": "NOT_DISPATCHED",
+      "current_work": "Harvey architecture and construction plan",
+      "work_truth": "OPERATOR_REPORTED; no registered receiver route or machine-local receipt",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "ASSIGNMENT_READY_ROUTE_UNBOUND",
+      "previous_packet": "NONE_PROVEN",
+      "previous_packet_status": "NO_RECEIVER_HISTORY",
+      "next_shots": [
+        { "title": "Harvey architecture decision record", "purpose": "Return interfaces, build order, risks, acceptance proof, and explicit disagreements under the existing intake contract.", "status": "PROPOSED_BLOCKED_BY_ROUTE" },
+        { "title": "Handeye route-binding plan", "purpose": "Design the smallest truthful binding and receiver-proof path for Betsy, Spanzee, Medullina, and Sally.", "status": "PROPOSED_BLOCKED_BY_ROUTE" }
+      ]
+    },
+    {
+      "id": "direwolf-dink-spanzee",
+      "name": "Direwolf Dink",
+      "seat": "Dink@Spanzee",
+      "role": "Oddly Godly game systems builder",
+      "intended_machine": "Spanzee",
+      "actual_execution_machine": null,
+      "route_status": "NO_STANDING_RECEIVER_PROOF",
+      "readback_status": "OPERATOR_REPORTED",
+      "current_work": "Oddly Godly: The Game",
+      "work_truth": "OPERATOR_REPORTED; Spanzee has no live Handeye",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COCKPIT_REFERENCE_ONLY_NO_ROUTE_PROOF",
+      "previous_packet": "F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712",
+      "previous_packet_status": "PREPARED_NO_DIREWOLF_RECEIPT_PROVEN",
+      "next_shots": [
+        { "title": "Playable vertical-slice backlog", "purpose": "Define the smallest playable loop, dependencies, acceptance checks, and what is explicitly out of scope.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Game data and save architecture", "purpose": "Return a minimal schema and failure-proofing plan before content volume grows.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "crash-davis-spanzee",
+      "name": "Crash Davis",
+      "seat": "Maker@Spanzee",
+      "role": "Oddly Godly hands-on maker",
+      "intended_machine": "Spanzee",
+      "actual_execution_machine": null,
+      "route_status": "NO_STANDING_RECEIVER_PROOF",
+      "readback_status": "OPERATOR_REPORTED",
+      "current_work": "Oddly Godly: The Game implementation",
+      "work_truth": "OPERATOR_REPORTED; Spanzee has no live Handeye",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COCKPIT_REFERENCE_ONLY_NO_ROUTE_PROOF",
+      "previous_packet": "F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712",
+      "previous_packet_status": "PREPARED_NO_CRASH_RECEIPT_PROVEN",
+      "next_shots": [
+        { "title": "Playable scene and UI slice", "purpose": "Build one testable scene from the agreed loop with screenshots, run proof, and known limitations.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Asset-pipeline proof", "purpose": "Prove source-to-runtime handling for one representative art, audio, and data asset without bulk imports.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "dink-medullina",
+      "name": "Dink",
+      "seat": "Dink@Medullina",
+      "role": "Cloud-first minimal-residue Harvey Mobile builder",
+      "intended_machine": "Medullina",
+      "actual_execution_machine": null,
+      "route_status": "NO_STANDING_RECEIVER_PROOF",
+      "readback_status": "READINESS_COMPLETE_BUILD_UNPROVEN",
+      "current_work": "Harvey Mobile without persistent local project storage",
+      "work_truth": "MEDULLINA_READINESS_RECEIPT_COMPLETE; no live Handeye or mobile-build receipt",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COCKPIT_REFERENCE_ONLY_NO_ROUTE_PROOF",
+      "previous_packet": "F_SYSTEM_WIDE_MACHINE_READINESS_20260712",
+      "previous_packet_status": "MEDULLINA_FIRST_READINESS_COMPLETED",
+      "next_shots": [
+        { "title": "Cloud-first mobile shell", "purpose": "Prove one bounded Harvey Mobile slice using session-only compute and cloud-backed source.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Zero-residue teardown proof", "purpose": "Return before/after evidence that no service, cache, package, or durable project copy remains after the session.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "dink-sally",
+      "name": "Dink",
+      "seat": "Dink@Sally",
+      "role": "Kind Sir operations hands",
+      "intended_machine": "Sally",
+      "actual_execution_machine": null,
+      "route_status": "NO_STANDING_RECEIVER_PROOF",
+      "readback_status": "OPERATOR_REPORTED",
+      "current_work": "Kind Sir email, Morris property-tax appeal, entity work, concrete, and insulation",
+      "work_truth": "OPERATOR_REPORTED; Sally has no live Handeye",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "COCKPIT_REFERENCE_ONLY_NO_ROUTE_PROOF",
+      "previous_packet": "F_SYSTEM_WIDE_MACHINE_READINESS_20260712",
+      "previous_packet_status": "ALL_HANDS_READBACK_COMPLETED_ON_SALLY",
+      "next_shots": [
+        { "title": "Kind Sir action queue receipts", "purpose": "Split email, appeal, entity, concrete, and insulation into separately closable evidence-backed actions.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Morris appeal evidence checklist", "purpose": "Return deadlines, required exhibits, missing proof, draft state, and the next human gate if any.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    },
+    {
+      "id": "swanson-doss",
+      "name": "Swanson",
+      "seat": "Swanson@Doss",
+      "role": "Foreman topology, receipt, provenance, and protected access-continuity status",
+      "intended_machine": "Doss",
+      "actual_execution_machine": "Doss",
+      "route_status": "ACTIVE_LOCAL_PROOF_REDACTED_ONLY",
+      "readback_status": "LOCAL_STATUS_POINTER",
+      "current_work": "Harvey relay truth and redacted family-access continuity status; no secrets enter Harvey",
+      "work_truth": "DOSS_LOCAL_FOREMAN_PROOF; credential contents excluded",
+      "latest_packet": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+      "latest_packet_status": "LOCAL_SOURCE_PACKET",
+      "previous_packet": "F_HARVEY_SOURCE_TRUTH_AND_BUILD_MOBILIZATION_20260712",
+      "previous_packet_status": "LOCAL_FOREMAN_SOURCE_PACKET",
+      "next_shots": [
+        { "title": "Route-binding ledger v2", "purpose": "Record every standing receiver, actual execution host, Handeye, packet, and return path in one durable truth surface.", "status": "PROPOSED_NOT_DISPATCHED" },
+        { "title": "Stale-receipt watchdog", "purpose": "Flag receipts and in-progress claims that exceed a defined age without asking Ben to poll them.", "status": "PROPOSED_NOT_DISPATCHED" }
+      ]
+    }
+  ],
+  "monitor_wall_backlog": [
+    { "priority": "NOW", "title": "Proof freshness clock", "value": "Age every heartbeat, readback, and operator report; stale truth must visibly decay." },
+    { "priority": "NOW", "title": "Intended seat versus actual host", "value": "Never let Betsy in a task title masquerade as Betsy execution proof." },
+    { "priority": "NOW", "title": "Current, previous, and next", "value": "Show current mission, latest terminal packet, previous packet, and two proposed next shots per Aeye." },
+    { "priority": "NOW", "title": "Receipt ladder", "value": "Prepared, dispatched, received, completed or blocker, with exact terminal evidence." },
+    { "priority": "NEXT", "title": "Collision detector", "value": "Warn when two Aeyes may edit the same files, own the same decision, or compete for one machine." },
+    { "priority": "NEXT", "title": "Dependency and human-gate rail", "value": "Separate actions automation may take from decisions, sign-ins, payments, and approvals Ben actually owes." },
+    { "priority": "NEXT", "title": "Capacity and residue budget", "value": "Show machine load, old-bones limits, Medullina residue constraints, and safe task size." },
+    { "priority": "NEXT", "title": "Branch, commit, and dirty-tree lens", "value": "Expose source identity and collision risk without staging, cleaning, or hiding unrelated work." },
+    { "priority": "NEXT", "title": "Decision inbox", "value": "Collect disagreements and route only the few real choices that require Ben or Petra." },
+    { "priority": "LATER", "title": "Cost and token budget", "value": "Track spend, model tier, and diminishing returns by workstream and Aeye." },
+    { "priority": "LATER", "title": "Canon-drift radar", "value": "Flag contradictions across Harvey, Werkles, Oddly Godly, and Kind Sir source truth." },
+    { "priority": "LATER", "title": "Idle, overloaded, and orphaned work", "value": "Find unused Aeyes, duplicate effort, abandoned assignments, and work with no receiver or owner." }
+  ]
+}

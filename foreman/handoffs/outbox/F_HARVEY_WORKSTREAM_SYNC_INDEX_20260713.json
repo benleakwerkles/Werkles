@@ -1,0 +1,30 @@
+{
+  "schema": "werkles.f-cockpit-index/v0.1",
+  "generated_at": "2026-07-13",
+  "packet_id": "F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713",
+  "packet_class": "F",
+  "status": "LOCAL_READY_REMOTE_PUBLICATION_NOT_AUTHORIZED",
+  "packet_path": "foreman/handoffs/outbox/F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713.md",
+  "knock_path": "foreman/handoffs/outbox/KNOCK_HARVEY_WORKSTREAM_SYNC_20260713.md",
+  "workstream_truth": "foreman/harvey/HARVEY_WORKSTREAMS_20260713.json",
+  "assignments": [
+    {
+      "assignment_id": "ALL_HANDS_HARVEY_WORKSTREAM_READBACK",
+      "status": "OPEN",
+      "eligible": "ANY_REGISTERED_STANDING_RECEIVER"
+    },
+    {
+      "assignment_id": "DEMO_BETSY_HARVEY_PLAN",
+      "status": "ROUTE_UNBOUND",
+      "eligible": "Demo @ Betsy via ChatGPT Work"
+    },
+    {
+      "assignment_id": "LOCKE_BETSY_HARVEY_ARCHITECTURE_PLAN",
+      "status": "ROUTE_UNBOUND",
+      "eligible": "Locke @ Betsy via Codex"
+    }
+  ],
+  "completion_rule": "receiver-side RECEIVED then COMPLETED or BLOCKER",
+  "sent_is_completion": false,
+  "publication_gate": "No push, merge, deploy, or remote publication without explicit Operator approval."
+}

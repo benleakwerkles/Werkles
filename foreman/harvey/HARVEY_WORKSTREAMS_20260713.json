@@ -1,0 +1,133 @@
+{
+  "schema": "werkles.harvey-workstreams/v1",
+  "updated_at": "2026-07-13",
+  "source": "OPERATOR_WORKLOAD_BRIEF_20260713",
+  "truth_policy": {
+    "operator_report_is_machine_proof": false,
+    "assignment_is_delivery_proof": false,
+    "sent_is_completion": false,
+    "terminal_receipts": ["COMPLETED", "BLOCKER"],
+    "secrets_allowed": false
+  },
+  "plan_intake": {
+    "title": "Demo + Locke Harvey game plan",
+    "machine": "Betsy",
+    "authors": ["Demo @ Betsy via ChatGPT Work", "Locke @ Betsy via Codex"],
+    "contract": "foreman/harvey/DEMO_LOCKE_PLAN_INTAKE_CONTRACT_20260713.md",
+    "accepted_file_patterns": [
+      "FROM_DEMO_HARVEY_PLAN_*.md",
+      "FROM_LOCKE_HARVEY_PLAN_*.md",
+      "FROM_DEMO_LOCKE_HARVEY_GAME_PLAN_*.md"
+    ]
+  },
+  "role_updates": [
+    {
+      "name": "Demo",
+      "seat": "ChatGPT Work @ Betsy",
+      "role": "Long-form writing, synthesis, and narrative planning",
+      "route_status": "NAMED_ROUTE_UNPROVEN"
+    },
+    {
+      "name": "Locke",
+      "seat": "Codex @ Betsy",
+      "role": "Architecture, implementation planning, and code construction",
+      "route_status": "NAMED_ROUTE_UNPROVEN"
+    }
+  ],
+  "unregistered_names": [
+    {
+      "name": "Mazer",
+      "reason": "Operator recalled a possible prior naming but no machine, seat, or assignment is confirmed."
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "harvey-command",
+      "name": "Harvey command cockpit",
+      "machine": "Doss",
+      "status": "ACTIVE_LOCAL_PROOF",
+      "phase": "VPG GO",
+      "owner": "Dink @ Doss via Codex Desktop",
+      "reviewers": ["Demo", "Locke", "Ender", "Bean"],
+      "proof": "Doss localhost /harvey returned HTTP 200; Doss Handeye round trip previously completed.",
+      "next_action": "Ingest the first Demo/Locke plan, reconcile it against machine truth, and turn its first approved slice into a durable command."
+    },
+    {
+      "id": "harvey-book",
+      "name": "Harvey: The Book",
+      "machine": "Betsy",
+      "status": "ACTIVE_OPERATOR_REPORTED",
+      "phase": "VPG VERIFY",
+      "owner": "Demo @ Betsy",
+      "reviewers": ["Ender @ Betsy", "Bean @ Betsy", "Thufir", "Petra"],
+      "proof": "Operator report only; no current machine-local completion receipt is represented here.",
+      "next_action": "Return a source inventory, current outline, written delta, and named blockers."
+    },
+    {
+      "id": "werkles-product",
+      "name": "Werkles product build",
+      "machine": "Betsy",
+      "status": "ACTIVE_OPERATOR_REPORTED",
+      "phase": "VPG VERIFY",
+      "owner": "HeimerDinker + Lady Jessica",
+      "reviewers": ["Skybro", "Ender", "Bean", "Thufir", "Doozer"],
+      "proof": "Operator report only; Betsy is not currently connected to Harvey by a live Handeye.",
+      "next_action": "Return the current build delta, test state, open decisions, and smallest next bounded build."
+    },
+    {
+      "id": "oddly-godly-game",
+      "name": "Oddly Godly: The Game",
+      "machine": "Spanzee",
+      "status": "ACTIVE_OPERATOR_REPORTED",
+      "phase": "VPG VERIFY",
+      "owner": "Direwolf Dink + Crash Davis",
+      "reviewers": ["Maker", "Skybro", "Ender", "Bean", "Thufir"],
+      "proof": "Operator report only; Spanzee is not currently connected to Harvey by a live Handeye.",
+      "next_action": "Return playable/build evidence, design decisions, canon risks, and the next testable slice."
+    },
+    {
+      "id": "oddly-godly-book",
+      "name": "Oddly Godly: The Book",
+      "machine": "Betsy",
+      "status": "STARTED_OPERATOR_REPORTED",
+      "phase": "VPG VERIFY",
+      "owner": "HeimerDinker",
+      "reviewers": ["Demo", "Ender", "Bean", "Thufir"],
+      "proof": "Operator report only; no current outline or manuscript receipt is represented here.",
+      "next_action": "Return manuscript location, current outline, canon dependencies, and a bounded writing assignment."
+    },
+    {
+      "id": "harvey-mobile",
+      "name": "Harvey Mobile",
+      "machine": "Medullina",
+      "status": "READY_MINIMAL_RESIDUE_REPORTED",
+      "phase": "VPG PREPARE",
+      "owner": "Dink @ Medullina",
+      "reviewers": ["Maker", "Ender", "Bean", "Locke"],
+      "proof": "Medullina readiness receipt completed; no live Handeye or current mobile-build receipt is represented here.",
+      "next_action": "Prepare a cloud-first, session-only architecture slice with no background services, large caches, or durable local project storage."
+    },
+    {
+      "id": "kind-sir-operations",
+      "name": "Kind Sir operations",
+      "machine": "Sally",
+      "status": "ACTIVE_OPERATOR_REPORTED",
+      "phase": "VPG VERIFY",
+      "owner": "Dink @ Sally",
+      "reviewers": ["Petra", "Computer", "Bean", "Thufir"],
+      "proof": "Operator report only; Sally is not currently connected to Harvey by a live Handeye.",
+      "next_action": "Return separate receipts for correspondence, Morris property-tax appeal, corporate work, concrete, and insulation."
+    },
+    {
+      "id": "password-access-continuity",
+      "name": "Family access continuity",
+      "machine": "Doss",
+      "status": "EXTERNAL_PROTECTED_LANE",
+      "phase": "VPG VERIFY",
+      "owner": "Swanson @ Doss",
+      "reviewers": [],
+      "proof": "Status pointer only. Passwords, vault contents, and provider authentication are outside the Harvey lane.",
+      "next_action": "Keep only redacted status and provenance in Harvey; never ingest secrets or credential values."
+    }
+  ]
+}

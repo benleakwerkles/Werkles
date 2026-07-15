@@ -1,0 +1,123 @@
+{
+  "schema": "werkles.harvey-station-identity-boundary/v1",
+  "contract_id": "HARVEY_STATION_IDENTITY_BOUNDARY_20260713",
+  "created_at": "2026-07-13T20:01:56.4239712-04:00",
+  "status": "WRITE_GUARD_ARMED",
+  "operator": "Ben Leak",
+  "station_packet_publication": {
+    "status": "PUBLIC_PACKET_BRANCH_APPROVED",
+    "repository": "benleakwerkles/Werkles",
+    "branch": "machine-readiness-packets-20260711",
+    "packet_path": "foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713.md",
+    "immutable_commit": "7b5e0547ea0cca04c69c4812ad68a1a923f29135",
+    "immutable_packet_url": "https://raw.githubusercontent.com/benleakwerkles/Werkles/7b5e0547ea0cca04c69c4812ad68a1a923f29135/foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713.md",
+    "packet_sha256": "B9CFFB0603272B1D8AD658755C232BBB2420DF990BE05D5A821E3175B3E5A33F"
+  },
+  "active_project": {
+    "project_id": "WERKLES",
+    "project_namespace": "WERKLES_HARVEY_ODDLY_GODLY",
+    "products": ["Werkles", "Harvey", "Oddly Godly"],
+    "repository": {
+      "full_name": "benleakwerkles/Werkles",
+      "repo_id": 1242158598,
+      "remote": "https://github.com/benleakwerkles/Werkles.git",
+      "default_branch": "main",
+      "expected_provider_owner": "benleakwerkles"
+    }
+  },
+  "authority_rules": [
+    "A shared ChatGPT account does not grant GitHub, repository, project, branch, or write authority.",
+    "Machine name, operating-system hostname, operating-system user, machine owner, Aeye identity, provider account, project namespace, and repository identity are separate fields.",
+    "No Aeye may edit, stage, commit, push, open a pull request, upload, or create a project until the observed project namespace and repository identity exactly match this contract.",
+    "Unknown identity fails closed. A mismatch fails closed. A public repository does not imply write authority.",
+    "Push, merge, provider sign-in, OAuth, account changes, secrets, billing, deployment, and public publication remain explicit human gates.",
+    "No Aeye may ask Ben to paste or upload a retrievable public station packet; Harvey must use a compatible delivery adapter or return HARVEY_STATION_PACKET_NOT_RETRIEVABLE."
+  ],
+  "provider_binding": {
+    "expected_repository_owner": "benleakwerkles",
+    "current_authenticated_provider_account": "UNPROVEN_CURRENT",
+    "connector_installation": "UNPROVEN_CURRENT",
+    "historical_observation_only": "courtneydleak-del",
+    "historical_observation_is_current_authority": false,
+    "rule": "Never infer current provider authority from a shared product account, a hostname, a machine owner, a historical connector observation, or conversation context."
+  },
+  "machine_identity_examples": {
+    "Medullina": {
+      "canonical_machine_name": "Medullina",
+      "operating_system_hostname": "COURTNEY",
+      "machine_owner": "Courtney",
+      "operating_system_user": "MUST_BE_REPORTED_BY_LOCAL_RECEIVER",
+      "project_authority": "WERKLES_ONLY_WHEN_STATION_BINDING_PASSES",
+      "identity_rule": "COURTNEY is a hostname in machine evidence; it is not a GitHub account, repository owner, project namespace, or Aeye identity."
+    }
+  },
+  "forbidden_adjacent_projects": [
+    {
+      "project_namespace": "COURTNEY_GAME",
+      "owner": "Courtney",
+      "repository": "UNREGISTERED_DO_NOT_INFER",
+      "binding_status": "SEPARATE_AND_INACCESSIBLE_BY_DEFAULT",
+      "rule": "Do not read, edit, stage, commit, push, upload, import, or create work for Courtney's game from a Werkles station command. A separately registered project contract and explicit authorization are required."
+    }
+  ],
+  "command_bootstrap": {
+    "packet_id": "ALL_COUSINS_COMMAND_LANGUAGE_BOOTSTRAP_20260712",
+    "commands": ["FOREMAN", "KNOCK", "VPG VERIFY", "VPG PREPARE", "VPG GO"],
+    "source_branch": "machine-readiness-packets-20260711",
+    "source_commit": "a1d261470c66c94b6c1b7eebef1200f0baabaf1a",
+    "source_path": "foreman/handoffs/outbox/ALL_COUSINS_COMMAND_LANGUAGE_BOOTSTRAP_20260712.md",
+    "git_blob": "614a989ccc201d324b01414881cb07f4959a0961",
+    "immutable_public_raw_url": "https://raw.githubusercontent.com/benleakwerkles/Werkles/a1d261470c66c94b6c1b7eebef1200f0baabaf1a/foreman/handoffs/outbox/ALL_COUSINS_COMMAND_LANGUAGE_BOOTSTRAP_20260712.md",
+    "raw_transport_sha256": "019B6B3F5FEE85DDFFA2153719275BFD5ED756358BD185724FBD577EA9980C34",
+    "default_branch_status": "ABSENT_FROM_MAIN",
+    "retrieval_status": "PUBLIC_IMMUTABLE_URL_PROVEN"
+  },
+  "delivery_adapters": [
+    {
+      "adapter": "HARVEY_HANDEYE",
+      "payload": "base64 bytes plus transport SHA-256",
+      "status": "WIRED_BY_HARVEY_KNOCK_BUNDLE"
+    },
+    {
+      "adapter": "GITHUB_RAW_PUBLIC",
+      "payload": "immutable public raw URL plus commit, blob, and raw-byte SHA-256",
+      "status": "PROVEN_FOR_COMMAND_BOOTSTRAP"
+    },
+    {
+      "adapter": "CODEX_STANDING_THREAD",
+      "payload": "direct task message plus exact packet handles",
+      "status": "AVAILABLE_ONLY_FOR_BOUND_STANDING_TASKS"
+    },
+    {
+      "adapter": "RELAY_INBOX",
+      "payload": "receiver URL plus receiver-side acknowledgement",
+      "status": "AVAILABLE_ONLY_WHEN_A_RECEIVER_ROUTE_IS_BOUND"
+    }
+  ],
+  "required_pre_mutation_fields": [
+    "operator",
+    "project_id",
+    "project_namespace",
+    "repo_full_name",
+    "repo_id",
+    "remote",
+    "allowed_branch",
+    "provider_account_expected",
+    "connector_installation_expected",
+    "machine",
+    "hostname",
+    "os_user",
+    "workspace_root",
+    "allowed_paths",
+    "forbidden_adjacent_projects",
+    "write_allowed"
+  ],
+  "terminal_blockers": [
+    "HARVEY_STATION_REPO_BINDING_UNPROVEN",
+    "HARVEY_STATION_REPO_BINDING_MISMATCH",
+    "HARVEY_STATION_PROJECT_NAMESPACE_MISMATCH",
+    "HARVEY_STATION_PROVIDER_AUTHORITY_UNPROVEN",
+    "HARVEY_STATION_PACKET_NOT_RETRIEVABLE",
+    "HARVEY_STATION_ADJACENT_PROJECT_FORBIDDEN"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "werkles.harvey-station-publication-receipt/v1",
+  "receipt_id": "HARVEY_STATION_PUBLICATION_RECEIPT_20260713",
+  "published_at": "2026-07-13T21:25:51-04:00",
+  "repository": "benleakwerkles/Werkles",
+  "repository_id": 1242158598,
+  "branch": "machine-readiness-packets-20260711",
+  "before_commit": "a1d261470c66c94b6c1b7eebef1200f0baabaf1a",
+  "published_commit": "7b5e0547ea0cca04c69c4812ad68a1a923f29135",
+  "publication_scope": "EIGHT_APPROVED_STATION_FILES_ONLY",
+  "canonical_worktree_staged_files": 0,
+  "files": [
+    {
+      "path": "foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_INDEX_20260713.json",
+      "sha256": "9CA83D42A28DE67DC38E9471F77B07673E72EF9DD878DD6D9039B872A70CF934"
+    },
+    {
+      "path": "foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713.md",
+      "sha256": "B9CFFB0603272B1D8AD658755C232BBB2420DF990BE05D5A821E3175B3E5A33F"
+    },
+    {
+      "path": "foreman/handoffs/outbox/KNOCK_HARVEY_STATION_IDENTITY_20260713.md",
+      "sha256": "42DDB5F4CFF2286EA73FAD6DBBAA8624DF5FF0EABB23F5E1860AF31317B36A2A"
+    },
+    {
+      "path": "foreman/harvey/HARVEY_STATION_IDENTITY_BOUNDARY_20260713.json",
+      "sha256": "DEBCF15DBF22DEE5BE11AE333BF5EEE6EF8EFDE87E717CD8DF0CBFC192534E5E"
+    },
+    {
+      "path": "scripts/foreman/Test-HarveyStationBinding.ps1",
+      "sha256": "B3D87D15F5E3693EEA838DEDED505A989BC17D5A1F1B0F8F4334782A649DE2A1"
+    },
+    {
+      "path": "data/harvey/operations/VPG_HARVEY_STATION_IDENTITY_20260713.json",
+      "sha256": "607F7F86AEC41CE9390A206DED6DCCFC946E7A0BCA2FF3EEE05B03A8C9A00732"
+    },
+    {
+      "path": "data/harvey/receipts/HARVEY_STATION_IDENTITY_DIRECT_DISPATCH_READBACK_20260713.json",
+      "sha256": "03883F4016CDD739BAA64A2CEBD0220F48A5008E981FE2DFB7C8A0F6C1D71108"
+    },
+    {
+      "path": "foreman/gates/APPROVAL_LOG.md",
+      "sha256": "5768B5DEE37D22D78F52024D3E0F1D95D2DB93004030EFC48563CBF0EC6DCCE0"
+    }
+  ],
+  "immutable_packet_url": "https://raw.githubusercontent.com/benleakwerkles/Werkles/7b5e0547ea0cca04c69c4812ad68a1a923f29135/foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713.md",
+  "lan_harvey_url": "http://10.1.10.8:3000/harvey",
+  "lan_listener_proof": "HTTP_200_FROM_DOSS_AND_FIREWALL_LOCALSUBNET_READY",
+  "remote_machine_lan_readback": "PENDING"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "werkles.harvey-cockpit-artifact-manifest/v1",
+  "packet_id": "F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713",
+  "artifacts": [
+    { "path": "foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_INDEX_20260713.json", "bytes": 985, "sha256": "9ca83d42a28de67dc38e9471f77b07673e72ef9dd878dd6d9039b872a70cf934" },
+    { "path": "foreman/handoffs/outbox/F_HARVEY_STATION_IDENTITY_AND_BOOTSTRAP_20260713.md", "bytes": 4641, "sha256": "b9cffb0603272b1d8ad658755c232bbb2420df990be05d5a821e3175b3e5a33f" },
+    { "path": "foreman/handoffs/outbox/KNOCK_HARVEY_STATION_IDENTITY_20260713.md", "bytes": 716, "sha256": "42ddb5f4cff2286ea73fad6dbbaa8624df5ff0eabb23f5e1860af31317b36a2a" },
+    { "path": "foreman/harvey/HARVEY_STATION_IDENTITY_BOUNDARY_20260713.json", "bytes": 5929, "sha256": "01f8c102b7a693b78977142166650f8b0ad8c021ab83a0086f45ead3cd618373" },
+    { "path": "foreman/handoffs/outbox/ALL_COUSINS_COMMAND_LANGUAGE_BOOTSTRAP_20260712.md", "bytes": 6220, "sha256": "ad5558607dcfe54a4031b62015241e567424c11c826844d40a6de5a5b5165baf" },
+    { "path": "foreman/handoffs/outbox/KNOCK_ALL_AEYES_20260712.md", "bytes": 4621, "sha256": "9e19224d3d89a9e68bfd040d1524fd9ab8edc9b1d3a2693a4564792bc4dcaa76" },
+    { "path": "scripts/foreman/Test-HarveyStationBinding.ps1", "bytes": 6923, "sha256": "c6970cc625fb19c0f198e99a3b9749247381fe3f3ad08eade04d4b79575ba54c" },
+    { "path": "foreman/handoffs/outbox/F_HARVEY_WORKSTREAM_SYNC_INDEX_20260713.json", "bytes": 1172, "sha256": "a1cc4ee66e9488d9d9a477bcf74988f36980569bfdca124cd372f18de07a0932" },
+    { "path": "foreman/handoffs/outbox/F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713.md", "bytes": 4619, "sha256": "f61cfc4651833677c4a491cef2f1d2d883f107929dfb685fa00ad25e04f4c411" },
+    { "path": "foreman/harvey/HARVEY_WORKSTREAMS_20260713.json", "bytes": 5463, "sha256": "1e719b574a70575b4396938e74fbc43bd2b2ddc2b2be1d741fc3ac0b1f3fa089" },
+    { "path": "foreman/harvey/HARVEY_AEYE_MONITOR_WALL_20260713.json", "bytes": 27271, "sha256": "1f8af49cea9d816d492f9636f3750cb0b390a6e9698a630896b133412b9fe61b" },
+    { "path": "foreman/harvey/DEMO_LOCKE_PLAN_INTAKE_CONTRACT_20260713.md", "bytes": 2074, "sha256": "0f320314cdc87a2c6798e2758356578d1c8be7781bc6581fd76476ad5b15b3d3" },
+    { "path": "foreman/relay/BIRDEYE_FLEET_TOPOLOGY_20260712.json", "bytes": 4280, "sha256": "6c963dab4c2b25ba0f3c8c984b93012198a038091c617abb136e1984de82d27c" }
+  ]
+}

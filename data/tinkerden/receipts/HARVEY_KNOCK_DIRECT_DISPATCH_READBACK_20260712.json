@@ -1,0 +1,27 @@
+{
+  "schema": "werkles.harvey-direct-dispatch-readback/v1",
+  "packet_family": "KNOCK_*_20260712",
+  "dispatch_surface": "Codex standing receiver tasks",
+  "source_thread": "019f5458-630b-75b2-85d4-04ac74c8b6a9",
+  "proof_boundary": "Thread delivery is DISPATCHED. Receiver text beginning RECEIVED is RECEIVED. Only a completed final answer ending in COMPLETED or BLOCKER is terminal.",
+  "routes": [
+    { "packet_id": "KNOCK_DINK_BETSY_20260712", "seat": "Dink@Betsy", "thread_id": "019f0fb9-c2b8-7fd0-99d6-1ac67a52edb7", "status": "RECEIVED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_PETRA_BETSY_20260712", "seat": "Petra@Betsy", "thread_id": "019f0c81-701b-7fb1-b768-b705126442be", "status": "DISPATCHED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_SKYBRO_BETSY_20260712", "seat": "Skybro@Betsy", "thread_id": "019f0c7b-7571-7451-9e68-82b1b9fd79a3", "status": "RECEIVED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_MAKER_BETSY_20260712", "seat": "Maker@Betsy", "thread_id": "019f0fb9-f553-7151-8069-aead5b0740c2", "status": "RECEIVED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_ENDER_BETSY_20260712", "seat": "Ender@Betsy", "thread_id": "019f117e-639b-7ae0-ab6f-347e4d96002b", "status": "COMPLETED", "actual_execution_machine": "Doss", "completion_scope": "ALL_HANDS_COCKPIT_READBACK", "betsy_local_work_claimed": false },
+    { "packet_id": "KNOCK_BEAN_SPANZEE_20260712", "seat": "Bean@Spanzee", "thread_id": "019f0fba-590f-7723-b45b-6ea352800405", "status": "RECEIVED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_ENDER_SPANZEE_20260712", "seat": "Ender@Spanzee", "thread_id": "019f117d-5a16-7f63-91d8-a5ad6c294cca", "status": "DISPATCHED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_COMPUTER_SPANZEE_20260712", "seat": "Computer@Spanzee", "thread_id": "019f0fba-858b-7460-bc04-53f3c6fd305f", "status": "DISPATCHED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_ENDER_SALLY_20260712", "seat": "Ender@Sally", "thread_id": "019f1182-b51b-7173-934f-5747d9194011", "status": "DISPATCHED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_BEAN_SALLY_20260712", "seat": "Bean@Sally", "thread_id": "019f117e-3230-7080-9ef8-c9a027b7f8da", "status": "RECEIVED_IN_PROGRESS" },
+    { "packet_id": "KNOCK_SKYBRO_SALLY_20260712", "seat": "Skybro@Sally", "thread_id": "019f11c8-608e-7c62-8520-76822183478a", "status": "RETRY_IN_PROGRESS" },
+    { "packet_id": "KNOCK_THUFIR_SALLY_20260712", "seat": "Thufir@Sally", "thread_id": "019f0fba-ad57-7530-8b45-433f271a4bde", "status": "COMPLETED", "completion_scope": "ALL_HANDS_COCKPIT_READBACK" },
+    { "packet_id": "KNOCK_ENDER_DOSS_20260712", "seat": "Ender@Doss", "thread_id": "019f117e-91c5-76f3-bcd1-466adc4738f8", "status": "RECEIVED_IN_PROGRESS" }
+  ],
+  "unbound": {
+    "machine": "Medullina",
+    "reason": "No standing Codex receiver task found",
+    "operator_copy_paste_required": false
+  }
+}

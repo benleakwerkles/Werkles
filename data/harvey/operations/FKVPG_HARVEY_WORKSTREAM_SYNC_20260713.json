@@ -1,0 +1,97 @@
+{
+  "schema": "werkles.harvey-fkvpg-operation/v1",
+  "operation_id": "FKVPG_HARVEY_WORKSTREAM_SYNC_20260713",
+  "requested_command": "FKVPG",
+  "expanded_command": ["FOREMAN", "KNOCK", "VPG VERIFY", "VPG PREPARE", "VPG GO"],
+  "created_at": "2026-07-13T06:49:00Z",
+  "updated_at": "2026-07-13T06:52:06.609Z",
+  "execution_context": {
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "repo": "C:\\Users\\BenLeak\\github\\Werkles",
+    "branch": "main",
+    "commit": "3b407e66385a56d74a8bb8356b854c20f2494b3a",
+    "runtime": "CODEX_LOCAL"
+  },
+  "overall_status": "PARTIAL_ROUND_TRIP",
+  "phases": [
+    {
+      "phase": "FOREMAN",
+      "status": "COMPLETED_LOCAL",
+      "evidence": "F index, F packet, and KNOCK packet created and SHA-256 verified. Remote publication was not authorized."
+    },
+    {
+      "phase": "KNOCK",
+      "status": "PARTIAL_ROUND_TRIP",
+      "evidence": "13 standing Codex routes dispatched; 9 terminal receiver readbacks; Doss Handeye v0.2 completed current-cockpit retrieval."
+    },
+    {
+      "phase": "VPG VERIFY",
+      "status": "COMPLETED",
+      "evidence": "Only Doss has a live Handeye. Demo and Locke have no registered receiver routes."
+    },
+    {
+      "phase": "VPG PREPARE",
+      "status": "COMPLETED",
+      "evidence": "Current cockpit packet transport added to the Handeye KNOCK response with Base64 bytes and SHA-256."
+    },
+    {
+      "phase": "VPG GO",
+      "status": "COMPLETED_LOCAL_FLEET_PARTIAL",
+      "evidence": "Doss Handeye v0.2 retrieved 14 addressed envelopes and verified five current cockpit artifacts. Four task routes remain in progress; four machines remain offline."
+    }
+  ],
+  "packet_artifacts": [
+    {
+      "path": "foreman/handoffs/outbox/F_HARVEY_WORKSTREAM_SYNC_INDEX_20260713.json",
+      "sha256": "A1CC4EE66E9488D9D9A477BCF74988F36980569BFDCA124CD372F18DE07A0932"
+    },
+    {
+      "path": "foreman/handoffs/outbox/F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713.md",
+      "sha256": "F61CFC4651833677C4A491CEF2F1D2D883F107929DFB685FA00AD25E04F4C411"
+    },
+    {
+      "path": "foreman/handoffs/outbox/KNOCK_HARVEY_WORKSTREAM_SYNC_20260713.md",
+      "sha256": "B1970B24DCBB927E253D4874F6F6696D11D021CA8A548501809C1B1D4B790935"
+    }
+  ],
+  "handeye_receipt": {
+    "machine": "Doss",
+    "hostname": "DOSS",
+    "agent_id": "handeye-doss-doss",
+    "agent_version": "0.2.0",
+    "command_id": "harvey_doss_1783925523262_cfef38e7",
+    "status": "COMPLETED",
+    "evidence": "Retrieved 14 addressed KNOCK packets and verified cockpit F_HARVEY_WORKSTREAM_SYNC_AND_PLAN_REQUEST_20260713 with 5 artifacts on DOSS"
+  },
+  "thread_routes": {
+    "total": 13,
+    "dispatched": 13,
+    "received": 9,
+    "terminal": 9,
+    "in_progress": 4,
+    "routes": [
+      { "seat": "Dink@Betsy", "thread_id": "019f0fb9-c2b8-7fd0-99d6-1ac67a52edb7", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Petra@Betsy", "thread_id": "019f0c81-701b-7fb1-b768-b705126442be", "status": "DISPATCHED_IN_PROGRESS" },
+      { "seat": "Skybro@Betsy", "thread_id": "019f0c7b-7571-7451-9e68-82b1b9fd79a3", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Maker@Betsy", "thread_id": "019f0fb9-f553-7151-8069-aead5b0740c2", "status": "DISPATCHED_IN_PROGRESS" },
+      { "seat": "Ender@Betsy", "thread_id": "019f117e-639b-7ae0-ab6f-347e4d96002b", "status": "DISPATCHED_IN_PROGRESS" },
+      { "seat": "Bean@Spanzee", "thread_id": "019f0fba-590f-7723-b45b-6ea352800405", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Ender@Spanzee", "thread_id": "019f117d-5a16-7f63-91d8-a5ad6c294cca", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Computer@Spanzee", "thread_id": "019f0fba-858b-7460-bc04-53f3c6fd305f", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Ender@Sally", "thread_id": "019f1182-b51b-7173-934f-5747d9194011", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Bean@Sally", "thread_id": "019f117e-3230-7080-9ef8-c9a027b7f8da", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Skybro@Sally", "thread_id": "019f11c8-608e-7c62-8520-76822183478a", "status": "DISPATCHED_IN_PROGRESS" },
+      { "seat": "Thufir@Sally", "thread_id": "019f0fba-ad57-7530-8b45-433f271a4bde", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" },
+      { "seat": "Ender@Doss", "thread_id": "019f117e-91c5-76f3-bcd1-466adc4738f8", "status": "COMPLETED_READBACK", "actual_execution_machine": "Doss" }
+    ]
+  },
+  "unbound_routes": [
+    { "seat": "Demo @ Betsy via ChatGPT Work", "assignment": "DEMO_BETSY_HARVEY_PLAN", "status": "ROUTE_UNBOUND" },
+    { "seat": "Locke @ Betsy via Codex", "assignment": "LOCKE_BETSY_HARVEY_ARCHITECTURE_PLAN", "status": "ROUTE_UNBOUND" },
+    { "machine": "Betsy", "status": "NO_LIVE_HANDEYE" },
+    { "machine": "Spanzee", "status": "NO_LIVE_HANDEYE" },
+    { "machine": "Medullina", "status": "NO_LIVE_HANDEYE" },
+    { "machine": "Sally", "status": "NO_LIVE_HANDEYE" }
+  ]
+}
