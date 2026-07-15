@@ -1,0 +1,110 @@
+﻿{
+    "ok":  true,
+    "schema":  "WERKLES_MATCHING_SHADOW_SMOKE_V1",
+    "timestamp":  "2026-07-14T04:19:34.141Z",
+    "site_origin":  "https://werkles.com",
+    "vercel_protection_bypass_used":  false,
+    "checks":  [
+                   {
+                       "scenario":  "capital_partner",
+                       "label":  "Capital + partner (symptom trap)",
+                       "pass":  true,
+                       "status":  200,
+                       "intake_id":  "WZ-20260714-1d077adc",
+                       "shadow_run_id":  "shadow_20260714041930_9c17b803",
+                       "shadow_top_eligible_path":  "verify_proof",
+                       "shadow_disqualified_kinds":  [
+                                                         "raise_capital",
+                                                         "stage_intro_candidate"
+                                                     ],
+                       "matching_mode":  "shadow",
+                       "error":  null
+                   },
+                   {
+                       "scenario":  "job_change",
+                       "label":  "Employment / job change",
+                       "pass":  true,
+                       "status":  200,
+                       "intake_id":  "WZ-20260714-6dc16c90",
+                       "shadow_run_id":  "shadow_20260714041931_02e2d9b5",
+                       "shadow_top_eligible_path":  "find_better_job",
+                       "shadow_disqualified_kinds":  [
+                                                         "stage_intro_candidate"
+                                                     ],
+                       "matching_mode":  "shadow",
+                       "error":  null
+                   },
+                   {
+                       "scenario":  "training_not_partner",
+                       "label":  "Partner language but training gap",
+                       "pass":  true,
+                       "status":  200,
+                       "intake_id":  "WZ-20260714-b2a186f7",
+                       "shadow_run_id":  "shadow_20260714041932_5d29e7d5",
+                       "shadow_top_eligible_path":  "get_training",
+                       "shadow_disqualified_kinds":  [
+                                                         "find_partner",
+                                                         "stage_intro_candidate"
+                                                     ],
+                       "matching_mode":  "shadow",
+                       "error":  null
+                   },
+                   {
+                       "name":  "semantic_capital_partner",
+                       "scenario":  "capital_partner",
+                       "pass":  true,
+                       "shadow_run_id":  "shadow_20260714041930_9c17b803",
+                       "expected_top_path":  "verify_proof",
+                       "actual_top_path":  "verify_proof",
+                       "disqualified_kinds":  [
+                                                  "raise_capital",
+                                                  "stage_intro_candidate"
+                                              ],
+                       "partner_suppressed":  true,
+                       "disqualifications_deduplicated":  true
+                   },
+                   {
+                       "name":  "semantic_job_change",
+                       "scenario":  "job_change",
+                       "pass":  true,
+                       "shadow_run_id":  "shadow_20260714041931_02e2d9b5",
+                       "expected_top_path":  "find_better_job",
+                       "actual_top_path":  "find_better_job",
+                       "disqualified_kinds":  [
+                                                  "stage_intro_candidate"
+                                              ],
+                       "partner_suppressed":  true,
+                       "disqualifications_deduplicated":  true
+                   },
+                   {
+                       "name":  "semantic_training_not_partner",
+                       "scenario":  "training_not_partner",
+                       "pass":  true,
+                       "shadow_run_id":  "shadow_20260714041932_5d29e7d5",
+                       "expected_top_path":  "get_training",
+                       "actual_top_path":  "get_training",
+                       "disqualified_kinds":  [
+                                                  "find_partner",
+                                                  "stage_intro_candidate"
+                                              ],
+                       "partner_suppressed":  true,
+                       "disqualifications_deduplicated":  true
+                   },
+                   {
+                       "name":  "operator_shadow_page",
+                       "pass":  true,
+                       "status":  404,
+                       "expected_access":  "denied",
+                       "expected_status":  404,
+                       "page_has_expected_copy":  false,
+                       "detail":  "Production operator boundary denied access as expected"
+                   }
+               ],
+    "operator_review_url":  null,
+    "operator_boundary_url":  "https://werkles.com/operator/matching/shadow",
+    "notes":  [
+                  "Production operator routes must remain denied; use localhost or the protected Preview operator page for readback.",
+                  "File receipt: foreman/receipts/WERKLES_MATCHING_SHADOW_QA_\u003cdate\u003e.md",
+                  "Report false positives to Maker for layer0/not-match/score-paths tuning."
+              ]
+}

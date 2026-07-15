@@ -131,13 +131,44 @@ async function postIntake(scenario, siteOrigin) {
   };
 }
 
+function expectedOperatorPageAccess(siteOrigin) {
+  const override = (process.env.WERKLES_OPERATOR_PAGE_EXPECTATION || "").trim().toLowerCase();
+  if (override) {
+    if (override !== "visible" && override !== "denied") {
+      throw new Error("WERKLES_OPERATOR_PAGE_EXPECTATION must be visible or denied");
+    }
+    return override;
+  }
+
+  const hostname = new URL(siteOrigin).hostname.toLowerCase();
+  return hostname === "werkles.com" || hostname === "www.werkles.com" ? "denied" : "visible";
+}
+
 async function probeShadowPage(siteOrigin) {
   const res = await fetch(`${siteOrigin}/operator/matching/shadow`, {
     headers: requestHeaders()
   });
   const html = await res.text();
-  const pass = res.ok && /Shadow runs|Autonomous matching/i.test(html);
-  return { name: "operator_shadow_page", pass, status: res.status, detail: pass ? "Page loads" : "Page missing expected copy" };
+  const expectedAccess = expectedOperatorPageAccess(siteOrigin);
+  const pageHasExpectedCopy = /Shadow runs|Autonomous matching/i.test(html);
+  const pass = expectedAccess === "denied" ? res.status === 404 : res.ok && pageHasExpectedCopy;
+  const detail =
+    expectedAccess === "denied"
+      ? pass
+        ? "Production operator boundary denied access as expected"
+        : `Expected production operator boundary HTTP 404; received ${res.status}`
+      : pass
+        ? "Page loads"
+        : "Page missing expected copy";
+  return {
+    name: "operator_shadow_page",
+    pass,
+    status: res.status,
+    expected_access: expectedAccess,
+    expected_status: expectedAccess === "denied" ? 404 : 200,
+    page_has_expected_copy: pageHasExpectedCopy,
+    detail
+  };
 }
 
 function semanticChecks(intakeChecks) {
@@ -170,7 +201,8 @@ async function main() {
   }
   const intakeChecks = [...checks];
   checks.push(...semanticChecks(intakeChecks));
-  checks.push(await probeShadowPage(siteOrigin));
+  const operatorPageCheck = await probeShadowPage(siteOrigin);
+  checks.push(operatorPageCheck);
 
   const ok = checks.every((c) => c.pass);
   const out = {
@@ -180,9 +212,14 @@ async function main() {
     site_origin: siteOrigin,
     vercel_protection_bypass_used: Boolean(vercelProtectionBypassSecret()),
     checks,
-    operator_review_url: `${siteOrigin}/operator/matching/shadow`,
+    operator_review_url:
+      operatorPageCheck.expected_access === "visible" ? `${siteOrigin}/operator/matching/shadow` : null,
+    operator_boundary_url:
+      operatorPageCheck.expected_access === "denied" ? `${siteOrigin}/operator/matching/shadow` : null,
     notes: [
-      "Review shadow runs at /operator/matching/shadow after deploy.",
+      operatorPageCheck.expected_access === "visible"
+        ? "Review shadow runs at /operator/matching/shadow."
+        : "Production operator routes must remain denied; use localhost or the protected Preview operator page for readback.",
       "File receipt: foreman/receipts/WERKLES_MATCHING_SHADOW_QA_<date>.md",
       "Report false positives to Maker for layer0/not-match/score-paths tuning."
     ]

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gate — Matching Shadow Production Deploy</title>
+  <style>
+    :root { color-scheme: dark; font-family: Georgia, "Times New Roman", serif; background:#0b1020; color:#e9edf7; }
+    body { margin:0; padding:32px; }
+    main { max-width:960px; margin:auto; }
+    section { background:#141b2f; border:1px solid #2b3655; border-radius:14px; padding:22px; margin:16px 0; }
+    h1,h2 { margin-top:0; font-family: "Segoe UI", system-ui, sans-serif; }
+    .status { color:#ffd166; font-weight:700; }
+    .good { color:#8ce99a; } .warn { color:#ffd166; }
+    code { background:#090d18; padding:3px 6px; border-radius:5px; display:block; margin:8px 0; white-space:pre-wrap; font-family: Consolas, monospace; }
+    ul, ol { line-height:1.6; }
+  </style>
+</head>
+<body><main>
+  <h1>Matching Shadow Production Deploy</h1>
+  <p class="status good">Tier 1 · Completed · production acceptance passed</p>
+  <p>Parent: preview rollout PASS · durable schema applied · public matching OFF</p>
+  <section>
+    <h2>Approve</h2>
+    <code>APPROVE MATCHING SHADOW PRODUCTION DEPLOY</code>
+    <p class="warn">Sets Production <code>MATCHING_STORAGE_MODE=supabase</code>, deploys branch to werkles.com, runs live smoke. Does not flip public matching.</p>
+  </section>
+  <section>
+    <h2>Evidence (preflight)</h2>
+    <ul class="good">
+      <li>Tables live: discovery_intakes + matching_shadow_runs</li>
+      <li>Preview smoke 7/7 PASS (golden paths)</li>
+      <li>Production MATCHING_STORAGE_MODE not set yet</li>
+      <li>Public / LLM flags OFF in code</li>
+    </ul>
+  </section>
+  <section>
+    <h2>After approve</h2>
+    <ol>
+      <li>Production env: MATCHING_STORAGE_MODE=supabase</li>
+      <li>Deploy maker/site-g-20260703 @ 76fd30e → production</li>
+      <li>Smoke https://werkles.com</li>
+      <li>Hold for public go-live gate</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Reject / patch</h2>
+    <code>REJECT MATCHING SHADOW PRODUCTION DEPLOY</code>
+    <code>PATCH MATCHING SHADOW PRODUCTION DEPLOY: &lt;instructions&gt;</code>
+  </section>
+  <section>
+    <h2>Execution result</h2>
+    <ul>
+      <li class="good">Deployment dpl_8RBL4NA2dfKZLpLL3RG1qM4iNp8x: Ready</li>
+      <li class="good">werkles.com: HTTP 200</li>
+      <li class="good">Three live Matching write and semantic scenarios: Pass</li>
+      <li class="good">/operator/matching/shadow: expected HTTP 404 boundary proof passed</li>
+    </ul>
+    <code>COMPLETED — MATCHING SHADOW PRODUCTION DEPLOY</code>
+  </section>
+</main></body></html>
