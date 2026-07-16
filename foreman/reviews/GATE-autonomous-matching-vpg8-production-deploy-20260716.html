@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autonomous Matching VPG8 Production Deploy Gate</title>
+  <style>
+    :root { color-scheme: light; --ink:#1f1814; --muted:#5d4a3e; --paper:#fffaf0; --card:#f4e2b1; --night:#191817; --good:#17643a; --warn:#8b4a16; --line:#c9b896; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { width:min(980px,calc(100% - 32px)); margin:32px auto 64px; }
+    .hero { background:var(--night); color:#fff7e6; border-radius:20px; padding:28px; }
+    .eyebrow { margin:0 0 8px; color:#f4e2b1; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    h1 { margin:.1em 0; font-size:clamp(2rem,5vw,3.5rem); line-height:1.05; }
+    h2 { margin:0 0 12px; }
+    .status { display:inline-block; margin-top:16px; border:1px solid #f4e2b1; border-radius:999px; padding:6px 12px; font-weight:800; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin:20px 0; }
+    .card { border:1px solid var(--line); border-radius:16px; padding:20px; background:#fff; }
+    .card strong { display:block; margin-bottom:6px; }
+    .ready { color:var(--good); }
+    .warn { color:var(--warn); }
+    code, .phrase { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .phrase { overflow-wrap:anywhere; background:var(--card); border:2px solid var(--night); border-radius:14px; padding:18px; font-size:1.05rem; font-weight:800; }
+    ol { padding-left:22px; }
+    footer { color:var(--muted); margin-top:28px; }
+  </style>
+</head>
+<body data-gate-status="AWAITING_HUMAN_GATE" data-target-commit="6cf99ed7a8b63f4e759da4557ffefa24d5a3216d">
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Tier 1 gate</p>
+      <h1>Autonomous Matching VPG8 production deploy</h1>
+      <p>The privacy/readability correction is Ready in Preview. Production is still on the earlier public go-live surface.</p>
+      <span class="status">AWAITING HUMAN GATE</span>
+    </section>
+
+    <section class="grid" aria-label="Deployment status">
+      <article class="card"><strong>Branch</strong><code>6cf99ed</code><br><span class="ready">Pushed and Preview Ready</span></article>
+      <article class="card"><strong>Preview</strong><code>dpl_GDz3JHVc1uT43E3mK9Hf5WggNwtU</code><br><span class="ready">VPG8 markers pass</span></article>
+      <article class="card"><strong>Production</strong><code>dpl_9u8Gn4F7r8qS38ZGkpn3uevNFqRi</code><br><span class="warn">Pre-VPG8 surface</span></article>
+    </section>
+
+    <section class="card">
+      <h2>What changes</h2>
+      <ul>
+        <li>Public recommendations become example-only with an empty ledger.</li>
+        <li>Global/latest member readers are removed from the public page.</li>
+        <li>Saving stays closed; buttons are disabled and direct POST returns 403.</li>
+        <li>The score becomes an honest Rules score and the page becomes readable.</li>
+      </ul>
+      <p><strong>Unchanged:</strong> public ON, LLM OFF, storage mode, schema, data, ranking logic, and production operator-route denial.</p>
+    </section>
+
+    <section class="card">
+      <h2>Approval phrase</h2>
+      <p class="phrase">APPROVE AUTONOMOUS MATCHING VPG8 CONTAINMENT DEPLOY TO WERKLES.COM</p>
+      <p>No shorthand or earlier approval performs this deployment.</p>
+    </section>
+
+    <section class="card">
+      <h2>After approval</h2>
+      <ol>
+        <li>Build exact commit <code>6cf99ed7a8b63f4e759da4557ffefa24d5a3216d</code> as a fresh Production-target deployment.</li>
+        <li>Wait for Ready, then run GET-only marker checks.</li>
+        <li>Only after the new markers pass, verify the inert save POST returns 403.</li>
+        <li>Confirm the production operator route remains 404 and flags remain public ON / LLM OFF.</li>
+      </ol>
+      <p><strong>Rollback:</strong> <code>dpl_9u8Gn4F7r8qS38ZGkpn3uevNFqRi</code>. Availability-only: it restores the pre-VPG8 privacy boundary.</p>
+    </section>
+
+    <footer>Prepared on Betsy by Dink@Betsy. Artifact only; no deployment or production mutation occurred.</footer>
+  </main>
+</body>
+</html>
