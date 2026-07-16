@@ -179,7 +179,7 @@ export function AccessScreen() {
           <View style={styles.boundaryHeader}>
             <MaterialCommunityIcons
               color={colors.secondaryBright}
-              name="receipt-text-outline"
+              name="script-text-outline"
               size={24}
             />
             <Text style={styles.sectionTitle}>Local request receipt</Text>
