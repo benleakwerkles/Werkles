@@ -181,6 +181,36 @@ Each lane must define:
 - Repair limit:
   - 2 bounded attempts.
 
+## Lane: Matching Shadow (G Lane)
+
+- Status: `APPROVED`
+- Environment: `maker/site-g-20260703` branch; Vercel production + preview; Supabase
+- Budget reference: no paid external calls (shadow is deterministic; LLM gated separately)
+- Current scope source:
+  - `foreman/NEXT_ACTION.md`
+  - `foreman/receipts/WERKLES_MATCHING_PRODUCTION_DEPLOY_20260713.md`
+  - `foreman/receipts/WERKLES_AUTONOMOUS_MATCHING_PIVOT_20260708.md`
+- Allowed actions:
+  - matching engine code changes within `lib/matching/**`
+  - smoke test execution (localhost, preview, production with bounded write count)
+  - cockpit/doctrine updates for matching gates
+  - shadow pipeline debugging and tuning
+  - operator page updates (`/operator/matching/shadow` on localhost/preview only)
+  - typecheck, build, lint within matching scope
+- Forbidden actions:
+  - flipping `MATCHING_AUTONOMOUS_PUBLIC` to true
+  - enabling `MATCHING_LLM_TRANSLATE_ENABLED`
+  - SQL/schema/RLS/policy changes without explicit approval
+  - production data mutation beyond approved bounded smoke intakes
+  - secrets in chat or repo
+  - deploying without explicit approval
+  - git push or merge without explicit approval
+  - weakening the production operator middleware boundary
+- Current stop condition:
+  - Speaker Charter V1 rejected; packaging renamed to Matching readout. Stop at next serialized human gate prep for `APPROVE MATCHING AUTONOMOUS GO-LIVE` (do not flip without approval).
+- Repair limit:
+  - 2 bounded repair attempts per failed technical proof.
+
 ## Lane: Cursor First Bounded Real Work
 
 - Status: `APPROVED`

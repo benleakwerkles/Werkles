@@ -16,7 +16,7 @@ import type {
 
   ScoredPath,
 
-  SpeakerFactDelivery,
+  MatchingReadout,
 
   SquibbVoiceDelivery,
 
@@ -202,7 +202,7 @@ export function buildRecommendationCard(
 
 }
 
-export function buildSpeakerFacts(
+export function buildMatchingReadout(
 
   signals: StructuredSignals,
 
@@ -212,7 +212,7 @@ export function buildSpeakerFacts(
 
   scoredPaths: ScoredPath[]
 
-): SpeakerFactDelivery {
+): MatchingReadout {
 
   const recommendationCard = buildRecommendationCard(signals, layer0, notMatch, scoredPaths);
 
@@ -384,31 +384,31 @@ export function buildSpeakerFacts(
 
 
 
-export function buildSquibbVoice(speaker: SpeakerFactDelivery): SquibbVoiceDelivery {
+export function buildSquibbVoice(readout: MatchingReadout): SquibbVoiceDelivery {
 
-  const top = speaker.scoredPaths[0];
+  const top = readout.scoredPaths[0];
 
   const topLabel = top ? RECOMMENDATION_KIND_LABELS[top.kind] : "Verify proof";
 
-  const card = speaker.recommendationCard;
+  const card = readout.recommendationCard;
 
 
 
   const intro =
 
-    speaker.notMatch.outcome === "pause"
+    readout.notMatch.outcome === "pause"
 
-      ? "Squibb: Speaker needs more from you before ranking paths. I'm not sending you to a person or a lender yet."
+      ? "Squibb: Matching needs more from you before ranking paths. I'm not sending you to a person or a lender yet."
 
-      : "Squibb: I read what you carried in. Speaker has the plain facts — I'm offering the path that scored highest, not a person or a guarantee.";
+      : "Squibb: I read what you carried in. Here's the plain-fact readout — I'm offering the path that scored highest, not a person or a guarantee.";
 
 
 
   const topPathNote =
 
-    speaker.notMatch.outcome === "pause"
+    readout.notMatch.outcome === "pause"
 
-      ? `Squibb: "${card.recommendation.headline}" — ${speaker.notMatch.reason}`
+      ? `Squibb: "${card.recommendation.headline}" — ${readout.notMatch.reason}`
 
       : top
 
@@ -426,9 +426,9 @@ export function buildSquibbVoice(speaker: SpeakerFactDelivery): SquibbVoiceDeliv
 
     counterpoint:
 
-      speaker.scoredPaths[1] && speaker.scoredPaths[1].score > 30 && !speaker.scoredPaths[1].disqualified
+      readout.scoredPaths[1] && readout.scoredPaths[1].score > 30 && !readout.scoredPaths[1].disqualified
 
-        ? `Squibb: "${RECOMMENDATION_KIND_LABELS[speaker.scoredPaths[1].kind]}" is the runner-up if the top path feels wrong.`
+        ? `Squibb: "${RECOMMENDATION_KIND_LABELS[readout.scoredPaths[1].kind]}" is the runner-up if the top path feels wrong.`
 
         : card.whyNotAlternatives[0]
 

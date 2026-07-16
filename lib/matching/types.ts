@@ -32,7 +32,7 @@ export type LeverageDiagnosis = {
 
   possible: LeverageCategory[];
 
-  speakerChecks: string[];
+  readoutChecks: string[];
 
 };
 
@@ -193,7 +193,8 @@ export type ScoredPath = {
 
 
 
-export type SpeakerFactItem = {
+/** One labeled fact line in a matching readout (not the Speaker causal office). */
+export type MatchingReadoutFact = {
 
   id: string;
 
@@ -209,7 +210,8 @@ export type SpeakerFactItem = {
 
 
 
-export type SpeakerFactDelivery = {
+/** One-shot structured packaging of a matching run for Squibb + operator review. */
+export type MatchingReadout = {
 
   version: "v1";
 
@@ -225,7 +227,7 @@ export type SpeakerFactDelivery = {
 
   recommendationCard: RecommendationCard;
 
-  facts: SpeakerFactItem[];
+  facts: MatchingReadoutFact[];
 
   falsifiers: string[];
 
@@ -236,8 +238,6 @@ export type SpeakerFactDelivery = {
   generatedAt: string;
 
 };
-
-
 
 export type SquibbVoiceDelivery = {
 
@@ -269,9 +269,12 @@ export type ShadowMatchingRun = {
 
   notMatch: NotMatchResult;
 
-  speaker: SpeakerFactDelivery;
+  readout: MatchingReadout;
 
   squibb: SquibbVoiceDelivery;
+
+  /** DRAFT member causal note (real Speaker job: why over time). Not org doctrine. */
+  memberCausalDraft: string | null;
 
   llmUsed: boolean;
 

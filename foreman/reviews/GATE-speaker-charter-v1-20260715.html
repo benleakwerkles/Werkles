@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gate Review — Speaker Charter V1</title>
+<style>
+  :root { --bg: #0a0a0a; --card: #141414; --border: #262626; --text: #e5e5e5; --muted: #999; --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --blue: #3b82f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+  .subtitle { color: var(--muted); font-size: .875rem; margin-bottom: 2rem; }
+  .badge { display: inline-block; padding: .2rem .6rem; border-radius: 4px; font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+  .badge-tier1 { background: #1e1b4b; color: #818cf8; }
+  .badge-high { background: #052e16; color: var(--green); }
+  .badge-low { background: #1a1a00; color: var(--amber); }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+  .section h2 { font-size: 1rem; margin-bottom: .75rem; color: var(--blue); }
+  .section h3 { font-size: .875rem; margin: .75rem 0 .5rem; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 500; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+  .status-pass { color: var(--green); }
+  .status-blocked { color: var(--red); }
+  .status-pending { color: var(--amber); }
+  .phrase-box { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: .75rem 1rem; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: .85rem; margin: .5rem 0; }
+  .diff-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .diff-col { padding: .75rem; border-radius: 6px; font-size: .85rem; }
+  .diff-before { background: #1c0c0c; border: 1px solid #3a1515; }
+  .diff-after { background: #0c1c0c; border: 1px solid #153a15; }
+  .diff-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .4rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: .25rem; font-size: .85rem; }
+  .guardrails { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .guardrail { padding: .5rem .75rem; border-radius: 6px; font-size: .8rem; background: #0d1117; border: 1px solid var(--border); }
+  .guardrail .label { color: var(--muted); font-size: .7rem; display: block; }
+</style>
+</head>
+<body>
+
+<h1>Speaker Charter V1 — Autonomous Fact Delivery</h1>
+<p class="subtitle">
+  <span class="badge badge-tier1">Tier 1 — Doctrine</span>
+  <span class="badge badge-high" style="margin-left:.5rem">Confidence: HIGH</span>
+  <span class="badge badge-low" style="margin-left:.5rem">Blast radius: LOW</span>
+  &nbsp;&middot;&nbsp; 2026-07-15
+</p>
+
+<div class="section">
+  <h2>What is being ratified</h2>
+  <p style="font-size:.875rem">Speaker V1 extends Speaker from an internal memory ledger into a <strong>live fact-delivery surface</strong> for the matching engine. V0 is preserved. V1 adds a product-facing readout layer.</p>
+  <p style="font-size:.8rem; color:var(--muted); margin-top:.5rem">Draft: <code>foreman/speaker/SPEAKER_CHARTER_V1_AUTONOMOUS_FACT_DELIVERY_DRAFT.md</code></p>
+</div>
+
+<div class="section">
+  <h2>What changes</h2>
+  <div class="diff-row">
+    <div class="diff-col diff-before">
+      <div class="diff-label">V0 (current)</div>
+      <ul>
+        <li>Speaker = internal causal memory</li>
+        <li>Squibb = static demo voice</li>
+        <li>Human operator reads intake</li>
+        <li>Human writes recommendation card</li>
+      </ul>
+    </div>
+    <div class="diff-col diff-after">
+      <div class="diff-label">V1 (proposed)</div>
+      <ul>
+        <li>Speaker = memory <strong>+ live fact delivery</strong></li>
+        <li>Squibb = <strong>voice layer</strong> wrapping paths</li>
+        <li><strong>Hybrid engine</strong> (deterministic + bounded LLM)</li>
+        <li>Engine produces card; <strong>shadow then public flip</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>What does NOT change</h2>
+  <div class="guardrails">
+    <div class="guardrail"><span class="label">Constitutional</span> Speaker remains advisory, not executive</div>
+    <div class="guardrail"><span class="label">Safety</span> No guarantees on outcomes, trust, or clearance</div>
+    <div class="guardrail"><span class="label">Routing</span> Does not override GD/Foreman dispatch</div>
+    <div class="guardrail"><span class="label">Evidence</span> Strength labels mandatory on every claim</div>
+    <div class="guardrail"><span class="label">LLM</span> Separately gated (MATCHING_LLM_TRANSLATE_ENABLED)</div>
+    <div class="guardrail"><span class="label">Public</span> Separately gated (APPROVE MATCHING AUTONOMOUS GO-LIVE)</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Shadow proof (production)</h2>
+  <table>
+    <tr><th>Scenario</th><th>Expected</th><th>Actual</th><th>Result</th></tr>
+    <tr><td>capital_partner</td><td>verify_proof</td><td>verify_proof</td><td class="status-pass">PASS</td></tr>
+    <tr><td>job_change</td><td>find_better_job</td><td>find_better_job</td><td class="status-pass">PASS</td></tr>
+    <tr><td>training_not_partner</td><td>get_training</td><td>get_training</td><td class="status-pass">PASS</td></tr>
+  </table>
+  <p style="font-size:.8rem; color:var(--muted); margin-top:.5rem">Production deploy receipt: <code>foreman/receipts/WERKLES_MATCHING_PRODUCTION_DEPLOY_20260713.md</code></p>
+</div>
+
+<div class="section">
+  <h2>Unknowns</h2>
+  <ul>
+    <li>Whether three golden paths are sufficient coverage for public flip</li>
+    <li>Squibb voice quality (LLM translation gated separately)</li>
+    <li>Member perception of autonomous vs. human-written recommendations</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>What remains blocked after ratification</h2>
+  <table>
+    <tr><th>Gate</th><th>Status</th></tr>
+    <tr><td>APPROVE MATCHING AUTONOMOUS GO-LIVE</td><td class="status-blocked">Blocked — public flip</td></tr>
+    <tr><td>APPROVE MATCHING LLM TRANSLATE</td><td class="status-blocked">Blocked — LLM slot</td></tr>
+    <tr><td>Retention/deletion automation</td><td class="status-blocked">Blocked — policy approved, automation gated</td></tr>
+    <tr><td>Stripe live checkout (HG-5)</td><td class="status-blocked">Blocked</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Files changed by ratification</h2>
+  <table>
+    <tr><th>File</th><th>Change</th></tr>
+    <tr><td><code>SPEAKER_CHARTER_V1_...DRAFT.md</code></td><td>Status: DRAFT → RATIFIED</td></tr>
+    <tr><td><code>foreman/gates/APPROVAL_LOG.md</code></td><td>New entry</td></tr>
+    <tr><td><code>foreman/NEXT_ACTION.md</code></td><td>Queue advances to public flip</td></tr>
+  </table>
+  <p style="font-size:.8rem; color:var(--muted); margin-top:.5rem">No product code. No deploy. No SQL. No secrets. No spend.</p>
+</div>
+
+<div class="section">
+  <h2>Approval</h2>
+
+  <h3>Approve</h3>
+  <div class="phrase-box">RATIFY SPEAKER CHARTER V1 AUTONOMOUS FACT DELIVERY</div>
+
+  <h3>Reject</h3>
+  <div class="phrase-box">REJECT SPEAKER CHARTER V1</div>
+
+  <h3>Patch</h3>
+  <div class="phrase-box">PATCH SPEAKER CHARTER V1: &lt;instructions&gt;</div>
+</div>
+
+</body>
+</html>

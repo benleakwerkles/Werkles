@@ -7,7 +7,8 @@ import { runLayer0 } from "@/lib/matching/layer0";
 import { evaluateNotMatch } from "@/lib/matching/not-match";
 import { signalsFromConcierge, signalsFromDiscovery } from "@/lib/matching/signals";
 import { scorePaths } from "@/lib/matching/score-paths";
-import { buildSpeakerFacts, buildSquibbVoice } from "@/lib/matching/deliver";
+import { buildMatchingReadout, buildSquibbVoice } from "@/lib/matching/deliver";
+import { buildMemberCausalDraft } from "@/lib/matching/member-causal-draft";
 import { newShadowRunId, persistShadowRun, readLatestShadowRuns } from "@/lib/matching/shadow-storage";
 import { matchingReceiptPath } from "@/lib/matching/shadow-store";
 import type { ShadowMatchingRun, StructuredSignals } from "@/lib/matching/types";
@@ -15,7 +16,7 @@ import type { ShadowMatchingRun, StructuredSignals } from "@/lib/matching/types"
 export { readLatestShadowRuns };
 
 export function shadowRunSmokeSummary(run: ShadowMatchingRun) {
-  const topEligible = run.speaker.scoredPaths.find((candidate) => !candidate.disqualified)?.kind ?? null;
+  const topEligible = run.readout.scoredPaths.find((candidate) => !candidate.disqualified)?.kind ?? null;
   const disqualifiedKinds = run.notMatch.disqualified.map((item) => item.kind);
   return {
     shadow_top_eligible_path: topEligible,
@@ -28,12 +29,23 @@ async function maybeLlmTranslate(signals: StructuredSignals): Promise<Structured
   return signals;
 }
 
-async function runMatchingCore(signals: StructuredSignals): Promise<Omit<ShadowMatchingRun, "runId" | "createdAt">> {
+async function runMatchingCore(signals: StructuredSignals): Promise<{
+  intakeId: string;
+  source: StructuredSignals["source"];
+  mode: "shadow";
+  signals: StructuredSignals;
+  layer0: ShadowMatchingRun["layer0"];
+  notMatch: ShadowMatchingRun["notMatch"];
+  readout: ShadowMatchingRun["readout"];
+  squibb: ShadowMatchingRun["squibb"];
+  llmUsed: boolean;
+  receiptPath: string;
+}> {
   const layer0 = runLayer0(signals);
   const notMatch = evaluateNotMatch(signals, layer0);
   const scoredPaths = scorePaths(signals, layer0, notMatch);
-  const speaker = buildSpeakerFacts(signals, layer0, notMatch, scoredPaths);
-  const squibb = buildSquibbVoice(speaker);
+  const readout = buildMatchingReadout(signals, layer0, notMatch, scoredPaths);
+  const squibb = buildSquibbVoice(readout);
 
   return {
     intakeId: signals.intakeId,
@@ -42,10 +54,27 @@ async function runMatchingCore(signals: StructuredSignals): Promise<Omit<ShadowM
     signals,
     layer0,
     notMatch,
-    speaker,
+    readout,
     squibb,
     llmUsed: isMatchingLlmEnabled(),
     receiptPath: matchingReceiptPath()
+  };
+}
+
+function finalizeRun(
+  core: Awaited<ReturnType<typeof runMatchingCore>>,
+  runId: string
+): ShadowMatchingRun {
+  return {
+    ...core,
+    runId,
+    createdAt: new Date().toISOString(),
+    memberCausalDraft: buildMemberCausalDraft({
+      runId,
+      signals: core.signals,
+      notMatch: core.notMatch,
+      readout: core.readout
+    })
   };
 }
 
@@ -54,17 +83,8 @@ export async function runShadowMatchingFromDiscovery(
   input: DiscoveryIntakeInput
 ): Promise<ShadowMatchingRun | null> {
   if (!isMatchingShadowEnabled()) return null;
-
-  let signals = signalsFromDiscovery(intakeId, input);
-  signals = await maybeLlmTranslate(signals);
-  const core = await runMatchingCore(signals);
-
-  const run: ShadowMatchingRun = {
-    runId: newShadowRunId(),
-    ...core,
-    createdAt: new Date().toISOString()
-  };
-
+  const signals = await maybeLlmTranslate(signalsFromDiscovery(intakeId, input));
+  const run = finalizeRun(await runMatchingCore(signals), newShadowRunId());
   await persistShadowRun(run);
   return run;
 }
@@ -74,17 +94,8 @@ export async function runShadowMatchingFromConcierge(
   answers: ConciergeIntakeAnswers
 ): Promise<ShadowMatchingRun | null> {
   if (!isMatchingShadowEnabled()) return null;
-
-  let signals = signalsFromConcierge(intakeId, answers);
-  signals = await maybeLlmTranslate(signals);
-  const core = await runMatchingCore(signals);
-
-  const run: ShadowMatchingRun = {
-    runId: newShadowRunId(),
-    ...core,
-    createdAt: new Date().toISOString()
-  };
-
+  const signals = await maybeLlmTranslate(signalsFromConcierge(intakeId, answers));
+  const run = finalizeRun(await runMatchingCore(signals), newShadowRunId());
   await persistShadowRun(run);
   return run;
 }

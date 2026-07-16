@@ -70,7 +70,7 @@ export default async function MatchingShadowPage() {
 
           <p>
 
-            Pipeline: <strong>signals → Layer 0 → not-match → path score → Speaker facts → Squibb voice</strong>.
+            Pipeline: <strong>signals → Layer 0 → not-match → path score → Matching readout → Squibb voice</strong>.
 
             Public delivery: <strong>{publicEnabled ? "ON" : "OFF (shadow)"}</strong>.
 
@@ -78,9 +78,9 @@ export default async function MatchingShadowPage() {
 
           <p className="muted">
 
-            Doctrine: <code>company/WERKLES_MATCH_STACKING_AND_NEED_TRANSLATION_V0.md</code> · Ratify Speaker
+            Doctrine: <code>company/WERKLES_MATCH_STACKING_AND_NEED_TRANSLATION_V0.md</code> · Packaging is
 
-            Charter V1 then flip with <code>APPROVE MATCHING AUTONOMOUS GO-LIVE</code>.
+            Matching readout (not Speaker). Public flip still requires <code>APPROVE MATCHING AUTONOMOUS GO-LIVE</code>.
 
           </p>
 
@@ -100,7 +100,7 @@ export default async function MatchingShadowPage() {
 
           runs.map((run) => {
 
-            const card = run.speaker.recommendationCard;
+            const card = run.readout.recommendationCard;
 
             return (
 
@@ -252,6 +252,22 @@ export default async function MatchingShadowPage() {
 
 
 
+                <h3>Matching readout — facts</h3>
+
+                <p className="muted">{run.readout.primaryBottleneck}</p>
+
+
+
+                <h3>Member causal draft (Speaker office shape)</h3>
+
+                <pre className="muted" style={{ whiteSpace: "pre-wrap", fontSize: "0.8rem" }}>
+
+                  {run.memberCausalDraft ?? "(none)"}
+
+                </pre>
+
+
+
                 <h3>Squibb — voice</h3>
 
                 <p>{run.squibb.intro}</p>
@@ -264,7 +280,7 @@ export default async function MatchingShadowPage() {
 
                 <ol>
 
-                  {run.speaker.scoredPaths.map((p) => (
+                  {run.readout.scoredPaths.map((p) => (
 
                     <li key={p.kind}>
 

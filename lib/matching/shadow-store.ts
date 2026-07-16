@@ -14,6 +14,22 @@ export { getMatchingStorageMode, matchingReceiptPath } from "@/lib/matching/stor
 
 const FILE_RECEIPT_PATH = "data/matching/shadow-runs.jsonl";
 
+/** Normalize legacy payloads that stored packaging under `speaker`. */
+function normalizeShadowRun(raw: unknown): ShadowMatchingRun {
+  const run = raw as ShadowMatchingRun & { speaker?: ShadowMatchingRun["readout"] };
+  if (!run.readout && run.speaker) {
+    return {
+      ...run,
+      readout: run.speaker,
+      memberCausalDraft: run.memberCausalDraft ?? null
+    };
+  }
+  return {
+    ...run,
+    memberCausalDraft: run.memberCausalDraft ?? null
+  };
+}
+
 async function ensureIntakeCustody(run: ShadowMatchingRun): Promise<void> {
   const { error } = await getSupabaseService()
     .from("discovery_intakes")
@@ -53,7 +69,7 @@ async function persistSupabase(run: ShadowMatchingRun): Promise<void> {
       intake_id: run.intakeId,
       source: run.source,
       mode: run.mode,
-      engine_version: run.speaker.version,
+      engine_version: run.readout.version,
       created_at: run.createdAt,
       payload: run
     });
@@ -90,7 +106,7 @@ async function readFileRuns(limit: number): Promise<ShadowMatchingRun[]> {
     .split(/\r?\n/)
     .filter(Boolean)
     .slice(-limit)
-    .map((line) => JSON.parse(line) as ShadowMatchingRun)
+    .map((line) => normalizeShadowRun(JSON.parse(line)))
     .reverse();
 }
 
@@ -102,7 +118,7 @@ async function readSupabaseRuns(limit: number): Promise<ShadowMatchingRun[]> {
     .limit(limit);
 
   if (error) throw new Error(`Matching shadow durable read failed: ${error.message}`);
-  return (data ?? []).map((row) => row.payload as ShadowMatchingRun);
+  return (data ?? []).map((row) => normalizeShadowRun(row.payload));
 }
 
 export async function readMatchingShadowRuns(limit = 10): Promise<ShadowMatchingRun[]> {

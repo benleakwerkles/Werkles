@@ -71,7 +71,7 @@ export function diagnoseLeverage(textBlob: string, assets: string[]): LeverageDi
     primaryHypothesis: primary,
     constrained: [...new Set(constrained)],
     possible: [...new Set(possible.filter((c) => !constrained.includes(c)))],
-    speakerChecks: checks.slice(0, 3)
+    readoutChecks: checks.slice(0, 3)
   };
 }
 
