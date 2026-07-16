@@ -201,6 +201,26 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+export function parseManualReturnReceipt(receiptText: string): unknown {
+  const normalized = receiptText.trim();
+
+  if (!normalized) {
+    throw new Error('Paste one returned receipt JSON object.');
+  }
+
+  if (normalized.length > 10000) {
+    throw new Error('Returned receipt JSON cannot exceed 10,000 characters.');
+  }
+
+  const parsed: unknown = JSON.parse(normalized);
+
+  if (!isRecord(parsed)) {
+    throw new Error('Returned receipt must be a JSON object.');
+  }
+
+  return parsed;
+}
+
 function isBoundedString(value: unknown, maximumLength: number): value is string {
   return typeof value === 'string' && value.trim().length > 0 && value.length <= maximumLength;
 }
