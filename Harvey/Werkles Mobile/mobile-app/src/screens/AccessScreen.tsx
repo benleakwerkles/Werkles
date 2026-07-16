@@ -1,16 +1,30 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  AccessibilityInfo,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from 'react-native';
 
 import { Card } from '../components/Card';
 import {
   canonicalSshTarget,
   createSshOnboardingReceipt,
   proofStatePresentation,
-  sshOnboardingSteps
+  sshOnboardingSteps,
+  validateCanonicalSshIdentity
 } from '../data/sshOnboarding';
 import type { SshOnboardingReceipt } from '../data/sshOnboarding';
 import { colors } from '../theme';
+
+const acceptedReturnStates = [
+  'RECEIVED_NOT_COMPLETED',
+  'COMPLETED_RECEIPT_PROVEN',
+  'BLOCKER_RECEIPT_PROVEN'
+] as const;
 
 export function AccessScreen() {
   const [machineName, setMachineName] = useState('Doss');
@@ -21,15 +35,23 @@ export function AccessScreen() {
   const proofPresentation = proofStatePresentation[proofState];
   const canStage = normalizedMachineName.length > 0 && receipt === null;
   const keyTitle = `Harvey · ${normalizedMachineName || 'Machine'} · <date>`;
+  const identityCheck = receipt ? validateCanonicalSshIdentity(receipt) : null;
+  const expectedRequestId = receipt?.requestId ?? 'Create a local request first';
 
   function stageRequest() {
-    if (canStage) {
-      setReceipt(createSshOnboardingReceipt(normalizedMachineName, new Date()));
+    if (!canStage) {
+      return;
     }
+
+    setReceipt(createSshOnboardingReceipt(normalizedMachineName, new Date()));
+    AccessibilityInfo.announceForAccessibility(
+      'Local request created. It has not been dispatched.'
+    );
   }
 
   function resetRequest() {
     setReceipt(null);
+    AccessibilityInfo.announceForAccessibility('Local request receipt cleared.');
   }
 
   return (
@@ -58,6 +80,7 @@ export function AccessScreen() {
 
         <Text style={styles.inputLabel}>Machine name</Text>
         <TextInput
+          accessibilityHint="Names the machine for this local request receipt."
           accessibilityLabel="Machine name"
           autoCapitalize="words"
           editable={receipt === null}
@@ -71,28 +94,38 @@ export function AccessScreen() {
         <View style={styles.targetList}>
           <View style={styles.targetRow}>
             <Text style={styles.targetLabel}>GitHub account</Text>
-            <Text style={styles.targetValue}>{canonicalSshTarget.account}</Text>
+            <Text selectable style={styles.targetValue}>
+              {canonicalSshTarget.account}
+            </Text>
           </View>
           <View style={styles.targetRow}>
             <Text style={styles.targetLabel}>Repository</Text>
-            <Text style={styles.targetValue}>{canonicalSshTarget.repository}</Text>
+            <Text selectable style={styles.targetValue}>
+              {canonicalSshTarget.repository}
+            </Text>
           </View>
           <View style={styles.targetRow}>
             <Text style={styles.targetLabel}>SSH alias</Text>
-            <Text style={styles.targetValue}>{canonicalSshTarget.hostAlias}</Text>
+            <Text selectable style={styles.targetValue}>
+              {canonicalSshTarget.hostAlias}
+            </Text>
           </View>
           <View style={styles.targetRow}>
             <Text style={styles.targetLabel}>Git remote</Text>
-            <Text style={styles.targetValue}>{canonicalSshTarget.remote}</Text>
+            <Text selectable style={styles.targetValue}>
+              {canonicalSshTarget.remote}
+            </Text>
           </View>
           <View style={styles.targetRow}>
             <Text style={styles.targetLabel}>Key title</Text>
-            <Text style={styles.targetValue}>{keyTitle}</Text>
+            <Text selectable style={styles.targetValue}>
+              {keyTitle}
+            </Text>
           </View>
         </View>
 
         {receipt ? (
-          <View style={styles.createdNotice}>
+          <View accessibilityLiveRegion="polite" style={styles.createdNotice}>
             <MaterialCommunityIcons color={colors.warning} name="progress-clock" size={22} />
             <View style={styles.createdNoticeCopy}>
               <Text style={styles.createdNoticeTitle}>
@@ -104,6 +137,8 @@ export function AccessScreen() {
         ) : null}
 
         <Pressable
+          accessibilityHint="Creates an in-memory receipt only. Nothing is sent to a machine."
+          accessibilityLabel="Create local SSH onboarding request"
           accessibilityRole="button"
           accessibilityState={{ disabled: !canStage }}
           disabled={!canStage}
@@ -115,7 +150,13 @@ export function AccessScreen() {
         </Pressable>
 
         {receipt ? (
-          <Pressable accessibilityRole="button" onPress={resetRequest} style={styles.resetButton}>
+          <Pressable
+            accessibilityHint="Removes the in-memory request receipt from this screen."
+            accessibilityLabel="Clear local SSH onboarding receipt"
+            accessibilityRole="button"
+            onPress={resetRequest}
+            style={styles.resetButton}
+          >
             <Text style={styles.resetButtonText}>Clear local receipt</Text>
           </Pressable>
         ) : null}
@@ -184,6 +225,94 @@ export function AccessScreen() {
           <Text style={styles.proofBoundary}>{receipt.proofBoundary}</Text>
         </Card>
       ) : null}
+
+      {identityCheck ? (
+        <Card>
+          <View style={styles.guardHeader}>
+            <View style={styles.guardHeaderCopy}>
+              <Text style={styles.gateKicker}>Canonical identity guard</Text>
+              <Text style={styles.sectionTitle}>Ben's Werkles target</Text>
+            </View>
+            <View
+              style={[
+                styles.guardBadge,
+                identityCheck.status === 'MISMATCH' && styles.guardBadgeBlocked
+              ]}
+            >
+              <Text
+                style={[
+                  styles.guardBadgeText,
+                  identityCheck.status === 'MISMATCH' && styles.guardBadgeTextBlocked
+                ]}
+              >
+                {identityCheck.status === 'MATCH'
+                  ? 'MATCH · LOCAL CHECK'
+                  : 'MISMATCH · BLOCKED'}
+              </Text>
+            </View>
+          </View>
+
+          <Text style={styles.guardBoundary}>{identityCheck.proofBoundary}</Text>
+
+          {identityCheck.mismatches.length > 0 ? (
+            <View style={styles.mismatchList}>
+              {identityCheck.mismatches.map((mismatch) => (
+                <View key={mismatch.field} style={styles.mismatchRow}>
+                  <Text style={styles.mismatchField}>{mismatch.field}</Text>
+                  <Text selectable style={styles.mismatchValue}>
+                    Expected {mismatch.expected}
+                  </Text>
+                  <Text selectable style={styles.mismatchActual}>
+                    Found {mismatch.actual}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          ) : (
+            <Text style={styles.guardDetail}>
+              Account, repository, SSH alias, and remote match the canonical cloud target. This
+              is not permission to dispatch and is not a machine receipt.
+            </Text>
+          )}
+        </Card>
+      ) : null}
+
+      <Card>
+        <View accessibilityLiveRegion="polite" style={styles.returnHeader}>
+          <View style={styles.returnHeaderCopy}>
+            <Text style={styles.gateKicker}>Returned machine receipt</Text>
+            <Text style={styles.sectionTitle}>Receiver proof</Text>
+          </View>
+          <View style={styles.pendingBadge}>
+            <Text style={styles.pendingBadgeText}>NOT RECEIVED</Text>
+          </View>
+        </View>
+
+        <Text style={styles.returnLead}>
+          No machine-agent receipt has returned. Created is not delivered.
+        </Text>
+
+        <View style={styles.returnRail}>
+          <View style={styles.receiptRow}>
+            <Text style={styles.receiptLabel}>Expected request ID</Text>
+            <Text selectable style={styles.receiptValue}>
+              {expectedRequestId}
+            </Text>
+          </View>
+          <View style={styles.receiptRow}>
+            <Text style={styles.receiptLabel}>Current receiver state</Text>
+            <Text style={styles.returnPendingValue}>NO RECEIVER PROOF</Text>
+          </View>
+          <View style={styles.receiptRow}>
+            <Text style={styles.receiptLabel}>Accepted future states</Text>
+            {acceptedReturnStates.map((state) => (
+              <Text key={state} selectable style={styles.receiptValue}>
+                {state}
+              </Text>
+            ))}
+          </View>
+        </View>
+      </Card>
 
       {receipt ? (
         <Card>
@@ -274,15 +403,14 @@ const styles = StyleSheet.create({
   prototypeText: { color: colors.muted, fontSize: 13, lineHeight: 19, marginTop: 3 },
   cardHeader: {
     alignItems: 'flex-start',
-    flexDirection: 'row',
     gap: 12,
-    justifyContent: 'space-between',
     marginBottom: 16
   },
   cardHeaderCopy: { flex: 1 },
   sectionTitle: { color: colors.ink, fontSize: 20, fontWeight: '800' },
   sectionCaption: { color: colors.muted, fontSize: 13, lineHeight: 19, marginTop: 3 },
   statusBadge: {
+    alignSelf: 'flex-start',
     backgroundColor: colors.elevated,
     borderColor: colors.border,
     borderRadius: 999,
@@ -306,24 +434,18 @@ const styles = StyleSheet.create({
   targetList: {
     borderTopColor: colors.border,
     borderTopWidth: 1,
-    gap: 10,
+    gap: 12,
     marginTop: 16,
     paddingTop: 14
   },
-  targetRow: {
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    gap: 12,
-    justifyContent: 'space-between'
-  },
-  targetLabel: { color: colors.muted, fontSize: 13 },
+  targetRow: { gap: 4 },
+  targetLabel: { color: colors.muted, fontSize: 13, fontWeight: '700' },
   targetValue: {
     color: colors.ink,
-    flex: 1,
     fontFamily: 'monospace',
     fontSize: 12,
     fontWeight: '700',
-    textAlign: 'right'
+    lineHeight: 18
   },
   createdNotice: {
     alignItems: 'flex-start',
@@ -355,8 +477,8 @@ const styles = StyleSheet.create({
   resetButton: {
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 44,
-    marginTop: 6
+    marginTop: 6,
+    minHeight: 44
   },
   resetButtonText: { color: colors.secondaryBright, fontSize: 14, fontWeight: '800' },
   receiptList: {
@@ -384,6 +506,64 @@ const styles = StyleSheet.create({
     marginTop: 14,
     padding: 10
   },
+  guardHeader: { alignItems: 'flex-start', gap: 12 },
+  guardHeaderCopy: { flex: 1 },
+  guardBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.accentSoft,
+    borderColor: colors.secondary,
+    borderRadius: 999,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 6
+  },
+  guardBadgeBlocked: {
+    backgroundColor: colors.warningSoft,
+    borderColor: colors.warning
+  },
+  guardBadgeText: { color: colors.secondaryBright, fontSize: 11, fontWeight: '800' },
+  guardBadgeTextBlocked: { color: colors.warning },
+  guardBoundary: {
+    color: colors.ink,
+    fontSize: 14,
+    fontWeight: '800',
+    lineHeight: 20,
+    marginTop: 14
+  },
+  guardDetail: { color: colors.muted, fontSize: 13, lineHeight: 20, marginTop: 8 },
+  mismatchList: { gap: 10, marginTop: 12 },
+  mismatchRow: {
+    backgroundColor: colors.warningSoft,
+    borderColor: colors.warning,
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 3,
+    padding: 10
+  },
+  mismatchField: { color: colors.warning, fontSize: 12, fontWeight: '800' },
+  mismatchValue: { color: colors.ink, fontFamily: 'monospace', fontSize: 12, lineHeight: 18 },
+  mismatchActual: { color: colors.warning, fontFamily: 'monospace', fontSize: 12, lineHeight: 18 },
+  returnHeader: { alignItems: 'flex-start', gap: 12 },
+  returnHeaderCopy: { flex: 1 },
+  pendingBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.warningSoft,
+    borderColor: colors.warning,
+    borderRadius: 999,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 6
+  },
+  pendingBadgeText: { color: colors.warning, fontSize: 11, fontWeight: '800' },
+  returnLead: { color: colors.ink, fontSize: 15, fontWeight: '800', lineHeight: 21, marginTop: 14 },
+  returnRail: {
+    borderLeftColor: colors.warning,
+    borderLeftWidth: 3,
+    gap: 13,
+    marginTop: 14,
+    paddingLeft: 14
+  },
+  returnPendingValue: { color: colors.warning, fontSize: 13, fontWeight: '800' },
   gateKicker: {
     color: colors.secondaryBright,
     fontSize: 12,
