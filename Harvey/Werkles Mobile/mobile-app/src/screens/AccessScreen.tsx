@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import {
   AccessibilityInfo,
   Pressable,
@@ -14,10 +14,12 @@ import {
   initialFlockProofLifecycle,
   reduceFlockProofLifecycle
 } from '../data/flockProof';
+import type { FlockProofLifecycle } from '../data/flockProof';
 import {
   canonicalSshTarget,
   correlateReturnReceipt,
   createSshOnboardingReceipt,
+  parseManualReturnReceipt,
   proofStatePresentation,
   sshOnboardingSteps,
   toMachineIdentityObservation,
@@ -33,11 +35,35 @@ const acceptedReturnStates = [
   'BLOCKER_RECEIPT_PROVEN'
 ] as const;
 
-const returnedMachineReceipt: unknown = null;
+type AccessScreenProps = Readonly<{
+  machineName: string;
+  setMachineName: Dispatch<SetStateAction<string>>;
+  receipt: SshOnboardingReceipt | null;
+  setReceipt: Dispatch<SetStateAction<SshOnboardingReceipt | null>>;
+  returnedReceiptText: string;
+  setReturnedReceiptText: Dispatch<SetStateAction<string>>;
+  returnedMachineReceipt: unknown;
+  setReturnedMachineReceipt: Dispatch<SetStateAction<unknown>>;
+  flockProofLifecycle: FlockProofLifecycle;
+  setFlockProofLifecycle: Dispatch<SetStateAction<FlockProofLifecycle>>;
+  importError: string | null;
+  setImportError: Dispatch<SetStateAction<string | null>>;
+}>;
 
-export function AccessScreen() {
-  const [machineName, setMachineName] = useState('Doss');
-  const [receipt, setReceipt] = useState<SshOnboardingReceipt | null>(null);
+export function AccessScreen({
+  machineName,
+  setMachineName,
+  receipt,
+  setReceipt,
+  returnedReceiptText,
+  setReturnedReceiptText,
+  returnedMachineReceipt,
+  setReturnedMachineReceipt,
+  flockProofLifecycle,
+  setFlockProofLifecycle,
+  importError,
+  setImportError
+}: AccessScreenProps) {
 
   const machineNameValidation = validateMachineName(machineName);
   const normalizedMachineName = machineNameValidation.normalized;
@@ -50,9 +76,6 @@ export function AccessScreen() {
   const returnReceiptCorrelation = receipt
     ? correlateReturnReceipt(receipt, returnedMachineReceipt)
     : null;
-  const flockProofLifecycle = returnReceiptCorrelation
-    ? reduceFlockProofLifecycle(initialFlockProofLifecycle, returnReceiptCorrelation)
-    : initialFlockProofLifecycle;
   const identityObservation = returnReceiptCorrelation?.receipt
     ? toMachineIdentityObservation(returnReceiptCorrelation.receipt)
     : null;
@@ -67,14 +90,57 @@ export function AccessScreen() {
     }
 
     setReceipt(createSshOnboardingReceipt(normalizedMachineName, new Date()));
+    setReturnedReceiptText('');
+    setReturnedMachineReceipt(null);
+    setFlockProofLifecycle(initialFlockProofLifecycle);
+    setImportError(null);
     AccessibilityInfo.announceForAccessibility(
       'Local request created. It has not been dispatched.'
     );
   }
 
+  function inspectReturnedReceipt() {
+    if (receipt === null) {
+      return;
+    }
+
+    try {
+      const candidate = parseManualReturnReceipt(returnedReceiptText);
+      const correlation = correlateReturnReceipt(receipt, candidate);
+      const nextLifecycle = reduceFlockProofLifecycle(
+        flockProofLifecycle,
+        correlation
+      );
+
+      setReturnedMachineReceipt(candidate);
+      setFlockProofLifecycle(nextLifecycle);
+
+      const issue =
+        correlation.status === 'REJECTED'
+          ? correlation.issues.join(' ')
+          : nextLifecycle.accepted
+            ? null
+            : nextLifecycle.reason;
+
+      setImportError(issue);
+      AccessibilityInfo.announceForAccessibility(
+        issue ?? 'Local receipt import advanced the structural proof lifecycle.'
+      );
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Returned receipt JSON is invalid.';
+      setImportError(message);
+      AccessibilityInfo.announceForAccessibility(message);
+    }
+  }
+
   function resetRequest() {
     setReceipt(null);
-    AccessibilityInfo.announceForAccessibility('Local request receipt cleared.');
+    setReturnedReceiptText('');
+    setReturnedMachineReceipt(null);
+    setFlockProofLifecycle(initialFlockProofLifecycle);
+    setImportError(null);
+    AccessibilityInfo.announceForAccessibility('Local access session cleared.');
   }
 
   return (
@@ -327,6 +393,56 @@ export function AccessScreen() {
             </Text>
           </View>
         </View>
+
+
+        <View style={styles.manualBoundary}>
+          <Text style={styles.manualBoundaryTitle}>
+            LOCAL IMPORT · AUTHENTICITY NOT PROVEN
+          </Text>
+          <Text style={styles.manualBoundaryText}>
+            Paste a machine-shaped receipt for structural testing only. This is not relay delivery,
+            machine identity, or cryptographic proof.
+          </Text>
+        </View>
+
+        <TextInput
+          accessibilityHint="Accepts up to ten thousand characters for local structural inspection."
+          accessibilityLabel="Returned machine receipt JSON"
+          editable={receipt !== null}
+          maxLength={10000}
+          multiline
+          onChangeText={setReturnedReceiptText}
+          placeholder={receipt ? '{"receiptId":"..."}' : 'Create a local request first'}
+          placeholderTextColor={colors.subtle}
+          spellCheck={false}
+          style={[styles.returnInput, receipt === null && styles.inputLocked]}
+          value={returnedReceiptText}
+        />
+
+        {importError ? (
+          <Text accessibilityLiveRegion="assertive" style={styles.importError}>
+            {importError}
+          </Text>
+        ) : null}
+
+        <Pressable
+          accessibilityHint="Inspects an untrusted local receipt without contacting a relay."
+          accessibilityLabel="Inspect untrusted local receipt"
+          accessibilityRole="button"
+          accessibilityState={{
+            disabled: receipt === null || returnedReceiptText.trim().length === 0
+          }}
+          disabled={receipt === null || returnedReceiptText.trim().length === 0}
+          onPress={inspectReturnedReceipt}
+          style={[
+            styles.inspectButton,
+            (receipt === null || returnedReceiptText.trim().length === 0) &&
+              styles.primaryButtonDisabled
+          ]}
+        >
+          <MaterialCommunityIcons color={colors.actionText} name="text-box-search-outline" size={20} />
+          <Text style={styles.inspectButtonText}>Inspect local receipt</Text>
+        </Pressable>
 
         <Text style={styles.returnLead}>
           {returnReceiptCorrelation?.proofBoundary ??
@@ -609,6 +725,42 @@ const styles = StyleSheet.create({
     paddingVertical: 6
   },
   pendingBadgeText: { color: colors.warning, fontSize: 11, fontWeight: '800' },
+  manualBoundary: {
+    backgroundColor: colors.warningSoft,
+    borderColor: colors.warning,
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 4,
+    marginTop: 14,
+    padding: 10
+  },
+  manualBoundaryTitle: { color: colors.warning, fontSize: 12, fontWeight: '800' },
+  manualBoundaryText: { color: colors.muted, fontSize: 12, lineHeight: 18 },
+  returnInput: {
+    backgroundColor: colors.elevated,
+    borderColor: colors.border,
+    borderRadius: 8,
+    borderWidth: 1,
+    color: colors.ink,
+    fontFamily: 'monospace',
+    fontSize: 12,
+    marginTop: 12,
+    minHeight: 128,
+    padding: 10,
+    textAlignVertical: 'top'
+  },
+  importError: { color: colors.warning, fontSize: 12, fontWeight: '800', marginTop: 8 },
+  inspectButton: {
+    alignItems: 'center',
+    backgroundColor: colors.secondary,
+    borderRadius: 8,
+    flexDirection: 'row',
+    gap: 8,
+    justifyContent: 'center',
+    marginTop: 10,
+    minHeight: 48
+  },
+  inspectButtonText: { color: colors.actionText, fontSize: 14, fontWeight: '800' },
   returnLead: { color: colors.ink, fontSize: 15, fontWeight: '800', lineHeight: 21, marginTop: 14 },
   returnRail: {
     borderLeftColor: colors.warning,
