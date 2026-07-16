@@ -3,10 +3,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Card } from '../components/Card';
 import { MetricTile } from '../components/MetricTile';
+import { getCommittedFlockEvidence } from '../data/flockRelay';
 import { bridgeRoutes, dispatchEvents, fixtureMetadata } from '../data/werkles';
 import { colors } from '../theme';
 
 const sampleQueued = bridgeRoutes.reduce((total, route) => total + route.sampleQueued, 0);
+const flockEvidence = getCommittedFlockEvidence(new Date());
 
 export function DashboardScreen() {
   return (
@@ -24,6 +26,39 @@ export function DashboardScreen() {
         <MetricTile label="Sample queue" tone="route" value={String(sampleQueued)} />
         <MetricTile label="Live proof" tone="warning" value="0" />
       </View>
+
+      <Card>
+        <View style={styles.cardHeader}>
+          <View style={styles.cardHeaderCopy}>
+            <Text style={styles.sectionTitle}>Flock committed evidence</Text>
+            <Text style={styles.sectionCaption}>Dated repository snapshots — never live health</Text>
+          </View>
+          <MaterialCommunityIcons color={colors.warning} name="database-clock-outline" size={24} />
+        </View>
+
+        <View style={styles.evidenceList}>
+          {flockEvidence.map((record) => (
+            <View key={record.id} style={styles.evidenceRow}>
+              <View style={styles.evidenceHeader}>
+                <Text style={styles.eventTitle}>{record.title}</Text>
+                <Text style={styles.evidenceTruth}>SNAPSHOT · NOT LIVE</Text>
+              </View>
+              <Text style={styles.evidenceSummary}>{record.summary}</Text>
+              <Text selectable style={styles.evidenceSource}>
+                {record.sourcePath} @ {record.sourceBlob}
+              </Text>
+              {record.supportingSource ? (
+                <Text selectable style={styles.evidenceSource}>
+                  Supports: {record.supportingSource.path} @ {record.supportingSource.blob}
+                </Text>
+              ) : null}
+              <Text style={styles.evidenceAge}>
+                Observed {record.observedAt} · {record.ageDays} days old · {record.freshness}
+              </Text>
+            </View>
+          ))}
+        </View>
+      </Card>
 
       <Card>
         <View style={styles.cardHeader}>
@@ -79,6 +114,20 @@ const styles = StyleSheet.create({
   cardHeaderCopy: { flex: 1 },
   sectionTitle: { color: colors.ink, fontSize: 20, fontWeight: '800' },
   sectionCaption: { color: colors.muted, fontSize: 13, lineHeight: 19, marginTop: 2 },
+  evidenceList: { gap: 12 },
+  evidenceRow: {
+    backgroundColor: colors.elevated,
+    borderColor: colors.border,
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 6,
+    padding: 12
+  },
+  evidenceHeader: { alignItems: 'flex-start', gap: 6 },
+  evidenceTruth: { color: colors.warning, fontSize: 11, fontWeight: '800' },
+  evidenceSummary: { color: colors.ink, fontSize: 13, lineHeight: 19 },
+  evidenceSource: { color: colors.muted, fontFamily: 'monospace', fontSize: 10, lineHeight: 15 },
+  evidenceAge: { color: colors.warning, fontSize: 11, fontWeight: '800' },
   eventList: { gap: 12 },
   eventRow: { alignItems: 'center', flexDirection: 'row', gap: 12 },
   eventMarker: {
