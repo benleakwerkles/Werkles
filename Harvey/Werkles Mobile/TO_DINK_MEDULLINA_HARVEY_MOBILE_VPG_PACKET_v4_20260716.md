@@ -38,4 +38,12 @@ Move Access and Duck draft/session state to the app shell so local receipts, inp
 
 Malformed, oversized, mismatched, duplicate, backward, and post-terminal receipt attempts cannot advance proof. Navigation cannot erase a valid local session. Return exact blobs and final exact-head cloud verification.
 
-Status: ROOT EXECUTION STARTED.
+## G receipts
+
+- Bounded receipt parser: `337344900fbc27a324bf9969fe09db4f8ec87380`
+- Stateful untrusted Access lab: `3a47c18ca4a7162d36aff668e4a58bfd783579b7`
+- Persistent Duck screen contract: `6424bf5ca8946b540fd6147e0e413403f6f660dc`
+- App-shell session persistence: `f480a31a7b9b58f40b499e32de00fa9aafb0f65b`
+- First full execution verification: Actions run `29522155655`, SUCCESS at `107edc0e48da74e6568683dd43f0a2564fb4ec96`.
+
+Status: ROOT EXECUTION COMPLETE.
