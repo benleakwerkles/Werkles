@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { AccessScreen } from './src/screens/AccessScreen';
 import { DashboardScreen } from './src/screens/DashboardScreen';
 import { DuckScreen } from './src/screens/DuckScreen';
 import { RoutesScreen } from './src/screens/RoutesScreen';
 import { colors } from './src/theme';
 
-type TabKey = 'dashboard' | 'duck' | 'routes';
+type TabKey = 'dashboard' | 'duck' | 'routes' | 'access';
 
 const tabs: Array<{
   key: TabKey;
@@ -24,26 +25,25 @@ const tabs: Array<{
 }> = [
   { key: 'dashboard', label: 'Ops', icon: 'view-dashboard-outline' },
   { key: 'duck', label: 'Duck', icon: 'duck' },
-  { key: 'routes', label: 'Routes', icon: 'source-branch' }
+  { key: 'routes', label: 'Routes', icon: 'source-branch' },
+  { key: 'access', label: 'Access', icon: 'shield-key-outline' }
 ];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>('dashboard');
-  const CurrentScreen = useMemo(() => {
-    if (activeTab === 'duck') {
-      return <DuckScreen />;
-    }
+  let currentScreen = <DashboardScreen />;
 
-    if (activeTab === 'routes') {
-      return <RoutesScreen />;
-    }
-
-    return <DashboardScreen />;
-  }, [activeTab]);
+  if (activeTab === 'duck') {
+    currentScreen = <DuckScreen />;
+  } else if (activeTab === 'routes') {
+    currentScreen = <RoutesScreen />;
+  } else if (activeTab === 'access') {
+    currentScreen = <AccessScreen />;
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <View style={styles.appShell}>
         <View style={styles.header}>
           <View>
@@ -56,7 +56,7 @@ export default function App() {
           </View>
         </View>
 
-        <ScrollView contentContainerStyle={styles.content}>{CurrentScreen}</ScrollView>
+        <ScrollView contentContainerStyle={styles.content}>{currentScreen}</ScrollView>
 
         <View style={styles.tabBar}>
           {tabs.map((tab) => {
@@ -64,7 +64,7 @@ export default function App() {
 
             return (
               <Pressable
-                accessibilityRole="button"
+                accessibilityRole="tab"
                 accessibilityState={{ selected }}
                 key={tab.key}
                 onPress={() => setActiveTab(tab.key)}
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   statusDot: {
-    backgroundColor: colors.success,
+    backgroundColor: colors.warning,
     borderRadius: 999,
     height: 8,
     width: 8

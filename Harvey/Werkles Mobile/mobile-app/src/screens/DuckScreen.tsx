@@ -31,11 +31,11 @@ export function DuckScreen() {
 
         <View style={styles.actions}>
           <Pressable accessibilityRole="button" style={styles.secondaryButton}>
-            <MaterialCommunityIcons color={colors.accent} name="content-save-outline" size={20} />
+            <MaterialCommunityIcons color={colors.actionText} name="content-save-outline" size={20} />
             <Text style={styles.secondaryButtonText}>Stage</Text>
           </Pressable>
           <Pressable accessibilityRole="button" style={styles.primaryButton}>
-            <MaterialCommunityIcons color={colors.surface} name="send-check-outline" size={20} />
+            <MaterialCommunityIcons color={colors.actionText} name="send-check-outline" size={20} />
             <Text style={styles.primaryButtonText}>Dispatch</Text>
           </Pressable>
         </View>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   input: {
-    backgroundColor: '#F1EEE8',
+    backgroundColor: colors.elevated,
     borderColor: colors.border,
     borderRadius: 8,
     borderWidth: 1,
@@ -99,13 +99,13 @@ const styles = StyleSheet.create({
     minHeight: 48
   },
   primaryButtonText: {
-    color: colors.surface,
+    color: colors.actionText,
     fontSize: 15,
     fontWeight: '800'
   },
   secondaryButton: {
     alignItems: 'center',
-    backgroundColor: colors.accentSoft,
+    backgroundColor: colors.secondary,
     borderRadius: 8,
     flex: 1,
     flexDirection: 'row',
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     minHeight: 48
   },
   secondaryButtonText: {
-    color: colors.accent,
+    color: colors.actionText,
     fontSize: 15,
     fontWeight: '800'
   },

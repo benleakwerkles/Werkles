@@ -21,7 +21,7 @@ export function DashboardScreen() {
             <Text style={styles.sectionTitle}>Dispatch history</Text>
             <Text style={styles.sectionCaption}>Latest bridge events</Text>
           </View>
-          <MaterialCommunityIcons color={colors.accent} name="timeline-clock" size={24} />
+          <MaterialCommunityIcons color={colors.accentBright} name="timeline-clock" size={24} />
         </View>
 
         <View style={styles.eventList}>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     gap: 12
   },
   eventMarker: {
-    backgroundColor: colors.accent,
+    backgroundColor: colors.accentBright,
     borderRadius: 999,
     height: 10,
     width: 10
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   eventState: {
-    color: colors.accent,
+    color: colors.accentBright,
     fontSize: 13,
     fontWeight: '800'
   }
