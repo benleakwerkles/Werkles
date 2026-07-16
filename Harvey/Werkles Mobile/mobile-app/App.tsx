@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { initialFlockProofLifecycle } from './src/data/flockProof';
+import type { FlockProofLifecycle } from './src/data/flockProof';
+import type { LocalDuckDraftReceipt } from './src/data/duckDraft';
+import type { SshOnboardingReceipt } from './src/data/sshOnboarding';
 import { AccessScreen } from './src/screens/AccessScreen';
 import { DashboardScreen } from './src/screens/DashboardScreen';
 import { DuckScreen } from './src/screens/DuckScreen';
@@ -31,14 +35,56 @@ const tabs: Array<{
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>('dashboard');
+  const [machineName, setMachineName] = useState('Doss');
+  const [accessReceipt, setAccessReceipt] =
+    useState<SshOnboardingReceipt | null>(null);
+  const [returnedReceiptText, setReturnedReceiptText] = useState('');
+  const [returnedMachineReceipt, setReturnedMachineReceipt] =
+    useState<unknown>(null);
+  const [flockProofLifecycle, setFlockProofLifecycle] =
+    useState<FlockProofLifecycle>(initialFlockProofLifecycle);
+  const [accessImportError, setAccessImportError] =
+    useState<string | null>(null);
+  const [duckPayload, setDuckPayload] = useState(
+    '{"work":"sync","priority":"normal","source":"harvey-mobile"}'
+  );
+  const [duckDraftReceipt, setDuckDraftReceipt] =
+    useState<LocalDuckDraftReceipt | null>(null);
+  const [duckValidationError, setDuckValidationError] =
+    useState<string | null>(null);
+
   let currentScreen = <DashboardScreen />;
 
   if (activeTab === 'duck') {
-    currentScreen = <DuckScreen />;
+    currentScreen = (
+      <DuckScreen
+        draftReceipt={duckDraftReceipt}
+        payload={duckPayload}
+        setDraftReceipt={setDuckDraftReceipt}
+        setPayload={setDuckPayload}
+        setValidationError={setDuckValidationError}
+        validationError={duckValidationError}
+      />
+    );
   } else if (activeTab === 'routes') {
     currentScreen = <RoutesScreen />;
   } else if (activeTab === 'access') {
-    currentScreen = <AccessScreen />;
+    currentScreen = (
+      <AccessScreen
+        flockProofLifecycle={flockProofLifecycle}
+        importError={accessImportError}
+        machineName={machineName}
+        receipt={accessReceipt}
+        returnedMachineReceipt={returnedMachineReceipt}
+        returnedReceiptText={returnedReceiptText}
+        setFlockProofLifecycle={setFlockProofLifecycle}
+        setImportError={setAccessImportError}
+        setMachineName={setMachineName}
+        setReceipt={setAccessReceipt}
+        setReturnedMachineReceipt={setReturnedMachineReceipt}
+        setReturnedReceiptText={setReturnedReceiptText}
+      />
+    );
   }
 
   return (
