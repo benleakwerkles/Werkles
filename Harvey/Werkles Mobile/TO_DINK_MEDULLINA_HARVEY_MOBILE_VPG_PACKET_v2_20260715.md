@@ -1,6 +1,6 @@
 # Dink @ Medullina — Harvey Mobile Cloud V/P/G Packet v2
 
-Status: READY FOR ROOT EXECUTION
+Status: EXECUTED / CLOUD RECEIPT VERIFIED
 Packet ID: TO_DINK_MEDULLINA_HARVEY_MOBILE_VPG_PACKET_v2_20260715
 Generated: 2026-07-15 America/New_York
 
@@ -64,3 +64,37 @@ Acceptance:
 ## Required receipt
 
 Return packet path/blob, selected ideas, files/commits, cloud check status, proof boundaries, and blockers.
+
+## G — execution receipt
+
+Selected ideas:
+
+1. Truth pass across Ops, Routes, and Duck.
+2. Harvey Mobile cloud verification workflow.
+
+Cloud commits and files:
+
+- 80973b36f3eb — src/data/werkles.ts
+- 92cf4b22ac57 — src/screens/DashboardScreen.tsx
+- 09b8d8b60752 — src/screens/RoutesScreen.tsx
+- c4f4417a0735 — src/screens/DuckScreen.tsx
+- 603d4093e6b0 — .github/workflows/harvey-mobile-verify.yml
+- 9a5f44e38293 — package.json lint compatibility pin
+- ea057dd372d1 — .eslintrc.js substantive-lint policy
+- 1c6cc8c5d205 — Access icon type correction
+
+Verified result:
+
+- Workflow: Harvey Mobile Verify
+- Run: 29470906287
+- Head: 1c6cc8c5d2050bd091a67bd09b93dd33184dd4b9
+- Conclusion: SUCCESS
+- Install dependencies: SUCCESS
+- Lint Harvey Mobile: SUCCESS
+- Typecheck Harvey Mobile: SUCCESS
+- Local source checkout: NONE
+- Main merge/deploy: NOT PERFORMED
+
+Proof boundary:
+
+Sample routes, queues, latencies, and timeline events are explicitly labeled SAMPLE_NOT_LIVE. Duck can create only an in-memory LOCAL_DRAFT_NOT_DISPATCHED receipt. No bridge transport or live Flock health is claimed.
