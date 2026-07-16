@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import {
   AccessibilityInfo,
   Pressable,
@@ -14,12 +14,23 @@ import { createLocalDuckDraftReceipt } from '../data/duckDraft';
 import type { LocalDuckDraftReceipt } from '../data/duckDraft';
 import { colors } from '../theme';
 
-export function DuckScreen() {
-  const [payload, setPayload] = useState(
-    '{"work":"sync","priority":"normal","source":"harvey-mobile"}'
-  );
-  const [draftReceipt, setDraftReceipt] = useState<LocalDuckDraftReceipt | null>(null);
-  const [validationError, setValidationError] = useState<string | null>(null);
+type DuckScreenProps = Readonly<{
+  payload: string;
+  setPayload: Dispatch<SetStateAction<string>>;
+  draftReceipt: LocalDuckDraftReceipt | null;
+  setDraftReceipt: Dispatch<SetStateAction<LocalDuckDraftReceipt | null>>;
+  validationError: string | null;
+  setValidationError: Dispatch<SetStateAction<string | null>>;
+}>;
+
+export function DuckScreen({
+  payload,
+  setPayload,
+  draftReceipt,
+  setDraftReceipt,
+  validationError,
+  setValidationError
+}: DuckScreenProps) {
 
   const canStage = payload.trim().length > 0 && draftReceipt === null;
 
