@@ -48,6 +48,12 @@ export const canonicalSshTarget = {
   remote: 'git@github-benleakwerkles:benleakwerkles/Werkles.git'
 } as const;
 
+export type MachineNameValidation = Readonly<{
+  normalized: string;
+  isValid: boolean;
+  issue: string | null;
+}>;
+
 export type SshTargetIdentity = Readonly<{
   githubAccount: string;
   repository: string;
@@ -80,6 +86,7 @@ export type SshOnboardingReceipt = Readonly<{
   requestId: string;
   createdAt: string;
   machineName: string;
+  keyTitle: string;
   githubAccount: typeof canonicalSshTarget.account;
   repository: typeof canonicalSshTarget.repository;
   hostAlias: typeof canonicalSshTarget.hostAlias;
@@ -99,6 +106,7 @@ export type SshOnboardingReturnReceipt = Readonly<{
   source: string;
   evidenceReference: string;
   machineName: string;
+  keyTitle: string;
   githubAccount: string;
   repository: string;
   hostAlias: string;
@@ -181,6 +189,7 @@ const allowedReturnReceiptKeys = [
   'source',
   'evidenceReference',
   'machineName',
+  'keyTitle',
   'githubAccount',
   'repository',
   'hostAlias',
@@ -244,6 +253,7 @@ export function correlateReturnReceipt(
     source,
     evidenceReference,
     machineName,
+    keyTitle,
     githubAccount,
     repository,
     hostAlias,
@@ -271,8 +281,11 @@ export function correlateReturnReceipt(
   if (!isBoundedString(evidenceReference, 240)) {
     issues.push('evidenceReference is required and must be 240 characters or fewer.');
   }
-  if (!isBoundedString(machineName, 80) || machineName !== request.machineName) {
+  if (!isBoundedString(machineName, 64) || machineName !== request.machineName) {
     issues.push('machineName does not match the active local request.');
+  }
+  if (!isBoundedString(keyTitle, 120) || keyTitle !== request.keyTitle) {
+    issues.push('keyTitle does not match the active local request.');
   }
   if (githubAccount !== request.githubAccount) {
     issues.push('githubAccount does not match the expected target.');
@@ -315,6 +328,7 @@ export function correlateReturnReceipt(
     source: source as string,
     evidenceReference: evidenceReference as string,
     machineName: machineName as string,
+    keyTitle: keyTitle as string,
     githubAccount: githubAccount as string,
     repository: repository as string,
     hostAlias: hostAlias as string,
@@ -344,15 +358,40 @@ export function toMachineIdentityObservation(
   });
 }
 
+export function validateMachineName(machineName: string): MachineNameValidation {
+  const normalized = machineName.trim().replace(/\s+/g, ' ');
+  let issue: string | null = null;
+
+  if (normalized.length < 2 || normalized.length > 64) {
+    issue = 'Use 2 to 64 characters for the machine name.';
+  } else if (!/^[A-Za-z0-9](?:[A-Za-z0-9 ._-]*[A-Za-z0-9])?$/.test(normalized)) {
+    issue = 'Use letters, numbers, spaces, dots, underscores, or hyphens; start and end with a letter or number.';
+  }
+
+  return Object.freeze({ normalized, isValid: issue === null, issue });
+}
+
+export function createSshKeyTitle(machineName: string, createdAt: Date): string {
+  const validation = validateMachineName(machineName);
+
+  if (!validation.isValid) {
+    throw new Error(validation.issue ?? 'Machine name is invalid.');
+  }
+
+  return 'Harvey · ' + validation.normalized + ' · ' + createdAt.toISOString().slice(0, 10);
+}
+
 export function createSshOnboardingReceipt(
   machineName: string,
   createdAt: Date
 ): SshOnboardingReceipt {
-  const normalizedMachineName = machineName.trim();
+  const validation = validateMachineName(machineName);
 
-  if (!normalizedMachineName) {
-    throw new Error('Machine name is required to create an onboarding receipt.');
+  if (!validation.isValid) {
+    throw new Error(validation.issue ?? 'Machine name is invalid.');
   }
+
+  const normalizedMachineName = validation.normalized;
 
   const machineId = normalizedMachineName
     .toLowerCase()
@@ -364,6 +403,7 @@ export function createSshOnboardingReceipt(
     requestId: `harvey-ssh-${machineId || 'machine'}-${timestampId}`,
     createdAt: createdAt.toISOString(),
     machineName: normalizedMachineName,
+    keyTitle: createSshKeyTitle(normalizedMachineName, createdAt),
     githubAccount: canonicalSshTarget.account,
     repository: canonicalSshTarget.repository,
     hostAlias: canonicalSshTarget.hostAlias,
