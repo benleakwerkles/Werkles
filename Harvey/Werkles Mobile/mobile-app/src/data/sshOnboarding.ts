@@ -41,6 +41,35 @@ export const proofStatePresentation: Record<
   }
 };
 
+export const canonicalSshTarget = {
+  account: 'benleakwerkles',
+  repository: 'benleakwerkles/Werkles',
+  hostAlias: 'github-benleakwerkles',
+  remote: 'git@github-benleakwerkles:benleakwerkles/Werkles.git'
+} as const;
+
+export type SshTargetIdentity = Readonly<{
+  githubAccount: string;
+  repository: string;
+  hostAlias: string;
+  remote: string;
+}>;
+
+export type CanonicalIdentityField = keyof SshTargetIdentity;
+
+export type CanonicalIdentityMismatch = Readonly<{
+  field: CanonicalIdentityField;
+  expected: string;
+  actual: string;
+}>;
+
+export type CanonicalIdentityCheck = Readonly<{
+  status: 'MATCH' | 'MISMATCH';
+  canDispatch: boolean;
+  mismatches: readonly CanonicalIdentityMismatch[];
+  proofBoundary: string;
+}>;
+
 export type SshOnboardingReceipt = Readonly<{
   requestId: string;
   createdAt: string;
@@ -53,6 +82,18 @@ export type SshOnboardingReceipt = Readonly<{
   proofBoundary: string;
 }>;
 
+export type SshOnboardingReturnReceipt = Readonly<{
+  receiptId: string;
+  requestId: string;
+  returnedAt: string;
+  proofState:
+    | 'RECEIVED_NOT_COMPLETED'
+    | 'COMPLETED_RECEIPT_PROVEN'
+    | 'BLOCKER_RECEIPT_PROVEN';
+  source: string;
+  evidence: string;
+}>;
+
 export type SshOnboardingStep = {
   id: 'generate' | 'approve' | 'verify' | 'bind';
   label: string;
@@ -62,12 +103,43 @@ export type SshOnboardingStep = {
   proofRequired: string;
 };
 
-export const canonicalSshTarget = {
-  account: 'benleakwerkles',
-  repository: 'benleakwerkles/Werkles',
-  hostAlias: 'github-benleakwerkles',
-  remote: 'git@github-benleakwerkles:benleakwerkles/Werkles.git'
-} as const;
+export function validateCanonicalSshIdentity(
+  target: SshTargetIdentity
+): CanonicalIdentityCheck {
+  const expectedFields: ReadonlyArray<
+    Readonly<{
+      field: CanonicalIdentityField;
+      expected: string;
+    }>
+  > = [
+    { field: 'githubAccount', expected: canonicalSshTarget.account },
+    { field: 'repository', expected: canonicalSshTarget.repository },
+    { field: 'hostAlias', expected: canonicalSshTarget.hostAlias },
+    { field: 'remote', expected: canonicalSshTarget.remote }
+  ];
+
+  const mismatches = expectedFields.flatMap(({ field, expected }) =>
+    target[field] === expected
+      ? []
+      : [
+          {
+            field,
+            expected,
+            actual: target[field]
+          }
+        ]
+  );
+
+  return Object.freeze({
+    status: mismatches.length === 0 ? 'MATCH' : 'MISMATCH',
+    canDispatch: mismatches.length === 0,
+    mismatches: Object.freeze(mismatches),
+    proofBoundary:
+      mismatches.length === 0
+        ? 'Canonical identity matches locally. No transport or receiver proof exists.'
+        : 'Canonical identity mismatch. Dispatch must remain blocked.'
+  });
+}
 
 export function createSshOnboardingReceipt(
   machineName: string,
