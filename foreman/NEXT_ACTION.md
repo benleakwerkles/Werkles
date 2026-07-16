@@ -53,3 +53,5 @@ None required for the rename. When ready for public matching: await Tier 1 go-li
 ## Hard stops
 
 no push to main | no SQL without approval | no secrets | no Ghost Forge spend | no Stripe live | no public matching flip | no LLM matching enable | no renaming Matching readout back to Speaker
+
+- **2026-07-16:** Matching readout redeploy to production complete; smoke PASS; commit `a2c5a6ca224e925b3c90fbf390808f57c19afdda`; deployment `dpl_Gf6JY5ELSfDnCRUAss3zap7BAz8m`.
