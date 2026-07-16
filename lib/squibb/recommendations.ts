@@ -126,10 +126,10 @@ function baseGates(kind: RecommendationKind): HumanGateRequirement[] {
   const shared: HumanGateRequirement[] = [
     {
       id: "gate-preview",
-      label: "Preview surface only",
+      label: "Recommendation only",
       kind: "none",
       severity: "info",
-      reason: "This deck is static UI. No intros, capital, or contracts move without live gates.",
+      reason: "Nothing here sends an introduction, commits funds, or creates a contract.",
       benMustApprove: false
     }
   ];
@@ -142,15 +142,15 @@ function baseGates(kind: RecommendationKind): HumanGateRequirement[] {
         ...shared,
         {
           id: "gate-petra-capital",
-          label: "Petra GO — capital structure",
+          label: "Capital structure approval",
           kind: "petra_review",
           severity: "blocker",
-          reason: "Securities, lending, and ownership moves require Comptroller review.",
+          reason: "Securities, lending, and ownership moves require expert review.",
           benMustApprove: true
         },
         {
           id: "gate-crucible-financial",
-          label: "Crucible proof — financial claims",
+          label: "Financial claims verification",
           kind: "crucible_proof",
           severity: "warning",
           reason: "Revenue, liquidity, and business-stage claims must be verified before lender intro.",
@@ -163,10 +163,10 @@ function baseGates(kind: RecommendationKind): HumanGateRequirement[] {
         ...shared,
         {
           id: "gate-human-read",
-          label: "Human read before dispatch",
+          label: "Human review before action",
           kind: "operator_approval",
           severity: "warning",
-          reason: "The packet can be staged, but a human chooses whether it becomes an intro, task, or proof request.",
+          reason: "A human must choose whether this becomes an introduction, task, or request for evidence.",
           benMustApprove: true
         }
       ];
@@ -176,10 +176,10 @@ function baseGates(kind: RecommendationKind): HumanGateRequirement[] {
         ...shared,
         {
           id: "gate-operator-intro",
-          label: "Operator approval — guarded intro",
+          label: "Your approval — guarded introduction",
           kind: "operator_approval",
           severity: "warning",
-          reason: "Warm intros and partnership conversations require Ben approval in preview.",
+          reason: "Warm introductions and partnership conversations require your approval.",
           benMustApprove: true
         },
         {
@@ -198,10 +198,10 @@ function baseGates(kind: RecommendationKind): HumanGateRequirement[] {
         ...shared,
         {
           id: "gate-operator-career",
-          label: "Operator judgment — career move",
+          label: "Your judgment — career move",
           kind: "operator_approval",
           severity: "warning",
-          reason: "Job change vs stay-put tradeoffs are human judgment calls Squibb cannot close.",
+          reason: "Job change versus staying put is a human judgment call Werkles cannot make for you.",
           benMustApprove: true
         }
       ];
@@ -218,7 +218,7 @@ function makeRecommendation(
   return {
     kind,
     rank,
-    suggestedAgent: "Squibb (scout) → Operator",
+    suggestedAgent: "Werkles recommendation guide",
     keepOriginalPathLabel: "Keep original path",
     humanGates: baseGates(kind),
     ...overrides
@@ -246,16 +246,16 @@ const rankedDeck: SquibbRecommendation[] = [
     confidence: {
       score: 78,
       label: "high",
-      why: "Named asset, price band, and seller contact are present in operator context."
+      why: "Named asset, price band, and seller contact are present in the information provided."
     },
     evidence: [
-      { id: "e1", label: "Oven quote $42k–$48k (self-reported)", strength: "self_reported", source: "Operator intake" },
+      { id: "e1", label: "Oven quote $42k–$48k (self-reported)", strength: "self_reported", source: "Your intake" },
       { id: "e2", label: "Seller business listing found", strength: "inferred", source: "Public listing" },
       { id: "e3", label: "Revenue history for bakery", strength: "missing" },
       { id: "e4", label: "Equipment inspection report", strength: "missing" }
     ],
-    suggestedAgent: "Operator + Dink (local verification)",
-    suggestedTool: "Crucible — equipment seller check",
+    suggestedAgent: "Werkles guide + local specialist",
+    suggestedTool: "Equipment seller check",
     humanGates: [
       ...baseGates("find_equipment"),
       {
@@ -263,7 +263,7 @@ const rankedDeck: SquibbRecommendation[] = [
         label: "Financial commitment — equipment purchase",
         kind: "financial_commitment",
         severity: "blocker",
-        reason: "No deposit or purchase without Operator approval and verified seller.",
+        reason: "No deposit or purchase without your approval and a verified seller.",
         benMustApprove: true
       }
     ]
@@ -289,12 +289,12 @@ const rankedDeck: SquibbRecommendation[] = [
       why: "Structure fits, but liquidity band and personal guarantee appetite are unverified."
     },
     evidence: [
-      { id: "e5", label: "Operator lane: Builder / Operator mix", strength: "self_reported" },
+      { id: "e5", label: "Working style: Builder / hands-on operator", strength: "self_reported" },
       { id: "e6", label: "Liquidity band verified", strength: "missing" },
       { id: "e7", label: "Local CU programs researched", strength: "inferred" }
     ],
-    suggestedAgent: "Thufir (research) → Operator",
-    suggestedTool: "Bellows — CU equipment checklist",
+    suggestedAgent: "Werkles research guide",
+    suggestedTool: "Credit union equipment checklist",
     humanGates: baseGates("find_credit_union")
   }),
   makeRecommendation("get_training", 3, {
@@ -321,14 +321,14 @@ const rankedDeck: SquibbRecommendation[] = [
       { id: "e8", label: "First commercial kitchen (self-reported)", strength: "self_reported" },
       { id: "e9", label: "Prior production volume", strength: "missing" }
     ],
-    suggestedAgent: "Ender (curriculum) + Bellows",
-    suggestedTool: "Bellows SOP lane"
+    suggestedAgent: "Training planner",
+    suggestedTool: "Training plan"
   })
 ];
 
 export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: string): SquibbRecommendation[] {
   const sourceEvidence: EvidenceItem[] = [
-    { id: "live-intake-source", label: "Latest Bellows intake packet", strength: "self_reported", source: "Bellows intake" },
+    { id: "live-intake-source", label: "Latest intake", strength: "self_reported", source: "Your intake" },
     { id: "live-human-translation", label: "Human translation not completed", strength: "missing" },
     { id: "live-third-party-proof", label: "Third-party proof not attached", strength: "missing" }
   ];
@@ -342,10 +342,10 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
         "Squibb: The stated ask is source material, not the verdict. Translate it before anyone starts shopping for a solution.",
       reasoning: {
         statedNeed,
-        translatedNeed: "Human-readable bottleneck statement from the latest Bellows intake.",
+        translatedNeed: "Human-readable bottleneck statement from the latest intake.",
         rationale: [
           "The intake is symptom-only by design, so the first action is translation rather than matching.",
-          "A translated bottleneck gives Petra, Skybro, or Maker something concrete to critique.",
+          "A translated bottleneck gives reviewers something concrete to critique.",
           "This prevents the first packet from becoming an unearned intro, funding ask, or vendor hunt."
         ],
         counterpoint: symptomBlock
@@ -358,8 +358,8 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
         why: "A current intake exists, but the translation slot is still open."
       },
       evidence: sourceEvidence,
-      suggestedAgent: "Speaker + Petra/Skybro human read",
-      suggestedTool: "Bellows intake translation packet",
+      suggestedAgent: "Human review",
+      suggestedTool: "Intake summary",
       keepOriginalPathLabel: "Keep raw intake only"
     }),
     makeRecommendation("verify_proof", 2, {
@@ -383,8 +383,8 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
         why: "The need is present, but the exact proof target still needs a human read."
       },
       evidence: sourceEvidence,
-      suggestedAgent: "Petra (proof framing) + Dink (file readback)",
-      suggestedTool: "Crucible proof request",
+      suggestedAgent: "Evidence review",
+      suggestedTool: "Evidence request",
       keepOriginalPathLabel: "Skip proof packet for now"
     }),
     makeRecommendation("stage_intro_candidate", 3, {
@@ -408,8 +408,8 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
         why: "Candidate staging is useful, but premature until translation and proof gaps are visible."
       },
       evidence: sourceEvidence,
-      suggestedAgent: "Skybro/Petra option packet -> Operator",
-      suggestedTool: "Guarded candidate packet",
+      suggestedAgent: "Candidate review",
+      suggestedTool: "Candidate information",
       keepOriginalPathLabel: "Do not stage candidate"
     })
   ];
@@ -423,27 +423,27 @@ const catalogDeck: SquibbRecommendation[] = (
   return makeRecommendation(kind, index + 1, {
     id: `catalog-${kind}`,
     title: label,
-    headline: `Template surface for “${label.toLowerCase()}” recommendations.`,
-    squibbNote: `Squibb: This is a ${label.toLowerCase()} card shape — not a live ranking.`,
+    headline: `Consider whether “${label.toLowerCase()}” fits your situation.`,
+    squibbNote: `Squibb: This is one option to consider — not a decision made for you.`,
     reasoning: {
       statedNeed: DEMO_STATED_NEED,
       rationale: [
-        `Shows how Squibb would frame a ${label.toLowerCase()} move.`,
+        `Frames ${label.toLowerCase()} as one possible next step.`,
         "Reasoning stays evidence-led; Squibb widens the map without deciding.",
-        "Replace with live context when Layer 0 translation ships."
+        "Ground this option in your intake before acting."
       ]
     },
     confidence: {
       score: 40 + (index % 3) * 15,
       label: index % 3 === 0 ? "low" : index % 3 === 1 ? "medium" : "high",
-      why: "Catalog template — confidence reflects exemplar only."
+      why: "This example is not yet grounded in your intake."
     },
     evidence: [
-      { id: `${kind}-ev-1`, label: "Operator stated need on file", strength: "self_reported" },
-      { id: `${kind}-ev-2`, label: "Crucible verification", strength: "missing" },
+      { id: `${kind}-ev-1`, label: "Your stated need on file", strength: "self_reported" },
+      { id: `${kind}-ev-2`, label: "Verification step", strength: "missing" },
       { id: `${kind}-ev-3`, label: "Third-party proof", strength: "missing" }
     ],
-    suggestedAgent: "Squibb (scout) → Operator",
+    suggestedAgent: "Werkles recommendation guide",
     keepOriginalPathLabel: "Ignore this option"
   });
 });
@@ -452,7 +452,7 @@ export function loadSquibbRecommendationSession(): SquibbRecommendationSession {
   return {
     version: "v1",
     statedNeed: DEMO_STATED_NEED,
-    operatorContext: "Builder lane · first commercial bakery · preview operator profile",
+    operatorContext: "First commercial bakery · equipment financing decision",
     squibbIntro:
       "Squibb notices what is easy to miss. These are ranked options — not orders. You hold the decision.",
     ranked: rankedDeck,

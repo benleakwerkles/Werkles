@@ -14,8 +14,8 @@ export function RecommendationCard({
   compact = false,
   onSelect
 }: RecommendationCardProps) {
-  const { id, rank, title, headline, confidence, humanGates } = recommendation;
-  const benGate = humanGates.some((g) => g.benMustApprove);
+  const { id, rank, title, headline, humanGates } = recommendation;
+  const approvalRequired = humanGates.some((g) => g.benMustApprove);
   const blocked = humanGates.some((g) => g.severity === "blocker");
 
   return (
@@ -29,14 +29,11 @@ export function RecommendationCard({
       <div className="squibb-rec-card__meta">
         {rank > 0 ? <span className="squibb-rec-card__rank">#{rank}</span> : null}
         <span className="squibb-rec-card__kind">{RECOMMENDATION_KIND_LABELS[recommendation.kind]}</span>
-        <span className={`squibb-rec-card__confidence squibb-rec-card__confidence--${confidence.label}`}>
-          {confidence.score}%
-        </span>
       </div>
       <h4 id={`squibb-rec-title-${id}`}>{title}</h4>
       {!compact ? <p>{headline}</p> : null}
       <div className="squibb-rec-card__flags">
-        {benGate ? <span className="squibb-rec-card__flag">Ben must approve</span> : null}
+        {approvalRequired ? <span className="squibb-rec-card__flag">Review required</span> : null}
         {blocked ? <span className="squibb-rec-card__flag squibb-rec-card__flag--blocker">Blocked</span> : null}
       </div>
     </button>

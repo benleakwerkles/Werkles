@@ -3,10 +3,6 @@ import "server-only";
 import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
 import type { BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
 import {
-  loadBellowsPacketLedger,
-  loadSquibbRecommendationSessionForBellows
-} from "@/lib/squibb/recommendation-session-server";
-import {
   loadSquibbRecommendationSession,
   type SquibbRecommendationSession
 } from "@/lib/squibb/recommendations";
@@ -16,7 +12,7 @@ export type PublicBellowsRecommendationPageData = {
   ledger: BellowsPacketLedger;
 };
 
-function closedBetaPageData(): PublicBellowsRecommendationPageData {
+function examplePageData(publicEnabled: boolean): PublicBellowsRecommendationPageData {
   const demo = loadSquibbRecommendationSession();
 
   return {
@@ -24,8 +20,10 @@ function closedBetaPageData(): PublicBellowsRecommendationPageData {
       ...demo,
       source: {
         mode: "demo",
-        label: "Demo scenario",
-        detail: "Personal recommendations are closed while this beta is being tested, so this page uses an example."
+        label: publicEnabled ? "Autonomous Matching example" : "Demo scenario",
+        detail: publicEnabled
+          ? "This public beta uses an example. No personal recommendation is shown until it can be tied to your account."
+          : "Personal recommendations are closed while this beta is being tested, so this page uses an example."
       }
     },
     ledger: {
@@ -35,16 +33,11 @@ function closedBetaPageData(): PublicBellowsRecommendationPageData {
   };
 }
 
-/** Decide OFF before constructing any personal intake, run, or ledger read. */
+/**
+ * Public mode controls product labeling, not permission to read global/latest
+ * member state. Keep this page example-only until authenticated owner binding
+ * can be supplied to every intake, run, and ledger reader.
+ */
 export async function loadPublicBellowsRecommendationPageData(): Promise<PublicBellowsRecommendationPageData> {
-  if (!isMatchingPublicEnabled()) {
-    return closedBetaPageData();
-  }
-
-  const [session, ledger] = await Promise.all([
-    loadSquibbRecommendationSessionForBellows(),
-    loadBellowsPacketLedger()
-  ]);
-
-  return { session, ledger };
+  return examplePageData(isMatchingPublicEnabled());
 }
