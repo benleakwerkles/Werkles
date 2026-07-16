@@ -1,0 +1,44 @@
+name: Harvey Mobile Verify
+
+on:
+  push:
+    branches:
+      - codex/cloud-harvey-mobile-vpg-20260715
+    paths:
+      - "Harvey/Werkles Mobile/mobile-app/**"
+      - ".github/workflows/harvey-mobile-verify.yml"
+  pull_request:
+    paths:
+      - "Harvey/Werkles Mobile/mobile-app/**"
+      - ".github/workflows/harvey-mobile-verify.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Lint and typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: "Harvey/Werkles Mobile/mobile-app"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install mobile dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Lint Harvey Mobile
+        run: npm run lint
+
+      - name: Typecheck Harvey Mobile
+        run: npm run typecheck
