@@ -4,23 +4,19 @@ import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { SquibbRecommendationSurface } from "@/components/squibb/recommendation-surface";
 import { copy } from "@/lib/copy";
-import {
-  loadBellowsPacketLedger,
-  loadSquibbRecommendationSessionForBellows
-} from "@/lib/squibb/recommendation-session-server";
+import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-recommendation-session-server";
 
 import "./squibb-recommendations.css";
 
 export const metadata = {
-  title: "Squibb Recommendations | Bellows",
-  description: "Squibb recommendation surface — ranked next steps with reasoning, confidence, proof, and human gates."
+  title: "Werkles Recommendations | Bellows",
+  description: "Compare possible next steps with their reasoning, evidence, limitations, and required human review."
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function SquibbRecommendationsPage() {
-  const [session, ledger] = await Promise.all([
-    loadSquibbRecommendationSessionForBellows(),
-    loadBellowsPacketLedger()
-  ]);
+  const { session, ledger } = await loadPublicBellowsRecommendationPageData();
 
   return (
     <>
