@@ -10,24 +10,9 @@ import {
 } from 'react-native';
 
 import { Card } from '../components/Card';
+import { createLocalDuckDraftReceipt } from '../data/duckDraft';
+import type { LocalDuckDraftReceipt } from '../data/duckDraft';
 import { colors } from '../theme';
-
-type LocalDuckDraftReceipt = Readonly<{
-  requestId: string;
-  createdAt: string;
-  payload: Readonly<Record<string, unknown>>;
-  proofState: 'LOCAL_DRAFT_NOT_DISPATCHED';
-}>;
-
-function parsePayload(payload: string): Readonly<Record<string, unknown>> {
-  const parsed: unknown = JSON.parse(payload);
-
-  if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
-    throw new Error('Payload must be a JSON object.');
-  }
-
-  return Object.freeze(parsed as Record<string, unknown>);
-}
 
 export function DuckScreen() {
   const [payload, setPayload] = useState(
@@ -44,17 +29,7 @@ export function DuckScreen() {
     }
 
     try {
-      const createdAt = new Date();
-      const parsedPayload = parsePayload(payload);
-
-      setDraftReceipt(
-        Object.freeze({
-          requestId: 'duck-local-' + createdAt.getTime().toString(36),
-          createdAt: createdAt.toISOString(),
-          payload: parsedPayload,
-          proofState: 'LOCAL_DRAFT_NOT_DISPATCHED'
-        })
-      );
+      setDraftReceipt(createLocalDuckDraftReceipt(payload, new Date()));
       setValidationError(null);
       AccessibilityInfo.announceForAccessibility(
         'Local Duck draft created. It has not been dispatched.'
@@ -145,7 +120,16 @@ export function DuckScreen() {
             <Text selectable style={styles.receiptValue}>
               {draftReceipt.createdAt}
             </Text>
+            <Text style={styles.receiptLabel}>Top-level keys</Text>
+            <Text selectable style={styles.receiptValue}>
+              {draftReceipt.payloadSummary.topLevelKeys.join(', ') || '(none)'}
+            </Text>
+            <Text style={styles.receiptLabel}>Payload characters</Text>
+            <Text selectable style={styles.receiptValue}>
+              {draftReceipt.payloadSummary.characterCount}
+            </Text>
             <Text style={styles.receiptState}>{draftReceipt.proofState.replace(/_/g, ' ')}</Text>
+            <Text style={styles.receiptBoundary}>{draftReceipt.proofBoundary}</Text>
             <Pressable
               accessibilityLabel="Clear local Duck draft"
               accessibilityRole="button"
@@ -240,8 +224,10 @@ const styles = StyleSheet.create({
     padding: 12
   },
   receiptTitle: { color: colors.ink, fontSize: 14, fontWeight: '800' },
+  receiptLabel: { color: colors.muted, fontSize: 11, fontWeight: '800', marginTop: 3 },
   receiptValue: { color: colors.ink, fontFamily: 'monospace', fontSize: 12, lineHeight: 18 },
   receiptState: { color: colors.warning, fontSize: 11, fontWeight: '800' },
+  receiptBoundary: { color: colors.muted, fontSize: 12, lineHeight: 18 },
   clearButton: { alignItems: 'center', justifyContent: 'center', marginTop: 4, minHeight: 44 },
   clearButtonText: { color: colors.secondaryBright, fontSize: 14, fontWeight: '800' },
   bodyText: { color: colors.muted, fontSize: 15, lineHeight: 22, marginTop: 8 }
