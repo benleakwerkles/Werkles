@@ -5,7 +5,9 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/data/contracts.test.ts",
+    "export:android": "expo export --platform android --output-dir dist/android"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.4",
@@ -20,6 +22,8 @@
     "@types/react": "~18.2.79",
     "eslint": "^8.57.1",
     "typescript": "~5.3.3",
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "@types/node": "^20.19.43",
+    "tsx": "4.23.1"
   }
 }
