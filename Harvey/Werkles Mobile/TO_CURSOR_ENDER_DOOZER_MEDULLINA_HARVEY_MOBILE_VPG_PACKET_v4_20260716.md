@@ -41,4 +41,11 @@ Run an Android Expo/Metro export after lint, tests, and typecheck. Upload the re
 
 A single final SHA must pass install, lint, contract tests, typecheck, and Android export. Return the Actions run and retained artifact proof. No deployment, live dispatch, or device/key mutation.
 
-Status: ROOT EXECUTION STARTED.
+## G receipts
+
+- Deterministic contract suite: `81e121f5e9f3b6d9cdced371358f4922b02a32cc`
+- Pinned test/export scripts: `555f9e9421e54da22cfe193e27f5e31f4b65c5bd`
+- Required Actions ratchet and seven-day artifact: `107edc0e48da74e6568683dd43f0a2564fb4ec96`
+- Actions run `29522155655`: install, lint, contract tests, typecheck, Android export, and artifact upload all SUCCESS.
+
+Status: ROOT EXECUTION COMPLETE.
