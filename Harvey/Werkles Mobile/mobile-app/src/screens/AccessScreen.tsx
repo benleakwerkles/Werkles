@@ -12,9 +12,11 @@ import {
 import { Card } from '../components/Card';
 import {
   canonicalSshTarget,
+  correlateReturnReceipt,
   createSshOnboardingReceipt,
   proofStatePresentation,
   sshOnboardingSteps,
+  toMachineIdentityObservation,
   validateCanonicalSshIdentity
 } from '../data/sshOnboarding';
 import type { SshOnboardingReceipt } from '../data/sshOnboarding';
@@ -26,6 +28,8 @@ const acceptedReturnStates = [
   'BLOCKER_RECEIPT_PROVEN'
 ] as const;
 
+const returnedMachineReceipt: unknown = null;
+
 export function AccessScreen() {
   const [machineName, setMachineName] = useState('Doss');
   const [receipt, setReceipt] = useState<SshOnboardingReceipt | null>(null);
@@ -35,7 +39,15 @@ export function AccessScreen() {
   const proofPresentation = proofStatePresentation[proofState];
   const canStage = normalizedMachineName.length > 0 && receipt === null;
   const keyTitle = `Harvey · ${normalizedMachineName || 'Machine'} · <date>`;
-  const identityCheck = receipt ? validateCanonicalSshIdentity(receipt) : null;
+  const returnReceiptCorrelation = receipt
+    ? correlateReturnReceipt(receipt, returnedMachineReceipt)
+    : null;
+  const identityObservation = returnReceiptCorrelation?.receipt
+    ? toMachineIdentityObservation(returnReceiptCorrelation.receipt)
+    : null;
+  const identityCheck = receipt
+    ? validateCanonicalSshIdentity(receipt, identityObservation)
+    : null;
   const expectedRequestId = receipt?.requestId ?? 'Create a local request first';
 
   function stageRequest() {
@@ -231,7 +243,7 @@ export function AccessScreen() {
           <View style={styles.guardHeader}>
             <View style={styles.guardHeaderCopy}>
               <Text style={styles.gateKicker}>Canonical identity guard</Text>
-              <Text style={styles.sectionTitle}>Ben's Werkles target</Text>
+              <Text style={styles.sectionTitle}>Expected Ben target</Text>
             </View>
             <View
               style={[
@@ -245,9 +257,11 @@ export function AccessScreen() {
                   identityCheck.status === 'MISMATCH' && styles.guardBadgeTextBlocked
                 ]}
               >
-                {identityCheck.status === 'MATCH'
-                  ? 'MATCH · LOCAL CHECK'
-                  : 'MISMATCH · BLOCKED'}
+                {identityCheck.status === 'NOT_OBSERVED'
+                  ? 'EXPECTED · NOT OBSERVED'
+                  : identityCheck.status === 'VERIFIED_MATCH'
+                    ? 'VERIFIED · CORRELATED'
+                    : 'MISMATCH · BLOCKED'}
               </Text>
             </View>
           </View>
@@ -270,8 +284,9 @@ export function AccessScreen() {
             </View>
           ) : (
             <Text style={styles.guardDetail}>
-              Account, repository, SSH alias, and remote match the canonical cloud target. This
-              is not permission to dispatch and is not a machine receipt.
+              {identityCheck.status === 'VERIFIED_MATCH'
+                ? 'A correlated returned receipt matches the active request. This is structural correlation, not cryptographic authenticity.'
+                : 'The expected account, repository, SSH alias, and remote are saved locally. No machine identity has been observed, so dispatch remains blocked.'}
             </Text>
           )}
         </Card>
@@ -284,12 +299,15 @@ export function AccessScreen() {
             <Text style={styles.sectionTitle}>Receiver proof</Text>
           </View>
           <View style={styles.pendingBadge}>
-            <Text style={styles.pendingBadgeText}>NOT RECEIVED</Text>
+            <Text style={styles.pendingBadgeText}>
+              {returnReceiptCorrelation?.status ?? 'NOT_RECEIVED'}
+            </Text>
           </View>
         </View>
 
         <Text style={styles.returnLead}>
-          No machine-agent receipt has returned. Created is not delivered.
+          {returnReceiptCorrelation?.proofBoundary ??
+            'Create a local request before receiver proof can be correlated.'}
         </Text>
 
         <View style={styles.returnRail}>
@@ -301,8 +319,16 @@ export function AccessScreen() {
           </View>
           <View style={styles.receiptRow}>
             <Text style={styles.receiptLabel}>Current receiver state</Text>
-            <Text style={styles.returnPendingValue}>NO RECEIVER PROOF</Text>
+            <Text style={styles.returnPendingValue}>
+              {returnReceiptCorrelation?.status ?? 'NO_ACTIVE_REQUEST'}
+            </Text>
           </View>
+          {returnReceiptCorrelation?.issues.map((issue) => (
+            <View key={issue} style={styles.receiptRow}>
+              <Text style={styles.receiptLabel}>Rejected receipt issue</Text>
+              <Text style={styles.returnPendingValue}>{issue}</Text>
+            </View>
+          ))}
           <View style={styles.receiptRow}>
             <Text style={styles.receiptLabel}>Accepted future states</Text>
             {acceptedReturnStates.map((state) => (
