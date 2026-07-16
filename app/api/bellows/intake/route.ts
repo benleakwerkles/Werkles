@@ -7,7 +7,7 @@ import {
 } from "@/lib/squibb/concierge-intake-v0";
 import { storeSpeakerIntake } from "@/lib/squibb/concierge-intake-storage";
 import { runShadowMatchingFromConcierge, shadowRunSmokeSummary } from "@/lib/matching/shadow-pipeline";
-import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
+import { isMatchingPublicEnabled, matchingPublicModeLabel } from "@/lib/matching/feature-flags";
 
 export const runtime = "nodejs";
 
@@ -49,10 +49,10 @@ export async function POST(request: NextRequest) {
       success: true,
       ...stored,
       shadow_run_id: shadowRun?.runId ?? null,
-      matching_mode: isMatchingPublicEnabled() ? "autonomous" : "shadow",
+      matching_mode: isMatchingPublicEnabled() ? matchingPublicModeLabel() : "shadow",
       ...(shadowRun ? shadowRunSmokeSummary(shadowRun) : {}),
       meaning: isMatchingPublicEnabled()
-        ? "Intake processed. Speaker delivered plain facts; Squibb ranked your paths."
+        ? "Intake processed by Autonomous Matching. Matching readout has the plain facts; Squibb ranked your paths."
         : "Intake saved. Matching engine ran in shadow mode — results visible to operator review."
     });
   } catch (error) {

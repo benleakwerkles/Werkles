@@ -76,7 +76,7 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
       "Werkles ranked these paths from what you entered. They are suggestions, not decisions, verified matches, or guaranteed outcomes.",
     source: {
       mode: "latest_intake",
-      label: "Automated path suggestion — beta",
+      label: "Autonomous Matching",
       detail:
         "The recommendation itself is not a verified match, eligibility or funding decision, introduction, or guaranteed outcome. Evidence labels may be incomplete. Werkles has not sent this to anyone.",
       intakeId: run.intakeId,

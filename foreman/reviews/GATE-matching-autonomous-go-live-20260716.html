@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gate Review — Matching Autonomous Go-Live</title>
+<style>
+  :root { --bg: #0a0a0a; --card: #141414; --border: #262626; --text: #e5e5e5; --muted: #999; --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --blue: #3b82f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+  .subtitle { color: var(--muted); font-size: .875rem; margin-bottom: 2rem; }
+  .badge { display: inline-block; padding: .2rem .6rem; border-radius: 4px; font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+  .badge-tier1 { background: #1e1b4b; color: #818cf8; }
+  .badge-med { background: #1a1a00; color: var(--amber); }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+  .section h2 { font-size: 1rem; margin-bottom: .75rem; color: var(--blue); }
+  .section h3 { font-size: .875rem; margin: .75rem 0 .5rem; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 500; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+  .status-pass { color: var(--green); }
+  .status-warn { color: var(--amber); }
+  .status-blocked { color: var(--red); }
+  .phrase-box { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: .75rem 1rem; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: .85rem; margin: .5rem 0; }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: .25rem; font-size: .85rem; }
+  p { font-size: .875rem; }
+</style>
+</head>
+<body>
+
+<h1>Matching Autonomous Go-Live</h1>
+<p class="subtitle">
+  <span class="badge badge-tier1">Tier 1 — Public exposure</span>
+  <span class="badge badge-med" style="margin-left:.5rem">Confidence: MEDIUM</span>
+  &nbsp;&middot;&nbsp; 2026-07-16
+</p>
+
+<div class="section">
+  <h2>Decision</h2>
+  <p>Flip <code>MATCHING_AUTONOMOUS_PUBLIC</code> to <strong>true</strong> and redeploy production so member-facing intake claims autonomous matching (Matching readout + Squibb), not “operator review first.”</p>
+  <p style="margin-top:.5rem;color:var(--muted)">Engine already runs in shadow on production. This is mostly public-mode labeling + claim strength — not a new matcher. LLM stays OFF.</p>
+</div>
+
+<div class="section">
+  <h2>What changes</h2>
+  <table>
+    <tr><th>Surface</th><th>Today</th><th>After flip</th></tr>
+    <tr><td>Engine on intake</td><td>Runs</td><td>Runs</td></tr>
+    <tr><td>Supabase writes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>API matching_mode</td><td>shadow</td><td>autonomous</td></tr>
+    <tr><td>Member meaning copy</td><td>Operator-review framing</td><td>Engine-ready framing</td></tr>
+    <tr><td>LLM</td><td class="status-blocked">OFF</td><td class="status-blocked">OFF (separate gate)</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Already proven</h2>
+  <table>
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>Production shadow + readout redeploy</td><td class="status-pass">PASS</td></tr>
+    <tr><td>3 golden paths on werkles.com</td><td class="status-pass">PASS</td></tr>
+    <tr><td>Durable supabase storage</td><td class="status-pass">PASS</td></tr>
+    <tr><td>Matching readout rename (not Speaker)</td><td class="status-pass">PASS</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Why MEDIUM confidence</h2>
+  <ul>
+    <li>Data policy V0 asked for member <strong>export + deletion request</strong> before public matching — <span class="status-warn">not built yet</span></li>
+    <li>Only three golden semantic scenarios proven</li>
+    <li>Flip raises public claim strength on existing engine output</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>If approved — mechanical sequence</h2>
+  <ol style="padding-left:1.25rem;font-size:.85rem">
+    <li>Set <code>MATCHING_AUTONOMOUS_PUBLIC = true</code></li>
+    <li>Commit + push isolated flip slice</li>
+    <li>Clean worktree <code>vercel deploy --prod</code></li>
+    <li>Live smoke on werkles.com</li>
+    <li>Receipt; hold LLM OFF</li>
+  </ol>
+</div>
+
+<div class="section">
+  <h2>Approval</h2>
+  <h3>Approve</h3>
+  <div class="phrase-box">APPROVE MATCHING AUTONOMOUS GO-LIVE</div>
+  <h3>Approve with conditions</h3>
+  <div class="phrase-box">APPROVE MATCHING AUTONOMOUS GO-LIVE WITH CONDITIONS: &lt;conditions&gt;</div>
+  <h3>Reject</h3>
+  <div class="phrase-box">REJECT MATCHING AUTONOMOUS GO-LIVE</div>
+  <h3>Patch</h3>
+  <div class="phrase-box">PATCH MATCHING AUTONOMOUS GO-LIVE: &lt;instructions&gt;</div>
+</div>
+
+</body>
+</html>

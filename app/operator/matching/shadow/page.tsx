@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
   title: "Matching Shadow | Werkles",
 
-  description: "Operator review of autonomous matching engine shadow runs.",
+  description: "Operator review of Autonomous Matching shadow runs.",
 
   robots: { index: false, follow: false }
 
@@ -62,7 +62,7 @@ export default async function MatchingShadowPage() {
 
           <div className="card-heading">
 
-            <p>Autonomous matching</p>
+            <p>Autonomous Matching</p>
 
             <h1>Shadow runs</h1>
 
@@ -72,7 +72,7 @@ export default async function MatchingShadowPage() {
 
             Pipeline: <strong>signals → Layer 0 → not-match → path score → Matching readout → Squibb voice</strong>.
 
-            Public delivery: <strong>{publicEnabled ? "ON" : "OFF (shadow)"}</strong>.
+            Public delivery: <strong>{publicEnabled ? "ON (Autonomous Matching)" : "OFF (shadow)"}</strong>.
 
           </p>
 
@@ -80,7 +80,7 @@ export default async function MatchingShadowPage() {
 
             Doctrine: <code>company/WERKLES_MATCH_STACKING_AND_NEED_TRANSLATION_V0.md</code> · Packaging is
 
-            Matching readout (not Speaker). Public flip still requires <code>APPROVE MATCHING AUTONOMOUS GO-LIVE</code>.
+            Matching readout (not Speaker). Go-live approved 2026-07-16 — LLM still gated.
 
           </p>
 

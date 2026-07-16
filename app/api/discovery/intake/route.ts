@@ -5,7 +5,7 @@ import {
   writeDiscoveryIntake
 } from "@/lib/discovery/concierge";
 import { runShadowMatchingFromDiscovery, shadowRunSmokeSummary } from "@/lib/matching/shadow-pipeline";
-import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
+import { isMatchingPublicEnabled, matchingPublicModeLabel } from "@/lib/matching/feature-flags";
 
 export const runtime = "nodejs";
 
@@ -33,10 +33,10 @@ export async function POST(request: NextRequest) {
       state: record.state,
       record_path: record.record_path,
       shadow_run_id: shadowRun?.runId ?? null,
-      matching_mode: isMatchingPublicEnabled() ? "autonomous" : "shadow",
+      matching_mode: isMatchingPublicEnabled() ? matchingPublicModeLabel() : "shadow",
       ...(shadowRun ? shadowRunSmokeSummary(shadowRun) : {}),
       meaning: isMatchingPublicEnabled()
-        ? "Intake processed by the Werkles matching engine. Speaker facts and Squibb paths are ready."
+        ? "Intake processed by Autonomous Matching. Matching readout and Squibb paths are ready."
         : "Intake saved. Matching engine ran in shadow mode — operator review before public delivery."
     });
   } catch (error) {
