@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   validate:
-    name: Lint and typecheck
+    name: Lint, test, typecheck, and Android export
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -41,5 +41,19 @@ jobs:
       - name: Lint Harvey Mobile
         run: npm run lint
 
+      - name: Run Harvey Mobile contract tests
+        run: npm test
+
       - name: Typecheck Harvey Mobile
         run: npm run typecheck
+
+      - name: Export Android bundle smoke artifact
+        run: npm run export:android
+
+      - name: Upload Android bundle smoke artifact (not an APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: harvey-mobile-android-bundle-not-apk
+          path: Harvey/Werkles Mobile/mobile-app/dist/android
+          if-no-files-found: error
+          retention-days: 7
