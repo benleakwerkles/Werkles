@@ -1,56 +1,44 @@
 # Harvey Mobile
 
-Harvey Mobile is an Expo React Native command surface for routing Duck payloads into the Werkles bridge network.
+Harvey Mobile is an Expo React Native command surface for safely shaping Werkles/Flock work without inventing relay, receiver, or machine proof.
 
-The first app slice includes:
+## Canon
 
-- operations dashboard
-- Duck intake composer
-- route health view
-- dispatch history
-- shared theme and display components
+`benleakwerkles/Werkles` → `Harvey/Werkles Mobile/mobile-app/`
 
-## Official Location
+The active cloud build branch is `codex/cloud-harvey-mobile-vpg-20260715`. See [BOUNDARY.md](./BOUNDARY.md) before machine, GitHub, or build work.
 
-This source belongs under the canonical Werkles repository:
+## Current prototype
 
-```text
-benleakwerkles/Werkles
-Harvey/Werkles Mobile/mobile-app/
-```
+- Ops shows static fixtures separately from dated, provenance-backed Flock snapshots.
+- Duck creates a secret-safe, memory-only draft receipt and never retains its raw payload.
+- Routes remains a sample layout and does not claim live health.
+- Access creates a canonical Ben SSH request receipt with a validated machine name and dated key title.
+- Access can inspect a bounded manual returned-receipt JSON object through correlation, identity, and monotonic lifecycle guards.
+- Manual receipt input is always labeled `LOCAL IMPORT · AUTHENTICITY NOT PROVEN`.
+- Access and Duck session state lives in the app shell and survives tab changes.
+- Nothing dispatches, creates keys, changes GitHub, mutates a remote, or persists secrets.
 
-## Boundary
+## Cloud verification
 
-This source must stay inside the Werkles boundary. See [BOUNDARY.md](./BOUNDARY.md) before doing machine, GitHub, or build-related work.
-
-## Development
-
-Install and validation commands are intended for GitHub Actions or an explicit Werkles-only sandbox:
+Validation belongs in GitHub Actions or an explicitly approved Werkles-only sandbox:
 
 ```text
 npm install
 npm run lint
+npm test
 npm run typecheck
+npm run export:android
 ```
 
-Do not start Expo, simulators, dependency installs, lint, typecheck, or mobile builds on Courtney's machine.
+The contract suite is deterministic and network-free. It covers SSH identity/key-title rules, manual receipt bounds and correlation, Duck secret/size/depth rejection, Flock replay/backward/terminal invariants, and snapshot provenance age.
 
-## SSH Onboarding Prototype
+The Android export is a Metro/Expo smoke artifact retained for seven days. It proves the JavaScript bundle can be exported; it is not an APK and is not a deployment.
 
-The `Access` tab is the first bounded implementation slice from
-`../TO_SWANSON_HARVEY_SSH_MACHINE_ONBOARDING_PACKET_v1_20260715.md`.
+## Proof boundary
 
-It creates an in-memory, non-secret request receipt and presents the canonical Ben account,
-repository, SSH alias, current proof state, one next move, human gate, and private-key boundary.
-The only reachable proof states are `DRAFT` and `CREATED_NOT_DISPATCHED`. Creation is not delivery
-or machine execution. The prototype does not generate a key, change GitHub settings, dispatch to a
-workstation, or modify a Git remote. Those actions remain blocked until Harvey has an approved
-machine-agent bridge and real verification receipts.
-
-The shared mobile theme uses the documented palette v0.2 warm-dark product tokens from
-`../../../foreman/DESIGN_SYSTEM.md`: forge-black and workshop-night surfaces, warm-cream text, violet
-primary actions, teal secondary actions, forge-orange warnings, and owl-eye-green proven success.
+Live Relay endpoints were unreachable during the latest V/P/G pull. Committed June 28–29 Flock artifacts are historical snapshots only. Structural correlation of manual JSON does not prove live delivery, machine identity, or cryptographic authenticity.
 
 ## Handoff
 
-See [HARVEY_MOBILE_HANDOFF.md](./HARVEY_MOBILE_HANDOFF.md) for the current source state and safe validation path.
+See [HARVEY_MOBILE_HANDOFF.md](./HARVEY_MOBILE_HANDOFF.md) and the latest v4 V/P/G packets one directory above for execution receipts.
