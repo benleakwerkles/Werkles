@@ -11,13 +11,18 @@ import {
 
 import { Card } from '../components/Card';
 import {
+  initialFlockProofLifecycle,
+  reduceFlockProofLifecycle
+} from '../data/flockProof';
+import {
   canonicalSshTarget,
   correlateReturnReceipt,
   createSshOnboardingReceipt,
   proofStatePresentation,
   sshOnboardingSteps,
   toMachineIdentityObservation,
-  validateCanonicalSshIdentity
+  validateCanonicalSshIdentity,
+  validateMachineName
 } from '../data/sshOnboarding';
 import type { SshOnboardingReceipt } from '../data/sshOnboarding';
 import { colors } from '../theme';
@@ -34,14 +39,20 @@ export function AccessScreen() {
   const [machineName, setMachineName] = useState('Doss');
   const [receipt, setReceipt] = useState<SshOnboardingReceipt | null>(null);
 
-  const normalizedMachineName = machineName.trim();
+  const machineNameValidation = validateMachineName(machineName);
+  const normalizedMachineName = machineNameValidation.normalized;
   const proofState = receipt?.proofState ?? 'DRAFT';
   const proofPresentation = proofStatePresentation[proofState];
-  const canStage = normalizedMachineName.length > 0 && receipt === null;
-  const keyTitle = `Harvey · ${normalizedMachineName || 'Machine'} · <date>`;
+  const canStage = machineNameValidation.isValid && receipt === null;
+  const keyTitle =
+    receipt?.keyTitle ??
+    'Harvey · ' + (normalizedMachineName || 'Machine') + ' · YYYY-MM-DD';
   const returnReceiptCorrelation = receipt
     ? correlateReturnReceipt(receipt, returnedMachineReceipt)
     : null;
+  const flockProofLifecycle = returnReceiptCorrelation
+    ? reduceFlockProofLifecycle(initialFlockProofLifecycle, returnReceiptCorrelation)
+    : initialFlockProofLifecycle;
   const identityObservation = returnReceiptCorrelation?.receipt
     ? toMachineIdentityObservation(returnReceiptCorrelation.receipt)
     : null;
@@ -102,6 +113,12 @@ export function AccessScreen() {
           style={[styles.input, receipt !== null && styles.inputLocked]}
           value={machineName}
         />
+
+        {!machineNameValidation.isValid && receipt === null ? (
+          <Text accessibilityLiveRegion="polite" style={styles.machineNameError}>
+            {machineNameValidation.issue}
+          </Text>
+        ) : null}
 
         <View style={styles.targetList}>
           <View style={styles.targetRow}>
@@ -204,6 +221,12 @@ export function AccessScreen() {
               </Text>
             </View>
             <View style={styles.receiptRow}>
+              <Text style={styles.receiptLabel}>Key title</Text>
+              <Text selectable style={styles.receiptValue}>
+                {receipt.keyTitle}
+              </Text>
+            </View>
+            <View style={styles.receiptRow}>
               <Text style={styles.receiptLabel}>GitHub account</Text>
               <Text selectable style={styles.receiptValue}>
                 {receipt.githubAccount}
@@ -300,7 +323,7 @@ export function AccessScreen() {
           </View>
           <View style={styles.pendingBadge}>
             <Text style={styles.pendingBadgeText}>
-              {returnReceiptCorrelation?.status ?? 'NOT_RECEIVED'}
+              {flockProofLifecycle.state}
             </Text>
           </View>
         </View>
@@ -320,8 +343,12 @@ export function AccessScreen() {
           <View style={styles.receiptRow}>
             <Text style={styles.receiptLabel}>Current receiver state</Text>
             <Text style={styles.returnPendingValue}>
-              {returnReceiptCorrelation?.status ?? 'NO_ACTIVE_REQUEST'}
+              {receipt ? flockProofLifecycle.state : 'NO_ACTIVE_REQUEST'}
             </Text>
+          </View>
+          <View style={styles.receiptRow}>
+            <Text style={styles.receiptLabel}>Lifecycle decision</Text>
+            <Text style={styles.returnPendingValue}>{flockProofLifecycle.reason}</Text>
           </View>
           {returnReceiptCorrelation?.issues.map((issue) => (
             <View key={issue} style={styles.receiptRow}>
@@ -457,6 +484,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   inputLocked: { color: colors.muted },
+  machineNameError: { color: colors.warning, fontSize: 12, fontWeight: '800', marginTop: 8 },
   targetList: {
     borderTopColor: colors.border,
     borderTopWidth: 1,
