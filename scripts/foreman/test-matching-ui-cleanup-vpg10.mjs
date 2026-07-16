@@ -45,6 +45,10 @@ assert.match(css, /\.squibb-rec-card[\s\S]*background: rgba\(255, 252, 246, 0\.9
 assert.match(css, /\.squibb-rec-detail__buttons \.button:disabled[\s\S]*opacity: 1/);
 assert.match(css, /\.squibb-evidence__item[\s\S]*background: #f8f2e8/);
 assert.match(css, /\.squibb-gate--blocker[\s\S]*background: #f9e4e2/);
+assert.match(
+  css,
+  /@media \(max-width: 900px\)[\s\S]*?\.squibb-rec-surface__layout \{[\s\S]*?grid-template-columns: minmax\(0, 1fr\);/
+);
 
 console.log(
   JSON.stringify(
@@ -59,6 +63,7 @@ console.log(
         "evidence_and_gates_compacted",
         "save_closed_notice_before_neutral_disabled_actions",
         "mobile_horizontal_recommendation_rail",
+        "mobile_detail_column_cannot_force_page_overflow",
         "reduced_motion_respected",
         "save_transport_still_absent"
       ]
