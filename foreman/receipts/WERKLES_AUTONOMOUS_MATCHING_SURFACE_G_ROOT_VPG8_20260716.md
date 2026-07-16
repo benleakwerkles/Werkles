@@ -5,7 +5,10 @@ Executor: `Heimerdinker / Dink@Betsy`
 Repository: `C:\Users\Ben Leak\github\Werkles`
 Branch: `maker/site-g-20260703`
 Execution baseline: `d183d8bcab872c001ac0ba740fc8d9f86ec4efa0`
-Status: `GO — LOCAL SLICE COMPLETE AND READY TO PUSH; NOT DEPLOYED`
+Status: `GO — SCOPED SLICE PUSHED; NOT DEPLOYED`
+
+Product commit: `58b8938877ae216fd308173a92e0a5da66971d0c` (`fix(matching): contain public recommendation surface`)
+Push proof: `origin/maker/site-g-20260703` advanced from `d183d8b` to `58b8938`; local HEAD and remote branch matched after push.
 
 Durable push approval: `foreman/gates/APPROVAL_LOG.md` at `2026-07-16T14:05:51-04:00`, recording Ben's exact phrase `V, P, G.` under the established Dink execution/push-rights shorthand. The approval is scoped to this VPG8 slice and explicitly excludes deploy.
 
@@ -162,4 +165,4 @@ Local visual artifacts (ignored by Git, not part of the push):
 - Authenticated ownership/isolation, export, correction, deletion, retention, legal/compliance approval, and personal-result delivery remain unopened work.
 - The production deployment still requires a separate explicit human gate. Until that deployment occurs, this safety fix is not live at `werkles.com`.
 
-`COMPLETED — FOUR PACKET IDEAS EXECUTED AND VERIFIED; PRODUCTION DEPLOY NOT PERFORMED`
+`COMPLETED — FOUR PACKET IDEAS EXECUTED, VERIFIED, COMMITTED, AND PUSHED; PRODUCTION DEPLOY NOT PERFORMED`
