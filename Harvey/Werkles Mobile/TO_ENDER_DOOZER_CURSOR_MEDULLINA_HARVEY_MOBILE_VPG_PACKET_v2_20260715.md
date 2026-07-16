@@ -1,6 +1,6 @@
 # Ender/Doozer + Cursor @ Medullina — Harvey Mobile Cloud V/P/G Packet v2
 
-Status: READY FOR ROOT EXECUTION
+Status: EXECUTED / CLOUD RECEIPT VERIFIED
 Packet ID: TO_ENDER_DOOZER_CURSOR_MEDULLINA_HARVEY_MOBILE_VPG_PACKET_v2_20260715
 Generated: 2026-07-15 America/New_York
 
@@ -71,3 +71,39 @@ No local checkout, main merge, deployment, key creation, GitHub setting change, 
 ## Required receipt
 
 Return packet path/blob, selected ideas, updated domain/UI blobs, transition behavior, check status, and remaining bridge/authenticity blockers.
+
+## G — execution receipt
+
+Selected ideas:
+
+1. Proof-tiered canonical identity guard.
+2. Strict returned-receipt parsing and correlation.
+
+Cloud commits and files:
+
+- 47fa4bae37fe — mobile-app/src/data/sshOnboarding.ts
+- abd55b1f92dc — mobile-app/src/screens/AccessScreen.tsx
+- 1c6cc8c5d205 — mobile-app/src/screens/AccessScreen.tsx icon type correction
+
+Implemented behavior:
+
+- Local expected target now reports NOT_OBSERVED and canDispatch false.
+- VERIFIED_MATCH requires a correlated returned machine observation.
+- MISMATCH retains expected/actual field details and blocks dispatch.
+- Unknown return input is allowlisted and validated for request, machine, target, chronology, proof state, bounded source/evidence reference, and origin-return confirmation.
+- Null input remains NOT_RECEIVED.
+- Structural correlation is explicitly not cryptographic authenticity.
+- No mock return receipt or machine bridge was introduced.
+
+Verified result:
+
+- Workflow run: 29470906287
+- Head: 1c6cc8c5d2050bd091a67bd09b93dd33184dd4b9
+- Lint: SUCCESS
+- Typecheck: SUCCESS
+- Local source checkout: NONE
+- Main merge/deploy: NOT PERFORMED
+
+Remaining blocker:
+
+A real approved machine-agent transport and authenticity mechanism are still absent. Expected target storage and receipt correlation do not prove a machine connection.
