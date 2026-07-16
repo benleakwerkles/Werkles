@@ -1,4 +1,5 @@
 name: Harvey Mobile Verify
+# Cloud-only validation for the canonical Harvey Mobile package.
 
 on:
   push:
