@@ -1,0 +1,69 @@
+/**
+ * Focused UI cleanup proof for the public recommendation page.
+ * Run: node scripts/foreman/test-matching-ui-cleanup-vpg10.mjs
+ */
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const read = (rel) => readFileSync(path.join(root, rel), "utf8");
+
+const page = read("app/bellows/recommendations/page.tsx");
+const surface = read("components/squibb/recommendation-surface.tsx");
+const css = read("app/bellows/recommendations/squibb-recommendations.css");
+
+assert.doesNotMatch(page, /NarrativeJourneyRail/);
+assert.doesNotMatch(page, /Test Case #0/);
+assert.match(page, /Autonomous Matching/);
+assert.match(page, /squibb-rec-page__intake-link/);
+
+assert.match(surface, /Example mode/);
+assert.match(surface, /This is a walkthrough, not your result\./);
+assert.doesNotMatch(surface, />See an example</);
+assert.match(surface, /squibb-rec-detail__proof-grid/);
+assert.match(surface, /Nothing is saved from this example\./);
+
+const noticeIndex = surface.indexOf('id="squibbRecommendationSavingStatus"');
+const buttonsIndex = surface.indexOf('className="squibb-rec-detail__buttons"');
+assert.ok(noticeIndex > -1 && buttonsIndex > noticeIndex, "save-closed notice must precede disabled actions");
+assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
+assert.doesNotMatch(surface, /fetch\s*\(/);
+
+for (const required of [
+  "width: min(1160px, calc(100% - 2rem))",
+  "position: sticky",
+  "grid-template-columns: repeat(2, minmax(0, 1fr))",
+  "scroll-snap-type: x proximity",
+  "prefers-reduced-motion: reduce"
+]) {
+  assert.match(css, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+}
+
+assert.match(css, /\.squibb-rec-card[\s\S]*background: rgba\(255, 252, 246, 0\.94\)/);
+assert.match(css, /\.squibb-rec-detail__buttons \.button:disabled[\s\S]*opacity: 1/);
+assert.match(css, /\.squibb-evidence__item[\s\S]*background: #f8f2e8/);
+assert.match(css, /\.squibb-gate--blocker[\s\S]*background: #f9e4e2/);
+
+console.log(
+  JSON.stringify(
+    {
+      pass: true,
+      checks: [
+        "single_route_navigation_band",
+        "public_test_fixture_link_removed",
+        "example_mode_copy_consolidated",
+        "centered_reading_width",
+        "light_readable_recommendation_cards",
+        "evidence_and_gates_compacted",
+        "save_closed_notice_before_neutral_disabled_actions",
+        "mobile_horizontal_recommendation_rail",
+        "reduced_motion_respected",
+        "save_transport_still_absent"
+      ]
+    },
+    null,
+    2
+  )
+);

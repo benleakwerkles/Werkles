@@ -74,26 +74,25 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
     <div className="squibb-rec-surface">
       {showIntakePrompt ? (
         <section className="squibb-rec-surface__intake-cta panel" aria-labelledby="squibbIntakeCtaTitle">
-          <p className="eyebrow">Start with what is real</p>
-          <h2 id="squibbIntakeCtaTitle">See how recommendations work.</h2>
-          <p>
-            The options below are an example. You can still complete an intake, but this public beta will not connect it
-            to this page yet.
-          </p>
+          <div>
+            <p className="eyebrow">Example mode</p>
+            <h2 id="squibbIntakeCtaTitle">This is a walkthrough, not your result.</h2>
+            <p>
+              Explore the recommendation below. You can still complete an intake, but this public beta will not connect it
+              to this page yet.
+            </p>
+          </div>
           <div className="member-selected-surface__actions">
             <Link className="button button-dark" href="/bellows/intake">
-              Start concierge intake
-            </Link>
-            <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
-              See an example
+              Start your intake
             </Link>
           </div>
         </section>
       ) : null}
 
       <header className="squibb-rec-surface__hero panel">
-        <p className="eyebrow">Werkles recommendations</p>
-        <h1>What should you do next?</h1>
+        <p className="eyebrow">Autonomous Matching</p>
+        <h1>Your strongest next move, explained.</h1>
         <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
         <dl className="squibb-rec-surface__context">
           <div>
@@ -178,8 +177,10 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             why={selected.confidence.why}
             variant="rules_score"
           />
-          <EvidenceSection items={selected.evidence} />
-          <HumanGateStrip gates={selected.humanGates} />
+          <div className="squibb-rec-detail__proof-grid">
+            <EvidenceSection items={selected.evidence} />
+            <HumanGateStrip gates={selected.humanGates} />
+          </div>
 
           <footer className="squibb-rec-detail__actions">
             <dl className="squibb-rec-detail__dispatch">
@@ -194,6 +195,14 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
                 </div>
               ) : null}
             </dl>
+            <div
+              id="squibbRecommendationSavingStatus"
+              className="squibb-rec-detail__preview-note"
+              data-status={packetState.status}
+              role="status"
+            >
+              {packetState.message}
+            </div>
             <div
               className="squibb-rec-detail__buttons"
               role="group"
@@ -210,22 +219,14 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
                 Ask what proof is needed
               </button>
             </div>
-            <p
-              id="squibbRecommendationSavingStatus"
-              className="squibb-rec-detail__preview-note"
-              data-status={packetState.status}
-              role="status"
-            >
-              {packetState.message}
-            </p>
           </footer>
         </article>
       </div>
 
       <section className="squibb-rec-ledger panel" aria-labelledby="squibbLedgerTitle">
         <header className="squibb-rec-ledger__header">
-          <p className="eyebrow">Saved activity</p>
-          <h2 id="squibbLedgerTitle">Your recent intake and saved options</h2>
+          <p className="eyebrow">Account activity</p>
+          <h2 id="squibbLedgerTitle">Nothing is saved from this example.</h2>
         </header>
         <div className="squibb-rec-ledger__grid">
           <div>
