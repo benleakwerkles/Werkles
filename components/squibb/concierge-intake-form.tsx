@@ -109,7 +109,22 @@ export function ConciergeIntakeForm() {
         </div>
       </header>
 
-      <form className="concierge-intake__form panel" onSubmit={handleSubmit} noValidate>
+      <section className="panel concierge-intake-page__guide" aria-labelledby="intakeGuideTitle">
+        <p className="eyebrow">How intake works</p>
+        <h2 id="intakeGuideTitle">Review the questions before you share anything.</h2>
+        <ol>
+          <li>Answer symptom questions — not “what partner do you want.”</li>
+          <li>Submission is temporarily closed while secure account storage is being connected.</li>
+          <li>The public recommendation walkthrough stays example-only and does not load anything typed here.</li>
+        </ol>
+      </section>
+
+      <form
+        className="concierge-intake__form panel"
+        onSubmit={handleSubmit}
+        aria-labelledby="intakeGuideTitle"
+        noValidate
+      >
         <ol className="concierge-intake__questions">
           {CONCIERGE_INTAKE_QUESTIONS.map((question, index) => {
             const hintId = `${question.id}-hint`;

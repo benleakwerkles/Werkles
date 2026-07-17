@@ -45,6 +45,7 @@ export async function loadSquibbRecommendationSessionForBellows(): Promise<Squib
 
   const statedNeed = firstAnsweredSymptom(latest.packet);
   const operatorContext = `Latest Bellows intake - ${latest.stored.answeredCount} of ${latest.stored.totalQuestions} fields answered - ${latest.stored.createdAt}`;
+  const liveDeck = buildLiveIntakeRankedDeck(statedNeed, latest.packet.speakerFeed.symptomBlock);
 
   return {
     ...fallback,
@@ -64,7 +65,8 @@ export async function loadSquibbRecommendationSessionForBellows(): Promise<Squib
       totalQuestions: latest.stored.totalQuestions,
       symptomBlock: latest.packet.speakerFeed.symptomBlock
     },
-    ranked: buildLiveIntakeRankedDeck(statedNeed, latest.packet.speakerFeed.symptomBlock)
+    ranked: liveDeck,
+    catalog: liveDeck
   };
 }
 

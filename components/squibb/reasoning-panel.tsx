@@ -2,15 +2,16 @@ import type { SquibbRecommendation } from "@/lib/squibb/recommendations";
 
 type ReasoningPanelProps = {
   reasoning: SquibbRecommendation["reasoning"];
+  isExample?: boolean;
 };
 
-export function ReasoningPanel({ reasoning }: ReasoningPanelProps) {
+export function ReasoningPanel({ reasoning, isExample = false }: ReasoningPanelProps) {
   return (
     <section className="squibb-reasoning" aria-labelledby="squibbReasoningTitle">
       <h3 id="squibbReasoningTitle">Reasoning</h3>
       <dl className="squibb-reasoning__need">
         <div>
-          <dt>You said</dt>
+          <dt>{isExample ? "Example scenario" : "You said"}</dt>
           <dd>{reasoning.statedNeed}</dd>
         </div>
         {reasoning.translatedNeed ? (

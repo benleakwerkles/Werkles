@@ -34,6 +34,10 @@
   box-shadow: 0 16px 34px rgba(65, 45, 28, 0.08);
 }
 
+.concierge-intake > .concierge-intake-page__guide {
+  margin: 0;
+}
+
 .concierge-intake-page__guide ol {
   margin: 0.75rem 0 0;
   padding-left: 1.25rem;

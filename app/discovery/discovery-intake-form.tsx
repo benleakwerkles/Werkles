@@ -81,8 +81,8 @@ export function DiscoveryIntakeForm() {
           <input name="name" autoComplete="name" maxLength={120} required />
         </label>
         <label className="field">
-          <span>Email or phone</span>
-          <input name="contact" autoComplete="email" maxLength={160} required />
+          <span>Email</span>
+          <input name="contact" type="email" inputMode="email" autoComplete="email" maxLength={160} required />
         </label>
       </div>
 

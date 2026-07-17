@@ -164,6 +164,10 @@ assert.match(
   meter,
   /This rules score shows how strongly the current rules support this option based on what you entered\. It is not a probability of success, a measure of eligibility, or a predicted outcome\./
 );
+assert.match(
+  meter,
+  /This rules score shows how strongly the current rules support this option based on the information in this example\. It is not a probability of success, a measure of eligibility, or a predicted outcome\./
+);
 assert.match(meter, />Confidence</);
 assert.match(meter, /\{clamped\}%/);
 

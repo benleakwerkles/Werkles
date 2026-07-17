@@ -65,7 +65,7 @@ assert.match(recommendationBoundary, /Rules-based recommendation example/);
 assert.match(recommendationAdapter, /Werkles rules-based recommendation/);
 assert.match(availability, /BELLOWS_INTAKE_SUBMISSION_OPEN = false/);
 assert.match(intakePage, /submission is temporarily closed/i);
-assert.match(intakePage, /walkthrough stays example-only and does not load anything typed here/);
+assert.match(intakeForm, /walkthrough stays example-only and does not load anything typed here/);
 assert.match(intakeForm, /Nothing you type here is saved or sent/);
 assert.match(intakeForm, /No automatic contact/);
 assert.doesNotMatch(intakeForm, /No matching\. No profiles\.|shadow until go-live/i);

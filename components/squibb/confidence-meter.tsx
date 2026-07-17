@@ -5,6 +5,7 @@ type ConfidenceMeterProps = {
   label: ConfidenceLabel;
   why: string;
   variant?: "confidence" | "rules_score";
+  isExample?: boolean;
 };
 
 const SUPPORT_BAND: Record<ConfidenceLabel, string> = {
@@ -13,10 +14,13 @@ const SUPPORT_BAND: Record<ConfidenceLabel, string> = {
   low: "Limited rule support"
 };
 
-const RULES_SCORE_DISCLAIMER =
+const LIVE_RULES_SCORE_DISCLAIMER =
   "This rules score shows how strongly the current rules support this option based on what you entered. It is not a probability of success, a measure of eligibility, or a predicted outcome.";
 
-export function ConfidenceMeter({ score, label, why, variant = "confidence" }: ConfidenceMeterProps) {
+const EXAMPLE_RULES_SCORE_DISCLAIMER =
+  "This rules score shows how strongly the current rules support this option based on the information in this example. It is not a probability of success, a measure of eligibility, or a predicted outcome.";
+
+export function ConfidenceMeter({ score, label, why, variant = "confidence", isExample = false }: ConfidenceMeterProps) {
   const clamped = Math.min(100, Math.max(0, score));
 
   if (variant === "rules_score") {
@@ -46,7 +50,7 @@ export function ConfidenceMeter({ score, label, why, variant = "confidence" }: C
           <div className="squibb-confidence__fill" style={{ width: `${rulesScore}%` }} />
         </div>
         <p className="squibb-confidence__why">
-          {why} {RULES_SCORE_DISCLAIMER}
+          {why} {isExample ? EXAMPLE_RULES_SCORE_DISCLAIMER : LIVE_RULES_SCORE_DISCLAIMER}
         </p>
       </div>
     );

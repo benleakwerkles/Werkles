@@ -232,7 +232,7 @@ const rankedDeck: SquibbRecommendation[] = [
     title: "Find equipment first",
     headline: "The oven quote is the nearer bottleneck — not the partner.",
     squibbNote:
-      "Squibb: You said partner and investor. The priced asset is already on the table. Partners show up faster when the machine is real.",
+      "Squibb: The example starts with a partner and investor. The priced asset is already on the table. Partners show up faster when the machine is real.",
     reasoning: {
       statedNeed: DEMO_STATED_NEED,
       translatedNeed: "Validate equipment cost and seller before raising or partnering.",
@@ -249,7 +249,7 @@ const rankedDeck: SquibbRecommendation[] = [
       why: "Named asset, price band, and seller contact are present in the information provided."
     },
     evidence: [
-      { id: "e1", label: "Oven quote $42k–$48k (self-reported)", strength: "self_reported", source: "Your intake" },
+      { id: "e1", label: "Oven quote $42k–$48k (self-reported)", strength: "self_reported", source: "Example intake" },
       { id: "e2", label: "Seller business listing found", strength: "inferred", source: "Public listing" },
       { id: "e3", label: "Revenue history for bakery", strength: "missing" },
       { id: "e4", label: "Equipment inspection report", strength: "missing" }
@@ -315,7 +315,7 @@ const rankedDeck: SquibbRecommendation[] = [
     confidence: {
       score: 55,
       label: "medium",
-      why: "Skill gap is plausible from intake, but no training quotes or schedules on file."
+      why: "A skill gap is plausible in the example, but no training quotes or schedules are included."
     },
     evidence: [
       { id: "e8", label: "First commercial kitchen (self-reported)", strength: "self_reported" },
@@ -430,16 +430,16 @@ const catalogDeck: SquibbRecommendation[] = (
       rationale: [
         `Frames ${label.toLowerCase()} as one possible next step.`,
         "Reasoning stays evidence-led; Squibb widens the map without deciding.",
-        "Ground this option in your intake before acting."
+        "Ground this option in verified facts before acting."
       ]
     },
     confidence: {
       score: 40 + (index % 3) * 15,
       label: index % 3 === 0 ? "low" : index % 3 === 1 ? "medium" : "high",
-      why: "This example is not yet grounded in your intake."
+      why: "This example is not yet grounded in verified evidence."
     },
     evidence: [
-      { id: `${kind}-ev-1`, label: "Your stated need on file", strength: "self_reported" },
+      { id: `${kind}-ev-1`, label: "Example stated need", strength: "self_reported" },
       { id: `${kind}-ev-2`, label: "Verification step", strength: "missing" },
       { id: `${kind}-ev-3`, label: "Third-party proof", strength: "missing" }
     ],

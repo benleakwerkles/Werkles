@@ -43,6 +43,7 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
     label: "Demo scenario",
     detail: "No saved intake was found."
   };
+  const isExample = source.mode === "demo";
 
   const activeList = view === "ranked" ? session.ranked : session.catalog;
 
@@ -71,11 +72,9 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
 
   if (!selected) return null;
 
-  const showIntakePrompt = source.mode === "demo" || ledger.intakes.length === 0;
-
   return (
     <div className="squibb-rec-surface">
-      {showIntakePrompt ? (
+      {isExample ? (
         <section className="squibb-rec-surface__intake-cta panel" aria-labelledby="squibbIntakeCtaTitle">
           <div>
             <p className="eyebrow">Example mode</p>
@@ -99,7 +98,7 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
         <dl className="squibb-rec-surface__context">
           <div>
-            <dt>What you need</dt>
+            <dt>{isExample ? "Example need" : "What you need"}</dt>
             <dd>{session.statedNeed}</dd>
           </div>
           <div>
@@ -186,12 +185,13 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             <p>{selected.headline}</p>
           </header>
 
-          <ReasoningPanel reasoning={selected.reasoning} />
+          <ReasoningPanel reasoning={selected.reasoning} isExample={isExample} />
           <ConfidenceMeter
             score={selected.confidence.score}
             label={selected.confidence.label}
             why={selected.confidence.why}
             variant="rules_score"
+            isExample={isExample}
           />
           <div className="squibb-rec-detail__proof-grid">
             <EvidenceSection items={selected.evidence} />
@@ -242,7 +242,9 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
       <section className="squibb-rec-ledger panel" aria-labelledby="squibbLedgerTitle">
         <header className="squibb-rec-ledger__header">
           <p className="eyebrow">Account activity</p>
-          <h2 id="squibbLedgerTitle">Nothing is saved from this example.</h2>
+          <h2 id="squibbLedgerTitle">
+            {isExample ? "Nothing is saved from this example." : "Recent activity tied to this intake."}
+          </h2>
         </header>
         <div className="squibb-rec-ledger__grid">
           <div>
@@ -260,8 +262,8 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
               </ol>
             ) : (
               <p className="squibb-rec-ledger__empty">
-                No saved intakes yet.{" "}
-                <Link href="/bellows/intake">Start an intake</Link> to create the first one.
+                {isExample ? "No saved intakes are part of this example. " : "No saved intakes are available here. "}
+                <Link href="/bellows/intake">Review the closed intake questions</Link>.
               </p>
             )}
           </div>

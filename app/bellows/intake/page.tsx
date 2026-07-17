@@ -34,16 +34,6 @@ export default function ConciergeIntakePage() {
           </Link>
         </nav>
 
-        <section className="panel concierge-intake-page__guide" aria-labelledby="intakeGuideTitle">
-          <p className="eyebrow">How intake works</p>
-          <h2 id="intakeGuideTitle">Review the questions before you share anything.</h2>
-          <ol>
-            <li>Answer symptom questions — not “what partner do you want.”</li>
-            <li>Submission is temporarily closed while secure account storage is being connected.</li>
-            <li>The public recommendation walkthrough stays example-only and does not load anything typed here.</li>
-          </ol>
-        </section>
-
         <ConciergeIntakeForm />
       </main>
       <footer className="site-footer">
