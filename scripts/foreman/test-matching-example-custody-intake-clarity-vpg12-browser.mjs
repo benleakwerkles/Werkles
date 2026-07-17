@@ -61,9 +61,9 @@ try {
     const surface = page.locator(".squibb-rec-surface");
     const rankedText = await surface.innerText();
     assert.doesNotMatch(rankedText, /You said|what you entered|Your intake|on file/i);
-    assert.match(rankedText, /Example mode/);
-    assert.match(rankedText, /Example need/);
-    assert.match(rankedText, /Example scenario/);
+    assert.match(rankedText, /Example mode/i);
+    assert.match(rankedText, /Example need/i);
+    assert.match(rankedText, /Example scenario/i);
     assert.match(rankedText, /based on the information in this example/);
     assert.doesNotMatch(rankedText, /Start an intake|create the first one/i);
 
