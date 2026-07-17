@@ -166,10 +166,31 @@ try {
     const pathname = new URL(url).pathname;
     return /\/api\/(?:discovery\/intake|bellows\/(?:intake|recommendation-packets)|matching(?:\/|$))/.test(pathname);
   });
+  const previewToolbarIssues = browserIssues.filter(
+    ({ text }) =>
+      text.includes("https://vercel.live/_next-live/feedback/feedback.js") &&
+      text.includes("Content Security Policy")
+  );
+  const actionableBrowserIssues = browserIssues.filter((issue) => !previewToolbarIssues.includes(issue));
   assert.deepEqual(closedActionPosts, [], "keyboard and form review must not issue a closed-action POST");
-  assert.deepEqual(browserIssues, [], `browser console/page issues: ${JSON.stringify(browserIssues)}`);
+  assert.deepEqual(actionableBrowserIssues, [], `browser console/page issues: ${JSON.stringify(actionableBrowserIssues)}`);
 } finally {
   await browser.close();
 }
 
-console.log(JSON.stringify({ pass: true, siteOrigin, postRequests, browserIssues, viewports: results }, null, 2));
+console.log(
+  JSON.stringify(
+    {
+      pass: true,
+      siteOrigin,
+      postRequests,
+      browserIssues,
+      ignoredPreviewToolbarIssueCount: browserIssues.filter(({ text }) =>
+        text.includes("https://vercel.live/_next-live/feedback/feedback.js")
+      ).length,
+      viewports: results
+    },
+    null,
+    2
+  )
+);

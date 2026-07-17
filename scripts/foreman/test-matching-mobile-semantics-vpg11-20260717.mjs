@@ -16,6 +16,7 @@ const recommendationSurface = read("components/squibb/recommendation-surface.tsx
 const recommendationCard = read("components/squibb/recommendation-card.tsx");
 const bellowsAvailability = read("lib/squibb/concierge-intake-availability.ts");
 const discoveryAvailability = read("lib/discovery/intake-availability.ts");
+const vercelConfig = JSON.parse(read("vercel.json"));
 
 const mobileHeaderStart = globals.indexOf("@media (max-width: 820px) {");
 const mobileHeaderEnd = globals.indexOf(".static-proof-shell", mobileHeaderStart);
@@ -28,6 +29,13 @@ assert.match(mobileHeader, /min-height: 44px/);
 assert.match(mobileHeader, /\.site-header a:focus-visible[\s\S]*outline: 3px solid/);
 assert.match(globals, /@media \(max-width: 620px\)[\s\S]*\.discovery-hero > \* \{[\s\S]*min-width: 0/);
 assert.match(globals, /\.discovery-hero \.hero-actions \{[\s\S]*flex-wrap: wrap/);
+
+const contentSecurityPolicy = vercelConfig.headers[0].headers.find(
+  (header) => header.key === "Content-Security-Policy"
+)?.value;
+assert.match(contentSecurityPolicy, /style-src[^;]*https:\/\/fonts\.googleapis\.com/);
+assert.match(contentSecurityPolicy, /font-src 'self' https:\/\/fonts\.gstatic\.com/);
+assert.doesNotMatch(contentSecurityPolicy, /vercel\.live/);
 
 assert.match(intakeForm, /const hintId = `\$\{question\.id\}-hint`/);
 assert.match(intakeForm, /const countId = `\$\{question\.id\}-count`/);
@@ -57,6 +65,7 @@ console.log(
         "mobile_header_targets_are_44px",
         "mobile_header_focus_is_explicit",
         "discovery_hero_is_contained_at_phone_width",
+        "font_csp_matches_declared_google_font_sources",
         "bellows_hints_and_counts_are_described",
         "bellows_counters_are_not_live_regions",
         "recommendation_switcher_uses_native_pressed_buttons",
