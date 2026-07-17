@@ -51,6 +51,8 @@ assert.match(css, /\.squibb-evidence__item--missing \{[\s\S]*var\(--werkles-iron
 assert.match(css, /\.squibb-rec-detail__buttons \.button:disabled \{[\s\S]*var\(--werkles-workshop-night, #191817\)/);
 assert.match(css, /\.squibb-confidence__fill \{[\s\S]*var\(--werkles-teal-deep, #015e51\)[\s\S]*var\(--werkles-teal-bright, #18c5ae\)/);
 assert.match(css, /:focus-visible[\s\S]*outline: 3px solid var\(--werkles-ember, #fbc368\)/);
+assert.match(css, /main\.squibb-rec-page \.squibb-rec-surface h1,[\s\S]*color: var\(--squibb-rec-on-dark\)/);
+assert.match(css, /main\.squibb-rec-page \.squibb-rec-surface p:not\(\.eyebrow\),[\s\S]*color: var\(--squibb-rec-muted-on-dark\)/);
 
 assert.match(surface, /const recommendationRailRef = useRef<HTMLDivElement>\(null\)/);
 assert.match(surface, /const selectedStillAvailable = nextList\.some/);

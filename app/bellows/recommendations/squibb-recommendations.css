@@ -1128,6 +1128,39 @@ main.squibb-rec-page .squibb-rec-ledger__empty {
   outline-offset: 3px;
 }
 
+/* This route is a dark-cockpit exception to the site's warm-paper main defaults. */
+main.squibb-rec-page .squibb-rec-surface h1,
+main.squibb-rec-page .squibb-rec-surface h2,
+main.squibb-rec-page .squibb-rec-surface h3,
+main.squibb-rec-page .squibb-rec-surface strong {
+  color: var(--squibb-rec-on-dark);
+}
+
+main.squibb-rec-page .squibb-rec-surface p:not(.eyebrow),
+main.squibb-rec-page .squibb-rec-surface li {
+  color: var(--squibb-rec-muted-on-dark);
+}
+
+main.squibb-rec-page .squibb-rec-surface .eyebrow,
+main.squibb-rec-page .squibb-rec-surface .squibb-rec-surface__stack-title,
+main.squibb-rec-page .squibb-rec-surface .squibb-rec-ledger h3 {
+  color: var(--werkles-brass-bright, #e0b569);
+}
+
+main.squibb-rec-page .squibb-rec-surface .squibb-rec-surface__squibb-note,
+main.squibb-rec-page .squibb-rec-surface .squibb-reasoning__counter {
+  color: var(--squibb-rec-on-dark);
+}
+
+main.squibb-rec-page .squibb-rec-surface .squibb-gates__summary {
+  color: #ffb7b1;
+}
+
+main.squibb-rec-page .squibb-rec-surface .squibb-gate--blocker p:not(.eyebrow),
+main.squibb-rec-page .squibb-rec-surface .squibb-gate--blocker strong {
+  color: #ffd0cb;
+}
+
 @media (max-width: 900px) {
   .squibb-rec-surface__layout {
     grid-template-columns: minmax(0, 1fr);
