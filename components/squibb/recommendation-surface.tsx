@@ -27,6 +27,9 @@ const SAVE_CLOSED_BETA = true;
 const SAVE_CLOSED_MESSAGE =
   "Saving is unavailable during this beta. Nothing is sent to another person or organization from these controls.";
 
+const RECOMMENDATION_COLLECTION_ID = "squibbRecommendationCollection";
+const RECOMMENDATION_DETAIL_ID = "squibbRecommendationDetail";
+
 export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommendationSurfaceProps) {
   const [selectedId, setSelectedId] = useState(session.ranked[0]?.id ?? session.catalog[0]?.id);
   const [view, setView] = useState<"ranked" | "catalog">("ranked");
@@ -124,11 +127,11 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         </section>
       ) : null}
 
-      <div className="squibb-rec-surface__tabs" role="tablist" aria-label="Recommendation deck">
+      <div className="squibb-rec-surface__tabs" role="group" aria-label="Recommendation deck view">
         <button
           type="button"
-          role="tab"
-          aria-selected={view === "ranked"}
+          aria-pressed={view === "ranked"}
+          aria-controls={RECOMMENDATION_COLLECTION_ID}
           className={view === "ranked" ? "squibb-rec-tab squibb-rec-tab--active" : "squibb-rec-tab"}
           onClick={() => switchView("ranked")}
         >
@@ -136,8 +139,8 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         </button>
         <button
           type="button"
-          role="tab"
-          aria-selected={view === "catalog"}
+          aria-pressed={view === "catalog"}
+          aria-controls={RECOMMENDATION_COLLECTION_ID}
           className={view === "catalog" ? "squibb-rec-tab squibb-rec-tab--active" : "squibb-rec-tab"}
           onClick={() => switchView("catalog")}
         >
@@ -145,8 +148,16 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         </button>
       </div>
 
+      <p className="squibb-rec-selection-status" role="status">
+        Selected recommendation: {selected.title}
+      </p>
+
       <div className="squibb-rec-surface__layout">
-        <aside className="squibb-rec-surface__stack" aria-label="Recommendation cards">
+        <aside
+          id={RECOMMENDATION_COLLECTION_ID}
+          className="squibb-rec-surface__stack"
+          aria-label="Recommendation cards"
+        >
           <h2 className="squibb-rec-surface__stack-title">
             {view === "ranked" ? "Best fits right now" : "Everything you can consider"}
           </h2>
@@ -157,13 +168,18 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
                 recommendation={rec}
                 selected={rec.id === selected.id}
                 compact={view === "catalog"}
+                detailId={RECOMMENDATION_DETAIL_ID}
                 onSelect={selectRecommendation}
               />
             ))}
           </div>
         </aside>
 
-        <article className="squibb-rec-surface__detail panel" aria-labelledby="squibbDetailTitle">
+        <article
+          id={RECOMMENDATION_DETAIL_ID}
+          className="squibb-rec-surface__detail panel"
+          aria-labelledby="squibbDetailTitle"
+        >
           <header className="squibb-rec-detail__header">
             <p className="eyebrow">Selected recommendation</p>
             <h2 id="squibbDetailTitle">{selected.title}</h2>

@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 "use strict";
 
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+
 /**
  * Werkles matching shadow smoke — POST discovery intakes, verify shadow_run_id.
  * No secrets printed.
@@ -76,21 +79,26 @@ const GOLDEN_TOP_PATHS = {
   training_not_partner: "get_training"
 };
 
-async function detectSiteOrigin() {
-  const local = "http://localhost:3000";
-  try {
-    const res = await fetch(`${local}/operator/matching/shadow`, { signal: AbortSignal.timeout(3000) });
-    if (res.ok) return local;
-  } catch {
-    /* fall through */
+export function resolveSiteOrigin(env = process.env) {
+  const fromEnv = (env.WERKLES_SITE_ORIGIN || "").replace(/\/$/, "");
+  if (!fromEnv) {
+    throw new Error("WERKLES_SITE_ORIGIN is required; the shadow smoke test never infers a mutation target");
   }
-  return "https://werkles.com";
-}
 
-async function resolveSiteOrigin() {
-  const fromEnv = (process.env.WERKLES_SITE_ORIGIN || "").replace(/\/$/, "");
-  if (fromEnv) return fromEnv;
-  return detectSiteOrigin();
+  const parsed = new URL(fromEnv);
+  if (parsed.pathname !== "/" || parsed.search || parsed.hash) {
+    throw new Error("WERKLES_SITE_ORIGIN must be an origin without a path, query, or hash");
+  }
+
+  const isProduction = parsed.hostname === "werkles.com" || parsed.hostname === "www.werkles.com";
+  const productionOverride = env.WERKLES_ALLOW_PRODUCTION_SMOKE_MUTATION === "I_UNDERSTAND_THIS_WRITES_PRODUCTION";
+  if (isProduction && !productionOverride) {
+    throw new Error(
+      "Production mutation refused; use a non-Production origin or set the deliberate Production mutation override"
+    );
+  }
+
+  return parsed.origin;
 }
 
 function vercelProtectionBypassSecret() {
@@ -194,7 +202,7 @@ function semanticChecks(intakeChecks) {
 }
 
 async function main() {
-  const siteOrigin = await resolveSiteOrigin();
+  const siteOrigin = resolveSiteOrigin();
   const checks = [];
   for (const scenario of SCENARIOS) {
     checks.push(await postIntake(scenario, siteOrigin));
@@ -228,7 +236,10 @@ async function main() {
   process.exit(ok ? 0 : 1);
 }
 
-main().catch((err) => {
-  process.stdout.write(JSON.stringify({ ok: false, error: err.message }) + "\n");
-  process.exit(1);
-});
+const directRun = process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+if (directRun) {
+  main().catch((err) => {
+    process.stdout.write(JSON.stringify({ ok: false, error: err.message }) + "\n");
+    process.exit(1);
+  });
+}

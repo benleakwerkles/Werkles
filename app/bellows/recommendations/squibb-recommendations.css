@@ -780,6 +780,14 @@
   box-shadow: none;
 }
 
+.squibb-rec-selection-status {
+  width: fit-content;
+  margin: -0.2rem 0 0;
+  color: #5e4a3c;
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
 .squibb-rec-surface__layout {
   grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
   gap: 1.75rem;

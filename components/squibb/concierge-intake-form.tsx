@@ -111,27 +111,35 @@ export function ConciergeIntakeForm() {
 
       <form className="concierge-intake__form panel" onSubmit={handleSubmit} noValidate>
         <ol className="concierge-intake__questions">
-          {CONCIERGE_INTAKE_QUESTIONS.map((question, index) => (
-            <li key={question.id} className="concierge-intake__field">
-              <label htmlFor={question.id}>
-                <span className="concierge-intake__num">{index + 1}</span>
-                <span className="concierge-intake__label">{question.label}</span>
-              </label>
-              <p className="concierge-intake__hint">{question.hint}</p>
-              <textarea
-                id={question.id}
-                name={question.id}
-                rows={3}
-                maxLength={INTAKE_FIELD_MAX}
-                value={answers[question.id]}
-                placeholder={question.placeholder}
-                onChange={(event) => updateField(question.id, event.target.value)}
-              />
-              <p className="concierge-intake__count" aria-live="polite">
-                {answers[question.id].length}/{INTAKE_FIELD_MAX}
-              </p>
-            </li>
-          ))}
+          {CONCIERGE_INTAKE_QUESTIONS.map((question, index) => {
+            const hintId = `${question.id}-hint`;
+            const countId = `${question.id}-count`;
+
+            return (
+              <li key={question.id} className="concierge-intake__field">
+                <label htmlFor={question.id}>
+                  <span className="concierge-intake__num">{index + 1}</span>
+                  <span className="concierge-intake__label">{question.label}</span>
+                </label>
+                <p id={hintId} className="concierge-intake__hint">
+                  {question.hint}
+                </p>
+                <textarea
+                  id={question.id}
+                  name={question.id}
+                  rows={3}
+                  maxLength={INTAKE_FIELD_MAX}
+                  value={answers[question.id]}
+                  placeholder={question.placeholder}
+                  aria-describedby={`${hintId} ${countId}`}
+                  onChange={(event) => updateField(question.id, event.target.value)}
+                />
+                <p id={countId} className="concierge-intake__count">
+                  {answers[question.id].length}/{INTAKE_FIELD_MAX}
+                </p>
+              </li>
+            );
+          })}
         </ol>
 
         <div className="concierge-intake__actions">
