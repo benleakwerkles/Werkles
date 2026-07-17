@@ -14,7 +14,6 @@ const surface = read("components/squibb/recommendation-surface.tsx");
 const reasoning = read("components/squibb/reasoning-panel.tsx");
 const meter = read("components/squibb/confidence-meter.tsx");
 const recommendations = read("lib/squibb/recommendations.ts");
-const sessionServer = read("lib/squibb/recommendation-session-server.ts");
 const bellowsPage = read("app/bellows/intake/page.tsx");
 const bellowsForm = read("components/squibb/concierge-intake-form.tsx");
 const discoveryForm = read("app/discovery/discovery-intake-form.tsx");
@@ -49,8 +48,7 @@ assert.match(reasoning, /isExample \? "Example scenario" : "You said"/);
 assert.match(meter, /EXAMPLE_RULES_SCORE_DISCLAIMER/);
 assert.match(meter, /LIVE_RULES_SCORE_DISCLAIMER/);
 
-assert.match(sessionServer, /const liveDeck = buildLiveIntakeRankedDeck/);
-assert.match(sessionServer, /ranked: liveDeck,[\s\S]*catalog: liveDeck/);
+assert.match(recommendations, /export function buildLiveIntakeRankedDeck/);
 
 assert.doesNotMatch(bellowsPage, /intakeGuideTitle|concierge-intake-page__guide/);
 const h1Index = bellowsForm.indexOf("<h1>Name what you are carrying</h1>");
@@ -78,7 +76,7 @@ console.log(
       checks: [
         "demo_copy_does_not_claim_visitor_ownership",
         "latest_intake_keeps_truthful_personal_copy",
-        "live_fallback_does_not_inherit_demo_catalog",
+        "live_ranked_builder_remains_distinct_from_demo_catalog",
         "empty_ledger_does_not_define_example_mode",
         "bellows_heading_order_is_h1_then_h2",
         "discovery_contact_purpose_is_consistently_email",

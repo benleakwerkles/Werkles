@@ -45,6 +45,8 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
     detail: "No saved intake was found."
   };
   const isExample = source.mode === "demo";
+  const hasRecordedActivity = ledger.intakes.length > 0 || optionPackets.length > 0;
+  const showActivityLedger = !isExample || hasRecordedActivity;
 
   const activeList = view === "ranked" ? session.ranked : session.catalog;
 
@@ -88,25 +90,23 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
 
   return (
     <div className="squibb-rec-surface">
-      {isExample ? (
-        <section className="squibb-rec-surface__intake-cta panel" aria-labelledby="squibbIntakeCtaTitle">
-          <div>
-            <p className="eyebrow">Example mode</p>
-            <h2 id="squibbIntakeCtaTitle">This is a walkthrough, not your result.</h2>
-            <p>
-              Explore the recommendation below. You can review the intake questions, but submission is temporarily closed
-              while secure account storage is being connected.
-            </p>
-          </div>
-          <div className="member-selected-surface__actions">
+      <header className="squibb-rec-surface__hero panel">
+        {isExample ? (
+          <div className="squibb-rec-surface__example-custody" role="note" aria-label="Example mode">
+            <div>
+              <p className="eyebrow">Example mode</p>
+              <p>
+                <strong>This is a walkthrough, not your result.</strong>{" "}
+                {hasRecordedActivity
+                  ? "Recorded example activity appears below. Nothing is sent to another person or organization."
+                  : "Nothing is saved from this example. Nothing is sent to another person or organization."}
+              </p>
+            </div>
             <Link className="button button-dark" href="/bellows/intake">
-              Review the intake
+              Review the closed intake questions
             </Link>
           </div>
-        </section>
-      ) : null}
-
-      <header className="squibb-rec-surface__hero panel">
+        ) : null}
         <p className="eyebrow">Werkles recommendations</p>
         <h1>One possible next move, explained.</h1>
         <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
@@ -263,51 +263,53 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         </article>
       </div>
 
-      <section className="squibb-rec-ledger panel" aria-labelledby="squibbLedgerTitle">
-        <header className="squibb-rec-ledger__header">
-          <p className="eyebrow">Account activity</p>
-          <h2 id="squibbLedgerTitle">
-            {isExample ? "Nothing is saved from this example." : "Recent activity tied to this intake."}
-          </h2>
-        </header>
-        <div className="squibb-rec-ledger__grid">
-          <div>
-            <h3>Recent intakes</h3>
-            {ledger.intakes.length > 0 ? (
-              <ol className="squibb-rec-ledger__list">
-                {ledger.intakes.map((intake) => (
-                  <li key={intake.intakeId} className="squibb-rec-ledger__item">
-                    <strong>{intake.state}</strong>
-                    <span>
-                      {intake.answeredCount} of {intake.totalQuestions} fields answered
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <p className="squibb-rec-ledger__empty">
-                {isExample ? "No saved intakes are part of this example. " : "No saved intakes are available here. "}
-                <Link href="/bellows/intake">Review the closed intake questions</Link>.
-              </p>
-            )}
+      {showActivityLedger ? (
+        <section className="squibb-rec-ledger panel" aria-labelledby="squibbLedgerTitle">
+          <header className="squibb-rec-ledger__header">
+            <p className="eyebrow">Account activity</p>
+            <h2 id="squibbLedgerTitle">
+              {isExample ? "Recorded activity attached to this example." : "Recent activity tied to this intake."}
+            </h2>
+          </header>
+          <div className="squibb-rec-ledger__grid">
+            <div>
+              <h3>Recent intakes</h3>
+              {ledger.intakes.length > 0 ? (
+                <ol className="squibb-rec-ledger__list">
+                  {ledger.intakes.map((intake) => (
+                    <li key={intake.intakeId} className="squibb-rec-ledger__item">
+                      <strong>{intake.state}</strong>
+                      <span>
+                        {intake.answeredCount} of {intake.totalQuestions} fields answered
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <p className="squibb-rec-ledger__empty">
+                  {isExample ? "No saved intakes are part of this example. " : "No saved intakes are available here. "}
+                  <Link href="/bellows/intake">Review the closed intake questions</Link>.
+                </p>
+              )}
+            </div>
+            <div>
+              <h3>Saved options</h3>
+              {optionPackets.length > 0 ? (
+                <ol className="squibb-rec-ledger__list">
+                  {optionPackets.map((packet) => (
+                    <li key={packet.packetId} className="squibb-rec-ledger__item">
+                      <strong>{packet.title}</strong>
+                      <span>Rules score: {packet.confidence} out of 100</span>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <p className="squibb-rec-ledger__empty">No recommendation options saved yet.</p>
+              )}
+            </div>
           </div>
-          <div>
-            <h3>Saved options</h3>
-            {optionPackets.length > 0 ? (
-              <ol className="squibb-rec-ledger__list">
-                {optionPackets.map((packet) => (
-                  <li key={packet.packetId} className="squibb-rec-ledger__item">
-                    <strong>{packet.title}</strong>
-                    <span>Rules score: {packet.confidence} out of 100</span>
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <p className="squibb-rec-ledger__empty">No recommendation options saved yet.</p>
-            )}
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </div>
   );
 }

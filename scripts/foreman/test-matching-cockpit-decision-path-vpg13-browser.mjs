@@ -97,8 +97,8 @@ try {
     const copyStyles = await page
       .locator(
         [
-          ".squibb-rec-surface__intake-cta h2",
-          ".squibb-rec-surface__intake-cta p",
+          ".squibb-rec-surface__example-custody strong",
+          ".squibb-rec-surface__example-custody p",
           ".squibb-rec-surface__hero h1",
           ".squibb-rec-surface__intro",
           ".squibb-rec-selection-status",
@@ -113,15 +113,13 @@ try {
           ".squibb-gates__operator-note",
           ".squibb-evidence h3",
           ".squibb-evidence__lead",
-          ".squibb-rec-detail__preview-note",
-          ".squibb-rec-ledger__header h2",
-          ".squibb-rec-ledger__empty"
+          ".squibb-rec-detail__preview-note"
         ].join(", ")
       )
       .evaluateAll((elements) =>
         elements.map((element) => ({ selector: element.className || element.tagName, color: getComputedStyle(element).color }))
       );
-    assert.ok(copyStyles.length >= 19, `expected representative copy samples at ${width}px`);
+    assert.ok(copyStyles.length >= 17, `expected representative copy samples at ${width}px`);
     for (const sample of copyStyles) {
       assert.ok(
         contrast(rgb(sample.color), [44, 35, 29]) >= 4.5,
@@ -174,6 +172,8 @@ try {
       return Boolean(gates && evidence && (gates.compareDocumentPosition(evidence) & Node.DOCUMENT_POSITION_FOLLOWING));
     });
     assert.equal(order, true, "review boundary must precede evidence");
+    assert.equal(await page.locator(".squibb-rec-ledger").count(), 0, "empty example ledger should be compressed away");
+    await page.getByRole("note", { name: "Example mode" }).getByText("Nothing is saved from this example.").waitFor();
 
     if (width === 320) {
       const viewButtons = page.getByRole("group", { name: "Recommendation deck view" }).getByRole("button");

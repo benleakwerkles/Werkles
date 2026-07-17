@@ -140,7 +140,11 @@ assert.match(
 assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
 assert.match(surface, /variant="rules_score"/);
 assert.match(surface, /aria-describedby="squibbRecommendationSavingStatus"/);
-assert.match(surface, /submission is temporarily closed/);
+assert.match(
+  surface,
+  /Nothing is saved from this example\. Nothing is sent to another person or organization\./
+);
+assert.match(surface, /Review the closed intake questions/);
 assert.doesNotMatch(surface, /Make these recommendations yours/);
 assert.doesNotMatch(surface, /fetch\s*\(/);
 assert.doesNotMatch(surface, /stagePacket\s*\(/);

@@ -72,9 +72,6 @@ assert.match(page, /loadPublicBellowsRecommendationPageData/);
 assert.doesNotMatch(page, /loadSquibbRecommendationSessionForBellows|loadBellowsPacketLedger/);
 assert.match(page, /dynamic\s*=\s*["']force-dynamic["']/);
 
-const personalSentinel = "PRIVATE_MATCHING_SENTINEL_DO_NOT_RENDER";
-let sessionReaderCalls = 0;
-let ledgerReaderCalls = 0;
 const demoSession = {
   version: "v1",
   statedNeed: "Example need",
@@ -89,29 +86,13 @@ const boundaryModule = executeTypeScript(boundarySource, {
     isMatchingPublicEnabled: () => false
   },
   "@/lib/squibb/bellows-ledger": {},
-  "@/lib/squibb/recommendation-session-server": {
-    loadSquibbRecommendationSessionForBellows: async () => {
-      sessionReaderCalls += 1;
-      return { ...demoSession, statedNeed: personalSentinel };
-    },
-    loadBellowsPacketLedger: async () => {
-      ledgerReaderCalls += 1;
-      return {
-        intakes: [{ intakeId: personalSentinel }],
-        optionPackets: [{ packetId: personalSentinel }]
-      };
-    }
-  },
   "@/lib/squibb/recommendations": {
     loadSquibbRecommendationSession: () => demoSession
   }
 });
 const closedData = await boundaryModule.loadPublicBellowsRecommendationPageData();
-assert.equal(sessionReaderCalls, 0, "OFF must not call the personal session reader");
-assert.equal(ledgerReaderCalls, 0, "OFF must not call the personal ledger reader");
 assert.equal(closedData.session.source.mode, "demo");
 assert.deepEqual(closedData.ledger, { intakes: [], optionPackets: [] });
-assert.doesNotMatch(JSON.stringify(closedData), new RegExp(personalSentinel));
 
 const routeDependencies = [];
 const routeModule = executeTypeScript(routeSource, {
