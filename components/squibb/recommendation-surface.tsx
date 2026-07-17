@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import type { BellowsLedgerOptionRow, BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
 import type { SquibbRecommendationSession } from "@/lib/squibb/recommendations";
@@ -33,6 +33,7 @@ const RECOMMENDATION_DETAIL_ID = "squibbRecommendationDetail";
 export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommendationSurfaceProps) {
   const [selectedId, setSelectedId] = useState(session.ranked[0]?.id ?? session.catalog[0]?.id);
   const [view, setView] = useState<"ranked" | "catalog">("ranked");
+  const recommendationRailRef = useRef<HTMLDivElement>(null);
   const [optionPackets] = useState<BellowsLedgerOptionRow[]>(ledger.optionPackets);
   const [packetState, setPacketState] = useState<RecommendationPacketState>({
     status: "closed",
@@ -53,9 +54,22 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
   );
 
   function switchView(next: "ranked" | "catalog") {
+    const nextList = next === "ranked" ? session.ranked : session.catalog;
+    const selectedStillAvailable = nextList.some((recommendation) => recommendation.id === selectedId);
     setView(next);
-    const first = next === "ranked" ? session.ranked[0] : session.catalog[0];
-    if (first) setSelectedId(first.id);
+    if (!selectedStillAvailable) {
+      const first = nextList[0];
+      if (first) setSelectedId(first.id);
+    }
+    requestAnimationFrame(() => {
+      const rail = recommendationRailRef.current;
+      const selectedCard = rail?.querySelector<HTMLElement>('.squibb-rec-card[aria-pressed="true"]');
+      if (selectedCard) {
+        selectedCard.scrollIntoView({ behavior: "auto", block: "nearest", inline: "nearest" });
+      } else {
+        rail?.scrollTo({ left: 0, behavior: "auto" });
+      }
+    });
     setPacketState({
       status: "closed",
       message: SAVE_CLOSED_MESSAGE
@@ -160,7 +174,17 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
           <h2 className="squibb-rec-surface__stack-title">
             {view === "ranked" ? "Best fits right now" : "Everything you can consider"}
           </h2>
-          <div className="squibb-rec-stack">
+          <p id="squibbRecommendationCompareCue" className="squibb-rec-surface__compare-cue">
+            Scroll sideways to compare options. Selecting one updates the details below.
+          </p>
+          <div
+            ref={recommendationRailRef}
+            className="squibb-rec-stack"
+            role="region"
+            aria-label={`${activeList.length} recommendation options`}
+            aria-describedby="squibbRecommendationCompareCue"
+            tabIndex={0}
+          >
             {activeList.map((rec) => (
               <RecommendationCard
                 key={rec.id}
@@ -194,8 +218,8 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             isExample={isExample}
           />
           <div className="squibb-rec-detail__proof-grid">
-            <EvidenceSection items={selected.evidence} />
             <HumanGateStrip gates={selected.humanGates} />
+            <EvidenceSection items={selected.evidence} />
           </div>
 
           <footer className="squibb-rec-detail__actions">

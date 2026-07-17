@@ -1,7 +1,7 @@
 /* Squibb Recommendation Surface v1 — Bellows sub-route */
 
 .squibb-rec-page {
-  --squibb-rec-accent: var(--werkles-owl-eye-green, #5fd178);
+  --squibb-rec-accent: var(--werkles-violet-bright, #672eed);
   --squibb-rec-copper: var(--werkles-copper, #9f6633);
 }
 
@@ -386,8 +386,8 @@
 }
 
 .squibb-evidence__strength--verified {
-  background: color-mix(in srgb, var(--squibb-rec-accent) 22%, transparent);
-  color: var(--squibb-rec-accent);
+  background: color-mix(in srgb, var(--werkles-owl-eye-green, #5fd178) 22%, transparent);
+  color: var(--werkles-owl-eye-green, #5fd178);
 }
 
 .squibb-evidence__strength--self_reported {
@@ -604,14 +604,19 @@
   }
 }
 
-/* V2 UI cleanup: quieter chrome, clearer hierarchy, and honest disabled states. */
+/* V2 geometry with VPG13 cockpit-law alignment. */
 .squibb-rec-page {
   min-height: 100vh;
   padding: 1rem 0 4rem;
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   background:
-    radial-gradient(circle at 86% 5%, rgba(95, 209, 120, 0.13), transparent 28rem),
-    linear-gradient(180deg, #fbf8f1 0%, #f5ecde 55%, #eee2d1 100%);
+    radial-gradient(circle at 86% 5%, rgba(103, 46, 237, 0.18), transparent 28rem),
+    linear-gradient(
+      180deg,
+      var(--werkles-forge-black, #050404) 0%,
+      var(--werkles-workshop-night, #191817) 55%,
+      var(--werkles-forge-black, #050404) 100%
+    );
 }
 
 .squibb-rec-page__nav,
@@ -627,22 +632,22 @@
   gap: 1rem;
   margin-bottom: 1rem;
   padding: 0.65rem 0.9rem;
-  border: 1px solid #ddcfbb;
+  border: 1px solid var(--werkles-iron, #3b342a);
   border-radius: 999px;
-  background: rgba(255, 252, 246, 0.88);
-  box-shadow: 0 8px 30px rgba(62, 43, 25, 0.07);
-  color: #5b493a;
+  background: rgba(25, 24, 23, 0.94);
+  box-shadow: 0 8px 30px rgba(5, 4, 4, 0.35);
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: 0.88rem;
 }
 
 .squibb-rec-page__nav span {
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-weight: 800;
 }
 
 .squibb-rec-page__back,
 .squibb-rec-page__intake-link {
-  color: #4a392d;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-weight: 700;
   text-decoration: none;
 }
@@ -653,23 +658,27 @@
 
 .squibb-rec-page__back:hover,
 .squibb-rec-page__intake-link:hover {
-  color: #015e51;
+  color: var(--werkles-teal-bright, #18c5ae);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 
 .squibb-rec-surface {
   gap: 1.5rem;
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.squibb-rec-surface .eyebrow {
+  color: var(--werkles-brass-bright, #e0b569);
 }
 
 .squibb-rec-surface > .panel,
 .squibb-rec-surface__detail {
   padding: clamp(1.1rem, 2.4vw, 1.85rem);
-  border: 1px solid #ddcfbb;
+  border: 1px solid var(--werkles-iron, #3b342a);
   border-radius: 1.25rem;
-  background: rgba(255, 252, 246, 0.96);
-  box-shadow: 0 14px 44px rgba(62, 43, 25, 0.08);
+  background: rgba(25, 24, 23, 0.97);
+  box-shadow: 0 14px 44px rgba(5, 4, 4, 0.38);
 }
 
 .squibb-rec-surface__intake-cta {
@@ -677,8 +686,12 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1.5rem;
-  border-left: 1px solid #ddcfbb;
-  background: linear-gradient(110deg, #fffaf0, #f1f8ea);
+  border-left: 1px solid var(--werkles-copper, #9f6633);
+  background: linear-gradient(
+    110deg,
+    var(--werkles-smoke, #2c231d),
+    var(--werkles-workshop-night, #191817)
+  );
 }
 
 .squibb-rec-surface__intake-cta h2,
@@ -688,7 +701,7 @@
 
 .squibb-rec-surface__intake-cta h2 {
   margin-bottom: 0.35rem;
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: clamp(1.2rem, 2vw, 1.55rem);
 }
 
@@ -697,14 +710,14 @@
 }
 
 .squibb-rec-surface__hero {
-  border-left: 1px solid #ddcfbb;
+  border-left: 1px solid var(--werkles-copper, #9f6633);
   overflow: hidden;
 }
 
 .squibb-rec-surface__hero h1 {
   max-width: 18ch;
   margin: 0.2rem 0 0.65rem;
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: clamp(2.2rem, 5vw, 4.35rem);
   line-height: 0.98;
   letter-spacing: -0.045em;
@@ -713,7 +726,7 @@
 .squibb-rec-surface__intro {
   max-width: 66ch;
   margin-bottom: 1.4rem;
-  color: #5b493a;
+  color: var(--squibb-rec-muted-on-dark);
   font-size: 1.04rem;
 }
 
@@ -725,65 +738,69 @@
 
 .squibb-rec-surface__context > div {
   padding: 0.9rem;
-  border: 1px solid #e4d7c5;
+  border: 1px solid var(--werkles-iron, #3b342a);
   border-radius: 0.85rem;
-  background: #fbf6ed;
+  background: var(--werkles-smoke, #2c231d);
 }
 
 .squibb-rec-surface__context dt {
-  color: #75563d;
+  color: var(--werkles-brass-bright, #e0b569);
   font-weight: 800;
 }
 
 .squibb-rec-surface__context dd {
-  color: #2c211a;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: 0.98rem;
   line-height: 1.45;
 }
 
 .squibb-rec-surface__context dd small {
-  color: #665448;
+  color: var(--squibb-rec-muted-on-dark);
   line-height: 1.45;
 }
 
 .squibb-rec-surface__squibb-note {
   margin-top: 1rem;
-  color: #2e4b31;
-  background: #edf6e8;
-  border-color: #bcd8b9;
+  color: var(--werkles-text-primary, #f4e2b1);
+  background: color-mix(
+    in srgb,
+    var(--werkles-teal-deep, #015e51) 32%,
+    var(--werkles-workshop-night, #191817)
+  );
+  border-color: var(--werkles-teal, #02917e);
   font-size: 0.95rem;
 }
 
 .squibb-rec-surface__tabs {
   width: fit-content;
   padding: 0.3rem;
-  border: 1px solid #d7c7ad;
+  border: 1px solid var(--werkles-iron, #3b342a);
   border-radius: 999px;
-  background: rgba(255, 252, 246, 0.9);
+  background: rgba(25, 24, 23, 0.94);
 }
 
 .squibb-rec-tab {
   border-color: transparent;
   background: transparent;
-  color: #574437;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-weight: 800;
 }
 
 .squibb-rec-tab:hover {
-  background: #f1e7d7;
+  background: var(--werkles-smoke, #2c231d);
 }
 
 .squibb-rec-tab--active {
-  border-color: #315e3b;
-  background: #263a2b;
-  color: #fffaf0;
+  border-color: var(--werkles-violet-bright, #672eed);
+  background: var(--werkles-violet-deep, #2a0e8c);
+  color: var(--werkles-text-primary, #f4e2b1);
   box-shadow: none;
 }
 
 .squibb-rec-selection-status {
   width: fit-content;
   margin: -0.2rem 0 0;
-  color: #5e4a3c;
+  color: var(--squibb-rec-muted-on-dark);
   font-size: 0.88rem;
   font-weight: 750;
 }
@@ -799,7 +816,7 @@
 }
 
 .squibb-rec-surface__stack-title {
-  color: #5e4a3c;
+  color: var(--werkles-brass-bright, #e0b569);
   font-weight: 800;
 }
 
@@ -810,50 +827,54 @@
 .squibb-rec-card {
   position: relative;
   padding: 1rem;
-  border-color: #d8c8b2;
-  background: rgba(255, 252, 246, 0.94);
-  color: #1f1814;
-  box-shadow: 0 8px 26px rgba(62, 43, 25, 0.07);
+  border-color: var(--werkles-iron, #3b342a);
+  background: var(--werkles-smoke, #2c231d);
+  color: var(--werkles-text-primary, #f4e2b1);
+  box-shadow: 0 8px 26px rgba(5, 4, 4, 0.24);
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .squibb-rec-card:hover {
   transform: translateY(-1px);
-  border-color: #9b744e;
-  box-shadow: 0 12px 30px rgba(62, 43, 25, 0.11);
+  border-color: var(--werkles-copper-light, #c08b52);
+  box-shadow: 0 12px 30px rgba(5, 4, 4, 0.34);
 }
 
 .squibb-rec-card--selected {
-  border-color: #4c7a50;
-  background: #edf6e8;
-  box-shadow: 0 0 0 2px rgba(76, 122, 80, 0.16), 0 12px 30px rgba(62, 43, 25, 0.1);
+  border-color: var(--werkles-violet-bright, #672eed);
+  background: color-mix(
+    in srgb,
+    var(--werkles-violet-deep, #2a0e8c) 48%,
+    var(--werkles-smoke, #2c231d)
+  );
+  box-shadow: 0 0 0 2px rgba(103, 46, 237, 0.24), 0 12px 30px rgba(5, 4, 4, 0.32);
 }
 
 .squibb-rec-card__rank {
-  color: #326a40;
+  color: var(--werkles-brass-bright, #e0b569);
 }
 
 .squibb-rec-card__kind,
 .squibb-rec-card p,
 main.squibb-rec-page .squibb-rec-card p {
-  color: #5f4c3e;
+  color: var(--squibb-rec-muted-on-dark);
 }
 
 .squibb-rec-card h4,
 main.squibb-rec-page .squibb-rec-card h4 {
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
 }
 
 .squibb-rec-card__flag {
-  color: #5a4219;
-  background: #fff2c8;
-  border-color: #dec279;
+  color: var(--werkles-ember, #fbc368);
+  background: color-mix(in srgb, var(--werkles-ember, #fbc368) 12%, transparent);
+  border-color: color-mix(in srgb, var(--werkles-ember, #fbc368) 54%, var(--werkles-iron, #3b342a));
 }
 
 .squibb-rec-card__flag--blocker {
-  color: #742c2c;
-  background: #f9dddd;
-  border-color: #d59b9b;
+  color: #ffd0cb;
+  background: #4a2020;
+  border-color: #b65e5e;
 }
 
 .squibb-rec-surface__detail {
@@ -862,11 +883,11 @@ main.squibb-rec-page .squibb-rec-card h4 {
 
 .squibb-rec-detail__header {
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #e4d7c5;
+  border-bottom: 1px solid var(--werkles-iron, #3b342a);
 }
 
 .squibb-rec-detail__header h2 {
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: clamp(1.75rem, 3vw, 2.55rem);
   line-height: 1.05;
 }
@@ -874,17 +895,18 @@ main.squibb-rec-page .squibb-rec-card h4 {
 .squibb-rec-detail__header p:not(.eyebrow) {
   max-width: 64ch;
   margin-bottom: 0;
-  color: #5b493a;
+  color: var(--squibb-rec-muted-on-dark);
   font-size: 1rem;
 }
 
 .squibb-reasoning,
 .squibb-confidence,
 .squibb-rec-detail__actions {
-  padding: 1.1rem;
-  border: 1px solid #e4d7c5;
-  border-radius: 1rem;
-  background: #fbf6ed;
+  padding: 1.1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--werkles-iron, #3b342a);
+  border-radius: 0;
+  background: transparent;
 }
 
 .squibb-reasoning h3,
@@ -892,39 +914,59 @@ main.squibb-rec-page .squibb-rec-card h4 {
 .squibb-evidence h3,
 .squibb-gates h3 {
   margin-top: 0;
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
 }
 
 .squibb-reasoning__need dt,
 .squibb-rec-detail__dispatch dt {
-  color: #745b47;
+  color: var(--werkles-brass-bright, #e0b569);
   font-weight: 800;
 }
 
 .squibb-reasoning__need dd,
 .squibb-reasoning__list,
 .squibb-confidence__why {
-  color: #44362c;
+  color: var(--werkles-text-primary, #f4e2b1);
 }
 
 .squibb-reasoning__counter {
-  color: #4c3724;
-  background: #fff0d2;
+  color: var(--werkles-text-primary, #f4e2b1);
+  background: color-mix(
+    in srgb,
+    var(--werkles-ember, #fbc368) 12%,
+    var(--werkles-workshop-night, #191817)
+  );
 }
 
 .squibb-confidence__badge {
-  border-color: #cdbb9f;
-  background: #efe4d3;
-  color: #3f3127;
+  border-color: var(--werkles-iron, #3b342a);
+  background: var(--werkles-smoke, #2c231d);
+  color: var(--werkles-text-primary, #f4e2b1);
+}
+
+.squibb-confidence__badge--high {
+  border-color: var(--werkles-teal-bright, #18c5ae);
+}
+
+.squibb-confidence__badge--medium {
+  border-color: var(--werkles-ember, #fbc368);
 }
 
 .squibb-confidence__score {
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: 1rem;
 }
 
 .squibb-confidence__track {
-  background: #d7cbb8;
+  background: var(--werkles-iron, #3b342a);
+}
+
+.squibb-confidence__fill {
+  background: linear-gradient(
+    90deg,
+    var(--werkles-teal-deep, #015e51),
+    var(--werkles-teal-bright, #18c5ae)
+  );
 }
 
 .squibb-rec-detail__proof-grid {
@@ -936,70 +978,79 @@ main.squibb-rec-page .squibb-rec-card h4 {
 
 .squibb-evidence,
 .squibb-gates {
-  padding: 1.1rem;
-  border: 1px solid #e4d7c5;
-  border-radius: 1rem;
-  background: #fffdf8;
+  padding: 1.1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--werkles-iron, #3b342a);
+  border-radius: 0;
+  background: transparent;
 }
 
 .squibb-evidence__lead,
 .squibb-gates__operator-note {
-  color: #5b493a;
+  color: var(--squibb-rec-muted-on-dark);
 }
 
 .squibb-evidence__item {
-  border-color: #d9cbb7;
-  background: #f8f2e8;
-  color: #2c211a;
+  border-color: var(--werkles-iron, #3b342a);
+  background: var(--werkles-smoke, #2c231d);
+  color: var(--werkles-text-primary, #f4e2b1);
 }
 
 .squibb-evidence__item--missing {
   opacity: 1;
-  background: #eee9e1;
+  background: color-mix(
+    in srgb,
+    var(--werkles-iron, #3b342a) 38%,
+    var(--werkles-workshop-night, #191817)
+  );
 }
 
 .squibb-evidence__item strong,
 main.squibb-rec-page .squibb-evidence__item strong {
-  color: #2c211a;
+  color: var(--werkles-text-primary, #f4e2b1);
 }
 
 .squibb-evidence__source {
-  color: #655348;
+  color: var(--squibb-rec-muted-on-dark);
 }
 
 .squibb-evidence__strength--missing {
-  color: #5f574f;
-  background: #ded8cf;
+  color: var(--squibb-rec-muted-on-dark);
+  background: var(--werkles-iron, #3b342a);
 }
 
 .squibb-gates__summary {
-  color: #842f2f;
+  color: #ffb7b1;
 }
 
 .squibb-gate {
-  border-color: #d9cbb7;
-  background: #fbf6ed;
-  color: #2c211a;
+  border-color: var(--werkles-iron, #3b342a);
+  background: var(--werkles-smoke, #2c231d);
+  color: var(--werkles-text-primary, #f4e2b1);
 }
 
 .squibb-gate--blocker {
-  border-color: #d39b9b;
-  background: #f9e4e2;
-  color: #562424;
+  border-color: #b65e5e;
+  background: #4a2020;
+  color: #ffd0cb;
 }
 
 .squibb-gate p,
 .squibb-gate__approval,
 .squibb-gate__approval--auto,
 main.squibb-rec-page .squibb-gate p {
-  color: #5b493a;
+  color: var(--squibb-rec-muted-on-dark);
+}
+
+.squibb-gate__approval:not(.squibb-gate__approval--auto) {
+  color: var(--werkles-ember, #fbc368);
 }
 
 .squibb-gate--blocker p,
 .squibb-gate--blocker .squibb-gate__approval,
 .squibb-gate--blocker .squibb-gate__approval--auto,
 main.squibb-rec-page .squibb-gate--blocker p {
-  color: #6d3030;
+  color: #ffd0cb;
 }
 
 .squibb-rec-detail__dispatch {
@@ -1010,30 +1061,30 @@ main.squibb-rec-page .squibb-gate--blocker p {
 .squibb-rec-detail__preview-note {
   margin: 0 0 0.85rem;
   padding: 0.8rem 0.9rem;
-  border: 1px solid #c9bb9f;
+  border: 1px solid var(--werkles-iron, #3b342a);
   border-radius: 0.75rem;
-  background: #f2eadc;
-  color: #55483e;
+  background: var(--werkles-smoke, #2c231d);
+  color: var(--squibb-rec-muted-on-dark);
   font-size: 0.88rem;
   line-height: 1.45;
 }
 
 .squibb-rec-detail__buttons .button:disabled {
   opacity: 1;
-  border-color: #cfc5b6;
-  background: #e8e2d8;
-  color: #766d62;
+  border-color: var(--werkles-iron, #3b342a);
+  background: var(--werkles-workshop-night, #191817);
+  color: var(--squibb-rec-muted-on-dark);
   box-shadow: none;
   cursor: not-allowed;
 }
 
 .squibb-rec-ledger {
-  border-left: 1px solid #ddcfbb;
+  border-left: 1px solid var(--werkles-copper, #9f6633);
   box-shadow: none;
 }
 
 .squibb-rec-ledger__header h2 {
-  color: #1f1814;
+  color: var(--werkles-text-primary, #f4e2b1);
   font-size: 1.25rem;
 }
 
@@ -1042,23 +1093,35 @@ main.squibb-rec-page .squibb-gate--blocker p {
 }
 
 .squibb-rec-ledger__grid > div {
-  padding: 0.85rem;
-  border: 1px solid #e4d7c5;
-  border-radius: 0.85rem;
-  background: #fbf6ed;
+  padding: 0.85rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--werkles-iron, #3b342a);
+  border-radius: 0;
+  background: transparent;
 }
 
 .squibb-rec-ledger h3,
 .squibb-rec-ledger__empty,
 main.squibb-rec-page .squibb-rec-ledger__empty {
-  color: #5b493a;
+  color: var(--squibb-rec-muted-on-dark);
+}
+
+.squibb-rec-ledger h3 {
+  color: var(--werkles-brass-bright, #e0b569);
+}
+
+.squibb-rec-surface__compare-cue {
+  display: none;
+  margin: -0.35rem 0 0.75rem;
+  color: var(--squibb-rec-muted-on-dark);
+  font-size: 0.82rem;
 }
 
 .squibb-rec-tab:focus-visible,
 .squibb-rec-card:focus-visible,
 .squibb-rec-page__back:focus-visible,
 .squibb-rec-page__intake-link:focus-visible {
-  outline: 3px solid #f3b54a;
+  outline: 3px solid var(--werkles-ember, #fbc368);
   outline-offset: 3px;
 }
 
@@ -1079,6 +1142,10 @@ main.squibb-rec-page .squibb-rec-ledger__empty {
 
   .squibb-rec-surface__stack {
     position: static;
+  }
+
+  .squibb-rec-surface__compare-cue {
+    display: block;
   }
 
   .squibb-rec-stack {

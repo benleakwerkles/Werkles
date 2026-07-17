@@ -42,10 +42,10 @@ for (const required of [
   assert.match(css, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
 }
 
-assert.match(css, /\.squibb-rec-card[\s\S]*background: rgba\(255, 252, 246, 0\.94\)/);
+assert.match(css, /\.squibb-rec-card[\s\S]*background: var\(--werkles-smoke, #2c231d\)/);
 assert.match(css, /\.squibb-rec-detail__buttons \.button:disabled[\s\S]*opacity: 1/);
-assert.match(css, /\.squibb-evidence__item[\s\S]*background: #f8f2e8/);
-assert.match(css, /\.squibb-gate--blocker[\s\S]*background: #f9e4e2/);
+assert.match(css, /\.squibb-evidence__item[\s\S]*background: var\(--werkles-smoke, #2c231d\)/);
+assert.match(css, /\.squibb-gate--blocker[\s\S]*background: #4a2020/);
 assert.match(
   css,
   /@media \(max-width: 900px\)[\s\S]*?\.squibb-rec-surface__layout \{[\s\S]*?grid-template-columns: minmax\(0, 1fr\);/
@@ -60,7 +60,7 @@ console.log(
         "public_test_fixture_link_removed",
         "example_mode_copy_consolidated",
         "centered_reading_width",
-        "light_readable_recommendation_cards",
+        "canonical_dark_recommendation_cards",
         "evidence_and_gates_compacted",
         "save_closed_notice_before_neutral_disabled_actions",
         "mobile_horizontal_recommendation_rail",
