@@ -9,7 +9,7 @@ import "./concierge-intake.css";
 
 export const metadata = {
   title: "Concierge Intake | Bellows",
-  description: "Symptom-only intake for Speaker — no matching, no profiles, no solution questions."
+  description: "Review the Werkles intake questions. Submission is temporarily closed while secure storage is connected."
 };
 
 export default function ConciergeIntakePage() {
@@ -36,11 +36,11 @@ export default function ConciergeIntakePage() {
 
         <section className="panel concierge-intake-page__guide" aria-labelledby="intakeGuideTitle">
           <p className="eyebrow">How intake works</p>
-          <h2 id="intakeGuideTitle">Symptoms in, engine out, Squibb speaks.</h2>
+          <h2 id="intakeGuideTitle">Review the questions before you share anything.</h2>
           <ol>
             <li>Answer symptom questions — not “what partner do you want.”</li>
-            <li>Submit — matching engine runs (shadow until go-live).</li>
-            <li>Speaker facts + Squibb-ranked paths on the recommendation surface.</li>
+            <li>Submission is temporarily closed while secure account storage is being connected.</li>
+            <li>The public recommendation walkthrough stays example-only and does not load anything typed here.</li>
           </ol>
         </section>
 

@@ -78,21 +78,21 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             <p className="eyebrow">Example mode</p>
             <h2 id="squibbIntakeCtaTitle">This is a walkthrough, not your result.</h2>
             <p>
-              Explore the recommendation below. You can still complete an intake, but this public beta will not connect it
-              to this page yet.
+              Explore the recommendation below. You can review the intake questions, but submission is temporarily closed
+              while secure account storage is being connected.
             </p>
           </div>
           <div className="member-selected-surface__actions">
             <Link className="button button-dark" href="/bellows/intake">
-              Start your intake
+              Review the intake
             </Link>
           </div>
         </section>
       ) : null}
 
       <header className="squibb-rec-surface__hero panel">
-        <p className="eyebrow">Autonomous Matching</p>
-        <h1>Your strongest next move, explained.</h1>
+        <p className="eyebrow">Werkles recommendations</p>
+        <h1>One possible next move, explained.</h1>
         <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
         <dl className="squibb-rec-surface__context">
           <div>

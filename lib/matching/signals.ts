@@ -8,15 +8,23 @@ import type { MatchingIntakeSource, StructuredSignals } from "@/lib/matching/typ
 
 
 
-const PARTNER_WORDS = /\b(partner|co-founder|cofounder|investor|backer|equity)\b/i;
+const PARTNER_WORDS = /\b(partner(?:ship)?|co[- ]?founder|investor|backer|equity)\b/i;
 
-const CAPITAL_WORDS = /\b(loan|capital|fund|fundraising|money|credit|financ|bank|lender|invest)\b/i;
+const CAPITAL_WORDS =
+  /\b(loan|capital|fund(?:ing|raise|raising)?|fundrais(?:e|ing)|money|credit|financ(?:e|es|ed|ing|ial|ially)?|bank(?:er|ing)?|lender|invest(?:or|ment|ing|ed)?)\b/i;
 
-const JOB_WORDS = /\b(job|hire|hired|employment|shift|bartend|server|waiter|waitress|kitchen)\b/i;
+const JOB_WORDS = /\b(job|hire|hired|hiring|employment|career|shift|bartend(?:er|ing)?|server|waiter|waitress|kitchen)\b/i;
 
-const TRAINING_WORDS = /\b(train|certif|license|course|class|learn|skill)\b/i;
+const TRAINING_WORDS =
+  /\b(train(?:ing|ed|er)?|certif(?:y|ied|ication|ications)?|licen[cs](?:e|ed|ing|ure)?|course|class|learn(?:ing)?|skill(?:s)?)\b/i;
 
-const RELOC_WORDS = /\b(relocat|move|city|state|zip|metro|area)\b/i;
+const RELOC_WORDS = /\b(relocat(?:e|ed|ing|ion)?|move|moved|moving|city|state|zip|metro|area)\b/i;
+
+const NEGATED_INTENT_BEFORE_MATCH =
+  /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not|never|no\s+longer)\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
+
+const DOUBLE_NEGATED_INTENT_BEFORE_MATCH =
+  /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not)\s+not\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
 
 
 
@@ -35,9 +43,24 @@ function tokenize(...parts: string[]): string[] {
 }
 
 
-function hasPattern(text: string, pattern: RegExp) {
+function hasAffirmedPattern(text: string, pattern: RegExp) {
 
-  return pattern.test(text);
+  const flags = pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`;
+
+  for (const match of text.matchAll(new RegExp(pattern.source, flags))) {
+
+    const matchIndex = match.index ?? 0;
+
+    const beforeMatch = text.slice(Math.max(0, matchIndex - 120), matchIndex);
+
+    const currentClause = beforeMatch.split(/[.!?;:\n]|\b(?:but|however|instead|yet)\b/i).at(-1) ?? beforeMatch;
+
+    if (DOUBLE_NEGATED_INTENT_BEFORE_MATCH.test(currentClause)) return true;
+    if (!NEGATED_INTENT_BEFORE_MATCH.test(currentClause)) return true;
+
+  }
+
+  return false;
 
 }
 
@@ -83,15 +106,15 @@ function buildSignals(
 
     goalKeywords: tokenize(...goalParts),
 
-    capitalSeeking: hasPattern(blob, CAPITAL_WORDS),
+    capitalSeeking: hasAffirmedPattern(blob, CAPITAL_WORDS),
 
-    partnerSeeking: hasPattern(blob, PARTNER_WORDS),
+    partnerSeeking: hasAffirmedPattern(blob, PARTNER_WORDS),
 
-    jobSeeking: hasPattern(blob, JOB_WORDS),
+    jobSeeking: hasAffirmedPattern(blob, JOB_WORDS),
 
-    trainingSeeking: hasPattern(blob, TRAINING_WORDS),
+    trainingSeeking: hasAffirmedPattern(blob, TRAINING_WORDS),
 
-    relocationSignal: hasPattern(blob, RELOC_WORDS),
+    relocationSignal: hasAffirmedPattern(blob, RELOC_WORDS),
 
     leverage,
 

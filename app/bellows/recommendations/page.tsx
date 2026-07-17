@@ -8,7 +8,7 @@ import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-rec
 import "./squibb-recommendations.css";
 
 export const metadata = {
-  title: "Autonomous Matching | Werkles",
+  title: "Werkles Recommendations",
   description: "Compare possible next steps with their reasoning, evidence, limitations, and required human review."
 };
 
@@ -25,9 +25,9 @@ export default async function SquibbRecommendationsPage() {
           <Link className="squibb-rec-page__back" href="/bellows">
             ← Bellows
           </Link>
-          <span aria-current="page">Autonomous Matching</span>
+          <span aria-current="page">Recommendations</span>
           <Link className="squibb-rec-page__intake-link" href="/bellows/intake">
-            Start an intake
+            Review the intake
           </Link>
         </nav>
 

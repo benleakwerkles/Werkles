@@ -20,7 +20,7 @@ function examplePageData(publicEnabled: boolean): PublicBellowsRecommendationPag
       ...demo,
       source: {
         mode: "demo",
-        label: publicEnabled ? "Autonomous Matching example" : "Demo scenario",
+        label: publicEnabled ? "Rules-based recommendation example" : "Demo scenario",
         detail: publicEnabled
           ? "This public beta uses an example. No personal recommendation is shown until it can be tied to your account."
           : "Personal recommendations are closed while this beta is being tested, so this page uses an example."

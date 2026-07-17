@@ -11,6 +11,10 @@ import {
   type ConciergeIntakeAnswers,
   type SpeakerIntakePacket
 } from "@/lib/squibb/concierge-intake-v0";
+import {
+  BELLOWS_INTAKE_CLOSED_MESSAGE,
+  BELLOWS_INTAKE_SUBMISSION_OPEN
+} from "@/lib/squibb/concierge-intake-availability";
 
 type IntakeSaveState =
   | { status: "idle"; message: string }
@@ -18,9 +22,6 @@ type IntakeSaveState =
   | {
       status: "saved";
       message: string;
-      intakeId: string;
-      packetPath: string;
-      speakerEntryPath: string;
     }
   | { status: "error"; message: string };
 
@@ -31,11 +32,13 @@ export function ConciergeIntakeForm() {
   const [submitted, setSubmitted] = useState<SpeakerIntakePacket | null>(null);
   const [saveState, setSaveState] = useState<IntakeSaveState>({
     status: "idle",
-    message: "Nothing is saved until you submit. No matching. No profiles."
+    message: `${BELLOWS_INTAKE_CLOSED_MESSAGE} Nothing you type here is saved or sent.`
   });
 
   const canSubmit = useMemo(
-    () => CONCIERGE_INTAKE_QUESTIONS.some((q) => answers[q.id].trim().length > 0),
+    () =>
+      BELLOWS_INTAKE_SUBMISSION_OPEN &&
+      CONCIERGE_INTAKE_QUESTIONS.some((q) => answers[q.id].trim().length > 0),
     [answers]
   );
 
@@ -44,16 +47,16 @@ export function ConciergeIntakeForm() {
     setSubmitted(null);
     setSaveState({
       status: "idle",
-      message: "Edits are local until you submit again. No matching. No profiles."
+      message: `${BELLOWS_INTAKE_CLOSED_MESSAGE} Nothing you type here is saved or sent.`
     });
   }
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    if (!canSubmit) return;
+    if (!BELLOWS_INTAKE_SUBMISSION_OPEN || !canSubmit) return;
     const packet = buildSpeakerIntakePacket(answers);
-    setSubmitted(packet);
-    setSaveState({ status: "saving", message: "Saving Speaker intake for human review." });
+    setSubmitted(null);
+    setSaveState({ status: "saving", message: "Saving your intake for human review." });
 
     try {
       const response = await fetch("/api/bellows/intake", {
@@ -71,17 +74,16 @@ export function ConciergeIntakeForm() {
         return;
       }
 
+      setSubmitted(packet);
       setSaveState({
         status: "saved",
-        message: String(result.meaning || "Received for human review."),
-        intakeId: String(result.intakeId || ""),
-        packetPath: String(result.packetPath || ""),
-        speakerEntryPath: String(result.speakerEntryPath || "")
+        message:
+          "Intake received for human review. The public recommendation walkthrough remains example-only."
       });
-    } catch (error) {
+    } catch {
       setSaveState({
         status: "error",
-        message: error instanceof Error ? error.message : "Could not save this intake."
+        message: "The intake could not be received. Nothing should be assumed saved."
       });
     }
   }
@@ -89,21 +91,21 @@ export function ConciergeIntakeForm() {
   return (
     <div className="concierge-intake">
       <header className="concierge-intake__hero panel">
-        <p className="eyebrow">Squibb · Concierge Intake · v0</p>
+        <p className="eyebrow">Werkles intake</p>
         <h1>Name what you are carrying</h1>
         <p className="concierge-intake__lead">
-          Symptoms only — not solutions. The matching engine reads your answers; Speaker delivers plain
-          facts; Squibb is the voice on ranked paths.
+          Review the questions below before you share anything. Submission is temporarily closed while secure
+          account storage is being connected. Nothing you type here is saved or sent.
         </p>
         <p className="concierge-intake__avoid" role="note">
           We will not ask: &ldquo;What partner do you need?&rdquo; or &ldquo;What service do you
           want?&rdquo;
         </p>
         <div className="gate-list" aria-label="What intake produces">
-          <span>Engine scoring</span>
-          <span>Speaker facts</span>
-          <span>Squibb voice</span>
-          <span>No auto-intro</span>
+          <span>Submission closed</span>
+          <span>Nothing sent</span>
+          <span>Human review required</span>
+          <span>No automatic contact</span>
         </div>
       </header>
 
@@ -133,21 +135,19 @@ export function ConciergeIntakeForm() {
         </ol>
 
         <div className="concierge-intake__actions">
-          <button type="submit" className="button button-dark" disabled={!canSubmit || saveState.status === "saving"}>
-            {saveState.status === "saving" ? "Running matcher" : "Submit intake"}
+          <button
+            type="submit"
+            className="button button-dark"
+            disabled={!BELLOWS_INTAKE_SUBMISSION_OPEN || !canSubmit || saveState.status === "saving"}
+          >
+            {!BELLOWS_INTAKE_SUBMISSION_OPEN
+              ? "Submission temporarily closed"
+              : saveState.status === "saving"
+                ? "Submitting"
+                : "Submit for review"}
           </button>
           <p className="concierge-intake__preview-note" data-status={saveState.status} role="status">
             {saveState.message}
-            {saveState.status === "saved" ? (
-              <>
-                <br />
-                Intake: <code>{saveState.intakeId}</code>
-                <br />
-                Packet: <code>{saveState.packetPath}</code>
-                <br />
-                Speaker entry: <code>{saveState.speakerEntryPath}</code>
-              </>
-            ) : null}
           </p>
         </div>
       </form>

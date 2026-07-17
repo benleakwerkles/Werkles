@@ -5,6 +5,10 @@ import {
   EMPTY_INTAKE_ANSWERS,
   type ConciergeIntakeAnswers
 } from "@/lib/squibb/concierge-intake-v0";
+import {
+  BELLOWS_INTAKE_CLOSED_MESSAGE,
+  BELLOWS_INTAKE_SUBMISSION_OPEN
+} from "@/lib/squibb/concierge-intake-availability";
 import { storeSpeakerIntake } from "@/lib/squibb/concierge-intake-storage";
 import { runShadowMatchingFromConcierge, shadowRunSmokeSummary } from "@/lib/matching/shadow-pipeline";
 import { isMatchingPublicEnabled, matchingPublicModeLabel } from "@/lib/matching/feature-flags";
@@ -28,6 +32,16 @@ function normalizeAnswers(value: unknown): ConciergeIntakeAnswers {
 }
 
 export async function POST(request: NextRequest) {
+  if (!BELLOWS_INTAKE_SUBMISSION_OPEN) {
+    return NextResponse.json(
+      {
+        error: BELLOWS_INTAKE_CLOSED_MESSAGE,
+        state: "Closed"
+      },
+      { status: 503 }
+    );
+  }
+
   try {
     const answers = normalizeAnswers(await request.json());
     const answeredCount = CONCIERGE_INTAKE_QUESTIONS.filter((question) => answers[question.id].length > 0).length;
@@ -47,16 +61,20 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      ...stored,
-      shadow_run_id: shadowRun?.runId ?? null,
+      state: stored.state,
       matching_mode: isMatchingPublicEnabled() ? matchingPublicModeLabel() : "shadow",
-      ...(shadowRun ? shadowRunSmokeSummary(shadowRun) : {}),
+      summary: shadowRun ? shadowRunSmokeSummary(shadowRun) : null,
       meaning: isMatchingPublicEnabled()
-        ? "Intake processed by Autonomous Matching. Matching readout has the plain facts; Squibb ranked your paths."
-        : "Intake saved. Matching engine ran in shadow mode — results visible to operator review."
+        ? "Intake received for rules-based recommendation review."
+        : "Intake received for operator review."
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Could not store concierge intake.";
-    return NextResponse.json({ error: message, state: "Failed" }, { status: 500 });
+    console.error("Bellows intake failed", {
+      errorType: error instanceof Error ? error.name : "UnknownError"
+    });
+    return NextResponse.json(
+      { error: "The intake could not be received. Nothing should be assumed saved.", state: "Failed" },
+      { status: 500 }
+    );
   }
 }

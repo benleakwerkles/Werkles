@@ -37,7 +37,7 @@ for (const forbiddenReader of [
 }
 assert.match(helper, /intakes:\s*\[\]/);
 assert.match(helper, /optionPackets:\s*\[\]/);
-assert.match(helper, /Autonomous Matching example/);
+assert.match(helper, /Rules-based recommendation example/);
 
 const transpiledHelper = ts.transpileModule(helper, {
   compilerOptions: {
@@ -130,7 +130,7 @@ for (const publicEnabled of [false, true]) {
     /Squibb \(scout\)|Operator \+ Dink|Thufir \(research\)|Ender \(curriculum\)|Petra|Skybro|Speaker|Crucible|Layer 0|Ben (?:must|approval)|No Operator gate|preview operator profile|Bellows (?:intake|SOP)|\bdispatch\b/i
   );
 }
-assert.equal((await loadPublicPageData(true)).session.source.label, "Autonomous Matching example");
+assert.equal((await loadPublicPageData(true)).session.source.label, "Rules-based recommendation example");
 
 assert.match(surface, /SAVE_CLOSED_BETA\s*=\s*true/);
 assert.match(
@@ -140,7 +140,7 @@ assert.match(
 assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
 assert.match(surface, /variant="rules_score"/);
 assert.match(surface, /aria-describedby="squibbRecommendationSavingStatus"/);
-assert.match(surface, /this public beta will not connect it/);
+assert.match(surface, /submission is temporarily closed/);
 assert.doesNotMatch(surface, /Make these recommendations yours/);
 assert.doesNotMatch(surface, /fetch\s*\(/);
 assert.doesNotMatch(surface, /stagePacket\s*\(/);

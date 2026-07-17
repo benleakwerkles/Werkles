@@ -16,7 +16,8 @@ const css = read("app/bellows/recommendations/squibb-recommendations.css");
 
 assert.doesNotMatch(page, /NarrativeJourneyRail/);
 assert.doesNotMatch(page, /Test Case #0/);
-assert.match(page, /Autonomous Matching/);
+assert.match(page, /Werkles Recommendations/);
+assert.doesNotMatch(page, /Autonomous Matching/);
 assert.match(page, /squibb-rec-page__intake-link/);
 
 assert.match(surface, /Example mode/);
