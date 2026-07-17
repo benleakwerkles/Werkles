@@ -18,10 +18,20 @@ const JOB_WORDS = /\b(job|hire|hired|hiring|employment|career|shift|bartend(?:er
 const TRAINING_WORDS =
   /\b(train(?:ing|ed|er)?|certif(?:y|ied|ication|ications)?|licen[cs](?:e|ed|ing|ure)?|course|class|learn(?:ing)?|skill(?:s)?)\b/i;
 
-const RELOC_WORDS = /\b(relocat(?:e|ed|ing|ion)?|move|moved|moving|city|state|zip|metro|area)\b/i;
+const RELOC_WORDS =
+  /\b(relocat(?:e|ed|ing|ion)?|(?:move|moved|moving)\s+(?:to|from|across|out\s+of)|(?:new|different|another)\s+(?:city|state|metro|area)|(?:city|state|metro|area)\s+(?:move|relocation))\b/i;
 
 const NEGATED_INTENT_BEFORE_MATCH =
   /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not|never|no\s+longer)\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
+
+const NEGATED_INTENT_SCOPE =
+  /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not|never|no\s+longer)\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to|interested\s+in|consider(?:ing)?)\b/i;
+
+const DIRECT_NOUN_NEGATION_BEFORE_MATCH =
+  /\b(?:no|not|without|need\s+no|want\s+no|seek\s+no)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
+
+const CANNOT_BEFORE_MATCH =
+  /\b(?:cannot|can't|cant|can\s+not)\s+(?:(?:afford|take|accept|pursue|use|seek|get|move|borrow|raise|hire|attend)\s+)?(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
 
 const DOUBLE_NEGATED_INTENT_BEFORE_MATCH =
   /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not)\s+not\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
@@ -51,12 +61,21 @@ function hasAffirmedPattern(text: string, pattern: RegExp) {
 
     const matchIndex = match.index ?? 0;
 
-    const beforeMatch = text.slice(Math.max(0, matchIndex - 120), matchIndex);
+    const beforeMatch = text.slice(Math.max(0, matchIndex - 180), matchIndex);
 
-    const currentClause = beforeMatch.split(/[.!?;:\n]|\b(?:but|however|instead|yet)\b/i).at(-1) ?? beforeMatch;
+    const currentClause =
+      beforeMatch
+        .split(
+          /[.!?;:\n]|\b(?:but|however|instead|yet)\b|\b(?:and|then)\s+(?=(?:(?:i|we)\s+)?(?:need|want|seek|require|look(?:ing)?\s+for|pursue|plan|intend|am|are)\b)/i
+        )
+        .at(-1) ?? beforeMatch;
 
     if (DOUBLE_NEGATED_INTENT_BEFORE_MATCH.test(currentClause)) return true;
-    if (!NEGATED_INTENT_BEFORE_MATCH.test(currentClause)) return true;
+    if (DIRECT_NOUN_NEGATION_BEFORE_MATCH.test(currentClause)) continue;
+    if (CANNOT_BEFORE_MATCH.test(currentClause)) continue;
+    if (NEGATED_INTENT_BEFORE_MATCH.test(currentClause)) continue;
+    if (NEGATED_INTENT_SCOPE.test(currentClause)) continue;
+    return true;
 
   }
 

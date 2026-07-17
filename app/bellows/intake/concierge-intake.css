@@ -184,15 +184,15 @@
 }
 
 .concierge-intake__preview-note[data-status="saving"] {
-  color: var(--werkles-text-secondary, #c08b52);
+  color: #734515;
 }
 
 .concierge-intake__preview-note[data-status="saved"] {
-  color: var(--werkles-teal-bright, #18c5ae);
+  color: #0b6955;
 }
 
 .concierge-intake__preview-note[data-status="error"] {
-  color: var(--werkles-forge-orange, #c45c26);
+  color: #9a3328;
 }
 
 .concierge-intake__preview-note code {

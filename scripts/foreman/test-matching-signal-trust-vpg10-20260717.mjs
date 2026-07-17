@@ -53,6 +53,7 @@ const positiveCases = [
   ["I need training.", "trainingSeeking"],
   ["A certification would help.", "trainingSeeking"],
   ["I am relocating.", "relocationSignal"],
+  ["I am moving to Ohio.", "relocationSignal"],
   ["I want a co founder.", "partnerSeeking"]
 ];
 for (const [text, flag] of positiveCases) {
@@ -65,7 +66,16 @@ const negativeCases = [
   ["I do not want a partner.", "partnerSeeking"],
   ["I am not looking for a new job.", "jobSeeking"],
   ["I do not need training.", "trainingSeeking"],
-  ["I do not plan to relocate.", "relocationSignal"]
+  ["I do not plan to relocate.", "relocationSignal"],
+  ["No loan.", "capitalSeeking"],
+  ["without a loan", "capitalSeeking"],
+  ["I need no investor.", "capitalSeeking"],
+  ["I need no investor.", "partnerSeeking"],
+  ["Not a partner.", "partnerSeeking"],
+  ["I cannot relocate.", "relocationSignal"],
+  ["I can't relocate.", "relocationSignal"],
+  ["I want no loan.", "capitalSeeking"],
+  ["I am not interested in a loan.", "capitalSeeking"]
 ];
 for (const [text, flag] of negativeCases) {
   assert.equal(signalsFor(text)[flag], false, `${flag} must respect explicit negation: ${text}`);
@@ -79,8 +89,25 @@ const contrast = signalsFor("I do not want a loan, but I need an investor.");
 assert.equal(contrast.capitalSeeking, true, "an affirmed intent after 'but' must remain detectable");
 assert.equal(contrast.partnerSeeking, true);
 
+const coordinatedNegative = signalsFor(
+  "I do not want a loan, investor, partner, new job, training course, or relocation."
+);
+for (const flag of ["capitalSeeking", "partnerSeeking", "jobSeeking", "trainingSeeking", "relocationSignal"]) {
+  assert.equal(coordinatedNegative[flag], false, `${flag} must remain false inside a coordinated negative list`);
+}
+
+const coordinatedContrast = signalsFor(
+  "I do not want a loan, investor, or partner, but I need training and certification."
+);
+assert.equal(coordinatedContrast.capitalSeeking, false);
+assert.equal(coordinatedContrast.partnerSeeking, false);
+assert.equal(coordinatedContrast.trainingSeeking, true);
+
 assert.equal(signalsFor("I am explaining the plan.").trainingSeeking, false);
 assert.equal(signalsFor("I don't not want a loan.").capitalSeeking, true, "double negative must not be flattened");
+assert.equal(signalsFor("The state of my plan is unclear.").relocationSignal, false);
+assert.equal(signalsFor("There are too many moving parts.").relocationSignal, false);
+assert.equal(signalsFor("The area chart is stale.").relocationSignal, false);
 
 console.log(JSON.stringify({
   pass: true,
@@ -89,8 +116,11 @@ console.log(JSON.stringify({
   checks: [
     "common_inflections_detected",
     "explicit_negative_intent_suppressed",
+    "short_noun_negation_suppressed",
+    "coordinated_negative_list_suppressed",
     "mixed_domain_clauses_kept_separate",
     "contrastive_affirmation_preserved",
+    "relocation_context_required",
     "unrelated_substring_control",
     "double_negative_not_flattened"
   ]

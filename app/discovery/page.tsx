@@ -22,20 +22,20 @@ export default function DiscoveryPage() {
         <section className="discovery-hero" aria-labelledby="discoveryTitle">
           <div>
             <p className="eyebrow">Werkles discovery intake</p>
-            <h1 id="discoveryTitle">Tell us where you are. Get paths ranked by the engine.</h1>
+            <h1 id="discoveryTitle">Review the questions that help Werkles understand where you are.</h1>
             <p>
-              Intake feeds the Werkles hybrid matcher — deterministic scoring plus optional translation.
-              Speaker delivers plain facts; Squibb is the voice. No payment gate on this path.
+              Submission is temporarily closed while secure account storage is being connected. Nothing you type
+              here is saved or sent.
             </p>
             <div className="hero-actions">
-              <Link className="button button-light" href="#intake">Start intake</Link>
+              <Link className="button button-light" href="#intake">Review the questions</Link>
               <Link className="button button-ghost" href="#what-comes-back">What comes back</Link>
             </div>
           </div>
           <aside className="discovery-hero__panel" aria-label="Human-operated promise">
             <SiteIcon icon="icon-dossier" size="lg" />
-            <strong>Algorithm-operated</strong>
-            <p>Software scores paths. Speaker states facts. Squibb speaks. Shadow review until public flip.</p>
+            <strong>Human review required</strong>
+            <p>No personal recommendation, introduction, or automatic contact is created from this closed form.</p>
           </aside>
         </section>
 

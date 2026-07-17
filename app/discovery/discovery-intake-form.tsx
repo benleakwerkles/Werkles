@@ -6,21 +6,26 @@ import {
   discoveryLaneValues,
   discoveryResponseSpeedValues
 } from "@/lib/discovery/schema";
+import {
+  DISCOVERY_INTAKE_CLOSED_MESSAGE,
+  DISCOVERY_INTAKE_SUBMISSION_OPEN
+} from "@/lib/discovery/intake-availability";
 
 type SubmissionState =
   | { status: "idle"; message: string }
   | { status: "saving"; message: string }
-  | { status: "saved"; message: string; intakeId: string; recordPath: string }
+  | { status: "saved"; message: string }
   | { status: "error"; message: string };
 
 export function DiscoveryIntakeForm() {
   const [submission, setSubmission] = useState<SubmissionState>({
     status: "idle",
-    message: "One intake. The matching engine processes it. Speaker delivers facts; Squibb delivers voice."
+    message: `${DISCOVERY_INTAKE_CLOSED_MESSAGE} Nothing you type here is saved or sent.`
   });
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!DISCOVERY_INTAKE_SUBMISSION_OPEN) return;
     const form = new FormData(event.currentTarget);
     const payload = {
       name: String(form.get("name") || ""),
@@ -40,26 +45,32 @@ export function DiscoveryIntakeForm() {
 
     setSubmission({ status: "saving", message: "Saving the intake record." });
 
-    const response = await fetch("/api/discovery/intake", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json().catch(() => ({}));
+    try {
+      const response = await fetch("/api/discovery/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-    if (!response.ok) {
-      const missing = Array.isArray(result.missing) ? ` Missing: ${result.missing.join(", ")}.` : "";
-      setSubmission({ status: "error", message: `${result.error || "Could not save intake."}${missing}` });
-      return;
+      if (!response.ok) {
+        setSubmission({
+          status: "error",
+          message: "The intake could not be received. Nothing should be assumed saved."
+        });
+        return;
+      }
+
+      event.currentTarget.reset();
+      setSubmission({
+        status: "saved",
+        message: "Intake received for human review."
+      });
+    } catch {
+      setSubmission({
+        status: "error",
+        message: "The intake could not be received. Nothing should be assumed saved."
+      });
     }
-
-    event.currentTarget.reset();
-    setSubmission({
-      status: "saved",
-      message: result.meaning || "Received for human review.",
-      intakeId: String(result.intake_id || ""),
-      recordPath: String(result.record_path || "")
-    });
   }
 
   return (
@@ -151,19 +162,19 @@ export function DiscoveryIntakeForm() {
       </label>
 
       <div className="discovery-intake-form__footer">
-        <button className="button button-dark" type="submit" disabled={submission.status === "saving"}>
-          {submission.status === "saving" ? "Saving" : "Submit intake"}
+        <button
+          className="button button-dark"
+          type="submit"
+          disabled={!DISCOVERY_INTAKE_SUBMISSION_OPEN || submission.status === "saving"}
+        >
+          {!DISCOVERY_INTAKE_SUBMISSION_OPEN
+            ? "Submission temporarily closed"
+            : submission.status === "saving"
+              ? "Submitting"
+              : "Submit for review"}
         </button>
         <p className="status-line" role="status" data-status={submission.status}>
           {submission.message}
-          {submission.status === "saved" ? (
-            <>
-              <br />
-              Intake: <code>{submission.intakeId}</code>
-              <br />
-              Record: <code>{submission.recordPath}</code>
-            </>
-          ) : null}
         </p>
       </div>
     </form>

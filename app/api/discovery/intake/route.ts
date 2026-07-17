@@ -4,12 +4,26 @@ import {
   validateDiscoveryIntake,
   writeDiscoveryIntake
 } from "@/lib/discovery/concierge";
+import {
+  DISCOVERY_INTAKE_CLOSED_MESSAGE,
+  DISCOVERY_INTAKE_SUBMISSION_OPEN
+} from "@/lib/discovery/intake-availability";
 import { runShadowMatchingFromDiscovery, shadowRunSmokeSummary } from "@/lib/matching/shadow-pipeline";
 import { isMatchingPublicEnabled, matchingPublicModeLabel } from "@/lib/matching/feature-flags";
 
 export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
+  if (!DISCOVERY_INTAKE_SUBMISSION_OPEN) {
+    return NextResponse.json(
+      {
+        error: DISCOVERY_INTAKE_CLOSED_MESSAGE,
+        state: "Closed"
+      },
+      { status: 503 }
+    );
+  }
+
   try {
     const input = normalizeDiscoveryIntake(await request.json());
     const missing = validateDiscoveryIntake(input);
@@ -29,18 +43,20 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      intake_id: record.user_id,
       state: record.state,
-      record_path: record.record_path,
-      shadow_run_id: shadowRun?.runId ?? null,
       matching_mode: isMatchingPublicEnabled() ? matchingPublicModeLabel() : "shadow",
-      ...(shadowRun ? shadowRunSmokeSummary(shadowRun) : {}),
+      summary: shadowRun ? shadowRunSmokeSummary(shadowRun) : null,
       meaning: isMatchingPublicEnabled()
-        ? "Intake processed by Autonomous Matching. Matching readout and Squibb paths are ready."
-        : "Intake saved. Matching engine ran in shadow mode — operator review before public delivery."
+        ? "Intake received for rules-based recommendation review."
+        : "Intake received for operator review."
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Could not save discovery intake.";
-    return NextResponse.json({ error: message }, { status: 500 });
+    console.error("Discovery intake failed", {
+      errorType: error instanceof Error ? error.name : "UnknownError"
+    });
+    return NextResponse.json(
+      { error: "The intake could not be received. Nothing should be assumed saved.", state: "Failed" },
+      { status: 500 }
+    );
   }
 }
