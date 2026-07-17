@@ -1,0 +1,30 @@
+# Permit one bounded machine-local recovery verb after this trusted project is
+# pulled and Codex is restarted. The script itself is Spanzee-only, proves each
+# orphan twice, and stops exact PIDs. Arbitrary PowerShell and name-wide process
+# termination remain outside this rule.
+prefix_rule(
+    pattern = [
+        ["powershell.exe", "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"],
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        [
+            ".\\scripts\\foreman\\Invoke-HarveySwateyeGitLfsRecovery.ps1",
+            "scripts\\foreman\\Invoke-HarveySwateyeGitLfsRecovery.ps1",
+        ],
+        "-Execute",
+    ],
+    decision = "allow",
+    justification = "Allow only the Spanzee-only Harvey Swateye wrapper; it refuses blanket name kills and stops only twice-proven orphan git-lfs PIDs.",
+    match = [
+        "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\foreman\\Invoke-HarveySwateyeGitLfsRecovery.ps1 -Execute",
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Invoke-HarveySwateyeGitLfsRecovery.ps1 -Execute",
+    ],
+    not_match = [
+        "Stop-Process -Name git-lfs -Force -ErrorAction SilentlyContinue",
+        "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command Stop-Process -Name git-lfs -Force",
+        "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\foreman\\Invoke-HarveySwateyeGitLfsRecovery.ps1",
+        "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\foreman\\Invoke-HarveyHandeye.ps1 -Execute",
+    ],
+)
