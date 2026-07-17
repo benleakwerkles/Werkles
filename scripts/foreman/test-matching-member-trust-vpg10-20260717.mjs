@@ -38,6 +38,7 @@ const intakePage = read("app/bellows/intake/page.tsx");
 const intakeForm = read("components/squibb/concierge-intake-form.tsx");
 const intakeRoute = read("app/api/bellows/intake/route.ts");
 const availability = read("lib/squibb/concierge-intake-availability.ts");
+const intakeCss = read("app/bellows/intake/concierge-intake.css");
 
 for (const [name, source] of Object.entries({
   recommendationPage,
@@ -61,6 +62,11 @@ assert.match(intakePage, /walkthrough stays example-only and does not load anyth
 assert.match(intakeForm, /Nothing you type here is saved or sent/);
 assert.match(intakeForm, /No automatic contact/);
 assert.doesNotMatch(intakeForm, /No matching\. No profiles\.|shadow until go-live/i);
+assert.match(intakeCss, /--intake-copy:\s*#2b2119/);
+assert.match(intakeCss, /--intake-surface:\s*rgba\(255, 252, 246, 0\.94\)/);
+assert.match(intakeCss, /\.concierge-intake__hero,\s*\n\.concierge-intake__form/);
+assert.match(intakeCss, /textarea::placeholder/);
+assert.doesNotMatch(intakeCss, /\.concierge-intake__label[\s\S]{0,180}var\(--werkles-text-primary/);
 
 const requestStart = intakeForm.indexOf("const response = await fetch");
 const errorBranch = intakeForm.indexOf("if (!response.ok)");
@@ -151,7 +157,8 @@ console.log(
         "intake_ui_and_route_share_closed_boundary",
         "closed_route_returns_before_json_or_storage",
         "failed_request_cannot_commit_submitted_state",
-        "raw_storage_errors_and_paths_not_rendered"
+        "raw_storage_errors_and_paths_not_rendered",
+        "intake_surface_uses_explicit_light_contrast_tokens"
       ]
     },
     null,
