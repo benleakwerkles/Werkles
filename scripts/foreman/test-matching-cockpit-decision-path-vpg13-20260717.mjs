@@ -32,6 +32,10 @@ for (const forbiddenLightSurface of [
 
 assert.doesNotMatch(css, /#(?:fff(?:fff)?|000(?:000)?)\b/i);
 assert.match(css, /--squibb-rec-accent: var\(--werkles-violet-bright, #672eed\)/);
+assert.match(css, /--werkles-text-primary: #f4e2b1/);
+assert.match(css, /--werkles-text-muted: #c9b896/);
+assert.match(css, /--squibb-rec-on-light: #f4e2b1/);
+assert.match(css, /--squibb-rec-muted-on-light: #c9b896/);
 assert.match(css, /\.squibb-rec-page \{[\s\S]*var\(--werkles-forge-black, #050404\)/);
 assert.match(css, /\.squibb-rec-surface > \.panel,[\s\S]*background: rgba\(25, 24, 23, 0\.97\)/);
 assert.match(css, /\.squibb-rec-card \{[\s\S]*background: var\(--werkles-smoke, #2c231d\)/);

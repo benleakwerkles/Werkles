@@ -3,6 +3,9 @@
 .squibb-rec-page {
   --squibb-rec-accent: var(--werkles-violet-bright, #672eed);
   --squibb-rec-copper: var(--werkles-copper, #9f6633);
+  --werkles-text-primary: #f4e2b1;
+  --werkles-text-secondary: #c08b52;
+  --werkles-text-muted: #c9b896;
 }
 
 .squibb-rec-page__nav {
@@ -14,8 +17,8 @@
 }
 
 .squibb-rec-surface {
-  --squibb-rec-on-light: #1f1814;
-  --squibb-rec-muted-on-light: #44362c;
+  --squibb-rec-on-light: #f4e2b1;
+  --squibb-rec-muted-on-light: #c9b896;
   --squibb-rec-on-dark: #f4e2b1;
   --squibb-rec-muted-on-dark: #c9b896;
   display: flex;

@@ -171,7 +171,7 @@ assert.match(
 assert.match(meter, />Confidence</);
 assert.match(meter, /\{clamped\}%/);
 
-for (const safeColor of ["#1f1814", "#44362c", "#f4e2b1", "#c9b896"]) {
+for (const safeColor of ["#f4e2b1", "#c9b896", "#191817", "#2c231d"]) {
   assert.match(css, new RegExp(safeColor));
 }
 for (const unsafePageOverride of ["#f7ecd4", "#e2c9a0", "#b5a48c"]) {
@@ -204,7 +204,7 @@ console.log(
         "save_controls_disabled_and_no_client_post",
         "recommendation_only_rules_score",
         "shared_confidence_default_preserved",
-        "page_scoped_light_dark_contrast_tokens",
+        "page_scoped_canonical_dark_contrast_tokens",
         "direct_packet_post_still_403"
       ]
     },
