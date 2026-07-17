@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "bird_id": "BIRD_HARVEY_MOBILE_MAKER_ROADMAP_20260717_001",
+  "correlation_id": "CORR_HARVEY_MOBILE_ROADMAP_20260717_001",
+  "project_id": "HARVEY_MOBILE",
+  "sender_role": "DINK_FOREMAN",
+  "sender_instance_id": "CODEX_DESKTOP_MEDULLINA_20260717",
+  "target_role": "MAKER_CURSOR_MEDULLINA",
+  "target_instance_id": "UNBOUND",
+  "created_at": "2026-07-17T16:00:00.000Z",
+  "expires_at": "2026-07-24T16:00:00.000Z",
+  "instruction": "Inspect Harvey Mobile's committed roadmap and implementation state. Return the two strongest next moves, each tied to a concrete repo artifact and a bounded acceptance test. Do not claim delivery or execution without correlated receiver receipts.",
+  "acceptance_tests": [
+    "Name exactly two prioritized next moves grounded in current Harvey Mobile source files.",
+    "For each move, name the intended artifact path, verification command or check, and explicit stop condition.",
+    "Return RECEIPTED only with repo-relative evidence under docs/harvey-flock/receipts/, or BLOCKED with a specific blocker."
+  ],
+  "source_paths": [
+    "README.md",
+    "mobile-app/HARVEY_MOBILE_HANDOFF.md",
+    "mobile-app/README.md",
+    "mobile-app/src/data/flockRelay.ts",
+    "mobile-app/src/data/flockProof.ts"
+  ],
+  "bird_sha256": "4ef81b276763f446f9ea35b954fb8a482f7dbdeef7206b416d30893f14ebe44b"
+}

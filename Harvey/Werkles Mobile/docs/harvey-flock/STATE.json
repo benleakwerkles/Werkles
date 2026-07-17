@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "project_id": "HARVEY_MOBILE",
+  "relay_state": "PREPARED_NOT_DELIVERED",
+  "active_bird_id": "BIRD_HARVEY_MOBILE_MAKER_ROADMAP_20260717_001",
+  "active_correlation_id": "CORR_HARVEY_MOBILE_ROADMAP_20260717_001",
+  "target_role": "MAKER_CURSOR_MEDULLINA",
+  "target_instance_id": "UNBOUND",
+  "last_sequence": 0,
+  "terminal_event": null,
+  "notice_digests": {},
+  "accepted_notices": [],
+  "proof_boundary": "Prepared in Ben's canonical Harvey branch; no receiver has been bound, contacted, or proven readable."
+}

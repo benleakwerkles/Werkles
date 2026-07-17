@@ -7,10 +7,14 @@ on:
       - codex/cloud-harvey-mobile-vpg-20260715
     paths:
       - "Harvey/Werkles Mobile/mobile-app/**"
+      - "Harvey/Werkles Mobile/docs/harvey-flock/**"
+      - "Harvey/Werkles Mobile/scripts/harvey-flock-*.mjs"
       - ".github/workflows/harvey-mobile-verify.yml"
   pull_request:
     paths:
       - "Harvey/Werkles Mobile/mobile-app/**"
+      - "Harvey/Werkles Mobile/docs/harvey-flock/**"
+      - "Harvey/Werkles Mobile/scripts/harvey-flock-*.mjs"
       - ".github/workflows/harvey-mobile-verify.yml"
   workflow_dispatch:
 
@@ -34,6 +38,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Verify passive Harvey Flock relay contract
+        run: node ../scripts/verify-harvey-flock.mjs
 
       - name: Install mobile dependencies
         run: npm install --no-audit --no-fund
