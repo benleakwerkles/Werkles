@@ -182,7 +182,10 @@ try {
       await catalogRail.evaluate((element) => {
         element.scrollLeft = element.scrollWidth;
       });
-      assert.ok((await catalogRail.evaluate((element) => element.scrollLeft)) > 0);
+      await page.waitForFunction(() => {
+        const element = document.querySelector('[role="region"][aria-label="12 recommendation options"]');
+        return Boolean(element && element.scrollLeft > 0);
+      });
 
       await viewButtons.nth(0).focus();
       await page.keyboard.press("Space");
