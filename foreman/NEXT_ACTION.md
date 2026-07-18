@@ -1,8 +1,8 @@
 ﻿# NEXT ACTION
 
-**Effective gate:** `[CLEARED: MATCHING_AUTONOMOUS_GO_LIVE]`
+**Effective gate:** `[AWAITING HUMAN GATE: MATCHING_TIER_A_PERSONAL_DELIVERY_PREVIEW]`
 
-Updated: 2026-07-16
+Updated: 2026-07-17
 
 ---
 
@@ -31,17 +31,26 @@ Public mode label: `autonomous_matching` / **Autonomous Matching**.
 
 ### Next gates
 
-1. **`APPROVE MATCHING LLM TRANSLATE`** — optional; remains OFF until explicit approval.
-2. **Retention/deletion automation** — policy approved; member export UX + deletion job still gated.
+1. **`APPROVE MATCHING TIER A PERSONAL DELIVERY PREVIEW`** — recommended; authenticated, profile-bound, in-memory result on localhost + protected Preview only. No schema, saving, or Production.
+2. **`APPROVE MATCHING LLM TRANSLATE`** — optional; remains OFF until explicit approval.
+3. **Retention/deletion automation** — policy approved; member export UX + deletion job still gated.
 
 ---
 
-## Ben (Operator) — next hands
+## Ben (Operator) — next decision
 
-No Tier-1 matching go-live gate pending. Optional: LLM translate gate review when ready; schedule deletion/export automation when prioritized.
+Review `foreman/reviews/GATE-matching-tier-a-personal-delivery-20260717-2038.md`.
+
+Recommended phrase:
+
+```text
+APPROVE MATCHING TIER A PERSONAL DELIVERY PREVIEW
+```
+
+Tier B durable owner custody remains closed and separately gated.
 
 ---
 
 ## Hard stops
 
-no LLM enable without explicit approval | no push to main | no SQL without approval | no secrets | no Ghost Forge spend | no Stripe live
+no personal-delivery build before the exact Tier A phrase | no durable owner-custody claim | no LLM enable without explicit approval | no push to main | no SQL without approval | no secrets | no Ghost Forge spend | no Stripe live
