@@ -6,6 +6,8 @@ export const HARVEY_MACHINES = ["Doss", "Betsy", "Spanzee", "Medullina", "Sally"
 export type HarveyMachine = (typeof HARVEY_MACHINES)[number];
 export type HarveyCommandStatus = "QUEUED" | "RECEIVED" | "COMPLETED" | "BLOCKER";
 export type HarveyTerminalCommandStatus = "COMPLETED" | "BLOCKER";
+export type HarveyMachineAuthMode = "HMAC_SHA256_V1" | "EPHEMERAL_RSA_V1";
+export type HarveyCommandAction = "OPEN_URL" | "PING" | "KNOCK" | "SWATEYE_GIT_LFS_RECOVERY";
 
 export const HARVEY_MACHINE_HOSTNAMES: Record<HarveyMachine, string> = {
   Doss: "DOSS",
@@ -25,6 +27,10 @@ export type HarveyMachineActor = {
   machine: HarveyMachine;
   hostname: string;
   agent_id: string;
+  auth_mode: HarveyMachineAuthMode;
+  credential_id: string;
+  credential_expires_at: string | null;
+  capabilities?: string[];
 };
 
 export type HarveyWriteActor = HarveyOperatorActor | HarveyMachineActor;
@@ -43,6 +49,9 @@ export type MachineHeartbeat = {
   machine: HarveyMachine;
   hostname: string;
   agent_id: string;
+  auth_mode: HarveyMachineAuthMode;
+  credential_id: string;
+  credential_expires_at: string | null;
   agent_version: string;
   capabilities: string[];
   observed_at: string;
@@ -53,7 +62,7 @@ export type HarveyCommand = {
   fleet_id?: string;
   workstream_id?: string;
   machine: HarveyMachine;
-  action: "OPEN_URL" | "PING" | "KNOCK";
+  action: HarveyCommandAction;
   payload: { url?: string };
   status: HarveyCommandStatus;
   created_at: string;
@@ -64,6 +73,9 @@ export type HarveyCommand = {
     machine: HarveyMachine;
     hostname: string;
     agent_id: string;
+    auth_mode: HarveyMachineAuthMode;
+    credential_id: string;
+    credential_expires_at: string | null;
     claimed_at: string;
     lease_expires_at: string;
     attempt: number;
@@ -75,6 +87,9 @@ export type HarveyCommand = {
     machine: HarveyMachine;
     hostname: string;
     agent_id: string;
+    auth_mode: HarveyMachineAuthMode;
+    credential_id: string;
+    credential_expires_at: string | null;
     claim_id: string;
     evidence: string;
     observed_at: string;
@@ -82,6 +97,9 @@ export type HarveyCommand = {
   receipt?: {
     hostname: string;
     agent_id: string;
+    auth_mode: HarveyMachineAuthMode;
+    credential_id: string;
+    credential_expires_at: string | null;
     evidence: string;
   };
 };
@@ -229,8 +247,13 @@ export async function writeHeartbeat(input: Record<string, unknown>, actor: Harv
     machine,
     hostname: actor.hostname,
     agent_id: actor.agent_id,
+    auth_mode: actor.auth_mode,
+    credential_id: actor.credential_id,
+    credential_expires_at: actor.credential_expires_at,
     agent_version: String(input.agent_version ?? "0.1.0").trim(),
-    capabilities: Array.isArray(input.capabilities) ? input.capabilities.map(String) : [],
+    capabilities: actor.auth_mode === "EPHEMERAL_RSA_V1"
+      ? [...(actor.capabilities ?? [])]
+      : (Array.isArray(input.capabilities) ? input.capabilities.map(String) : []),
     observed_at: new Date().toISOString()
   };
   if (!heartbeat.agent_id) throw new HarveyControlError("HEARTBEAT_IDENTITY_REQUIRED");
@@ -244,7 +267,9 @@ export async function listHeartbeats() {
     try {
       const heartbeat = JSON.parse(await fs.readFile(machineFile(machine), "utf8")) as MachineHeartbeat;
       const age_ms = Date.now() - Date.parse(heartbeat.observed_at);
-      return { ...heartbeat, age_ms, live: age_ms <= 90_000 };
+      const credentialActive = heartbeat.auth_mode !== "EPHEMERAL_RSA_V1"
+        || (heartbeat.credential_expires_at !== null && Date.parse(heartbeat.credential_expires_at) > Date.now());
+      return { ...heartbeat, age_ms, live: age_ms <= 90_000 && credentialActive };
     } catch {
       return { machine, live: false, age_ms: null };
     }
@@ -252,10 +277,9 @@ export async function listHeartbeats() {
 }
 
 function validatePreviewUrl(value: unknown) {
-  const url = new URL(String(value ?? ""));
-  const allowedHost = ["10.1.10.8:3000", "127.0.0.1:3000", "localhost:3000"].includes(url.host);
-  if (url.protocol !== "http:" || !allowedHost || url.pathname !== "/harvey") throw new Error("URL_NOT_ALLOWLISTED");
-  return url.toString();
+  const requested = String(value ?? "");
+  if (requested !== "http://10.1.10.8:3000/harvey") throw new Error("URL_NOT_ALLOWLISTED");
+  return requested;
 }
 
 function commandLeaseMs() {
@@ -265,7 +289,7 @@ function commandLeaseMs() {
 
 function validateAction(input: Record<string, unknown>) {
   const action = String(input.action ?? "") as HarveyCommand["action"];
-  if (!["OPEN_URL", "PING", "KNOCK"].includes(action)) throw new Error("ACTION_NOT_ALLOWLISTED");
+  if (!["OPEN_URL", "PING", "KNOCK", "SWATEYE_GIT_LFS_RECOVERY"].includes(action)) throw new Error("ACTION_NOT_ALLOWLISTED");
   return action;
 }
 
@@ -300,6 +324,9 @@ async function enforceCommandRetention(machine: HarveyMachine, requireActiveCapa
 
 function buildCommand(input: Record<string, unknown>, machine: HarveyMachine, fleetId?: string): HarveyCommand {
   const action = validateAction(input);
+  if (action === "SWATEYE_GIT_LFS_RECOVERY" && machine !== "Spanzee") {
+    throw new HarveyControlError("SWATEYE_GIT_LFS_RECOVERY_SPANZEE_ONLY");
+  }
   const workstreamId = validateWorkstreamId(input.workstream_id);
   const now = new Date().toISOString();
   return {
@@ -562,6 +589,9 @@ export async function updateCommand(input: Record<string, unknown>, actor: Harve
     let claim = command.claim;
 
     if (status === "RECEIVED") {
+      if (actor.auth_mode === "EPHEMERAL_RSA_V1" && !(actor.capabilities ?? []).includes(command.action)) {
+        throw new HarveyControlError("COMMAND_ACTION_NOT_AUTHORIZED_FOR_CREDENTIAL", 403);
+      }
       const reclaim = input.reclaim_expired === true;
       if (command.status === "RECEIVED") {
         const expired = !claim || Date.parse(claim.lease_expires_at) <= now.getTime();
@@ -571,13 +601,18 @@ export async function updateCommand(input: Record<string, unknown>, actor: Harve
         throw new HarveyControlError("INVALID_STATUS_TRANSITION", 409);
       }
       const claimId = randomUUID().replaceAll("-", "");
+      const actorExpiry = actor.credential_expires_at ? Date.parse(actor.credential_expires_at) : Number.POSITIVE_INFINITY;
+      const leaseExpiry = Math.min(now.getTime() + commandLeaseMs(), actorExpiry);
       claim = {
         claim_id: claimId,
         machine: actor.machine,
         hostname: actor.hostname,
         agent_id: actor.agent_id,
+        auth_mode: actor.auth_mode,
+        credential_id: actor.credential_id,
+        credential_expires_at: actor.credential_expires_at,
         claimed_at: now.toISOString(),
-        lease_expires_at: new Date(now.getTime() + commandLeaseMs()).toISOString(),
+        lease_expires_at: new Date(leaseExpiry).toISOString(),
         attempt: (command.claim?.attempt ?? 0) + 1
       };
       command.status = "RECEIVED";
@@ -589,12 +624,26 @@ export async function updateCommand(input: Record<string, unknown>, actor: Harve
       if (claim.machine !== actor.machine || claim.hostname !== actor.hostname || claim.agent_id !== actor.agent_id) {
         throw new HarveyControlError("COMMAND_CLAIM_ACTOR_MISMATCH", 403);
       }
+      if (
+        claim.auth_mode !== actor.auth_mode
+        || claim.credential_id !== actor.credential_id
+        || claim.credential_expires_at !== actor.credential_expires_at
+      ) {
+        throw new HarveyControlError("COMMAND_CLAIM_CREDENTIAL_MISMATCH", 403);
+      }
       command.status = status as HarveyTerminalCommandStatus;
     }
 
     const receiptStatus = status as Exclude<HarveyCommandStatus, "QUEUED">;
     command.updated_at = now.toISOString();
-    command.receipt = { hostname: actor.hostname, agent_id: actor.agent_id, evidence };
+    command.receipt = {
+      hostname: actor.hostname,
+      agent_id: actor.agent_id,
+      auth_mode: actor.auth_mode,
+      credential_id: actor.credential_id,
+      credential_expires_at: actor.credential_expires_at,
+      evidence
+    };
     command.receipts.push({
       receipt_id: `harvey_receipt_${randomUUID().replaceAll("-", "")}`,
       command_id: command.command_id,
@@ -602,6 +651,9 @@ export async function updateCommand(input: Record<string, unknown>, actor: Harve
       machine: actor.machine,
       hostname: actor.hostname,
       agent_id: actor.agent_id,
+      auth_mode: actor.auth_mode,
+      credential_id: actor.credential_id,
+      credential_expires_at: actor.credential_expires_at,
       claim_id: claim.claim_id,
       evidence,
       observed_at: now.toISOString()

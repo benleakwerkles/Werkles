@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Private Harvey at Werkles.com - Deployment Gate</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b0d10;--panel:#121819;--text:#fff6df;--muted:#c3cbc5;--gold:#f2bd5b;--green:#84df96;--orange:#ffad66;--red:#ff7e75}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55}.wrap{max-width:980px;margin:auto;padding:28px 18px 60px}.eyebrow{color:var(--gold);font-weight:900;letter-spacing:.12em}.status{display:inline-block;border:1px solid var(--orange);color:var(--orange);padding:5px 9px;border-radius:999px;font-weight:900}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px;margin:18px 0}.card{background:var(--panel);border:1px solid #4c5751;border-radius:12px;padding:16px}.good{border-color:var(--green)}.warn{border-color:var(--orange)}.blocked{border-color:var(--red)}h1{font-size:clamp(32px,6vw,58px);line-height:1.05;margin:.25em 0}h2{font-size:20px;margin:0 0 8px}p,li{color:var(--muted)}blockquote{border-left:4px solid var(--gold);margin:18px 0;padding:8px 16px;color:var(--text);font-size:18px}code{overflow-wrap:anywhere;color:var(--gold)}
+  </style>
+</head>
+<body><main class="wrap">
+  <div class="eyebrow">TIER 1 REVIEW - 2026-07-17</div>
+  <h1>Private Harvey at Werkles.com</h1>
+  <span class="status">CODE PROVED - PROVIDER BINDING PENDING</span>
+  <blockquote>"Make me a secure private harvey page at Werkles.com. Use my Juryduty password (blind) ... Don't make it public."</blockquote>
+  <div class="grid">
+    <section class="card good"><h2>Access boundary: HIGH confidence</h2><p>Clean production build and staged-tree E2E proof cover redirects, API denials, login, signed sessions, tamper rejection, logout, origin checks, size limits, and rate limiting.</p></section>
+    <section class="card"><h2>Address</h2><p><code>https://werkles.com/harvey</code></p><p>This is the permanent target, not a claim that deployment is already complete.</p></section>
+    <section class="card good"><h2>Secret handling</h2><p>No plaintext password belongs in Git, logs, chat, or browser JavaScript. Ben types it once into a local no-echo prompt; only a blind verifier reaches production.</p></section>
+    <section class="card"><h2>Budget</h2><p>$0.00 expected. The custom route gate leaves the public Werkles site public and avoids paid whole-deployment protection.</p></section>
+    <section class="card warn"><h2>Known compromise</h2><p>Reusing Juryduty increases blast radius. A unique Harvey passphrase remains the safer later migration.</p></section>
+    <section class="card blocked"><h2>Still blocked</h2><p>The Vercel connection shows no project for the team. Project/domain ownership, Ben-only secret entry, deploy, and external lock-wall proof remain required.</p></section>
+  </div>
+  <section class="card"><h2>Continue phrase</h2><p><code>CONTINUE PRIVATE HARVEY DEPLOYMENT</code></p></section>
+</main></body></html>

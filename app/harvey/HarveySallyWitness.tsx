@@ -20,6 +20,7 @@ type Witness = {
   command?: { command_id: string; workstream_id: string };
   command_status: string | null;
   browser_completed?: { receipt_id: string; observed_at: string; observed_revision: string; terminal_receipt_id: string; sally_connectivity_after: string };
+  operator_session?: { status: "ACTIVE"; receipt_id: string; activated_at: string; expires_at: string; active: boolean };
   blocker?: { code: string; observed_at: string };
 };
 
@@ -81,7 +82,7 @@ export default function HarveySallyWitness() {
   const pollingStopped = useRef(false);
 
   async function refresh() {
-    const response = await fetch("/api/harvey/witness", { cache: "no-store", credentials: "omit" });
+    const response = await fetch("/api/harvey/witness", { cache: "no-store", credentials: "same-origin" });
     const body = await response.json();
     if (!response.ok) throw new Error(body.error ?? "SALLY_WITNESS_READ_FAILED");
     setReadError("");
@@ -267,12 +268,20 @@ export default function HarveySallyWitness() {
           <h2 style={{ color: "#fff4d6", margin: "7px 0" }}>{finalProved ? "SALLY ACCEPTANCE PROVED" : announcement}</h2>
           <p style={{ color: "#aeb6b0", maxWidth: 800, lineHeight: 1.5 }}>{receiverMode ? "Keep this page open. Harvey is checking automatically; no copy/paste or refresh required." : "One bounded Sally browser session proves an already-open page observed one exact Doss PING complete."}</p>
         </div>
-        {!receiverMode && <button type="button" disabled={!operatorReady} onClick={() => void createChallenge(activeChallenge)} style={{ border: 0, borderRadius: 8, padding: "10px 14px", fontWeight: 900, background: operatorReady ? "#d8a84e" : "#303532", color: operatorReady ? "#111" : "#7e8781" }}>{activeChallenge ? "REISSUE SALLY ACCEPTANCE" : "CREATE SALLY ACCEPTANCE"}</button>}
+        {!receiverMode && <button type="button" data-route-enabled={operatorReady ? "true" : "false"} onClick={() => void createChallenge(activeChallenge)} style={{ border: 0, borderRadius: 8, padding: "10px 14px", fontWeight: 900, background: operatorReady ? "#d8a84e" : "#303532", color: operatorReady ? "#111" : "#aab1ad", cursor: "pointer", opacity: operatorReady ? 1 : 0.78 }}>{activeChallenge ? "REISSUE SALLY ACCEPTANCE" : "CREATE SALLY ACCEPTANCE"}</button>}
       </div>
 
       <p data-testid="sally-witness-boundary" style={{ padding: 10, border: "1px solid #775b32", borderRadius: 8, color: "#ffcc73" }}>
-        Acceptance session only. This does not mark Sally LIVE or enable general Sally controls. Current Sally topology: <strong>{sally?.connectivity ?? "DISCONNECTED"}</strong> · sally_live_claimed: false.
+        This does not mark Sally LIVE or invent a machine heartbeat. A completed physical-Sally acceptance activates only the short-lived universal command deck; machine controls and receiver delivery remain separately proved. Current Sally topology: <strong>{sally?.connectivity ?? "DISCONNECTED"}</strong> · sally_live_claimed: false.
       </p>
+
+      {receiverMode && finalProved && witness.operator_session?.active && (
+        <div data-testid="sally-operator-ready" style={{ margin: "14px 0", padding: 16, border: "2px solid #42d7c2", borderRadius: 12, background: "#102522" }}>
+          <strong style={{ color: "#8ef0ae", fontSize: 18 }}>SALLY OPERATOR ROUTE CONNECTED</strong>
+          <p style={{ color: "#e7e3d8", lineHeight: 1.5 }}>This browser may now write durable Harvey work orders until {new Date(witness.operator_session.expires_at).toLocaleString()}. Queued is still not delivered.</p>
+          <a href="/harvey" data-testid="open-sally-harvey-command" style={{ display: "inline-block", borderRadius: 9, padding: "12px 16px", background: "#18c5ae", color: "#07110f", fontWeight: 950, textDecoration: "none" }}>OPEN HARVEY COMMAND</a>
+        </div>
+      )}
 
       <div role="status" aria-live="polite" aria-atomic="true" data-testid="sally-witness-announcement" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>Sally acceptance: {announcement}</div>
       {(visibleError || witness?.blocker) && <p role="alert" style={{ color: "#ff8c75" }}>{visibleError || witness?.blocker?.code}</p>}

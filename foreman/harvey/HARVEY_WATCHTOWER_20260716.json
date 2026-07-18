@@ -1,0 +1,94 @@
+{
+  "schema": "werkles.harvey-watchtower-contract/v1",
+  "updated_at": "2026-07-16",
+  "authority": "ADVISORY_ONLY",
+  "rule_version": "20260716.1",
+  "role_scope_proof_available": false,
+  "projects": [
+    {
+      "workstream_id": "harvey-command",
+      "canonical_machine": "Doss",
+      "owner_role": "Swanson / Dink @ Doss",
+      "next_proof_action": "Return the next machine-bound Harvey slice receipt and keep the live test ladder green.",
+      "flock_route_state": "LOCAL_OPERATOR_ROUTE",
+      "flock_route_source_id": null
+    },
+    {
+      "workstream_id": "harvey-book",
+      "canonical_machine": "Betsy",
+      "owner_role": "Demo + Dink / Ender / Bean micro-flock @ Betsy",
+      "next_proof_action": "Return source inventory, outline delta, named blockers, and a Betsy-local terminal receipt.",
+      "flock_route_state": "ROUTE_UNPROVEN",
+      "flock_route_source_id": null
+    },
+    {
+      "workstream_id": "werkles-product",
+      "canonical_machine": "Betsy",
+      "owner_role": "HeimerDinker + Lady Jessica @ Betsy",
+      "next_proof_action": "Return build delta, test state, open decisions, and the smallest bounded next build.",
+      "flock_route_state": "ROUTE_UNPROVEN",
+      "flock_route_source_id": null
+    },
+    {
+      "workstream_id": "oddly-godly-game",
+      "canonical_machine": "Spanzee",
+      "owner_role": "Direwolf Dink + Crash Davis + Maker @ Spanzee",
+      "next_proof_action": "Return playable evidence, canon risks, and the next testable game slice from Spanzee.",
+      "flock_route_state": "ROUTE_UNPROVEN",
+      "flock_route_source_id": null
+    },
+    {
+      "workstream_id": "oddly-godly-book",
+      "canonical_machine": "Betsy",
+      "owner_role": "HeimerDinker @ Betsy",
+      "next_proof_action": "Return manuscript location, current outline, canon dependencies, and one bounded writing assignment.",
+      "flock_route_state": "ROUTE_UNPROVEN",
+      "flock_route_source_id": null
+    },
+    {
+      "workstream_id": "harvey-mobile",
+      "canonical_machine": "Medullina",
+      "owner_role": "Dink @ Medullina",
+      "next_proof_action": "Bind the actual Maker/Cursor thread or receiver, a shared readable packet source, and a receipt-return path; meanwhile use concrete minimal-residue engineering specs.",
+      "flock_route_state": "ROUTE_UNBOUND_OPERATOR_REPORTED",
+      "flock_route_source_id": "FROM_MEDULLINA_MAKER_FLOCK_ROUTE_UNBOUND_20260716"
+    },
+    {
+      "workstream_id": "kind-sir-operations",
+      "canonical_machine": "Sally",
+      "owner_role": "Dink @ Sally",
+      "next_proof_action": "Return separate receipts for correspondence, tax appeal, corporate, concrete, and insulation work.",
+      "flock_route_state": "ROUTE_UNPROVEN",
+      "flock_route_source_id": null
+    },
+    {
+      "workstream_id": "password-access-continuity",
+      "canonical_machine": "Doss",
+      "owner_role": "Swanson @ Doss",
+      "next_proof_action": "Keep only redacted status and provenance in Harvey; private credential action stays outside this surface.",
+      "flock_route_state": "LOCAL_OPERATOR_ROUTE",
+      "flock_route_source_id": null
+    }
+  ],
+  "candidate_inventions": [
+    {
+      "capsule_id": "betsy-harvey-book-micro-flock",
+      "source_project": "harvey-book",
+      "source_machine": "Betsy",
+      "invented_by": "Dink / Ender / Bean micro-flock assignment",
+      "problem_and_cause": "A three-Aeye writing crew needs shared state and independent red-team return without making Ben carry every handoff.",
+      "candidate_pattern": "One Dink executes, Ender shapes the human result, Bean challenges proof, and terminal receipts return to Harvey.",
+      "proof_level": "PACKET_ONLY_NO_RECEIVER_PROOF",
+      "known_risks": [
+        "Wrong-thread delivery if receiver identity is not bound.",
+        "SENT or assignment may be mistaken for completion.",
+        "Compression can discard the reason the invention worked."
+      ],
+      "possible_adopters": ["werkles-product", "harvey-mobile"],
+      "adoption_status": "CANDIDATE_REPORTED",
+      "source_proof_ids": [],
+      "adopted_by_project": null,
+      "adoption_receipt_id": null
+    }
+  ]
+}

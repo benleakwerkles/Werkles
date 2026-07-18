@@ -4,6 +4,7 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 import { HARVEY_MACHINES } from "@/lib/harvey/machine-control";
 import { assertCockpitArtifactSafe, resolveCockpitArtifactPath } from "@/lib/harvey/cockpit-artifact-security";
+import { harveyPrivateApiGate } from "@/lib/harvey/private-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -58,6 +59,8 @@ async function readCurrentCockpit() {
 }
 
 export async function GET(request: Request) {
+  const denied = await harveyPrivateApiGate(request);
+  if (denied) return denied;
   const requested = new URL(request.url).searchParams.get("machine") ?? "";
   const machine = HARVEY_MACHINES.find((item) => item.toLowerCase() === requested.toLowerCase());
   if (!machine) return NextResponse.json({ ok: false, error: "UNKNOWN_MACHINE" }, { status: 400 });

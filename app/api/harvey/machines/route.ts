@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import { listHeartbeats, writeHeartbeat } from "@/lib/harvey/machine-control";
 import { assertMachineRequestEnvelope, authenticateMachineRequest, harveyErrorResponse, readHarveyWriteBody } from "@/lib/harvey/machine-security";
+import { harveyPrivateApiGate } from "@/lib/harvey/private-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const denied = await harveyPrivateApiGate(request);
+  if (denied) return denied;
   return NextResponse.json({ ok: true, machines: await listHeartbeats() });
 }
 

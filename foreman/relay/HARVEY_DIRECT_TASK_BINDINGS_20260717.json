@@ -1,0 +1,19 @@
+{
+  "schema": "werkles.harvey-direct-task-bindings/v1",
+  "generated_at": "2026-07-17T19:47:20.000Z",
+  "truth_rule": "A binding names one exact provider task. Machine, provider, role, and thread identity are separate fields.",
+  "bindings": [
+    {
+      "binding_id": "shakespeare-doss",
+      "label": "Shakespeare",
+      "role": "Harvey direct-task receiver",
+      "machine": "Doss",
+      "provider": "Codex",
+      "host_id": "local",
+      "thread_id": "019f719e-1b67-77c0-a9be-6ca901377747",
+      "state": "BOUND_PROVEN",
+      "proof": "Dedicated task returned HARVEY_SHAKESPEARE_RECEIVER_READY and HARVEY_SHAKESPEARE_DIRECT_LINK_OK through codex exec resume --json.",
+      "project_scope": "CURRENT_WERKLES_CHECKOUT"
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import {
 import { buildHarveySnapshot, readHarveySnapshot } from "./snapshot";
 
 const CHALLENGE_TTL_MS = 15 * 60 * 1000;
+export const SALLY_OPERATOR_SESSION_TTL_MS = 8 * 60 * 60 * 1000;
 const CHALLENGE_PATTERN = /^sally_[a-f0-9]{32}$/;
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const PAGE_ID_PATTERN = /^[a-f0-9]{32}$/;
@@ -86,6 +87,12 @@ type SallyWitnessState = {
     sally_connectivity_after: string;
     sally_heartbeat_after: string;
   };
+  operator_session?: {
+    status: "ACTIVE";
+    receipt_id: string;
+    activated_at: string;
+    expires_at: string;
+  };
   blocker?: { code: string; observed_at: string };
   expired_receipt?: { receipt_id: string; observed_at: string };
 };
@@ -105,6 +112,7 @@ export type PublicSallyWitnessState = {
   page_ready?: Omit<NonNullable<SallyWitnessState["page_ready"]>, "session_sha256">;
   command?: SallyWitnessState["command"];
   browser_completed?: Omit<NonNullable<SallyWitnessState["browser_completed"]>, "sally_heartbeat_after">;
+  operator_session?: SallyWitnessState["operator_session"] & { active: boolean };
   blocker?: SallyWitnessState["blocker"];
   expired_receipt?: SallyWitnessState["expired_receipt"];
   command_status: string | null;
@@ -182,7 +190,7 @@ function validTimestamp(value: unknown) {
 }
 
 function validateState(value: unknown): value is SallyWitnessState {
-  if (!hasExactKeys(value, ["schema", "challenge_id", "status", "created_at", "expires_at", "sally_live_claimed", "evidence_environment", "sally_connectivity_before", "sally_heartbeat_before", "pairing_requests?", "host_ready?", "page_ready?", "command?", "browser_completed?", "blocker?", "expired_receipt?"])) return false;
+  if (!hasExactKeys(value, ["schema", "challenge_id", "status", "created_at", "expires_at", "sally_live_claimed", "evidence_environment", "sally_connectivity_before", "sally_heartbeat_before", "pairing_requests?", "host_ready?", "page_ready?", "command?", "browser_completed?", "operator_session?", "blocker?", "expired_receipt?"])) return false;
   const state = value as SallyWitnessState;
   if (state.schema !== "werkles.harvey-sally-browser-witness/v1" || !CHALLENGE_PATTERN.test(state.challenge_id)) return false;
   if (!["CHALLENGE_ISSUED", "PAIRING_PENDING", "PAIRING_APPROVED", "HOST_READY", "PING_QUEUED", "COMPLETED", "BLOCKER", "EXPIRED"].includes(state.status)) return false;
@@ -212,6 +220,8 @@ function validateState(value: unknown): value is SallyWitnessState {
   if (state.page_ready && (!hasExactKeys(state.page_ready, ["receipt_id", "observed_at", "page_instance_id", "time_origin", "navigation_count", "session_sha256"]) || !validTimestamp(state.page_ready.observed_at) || !PAGE_ID_PATTERN.test(state.page_ready.page_instance_id) || !Number.isFinite(state.page_ready.time_origin) || state.page_ready.navigation_count !== 1 || !SHA256_PATTERN.test(state.page_ready.session_sha256))) return false;
   if (state.command && (!hasExactKeys(state.command, ["command_id", "workstream_id"]) || !/^[A-Za-z0-9_-]+$/.test(state.command.command_id) || !/^[a-z0-9][a-z0-9-]{0,63}$/.test(state.command.workstream_id))) return false;
   if (state.browser_completed && (!hasExactKeys(state.browser_completed, ["receipt_id", "observed_at", "initial_revision", "observed_revision", "page_instance_id", "time_origin", "navigation_count", "command_id", "command_claim_id", "terminal_receipt_id", "terminal_receipt_at", "sally_connectivity_after", "sally_heartbeat_after"]) || !validTimestamp(state.browser_completed.observed_at) || !validTimestamp(state.browser_completed.terminal_receipt_at) || !SHA256_PATTERN.test(state.browser_completed.initial_revision) || !SHA256_PATTERN.test(state.browser_completed.observed_revision) || !PAGE_ID_PATTERN.test(state.browser_completed.page_instance_id) || state.browser_completed.navigation_count !== 1)) return false;
+  if (state.operator_session && (!hasExactKeys(state.operator_session, ["status", "receipt_id", "activated_at", "expires_at"]) || state.operator_session.status !== "ACTIVE" || !validTimestamp(state.operator_session.activated_at) || !validTimestamp(state.operator_session.expires_at) || Date.parse(state.operator_session.expires_at) - Date.parse(state.operator_session.activated_at) !== SALLY_OPERATOR_SESSION_TTL_MS)) return false;
+  if ((state.status === "COMPLETED") !== Boolean(state.browser_completed && state.operator_session)) return false;
   if (state.blocker && (!hasExactKeys(state.blocker, ["code", "observed_at"]) || typeof state.blocker.code !== "string" || !validTimestamp(state.blocker.observed_at))) return false;
   if (state.expired_receipt && (!hasExactKeys(state.expired_receipt, ["receipt_id", "observed_at"]) || !validTimestamp(state.expired_receipt.observed_at))) return false;
   return true;
@@ -703,6 +713,13 @@ export async function recordSallyBrowserCompleted(input: Record<string, unknown>
       sally_connectivity_after: snapshot.machines.find((machine) => machine.machine === "Sally")?.connectivity ?? "DISCONNECTED",
       sally_heartbeat_after: heartbeatAfter
     };
+    const activatedAt = new Date();
+    state.operator_session = {
+      status: "ACTIVE",
+      receipt_id: `sally_operator_${randomUUID().replaceAll("-", "")}`,
+      activated_at: activatedAt.toISOString(),
+      expires_at: new Date(activatedAt.getTime() + SALLY_OPERATOR_SESSION_TTL_MS).toISOString()
+    };
     state.status = "COMPLETED";
     await writeSignedState(stateFile(), state);
     await archiveState(state);
@@ -739,6 +756,7 @@ export async function readPublicSallyWitness(): Promise<PublicSallyWitnessState 
   const hostReady = state.host_ready;
   const pageReady = state.page_ready;
   const browserCompleted = state.browser_completed;
+  const operatorSession = state.operator_session;
   const pairingStatus: PublicSallyWitnessState["pairing_status"] = state.pairing_requests?.some((request) => request.status === "REDEEMED")
     ? "REDEEMED"
     : state.pairing_requests?.some((request) => request.status === "APPROVED")
@@ -789,6 +807,10 @@ export async function readPublicSallyWitness(): Promise<PublicSallyWitnessState 
       terminal_receipt_at: browserCompleted.terminal_receipt_at,
       sally_connectivity_after: browserCompleted.sally_connectivity_after
     } } : {}),
+    ...(operatorSession ? { operator_session: {
+      ...operatorSession,
+      active: Date.parse(operatorSession.expires_at) > Date.now()
+    } } : {}),
     ...(state.blocker ? { blocker: { code: state.blocker.code, observed_at: state.blocker.observed_at } } : {}),
     ...(state.expired_receipt ? { expired_receipt: { receipt_id: state.expired_receipt.receipt_id, observed_at: state.expired_receipt.observed_at } } : {}),
     command_status: command?.status ?? null
@@ -799,4 +821,50 @@ export function parseWitnessCookie(value: string | undefined, challengeId: strin
   const [cookieChallenge, capability, extra] = String(value ?? "").split(".");
   if (extra || cookieChallenge !== challengeId || !SHA256_PATTERN.test(capability ?? "")) throw new HarveyControlError("SALLY_WITNESS_SESSION_INVALID", 403);
   return capability;
+}
+
+function requestCookieValue(request: Request, name: string) {
+  const item = (request.headers.get("cookie") ?? "").split(";").map((value) => value.trim()).find((value) => value.startsWith(`${name}=`));
+  return item ? decodeURIComponent(item.slice(name.length + 1)) : undefined;
+}
+
+function assertSameOriginOperatorBrowser(request: Request) {
+  const originValue = request.headers.get("origin") || request.headers.get("referer");
+  let origin: URL;
+  try { origin = new URL(originValue ?? ""); }
+  catch { throw new HarveyControlError("SALLY_OPERATOR_ORIGIN_REQUIRED", 403); }
+  const requestHost = request.headers.get("host") ?? new URL(request.url).host;
+  const requestAuthority = new URL(`http://${requestHost}`);
+  const requestName = requestAuthority.hostname.toLowerCase();
+  const requestPort = requestAuthority.port || "80";
+  const originName = origin.hostname.toLowerCase();
+  const originPort = origin.port || "80";
+  const loopbackAlias = new Set(["127.0.0.1", "localhost"]);
+  const hostMatches = originName === requestName || (loopbackAlias.has(originName) && loopbackAlias.has(requestName));
+  if (origin.protocol !== "http:" || !hostMatches || originPort !== requestPort) {
+    throw new HarveyControlError("SALLY_OPERATOR_ORIGIN_INVALID", 403);
+  }
+  const fetchSite = request.headers.get("sec-fetch-site");
+  if (fetchSite && fetchSite !== "same-origin") throw new HarveyControlError("SALLY_OPERATOR_FETCH_SITE_INVALID", 403);
+}
+
+export async function authenticateSallyOperatorRequest(request: Request): Promise<HarveyOperatorActor> {
+  const rawCookie = requestCookieValue(request, "harvey_sally_witness");
+  const [challengeId] = String(rawCookie ?? "").split(".");
+  if (!CHALLENGE_PATTERN.test(challengeId)) throw new HarveyControlError("SALLY_OPERATOR_SESSION_REQUIRED", 401);
+  assertSameOriginOperatorBrowser(request);
+  const session = parseWitnessCookie(rawCookie, challengeId);
+  const state = await readState();
+  if (!state || state.challenge_id !== challengeId || state.status !== "COMPLETED" || !state.browser_completed || !state.page_ready || !state.operator_session) {
+    throw new HarveyControlError("SALLY_OPERATOR_SESSION_NOT_ACTIVE", 401);
+  }
+  if (state.operator_session.status !== "ACTIVE" || Date.parse(state.operator_session.expires_at) <= Date.now()) {
+    throw new HarveyControlError("SALLY_OPERATOR_SESSION_EXPIRED", 401);
+  }
+  const expected = Buffer.from(state.page_ready.session_sha256, "hex");
+  const observed = Buffer.from(hash(session), "hex");
+  if (expected.length !== observed.length || !timingSafeEqual(expected, observed)) {
+    throw new HarveyControlError("SALLY_OPERATOR_SESSION_INVALID", 403);
+  }
+  return { role: "operator", operator_id: `sally-browser:${challengeId}` };
 }

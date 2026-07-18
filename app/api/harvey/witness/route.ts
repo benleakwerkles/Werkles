@@ -5,6 +5,7 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 
 import { HarveyControlError } from "@/lib/harvey/machine-control";
+import { harveyPrivateApiGate } from "@/lib/harvey/private-access";
 import {
   assertMachineRequestEnvelope,
   authenticateMachineRequest,
@@ -24,7 +25,8 @@ import {
   recordSallyBrowserCompleted,
   recordSallyHostReady,
   recordSallyPageReady,
-  requestSallyPairing
+  requestSallyPairing,
+  SALLY_OPERATOR_SESSION_TTL_MS
 } from "@/lib/harvey/sally-witness";
 
 export const runtime = "nodejs";
@@ -70,6 +72,8 @@ async function packetText(state: Awaited<ReturnType<typeof readPublicSallyWitnes
 }
 
 export async function GET(request: Request) {
+  const denied = await harveyPrivateApiGate(request);
+  if (denied) return denied;
   try {
     const format = new URL(request.url).searchParams.get("format");
     const state = await readPublicSallyWitness();
@@ -151,8 +155,8 @@ export async function POST(request: Request) {
         response.cookies.set("harvey_sally_witness", `${result.state.challenge_id}.${result.sessionToken}`, {
           httpOnly: true,
           sameSite: "strict",
-          path: "/api/harvey/witness",
-          maxAge: 15 * 60
+          path: "/api/harvey",
+          maxAge: SALLY_OPERATOR_SESSION_TTL_MS / 1000
         });
       }
       return response;
@@ -163,7 +167,12 @@ export async function POST(request: Request) {
       const session = parseWitnessCookie(cookieValue(request, "harvey_sally_witness"), challengeId);
       await recordSallyBrowserCompleted(parsed.body, session);
       const response = NextResponse.json({ ok: true, witness: await readPublicSallyWitness() }, { headers });
-      response.cookies.set("harvey_sally_witness", "", { httpOnly: true, sameSite: "strict", path: "/api/harvey/witness", maxAge: 0 });
+      response.cookies.set("harvey_sally_witness", `${challengeId}.${session}`, {
+        httpOnly: true,
+        sameSite: "strict",
+        path: "/api/harvey",
+        maxAge: SALLY_OPERATOR_SESSION_TTL_MS / 1000
+      });
       return response;
     }
     throw new HarveyControlError("SALLY_WITNESS_PHASE_INVALID", 400);

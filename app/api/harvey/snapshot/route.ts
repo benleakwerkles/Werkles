@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { harveyPrivateApiGate } from "@/lib/harvey/private-access";
 import { readHarveySnapshot } from "@/lib/harvey/snapshot";
 
 export const runtime = "nodejs";
@@ -12,6 +13,8 @@ const responseHeaders = (etag: string) => ({
 });
 
 export async function GET(request: Request) {
+  const denied = await harveyPrivateApiGate(request);
+  if (denied) return denied;
   const snapshot = await readHarveySnapshot();
   const etag = `"${snapshot.revision}"`;
   const matches = (request.headers.get("if-none-match") ?? "")

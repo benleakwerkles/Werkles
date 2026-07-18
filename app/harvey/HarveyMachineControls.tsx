@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { harveyOperatorBridgeReady, harveyOperatorBridgeUrl } from "./operator-bridge";
 
-type Action = "PING" | "KNOCK" | "OPEN_URL";
+type Action = "PING" | "KNOCK" | "OPEN_URL" | "SWATEYE_GIT_LFS_RECOVERY";
 
-export default function HarveyMachineControls({ machine, enabled, workstreamId }: { machine: string; enabled: boolean; workstreamId?: string }) {
+export default function HarveyMachineControls({ machine, enabled, capabilities, workstreamId }: { machine: string; enabled: boolean; capabilities: Action[]; workstreamId?: string }) {
   const [state, setState] = useState("IDLE");
   const [detail, setDetail] = useState("");
   const [operatorReady, setOperatorReady] = useState(false);
@@ -15,6 +15,10 @@ export default function HarveyMachineControls({ machine, enabled, workstreamId }
   }, []);
 
   async function issue(action: Action) {
+    if (state === "QUEUEING") {
+      setDetail("A command is already being queued. Your click was not sent twice.");
+      return;
+    }
     setState("QUEUEING");
     setDetail("");
     try {
@@ -49,19 +53,32 @@ export default function HarveyMachineControls({ machine, enabled, workstreamId }
     }
   }
 
-  const actionable = enabled && operatorReady;
-  const buttonStyle = { border: "1px solid #d8a84e", borderRadius: 8, background: actionable ? "#d8a84e" : "#303532", color: actionable ? "#111" : "#7e8781", padding: "8px 10px", fontWeight: 800, cursor: actionable ? "pointer" : "not-allowed" } as const;
+  function explainLockedRoute(action: Action) {
+    setState("BLOCKER");
+    setDetail(!enabled
+      ? `${machine.toUpperCase()}_HANDEYE_PAGE_READY_AND_HEARTBEAT_REQUIRED`
+      : !capabilities.includes(action)
+        ? `ACTION_NOT_SUPPORTED_BY_CURRENT_HANDEYE:${action}`
+        : "OPERATOR_ROUTE_NOT_PAIRED_FOR_THIS_BROWSER");
+  }
+
+  const actionable = (action: Action) => enabled && operatorReady && capabilities.includes(action) && state !== "QUEUEING";
+  const expectedCapabilities = machine === "Spanzee" ? 4 : 3;
+  const buttonStyle = (action: Action) => ({ border: "1px solid #d8a84e", borderRadius: 8, background: actionable(action) ? "#d8a84e" : "#303532", color: actionable(action) ? "#111" : "#aab1ad", padding: "8px 10px", fontWeight: 800, cursor: "pointer", opacity: actionable(action) ? 1 : 0.78 } as const);
+  const click = (action: Action) => actionable(action) ? void issue(action) : explainLockedRoute(action);
 
   return (
     <div data-testid={`controls-${machine}`} data-proof-enabled={enabled ? "true" : "false"} style={{ marginTop: 12 }}>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-        <button type="button" disabled={!actionable || state === "QUEUEING"} onClick={() => issue("PING")} style={buttonStyle}>PING</button>
-        <button type="button" disabled={!actionable || state === "QUEUEING"} onClick={() => issue("KNOCK")} style={buttonStyle}>KNOCK</button>
-        <button type="button" disabled={!actionable || state === "QUEUEING"} onClick={() => issue("OPEN_URL")} style={buttonStyle}>OPEN HARVEY</button>
+        <button type="button" data-route-enabled={actionable("PING") ? "true" : "false"} onClick={() => click("PING")} style={buttonStyle("PING")}>PING</button>
+        <button type="button" data-route-enabled={actionable("KNOCK") ? "true" : "false"} onClick={() => click("KNOCK")} style={buttonStyle("KNOCK")}>KNOCK</button>
+        <button type="button" data-route-enabled={actionable("OPEN_URL") ? "true" : "false"} onClick={() => click("OPEN_URL")} style={buttonStyle("OPEN_URL")}>OPEN HARVEY</button>
+        {machine === "Spanzee" && <button type="button" data-route-enabled={actionable("SWATEYE_GIT_LFS_RECOVERY") ? "true" : "false"} onClick={() => click("SWATEYE_GIT_LFS_RECOVERY")} style={buttonStyle("SWATEYE_GIT_LFS_RECOVERY")}>SWAT ORPHANED GIT LFS</button>}
       </div>
-      {!enabled && <small style={{ display: "block", marginTop: 7, color: "#89928c" }}>Requires live Handeye</small>}
-      {enabled && !operatorReady && <small style={{ display: "block", marginTop: 7, color: "#89928c" }}>Read-only here · operator controls require Doss localhost bridge</small>}
+      {!enabled && <small style={{ display: "block", marginTop: 7, color: machine === "Betsy" ? "#ffcc73" : "#89928c" }}>{machine === "Betsy" ? "BETSY CONTROL ROUTE LOCKED · waiting for approved Handeye PAGE_READY + heartbeat" : "CONTROL ROUTE LOCKED · requires a fresh Handeye heartbeat"}</small>}
+      {enabled && !operatorReady && <small style={{ display: "block", marginTop: 7, color: "#ffcc73" }}>MACHINE LIVE · this browser still needs an approved operator route</small>}
       {enabled && operatorReady && <small style={{ display: "block", marginTop: 7, color: "#75e6a4" }}>DOSS LOCAL · OPERATOR BRIDGE CONNECTED</small>}
+      {enabled && operatorReady && capabilities.length < expectedCapabilities && <small style={{ display: "block", marginTop: 7, color: "#ffcc73" }}>THIS HANDEYE CAN RUN: {capabilities.join(", ") || "NO COMMANDS"}</small>}
       {state !== "IDLE" && <small style={{ display: "block", marginTop: 7, color: state === "BLOCKER" ? "#ff8c75" : state === "COMPLETED" ? "#75e6a4" : "#d8a84e" }}>{state} · {detail}</small>}
     </div>
   );

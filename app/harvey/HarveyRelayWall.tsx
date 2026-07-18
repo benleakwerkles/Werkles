@@ -60,7 +60,7 @@ export default function HarveyRelayWall() {
     let timer: number | undefined;
     const refresh = async () => {
       try {
-        const response = await fetch("/api/harvey/relay-events", { cache: "no-store", credentials: "omit" });
+        const response = await fetch("/api/harvey/relay-events", { cache: "no-store", credentials: "same-origin" });
         const body = await response.json() as Projection;
         if (!response.ok || !body.ok) throw new Error("BRIDGE_PROJECTION_UNAVAILABLE");
         if (active) {
@@ -89,7 +89,8 @@ export default function HarveyRelayWall() {
     <section data-testid="harvey-relay-wall" aria-labelledby="harvey-relay-wall-title" style={{ maxWidth: 1200, margin: "28px auto", border: "1px solid #4d554f", borderRadius: 14, background: "#101417", padding: 20 }}>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "start", gap: 16 }}>
         <div>
-          <p style={{ color: "#d8a84e", letterSpacing: 2, fontWeight: 900, margin: 0 }}>HARVEY CREW BRIDGE / ODDLY GODLY</p>
+          <p style={{ color: "#d8a84e", letterSpacing: 2, fontWeight: 900, margin: 0 }}>HARVEY CREW BRIDGE / BIRD-FLOCK RELAY</p>
+          <p style={{ color: "#ffcc73", margin: "6px 0 0", fontWeight: 800 }}>ACTIVE ADAPTER: ODDLY GODLY / SPANZEE PILOT</p>
           <h2 id="harvey-relay-wall-title" style={{ color: "#fff4d6", fontSize: 32, margin: "7px 0" }}>Chat wakes the Aeye. The repo carries truth. Receipts close the loop.</h2>
           <p style={{ maxWidth: 860, color: "#aeb6b0", lineHeight: 1.55, margin: 0 }}>
             This wall accepts sanitized lifecycle events authenticated at intake as the Spanzee Handeye. Local Harvey storage is the trusted projection boundary. It cannot send Cowork messages, inspect transcripts, run Runner jobs, or execute Git. SENT is visible but never terminal.

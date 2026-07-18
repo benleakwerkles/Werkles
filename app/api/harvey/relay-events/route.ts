@@ -7,13 +7,16 @@ import {
   harveyErrorResponse,
   readHarveyWriteBody
 } from "@/lib/harvey/machine-security";
+import { harveyPrivateApiGate } from "@/lib/harvey/private-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const noStore = { "cache-control": "no-store, max-age=0" };
 
-export async function GET() {
+export async function GET(request: Request) {
+  const denied = await harveyPrivateApiGate(request);
+  if (denied) return denied;
   try {
     const deliveries = await listCrewBridgeDeliveries();
     return NextResponse.json({

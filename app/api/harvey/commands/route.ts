@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import { createCommand, createFleetCommands, listCommands, readFleetSummary, updateCommand } from "@/lib/harvey/machine-control";
 import { assertMachineRequestEnvelope, authenticateMachineRequest, authenticateOperatorRequest, harveyErrorResponse, readHarveyWriteBody } from "@/lib/harvey/machine-security";
+import { harveyPrivateApiGate } from "@/lib/harvey/private-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
+  const denied = await harveyPrivateApiGate(request);
+  if (denied) return denied;
   const parameters = new URL(request.url).searchParams;
   const machine = parameters.get("machine");
   const fleetId = parameters.get("fleet_id");

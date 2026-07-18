@@ -1,6 +1,8 @@
 import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { EPHEMERAL_RSA_AUTH_MODE, parseEphemeralRsaEnvelope, type EphemeralRsaEnvelope } from "@/lib/harvey/ephemeral-rsa";
+import { authenticateActiveBetsyEphemeralRequest } from "@/lib/harvey/handeye-pairing";
 import {
   HARVEY_MACHINE_HOSTNAMES,
   HarveyControlError,
@@ -16,7 +18,8 @@ const MACHINE_SIGNATURE_WINDOW_SECONDS = 90;
 const MACHINE_NONCE_RETENTION_SECONDS = MACHINE_SIGNATURE_WINDOW_SECONDS * 2 + 30;
 const MAX_RETAINED_NONCES_PER_MACHINE = 256;
 
-type MachineRequestEnvelope = {
+type HmacMachineRequestEnvelope = {
+  kind: "hmac";
   machine: HarveyMachine;
   hostname: string;
   agentId: string;
@@ -25,6 +28,8 @@ type MachineRequestEnvelope = {
   nonce: string;
   signature: string;
 };
+
+type MachineRequestEnvelope = HmacMachineRequestEnvelope | EphemeralRsaEnvelope;
 
 export type HarveyWriteBody = {
   body: Record<string, unknown>;
@@ -67,6 +72,9 @@ function expectedAgentId(machine: HarveyMachine, hostname: string) {
 }
 
 export function assertMachineRequestEnvelope(request: Request): MachineRequestEnvelope {
+  if ((request.headers.get("x-harvey-auth-mode") ?? "").trim() === EPHEMERAL_RSA_AUTH_MODE) {
+    return parseEphemeralRsaEnvelope(request);
+  }
   const machineHeader = request.headers.get("x-harvey-machine");
   if (!machineHeader) throw new HarveyControlError("AUTHENTICATION_REQUIRED", 401);
   const machine = normalizeMachine(machineHeader);
@@ -92,10 +100,10 @@ export function assertMachineRequestEnvelope(request: Request): MachineRequestEn
   const configured = configuredMachineSecrets();
   const secret = String(configured[machine] ?? "").trim();
   if (!secret) throw new HarveyControlError("MACHINE_CREDENTIAL_NOT_CONFIGURED", 503);
-  return { machine, hostname, agentId, secret, timestamp, nonce, signature };
+  return { kind: "hmac", machine, hostname, agentId, secret, timestamp, nonce, signature };
 }
 
-function machineSignature(request: Request, rawBody: string, envelope: MachineRequestEnvelope) {
+function machineSignature(request: Request, rawBody: string, envelope: HmacMachineRequestEnvelope) {
   const bodyHash = createHash("sha256").update(rawBody, "utf8").digest("hex");
   const pathname = new URL(request.url).pathname;
   const canonical = [
@@ -110,7 +118,7 @@ function machineSignature(request: Request, rawBody: string, envelope: MachineRe
   return createHmac("sha256", envelope.secret).update(canonical, "utf8").digest("hex");
 }
 
-async function consumeMachineNonce(envelope: MachineRequestEnvelope) {
+async function consumeMachineNonce(envelope: HmacMachineRequestEnvelope) {
   const directory = path.join(process.cwd(), "data", "harvey", "machine-control", "nonces", envelope.machine.toLowerCase());
   await fs.mkdir(directory, { recursive: true });
   const noncePath = path.join(directory, `${envelope.nonce}.json`);
@@ -150,6 +158,9 @@ export async function authenticateMachineRequest(
   prepared?: MachineRequestEnvelope
 ): Promise<HarveyMachineActor> {
   const envelope = prepared ?? assertMachineRequestEnvelope(request);
+  if (envelope.kind === "ephemeral-rsa") {
+    return authenticateActiveBetsyEphemeralRequest(request, rawBody, envelope);
+  }
   const expected = machineSignature(request, rawBody, envelope);
   if (!valueMatches(envelope.signature, expected)) throw new HarveyControlError("INVALID_MACHINE_SIGNATURE", 401);
   await consumeMachineNonce(envelope);
@@ -157,7 +168,10 @@ export async function authenticateMachineRequest(
     role: "machine",
     machine: envelope.machine,
     hostname: envelope.hostname,
-    agent_id: envelope.agentId
+    agent_id: envelope.agentId,
+    auth_mode: "HMAC_SHA256_V1",
+    credential_id: envelope.agentId,
+    credential_expires_at: null
   };
 }
 

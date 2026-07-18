@@ -1,0 +1,91 @@
+{
+  "schema": "werkles.harvey-project-field-artifact-ledger/v1",
+  "updated_at": "2026-07-16",
+  "project_index": "foreman/harvey/HARVEY_PROJECT_FLOCK_INDEX_20260716.json",
+  "rules": {
+    "terminal_receipt_required_for_completion": true,
+    "sent_is_terminal": false,
+    "operator_forwarded_report_is_machine_proof": false,
+    "artifact_hash_required_when_recorded": true,
+    "invention_default_state": "CANDIDATE_REPORTED"
+  },
+  "projects": [
+    {
+      "project_id": "harvey-command",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [
+        {
+          "path": "foreman/harvey/HARVEY_WATCHTOWER_20260716.json",
+          "sha256": "bd670fb5d9e355c19093c981a141df68cae6a3f08ba5c80f1cb4670094d78ffb",
+          "evidence_class": "LOCAL_WORKTREE_CANDIDATE",
+          "claim_scope": "watchtower policy contract only"
+        }
+      ],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "harvey-book",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "werkles-product",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "oddly-godly-game",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "oddly-godly-book",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "harvey-mobile",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [
+        {
+          "path": "foreman/handoffs/inbox/FROM_MEDULLINA_MAKER_FLOCK_ROUTE_UNBOUND_20260716.md",
+          "sha256": "11a9de863ac5f4213a6ff3b1c64cc9e3c3476b99b544a906aa4a8328628c60a8",
+          "evidence_class": "OPERATOR_FORWARDED_RECEIVER_REPORT",
+          "claim_scope": "route-unbound report; not machine proof"
+        }
+      ],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "kind-sir-operations",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [],
+      "invention_candidates": []
+    },
+    {
+      "project_id": "password-access-continuity",
+      "latest_accepted_terminal_receipt": null,
+      "terminal_receipts": [],
+      "field_artifacts": [
+        {
+          "path": "foreman/harvey/HARVEY_PASSWORD_INCIDENT_AUTOMATICA_SCOPE_20260715.md",
+          "sha256": "de9dfebdc23ced2577d8059ceff8b4c09c963f8ebdf717c00738a83aa9ae5813",
+          "evidence_class": "LOCAL_SCOPE_CONTRACT",
+          "claim_scope": "no-secret incident boundary only"
+        }
+      ],
+      "invention_candidates": []
+    }
+  ]
+}
