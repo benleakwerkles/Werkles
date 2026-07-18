@@ -94,6 +94,19 @@ export type SquibbRecommendationSessionSource = {
   answeredCount?: number;
   totalQuestions?: number;
   symptomBlock?: string;
+  fedDocument?: {
+    id: string;
+    title: string;
+    kind: "example_fixture" | "member_intake" | "uploaded_document";
+    summary: string;
+    body: string;
+    excerpts: Array<{
+      id: string;
+      label: string;
+      text: string;
+      feeds: string[];
+    }>;
+  };
 };
 
 export type SquibbRecommendationSessionInput = {

@@ -33,6 +33,7 @@ export const config = {
     "/soledash/:path*",
     "/gd/:path*",
     "/nerdkle/:path*",
+    "/api/operator/:path*",
     "/api/soledash/:path*",
     "/api/tinkerden/:path*",
     "/api/thinkit/:path*",

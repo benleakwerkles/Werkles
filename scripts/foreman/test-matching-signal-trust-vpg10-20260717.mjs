@@ -65,6 +65,7 @@ const negativeCases = [
   ["I don't need an investor.", "partnerSeeking"],
   ["I do not want a partner.", "partnerSeeking"],
   ["I am not looking for a new job.", "jobSeeking"],
+  ["I am not trying to hire employees.", "jobSeeking"],
   ["I do not need training.", "trainingSeeking"],
   ["I do not plan to relocate.", "relocationSignal"],
   ["No loan.", "capitalSeeking"],

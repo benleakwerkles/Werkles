@@ -8,6 +8,7 @@ export const INTERNAL_ROUTE_ROOTS = [
 ] as const;
 
 export const INTERNAL_API_ROOTS = [
+  "/api/operator",
   "/api/soledash",
   "/api/tinkerden",
   "/api/thinkit",

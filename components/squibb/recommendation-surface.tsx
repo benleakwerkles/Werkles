@@ -10,6 +10,7 @@ import { EvidenceSection } from "./evidence-section";
 import { HumanGateStrip } from "./human-gate-strip";
 import { ReasoningPanel } from "./reasoning-panel";
 import { RecommendationCard } from "./recommendation-card";
+import { SourceDocumentPanel } from "./source-document-panel";
 
 type SquibbRecommendationSurfaceProps = {
   session: SquibbRecommendationSession;
@@ -135,7 +136,9 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         </p>
       </header>
 
-      {source.mode === "latest_intake" && source.symptomBlock ? (
+      {source.fedDocument ? <SourceDocumentPanel source={source} selectedKind={selected.kind} /> : null}
+
+      {source.mode === "latest_intake" && source.symptomBlock && !source.fedDocument ? (
         <section className="squibb-rec-source panel" aria-labelledby="squibbSourceTitle">
           <p className="eyebrow">What we heard</p>
           <h2 id="squibbSourceTitle">Your latest intake</h2>

@@ -38,7 +38,7 @@ const NEGATED_INTENT_BEFORE_MATCH =
   /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not|never|no\s+longer)\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
 
 const NEGATED_INTENT_SCOPE =
-  /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not|never|no\s+longer)\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to|interested\s+in|consider(?:ing)?)\b/i;
+  /\b(?:do\s+not|don't|dont|does\s+not|doesn't|doesnt|did\s+not|didn't|didnt|not|never|no\s+longer)\s+(?:currently\s+)?(?:need|want|seek|seeking|require|look(?:ing)?\s+for|pursue|plan(?:ning)?\s+to|intend(?:ing)?\s+to|try(?:ing)?\s+to|interested\s+in|consider(?:ing)?)\b/i;
 
 const DIRECT_NOUN_NEGATION_BEFORE_MATCH =
   /\b(?:no|not|without|need\s+no|want\s+no|seek\s+no)\s+(?:(?:to|a|an|any|another|more|new)\s+){0,3}$/i;
@@ -232,6 +232,32 @@ export function signalsFromConcierge(intakeId: string, answers: ConciergeIntakeA
 
   );
 
+}
+
+/**
+ * Convert a pasted document into the same deterministic signal shape used by
+ * the existing Matching rules. The caller owns storage; this adapter does not
+ * persist the title or body.
+ */
+export function signalsFromDocumentText(intakeId: string, title: string, body: string): StructuredSignals {
+  const cleanedBody = body.trim().slice(0, 20_000);
+  const cleanedTitle = title.trim().slice(0, 200);
+  const lines = cleanedBody.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  const firstMeaningfulLine =
+    lines.find((line) => !/^(?:from|date|subject)\s*:/i.test(line) && line.length >= 20) ?? lines[0] ?? cleanedBody;
+  const statedNeed = firstMeaningfulLine.slice(0, 280);
+  const blob = [cleanedTitle, cleanedBody].filter(Boolean).join(". ");
+
+  return buildSignals(
+    "discovery",
+    intakeId,
+    statedNeed,
+    blob,
+    "Unsure",
+    [],
+    [cleanedBody.slice(0, 400)],
+    [statedNeed]
+  );
 }
 
 function profileText(value: unknown, maxLength = 1600): string {

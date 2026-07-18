@@ -5,7 +5,11 @@ import type { DiscoveryIntakeInput } from "@/lib/discovery/schema";
 import { isMatchingShadowEnabled, isMatchingLlmEnabled } from "@/lib/matching/feature-flags";
 import { runLayer0 } from "@/lib/matching/layer0";
 import { evaluateNotMatch } from "@/lib/matching/not-match";
-import { signalsFromConcierge, signalsFromDiscovery } from "@/lib/matching/signals";
+import {
+  signalsFromConcierge,
+  signalsFromDiscovery,
+  signalsFromDocumentText
+} from "@/lib/matching/signals";
 import { scorePaths } from "@/lib/matching/score-paths";
 import { buildMatchingReadout, buildSquibbVoice } from "@/lib/matching/deliver";
 import { buildMemberCausalDraft } from "@/lib/matching/member-causal-draft";
@@ -29,7 +33,7 @@ async function maybeLlmTranslate(signals: StructuredSignals): Promise<Structured
   return signals;
 }
 
-async function runMatchingCore(signals: StructuredSignals): Promise<{
+async function runMatchingCore(signals: StructuredSignals, llmUsed = isMatchingLlmEnabled()): Promise<{
   intakeId: string;
   source: StructuredSignals["source"];
   mode: "shadow";
@@ -56,7 +60,7 @@ async function runMatchingCore(signals: StructuredSignals): Promise<{
     notMatch,
     readout,
     squibb,
-    llmUsed: isMatchingLlmEnabled(),
+    llmUsed,
     receiptPath: matchingReceiptPath()
   };
 }
@@ -98,4 +102,19 @@ export async function runShadowMatchingFromConcierge(
   const run = finalizeRun(await runMatchingCore(signals), newShadowRunId());
   await persistShadowRun(run);
   return run;
+}
+
+/**
+ * Score an operator-supplied document without writing a shadow run or source
+ * document to storage.
+ */
+export async function runEphemeralMatchingFromDocument(input: {
+  title: string;
+  body: string;
+}): Promise<ShadowMatchingRun | null> {
+  if (!isMatchingShadowEnabled()) return null;
+
+  const intakeId = `doc_${Date.now().toString(36)}`;
+  const signals = signalsFromDocumentText(intakeId, input.title, input.body);
+  return finalizeRun(await runMatchingCore(signals, false), newShadowRunId());
 }
