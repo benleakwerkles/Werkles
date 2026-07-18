@@ -1,11 +1,12 @@
 # Flock Packet — Shared Copy Compression and Trust VPG16
 
-Status: `OPEN`
+Status: `COMPLETED`
 Machine: `Betsy`
 Execution/push owner: Heimerdinker / Dink@Betsy
 Review seats: Doozer@Betsy, Thufir@Betsy, and Bean@Betsy
 Repository: `benleakwerkles/Werkles`
 Starting source: `8029df2169bdeb686410104e6d992417c0c54097`
+Product commit: `abdb85b`
 
 ## Mission
 

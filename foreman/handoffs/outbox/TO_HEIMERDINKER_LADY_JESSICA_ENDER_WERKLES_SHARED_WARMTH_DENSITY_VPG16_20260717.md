@@ -1,11 +1,12 @@
 # Flock Packet — Shared Warmth and Density VPG16
 
-Status: `OPEN`
+Status: `COMPLETED`
 Machine: `Betsy`
 Execution/push owner: Heimerdinker / Dink@Betsy
 Review seats: Lady Jessica / Cursor@Betsy and Ender@Betsy
 Repository: `benleakwerkles/Werkles`
 Starting source: `8029df2169bdeb686410104e6d992417c0c54097`
+Product commit: `abdb85b`
 
 ## Mission
 
