@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { copy } from "@/lib/copy";
+import { publicAuthMessage } from "@/lib/public-auth-message";
 import { safeMemberReturnPath } from "@/lib/safe-member-return";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
@@ -14,52 +15,62 @@ function readAuthParams() {
   return { hashParams, queryParams };
 }
 
-function decodeAuthMessage(value: string | null) {
-  if (!value) return null;
-  return decodeURIComponent(value.replace(/\+/g, " "));
-}
+type CallbackState =
+  | { status: "checking" | "redirecting"; message: string }
+  | { status: "failed"; message: string; nextPath: string };
 
 export default function AuthCallbackPage() {
   const router = useRouter();
-  const [nextPath, setNextPath] = useState("/dashboard");
-  const [status, setStatus] = useState("Confirming your account.");
+  const callbackStartedRef = useRef(false);
+  const [callbackState, setCallbackState] = useState<CallbackState>({
+    status: "checking",
+    message: "Checking your confirmation."
+  });
 
   useEffect(() => {
     async function confirmAccount() {
+      if (callbackStartedRef.current) return;
+      callbackStartedRef.current = true;
+
       const { hashParams, queryParams } = readAuthParams();
       const safeNextPath = safeMemberReturnPath(queryParams.get("next"));
       const onboardingHref = `/onboarding?next=${encodeURIComponent(safeNextPath)}`;
-      setNextPath(safeNextPath);
 
       const hashError = hashParams.get("error");
       if (hashError) {
-        const description =
-          decodeAuthMessage(hashParams.get("error_description")) ||
-          decodeAuthMessage(hashParams.get("error_code")) ||
-          hashError;
-
-        if (hashParams.get("error_code") === "otp_expired") {
-          setStatus(
-            `${description} Request a new confirmation email from Supabase, or log in if your account is already confirmed.`
-          );
-          return;
-        }
-
-        setStatus(description);
+        setCallbackState({
+          status: "failed",
+          message: publicAuthMessage({
+            context: "callback",
+            code: hashParams.get("error_code") || hashError
+          }),
+          nextPath: safeNextPath
+        });
         return;
       }
 
       const queryError = queryParams.get("error");
       if (queryError) {
-        setStatus(decodeAuthMessage(queryParams.get("error_description")) || queryError);
+        setCallbackState({
+          status: "failed",
+          message: publicAuthMessage({
+            context: "callback",
+            code: queryParams.get("error_code") || queryError
+          }),
+          nextPath: safeNextPath
+        });
         return;
       }
 
       let supabase;
       try {
         supabase = getSupabaseBrowser();
-      } catch (error) {
-        setStatus(error instanceof Error ? error.message : "Auth callback failed before the gate opened.");
+      } catch {
+        setCallbackState({
+          status: "failed",
+          message: publicAuthMessage({ context: "callback", code: "service_unavailable" }),
+          nextPath: safeNextPath
+        });
         return;
       }
 
@@ -67,10 +78,15 @@ export default function AuthCallbackPage() {
       if (code) {
         const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (error) {
-          setStatus(error.message);
+          setCallbackState({
+            status: "failed",
+            message: publicAuthMessage({ context: "callback", code: error.code, status: error.status }),
+            nextPath: safeNextPath
+          });
           return;
         }
 
+        setCallbackState({ status: "redirecting", message: "Confirmed. Opening onboarding." });
         router.replace(onboardingHref);
         return;
       }
@@ -84,18 +100,27 @@ export default function AuthCallbackPage() {
         });
 
         if (error) {
-          setStatus(error.message);
+          setCallbackState({
+            status: "failed",
+            message: publicAuthMessage({ context: "callback", code: error.code, status: error.status }),
+            nextPath: safeNextPath
+          });
           return;
         }
 
+        setCallbackState({ status: "redirecting", message: "Confirmed. Opening onboarding." });
         router.replace(onboardingHref);
         return;
       }
 
-      setStatus("No confirmation code found. Log in with your email and password.");
+      setCallbackState({
+        status: "failed",
+        message: publicAuthMessage({ context: "callback", code: "missing_confirmation" }),
+        nextPath: safeNextPath
+      });
     }
 
-    confirmAccount();
+    void confirmAccount();
   }, [router]);
 
   return (
@@ -104,40 +129,35 @@ export default function AuthCallbackPage() {
         <RouteUnlockBanner blockedDetail={copy.infraPreview.login} />
         <p className="eyebrow">Werkles</p>
         <h1>Opening the gate.</h1>
-        <p className="status-line" role="status">
-          {status}
-        </p>
-        <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href={`/onboarding?next=${encodeURIComponent(nextPath)}`}>
-            Continue to onboarding
-          </Link>
-          <Link className="button button-outline" href="/dashboard">
-            Member home
-          </Link>
-          <Link className="button button-outline" href={`/login?next=${encodeURIComponent(nextPath)}`}>
-            Back to login
-          </Link>
-        </div>
-
-        <section className="ops-card auth-doorway" aria-label="Auth recovery">
-          <div className="card-heading">
-            <p>If this page looks wrong</p>
-            <h2>Try login before you re-signup.</h2>
-          </div>
-          <ul>
-            <li>Expired confirmation link — log in with email and password; account may already be active.</li>
-            <li>No code in URL — start from signup or login, not this page directly.</li>
-            <li>Still stuck — use signup again or check Supabase email templates in operator setup.</li>
-          </ul>
-          <div className="member-selected-surface__actions">
-            <Link className="button button-outline" href={`/signup?next=${encodeURIComponent(nextPath)}`}>
-              Create account
-            </Link>
-            <Link className="button button-outline" href="/proof">
-              Inspect proof
-            </Link>
-          </div>
-        </section>
+        {callbackState.status === "failed" ? (
+          <>
+            <p id="authCallbackStatus" className="status-line" role="alert">
+              {callbackState.message}
+            </p>
+            <nav
+              className="member-selected-surface__actions"
+              aria-label="Account recovery"
+              aria-describedby="authCallbackStatus"
+            >
+              <Link
+                className="button button-dark"
+                href={`/login?next=${encodeURIComponent(callbackState.nextPath)}`}
+              >
+                Log in
+              </Link>
+              <Link
+                className="button button-outline"
+                href={`/signup?next=${encodeURIComponent(callbackState.nextPath)}`}
+              >
+                Create account
+              </Link>
+            </nav>
+          </>
+        ) : (
+          <p className="status-line" role="status">
+            {callbackState.message}
+          </p>
+        )}
       </section>
     </main>
   );

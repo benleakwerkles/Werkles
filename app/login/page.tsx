@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { WorkshopGreeter } from "@/components/foundry/workshop-greeter";
@@ -15,15 +15,18 @@ import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
 import { isLocalRoutePreviewUnlocked, isRuntimeRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
+import { publicAuthMessage } from "@/lib/public-auth-message";
 import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 export default function LoginPage() {
   const router = useRouter();
   const previewBlocked = isAuthStripeTestBlocked();
+  const authAttemptRef = useRef(false);
   const [previewUnlocked, setPreviewUnlocked] = useState(isLocalRoutePreviewUnlocked());
   const [nextPath, setNextPath] = useState("/dashboard");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState(
     previewBlocked
       ? copy.infraPreview.login
@@ -57,31 +60,48 @@ export default function LoginPage() {
     );
   }, [previewBlocked]);
 
+  function unlockAuthAttempt() {
+    authAttemptRef.current = false;
+    setBusy(false);
+  }
+
   async function login() {
     if (previewBlocked) return;
     if (!email.trim() || !password.trim()) {
       setStatus("Enter a username/email and password.");
       return;
     }
+    if (authAttemptRef.current) return;
+
+    authAttemptRef.current = true;
+    setBusy(true);
+    const safeNextPath = safeMemberReturnPath(new URLSearchParams(window.location.search).get("next"));
 
     if (shouldUseRuntimePreviewAuth()) {
-      signInDevPreview(email);
-      router.replace(nextPath);
+      try {
+        signInDevPreview(email);
+        router.replace(safeNextPath);
+      } catch {
+        setStatus(publicAuthMessage({ context: "login", code: "service_unavailable" }));
+        unlockAuthAttempt();
+      }
       return;
     }
 
     try {
       const { error } = await getSupabaseBrowser().auth.signInWithPassword({ email, password });
       if (error) {
-        setStatus(error.message);
+        setStatus(publicAuthMessage({ context: "login", code: error.code, status: error.status }));
+        unlockAuthAttempt();
         return;
       }
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : "Login failed before the gate opened.");
+    } catch {
+      setStatus(publicAuthMessage({ context: "login", code: "service_unavailable" }));
+      unlockAuthAttempt();
       return;
     }
 
-    router.replace(nextPath);
+    router.replace(safeNextPath);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -113,7 +133,13 @@ export default function LoginPage() {
           <p className="eyebrow">{copy.brand}</p>
           <h1>{copy.auth.loginTitle}</h1>
           <p>{copy.auth.loginSubhead}</p>
-          <form className="form-stack" action="/api/auth-first/dev-preview-login" method="post" onSubmit={handleSubmit}>
+          <form
+            className="form-stack"
+            action="/api/auth-first/dev-preview-login"
+            method="post"
+            aria-busy={busy}
+            onSubmit={handleSubmit}
+          >
             <input type="hidden" name="next" value={nextPath} />
             <label className="field">
               <span>Email or username</span>
@@ -124,7 +150,7 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                disabled={previewBlocked}
+                disabled={previewBlocked || busy}
               />
             </label>
             <label className="field">
@@ -136,11 +162,11 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                disabled={previewBlocked}
+                disabled={previewBlocked || busy}
               />
             </label>
-            <button className="button button-dark" type="submit" disabled={previewBlocked}>
-              {previewBlocked ? "Sign-in disabled (preview)" : "Log in"}
+            <button className="button button-dark" type="submit" disabled={previewBlocked || busy}>
+              {previewBlocked ? "Sign-in disabled (preview)" : busy ? "Logging in..." : "Log in"}
             </button>
             <p className="status-line" role="status">{status}</p>
           </form>
@@ -148,51 +174,10 @@ export default function LoginPage() {
             Create an account
           </Link>
 
-          <section className="ops-card auth-doorway" aria-label="New here">
-            <div className="card-heading">
-              <p>New here</p>
-              <h2>Start free before you log in.</h2>
-            </div>
-            <p>
-              You do not need an account to inspect proof or compare pricing. Create one when you are ready to save
-              profile work and use the member floor.
-            </p>
-            <div className="trust-state-strip" aria-label="Entry paths">
-              <span>Free signup</span>
-              <span>Proof before trust</span>
-              <span>Pay when useful</span>
-            </div>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-dark" href={signupHref}>
-                Create account
-              </Link>
-              <Link className="button button-outline" href="/proof">
-                Inspect proof
-              </Link>
-              <Link className="button button-outline" href="/pricing">
-                Compare pricing
-              </Link>
-            </div>
-          </section>
-
-          <section className="ops-card auth-doorway" aria-label="Email confirmation help">
-            <div className="card-heading">
-              <p>Email stuck?</p>
-              <h2>Confirmation links expire. Login may still work.</h2>
-            </div>
-            <p>
-              If the confirm email never arrived or the link expired, try logging in anyway — your account may already
-              be active. The auth callback page shows what Supabase returned without exposing secrets.
-            </p>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/auth/callback">
-                Open auth callback
-              </Link>
-              <Link className="button button-outline" href={signupHref}>
-                Create a new account
-              </Link>
-            </div>
-          </section>
+          <details className="auth-help">
+            <summary>Need help?</summary>
+            <p>A confirmation link can expire. If you already started, try logging in with the same details.</p>
+          </details>
         </div>
       </section>
     </main>

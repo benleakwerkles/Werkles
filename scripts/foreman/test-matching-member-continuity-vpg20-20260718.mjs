@@ -66,7 +66,7 @@ for (const rejected of [
 }
 
 assert.match(login, /const signupHref = `\/signup\?next=\$\{encodeURIComponent\(nextPath\)\}`/);
-assert.equal(login.match(/href=\{signupHref\}/g)?.length, 3);
+assert.equal(login.match(/href=\{signupHref\}/g)?.length, 1);
 assert.doesNotMatch(login, /href="\/signup"/);
 
 assert.match(signup, /safeMemberReturnPath\(new URLSearchParams\(window\.location\.search\)\.get\("next"\)\)/);
@@ -74,7 +74,7 @@ assert.match(signup, /new URL\("\/auth\/callback", window\.location\.origin\)/);
 assert.match(signup, /callbackUrl\.searchParams\.set\("next", safeNextPath\)/);
 assert.match(signup, /emailRedirectTo: callbackUrl\.toString\(\)/);
 assert.equal(signup.match(/window\.location\.href = onboardingHref/g)?.length, 2);
-assert.equal(signup.match(/\/login\?next=\$\{encodeURIComponent\(nextPath\)\}/g)?.length, 2);
+assert.equal(signup.match(/\/login\?next=\$\{encodeURIComponent\(nextPath\)\}/g)?.length, 1);
 assert.doesNotMatch(signup, /emailRedirectTo: `|params\.get\("next"\)\s*\|\|/);
 
 assert.match(callback, /const safeNextPath = safeMemberReturnPath\(queryParams\.get\("next"\)\)/);

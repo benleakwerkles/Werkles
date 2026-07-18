@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { copy } from "@/lib/copy";
@@ -13,12 +13,16 @@ import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
+import { publicAuthMessage } from "@/lib/public-auth-message";
 import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 export default function SignupPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = isLocalRoutePreviewUnlocked();
+  const authAttemptRef = useRef(false);
   const [nextPath, setNextPath] = useState("/dashboard");
+  const [busy, setBusy] = useState(false);
+  const [confirmationPending, setConfirmationPending] = useState(false);
   const [status, setStatus] = useState(
     previewBlocked
       ? copy.infraPreview.signup
@@ -31,6 +35,12 @@ export default function SignupPage() {
     const params = new URLSearchParams(window.location.search);
     setNextPath(safeMemberReturnPath(params.get("next")));
   }, []);
+
+  function unlockAuthAttempt() {
+    authAttemptRef.current = false;
+    setBusy(false);
+    setConfirmationPending(false);
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -47,50 +57,55 @@ export default function SignupPage() {
       setStatus("Passwords do not match.");
       return;
     }
+    if (authAttemptRef.current) return;
 
-    if (shouldUseDevPreviewAuth()) {
-      signInDevPreview(email);
-      window.location.href = onboardingHref;
-      return;
-    }
+    authAttemptRef.current = true;
+    setBusy(true);
 
-    const callbackUrl = new URL("/auth/callback", window.location.origin);
-    callbackUrl.searchParams.set("next", safeNextPath);
-
-    const { data, error } = await getSupabaseBrowser().auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: callbackUrl.toString()
-      }
-    });
-
-    if (error) {
-      const msg = error.message.toLowerCase();
-      if (msg.includes("already registered") || msg.includes("already exists")) {
-        setStatus("This email may already have an account. Try logging in instead of signing up again.");
+    try {
+      if (shouldUseDevPreviewAuth()) {
+        signInDevPreview(email);
+        window.location.href = onboardingHref;
         return;
       }
-      setStatus(error.message);
-      return;
-    }
 
-    if (data.user && !data.session) {
-      const identities = data.user.identities ?? [];
-      if (identities.length === 0) {
-        setStatus(
-          "If this email is already registered, use Log in. Otherwise check your inbox (and spam) for the confirmation link from Werkles."
-        );
+      const callbackUrl = new URL("/auth/callback", window.location.origin);
+      callbackUrl.searchParams.set("next", safeNextPath);
+
+      const { data, error } = await getSupabaseBrowser().auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: callbackUrl.toString()
+        }
+      });
+
+      if (error) {
+        setStatus(publicAuthMessage({ context: "signup", code: error.code, status: error.status }));
+        unlockAuthAttempt();
         return;
       }
-    }
 
-    if (data.session) {
-      window.location.href = onboardingHref;
-      return;
-    }
+      if (data.user && !data.session) {
+        const identities = data.user.identities ?? [];
+        if (identities.length === 0) {
+          setStatus(publicAuthMessage({ context: "signup", code: "possible_existing_account" }));
+          unlockAuthAttempt();
+          return;
+        }
+      }
 
-    setStatus("Check your email, then come back to make the first weld.");
+      if (data.session) {
+        window.location.href = onboardingHref;
+        return;
+      }
+
+      setConfirmationPending(true);
+      setStatus("Check your email, then come back to start onboarding.");
+    } catch {
+      setStatus(publicAuthMessage({ context: "signup", code: "service_unavailable" }));
+      unlockAuthAttempt();
+    }
   }
 
   return (
@@ -114,10 +129,10 @@ export default function SignupPage() {
         <p className="eyebrow">{copy.brand}</p>
         <h1>{copy.auth.signupTitle}</h1>
         <p>{copy.auth.signupSubhead}</p>
-        <form className="form-stack" onSubmit={handleSubmit}>
+        <form className="form-stack" aria-busy={busy && !confirmationPending} onSubmit={handleSubmit}>
           <label className="field">
             <span>Email</span>
-            <input name="email" type="email" autoComplete="email" required disabled={previewBlocked} />
+            <input name="email" type="email" autoComplete="email" required disabled={previewBlocked || busy} />
           </label>
           <label className="field">
             <span>Password</span>
@@ -127,7 +142,7 @@ export default function SignupPage() {
               autoComplete="new-password"
               required
               minLength={8}
-              disabled={previewBlocked}
+              disabled={previewBlocked || busy}
             />
           </label>
           <label className="field">
@@ -138,11 +153,17 @@ export default function SignupPage() {
               autoComplete="new-password"
               required
               minLength={8}
-              disabled={previewBlocked}
+              disabled={previewBlocked || busy}
             />
           </label>
-          <button className="button button-dark" type="submit" disabled={previewBlocked}>
-            {previewBlocked ? "Sign-up disabled (preview)" : copy.auth.signupCta}
+          <button className="button button-dark" type="submit" disabled={previewBlocked || busy}>
+            {previewBlocked
+              ? "Sign-up disabled (preview)"
+              : confirmationPending
+                ? "Check your email"
+                : busy
+                  ? "Creating account..."
+                  : copy.auth.signupCta}
           </button>
           <p className="status-line" role="status">{status}</p>
         </form>
@@ -150,51 +171,10 @@ export default function SignupPage() {
           I already have an account
         </Link>
 
-          <section className="ops-card auth-doorway" aria-label="What happens next">
-            <div className="card-heading">
-              <p>What happens next</p>
-              <h2>Free account first. Dues only when the floor earns it.</h2>
-            </div>
-            <p>
-              After signup you land in onboarding: lane, arena, turf, then a profile depth that fits your pace. You can
-              explore proof and pricing before paying Foundry Dues.
-            </p>
-            <div className="trust-state-strip" aria-label="Signup path">
-              <span>Onboarding</span>
-              <span>Profile</span>
-              <span>Dues optional</span>
-            </div>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/proof">
-                Inspect proof first
-              </Link>
-              <Link className="button button-outline" href="/pricing">
-                Compare pricing
-              </Link>
-            </div>
-          </section>
-
-          <section className="ops-card auth-doorway" aria-label="After signup">
-            <div className="card-heading">
-              <p>After signup</p>
-              <h2>Check email, then onboarding.</h2>
-            </div>
-            <p>
-              If confirmation is slow or the link expired, try logging in or open the auth callback page to see the
-              exact status message from Supabase.
-            </p>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href={`/login?next=${encodeURIComponent(nextPath)}`}>
-                Log in
-              </Link>
-              <Link
-                className="button button-outline"
-                href={`/auth/callback?next=${encodeURIComponent(nextPath)}`}
-              >
-                Auth callback status
-              </Link>
-            </div>
-          </section>
+          <details className="auth-help">
+            <summary>What happens next?</summary>
+            <p>Confirm your email, then finish onboarding. Foundry Dues stay optional.</p>
+          </details>
         </div>
       </section>
     </main>
