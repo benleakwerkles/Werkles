@@ -1,11 +1,12 @@
 # Flock Packet — Matching Rules-Only Truth Guard VPG15
 
-Status: `OPEN`
+Status: `COMPLETED`
 Machine: `Betsy`
 Execution/push owner: Heimerdinker / Dink@Betsy
 Review seats: Doozer@Betsy, Thufir@Betsy, and Bean@Betsy
 Repository: `benleakwerkles/Werkles`
 Starting source: `01cdc1b43957c6ea981efdad71c696faa9c238f9`
+Product commit: `efdbb64`
 
 ## Mission
 
@@ -24,7 +25,7 @@ Heimerdinker owns all edits, verification, commits, pushes, localhost hands, and
 - Keep the fixed authenticated ownership query and user-scoped client unchanged unless a concrete defect is proven.
 - Keep packet saving fail-closed at `403` and anonymous custody example-only.
 - Do not claim two-account stored-row isolation, legal approval, or durable owner custody.
-- No Production action, deploy, SQL/schema/RLS, persistence, saving, LLM enablement, provider call, or external delivery.
+- No manual deploy, Production action, SQL/schema/RLS, persistence, saving, LLM enablement, provider call, or external delivery. The approved isolated branch push may create the repository's configured protected Git Preview; do not promote or alias it.
 
 ## Acceptance
 

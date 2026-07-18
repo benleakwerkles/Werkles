@@ -1,11 +1,12 @@
 # Flock Packet — Matching Plain Rules Language VPG15
 
-Status: `OPEN`
+Status: `COMPLETED`
 Machine: `Betsy`
 Execution/push owner: Heimerdinker / Dink@Betsy
 Review seats: Lady Jessica / Cursor@Betsy and Ender@Betsy
 Repository: `benleakwerkles/Werkles`
 Starting source: `01cdc1b43957c6ea981efdad71c696faa9c238f9`
+Product commit: `efdbb64`
 
 ## Mission
 
@@ -24,7 +25,7 @@ Heimerdinker owns all edits, verification, commits, pushes, localhost hands, and
 - Preserve the distinction between the static signed-out example and the profile-derived signed-in result.
 - Preserve private/no-store, nothing-saved, nothing-sent, self-reported evidence, and rules-score limitations.
 - Do not imply that no AI exists anywhere in Werkles; state only that no AI model generates this Tier A result.
-- No Production action, deploy, SQL/schema/RLS, persistence, saving, LLM enablement, provider call, or external delivery.
+- No manual deploy, Production action, SQL/schema/RLS, persistence, saving, LLM enablement, provider call, or external delivery. The approved isolated branch push may create the repository's configured protected Git Preview; do not promote or alias it.
 
 ## Acceptance
 
