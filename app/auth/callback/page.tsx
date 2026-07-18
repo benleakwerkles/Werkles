@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { copy } from "@/lib/copy";
+import { safeMemberReturnPath } from "@/lib/safe-member-return";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 function readAuthParams() {
@@ -20,11 +21,15 @@ function decodeAuthMessage(value: string | null) {
 
 export default function AuthCallbackPage() {
   const router = useRouter();
+  const [nextPath, setNextPath] = useState("/dashboard");
   const [status, setStatus] = useState("Confirming your account.");
 
   useEffect(() => {
     async function confirmAccount() {
       const { hashParams, queryParams } = readAuthParams();
+      const safeNextPath = safeMemberReturnPath(queryParams.get("next"));
+      const onboardingHref = `/onboarding?next=${encodeURIComponent(safeNextPath)}`;
+      setNextPath(safeNextPath);
 
       const hashError = hashParams.get("error");
       if (hashError) {
@@ -66,7 +71,7 @@ export default function AuthCallbackPage() {
           return;
         }
 
-        router.replace("/onboarding");
+        router.replace(onboardingHref);
         return;
       }
 
@@ -83,7 +88,7 @@ export default function AuthCallbackPage() {
           return;
         }
 
-        router.replace("/onboarding");
+        router.replace(onboardingHref);
         return;
       }
 
@@ -103,13 +108,13 @@ export default function AuthCallbackPage() {
           {status}
         </p>
         <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href="/onboarding">
+          <Link className="button button-dark" href={`/onboarding?next=${encodeURIComponent(nextPath)}`}>
             Continue to onboarding
           </Link>
           <Link className="button button-outline" href="/dashboard">
             Member home
           </Link>
-          <Link className="button button-outline" href="/login">
+          <Link className="button button-outline" href={`/login?next=${encodeURIComponent(nextPath)}`}>
             Back to login
           </Link>
         </div>
@@ -125,7 +130,7 @@ export default function AuthCallbackPage() {
             <li>Still stuck — use signup again or check Supabase email templates in operator setup.</li>
           </ul>
           <div className="member-selected-surface__actions">
-            <Link className="button button-outline" href="/signup">
+            <Link className="button button-outline" href={`/signup?next=${encodeURIComponent(nextPath)}`}>
               Create account
             </Link>
             <Link className="button button-outline" href="/proof">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { copy } from "@/lib/copy";
@@ -13,10 +13,12 @@ import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
+import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 export default function SignupPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = isLocalRoutePreviewUnlocked();
+  const [nextPath, setNextPath] = useState("/dashboard");
   const [status, setStatus] = useState(
     previewBlocked
       ? copy.infraPreview.signup
@@ -24,6 +26,11 @@ export default function SignupPage() {
         ? copy.localPreview.signupIdle
         : copy.auth.signupIdle
   );
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setNextPath(safeMemberReturnPath(params.get("next")));
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,6 +40,8 @@ export default function SignupPage() {
     const email = String(form.get("email") || "");
     const password = String(form.get("password") || "");
     const confirm = String(form.get("confirm") || "");
+    const safeNextPath = safeMemberReturnPath(new URLSearchParams(window.location.search).get("next"));
+    const onboardingHref = `/onboarding?next=${encodeURIComponent(safeNextPath)}`;
 
     if (password !== confirm) {
       setStatus("Passwords do not match.");
@@ -41,15 +50,18 @@ export default function SignupPage() {
 
     if (shouldUseDevPreviewAuth()) {
       signInDevPreview(email);
-      window.location.href = "/onboarding";
+      window.location.href = onboardingHref;
       return;
     }
+
+    const callbackUrl = new URL("/auth/callback", window.location.origin);
+    callbackUrl.searchParams.set("next", safeNextPath);
 
     const { data, error } = await getSupabaseBrowser().auth.signUp({
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`
+        emailRedirectTo: callbackUrl.toString()
       }
     });
 
@@ -74,7 +86,7 @@ export default function SignupPage() {
     }
 
     if (data.session) {
-      window.location.href = "/onboarding";
+      window.location.href = onboardingHref;
       return;
     }
 
@@ -134,7 +146,9 @@ export default function SignupPage() {
           </button>
           <p className="status-line" role="status">{status}</p>
         </form>
-        <Link className="button button-outline" href="/login">I already have an account</Link>
+        <Link className="button button-outline" href={`/login?next=${encodeURIComponent(nextPath)}`}>
+          I already have an account
+        </Link>
 
           <section className="ops-card auth-doorway" aria-label="What happens next">
             <div className="card-heading">
@@ -170,10 +184,13 @@ export default function SignupPage() {
               exact status message from Supabase.
             </p>
             <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/login">
+              <Link className="button button-outline" href={`/login?next=${encodeURIComponent(nextPath)}`}>
                 Log in
               </Link>
-              <Link className="button button-outline" href="/auth/callback">
+              <Link
+                className="button button-outline"
+                href={`/auth/callback?next=${encodeURIComponent(nextPath)}`}
+              >
                 Auth callback status
               </Link>
             </div>

@@ -89,6 +89,8 @@ export default function LoginPage() {
     await login();
   }
 
+  const signupHref = `/signup?next=${encodeURIComponent(nextPath)}`;
+
   return (
     <main className={`auth-shell auth-shell--foundry ${routeAtmosphere.auth}`}>
       <NarrativeJourneyRail currentSlug="/proof" />
@@ -142,7 +144,7 @@ export default function LoginPage() {
             </button>
             <p className="status-line" role="status">{status}</p>
           </form>
-          <Link className="button button-outline" href="/signup">
+          <Link className="button button-outline" href={signupHref}>
             Create an account
           </Link>
 
@@ -161,7 +163,7 @@ export default function LoginPage() {
               <span>Pay when useful</span>
             </div>
             <div className="member-selected-surface__actions">
-              <Link className="button button-dark" href="/signup">
+              <Link className="button button-dark" href={signupHref}>
                 Create account
               </Link>
               <Link className="button button-outline" href="/proof">
@@ -186,7 +188,7 @@ export default function LoginPage() {
               <Link className="button button-outline" href="/auth/callback">
                 Open auth callback
               </Link>
-              <Link className="button button-outline" href="/signup">
+              <Link className="button button-outline" href={signupHref}>
                 Create a new account
               </Link>
             </div>

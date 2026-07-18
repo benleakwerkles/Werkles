@@ -95,8 +95,9 @@ export function PersonalRecommendationDelivery({
       ) : null}
       {delivery.status === "signed_out" ? (
         <p className="squibb-rec-delivery-status" role="status">
-          You are viewing an example. <Link href="/login?next=%2Fbellows%2Frecommendations">Sign in</Link> to request a
-          private rules-based recommendation from your saved profile.
+          You are viewing an example. <Link href="/login?next=%2Fbellows%2Frecommendations">Sign in</Link> or{" "}
+          <Link href="/signup?next=%2Fbellows%2Frecommendations">create an account</Link> to request a private
+          rules-based recommendation from your saved profile.
         </p>
       ) : null}
       {delivery.status === "profile_required" ? (

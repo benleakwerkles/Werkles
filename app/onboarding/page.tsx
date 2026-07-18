@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { copy } from "@/lib/copy";
 import { getDevPreviewUser, shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getClientAccessToken } from "@/lib/client-auth";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
+import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 type Phase = "first-weld" | "doors" | "quick-weld" | "blueprint";
 
@@ -20,9 +21,21 @@ function splitTags(value: FormDataEntryValue | null) {
 }
 
 export default function OnboardingPage() {
+  const [nextPath, setNextPath] = useState("/dashboard");
   const [phase, setPhase] = useState<Phase>("first-weld");
   const [status, setStatus] = useState("The machine needs lane, arena, and turf.");
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setNextPath(safeMemberReturnPath(params.get("next")));
+  }, []);
+
+  const profileReturnHref = `/dashboard/profile?next=${encodeURIComponent(nextPath)}`;
+
+  function goToProfile() {
+    window.location.href = profileReturnHref;
+  }
 
   async function currentUser() {
     const devUser = getDevPreviewUser();
@@ -99,7 +112,7 @@ export default function OnboardingPage() {
     }
 
     if (shouldUseDevPreviewAuth()) {
-      window.location.href = "/dashboard/profile";
+      goToProfile();
       return;
     }
 
@@ -113,7 +126,7 @@ export default function OnboardingPage() {
       return;
     }
 
-    window.location.href = "/dashboard/profile";
+    goToProfile();
   }
 
   async function saveQuickWeld(event: FormEvent<HTMLFormElement>) {
@@ -130,7 +143,7 @@ export default function OnboardingPage() {
 
     if (shouldUseDevPreviewAuth()) {
       setBusy(false);
-      window.location.href = "/dashboard/profile";
+      goToProfile();
       return;
     }
 
@@ -153,7 +166,7 @@ export default function OnboardingPage() {
       return;
     }
 
-    window.location.href = "/dashboard/profile";
+    goToProfile();
   }
 
   async function saveBlueprint(event: FormEvent<HTMLFormElement>) {
@@ -177,7 +190,7 @@ export default function OnboardingPage() {
 
     if (shouldUseDevPreviewAuth()) {
       setBusy(false);
-      window.location.href = "/dashboard/profile";
+      goToProfile();
       return;
     }
 
@@ -196,7 +209,7 @@ export default function OnboardingPage() {
       return;
     }
 
-    window.location.href = "/dashboard/profile";
+    goToProfile();
   }
 
   return (
@@ -207,7 +220,7 @@ export default function OnboardingPage() {
         <Link href="/dashboard">Member home</Link>
         <Link href="/formation">Formation</Link>
         <Link href="/proof">Proof</Link>
-        <Link href="/dashboard/profile">Profile</Link>
+        <Link href={profileReturnHref}>Profile</Link>
       </nav>
 
       <section className="onboarding-hero">
@@ -282,7 +295,7 @@ export default function OnboardingPage() {
             <Link className="button button-dark" href="/dashboard">
               Go to member home
             </Link>
-            <Link className="button button-outline" href="/dashboard/profile">
+            <Link className="button button-outline" href={profileReturnHref}>
               Open profile
             </Link>
             <Link className="button button-outline" href="/membership">
