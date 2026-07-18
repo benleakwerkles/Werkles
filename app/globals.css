@@ -3724,33 +3724,6 @@ main .proof-warning.proof-boundary .trust-badge {
   max-width: 10ch;
 }
 
-.hero.hero--rewrite-v1 .hero-positioning {
-  margin-top: 0.65rem;
-  color: var(--werkles-ink-muted-on-paper);
-  font-size: 0.98rem;
-  line-height: 1.5;
-  max-width: 34rem;
-}
-
-.hero.hero--rewrite-v1 .hero-before {
-  margin-top: 0.5rem;
-  color: var(--werkles-copper);
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.45;
-  max-width: 34rem;
-}
-
-.hero.hero--rewrite-v1 .hero-signup-preview {
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(159, 102, 51, 0.22);
-  color: var(--werkles-ink-muted-on-paper);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 36rem;
-}
-
 .hero-headline-preview {
   display: flex;
   flex-wrap: wrap;
@@ -4479,9 +4452,9 @@ main .proof-warning.proof-boundary .trust-badge {
   margin: 0 22px 20px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: 18px;
+  gap: clamp(20px, 3vw, 34px);
   align-items: stretch;
-  padding: 18px;
+  padding: clamp(18px, 3vw, 28px);
   border: 1px solid var(--werkles-copper-frame-soft);
   border-radius: var(--radius);
   background: linear-gradient(160deg, rgba(255, 252, 247, 0.98), rgba(246, 239, 229, 0.92));
@@ -4496,9 +4469,10 @@ main .proof-warning.proof-boundary .trust-badge {
 
 .narrative-act-hero__lede {
   margin: 0 0 14px;
-  max-width: 48ch;
+  max-width: 42ch;
   color: var(--werkles-ink-muted-on-paper);
-  line-height: 1.55;
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 
 .narrative-act-hero__actions {
@@ -4530,6 +4504,12 @@ main .proof-warning.proof-boundary .trust-badge {
 .narrative-act-body h2 {
   margin: 0 0 10px;
   color: var(--werkles-ink-on-paper);
+}
+
+.narrative-act-body p {
+  max-width: 68ch;
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 
 .narrative-act-page__note {

@@ -26,8 +26,7 @@ export const narrativeArcPages: NarrativeActPage[] = [
     slug: "/spark",
     eyebrow: "Act I — Spark",
     headline: "Something specific wants steel around it.",
-    lede:
-      "One person, one thought-in-progress on real work. Hopeful reality — attention on the notes and plans, not the camera. The arc starts before the room exists.",
+    lede: "An idea gets real when you can name the next piece it needs.",
     heroImage: narrativeV1Assets.sparkC01KitchenTable,
     heroAlt: "Person at kitchen table with notes — Spark beat documentary preview",
     nextSlug: "/space",
@@ -41,8 +40,7 @@ export const narrativeArcPages: NarrativeActPage[] = [
     slug: "/space",
     eyebrow: "Act II — Space",
     headline: "The room waits — paused, not empty.",
-    lede:
-      "No people required. One trace of recent or imminent use — inhabited, not abandoned, not a listing photo. Capacity on the bench before the crew arrives.",
+    lede: "A room can hold possibility before the crew or sign arrives.",
     heroImage: narrativeV1Assets.spaceD01BeforeOpening,
     heroAlt: "Commercial space before opening — Space beat documentary preview",
     nextSlug: "/formation",
@@ -56,8 +54,7 @@ export const narrativeArcPages: NarrativeActPage[] = [
     slug: "/formation",
     eyebrow: "Act III — Forge",
     headline: "Complementary lanes lock on the same plan.",
-    lede:
-      "Two or more people around shared work. Present, not posed — no eye contact with camera, no presenting gesture. Joints finding each other, not a victory photo.",
+    lede: "Different strengths meet around the same piece of work.",
     heroImage: narrativeV1Assets.forgeA03HalfBuiltPair,
     heroAlt: "Two people reviewing plans in half-built space — Forge beat",
     nextSlug: "/proof",
@@ -71,8 +68,7 @@ export const narrativeArcPages: NarrativeActPage[] = [
     slug: "/proof",
     eyebrow: "Act IV — Foundry",
     headline: "People leave different than they arrived.",
-    lede:
-      "The proof is a shop opening, a route getting bought, a crew taking equity, a practice seeing patients, a bakery line finally running. Not because the founder was fixed. Because the missing piece became visible, and the next move became safe enough to make.",
+    lede: "The missing piece becomes visible. The next move feels possible—and safer to make.",
     heroImage: narrativeV1Assets.foundryB02FinishedProduct,
     heroAlt: "Finished product on bench — Foundry proof texture",
     nextSlug: "/bellows",
@@ -126,4 +122,4 @@ export function getNarrativeAct(slug: string): NarrativeActPage | undefined {
 }
 
 export const narrativeArcAttribution =
-  "Four-act narrative wire — draft Ghost Forge previews. Not final brand approval.";
+  "From first spark to working floor—one step at a time.";

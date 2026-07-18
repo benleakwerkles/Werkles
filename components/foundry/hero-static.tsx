@@ -36,7 +36,6 @@ export function HeroStatic() {
           </Link>
         </div>
         <p className="hero-trust-line">{copy.hero.trustLine}</p>
-        <p className="hero-signup-preview">{copy.hero.signupPreview}</p>
       </div>
 
       <aside className="hero-artifact" aria-label="Example Werkles output">

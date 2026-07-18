@@ -4,7 +4,7 @@ export const copy = {
   longPositioning:
     "Werkles helps small business builders find the person, money, space, or equipment that can move the work forward — then verifies before they act.",
   disclaimer:
-    "Foundry Dues unlock Werkles workflows. They do not guarantee trust, verification, funding, legal clearance, or partner outcomes.",
+    "Foundry Dues open Werkles workflows. Verification, funding, legal clearance, partner quality, and outcomes are not guaranteed.",
   proofDisclaimer:
     "Proof and Crucible surfaces are preview placeholders until counsel and providers approve live checks.",
   loginPreview:
@@ -51,7 +51,7 @@ export const copy = {
     eyebrow: "For people building real businesses",
     headline: "Find the people and proof that move your business forward.",
     subhead:
-      "Werkles helps small business builders name what they need, find reachable help, and verify the facts before they rely on anyone.",
+      "Tell Werkles what you're trying to move. We'll help you find reachable people or resources and show what to verify before you rely on them.",
     positioning:
       "For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
     beforeState: "People first. Trust visible. Opportunity you can actually reach.",
@@ -194,15 +194,15 @@ export const copy = {
     valueFold: {
       what: {
         label: "What it is",
-        body: "A discovery and verification floor for Main Street builders. You state the need. Werkles translates the bottleneck, surfaces reachable means, and shows itemized proof before you rely on anyone."
+        body: "Werkles helps Main Street builders name the real need, find reachable help, and see itemized proof before relying on it."
       },
       whyNeed: {
         label: "Why you need it",
-        body: "Most stalls are misnamed problems — customers when it's equipment, a cofounder when it's a lender, capital when it's proof. Acting on the wrong need burns time. Acting without proof burns cash."
+        body: "Misnamed problems waste time. Acting without proof wastes money. Werkles separates the bottleneck from the first answer."
       },
       whyPay: {
         label: "Why Foundry Dues",
-        body: "Dues open the workbench: need translation, Crucible checks, guarded intros, and published verification costs. You pay for runway — not a match guarantee, not hype, not algorithm fog."
+        body: "Dues open need translation, Crucible checks, guarded intros, and published verification costs—not a guaranteed match or outcome."
       }
     },
     visualStory: {
