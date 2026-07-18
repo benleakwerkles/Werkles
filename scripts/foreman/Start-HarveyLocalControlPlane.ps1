@@ -3,21 +3,22 @@ param(
     [string]$RepoPath,
     [ValidateRange(3000, 3099)][int]$WebPort = 3000,
     [ValidateRange(3002, 3099)][int]$BridgePort = 3002,
-    [ValidateRange(5, 60)][int]$PollSeconds = 5
+    [ValidateRange(5, 60)][int]$PollSeconds = 5,
+    [switch]$CloudTaskCourier,
+    [string]$CloudUrl = 'https://werkles.com'
 )
 
 $ErrorActionPreference = 'Stop'
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 if (-not $RepoPath) { $RepoPath = (Resolve-Path (Join-Path $scriptRoot '..\..')).Path }
 $repo = (Resolve-Path -LiteralPath $RepoPath).Path
-$expectedRepo = 'C:\Users\BenLeak\github\Werkles'
-if (-not $repo.Equals($expectedRepo, [System.StringComparison]::OrdinalIgnoreCase)) { throw 'HARVEY_CANONICAL_REPO_REQUIRED' }
 if (-not $env:COMPUTERNAME.Equals('DOSS', [System.StringComparison]::OrdinalIgnoreCase)) { throw 'HARVEY_DOSS_HOST_REQUIRED' }
 
 $guardOutput = & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $repo 'scripts\foreman\Test-HarveyStationBinding.ps1') -Operation Inspect -RepoPath $repo
 if ($LASTEXITCODE -ne 0) { throw 'HARVEY_STATION_BINDING_FAILED' }
 $guard = ($guardOutput -join "`n") | ConvertFrom-Json
 if (-not $guard.pass) { throw 'HARVEY_STATION_BINDING_FAILED' }
+if ([int]$guard.dirty_entries -gt 0 -or [int]$guard.staged_entries -gt 0) { throw 'HARVEY_RUNTIME_REQUIRES_CLEAN_PROVIDER_BOUND_CHECKOUT' }
 
 function New-HarveyEphemeralSecret {
     $bytes = New-Object byte[] 32
@@ -60,7 +61,8 @@ if (Get-NetTCPConnection -State Listen -LocalPort $BridgePort -ErrorAction Silen
 Stop-VerifiedHarveyWebTree -Port $WebPort
 
 $operatorToken = New-HarveyEphemeralSecret
-$dossAgentSecret = New-HarveyEphemeralSecret
+$dossAgentSecret = if ($CloudTaskCourier) { [string]$env:HARVEY_CLOUD_DOSS_SECRET } else { New-HarveyEphemeralSecret }
+if ($CloudTaskCourier -and [string]::IsNullOrWhiteSpace($dossAgentSecret)) { throw 'HARVEY_CLOUD_DOSS_SECRET_NOT_AVAILABLE' }
 $agentSecrets = @{}
 if (-not [string]::IsNullOrWhiteSpace($env:HARVEY_AGENT_SECRETS_JSON)) {
     try {
@@ -86,13 +88,15 @@ $bridgeOut = Join-Path $runtimeRoot ("bridge-{0}.out.log" -f $stamp)
 $bridgeErr = Join-Path $runtimeRoot ("bridge-{0}.err.log" -f $stamp)
 $handeyeOut = Join-Path $runtimeRoot ("handeye-{0}.out.log" -f $stamp)
 $handeyeErr = Join-Path $runtimeRoot ("handeye-{0}.err.log" -f $stamp)
+$courierOut = Join-Path $runtimeRoot ("cloud-courier-{0}.out.log" -f $stamp)
+$courierErr = Join-Path $runtimeRoot ("cloud-courier-{0}.err.log" -f $stamp)
 
 $env:HARVEY_OPERATOR_TOKEN = $operatorToken
 $env:HARVEY_AGENT_SECRETS_JSON = ($agentSecrets | ConvertTo-Json -Compress)
 $env:HARVEY_WITNESS_EVIDENCE_SCOPE = 'LIVE_CONTROL_PLANE'
 $env:HARVEY_COCKPIT_URL = ("http://127.0.0.1:{0}" -f $WebPort)
 $env:HARVEY_OPERATOR_BRIDGE_PORT = [string]$BridgePort
-$web = Start-Process -FilePath 'C:\Program Files\nodejs\npm.cmd' -ArgumentList @('run','dev','--','--hostname','0.0.0.0','-p',[string]$WebPort) -WorkingDirectory $repo -RedirectStandardOutput $webOut -RedirectStandardError $webErr -WindowStyle Hidden -PassThru
+$web = Start-Process -FilePath 'C:\Program Files\nodejs\npm.cmd' -ArgumentList @('run','dev','--','--hostname','127.0.0.1','-p',[string]$WebPort) -WorkingDirectory $repo -RedirectStandardOutput $webOut -RedirectStandardError $webErr -WindowStyle Hidden -PassThru
 $bridge = Start-Process -FilePath 'C:\Program Files\nodejs\node.exe' -ArgumentList @((Join-Path $repo 'scripts\foreman\harvey-operator-bridge.mjs')) -WorkingDirectory $repo -RedirectStandardOutput $bridgeOut -RedirectStandardError $bridgeErr -WindowStyle Hidden -PassThru
 
 $webReady = $false
@@ -127,6 +131,21 @@ if (-not $handeyeReady) {
     throw 'HARVEY_DOSS_HANDEYE_START_FAILED'
 }
 
+$courier = $null
+if ($CloudTaskCourier) {
+    $courier = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
+        '-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $repo 'scripts\foreman\Invoke-HarveyCloudTaskCourier.ps1'),
+        '-CloudUrl',$CloudUrl,
+        '-LocalCockpitUrl',("http://127.0.0.1:{0}" -f $WebPort),
+        '-PollSeconds',[string]([Math]::Max(1, [Math]::Min(30, $PollSeconds)))
+    ) -WorkingDirectory $repo -RedirectStandardOutput $courierOut -RedirectStandardError $courierErr -WindowStyle Hidden -PassThru
+    Start-Sleep -Milliseconds 750
+    if ($courier.HasExited) {
+        Stop-Process -Id $handeye.Id,$bridge.Id,$web.Id -Force -ErrorAction SilentlyContinue
+        throw 'HARVEY_DOSS_CLOUD_TASK_COURIER_START_FAILED'
+    }
+}
+
 $webListener = Get-NetTCPConnection -State Listen -LocalPort $WebPort | Select-Object -First 1
 $bridgeListener = Get-NetTCPConnection -State Listen -LocalPort $BridgePort | Select-Object -First 1
 [pscustomobject]@{
@@ -139,13 +158,17 @@ $bridgeListener = Get-NetTCPConnection -State Listen -LocalPort $BridgePort | Se
     branch = (& git -C $repo branch --show-current).Trim()
     head = (& git -C $repo rev-parse HEAD).Trim()
     web_url = ("http://127.0.0.1:{0}/harvey" -f $WebPort)
-    lan_url = ("http://10.1.10.8:{0}/harvey" -f $WebPort)
+    web_bind_address = '127.0.0.1'
+    lan_url = $null
     operator_bridge = ("http://127.0.0.1:{0}" -f $BridgePort)
     web_listener_pid = $webListener.OwningProcess
     bridge_listener_pid = $bridgeListener.OwningProcess
     handeye_pid = $handeye.Id
+    cloud_task_courier_pid = if ($courier) { $courier.Id } else { $null }
+    cloud_task_courier_enabled = [bool]$CloudTaskCourier
     secrets_printed_or_stored = $false
     web_log = $webOut
     bridge_log = $bridgeOut
     handeye_log = $handeyeOut
+    cloud_task_courier_log = if ($courier) { $courierOut } else { $null }
 } | ConvertTo-Json -Depth 5

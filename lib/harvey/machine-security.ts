@@ -31,6 +31,14 @@ type HmacMachineRequestEnvelope = {
 
 type MachineRequestEnvelope = HmacMachineRequestEnvelope | EphemeralRsaEnvelope;
 
+export type HarveyMachineNonceProof = {
+  machine: HarveyMachine;
+  hostname: string;
+  agent_id: string;
+  timestamp: string;
+  nonce: string;
+};
+
 export type HarveyWriteBody = {
   body: Record<string, unknown>;
   rawBody: string;
@@ -103,7 +111,7 @@ export function assertMachineRequestEnvelope(request: Request): MachineRequestEn
   return { kind: "hmac", machine, hostname, agentId, secret, timestamp, nonce, signature };
 }
 
-function machineSignature(request: Request, rawBody: string, envelope: HmacMachineRequestEnvelope) {
+function machineSignature(request: Request, rawBody: string, envelope: HmacMachineRequestEnvelope, audience?: string) {
   const bodyHash = createHash("sha256").update(rawBody, "utf8").digest("hex");
   const pathname = new URL(request.url).pathname;
   const canonical = [
@@ -113,7 +121,8 @@ function machineSignature(request: Request, rawBody: string, envelope: HmacMachi
     envelope.agentId,
     envelope.timestamp,
     envelope.nonce,
-    bodyHash
+    bodyHash,
+    ...(audience ? [audience] : [])
   ].join("\n");
   return createHmac("sha256", envelope.secret).update(canonical, "utf8").digest("hex");
 }
@@ -152,6 +161,42 @@ async function consumeMachineNonce(envelope: HmacMachineRequestEnvelope) {
   }
 }
 
+function machineActor(envelope: HmacMachineRequestEnvelope): HarveyMachineActor {
+  return {
+    role: "machine",
+    machine: envelope.machine,
+    hostname: envelope.hostname,
+    agent_id: envelope.agentId,
+    auth_mode: "HMAC_SHA256_V1",
+    credential_id: envelope.agentId,
+    credential_expires_at: null
+  };
+}
+
+export async function authenticateMachineRequestWithNonceConsumer(
+  request: Request,
+  rawBody: string,
+  consumeNonce: (proof: HarveyMachineNonceProof) => Promise<void>,
+  prepared?: MachineRequestEnvelope
+): Promise<HarveyMachineActor> {
+  const envelope = prepared ?? assertMachineRequestEnvelope(request);
+  if (envelope.kind !== "hmac") throw new HarveyControlError("CLOUD_RECEIVER_AUTH_MODE_UNSUPPORTED", 401);
+  const audience = (request.headers.get("x-harvey-audience") ?? "").trim();
+  const expectedAudience = (process.env.HARVEY_CLOUD_RECEIVER_AUDIENCE ?? "").trim();
+  if (!expectedAudience) throw new HarveyControlError("CLOUD_RECEIVER_AUDIENCE_NOT_CONFIGURED", 503);
+  if (audience !== expectedAudience) throw new HarveyControlError("CLOUD_RECEIVER_AUDIENCE_MISMATCH", 403);
+  const expected = machineSignature(request, rawBody, envelope, audience);
+  if (!valueMatches(envelope.signature, expected)) throw new HarveyControlError("INVALID_MACHINE_SIGNATURE", 401);
+  await consumeNonce({
+    machine: envelope.machine,
+    hostname: envelope.hostname,
+    agent_id: envelope.agentId,
+    timestamp: envelope.timestamp,
+    nonce: envelope.nonce
+  });
+  return machineActor(envelope);
+}
+
 export async function authenticateMachineRequest(
   request: Request,
   rawBody: string,
@@ -164,15 +209,7 @@ export async function authenticateMachineRequest(
   const expected = machineSignature(request, rawBody, envelope);
   if (!valueMatches(envelope.signature, expected)) throw new HarveyControlError("INVALID_MACHINE_SIGNATURE", 401);
   await consumeMachineNonce(envelope);
-  return {
-    role: "machine",
-    machine: envelope.machine,
-    hostname: envelope.hostname,
-    agent_id: envelope.agentId,
-    auth_mode: "HMAC_SHA256_V1",
-    credential_id: envelope.agentId,
-    credential_expires_at: null
-  };
+  return machineActor(envelope);
 }
 
 export async function readHarveyWriteBody(request: Request): Promise<HarveyWriteBody> {

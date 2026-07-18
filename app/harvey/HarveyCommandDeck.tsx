@@ -45,6 +45,8 @@ type DirectEnvelope = {
   };
 };
 type CloudCounts = { total: number; queued: number; claimed: number; working: number; completed: number; blocked: number; awaiting_receiver: number };
+type CloudCommand = { command_id: string; verb: Verb; target: string; instruction: string; status: string };
+type CloudReceipt = { receipt_id: string; delivery_id: string; receiver_id: string; state: "CLAIMED" | "WORKING" | "REPLIED" | "COMPLETED" | "BLOCKED"; detail: string; reply: string | null; recorded_at: string; sequence: number };
 
 const STAGES = ["Draft", "Queued", "Sending", "Received", "Working", "Completed / Blocked"] as const;
 const DIRECT_STEPS: DirectState[] = ["QUEUED", "DELIVERED", "THINKING", "REPLIED", "COMPLETED"];
@@ -92,6 +94,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
   const [cloudCommandId, setCloudCommandId] = useState("");
   const [cloudCommandStatus, setCloudCommandStatus] = useState("");
   const [cloudCounts, setCloudCounts] = useState<CloudCounts | null>(null);
+  const [cloudCommand, setCloudCommand] = useState<CloudCommand | null>(null);
+  const [cloudReceipts, setCloudReceipts] = useState<CloudReceipt[]>([]);
   const queueingRef = useRef(false);
   const instructionRef = useRef<HTMLTextAreaElement>(null);
   const pendingSubmissionRef = useRef<{ id: string; signature: string } | null>(null);
@@ -129,6 +133,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
         if (disposed) return;
         const counts = body.relay.counts as CloudCounts;
         setCloudCounts(counts);
+        setCloudCommand(body.relay.command as CloudCommand);
+        setCloudReceipts(Array.isArray(body.relay.receipts) ? body.relay.receipts as CloudReceipt[] : []);
         setCloudCommandStatus(String(body.relay.command.status));
         setMessage(`${counts.total} named Harvey inboxes · ${counts.queued} waiting pickup · ${counts.claimed} claimed · ${counts.working} working/replied · ${counts.completed} completed · ${counts.blocked} blocked · ${counts.awaiting_receiver} awaiting a receiver.`);
       } catch (error) {
@@ -265,6 +271,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
     setCloudCommandId("");
     setCloudCommandStatus("");
     setCloudCounts(null);
+    setCloudCommand(null);
+    setCloudReceipts([]);
     setDirectAttemptStage("DRAFT");
     setDirectAttemptMessage("This instruction is a draft for the selected Aeye. Nothing was sent.");
     if (stage !== "DRAFT") {
@@ -330,6 +338,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
       return;
     }
     setWorkOrderId("");
+    setCloudCommand(null);
+    setCloudReceipts([]);
     if (!instruction.trim()) {
       if (selectedBinding) {
         setDirectAttemptStage("DRAFT");
@@ -523,6 +533,19 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
         <ol aria-label="Command progress" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(105px,1fr))", gap: 7, padding: 0, margin: "14px 0 0", listStyle: "none" }}>
           {STAGES.map((item, index) => <li key={item} style={{ padding: "9px 8px", borderRadius: 8, textAlign: "center", background: index <= reached ? "#25432f" : "#202524", color: index <= reached ? "#9ef2b7" : "#89928c", fontSize: 12, fontWeight: 800 }}>{index <= reached ? "✓ " : "○ "}{item}</li>)}
         </ol>
+        {stage === "QUEUED_CLOUD" && cloudCommand && <div data-testid="harvey-cloud-conversation" style={{ marginTop: 14, display: "grid", gap: 10 }}>
+          <article style={{ border: "1px solid #5b5340", borderRadius: 10, padding: 12, background: "#15130e" }}>
+            <strong style={{ color: "#fff4d6" }}>YOU · {cloudCommand.verb} · {cloudCommand.target}</strong>
+            <p style={{ color: "#edf0e8", whiteSpace: "pre-wrap", marginBottom: 0 }}>{cloudCommand.instruction}</p>
+          </article>
+          {cloudReceipts.filter((receipt) => Boolean(receipt.reply)).map((receipt) => <article key={receipt.receipt_id} style={{ border: "1px solid #346b61", borderRadius: 10, padding: 12, background: "#0d1917" }}>
+            <strong style={{ color: "#78f1df" }}>{receipt.receiver_id} · {receipt.state}</strong>
+            <p style={{ color: "#edf0e8", whiteSpace: "pre-wrap", marginBottom: 0 }}>{receipt.reply}</p>
+          </article>)}
+          {cloudReceipts.filter((receipt) => receipt.state === "BLOCKED").map((receipt) => <article key={receipt.receipt_id} style={{ border: "1px solid #7f493e", borderRadius: 10, padding: 12, color: "#ffb09d" }}>
+            BLOCKER · {receipt.receiver_id} · {receipt.detail}
+          </article>)}
+        </div>}
       </>}
     </section>
   </>);

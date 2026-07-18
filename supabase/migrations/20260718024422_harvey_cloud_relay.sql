@@ -44,12 +44,21 @@ create table if not exists public.harvey_relay_receiver_routes (
   primary key (receiver_id, recipient_id)
 );
 
+create table if not exists public.harvey_relay_receiver_nonces (
+  receiver_id text not null references public.harvey_relay_receivers(receiver_id) on delete cascade,
+  nonce text not null check (nonce ~ '^[a-f0-9]{32}$'),
+  timestamp_seconds bigint not null,
+  consumed_at timestamptz not null default now(),
+  primary key (receiver_id, nonce)
+);
+
 create table if not exists public.harvey_relay_deliveries (
   delivery_id uuid primary key default gen_random_uuid(),
   command_id uuid not null references public.harvey_relay_commands(command_id) on delete cascade,
   recipient_id text not null references public.harvey_relay_recipients(recipient_id) on delete restrict,
   state text not null check (state in ('AWAITING_RECEIVER', 'QUEUED', 'CLAIMED', 'WORKING', 'REPLIED', 'COMPLETED', 'BLOCKED')),
   receiver_id text,
+  claim_token uuid,
   lease_expires_at timestamptz,
   claim_count integer not null default 0 check (claim_count >= 0),
   claimed_at timestamptz,
@@ -83,10 +92,33 @@ create index if not exists harvey_relay_receipts_delivery_sequence_idx
   on public.harvey_relay_receipts (delivery_id, sequence);
 create index if not exists harvey_relay_receiver_routes_recipient_idx
   on public.harvey_relay_receiver_routes (recipient_id, receiver_id);
+create index if not exists harvey_relay_receiver_nonces_consumed_idx
+  on public.harvey_relay_receiver_nonces (consumed_at);
+
+insert into public.harvey_relay_recipients (
+  recipient_id, label, seat, machine, provider, route_kind, route_state, accepts_broadcast, metadata
+)
+values (
+  'shakespeare-doss', 'Shakespeare', 'Shakespeare@Doss', 'Doss', 'Codex', 'CODEX_TASK', 'BOUND_PROVEN', true,
+  '{"thread_id":"019f719e-1b67-77c0-a9be-6ca901377747","receiver_truth":"SIGNED_DOSS_COURIER_REQUIRED"}'::jsonb
+)
+on conflict (recipient_id) do nothing;
+
+insert into public.harvey_relay_receivers (receiver_id, machine, state, metadata)
+values (
+  'handeye-doss-doss', 'Doss', 'ACTIVE',
+  '{"adapter":"HARVEY_DOSS_CODEX_TASK_COURIER_V1","recipient_scope":["shakespeare-doss"]}'::jsonb
+)
+on conflict (receiver_id) do nothing;
+
+insert into public.harvey_relay_receiver_routes (receiver_id, recipient_id)
+values ('handeye-doss-doss', 'shakespeare-doss')
+on conflict (receiver_id, recipient_id) do nothing;
 
 alter table public.harvey_relay_recipients enable row level security;
 alter table public.harvey_relay_receivers enable row level security;
 alter table public.harvey_relay_receiver_routes enable row level security;
+alter table public.harvey_relay_receiver_nonces enable row level security;
 alter table public.harvey_relay_commands enable row level security;
 alter table public.harvey_relay_deliveries enable row level security;
 alter table public.harvey_relay_receipts enable row level security;
@@ -94,12 +126,14 @@ alter table public.harvey_relay_receipts enable row level security;
 revoke all on public.harvey_relay_recipients from public, anon, authenticated;
 revoke all on public.harvey_relay_receivers from public, anon, authenticated;
 revoke all on public.harvey_relay_receiver_routes from public, anon, authenticated;
+revoke all on public.harvey_relay_receiver_nonces from public, anon, authenticated;
 revoke all on public.harvey_relay_commands from public, anon, authenticated;
 revoke all on public.harvey_relay_deliveries from public, anon, authenticated;
 revoke all on public.harvey_relay_receipts from public, anon, authenticated;
 revoke all on public.harvey_relay_recipients from service_role;
 revoke all on public.harvey_relay_receivers from service_role;
 revoke all on public.harvey_relay_receiver_routes from service_role;
+revoke all on public.harvey_relay_receiver_nonces from service_role;
 revoke all on public.harvey_relay_commands from service_role;
 revoke all on public.harvey_relay_deliveries from service_role;
 revoke all on public.harvey_relay_receipts from service_role;
@@ -218,6 +252,46 @@ begin
 end;
 $$;
 
+create or replace function public.harvey_consume_receiver_nonce(
+  p_receiver_id text,
+  p_machine text,
+  p_nonce text,
+  p_timestamp_seconds bigint
+)
+returns void
+language plpgsql
+security definer
+set search_path = pg_catalog, public
+as $$
+begin
+  if p_nonce !~ '^[a-f0-9]{32}$' then raise exception 'HARVEY_RECEIVER_NONCE_INVALID'; end if;
+  if abs(extract(epoch from now())::bigint - p_timestamp_seconds) > 90 then raise exception 'HARVEY_RECEIVER_TIMESTAMP_EXPIRED'; end if;
+  if not exists (
+    select 1 from public.harvey_relay_receivers receiver
+    where receiver.receiver_id = p_receiver_id
+      and receiver.machine = p_machine
+      and receiver.state = 'ACTIVE'
+  ) then raise exception 'HARVEY_RECEIVER_MACHINE_BINDING_INVALID'; end if;
+
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('harvey-receiver-nonce:' || p_receiver_id, 0));
+
+  delete from public.harvey_relay_receiver_nonces nonce_row
+  where nonce_row.consumed_at < now() - interval '4 minutes';
+
+  if (
+    select count(*) from public.harvey_relay_receiver_nonces nonce_row
+    where nonce_row.receiver_id = p_receiver_id
+  ) >= 256 then raise exception 'HARVEY_RECEIVER_NONCE_CAPACITY_EXCEEDED'; end if;
+
+  begin
+    insert into public.harvey_relay_receiver_nonces (receiver_id, nonce, timestamp_seconds)
+    values (p_receiver_id, p_nonce, p_timestamp_seconds);
+  exception when unique_violation then
+    raise exception 'HARVEY_RECEIVER_NONCE_REPLAYED';
+  end;
+end;
+$$;
+
 create or replace function public.harvey_claim_deliveries(
   p_machine text,
   p_receiver_id text,
@@ -226,6 +300,7 @@ create or replace function public.harvey_claim_deliveries(
 )
 returns table (
   delivery_id uuid,
+  claim_token uuid,
   command_id uuid,
   recipient_id text,
   verb text,
@@ -261,7 +336,7 @@ begin
     where recipient.machine = p_machine
       and (
         delivery.state = 'QUEUED'
-        or (delivery.state in ('CLAIMED', 'WORKING') and delivery.lease_expires_at < now())
+        or (delivery.state in ('CLAIMED', 'WORKING', 'REPLIED') and delivery.lease_expires_at < now())
       )
     order by delivery.created_at, delivery.delivery_id
     for update of delivery skip locked
@@ -270,6 +345,7 @@ begin
     update public.harvey_relay_deliveries delivery
     set state = 'CLAIMED',
         receiver_id = p_receiver_id,
+        claim_token = gen_random_uuid(),
         lease_expires_at = now() + make_interval(secs => p_lease_seconds),
         claim_count = delivery.claim_count + 1,
         claimed_at = coalesce(delivery.claimed_at, now()),
@@ -291,6 +367,7 @@ begin
     returning command_row.command_id
   )
   select claimed.delivery_id,
+         claimed.claim_token,
          claimed.command_id,
          claimed.recipient_id,
          command_row.verb,
@@ -307,6 +384,7 @@ $$;
 create or replace function public.harvey_record_delivery_receipt(
   p_delivery_id uuid,
   p_receiver_id text,
+  p_claim_token uuid,
   p_state text,
   p_detail text,
   p_reply text default null,
@@ -341,6 +419,7 @@ begin
       and receiver_route.recipient_id = v_delivery.recipient_id
   ) then raise exception 'HARVEY_RECEIVER_ROUTE_BINDING_INVALID'; end if;
   if v_delivery.receiver_id is distinct from p_receiver_id then raise exception 'HARVEY_DELIVERY_RECEIVER_MISMATCH'; end if;
+  if v_delivery.claim_token is distinct from p_claim_token then raise exception 'HARVEY_DELIVERY_CLAIM_TOKEN_MISMATCH'; end if;
   if v_delivery.lease_expires_at is null or v_delivery.lease_expires_at <= now() then raise exception 'HARVEY_DELIVERY_LEASE_EXPIRED'; end if;
   if v_delivery.state in ('COMPLETED', 'BLOCKED') then raise exception 'HARVEY_DELIVERY_ALREADY_TERMINAL'; end if;
   if v_delivery.state = 'CLAIMED' and p_state not in ('WORKING', 'COMPLETED', 'BLOCKED') then raise exception 'HARVEY_RECEIPT_TRANSITION_INVALID'; end if;
@@ -353,6 +432,7 @@ begin
 
   update public.harvey_relay_deliveries
   set state = p_state,
+      lease_expires_at = case when p_state in ('COMPLETED', 'BLOCKED') then lease_expires_at else now() + interval '15 minutes' end,
       completed_at = case when p_state in ('COMPLETED', 'BLOCKED') then now() else completed_at end,
       error_code = case when p_state = 'BLOCKED' then coalesce(p_metadata->>'error_code', 'RECEIVER_BLOCKED') else null end,
       updated_at = now()
@@ -389,16 +469,19 @@ end;
 $$;
 
 revoke all on function public.harvey_enqueue_command(text, text, text, text, text, text[]) from public, anon, authenticated;
+revoke all on function public.harvey_consume_receiver_nonce(text, text, text, bigint) from public, anon, authenticated;
 revoke all on function public.harvey_claim_deliveries(text, text, integer, integer) from public, anon, authenticated;
-revoke all on function public.harvey_record_delivery_receipt(uuid, text, text, text, text, jsonb) from public, anon, authenticated;
-revoke all on function public.harvey_claim_deliveries(text, text, integer, integer) from service_role;
-revoke all on function public.harvey_record_delivery_receipt(uuid, text, text, text, text, jsonb) from service_role;
+revoke all on function public.harvey_record_delivery_receipt(uuid, text, uuid, text, text, text, jsonb) from public, anon, authenticated;
 grant execute on function public.harvey_enqueue_command(text, text, text, text, text, text[]) to service_role;
+grant execute on function public.harvey_consume_receiver_nonce(text, text, text, bigint) to service_role;
+grant execute on function public.harvey_claim_deliveries(text, text, integer, integer) to service_role;
+grant execute on function public.harvey_record_delivery_receipt(uuid, text, uuid, text, text, text, jsonb) to service_role;
 
 comment on table public.harvey_relay_commands is 'Private Harvey operator commands. No secrets or credential material allowed.';
 comment on table public.harvey_relay_deliveries is 'Per-recipient delivery truth; QUEUED is not RECEIVED and CLAIMED is not COMPLETED.';
 comment on table public.harvey_relay_receipts is 'Append-only receiver evidence for Harvey command delivery state.';
 comment on table public.harvey_relay_receivers is 'Receiver identities bound to one canonical machine; service_role cannot register or mutate them.';
 comment on table public.harvey_relay_receiver_routes is 'Database-enforced receiver-to-Aeye inbox allowlist.';
-comment on function public.harvey_claim_deliveries(text, text, integer, integer) is 'Locked receiver contract. Not executable by service_role until a signed receiver adapter is separately reviewed and deployed.';
-comment on function public.harvey_record_delivery_receipt(uuid, text, text, text, text, jsonb) is 'Locked receipt contract. Not executable by service_role until a signed receiver adapter is separately reviewed and deployed.';
+comment on table public.harvey_relay_receiver_nonces is 'Short-lived replay protection for signed cloud receiver requests.';
+comment on function public.harvey_claim_deliveries(text, text, integer, integer) is 'Receiver claim contract callable only behind the signed, machine-bound Harvey adapter.';
+comment on function public.harvey_record_delivery_receipt(uuid, text, uuid, text, text, text, jsonb) is 'Claim-token-bound receipt contract callable only behind the signed Harvey adapter.';
