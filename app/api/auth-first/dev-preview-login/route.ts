@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { shouldUseRuntimePreviewAuth } from "@/lib/dev-preview-auth";
+import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 const COOKIE_KEY = "werkles_dev_preview_session";
 
@@ -8,8 +9,7 @@ export async function POST(request: NextRequest) {
   const form = await request.formData();
   const email = String(form.get("email") || "").trim();
   const password = String(form.get("password") || "").trim();
-  const next = String(form.get("next") || "/dashboard");
-  const target = next.startsWith("/") ? next : "/dashboard";
+  const target = safeMemberReturnPath(form.get("next"));
 
   if (!shouldUseRuntimePreviewAuth() || !email || !password) {
     return NextResponse.redirect(new URL("/login?auth_error=missing_credentials", request.url), 303);

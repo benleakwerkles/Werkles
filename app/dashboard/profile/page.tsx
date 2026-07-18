@@ -13,6 +13,8 @@ import {
   US_STATE_OPTIONS
 } from "@/lib/profile-builder-options";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { hasUsableMemberProfileSignal } from "@/lib/matching/signals";
+import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 type ProfileRow = {
   display_name?: string;
@@ -57,9 +59,15 @@ export default function ProfilePage() {
   const [status, setStatus] = useState("Loading profile...");
   const [verificationStatus, setVerificationStatus] = useState(copy.verification.pending);
   const [email, setEmail] = useState<string | null>(null);
+  const [recommendationReady, setRecommendationReady] = useState(false);
+  const [recommendationReturnPath, setRecommendationReturnPath] = useState("/bellows/recommendations");
 
   useEffect(() => {
     async function loadProfile() {
+      const params = new URLSearchParams(window.location.search);
+      setRecommendationReturnPath(
+        safeMemberReturnPath(params.get("next"), "/bellows/recommendations")
+      );
       let supabase: ReturnType<typeof getSupabaseBrowser>;
 
       try {
@@ -89,7 +97,9 @@ export default function ProfilePage() {
         return;
       }
 
-      setProfile(data || {});
+      const loadedProfile = data || {};
+      setProfile(loadedProfile);
+      setRecommendationReady(hasUsableMemberProfileSignal(loadedProfile));
       setStatus(data ? "Profile loaded." : "Create your first production profile.");
     }
 
@@ -149,7 +159,13 @@ export default function ProfilePage() {
     }
 
     const { error } = await supabase.from("profiles").upsert(row);
-    setStatus(error ? error.message : "Profile saved.");
+    if (error) {
+      setStatus(error.message);
+      return;
+    }
+
+    setRecommendationReady(hasUsableMemberProfileSignal(row));
+    setStatus("Profile saved.");
   }
 
   async function triggerVerification(kind: "identity" | "funds") {
@@ -363,6 +379,11 @@ export default function ProfilePage() {
           </label>
           <div className="profile-actions">
             <button className="button button-dark" type="submit">Save profile</button>
+            {recommendationReady ? (
+              <Link className="button button-outline" href={recommendationReturnPath}>
+                See my private recommendation
+              </Link>
+            ) : null}
             <p className="status-line" role="status">{status}</p>
           </div>
         </form>

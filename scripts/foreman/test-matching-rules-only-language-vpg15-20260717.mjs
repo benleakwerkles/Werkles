@@ -74,11 +74,13 @@ assert.doesNotMatch(route, /request\.(?:json|text|formData|body|nextUrl)/);
 assert.doesNotMatch(route, /\b(?:ownerId|userId|profileId|intakeId|email)\b/);
 
 // Delivered language describes ordinary rules, not an AI-generated result.
-assert.match(builder, /Werkles programming applied fixed written rules to your saved profile/);
-assert.match(builder, /No AI model generated this result/);
-assert.match(builder, /nothing was saved or sent/);
+assert.match(builder, /Fixed written rules calculated this result from your existing saved profile/);
+assert.match(builder, /No AI model generated it/);
+assert.match(builder, /result itself was not saved or forwarded to a provider or external recipient/);
 assert.match(converter, /id: `rules-ranked-\$\{path\.kind\}`/);
 assert.match(converter, /Rules-based recommendation calculated/);
+assert.match(converter, /highest-ranked path not ruled out by the current rules/);
+assert.doesNotMatch(converter, /highest-ranked eligible path|another eligible path/);
 assert.match(gates, /This rules-based suggestion cannot send/);
 assert.match(reasoning, /isExample \? "Example interpretation" : "Werkles rules read it as"/);
 

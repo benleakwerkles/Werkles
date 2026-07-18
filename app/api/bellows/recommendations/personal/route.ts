@@ -51,8 +51,8 @@ export async function GET(request: NextRequest) {
 
   const session = recommendationSessionFromMemberProfile((data ?? {}) as MemberMatchingProfile);
   if (!session) {
-    return privateJson({ status: "profile_required" });
+    return privateJson({ success: true, persisted: false, status: "profile_required" });
   }
 
-  return privateJson({ status: "personal", session });
+  return privateJson({ success: true, persisted: false, status: "personal", session });
 }

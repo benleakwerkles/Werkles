@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { isPersonalRecommendationResponse } from "@/lib/matching/personal-recommendation-contract";
 import type { BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
 import type { SquibbRecommendationSession } from "@/lib/squibb/recommendations";
 import { getSupabaseBrowser, hasSupabaseBrowserConfig } from "@/lib/supabase/client";
@@ -20,16 +21,12 @@ type DeliveryState =
   | { status: "personal"; session: SquibbRecommendationSession }
   | { status: "error" };
 
-type PersonalRecommendationResponse =
-  | { status: "profile_required" }
-  | { status: "personal"; session: SquibbRecommendationSession }
-  | { error: string };
-
 export function PersonalRecommendationDelivery({
   exampleSession,
   ledger
 }: PersonalRecommendationDeliveryProps) {
   const [delivery, setDelivery] = useState<DeliveryState>({ status: "loading" });
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     let active = true;
@@ -58,10 +55,10 @@ export function PersonalRecommendationDelivery({
             Authorization: `Bearer ${token}`
           }
         });
-        const payload = (await response.json()) as PersonalRecommendationResponse;
+        const payload: unknown = await response.json().catch(() => null);
 
         if (!active) return;
-        if (!response.ok || "error" in payload) {
+        if (!response.ok || !isPersonalRecommendationResponse(payload)) {
           setDelivery({ status: "error" });
           return;
         }
@@ -80,7 +77,12 @@ export function PersonalRecommendationDelivery({
       active = false;
       controller.abort();
     };
-  }, []);
+  }, [attempt]);
+
+  function retryPersonalRecommendation() {
+    setDelivery({ status: "loading" });
+    setAttempt((current) => current + 1);
+  }
 
   const session = delivery.status === "personal" ? delivery.session : exampleSession;
 
@@ -93,20 +95,30 @@ export function PersonalRecommendationDelivery({
       ) : null}
       {delivery.status === "signed_out" ? (
         <p className="squibb-rec-delivery-status" role="status">
-          You are viewing an example. <Link href="/login">Sign in</Link> to request a private rules-based
-          recommendation from your saved profile.
+          You are viewing an example. <Link href="/login?next=%2Fbellows%2Frecommendations">Sign in</Link> to request a
+          private rules-based recommendation from your saved profile.
         </p>
       ) : null}
       {delivery.status === "profile_required" ? (
         <p className="squibb-rec-delivery-status" role="status">
           You are signed in, but your profile needs a goal or project detail before Werkles can rank a personal result.{' '}
-          <Link href="/dashboard/profile">Open Profile Builder</Link>.
+          <Link href="/dashboard/profile?next=%2Fbellows%2Frecommendations">Open Profile Builder</Link>.
+        </p>
+      ) : null}
+      {delivery.status === "personal" ? (
+        <p className="squibb-rec-delivery-status" role="status">
+          Private rules result loaded from your saved profile. Inputs: goal, project details, offered and sought skills,
+          industry, lane, work preference, location, and timeline. The result itself was not saved or forwarded.{' '}
+          <Link href="/dashboard/profile?next=%2Fbellows%2Frecommendations">Edit profile</Link>.
         </p>
       ) : null}
       {delivery.status === "error" ? (
         <p className="squibb-rec-delivery-status squibb-rec-delivery-status--error" role="alert">
           A personal recommendation could not be loaded. The page below is still an example.{' '}
-          <Link href="/dashboard/profile">Review Profile Builder</Link>.
+          <button type="button" className="squibb-rec-delivery-retry" onClick={retryPersonalRecommendation}>
+            Try again
+          </button>{' '}
+          or <Link href="/dashboard/profile?next=%2Fbellows%2Frecommendations">review Profile Builder</Link>.
         </p>
       ) : null}
 

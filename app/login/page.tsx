@@ -15,6 +15,7 @@ import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
 import { isLocalRoutePreviewUnlocked, isRuntimeRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
+import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function LoginPage() {
     const params = new URLSearchParams(window.location.search);
     const runtimePreview = isRuntimeRoutePreviewUnlocked();
     setPreviewUnlocked(runtimePreview);
-    setNextPath(params.get("next") || "/dashboard");
+    setNextPath(safeMemberReturnPath(params.get("next")));
 
     if (params.get("logged_out") === "1") {
       setStatus("Logged out. Use the test account to enter again.");

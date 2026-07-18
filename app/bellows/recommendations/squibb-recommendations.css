@@ -34,6 +34,23 @@ main.squibb-rec-page p.squibb-rec-delivery-status:not(.eyebrow) a {
   font-weight: 800;
 }
 
+.squibb-rec-delivery-retry {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--werkles-teal-bright, #18c5ae);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.squibb-rec-delivery-retry:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 main.squibb-rec-page p.squibb-rec-delivery-status--error:not(.eyebrow) {
   border-left-color: #b65e5e;
 }

@@ -54,7 +54,7 @@ export function recommendationSessionFromMemberProfile(
       mode: "authenticated_profile",
       label: "Private to this signed-in account",
       detail:
-        "Werkles programming applied fixed written rules to your saved profile. No AI model generated this result. It was calculated in memory; nothing was saved or sent."
+        "Fixed written rules calculated this result from your existing saved profile. No AI model generated it. The result itself was not saved or forwarded to a provider or external recipient."
     }
   };
 }

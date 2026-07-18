@@ -30,8 +30,8 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
     ),
     squibbNote:
       path.rank === 1
-        ? "This is the highest-ranked eligible path from the current rules."
-        : "This is another eligible path to compare before deciding what to do.",
+        ? "This is the highest-ranked path not ruled out by the current rules."
+        : "This is another path not ruled out by the current rules to compare before deciding what to do.",
     reasoning: {
       statedNeed: card.whatYouAskedFor,
       translatedNeed: publicSystemText(

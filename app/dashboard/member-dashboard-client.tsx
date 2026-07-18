@@ -146,17 +146,17 @@ export function MemberDashboardClient({
             <ul>
               <li>Account, login, onboarding, and profile</li>
               <li>Member home, workshops, and intros queue</li>
-              <li>Bellows intake and Squibb recommendations (demo + saved intake)</li>
+              <li>Private rules recommendations from your saved profile, plus an example walkthrough</li>
               <li>Proof, pricing, and narrative entry paths</li>
               <li>Test-mode Foundry Dues checkout on /membership (Stripe test keys)</li>
               <li>Crucible Identity + Funds provider test on /dashboard/crucible (active members)</li>
             </ul>
             <div className="member-selected-surface__actions">
-              <Link className="button button-dark" href="/bellows/intake">
-                Start intake
+              <Link className="button button-dark" href="/dashboard/profile">
+                Review profile
               </Link>
-              <Link className="button button-outline" href="/dashboard/profile">
-                Update profile
+              <Link className="button button-outline" href="/bellows/recommendations">
+                See recommendations
               </Link>
             </div>
           </div>
@@ -187,27 +187,27 @@ export function MemberDashboardClient({
       <section className="member-next-move-card" aria-label="Your next move">
         <div className="member-next-move-card__copy">
           <p className="member-next-move-card__kicker">Your next move</p>
-          <h2>Start intake.</h2>
+          <h2>Review your profile.</h2>
           <p>
-            Give Werkles one real decision, stuck idea, or business problem to shape into a useful first artifact.
+            Make sure your goal, project details, and missing skills still describe the work you want to move.
           </p>
         </div>
         <dl className="member-next-move-card__facts">
           <div>
             <dt>Action</dt>
-            <dd>Click Start intake.</dd>
+            <dd>Review or update your saved profile.</dd>
           </div>
           <div>
             <dt>Reason</dt>
-            <dd>Werkles needs one clear piece of work before it can help.</dd>
+            <dd>Your private recommendation uses the useful work signals already saved there.</dd>
           </div>
           <div>
             <dt>Expected outcome</dt>
-            <dd>A plain-English next step you can read and use.</dd>
+            <dd>A profile ready to use for a private rules recommendation.</dd>
           </div>
         </dl>
-        <Link className="button button-dark member-next-move-card__button" href="/bellows/intake">
-          Start intake
+        <Link className="button button-dark member-next-move-card__button" href="/dashboard/profile">
+          Review profile
         </Link>
       </section>
 
@@ -217,12 +217,12 @@ export function MemberDashboardClient({
           <h2>Turn one messy need into a useful next step.</h2>
         </div>
         <p>
-          Start with Bellows intake, then compare Squibb's recommendation surface and the concierge walkthrough.
-          This keeps the member path on the work itself: symptoms, context, evidence, and a reversible next move.
+          Review the profile Werkles uses, then open your private recommendation. The closed intake remains available as
+          a walkthrough of the questions, not a saved member workflow.
         </p>
         <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href="/bellows/intake">
-            Start intake
+          <Link className="button button-dark" href="/dashboard/profile">
+            Review profile
           </Link>
           <Link className="button button-outline" href="/bellows/recommendations">
             See recommendations
@@ -230,8 +230,8 @@ export function MemberDashboardClient({
           <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
             Walk through an example
           </Link>
-          <Link className="button button-outline" href="/dashboard/profile">
-            Update profile
+          <Link className="button button-outline" href="/bellows/intake">
+            Closed intake walkthrough
           </Link>
         </div>
       </section>
@@ -276,18 +276,17 @@ export function MemberDashboardClient({
         </article>
         <article className="member-first-screen__answer">
           <p className="member-first-screen__kicker">3. What can I do today?</p>
-          <h2>Describe one problem and get a useful first artifact.</h2>
+          <h2>Review your profile and compare a private recommendation.</h2>
           <p>
-            Start intake, name the outcome you want, and let Werkles shape it into a checklist,
-            recommendation, or candidate comparison.
+            Keep your goal and project details current, then see which paths the written rules do not rule out.
           </p>
         </article>
         <article className="member-first-screen__answer">
           <p className="member-first-screen__kicker">4. What should I click next?</p>
-          <h2>Click Start intake.</h2>
+          <h2>Review your profile.</h2>
           <p>
-            Start intake is the first member path. It asks what you are trying to move, then turns
-            the answer into the next useful surface.
+            Profile is the first member path for a private recommendation. When it reflects the work, open the
+            recommendation page and compare the result.
           </p>
         </article>
       </section>
@@ -295,21 +294,21 @@ export function MemberDashboardClient({
       <section className="member-selected-surface" aria-label="First member action">
         <div className="member-selected-surface__copy">
           <p className="member-selected-surface__kicker">First useful thing</p>
-          <h2>Start with one decision.</h2>
+          <h2>Start with the profile you control.</h2>
           <p>
-            The simplest member path is Bellows: tell Squibb what you are trying to sort out, then
-            get a plain-English artifact that makes the next decision easier.
+            Give Werkles a goal, a little project context, and the skills you have or need. The rules can then return a
+            private result without saving that result.
           </p>
         </div>
         <div className="member-selected-surface__offer" aria-label="Member artifact details">
           <dl>
             <div>
               <dt>Start here</dt>
-              <dd>Use intake when you have one decision, one idea, or one stuck piece of work.</dd>
+              <dd>Review or update the goal and project details in your saved profile.</dd>
             </div>
             <div>
-              <dt>You get</dt>
-              <dd>A clearer description of the work and a practical next step you can read.</dd>
+              <dt>Then</dt>
+              <dd>Open recommendations and compare the rules-based paths still on the table.</dd>
             </div>
             <div>
               <dt>No guessing</dt>
@@ -317,11 +316,11 @@ export function MemberDashboardClient({
             </div>
           </dl>
           <div className="member-selected-surface__actions">
-            <Link className="button button-dark" href="/bellows/intake">
-              Start intake
+            <Link className="button button-dark" href="/dashboard/profile">
+              Review profile
             </Link>
-            <Link className="button button-outline" href="/bellows">
-              See Bellows
+            <Link className="button button-outline" href="/bellows/recommendations">
+              See recommendations
             </Link>
           </div>
         </div>
@@ -330,19 +329,19 @@ export function MemberDashboardClient({
       <section className="member-next-five" aria-label="First five minutes">
         <div>
           <p className="member-next-five__kicker">First 5 minutes</p>
-          <h2>Answer one question: what are you trying to move?</h2>
+          <h2>Check the profile, then read the recommendation.</h2>
         </div>
         <p>
-          Best next move: start intake, name the outcome, and let Werkles turn the messy description
-          into a clearer first artifact.
+          Best next move: make sure your saved goal still fits, then compare the private rules result with your own
+          judgment.
         </p>
       </section>
 
       <nav className="dashboard-nav member-dashboard__nav" aria-label="Dashboard navigation">
         <Link href="/">Home</Link>
-        <Link href="/bellows/intake">Start intake</Link>
-        <Link href="/bellows">Bellows</Link>
         <Link href="/dashboard/profile">Profile</Link>
+        <Link href="/bellows/recommendations">Recommendations</Link>
+        <Link href="/bellows">Bellows</Link>
       </nav>
         </div>
       </details>
