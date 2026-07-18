@@ -1,11 +1,12 @@
 # Flock Packet — Document Score Explanations VPG18
 
-Status: `CLAIMED`
+Status: `COMPLETED`
 Machine: `BETSY`
 Execution/push owner: Heimerdinker / Dink@Betsy
 Review seats: Lady Jessica / Cursor@Betsy and Ender@Betsy
 Repository: `benleakwerkles/Werkles`
 Starting source: `99993964bc9f189b4baa02c32839ada03c93fe95`
+Product commit: `7f314092842413c601e3d3b9f4185b5d8c982864`
 
 ## Mission
 
