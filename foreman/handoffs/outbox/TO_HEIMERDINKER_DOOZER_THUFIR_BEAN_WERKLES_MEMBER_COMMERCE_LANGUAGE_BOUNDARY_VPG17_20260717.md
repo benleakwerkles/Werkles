@@ -1,11 +1,12 @@
 # Flock Packet — Member Commerce Language Boundary VPG17
 
-Status: `OPEN`
+Status: `COMPLETED`
 Machine: `Betsy`
 Execution/push owner: Heimerdinker / Dink@Betsy
 Review seats: Doozer@Betsy, Thufir@Betsy, and Bean@Betsy
 Repository: `benleakwerkles/Werkles`
 Starting source: `234f25f71efbeb6e1945729ea938573b3c13dad8`
+Product commit: `112b295`
 
 ## Mission
 
