@@ -1,16 +1,24 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { copy } from "@/lib/copy";
 import { deriveAccessWeight } from "@/lib/access-weight-client";
+import {
+  PRIMARY_GOAL_SUGGESTIONS,
+  PROFILE_LANE_OPTIONS,
+  PROFILE_VISIBILITY_OPTIONS,
+  US_STATE_OPTIONS
+} from "@/lib/profile-builder-options";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 type ProfileRow = {
   display_name?: string;
   first_name?: string;
   last_name?: string;
+  email?: string;
   location_city?: string;
   location_state?: string;
   lane?: string;
@@ -109,7 +117,7 @@ export default function ProfilePage() {
     const form = new FormData(event.currentTarget);
     const row = {
       id: userData.user.id,
-      email: userData.user.email,
+      email: String(form.get("contact_email") || "").trim() || userData.user.email || null,
       display_name: String(form.get("display_name") || "").trim(),
       first_name: String(form.get("first_name") || "").trim() || null,
       last_name: String(form.get("last_name") || "").trim() || null,
@@ -183,9 +191,28 @@ export default function ProfilePage() {
       </nav>
 
       <section className="ops-card profile-editor">
-        <div className="card-heading">
-          <p>{copy.dashboard.profile.kicker}</p>
-          <h1>{copy.dashboard.profile.headline}</h1>
+        <div className="profile-builder-intro">
+          <div className="profile-builder-intro__copy">
+            <div className="card-heading">
+              <p>{copy.dashboard.profile.kicker}</p>
+              <h1>{copy.dashboard.profile.headline}</h1>
+            </div>
+            <p>
+              Give Werkles enough signal to understand what you are building, what you can carry, and what is missing.
+              You can keep the specifics plain and human.
+            </p>
+          </div>
+          <figure className="profile-builder-intro__media">
+            <Image
+              src="/assets/draft/render-batch-1/werkles-render-batch-1-electrician-bookkeeper.png"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 820px) 100vw, 38vw"
+              alt="An electrician and a bookkeeper reviewing a business plan together in a workshop"
+              priority
+            />
+            <figcaption>A useful profile makes the missing piece easier to see.</figcaption>
+          </figure>
         </div>
         <div className="trust-state-strip" aria-label="Trust state">
           <span>{deriveAccessWeight(profile)} Foundry record</span>
@@ -207,8 +234,25 @@ export default function ProfilePage() {
             <input name="last_name" defaultValue={profile.last_name || ""} />
           </label>
           <label className="field">
-            <span>Email</span>
-            <input value={email || ""} readOnly />
+            <span>Account email</span>
+            <input type="email" value={email || ""} readOnly aria-describedby="accountEmailHelp" />
+            <small className="profile-field-help" id="accountEmailHelp">
+              Used to sign in. Your preferred contact email can be different.
+            </small>
+          </label>
+          <label className="field">
+            <span>Preferred contact email (optional)</span>
+            <input
+              name="contact_email"
+              type="email"
+              autoComplete="email"
+              defaultValue={profile.email && profile.email.toLowerCase() !== email?.toLowerCase() ? profile.email : ""}
+              placeholder="another@email.com"
+              aria-describedby="contactEmailHelp"
+            />
+            <small className="profile-field-help" id="contactEmailHelp">
+              Use another inbox for Werkles contact. This is not shown on your public profile.
+            </small>
           </label>
           <label className="field">
             <span>Phone</span>
@@ -223,18 +267,28 @@ export default function ProfilePage() {
             <input name="location_city" defaultValue={profile.location_city || ""} required />
           </label>
           <label className="field">
-            <span>State</span>
-            <input name="location_state" defaultValue={profile.location_state || ""} maxLength={2} required />
+            <span>State or territory</span>
+            <select name="location_state" defaultValue={profile.location_state || ""} required>
+              <option value="" disabled>Choose a state or territory</option>
+              {US_STATE_OPTIONS.map(([code, label]) => (
+                <option key={code} value={code}>{label} ({code})</option>
+              ))}
+            </select>
           </label>
           <label className="field">
             <span>Turf ZIP</span>
             <input name="turf_zip" defaultValue={profile.turf_zip || ""} inputMode="numeric" maxLength={5} />
           </label>
           <label className="field">
-            <span>Lane</span>
+            <span>Lane (broad role)</span>
             <select name="lane" defaultValue={profile.lane || "Builder"}>
-              {copy.laneOptions.map((lane) => <option key={lane}>{lane}</option>)}
+              {PROFILE_LANE_OPTIONS.map(([value, label]) => (
+                <option key={value} value={value}>{label}</option>
+              ))}
             </select>
+            <small className="profile-field-help">
+              Lanes route matching; they are not job titles. Put your specific niche in skills and your blueprint.
+            </small>
           </label>
           <label className="field">
             <span>Work preference</span>
@@ -253,7 +307,9 @@ export default function ProfilePage() {
           <label className="field">
             <span>Visibility</span>
             <select name="visibility_mode" defaultValue={profile.visibility_mode || "full_name"}>
-              {copy.visibilityModes.map((mode) => <option key={mode} value={mode}>{mode}</option>)}
+              {PROFILE_VISIBILITY_OPTIONS.map(([value, label]) => (
+                <option key={value} value={value}>{label}</option>
+              ))}
             </select>
           </label>
           <label className="field">
@@ -270,7 +326,19 @@ export default function ProfilePage() {
           </label>
           <label className="field">
             <span>Primary goal</span>
-            <input name="primary_goal" defaultValue={profile.primary_goal || ""} placeholder="Generational Family Business" />
+            <input
+              name="primary_goal"
+              list="primaryGoalSuggestions"
+              defaultValue={profile.primary_goal || ""}
+              placeholder="Choose an idea or type your own"
+              aria-describedby="primaryGoalHelp"
+            />
+            <datalist id="primaryGoalSuggestions">
+              {PRIMARY_GOAL_SUGGESTIONS.map((goal) => <option key={goal} value={goal} />)}
+            </datalist>
+            <small className="profile-field-help" id="primaryGoalHelp">
+              Pick a suggestion or write a goal in your own words.
+            </small>
           </label>
           <label className="field wide-field">
             <span>Skills offered</span>
