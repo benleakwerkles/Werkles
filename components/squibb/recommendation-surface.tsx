@@ -45,8 +45,9 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
     detail: "No saved intake was found."
   };
   const isExample = source.mode === "demo";
+  const isPersonal = source.mode === "authenticated_profile";
   const hasRecordedActivity = ledger.intakes.length > 0 || optionPackets.length > 0;
-  const showActivityLedger = !isExample || hasRecordedActivity;
+  const showActivityLedger = hasRecordedActivity || (!isExample && !isPersonal);
 
   const activeList = view === "ranked" ? session.ranked : session.catalog;
 
@@ -123,7 +124,9 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             <dt>What this is based on</dt>
             <dd>
               {source.label}
-              <small>{source.detail}</small>
+              <small className={isPersonal ? "squibb-rec-surface__private-custody" : undefined}>
+                {source.detail}
+              </small>
             </dd>
           </div>
         </dl>

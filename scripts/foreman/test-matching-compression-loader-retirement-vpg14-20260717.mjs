@@ -120,7 +120,8 @@ assert.equal(requestBodyRead, false);
 
 assert.doesNotMatch(surface, /squibb-rec-surface__intake-cta/);
 assert.match(surface, /const hasRecordedActivity = ledger\.intakes\.length > 0 \|\| optionPackets\.length > 0/);
-assert.match(surface, /const showActivityLedger = !isExample \|\| hasRecordedActivity/);
+assert.match(surface, /const isPersonal = source\.mode === "authenticated_profile"/);
+assert.match(surface, /const showActivityLedger = hasRecordedActivity \|\| \(!isExample && !isPersonal\)/);
 assert.match(surface, /squibb-rec-surface__example-custody/);
 assert.match(surface, /This is a walkthrough, not your result\./);
 assert.match(surface, /Nothing is saved from this example\. Nothing is sent to another person or organization\./);

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/foundry/site-header";
-import { SquibbRecommendationSurface } from "@/components/squibb/recommendation-surface";
+import { PersonalRecommendationDelivery } from "@/components/squibb/personal-recommendation-delivery";
 import { copy } from "@/lib/copy";
 import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-recommendation-session-server";
 
@@ -31,7 +31,7 @@ export default async function SquibbRecommendationsPage() {
           </Link>
         </nav>
 
-        <SquibbRecommendationSurface session={session} ledger={ledger} />
+        <PersonalRecommendationDelivery exampleSession={session} ledger={ledger} />
       </main>
       <footer className="site-footer">
         <p>{copy.disclaimer}</p>

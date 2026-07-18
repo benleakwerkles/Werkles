@@ -16,6 +16,28 @@
   margin: 0.5rem 0 0;
 }
 
+main.squibb-rec-page p.squibb-rec-delivery-status:not(.eyebrow) {
+  width: min(1160px, calc(100% - 2rem));
+  margin: 0 auto 1rem;
+  padding: 0.72rem 0.9rem;
+  border: 1px solid var(--werkles-iron, #3b342a);
+  border-left: 3px solid var(--werkles-violet-bright, #672eed);
+  border-radius: 0.75rem;
+  background: var(--werkles-workshop-night, #191817);
+  color: var(--werkles-text-muted, #c9b896);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+main.squibb-rec-page p.squibb-rec-delivery-status:not(.eyebrow) a {
+  color: var(--werkles-teal-bright, #18c5ae);
+  font-weight: 800;
+}
+
+main.squibb-rec-page p.squibb-rec-delivery-status--error:not(.eyebrow) {
+  border-left-color: #b65e5e;
+}
+
 .squibb-rec-surface {
   --squibb-rec-on-light: #f4e2b1;
   --squibb-rec-muted-on-light: #c9b896;
@@ -754,6 +776,11 @@
   line-height: 1.45;
 }
 
+.squibb-rec-surface__private-custody {
+  color: var(--werkles-teal-bright, #18c5ae);
+  font-weight: 800;
+}
+
 .squibb-rec-surface__squibb-note {
   margin-top: 1rem;
   color: var(--werkles-text-primary, #f4e2b1);
@@ -1197,7 +1224,8 @@ main.squibb-rec-page .squibb-rec-surface .squibb-gate--blocker strong {
   }
 
   .squibb-rec-page__nav,
-  .squibb-rec-surface {
+  .squibb-rec-surface,
+  .squibb-rec-delivery-status {
     width: min(100% - 1rem, 1160px);
   }
 

@@ -12,6 +12,7 @@ import {
 export function shadowRunToRecommendationSession(run: ShadowMatchingRun): SquibbRecommendationSession {
   const card = run.readout.recommendationCard;
   const eligiblePaths = eligiblePublicMatchingPaths(run.readout.scoredPaths);
+  const memberEvidenceSource = run.source === "member_profile" ? "Your saved profile" : "Your intake";
 
   const ranked: SquibbRecommendation[] = eligiblePaths.map((path) => ({
     id: `automated-${path.kind}`,
@@ -56,7 +57,7 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
       strength: f.strength === "verified" ? "inferred" : f.strength,
       source:
         f.strength === "self_reported"
-          ? "Your intake"
+          ? memberEvidenceSource
           : f.strength === "verified"
             ? "Evidence supplied; verification details incomplete"
             : f.strength === "missing"

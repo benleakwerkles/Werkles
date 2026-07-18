@@ -6,7 +6,7 @@ import type { EvidenceStrength } from "@/lib/squibb/recommendations";
 
 
 
-export type MatchingIntakeSource = "discovery" | "bellows_concierge";
+export type MatchingIntakeSource = "discovery" | "bellows_concierge" | "member_profile";
 
 
 

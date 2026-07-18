@@ -1,6 +1,6 @@
 # Tier 1 Gate — Matching Tier A Personal Delivery Preview
 
-**Status:** `AWAITING HUMAN GATE`
+**Status:** `APPROVED__IN_PROGRESS`
 
 **Prepared:** `2026-07-17T20:38:27-04:00`
 
@@ -29,6 +29,8 @@ APPROVE MATCHING TIER A PERSONAL DELIVERY PREVIEW
 ```
 
 No shorthand, earlier Matching approval, or public-mode approval authorizes this personal-delivery build.
+
+**Approved:** `2026-07-17T20:47:54-04:00` with the exact phrase above. Recorded in `foreman/gates/APPROVAL_LOG.md`.
 
 ## What Tier A authorizes
 

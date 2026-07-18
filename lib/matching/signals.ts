@@ -6,6 +6,19 @@ import { diagnoseLeverage } from "@/lib/matching/leverage";
 
 import type { MatchingIntakeSource, StructuredSignals } from "@/lib/matching/types";
 
+export type MemberMatchingProfile = {
+  primary_goal?: unknown;
+  blueprint_narrative?: unknown;
+  skills_offered?: unknown;
+  skills_sought?: unknown;
+  industry_tags?: unknown;
+  lane?: unknown;
+  work_preference?: unknown;
+  location_city?: unknown;
+  location_state?: unknown;
+  timeline_to_launch?: unknown;
+};
+
 
 
 const PARTNER_WORDS = /\b(partner(?:ship)?|co[- ]?founder|investor|backer|equity)\b/i;
@@ -219,6 +232,85 @@ export function signalsFromConcierge(intakeId: string, answers: ConciergeIntakeA
 
   );
 
+}
+
+function profileText(value: unknown, maxLength = 1600): string {
+  return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+}
+
+function profileList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((item): item is string => typeof item === "string")
+    .map((item) => item.trim().slice(0, 160))
+    .filter(Boolean)
+    .slice(0, 20);
+}
+
+function profileLane(value: unknown): StructuredSignals["lane"] {
+  return value === "Builder" ||
+    value === "Operator" ||
+    value === "Backer" ||
+    value === "Connector" ||
+    value === "Spark"
+    ? value
+    : "Unsure";
+}
+
+export function hasUsableMemberProfileSignal(profile: MemberMatchingProfile): boolean {
+  return Boolean(
+    profileText(profile.primary_goal) ||
+      profileText(profile.blueprint_narrative) ||
+      profileList(profile.skills_sought).length > 0
+  );
+}
+
+/**
+ * Adapts only self-reported profile fields into the existing deterministic
+ * Matching signal shape. The fixed in-memory key is never returned to the client.
+ */
+export function signalsFromMemberProfile(profile: MemberMatchingProfile): StructuredSignals | null {
+  if (!hasUsableMemberProfileSignal(profile)) return null;
+
+  const primaryGoal = profileText(profile.primary_goal);
+  const narrative = profileText(profile.blueprint_narrative);
+  const skillsOffered = profileList(profile.skills_offered);
+  const skillsSought = profileList(profile.skills_sought);
+  const industryTags = profileList(profile.industry_tags);
+  const workPreference = profileText(profile.work_preference, 200);
+  const locationCity = profileText(profile.location_city, 160);
+  const locationState = profileText(profile.location_state, 80);
+  const timeline = profileText(profile.timeline_to_launch, 200);
+  const statedNeed =
+    primaryGoal ||
+    (skillsSought.length > 0 ? `I need support with ${skillsSought.join(", ")}.` : narrative);
+  const blob = [
+    primaryGoal,
+    narrative,
+    skillsOffered.join(" "),
+    skillsSought.join(" "),
+    industryTags.join(" "),
+    profileText(profile.lane, 80),
+    workPreference,
+    [locationCity, locationState].filter(Boolean).join(", "),
+    timeline
+  ]
+    .filter(Boolean)
+    .join(". ");
+  const assets: StructuredSignals["assets"] = [];
+  if (skillsOffered.length > 0) assets.push("Skills");
+  if (locationCity || locationState) assets.push("Place");
+
+  return buildSignals(
+    "member_profile",
+    "private-in-memory",
+    statedNeed,
+    blob,
+    profileLane(profile.lane),
+    assets,
+    [skillsSought.join(" "), workPreference],
+    [primaryGoal, narrative, industryTags.join(" "), timeline]
+  );
 }
 
 
