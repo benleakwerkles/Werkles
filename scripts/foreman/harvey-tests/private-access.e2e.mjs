@@ -18,7 +18,7 @@ function setCookie(response) {
 function sessionCookie(response) {
   const raw = setCookie(response);
   const pair = raw.split(";", 1)[0];
-  assert.match(pair, /^harvey_private_dev=/);
+  assert.match(pair, /^(?:harvey_private_dev|__Host-harvey_private)=/);
   return pair;
 }
 
@@ -77,6 +77,18 @@ assert.match(await privatePage.text(), /HARVEY|Harvey/);
 const privateApi = await request("/api/harvey/snapshot", { headers: { cookie } });
 assert.equal(privateApi.status, 200);
 assert.equal((await privateApi.json()).schema, "werkles.harvey-snapshot/v1");
+
+const privateCommandRoute = await request("/api/harvey/work-orders", { headers: { cookie } });
+assert.equal(privateCommandRoute.status, 200);
+assert.equal((await privateCommandRoute.json()).operator.mode, "HARVEY_CLOUD");
+
+const crossOriginCommand = await request("/api/harvey/work-orders", {
+  method: "POST",
+  headers: { origin: "https://attacker.invalid", cookie, "content-type": "application/json" },
+  body: JSON.stringify({ submission_id: "a".repeat(32), verb: "GO", target: "All Aeyes", instruction: "Cross-origin relay test." })
+});
+assert.equal(crossOriginCommand.status, 403);
+assert.equal((await crossOriginCommand.json()).error, "REQUEST_ORIGIN_REJECTED");
 
 const [cookieName, cookieValue] = cookie.split("=");
 const tampered = `${cookieName}=${cookieValue.slice(0, -1)}${cookieValue.endsWith("a") ? "b" : "a"}`;

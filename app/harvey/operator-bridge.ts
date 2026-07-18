@@ -18,7 +18,7 @@ export async function harveyOperatorBridgeReady() {
 
 export type HarveyCommandRoute = {
   url: string;
-  mode: "DOSS_LOOPBACK" | "SALLY_PAIRED";
+  mode: "DOSS_LOOPBACK" | "HARVEY_CLOUD" | "SALLY_PAIRED";
   credentials: RequestCredentials;
 };
 
@@ -29,7 +29,7 @@ export function harveyCommandRoute(): HarveyCommandRoute | null {
   if (typeof window === "undefined") return null;
   const bridge = harveyOperatorBridgeUrl();
   if (bridge) return { url: `${bridge}/work-orders`, mode: "DOSS_LOOPBACK", credentials: "omit" };
-  return { url: "/api/harvey/work-orders", mode: "SALLY_PAIRED", credentials: "include" };
+  return { url: "/api/harvey/work-orders", mode: "HARVEY_CLOUD", credentials: "include" };
 }
 
 export async function harveyCommandRouteReady(): Promise<HarveyCommandRoute | null> {
@@ -43,7 +43,7 @@ export async function harveyCommandRouteReady(): Promise<HarveyCommandRoute | nu
     const response = await fetch(route.url, { cache: "no-store", credentials: route.credentials });
     if (!response.ok) return null;
     const body = await response.json();
-    return body?.operator?.mode === "SALLY_PAIRED" ? route : null;
+    return body?.operator?.mode === "HARVEY_CLOUD" ? route : null;
   } catch {
     return null;
   }

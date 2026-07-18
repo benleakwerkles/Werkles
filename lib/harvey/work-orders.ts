@@ -30,20 +30,20 @@ const WORK_ORDER_LOCK_STALE_MS = 30_000;
 
 const workOrderRoot = () => path.join(process.cwd(), "data", "harvey", "work-orders");
 
-function normalizeVerb(value: unknown): HarveyWorkOrderVerb {
+export function normalizeWorkOrderVerb(value: unknown): HarveyWorkOrderVerb {
   const verb = String(value ?? "").toUpperCase();
   if (!HARVEY_WORK_ORDER_VERBS.includes(verb as HarveyWorkOrderVerb)) throw new HarveyControlError("WORK_ORDER_VERB_INVALID");
   return verb as HarveyWorkOrderVerb;
 }
 
-function normalizeTarget(value: unknown) {
+export function normalizeWorkOrderTarget(value: unknown) {
   const target = String(value ?? "").trim();
   if (!TARGET_PATTERN.test(target)) throw new HarveyControlError("WORK_ORDER_TARGET_INVALID");
   const machine = HARVEY_MACHINES.find((candidate) => candidate.toLowerCase() === target.toLowerCase());
   return machine ?? target;
 }
 
-function normalizeInstruction(value: unknown) {
+export function normalizeWorkOrderInstruction(value: unknown) {
   const instruction = String(value ?? "").trim();
   if (!instruction) throw new HarveyControlError("WORK_ORDER_INSTRUCTION_REQUIRED");
   if (Buffer.byteLength(instruction, "utf8") > MAX_INSTRUCTION_BYTES) throw new HarveyControlError("WORK_ORDER_INSTRUCTION_TOO_LARGE", 413);
@@ -57,7 +57,7 @@ function normalizeInstruction(value: unknown) {
   return instruction;
 }
 
-function normalizeSubmissionId(value: unknown) {
+export function normalizeWorkOrderSubmissionId(value: unknown) {
   const submissionId = String(value ?? "").toLowerCase();
   if (!/^[a-f0-9]{32}$/.test(submissionId)) throw new HarveyControlError("WORK_ORDER_SUBMISSION_ID_INVALID");
   return submissionId;
@@ -114,10 +114,10 @@ async function withWorkOrderLock<T>(operation: () => Promise<T>) {
 
 export async function createHarveyWorkOrder(input: Record<string, unknown>, actor: HarveyOperatorActor) {
   if (actor.role !== "operator") throw new HarveyControlError("OPERATOR_AUTH_REQUIRED", 403);
-  const submissionId = normalizeSubmissionId(input.submission_id);
-  const verb = normalizeVerb(input.verb);
-  const target = normalizeTarget(input.target);
-  const instruction = normalizeInstruction(input.instruction);
+  const submissionId = normalizeWorkOrderSubmissionId(input.submission_id);
+  const verb = normalizeWorkOrderVerb(input.verb);
+  const target = normalizeWorkOrderTarget(input.target);
+  const instruction = normalizeWorkOrderInstruction(input.instruction);
   const now = new Date().toISOString();
   const workOrder: HarveyWorkOrder = {
     schema: "werkles.harvey-work-order/v1",

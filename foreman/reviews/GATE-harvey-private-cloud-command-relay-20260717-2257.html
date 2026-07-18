@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gate — Private Harvey Cloud Command Relay</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:#07110f; color:#edf0e8; }
+    body { margin:0; padding:28px; background:radial-gradient(circle at top right,#173a34,#07110f 52%); }
+    main { max-width:980px; margin:auto; }
+    h1 { color:#fff4d6; font-size:clamp(2rem,5vw,3.5rem); margin-bottom:.3rem; }
+    h2 { color:#78f1df; margin-top:2rem; }
+    p,li { line-height:1.58; }
+    .status { display:inline-block; padding:.55rem .8rem; border:2px solid #ffcc73; border-radius:999px; color:#ffda8a; font-weight:900; }
+    .card { margin-top:18px; padding:20px; border:1px solid #346b61; border-radius:15px; background:rgba(13,25,23,.94); }
+    .proof { border-color:#497b59; }
+    .warning { border-color:#a55343; }
+    code { color:#fff4d6; overflow-wrap:anywhere; }
+    strong { color:#fff4d6; }
+    .commands { display:grid; gap:10px; }
+    .commands code { display:block; padding:13px; border-radius:9px; background:#111719; border:1px solid #5b5340; user-select:all; }
+  </style>
+</head>
+<body><main>
+  <span class="status">AWAITING BEN APPROVAL</span>
+  <h1>Make Harvey's command deck issue commands</h1>
+  <p>Approve one bounded production activation: private browser → same-origin Harvey API → one durable command → 21 named Aeye inbox deliveries → claim/work/terminal receipt states.</p>
+
+  <section class="card proof">
+    <h2>Confidence: HIGH</h2>
+    <ul>
+      <li>TypeScript: pass</li><li>production build: pass</li><li>private login/origin E2E: pass</li>
+      <li>relay regression suite: 3/3 pass</li><li>real Postgres transaction: fan-out, retry, claim, receipt, RLS, and grants pass; rolled back</li>
+      <li>production readback after rollback: zero Harvey relay tables</li>
+      <li>independent Dink red team: initial PATCH addressed; final GO with no remaining findings</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>What Harvey will truthfully show</h2>
+    <ol><li><strong>QUEUED</strong> — written to the named Harvey inbox.</li><li><strong>CLAIMED</strong> — a receiver picked it up.</li><li><strong>WORKING / REPLIED</strong> — receiver-side progress.</li><li><strong>COMPLETED / BLOCKED</strong> — terminal receipt returned.</li></ol>
+    <p>QUEUED is not RECEIVED. CLAIMED is not COMPLETED.</p>
+  </section>
+
+  <section class="card warning">
+    <h2>Known boundary</h2>
+    <p>This makes the command deck a real private command bus, not instant magic access to every provider task. Most Aeyes still need a bound courier/adapter. Their commands remain visibly queued instead of falsely called received.</p>
+    <p>Command text is durable production data. Passwords, tokens, codes, recovery keys, and other secrets do not belong in it.</p>
+  </section>
+
+  <section class="card">
+    <h2>Blast radius</h2>
+    <p>Existing private <code>/harvey</code> page, existing work-order API, six new isolated Supabase tables, one service-role-callable enqueue function, two database-locked receiver contracts, one clean GitHub branch, and the existing Vercel production project. No existing table is altered. No unrelated dirty work is included.</p>
+  </section>
+
+  <section class="card commands">
+    <h2>Decision phrases</h2>
+    <code>APPROVE PRIVATE HARVEY CLOUD COMMAND RELAY</code>
+    <code>REJECT PRIVATE HARVEY CLOUD COMMAND RELAY</code>
+    <code>PATCH PRIVATE HARVEY CLOUD COMMAND RELAY: &lt;change&gt;</code>
+  </section>
+</main></body></html>

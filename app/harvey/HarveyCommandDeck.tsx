@@ -6,7 +6,7 @@ import { useHarveySnapshotState } from "./HarveyLiveCockpit";
 import { harveyCommandRouteReady, harveyTaskBridgeRouteReady, type HarveyCommandRoute, type HarveyTaskBridgeRoute } from "./operator-bridge";
 
 type Verb = "VERIFY" | "PREPARE" | "GO" | "KNOCK";
-type Stage = "DRAFT" | "QUEUING" | "QUEUED_LOCAL" | "ROUTE_BLOCKED" | "RESULT_UNKNOWN";
+type Stage = "DRAFT" | "QUEUING" | "QUEUED_LOCAL" | "QUEUED_CLOUD" | "ROUTE_BLOCKED" | "RESULT_UNKNOWN";
 type DirectAttemptStage = "IDLE" | "DRAFT" | "SENDING" | "REJECTED" | "RESULT_UNKNOWN";
 type HarveyProjectCommandDetail = { target: string; instruction?: string };
 type DirectState = "QUEUED" | "DELIVERED" | "THINKING" | "REPLIED" | "COMPLETED" | "BLOCKER";
@@ -44,6 +44,7 @@ type DirectEnvelope = {
     dispatches: DirectDispatch[];
   };
 };
+type CloudCounts = { total: number; queued: number; claimed: number; working: number; completed: number; blocked: number; awaiting_receiver: number };
 
 const STAGES = ["Draft", "Queued", "Sending", "Received", "Working", "Completed / Blocked"] as const;
 const DIRECT_STEPS: DirectState[] = ["QUEUED", "DELIVERED", "THINKING", "REPLIED", "COMPLETED"];
@@ -65,6 +66,13 @@ function isConfirmedPrewriteRejection(status: number) {
   return [400, 401, 403, 404, 413, 422, 429].includes(status);
 }
 
+async function readHarveyJson(response: Response) {
+  const text = await response.text();
+  if (text.length > 128 * 1024) throw new Error("HARVEY_RESPONSE_TOO_LARGE");
+  try { return JSON.parse(text) as Record<string, any>; }
+  catch { throw new Error(response.ok ? "HARVEY_RESPONSE_INVALID" : `HARVEY_HTTP_${response.status}_NON_JSON`); }
+}
+
 export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
   const { snapshot, transport } = useHarveySnapshotState();
   const [instruction, setInstruction] = useState("");
@@ -81,6 +89,9 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
   const [directSending, setDirectSending] = useState(false);
   const [message, setMessage] = useState("Type what you want done. Harvey will keep it here until you choose an order.");
   const [workOrderId, setWorkOrderId] = useState("");
+  const [cloudCommandId, setCloudCommandId] = useState("");
+  const [cloudCommandStatus, setCloudCommandStatus] = useState("");
+  const [cloudCounts, setCloudCounts] = useState<CloudCounts | null>(null);
   const queueingRef = useRef(false);
   const instructionRef = useRef<HTMLTextAreaElement>(null);
   const pendingSubmissionRef = useRef<{ id: string; signature: string } | null>(null);
@@ -104,12 +115,39 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!cloudCommandId || commandRoute?.mode !== "HARVEY_CLOUD") return;
+    let disposed = false;
+    let busy = false;
+    const refresh = async () => {
+      if (busy) return;
+      busy = true;
+      try {
+        const response = await fetch(`${commandRoute.url}?command_id=${encodeURIComponent(cloudCommandId)}`, { cache: "no-store", credentials: commandRoute.credentials });
+        const body = await readHarveyJson(response);
+        if (!response.ok) throw new Error(body.error ?? "HARVEY_RELAY_STATUS_READ_FAILED");
+        if (disposed) return;
+        const counts = body.relay.counts as CloudCounts;
+        setCloudCounts(counts);
+        setCloudCommandStatus(String(body.relay.command.status));
+        setMessage(`${counts.total} named Harvey inboxes · ${counts.queued} waiting pickup · ${counts.claimed} claimed · ${counts.working} working/replied · ${counts.completed} completed · ${counts.blocked} blocked · ${counts.awaiting_receiver} awaiting a receiver.`);
+      } catch (error) {
+        if (!disposed) setMessage(`${error instanceof Error ? error.message : "HARVEY_RELAY_STATUS_READ_FAILED"}. The command id is preserved; delivery status is temporarily unavailable.`);
+      } finally {
+        busy = false;
+      }
+    };
+    void refresh();
+    const timer = window.setInterval(() => void refresh(), 2_000);
+    return () => { disposed = true; window.clearInterval(timer); };
+  }, [cloudCommandId, commandRoute]);
+
   const refreshTaskBridge = useCallback(async (candidate: HarveyTaskBridgeRoute) => {
     if (taskPollBusyRef.current) return false;
     taskPollBusyRef.current = true;
     try {
       const response = await fetch(candidate.url, { cache: "no-store", credentials: candidate.credentials });
-      const body = await response.json() as DirectEnvelope & { error?: string };
+      const body = await readHarveyJson(response) as unknown as DirectEnvelope & { error?: string };
       if (!response.ok) throw new Error(body.error ?? "TASK_BRIDGE_READ_FAILED");
       setTaskEnvelope(body);
       const firstBinding = body.bridge.bindings[0];
@@ -197,7 +235,11 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
   const displayedDirectDispatch = directAttemptStage === "IDLE" && !directSending ? activeDirectDispatch : null;
   const targetLabel = selectedBinding ? `${selectedBinding.label}@${selectedBinding.machine} · ${selectedBinding.provider} · DIRECT` : target;
   const liveCount = useMemo(() => transport === "CURRENT" ? snapshot.machines.filter((machine) => machine.connectivity === "LIVE").length : 0, [snapshot, transport]);
-  const reached = stage === "QUEUED_LOCAL" ? 1 : 0;
+  const reached = stage === "QUEUED_LOCAL" ? 1
+    : stage === "QUEUED_CLOUD" && cloudCounts && cloudCounts.total > 0 && cloudCounts.completed + cloudCounts.blocked === cloudCounts.total ? 5
+      : stage === "QUEUED_CLOUD" && cloudCounts && cloudCounts.working > 0 ? 4
+        : stage === "QUEUED_CLOUD" && cloudCounts && cloudCounts.claimed > 0 ? 3
+          : stage === "QUEUED_CLOUD" ? 1 : 0;
   const directState = displayedDirectDispatch?.state ?? null;
   const directReached = directState === "BLOCKER" ? -1 : directState ? DIRECT_STEPS.indexOf(directState) : -1;
   const directDispatchOutsideWindow = Boolean(directAttemptStage === "IDLE" && dispatchId && taskEnvelope && !activeDirectDispatch);
@@ -220,6 +262,9 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
   function reviseDraft() {
     pendingSubmissionRef.current = null;
     pendingDirectSubmissionRef.current = null;
+    setCloudCommandId("");
+    setCloudCommandStatus("");
+    setCloudCounts(null);
     setDirectAttemptStage("DRAFT");
     setDirectAttemptMessage("This instruction is a draft for the selected Aeye. Nothing was sent.");
     if (stage !== "DRAFT") {
@@ -258,9 +303,9 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ submission_id: submissionId, binding_id: binding.binding_id, body: directBody })
       });
-      const body = await response.json() as DirectEnvelope & { dispatch: DirectDispatch; error?: string };
+      confirmedRejected = isConfirmedPrewriteRejection(response.status);
+      const body = await readHarveyJson(response) as unknown as DirectEnvelope & { dispatch: DirectDispatch; error?: string };
       if (!response.ok) {
-        confirmedRejected = isConfirmedPrewriteRejection(response.status);
         throw new Error(body.error ?? "TASK_BRIDGE_WRITE_FAILED");
       }
       setTaskEnvelope(body);
@@ -318,7 +363,7 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
     }
     setStage("QUEUING");
     queueingRef.current = true;
-    setMessage("Harvey is writing your order to the local command queue.");
+    setMessage(commandRoute.mode === "HARVEY_CLOUD" ? "Harvey is writing one durable delivery per addressed Aeye inbox." : "Harvey is writing your order to the local command queue.");
     let confirmedRejected = false;
     try {
       const response = await fetch(commandRoute.url, {
@@ -327,15 +372,32 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ submission_id: submissionId, verb, target, instruction })
       });
-      const body = await response.json();
+      confirmedRejected = isConfirmedPrewriteRejection(response.status);
+      const body = await readHarveyJson(response);
       if (!response.ok) {
-        confirmedRejected = isConfirmedPrewriteRejection(response.status);
         throw new Error(body.error ?? "WORK_ORDER_CREATE_FAILED");
       }
       setWorkOrderId(String(body.work_order.work_order_id));
       pendingSubmissionRef.current = null;
-      setStage("QUEUED_LOCAL");
-      setMessage("Queued safely on Doss. No courier route has claimed it yet, so Harvey has not called it sent or received.");
+      if (commandRoute.mode === "HARVEY_CLOUD") {
+        const counts: CloudCounts = {
+          total: Number(body.work_order.recipient_count ?? 0),
+          queued: Number(body.work_order.queued_count ?? 0),
+          claimed: Number(body.work_order.claimed_count ?? 0),
+          working: Number(body.work_order.working_count ?? 0),
+          completed: Number(body.work_order.terminal_count ?? 0),
+          blocked: 0,
+          awaiting_receiver: Number(body.work_order.awaiting_receiver_count ?? 0)
+        };
+        setCloudCommandId(String(body.work_order.command_id));
+        setCloudCommandStatus(String(body.work_order.status));
+        setCloudCounts(counts);
+        setStage("QUEUED_CLOUD");
+        setMessage(`${counts.total} named Harvey inboxes created · ${counts.queued} queued for receiver pickup · ${counts.awaiting_receiver} awaiting a receiver. Inbox delivery is proven; Aeye receipt is not claimed until pickup.`);
+      } else {
+        setStage("QUEUED_LOCAL");
+        setMessage("Queued safely on Doss. No courier route has claimed it yet, so Harvey has not called it sent or received.");
+      }
     } catch (error) {
       setStage(confirmedRejected ? "ROUTE_BLOCKED" : "RESULT_UNKNOWN");
       setMessage(confirmedRejected
@@ -357,13 +419,13 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
     <section id="harvey-command-deck" data-testid="harvey-command-deck" aria-labelledby="harvey-local-work-order-title" style={{ maxWidth: 1200, margin: "0 auto 24px", padding: "clamp(18px,3vw,30px)", border: "3px solid #ffcc73", borderRadius: 18, background: "linear-gradient(145deg,#19170f,#101615)", boxShadow: "0 18px 60px rgba(0,0,0,.28)", scrollMarginTop: 16 }}>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "start", gap: 16 }}>
         <div>
-          <p style={{ color: "#ffcc73", fontWeight: 900, letterSpacing: 1.4, margin: 0 }}>COMMAND LINE 1 · DIRECT AEYE / LOCAL QUEUE</p>
+          <p style={{ color: "#ffcc73", fontWeight: 900, letterSpacing: 1.4, margin: 0 }}>COMMAND LINE 1 · DIRECT AEYE / HARVEY CLOUD INBOX</p>
           <h1 id="harvey-local-work-order-title" style={{ color: "#fff4d6", fontSize: "clamp(25px,3.5vw,40px)", margin: "7px 0" }}>What do you want done?</h1>
-          <p style={{ color: "#d6dbd7", lineHeight: 1.5, maxWidth: 800, margin: 0 }}>Choose the proven direct Aeye for real delivery, thinking, and reply states. All Aeyes, machines, and project lanes remain honest local queues until a courier claims them.</p>
+          <p style={{ color: "#d6dbd7", lineHeight: 1.5, maxWidth: 800, margin: 0 }}>From private Harvey, SEND writes a durable inbox delivery for every addressed Aeye. Harvey calls it received only after a receiver claims it, and completed only after a receipt returns.</p>
         </div>
         <div style={{ display: "grid", gap: 7 }}>
           <div data-testid="harvey-command-route" style={{ padding: "9px 12px", borderRadius: 999, background: commandRoute ? "#183725" : "#392d18", color: commandRoute ? "#8ef0ae" : "#ffcc73", fontWeight: 800 }}>
-            {commandRoute?.mode === "SALLY_PAIRED" ? "Sally operator route connected" : commandRoute ? "Doss operator route connected" : "Viewing only · operator route unbound"}
+            {commandRoute?.mode === "HARVEY_CLOUD" ? "Private Harvey cloud route connected" : commandRoute ? "Doss operator route connected" : "Viewing only · operator route unbound"}
           </div>
           <div data-testid="harvey-direct-route" style={{ padding: "9px 12px", borderRadius: 999, background: taskRoute && taskEnvelope?.bridge.bindings.length ? "#163334" : "#392d18", color: taskRoute && taskEnvelope?.bridge.bindings.length ? "#78f1df" : "#ffcc73", fontWeight: 800 }}>
             {taskRoute && taskEnvelope?.bridge.bindings.length ? `${taskEnvelope.bridge.bindings.length} DIRECT AEYE BOUND` : "DIRECT AEYE ROUTE UNBOUND"}
@@ -378,8 +440,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
               {(taskEnvelope?.bridge.bindings ?? []).map((binding) => <option key={binding.binding_id} value={`direct:${binding.binding_id}`}>{binding.label}@{binding.machine} · {binding.provider} · {binding.busy ? "WORKING" : "DIRECT"}</option>)}
               {!taskEnvelope?.bridge.bindings.length && <option value="direct-unbound" disabled>NO DIRECT AEYE ROUTE YET</option>}
             </optgroup>
-            <optgroup label="LOCAL QUEUE · COURIER UNBOUND">
-              {targets.map((item) => <option key={item} value={item}>{item} · LOCAL QUEUE</option>)}
+            <optgroup label="HARVEY CLOUD INBOXES">
+              {targets.map((item) => <option key={item} value={item}>{item} · CLOUD INBOX</option>)}
             </optgroup>
           </select>
         </label>
@@ -393,8 +455,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
           {stage === "QUEUING" || directSending ? "SENDING…" : `SEND · ${verb} · ${selectedBinding ? `${selectedBinding.label}@${selectedBinding.machine}` : targetLabel}`}
         </button>
         <div data-testid="harvey-inline-status" role="status" aria-live="polite" style={{ gridColumn: "1 / -1", display: "flex", flexWrap: "wrap", gap: 8, padding: "9px 11px", borderRadius: 9, background: "#111719", color: "#d6dbd7", lineHeight: 1.4 }}>
-          <strong style={{ color: selectedBinding ? directState === "THINKING" ? "#8fcfff" : directState === "COMPLETED" || directState === "REPLIED" ? "#8ef0ae" : directState === "BLOCKER" ? "#ff9a83" : "#78f1df" : stage === "ROUTE_BLOCKED" ? "#ff9a83" : stage === "RESULT_UNKNOWN" ? "#ffcc73" : stage === "QUEUED_LOCAL" ? "#8ef0ae" : "#fff4d6" }}>
-            STATUS: {selectedBinding ? directDisplayState : stage === "ROUTE_BLOCKED" ? "BLOCKED — NOT SENT" : stage === "RESULT_UNKNOWN" ? "RESULT UNKNOWN" : stage === "QUEUED_LOCAL" ? "QUEUED LOCALLY — NOT SENT" : stage}
+          <strong style={{ color: selectedBinding ? directState === "THINKING" ? "#8fcfff" : directState === "COMPLETED" || directState === "REPLIED" ? "#8ef0ae" : directState === "BLOCKER" ? "#ff9a83" : "#78f1df" : stage === "ROUTE_BLOCKED" ? "#ff9a83" : stage === "RESULT_UNKNOWN" ? "#ffcc73" : stage === "QUEUED_LOCAL" || stage === "QUEUED_CLOUD" ? "#8ef0ae" : "#fff4d6" }}>
+            STATUS: {selectedBinding ? directDisplayState : stage === "ROUTE_BLOCKED" ? "BLOCKED — NOT SENT" : stage === "RESULT_UNKNOWN" ? "RESULT UNKNOWN" : stage === "QUEUED_CLOUD" ? `CLOUD ${cloudCommandStatus || "QUEUED"}` : stage === "QUEUED_LOCAL" ? "QUEUED LOCALLY — NOT SENT" : stage}
           </strong>
           <span>{selectedBinding ? directStateMessage : message}</span>
         </div>
@@ -408,7 +470,7 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
       </div>}
 
       <label htmlFor="harvey-instruction" style={{ display: "block", color: "#edf0e8", fontWeight: 800, marginTop: 12 }}>Your instruction</label>
-      <p data-testid="harvey-secret-warning" style={{ color: "#ffcc73", margin: "6px 0 0", fontSize: 14 }}>Direct messages and Doss queue orders create durable local runtime records. Do not paste passwords, codes, tokens, recovery keys, or other secrets here.</p>
+      <p data-testid="harvey-secret-warning" style={{ color: "#ffcc73", margin: "6px 0 0", fontSize: 14 }}>Direct messages and Harvey cloud inbox orders create durable records. Do not paste passwords, codes, tokens, recovery keys, or other secrets here.</p>
       <textarea
         ref={instructionRef}
         id="harvey-instruction"
@@ -453,8 +515,8 @@ export default function HarveyCommandDeck({ targets }: { targets: string[] }) {
           {displayedDirectDispatch.usage && <small data-testid="harvey-direct-usage" style={{ color: "#aeb6b0" }}>Current Codex account/quota usage: {displayedDirectDispatch.usage.input_tokens.toLocaleString()} input ({displayedDirectDispatch.usage.cached_input_tokens.toLocaleString()} cached) · {displayedDirectDispatch.usage.output_tokens.toLocaleString()} output tokens. Billing mode is uninspected; Harvey does not calculate dollars.</small>}
         </div>}
       </> : <>
-        <div role="status" aria-live="polite" data-testid="harvey-command-status" style={{ marginTop: 18, padding: 15, border: `1px solid ${stage === "ROUTE_BLOCKED" ? "#a55343" : stage === "RESULT_UNKNOWN" ? "#ae7d36" : stage === "QUEUED_LOCAL" ? "#497b59" : "#5a563d"}`, borderRadius: 11, background: "#0e1212" }}>
-          <strong style={{ color: stage === "ROUTE_BLOCKED" ? "#ff9a83" : stage === "RESULT_UNKNOWN" ? "#ffcc73" : stage === "QUEUED_LOCAL" ? "#8ef0ae" : "#ffda8a" }}>{stage === "ROUTE_BLOCKED" ? "BLOCKED — NOT SENT" : stage === "RESULT_UNKNOWN" ? "RESULT UNKNOWN — SAFE RETRY AVAILABLE" : stage === "QUEUED_LOCAL" ? "QUEUED LOCALLY — NOT SENT YET" : stage === "QUEUING" ? "WRITING ORDER" : "DRAFT"}</strong>
+        <div role="status" aria-live="polite" data-testid="harvey-command-status" style={{ marginTop: 18, padding: 15, border: `1px solid ${stage === "ROUTE_BLOCKED" ? "#a55343" : stage === "RESULT_UNKNOWN" ? "#ae7d36" : stage === "QUEUED_LOCAL" || stage === "QUEUED_CLOUD" ? "#497b59" : "#5a563d"}`, borderRadius: 11, background: "#0e1212" }}>
+          <strong style={{ color: stage === "ROUTE_BLOCKED" ? "#ff9a83" : stage === "RESULT_UNKNOWN" ? "#ffcc73" : stage === "QUEUED_LOCAL" || stage === "QUEUED_CLOUD" ? "#8ef0ae" : "#ffda8a" }}>{stage === "ROUTE_BLOCKED" ? "BLOCKED — NOT SENT" : stage === "RESULT_UNKNOWN" ? "RESULT UNKNOWN — SAFE RETRY AVAILABLE" : stage === "QUEUED_CLOUD" ? `DELIVERED TO HARVEY INBOXES · ${cloudCommandStatus || "QUEUED"}` : stage === "QUEUED_LOCAL" ? "QUEUED LOCALLY — NOT SENT YET" : stage === "QUEUING" ? "WRITING ORDER" : "DRAFT"}</strong>
           <p style={{ color: "#d6dbd7", margin: "7px 0 0", lineHeight: 1.5 }}>{message}</p>
           {workOrderId && <details style={{ marginTop: 8, color: "#89928c" }}><summary>Proof details</summary><code style={{ overflowWrap: "anywhere" }}>{workOrderId}</code></details>}
         </div>
