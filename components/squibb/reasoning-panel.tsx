@@ -16,7 +16,7 @@ export function ReasoningPanel({ reasoning, isExample = false }: ReasoningPanelP
         </div>
         {reasoning.translatedNeed ? (
           <div>
-            <dt>Squibb reads it as</dt>
+            <dt>{isExample ? "Example interpretation" : "Werkles rules read it as"}</dt>
             <dd>{reasoning.translatedNeed}</dd>
           </div>
         ) : null}

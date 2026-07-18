@@ -53,7 +53,8 @@ export function recommendationSessionFromMemberProfile(
     source: {
       mode: "authenticated_profile",
       label: "Private to this signed-in account",
-      detail: "Generated in memory from your own saved profile. Nothing is saved or sent."
+      detail:
+        "Werkles programming applied fixed written rules to your saved profile. No AI model generated this result. It was calculated in memory; nothing was saved or sent."
     }
   };
 }

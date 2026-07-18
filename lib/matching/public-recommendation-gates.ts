@@ -9,7 +9,7 @@ const REVIEW_GATE: HumanGateRequirement = {
   label: "Human review before action",
   kind: "operator_approval",
   severity: "blocker",
-  reason: "This automated suggestion cannot send, apply, introduce, commit, purchase, or decide anything on your behalf.",
+  reason: "This rules-based suggestion cannot send, apply, introduce, commit, purchase, or decide anything on your behalf.",
   benMustApprove: true
 };
 

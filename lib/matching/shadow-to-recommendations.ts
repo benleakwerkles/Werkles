@@ -15,7 +15,7 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
   const memberEvidenceSource = run.source === "member_profile" ? "Your saved profile" : "Your intake";
 
   const ranked: SquibbRecommendation[] = eligiblePaths.map((path) => ({
-    id: `automated-${path.kind}`,
+    id: `rules-ranked-${path.kind}`,
     kind: path.kind,
     rank: path.rank,
     title: RECOMMENDATION_KIND_LABELS[path.kind],
@@ -72,7 +72,7 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
   return {
     version: "v1",
     statedNeed: run.signals.statedNeed,
-    operatorContext: `Automated beta recommendation generated ${run.createdAt}.`,
+    operatorContext: `Rules-based recommendation calculated ${run.createdAt} from the information you provided.`,
     squibbIntro:
       "Werkles ranked these paths from what you entered. They are suggestions, not decisions, verified matches, or guaranteed outcomes.",
     source: {

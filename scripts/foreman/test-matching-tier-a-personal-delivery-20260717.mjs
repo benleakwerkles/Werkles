@@ -63,7 +63,8 @@ assert.match(personalBuilder, /llmUsed: false/);
 assert.match(personalBuilder, /receiptPath: ""/);
 assert.match(personalBuilder, /mode: "authenticated_profile"/);
 assert.match(personalBuilder, /Private to this signed-in account/);
-assert.match(personalBuilder, /Nothing is saved or sent/);
+assert.match(personalBuilder, /No AI model generated this result/);
+assert.match(personalBuilder, /nothing was saved or sent/);
 assert.doesNotMatch(personalBuilder, /persistShadowRun|writeFile|fetch\s*\(/);
 
 // Browser delivery keeps the anonymous example until an authenticated personal response succeeds.
