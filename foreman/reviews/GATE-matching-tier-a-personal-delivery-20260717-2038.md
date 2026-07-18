@@ -1,6 +1,6 @@
 # Tier 1 Gate — Matching Tier A Personal Delivery Preview
 
-**Status:** `APPROVED__IN_PROGRESS`
+**Status:** `COMPLETED__PREVIEW_READY`
 
 **Prepared:** `2026-07-17T20:38:27-04:00`
 
@@ -31,6 +31,8 @@ APPROVE MATCHING TIER A PERSONAL DELIVERY PREVIEW
 No shorthand, earlier Matching approval, or public-mode approval authorizes this personal-delivery build.
 
 **Approved:** `2026-07-17T20:47:54-04:00` with the exact phrase above. Recorded in `foreman/gates/APPROVAL_LOG.md`.
+
+**Completed:** `2026-07-17T21:06:36-04:00`. Product commit `a5b0216f34a493b7c8691e9d0a109216862755fe`; protected Preview deployment `dpl_8m2YBfGQKWAh4gpMhwLnRp1234uB` is `READY` with `target: null`. Production was not deployed, promoted, or aliased.
 
 ## What Tier A authorizes
 
@@ -114,6 +116,16 @@ No paid calls, packages, LLM use, image generation, or provider spend.
 ## Stop condition
 
 After approval: build, verify, push the isolated branch, deploy protected Preview, and hand Ben the direct test path. Stop before Production, SQL/schema/RLS, saving, LLM, external send, or any provider/account gate.
+
+## Completion proof
+
+- Lady Jessica + Ender completed the bounded product packet; Heimerdinker independently reviewed, tested, committed, pushed, deployed, and verified it.
+- Missing bearer returned `401`; forged invalid bearer plus a caller-supplied `userId` returned `401`; both personal responses were `private, no-store`.
+- The endpoint accepts no caller owner ID and fixes the read to `profiles.id = authenticated user.id` through the authenticated user-scoped Supabase client.
+- Anonymous desktop and phone Preview remained the example; 390 px had no horizontal overflow; no framework overlay or page error appeared.
+- Recommendation saving remained `403`, three save controls remained disabled, LLM stayed off, and no SQL/schema/RLS, service-role read, persistence, external delivery, or Production action occurred.
+- Focused Tier A and Matching VPG6/VPG8/VPG10/VPG11/VPG12/VPG13/VPG14 regressions, TypeScript typecheck, and the 81-page Next.js production build passed.
+- A real Ben-profile response was not observed headlessly because no valid Ben browser session was extracted or controlled. The protected direct path is ready for Ben to perform that one human test-subject observation.
 
 ## Responses
 

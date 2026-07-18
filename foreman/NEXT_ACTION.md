@@ -1,6 +1,6 @@
 ﻿# NEXT ACTION
 
-**Effective gate:** `[IN PROGRESS: MATCHING_TIER_A_PERSONAL_DELIVERY_PREVIEW]`
+**Effective gate:** `[PREVIEW READY: MATCHING_TIER_A_PERSONAL_DELIVERY]`
 
 Updated: 2026-07-17
 
@@ -31,15 +31,15 @@ Public mode label: `autonomous_matching` / **Autonomous Matching**.
 
 ### Next gates
 
-1. **`APPROVE MATCHING TIER A PERSONAL DELIVERY PREVIEW`** — APPROVED 2026-07-17; authenticated, profile-bound, in-memory result on localhost + protected Preview only. No schema, saving, or Production.
+1. **Matching Tier A personal delivery Preview** — COMPLETED 2026-07-17; protected Preview is READY at deployment `dpl_8m2YBfGQKWAh4gpMhwLnRp1234uB`. Ben's real signed-in profile observation is the remaining test-subject check, not crew hands.
 2. **`APPROVE MATCHING LLM TRANSLATE`** — optional; remains OFF until explicit approval.
 3. **Retention/deletion automation** — policy approved; member export UX + deletion job still gated.
 
 ---
 
-## Crew — current hands
+## Test subject — next check
 
-Lady Jessica + Ender build only the addressed Tier A packet. Heimerdinker reviews the scoped diff, runs authorization and Matching proofs, commits/pushes, deploys protected Preview, and gives Ben the direct test path. Tier B durable owner custody remains closed and separately gated.
+Open the protected Preview, sign in on that Preview origin if needed, and confirm the status changes from the truthful example to **Private to this signed-in account**. No command, copy/paste, schema work, or deployment is required from Ben. Tier B durable owner custody remains closed and separately gated.
 
 ---
 
