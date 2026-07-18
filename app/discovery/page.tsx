@@ -2,7 +2,6 @@ import Link from "next/link";
 import { DiscoveryIntakeForm } from "./discovery-intake-form";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
-import { discoveryStateValues } from "@/lib/discovery/schema";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 
 const deliverySections = [
@@ -29,7 +28,7 @@ export default function DiscoveryPage() {
             </p>
             <div className="hero-actions">
               <Link className="button button-light" href="#intake">Review the questions</Link>
-              <Link className="button button-ghost" href="#what-comes-back">What comes back</Link>
+              <Link className="button button-ghost" href="#what-comes-back">See what a reviewer returns</Link>
             </div>
           </div>
           <aside className="discovery-hero__panel" aria-label="Human-operated promise">
@@ -39,17 +38,11 @@ export default function DiscoveryPage() {
           </aside>
         </section>
 
-        <section className="discovery-state-strip" aria-label="Discovery state model">
-          {discoveryStateValues.map((state) => (
-            <span key={state}>{state}</span>
-          ))}
-        </section>
-
         <section id="intake" className="discovery-layout" aria-label="Discovery intake form">
           <article className="discovery-card discovery-card--form">
             <div className="card-heading">
-              <p>Layer 0</p>
-              <h2>The raw starting point</h2>
+              <p>Your starting point</p>
+              <h2>Tell us where things stand.</h2>
             </div>
             <DiscoveryIntakeForm />
           </article>

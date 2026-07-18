@@ -133,9 +133,8 @@ export const copy = {
   bellows: {
     eyebrow: "Bellows",
     headline: "Learn how the floor actually works.",
-    body:
-      "Practical lessons, SOPs, and anti-guru operator knowledge. Squibb hosts — no guru fog, no pretend certainty.",
-    shellNote: "Route shell only — full Bellows curriculum ships after separate approval.",
+    body: "Practical lessons and shop-floor know-how, hosted by Squibb.",
+    shellNote: "Compare possible next steps here. Proof and human judgment still come before action.",
     host: "Hosted by Squibb"
   },
   onboarding: {

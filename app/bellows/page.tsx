@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
 import { narrativeArcAttribution, getNarrativeAct } from "@/lib/narrative-arc";
-import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED, renderBatch4AttributionNote } from "@/lib/render-batch-4-imagery";
+import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED } from "@/lib/render-batch-4-imagery";
 
 export default function BellowsPage() {
   const foundryAct = getNarrativeAct("/proof");
@@ -25,16 +25,10 @@ export default function BellowsPage() {
             <p className="trust-badge">{copy.bellows.shellNote}</p>
             <div className="actions" style={{ marginTop: "1rem" }}>
               <Link className="button button-dark" href="/bellows/intake">
-                Start concierge intake
+                Review the intake
               </Link>
               <Link className="button button-dark" href="/bellows/recommendations">
-                See Squibb recommendations
-              </Link>
-              <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
-                Walk through an example
-              </Link>
-              <Link className="button button-outline" href="/proof">
-                Inspect proof first
+                See recommendations
               </Link>
             </div>
           </div>
@@ -48,7 +42,7 @@ export default function BellowsPage() {
                 className="bellows-hero__squibb-photo"
                 priority
               />
-              <figcaption>Squibb hosts — draft exploration, not canonical cutout</figcaption>
+              <figcaption>Squibb hosts practical lessons from the workshop floor.</figcaption>
             </figure>
           ) : null}
         </section>
@@ -65,7 +59,7 @@ export default function BellowsPage() {
                   height={600}
                   className="bellows-squibb-gallery__photo"
                 />
-                <figcaption>Lesson card host — anti-guru, operator scale</figcaption>
+                <figcaption>A practical lesson, kept close to the work.</figcaption>
               </figure>
               <figure>
                 <Image
@@ -75,13 +69,9 @@ export default function BellowsPage() {
                   height={720}
                   className="bellows-squibb-gallery__photo"
                 />
-                <figcaption>Wide host scene — Bellows curriculum direction</figcaption>
+                <figcaption>Questions, notes, and the next useful step.</figcaption>
               </figure>
             </div>
-            <p className="bellows-squibb-gallery__note" role="note">
-              {renderBatch4AttributionNote} Compare against manual cutout path in{" "}
-              <code>public/assets/mascot/README.md</code>.
-            </p>
           </section>
         ) : null}
 
@@ -89,8 +79,8 @@ export default function BellowsPage() {
           <p className="eyebrow">First useful path</p>
           <h2 id="bellowsPathTitle">Intake first, recommendation second, proof always visible.</h2>
           <p>
-            Bellows should not start by asking which service you want. It starts with the heaviest thing you are trying
-            to lift, formats that into a Speaker-readable packet, then shows Squibb's reversible next-step options.
+            Start with the heaviest thing you are trying to lift. Bellows shapes it into a short summary a human
+            reviewer can understand, then shows a few reversible next steps.
           </p>
           <div className="actions" style={{ marginTop: "1rem" }}>
             <Link className="button button-outline" href="/bellows/recommendations">

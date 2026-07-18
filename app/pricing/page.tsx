@@ -4,7 +4,6 @@ import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { PricingTable } from "@/components/pricing/pricing-table";
 import { copy } from "@/lib/copy";
-import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 
 export default function PricingPage() {
@@ -24,8 +23,8 @@ export default function PricingPage() {
       <section className="ops-card pricing-section" aria-label="Pricing note">
         <p className="muted">
           {checkoutPaused
-            ? "Foundry Dues checkout is paused while operator payment setup finishes. Pricing stays visible so you can compare plans before dues return."
-            : "Test-mode Foundry Dues checkout is open on /membership. Live Stripe keys and live checkout stay gated."}
+            ? "Paid checkout is paused. Compare plans or continue free; live payments remain behind a human gate."
+            : "Checkout preview is available. No live payment is taken; live payments remain behind a human gate."}
         </p>
       </section>
 
@@ -33,7 +32,7 @@ export default function PricingPage() {
         <div className="tier2-page-header__copy membership-hero pricing-hero">
           <p className="eyebrow">{copy.pricing.eyebrow}</p>
           <h1>{copy.pricing.headline}</h1>
-          <p>{copy.pricing.subhead} Source of truth: {pricing.source}.</p>
+          <p>{copy.pricing.subhead}</p>
         </div>
       </section>
 

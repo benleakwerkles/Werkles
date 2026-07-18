@@ -3,32 +3,34 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { isAuthStripeTestBlocked, isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
-import { productGateTestCheckoutPreflight } from "@/lib/product-human-gates";
 import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getClientAccessToken } from "@/lib/client-auth";
 
 type Plan = "monthly" | "annual";
 
+const CHECKOUT_PREVIEW_MESSAGE =
+  "Checkout preview is available. No live payment is taken; live payments remain behind a human gate.";
+const CHECKOUT_PAUSED_MESSAGE =
+  "Paid checkout is paused. Compare plans or continue free; live payments remain behind a human gate.";
+const CHECKOUT_UNAVAILABLE_MESSAGE =
+  "Paid checkout is unavailable here. Compare plans or continue free; live payments remain behind a human gate.";
+
 export default function MembershipPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = shouldUseDevPreviewAuth();
   const paymentsPaused = !devPreview && isFoundryDuesCheckoutPaused();
-  const [status, setStatus] = useState(
-    previewBlocked
-      ? copy.infraPreview.membershipCheckout
-      : devPreview
-        ? copy.localPreview.membershipIdle
-        : paymentsPaused
-          ? "Foundry Dues checkout is paused while operator payment setup finishes."
-          : "Test-mode Foundry Dues checkout is open. Live keys stay gated."
-  );
+  const availabilityMessage = previewBlocked
+    ? CHECKOUT_UNAVAILABLE_MESSAGE
+    : paymentsPaused
+      ? CHECKOUT_PAUSED_MESSAGE
+      : CHECKOUT_PREVIEW_MESSAGE;
+  const [status, setStatus] = useState(availabilityMessage);
   const [highlightPlan, setHighlightPlan] = useState<Plan | null>(null);
 
   useEffect(() => {
@@ -40,33 +42,27 @@ export default function MembershipPage() {
     if (plan === "monthly" || plan === "annual") {
       setHighlightPlan(plan);
       const planLabel = plan === "annual" ? copy.membership.annual : copy.membership.monthly;
-      setStatus(
-        previewBlocked
-          ? `${copy.infraPreview.membershipCheckout} Highlighting ${planLabel}.`
-          : devPreview
-            ? `${copy.localPreview.membershipIdle} Highlighting ${planLabel}.`
-            : `Showing ${planLabel} from dues.`
-      );
+      setStatus(`${planLabel} selected. ${availabilityMessage}`);
     }
-  }, [previewBlocked, devPreview]);
+  }, [availabilityMessage]);
 
   async function startCheckout(plan: Plan) {
     if (paymentsPaused) {
-      setStatus("Foundry Dues checkout is paused while operator payment setup finishes.");
+      setStatus(CHECKOUT_PAUSED_MESSAGE);
       return;
     }
     if (previewBlocked) {
-      setStatus(copy.infraPreview.membershipCheckout);
+      setStatus(CHECKOUT_UNAVAILABLE_MESSAGE);
       return;
     }
 
     if (devPreview) {
-      setStatus(copy.localPreview.membershipCheckoutMock);
+      setStatus("Opening the checkout preview.");
       window.location.href = `/membership/success?preview=1&plan=${plan}`;
       return;
     }
 
-    setStatus("Opening Stripe checkout.");
+    setStatus("Opening the checkout preview.");
     const token = await getClientAccessToken();
 
     if (!token) {
@@ -95,12 +91,12 @@ export default function MembershipPage() {
   const monthlyFeatured = highlightPlan === null || highlightPlan === "monthly";
   const annualFeatured = highlightPlan === "annual";
   const checkoutLabel = previewBlocked
-    ? "Checkout disabled (preview)"
+    ? "Checkout unavailable"
     : devPreview
-      ? "Mock checkout (preview)"
+      ? "Preview checkout"
       : paymentsPaused
         ? "Checkout paused"
-        : copy.membership.checkout;
+        : "Continue to checkout";
   const checkoutDisabled = previewBlocked || paymentsPaused;
 
   return (
@@ -114,25 +110,6 @@ export default function MembershipPage() {
         <Link href="/pricing">{copy.nav.pricing}</Link>
         <Link href="/proof">Proof</Link>
       </nav>
-
-      <RouteUnlockBanner blockedDetail={copy.infraPreview.membershipCheckout} />
-
-      {!checkoutDisabled && !devPreview ? (
-        <section className="ops-card membership-preflight" aria-label="Before you click checkout">
-          <div className="card-heading">
-            <p>Read first</p>
-            <h2>Before you click Pay</h2>
-          </div>
-          <ol>
-            {productGateTestCheckoutPreflight.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
-          <p className="muted">
-            <Link href="/operator/gate-knockout/test-checkout-smoke">Full test checkout smoke runbook</Link>
-          </p>
-        </section>
-      ) : null}
 
       <section className="tier2-page-header">
         <div className="tier2-page-header__copy membership-hero">
@@ -223,28 +200,6 @@ export default function MembershipPage() {
         <p>{copy.membership.trust}</p>
         <p className="membership-squibb-hint">{copy.squibb.membership}</p>
         <p className="status-line" role="status">{status}</p>
-      </section>
-
-      <section className="ops-card membership-trust" aria-label="Payments paused">
-        <div className="card-heading">
-          <p>Foundry Dues</p>
-          <h2>Payments are paused while operator setup finishes.</h2>
-        </div>
-        <p>
-          Werkles still works on the free path: account, profile, onboarding, and member surfaces stay open. Foundry
-          Dues checkout returns when payment wiring is cleared — not because the workshop stopped.
-        </p>
-        <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href="/dashboard">
-            Go to member home
-          </Link>
-          <Link className="button button-outline" href="/dashboard/profile">
-            Update profile
-          </Link>
-          <Link className="button button-outline" href="/proof">
-            Inspect proof
-          </Link>
-        </div>
       </section>
       </main>
     </CockpitShell>
