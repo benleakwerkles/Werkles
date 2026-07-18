@@ -249,7 +249,7 @@ export function signalsFromDocumentText(intakeId: string, title: string, body: s
   const blob = [cleanedTitle, cleanedBody].filter(Boolean).join(". ");
 
   return buildSignals(
-    "discovery",
+    "operator_document",
     intakeId,
     statedNeed,
     blob,

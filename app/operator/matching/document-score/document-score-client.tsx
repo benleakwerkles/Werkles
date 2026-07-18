@@ -12,10 +12,12 @@ const EMPTY_LEDGER: BellowsPacketLedger = { intakes: [], optionPackets: [] };
 
 type ScoreboardRow = {
   kind: string;
+  label: string;
   rank: number;
   score: number;
   disqualified: boolean;
-  confidenceLabel: string;
+  ruleSupportBand: string;
+  why: string;
 };
 
 type DocumentScoreResponse = {
@@ -23,7 +25,7 @@ type DocumentScoreResponse = {
   session?: SquibbRecommendationSession;
   run_id?: string;
   persisted?: boolean;
-  eligible_count?: number;
+  not_ruled_out_count?: number;
   scoreboard?: ScoreboardRow[];
 };
 
@@ -50,7 +52,7 @@ export function DocumentScoreClient() {
   const [error, setError] = useState<string | null>(null);
   const [session, setSession] = useState<SquibbRecommendationSession | null>(null);
   const [scoreboard, setScoreboard] = useState<ScoreboardRow[]>([]);
-  const [meta, setMeta] = useState<{ runId: string; eligibleCount: number } | null>(null);
+  const [meta, setMeta] = useState<{ runId: string; notRuledOutCount: number } | null>(null);
   const resultsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -84,7 +86,7 @@ export function DocumentScoreClient() {
       setScoreboard(rows);
       setMeta({
         runId: result.run_id || "local",
-        eligibleCount: result.eligible_count ?? result.session.ranked.length
+        notRuledOutCount: result.not_ruled_out_count ?? result.session.ranked.length
       });
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "The document could not be scored.");
@@ -150,33 +152,39 @@ export function DocumentScoreClient() {
           </div>
           {meta ? (
             <p className="doc-score__meta">
-              Not saved · {meta.eligibleCount} eligible · run <code>{meta.runId}</code>
+              Not saved · {meta.notRuledOutCount} paths not ruled out by these rules · run <code>{meta.runId}</code>
             </p>
           ) : null}
+          <p className="doc-score__limit" role="note">
+            These scores show how strongly the current rules react to this paste. They are not probabilities, accuracy
+            ratings, eligibility decisions, verification, or predicted outcomes. A path not ruled out still requires
+            the human and proof checks shown below.
+          </p>
           {scoreboard.length > 0 ? (
             <div className="doc-score__table-wrap">
               <table className="doc-score__table">
+                <caption className="sr-only">Rules scores and limits for the pasted document</caption>
                 <thead>
                   <tr>
                     <th scope="col">Rank</th>
                     <th scope="col">Path</th>
                     <th scope="col">Rules score</th>
-                    <th scope="col">Band</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Rule-support band</th>
+                    <th scope="col">Rule filter</th>
+                    <th scope="col">Why this row</th>
                   </tr>
                 </thead>
                 <tbody>
                   {scoreboard.map((row) => (
                     <tr key={row.kind} className={row.disqualified ? "doc-score__row--out" : undefined}>
                       <td>{row.rank}</td>
-                      <td>
-                        <code>{row.kind}</code>
-                      </td>
+                      <td>{row.label}</td>
                       <td>
                         <strong>{Math.round(row.score)} out of 100</strong>
                       </td>
-                      <td>{row.confidenceLabel}</td>
-                      <td>{row.disqualified ? "Ruled out" : "Eligible"}</td>
+                      <td>{row.ruleSupportBand}</td>
+                      <td>{row.disqualified ? "Ruled out" : "Not ruled out"}</td>
+                      <td className="doc-score__why">{row.why}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -187,7 +195,7 @@ export function DocumentScoreClient() {
           )}
           {session && session.ranked.length === 0 ? (
             <p className="doc-score__empty" role="status">
-              Every path was ruled out. The scoreboard above is still the complete result.
+              Every path was ruled out by these rules. The scoreboard above is still the complete result.
             </p>
           ) : null}
         </section>

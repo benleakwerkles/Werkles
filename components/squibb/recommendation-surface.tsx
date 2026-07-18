@@ -47,8 +47,10 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
   };
   const isExample = source.mode === "demo";
   const isPersonal = source.mode === "authenticated_profile";
+  const isEphemeralDocument = source.mode === "ephemeral_document";
   const hasRecordedActivity = ledger.intakes.length > 0 || optionPackets.length > 0;
-  const showActivityLedger = hasRecordedActivity || (!isExample && !isPersonal);
+  const showActivityLedger =
+    !isEphemeralDocument && (hasRecordedActivity || (!isExample && !isPersonal));
 
   const activeList = view === "ranked" ? session.ranked : session.catalog;
 

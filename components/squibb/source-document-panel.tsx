@@ -45,7 +45,9 @@ export function SourceDocumentPanel({ source, selectedKind }: SourceDocumentPane
               ))}
             </ul>
           ) : (
-            <p className="squibb-fed-doc__empty">No individual lines are tagged to this option yet.</p>
+            <p className="squibb-fed-doc__empty">
+              This pass scored the document as a whole. A line-by-line trace is not available.
+            </p>
           )}
         </div>
       </div>

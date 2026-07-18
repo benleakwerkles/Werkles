@@ -84,7 +84,7 @@ export interface SquibbRecommendationSession {
 }
 
 export type SquibbRecommendationSessionSource = {
-  mode: "demo" | "latest_intake" | "authenticated_profile";
+  mode: "demo" | "latest_intake" | "authenticated_profile" | "ephemeral_document";
   label: string;
   detail: string;
   intakeId?: string;

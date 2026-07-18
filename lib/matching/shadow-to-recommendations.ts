@@ -12,7 +12,12 @@ import {
 export function shadowRunToRecommendationSession(run: ShadowMatchingRun): SquibbRecommendationSession {
   const card = run.readout.recommendationCard;
   const eligiblePaths = eligiblePublicMatchingPaths(run.readout.scoredPaths);
-  const memberEvidenceSource = run.source === "member_profile" ? "Your saved profile" : "Your intake";
+  const memberEvidenceSource =
+    run.source === "member_profile"
+      ? "Your saved profile"
+      : run.source === "operator_document"
+        ? "Pasted document"
+        : "Your intake";
 
   const ranked: SquibbRecommendation[] = eligiblePaths.map((path) => ({
     id: `rules-ranked-${path.kind}`,
@@ -76,7 +81,7 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
     squibbIntro:
       "Werkles ranked these paths from what you entered. They are suggestions, not decisions, verified matches, or guaranteed outcomes.",
     source: {
-      mode: "latest_intake",
+      mode: run.source === "operator_document" ? "ephemeral_document" : "latest_intake",
       label: "Werkles rules-based recommendation",
       detail:
         "The recommendation itself is not a verified match, eligibility or funding decision, introduction, or guaranteed outcome. Evidence labels may be incomplete. Werkles has not sent this to anyone.",

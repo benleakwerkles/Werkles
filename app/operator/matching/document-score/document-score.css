@@ -49,6 +49,15 @@
   font-size: 0.85rem;
 }
 
+.doc-score__limit {
+  max-width: 62rem;
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid #e8b878;
+  color: #f0e6d0;
+  background: rgb(232 184 120 / 8%);
+}
+
 .doc-score__meta code {
   font-family: Consolas, "Courier New", monospace;
 }
@@ -59,9 +68,15 @@
 
 .doc-score__table {
   width: 100%;
-  min-width: 38rem;
+  min-width: 58rem;
   border-collapse: collapse;
   font-size: 0.92rem;
+}
+
+.doc-score__why {
+  min-width: 18rem;
+  max-width: 30rem;
+  line-height: 1.45;
 }
 
 .doc-score__table th,
