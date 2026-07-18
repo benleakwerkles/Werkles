@@ -13,42 +13,75 @@ const PRIVATE_HEADERS = {
   "Cache-Control": "no-store",
   "X-Robots-Tag": "noindex, nofollow, noarchive"
 };
+const MAX_REQUEST_BYTES = 24_000;
 
 const INTERNAL_EXPLANATION_LANGUAGE =
   /Layer 0|not-match|shadow|\b(?:Automated|Autonomous)\b|\bRule\s+\d+\b/i;
 
-function safeRowExplanation(value: string | undefined, fallback: string) {
-  const candidate = value?.trim();
-  if (!candidate || INTERNAL_EXPLANATION_LANGUAGE.test(candidate)) return fallback;
-  return candidate.length > 240 ? `${candidate.slice(0, 237).trimEnd()}...` : candidate;
+function safeRowExplanation(values: Array<string | undefined>, fallback: string) {
+  for (const value of values) {
+    const candidate = value?.trim();
+    if (!candidate || INTERNAL_EXPLANATION_LANGUAGE.test(candidate)) continue;
+    return candidate.length > 240 ? `${candidate.slice(0, 237).trimEnd()}...` : candidate;
+  }
+  return fallback;
+}
+
+function privateJson(body: unknown, status = 200) {
+  return NextResponse.json(body, { status, headers: PRIVATE_HEADERS });
+}
+
+function isJsonRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 /** Internal, ephemeral score proof. The pasted document is never persisted. */
 export async function POST(request: NextRequest) {
-  try {
-    const input = (await request.json()) as { title?: unknown; body?: unknown };
-    const title = String(input.title ?? "").trim().slice(0, 200);
-    const documentBody = String(input.body ?? "").trim();
+  const contentType = request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase();
+  if (contentType !== "application/json") {
+    return privateJson({ error: "Send this request as JSON." }, 415);
+  }
 
-    if (documentBody.length < 40) {
-      return NextResponse.json(
-        { error: "Paste at least 40 characters." },
-        { status: 400, headers: PRIVATE_HEADERS }
+  const contentLength = Number(request.headers.get("content-length"));
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+    return privateJson({ error: "Keep the request under 24,000 bytes." }, 413);
+  }
+
+  try {
+    let input: unknown;
+    try {
+      input = await request.json();
+    } catch {
+      return privateJson({ error: "Send valid JSON." }, 400);
+    }
+
+    if (
+      !isJsonRecord(input) ||
+      typeof input.body !== "string" ||
+      (input.title !== undefined && typeof input.title !== "string")
+    ) {
+      return privateJson({ error: "Provide a document body and an optional text title." }, 400);
+    }
+    if (input.custody_confirmed !== true) {
+      return privateJson(
+        { error: "Confirm that you are authorized to use a redacted copy of this document." },
+        400
       );
     }
+
+    const title = (input.title ?? "").trim().slice(0, 200);
+    const documentBody = input.body.trim();
+
+    if (documentBody.length < 40) {
+      return privateJson({ error: "Paste at least 40 characters." }, 400);
+    }
     if (documentBody.length > 20_000) {
-      return NextResponse.json(
-        { error: "Keep the document under 20,000 characters." },
-        { status: 413, headers: PRIVATE_HEADERS }
-      );
+      return privateJson({ error: "Keep the document under 20,000 characters." }, 413);
     }
 
     const run = await runEphemeralMatchingFromDocument({ title, body: documentBody });
     if (!run) {
-      return NextResponse.json(
-        { error: "Matching rules are disabled." },
-        { status: 503, headers: PRIVATE_HEADERS }
-      );
+      return privateJson({ error: "Matching rules are disabled." }, 503);
     }
 
     const session = shadowRunToRecommendationSession(run);
@@ -59,26 +92,16 @@ export async function POST(request: NextRequest) {
       ...session.source,
       mode: "ephemeral_document",
       label: "Document score",
-      detail: "Rules-only score from this paste. The document was not saved or sent anywhere.",
-      fedDocument: {
-        id: run.intakeId,
-        title: title || "Pasted document",
-        kind: "uploaded_document",
-        summary: "The document used for this one-time score.",
-        body: documentBody,
-        excerpts: []
-      }
+      detail:
+        "Processed once in memory by this internal Werkles endpoint. This feature does not persist the paste or forward it to an AI provider or external recipient."
     };
 
-    const deliveredByKind = new Map(session.catalog.map((recommendation) => [recommendation.kind, recommendation]));
     const scoreboard = run.readout.scoredPaths
       .map((path) => {
         const disqualified = Boolean(path.disqualified);
         const fallback = disqualified
           ? "The current rules held this path for more proof or human review."
           : "The current rules found some support for this path in the paste.";
-        const deliveredReason = deliveredByKind.get(path.kind)?.reasoning.rationale.find(Boolean);
-
         return {
           kind: path.kind,
           label: RECOMMENDATION_KIND_LABELS[path.kind],
@@ -86,12 +109,15 @@ export async function POST(request: NextRequest) {
           score: path.score,
           disqualified,
           ruleSupportBand: path.confidenceLabel,
-          why: safeRowExplanation(disqualified ? path.disqualifyReason : deliveredReason, fallback)
+          why: safeRowExplanation(
+            disqualified ? [path.disqualifyReason, ...path.rationale] : path.rationale,
+            fallback
+          )
         };
       })
       .sort((left, right) => left.rank - right.rank || right.score - left.score);
 
-    return NextResponse.json(
+    return privateJson(
       {
         success: true,
         run_id: run.runId,
@@ -100,11 +126,9 @@ export async function POST(request: NextRequest) {
         scoreboard,
         not_ruled_out_count: session.ranked.length,
         smoke: shadowRunSmokeSummary(run)
-      },
-      { headers: PRIVATE_HEADERS }
+      }
     );
-  } catch (caught) {
-    const message = caught instanceof Error ? caught.message : "The document could not be scored.";
-    return NextResponse.json({ error: message }, { status: 500, headers: PRIVATE_HEADERS });
+  } catch {
+    return privateJson({ error: "The document could not be scored." }, 500);
   }
 }

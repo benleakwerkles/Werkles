@@ -34,6 +34,31 @@
   margin-top: 0.85rem;
 }
 
+.doc-score__custody-warning {
+  max-width: 62rem;
+  margin: 0.85rem 0 0.65rem;
+  color: #e7cf9f;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.doc-score__custody-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  max-width: 62rem;
+  color: #faf6eb;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.doc-score__custody-check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.12rem;
+  accent-color: #e8b878;
+}
+
 .doc-score__error {
   color: #e8a0a0;
   font-weight: 600;
@@ -58,12 +83,32 @@
   background: rgb(232 184 120 / 8%);
 }
 
+.doc-score__key {
+  max-width: 62rem;
+  margin: 0 0 0.7rem;
+  color: #d2c4a8;
+  line-height: 1.5;
+}
+
+.doc-score__scroll-cue {
+  display: none;
+  margin: 0 0 0.55rem;
+  color: #e8b878;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 .doc-score__meta code {
   font-family: Consolas, "Courier New", monospace;
 }
 
 .doc-score__table-wrap {
   overflow-x: auto;
+}
+
+.doc-score__table-wrap:focus-visible {
+  outline: 3px solid #e8b878;
+  outline-offset: 3px;
 }
 
 .doc-score__table {
@@ -87,14 +132,19 @@
   text-align: left;
 }
 
-.doc-score__table th {
+.doc-score__table thead th {
   color: #e8b878;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.doc-score__row--out td {
+.doc-score__path {
+  color: #f0e6d0;
+  font-weight: 700;
+}
+
+.doc-score__row--out > * {
   opacity: 0.55;
 }
 
@@ -105,4 +155,10 @@
 
 .doc-score__result {
   margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .doc-score__scroll-cue {
+    display: block;
+  }
 }
