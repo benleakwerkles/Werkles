@@ -5,6 +5,11 @@
     "target": "preview",
     "ready_state": "READY"
   },
+  "provenance_source": {
+    "type": "github",
+    "github_org": "benleakwerkles",
+    "github_repo": "Werkles"
+  },
   "required_app_paths": [
     "/page",
     "/auth/callback/page",

@@ -7,6 +7,10 @@ import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { copy } from "@/lib/copy";
 import { deriveAccessWeight } from "@/lib/access-weight-client";
 import {
+  PUBLIC_TEST_PROVIDER_ACTIONS_CLOSED_MESSAGE,
+  PUBLIC_TEST_PROVIDER_ACTIONS_OPEN
+} from "@/lib/app-infra-preview";
+import {
   PRIMARY_GOAL_SUGGESTIONS,
   PROFILE_LANE_OPTIONS,
   PROFILE_VISIBILITY_OPTIONS,
@@ -43,6 +47,11 @@ type ProfileRow = {
   blueprint_narrative?: string;
 };
 
+type ProfileAuthState = "checking" | "signed_out" | "signed_in" | "unavailable";
+
+const recommendationSignalGuidance =
+  "Add one Primary goal, Blueprint narrative, or Skills sought entry to unlock your private recommendation.";
+
 function splitTags(value: FormDataEntryValue | null) {
   return String(value || "")
     .split(",")
@@ -61,6 +70,7 @@ export default function ProfilePage() {
   const [email, setEmail] = useState<string | null>(null);
   const [recommendationReady, setRecommendationReady] = useState(false);
   const [recommendationReturnPath, setRecommendationReturnPath] = useState("/bellows/recommendations");
+  const [profileAuthState, setProfileAuthState] = useState<ProfileAuthState>("checking");
 
   useEffect(() => {
     async function loadProfile() {
@@ -72,15 +82,23 @@ export default function ProfilePage() {
 
       try {
         supabase = getSupabaseBrowser();
-      } catch (error) {
-        setStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+      } catch {
+        setProfileAuthState("unavailable");
+        setStatus("Profile Builder could not connect. Try again shortly.");
         return;
       }
 
-      const { data: userData } = await supabase.auth.getUser();
+      const { data: userData, error: authError } = await supabase.auth.getUser();
+
+      if (authError) {
+        setProfileAuthState("unavailable");
+        setStatus("Profile Builder could not confirm your account. Try signing in again.");
+        return;
+      }
 
       if (!userData.user) {
-        setStatus("Log in before creating a production profile.");
+        setProfileAuthState("signed_out");
+        setStatus("Sign in or create an account to build your production profile.");
         return;
       }
 
@@ -93,13 +111,15 @@ export default function ProfilePage() {
         .maybeSingle();
 
       if (error) {
-        setStatus(error.message);
+        setProfileAuthState("signed_in");
+        setStatus("Your profile could not be loaded. Try again.");
         return;
       }
 
       const loadedProfile = data || {};
       setProfile(loadedProfile);
       setRecommendationReady(hasUsableMemberProfileSignal(loadedProfile));
+      setProfileAuthState("signed_in");
       setStatus(data ? "Profile loaded." : "Create your first production profile.");
     }
 
@@ -112,14 +132,15 @@ export default function ProfilePage() {
 
     try {
       supabase = getSupabaseBrowser();
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+    } catch {
+      setStatus("Profile Builder could not connect. Try again shortly.");
       return;
     }
 
     const { data: userData } = await supabase.auth.getUser();
 
     if (!userData.user) {
+      setProfileAuthState("signed_out");
       setStatus("Log in before saving.");
       return;
     }
@@ -160,12 +181,17 @@ export default function ProfilePage() {
 
     const { error } = await supabase.from("profiles").upsert(row);
     if (error) {
-      setStatus(error.message);
+      setStatus("Profile could not be saved. Try again.");
       return;
     }
 
-    setRecommendationReady(hasUsableMemberProfileSignal(row));
-    setStatus("Profile saved.");
+    const isRecommendationReady = hasUsableMemberProfileSignal(row);
+    setRecommendationReady(isRecommendationReady);
+    setStatus(
+      isRecommendationReady
+        ? "Profile saved. Your private recommendation is ready."
+        : `Profile saved. ${recommendationSignalGuidance}`
+    );
   }
 
   async function triggerVerification(kind: "identity" | "funds") {
@@ -197,6 +223,8 @@ export default function ProfilePage() {
     setVerificationStatus(payload.error || payload.label || copy.verification.prepared);
   }
 
+  const encodedRecommendationReturnPath = encodeURIComponent(recommendationReturnPath);
+
   return (
     <CockpitShell>
       <main className="dashboard-main">
@@ -206,6 +234,38 @@ export default function ProfilePage() {
         <Link href="/dashboard/intros">Intros</Link>
       </nav>
 
+      {profileAuthState === "checking" || profileAuthState === "unavailable" ? (
+        <section className="ops-card" aria-labelledby="profileAuthStatusTitle">
+          <div className="card-heading">
+            <p>Profile Builder</p>
+            <h1 id="profileAuthStatusTitle">
+              {profileAuthState === "checking" ? "Checking your account…" : "Profile Builder is unavailable."}
+            </h1>
+          </div>
+          <p className="status-line" role={profileAuthState === "unavailable" ? "alert" : "status"}>{status}</p>
+        </section>
+      ) : null}
+
+      {profileAuthState === "signed_out" ? (
+        <section className="ops-card" aria-labelledby="profileSignInTitle">
+          <div className="card-heading">
+            <p>Profile Builder</p>
+            <h1 id="profileSignInTitle">Sign in before adding profile details.</h1>
+          </div>
+          <p>Your profile stays attached to your account. We will return you to the recommendation you came for.</p>
+          <div className="profile-actions">
+            <Link className="button button-dark" href={`/signup?next=${encodedRecommendationReturnPath}`}>
+              Create account
+            </Link>
+            <Link className="button button-outline" href={`/login?next=${encodedRecommendationReturnPath}`}>
+              Sign in
+            </Link>
+            <p className="status-line" role="status">{status}</p>
+          </div>
+        </section>
+      ) : null}
+
+      {profileAuthState === "signed_in" ? (
       <section className="ops-card profile-editor">
         <div className="profile-builder-intro">
           <div className="profile-builder-intro__copy">
@@ -384,11 +444,19 @@ export default function ProfilePage() {
                 See my private recommendation
               </Link>
             ) : null}
+            <p className="profile-field-help">
+              {recommendationReady
+                ? "Your profile has enough detail for a private recommendation."
+                : recommendationSignalGuidance}
+            </p>
             <p className="status-line" role="status">{status}</p>
           </div>
         </form>
       </section>
+      ) : null}
 
+      {profileAuthState === "signed_in" ? (
+      <>
       <section className="ops-card" aria-label="Member floor map">
         <div className="card-heading">
           <p>Member floor</p>
@@ -421,18 +489,34 @@ export default function ProfilePage() {
         </div>
         <p>{copy.dashboard.profile.verificationBody}</p>
         <p className="muted">
-          Verification is optional and separate from Foundry Dues. Provider wiring may be paused — profile and Crucible
-          surfaces still show readiness without pretending a check ran.
+          {PUBLIC_TEST_PROVIDER_ACTIONS_OPEN
+            ? "Verification is optional and separate from Foundry Dues."
+            : `${PUBLIC_TEST_PROVIDER_ACTIONS_CLOSED_MESSAGE} No provider session will start and no verification status will change.`}
         </p>
         <div className="verification-actions">
-          <button className="button button-outline" type="button" onClick={() => triggerVerification("identity")}>
-            Prepare ID Check
-          </button>
-          <button className="button button-outline" type="button" onClick={() => triggerVerification("funds")}>
-            Prepare Asset Check
-          </button>
+          {PUBLIC_TEST_PROVIDER_ACTIONS_OPEN ? (
+            <>
+              <button className="button button-outline" type="button" onClick={() => triggerVerification("identity")}>
+                Prepare ID Check
+              </button>
+              <button className="button button-outline" type="button" onClick={() => triggerVerification("funds")}>
+                Prepare Asset Check
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="button button-outline" type="button" disabled>
+                ID Check — closed
+              </button>
+              <button className="button button-outline" type="button" disabled>
+                Asset Check — closed
+              </button>
+            </>
+          )}
         </div>
-        <p className="status-line" role="status">{verificationStatus}</p>
+        <p className="status-line" role="status">
+          {PUBLIC_TEST_PROVIDER_ACTIONS_OPEN ? verificationStatus : PUBLIC_TEST_PROVIDER_ACTIONS_CLOSED_MESSAGE}
+        </p>
       </section>
 
       <section className="ops-card deep-audit-card">
@@ -448,6 +532,8 @@ export default function ProfilePage() {
           Status: {profile.deep_audit_status || "none"}. {copy.deepAudit.placeholder}
         </p>
       </section>
+      </>
+      ) : null}
       </main>
     </CockpitShell>
   );

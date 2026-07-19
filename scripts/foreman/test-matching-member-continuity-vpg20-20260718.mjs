@@ -35,8 +35,7 @@ const recommendationNav = recommendationPage.slice(
   recommendationPage.indexOf('<nav className="squibb-rec-page__nav"'),
   recommendationPage.indexOf("</nav>")
 );
-assert.match(recommendationNav, /href="\/dashboard\/profile\?next=%2Fbellows%2Frecommendations"/);
-assert.match(recommendationNav, />\s*Profile\s*</);
+assert.doesNotMatch(recommendationNav, /\/dashboard\/profile|>\s*Profile\s*</);
 assert.doesNotMatch(recommendationNav, /\/bellows\/intake|Review the intake|Your profile|Edit profile/);
 
 const signedOut = delivery.slice(
@@ -95,7 +94,7 @@ console.log(
     {
       pass: true,
       checks: [
-        "recommendation_nav_is_profile_first",
+        "recommendation_nav_has_no_anonymous_profile_shortcut",
         "signed_out_entry_offers_signin_and_signup",
         "exact_return_allowlist_remains_closed",
         "login_signup_links_share_one_encoded_destination",

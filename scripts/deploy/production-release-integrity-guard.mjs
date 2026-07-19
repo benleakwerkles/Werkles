@@ -22,6 +22,7 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
   const checks = emptyChecks();
   const headSha = normalizeSha(input.headSha);
   const approvedSha = normalizeSha(input.approvedSha);
+  const approvedDeploymentId = normalizeDeploymentId(input.approvedDeploymentId);
 
   if (typeof input.dirty !== "boolean") {
     reasons.push({ code: "DIRTY_STATE_REQUIRED", detail: "dirty must be an explicit boolean." });
@@ -48,6 +49,13 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     }
   }
 
+  if (!approvedDeploymentId) {
+    reasons.push({
+      code: "APPROVED_DEPLOYMENT_ID_REQUIRED",
+      detail: "The exact approved Vercel deployment ID is required."
+    });
+  }
+
   const appPathKeys = manifestKeys(input.appPathsManifest);
   let missingAppPaths = [...contract.required_app_paths];
   if (!appPathKeys) {
@@ -69,6 +77,7 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
   }
 
   const candidate = isPlainObject(input.candidate) ? input.candidate : null;
+  const candidateDeploymentId = deploymentIdFromObject(candidate);
   let candidateRoutes = [];
   let missingCandidateRoutes = [...contract.required_candidate_output_routes];
   if (!candidate) {
@@ -77,6 +86,20 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
       detail: "A parsed Vercel candidate inspection object is required."
     });
   } else {
+    if (!candidateDeploymentId) {
+      reasons.push({
+        code: "CANDIDATE_DEPLOYMENT_ID_REQUIRED",
+        detail: "Candidate deployment id or uid is required."
+      });
+    } else if (approvedDeploymentId && candidateDeploymentId !== approvedDeploymentId) {
+      reasons.push({
+        code: "CANDIDATE_DEPLOYMENT_ID_MISMATCH",
+        detail: `Candidate deployment ${candidateDeploymentId} does not equal approved deployment ${approvedDeploymentId}.`
+      });
+    } else if (approvedDeploymentId) {
+      checks.candidate_deployment_id_matches = true;
+    }
+
     if (candidate.name !== contract.candidate.name) {
       reasons.push({
         code: "CANDIDATE_NAME_MISMATCH",
@@ -117,13 +140,79 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     }
   }
 
+  const provenance = isPlainObject(input.provenance) ? input.provenance : null;
+  const provenanceDeploymentId = deploymentIdFromObject(provenance);
+  const sourceSha = normalizeSha(provenance?.gitSource?.sha);
+  const sourceType = normalizeText(provenance?.gitSource?.type);
+  const sourceRepoId = normalizeText(provenance?.gitSource?.repoId);
+  const sourceOrg = normalizeText(provenance?.meta?.githubCommitOrg ?? provenance?.meta?.githubOrg);
+  const sourceRepo = normalizeText(provenance?.meta?.githubCommitRepo ?? provenance?.meta?.githubRepo);
+
+  if (!provenance) {
+    reasons.push({
+      code: "PROVENANCE_REQUIRED",
+      detail: "A separate parsed Vercel provenance object is required."
+    });
+  } else {
+    if (!provenanceDeploymentId) {
+      reasons.push({
+        code: "PROVENANCE_DEPLOYMENT_ID_REQUIRED",
+        detail: "Provenance deployment id or uid is required."
+      });
+    } else if (candidateDeploymentId && provenanceDeploymentId !== candidateDeploymentId) {
+      reasons.push({
+        code: "PROVENANCE_DEPLOYMENT_ID_MISMATCH",
+        detail: `Provenance deployment ${provenanceDeploymentId} does not equal candidate deployment ${candidateDeploymentId}.`
+      });
+    } else if (candidateDeploymentId) {
+      checks.provenance_deployment_matches_candidate = true;
+    }
+
+    if (!sourceSha) {
+      reasons.push({
+        code: "PROVENANCE_SHA_REQUIRED",
+        detail: "Provenance gitSource.sha is required."
+      });
+    } else if (approvedSha && sourceSha !== approvedSha) {
+      reasons.push({
+        code: "PROVENANCE_SHA_MISMATCH",
+        detail: `Provenance source SHA ${sourceSha} does not equal approved SHA ${approvedSha}.`
+      });
+    } else if (approvedSha) {
+      checks.provenance_sha_matches_approved = true;
+    }
+
+    const expectedSource = contract.provenance_source;
+    const sourceMatches =
+      sourceType.toLowerCase() === expectedSource.type.toLowerCase() &&
+      Boolean(sourceRepoId) &&
+      sourceOrg.toLowerCase() === expectedSource.github_org.toLowerCase() &&
+      sourceRepo.toLowerCase() === expectedSource.github_repo.toLowerCase();
+    if (!sourceMatches) {
+      reasons.push({
+        code: "PROVENANCE_SOURCE_MISMATCH",
+        detail: `Provenance source must be ${expectedSource.type}:${expectedSource.github_org}/${expectedSource.github_repo} with a GitHub repo ID.`
+      });
+    } else {
+      checks.provenance_source_matches = true;
+    }
+  }
+
   return resultFromReasons(reasons, checks, {
     head_sha: headSha || null,
     approved_sha: approvedSha || null,
+    approved_deployment_id: approvedDeploymentId || null,
     dirty: typeof input.dirty === "boolean" ? input.dirty : null,
+    candidate_deployment_id: candidateDeploymentId || null,
     candidate_name: candidate?.name ?? null,
     candidate_target: candidate?.target ?? null,
     candidate_ready_state: candidate?.readyState ?? null,
+    provenance_deployment_id: provenanceDeploymentId || null,
+    source_sha: sourceSha || null,
+    source_type: sourceType || null,
+    source_repo_id: sourceRepoId || null,
+    source_github_org: sourceOrg || null,
+    source_github_repo: sourceRepo || null,
     app_path_count: appPathKeys?.length ?? 0,
     candidate_route_count: candidateRoutes.length,
     missing_app_paths: missingAppPaths,
@@ -166,6 +255,14 @@ function validateContract(contract) {
   if (!isPlainObject(contract.candidate)) {
     return { ok: false, detail: "Contract candidate must be an object." };
   }
+  if (!isPlainObject(contract.provenance_source)) {
+    return { ok: false, detail: "Contract provenance_source must be an object." };
+  }
+  for (const field of ["type", "github_org", "github_repo"]) {
+    if (!nonEmptyString(contract.provenance_source[field])) {
+      return { ok: false, detail: `Contract provenance_source.${field} must be a non-empty string.` };
+    }
+  }
   for (const field of ["name", "target", "ready_state"]) {
     if (!nonEmptyString(contract.candidate[field])) {
       return { ok: false, detail: `Contract candidate.${field} must be a non-empty string.` };
@@ -198,10 +295,14 @@ function emptyChecks() {
     worktree_clean: false,
     head_matches_approved_sha: false,
     app_paths_complete: false,
+    candidate_deployment_id_matches: false,
     candidate_name_matches: false,
     candidate_target_matches: false,
     candidate_ready: false,
-    candidate_routes_complete: false
+    candidate_routes_complete: false,
+    provenance_deployment_matches_candidate: false,
+    provenance_sha_matches_approved: false,
+    provenance_source_matches: false
   };
 }
 
@@ -209,10 +310,22 @@ function emptyEvidence(input) {
   return {
     head_sha: normalizeSha(input.headSha) || null,
     approved_sha: normalizeSha(input.approvedSha) || null,
+    approved_deployment_id: normalizeDeploymentId(input.approvedDeploymentId) || null,
     dirty: typeof input.dirty === "boolean" ? input.dirty : null,
+    candidate_deployment_id: deploymentIdFromObject(input.candidate) || null,
     candidate_name: input.candidate?.name ?? null,
     candidate_target: input.candidate?.target ?? null,
     candidate_ready_state: input.candidate?.readyState ?? null,
+    provenance_deployment_id: deploymentIdFromObject(input.provenance) || null,
+    source_sha: normalizeSha(input.provenance?.gitSource?.sha) || null,
+    source_type: normalizeText(input.provenance?.gitSource?.type) || null,
+    source_repo_id: normalizeText(input.provenance?.gitSource?.repoId) || null,
+    source_github_org: normalizeText(
+      input.provenance?.meta?.githubCommitOrg ?? input.provenance?.meta?.githubOrg
+    ) || null,
+    source_github_repo: normalizeText(
+      input.provenance?.meta?.githubCommitRepo ?? input.provenance?.meta?.githubRepo
+    ) || null,
     app_path_count: 0,
     candidate_route_count: 0,
     missing_app_paths: [],
@@ -222,6 +335,19 @@ function emptyEvidence(input) {
 
 function normalizeSha(value) {
   return String(value ?? "").trim().toLowerCase();
+}
+
+function normalizeDeploymentId(value) {
+  return String(value ?? "").trim();
+}
+
+function deploymentIdFromObject(value) {
+  if (!isPlainObject(value)) return "";
+  return normalizeDeploymentId(value.id ?? value.uid);
+}
+
+function normalizeText(value) {
+  return String(value ?? "").trim();
 }
 
 function nonEmptyString(value) {
@@ -244,7 +370,9 @@ function parseArgs(argv) {
     const next = () => argv[++index] ?? "";
 
     if (arg === "--approved-sha") input.approvedSha = next();
+    else if (arg === "--approved-deployment-id") input.approvedDeploymentId = next();
     else if (arg === "--candidate") input.candidatePath = next();
+    else if (arg === "--provenance") input.provenancePath = next();
     else if (arg === "--contract") input.contractPath = next();
     else if (arg === "--app-paths-manifest") input.appPathsManifestPath = next();
     else if (arg === "--repo-root") input.repoRoot = next();
@@ -270,12 +398,15 @@ function main() {
   try {
     const args = parseArgs(process.argv.slice(2));
     if (!args.approvedSha) throw new Error("--approved-sha is required.");
+    if (!args.approvedDeploymentId) throw new Error("--approved-deployment-id is required.");
     if (!args.candidatePath) throw new Error("--candidate is required.");
+    if (!args.provenancePath) throw new Error("--provenance is required.");
 
     const repoRoot = path.resolve(args.repoRoot ?? process.cwd());
     const contractPath = path.resolve(repoRoot, args.contractPath ?? DEFAULT_RELEASE_CONTRACT);
     const manifestPath = path.resolve(repoRoot, args.appPathsManifestPath ?? DEFAULT_APP_PATHS_MANIFEST);
     const candidatePath = path.resolve(repoRoot, args.candidatePath);
+    const provenancePath = path.resolve(repoRoot, args.provenancePath);
     const headSha = gitOutput(repoRoot, ["rev-parse", "HEAD"]);
     const dirty = gitOutput(repoRoot, ["status", "--porcelain=v1"]).length > 0;
 
@@ -284,8 +415,10 @@ function main() {
       dirty,
       headSha,
       approvedSha: args.approvedSha,
+      approvedDeploymentId: args.approvedDeploymentId,
       appPathsManifest: readJson(manifestPath),
-      candidate: readJson(candidatePath)
+      candidate: readJson(candidatePath),
+      provenance: readJson(provenancePath)
     });
 
     if (args.json) {
@@ -294,6 +427,8 @@ function main() {
       console.log(`release_guard_result=${result.receipt.result}`);
       console.log(`head_sha=${result.receipt.evidence.head_sha ?? ""}`);
       console.log(`approved_sha=${result.receipt.evidence.approved_sha ?? ""}`);
+      console.log(`candidate_deployment_id=${result.receipt.evidence.candidate_deployment_id ?? ""}`);
+      console.log(`source_sha=${result.receipt.evidence.source_sha ?? ""}`);
       for (const reason of result.receipt.reasons) {
         console.log(`reason=${reason.code}: ${reason.detail}`);
       }

@@ -9,6 +9,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "../..");
 const contract = JSON.parse(readFileSync(path.join(repoRoot, "deploy/production-release-contract.json"), "utf8"));
 const approvedSha = "83178a95053a3a108dfa48de38f111172d25d50b";
+const approvedDeploymentId = "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo";
 
 function completeFixture() {
   return {
@@ -16,8 +17,10 @@ function completeFixture() {
     dirty: false,
     headSha: approvedSha,
     approvedSha,
+    approvedDeploymentId,
     appPathsManifest: Object.fromEntries(contract.required_app_paths.map((route) => [route, `server${route}.js`])),
     candidate: {
+      id: approvedDeploymentId,
       name: contract.candidate.name,
       target: contract.candidate.target,
       readyState: contract.candidate.ready_state,
@@ -26,6 +29,18 @@ function completeFixture() {
           output: contract.required_candidate_output_routes.map((route) => ({ path: route, type: "lambda" }))
         }
       ]
+    },
+    provenance: {
+      id: approvedDeploymentId,
+      gitSource: {
+        type: contract.provenance_source.type,
+        repoId: 123456789,
+        sha: approvedSha
+      },
+      meta: {
+        githubCommitOrg: contract.provenance_source.github_org,
+        githubCommitRepo: contract.provenance_source.github_repo
+      }
     }
   };
 }
@@ -52,6 +67,62 @@ const cases = [
     },
     expectOk: false,
     expectReason: "HEAD_SHA_MISMATCH"
+  },
+  {
+    name: "missing approved deployment ID fails closed",
+    mutate(input) {
+      input.approvedDeploymentId = "";
+    },
+    expectOk: false,
+    expectReason: "APPROVED_DEPLOYMENT_ID_REQUIRED"
+  },
+  {
+    name: "missing candidate deployment ID fails closed",
+    mutate(input) {
+      delete input.candidate.id;
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_DEPLOYMENT_ID_REQUIRED"
+  },
+  {
+    name: "wrong candidate deployment ID fails closed",
+    mutate(input) {
+      input.candidate.id = "dpl_otherCandidate";
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_DEPLOYMENT_ID_MISMATCH"
+  },
+  {
+    name: "missing separate provenance fails closed",
+    mutate(input) {
+      delete input.provenance;
+    },
+    expectOk: false,
+    expectReason: "PROVENANCE_REQUIRED"
+  },
+  {
+    name: "provenance deployment ID mismatch fails closed",
+    mutate(input) {
+      input.provenance.id = "dpl_otherProvenance";
+    },
+    expectOk: false,
+    expectReason: "PROVENANCE_DEPLOYMENT_ID_MISMATCH"
+  },
+  {
+    name: "provenance SHA mismatch fails closed",
+    mutate(input) {
+      input.provenance.gitSource.sha = "70a35fe53b78203e5b064e5a4743eea001702a94";
+    },
+    expectOk: false,
+    expectReason: "PROVENANCE_SHA_MISMATCH"
+  },
+  {
+    name: "provenance GitHub source mismatch fails closed",
+    mutate(input) {
+      input.provenance.meta.githubCommitRepo = "OtherRepo";
+    },
+    expectOk: false,
+    expectReason: "PROVENANCE_SOURCE_MISMATCH"
   },
   {
     name: "missing candidate route fails closed",
@@ -114,6 +185,16 @@ for (const testCase of cases) {
       assert.deepEqual(reasonCodes, [], `${testCase.name}: unexpected reasons`);
       assert.equal(result.receipt.result, "PASS", `${testCase.name}: expected PASS receipt`);
       assert.ok(Object.values(result.receipt.checks).every(Boolean), `${testCase.name}: an acceptance check was false`);
+      assert.equal(
+        result.receipt.evidence.candidate_deployment_id,
+        approvedDeploymentId,
+        `${testCase.name}: candidate deployment ID missing from receipt`
+      );
+      assert.equal(
+        result.receipt.evidence.source_sha,
+        approvedSha,
+        `${testCase.name}: source SHA missing from receipt`
+      );
     }
 
     console.log(`PASS ${testCase.name}`);

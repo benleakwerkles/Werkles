@@ -11,6 +11,12 @@ export const APP_INFRA_PREVIEW_CRUCIBLE = false;
 /** Stripe Identity + Plaid Link test wiring (test/sandbox providers only). */
 export const CRUCIBLE_PROVIDER_TEST_ENABLED = true;
 
+/** Public-test releases must not start provider actions or mutate verification state. */
+export const PUBLIC_TEST_PROVIDER_ACTIONS_OPEN = false;
+
+export const PUBLIC_TEST_PROVIDER_ACTIONS_CLOSED_MESSAGE =
+  "Verification provider actions are unavailable during public testing.";
+
 /** Login, signup, checkout, billing portal — enabled for test-mode wiring. */
 export const AUTH_STRIPE_TEST_WIRING_ENABLED = true;
 
@@ -31,7 +37,11 @@ export function isCruciblePreview(): boolean {
 }
 
 export function isCrucibleProviderTestEnabled(): boolean {
-  return CRUCIBLE_PROVIDER_TEST_ENABLED && !APP_INFRA_PREVIEW_CRUCIBLE;
+  return (
+    PUBLIC_TEST_PROVIDER_ACTIONS_OPEN &&
+    CRUCIBLE_PROVIDER_TEST_ENABLED &&
+    !APP_INFRA_PREVIEW_CRUCIBLE
+  );
 }
 
 export function isAuthStripeTestBlocked(): boolean {
@@ -41,5 +51,5 @@ export function isAuthStripeTestBlocked(): boolean {
 
 /** Crucible and verification APIs only. */
 export function isAppInfraPreview(): boolean {
-  return isCruciblePreview();
+  return isCruciblePreview() || !PUBLIC_TEST_PROVIDER_ACTIONS_OPEN;
 }

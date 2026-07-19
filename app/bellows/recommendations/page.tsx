@@ -26,12 +26,6 @@ export default async function SquibbRecommendationsPage() {
             ← Bellows
           </Link>
           <span aria-current="page">Recommendations</span>
-          <Link
-            className="squibb-rec-page__intake-link"
-            href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
-          >
-            Profile
-          </Link>
         </nav>
 
         <PersonalRecommendationDelivery exampleSession={session} ledger={ledger} />

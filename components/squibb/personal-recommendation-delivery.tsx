@@ -94,11 +94,26 @@ export function PersonalRecommendationDelivery({
         </p>
       ) : null}
       {delivery.status === "signed_out" ? (
-        <p className="squibb-rec-delivery-status" role="status">
-          You are viewing an example. <Link href="/login?next=%2Fbellows%2Frecommendations">Sign in</Link> or{" "}
-          <Link href="/signup?next=%2Fbellows%2Frecommendations">create an account</Link> to request a private
-          rules-based recommendation from your saved profile.
-        </p>
+        <section
+          className="squibb-rec-delivery-cta panel"
+          aria-labelledby="personalRecommendationCtaTitle"
+          aria-live="polite"
+        >
+          <p className="eyebrow">Your turn</p>
+          <h2 id="personalRecommendationCtaTitle">Make this about your work.</h2>
+          <p>
+            You are viewing an example. Create an account, add a few profile signals, and come straight back for a
+            private rules-based recommendation. The result is not saved or forwarded.
+          </p>
+          <div className="squibb-rec-delivery-cta__actions">
+            <Link className="button button-dark" href="/signup?next=%2Fbellows%2Frecommendations">
+              Create account
+            </Link>
+            <Link className="button button-outline" href="/login?next=%2Fbellows%2Frecommendations">
+              Sign in
+            </Link>
+          </div>
+        </section>
       ) : null}
       {delivery.status === "profile_required" ? (
         <p className="squibb-rec-delivery-status" role="status">

@@ -52,7 +52,9 @@
     "deploy:alias-guard": "node scripts/deploy/deploy-alias-guard.mjs",
     "test:deploy-alias-guard": "node scripts/deploy/deploy-alias-guard-smoke.mjs",
     "deploy:release-guard": "node scripts/deploy/production-release-integrity-guard.mjs",
-    "test:deploy-release-guard": "node scripts/deploy/production-release-integrity-guard-smoke.mjs"
+    "test:deploy-release-guard": "node scripts/deploy/production-release-integrity-guard-smoke.mjs",
+    "test:vpg24:continuity": "node scripts/foreman/test-public-tester-continuity-vpg24-20260719.mjs",
+    "test:vpg24:provider-closure": "node scripts/foreman/test-public-provider-closure-vpg24-20260719.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
