@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import {
-  documentaryImageryAttribution,
   documentaryLaneIcons,
   documentaryLanePhotos
 } from "@/lib/documentary-lane-imagery";
@@ -14,8 +13,7 @@ export function LanesDocumentarySection() {
         <p className="eyebrow">The Forge</p>
         <h2 id="lanesDocTitle">Six lanes. Real people. Visible potential.</h2>
         <p className="lanes-documentary__lede">
-          Documentary photographs carry the emotional proof — lane props mark the role without game UI or guru
-          fog.
+          Choose the role closest to how you help work move. You can change it as the work changes.
         </p>
       </div>
 
@@ -68,9 +66,6 @@ export function LanesDocumentarySection() {
         })}
       </div>
 
-      <p className="lanes-documentary__note" role="note">
-        {documentaryImageryAttribution}
-      </p>
     </section>
   );
 }

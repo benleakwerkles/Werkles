@@ -50,7 +50,9 @@
     "test:human-gates": "npx --yes tsx scripts/foreman/human-gates-smoke.ts",
     "test:delivery-verification": "npx --yes tsx scripts/soledash/delivery-verification-smoke.ts",
     "deploy:alias-guard": "node scripts/deploy/deploy-alias-guard.mjs",
-    "test:deploy-alias-guard": "node scripts/deploy/deploy-alias-guard-smoke.mjs"
+    "test:deploy-alias-guard": "node scripts/deploy/deploy-alias-guard-smoke.mjs",
+    "deploy:release-guard": "node scripts/deploy/production-release-integrity-guard.mjs",
+    "test:deploy-release-guard": "node scripts/deploy/production-release-integrity-guard-smoke.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

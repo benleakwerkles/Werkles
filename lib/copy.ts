@@ -56,7 +56,7 @@ export const copy = {
       "For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
     beforeState: "People first. Trust visible. Opportunity you can actually reach.",
     brandPromise: "People, trust, momentum, opportunity.",
-    primaryCta: "Tell us what you need",
+    primaryCta: "See a recommendation",
     secondaryCta: "See how trust is checked",
     trustLine: "Real human help, with proof shown before you rely on it.",
     signupPreview: "Start with one business need. Werkles turns it into a practical next move and the proof to check."

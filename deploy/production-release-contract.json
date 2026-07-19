@@ -1,0 +1,40 @@
+{
+  "schema": "werkles.production-release-contract/v1",
+  "candidate": {
+    "name": "werkles1",
+    "target": "preview",
+    "ready_state": "READY"
+  },
+  "required_app_paths": [
+    "/page",
+    "/auth/callback/page",
+    "/bellows/page",
+    "/bellows/intake/page",
+    "/bellows/recommendations/page",
+    "/bellows/recommendations/test-case-0/page",
+    "/discovery/page",
+    "/login/page",
+    "/signup/page",
+    "/operator/matching/shadow/page",
+    "/api/bellows/intake/route",
+    "/api/bellows/recommendations/packet/route",
+    "/api/bellows/recommendations/personal/route",
+    "/api/discovery/intake/route"
+  ],
+  "required_candidate_output_routes": [
+    "index",
+    "auth/callback",
+    "bellows",
+    "bellows/intake",
+    "bellows/recommendations",
+    "bellows/recommendations/test-case-0",
+    "discovery",
+    "login",
+    "signup",
+    "operator/matching/shadow",
+    "api/bellows/intake",
+    "api/bellows/recommendations/packet",
+    "api/bellows/recommendations/personal",
+    "api/discovery/intake"
+  ]
+}

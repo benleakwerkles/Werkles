@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
-import { narrativeArcAttribution, getNarrativeAct } from "@/lib/narrative-arc";
+import { getNarrativeAct } from "@/lib/narrative-arc";
 import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED } from "@/lib/render-batch-4-imagery";
 
 export default function BellowsPage() {
@@ -24,11 +24,17 @@ export default function BellowsPage() {
             <p className="muted">{copy.bellows.host}</p>
             <p className="trust-badge">{copy.bellows.shellNote}</p>
             <div className="actions" style={{ marginTop: "1rem" }}>
-              <Link className="button button-dark" href="/bellows/intake">
-                Review the intake
-              </Link>
               <Link className="button button-dark" href="/bellows/recommendations">
                 See recommendations
+              </Link>
+              <Link
+                className="button button-outline"
+                href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
+              >
+                Build your profile
+              </Link>
+              <Link className="button button-ghost" href="/bellows/intake">
+                Review the intake (closed)
               </Link>
             </div>
           </div>
@@ -76,18 +82,24 @@ export default function BellowsPage() {
         ) : null}
 
         <section className="narrative-act-body panel" aria-labelledby="bellowsPathTitle">
-          <p className="eyebrow">First useful path</p>
-          <h2 id="bellowsPathTitle">Intake first, recommendation second, proof always visible.</h2>
+          <p className="eyebrow">Start here</p>
+          <h2 id="bellowsPathTitle">Recommendations first. Your profile makes them personal.</h2>
           <p>
-            Start with the heaviest thing you are trying to lift. Bellows shapes it into a short summary a human
-            reviewer can understand, then shows a few reversible next steps.
+            Start with the public example. Sign in and build your profile when you want a private, rules-based result.
+            Intake submission is temporarily closed while secure account storage is connected.
           </p>
           <div className="actions" style={{ marginTop: "1rem" }}>
-            <Link className="button button-outline" href="/bellows/recommendations">
-              Compare recommendation types
+            <Link className="button button-dark" href="/bellows/recommendations">
+              See a recommendation
             </Link>
-            <Link className="button button-outline" href="/dashboard">
-              Member home
+            <Link
+              className="button button-outline"
+              href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
+            >
+              Build your profile
+            </Link>
+            <Link className="button button-ghost" href="/bellows/intake">
+              Review the intake (closed)
             </Link>
             <Link className="button button-outline" href="/proof">
               Inspect proof
@@ -109,9 +121,6 @@ export default function BellowsPage() {
           </section>
         ) : null}
 
-        <p className="narrative-act-page__note" role="note">
-          {narrativeArcAttribution}
-        </p>
       </main>
       <footer className="site-footer">
         <p>{copy.disclaimer}</p>

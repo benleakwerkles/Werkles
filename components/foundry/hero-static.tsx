@@ -28,7 +28,7 @@ export function HeroStatic() {
         <WorkshopMomentEyebrow />
         <HeroCopyBlock />
         <div className="hero-actions">
-          <Link className="button button-light" href="/signup">
+          <Link className="button button-light" href="/bellows/recommendations">
             {copy.hero.primaryCta}
           </Link>
           <Link className="button button-ghost" href="/proof">

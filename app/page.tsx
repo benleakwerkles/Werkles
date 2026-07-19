@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import BetaSignupForm from "./beta-signup-form";
-import { DraftReviewBadge } from "@/components/foundry/draft-review-badge";
+import BetaSignupDoorway from "./beta-signup-form";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { HomeValueFold } from "@/components/foundry/home-value-fold";
 import { LanesDocumentarySection } from "@/components/foundry/lanes-documentary-section";
@@ -21,10 +20,6 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="top" className={routeAtmosphere.home}>
-        <div className="home-draft-badge">
-          <DraftReviewBadge />
-        </div>
-
         <HeroStatic />
         <HomeValueFold />
         <LanesDocumentarySection />
@@ -119,7 +114,7 @@ export default function HomePage() {
                   <h2>{copy.home.foundry.headline}</h2>
                 </div>
                 <p>{copy.home.foundry.body}</p>
-                <BetaSignupForm />
+                <BetaSignupDoorway />
               </article>
 
               <article className="ops-card">
