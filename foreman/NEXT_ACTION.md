@@ -1,39 +1,34 @@
 # NEXT ACTION
 
-**Effective gate:** `[PUBLIC TEST LIVE: WERKLES_VPG22]`
+**Effective gate:** `[PREVIEW READY: WERKLES_VPG23_PUBLIC_ENTRY]`
 
-Updated: 2026-07-18 22:03 ET
+Updated: 2026-07-19 00:45 ET
 
-## Live release
+## Production — healthy and unchanged
 
-- Production: `https://werkles.com`
-- Branch: `codex/werkles-public-test-vpg22-20260718`
-- Source: `83178a95053a3a108dfa48de38f111172d25d50b`
-- Deployment: `dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo` — `Ready` — 366 outputs
+- URL: `https://werkles.com`
+- Deployment: `dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo`
+- Public/auth routes are healthy; VPG22 trust boundaries remain enforced.
 
-The public tester path is live: homepage → Bellows recommendations example → login/signup → Profile Builder → authenticated private recommendation.
+## VPG23 Preview — ready
 
-## Verified live
+- Branch: `codex/werkles-public-entry-vpg23-20260719`
+- Product tip: `5bacb93f94288a844cbd4b56cc816c340ec501d3`
+- Preview: `https://werkles1-a02oy2et8-werkles.vercel.app`
+- Deployment: `dpl_3CPYmcKZSXYEQJhNSSfz4SfP5ChD` — `Ready` — 366 outputs
 
-- Public/auth pages: `200`.
-- Nested Bellows pages and Discovery: restored to `200`.
-- Anonymous recommendation remains example-only.
-- Personal recommendation: `401` signed out.
-- Recommendation saving: `403`.
-- Bellows and Discovery intake writes: `503`; closed before parsing/storage.
-- Operator Matching page/API: `404`.
-- LLM translation remains OFF.
+### What changed
 
-## Next work
+- Homepage header/hero expose the recommendation example before signup.
+- Public draft/mock/process notes and the beta email form are gone.
+- Bellows tells the open recommendation → Profile Builder → private-result path truthfully.
+- Anonymous `/api/beta` storage is closed before parsing/service access.
+- Production release guard now stops dirty, wrong-SHA, missing-route, wrong-candidate, or non-Ready releases.
 
-1. Let people test the public example, auth doorway, Profile Builder, and private-result return path.
-2. Capture tester friction and runtime errors; fix only evidence-backed problems on a bounded release branch.
-3. Design consent, ownership, deletion, age, and abuse controls before reopening any real personal-data intake.
+## Next action
 
-## Rollback
-
-Known-good fallback: `dpl_9NXXaqFksPFxfgqzUPYsCjka5yPi`.
+Review the protected Preview through the existing Vercel team session. The next Production action is promotion of this exact guarded artifact after an explicit Production instruction; no rebuild or database work is required.
 
 ## Hard stops
 
-No public personal-data intake | no anonymous personal result | no saving | no Tier B custody | no LLM/provider enablement | no SQL/schema/RLS mutation | no live payment change
+No anonymous email/intake persistence | no anonymous personal result | no saving | no Tier B custody | no LLM/provider enablement | no SQL/schema/RLS mutation | no live payment change
