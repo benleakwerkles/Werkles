@@ -1,7 +1,7 @@
 # VPG22 — Werkles Public-Test Release
 
 PACKET_ID: `TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_PUBLIC_TEST_RELEASE_VPG22_20260718`
-STATUS: `CLAIMED`
+STATUS: `COMPLETED`
 FROM: `Heimerdinker@Betsy`
 TO: `Heimerdinker@Betsy`, `LadyJessica@Betsy`, `Ender/Doozer@Betsy`
 EXECUTION_OWNER: `Heimerdinker@Betsy`
@@ -33,3 +33,8 @@ Ben authorized public testing and Production execution with:
 - Anonymous visitors cannot receive a personal recommendation or another member's result.
 - Intake remains an honest closed walkthrough; LLM, saving, Tier B, SQL, and schema changes remain out of scope.
 - Exact deployment ID, source commit, route results, and rollback target are recorded in a completion receipt.
+
+## Receipts
+
+- `foreman/receipts/WERKLES_PUBLIC_TEST_RELEASE_VPG22_PULL_20260718.md`
+- `foreman/receipts/WERKLES_PUBLIC_TEST_RELEASE_VPG22_COMPLETED_20260718.md`
