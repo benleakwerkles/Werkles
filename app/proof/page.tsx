@@ -1,10 +1,10 @@
 import Link from "next/link";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeActPageLayout } from "@/components/narrative/narrative-act-page-layout";
 import { NarrativePhotoGallery } from "@/components/narrative/narrative-photo-gallery";
 import { ProofDoctrineSection } from "@/components/narrative/proof-doctrine-section";
-import { copy } from "@/lib/copy";
 import { narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
 import { forgeV2Gallery } from "@/lib/render-batch-3-imagery";
 import { getNarrativeAct } from "@/lib/narrative-arc";
@@ -93,10 +93,7 @@ export default function ProofPage() {
           </section>
         ) : null}
       </NarrativeActPageLayout>
-      <footer className="site-footer">
-        <p>{copy.proofDisclaimer}</p>
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter showProofDisclaimer />
     </>
   );
 }

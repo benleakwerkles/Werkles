@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
@@ -122,9 +123,7 @@ export default function BellowsPage() {
         ) : null}
 
       </main>
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

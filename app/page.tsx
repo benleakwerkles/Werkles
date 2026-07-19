@@ -4,6 +4,7 @@ import BetaSignupDoorway from "./beta-signup-form";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { HomeValueFold } from "@/components/foundry/home-value-fold";
 import { LanesDocumentarySection } from "@/components/foundry/lanes-documentary-section";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { SquibbStoryBeat } from "@/components/foundry/squibb-story-beat";
@@ -157,9 +158,7 @@ export default function HomePage() {
         )}
       </main>
 
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

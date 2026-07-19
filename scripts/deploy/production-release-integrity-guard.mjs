@@ -23,6 +23,7 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
   const headSha = normalizeSha(input.headSha);
   const approvedSha = normalizeSha(input.approvedSha);
   const approvedDeploymentId = normalizeDeploymentId(input.approvedDeploymentId);
+  const productionDeploymentId = normalizeDeploymentId(input.productionDeploymentId);
 
   if (typeof input.dirty !== "boolean") {
     reasons.push({ code: "DIRTY_STATE_REQUIRED", detail: "dirty must be an explicit boolean." });
@@ -53,6 +54,12 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     reasons.push({
       code: "APPROVED_DEPLOYMENT_ID_REQUIRED",
       detail: "The exact approved Vercel deployment ID is required."
+    });
+  }
+  if (!productionDeploymentId) {
+    reasons.push({
+      code: "PRODUCTION_DEPLOYMENT_ID_REQUIRED",
+      detail: "The exact current Production deployment ID is required for audience-boundary proof."
     });
   }
 
@@ -296,10 +303,130 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     }
   }
 
+  const audienceHttpBoundaries = isPlainObject(input.audienceHttpBoundaries)
+    ? input.audienceHttpBoundaries
+    : null;
+  const audienceCandidateDeploymentId = normalizeDeploymentId(
+    audienceHttpBoundaries?.candidate_deployment_id
+  );
+  const audienceProductionDeploymentId = normalizeDeploymentId(
+    audienceHttpBoundaries?.production_deployment_id
+  );
+  const audienceResponses = Array.isArray(audienceHttpBoundaries?.responses)
+    ? audienceHttpBoundaries.responses
+    : [];
+  let missingAudienceHttpBoundaries = contract.required_audience_http_boundaries.map(audienceBoundaryKey);
+  const failedAudienceHttpBoundaries = [];
+
+  if (!audienceHttpBoundaries) {
+    reasons.push({
+      code: "AUDIENCE_HTTP_BOUNDARIES_REQUIRED",
+      detail: "Parsed protected-Preview and Production audience-boundary evidence is required."
+    });
+  } else {
+    let audienceDeploymentsMatch = true;
+    if (!audienceCandidateDeploymentId) {
+      audienceDeploymentsMatch = false;
+      reasons.push({
+        code: "AUDIENCE_CANDIDATE_DEPLOYMENT_ID_REQUIRED",
+        detail: "Audience evidence candidate_deployment_id is required."
+      });
+    } else if (candidateDeploymentId && audienceCandidateDeploymentId !== candidateDeploymentId) {
+      audienceDeploymentsMatch = false;
+      reasons.push({
+        code: "AUDIENCE_CANDIDATE_DEPLOYMENT_ID_MISMATCH",
+        detail: `Audience candidate deployment ${audienceCandidateDeploymentId} does not equal candidate deployment ${candidateDeploymentId}.`
+      });
+    }
+
+    if (!audienceProductionDeploymentId) {
+      audienceDeploymentsMatch = false;
+      reasons.push({
+        code: "AUDIENCE_PRODUCTION_DEPLOYMENT_ID_REQUIRED",
+        detail: "Audience evidence production_deployment_id is required."
+      });
+    } else if (productionDeploymentId && audienceProductionDeploymentId !== productionDeploymentId) {
+      audienceDeploymentsMatch = false;
+      reasons.push({
+        code: "AUDIENCE_PRODUCTION_DEPLOYMENT_ID_MISMATCH",
+        detail: `Audience Production deployment ${audienceProductionDeploymentId} does not equal approved current Production deployment ${productionDeploymentId}.`
+      });
+    }
+
+    if (audienceDeploymentsMatch && candidateDeploymentId && productionDeploymentId) {
+      checks.audience_boundary_deployments_match = true;
+    }
+
+    if (!Array.isArray(audienceHttpBoundaries.responses)) {
+      reasons.push({
+        code: "AUDIENCE_HTTP_RESPONSES_REQUIRED",
+        detail: "Audience-boundary evidence responses must be an array."
+      });
+    } else {
+      const responseIndex = indexAudienceBoundaryResponses(audienceResponses);
+      missingAudienceHttpBoundaries = [];
+
+      for (const expected of contract.required_audience_http_boundaries) {
+        const key = audienceBoundaryKey(expected);
+        const matches = responseIndex.get(key) ?? [];
+        if (!matches.length) {
+          missingAudienceHttpBoundaries.push(key);
+          reasons.push({
+            code: "MISSING_AUDIENCE_HTTP_BOUNDARY",
+            detail: key
+          });
+          continue;
+        }
+        if (matches.length !== 1) {
+          failedAudienceHttpBoundaries.push(`${key}:duplicate`);
+          reasons.push({
+            code: "DUPLICATE_AUDIENCE_HTTP_BOUNDARY",
+            detail: key
+          });
+          continue;
+        }
+
+        const actual = matches[0];
+        if (actual.status !== expected.status) {
+          failedAudienceHttpBoundaries.push(`${key}:status`);
+          reasons.push({
+            code: "AUDIENCE_HTTP_STATUS_MISMATCH",
+            detail: `${key} expected ${expected.status}, got ${display(actual.status)}.`
+          });
+        }
+
+        for (const header of expectedHeaderMismatches(expected.headers, actual.headers)) {
+          failedAudienceHttpBoundaries.push(`${key}:header:${header}`);
+          reasons.push({
+            code: "AUDIENCE_HTTP_HEADER_MISMATCH",
+            detail: `${key} did not satisfy required header ${header}.`
+          });
+        }
+
+        for (const header of expectedHeaderPrefixMismatches(expected.header_prefixes, actual.headers)) {
+          failedAudienceHttpBoundaries.push(`${key}:header-prefix:${header}`);
+          reasons.push({
+            code: "AUDIENCE_HTTP_HEADER_PREFIX_MISMATCH",
+            detail: `${key} did not satisfy required header prefix ${header}.`
+          });
+        }
+      }
+
+      if (
+        checks.audience_boundary_deployments_match &&
+        !missingAudienceHttpBoundaries.length &&
+        !failedAudienceHttpBoundaries.length
+      ) {
+        checks.audience_http_boundaries_complete = true;
+      }
+    }
+  }
+
   return resultFromReasons(reasons, checks, {
     head_sha: headSha || null,
     approved_sha: approvedSha || null,
     approved_deployment_id: approvedDeploymentId || null,
+    production_deployment_id: productionDeploymentId || null,
     dirty: typeof input.dirty === "boolean" ? input.dirty : null,
     candidate_deployment_id: candidateDeploymentId || null,
     candidate_name: candidate?.name ?? null,
@@ -313,12 +440,17 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     source_github_repo: sourceRepo || null,
     candidate_http_deployment_id: candidateHttpDeploymentId || null,
     candidate_http_boundary_count: boundaryResponses.length,
+    audience_candidate_deployment_id: audienceCandidateDeploymentId || null,
+    audience_production_deployment_id: audienceProductionDeploymentId || null,
+    audience_http_boundary_count: audienceResponses.length,
     app_path_count: appPathKeys?.length ?? 0,
     candidate_route_count: candidateRoutes.length,
     missing_app_paths: missingAppPaths,
     missing_candidate_routes: missingCandidateRoutes,
     missing_candidate_http_boundaries: missingCandidateHttpBoundaries,
-    failed_candidate_http_boundaries: failedCandidateHttpBoundaries
+    failed_candidate_http_boundaries: failedCandidateHttpBoundaries,
+    missing_audience_http_boundaries: missingAudienceHttpBoundaries,
+    failed_audience_http_boundaries: failedAudienceHttpBoundaries
   });
 }
 
@@ -355,6 +487,11 @@ function httpBoundaryKey(boundary) {
   return `${method} ${route}`.trim();
 }
 
+function audienceBoundaryKey(boundary) {
+  const audience = normalizeText(boundary?.audience).toLowerCase();
+  return `${audience} ${httpBoundaryKey(boundary)}`.trim();
+}
+
 function normalizeHttpPath(value) {
   const route = normalizeText(value);
   if (!route) return "";
@@ -366,6 +503,18 @@ function indexHttpBoundaryResponses(responses) {
   for (const response of responses) {
     if (!isPlainObject(response)) continue;
     const key = httpBoundaryKey(response);
+    const entries = index.get(key) ?? [];
+    entries.push(response);
+    index.set(key, entries);
+  }
+  return index;
+}
+
+function indexAudienceBoundaryResponses(responses) {
+  const index = new Map();
+  for (const response of responses) {
+    if (!isPlainObject(response)) continue;
+    const key = audienceBoundaryKey(response);
     const entries = index.get(key) ?? [];
     entries.push(response);
     index.set(key, entries);
@@ -398,6 +547,23 @@ function expectedHeaderMismatches(expectedHeaders, actualHeaders) {
     .map(([name]) => name.toLowerCase());
 }
 
+function expectedHeaderPrefixMismatches(expectedPrefixes, actualHeaders) {
+  if (!isPlainObject(expectedPrefixes)) return [];
+  const actual = new Map(
+    Object.entries(isPlainObject(actualHeaders) ? actualHeaders : {}).map(([name, value]) => [
+      name.toLowerCase(),
+      normalizeText(value).toLowerCase()
+    ])
+  );
+
+  return Object.entries(expectedPrefixes)
+    .filter(([name, expectedPrefix]) => {
+      const value = actual.get(name.toLowerCase()) ?? "";
+      return !value.startsWith(normalizeText(expectedPrefix).toLowerCase());
+    })
+    .map(([name]) => name.toLowerCase());
+}
+
 function expectedJsonMismatches(expected, actual, prefix = "json") {
   if (expected === undefined) return [];
   if (!isPlainObject(expected)) {
@@ -419,6 +585,13 @@ function validHttpBoundaryContract(boundary) {
   if (
     boundary.headers !== undefined &&
     (!isPlainObject(boundary.headers) || !Object.values(boundary.headers).every(nonEmptyString))
+  ) {
+    return false;
+  }
+  if (
+    boundary.header_prefixes !== undefined &&
+    (!isPlainObject(boundary.header_prefixes) ||
+      !Object.values(boundary.header_prefixes).every(nonEmptyString))
   ) {
     return false;
   }
@@ -482,6 +655,35 @@ function validateContract(contract) {
     }
     boundaryKeys.add(key);
   }
+  if (
+    !Array.isArray(contract.required_audience_http_boundaries) ||
+    !contract.required_audience_http_boundaries.length
+  ) {
+    return {
+      ok: false,
+      detail: "Contract required_audience_http_boundaries must be a non-empty array."
+    };
+  }
+  const audienceBoundaryKeys = new Set();
+  for (const boundary of contract.required_audience_http_boundaries) {
+    if (
+      !validHttpBoundaryContract(boundary) ||
+      !["candidate_anonymous", "production"].includes(normalizeText(boundary.audience).toLowerCase())
+    ) {
+      return {
+        ok: false,
+        detail: "Each required_audience_http_boundaries entry must define candidate_anonymous or production audience plus a valid HTTP boundary."
+      };
+    }
+    const key = audienceBoundaryKey(boundary);
+    if (audienceBoundaryKeys.has(key)) {
+      return {
+        ok: false,
+        detail: `Contract required_audience_http_boundaries contains duplicate ${key}.`
+      };
+    }
+    audienceBoundaryKeys.add(key);
+  }
   return { ok: true, contract };
 }
 
@@ -510,6 +712,8 @@ function emptyChecks() {
     candidate_ready: false,
     candidate_routes_complete: false,
     candidate_http_boundaries_complete: false,
+    audience_boundary_deployments_match: false,
+    audience_http_boundaries_complete: false,
     provenance_deployment_matches_candidate: false,
     provenance_sha_matches_approved: false,
     provenance_source_matches: false
@@ -521,6 +725,7 @@ function emptyEvidence(input) {
     head_sha: normalizeSha(input.headSha) || null,
     approved_sha: normalizeSha(input.approvedSha) || null,
     approved_deployment_id: normalizeDeploymentId(input.approvedDeploymentId) || null,
+    production_deployment_id: normalizeDeploymentId(input.productionDeploymentId) || null,
     dirty: typeof input.dirty === "boolean" ? input.dirty : null,
     candidate_deployment_id: deploymentIdFromObject(input.candidate) || null,
     candidate_name: input.candidate?.name ?? null,
@@ -542,12 +747,23 @@ function emptyEvidence(input) {
     candidate_http_boundary_count: Array.isArray(input.candidateHttpBoundaries?.responses)
       ? input.candidateHttpBoundaries.responses.length
       : 0,
+    audience_candidate_deployment_id: normalizeDeploymentId(
+      input.audienceHttpBoundaries?.candidate_deployment_id
+    ) || null,
+    audience_production_deployment_id: normalizeDeploymentId(
+      input.audienceHttpBoundaries?.production_deployment_id
+    ) || null,
+    audience_http_boundary_count: Array.isArray(input.audienceHttpBoundaries?.responses)
+      ? input.audienceHttpBoundaries.responses.length
+      : 0,
     app_path_count: 0,
     candidate_route_count: 0,
     missing_app_paths: [],
     missing_candidate_routes: [],
     missing_candidate_http_boundaries: [],
-    failed_candidate_http_boundaries: []
+    failed_candidate_http_boundaries: [],
+    missing_audience_http_boundaries: [],
+    failed_audience_http_boundaries: []
   };
 }
 
@@ -589,9 +805,11 @@ function parseArgs(argv) {
 
     if (arg === "--approved-sha") input.approvedSha = next();
     else if (arg === "--approved-deployment-id") input.approvedDeploymentId = next();
+    else if (arg === "--production-deployment-id") input.productionDeploymentId = next();
     else if (arg === "--candidate") input.candidatePath = next();
     else if (arg === "--provenance") input.provenancePath = next();
     else if (arg === "--candidate-http-boundaries") input.candidateHttpBoundariesPath = next();
+    else if (arg === "--audience-http-boundaries") input.audienceHttpBoundariesPath = next();
     else if (arg === "--contract") input.contractPath = next();
     else if (arg === "--app-paths-manifest") input.appPathsManifestPath = next();
     else if (arg === "--repo-root") input.repoRoot = next();
@@ -618,10 +836,14 @@ function main() {
     const args = parseArgs(process.argv.slice(2));
     if (!args.approvedSha) throw new Error("--approved-sha is required.");
     if (!args.approvedDeploymentId) throw new Error("--approved-deployment-id is required.");
+    if (!args.productionDeploymentId) throw new Error("--production-deployment-id is required.");
     if (!args.candidatePath) throw new Error("--candidate is required.");
     if (!args.provenancePath) throw new Error("--provenance is required.");
     if (!args.candidateHttpBoundariesPath) {
       throw new Error("--candidate-http-boundaries is required.");
+    }
+    if (!args.audienceHttpBoundariesPath) {
+      throw new Error("--audience-http-boundaries is required.");
     }
 
     const repoRoot = path.resolve(args.repoRoot ?? process.cwd());
@@ -630,6 +852,7 @@ function main() {
     const candidatePath = path.resolve(repoRoot, args.candidatePath);
     const provenancePath = path.resolve(repoRoot, args.provenancePath);
     const candidateHttpBoundariesPath = path.resolve(repoRoot, args.candidateHttpBoundariesPath);
+    const audienceHttpBoundariesPath = path.resolve(repoRoot, args.audienceHttpBoundariesPath);
     const headSha = gitOutput(repoRoot, ["rev-parse", "HEAD"]);
     const dirty = gitOutput(repoRoot, ["status", "--porcelain=v1"]).length > 0;
 
@@ -639,10 +862,12 @@ function main() {
       headSha,
       approvedSha: args.approvedSha,
       approvedDeploymentId: args.approvedDeploymentId,
+      productionDeploymentId: args.productionDeploymentId,
       appPathsManifest: readJson(manifestPath),
       candidate: readJson(candidatePath),
       provenance: readJson(provenancePath),
-      candidateHttpBoundaries: readJson(candidateHttpBoundariesPath)
+      candidateHttpBoundaries: readJson(candidateHttpBoundariesPath),
+      audienceHttpBoundaries: readJson(audienceHttpBoundariesPath)
     });
 
     if (args.json) {
@@ -652,6 +877,7 @@ function main() {
       console.log(`head_sha=${result.receipt.evidence.head_sha ?? ""}`);
       console.log(`approved_sha=${result.receipt.evidence.approved_sha ?? ""}`);
       console.log(`candidate_deployment_id=${result.receipt.evidence.candidate_deployment_id ?? ""}`);
+      console.log(`production_deployment_id=${result.receipt.evidence.production_deployment_id ?? ""}`);
       console.log(`source_sha=${result.receipt.evidence.source_sha ?? ""}`);
       console.log(
         `candidate_http_deployment_id=${result.receipt.evidence.candidate_http_deployment_id ?? ""}`

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { ArchetypeCardSystem } from "@/components/archetypes";
-import { copy } from "@/lib/copy";
 
 export const metadata: Metadata = {
   title: "Archetype Card System | Werkles",
@@ -39,9 +39,7 @@ export default function ArchetypesPage() {
         </section>
         <ArchetypeCardSystem />
       </main>
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
@@ -202,6 +203,7 @@ export default function MembershipPage() {
         <p className="status-line" role="status">{status}</p>
       </section>
       </main>
+      <PublicTrustFooter />
     </CockpitShell>
   );
 }

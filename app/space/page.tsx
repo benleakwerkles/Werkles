@@ -1,9 +1,9 @@
 import Link from "next/link";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeActPageLayout } from "@/components/narrative/narrative-act-page-layout";
 import { NarrativePhotoGallery } from "@/components/narrative/narrative-photo-gallery";
-import { copy } from "@/lib/copy";
 import { allSpaceGallery, getNarrativeAct } from "@/lib/narrative-arc";
 
 export default function SpacePage() {
@@ -37,9 +37,7 @@ export default function SpacePage() {
           </div>
         </section>
       </NarrativeActPageLayout>
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

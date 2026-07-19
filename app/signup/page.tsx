@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { copy } from "@/lib/copy";
 import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
@@ -119,6 +120,7 @@ export default function SignupPage() {
   }
 
   return (
+    <>
     <main className={`auth-shell auth-shell--spark ${routeAtmosphere.auth}`}>
       <NarrativeJourneyRail currentSlug="/spark" />
       <section className="auth-panel auth-panel--split">
@@ -197,5 +199,7 @@ export default function SignupPage() {
         </div>
       </section>
     </main>
+    <PublicTrustFooter />
+    </>
   );
 }

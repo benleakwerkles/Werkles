@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DiscoveryIntakeForm } from "./discovery-intake-form";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { routeAtmosphere } from "@/lib/workshop-facets";
@@ -64,6 +65,7 @@ export default function DiscoveryPage() {
           </aside>
         </section>
       </main>
+      <PublicTrustFooter />
     </>
   );
 }

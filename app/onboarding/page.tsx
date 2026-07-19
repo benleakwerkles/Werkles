@@ -8,12 +8,19 @@ import { getDevPreviewUser, shouldUseDevPreviewAuth } from "@/lib/dev-preview-au
 import { getClientAccessToken } from "@/lib/client-auth";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
 import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
 const RECOMMENDATION_RETURN_PATH = "/bellows/recommendations";
 
 type Phase = "first-weld" | "doors" | "quick-weld" | "blueprint";
+
+const collectionNoticeByPhase: Partial<Record<Phase, string>> = {
+  "first-weld": "This step saves your lane, field, and ZIP-derived location to your signed-in profile.",
+  "quick-weld": "This step saves the skills, goal, timeline, and work preference you enter to your signed-in profile.",
+  blueprint: "This step saves your workshop narrative to your signed-in profile."
+};
 
 function splitTags(value: FormDataEntryValue | null) {
   return String(value || "")
@@ -39,6 +46,7 @@ export default function OnboardingPage() {
 
   const profileReturnHref = `/dashboard/profile?next=${encodeURIComponent(nextPath)}`;
   const isRecommendationJourney = nextPath === RECOMMENDATION_RETURN_PATH;
+  const collectionNotice = collectionNoticeByPhase[phase];
 
   function goToProfile() {
     window.location.href = profileReturnHref;
@@ -229,6 +237,7 @@ export default function OnboardingPage() {
   }
 
   return (
+    <>
     <main className="dashboard-main onboarding-page">
       <NarrativeJourneyRail currentSlug="/formation" />
       <nav className="dashboard-nav" aria-label="Onboarding navigation">
@@ -270,6 +279,12 @@ export default function OnboardingPage() {
         </div>
         </div>
       </section>
+
+      {collectionNotice ? (
+        <p className="profile-field-help onboarding-data-notice">
+          {collectionNotice} Read the <Link href="/privacy">Public Test Data Notice</Link> before saving.
+        </p>
+      ) : null}
 
       {phase === "first-weld" && (
         <section className="ops-card onboarding-panel">
@@ -411,5 +426,7 @@ export default function OnboardingPage() {
         </section>
       )}
     </main>
+    <PublicTrustFooter />
+    </>
   );
 }

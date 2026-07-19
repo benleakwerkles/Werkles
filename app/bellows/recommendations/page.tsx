@@ -1,8 +1,8 @@
 import Link from "next/link";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { PersonalRecommendationDelivery } from "@/components/squibb/personal-recommendation-delivery";
-import { copy } from "@/lib/copy";
 import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-recommendation-session-server";
 
 import "./squibb-recommendations.css";
@@ -30,9 +30,7 @@ export default async function SquibbRecommendationsPage() {
 
         <PersonalRecommendationDelivery exampleSession={session} ledger={ledger} />
       </main>
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

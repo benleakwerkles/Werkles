@@ -10,6 +10,7 @@ const repoRoot = path.resolve(scriptDir, "../..");
 const contract = JSON.parse(readFileSync(path.join(repoRoot, "deploy/production-release-contract.json"), "utf8"));
 const approvedSha = "83178a95053a3a108dfa48de38f111172d25d50b";
 const approvedDeploymentId = "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo";
+const productionDeploymentId = "dpl_currentProduction";
 
 function completeFixture() {
   return {
@@ -18,6 +19,7 @@ function completeFixture() {
     headSha: approvedSha,
     approvedSha,
     approvedDeploymentId,
+    productionDeploymentId,
     appPathsManifest: Object.fromEntries(contract.required_app_paths.map((route) => [route, `server${route}.js`])),
     candidate: {
       id: approvedDeploymentId,
@@ -50,6 +52,25 @@ function completeFixture() {
         status: boundary.status,
         headers: boundary.headers ? { ...boundary.headers } : {},
         json: boundary.json ? { ...boundary.json } : undefined
+      }))
+    },
+    audienceHttpBoundaries: {
+      candidate_deployment_id: approvedDeploymentId,
+      production_deployment_id: productionDeploymentId,
+      responses: contract.required_audience_http_boundaries.map((boundary) => ({
+        audience: boundary.audience,
+        method: boundary.method,
+        path: boundary.path,
+        status: boundary.status,
+        headers: {
+          ...(boundary.headers ?? {}),
+          ...Object.fromEntries(
+            Object.entries(boundary.header_prefixes ?? {}).map(([name, prefix]) => [
+              name,
+              `${prefix}?fixture=1`
+            ])
+          )
+        }
       }))
     }
   };
@@ -85,6 +106,14 @@ const cases = [
     },
     expectOk: false,
     expectReason: "APPROVED_DEPLOYMENT_ID_REQUIRED"
+  },
+  {
+    name: "missing Production deployment ID fails closed",
+    mutate(input) {
+      input.productionDeploymentId = "";
+    },
+    expectOk: false,
+    expectReason: "PRODUCTION_DEPLOYMENT_ID_REQUIRED"
   },
   {
     name: "missing candidate deployment ID fails closed",
@@ -194,6 +223,83 @@ const cases = [
     expectReason: "CANDIDATE_HTTP_JSON_MISMATCH"
   },
   {
+    name: "missing onboarding candidate HTTP boundary fails closed",
+    mutate(input) {
+      input.candidateHttpBoundaries.responses = input.candidateHttpBoundaries.responses.filter(
+        (response) => response.path !== "/onboarding"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_CANDIDATE_HTTP_BOUNDARY"
+  },
+  {
+    name: "missing audience evidence fails closed",
+    mutate(input) {
+      delete input.audienceHttpBoundaries;
+    },
+    expectOk: false,
+    expectReason: "AUDIENCE_HTTP_BOUNDARIES_REQUIRED"
+  },
+  {
+    name: "audience candidate deployment mismatch fails closed",
+    mutate(input) {
+      input.audienceHttpBoundaries.candidate_deployment_id = "dpl_otherCandidate";
+    },
+    expectOk: false,
+    expectReason: "AUDIENCE_CANDIDATE_DEPLOYMENT_ID_MISMATCH"
+  },
+  {
+    name: "audience Production deployment mismatch fails closed",
+    mutate(input) {
+      input.audienceHttpBoundaries.production_deployment_id = "dpl_otherProduction";
+    },
+    expectOk: false,
+    expectReason: "AUDIENCE_PRODUCTION_DEPLOYMENT_ID_MISMATCH"
+  },
+  {
+    name: "missing Production internal API denial fails closed",
+    mutate(input) {
+      input.audienceHttpBoundaries.responses = input.audienceHttpBoundaries.responses.filter(
+        (response) => response.path !== "/api/soledash/v1/automatica-relay"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_AUDIENCE_HTTP_BOUNDARY"
+  },
+  {
+    name: "protected Preview redirect status mismatch fails closed",
+    mutate(input) {
+      const response = input.audienceHttpBoundaries.responses.find(
+        (entry) => entry.audience === "candidate_anonymous"
+      );
+      response.status = 200;
+    },
+    expectOk: false,
+    expectReason: "AUDIENCE_HTTP_STATUS_MISMATCH"
+  },
+  {
+    name: "protected Preview SSO location mismatch fails closed",
+    mutate(input) {
+      const response = input.audienceHttpBoundaries.responses.find(
+        (entry) => entry.audience === "candidate_anonymous"
+      );
+      response.headers.location = "https://example.com/login";
+    },
+    expectOk: false,
+    expectReason: "AUDIENCE_HTTP_HEADER_PREFIX_MISMATCH"
+  },
+  {
+    name: "Production internal page cache boundary mismatch fails closed",
+    mutate(input) {
+      const response = input.audienceHttpBoundaries.responses.find(
+        (entry) => entry.audience === "production" && entry.path === "/operator"
+      );
+      response.headers["cache-control"] = "public, max-age=3600";
+    },
+    expectOk: false,
+    expectReason: "AUDIENCE_HTTP_HEADER_MISMATCH"
+  },
+  {
     name: "missing candidate route fails closed",
     mutate(input) {
       input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
@@ -220,10 +326,28 @@ const cases = [
     expectReason: "MISSING_APP_PATH"
   },
   {
+    name: "missing onboarding app path fails closed",
+    mutate(input) {
+      delete input.appPathsManifest["/onboarding/page"];
+    },
+    expectOk: false,
+    expectReason: "MISSING_APP_PATH"
+  },
+  {
     name: "missing verification candidate route fails closed",
     mutate(input) {
       input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
         (entry) => entry.path !== "api/verification/funds/exchange"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_CANDIDATE_OUTPUT_ROUTE"
+  },
+  {
+    name: "missing onboarding candidate route fails closed",
+    mutate(input) {
+      input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
+        (entry) => entry.path !== "onboarding"
       );
     },
     expectOk: false,
@@ -291,6 +415,16 @@ for (const testCase of cases) {
         result.receipt.evidence.candidate_http_boundary_count,
         contract.required_candidate_http_boundaries.length,
         `${testCase.name}: HTTP boundary count missing from receipt`
+      );
+      assert.equal(
+        result.receipt.evidence.production_deployment_id,
+        productionDeploymentId,
+        `${testCase.name}: Production deployment ID missing from receipt`
+      );
+      assert.equal(
+        result.receipt.evidence.audience_http_boundary_count,
+        contract.required_audience_http_boundaries.length,
+        `${testCase.name}: audience boundary count missing from receipt`
       );
     }
 

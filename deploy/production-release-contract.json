@@ -20,6 +20,7 @@
     "/discovery/page",
     "/dashboard/profile/page",
     "/privacy/page",
+    "/onboarding/page",
     "/login/page",
     "/signup/page",
     "/operator/matching/shadow/page",
@@ -41,6 +42,7 @@
     "discovery",
     "dashboard/profile",
     "privacy",
+    "onboarding",
     "login",
     "signup",
     "operator/matching/shadow",
@@ -61,6 +63,11 @@
     {
       "method": "GET",
       "path": "/privacy",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/onboarding",
       "status": 200
     },
     {
@@ -97,6 +104,40 @@
       "json": {
         "error": "Verification provider actions are unavailable during public testing.",
         "state": "Closed"
+      }
+    }
+  ],
+  "required_audience_http_boundaries": [
+    {
+      "audience": "candidate_anonymous",
+      "method": "GET",
+      "path": "/",
+      "status": 302,
+      "headers": {
+        "cache-control": "no-store"
+      },
+      "header_prefixes": {
+        "location": "https://vercel.com/sso-api"
+      }
+    },
+    {
+      "audience": "production",
+      "method": "GET",
+      "path": "/operator",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "x-robots-tag": "noindex, nofollow, noarchive"
+      }
+    },
+    {
+      "audience": "production",
+      "method": "GET",
+      "path": "/api/soledash/v1/automatica-relay",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "x-robots-tag": "noindex, nofollow, noarchive"
       }
     }
   ]

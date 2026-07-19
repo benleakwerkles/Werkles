@@ -775,6 +775,29 @@ main.squibb-rec-page p.squibb-rec-delivery-status--error:not(.eyebrow) {
   color: var(--squibb-rec-on-dark);
 }
 
+.squibb-rec-surface__personal-custody {
+  margin: -0.2rem 0 1.15rem;
+  padding: 0.1rem 0 0.85rem 0.75rem;
+  border-left: 3px solid var(--werkles-teal-bright, #18c5ae);
+  border-bottom: 1px solid var(--werkles-iron, #3b342a);
+  background: linear-gradient(90deg, rgba(2, 145, 126, 0.12), transparent 72%);
+}
+
+.squibb-rec-surface__personal-custody p {
+  max-width: 62rem;
+  margin: 0;
+  color: var(--squibb-rec-muted-on-dark);
+  line-height: 1.45;
+}
+
+.squibb-rec-surface__personal-custody .eyebrow {
+  margin-bottom: 0.2rem;
+}
+
+.squibb-rec-surface__personal-custody strong {
+  color: var(--squibb-rec-on-dark);
+}
+
 .squibb-rec-surface__hero {
   border-left: 1px solid var(--werkles-copper, #9f6633);
   overflow: hidden;

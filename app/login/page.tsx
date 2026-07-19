@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { WorkshopGreeter } from "@/components/foundry/workshop-greeter";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { routeAtmosphere } from "@/lib/workshop-facets";
@@ -112,6 +113,7 @@ export default function LoginPage() {
   const signupHref = `/signup?next=${encodeURIComponent(nextPath)}`;
 
   return (
+    <>
     <main className={`auth-shell auth-shell--foundry ${routeAtmosphere.auth}`}>
       <NarrativeJourneyRail currentSlug="/proof" />
       <section className="auth-panel auth-panel--split">
@@ -181,5 +183,7 @@ export default function LoginPage() {
         </div>
       </section>
     </main>
+    <PublicTrustFooter />
+    </>
   );
 }

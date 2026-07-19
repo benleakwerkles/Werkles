@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
@@ -60,6 +61,7 @@ export default async function MembershipSuccessPage({ searchParams }: Props) {
           <Tier2PageVisual page="membershipSuccess" featured />
         </section>
       </main>
+      <PublicTrustFooter />
     </CockpitShell>
   );
 }

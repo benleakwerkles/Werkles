@@ -70,11 +70,13 @@ export default function ProfilePage() {
   const [email, setEmail] = useState<string | null>(null);
   const [recommendationReady, setRecommendationReady] = useState(false);
   const [recommendationReturnPath, setRecommendationReturnPath] = useState("/bellows/recommendations");
+  const [isRecommendationJourney, setIsRecommendationJourney] = useState(false);
   const [profileAuthState, setProfileAuthState] = useState<ProfileAuthState>("checking");
 
   useEffect(() => {
     async function loadProfile() {
       const params = new URLSearchParams(window.location.search);
+      setIsRecommendationJourney(params.get("next") === "/bellows/recommendations");
       setRecommendationReturnPath(
         safeMemberReturnPath(params.get("next"), "/bellows/recommendations")
       );
@@ -224,6 +226,41 @@ export default function ProfilePage() {
   }
 
   const encodedRecommendationReturnPath = encodeURIComponent(recommendationReturnPath);
+  const primaryGoalField = (
+    <label className="field">
+      <span>Primary goal</span>
+      <input
+        name="primary_goal"
+        list="primaryGoalSuggestions"
+        defaultValue={profile.primary_goal || ""}
+        placeholder="Choose an idea or type your own"
+        aria-describedby="primaryGoalHelp"
+      />
+      <datalist id="primaryGoalSuggestions">
+        {PRIMARY_GOAL_SUGGESTIONS.map((goal) => <option key={goal} value={goal} />)}
+      </datalist>
+      <small className="profile-field-help" id="primaryGoalHelp">
+        Pick a suggestion or write a goal in your own words.
+      </small>
+    </label>
+  );
+  const skillsSoughtField = (
+    <label className="field wide-field">
+      <span>Skills sought</span>
+      <input name="skills_sought" defaultValue={joinTags(profile.skills_sought)} placeholder="capital, license, admin" />
+    </label>
+  );
+  const blueprintNarrativeField = (
+    <label className="field wide-field">
+      <span>Blueprint narrative</span>
+      <textarea
+        name="blueprint_narrative"
+        defaultValue={profile.blueprint_narrative || ""}
+        rows={5}
+        placeholder="What are you building, who is missing, and where does this thing live?"
+      />
+    </label>
+  );
 
   return (
     <CockpitShell>
@@ -297,6 +334,34 @@ export default function ProfilePage() {
           <span>Assets: {profile.funds_status || "none"}</span>
         </div>
         <form className="profile-grid" key={`${email || "anonymous"}:${profile.display_name || "new"}`} onSubmit={handleSubmit}>
+          {isRecommendationJourney ? (
+            <>
+              <p className="profile-field-help wide-field" role="note">
+                Start with one useful signal. These details create your private recommendation; you can finish the rest later.
+              </p>
+              {primaryGoalField}
+              {skillsSoughtField}
+              {blueprintNarrativeField}
+              <div className="profile-actions wide-field recommendation-activation-actions">
+                {recommendationReady ? (
+                  <>
+                    <Link className="button button-dark" href={recommendationReturnPath}>
+                      See my private recommendation
+                    </Link>
+                    <button className="button button-outline" type="submit">Save profile changes</button>
+                  </>
+                ) : (
+                  <button className="button button-dark" type="submit">Save and check recommendation</button>
+                )}
+                <p className="profile-field-help">
+                  {recommendationReady
+                    ? "Your profile has enough detail for a private recommendation."
+                    : recommendationSignalGuidance}
+                </p>
+                <p className="status-line" role="status">{status}</p>
+              </div>
+            </>
+          ) : null}
           <p className="profile-field-help wide-field">
             This form saves details to your signed-in account. Read the{" "}
             <Link href="/privacy">Public Test Data Notice</Link> before adding anything you do not want in your profile.
@@ -404,56 +469,40 @@ export default function ProfilePage() {
             <span>Timeline</span>
             <input name="timeline_to_launch" defaultValue={profile.timeline_to_launch || ""} placeholder="0-3 months" />
           </label>
-          <label className="field">
-            <span>Primary goal</span>
-            <input
-              name="primary_goal"
-              list="primaryGoalSuggestions"
-              defaultValue={profile.primary_goal || ""}
-              placeholder="Choose an idea or type your own"
-              aria-describedby="primaryGoalHelp"
-            />
-            <datalist id="primaryGoalSuggestions">
-              {PRIMARY_GOAL_SUGGESTIONS.map((goal) => <option key={goal} value={goal} />)}
-            </datalist>
-            <small className="profile-field-help" id="primaryGoalHelp">
-              Pick a suggestion or write a goal in your own words.
-            </small>
-          </label>
+          {!isRecommendationJourney ? primaryGoalField : null}
           <label className="field wide-field">
             <span>Skills offered</span>
             <input name="skills_offered" defaultValue={joinTags(profile.skills_offered)} placeholder="field, sales, books" />
           </label>
-          <label className="field wide-field">
-            <span>Skills sought</span>
-            <input name="skills_sought" defaultValue={joinTags(profile.skills_sought)} placeholder="capital, license, admin" />
-          </label>
+          {!isRecommendationJourney ? skillsSoughtField : null}
           <label className="field wide-field">
             <span>Industry tags</span>
             <input name="industry_tags" defaultValue={joinTags(profile.industry_tags)} placeholder="plumbing, home services" />
           </label>
-          <label className="field wide-field">
-            <span>Blueprint narrative</span>
-            <textarea
-              name="blueprint_narrative"
-              defaultValue={profile.blueprint_narrative || ""}
-              rows={5}
-              placeholder="What are you building, who is missing, and where does this thing live?"
-            />
-          </label>
+          {!isRecommendationJourney ? blueprintNarrativeField : null}
           <div className="profile-actions">
-            <button className="button button-dark" type="submit">Save profile</button>
-            {recommendationReady ? (
-              <Link className="button button-outline" href={recommendationReturnPath}>
-                See my private recommendation
-              </Link>
+            {isRecommendationJourney ? (
+              <button className="button button-outline" type="submit">Save remaining profile details</button>
+            ) : (
+              <>
+                <button className="button button-dark" type="submit">Save profile</button>
+                {recommendationReady ? (
+                  <Link className="button button-outline" href={recommendationReturnPath}>
+                    See my private recommendation
+                  </Link>
+                ) : null}
+              </>
+            )}
+            {!isRecommendationJourney ? (
+              <>
+                <p className="profile-field-help">
+                  {recommendationReady
+                    ? "Your profile has enough detail for a private recommendation."
+                    : recommendationSignalGuidance}
+                </p>
+                <p className="status-line" role="status">{status}</p>
+              </>
             ) : null}
-            <p className="profile-field-help">
-              {recommendationReady
-                ? "Your profile has enough detail for a private recommendation."
-                : recommendationSignalGuidance}
-            </p>
-            <p className="status-line" role="status">{status}</p>
           </div>
         </form>
       </section>

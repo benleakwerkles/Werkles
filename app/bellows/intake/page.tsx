@@ -1,9 +1,9 @@
 import Link from "next/link";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { ConciergeIntakeForm } from "@/components/squibb/concierge-intake-form";
-import { copy } from "@/lib/copy";
 
 import "./concierge-intake.css";
 
@@ -36,9 +36,7 @@ export default function ConciergeIntakePage() {
 
         <ConciergeIntakeForm />
       </main>
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { PricingTable } from "@/components/pricing/pricing-table";
 import { copy } from "@/lib/copy";
@@ -42,6 +43,7 @@ export default function PricingPage() {
 
       <PricingTable />
       </main>
+      <PublicTrustFooter />
     </CockpitShell>
   );
 }

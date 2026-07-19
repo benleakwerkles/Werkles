@@ -1,9 +1,9 @@
 import Link from "next/link";
 
+import { PublicTrustFooter } from "@/components/foundry/public-trust-footer";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { ConciergeWalkthrough } from "@/components/squibb/concierge-walkthrough";
-import { copy } from "@/lib/copy";
 import { loadConciergeUser0Flow } from "@/lib/squibb/concierge-walkthrough-test-case-0";
 import { loadSpeakerHumanReadTestCase0 } from "@/lib/squibb/speaker-transparency-test-case-0";
 
@@ -36,9 +36,7 @@ export default function ConciergeWalkthroughTestCase0Page() {
 
         <ConciergeWalkthrough walkthrough={walkthrough} speakerRead={speakerRead} />
       </main>
-      <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
-      </footer>
+      <PublicTrustFooter />
     </>
   );
 }

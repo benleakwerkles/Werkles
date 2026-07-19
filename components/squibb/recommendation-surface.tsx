@@ -22,7 +22,7 @@ type RecommendationPacketState =
   | { status: "closed"; message: string }
   | { status: "error"; message: string };
 
-/** Closed until authenticated owner binding exists. Server still returns 403. */
+/** Closed throughout the public test; recommendation actions are not persisted. Server still returns 403. */
 const SAVE_CLOSED_BETA = true;
 
 const SAVE_CLOSED_MESSAGE =
@@ -48,6 +48,9 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
   const isExample = source.mode === "demo";
   const isPersonal = source.mode === "authenticated_profile";
   const isEphemeralDocument = source.mode === "ephemeral_document";
+  const savingStatusMessage = isPersonal
+    ? "Saving is closed during this public test. This private result was not saved or sent. Edit your profile to recalculate it."
+    : packetState.message;
   const hasRecordedActivity = ledger.intakes.length > 0 || optionPackets.length > 0;
   const showActivityLedger =
     !isEphemeralDocument && (hasRecordedActivity || (!isExample && !isPersonal));
@@ -95,6 +98,15 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
   return (
     <div className="squibb-rec-surface">
       <header className="squibb-rec-surface__hero panel">
+        {isPersonal ? (
+          <div className="squibb-rec-surface__personal-custody" role="note" aria-label="Private recommendation">
+            <p className="eyebrow">Private account result</p>
+            <p>
+              <strong>Built from your saved profile.</strong> Loaded only after this account was confirmed. This result was
+              not saved or sent.
+            </p>
+          </div>
+        ) : null}
         {isExample ? (
           <div className="squibb-rec-surface__example-custody" role="note" aria-label="Example mode">
             <div>
@@ -111,8 +123,8 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             </Link>
           </div>
         ) : null}
-        <p className="eyebrow">Werkles recommendations</p>
-        <h1>One possible next move, explained.</h1>
+        <p className="eyebrow">{isPersonal ? "Private, rules-based result" : "Werkles recommendations"}</p>
+        <h1>{isPersonal ? "Your private recommendation" : "One possible next move, explained."}</h1>
         <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
         <dl className="squibb-rec-surface__context">
           <div>
@@ -249,24 +261,35 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
               data-status={packetState.status}
               role="status"
             >
-              {packetState.message}
+              {savingStatusMessage}
             </div>
-            <div
-              className="squibb-rec-detail__buttons"
-              role="group"
-              aria-label="Recommendation actions"
-              aria-describedby="squibbRecommendationSavingStatus"
-            >
-              <button type="button" className="button button-dark" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
-                Save this option
-              </button>
-              <button type="button" className="button button-outline" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
-                {selected.keepOriginalPathLabel}
-              </button>
-              <button type="button" className="button button-ghost" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
-                Ask what proof is needed
-              </button>
-            </div>
+            {isPersonal ? (
+              <div className="squibb-rec-detail__buttons" aria-label="Private recommendation actions">
+                <Link
+                  className="button button-dark"
+                  href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
+                >
+                  Edit Profile
+                </Link>
+              </div>
+            ) : (
+              <div
+                className="squibb-rec-detail__buttons"
+                role="group"
+                aria-label="Recommendation actions"
+                aria-describedby="squibbRecommendationSavingStatus"
+              >
+                <button type="button" className="button button-dark" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
+                  Save this option
+                </button>
+                <button type="button" className="button button-outline" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
+                  {selected.keepOriginalPathLabel}
+                </button>
+                <button type="button" className="button button-ghost" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
+                  Ask what proof is needed
+                </button>
+              </div>
+            )}
           </footer>
         </article>
       </div>
