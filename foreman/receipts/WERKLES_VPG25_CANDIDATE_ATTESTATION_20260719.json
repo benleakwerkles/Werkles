@@ -1,0 +1,60 @@
+{
+  "schema": "werkles.candidate-attestation/v1",
+  "created_at": "2026-07-19T13:10:02-04:00",
+  "operator": "Heimerdinker@Betsy",
+  "machine": "BETSY",
+  "repository": "benleakwerkles/Werkles",
+  "branch": "codex/werkles-vpg25-20260719",
+  "candidate": {
+    "deployment_id": "dpl_DAFSCodmpd4SN9A5oFkCjKACPWhE",
+    "immutable_url": "https://werkles1-i9prsrhtj-werkles.vercel.app",
+    "branch_alias": "https://werkles1-git-codex-werkles-vpg25-20260719-werkles.vercel.app",
+    "target": "preview",
+    "ready_state": "READY",
+    "output_count": 373,
+    "source_sha": "7881e770500556df1cf12e36a79b556056029f53",
+    "product_sha": "7881e770500556df1cf12e36a79b556056029f53",
+    "source_type": "github",
+    "source_repo_id": "1242158598"
+  },
+  "release_integrity": {
+    "result": "PASS",
+    "worktree_clean_at_candidate_sha": true,
+    "head_matches_approved_sha": true,
+    "app_paths_complete": true,
+    "candidate_deployment_id_matches": true,
+    "candidate_name_matches": true,
+    "candidate_target_matches": true,
+    "candidate_ready": true,
+    "candidate_routes_complete": true,
+    "candidate_http_boundaries_complete": true,
+    "provenance_deployment_matches_candidate": true,
+    "provenance_sha_matches_approved": true,
+    "provenance_source_matches": true,
+    "app_path_count": 187,
+    "candidate_route_count": 373,
+    "candidate_http_boundary_count": 5
+  },
+  "runtime_boundaries": [
+    { "method": "GET", "path": "/dashboard/profile", "status": 200 },
+    { "method": "GET", "path": "/privacy", "status": 200 },
+    { "method": "GET", "path": "/api/bellows/recommendations/personal", "status": 401 },
+    { "method": "POST", "path": "/api/verification/identity", "status": 503, "cache_control": "no-store", "state": "Closed" },
+    { "method": "POST", "path": "/api/verification/funds", "status": 503, "cache_control": "no-store", "state": "Closed" },
+    { "method": "POST", "path": "/api/verification/funds/exchange", "status": 503, "cache_control": "no-store", "state": "Closed" }
+  ],
+  "production": {
+    "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo",
+    "immutable_url": "https://werkles1-dl6jjnwea-werkles.vercel.app",
+    "alias": "https://werkles.com",
+    "ready_state": "READY",
+    "output_count": 371,
+    "release_label": "VPG22",
+    "source_provenance": "UNAVAILABLE",
+    "changed_by_vpg25": false
+  },
+  "promotion_input": {
+    "deployment_id": "dpl_DAFSCodmpd4SN9A5oFkCjKACPWhE",
+    "source_sha": "7881e770500556df1cf12e36a79b556056029f53"
+  }
+}

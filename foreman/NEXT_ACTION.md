@@ -1,8 +1,8 @@
 # NEXT ACTION
 
-**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG24_PUBLIC_TESTER_CONTINUITY_TRUST]`
+**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG25_PUBLIC_TESTER_HANDOFF_TRUST]`
 
-Updated: 2026-07-19 12:09 ET
+Updated: 2026-07-19 13:10 ET
 
 ## Production — healthy and unchanged
 
@@ -10,22 +10,25 @@ Updated: 2026-07-19 12:09 ET
 - Deployment: `dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo`
 - VPG22 remains the current Production release.
 
-## VPG24 branch — complete
+## VPG25 product candidate — Ready
 
-- Branch: `codex/werkles-vpg24-20260719`
-- Product commit: `91cc95d6c96e094f43afbb783aef6bf7ab42d984`
-- Recommendation CTA and Profile Builder now tell the signed-out/signed-in journey truthfully.
-- Identity/Plaid actions fail closed during public testing.
-- Release guard binds the exact approved deployment and Git provenance.
+- Branch: `codex/werkles-vpg25-20260719`
+- Product/source commit: `7881e770500556df1cf12e36a79b556056029f53`
+- Exact deployment: `dpl_DAFSCodmpd4SN9A5oFkCjKACPWhE`
+- Immutable Preview: `https://werkles1-i9prsrhtj-werkles.vercel.app`
+- Recommendation signup and First Weld now continue cleanly into Profile Builder.
+- `/privacy` explains verified public-test custody beside both collection points.
+- Critical Profile/provider boundaries are verified against the exact artifact.
 
 ## Proof
 
-- Focused VPG24 tests, VPG10/VPG19–VPG23 regressions, release/alias guards, TypeScript, 82-page build, browser check, and live local route smoke all pass.
-- Protected Preview is produced by the final branch push; exact deployment proof is returned in the root operator receipt.
+- Candidate attestation: `foreman/receipts/WERKLES_VPG25_CANDIDATE_ATTESTATION_20260719.json`
+- Exact Preview is Ready with 373 outputs and GitHub provenance bound to `benleakwerkles/Werkles@7881e77`.
+- Focused guards, regressions, TypeScript, 83-page build, visual check, and deployment-bound HTTP smoke pass.
 
 ## Next action
 
-Review the VPG24 protected Preview. Production remains unchanged unless Ben separately directs a Production action.
+Review the immutable VPG25 protected Preview. Production remains unchanged unless Ben separately directs a Production action.
 
 ## Hard stops
 
