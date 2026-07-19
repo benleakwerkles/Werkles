@@ -368,7 +368,7 @@ export const copy = {
         "Foundry Dues start at {price}/mo. Checkout stays disabled until the billing gate clears."
     },
     artifact: {
-      label: "Example reveal — draft illustration",
+      label: "Example output",
       title: "Equipment · Used commercial oven",
       meansLine: "Within budget after credit-union desk — closer than you assumed",
       body: "Seller checks: identity · license · references · funds posture",

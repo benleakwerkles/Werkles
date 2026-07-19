@@ -13,6 +13,7 @@ const lanes = read("components/foundry/lanes-documentary-section.tsx");
 const bellows = read("app/bellows/page.tsx");
 
 assert.match(copy, /primaryCta: "See a recommendation"/);
+assert.doesNotMatch(copy, /Example reveal[^\n]*draft illustration/);
 assert.match(hero, /className="button button-light" href="\/bellows\/recommendations"/);
 assert.match(header, /className="header-cta" href="\/bellows\/recommendations"/);
 assert.doesNotMatch(hero, /className="button button-light" href="\/signup"/);
@@ -39,4 +40,4 @@ assert.match(bellows, /Intake submission is temporarily closed/);
 assert.match(bellows, /Review the intake \(closed\)/);
 assert.match(bellows, /className="button button-ghost" href="\/bellows\/intake"/);
 
-console.log("PASS VPG23 public tester entry and public-copy boundary (16 checks)");
+console.log("PASS VPG23 public tester entry and public-copy boundary (17 checks)");

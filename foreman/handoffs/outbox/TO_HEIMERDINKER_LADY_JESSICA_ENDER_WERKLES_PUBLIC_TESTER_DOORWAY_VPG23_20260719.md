@@ -31,4 +31,3 @@ Ben issued `V, P, G`; the established shorthand authorizes exactly two fresh pac
 - Homepage contains no review-only, Ghost Forge, legacy-imagery, mock-only, email-capture, or `/api/beta` client language.
 - Bellows no longer claims closed intake is the first active step.
 - Existing VPG19–VPG22 auth, owner-binding, save, and intake boundaries remain unchanged.
-

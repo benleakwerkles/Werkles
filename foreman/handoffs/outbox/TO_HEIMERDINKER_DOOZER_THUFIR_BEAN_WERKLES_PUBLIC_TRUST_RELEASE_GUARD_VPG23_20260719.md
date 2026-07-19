@@ -26,4 +26,3 @@ EXECUTION_BRANCH: `codex/werkles-public-entry-vpg23-20260719`
 - Release guard fixture matrix passes the exact clean case and fails dirty, SHA mismatch, missing route, and non-Ready candidate cases.
 - Guard validates the current `.next/server/app-paths-manifest.json` route contract after `npm run build`.
 - No SQL/schema/RLS, Supabase mutation, LLM/provider call, Tier B, saving, payment, alias, or Production deployment occurs.
-
