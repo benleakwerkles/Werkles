@@ -11,6 +11,8 @@ import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-r
 import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
 import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
+const RECOMMENDATION_RETURN_PATH = "/bellows/recommendations";
+
 type Phase = "first-weld" | "doors" | "quick-weld" | "blueprint";
 
 function splitTags(value: FormDataEntryValue | null) {
@@ -28,13 +30,29 @@ export default function OnboardingPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setNextPath(safeMemberReturnPath(params.get("next")));
+    const safeNextPath = safeMemberReturnPath(params.get("next"));
+    setNextPath(safeNextPath);
+    if (safeNextPath === RECOMMENDATION_RETURN_PATH) {
+      setStatus("Start with your lane, field, and ZIP. Then we'll open Profile Builder for your recommendation.");
+    }
   }, []);
 
   const profileReturnHref = `/dashboard/profile?next=${encodeURIComponent(nextPath)}`;
+  const isRecommendationJourney = nextPath === RECOMMENDATION_RETURN_PATH;
 
   function goToProfile() {
     window.location.href = profileReturnHref;
+  }
+
+  function finishFirstWeld() {
+    if (isRecommendationJourney) {
+      setStatus("First Weld saved. Opening Profile Builder for your recommendation.");
+      goToProfile();
+      return;
+    }
+
+    setStatus(`${copy.onboarding.saved} Pick a door below, or go straight to Foundry Dues.`);
+    setPhase("doors");
   }
 
   async function currentUser() {
@@ -63,8 +81,7 @@ export default function OnboardingPage() {
       }
 
       if (shouldUseDevPreviewAuth()) {
-        setStatus(`${copy.onboarding.saved} Pick a door below, or go straight to Foundry Dues.`);
-        setPhase("doors");
+        finishFirstWeld();
         return;
       }
 
@@ -90,8 +107,7 @@ export default function OnboardingPage() {
         return;
       }
 
-      setStatus(`${copy.onboarding.saved} Pick a door below, or go straight to Foundry Dues.`);
-      setPhase("doors");
+      finishFirstWeld();
     } catch {
       setStatus("First weld jammed. Try again.");
     } finally {
@@ -240,8 +256,9 @@ export default function OnboardingPage() {
         <h1>{copy.onboarding.headline}</h1>
         <p>{copy.onboarding.subhead}</p>
         <p className="muted">
-          Onboarding is free. After the first weld you can open the member floor, build your profile, or compare
-          Foundry Dues — nothing here requires payment.
+          {isRecommendationJourney
+            ? "This free first step saves your lane and location. Next, add one goal or project detail in Profile Builder and return to your private recommendation. Foundry Dues stay optional."
+            : "Onboarding is free. After the first weld you can open the member floor, build your profile, or compare Foundry Dues — nothing here requires payment."}
         </p>
         <div className="member-selected-surface__actions">
           <Link className="button button-outline" href="/formation">
@@ -274,7 +291,7 @@ export default function OnboardingPage() {
               <input name="turf" inputMode="numeric" maxLength={5} placeholder="ZIP code" required />
             </label>
             <button className="button button-light" type="submit" disabled={busy}>
-              Set the First Weld
+              {isRecommendationJourney ? "Save and continue to profile" : "Set the First Weld"}
             </button>
           </form>
           <p className="status-line" role="status">{status}</p>

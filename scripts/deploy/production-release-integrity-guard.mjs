@@ -198,6 +198,104 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     }
   }
 
+  const candidateHttpBoundaries = isPlainObject(input.candidateHttpBoundaries)
+    ? input.candidateHttpBoundaries
+    : null;
+  const candidateHttpDeploymentId = normalizeDeploymentId(candidateHttpBoundaries?.deployment_id);
+  const boundaryResponses = Array.isArray(candidateHttpBoundaries?.responses)
+    ? candidateHttpBoundaries.responses
+    : [];
+  let missingCandidateHttpBoundaries = contract.required_candidate_http_boundaries.map(httpBoundaryKey);
+  const failedCandidateHttpBoundaries = [];
+
+  if (!candidateHttpBoundaries) {
+    reasons.push({
+      code: "CANDIDATE_HTTP_BOUNDARIES_REQUIRED",
+      detail: "Parsed exact-candidate HTTP boundary evidence is required."
+    });
+  } else {
+    let httpDeploymentMatches = false;
+    if (!candidateHttpDeploymentId) {
+      reasons.push({
+        code: "CANDIDATE_HTTP_DEPLOYMENT_ID_REQUIRED",
+        detail: "HTTP boundary evidence deployment_id is required."
+      });
+    } else if (candidateDeploymentId && candidateHttpDeploymentId !== candidateDeploymentId) {
+      reasons.push({
+        code: "CANDIDATE_HTTP_DEPLOYMENT_ID_MISMATCH",
+        detail: `HTTP boundary deployment ${candidateHttpDeploymentId} does not equal candidate deployment ${candidateDeploymentId}.`
+      });
+    } else if (candidateDeploymentId) {
+      httpDeploymentMatches = true;
+    }
+
+    if (!Array.isArray(candidateHttpBoundaries.responses)) {
+      reasons.push({
+        code: "CANDIDATE_HTTP_RESPONSES_REQUIRED",
+        detail: "HTTP boundary evidence responses must be an array."
+      });
+    } else {
+      const responseIndex = indexHttpBoundaryResponses(boundaryResponses);
+      missingCandidateHttpBoundaries = [];
+
+      for (const expected of contract.required_candidate_http_boundaries) {
+        const key = httpBoundaryKey(expected);
+        const matches = responseIndex.get(key) ?? [];
+        if (!matches.length) {
+          missingCandidateHttpBoundaries.push(key);
+          reasons.push({
+            code: "MISSING_CANDIDATE_HTTP_BOUNDARY",
+            detail: key
+          });
+          continue;
+        }
+        if (matches.length !== 1) {
+          failedCandidateHttpBoundaries.push(`${key}:duplicate`);
+          reasons.push({
+            code: "DUPLICATE_CANDIDATE_HTTP_BOUNDARY",
+            detail: key
+          });
+          continue;
+        }
+
+        const actual = matches[0];
+        if (actual.status !== expected.status) {
+          failedCandidateHttpBoundaries.push(`${key}:status`);
+          reasons.push({
+            code: "CANDIDATE_HTTP_STATUS_MISMATCH",
+            detail: `${key} expected ${expected.status}, got ${display(actual.status)}.`
+          });
+        }
+
+        const headerMismatches = expectedHeaderMismatches(expected.headers, actual.headers);
+        for (const header of headerMismatches) {
+          failedCandidateHttpBoundaries.push(`${key}:header:${header}`);
+          reasons.push({
+            code: "CANDIDATE_HTTP_HEADER_MISMATCH",
+            detail: `${key} did not satisfy required header ${header}.`
+          });
+        }
+
+        const jsonMismatches = expectedJsonMismatches(expected.json, actual.json);
+        for (const field of jsonMismatches) {
+          failedCandidateHttpBoundaries.push(`${key}:json:${field}`);
+          reasons.push({
+            code: "CANDIDATE_HTTP_JSON_MISMATCH",
+            detail: `${key} did not satisfy required JSON field ${field}.`
+          });
+        }
+      }
+
+      if (
+        httpDeploymentMatches &&
+        !missingCandidateHttpBoundaries.length &&
+        !failedCandidateHttpBoundaries.length
+      ) {
+        checks.candidate_http_boundaries_complete = true;
+      }
+    }
+  }
+
   return resultFromReasons(reasons, checks, {
     head_sha: headSha || null,
     approved_sha: approvedSha || null,
@@ -213,10 +311,14 @@ export function evaluateProductionReleaseIntegrity(input = {}) {
     source_repo_id: sourceRepoId || null,
     source_github_org: sourceOrg || null,
     source_github_repo: sourceRepo || null,
+    candidate_http_deployment_id: candidateHttpDeploymentId || null,
+    candidate_http_boundary_count: boundaryResponses.length,
     app_path_count: appPathKeys?.length ?? 0,
     candidate_route_count: candidateRoutes.length,
     missing_app_paths: missingAppPaths,
-    missing_candidate_routes: missingCandidateRoutes
+    missing_candidate_routes: missingCandidateRoutes,
+    missing_candidate_http_boundaries: missingCandidateHttpBoundaries,
+    failed_candidate_http_boundaries: failedCandidateHttpBoundaries
   });
 }
 
@@ -247,6 +349,87 @@ function manifestKeys(manifest) {
   return Object.keys(manifest);
 }
 
+function httpBoundaryKey(boundary) {
+  const method = normalizeText(boundary?.method).toUpperCase();
+  const route = normalizeHttpPath(boundary?.path);
+  return `${method} ${route}`.trim();
+}
+
+function normalizeHttpPath(value) {
+  const route = normalizeText(value);
+  if (!route) return "";
+  return `/${route.replace(/^\/+|\/+$/g, "")}`;
+}
+
+function indexHttpBoundaryResponses(responses) {
+  const index = new Map();
+  for (const response of responses) {
+    if (!isPlainObject(response)) continue;
+    const key = httpBoundaryKey(response);
+    const entries = index.get(key) ?? [];
+    entries.push(response);
+    index.set(key, entries);
+  }
+  return index;
+}
+
+function expectedHeaderMismatches(expectedHeaders, actualHeaders) {
+  if (!isPlainObject(expectedHeaders)) return [];
+  const actual = new Map(
+    Object.entries(isPlainObject(actualHeaders) ? actualHeaders : {}).map(([name, value]) => [
+      name.toLowerCase(),
+      normalizeText(value).toLowerCase()
+    ])
+  );
+
+  return Object.entries(expectedHeaders)
+    .filter(([name, expectedValue]) => {
+      const expectedTokens = normalizeText(expectedValue)
+        .toLowerCase()
+        .split(",")
+        .map((token) => token.trim())
+        .filter(Boolean);
+      const actualTokens = (actual.get(name.toLowerCase()) ?? "")
+        .split(",")
+        .map((token) => token.trim())
+        .filter(Boolean);
+      return !expectedTokens.every((token) => actualTokens.includes(token));
+    })
+    .map(([name]) => name.toLowerCase());
+}
+
+function expectedJsonMismatches(expected, actual, prefix = "json") {
+  if (expected === undefined) return [];
+  if (!isPlainObject(expected)) {
+    return Object.is(expected, actual) ? [] : [prefix];
+  }
+  if (!isPlainObject(actual)) return [prefix];
+
+  const mismatches = [];
+  for (const [key, expectedValue] of Object.entries(expected)) {
+    mismatches.push(...expectedJsonMismatches(expectedValue, actual[key], `${prefix}.${key}`));
+  }
+  return mismatches;
+}
+
+function validHttpBoundaryContract(boundary) {
+  if (!isPlainObject(boundary)) return false;
+  if (!nonEmptyString(boundary.method) || !normalizeHttpPath(boundary.path)) return false;
+  if (!Number.isInteger(boundary.status) || boundary.status < 100 || boundary.status > 599) return false;
+  if (
+    boundary.headers !== undefined &&
+    (!isPlainObject(boundary.headers) || !Object.values(boundary.headers).every(nonEmptyString))
+  ) {
+    return false;
+  }
+  return boundary.json === undefined || validExpectedJson(boundary.json);
+}
+
+function validExpectedJson(value) {
+  if (value === null || ["string", "number", "boolean"].includes(typeof value)) return true;
+  return isPlainObject(value) && Object.values(value).every(validExpectedJson);
+}
+
 function validateContract(contract) {
   if (!isPlainObject(contract)) return { ok: false, detail: "Contract must be a JSON object." };
   if (contract.schema !== "werkles.production-release-contract/v1") {
@@ -272,6 +455,32 @@ function validateContract(contract) {
     if (!Array.isArray(contract[field]) || !contract[field].length || !contract[field].every(nonEmptyString)) {
       return { ok: false, detail: `Contract ${field} must be a non-empty string array.` };
     }
+  }
+  if (
+    !Array.isArray(contract.required_candidate_http_boundaries) ||
+    !contract.required_candidate_http_boundaries.length
+  ) {
+    return {
+      ok: false,
+      detail: "Contract required_candidate_http_boundaries must be a non-empty array."
+    };
+  }
+  const boundaryKeys = new Set();
+  for (const boundary of contract.required_candidate_http_boundaries) {
+    if (!validHttpBoundaryContract(boundary)) {
+      return {
+        ok: false,
+        detail: "Each required_candidate_http_boundaries entry must define method, path, status, and valid optional headers/json objects."
+      };
+    }
+    const key = httpBoundaryKey(boundary);
+    if (boundaryKeys.has(key)) {
+      return {
+        ok: false,
+        detail: `Contract required_candidate_http_boundaries contains duplicate ${key}.`
+      };
+    }
+    boundaryKeys.add(key);
   }
   return { ok: true, contract };
 }
@@ -300,6 +509,7 @@ function emptyChecks() {
     candidate_target_matches: false,
     candidate_ready: false,
     candidate_routes_complete: false,
+    candidate_http_boundaries_complete: false,
     provenance_deployment_matches_candidate: false,
     provenance_sha_matches_approved: false,
     provenance_source_matches: false
@@ -326,10 +536,18 @@ function emptyEvidence(input) {
     source_github_repo: normalizeText(
       input.provenance?.meta?.githubCommitRepo ?? input.provenance?.meta?.githubRepo
     ) || null,
+    candidate_http_deployment_id: normalizeDeploymentId(
+      input.candidateHttpBoundaries?.deployment_id
+    ) || null,
+    candidate_http_boundary_count: Array.isArray(input.candidateHttpBoundaries?.responses)
+      ? input.candidateHttpBoundaries.responses.length
+      : 0,
     app_path_count: 0,
     candidate_route_count: 0,
     missing_app_paths: [],
-    missing_candidate_routes: []
+    missing_candidate_routes: [],
+    missing_candidate_http_boundaries: [],
+    failed_candidate_http_boundaries: []
   };
 }
 
@@ -373,6 +591,7 @@ function parseArgs(argv) {
     else if (arg === "--approved-deployment-id") input.approvedDeploymentId = next();
     else if (arg === "--candidate") input.candidatePath = next();
     else if (arg === "--provenance") input.provenancePath = next();
+    else if (arg === "--candidate-http-boundaries") input.candidateHttpBoundariesPath = next();
     else if (arg === "--contract") input.contractPath = next();
     else if (arg === "--app-paths-manifest") input.appPathsManifestPath = next();
     else if (arg === "--repo-root") input.repoRoot = next();
@@ -401,12 +620,16 @@ function main() {
     if (!args.approvedDeploymentId) throw new Error("--approved-deployment-id is required.");
     if (!args.candidatePath) throw new Error("--candidate is required.");
     if (!args.provenancePath) throw new Error("--provenance is required.");
+    if (!args.candidateHttpBoundariesPath) {
+      throw new Error("--candidate-http-boundaries is required.");
+    }
 
     const repoRoot = path.resolve(args.repoRoot ?? process.cwd());
     const contractPath = path.resolve(repoRoot, args.contractPath ?? DEFAULT_RELEASE_CONTRACT);
     const manifestPath = path.resolve(repoRoot, args.appPathsManifestPath ?? DEFAULT_APP_PATHS_MANIFEST);
     const candidatePath = path.resolve(repoRoot, args.candidatePath);
     const provenancePath = path.resolve(repoRoot, args.provenancePath);
+    const candidateHttpBoundariesPath = path.resolve(repoRoot, args.candidateHttpBoundariesPath);
     const headSha = gitOutput(repoRoot, ["rev-parse", "HEAD"]);
     const dirty = gitOutput(repoRoot, ["status", "--porcelain=v1"]).length > 0;
 
@@ -418,7 +641,8 @@ function main() {
       approvedDeploymentId: args.approvedDeploymentId,
       appPathsManifest: readJson(manifestPath),
       candidate: readJson(candidatePath),
-      provenance: readJson(provenancePath)
+      provenance: readJson(provenancePath),
+      candidateHttpBoundaries: readJson(candidateHttpBoundariesPath)
     });
 
     if (args.json) {
@@ -429,6 +653,9 @@ function main() {
       console.log(`approved_sha=${result.receipt.evidence.approved_sha ?? ""}`);
       console.log(`candidate_deployment_id=${result.receipt.evidence.candidate_deployment_id ?? ""}`);
       console.log(`source_sha=${result.receipt.evidence.source_sha ?? ""}`);
+      console.log(
+        `candidate_http_deployment_id=${result.receipt.evidence.candidate_http_deployment_id ?? ""}`
+      );
       for (const reason of result.receipt.reasons) {
         console.log(`reason=${reason.code}: ${reason.detail}`);
       }

@@ -41,6 +41,16 @@ function completeFixture() {
         githubCommitOrg: contract.provenance_source.github_org,
         githubCommitRepo: contract.provenance_source.github_repo
       }
+    },
+    candidateHttpBoundaries: {
+      deployment_id: approvedDeploymentId,
+      responses: contract.required_candidate_http_boundaries.map((boundary) => ({
+        method: boundary.method,
+        path: boundary.path,
+        status: boundary.status,
+        headers: boundary.headers ? { ...boundary.headers } : {},
+        json: boundary.json ? { ...boundary.json } : undefined
+      }))
     }
   };
 }
@@ -125,6 +135,65 @@ const cases = [
     expectReason: "PROVENANCE_SOURCE_MISMATCH"
   },
   {
+    name: "missing exact-candidate HTTP evidence fails closed",
+    mutate(input) {
+      delete input.candidateHttpBoundaries;
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_BOUNDARIES_REQUIRED"
+  },
+  {
+    name: "HTTP evidence deployment mismatch fails closed",
+    mutate(input) {
+      input.candidateHttpBoundaries.deployment_id = "dpl_otherHttpEvidence";
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_DEPLOYMENT_ID_MISMATCH"
+  },
+  {
+    name: "missing provider HTTP boundary fails closed",
+    mutate(input) {
+      input.candidateHttpBoundaries.responses = input.candidateHttpBoundaries.responses.filter(
+        (response) => response.path !== "/api/verification/funds/exchange"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_CANDIDATE_HTTP_BOUNDARY"
+  },
+  {
+    name: "provider HTTP status mismatch fails closed",
+    mutate(input) {
+      const response = input.candidateHttpBoundaries.responses.find(
+        (entry) => entry.path === "/api/verification/identity"
+      );
+      response.status = 200;
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_STATUS_MISMATCH"
+  },
+  {
+    name: "provider HTTP no-store mismatch fails closed",
+    mutate(input) {
+      const response = input.candidateHttpBoundaries.responses.find(
+        (entry) => entry.path === "/api/verification/funds"
+      );
+      response.headers["cache-control"] = "public, max-age=3600";
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_HEADER_MISMATCH"
+  },
+  {
+    name: "provider HTTP JSON mismatch fails closed",
+    mutate(input) {
+      const response = input.candidateHttpBoundaries.responses.find(
+        (entry) => entry.path === "/api/verification/funds/exchange"
+      );
+      response.json.state = "Open";
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_JSON_MISMATCH"
+  },
+  {
     name: "missing candidate route fails closed",
     mutate(input) {
       input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
@@ -141,6 +210,24 @@ const cases = [
     },
     expectOk: false,
     expectReason: "MISSING_APP_PATH"
+  },
+  {
+    name: "missing Profile app path fails closed",
+    mutate(input) {
+      delete input.appPathsManifest["/dashboard/profile/page"];
+    },
+    expectOk: false,
+    expectReason: "MISSING_APP_PATH"
+  },
+  {
+    name: "missing verification candidate route fails closed",
+    mutate(input) {
+      input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
+        (entry) => entry.path !== "api/verification/funds/exchange"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_CANDIDATE_OUTPUT_ROUTE"
   },
   {
     name: "non-READY candidate fails closed",
@@ -194,6 +281,16 @@ for (const testCase of cases) {
         result.receipt.evidence.source_sha,
         approvedSha,
         `${testCase.name}: source SHA missing from receipt`
+      );
+      assert.equal(
+        result.receipt.evidence.candidate_http_deployment_id,
+        approvedDeploymentId,
+        `${testCase.name}: HTTP evidence deployment ID missing from receipt`
+      );
+      assert.equal(
+        result.receipt.evidence.candidate_http_boundary_count,
+        contract.required_candidate_http_boundaries.length,
+        `${testCase.name}: HTTP boundary count missing from receipt`
       );
     }
 

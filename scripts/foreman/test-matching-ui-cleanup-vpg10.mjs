@@ -18,7 +18,7 @@ assert.doesNotMatch(page, /NarrativeJourneyRail/);
 assert.doesNotMatch(page, /Test Case #0/);
 assert.match(page, /Werkles Recommendations/);
 assert.doesNotMatch(page, /Autonomous Matching/);
-assert.match(page, /squibb-rec-page__intake-link/);
+assert.doesNotMatch(page, /squibb-rec-page__intake-link/);
 
 assert.match(surface, /Example mode/);
 assert.match(surface, /This is a walkthrough, not your result\./);
@@ -56,7 +56,7 @@ console.log(
     {
       pass: true,
       checks: [
-        "single_route_navigation_band",
+        "closed_intake_link_removed",
         "public_test_fixture_link_removed",
         "example_mode_copy_consolidated",
         "centered_reading_width",

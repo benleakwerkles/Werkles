@@ -83,7 +83,7 @@ assert.doesNotMatch(callback, /router\.replace\("\/onboarding"\)/);
 
 assert.match(onboarding, /const profileReturnHref = `\/dashboard\/profile\?next=\$\{encodeURIComponent\(nextPath\)\}`/);
 assert.match(onboarding, /function goToProfile\(\)/);
-assert.equal(onboarding.match(/goToProfile\(\);/g)?.length, 6);
+assert.equal(onboarding.match(/goToProfile\(\);/g)?.length, 7);
 assert.equal(onboarding.match(/href=\{profileReturnHref\}/g)?.length, 2);
 assert.doesNotMatch(onboarding, /window\.location\.href = "\/dashboard\/profile"|href="\/dashboard\/profile"/);
 assert.match(profile, /safeMemberReturnPath\(params\.get\("next"\), "\/bellows\/recommendations"\)/);

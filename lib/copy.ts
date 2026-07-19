@@ -174,7 +174,7 @@ export const copy = {
     loginSubhead: "Same floor, same rules — glad you're back.",
     signupSubhead: "Your profile starts here. We'll walk you through the gates.",
     loginIdle: "Use the account you created for Werkles.",
-    signupIdle: "Activation still waits on ID, face capture, phone, and proof gates.",
+    signupIdle: "Create your account, confirm your email, and we'll open your first profile step.",
     signupCta: "Start your profile",
     phoneConsent: "I consent to phone checks for account security when that feature is live."
   },

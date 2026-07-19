@@ -16,6 +16,10 @@ import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-r
 import { publicAuthMessage } from "@/lib/public-auth-message";
 import { safeMemberReturnPath } from "@/lib/safe-member-return";
 
+const RECOMMENDATION_RETURN_PATH = "/bellows/recommendations";
+const recommendationSignupIdle =
+  "Create your account, confirm your email, and we'll guide you back to a private recommendation.";
+
 export default function SignupPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = isLocalRoutePreviewUnlocked();
@@ -33,8 +37,14 @@ export default function SignupPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setNextPath(safeMemberReturnPath(params.get("next")));
+    const safeNextPath = safeMemberReturnPath(params.get("next"));
+    setNextPath(safeNextPath);
+    if (safeNextPath === RECOMMENDATION_RETURN_PATH) {
+      setStatus((current) => current === copy.auth.signupIdle ? recommendationSignupIdle : current);
+    }
   }, []);
+
+  const isRecommendationJourney = nextPath === RECOMMENDATION_RETURN_PATH;
 
   function unlockAuthAttempt() {
     authAttemptRef.current = false;
@@ -171,9 +181,18 @@ export default function SignupPage() {
           I already have an account
         </Link>
 
+          <p className="profile-field-help">
+            Before adding account or profile details, read the{" "}
+            <Link href="/privacy">Public Test Data Notice</Link>.
+          </p>
+
           <details className="auth-help">
             <summary>What happens next?</summary>
-            <p>Confirm your email, then finish onboarding. Foundry Dues stay optional.</p>
+            <p>
+              {isRecommendationJourney
+                ? "Confirm your email, complete one quick setup step, then add a goal or project detail. We'll bring you back to your private recommendation. Foundry Dues stay optional."
+                : "Confirm your email, then finish onboarding. Foundry Dues stay optional."}
+            </p>
           </details>
         </div>
       </section>

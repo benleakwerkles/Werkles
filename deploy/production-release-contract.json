@@ -18,13 +18,18 @@
     "/bellows/recommendations/page",
     "/bellows/recommendations/test-case-0/page",
     "/discovery/page",
+    "/dashboard/profile/page",
+    "/privacy/page",
     "/login/page",
     "/signup/page",
     "/operator/matching/shadow/page",
     "/api/bellows/intake/route",
     "/api/bellows/recommendations/packet/route",
     "/api/bellows/recommendations/personal/route",
-    "/api/discovery/intake/route"
+    "/api/discovery/intake/route",
+    "/api/verification/identity/route",
+    "/api/verification/funds/route",
+    "/api/verification/funds/exchange/route"
   ],
   "required_candidate_output_routes": [
     "index",
@@ -34,12 +39,65 @@
     "bellows/recommendations",
     "bellows/recommendations/test-case-0",
     "discovery",
+    "dashboard/profile",
+    "privacy",
     "login",
     "signup",
     "operator/matching/shadow",
     "api/bellows/intake",
     "api/bellows/recommendations/packet",
     "api/bellows/recommendations/personal",
-    "api/discovery/intake"
+    "api/discovery/intake",
+    "api/verification/identity",
+    "api/verification/funds",
+    "api/verification/funds/exchange"
+  ],
+  "required_candidate_http_boundaries": [
+    {
+      "method": "GET",
+      "path": "/dashboard/profile",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/privacy",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/verification/identity",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store"
+      },
+      "json": {
+        "error": "Verification provider actions are unavailable during public testing.",
+        "state": "Closed"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/verification/funds",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store"
+      },
+      "json": {
+        "error": "Verification provider actions are unavailable during public testing.",
+        "state": "Closed"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/verification/funds/exchange",
+      "status": 503,
+      "headers": {
+        "cache-control": "no-store"
+      },
+      "json": {
+        "error": "Verification provider actions are unavailable during public testing.",
+        "state": "Closed"
+      }
+    }
   ]
 }
