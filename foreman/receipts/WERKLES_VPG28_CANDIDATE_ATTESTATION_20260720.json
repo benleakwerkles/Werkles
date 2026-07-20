@@ -1,0 +1,45 @@
+{
+  "schema": "werkles.candidate-attestation/v1",
+  "created_at": "2026-07-20T00:17:01-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260720-000255-ET-BETSY-01",
+  "legacy_label": "VPG28",
+  "ordinal_claim": null,
+  "operator": "Heimerdinker@Betsy",
+  "machine": "BETSY",
+  "repository": "benleakwerkles/Werkles",
+  "branch": "codex/werkles-vpg28-20260720",
+  "candidate": {
+    "deployment_id": "dpl_DCcXKBAL8zVHuzXSHz38n8oc4Lys",
+    "immutable_url": "https://werkles1-pgjk35fhc-werkles.vercel.app",
+    "branch_alias": "https://werkles1-git-codex-werkles-vpg28-20260720-werkles.vercel.app",
+    "target": "preview",
+    "ready_state": "READY",
+    "output_count": 373,
+    "source_sha": "ce058f1c4510dcb3bf1b00191155531aa2fce25e",
+    "source_type": "github",
+    "source_repo_id": "1242158598"
+  },
+  "runtime": {
+    "homepage": { "status": 200, "worked_example_cta": true, "old_cta": false },
+    "recommendation": { "status": 200, "walkthrough_notice": true, "closed_intake_detour": false },
+    "anonymous_preview": { "status": 302, "cache_control": "no-store, max-age=0", "sso_redirect": true, "x_robots_tag": "noindex" },
+    "production_operator": { "status": 404, "cache_control": "no-store", "x_robots_tag": "noindex, nofollow, noarchive" }
+  },
+  "verification": {
+    "typecheck": "PASS",
+    "production_build": "PASS",
+    "static_page_count": 83,
+    "first_visit_checks": 8,
+    "cycle_guard_smoke_cases": 11,
+    "release_guard_smoke_cases": 39
+  },
+  "production": {
+    "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo",
+    "immutable_url": "https://werkles1-dl6jjnwea-werkles.vercel.app",
+    "alias": "https://werkles.com",
+    "ready_state": "READY",
+    "output_count": 371,
+    "release_label": "VPG22",
+    "changed_by_cycle": false
+  }
+}

@@ -15,4 +15,3 @@ PRODUCTION: `dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo` (`READY`, unchanged)
 2. Remove the closed-intake button from the example-custody block. The complete example is already followed by the account doorway; removing the competing closed route makes that intended next step unambiguous while leaving intake closure and custody truth intact elsewhere.
 
 PULL COMPLETED
-

@@ -1,8 +1,8 @@
 # NEXT ACTION
 
-**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG27_PUBLIC_MOMENTUM_USABILITY]`
+**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG28_FIRST_VISIT_AND_CYCLE_TRUTH]`
 
-Updated: 2026-07-19 21:39 ET
+Updated: 2026-07-20 00:17 ET
 
 ## Production - healthy and unchanged
 
@@ -10,26 +10,24 @@ Updated: 2026-07-19 21:39 ET
 - Deployment: `dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo`
 - VPG22 remains the current Production release.
 
-## VPG27 product candidate - Ready
+## VPG28 product candidate - Ready
 
-- Branch: `codex/werkles-vpg27-20260719`
-- Product/source commit: `8df73dc25d90040be3b187a82cc607b56459848c`
-- Exact deployment: `dpl_6UAguqySKh9R2Kf737MwDrwD32Gu`
-- Immutable Preview: `https://werkles1-okrw1q795-werkles.vercel.app`
-- The full example now precedes the warmer account ask.
-- Recommendation Profile shows any missing required basics before its action and returns after one successful ready save.
-- First Weld discloses its Zippopotam.us ZIP lookup beside collection and on the Public Test Data Notice.
-- Release proof binds the First Weld source/output plus its safe anonymous `401` boundary to the exact candidate.
+- Cycle ID: `WERKLES-FLOCK-20260720-000255-ET-BETSY-01`
+- Legacy label: `VPG28` (not an ordinal total)
+- Product/source commit: `ce058f1c4510dcb3bf1b00191155531aa2fce25e`
+- Exact deployment: `dpl_DCcXKBAL8zVHuzXSHz38n8oc4Lys`
+- Immutable Preview: `https://werkles1-pgjk35fhc-werkles.vercel.app`
+- Shared CTAs now name the worked example.
+- The example keeps its custody truth without diverting testers into closed intake.
+- Cycle identity and release evidence are append-only and guard-checked.
 
-## Proof
+## Numbering truth
 
-- Candidate attestation: `foreman/receipts/WERKLES_VPG27_CANDIDATE_ATTESTATION_20260719.json`
-- Exact Preview is Ready with 373 outputs and GitHub provenance bound to `benleakwerkles/Werkles@8df73dc`.
-- Focused guards, regressions, TypeScript, 83-page build, and deployment-bound HTTP/audience smoke pass.
+The repository proves at least 31 documented/opened pre-VPG28 scopes, not 27 completed cycles. Exact historical completed-cycle count is unknown. Future cycles use immutable cycle IDs; legacy VPG numbers are labels only.
 
 ## Next action
 
-Review the immutable VPG27 protected Preview. Production remains unchanged unless Ben separately directs a Production action.
+Review the exact protected Preview. Production remains unchanged unless Ben separately directs a Production action.
 
 ## Hard stops
 
