@@ -36,8 +36,9 @@ assert.ok(skillsFirstIndex > primaryFirstIndex, "Skills sought must follow Prima
 assert.ok(narrativeFirstIndex > skillsFirstIndex, "Blueprint narrative must follow Skills sought");
 assert.match(recommendationFirst, /you can finish the rest later/);
 assert.match(recommendationFirst, /Save and see my recommendation/);
-assert.match(recommendationFirst, /<Link className="button button-dark" href=\{recommendationReturnPath\}>/);
-assert.match(recommendationFirst, /Save profile changes/);
+assert.match(recommendationFirst, /Save changes and refresh recommendation/);
+assert.match(recommendationFirst, /<Link className="button button-outline" href=\{recommendationReturnPath\}>/);
+assert.match(recommendationFirst, /See current saved recommendation/);
 
 const genericGoalIndex = profileForm.indexOf("{!isRecommendationJourney ? primaryGoalField : null}");
 const skillsOfferedIndex = profileForm.indexOf('name="skills_offered"');
@@ -90,7 +91,7 @@ console.log(
       checks: [
         "recommendation_mode_leads_with_one_copy_of_each_matching_signal",
         "generic_profile_field_order_is_preserved",
-        "ready_private_result_is_the_primary_profile_action",
+        "save_then_refresh_is_the_primary_ready_profile_action",
         "generic_profile_actions_remain_available",
         "personal_recommendation_has_distinct_hero_and_custody",
         "personal_recommendation_states_closed_saving_truth",

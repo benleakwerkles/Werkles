@@ -131,8 +131,9 @@ export function PersonalRecommendationDelivery({
           <p className="eyebrow">Your turn</p>
           <h2 id="personalRecommendationCtaTitle">Want one for your situation?</h2>
           <p>
-            Create an account, add a few profile signals, and come straight back for a private rules-based
-            recommendation. The result is not saved or forwarded.
+            New here? Create an account, confirm your email, complete First Weld, and add one useful profile signal.
+            Already a member? Sign in and come straight back. Your private rules-based result is not saved or
+            forwarded.
           </p>
           <div className="squibb-rec-delivery-cta__actions">
             <Link className="button button-dark" href="/signup?next=%2Fbellows%2Frecommendations">

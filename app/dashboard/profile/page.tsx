@@ -387,10 +387,12 @@ export default function ProfilePage() {
               <div className="profile-actions wide-field recommendation-activation-actions">
                 {recommendationReady ? (
                   <>
-                    <Link className="button button-dark" href={recommendationReturnPath}>
-                      See my private recommendation
+                    <button className="button button-dark" type="submit">
+                      Save changes and refresh recommendation
+                    </button>
+                    <Link className="button button-outline" href={recommendationReturnPath}>
+                      See current saved recommendation
                     </Link>
-                    <button className="button button-outline" type="submit">Save profile changes</button>
                   </>
                 ) : (
                   <button className="button button-dark" type="submit">Save and see my recommendation</button>

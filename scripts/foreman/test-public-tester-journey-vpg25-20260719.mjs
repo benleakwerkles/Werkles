@@ -47,7 +47,7 @@ assert.match(onboarding, /Save and continue to profile/);
 assert.match(onboarding, /add one goal or project detail in Profile Builder and return to your private recommendation/);
 assert.doesNotMatch(onboarding, /window\.location\.href\s*=\s*["']\/bellows\/recommendations/);
 
-assert.match(profile, /See my private recommendation/);
+assert.match(profile, /See current saved recommendation/);
 assert.match(
   profile,
   /Add one Primary goal, Blueprint narrative, or Skills sought entry to unlock your private recommendation\./
