@@ -93,28 +93,6 @@ export function PersonalRecommendationDelivery({
           Checking this browser for a signed-in profile. The example remains visible while we check.
         </p>
       ) : null}
-      {delivery.status === "signed_out" ? (
-        <section
-          className="squibb-rec-delivery-cta panel"
-          aria-labelledby="personalRecommendationCtaTitle"
-          aria-live="polite"
-        >
-          <p className="eyebrow">Your turn</p>
-          <h2 id="personalRecommendationCtaTitle">Make this about your work.</h2>
-          <p>
-            You are viewing an example. Create an account, add a few profile signals, and come straight back for a
-            private rules-based recommendation. The result is not saved or forwarded.
-          </p>
-          <div className="squibb-rec-delivery-cta__actions">
-            <Link className="button button-dark" href="/signup?next=%2Fbellows%2Frecommendations">
-              Create account
-            </Link>
-            <Link className="button button-outline" href="/login?next=%2Fbellows%2Frecommendations">
-              Sign in
-            </Link>
-          </div>
-        </section>
-      ) : null}
       {delivery.status === "profile_required" ? (
         <p className="squibb-rec-delivery-status" role="status">
           You are signed in, but your profile needs a goal or project detail before Werkles can rank a personal result.{' '}
@@ -143,6 +121,29 @@ export function PersonalRecommendationDelivery({
         session={session}
         ledger={ledger}
       />
+
+      {delivery.status === "signed_out" ? (
+        <section
+          className="squibb-rec-delivery-cta panel"
+          aria-labelledby="personalRecommendationCtaTitle"
+          aria-live="polite"
+        >
+          <p className="eyebrow">Your turn</p>
+          <h2 id="personalRecommendationCtaTitle">Want one for your situation?</h2>
+          <p>
+            Create an account, add a few profile signals, and come straight back for a private rules-based
+            recommendation. The result is not saved or forwarded.
+          </p>
+          <div className="squibb-rec-delivery-cta__actions">
+            <Link className="button button-dark" href="/signup?next=%2Fbellows%2Frecommendations">
+              Create account
+            </Link>
+            <Link className="button button-outline" href="/login?next=%2Fbellows%2Frecommendations">
+              Sign in
+            </Link>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }

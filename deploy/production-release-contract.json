@@ -28,6 +28,7 @@
     "/api/bellows/recommendations/packet/route",
     "/api/bellows/recommendations/personal/route",
     "/api/discovery/intake/route",
+    "/api/onboarding/first-weld/route",
     "/api/verification/identity/route",
     "/api/verification/funds/route",
     "/api/verification/funds/exchange/route"
@@ -50,6 +51,7 @@
     "api/bellows/recommendations/packet",
     "api/bellows/recommendations/personal",
     "api/discovery/intake",
+    "api/onboarding/first-weld",
     "api/verification/identity",
     "api/verification/funds",
     "api/verification/funds/exchange"
@@ -69,6 +71,14 @@
       "method": "GET",
       "path": "/onboarding",
       "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/onboarding/first-weld",
+      "status": 401,
+      "json": {
+        "error": "Authentication required"
+      }
     },
     {
       "method": "POST",

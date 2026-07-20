@@ -38,6 +38,8 @@ export default function PublicTestDataNoticePage() {
             <h2>Saved to you</h2>
             <p>
               Your account and the profile details you choose to save are stored for your signed-in account.
+              During First Weld, Werkles sends the ZIP you enter to Zippopotam.us to look up city, state, latitude,
+              and longitude before saving those profile fields.
             </p>
           </article>
 

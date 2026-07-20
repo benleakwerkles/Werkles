@@ -75,7 +75,7 @@ assert.match(delivery, /Authorization: `Bearer \$\{token\}`/);
 assert.match(delivery, /cache: "no-store"/);
 assert.match(delivery, /isPersonalRecommendationResponse\(payload\)/);
 assert.match(delivery, /delivery\.status === "personal" \? delivery\.session : exampleSession/);
-assert.match(delivery, /You are viewing an example/);
+assert.match(delivery, /Want one for your situation\?/);
 assert.match(delivery, /Open Profile Builder/);
 assert.match(delivery, /page below is still an example/);
 assert.match(delivery, /Private rules result loaded from your saved profile/);

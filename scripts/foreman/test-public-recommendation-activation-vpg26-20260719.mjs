@@ -35,7 +35,7 @@ assert.ok(primaryFirstIndex > -1, "recommendation mode must lead with Primary go
 assert.ok(skillsFirstIndex > primaryFirstIndex, "Skills sought must follow Primary goal");
 assert.ok(narrativeFirstIndex > skillsFirstIndex, "Blueprint narrative must follow Skills sought");
 assert.match(recommendationFirst, /you can finish the rest later/);
-assert.match(recommendationFirst, /Save and check recommendation/);
+assert.match(recommendationFirst, /Save and see my recommendation/);
 assert.match(recommendationFirst, /<Link className="button button-dark" href=\{recommendationReturnPath\}>/);
 assert.match(recommendationFirst, /Save profile changes/);
 

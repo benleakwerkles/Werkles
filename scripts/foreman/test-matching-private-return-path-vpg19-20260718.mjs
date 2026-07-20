@@ -80,7 +80,8 @@ assert.match(profile, /hasUsableMemberProfileSignal\(loadedProfile\)/);
 assert.match(profile, /hasUsableMemberProfileSignal\(row\)/);
 assert.match(profile, /recommendationReady \? \(/);
 assert.match(profile, /See my private recommendation/);
-assert.doesNotMatch(profile, /router\.(?:push|replace)|window\.location\.(?:href|assign|replace)/);
+assert.match(profile, /if \(isRecommendationJourney && isRecommendationReady\) \{\s*window\.location\.assign\(recommendationReturnPath\);/);
+assert.doesNotMatch(profile, /router\.(?:push|replace)|window\.location\.(?:href|replace)/);
 
 const recommendationTypes = loadTs(read("lib/squibb/recommendations.ts"));
 const baseSession = recommendationTypes.loadSquibbRecommendationSession();

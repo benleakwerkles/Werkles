@@ -18,13 +18,12 @@ assert.match(recommendationNav, /href="\/bellows"/);
 assert.doesNotMatch(recommendationNav, /\/dashboard\/profile|>\s*Profile\s*</);
 
 const signedOutDelivery = delivery.slice(
-  delivery.indexOf('delivery.status === "signed_out" ? ('),
-  delivery.indexOf('delivery.status === "profile_required" ? (')
+  delivery.lastIndexOf('delivery.status === "signed_out" ? (')
 );
 const createAccountIndex = signedOutDelivery.indexOf('href="/signup?next=%2Fbellows%2Frecommendations"');
 const signInIndex = signedOutDelivery.indexOf('href="/login?next=%2Fbellows%2Frecommendations"');
-assert.match(signedOutDelivery, /<h2 id="personalRecommendationCtaTitle">Make this about your work\.<\/h2>/);
-assert.match(signedOutDelivery, /private rules-based recommendation/);
+assert.match(signedOutDelivery, /<h2 id="personalRecommendationCtaTitle">Want one for your situation\?<\/h2>/);
+assert.match(signedOutDelivery, /private rules-based\s+recommendation/);
 assert.match(signedOutDelivery, /The result is not saved or forwarded\./);
 assert.match(signedOutDelivery, /aria-live="polite"/);
 assert.ok(createAccountIndex > -1, "signed-out recommendation must offer account creation");
@@ -58,7 +57,8 @@ assert.match(
 );
 assert.match(profile, /Profile saved\. Your private recommendation is ready\./);
 assert.match(profile, /`Profile saved\. \$\{recommendationSignalGuidance\}`/);
-assert.doesNotMatch(profile, /router\.(?:push|replace)|window\.location\.(?:href|assign|replace)/);
+assert.match(profile, /window\.location\.assign\(recommendationReturnPath\)/);
+assert.doesNotMatch(profile, /router\.(?:push|replace)|window\.location\.(?:href|replace)/);
 
 assert.match(profile, /PUBLIC_TEST_PROVIDER_ACTIONS_OPEN \? \(/);
 assert.match(profile, /<button className="button button-outline" type="button" disabled>\s*ID Check — closed/);

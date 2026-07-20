@@ -194,6 +194,10 @@ export default function ProfilePage() {
         ? "Profile saved. Your private recommendation is ready."
         : `Profile saved. ${recommendationSignalGuidance}`
     );
+
+    if (isRecommendationJourney && isRecommendationReady) {
+      window.location.assign(recommendationReturnPath);
+    }
   }
 
   async function triggerVerification(kind: "identity" | "funds") {
@@ -226,6 +230,42 @@ export default function ProfilePage() {
   }
 
   const encodedRecommendationReturnPath = encodeURIComponent(recommendationReturnPath);
+  const displayNameField = (
+    <label className="field">
+      <span>Display name</span>
+      <input name="display_name" defaultValue={profile.display_name || ""} required />
+    </label>
+  );
+  const cityField = (
+    <label className="field">
+      <span>City</span>
+      <input name="location_city" defaultValue={profile.location_city || ""} required />
+    </label>
+  );
+  const stateField = (
+    <label className="field">
+      <span>State or territory</span>
+      <select name="location_state" defaultValue={profile.location_state || ""} required>
+        <option value="" disabled>Choose a state or territory</option>
+        {US_STATE_OPTIONS.map(([code, label]) => (
+          <option key={code} value={code}>{label} ({code})</option>
+        ))}
+      </select>
+    </label>
+  );
+  const recommendationBaseFields = (
+    <>
+      {profile.display_name ? (
+        <input type="hidden" name="display_name" value={profile.display_name} />
+      ) : displayNameField}
+      {profile.location_city ? (
+        <input type="hidden" name="location_city" value={profile.location_city} />
+      ) : cityField}
+      {profile.location_state ? (
+        <input type="hidden" name="location_state" value={profile.location_state} />
+      ) : stateField}
+    </>
+  );
   const primaryGoalField = (
     <label className="field">
       <span>Primary goal</span>
@@ -337,8 +377,10 @@ export default function ProfilePage() {
           {isRecommendationJourney ? (
             <>
               <p className="profile-field-help wide-field" role="note">
-                Start with one useful signal. These details create your private recommendation; you can finish the rest later.
+                Start with one useful signal. If this profile is new, add the basic name and location fields shown here
+                too. Then we will open your private recommendation; you can finish the rest later.
               </p>
+              {recommendationBaseFields}
               {primaryGoalField}
               {skillsSoughtField}
               {blueprintNarrativeField}
@@ -351,7 +393,7 @@ export default function ProfilePage() {
                     <button className="button button-outline" type="submit">Save profile changes</button>
                   </>
                 ) : (
-                  <button className="button button-dark" type="submit">Save and check recommendation</button>
+                  <button className="button button-dark" type="submit">Save and see my recommendation</button>
                 )}
                 <p className="profile-field-help">
                   {recommendationReady
@@ -366,10 +408,7 @@ export default function ProfilePage() {
             This form saves details to your signed-in account. Read the{" "}
             <Link href="/privacy">Public Test Data Notice</Link> before adding anything you do not want in your profile.
           </p>
-          <label className="field">
-            <span>Display name</span>
-            <input name="display_name" defaultValue={profile.display_name || ""} required />
-          </label>
+          {!isRecommendationJourney ? displayNameField : null}
           <label className="field">
             <span>First name</span>
             <input name="first_name" defaultValue={profile.first_name || ""} />
@@ -407,19 +446,8 @@ export default function ProfilePage() {
             <input name="phone_consent" type="checkbox" />
             <span>{copy.auth.phoneConsent}</span>
           </label>
-          <label className="field">
-            <span>City</span>
-            <input name="location_city" defaultValue={profile.location_city || ""} required />
-          </label>
-          <label className="field">
-            <span>State or territory</span>
-            <select name="location_state" defaultValue={profile.location_state || ""} required>
-              <option value="" disabled>Choose a state or territory</option>
-              {US_STATE_OPTIONS.map(([code, label]) => (
-                <option key={code} value={code}>{label} ({code})</option>
-              ))}
-            </select>
-          </label>
+          {!isRecommendationJourney ? cityField : null}
+          {!isRecommendationJourney ? stateField : null}
           <label className="field">
             <span>Turf ZIP</span>
             <input name="turf_zip" defaultValue={profile.turf_zip || ""} inputMode="numeric" maxLength={5} />

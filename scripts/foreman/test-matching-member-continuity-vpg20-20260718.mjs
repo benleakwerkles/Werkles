@@ -39,13 +39,18 @@ assert.doesNotMatch(recommendationNav, /\/dashboard\/profile|>\s*Profile\s*</);
 assert.doesNotMatch(recommendationNav, /\/bellows\/intake|Review the intake|Your profile|Edit profile/);
 
 const signedOut = delivery.slice(
-  delivery.indexOf('delivery.status === "signed_out"'),
-  delivery.indexOf('delivery.status === "profile_required"')
+  delivery.lastIndexOf('delivery.status === "signed_out"')
 );
 assert.match(signedOut, /\/login\?next=%2Fbellows%2Frecommendations/);
 assert.match(signedOut, /\/signup\?next=%2Fbellows%2Frecommendations/);
-assert.match(signedOut, /You are viewing an example/);
-assert.doesNotMatch(delivery.slice(delivery.indexOf('delivery.status === "profile_required"')), /\/signup\?next=/);
+assert.match(signedOut, /Want one for your situation\?/);
+assert.doesNotMatch(
+  delivery.slice(
+    delivery.indexOf('delivery.status === "profile_required"'),
+    delivery.lastIndexOf('delivery.status === "signed_out"')
+  ),
+  /\/signup\?next=/
+);
 
 for (const allowed of ["/dashboard", "/dashboard/profile", "/bellows/recommendations"]) {
   assert.equal(safeReturn(allowed), allowed);
@@ -87,7 +92,8 @@ assert.equal(onboarding.match(/goToProfile\(\);/g)?.length, 7);
 assert.equal(onboarding.match(/href=\{profileReturnHref\}/g)?.length, 2);
 assert.doesNotMatch(onboarding, /window\.location\.href = "\/dashboard\/profile"|href="\/dashboard\/profile"/);
 assert.match(profile, /safeMemberReturnPath\(params\.get\("next"\), "\/bellows\/recommendations"\)/);
-assert.doesNotMatch(profile, /router\.(?:push|replace)|window\.location\.(?:href|assign|replace)/);
+assert.match(profile, /if \(isRecommendationJourney && isRecommendationReady\) \{\s*window\.location\.assign\(recommendationReturnPath\);/);
+assert.doesNotMatch(profile, /router\.(?:push|replace)|window\.location\.(?:href|replace)/);
 
 console.log(
   JSON.stringify(
@@ -101,7 +107,7 @@ console.log(
         "signup_callback_is_same_origin_and_sanitized",
         "both_callback_success_modes_preserve_destination",
         "all_onboarding_profile_exits_share_one_safe_handoff",
-        "profile_builder_keeps_manual_readiness_return"
+        "profile_builder_uses_success_only_sanitized_readiness_return"
       ]
     },
     null,

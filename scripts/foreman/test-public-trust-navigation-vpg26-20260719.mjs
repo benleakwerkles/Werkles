@@ -43,7 +43,7 @@ for (const pagePath of sharedFooterPages) {
   assert.doesNotMatch(page, /<footer className="site-footer">/, `${pagePath} must not retain a copied footer`);
 }
 
-assert.match(onboarding, /"first-weld": "This step saves your lane, field, and ZIP-derived location to your signed-in profile\."/);
+assert.match(onboarding, /"first-weld":\s*"This step sends the ZIP you enter to Zippopotam\.us/);
 assert.match(onboarding, /"quick-weld": "This step saves the skills, goal, timeline, and work preference you enter to your signed-in profile\."/);
 assert.match(onboarding, /blueprint: "This step saves your workshop narrative to your signed-in profile\."/);
 assert.match(

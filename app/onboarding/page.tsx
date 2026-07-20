@@ -17,7 +17,8 @@ const RECOMMENDATION_RETURN_PATH = "/bellows/recommendations";
 type Phase = "first-weld" | "doors" | "quick-weld" | "blueprint";
 
 const collectionNoticeByPhase: Partial<Record<Phase, string>> = {
-  "first-weld": "This step saves your lane, field, and ZIP-derived location to your signed-in profile.",
+  "first-weld":
+    "This step sends the ZIP you enter to Zippopotam.us to look up city, state, latitude, and longitude, then saves your lane, field, ZIP, and resolved location to your signed-in profile.",
   "quick-weld": "This step saves the skills, goal, timeline, and work preference you enter to your signed-in profile.",
   blueprint: "This step saves your workshop narrative to your signed-in profile."
 };

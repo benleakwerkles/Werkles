@@ -233,6 +233,38 @@ const cases = [
     expectReason: "MISSING_CANDIDATE_HTTP_BOUNDARY"
   },
   {
+    name: "missing First Weld action boundary fails closed",
+    mutate(input) {
+      input.candidateHttpBoundaries.responses = input.candidateHttpBoundaries.responses.filter(
+        (response) => response.path !== "/api/onboarding/first-weld"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_CANDIDATE_HTTP_BOUNDARY"
+  },
+  {
+    name: "First Weld action status mismatch fails closed",
+    mutate(input) {
+      const response = input.candidateHttpBoundaries.responses.find(
+        (entry) => entry.path === "/api/onboarding/first-weld"
+      );
+      response.status = 200;
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_STATUS_MISMATCH"
+  },
+  {
+    name: "First Weld action JSON mismatch fails closed",
+    mutate(input) {
+      const response = input.candidateHttpBoundaries.responses.find(
+        (entry) => entry.path === "/api/onboarding/first-weld"
+      );
+      response.json.error = "Open";
+    },
+    expectOk: false,
+    expectReason: "CANDIDATE_HTTP_JSON_MISMATCH"
+  },
+  {
     name: "missing audience evidence fails closed",
     mutate(input) {
       delete input.audienceHttpBoundaries;
@@ -334,6 +366,14 @@ const cases = [
     expectReason: "MISSING_APP_PATH"
   },
   {
+    name: "missing First Weld action app path fails closed",
+    mutate(input) {
+      delete input.appPathsManifest["/api/onboarding/first-weld/route"];
+    },
+    expectOk: false,
+    expectReason: "MISSING_APP_PATH"
+  },
+  {
     name: "missing verification candidate route fails closed",
     mutate(input) {
       input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
@@ -348,6 +388,16 @@ const cases = [
     mutate(input) {
       input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
         (entry) => entry.path !== "onboarding"
+      );
+    },
+    expectOk: false,
+    expectReason: "MISSING_CANDIDATE_OUTPUT_ROUTE"
+  },
+  {
+    name: "missing First Weld action candidate route fails closed",
+    mutate(input) {
+      input.candidate.builds[0].output = input.candidate.builds[0].output.filter(
+        (entry) => entry.path !== "api/onboarding/first-weld"
       );
     },
     expectOk: false,
