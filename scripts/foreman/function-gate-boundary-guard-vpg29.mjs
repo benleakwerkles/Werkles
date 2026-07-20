@@ -31,9 +31,16 @@ for (const row of rows) {
   assert.match(row.path, /^\//);
   assert.equal(Number.isInteger(row.status), true);
   assert.ok(
-    ["PUBLIC_WORKING", "AUTH_REQUIRED", "PUBLICLY_CLOSED", "INTERNAL_ONLY", "NOT_DEPLOYED", "UNKNOWN"].includes(
-      row.capability_state
-    )
+    [
+      "PUBLIC_WORKING",
+      "PREVIEW_WORKING",
+      "AUTH_REQUIRED",
+      "PUBLICLY_CLOSED",
+      "SAVE_CLOSED",
+      "INTERNAL_ONLY",
+      "NOT_DEPLOYED",
+      "UNKNOWN"
+    ].includes(row.capability_state)
   );
   const key = `${row.environment}:${row.method}:${row.path}`;
   assert.equal(unique.has(key), false, `duplicate matrix row: ${key}`);
@@ -54,12 +61,19 @@ for (const row of rows) {
   if (row.status === 401) {
     assert.notEqual(row.capability_state, "PUBLICLY_CLOSED", `${key}: 401 proves auth only, not closure`);
   }
+  if (row.capability_state === "SAVE_CLOSED") {
+    assert.equal(row.status, 403, `${key}: SAVE_CLOSED requires HTTP 403`);
+    assert.equal(row.envelope?.state, "Blocked", `${key}: SAVE_CLOSED requires the Blocked envelope`);
+  }
+  if (row.environment === "Preview") {
+    assert.notEqual(row.capability_state, "PUBLIC_WORKING", `${key}: protected Preview is not Production`);
+  }
 }
 
 for (const providerPath of [
   "/api/verification/identity",
   "/api/verification/funds",
-  "/api/verification/funds-exchange"
+  "/api/verification/funds/exchange"
 ]) {
   const production = rows.find(
     (row) => row.environment === "Production" && row.method === "POST" && row.path === providerPath

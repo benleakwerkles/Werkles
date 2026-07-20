@@ -1,34 +1,35 @@
 # NEXT ACTION
 
-**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG28_FIRST_VISIT_AND_CYCLE_TRUTH]`
+**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG29_WALKTHROUGH_CONTINUITY_AND_GATE_TRUTH]`
 
-Updated: 2026-07-20 00:17 ET
+Updated: 2026-07-20 19:00 ET
 
 ## Production - healthy and unchanged
 
 - URL: `https://werkles.com`
 - Deployment: `dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo`
 - VPG22 remains the current Production release.
+- Provider routes prove authentication, not hard closure; do not report the newer Preview closure behavior as Production.
 
-## VPG28 product candidate - Ready
+## VPG29 product candidate - Ready
 
-- Cycle ID: `WERKLES-FLOCK-20260720-000255-ET-BETSY-01`
-- Legacy label: `VPG28` (not an ordinal total)
-- Product/source commit: `ce058f1c4510dcb3bf1b00191155531aa2fce25e`
-- Exact deployment: `dpl_DCcXKBAL8zVHuzXSHz38n8oc4Lys`
-- Immutable Preview: `https://werkles1-pgjk35fhc-werkles.vercel.app`
-- Shared CTAs now name the worked example.
-- The example keeps its custody truth without diverting testers into closed intake.
-- Cycle identity and release evidence are append-only and guard-checked.
-
-## Numbering truth
-
-The repository proves at least 31 documented/opened pre-VPG28 scopes, not 27 completed cycles. Exact historical completed-cycle count is unknown. Future cycles use immutable cycle IDs; legacy VPG numbers are labels only.
+- Cycle ID: `WERKLES-FLOCK-20260720-184759-ET-BETSY-02`
+- Legacy label: `VPG29` (not an ordinal total)
+- Product/source commit: `9ac95d3aaa7cb817862237ccb23585309f815f1c`
+- Exact deployment: `dpl_GjiACys8j1wGnefcxPQszmj3rFgw`
+- Immutable Preview: `https://werkles1-oexaynukt-werkles.vercel.app`
+- Account doorway now distinguishes new and returning members.
+- Recommendation-mode Profile Builder saves edits before refreshing the private result.
+- Operator walkthrough and Preview/Production gate matrix are prepared.
 
 ## Next action
 
-Review the exact protected Preview. Production remains unchanged unless Ben separately directs a Production action.
+When Ben is ready, walk the exact protected Preview using `foreman/reviews/WERKLES_OPERATOR_WALKTHROUGH_STATUS_VPG29_20260720.md`. Do not open/control the browser before that direction. Production remains unchanged unless Ben separately directs a Production action.
 
-## Hard stops
+## Human Gates
 
-No provider actions | no anonymous intake persistence | no saving expansion | no Tier B custody | no LLM/provider enablement | no SQL/schema/RLS mutation | no live payment change
+Production promotion | Tier B/durable saving | provider or LLM enablement | SQL/schema/RLS or Production-data mutation | live Stripe payment change
+
+## Closed now
+
+Public intake submission | recommendation saving | current Preview provider actions | LLM translation

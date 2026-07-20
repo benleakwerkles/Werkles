@@ -1,7 +1,7 @@
 # VPG29 - Function and Gate Truth
 
 PACKET_ID: `TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_FUNCTION_GATE_TRUTH_VPG29_20260720`
-STATUS: `OPEN`
+STATUS: `COMPLETED`
 FROM: `Heimerdinker@Betsy`
 TO: `Heimerdinker@Betsy`, `Doozer@Betsy`, `Thufir@Betsy`, `Bean@Betsy`
 EXECUTION_OWNER: `Heimerdinker@Betsy`
@@ -35,3 +35,7 @@ Return exactly two strongest bounded improvements that make the functioning-vers
 
 - `foreman/receipts/WERKLES_FULL_FLOCK_VPG29_P_DOOZER_THUFIR_BEAN_20260720.md`
 - `foreman/receipts/WERKLES_FULL_FLOCK_VPG29_G_FUNCTION_GATE_TRUTH_20260720.md`
+
+## Completion
+
+Both pulled ideas were executed: a deployment-bound operator walkthrough/status was prepared, and a machine-readable Preview-versus-Production matrix now fails closed when `401 Auth Required` is mislabeled as provider closure. Production was not changed.

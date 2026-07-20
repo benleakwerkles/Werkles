@@ -1,0 +1,78 @@
+{
+  "schema": "werkles.function-gate-matrix/v1",
+  "created_at": "2026-07-20T19:00:50-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260720-184759-ET-BETSY-02",
+  "legacy_label": "VPG29",
+  "ordinal_claim": null,
+  "operator": "Heimerdinker@Betsy",
+  "production": {
+    "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo",
+    "immutable_url": "https://werkles1-dl6jjnwea-werkles.vercel.app",
+    "alias": "https://werkles.com",
+    "target": "production",
+    "ready_state": "READY",
+    "output_count": 371,
+    "release_label": "VPG22",
+    "source_sha": "83178a95053a3a108dfa48de38f111172d25d50b",
+    "changed_by_cycle": false
+  },
+  "preview": {
+    "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw",
+    "immutable_url": "https://werkles1-oexaynukt-werkles.vercel.app",
+    "branch_alias": "https://werkles1-git-codex-werkles-vpg29-20260720-werkles.vercel.app",
+    "target": "preview",
+    "ready_state": "READY",
+    "output_count": 373,
+    "release_label": "VPG29",
+    "source_sha": "9ac95d3aaa7cb817862237ccb23585309f815f1c"
+  },
+  "source_flags": {
+    "production": {
+      "MATCHING_AUTONOMOUS_PUBLIC": true,
+      "MATCHING_LLM_TRANSLATE_ENABLED": false,
+      "PUBLIC_TEST_PROVIDER_ACTIONS_OPEN": null,
+      "provider_closure_note": "The VPG22 source predates the hard-close flag; anonymous 401 proves auth only."
+    },
+    "preview": {
+      "MATCHING_AUTONOMOUS_PUBLIC": true,
+      "MATCHING_LLM_TRANSLATE_ENABLED": false,
+      "PUBLIC_TEST_PROVIDER_ACTIONS_OPEN": false
+    }
+  },
+  "rows": [
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "GET", "path": "/", "status": 200, "capability_state": "PUBLIC_WORKING", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "GET", "path": "/bellows/recommendations", "status": 200, "capability_state": "PUBLIC_WORKING", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "GET", "path": "/privacy", "status": 404, "capability_state": "NOT_DEPLOYED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "GET", "path": "/operator", "status": 404, "capability_state": "NOT_DEPLOYED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "GET", "path": "/dashboard/profile", "status": 200, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "GET", "path": "/api/bellows/recommendations/personal", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/bellows/recommendations/packet", "status": 403, "capability_state": "SAVE_CLOSED", "envelope": { "state": "Blocked" } },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/onboarding/first-weld", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/bellows/intake", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/discovery/intake", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/verification/identity", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/verification/funds", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Production", "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo", "method": "POST", "path": "/api/verification/funds/exchange", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "GET", "path": "/", "status": 200, "capability_state": "PREVIEW_WORKING", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "GET", "path": "/bellows/recommendations", "status": 200, "capability_state": "PREVIEW_WORKING", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "GET", "path": "/privacy", "status": 200, "capability_state": "PREVIEW_WORKING", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "GET", "path": "/operator", "status": 200, "capability_state": "INTERNAL_ONLY", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "GET", "path": "/dashboard/profile", "status": 200, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "GET", "path": "/api/bellows/recommendations/personal", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/bellows/recommendations/packet", "status": 403, "capability_state": "SAVE_CLOSED", "envelope": { "state": "Blocked" } },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/onboarding/first-weld", "status": 401, "capability_state": "AUTH_REQUIRED", "envelope": null },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/bellows/intake", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/discovery/intake", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/verification/identity", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/verification/funds", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } },
+    { "environment": "Preview", "deployment_id": "dpl_GjiACys8j1wGnefcxPQszmj3rFgw", "method": "POST", "path": "/api/verification/funds/exchange", "status": 503, "capability_state": "PUBLICLY_CLOSED", "envelope": { "state": "Closed" } }
+  ],
+  "gates": {
+    "production_promotion": "HUMAN_GATE",
+    "tier_b_durable_saving": "HUMAN_GATE",
+    "provider_or_llm_enablement": "HUMAN_GATE",
+    "sql_schema_rls_or_production_data_mutation": "HUMAN_GATE",
+    "live_stripe_payment_change": "HUMAN_GATE",
+    "read_only_testing_and_protected_preview": "NOT_A_HUMAN_GATE"
+  }
+}
