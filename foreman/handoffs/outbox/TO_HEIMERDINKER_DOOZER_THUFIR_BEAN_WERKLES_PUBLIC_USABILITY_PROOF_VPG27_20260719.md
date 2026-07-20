@@ -1,7 +1,7 @@
 # VPG27 - Public Usability Proof
 
 PACKET_ID: `TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_PUBLIC_USABILITY_PROOF_VPG27_20260719`
-STATUS: `OPEN`
+STATUS: `COMPLETED`
 FROM: `Heimerdinker@Betsy`
 TO: `Heimerdinker@Betsy`, `Doozer@Betsy`, `Thufir@Betsy`, `Bean@Betsy`
 EXECUTION_OWNER: `Heimerdinker@Betsy`
@@ -31,3 +31,7 @@ Return exactly two strongest bounded improvements that close a concrete public u
 
 - `foreman/receipts/WERKLES_FULL_FLOCK_VPG27_P_DOOZER_THUFIR_BEAN_20260719.md`
 - `foreman/receipts/WERKLES_FULL_FLOCK_VPG27_G_PUBLIC_USABILITY_PROOF_20260719.md`
+
+## Completion
+
+Both selected ideas executed at product commit `8df73dc25d90040be3b187a82cc607b56459848c`; immutable Preview and release evidence are recorded in `foreman/receipts/WERKLES_VPG27_CANDIDATE_ATTESTATION_20260719.json`.

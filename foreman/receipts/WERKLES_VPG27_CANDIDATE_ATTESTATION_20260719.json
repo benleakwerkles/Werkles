@@ -1,0 +1,71 @@
+{
+  "schema": "werkles.candidate-attestation/v1",
+  "created_at": "2026-07-19T21:39:48-04:00",
+  "operator": "Heimerdinker@Betsy",
+  "machine": "BETSY",
+  "repository": "benleakwerkles/Werkles",
+  "branch": "codex/werkles-vpg27-20260719",
+  "candidate": {
+    "deployment_id": "dpl_6UAguqySKh9R2Kf737MwDrwD32Gu",
+    "immutable_url": "https://werkles1-okrw1q795-werkles.vercel.app",
+    "branch_alias": "https://werkles1-git-codex-werkles-vpg27-20260719-werkles.vercel.app",
+    "target": "preview",
+    "ready_state": "READY",
+    "output_count": 373,
+    "source_sha": "8df73dc25d90040be3b187a82cc607b56459848c",
+    "product_sha": "8df73dc25d90040be3b187a82cc607b56459848c",
+    "source_type": "github",
+    "source_repo_id": "1242158598"
+  },
+  "release_integrity": {
+    "result": "PASS",
+    "check_count": 14,
+    "passed_check_count": 14,
+    "worktree_clean_at_candidate_sha": true,
+    "head_matches_approved_sha": true,
+    "app_paths_complete": true,
+    "candidate_deployment_id_matches": true,
+    "candidate_name_matches": true,
+    "candidate_target_matches": true,
+    "candidate_ready": true,
+    "candidate_routes_complete": true,
+    "candidate_http_boundaries_complete": true,
+    "audience_boundary_deployments_match": true,
+    "audience_http_boundaries_complete": true,
+    "provenance_deployment_matches_candidate": true,
+    "provenance_sha_matches_approved": true,
+    "provenance_source_matches": true,
+    "app_path_count": 187,
+    "candidate_route_count": 373,
+    "candidate_http_boundary_count": 7,
+    "audience_http_boundary_count": 3
+  },
+  "candidate_runtime_boundaries": [
+    { "method": "GET", "path": "/dashboard/profile", "status": 200 },
+    { "method": "GET", "path": "/privacy", "status": 200 },
+    { "method": "GET", "path": "/onboarding", "status": 200 },
+    { "method": "POST", "path": "/api/onboarding/first-weld", "status": 401, "json": { "error": "Authentication required" } },
+    { "method": "POST", "path": "/api/verification/identity", "status": 503, "cache_control": "no-store", "state": "Closed" },
+    { "method": "POST", "path": "/api/verification/funds", "status": 503, "cache_control": "no-store", "state": "Closed" },
+    { "method": "POST", "path": "/api/verification/funds/exchange", "status": 503, "cache_control": "no-store", "state": "Closed" }
+  ],
+  "audience_boundaries": [
+    { "audience": "candidate_anonymous", "method": "GET", "path": "/", "status": 302, "cache_control": "no-store, max-age=0", "location_prefix": "https://vercel.com/sso-api" },
+    { "audience": "production", "method": "GET", "path": "/operator", "status": 404, "cache_control": "no-store", "x_robots_tag": "noindex, nofollow, noarchive" },
+    { "audience": "production", "method": "GET", "path": "/api/soledash/v1/automatica-relay", "status": 404, "cache_control": "no-store", "x_robots_tag": "noindex, nofollow, noarchive" }
+  ],
+  "production": {
+    "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo",
+    "immutable_url": "https://werkles1-dl6jjnwea-werkles.vercel.app",
+    "alias": "https://werkles.com",
+    "ready_state": "READY",
+    "output_count": 371,
+    "release_label": "VPG22",
+    "source_provenance": "UNAVAILABLE",
+    "changed_by_vpg27": false
+  },
+  "promotion_input": {
+    "deployment_id": "dpl_6UAguqySKh9R2Kf737MwDrwD32Gu",
+    "source_sha": "8df73dc25d90040be3b187a82cc607b56459848c"
+  }
+}
