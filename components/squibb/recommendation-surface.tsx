@@ -109,18 +109,13 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         ) : null}
         {isExample ? (
           <div className="squibb-rec-surface__example-custody" role="note" aria-label="Example mode">
-            <div>
-              <p className="eyebrow">Example mode</p>
-              <p>
-                <strong>This is a walkthrough, not your result.</strong>{" "}
-                {hasRecordedActivity
-                  ? "Recorded example activity appears below. Nothing is sent to another person or organization."
-                  : "Nothing is saved from this example. Nothing is sent to another person or organization."}
-              </p>
-            </div>
-            <Link className="button button-dark" href="/bellows/intake">
-              Review the closed intake questions
-            </Link>
+            <p className="eyebrow">Example mode</p>
+            <p>
+              <strong>This is a walkthrough, not your result.</strong>{" "}
+              {hasRecordedActivity
+                ? "Recorded example activity appears below. Nothing is sent to another person or organization."
+                : "Nothing is saved from this example. Nothing is sent to another person or organization."}
+            </p>
           </div>
         ) : null}
         <p className="eyebrow">{isPersonal ? "Private, rules-based result" : "Werkles recommendations"}</p>

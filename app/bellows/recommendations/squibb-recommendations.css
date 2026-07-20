@@ -746,18 +746,10 @@ main.squibb-rec-page p.squibb-rec-delivery-status--error:not(.eyebrow) {
 }
 
 .squibb-rec-surface__example-custody {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 1rem;
   margin: -0.2rem 0 1.15rem;
   padding: 0 0 0.85rem 0.75rem;
   border-left: 3px solid var(--werkles-copper, #9f6633);
   border-bottom: 1px solid var(--werkles-iron, #3b342a);
-}
-
-.squibb-rec-surface__example-custody > div {
-  min-width: 0;
 }
 
 .squibb-rec-surface__example-custody p {
@@ -1407,10 +1399,6 @@ main.squibb-rec-page .squibb-rec-surface .squibb-gate--blocker strong {
 
   .squibb-rec-page__nav span {
     display: none;
-  }
-
-  .squibb-rec-surface__example-custody {
-    grid-template-columns: 1fr;
   }
 
   .squibb-rec-surface__hero h1 {

@@ -73,7 +73,7 @@ const exampleCustody = surface.slice(
 );
 assert.match(exampleCustody, /aria-label="Example mode"/);
 assert.match(exampleCustody, /This is a walkthrough, not your result\./);
-assert.match(exampleCustody, /Review the closed intake questions/);
+assert.doesNotMatch(exampleCustody, /Review the closed intake questions/);
 assert.match(surface, /aria-label="Recommendation actions"/);
 assert.equal(count(surface, /disabled=\{SAVE_CLOSED_BETA\}/g), 3);
 assert.match(surface, /Save this option/);

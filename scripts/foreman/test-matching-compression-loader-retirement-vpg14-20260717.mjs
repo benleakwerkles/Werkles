@@ -126,7 +126,11 @@ assert.match(surface, /!isEphemeralDocument && \(hasRecordedActivity \|\| \(!isE
 assert.match(surface, /squibb-rec-surface__example-custody/);
 assert.match(surface, /This is a walkthrough, not your result\./);
 assert.match(surface, /Nothing is saved from this example\. Nothing is sent to another person or organization\./);
-assert.match(surface, /Review the closed intake questions/);
+const exampleCustody = surface.slice(
+  surface.indexOf("{isExample ? ("),
+  surface.indexOf('<p className="eyebrow">{isPersonal ?')
+);
+assert.doesNotMatch(exampleCustody, /Review the closed intake questions/);
 assert.match(surface, /\{showActivityLedger \? \([\s\S]*squibb-rec-ledger/);
 assert.match(css, /\.squibb-rec-surface__example-custody \{[\s\S]*border-bottom: 1px solid var\(--werkles-iron, #3b342a\)/);
 assert.doesNotMatch(surface, /fetch\s*\(/);

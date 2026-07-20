@@ -12,7 +12,7 @@ const visualStory = read("components/foundry/visual-story-section.tsx");
 const lanes = read("components/foundry/lanes-documentary-section.tsx");
 const bellows = read("app/bellows/page.tsx");
 
-assert.match(copy, /primaryCta: "See a recommendation"/);
+assert.match(copy, /primaryCta: "See the worked example"/);
 assert.doesNotMatch(copy, /Example reveal[^\n]*draft illustration/);
 assert.match(hero, /className="button button-light" href="\/bellows\/recommendations"/);
 assert.match(header, /className="header-cta" href="\/bellows\/recommendations"/);

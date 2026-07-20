@@ -43,7 +43,11 @@ assert.match(surface, /\{isExample \? "Example need" : "What you need"\}/);
 assert.match(surface, /<ReasoningPanel reasoning=\{selected\.reasoning\} isExample=\{isExample\}/);
 assert.match(surface, /isExample=\{isExample\}/);
 assert.doesNotMatch(surface, /showIntakePrompt|Start an intake|to create the first one/);
-assert.match(surface, /Review the closed intake questions/);
+const exampleCustody = surface.slice(
+  surface.indexOf("{isExample ? ("),
+  surface.indexOf('<p className="eyebrow">{isPersonal ?')
+);
+assert.doesNotMatch(exampleCustody, /Review the closed intake questions/);
 assert.match(reasoning, /isExample \? "Example scenario" : "You said"/);
 assert.match(meter, /EXAMPLE_RULES_SCORE_DISCLAIMER/);
 assert.match(meter, /LIVE_RULES_SCORE_DISCLAIMER/);

@@ -144,7 +144,11 @@ assert.match(
   surface,
   /Nothing is saved from this example\. Nothing is sent to another person or organization\./
 );
-assert.match(surface, /Review the closed intake questions/);
+const exampleCustody = surface.slice(
+  surface.indexOf("{isExample ? ("),
+  surface.indexOf('<p className="eyebrow">{isPersonal ?')
+);
+assert.doesNotMatch(exampleCustody, /Review the closed intake questions/);
 assert.doesNotMatch(surface, /Make these recommendations yours/);
 assert.doesNotMatch(surface, /fetch\s*\(/);
 assert.doesNotMatch(surface, /stagePacket\s*\(/);
