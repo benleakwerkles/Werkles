@@ -1,0 +1,31 @@
+{
+  "schema": "werkles.j-ownership-manifest/v1",
+  "created_at": "2026-07-21T03:43:50-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01",
+  "legacy_label": "VPG30",
+  "base_sha": "e698d66cc5a01321dda1f39e0c56e731a8cd9600",
+  "branch": "codex/werkles-vpg30-20260721",
+  "phase": "product_and_pull",
+  "canonical_maker_worktree": {
+    "path": "C:/Users/Ben Leak/github/Werkles",
+    "base_sha": "674f3db2dd56a8b131981fb3ea974bc018463fb9",
+    "touched_by_j": false,
+    "whole_tree_staged": false
+  },
+  "owned_paths": [
+    { "path": "app/bellows/recommendations/squibb-recommendations.css", "sha256": "d434888b8f0c8c0c15e7371dac7021883e9e35a3940d12d50f36b57a6068f40c", "owner": "LadyJessica@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "VPG10 helper disclosure treatment, selectively reimplemented on VPG29" },
+    { "path": "components/squibb/concierge-intake-form.tsx", "sha256": "f6f434c8b93c39e94aaee678dfe393932aafdd5c31d1ec0d0ef7cba0d4b4f49c", "owner": "Ender@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Lady Jessica Maker confirmation UI, selectively reimplemented on VPG29" },
+    { "path": "components/squibb/evidence-section.tsx", "sha256": "f5de58760a600d75bf22bee5d74d3c5d4d9678312857db3b20af9d031a5888c7", "owner": "LadyJessica@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "VPG10 helper disclosure treatment, retaining VPG29 source truth" },
+    { "path": "components/squibb/reasoning-panel.tsx", "sha256": "c0e26387a2180e0969143424e180d71d9eec0403bbdde0ad5b0bc927c7aa4f49", "owner": "Ender@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "VPG10 helper disclosure treatment, retaining VPG29 example language" },
+    { "path": "foreman/VPG_SHORTHAND.md", "sha256": "9329cdf8103e94a45f9cebaf701ba817f3e1b24a7593a5b3ff7c8d7f56ce40c3", "owner": "Heimerdinker@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Operator definition of J" },
+    { "path": "foreman/gates/APPROVAL_LOG.md", "sha256": "cda0bb22a90db6fb4c8a05004c2834d0194d9097e09a5ad28e4e54fa9994cd8b", "owner": "Heimerdinker@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Operator VPGJ authorization" },
+    { "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_J_OWNERSHIP_INTEGRITY_VPG30_20260721.md", "sha256": "5f7044ef86782ee2e4a70ddfc9afa19f659eea5adcaba4400b829ffc7eb4e35d", "owner": "Heimerdinker@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "V packet 2" },
+    { "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_HELPER_HARVEST_VPG30_20260721.md", "sha256": "302dd57d898eb555f335e602b756761f18f6f069eb4b6432e3a8cd2c0a9fbb99", "owner": "Heimerdinker@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "V packet 1" },
+    { "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG30_P_DOOZER_THUFIR_BEAN_20260721.md", "sha256": "0802d3b578eea9066c69fc8693bc82540b808ee318948d2ae77a2fc1c0b9ea12", "owner": "Doozer@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "P packet 2 receipt" },
+    { "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG30_P_LADY_JESSICA_ENDER_20260721.md", "sha256": "ec3073ed82bdf80e2d8ab5cc5d6ec13d1b64ecc6f1c91629420028b6a3721945", "owner": "LadyJessica@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "P packet 1 receipt" },
+    { "path": "scripts/foreman/j-ownership-guard-vpg30.mjs", "sha256": "647a78882a7e5d302a4ff4b6fb99f353fd515411e41470e485e1964fd9015d10", "owner": "Doozer@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "G packet 2 deterministic J guard" },
+    { "path": "scripts/foreman/test-helper-harvest-vpg30-20260721.mjs", "sha256": "cca2e04923ad4c5ca8161a22a0d5ffbe1ceee62659f1a22fa4b3cf3fbebb3392", "owner": "Ender@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "G packet 1 helper-harvest regression" },
+    { "path": "scripts/foreman/test-route-audience-readonly-vpg30-20260721.mjs", "sha256": "915e7c1a79f65bf382287307dd3ea09d206047b10c0c33663a929c84afe852eb", "owner": "Bean@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "G packet 2 read-only regression guard" },
+    { "path": "scripts/foreman/test-werkles-route-audience-boundary.mjs", "sha256": "341273f8fa5952fc4a3518689e0d337d257ddfec258d203b1eb05457e1a78d3f", "owner": "Doozer@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "G packet 2 explicit receipt-write boundary" }
+  ]
+}

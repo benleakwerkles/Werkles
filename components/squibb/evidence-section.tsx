@@ -13,8 +13,8 @@ type EvidenceSectionProps = {
 
 export function EvidenceSection({ items }: EvidenceSectionProps) {
   return (
-    <section className="squibb-evidence" aria-labelledby="squibbEvidenceTitle">
-      <h3 id="squibbEvidenceTitle">Proof & evidence</h3>
+    <details className="squibb-evidence squibb-rec-collapse">
+      <summary className="squibb-rec-collapse__summary">Proof and gaps</summary>
       <p className="squibb-evidence__lead">
         Squibb stays quiet when evidence is thin. Verified proof clears the path — it does not make the call for
         you.
@@ -32,6 +32,6 @@ export function EvidenceSection({ items }: EvidenceSectionProps) {
           </li>
         ))}
       </ul>
-    </section>
+    </details>
   );
 }

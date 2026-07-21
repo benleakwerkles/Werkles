@@ -117,11 +117,17 @@ const receipt = {
   boundary_note: "This proves deny-by-default page and API concealment, not authenticated operator access."
 };
 
+const writeReceipt = process.argv.includes("--write-receipt");
+const unknownArgs = process.argv.slice(2).filter((arg) => arg !== "--write-receipt");
+if (unknownArgs.length > 0) throw new Error(`Unknown argument(s): ${unknownArgs.join(", ")}`);
+
 const output = path.resolve("foreman/receipts/WERKLES_INTERNAL_EXTERNAL_ROUTE_BOUNDARY_20260712.json");
-await fs.mkdir(path.dirname(output), { recursive: true });
-await fs.writeFile(output, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
+if (writeReceipt) {
+  await fs.mkdir(path.dirname(output), { recursive: true });
+  await fs.writeFile(output, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
+}
 
 console.log(`INTERNAL_EXTERNAL_BOUNDARY=${receipt.pass ? "PASS" : "FAIL"}`);
 for (const result of [...results, ...unitChecks]) console.log(`${result.pass ? "PASS" : "FAIL"} ${result.name}`);
-console.log(`RECEIPT=${output}`);
+console.log(`RECEIPT=${writeReceipt ? output : "not-written (pass --write-receipt to refresh)"}`);
 process.exitCode = receipt.pass ? 0 : 1;

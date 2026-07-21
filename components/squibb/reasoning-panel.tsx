@@ -7,8 +7,8 @@ type ReasoningPanelProps = {
 
 export function ReasoningPanel({ reasoning, isExample = false }: ReasoningPanelProps) {
   return (
-    <section className="squibb-reasoning" aria-labelledby="squibbReasoningTitle">
-      <h3 id="squibbReasoningTitle">Reasoning</h3>
+    <details className="squibb-reasoning squibb-rec-collapse">
+      <summary className="squibb-rec-collapse__summary">Why this option</summary>
       <dl className="squibb-reasoning__need">
         <div>
           <dt>{isExample ? "Example scenario" : "You said"}</dt>
@@ -31,6 +31,6 @@ export function ReasoningPanel({ reasoning, isExample = false }: ReasoningPanelP
           <strong>Counterpoint:</strong> {reasoning.counterpoint}
         </p>
       ) : null}
-    </section>
+    </details>
   );
 }

@@ -7,7 +7,6 @@ import {
   buildSpeakerIntakePacket,
   CONCIERGE_INTAKE_QUESTIONS,
   EMPTY_INTAKE_ANSWERS,
-  formatSpeakerIntakeJson,
   type ConciergeIntakeAnswers,
   type SpeakerIntakePacket
 } from "@/lib/squibb/concierge-intake-v0";
@@ -177,17 +176,12 @@ export function ConciergeIntakeForm() {
 
       {submitted ? (
         <section className="concierge-intake__output panel" aria-labelledby="intakeOutputTitle">
-          <h2 id="intakeOutputTitle">Speaker intake packet</h2>
+          <h2 id="intakeOutputTitle">What we heard</h2>
           <p className="concierge-intake__output-summary">{submitted.speakerFeed.summary}</p>
 
           <div className="concierge-intake__symptom-block">
-            <p className="concierge-intake__section-label">Symptom block</p>
+            <p className="concierge-intake__section-label">Your situation</p>
             <pre className="concierge-intake__symptom-pre">{submitted.speakerFeed.symptomBlock}</pre>
-          </div>
-
-          <div className="concierge-intake__json">
-            <p className="concierge-intake__section-label">Structured JSON (Speaker feed)</p>
-            <pre className="concierge-intake__json-pre">{formatSpeakerIntakeJson(submitted)}</pre>
           </div>
 
           <div className="concierge-intake__actions" aria-label="Next steps after intake">
@@ -195,7 +189,7 @@ export function ConciergeIntakeForm() {
               Compare next-step options
             </Link>
             <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
-              See the walkthrough proof
+              See an example
             </Link>
             <Link className="button button-ghost" href="/dashboard">
               Back to member home
