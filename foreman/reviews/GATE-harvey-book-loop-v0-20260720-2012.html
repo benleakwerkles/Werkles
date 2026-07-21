@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harvey Book Loop V0 - Approved</title>
+  <style>
+    body { margin: 0; background: #101719; color: #f4eee2; font: 18px/1.55 system-ui, sans-serif; }
+    main { max-width: 880px; margin: 0 auto; padding: 40px 24px 72px; }
+    h1, h2 { color: #ffd28a; }
+    .status { border: 2px solid #79d6b2; padding: 16px; background: #14231f; }
+    code { color: #fff2bd; }
+    li { margin: 8px 0; }
+  </style>
+</head>
+<body><main>
+  <h1>Harvey Book Loop V0</h1>
+  <p class="status"><strong>APPROVED:</strong> bounded mailbox routing and local receipt-to-pointer router. <strong>STOP:</strong> automatic Orson browser submission.</p>
+  <h2>What this proves</h2>
+  <ul>
+    <li>Swanson's exact terminal return can unlock one already-sealed next packet.</li>
+    <li>The sole pointer advances only after hash, target, terminal-state and path checks.</li>
+    <li>Replay is harmless and stale or conflicting state fails closed.</li>
+  </ul>
+  <h2>What this does not prove</h2>
+  <p>Pointer advancement is not delivery, reading, custody, incorporation, acceptance, effect, completion, outcome, or returned human time.</p>
+  <h2>Next honest state</h2>
+  <p><code>AWAITING_ORSON_ROUTE_BINDING</code>. Ben sends one final <code>KNock</code> in the preserved Orson Work thread.</p>
+</main></body>
+</html>

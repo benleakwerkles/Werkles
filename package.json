@@ -47,6 +47,7 @@
     "relay:command-dash:doctor": "node scripts/foreman/command-dash-relay-doctor.mjs",
     "relay:command-dash:triage": "node scripts/foreman/command-dash-inbox-triage.mjs",
     "relay:command-dash:status": "node scripts/foreman/command-dash-relay-status.mjs",
+    "harvey:book-loop:route": "node scripts/foreman/harvey-book-loop-router.mjs",
     "nerdkle:doctor": "node scripts/foreman/nerdkle-doctor.mjs",
     "nerdkle:packet": "node scripts/foreman/nerdkle-execution-packet.mjs"
   },
