@@ -46,3 +46,5 @@ foreman/crew-dispatch-console/LATEST_DISPATCH.json
 foreman/crew-dispatch-console/dashboard.html
 
 supabase/.temp
+.vercel
+.env*

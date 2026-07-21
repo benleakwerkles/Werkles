@@ -1,10 +1,21 @@
 # Gate Review - Private Harvey at Werkles.com
 
-Decision: `APPROVED_FOR_PRIVATE_DEPLOYMENT_PREP`
+Decision: `APPROVED_FOR_PRIVATE_PRODUCTION_DEPLOYMENT`
 
 Decision time: `2026-07-17T20:20:26-04:00`
 
-Confidence: `HIGH` for the access boundary; `LOW` for the unresolved provider binding
+Final deployment authorization: `2026-07-21T04:13:09-04:00`
+
+> Publish it, go
+>
+> to the private page behind the password
+
+The exact Vercel binding is now proved as team `werkles`, project `werkles1`,
+serving `https://werkles.com`. The encrypted production environment already
+contains `HARVEY_PRIVATE_PASSWORD_VERIFIER` and
+`HARVEY_PRIVATE_SESSION_SECRET`; their values were not read or printed.
+
+Confidence: `HIGH` for the access boundary and proved provider binding
 
 ## Operator approval
 
@@ -63,11 +74,8 @@ local blind setup prompt.
 - A serverless deployment cannot treat its filesystem as a durable command bus,
   and it cannot reach a machine-local relay without a separate signed route.
 
-## What remains blocked
+## What remains blocked before execution
 
-- Proving the exact Vercel team/project serving `werkles.com`.
-- Ben's blind password entry into the local no-echo setup prompt.
-- Adding the verifier and signing secret to that exact production project.
 - Deploying and independently proving that the public URL shows the lock wall,
   rejects the wrong password, accepts the blind password, and does not expose
   Harvey APIs without a session.
