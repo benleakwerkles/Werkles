@@ -1,8 +1,8 @@
 # NEXT ACTION
 
-**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG29_WALKTHROUGH_CONTINUITY_AND_GATE_TRUTH]`
+**Effective gate:** `[PROTECTED PREVIEW: WERKLES_VPG30_HELPER_HARVEST_AND_J_INTEGRITY]`
 
-Updated: 2026-07-20 19:00 ET
+Updated: 2026-07-21 03:56 ET
 
 ## Production - healthy and unchanged
 
@@ -11,20 +11,20 @@ Updated: 2026-07-20 19:00 ET
 - VPG22 remains the current Production release.
 - Provider routes prove authentication, not hard closure; do not report the newer Preview closure behavior as Production.
 
-## VPG29 product candidate - Ready
+## VPG30 product candidate - Ready
 
-- Cycle ID: `WERKLES-FLOCK-20260720-184759-ET-BETSY-02`
-- Legacy label: `VPG29` (not an ordinal total)
-- Product/source commit: `9ac95d3aaa7cb817862237ccb23585309f815f1c`
-- Exact deployment: `dpl_GjiACys8j1wGnefcxPQszmj3rFgw`
-- Immutable Preview: `https://werkles1-oexaynukt-werkles.vercel.app`
-- Account doorway now distinguishes new and returning members.
-- Recommendation-mode Profile Builder saves edits before refreshing the private result.
-- Operator walkthrough and Preview/Production gate matrix are prepared.
+- Cycle ID: `WERKLES-FLOCK-20260721-034350-ET-BETSY-01`
+- Legacy label: `VPG30` (not an ordinal total)
+- Product/source commit: `884852bd7e91e88fa1f11cc3bbb24a49be6432f5`
+- Exact deployment: `dpl_DSJMneD4YFH9uYQRvPD1BWfkCQ2Q`
+- Immutable Preview: `https://werkles1-l1trgoauw-werkles.vercel.app`
+- Recommendation reasoning and evidence now scan compactly without losing proof.
+- The closed intake confirmation is human-readable and no longer exposes raw packet JSON.
+- J ownership is hash-bound to current-cycle helper work; unrelated Maker dirt is excluded.
 
 ## Next action
 
-When Ben is ready, walk the exact protected Preview using `foreman/reviews/WERKLES_OPERATOR_WALKTHROUGH_STATUS_VPG29_20260720.md`. Do not open/control the browser before that direction. Production remains unchanged unless Ben separately directs a Production action.
+When Ben is ready, walk the exact protected VPG30 Preview, focusing on the recommendation disclosure controls and the intake confirmation. Do not open/control the browser before that direction. Production remains unchanged unless Ben separately directs a Production action.
 
 ## Human Gates
 

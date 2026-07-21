@@ -1,0 +1,20 @@
+{
+  "schema": "werkles.j-ownership-manifest/v1",
+  "created_at": "2026-07-21T03:56:07-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01",
+  "legacy_label": "VPG30",
+  "base_sha": "884852bd7e91e88fa1f11cc3bbb24a49be6432f5",
+  "branch": "codex/werkles-vpg30-20260721",
+  "phase": "closure",
+  "parent_manifest": "foreman/receipts/WERKLES_VPG30_J_OWNERSHIP_MANIFEST_20260721.json",
+  "owned_paths": [
+    { "path": "foreman/NEXT_ACTION.md", "sha256": "ecbe44708b8859801bd82136d352ef52b378c38d93d3b680041521ca8b497fbb", "owner": "Heimerdinker@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "J candidate handoff" },
+    { "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_J_OWNERSHIP_INTEGRITY_VPG30_20260721.md", "sha256": "ea4518dc5a4b07f40e9b67a0aad6bedb894574f5096a3634c99ccfcfabd82232", "owner": "Doozer@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Packet 2 completion" },
+    { "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_HELPER_HARVEST_VPG30_20260721.md", "sha256": "055e058c2bca73cfd93e6ce8d9b950a599155af672d8a2c4e64ea6e48c96faca", "owner": "LadyJessica@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Packet 1 completion" },
+    { "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG30_20260721.md", "sha256": "91b2177bd45e06ab6a6baa8d1e4b022d06831a8eb95d3f101363526d31960269", "owner": "Heimerdinker@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Aggregate VPGJ receipt" },
+    { "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG30_G_HELPER_HARVEST_20260721.md", "sha256": "6546c8b5b173fce9aeed21785135276818d0987cbf99b9a8619b6609cefb57fd", "owner": "Ender@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "G packet 1 receipt" },
+    { "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG30_G_J_OWNERSHIP_INTEGRITY_20260721.md", "sha256": "b08ffc8a541be87f732b577d05b7f002759d698bfb048308dfc39ae97ec5d7b3", "owner": "Doozer@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "G packet 2 receipt" },
+    { "path": "foreman/receipts/WERKLES_VPG30_CANDIDATE_ATTESTATION_20260721.json", "sha256": "458a56f4cfa120eb53e7fcf9a6fe2e98d757ea59b106035cc66331d9bae80976", "owner": "Bean@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Exact Preview and Production boundary attestation" },
+    { "path": "foreman/receipts/WERKLES_VPG_CYCLE_EVIDENCE_LEDGER.jsonl", "sha256": "8bc5cd5aaaef1ff243878afd955d77bc02f1874c26d40404f333bce8ac0ef259", "owner": "Thufir@Betsy", "source_cycle": "WERKLES-FLOCK-20260721-034350-ET-BETSY-01", "origin": "Immutable cycle evidence row" }
+  ]
+}
