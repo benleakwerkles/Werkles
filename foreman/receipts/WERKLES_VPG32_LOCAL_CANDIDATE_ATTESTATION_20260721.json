@@ -1,0 +1,227 @@
+{
+  "schema": "werkles.local-candidate-attestation/v1",
+  "attestation_path": "foreman/receipts/WERKLES_VPG32_LOCAL_CANDIDATE_ATTESTATION_20260721.json",
+  "created_at": "2026-07-21T05:25:45-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260721-051137-ET-BETSY-01",
+  "legacy_label": "VPG32",
+  "operator": "Heimerdinker@Betsy",
+  "machine": "BETSY",
+  "repository": "benleakwerkles/Werkles",
+  "base_sha": "8c13380714815f58235b5ae2746fa5b217554dab",
+  "branch": "codex/werkles-vpg31-20260721",
+  "state": "LOCAL_UNCOMMITTED_UNPUSHED",
+  "build_id": "h2PHA9LajWkn1RGxJ8tQV",
+  "versions": {
+    "next": "15.5.18",
+    "react": "19.2.6",
+    "react_dom": "19.2.6",
+    "eslint": "9.39.4"
+  },
+  "owned_paths": [
+    {
+      "path": "app/bellows/recommendations/squibb-recommendations.css",
+      "sha256": "c000fa36f2d044958bd09831d5db79a5bd9918c7857442f50f813398a0eef159"
+    },
+    {
+      "path": "app/dashboard/profile/page.tsx",
+      "sha256": "cbec3ab2205a95ebb75e875d1f02ffeeac7f98318602777427e913ff99078866"
+    },
+    {
+      "path": "components/squibb/evidence-section.tsx",
+      "sha256": "a6076a00aab8b451d428102c02e4d436ae7137f3270ead03675435c035d55c7a"
+    },
+    {
+      "path": "components/squibb/personal-recommendation-delivery.tsx",
+      "sha256": "e7f50c8c643b111d6cfa7981d593d8972549c8658169455d2bf8b946c53e83e2"
+    },
+    {
+      "path": "components/squibb/recommendation-card.tsx",
+      "sha256": "a2a36421c1f3f6109bfc05b522988d0c17faefb4969a62c81fbde5980f328fb1"
+    },
+    {
+      "path": "components/squibb/recommendation-surface.tsx",
+      "sha256": "ed5f1defb84069bf914e92ce3e72f3a847d5a11b0180c787ff73d3edcc3d501c"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "867d11c4afef7bf3d7ee83f497159e56336d62ad10ce6957e3f2005966154614"
+    },
+    {
+      "path": "foreman/gates/APPROVAL_LOG.md",
+      "sha256": "6c8214ca2b24cfdd6f67bae5aa822194dc4ee09ccc6eff5511bde6d65fe101e0"
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_PUBLIC_ACCESSIBILITY_TRUST_PROOF_VPG31_20260721.md",
+      "sha256": "55f41d435a5a5f0fda17b2dfb4f301d38e5b956bfad9774908d23c954d28a388"
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_QC_RELEASE_CONFIDENCE_VPG32_20260721.md",
+      "sha256": "f18282a8a45759492593ed5db634710ef78a4d58d3d8a4a8661cf34183cac690"
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_CHOICE_TO_ACTION_WARMTH_VPG32_20260721.md",
+      "sha256": "bf46d10a53ce47e726194289fe371a426ece8237d9345ff49cd39fbbcfbaa83e"
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_RECOMMENDATION_DECISION_MOMENT_VPG31_20260721.md",
+      "sha256": "40b106aa09e1355ad33e4253ee3f1a3406474f2c707d10d194bec0fbae67eda0"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG31_20260721.md",
+      "sha256": "b0a545d0d5901ab5d551d458f8fdac02a2a6ebd552ed583f2b316c551a84c36e"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG31_G_PUBLIC_ACCESSIBILITY_TRUST_PROOF_20260721.md",
+      "sha256": "6c51199ec32da0bde6a564c7b29b4ca5ef0b1ba0341f5f2fd602a17e1c38bca6"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG31_G_RECOMMENDATION_DECISION_MOMENT_20260721.md",
+      "sha256": "8145dfae2824250c07380c9e2291290af0c9f5325f875cc3303113a9cb4c95f2"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG31_P_DOOZER_THUFIR_BEAN_20260721.md",
+      "sha256": "43b5378ecc0d47c90463c8d1e1751cdd38e766b4d22f1e49a00b4c49d0ccfa35"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG31_P_LADY_JESSICA_ENDER_20260721.md",
+      "sha256": "9b228fee0f130b1fc77ad7c381765efb48668d418ba0c67114293760394276e8"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG32_20260721.md",
+      "sha256": "3dd7b883414f5e389359f8e766fe7f2773dfd375752de86b5e0a09403f5a8b56"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG32_G_CHOICE_TO_ACTION_WARMTH_20260721.md",
+      "sha256": "6af4fee7afc14d5396f69dd94419e986d06b79d84f64df099c22667669bbc91d"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG32_G_QC_RELEASE_CONFIDENCE_20260721.md",
+      "sha256": "990b7de061906eee89cfce1eda3595fc90d6d726c98ae30f35bbc59a09a750ce"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG32_P_DOOZER_THUFIR_BEAN_20260721.md",
+      "sha256": "8f93269df7447b0c853d9bf0042941bb2d770c2ccc9faac6b9c4c14df94ee703"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG32_P_LADY_JESSICA_ENDER_20260721.md",
+      "sha256": "d8896737e657a3267457d022427370328957096c3a412af0ed1e06e52212be4b"
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG_CYCLE_EVIDENCE_LEDGER.jsonl",
+      "sha256": "346a1e6fbef6a1e4048c0f4723456644a7429586775f2747ac52d20dc13c0187"
+    },
+    {
+      "path": "package.json",
+      "sha256": "49c661a01c4222c0597395b1e1c7933b67dffa60206b6d8afc1be5fd7ed001da"
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg32-invalid-hook.tsx",
+      "sha256": "957d378566098ca4aba1e196bddbec1b4c7af66dc2900be55df5ccec38750340"
+    },
+    {
+      "path": "scripts/foreman/local-candidate-verifier-vpg32.mjs",
+      "sha256": "d201c8eaae5ab47d604ddffdfd10075a486257d8627e93154be34787798d5674"
+    },
+    {
+      "path": "scripts/foreman/test-choice-to-action-warmth-vpg32-20260721.mjs",
+      "sha256": "2d4c69b3ca8b36e319ec4bc32f80881b23121bb38abecf52df4c2db5e334fcf2"
+    },
+    {
+      "path": "scripts/foreman/test-helper-harvest-vpg30-20260721.mjs",
+      "sha256": "ba686111e59ce34f2f2649e82b981da700665c36557d16f0a98a9e97cc4836f3"
+    },
+    {
+      "path": "scripts/foreman/test-lint-gate-vpg32-20260721.mjs",
+      "sha256": "f8ddb2d30f8293b80372d3cfe94259adafdb704f7cffc3443c957b6e98c2104f"
+    },
+    {
+      "path": "scripts/foreman/test-local-candidate-verifier-vpg32-20260721.mjs",
+      "sha256": "992c12658472830bd92c216d01e9d18bc9df2df2ac96132beaec0225e344a7d4"
+    },
+    {
+      "path": "scripts/foreman/test-local-runtime-qc-vpg32-20260721.mjs",
+      "sha256": "3971cd9e9ae1fc1c847ee1b333b4c7ca02aa511866fca2749907585cf6de401d"
+    },
+    {
+      "path": "scripts/foreman/test-public-accessibility-trust-vpg31-20260721.mjs",
+      "sha256": "834336f3238c51eb70a770a1c621811c4ee3493651e370e1081cc30c13b6f5d5"
+    },
+    {
+      "path": "scripts/foreman/test-public-recommendation-activation-vpg26-20260719.mjs",
+      "sha256": "073eb31c190eb0f9ad35c96a33e3290e659b47b6de00c89ee58445750b83ad0f"
+    },
+    {
+      "path": "scripts/foreman/test-recommendation-decision-moment-vpg31-20260721.mjs",
+      "sha256": "bb8efad706ab7d21b024794c1a576d4f90a9a338ed7ea0e44764f9d40d4a03f2"
+    },
+    {
+      "path": "scripts/foreman/test-walkthrough-continuity-vpg29-20260720.mjs",
+      "sha256": "542965122a1624f11c5bd7574254edd55d371bf69658a7be33630b7e543f9950"
+    }
+  ],
+  "candidate_digest": "42f288a6416fd8835d167c569eafb9974c175c2ca9523e3a3d05e600f1ce69cb",
+  "qc_results": [
+    {
+      "name": "candidate_lint",
+      "status": "PASS",
+      "checks": 3
+    },
+    {
+      "name": "typecheck",
+      "status": "PASS"
+    },
+    {
+      "name": "vpg31_vpg32_focused",
+      "status": "PASS",
+      "checks": 15
+    },
+    {
+      "name": "current_regressions",
+      "status": "PASS"
+    },
+    {
+      "name": "build",
+      "status": "PASS",
+      "static_pages": 83
+    },
+    {
+      "name": "runtime",
+      "status": "PASS",
+      "recommendations": 200,
+      "profile": 200,
+      "intake": 503,
+      "saving": 403,
+      "anonymous_personal": 401
+    },
+    {
+      "name": "route_boundary",
+      "status": "PASS"
+    },
+    {
+      "name": "release_integrity_smoke",
+      "status": "PASS",
+      "cases": 39
+    },
+    {
+      "name": "cycle_identity_smoke",
+      "status": "PASS",
+      "cases": 11
+    },
+    {
+      "name": "attestation_verifier_selftest",
+      "status": "PASS",
+      "cases": 8
+    },
+    {
+      "name": "diff_check",
+      "status": "PASS"
+    }
+  ],
+  "j": {
+    "requested": false,
+    "staged": false,
+    "committed": false,
+    "pushed": false,
+    "deployed": false
+  }
+}
