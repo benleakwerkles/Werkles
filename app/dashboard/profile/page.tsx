@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState, type ReactNode } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { copy } from "@/lib/copy";
 import { deriveAccessWeight } from "@/lib/access-weight-client";
@@ -51,6 +51,23 @@ type ProfileAuthState = "checking" | "signed_out" | "signed_in" | "unavailable";
 
 const recommendationSignalGuidance =
   "Add one Primary goal, Blueprint narrative, or Skills sought entry to unlock your private recommendation.";
+
+function RecommendationOptionalProfileTail({
+  collapsed,
+  children
+}: {
+  collapsed: boolean;
+  children: ReactNode;
+}) {
+  if (!collapsed) return <>{children}</>;
+
+  return (
+    <details className="recommendation-profile-optional">
+      <summary>Add more profile details (optional)</summary>
+      <div className="recommendation-profile-optional__grid">{children}</div>
+    </details>
+  );
+}
 
 function splitTags(value: FormDataEntryValue | null) {
   return String(value || "")
@@ -410,7 +427,8 @@ export default function ProfilePage() {
               </div>
             </>
           ) : null}
-          {!isRecommendationJourney ? displayNameField : null}
+          <RecommendationOptionalProfileTail collapsed={isRecommendationJourney}>
+            {!isRecommendationJourney ? displayNameField : null}
           <label className="field">
             <span>First name</span>
             <input name="first_name" defaultValue={profile.first_name || ""} />
@@ -510,30 +528,23 @@ export default function ProfilePage() {
             <input name="industry_tags" defaultValue={joinTags(profile.industry_tags)} placeholder="plumbing, home services" />
           </label>
           {!isRecommendationJourney ? blueprintNarrativeField : null}
-          <div className="profile-actions">
-            {isRecommendationJourney ? (
-              <button className="button button-outline" type="submit">Save remaining profile details</button>
-            ) : (
-              <>
-                <button className="button button-dark" type="submit">Save profile</button>
-                {recommendationReady ? (
-                  <Link className="button button-outline" href={recommendationReturnPath}>
-                    See my private recommendation
-                  </Link>
-                ) : null}
-              </>
-            )}
-            {!isRecommendationJourney ? (
-              <>
-                <p className="profile-field-help">
-                  {recommendationReady
-                    ? "Your profile has enough detail for a private recommendation."
-                    : recommendationSignalGuidance}
-                </p>
-                <p className="status-line" role="status">{status}</p>
-              </>
-            ) : null}
-          </div>
+          {!isRecommendationJourney ? (
+            <div className="profile-actions">
+              <button className="button button-dark" type="submit">Save profile</button>
+              {recommendationReady ? (
+                <Link className="button button-outline" href={recommendationReturnPath}>
+                  See my private recommendation
+                </Link>
+              ) : null}
+              <p className="profile-field-help">
+                {recommendationReady
+                  ? "Your profile has enough detail for a private recommendation."
+                  : recommendationSignalGuidance}
+              </p>
+              <p className="status-line" role="status">{status}</p>
+            </div>
+          ) : null}
+          </RecommendationOptionalProfileTail>
         </form>
       </section>
       ) : null}

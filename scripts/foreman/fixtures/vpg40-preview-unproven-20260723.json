@@ -1,0 +1,13 @@
+{
+  "schema": "werkles.preview-evidence/v1",
+  "release_label": "VPG39",
+  "verification": "UNPROVEN",
+  "evidence_path": null,
+  "deployment_id": null,
+  "source_sha": null,
+  "target": null,
+  "ready_state": null,
+  "provenance": null,
+  "audience_evidence": null,
+  "claim": "Repository evidence contains no VPG39 Preview deployment, provenance, or audience artifact. This does not prove that no external Preview exists."
+}

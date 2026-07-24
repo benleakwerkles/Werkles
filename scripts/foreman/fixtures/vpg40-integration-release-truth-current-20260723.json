@@ -1,0 +1,72 @@
+{
+  "schema": "werkles.integration-release-truth-input/v1",
+  "cycle_id": "WERKLES-FLOCK-20260723-205525-ET-BETSY-01",
+  "legacy_label": "VPG40",
+  "repository": "benleakwerkles/Werkles",
+  "branch": "codex/werkles-vpg31-20260721",
+  "expected": {
+    "base_commit": "8c13380714815f58235b5ae2746fa5b217554dab",
+    "product_commit": "a07374db431a6086da534ca723a27288f09eaf8c",
+    "product_tree": "babfa59ce196a8bb803a1e26657cb57752233a81",
+    "closure_commit": "32e890be151a59a123c711871fe32e27bf8f9f99",
+    "candidate_digest": "e3285d3839c137ba61947a35898cb975357104104873b85c154841a0528d9c1e",
+    "candidate_path_count": 36,
+    "closure_owned_path_count": 73
+  },
+  "refs": {
+    "remote_ref": "refs/heads/codex/werkles-vpg31-20260721",
+    "local_head": "32e890be151a59a123c711871fe32e27bf8f9f99",
+    "upstream_head": "32e890be151a59a123c711871fe32e27bf8f9f99",
+    "remote_branch_head": "32e890be151a59a123c711871fe32e27bf8f9f99",
+    "origin_main": "294f98396b122b413275a3f8c45524987de284fe"
+  },
+  "topology": {
+    "closure_parent": "a07374db431a6086da534ca723a27288f09eaf8c",
+    "product_parent": "8c13380714815f58235b5ae2746fa5b217554dab",
+    "product_tree": "babfa59ce196a8bb803a1e26657cb57752233a81",
+    "product_in_origin_main": false,
+    "closure_in_origin_main": false
+  },
+  "pr_state": {
+    "evidence_source": "VPG40 read-only P capture",
+    "state": "NONE",
+    "number": null,
+    "head_sha": null,
+    "base_ref": "main",
+    "merge_commit_sha": null
+  },
+  "evidence_paths": {
+    "candidate_manifest": "foreman/receipts/WERKLES_VPG39_J_CANDIDATE_MANIFEST_20260723.json",
+    "closure_manifest": "foreman/receipts/WERKLES_VPG39_J_CLOSURE_MANIFEST_20260723.json",
+    "preview": "scripts/foreman/fixtures/vpg40-preview-unproven-20260723.json",
+    "production_receipt": "foreman/receipts/WERKLES_PRODUCTION_ROUTE_TRUTH_VPG22_COMPLETED_20260718.md",
+    "production_pointer": "foreman/NEXT_ACTION.md",
+    "vpg39_hold_receipt": "foreman/receipts/WERKLES_FULL_FLOCK_VPG39_20260723.md",
+    "scope_packet": "foreman/handoffs/outbox/TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_POST_PUSH_INTEGRATION_RELEASE_TRUTH_VPG40_20260723.md",
+    "human_gates": "foreman/HUMAN_GATES.md"
+  },
+  "production": {
+    "release_label": "VPG22",
+    "deployment_id": "dpl_BBBNaeGfjnZJXy3FbQVmVjePVgxo",
+    "changed_by_vpg39": false,
+    "live_verified_by_this_guard": false
+  },
+  "asserted_states": [
+    "PUSHED",
+    "NOT_INTEGRATED",
+    "PREVIEW_UNPROVEN",
+    "PRODUCTION_REPO_ATTESTED_UNCHANGED"
+  ],
+  "forbidden_actions": [
+    "PREVIEW_CREATE",
+    "DEPLOY",
+    "PROMOTE",
+    "ALIAS",
+    "ENV_CHANGE",
+    "GATE_CHANGE",
+    "PR",
+    "MERGE",
+    "PUSH",
+    "COMMIT"
+  ]
+}

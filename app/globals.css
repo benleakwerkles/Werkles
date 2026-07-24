@@ -10517,8 +10517,37 @@ main:not(.foundry-cockpit) strong {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.recommendation-profile-optional {
+  grid-column: 1 / -1;
+  padding: 0.85rem;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: 0.85rem;
+}
+
+.recommendation-profile-optional > summary {
+  cursor: pointer;
+  color: inherit;
+  font-weight: 800;
+}
+
+.recommendation-profile-optional > summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.recommendation-profile-optional__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 0.85rem;
+}
+
 @media (max-width: 1120px) {
   .profile-editor .profile-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .recommendation-profile-optional__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -10528,7 +10557,8 @@ main:not(.foundry-cockpit) strong {
     grid-template-columns: 1fr;
   }
 
-  .profile-editor .profile-grid {
+  .profile-editor .profile-grid,
+  .recommendation-profile-optional__grid {
     grid-template-columns: 1fr;
   }
 

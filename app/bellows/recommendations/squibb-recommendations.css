@@ -131,6 +131,36 @@ main.squibb-rec-page .squibb-rec-delivery-status--error:not(.eyebrow) {
   border-left: 3px solid var(--squibb-rec-accent);
 }
 
+.squibb-rec-surface__hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 280px);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.squibb-rec-surface__guide {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--werkles-iron);
+  border-radius: 0.85rem;
+  background: var(--werkles-smoke);
+}
+
+.squibb-rec-surface__guide-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.squibb-rec-surface__guide figcaption {
+  padding: 0.65rem 0.75rem;
+  color: var(--squibb-rec-muted-on-dark);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
 .squibb-rec-surface__intro {
   max-width: 52rem;
   color: var(--squibb-rec-muted-on-light);
@@ -1367,6 +1397,14 @@ main.squibb-rec-page .squibb-rec-surface .squibb-gate--blocker strong {
 }
 
 @media (max-width: 900px) {
+  .squibb-rec-surface__hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .squibb-rec-surface__guide {
+    width: min(100%, 34rem);
+  }
+
   .squibb-rec-surface__layout {
     grid-template-columns: minmax(0, 1fr);
   }

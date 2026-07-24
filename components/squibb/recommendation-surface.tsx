@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 
 import type { BellowsLedgerOptionRow, BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
+import { RENDER_BATCH_4_SQUIBB_ENABLED, squibbBellowsAssets } from "@/lib/render-batch-4-imagery";
 import { followContinuationTarget } from "@/lib/squibb/continuation-focus";
 import type { SquibbRecommendationSession } from "@/lib/squibb/recommendations";
 import { recommendationSelectionUpdate } from "@/lib/squibb/recommendation-selection";
@@ -130,27 +132,44 @@ export function SquibbRecommendationSurface({
             </p>
           </div>
         ) : null}
-        <p className="eyebrow">{isPersonal ? "Private, rules-based result" : "Werkles recommendations"}</p>
-        <h1>{isPersonal ? "Your private recommendation" : "One possible next move, explained."}</h1>
-        <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
-        <dl className="squibb-rec-surface__context">
+        <div className="squibb-rec-surface__hero-grid">
           <div>
-            <dt>{isExample ? "Example situation" : "Your situation"}</dt>
-            <dd>
-              {session.statedNeed}
-              <small>{session.operatorContext}</small>
-            </dd>
+            <p className="eyebrow">{isPersonal ? "Private, rules-based result" : "Werkles recommendations"}</p>
+            <h1>{isPersonal ? "Your private recommendation" : "One possible next move, explained."}</h1>
+            <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
+            <dl className="squibb-rec-surface__context">
+              <div>
+                <dt>{isExample ? "Example situation" : "Your situation"}</dt>
+                <dd>
+                  {session.statedNeed}
+                  <small>{session.operatorContext}</small>
+                </dd>
+              </div>
+              <div>
+                <dt>Based on</dt>
+                <dd>
+                  {source.label}
+                  <small className={isPersonal ? "squibb-rec-surface__private-custody" : undefined}>
+                    {source.detail}
+                  </small>
+                </dd>
+              </div>
+            </dl>
           </div>
-          <div>
-            <dt>Based on</dt>
-            <dd>
-              {source.label}
-              <small className={isPersonal ? "squibb-rec-surface__private-custody" : undefined}>
-                {source.detail}
-              </small>
-            </dd>
-          </div>
-        </dl>
+          {RENDER_BATCH_4_SQUIBB_ENABLED ? (
+            <figure className="squibb-rec-surface__guide">
+              <Image
+                src={squibbBellowsAssets.lessonCard}
+                alt="Squibb, an owl workshop guide, pointing to a blank clipboard"
+                width={1536}
+                height={864}
+                sizes="(max-width: 900px) 100vw, 280px"
+                className="squibb-rec-surface__guide-image"
+              />
+              <figcaption>Squibb guides the readout. You make the call.</figcaption>
+            </figure>
+          ) : null}
+        </div>
       </header>
 
       {source.fedDocument ? <SourceDocumentPanel source={source} selectedKind={selected.kind} /> : null}

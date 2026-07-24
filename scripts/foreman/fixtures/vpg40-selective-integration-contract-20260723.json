@@ -1,0 +1,211 @@
+{
+  "schema": "werkles.selective-integration-rehearsal/v1",
+  "cycle_id": "WERKLES-FLOCK-20260723-205525-ET-BETSY-01",
+  "legacy_label": "VPG40",
+  "execution_owner": "Heimerdinker@Betsy",
+  "repository": "benleakwerkles/Werkles",
+  "execution_branch": "codex/werkles-vpg31-20260721",
+  "source_commit": "32e890be151a59a123c711871fe32e27bf8f9f99",
+  "source_remote_ref": "refs/heads/codex/werkles-vpg31-20260721",
+  "origin_main_ref": "refs/heads/main",
+  "origin_main_sha": "294f98396b122b413275a3f8c45524987de284fe",
+  "product_commit": "a07374db431a6086da534ca723a27288f09eaf8c",
+  "product_parent": "8c13380714815f58235b5ae2746fa5b217554dab",
+  "product_tree": "babfa59ce196a8bb803a1e26657cb57752233a81",
+  "candidate_manifest": "foreman/receipts/WERKLES_VPG39_J_CANDIDATE_MANIFEST_20260723.json",
+  "expected_product_path_count": 36,
+  "apply": {
+    "command": "git",
+    "args": [
+      "cherry-pick",
+      "--no-commit",
+      "a07374db431a6086da534ca723a27288f09eaf8c"
+    ],
+    "temporary_head_must_remain": "294f98396b122b413275a3f8c45524987de284fe",
+    "conflicts_allowed": false,
+    "unstaged_changes_allowed": false
+  },
+  "qc_commands": [
+    {
+      "id": "vpg8_surface",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-vpg8-surface.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg10_ui_cleanup",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-ui-cleanup-vpg10.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg11_mobile_semantics",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-mobile-semantics-vpg11-20260717.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg13_decision_path",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-cockpit-decision-path-vpg13-20260717.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg14_loader_retirement",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-compression-loader-retirement-vpg14-20260717.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg19_private_return",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-private-return-path-vpg19-20260718.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg20_member_continuity",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-member-continuity-vpg20-20260718.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg26_activation",
+      "command": "node",
+      "args": ["scripts/foreman/test-public-recommendation-activation-vpg26-20260719.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg26_trust_navigation",
+      "command": "node",
+      "args": ["scripts/foreman/test-public-trust-navigation-vpg26-20260719.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg28_first_visit",
+      "command": "node",
+      "args": ["scripts/foreman/test-first-visit-clarity-vpg28-20260720.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg31_decision_moment",
+      "command": "node",
+      "args": ["scripts/foreman/test-recommendation-decision-moment-vpg31-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg31_public_trust",
+      "command": "node",
+      "args": ["scripts/foreman/test-public-accessibility-trust-vpg31-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg32_choice_to_action",
+      "command": "node",
+      "args": ["scripts/foreman/test-choice-to-action-warmth-vpg32-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg33_clarity_recovery",
+      "command": "node",
+      "args": ["scripts/foreman/test-recommendation-clarity-recovery-vpg33-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg34_compare_continuation",
+      "command": "node",
+      "args": ["scripts/foreman/test-compare-continuation-vpg34-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg35_warmth_interaction",
+      "command": "node",
+      "args": ["scripts/foreman/test-recommendation-warmth-interaction-vpg35-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg36_first_screen",
+      "command": "node",
+      "args": ["scripts/foreman/test-first-screen-selection-vpg36-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg37_action_closure",
+      "command": "node",
+      "args": ["scripts/foreman/test-action-closure-declutter-vpg37-20260721.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "vpg38_next_step",
+      "command": "node",
+      "args": ["scripts/foreman/test-next-step-orientation-vpg38-20260723.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "tier_a_personal_delivery",
+      "command": "node",
+      "args": ["scripts/foreman/test-matching-tier-a-personal-delivery-20260717.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "candidate_lint",
+      "command": "npm.cmd",
+      "args": ["run", "lint"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "typecheck",
+      "command": "npm.cmd",
+      "args": ["run", "typecheck"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "production_build",
+      "command": "npm.cmd",
+      "args": ["run", "build"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "release_integrity_smoke",
+      "command": "node",
+      "args": ["scripts/deploy/production-release-integrity-guard-smoke.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "cycle_identity_smoke",
+      "command": "node",
+      "args": ["scripts/foreman/flock-cycle-identity-guard-smoke.mjs"],
+      "execution": "run_in_disposable_worktree"
+    },
+    {
+      "id": "local_runtime_boundaries",
+      "command": "node",
+      "args": ["scripts/foreman/test-local-runtime-qc-vpg32-20260721.mjs"],
+      "execution": "attested_only_no_server_in_this_proof",
+      "expected": {
+        "recommendations": 200,
+        "profile": 200,
+        "intake": 503,
+        "saving": 403,
+        "anonymous_personal": 401
+      }
+    },
+    {
+      "id": "react_review",
+      "command": "attestation",
+      "args": ["candidate_manifest.qc.react_review"],
+      "execution": "attested_only",
+      "expected": "PASS"
+    }
+  ],
+  "forbidden_actions": [
+    "commit",
+    "pull_request",
+    "merge",
+    "push",
+    "preview_deployment",
+    "production_deployment",
+    "production_promotion",
+    "alias_change",
+    "environment_change"
+  ]
+}

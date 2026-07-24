@@ -50,7 +50,9 @@ assert.ok(genericSkillsIndex > skillsOfferedIndex);
 assert.ok(genericNarrativeIndex > industryIndex);
 
 const profileActions = profileForm.slice(profileForm.indexOf('<div className="profile-actions">'));
-assert.match(profileActions, /Save remaining profile details/);
+assert.doesNotMatch(profileActions, /Save remaining profile details/);
+assert.match(profileForm, /<RecommendationOptionalProfileTail collapsed=\{isRecommendationJourney\}>/);
+assert.match(profile, /<summary>Add more profile details \(optional\)<\/summary>/);
 assert.match(profileActions, /<button className="button button-dark" type="submit">Save profile<\/button>/);
 assert.match(profileActions, /<Link className="button button-outline" href=\{recommendationReturnPath\}>/);
 
