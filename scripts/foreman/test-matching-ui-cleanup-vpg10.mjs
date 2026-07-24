@@ -28,8 +28,8 @@ assert.match(surface, /Nothing is saved from this example\./);
 
 const noticeIndex = surface.indexOf('id="squibbRecommendationSavingStatus"');
 const buttonsIndex = surface.indexOf('className="squibb-rec-detail__buttons"');
-assert.ok(noticeIndex > -1 && buttonsIndex > noticeIndex, "save-closed notice must precede disabled actions");
-assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
+assert.ok(buttonsIndex > -1 && noticeIndex > buttonsIndex, "live actions must precede the save-closed note");
+assert.doesNotMatch(surface, /SAVE_CLOSED_BETA|Unavailable beta actions|disabled=/);
 assert.doesNotMatch(surface, /fetch\s*\(/);
 
 for (const required of [
@@ -43,7 +43,7 @@ for (const required of [
 }
 
 assert.match(css, /\.squibb-rec-card[\s\S]*background: var\(--werkles-smoke, #2c231d\)/);
-assert.match(css, /\.squibb-rec-detail__buttons \.button:disabled[\s\S]*opacity: 1/);
+assert.doesNotMatch(css, /\.squibb-rec-detail__buttons \.button:disabled/);
 assert.match(css, /\.squibb-evidence__item[\s\S]*background: var\(--werkles-smoke, #2c231d\)/);
 assert.match(css, /\.squibb-gate--blocker[\s\S]*background: #4a2020/);
 assert.match(

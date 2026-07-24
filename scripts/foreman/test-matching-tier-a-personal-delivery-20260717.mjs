@@ -73,12 +73,14 @@ assert.doesNotMatch(personalBuilder, /persistShadowRun|writeFile|fetch\s*\(/);
 assert.match(delivery, /getSupabaseBrowser\(\)\.auth\.getSession\(\)/);
 assert.match(delivery, /Authorization: `Bearer \$\{token\}`/);
 assert.match(delivery, /cache: "no-store"/);
-assert.match(delivery, /isPersonalRecommendationResponse\(payload\)/);
+assert.match(delivery, /classifyPersonalRecommendationResponse/);
+assert.match(contract, /!ok \|\| !isPersonalRecommendationResponse\(payload\)/);
 assert.match(delivery, /delivery\.status === "personal" \? delivery\.session : exampleSession/);
 assert.match(delivery, /Want one for your situation\?/);
 assert.match(delivery, /Open Profile Builder/);
-assert.match(delivery, /page below is still an example/);
-assert.match(delivery, /Private rules result loaded from your saved profile/);
+assert.match(delivery, /example stays here/);
+assert.match(surface, /Built from your saved profile/);
+assert.match(surface, /This result was[\s\S]*not saved or sent/);
 assert.match(delivery, /setAttempt\(\(current\) => current \+ 1\)/);
 assert.match(contract, /value\.success !== true/);
 assert.match(contract, /value\.persisted !== false/);
@@ -94,8 +96,8 @@ assert.match(
   surface,
   /showActivityLedger =\s*!isEphemeralDocument && \(hasRecordedActivity \|\| \(!isExample && !isPersonal\)\)/
 );
-assert.match(surface, /const SAVE_CLOSED_BETA = true/);
-assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
+assert.doesNotMatch(surface, /SAVE_CLOSED_BETA|Unavailable beta actions|disabled=/);
+assert.match(surface, /Saving is closed in this beta\. Nothing is sent\./);
 assert.match(packetRoute, /export async function POST\(\)[\s\S]*status: 403/);
 assert.doesNotMatch(packetRoute, /request\.(?:json|text|formData|body)/);
 

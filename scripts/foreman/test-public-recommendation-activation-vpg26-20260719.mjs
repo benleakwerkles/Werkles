@@ -26,7 +26,7 @@ assert.match(profile, /setIsRecommendationJourney\(params\.get\("next"\) === "\/
 const profileForm = profile.slice(profile.indexOf('<form className="profile-grid"'), profile.indexOf("</form>"));
 const recommendationFirst = profileForm.slice(
   profileForm.indexOf("{isRecommendationJourney ? ("),
-  profileForm.indexOf('This form saves details to your signed-in account.')
+  profileForm.indexOf("{!isRecommendationJourney ? displayNameField : null}")
 );
 const primaryFirstIndex = recommendationFirst.indexOf("{primaryGoalField}");
 const skillsFirstIndex = recommendationFirst.indexOf("{skillsSoughtField}");
@@ -63,10 +63,10 @@ assert.match(
   surface,
   /<h1>\{isPersonal \? "Your private recommendation" : "One possible next move, explained\."\}<\/h1>/
 );
-assert.match(surface, /This private result was not saved or sent\. Edit your profile to recalculate it\./);
+assert.match(surface, /This private result was not saved or sent\./);
 assert.match(surface, /aria-label="Private recommendation actions"/);
 assert.match(surface, /href="\/dashboard\/profile\?next=%2Fbellows%2Frecommendations"/);
-assert.match(surface, />\s*Edit Profile\s*<\/Link>/);
+assert.match(surface, />\s*Update my profile\s*<\/Link>/);
 
 const exampleCustody = surface.slice(
   surface.indexOf("{isExample ? ("),
@@ -75,11 +75,10 @@ const exampleCustody = surface.slice(
 assert.match(exampleCustody, /aria-label="Example mode"/);
 assert.match(exampleCustody, /This is a walkthrough, not your result\./);
 assert.doesNotMatch(exampleCustody, /Review the closed intake questions/);
-assert.match(surface, /aria-label="Recommendation actions"/);
-assert.equal(count(surface, /disabled=\{SAVE_CLOSED_BETA\}/g), 3);
-assert.match(surface, /Save this option/);
-assert.match(surface, /\{selected\.keepOriginalPathLabel\}/);
-assert.match(surface, /Ask what proof is needed/);
+assert.match(surface, /aria-label="Available recommendation actions"/);
+assert.doesNotMatch(surface, /Unavailable beta actions|Save this option|disabled=/);
+assert.match(surface, /id="squibbRecommendationSavingStatus"[\s\S]*role="note"/);
+assert.match(surface, /Check proof and gaps/);
 assert.doesNotMatch(surface, /\bfetch\s*\(/);
 assert.match(recommendationCss, /\.squibb-rec-surface__personal-custody\s*\{/);
 assert.match(recommendationCss, /border-left: 3px solid var\(--werkles-teal-bright/);
@@ -96,7 +95,7 @@ console.log(
         "personal_recommendation_has_distinct_hero_and_custody",
         "personal_recommendation_states_closed_saving_truth",
         "personal_recommendation_has_live_edit_profile_return",
-        "example_mode_copy_and_closed_controls_remain_unchanged",
+        "example_mode_copy_and_closed_actions_remain_clear",
         "recommendation_surface_adds_no_write_request"
       ]
     },

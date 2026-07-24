@@ -374,6 +374,10 @@ export default function ProfilePage() {
           <span>Assets: {profile.funds_status || "none"}</span>
         </div>
         <form className="profile-grid" key={`${email || "anonymous"}:${profile.display_name || "new"}`} onSubmit={handleSubmit}>
+          <p className="profile-field-help wide-field">
+            This form saves details to your signed-in account. Read the{" "}
+            <Link href="/privacy">Public Test Data Notice</Link> before adding anything you do not want in your profile.
+          </p>
           {isRecommendationJourney ? (
             <>
               <p className="profile-field-help wide-field" role="note">
@@ -406,10 +410,6 @@ export default function ProfilePage() {
               </div>
             </>
           ) : null}
-          <p className="profile-field-help wide-field">
-            This form saves details to your signed-in account. Read the{" "}
-            <Link href="/privacy">Public Test Data Notice</Link> before adding anything you do not want in your profile.
-          </p>
           {!isRecommendationJourney ? displayNameField : null}
           <label className="field">
             <span>First name</span>

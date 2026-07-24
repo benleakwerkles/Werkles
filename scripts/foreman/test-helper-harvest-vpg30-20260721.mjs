@@ -12,7 +12,7 @@ const css = read("app/bellows/recommendations/squibb-recommendations.css");
 
 assert.match(reasoning, /<details className="squibb-reasoning squibb-rec-collapse">/);
 assert.match(reasoning, /<summary className="squibb-rec-collapse__summary">Why this option<\/summary>/);
-assert.match(evidence, /<details className="squibb-evidence squibb-rec-collapse">/);
+assert.match(evidence, /<details[^>]*className="squibb-evidence squibb-rec-collapse">/);
 assert.match(evidence, /<summary className="squibb-rec-collapse__summary">Proof and gaps<\/summary>/);
 assert.match(css, /\.squibb-rec-collapse\s*\{/);
 assert.match(css, /\.squibb-rec-collapse\[open\] \.squibb-rec-collapse__summary/);

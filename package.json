@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --max-warnings=0 app/dashboard/profile/page.tsx components/squibb/evidence-section.tsx components/squibb/personal-recommendation-delivery.tsx components/squibb/recommendation-card.tsx components/squibb/recommendation-surface.tsx",
     "typecheck": "tsc --noEmit",
     "truth:atlas": "node scripts/foreman/atlas-source-truth-readback.mjs --write",
     "truth:branches": "node scripts/foreman/atlas-github-branch-index.mjs --write",

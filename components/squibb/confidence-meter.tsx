@@ -1,4 +1,5 @@
 import type { ConfidenceLabel } from "@/lib/squibb/walkthrough-types";
+import { ruleSupportBand } from "@/lib/squibb/rule-support";
 
 type ConfidenceMeterProps = {
   score: number;
@@ -6,12 +7,6 @@ type ConfidenceMeterProps = {
   why: string;
   variant?: "confidence" | "rules_score";
   isExample?: boolean;
-};
-
-const SUPPORT_BAND: Record<ConfidenceLabel, string> = {
-  high: "Stronger rule support",
-  medium: "Moderate rule support",
-  low: "Limited rule support"
 };
 
 const LIVE_RULES_SCORE_DISCLAIMER =
@@ -25,7 +20,7 @@ export function ConfidenceMeter({ score, label, why, variant = "confidence", isE
 
   if (variant === "rules_score") {
     const rulesScore = Math.round(clamped);
-    const band = SUPPORT_BAND[label] ?? SUPPORT_BAND.low;
+    const band = ruleSupportBand(label);
 
     return (
       <div className="squibb-confidence" aria-labelledby="squibbRulesScoreTitle">

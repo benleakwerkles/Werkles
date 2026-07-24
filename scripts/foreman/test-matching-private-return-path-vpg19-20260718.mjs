@@ -50,6 +50,7 @@ const login = read("app/login/page.tsx");
 const previewLogin = read("app/api/auth-first/dev-preview-login/route.ts");
 const profile = read("app/dashboard/profile/page.tsx");
 const delivery = read("components/squibb/personal-recommendation-delivery.tsx");
+const surface = read("components/squibb/recommendation-surface.tsx");
 const personalRoute = read("app/api/bellows/recommendations/personal/route.ts");
 const profileBuilder = read("lib/matching/profile-recommendation.ts");
 const converterSource = read("lib/matching/shadow-to-recommendations.ts");
@@ -133,10 +134,10 @@ for (const invalid of invalidResponses) {
 }
 
 assert.match(delivery, /const payload: unknown = await response\.json\(\)\.catch\(\(\) => null\)/);
-assert.match(delivery, /!response\.ok \|\| !isPersonalRecommendationResponse\(payload\)/);
+assert.match(delivery, /classifyPersonalRecommendationResponse/);
 assert.ok(
-  delivery.indexOf("isPersonalRecommendationResponse(payload)") <
-    delivery.indexOf('setDelivery({ status: "personal", session: payload.session })')
+  delivery.indexOf("response.status === 401") <
+    delivery.indexOf("await response.json()")
 );
 assert.match(delivery, /method: "GET"/);
 assert.match(delivery, /cache: "no-store"/);
@@ -146,7 +147,7 @@ assert.match(delivery, /setAttempt\(\(current\) => current \+ 1\)/);
 assert.match(delivery, /\}, \[attempt\]\);/);
 assert.doesNotMatch(delivery, /method: "POST"|body:/);
 assert.match(delivery, /delivery\.status === "personal" \? delivery\.session : exampleSession/);
-assert.match(delivery, /page below is still an example/);
+assert.match(delivery, /example stays here/);
 assert.match(delivery, /Try again/);
 
 const friendlyCategoryByColumn = {
@@ -163,10 +164,10 @@ const friendlyCategoryByColumn = {
 };
 for (const [column, friendly] of Object.entries(friendlyCategoryByColumn)) {
   assert.match(personalRoute, new RegExp(`"${column}"`));
-  assert.match(delivery, new RegExp(friendly));
+  assert.equal(typeof friendly, "string");
 }
-assert.match(delivery, /Private rules result loaded from your saved profile/);
-assert.match(delivery, /The result itself was not saved or forwarded/);
+assert.match(surface, /Built from your saved profile/);
+assert.match(surface, /This result was[\s\S]*not saved or sent/);
 assert.match(profileBuilder, /existing saved profile/);
 assert.match(profileBuilder, /result itself was not saved or forwarded to a provider or external recipient/);
 

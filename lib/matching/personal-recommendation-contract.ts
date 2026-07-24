@@ -14,6 +14,11 @@ export type PersonalRecommendationResponse =
       session: SquibbRecommendationSession;
     };
 
+export type PersonalRecommendationDeliveryDecision =
+  | PersonalRecommendationResponse
+  | { status: "reauth_required" }
+  | { status: "error" };
+
 const RECOMMENDATION_KINDS = new Set([
   "translate_need",
   "verify_proof",
@@ -141,4 +146,18 @@ export function isPersonalRecommendationResponse(
   return value.status === "profile_required"
     ? value.session === undefined
     : isPersonalSession(value.session);
+}
+
+export function classifyPersonalRecommendationResponse({
+  status,
+  ok,
+  payload
+}: {
+  status: number;
+  ok: boolean;
+  payload: unknown;
+}): PersonalRecommendationDeliveryDecision {
+  if (status === 401) return { status: "reauth_required" };
+  if (!ok || !isPersonalRecommendationResponse(payload)) return { status: "error" };
+  return payload;
 }

@@ -8,15 +8,15 @@ function read(path) {
 const delivery = read("components/squibb/personal-recommendation-delivery.tsx");
 const profile = read("app/dashboard/profile/page.tsx");
 
-assert.match(delivery, /New here\? Create an account, confirm your email, complete First Weld/);
-assert.match(delivery, /Already a member\? Sign in and come straight back/);
+assert.match(delivery, /New here: confirm your email, finish First Weld/);
+assert.match(delivery, /Already a member: sign in and come straight back/);
 assert.match(delivery, /href="\/signup\?next=%2Fbellows%2Frecommendations"/);
 assert.match(delivery, /href="\/login\?next=%2Fbellows%2Frecommendations"/);
 
 const profileForm = profile.slice(profile.indexOf('<form className="profile-grid"'), profile.indexOf("</form>"));
 const recommendationFirst = profileForm.slice(
   profileForm.indexOf("{isRecommendationJourney ? ("),
-  profileForm.indexOf("This form saves details to your signed-in account.")
+  profileForm.indexOf("{!isRecommendationJourney ? displayNameField : null}")
 );
 
 assert.match(recommendationFirst, /Save changes and refresh recommendation/);

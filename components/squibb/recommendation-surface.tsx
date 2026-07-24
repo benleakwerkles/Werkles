@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
+import type { MouseEvent } from "react";
 
 import type { BellowsLedgerOptionRow, BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
+import { followContinuationTarget } from "@/lib/squibb/continuation-focus";
 import type { SquibbRecommendationSession } from "@/lib/squibb/recommendations";
+import { recommendationSelectionUpdate } from "@/lib/squibb/recommendation-selection";
 import { ConfidenceMeter } from "./confidence-meter";
 import { EvidenceSection } from "./evidence-section";
 import { HumanGateStrip } from "./human-gate-strip";
@@ -15,31 +18,31 @@ import { SourceDocumentPanel } from "./source-document-panel";
 type SquibbRecommendationSurfaceProps = {
   session: SquibbRecommendationSession;
   ledger: BellowsPacketLedger;
+  continuationAction?: {
+    label: string;
+    href: string;
+    focusTargetId?: string;
+  };
 };
 
-type RecommendationPacketState =
-  | { status: "idle"; message: string }
-  | { status: "closed"; message: string }
-  | { status: "error"; message: string };
-
-/** Closed throughout the public test; recommendation actions are not persisted. Server still returns 403. */
-const SAVE_CLOSED_BETA = true;
-
-const SAVE_CLOSED_MESSAGE =
-  "Saving is unavailable during this beta. Nothing is sent to another person or organization from these controls.";
+const SAVE_CLOSED_MESSAGE = "Saving is closed in this beta. Nothing is sent.";
 
 const RECOMMENDATION_COLLECTION_ID = "squibbRecommendationCollection";
+const RECOMMENDATION_COLLECTION_TITLE_ID = "squibbRecommendationCollectionTitle";
 const RECOMMENDATION_DETAIL_ID = "squibbRecommendationDetail";
+const RECOMMENDATION_EVIDENCE_ID = "squibbRecommendationEvidence";
 
-export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommendationSurfaceProps) {
+export function SquibbRecommendationSurface({
+  session,
+  ledger,
+  continuationAction
+}: SquibbRecommendationSurfaceProps) {
   const [selectedId, setSelectedId] = useState(session.ranked[0]?.id ?? session.catalog[0]?.id);
   const [view, setView] = useState<"ranked" | "catalog">("ranked");
+  const [selectionAnnouncement, setSelectionAnnouncement] = useState("");
   const recommendationRailRef = useRef<HTMLDivElement>(null);
+  const evidenceDetailsRef = useRef<HTMLDetailsElement>(null);
   const [optionPackets] = useState<BellowsLedgerOptionRow[]>(ledger.optionPackets);
-  const [packetState, setPacketState] = useState<RecommendationPacketState>({
-    status: "closed",
-    message: SAVE_CLOSED_MESSAGE
-  });
   const source = session.source ?? {
     mode: "demo",
     label: "Demo scenario",
@@ -49,8 +52,8 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
   const isPersonal = source.mode === "authenticated_profile";
   const isEphemeralDocument = source.mode === "ephemeral_document";
   const savingStatusMessage = isPersonal
-    ? "Saving is closed during this public test. This private result was not saved or sent. Edit your profile to recalculate it."
-    : packetState.message;
+    ? "This private result was not saved or sent."
+    : SAVE_CLOSED_MESSAGE;
   const hasRecordedActivity = ledger.intakes.length > 0 || optionPackets.length > 0;
   const showActivityLedger =
     !isEphemeralDocument && (hasRecordedActivity || (!isExample && !isPersonal));
@@ -66,6 +69,7 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
     const nextList = next === "ranked" ? session.ranked : session.catalog;
     const selectedStillAvailable = nextList.some((recommendation) => recommendation.id === selectedId);
     setView(next);
+    setSelectionAnnouncement("");
     if (!selectedStillAvailable) {
       const first = nextList[0];
       if (first) setSelectedId(first.id);
@@ -79,18 +83,26 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         rail?.scrollTo({ left: 0, behavior: "auto" });
       }
     });
-    setPacketState({
-      status: "closed",
-      message: SAVE_CLOSED_MESSAGE
-    });
   }
 
   function selectRecommendation(id: string) {
-    setSelectedId(id);
-    setPacketState({
-      status: "closed",
-      message: SAVE_CLOSED_MESSAGE
-    });
+    const update = recommendationSelectionUpdate(selected.id, id, activeList);
+    if (!update) return;
+    setSelectedId(update.id);
+    setSelectionAnnouncement(update.announcement);
+  }
+
+  function reviewProofAndGaps() {
+    const details = evidenceDetailsRef.current;
+    if (!details) return;
+    details.open = true;
+    const summary = details.querySelector<HTMLElement>("summary");
+    summary?.focus({ preventScroll: true });
+    details.scrollIntoView({ behavior: "auto", block: "nearest" });
+  }
+
+  function followContinuation(event: MouseEvent<HTMLAnchorElement>) {
+    followContinuationTarget(continuationAction?.focusTargetId, event);
   }
 
   if (!selected) return null;
@@ -123,15 +135,14 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
         <dl className="squibb-rec-surface__context">
           <div>
-            <dt>{isExample ? "Example need" : "What you need"}</dt>
-            <dd>{session.statedNeed}</dd>
+            <dt>{isExample ? "Example situation" : "Your situation"}</dt>
+            <dd>
+              {session.statedNeed}
+              <small>{session.operatorContext}</small>
+            </dd>
           </div>
           <div>
-            <dt>What matters here</dt>
-            <dd>{session.operatorContext}</dd>
-          </div>
-          <div>
-            <dt>What this is based on</dt>
+            <dt>Based on</dt>
             <dd>
               {source.label}
               <small className={isPersonal ? "squibb-rec-surface__private-custody" : undefined}>
@@ -140,9 +151,6 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             </dd>
           </div>
         </dl>
-        <p className="squibb-rec-surface__squibb-note" role="note">
-          {selected.squibbNote}
-        </p>
       </header>
 
       {source.fedDocument ? <SourceDocumentPanel source={source} selectedKind={selected.kind} /> : null}
@@ -176,21 +184,21 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
         </button>
       </div>
 
-      <p className="squibb-rec-selection-status" role="status">
-        Selected recommendation: {selected.title}
+      <p className="squibb-rec-selection-status" role="status" aria-atomic="true">
+        {selectionAnnouncement}
       </p>
 
       <div className="squibb-rec-surface__layout">
         <aside
           id={RECOMMENDATION_COLLECTION_ID}
           className="squibb-rec-surface__stack"
-          aria-label="Recommendation cards"
+          aria-labelledby={RECOMMENDATION_COLLECTION_TITLE_ID}
         >
-          <h2 className="squibb-rec-surface__stack-title">
+          <h2 id={RECOMMENDATION_COLLECTION_TITLE_ID} className="squibb-rec-surface__stack-title">
             {view === "ranked" ? "Best fits right now" : "Everything you can consider"}
           </h2>
           <p id="squibbRecommendationCompareCue" className="squibb-rec-surface__compare-cue">
-            Scroll sideways to compare options. Selecting one updates the details below.
+            Swipe or scroll, then pick one to explore.
           </p>
           <div
             ref={recommendationRailRef}
@@ -219,12 +227,14 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
           aria-labelledby="squibbDetailTitle"
         >
           <header className="squibb-rec-detail__header">
-            <p className="eyebrow">Selected recommendation</p>
+            <p className="eyebrow">Selected</p>
             <h2 id="squibbDetailTitle">{selected.title}</h2>
             <p>{selected.headline}</p>
+            <p className="squibb-rec-surface__squibb-note" role="note">
+              {selected.squibbNote}
+            </p>
           </header>
 
-          <ReasoningPanel reasoning={selected.reasoning} isExample={isExample} />
           <ConfidenceMeter
             score={selected.confidence.score}
             label={selected.confidence.label}
@@ -232,59 +242,66 @@ export function SquibbRecommendationSurface({ session, ledger }: SquibbRecommend
             variant="rules_score"
             isExample={isExample}
           />
+          <ReasoningPanel reasoning={selected.reasoning} isExample={isExample} />
           <div className="squibb-rec-detail__proof-grid">
             <HumanGateStrip gates={selected.humanGates} />
-            <EvidenceSection items={selected.evidence} />
+            <EvidenceSection
+              items={selected.evidence}
+              detailsId={RECOMMENDATION_EVIDENCE_ID}
+              detailsRef={evidenceDetailsRef}
+            />
           </div>
 
           <footer className="squibb-rec-detail__actions">
             <dl className="squibb-rec-detail__dispatch">
               <div>
-                <dt>Suggested support</dt>
+                <dt>Start with</dt>
                 <dd>{selected.suggestedAgent}</dd>
               </div>
               {selected.suggestedTool ? (
                 <div>
-                  <dt>Verification</dt>
+                  <dt>Helpful check or prep</dt>
                   <dd>{selected.suggestedTool}</dd>
                 </div>
               ) : null}
             </dl>
-            <div
-              id="squibbRecommendationSavingStatus"
-              className="squibb-rec-detail__preview-note"
-              data-status={packetState.status}
-              role="status"
-            >
-              {savingStatusMessage}
-            </div>
             {isPersonal ? (
               <div className="squibb-rec-detail__buttons" aria-label="Private recommendation actions">
                 <Link
                   className="button button-dark"
                   href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
                 >
-                  Edit Profile
+                  Update my profile
                 </Link>
               </div>
             ) : (
               <div
                 className="squibb-rec-detail__buttons"
                 role="group"
-                aria-label="Recommendation actions"
-                aria-describedby="squibbRecommendationSavingStatus"
+                aria-label="Available recommendation actions"
               >
-                <button type="button" className="button button-dark" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
-                  Save this option
-                </button>
-                <button type="button" className="button button-outline" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
-                  {selected.keepOriginalPathLabel}
-                </button>
-                <button type="button" className="button button-ghost" disabled={SAVE_CLOSED_BETA} aria-disabled="true">
-                  Ask what proof is needed
+                {continuationAction ? (
+                  <a className="button button-dark" href={continuationAction.href} onClick={followContinuation}>
+                    {continuationAction.label}
+                  </a>
+                ) : null}
+                <button
+                  type="button"
+                  className="button button-ghost"
+                  aria-controls={RECOMMENDATION_EVIDENCE_ID}
+                  onClick={reviewProofAndGaps}
+                >
+                  Check proof and gaps
                 </button>
               </div>
             )}
+            <p
+              id="squibbRecommendationSavingStatus"
+              className="squibb-rec-detail__preview-note"
+              role="note"
+            >
+              {savingStatusMessage}
+            </p>
           </footer>
         </article>
       </div>

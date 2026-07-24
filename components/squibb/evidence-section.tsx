@@ -1,4 +1,5 @@
 import type { EvidenceItem } from "@/lib/squibb/recommendations";
+import type { Ref } from "react";
 
 const STRENGTH_LABELS: Record<EvidenceItem["strength"], string> = {
   verified: "Verified",
@@ -9,11 +10,13 @@ const STRENGTH_LABELS: Record<EvidenceItem["strength"], string> = {
 
 type EvidenceSectionProps = {
   items: EvidenceItem[];
+  detailsId: string;
+  detailsRef: Ref<HTMLDetailsElement>;
 };
 
-export function EvidenceSection({ items }: EvidenceSectionProps) {
+export function EvidenceSection({ items, detailsId, detailsRef }: EvidenceSectionProps) {
   return (
-    <details className="squibb-evidence squibb-rec-collapse">
+    <details ref={detailsRef} id={detailsId} className="squibb-evidence squibb-rec-collapse">
       <summary className="squibb-rec-collapse__summary">Proof and gaps</summary>
       <p className="squibb-evidence__lead">
         Squibb stays quiet when evidence is thin. Verified proof clears the path — it does not make the call for

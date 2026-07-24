@@ -46,7 +46,9 @@ assert.match(recommendationSurface, /role="group" aria-label="Recommendation dec
 assert.equal(recommendationSurface.match(/aria-pressed=\{view ===/g)?.length, 2);
 assert.equal(recommendationSurface.match(/aria-controls=\{RECOMMENDATION_COLLECTION_ID\}/g)?.length, 2);
 assert.doesNotMatch(recommendationSurface, /role="tab(?:list)?"|aria-selected/);
-assert.match(recommendationSurface, /role="status"[\s\S]*Selected recommendation: \{selected\.title\}/);
+assert.match(recommendationSurface, /role="status" aria-atomic="true"/);
+assert.doesNotMatch(recommendationSurface, /role="status" aria-live=/);
+assert.match(recommendationSurface, /\{selectionAnnouncement\}/);
 assert.match(recommendationSurface, /id=\{RECOMMENDATION_COLLECTION_ID\}/);
 assert.match(recommendationSurface, /id=\{RECOMMENDATION_DETAIL_ID\}/);
 assert.match(recommendationCard, /aria-controls=\{detailId\}/);

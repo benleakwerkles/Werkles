@@ -21,6 +21,7 @@ const recommendationsSource = read("lib/squibb/recommendations.ts");
 const surface = read("components/squibb/recommendation-surface.tsx");
 const meter = read("components/squibb/confidence-meter.tsx");
 const card = read("components/squibb/recommendation-card.tsx");
+const ruleSupport = read("lib/squibb/rule-support.ts");
 const humanGateStrip = read("components/squibb/human-gate-strip.tsx");
 const css = read("app/bellows/recommendations/squibb-recommendations.css");
 const packetRoute = read("app/api/bellows/recommendations/packet/route.ts");
@@ -132,14 +133,14 @@ for (const publicEnabled of [false, true]) {
 }
 assert.equal((await loadPublicPageData(true)).session.source.label, "Rules-based recommendation example");
 
-assert.match(surface, /SAVE_CLOSED_BETA\s*=\s*true/);
+assert.doesNotMatch(surface, /SAVE_CLOSED_BETA|Unavailable beta actions|disabled=/);
 assert.match(
   surface,
-  /Saving is unavailable during this beta\. Nothing is sent to another person or organization from these controls\./
+  /Saving is closed in this beta\. Nothing is sent\./
 );
-assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
+assert.equal(surface.match(/disabled=/g)?.length ?? 0, 0);
 assert.match(surface, /variant="rules_score"/);
-assert.match(surface, /aria-describedby="squibbRecommendationSavingStatus"/);
+assert.match(surface, /id="squibbRecommendationSavingStatus"[\s\S]*role="note"/);
 assert.match(
   surface,
   /Nothing is saved from this example\. Nothing is sent to another person or organization\./
@@ -153,7 +154,11 @@ assert.doesNotMatch(surface, /Make these recommendations yours/);
 assert.doesNotMatch(surface, /fetch\s*\(/);
 assert.doesNotMatch(surface, /stagePacket\s*\(/);
 
-assert.doesNotMatch(card, /confidence\.score/);
+assert.match(
+  card,
+  /Math\.max\(0, Math\.min\(100, Math\.round\(recommendation\.confidence\.score\)\)\)/
+);
+assert.match(card, /\{rulesScore\}\/100/);
 assert.doesNotMatch(card, /squibb-rec-card__confidence/);
 
 assert.match(humanGateStrip, /Before anything moves/);
@@ -165,9 +170,9 @@ assert.doesNotMatch(humanGateStrip, /Ben must approve|No Operator gate/);
 assert.match(meter, /variant\?: "confidence" \| "rules_score"/);
 assert.match(meter, /variant = "confidence"/);
 assert.match(meter, /Support band: \{band\}/);
-assert.match(meter, /Limited rule support/);
-assert.match(meter, /Moderate rule support/);
-assert.match(meter, /Stronger rule support/);
+assert.match(ruleSupport, /Limited rule support/);
+assert.match(ruleSupport, /Moderate rule support/);
+assert.match(ruleSupport, /Stronger rule support/);
 assert.match(
   meter,
   /This rules score shows how strongly the current rules support this option based on what you entered\. It is not a probability of success, a measure of eligibility, or a predicted outcome\./
@@ -209,7 +214,7 @@ console.log(
         "clean_checkout_public_copy_reproduced",
         "gate_structure_and_approval_flags_preserved",
         "empty_public_ledger",
-        "save_controls_disabled_and_no_client_post",
+        "closed_save_controls_absent_and_no_client_post",
         "recommendation_only_rules_score",
         "shared_confidence_default_preserved",
         "page_scoped_canonical_dark_contrast_tokens",

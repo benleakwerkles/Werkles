@@ -48,7 +48,7 @@ assert.match(css, /\.squibb-rec-card__flag \{[\s\S]*var\(--werkles-ember, #fbc36
 assert.match(css, /\.squibb-gate--blocker \{[\s\S]*background: #4a2020/);
 assert.match(css, /\.squibb-evidence__strength--verified \{[\s\S]*var\(--werkles-owl-eye-green, #5fd178\)/);
 assert.match(css, /\.squibb-evidence__item--missing \{[\s\S]*var\(--werkles-iron, #3b342a\)/);
-assert.match(css, /\.squibb-rec-detail__buttons \.button:disabled \{[\s\S]*var\(--werkles-workshop-night, #191817\)/);
+assert.doesNotMatch(css, /\.squibb-rec-detail__buttons \.button:disabled/);
 assert.match(css, /\.squibb-confidence__fill \{[\s\S]*var\(--werkles-teal-deep, #015e51\)[\s\S]*var\(--werkles-teal-bright, #18c5ae\)/);
 assert.match(css, /:focus-visible[\s\S]*outline: 3px solid var\(--werkles-ember, #fbc368\)/);
 assert.match(css, /main\.squibb-rec-page \.squibb-rec-surface h1,[\s\S]*color: var\(--squibb-rec-on-dark\)/);
@@ -59,15 +59,15 @@ assert.match(surface, /const selectedStillAvailable = nextList\.some/);
 assert.match(surface, /requestAnimationFrame\(\(\) => \{/);
 assert.match(surface, /selectedCard\.scrollIntoView\(\{ behavior: "auto", block: "nearest", inline: "nearest" \}\)/);
 assert.match(surface, /rail\?\.scrollTo\(\{ left: 0, behavior: "auto" \}\)/);
-assert.match(surface, /Scroll sideways to compare options\. Selecting one updates the details below\./);
+assert.match(surface, /Swipe or scroll, then pick one to explore\./);
 assert.match(surface, /role="region"[\s\S]*aria-label=\{`\$\{activeList\.length\} recommendation options`\}/);
 assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.squibb-rec-surface__compare-cue \{[\s\S]*display: block/);
 
 const gatesIndex = surface.indexOf("<HumanGateStrip gates={selected.humanGates} />");
-const evidenceIndex = surface.indexOf("<EvidenceSection items={selected.evidence} />");
+const evidenceIndex = surface.indexOf("<EvidenceSection");
 assert.ok(gatesIndex > -1 && evidenceIndex > gatesIndex, "review boundary must precede evidence in DOM order");
 
-assert.equal(surface.match(/disabled=\{SAVE_CLOSED_BETA\}/g)?.length, 3);
+assert.doesNotMatch(surface, /SAVE_CLOSED_BETA|Unavailable beta actions|disabled=/);
 assert.doesNotMatch(surface, /fetch\s*\(/);
 assert.match(bellowsAvailability, /BELLOWS_INTAKE_SUBMISSION_OPEN = false/);
 assert.match(discoveryAvailability, /DISCOVERY_INTAKE_SUBMISSION_OPEN = false/);
