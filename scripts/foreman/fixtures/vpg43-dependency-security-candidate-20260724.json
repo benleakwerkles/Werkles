@@ -1,0 +1,166 @@
+{
+  "schema": "werkles.vpg43-dependency-security-contract/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+  "source_commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "root": {
+    "name": "werkles",
+    "version": "0.2.0",
+    "dependencies": {
+      "@supabase/ssr": "^0.6.1",
+      "@supabase/supabase-js": "^2.49.4",
+      "chokidar": "^5.0.0",
+      "next": "^15.5.21",
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0",
+      "server-only": "^0.0.1",
+      "stripe": "^17.7.0"
+    },
+    "devDependencies": {
+      "@types/node": "^22.15.18",
+      "@types/react": "^19.0.10",
+      "@types/react-dom": "^19.0.4",
+      "autoprefixer": "^10.4.21",
+      "eslint": "^9.27.0",
+      "eslint-config-next": "^15.3.2",
+      "playwright": "^1.60.0",
+      "postcss": "^8.5.18",
+      "tailwindcss": "^3.4.17",
+      "typescript": "^5.8.3"
+    },
+    "optionalDependencies": {},
+    "overrides": {
+      "next": {
+        "postcss": "8.5.18",
+        "sharp": "0.35.0"
+      }
+    }
+  },
+  "lockfile_version": 3,
+  "versions": {
+    "next": {
+      "minimum": "15.5.21",
+      "maximum_exclusive": "16.0.0"
+    },
+    "postcss": {
+      "minimum": "8.5.18",
+      "maximum_exclusive": "9.0.0"
+    },
+    "sharp": {
+      "minimum": "0.35.0",
+      "maximum_exclusive": "0.36.0"
+    }
+  },
+  "audit": {
+    "maximum_high": 0,
+    "maximum_critical": 0
+  },
+  "smoke_fixture": {
+    "manifest": {
+      "name": "werkles",
+      "version": "0.2.0",
+      "dependencies": {
+        "@supabase/ssr": "^0.6.1",
+        "@supabase/supabase-js": "^2.49.4",
+        "chokidar": "^5.0.0",
+        "next": "^15.5.21",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "server-only": "^0.0.1",
+        "stripe": "^17.7.0"
+      },
+      "devDependencies": {
+        "@types/node": "^22.15.18",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "autoprefixer": "^10.4.21",
+        "eslint": "^9.27.0",
+        "eslint-config-next": "^15.3.2",
+        "playwright": "^1.60.0",
+        "postcss": "^8.5.18",
+        "tailwindcss": "^3.4.17",
+        "typescript": "^5.8.3"
+      },
+      "optionalDependencies": {},
+      "overrides": {
+        "next": {
+          "postcss": "8.5.18",
+          "sharp": "0.35.0"
+        }
+      }
+    },
+    "lock": {
+      "lockfileVersion": 3,
+      "packages": {
+        "": {
+          "dependencies": {
+            "@supabase/ssr": "^0.6.1",
+            "@supabase/supabase-js": "^2.49.4",
+            "chokidar": "^5.0.0",
+            "next": "^15.5.21",
+            "react": "^19.0.0",
+            "react-dom": "^19.0.0",
+            "server-only": "^0.0.1",
+            "stripe": "^17.7.0"
+          },
+          "devDependencies": {
+            "@types/node": "^22.15.18",
+            "@types/react": "^19.0.10",
+            "@types/react-dom": "^19.0.4",
+            "autoprefixer": "^10.4.21",
+            "eslint": "^9.27.0",
+            "eslint-config-next": "^15.3.2",
+            "playwright": "^1.60.0",
+            "postcss": "^8.5.18",
+            "tailwindcss": "^3.4.17",
+            "typescript": "^5.8.3"
+          },
+          "optionalDependencies": {}
+        },
+        "node_modules/@next/env": {
+          "version": "15.5.21",
+          "resolved": "https://registry.npmjs.org/@next/env/-/env-15.5.21.tgz",
+          "integrity": "sha512-fixture"
+        },
+        "node_modules/@next/swc-win32-x64-msvc": {
+          "version": "15.5.21",
+          "resolved": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-15.5.21.tgz",
+          "integrity": "sha512-fixture"
+        },
+        "node_modules/next": {
+          "version": "15.5.21",
+          "resolved": "https://registry.npmjs.org/next/-/next-15.5.21.tgz",
+          "integrity": "sha512-fixture"
+        },
+        "node_modules/next/node_modules/postcss": {
+          "version": "8.5.18",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.18.tgz",
+          "integrity": "sha512-fixture"
+        },
+        "node_modules/postcss": {
+          "version": "8.5.23",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.23.tgz",
+          "integrity": "sha512-fixture"
+        },
+        "node_modules/sharp": {
+          "version": "0.35.0",
+          "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.35.0.tgz",
+          "integrity": "sha512-fixture"
+        }
+      }
+    },
+    "audit": {
+      "auditReportVersion": 2,
+      "vulnerabilities": {},
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        }
+      }
+    }
+  }
+}

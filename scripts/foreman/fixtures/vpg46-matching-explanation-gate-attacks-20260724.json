@@ -1,0 +1,42 @@
+{
+  "schema": "werkles.vpg46-matching-explanation-gate-attacks/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+  "legacy_label": "VPG46",
+  "seat": "Thufir@Betsy",
+  "ideas": [
+    {
+      "id": "GENERATION_SOURCE_TRUTH_AUTHORITY_LAUNDERING",
+      "cases": [
+        "operator_context_ai_generated",
+        "intro_automatic_provider",
+        "source_label_ai_service",
+        "source_detail_contact_and_payment",
+        "headline_automatic_contact",
+        "squibb_note_payment_complete",
+        "reasoning_provider_confirmation",
+        "confidence_ai_probability",
+        "evidence_source_contacted_recipient",
+        "suggested_dispatch_already_done",
+        "generation_contract_missing",
+        "generation_ai_provider_recipient_true",
+        "generation_result_persisted",
+        "generation_intro_contact_payment_action_true",
+        "generation_method_input_execution_drift",
+        "generation_explanation_blank"
+      ]
+    },
+    {
+      "id": "PER_OPTION_DECK_ORDER_HUMAN_GATE_LAUNDERING",
+      "cases": [
+        "first_rendered_item_approval_free_later_rank_one_safe",
+        "lower_ranked_item_approval_free",
+        "catalog_item_approval_free",
+        "same_id_cross_deck_gate_drift",
+        "pseudo_approval_none_info",
+        "universal_review_gate_removed",
+        "gate_reason_claims_action_already_happened"
+      ]
+    }
+  ],
+  "expected_result": "Every case rejects the entire personal response and keeps the labeled example."
+}

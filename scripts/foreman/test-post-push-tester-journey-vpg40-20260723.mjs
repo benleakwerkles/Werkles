@@ -31,7 +31,8 @@ assert.match(
 assert.doesNotMatch(optionalTailComponent, /<details[^>]*\sopen(?:=|>)/);
 assert.match(profile, /<RecommendationOptionalProfileTail collapsed=\{isRecommendationJourney\}>/);
 assert.match(optionalTailCall, /name="first_name"[\s\S]*name="contact_email"[\s\S]*name="lane"[\s\S]*name="visibility_mode"[\s\S]*name="skills_offered"/);
-assert.doesNotMatch(optionalTailCall, /\sdisabled(?:=|>)/);
+assert.doesNotMatch(optionalTailCall, /<(?:input|select|textarea)[^>]*\sdisabled(?:=|>)/);
+assert.match(optionalTailCall, /type="submit" disabled=\{isSaving\}/);
 assert.doesNotMatch(profile, /Save remaining profile details/);
 assert.match(profile, /Save and see my recommendation/);
 assert.match(profile, /Save changes and refresh recommendation/);

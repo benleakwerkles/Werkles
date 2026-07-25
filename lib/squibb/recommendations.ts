@@ -79,9 +79,25 @@ export interface SquibbRecommendationSession {
   operatorContext: string;
   squibbIntro: string;
   source?: SquibbRecommendationSessionSource;
+  generation?: PersonalRecommendationGenerationDisclosure;
   ranked: SquibbRecommendation[];
   catalog: SquibbRecommendation[];
 }
+
+export type PersonalRecommendationGenerationDisclosure = {
+  method: "fixed_written_rules";
+  input: "saved_profile";
+  execution: "in_memory";
+  aiModelUsed: false;
+  providerContacted: false;
+  externalRecipientContacted: false;
+  recommendationPersisted: false;
+  introSent: false;
+  contactMade: false;
+  paymentInitiated: false;
+  actionTaken: false;
+  explanation: string;
+};
 
 export type SquibbRecommendationSessionSource = {
   mode: "demo" | "latest_intake" | "authenticated_profile" | "ephemeral_document";

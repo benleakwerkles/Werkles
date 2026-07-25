@@ -1,0 +1,109 @@
+{
+  "schema": "werkles.vpg45-thufir-release-custody-adversaries/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+  "legacy_label": "VPG45",
+  "seat": "Thufir@Betsy",
+  "source_commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "ideas": [
+    {
+      "id": "SELF_ISSUED_AUTHORITY_PASS_LAUNDERING",
+      "cases": [
+        {
+          "id": "ordinary_vpg45_approval_is_not_production_authority",
+          "mutation": "Use the VPG45 APPROVED row as the Production approval.",
+          "required_invariant": "The row explicitly forbids deployment, alias, and Production action.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "caller_minted_unkeyed_approval_digest",
+          "mutation": "Supply a structurally valid approval object and recompute its caller-controlled SHA-256 digest.",
+          "required_invariant": "A self-hash is integrity metadata, not proof of durable Human Gate authority.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "fabricated_harvey_authorization",
+          "mutation": "Mark all missing Harvey paths authorized and the decision RESOLVED without a bound Human Gate decision.",
+          "required_invariant": "Caller-supplied authorized removals cannot establish disposition authority.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "identity_only_cycle_artifacts",
+          "mutation": "Supply packet and receipt text carrying only the expected cycle ID and legacy label.",
+          "required_invariant": "Identity strings alone cannot establish the content or completion of release evidence.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "independent_subguard_pass_laundering",
+          "mutation": "Supply PASS claims for alias, release integrity, cycle identity, J, and Harvey while withholding their raw bound evidence.",
+          "required_invariant": "Independent PASS receipts are evidence inputs, never composite release authority.",
+          "expected_result": "STOP"
+        }
+      ]
+    },
+    {
+      "id": "CROSS_CYCLE_REPLAY_SNAPSHOT_TOCTOU",
+      "cases": [
+        {
+          "id": "stale_vpg41_j_replay",
+          "mutation": "Substitute the last real VPG41 J receipt and manifests for current-cycle J.",
+          "required_invariant": "J must bind the current release cycle, candidate, branch, exact remote ref, and evidence envelope.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "wrong_branch",
+          "mutation": "Change the execution branch after the approval and J evidence were created.",
+          "required_invariant": "Branch must equal every bound approval, J, candidate, and release field.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "wrong_head_or_upstream",
+          "mutation": "Change HEAD or upstream while leaving candidate provenance and J unchanged.",
+          "required_invariant": "HEAD, upstream, candidate source, J product/closure, and remote branch must agree.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "candidate_source_mismatch",
+          "mutation": "Keep the candidate deployment ID but change its source commit.",
+          "required_invariant": "Candidate deployment and provenance must bind the exact approved commit.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "production_rollback_swap",
+          "mutation": "Swap current Production and rollback deployment identities.",
+          "required_invariant": "Current Production and rollback are distinct roles; rollback is recovery, not coexistence.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "alias_set_drift",
+          "mutation": "Add, remove, or replace an alias after approval.",
+          "required_invariant": "Requested and applied aliases must exactly equal the approved canonical alias set.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "approval_replay",
+          "mutation": "Reuse an otherwise valid approval from another cycle, candidate, rollback, or alias set.",
+          "required_invariant": "Production approval is single-scope and cannot be replayed across release identities.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "unresolved_harvey",
+          "mutation": "Leave the 37-path Harvey disposition unresolved or label rollback as coexistence.",
+          "required_invariant": "Harvey requires a bound eligible disposition; rollback alone is not coexistence.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "dirty_or_untracked_release_evidence",
+          "mutation": "Use approval, J, guard, or release evidence not present in the immutable candidate custody.",
+          "required_invariant": "Release authority cannot depend on mutable dirty or untracked evidence.",
+          "expected_result": "STOP"
+        },
+        {
+          "id": "post_evaluation_snapshot_drift",
+          "mutation": "Change any branch, commit, deployment, alias, approval, J, or Harvey field after the evaluated evidence digest was produced.",
+          "required_invariant": "The pre-mutation caller must present the same canonical evidence digest the evaluator decided.",
+          "expected_result": "STOP"
+        }
+      ]
+    }
+  ]
+}

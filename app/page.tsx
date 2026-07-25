@@ -38,10 +38,10 @@ export default function HomePage() {
                 If you are new, start free. If you are deciding whether it is worth joining, compare pricing. If you
                 need trust before movement, inspect proof first.
               </p>
-              <div className="trust-state-strip" aria-label="Werkles entry paths">
-                <span>Free account</span>
-                <span>Transparent pricing</span>
-                <span>Proof before trust</span>
+              <div className="trust-state-strip" role="list" aria-label="Werkles entry paths">
+                <span role="listitem">Free account</span>
+                <span role="listitem">Transparent pricing</span>
+                <span role="listitem">Proof before trust</span>
               </div>
               <div className="member-selected-surface__actions">
                 <Link className="button button-dark" href="/signup">
@@ -124,9 +124,9 @@ export default function HomePage() {
                   <h2>{copy.home.forge.headline}</h2>
                 </div>
                 <p>{copy.home.forge.body}</p>
-                <div className="gate-list" aria-label="Required account gate">
+                <div className="gate-list" role="list" aria-label="Required account gate">
                   {copy.home.accountGate.map((item) => (
-                    <span key={item}>{item}</span>
+                    <span role="listitem" key={item}>{item}</span>
                   ))}
                 </div>
                 <Link className="button button-outline" href="/proof">

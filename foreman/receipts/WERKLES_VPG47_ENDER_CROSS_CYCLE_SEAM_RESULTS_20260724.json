@@ -1,0 +1,254 @@
+{
+  "schema": "werkles.vpg47-ender-cross-cycle-contract-seam-result/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+  "seat": "Ender/Doozer@Betsy",
+  "idea": "CROSS_CYCLE_DEPENDENCY_PRODUCT_CONTRACT_SEAM_PROOF",
+  "historical_dependency_claim": "VPG43_RECORDED_ZERO_AT_ITS_OBSERVATION_TIME",
+  "current_dependency_claim": "PRODUCTION_AUDIT_ZERO_WITH_FULL_AUDIT_DEV_TOOLCHAIN_RESIDUAL_DISCLOSED",
+  "historical_hash_state": [
+    {
+      "path": "package.json",
+      "historical_sha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+      "current_sha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+      "relationship": "CURRENT_SOURCE_STILL_MATCHES_HISTORICAL_HASH"
+    },
+    {
+      "path": "package-lock.json",
+      "historical_sha256": "f0bcbc04f494e214812bdc88eec6e1d6b6a3bc0909610819710e92858e31c392",
+      "current_sha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+      "relationship": "HISTORICAL_HASH_SUPERSEDED_BY_CURRENT_BOUNDED_CANDIDATE"
+    },
+    {
+      "path": "scripts/foreman/dependency-security-integrity-guard-vpg43-20260724.mjs",
+      "historical_sha256": "ef0cf7abe3c98fc014543022a3e41fb649ced1fd2a31f57a8666bff27e2434bb",
+      "current_sha256": "ef0cf7abe3c98fc014543022a3e41fb649ced1fd2a31f57a8666bff27e2434bb",
+      "relationship": "CURRENT_SOURCE_STILL_MATCHES_HISTORICAL_HASH"
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg43-dependency-security-candidate-20260724.json",
+      "historical_sha256": "7b0dbdfa1a9f3f95a562362542f8b54c87345b374aba8e6c5b40977444c34113",
+      "current_sha256": "7b0dbdfa1a9f3f95a562362542f8b54c87345b374aba8e6c5b40977444c34113",
+      "relationship": "CURRENT_SOURCE_STILL_MATCHES_HISTORICAL_HASH"
+    },
+    {
+      "path": "scripts/foreman/test-dependency-security-integrity-guard-vpg43-20260724.mjs",
+      "historical_sha256": "cf3a405604d214d9dd392d9c82c368140e40772902ec47edc7dc6f2c6be1c31d",
+      "current_sha256": "cf3a405604d214d9dd392d9c82c368140e40772902ec47edc7dc6f2c6be1c31d",
+      "relationship": "CURRENT_SOURCE_STILL_MATCHES_HISTORICAL_HASH"
+    }
+  ],
+  "historical_hashes_superseded_count": 1,
+  "historical_snapshots_are_current_authority": false,
+  "current_source_hashes": {
+    "package.json": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "package-lock.json": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+    "lib/supabase/request.ts": "6ed3f9f6fa4788afb7ca5eb44d6efdccf6eece3379211d1d85c69dd87f605d3d",
+    "scripts/deploy/deploy-alias-guard.mjs": "6748fd1fc70c292a9764ed86a1e836e0ce89ee981e6f6c4bc0001be2bc224d21",
+    "scripts/deploy/deploy-alias-guard-smoke.mjs": "b6c03607dcdfb775697acea6a0c6e6b2d0278cb5baf41b1089152adc87a8b06a",
+    "app/beta-signup-form.tsx": "e967e8a20343079dde8525da537671ed53b6633e2b657f21457cc767fd23653a",
+    "app/page.tsx": "9e8aba2bab53da76b990833c28e7bde7edda5e57e0526e8e4304ec8c5c17840d",
+    "components/foundry/home-value-fold.tsx": "b11529f8c5560846ed35a10d7d6b6c095a7f6431b82b2cc27f61239711017a2a",
+    "components/squibb/confidence-meter.tsx": "5f8df598e499714787f9e429e200934997b1860a3f0d5fd4d67b5d065d125656",
+    "app/dashboard/profile/page.tsx": "fc805bda70eb44367714f5e29ea437b41adc39f1a2582d7294444a88753c9774",
+    "lib/profile-builder-options.ts": "4772f3b0847b2a66a2d1f876556775e3d123f2cd1c62f9de1b9f06fcdacb9313",
+    "lib/matching/personal-recommendation-disclosure.ts": "3e714e29cc088236fdda4921d02efb91ee933a193c6898e4b576793688c283e1",
+    "lib/matching/personal-recommendation-contract.ts": "c813647a525624ca7c09d28a179ac1c9bcbbd2b9f54ee77c360ff134016e8d78",
+    "lib/matching/profile-recommendation.ts": "909b9a6513f737db8681c7bbf0a33c89ae97b3be4a8c586bc2dd9a0c9d6cb635",
+    "lib/squibb/recommendations.ts": "86631b463eb2cd39d4e861849b130afe59f04f2e9f61bdcc5da7f8247a83d5ca",
+    "components/squibb/recommendation-surface.tsx": "042da75348d85de48e93b651d947095760c7cc16badf7a52097b37521c600723"
+  },
+  "command_results": [
+    {
+      "id": "vpg43_dependency_current_production_guard",
+      "path": "scripts/foreman/dependency-security-integrity-guard-vpg43-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "  },",
+        "  \"contract\": \"scripts/foreman/fixtures/vpg43-dependency-security-candidate-20260724.json\"",
+        "}"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg43_dependency_guard_smoke",
+      "path": "scripts/foreman/test-dependency-security-integrity-guard-vpg43-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "PASS missing audit evidence fails closed",
+        "PASS audit command failure fails closed",
+        "VPG43_DEPENDENCY_SECURITY_INTEGRITY_SMOKE: PASS (15 cases)"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg44_alias_guard_smoke",
+      "path": "scripts/deploy/deploy-alias-guard-smoke.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "PASS production alias rejects approval for a different candidate",
+        "PASS receipt includes required deploy alias fields",
+        "DEPLOY_ALIAS_GUARD_SMOKE: PASS"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg44_api_boundary_red_team",
+      "path": "scripts/foreman/test-public-tester-api-boundary-red-team-vpg44-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "  },",
+        "  \"proven_bypasses\": []",
+        "}"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg45_accessibility_semantics",
+      "path": "scripts/foreman/test-accessible-self-contained-public-flows-vpg45-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "    \"serif_and_sans_font_stacks_have_local_system_fallbacks\"",
+        "  ]",
+        "}"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg46_profile_first_save_contract",
+      "path": "scripts/foreman/test-profile-builder-first-save-contract-vpg46-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "    \"primary_goal_stays_suggested_and_custom_fillable\"",
+        "  ]",
+        "}"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg46_matching_hostile_contract",
+      "path": "scripts/foreman/test-matching-explanation-human-gate-red-team-vpg46-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "  ],",
+        "  \"result\": \"PASS\"",
+        "}"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    },
+    {
+      "id": "vpg46_matching_per_option_contract",
+      "path": "scripts/foreman/test-matching-personal-per-option-gate-truth-vpg46-20260724.mjs",
+      "exit_code": 0,
+      "signal": null,
+      "stdout_tail": [
+        "  \"failures\": [],",
+        "  \"result\": \"PASS\"",
+        "}"
+      ],
+      "stderr_tail": [
+        ""
+      ]
+    }
+  ],
+  "fresh_full_audit": {
+    "full": {
+      "exit_code": 1,
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 9,
+        "critical": 0,
+        "total": 9
+      },
+      "severe_packages": [
+        "@eslint/config-array",
+        "@eslint/eslintrc",
+        "brace-expansion",
+        "eslint",
+        "eslint-config-next",
+        "eslint-plugin-import",
+        "eslint-plugin-jsx-a11y",
+        "eslint-plugin-react",
+        "minimatch"
+      ]
+    },
+    "production": {
+      "exit_code": 0,
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "severe_packages": []
+    },
+    "severe_nodes_all_dev_only": true,
+    "severe_node_state": [
+      {
+        "node": "node_modules/@eslint/config-array",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/@eslint/eslintrc",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/brace-expansion",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/eslint",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/eslint-config-next",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/eslint-plugin-import",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/eslint-plugin-jsx-a11y",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/eslint-plugin-react",
+        "dev_only": true
+      },
+      {
+        "node": "node_modules/minimatch",
+        "dev_only": true
+      }
+    ],
+    "residual_disposition": "DEFER_DEV_TOOLCHAIN_MAJOR_REPAIR_TO_FUTURE_DEPENDENCY_LANE"
+  },
+  "check_count": 71,
+  "failure_count": 0,
+  "failures": [],
+  "result": "PASS"
+}

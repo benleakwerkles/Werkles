@@ -1,13 +1,13 @@
 # VPGJ shorthand - Operator definition
 
-Effective: 2026-07-21
+Effective: 2026-07-24
 Lane: Werkles.com
 
 | Letter | Meaning |
 |---|---|
-| **V** | Build exactly two fresh Flock handoff packets for Heimerdinker, Lady Jessica, Ender/Doozer, Thufir, and Bean as needed, with Heimerdinker owning execution and push rights. |
-| **P** | Each addressed Aeye pulls its latest packet and Flock state and returns evidence. |
-| **G** | Execute exactly the two strongest ideas from each packet and return receipts. |
+| **V** | Heimerdinker creates exactly two fresh, project-based Flock packets for Heimerdinker and the relevant Maker/Ender/Bean/Thufir seats. Heimerdinker owns integration and push responsibility. |
+| **P** | Each addressed Aeye independently pulls and reads its packet plus current Flock state. |
+| **G** | Each addressed Aeye executes its own two strongest ideas and returns a receipt. Heimerdinker integrates the best bounded work. |
 | **J** | Push the in-scope dirty worktree owned by Heimerdinker and the helpers. |
 
 ## J ownership boundary

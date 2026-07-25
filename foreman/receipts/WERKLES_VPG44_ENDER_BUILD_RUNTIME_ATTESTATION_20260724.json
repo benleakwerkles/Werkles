@@ -1,0 +1,148 @@
+{
+  "schema": "werkles.vpg44-ender-build-runtime-attestation/v1",
+  "created_at": "2026-07-24T19:15:53-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+  "legacy_label": "VPG44",
+  "seat": "Ender@Betsy",
+  "hostname": "BETSY",
+  "execution_context": "CODEX_LOCAL on local BETSY Windows",
+  "branch": "codex/werkles-vpg31-20260721",
+  "source_commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "snapshot": {
+    "root": "C:\\Users\\Ben Leak\\AppData\\Local\\Temp\\Werkles-vpg44-ender-refresh-20260724-191225",
+    "source_file_count": 3547,
+    "snapshot_file_count": 3547,
+    "source_digest_sha256": "67d16a5a08215ee7f5429c13935f22ea6dbf354a79068f9326f83faa5cb0debc",
+    "snapshot_digest_sha256": "67d16a5a08215ee7f5429c13935f22ea6dbf354a79068f9326f83faa5cb0debc",
+    "missing": 0,
+    "extra": 0,
+    "changed": 0,
+    "manifest_sha256": "ee7edb42a34079faf0c68c1b9b6fc107ad3155d4e78d31b1de6d02d8b9d34bfd",
+    "current_product_config_test_delta_after_freeze": []
+  },
+  "environment": {
+    "provider_or_werkles_credentials_passed": false,
+    "feature_flags_passed": false,
+    "production_write_probe": false,
+    "paid_call": false,
+    "shared_node_modules_touched": false,
+    "port_3000_touched": false
+  },
+  "dependency": {
+    "npm_ci": "PASS",
+    "installed_packages": 371,
+    "audit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "next": "15.5.21",
+    "next_nested_postcss": "8.5.18",
+    "sharp": "0.35.0",
+    "react": "19.2.6",
+    "react_dom": "19.2.6",
+    "package_json_sha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "package_lock_sha256": "f0bcbc04f494e214812bdc88eec6e1d6b6a3bc0909610819710e92858e31c392"
+  },
+  "tests": {
+    "inherited_test_mjs_inventory": 60,
+    "inherited_executed": 52,
+    "inherited_passed": 52,
+    "inherited_failed": 0,
+    "inherited_classified_not_executed": 8,
+    "configured_test_scripts": 9,
+    "configured_passed": 9,
+    "configured_failed": 0,
+    "lint": "PASS",
+    "typescript": "PASS",
+    "static_census_sha256": "1af85e107b0fd3c4392671e462eb66f291fe95f7761907455d780ca079a23a6a",
+    "configured_suite_sha256": "9991adc7ff321213dc35c0fa63220baf4557b5a34d900e0162130f02e94c6fe8"
+  },
+  "repair": {
+    "attempts_used": 1,
+    "path": "scripts/foreman/test-route-audience-readonly-vpg30-20260721.mjs",
+    "finding": "Windows file URL pathname retained percent-encoded spaces in an isolated root",
+    "repair": "Use fileURLToPath(import.meta.url) before deriving the repository root",
+    "verification": "PASS in the space-bearing isolated path and in the complete 52-script rerun",
+    "sha256": "7c8eed35b87357a9ccf8d33d65ba3331492325fe560d1736ba2e6f2004e21f8d"
+  },
+  "build": {
+    "status": "PASS",
+    "next": "15.5.21",
+    "compiled": true,
+    "generated_static_pages": 83,
+    "build_id": "oz3lnhtZDaAN186GAORRA",
+    "build_log_sha256": "e5a24b993a4bc11783a6dd601ba4750c58341ce305566a87948bbd72402582a6",
+    "informational_warnings": [
+      "No build cache found",
+      "Next.js ESLint plugin not detected"
+    ]
+  },
+  "runtime": {
+    "status": "PASS_SERVING_FOR_BROWSER_ACCEPTANCE",
+    "origin": "http://127.0.0.1:31245",
+    "pid": 38940,
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "working_root": "C:\\Users\\Ben Leak\\AppData\\Local\\Temp\\Werkles-vpg44-ender-refresh-20260724-191225",
+    "ready_ms": 389,
+    "root_status": 200,
+    "route_inventory": 184,
+    "page_files": 69,
+    "page_reads": 69,
+    "page_statuses": {
+      "200": 28,
+      "404": 41
+    },
+    "api_files": 115,
+    "safe_api_reads": 2,
+    "safe_api_statuses": {
+      "200": 2
+    },
+    "classified_api_not_read": 113,
+    "closed_boundary_probes": 3,
+    "total_http_requests": 74,
+    "unexpected_5xx": 0,
+    "stack_or_path_leaks": 0,
+    "closed_boundaries": {
+      "anonymous_personal": "401 private, no-store; Pragma no-cache; Vary Authorization",
+      "saving": "403 Blocked",
+      "intake": "503 Closed"
+    },
+    "expected_stderr_events": 6,
+    "unexpected_runtime_errors": 0,
+    "runtime_report_sha256": "107d4424897d91a8f72d2de4312d653f2a22509903122ee913d56dd2126301eb",
+    "runtime_harness_sha256": "00a12a5649411143a6b1a8afa30d6b6b56b9f35e6aaa57763646e591a9498a17"
+  },
+  "image_optimizer": {
+    "status": "PASS",
+    "sequential_cases": 26,
+    "valid_sequential": 3,
+    "abuse_sequential": 23,
+    "bounded_concurrent_requests": 16,
+    "total_http_requests": 42,
+    "valid_status_200": 19,
+    "abuse_status_400": 23,
+    "unexpected_5xx": 0,
+    "path_or_secret_leaks": 0,
+    "valid_content_types": [
+      "image/png",
+      "image/jpeg"
+    ],
+    "nosniff": true,
+    "image_report_sha256": "3579984705d262ced14d4a85b9d1fead6631a2c51cb00a94bdeeb7c6351cf3ea",
+    "image_harness_sha256": "f73e79825ac5cf2b79f23b4765ba98562840e16815f1e9332bd6f58f54c09456"
+  },
+  "verdict": {
+    "local_build_runtime_image_readiness": "PASS",
+    "runtime_blockers": [],
+    "release_authority": false,
+    "release_holds": [
+      "J not requested",
+      "Harvey coexistence unresolved",
+      "Production release custody must remain fail closed"
+    ]
+  }
+}

@@ -53,6 +53,7 @@ export function SquibbRecommendationSurface({
   const isExample = source.mode === "demo";
   const isPersonal = source.mode === "authenticated_profile";
   const isEphemeralDocument = source.mode === "ephemeral_document";
+  const personalGeneration = isPersonal ? session.generation : undefined;
   const savingStatusMessage = isPersonal
     ? "This private result was not saved or sent."
     : SAVE_CLOSED_MESSAGE;
@@ -116,8 +117,8 @@ export function SquibbRecommendationSurface({
           <div className="squibb-rec-surface__personal-custody" role="note" aria-label="Private recommendation">
             <p className="eyebrow">Private account result</p>
             <p>
-              <strong>Built from your saved profile.</strong> Loaded only after this account was confirmed. This result was
-              not saved or sent.
+              <strong>Fixed rules, private result.</strong>{" "}
+              {personalGeneration?.explanation ?? "Nothing was saved, sent, or acted on."}
             </p>
           </div>
         ) : null}
@@ -149,9 +150,7 @@ export function SquibbRecommendationSurface({
                 <dt>Based on</dt>
                 <dd>
                   {source.label}
-                  <small className={isPersonal ? "squibb-rec-surface__private-custody" : undefined}>
-                    {source.detail}
-                  </small>
+                  {!isPersonal ? <small>{source.detail}</small> : null}
                 </dd>
               </div>
             </dl>

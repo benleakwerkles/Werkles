@@ -1,0 +1,189 @@
+{
+  "schema": "werkles.harvey-release-language-consent-matrix/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+  "legacy_label": "VPG43",
+  "owner": "Thufir@Betsy",
+  "contract": "foreman/receipts/WERKLES_VPG43_HARVEY_COEXISTENCE_DECISION_CONTRACT_20260724.json",
+  "status": "ACTIVE_FAIL_CLOSED_LANGUAGE_POLICY",
+  "legal_scope": "Evidence and informed operator consent only; this matrix makes no legal conclusion and is not legal advice.",
+  "bound_facts": {
+    "current_production": "Harvey deployment dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn at commit 3998101aed1835e7478a83cc44bd823502676648 currently owns werkles.com.",
+    "candidate": "Deployment dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd at commit 67c38ace103ba5f1ba473b984c91e243d9120630 is READY but Vercel-SSO protected and is not Production.",
+    "divergence": "Production and candidate diverge by 10 Production-only and 95 candidate-only commits from merge base 294f98396b122b413275a3f8c45524987de284fe.",
+    "raw_cutover": "Raw candidate cutover deletes 229 paths, including exactly 37 Harvey app/API paths.",
+    "rollback": "Deployment dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn can be a rollback target after failure; it does not provide simultaneous Harvey availability.",
+    "dependency_gate": "The bound VPG42 production audit reports 3 high-severity and 0 critical findings, with fixes available.",
+    "closed_capabilities": "Saving/Tier B, intake writes, anonymous personal delivery, providers/LLM, payments, schema/data mutation, and introductions remain closed."
+  },
+  "disclosures": [
+    {
+      "id": "D01_CURRENT_PRODUCTION_IDENTITY",
+      "text": "werkles.com currently serves the divergent Harvey Production deployment, not the public-site candidate."
+    },
+    {
+      "id": "D02_EXACT_HARVEY_LOSS",
+      "text": "A raw candidate cutover removes exactly 37 Harvey app/API paths and interrupts the current private Harvey service."
+    },
+    {
+      "id": "D03_COMMIT_DIVERGENCE",
+      "text": "Harvey Production has 10 exclusive commits and the candidate has 95 exclusive commits from their merge base."
+    },
+    {
+      "id": "D04_ROLLBACK_LIMIT",
+      "text": "Rollback restores the prior Harvey deployment after a failed cutover; rollback is recovery, not coexistence or uninterrupted availability."
+    },
+    {
+      "id": "D05_DEPENDENCY_PRECONDITION",
+      "text": "Three high-severity production dependency findings remain bound to the current candidate evidence and must be patched and rebuilt before cutover."
+    },
+    {
+      "id": "D06_PREVIEW_ACCESS",
+      "text": "The READY candidate is a Vercel-authenticated protected Preview, not a publicly accessible launch."
+    },
+    {
+      "id": "D07_CAPABILITY_BOUNDARY",
+      "text": "The proposed public test does not open saving, intake writes, anonymous personal delivery, providers/LLM, payments, schema/data mutation, or introductions."
+    },
+    {
+      "id": "D08_NO_EXECUTION_AUTHORITY",
+      "text": "Selecting or acknowledging a mode records informed intent only; it does not itself authorize deploy, promotion, alias, environment, data, or infrastructure action."
+    },
+    {
+      "id": "D09_RELOCATION_BURDEN",
+      "text": "Relocation requires a separately proven private Harvey origin, independent auth and route proof, and independent rollback before werkles.com can move."
+    },
+    {
+      "id": "D10_RECONCILIATION_BURDEN",
+      "text": "Reconciliation requires a new candidate that preserves the exact Harvey boundary and passes fresh public, private, dependency, and rollback verification."
+    }
+  ],
+  "claim_rules": [
+    {
+      "id": "CURRENT_PRODUCTION",
+      "claim": "Harvey is current Production at werkles.com.",
+      "current_status": "ALLOWED",
+      "required_disclosures": [
+        "D01_CURRENT_PRODUCTION_IDENTITY"
+      ]
+    },
+    {
+      "id": "PROTECTED_PREVIEW",
+      "claim": "The candidate is READY and testable by a Vercel-authenticated operator.",
+      "current_status": "ALLOWED",
+      "required_disclosures": [
+        "D06_PREVIEW_ACCESS",
+        "D07_CAPABILITY_BOUNDARY"
+      ]
+    },
+    {
+      "id": "PUBLIC_PREVIEW",
+      "claim": "The candidate Preview is public.",
+      "current_status": "PROHIBITED",
+      "reason": "Unauthenticated requests redirect to Vercel Login."
+    },
+    {
+      "id": "EVERYTHING_LIVE",
+      "claim": "Everything is live.",
+      "current_status": "PROHIBITED",
+      "reason": "The candidate is not Production and named capabilities remain closed."
+    },
+    {
+      "id": "RAW_CUTOVER_COEXISTENCE",
+      "claim": "Promoting the raw candidate preserves or coexists with Harvey.",
+      "current_status": "PROHIBITED",
+      "reason": "The raw candidate removes the exact 37-path Harvey inventory."
+    },
+    {
+      "id": "RAW_CUTOVER_REPLACEMENT",
+      "claim": "Promoting the raw candidate replaces Harvey Production.",
+      "current_status": "ALLOWED_AS_PROPOSAL_ONLY",
+      "required_disclosures": [
+        "D01_CURRENT_PRODUCTION_IDENTITY",
+        "D02_EXACT_HARVEY_LOSS",
+        "D03_COMMIT_DIVERGENCE",
+        "D04_ROLLBACK_LIMIT",
+        "D05_DEPENDENCY_PRECONDITION",
+        "D06_PREVIEW_ACCESS",
+        "D07_CAPABILITY_BOUNDARY",
+        "D08_NO_EXECUTION_AUTHORITY"
+      ]
+    },
+    {
+      "id": "ROLLBACK_PRESERVATION",
+      "claim": "The rollback plan preserves Harvey during cutover.",
+      "current_status": "PROHIBITED",
+      "reason": "Rollback is post-failure recovery, not concurrent service."
+    },
+    {
+      "id": "HARVEY_PRESERVED",
+      "claim": "Harvey is preserved after public cutover.",
+      "current_status": "PROHIBITED_UNTIL_FRESH_PROOF",
+      "reason": "Neither PRESERVE_RECONCILE nor PRESERVE_RELOCATE currently satisfies its proof requirements."
+    },
+    {
+      "id": "CUTOVER_SAFE",
+      "claim": "The cutover is safe.",
+      "current_status": "PROHIBITED_UNQUALIFIED",
+      "reason": "Safety depends on the unresolved Harvey decision, dependency patch, fresh binding, smoke, and rollback proof."
+    },
+    {
+      "id": "CUTOVER_APPROVED",
+      "claim": "Production cutover is approved or ready to execute.",
+      "current_status": "PROHIBITED",
+      "reason": "The decision contract has no selected mode, all modes are currently ineligible, and the VPG42 gate remains technically blocked."
+    }
+  ],
+  "consent_modes": [
+    {
+      "mode": "PRESERVE_RECONCILE",
+      "exact_phrase": "CHOOSE WERKLES HARVEY COEXISTENCE - RECONCILE HARVEY INTO A NEW PUBLIC CANDIDATE",
+      "required_disclosures": [
+        "D01_CURRENT_PRODUCTION_IDENTITY",
+        "D03_COMMIT_DIVERGENCE",
+        "D04_ROLLBACK_LIMIT",
+        "D05_DEPENDENCY_PRECONDITION",
+        "D08_NO_EXECUTION_AUTHORITY",
+        "D10_RECONCILIATION_BURDEN"
+      ],
+      "records_execution_approval": false
+    },
+    {
+      "mode": "PRESERVE_RELOCATE",
+      "exact_phrase": "CHOOSE WERKLES HARVEY COEXISTENCE - RELOCATE HARVEY TO A PROVEN PRIVATE ORIGIN",
+      "required_disclosures": [
+        "D01_CURRENT_PRODUCTION_IDENTITY",
+        "D03_COMMIT_DIVERGENCE",
+        "D04_ROLLBACK_LIMIT",
+        "D05_DEPENDENCY_PRECONDITION",
+        "D08_NO_EXECUTION_AUTHORITY",
+        "D09_RELOCATION_BURDEN"
+      ],
+      "records_execution_approval": false
+    },
+    {
+      "mode": "REPLACE_HARVEY",
+      "exact_phrase": "APPROVE WERKLES VPG42 PUBLIC TEST CUTOVER - REPLACE HARVEY PRODUCTION",
+      "required_disclosures": [
+        "D01_CURRENT_PRODUCTION_IDENTITY",
+        "D02_EXACT_HARVEY_LOSS",
+        "D03_COMMIT_DIVERGENCE",
+        "D04_ROLLBACK_LIMIT",
+        "D05_DEPENDENCY_PRECONDITION",
+        "D06_PREVIEW_ACCESS",
+        "D07_CAPABILITY_BOUNDARY",
+        "D08_NO_EXECUTION_AUTHORITY"
+      ],
+      "records_execution_approval": false
+    }
+  ],
+  "evaluation": {
+    "selected_mode": null,
+    "matched_exact_phrase": false,
+    "all_required_disclosures_present": false,
+    "all_mode_preconditions_proven": false,
+    "release_claim_eligible": false,
+    "execution_authorized": false,
+    "verdict": "STOP_ACCURATE_LANGUAGE_ONLY_NO_RELEASE_CONSENT"
+  },
+  "live_state_changed": false
+}

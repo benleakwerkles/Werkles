@@ -2,8 +2,24 @@
 import { strict as assert } from "node:assert";
 import {
   evaluateAliasGuard,
+  productionAliasApprovalDigest,
+  REQUIRED_ALIAS_APPROVAL_PHRASE,
   REQUIRED_ALIAS_GATE
 } from "./deploy-alias-guard.mjs";
+
+function approval(overrides = {}) {
+  const value = {
+    schema: "werkles.production-alias-approval/v1",
+    decision: "APPROVE",
+    phrase: REQUIRED_ALIAS_APPROVAL_PHRASE,
+    cycle_id: "WERKLES-FLOCK-SMOKE-01",
+    candidate_deployment_id: "dpl_candidate123",
+    rollback_deployment_id: "dpl_rollback123",
+    aliases: ["werkles.com"],
+    ...overrides
+  };
+  return { ...value, digest: productionAliasApprovalDigest(value) };
+}
 
 const cases = [
   {
@@ -46,10 +62,32 @@ const cases = [
     expectReasons: ["ALIAS_NOT_IN_PRODUCTION_CONFIG"]
   },
   {
-    name: "production alias in config passes with Tier 1 gate",
+    name: "generic Tier 1 token alone cannot authorize production alias",
     input: { deployTarget: "production", aliases: ["werkles.com"], humanGate: REQUIRED_ALIAS_GATE },
+    expectOk: false,
+    expectReasons: ["PRODUCTION_ALIAS_APPROVAL_INVALID"]
+  },
+  {
+    name: "production alias requires matching hash-bound approval",
+    input: {
+      deployTarget: "production",
+      aliases: ["werkles.com"],
+      humanGate: REQUIRED_ALIAS_GATE,
+      aliasApproval: approval()
+    },
     expectOk: true,
     expectReasons: []
+  },
+  {
+    name: "production alias rejects approval for a different candidate",
+    input: {
+      deployTarget: "production",
+      aliases: ["werkles.com"],
+      humanGate: REQUIRED_ALIAS_GATE,
+      aliasApproval: { ...approval(), candidate_deployment_id: "dpl_attacker" }
+    },
+    expectOk: false,
+    expectReasons: ["PRODUCTION_ALIAS_APPROVAL_INVALID"]
   },
   {
     name: "receipt includes required deploy alias fields",

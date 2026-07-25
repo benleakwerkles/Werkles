@@ -1,0 +1,3115 @@
+{
+  "schema": "werkles.vpg47-lady-jessica-hoard-ownership-manifest/v1",
+  "generated_at": "2026-07-25T04:10:26.037Z",
+  "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+  "seat": "LadyJessica@Betsy",
+  "integration_owner": "Heimerdinker@Betsy",
+  "repository": "C:\\w8",
+  "branch": "codex/werkles-vpg31-20260721",
+  "head": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "upstream": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "index_empty": true,
+  "port_3000_excluded": true,
+  "historical_evidence": {
+    "acceptance_result": "foreman/receipts/WERKLES_VPG47_LADY_JESSICA_FULL_STORY_ACCEPTANCE_RESULTS_20260724.json",
+    "checked": true,
+    "immutable": true
+  },
+  "entries": [
+    {
+      "path": "app/beta-signup-form.tsx",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 714,
+      "sha256": "e967e8a20343079dde8525da537671ed53b6633e2b657f21457cc767fd23653a",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy; LadyJessica proof",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "app/dashboard/profile/page.tsx",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 27877,
+      "sha256": "fc805bda70eb44367714f5e29ea437b41adc39f1a2582d7294444a88753c9774",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy; LadyJessica proof",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "app/page.tsx",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 7117,
+      "sha256": "9e8aba2bab53da76b990833c28e7bde7edda5e57e0526e8e4304ec8c5c17840d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy; LadyJessica proof",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "components/foundry/home-value-fold.tsx",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 726,
+      "sha256": "b11529f8c5560846ed35a10d7d6b6c095a7f6431b82b2cc27f61239711017a2a",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy; LadyJessica proof",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "components/squibb/confidence-meter.tsx",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 2993,
+      "sha256": "5f8df598e499714787f9e429e200934997b1860a3f0d5fd4d67b5d065d125656",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy; LadyJessica proof",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "components/squibb/recommendation-surface.tsx",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 15226,
+      "sha256": "042da75348d85de48e93b651d947095760c7cc16badf7a52097b37521c600723",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy; LadyJessica proof",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/VPG_SHORTHAND.md",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 1176,
+      "sha256": "12e117998e9cf19b53e4a2a658a2be1a7243c1497b25ceced2ef1eacd190be85",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42-VPG47",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "CONTROL_EVIDENCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        },
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/gates/APPROVAL_LOG.md",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 45138,
+      "sha256": "483aeb1fff4957dfb74362255eb8cfbe2059aded9e49096e8871e9a3610a9d5c",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42-VPG47",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "CONTROL_EVIDENCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        },
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_DOOZER_THUFIR_BEAN_WERKLES_PRODUCTION_PROMOTION_GATE_TRUTH_VPG42_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2697,
+      "sha256": "b8c459baabbcd04f54f01b4ee0e8d446246739e31f839306ee1c34cb1cd7c4f1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_ENDER_THUFIR_WERKLES_COMPOSITE_RELEASE_CUSTODY_GUARD_VPG45_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2760,
+      "sha256": "e119f7df66f6702b42632522465545fc84e8154669eadf213552be5755740de1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Ender@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_ENDER_THUFIR_WERKLES_MATCHING_EXPLANATION_HUMAN_GATE_TRUTH_VPG46_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3012,
+      "sha256": "87aacad93b635f8f549e3fc2f72192216419edcbe03f2f827cf239fe82450f44",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Ender@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_ENDER_THUFIR_WERKLES_RELEASE_CUSTODY_FULL_REGRESSION_RED_TEAM_VPG44_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4007,
+      "sha256": "f4b6817e617a72c6b3cef354e55a6c836f636e1245ba4861c3b0bad77acb44ea",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_BEAN_WERKLES_PUBLIC_TESTER_FULL_STORY_RED_TEAM_VPG44_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3659,
+      "sha256": "de7d63297a0e459c24379647e151bf97269ae2431db1c076e2cc49ee001b1311",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_DEPENDENCY_SECURITY_RELEASE_CANDIDATE_VPG43_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2850,
+      "sha256": "db8f0bfaf9d2deefa8099024ca7f4ddbe75c76770c0f4ea4b0b023d74a0bd221",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_LADY_JESSICA_HOARD_INTEGRATION_VPG47_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3069,
+      "sha256": "d8d727250b9d3b21d197e84620577de1ea476461d033c425e93f588a50228432",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_PREVIEW_TESTER_WALKTHROUGH_READINESS_VPG42_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2506,
+      "sha256": "1b6ba49f342bb7186bff74bf281402d5aa88fc11da4ed9f70d6919ece286a6f2",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_WERKLES_ACCESSIBLE_SELF_CONTAINED_PUBLIC_FLOWS_VPG45_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2647,
+      "sha256": "1a34ae566fe93965fbadaba84190a360cd0b7e4a03f8ebcff5ac1d86f88ea992",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_LADY_JESSICA_WERKLES_PROFILE_BUILDER_FIRST_SAVE_TRUTH_VPG46_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2813,
+      "sha256": "02ca8aeee392601f7ebceb2a7b334d60563670a6852a7a0195967f4adf3df0b6",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_THUFIR_WERKLES_HARVEY_PUBLIC_SITE_COEXISTENCE_CONTRACT_VPG43_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2579,
+      "sha256": "024b5508446cf302e9ada50f13a47232b8a350b58c091eb03057e666565c7bbb",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_HEIMERDINKER_THUFIR_WERKLES_J_HUMAN_GATE_CUSTODY_PUSH_VPG47_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2791,
+      "sha256": "d9be6cdc3a8327d4cab286fef6d67f81901571dfb7a42097f2d51c0cec43f9bc",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "HANDOFF_PACKET",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG42_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1356,
+      "sha256": "2fee96670301cd8ae5a10c92dc31ed977aa5324e77f04b880cb18fd66db47e7d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG42_G_PREVIEW_TESTER_WALKTHROUGH_READINESS_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1144,
+      "sha256": "3b1fc2e2151fcfb2edee72a54837b294f7d6a6882fa4042651dfcebc36ee828a",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG42_G_PRODUCTION_PROMOTION_GATE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1135,
+      "sha256": "3920073e0db4e25306db506bba8cc8cd0cb3e4c2d84481a7ffaf6ae4dcd2933b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG42_P_DOOZER_THUFIR_BEAN_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1445,
+      "sha256": "aa540a75bfc4e2d0b436ae99dd8aa306d9fa4a5680ca9f353537704dbde8ffb7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG42_P_LADY_JESSICA_ENDER_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1756,
+      "sha256": "df108c5c81ef3366a8c1ac91395f329092094874d97a12de5fc7255b9ba01d96",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG43_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4009,
+      "sha256": "f9d4873b10c547288aab97c08254e6078608da0233576e5f1bcc8540ff5d01f2",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG43_G_DEPENDENCY_SECURITY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1028,
+      "sha256": "e3b605b811c607dede84fc6acd9e80ed1722a66648997089e026c24e09938b0c",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG43_G_HARVEY_PUBLIC_COEXISTENCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 889,
+      "sha256": "88d1725263a2a61a42c7669cf1f6a8a40e7e3ded5a99c499d1be224e4bbd14f2",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG43_P_DEPENDENCY_SECURITY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 660,
+      "sha256": "b8c21e4fc8d6e9fb9a632d372f30cdf33cc35e6c02fb35a97579460364afe0ba",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG43_P_HARVEY_PUBLIC_COEXISTENCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 569,
+      "sha256": "4e9194ac64acc30384b610879aab780d654050d398744db2fc69ca10e1de2dc6",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG44_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2573,
+      "sha256": "11362aac1f19ddcfa2fb709ebfdd77dca5d6eee4495f99fba9f5b2b82401be14",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG44_G_PUBLIC_TESTER_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1291,
+      "sha256": "de0d9125e00dd8acc29866cb6b95876a6af3824dbb4580d0320ca1ea9bcc6d0d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG44_G_RELEASE_CUSTODY_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1425,
+      "sha256": "ad149d159984cbfdc6fe723be487ea83d23b324045b70310749ab8d6a93b9836",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG44_P_PUBLIC_TESTER_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1501,
+      "sha256": "b8394fd16581d4f51e9b7d2e2961b5cd4dd0e7726fe89401974b02c06b39e9f7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG44_P_RELEASE_CUSTODY_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1621,
+      "sha256": "5c0c6a7dcbb54e531f4f039aad2106fba9f49ffc62af5ede6060a5400318c0c7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG45_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2052,
+      "sha256": "f595dc44cb5c76d91ad6ac70598fbb937ffb078c77c9364a94c58db226a448fc",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG45_G_ACCESSIBLE_SELF_CONTAINED_PUBLIC_FLOWS_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1599,
+      "sha256": "60e4408fcb835a5dae66003efd5173270ee1f5e98bdf65d9c4eafe908c0698fd",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG45_G_COMPOSITE_RELEASE_CUSTODY_GUARD_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1508,
+      "sha256": "2334fe7990b1efcaf6e51721663b6214195d20e009d8c249b07e011fae715407",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG45_P_ACCESSIBLE_SELF_CONTAINED_PUBLIC_FLOWS_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1505,
+      "sha256": "146ed3f874680b8f8189ba40291508446eaa402c8ee01d6b1d21d56b629c6634",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG45_P_COMPOSITE_RELEASE_CUSTODY_GUARD_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1747,
+      "sha256": "a8df1101a1544d9f4b9cedf8bfddcf9dcaa83a94dd25951b7d633dfe4be8dcf7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG46_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2929,
+      "sha256": "6de5eea6374c4ff2cb5c4dd6228a1a69a41fd132d53171fe9866a1995c875697",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG46_G_MATCHING_EXPLANATION_HUMAN_GATE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1515,
+      "sha256": "2fcdf7ebf808fef6a6aff7f9692d0534ffd52f45ade1cfffd177761a5645ddc1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG46_G_PROFILE_BUILDER_FIRST_SAVE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1777,
+      "sha256": "5c79335b07efcc122eefdba387b01fea1e5a5e8d9cb4e026b1ec8a2d281460da",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG46_P_MATCHING_EXPLANATION_HUMAN_GATE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2175,
+      "sha256": "5e96ad491cf2173a617be01c4cab5ed29531db245912210f7c7df6ce535254ea",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG46_P_PROFILE_BUILDER_FIRST_SAVE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1746,
+      "sha256": "1c8b16065eb56b9f678b5512c438979a5b632cd2b0775588e5b83deb59b170d2",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_FULL_FLOCK_VPG47_G_LADY_JESSICA_HOARD_INTEGRATION_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1643,
+      "sha256": "ea0a8ebcdc63fd2835967fd746fa93d82e19ee495850877b67b73580227b1e05",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG42_PREVIEW_PRODUCTION_ACCEPTANCE_CARD_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1507,
+      "sha256": "2fa8ddb00192f0259022dd9d07b972d7e48b89e0534c580832de45da08cbbbca",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG42_PREVIEW_ROUTE_MATRIX_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1378,
+      "sha256": "c652c4b9ec1ca60b89a06a2aa18768cfd3c8f1db1bd2693c25ff759749a6b9ce",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG42_PROMOTION_CANDIDATE_MANIFEST_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 2334,
+      "sha256": "2aff18305a0cbc5b1481a946823ae5b962d525a5947c6cc651574dd479a4fb8b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_G_ENDER_DEPENDENCY_INTEGRITY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 6379,
+      "sha256": "2bfc6f9f746570a1403450148648c4c108ef0b6122ff7d813fe77f65954a2f06",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_G_HEIMERDINKER_DEPENDENCY_SECURITY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1675,
+      "sha256": "c6a3f857e2609ec4d33d9da48133965ec635b601827840171d8a9a00727bf7de",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_G_HEIMERDINKER_HARVEY_COEXISTENCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1832,
+      "sha256": "426b8086026126f5c081150ecbab0d4279fb8830e7d3caab08ebfc61aa0857f6",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_G_LADY_JESSICA_DEPENDENCY_ACCEPTANCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 5699,
+      "sha256": "f6ba3d32fff571f4247b144c251566c0e89fafbbc51e86612d7c958e985ef954",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_G_THUFIR_HARVEY_COEXISTENCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2729,
+      "sha256": "7073c52ed7ac83a8fc7c8330cb520c223f251099719d916428049cc5b4ce9271",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_HARVEY_COEXISTENCE_DECISION_CONTRACT_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 9088,
+      "sha256": "6d9117f2da4ad7535939880467bdbf1df4664af0f2189e5f0ee537771f364164",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_HARVEY_RELEASE_LANGUAGE_CONSENT_MATRIX_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 8103,
+      "sha256": "37507886f01180bfaebbdd8d11e75ecb31a6d16bb45d7589fbf876599f7e6fc1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_P_ENDER_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 787,
+      "sha256": "f8416188a728bd1bfa6b6c0cbaba20429ab5895527efb2925c41bcfa2be289d0",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_P_HEIMERDINKER_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1070,
+      "sha256": "d5efab81c714e0769d95a4dab2db2f497fe52d8e3cc65e9d95a2c1a91be52b83",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_P_LADY_JESSICA_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 827,
+      "sha256": "d9feef0d68b3d2a65273dd65415cf4d9eb4cbcdc0514544c4f2f01991e56bc3b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG43_P_THUFIR_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 814,
+      "sha256": "6d2bbde78639c4c707455643f96d8fea0851bdd7e2e0e14af36d00c7fce4d77d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_ENDER_BUILD_RUNTIME_ATTESTATION_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 5195,
+      "sha256": "6335bf59d550f5935bb2be807b4e97c45e5e53623b6b06ada9411efa546ec52c",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_ENDER_IMAGE_ABUSE_RED_TEAM_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 18114,
+      "sha256": "3579984705d262ced14d4a85b9d1fead6631a2c51cb00a94bdeeb7c6351cf3ea",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_ENDER_RUNTIME_RED_TEAM_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 58776,
+      "sha256": "107d4424897d91a8f72d2de4312d653f2a22509903122ee913d56dd2126301eb",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_G_BEAN_PUBLIC_SECURITY_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 5023,
+      "sha256": "b0396b2684947e23c385b55298e38bdbd813731650245fe32126bebd60d1a129",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Bean@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_G_ENDER_RUNTIME_ABUSE_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 5294,
+      "sha256": "c7c061881e42f72b7997478aae87e533586bea7fa7c14688fd76ef5014a45f6f",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_G_HEIMERDINKER_PUBLIC_TESTER_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2985,
+      "sha256": "3786dc9745f724f7de3a26fa1410b5ba132c521c85d5671ab3d8ccf63b49c967",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_G_HEIMERDINKER_RELEASE_REGRESSION_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2814,
+      "sha256": "afacfa66085e80877e9e34598af27825e2750387b0add330b890d25c795a4d89",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_G_LADY_JESSICA_BROWSER_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3708,
+      "sha256": "1be4099ed09c02d8f1b8fb8ef84349a94a08965498bd79ce17d7fe8c06e95796",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_G_THUFIR_RELEASE_CUSTODY_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 5695,
+      "sha256": "1752098412f3caea97283b575a2517c2f32b168d53cf4392f3e4c481c9915954",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_LADY_JESSICA_BROWSER_RED_TEAM_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 4760,
+      "sha256": "81b8e38ea5c91537f0b634802780cbd9508ba1b6eba4b6316c3ffe6f412e0300",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG44_P_HEIMERDINKER_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2519,
+      "sha256": "9aaebd8da719c30f4429bf24fbb4a1760ad1b4d306d81c2a2172b147b1bcab97",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_ENDER_COMPOSITE_MATRIX_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1619,
+      "sha256": "80751a6dacd965f40950825bd62f0bc04a8626e8e941c02af5b5619f0a5373d5",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_ENDER_CURRENT_STATE_STOP_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1455,
+      "sha256": "f20a09e680458ab41f603d6d2c9ea25c16c81763dfb4f75dd68f9c1ec735b8ce",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_G_ENDER_COMPOSITE_RELEASE_CUSTODY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3038,
+      "sha256": "e7a14d57ef1f1ccb0870e35dffa5e9058f041204fa34dab36846c26aee6cde03",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_G_HEIMERDINKER_ACCESSIBLE_SELF_CONTAINED_PUBLIC_FLOWS_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2734,
+      "sha256": "149d77d151a6d316af03c2c2cdab92353b9d189ebcafa5f49f8f018e6bdb6a04",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_G_HEIMERDINKER_COMPOSITE_RELEASE_CUSTODY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2813,
+      "sha256": "12b87690d5e496c0cc6aceb7e2deeddb737744ffe994402c5e5b2345445d6a7b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_G_LADY_JESSICA_ACCESSIBLE_FONT_RESILIENCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3826,
+      "sha256": "9e37b8c78566e2c0822476d2b1b134cee6e1847e81470f56bde58f77c1c62218",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_G_THUFIR_RELEASE_CUSTODY_ADVERSARY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4018,
+      "sha256": "44569d5474c62b8230563eda584ca7ec60418d3bdf69012a2897ea544e787d81",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG45_LADY_JESSICA_ACCESSIBLE_FONT_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 228613,
+      "sha256": "334c404777735974488d0504c1f851b84a0dc234e4039fa8eac9241ecb91a8f2",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_ENDER_GENERATION_SOURCE_TRUTH_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1195,
+      "sha256": "132bb9f6b0c03b6bc44907272eb12b70f7160051f518ce2736312bf1f59e9b3b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_ENDER_PER_OPTION_GATE_TRUTH_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1014,
+      "sha256": "cdba719902ca113ae009688ad04b1a0acb077143e28a52d4536351213a011ec6",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_G_ENDER_MATCHING_EXPLANATION_GATE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2317,
+      "sha256": "bde09149262cc9bdea3b1f1029d2cdb3a7a1ce06c324af57b58c62aed6d0966b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_G_HEIMERDINKER_MATCHING_EXPLANATION_GATE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1852,
+      "sha256": "a6782f888927020fb76332fb74f468725402409439553db9e6cef2afe651fbd1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_G_HEIMERDINKER_PROFILE_BUILDER_FIRST_SAVE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1767,
+      "sha256": "dace39ee5a6894700a309aeeb376dfa6ff21327a12f24a9e0ddd856f211fde5f",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_G_LADY_JESSICA_PROFILE_FIRST_SAVE_TRUTH_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 5096,
+      "sha256": "2f4a1c9b311758a8f6fd8d292b8b0961c9c5f74efa6daa4ea69a6cb0b5749367",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_G_THUFIR_MATCHING_EXPLANATION_GATE_RED_TEAM_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2879,
+      "sha256": "d661c913b43eb48bbbfae3c8f9e5abb2639a1df2fb57ddffc3ba9af7dc967a3e",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG46_LADY_JESSICA_PROFILE_FIRST_SAVE_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 98175,
+      "sha256": "997a57cd6f2d7f697bab1b2fdcc87018b98d367b94e649922ce20437176250a5",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_DIRECT_BROWSER_ACCEPTANCE_SUMMARY_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1795,
+      "sha256": "3073ee666642df61c67cbb8ee499852a9040e7000c0bb1c600b6796e2ad36afb",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_ENDER_ARTIFACT_LIVENESS_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 59013,
+      "sha256": "ecc8ec41d589e0a1a63ab806fa2d907b760041903d49a84b2036c335b53f4b5f",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_ENDER_CROSS_CYCLE_SEAM_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 8847,
+      "sha256": "f87c06b59536f05eca6df618e007b95a23f438678f2cd7287880ec5c84c51479",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_G_ENDER_HOARD_COHERENCE_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4722,
+      "sha256": "6521f058e8c017d45825693ecc71a72cb34c7eeb19c0c29c604f152fef7cc228",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_G_HEIMERDINKER_LADY_JESSICA_HOARD_INTEGRATION_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2772,
+      "sha256": "bd7f3c4ebc597572b872510cf8e14dd1aa55fb4ec04c86f18e317e615d92faf3",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_G_LADY_JESSICA_HOARD_INTEGRATION_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4869,
+      "sha256": "9576f19208c096f0d0d1185be0fea5876285f2c8b93460e2a3f68f584bcccf67",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_G_THUFIR_J_CUSTODY_ADVERSARY_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 3396,
+      "sha256": "7f69028bcf22daf5b42bdb5ce2fa351d46bf1c4f6376ac498d6e1dce639eb339",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_LADY_JESSICA_FULL_STORY_ACCEPTANCE_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 46371,
+      "sha256": "5d4c2503c59240d3cce153d41ac96194d8d65d08e4543913b4b6b477e49a0818",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_LADY_JESSICA_HOARD_OWNERSHIP_MANIFEST_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 115150,
+      "sha256": null,
+      "hash_status": "SELF_REFERENTIAL_MANIFEST_HASH_EXCLUDED",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_P_ENDER_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4515,
+      "sha256": "bf6ec5fcbaa67bac57b8d5965251defd944f5396c70540ce018d90943acfcd16",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Ender@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_P_HEIMERDINKER_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 2045,
+      "sha256": "9e261d74de0c5fef7c3c363d7d34c6adfe1cf50e375bad2e45f99cb2a4a404f1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_P_LADY_JESSICA_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 4713,
+      "sha256": "1710b808b1bfa27cfe15e9eb7a1d29a2f3e148ebefb4e75b9ca853d3abefc245",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_P_THUFIR_20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 6098,
+      "sha256": "01d457ef88f25a74b4e6642f0df5f61f385f471e0813d5d03087a9719193d664",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG47_THUFIR_J_CUSTODY_ADVERSARY_RESULTS_20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 2559,
+      "sha256": "1f5c60a73e1cfb11ebe3d8bdb929e651cc557a320b83be43e21c863a5e6825e1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "RESULT_OR_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/receipts/WERKLES_VPG_CYCLE_EVIDENCE_LEDGER.jsonl",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 38399,
+      "sha256": "407a1f12a88c4898b963aae5ec8077061cb34bc6d66acd72fb1a0ccbe720abe7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42-VPG47",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RECEIPT",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        },
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "foreman/reviews/GATE-werkles-vpg42-public-test-cutover-20260724.md",
+      "git_status": "UNTRACKED",
+      "bytes": 1869,
+      "sha256": "4cce2fb7f76bc4c5a0799a5429f6c382819f88cb5f0a144a0032df394259be27",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG42",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "HUMAN_GATE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG42",
+          "cycle_id": "WERKLES-FLOCK-20260724-145708-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG42*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "lib/matching/personal-recommendation-contract.ts",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 11789,
+      "sha256": "c813647a525624ca7c09d28a179ac1c9bcbbd2b9f54ee77c360ff134016e8d78",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44+VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        },
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "lib/matching/personal-recommendation-disclosure.ts",
+      "git_status": "UNTRACKED",
+      "bytes": 1247,
+      "sha256": "3e714e29cc088236fdda4921d02efb91ee933a193c6898e4b576793688c283e1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "lib/matching/profile-recommendation.ts",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 2331,
+      "sha256": "909b9a6513f737db8681c7bbf0a33c89ae97b3be4a8c586bc2dd9a0c9d6cb635",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "lib/profile-builder-options.ts",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 2943,
+      "sha256": "4772f3b0847b2a66a2d1f876556775e3d123f2cd1c62f9de1b9f06fcdacb9313",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "lib/squibb/recommendations.ts",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 17905,
+      "sha256": "86631b463eb2cd39d4e861849b130afe59f04f2e9f61bdcc5da7f8247a83d5ca",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "lib/supabase/request.ts",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 1575,
+      "sha256": "6ed3f9f6fa4788afb7ca5eb44d6efdccf6eece3379211d1d85c69dd87f605d3d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "PRODUCT_SOURCE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "package-lock.json",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 235080,
+      "sha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "DEPENDENCY_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "package.json",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 6623,
+      "sha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "DEPENDENCY_MANIFEST",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/deploy/deploy-alias-guard-smoke.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 4353,
+      "sha256": "b6c03607dcdfb775697acea6a0c6e6b2d0278cb5baf41b1089152adc87a8b06a",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/deploy/deploy-alias-guard.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 10548,
+      "sha256": "6748fd1fc70c292a9764ed86a1e836e0ce89ee981e6f6c4bc0001be2bc224d21",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/build-lady-jessica-hoard-ownership-manifest-vpg47-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 11120,
+      "sha256": "14cb835a12c7e21076e593dd10c4a543ff5e6389b2b41bd4276120cb49d5724d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/composite-release-custody-guard-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 13534,
+      "sha256": "666613945724adb9d1e9c41afeab0b40020ac34f4a1ffe1423c02f728e8afaaf",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/dependency-security-integrity-guard-vpg43-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 9407,
+      "sha256": "ef0cf7abe3c98fc014543022a3e41fb649ced1fd2a31f57a8666bff27e2434bb",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg43-dependency-security-candidate-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 4721,
+      "sha256": "7b0dbdfa1a9f3f95a562362542f8b54c87345b374aba8e6c5b40977444c34113",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg43-harvey-public-coexistence-current-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 2965,
+      "sha256": "b6cd13e92b48108aa0e23a8ba122588f1eb97cfb1a775e6b8adb143617f2c64b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg44-release-custody-current-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 2444,
+      "sha256": "cb8663148191b60413782577ac2dc12c8a4330dcaa9ddebd8f4945f359491816",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg45-composite-release-custody-complete-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 3725,
+      "sha256": "e207df392926e7437dfd43e81781ee9b7901c7e3422bcfc5fdae8ebb2e311a9a",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg45-thufir-release-custody-adversaries-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 5372,
+      "sha256": "170745240d44c8ae889a5524c8ed0989fb5027dd6514f0d8ea1004a0e4723ea7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg46-matching-explanation-gate-attacks-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 1492,
+      "sha256": "d54a02cd6271d6231d291c278eda2c4316ae6d263039c4c5b7dc6757438d744f",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg46-matching-generation-gate-contract-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 2928,
+      "sha256": "59aca24328ac7326dc40a679229460fd76cdc1b21b8b555ab7fed3f779ac9ce9",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/fixtures/vpg47-hoard-coherence-contract-20260724.json",
+      "git_status": "UNTRACKED",
+      "bytes": 5252,
+      "sha256": "95cf64e530edb491d2e836ce67ec6775ee77d7000998b69f66f29a21c9a6eee1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_FIXTURE",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/harvey-public-coexistence-guard-vpg43-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 5351,
+      "sha256": "095f73a72285cee92df2d08909e7774ed164eafd9808336ff6afdc4916a4a33d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/red-team-composite-release-custody-thufir-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 12668,
+      "sha256": "d0ada10e9bdd53a59841a693bd8a9ad09f843f353c98d9268b2d4370267bc488",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Thufir@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/red-team-release-custody-current-state-vpg44-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 7247,
+      "sha256": "933ac9235347c860be5dbbe85ee10fa8c6da83b3bde701bf4bf59f71b04c76e9",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/red-team-release-guard-composition-vpg44-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 7179,
+      "sha256": "c8a00b3cd1fb16b009d3052f9f4d88eac4bfaa95280b532b9631bcfe6b094803",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-accessible-font-resilient-public-flows-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 27590,
+      "sha256": "5510905fe20bdd6ef65765dc4c02ea5ea4e0224372c4f8685b7a4b76ca7a85da",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-accessible-self-contained-public-flows-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 2108,
+      "sha256": "6f5fd8cec974eaa984f1836d9674cce843c83d958be62823b033483c0b0f695d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-composite-release-custody-cli-trust-boundary-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 2404,
+      "sha256": "997e88a288af2422be98328764fef48a6132518183a053aae655f41507c0777f",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-composite-release-custody-current-state-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 7418,
+      "sha256": "78e57bd95aa93bd0612e26209d5a1c93d3645d51b3119890bd44f2a8e57641a8",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-composite-release-custody-guard-vpg45-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 12062,
+      "sha256": "718589efe2fa8ebeb14ca350b57a8f05bd4a63922501bfc206fadc4b607ce0a9",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG45",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG45",
+          "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG45*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-cross-cycle-contract-seams-vpg47-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 11818,
+      "sha256": "c6b63f661dcc4e90749d7f1c43f991ad67c4ddeb66d283784d27b245e1727667",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-dependency-security-integrity-guard-vpg43-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 5005,
+      "sha256": "cf3a405604d214d9dd392d9c82c368140e40772902ec47edc7dc6f2c6be1c31d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-harvey-public-coexistence-guard-vpg43-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 2800,
+      "sha256": "f9d0fc942faeddb9306b47ba6034618d8f3349030effad1fe1b7ac9d48f75aa2",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG43",
+      "owner": "Heimerdinker@Betsy (integration/custody)",
+      "artifact_class": "RELEASE_GUARD",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG43",
+          "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG43*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-hoard-artifact-liveness-vpg47-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 9623,
+      "sha256": "14aab43807efbf4047d527e4d711a18a5c348c9839819ac2e68e24d793f2d4ab",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-lady-jessica-full-story-candidate-vpg47-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 17045,
+      "sha256": "131b3d9e35a216471c2d84554377cd54118ce92d822efc19deb4469c112e1e28",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-matching-example-custody-intake-clarity-vpg12-20260717.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 4205,
+      "sha256": "e721d68316566888d70859dba492499ec3e14eda434414ad1abfd183d4fd85f8",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-matching-example-custody-intake-clarity-vpg12-browser.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 6287,
+      "sha256": "555dc076ab4d2576ee920c3d727784b9667fe21b86e00fa0142b5ab48d5431b3",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-matching-explanation-human-gate-red-team-vpg46-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 12027,
+      "sha256": "786e1b53f24da1d6740c1d9242036a5a6255daf512541205df34e4ff46d0951b",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-matching-personal-generation-source-truth-vpg46-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 11181,
+      "sha256": "503a0eb8cc9b32875cb9d0ba83650862f376c0acd5ae1ff1f3093e4fde43bdc1",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-matching-personal-per-option-gate-truth-vpg46-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 8239,
+      "sha256": "3464d7c004aa9b1b08e42046cee683871d1757b2759a2238e255ad411d9f4193",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-matching-tier-a-personal-delivery-20260717.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 6318,
+      "sha256": "1406b018b743ebd435bf13ed60d9a2144ece3d35a04a37b2693ee48bc59998eb",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-post-push-tester-journey-vpg40-20260723.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 4339,
+      "sha256": "911504a02f442d2f9356fcf69f20ecfeecb63564060d1bcb5f2e2c932b7f91d7",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-profile-builder-first-save-browser-vpg46-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 32176,
+      "sha256": "21fb115d8465c04401b49bab82fd03c7f8f35159a8b429828ada849175e638f9",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-profile-builder-first-save-contract-vpg46-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 3433,
+      "sha256": "3283518cf8c4c7c1fbcceb307894ed60f78add78cc25c0429f350cf64955d764",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-language-boundary-vpg17-20260717.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 4356,
+      "sha256": "5ed936c098bc69a9dad18b7aabcf777b0338d537f3d33f514ba3d6daa1a976ac",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-momentum-usability-vpg27-20260719.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 5357,
+      "sha256": "ae31d1aa6a2b26aa462725a1593e96ad814b55f7f6dc484b81bb968dd5dd0ff5",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-recommendation-activation-vpg26-20260719.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 5647,
+      "sha256": "faed13cb6f491e7e7508611c42845340ec413d2bfcb387a7762d17e5b1bc0c18",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-tester-api-boundary-red-team-vpg44-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 11364,
+      "sha256": "8de40a2abb94a2a1de710ec5c22fb7c2c59ac3d36f7c28db95de4bc1974492ff",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-tester-browser-red-team-vpg44-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 27182,
+      "sha256": "7a2200c4376d74e59010a0aefc1b708940f0c5918f09ae837885b6d38b8c48fe",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "LadyJessica@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-tester-continuity-vpg24-20260719.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 4738,
+      "sha256": "bee0e4e4bcad2a719bba6cf89561528b298ff18499bffb7034002f98a9e752a3",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-public-tester-response-contract-red-team-vpg44-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 8502,
+      "sha256": "fc3ef4afbcef8128ebf19a9cf91ede1fe1c5eb0fb8daa7b2ad2ee8863a7e6f3e",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-recommendation-warmth-interaction-vpg35-20260721.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 6759,
+      "sha256": "b2e52cff0e9ae25a07766e8177449054813ac16de073dcabc783d907e9156a40",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG46",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG46",
+          "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG46*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-route-audience-readonly-vpg30-20260721.mjs",
+      "git_status": "MODIFIED_TRACKED",
+      "bytes": 1444,
+      "sha256": "7c8eed35b87357a9ccf8d33d65ba3331492325fe560d1736ba2e6f2004e21f8d",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/test-vpg47-j-custody-adversaries-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 18909,
+      "sha256": "04fe7770d1ebcdaca42c241a6b7343703538834a484582bbc9922a383b960ee4",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/vpg44-ender-image-abuse-red-team-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 6234,
+      "sha256": "f73e79825ac5cf2b79f23b4765ba98562840e16815f1e9332bd6f58f54c09456",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/vpg44-ender-runtime-red-team-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 8210,
+      "sha256": "00a12a5649411143a6b1a8afa30d6b6b56b9f35e6aaa57763646e591a9498a17",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG44",
+      "owner": "Ender@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG44",
+          "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG44*20260724*"
+        }
+      ]
+    },
+    {
+      "path": "scripts/foreman/vpg47-j-custody-guard-20260724.mjs",
+      "git_status": "UNTRACKED",
+      "bytes": 17271,
+      "sha256": "9d606f7b98fa49b7cf89f065f002528093853ce611d0c3b07e135e7574081c53",
+      "hash_status": "SHA256_BOUND",
+      "cycle": "VPG47",
+      "owner": "Heimerdinker/helper Flock; integration Heimerdinker@Betsy",
+      "artifact_class": "TEST_HARNESS",
+      "disposition": "INCLUDE",
+      "reason": "EVIDENCE_BACKED_VPG42_VPG47_CANDIDATE",
+      "evidence": [
+        {
+          "legacy_label": "VPG47",
+          "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+          "packet_or_receipt_pattern": "foreman/**/VPG47*20260724*"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "dirty_path_count": 160,
+    "modified_tracked_count": 28,
+    "untracked_count": 132,
+    "staged_or_mixed_count": 0,
+    "include_count": 160,
+    "exclude_count": 0,
+    "review_count": 0,
+    "self_referential_hash_exclusions": 1,
+    "by_cycle": {
+      "VPG42": 11,
+      "VPG42-VPG47": 3,
+      "VPG43": 26,
+      "VPG44": 33,
+      "VPG44+VPG46": 1,
+      "VPG45": 28,
+      "VPG46": 34,
+      "VPG47": 24
+    },
+    "by_artifact_class": {
+      "CONTROL_EVIDENCE": 2,
+      "DEPENDENCY_MANIFEST": 2,
+      "HANDOFF_PACKET": 12,
+      "HUMAN_GATE": 1,
+      "PRODUCT_SOURCE": 12,
+      "RECEIPT": 62,
+      "RELEASE_GUARD": 8,
+      "RESULT_OR_MANIFEST": 20,
+      "TEST_FIXTURE": 8,
+      "TEST_HARNESS": 33
+    },
+    "tree_sha256": "76f171556ecb64db586d25f0f26f0c8746759d2c15c0d981d168e3f579b3400f",
+    "zero_unexplained_paths": true,
+    "verdict": "PASS"
+  }
+}

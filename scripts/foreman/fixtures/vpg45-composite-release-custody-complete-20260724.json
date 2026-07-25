@@ -1,0 +1,98 @@
+{
+  "schema": "werkles.vpg45-composite-release-custody-fixture/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+  "legacy_label": "VPG45",
+  "request": {
+    "schema": "werkles.production-release-custody-request/v1",
+    "branch": "codex/werkles-vpg31-20260721",
+    "headSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "candidateDeploymentId": "dpl_vpg45candidate",
+    "productionDeploymentId": "dpl_vpg45production",
+    "rollbackDeploymentId": "dpl_vpg45rollback",
+    "aliases": [
+      "werkles.com"
+    ],
+    "cycleId": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+    "legacyLabel": "VPG45",
+    "harveyMode": "PRESERVE_RECONCILE",
+    "evidenceDigest": "__COMPUTED_BY_TEST__"
+  },
+  "trusted_evidence": {
+    "schema": "werkles.production-release-custody-trusted-evidence/v1",
+    "snapshotDigest": "__COMPUTED_BY_TEST__",
+    "git": {
+      "branch": "codex/werkles-vpg31-20260721",
+      "headSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "upstreamSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "dirty": false,
+      "untrackedCount": 0
+    },
+    "aliases": [
+      "werkles.com"
+    ],
+    "cycle": {
+      "id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+      "legacyLabel": "VPG45",
+      "status": "COMPLETED",
+      "guardResult": "PASS",
+      "recordDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "j": {
+      "result": "PASS",
+      "cycleId": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+      "legacyLabel": "VPG45",
+      "branch": "codex/werkles-vpg31-20260721",
+      "headSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "upstreamSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "remoteEqual": true,
+      "recordDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "approval": {
+      "authoritative": true,
+      "recordPresent": true,
+      "sourcePath": "foreman/gates/APPROVAL_LOG.md",
+      "scope": "PRODUCTION_DEPLOY_AND_ALIAS",
+      "decision": "APPROVE",
+      "phrase": "APPROVE WERKLES PRODUCTION RELEASE",
+      "cycleId": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+      "legacyLabel": "VPG45",
+      "branch": "codex/werkles-vpg31-20260721",
+      "headSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidateDeploymentId": "dpl_vpg45candidate",
+      "productionDeploymentId": "dpl_vpg45production",
+      "rollbackDeploymentId": "dpl_vpg45rollback",
+      "aliases": [
+        "werkles.com"
+      ],
+      "harveyMode": "PRESERVE_RECONCILE",
+      "recordDigest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "release": {
+      "result": "PASS",
+      "headSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidateSourceSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidateDeploymentId": "dpl_vpg45candidate",
+      "productionDeploymentId": "dpl_vpg45production",
+      "recordDigest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "harvey": {
+      "result": "PASS",
+      "state": "RESOLVED",
+      "authority": "HUMAN_GATE_APPROVAL_LOG",
+      "executionAuthorized": true,
+      "recordPresent": true,
+      "cycleId": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+      "mode": "PRESERVE_RECONCILE",
+      "candidateDeploymentId": "dpl_vpg45candidate",
+      "productionDeploymentId": "dpl_vpg45production",
+      "rollbackDeploymentId": "dpl_vpg45rollback",
+      "recordDigest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    "rollback": {
+      "deploymentId": "dpl_vpg45rollback",
+      "commit": "9999999999999999999999999999999999999999",
+      "isCoexistence": false,
+      "purpose": "RECOVERY"
+    }
+  }
+}

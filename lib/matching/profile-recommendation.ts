@@ -3,6 +3,13 @@ import "server-only";
 import { buildMatchingReadout, buildSquibbVoice } from "@/lib/matching/deliver";
 import { runLayer0 } from "@/lib/matching/layer0";
 import { evaluateNotMatch } from "@/lib/matching/not-match";
+import {
+  PERSONAL_RECOMMENDATION_GENERATION,
+  PERSONAL_RECOMMENDATION_INTRO,
+  PERSONAL_RECOMMENDATION_OPERATOR_CONTEXT,
+  PERSONAL_RECOMMENDATION_SOURCE_DETAIL,
+  PERSONAL_RECOMMENDATION_SOURCE_LABEL
+} from "@/lib/matching/personal-recommendation-disclosure";
 import { scorePaths } from "@/lib/matching/score-paths";
 import {
   signalsFromMemberProfile,
@@ -47,14 +54,13 @@ export function recommendationSessionFromMemberProfile(
 
   return {
     ...session,
-    operatorContext: "Rules-based recommendation generated in memory from your saved profile.",
-    squibbIntro:
-      "Werkles ranked these paths from the self-reported information in your saved profile. They are suggestions, not decisions, verified matches, or guaranteed outcomes.",
+    operatorContext: PERSONAL_RECOMMENDATION_OPERATOR_CONTEXT,
+    squibbIntro: PERSONAL_RECOMMENDATION_INTRO,
+    generation: { ...PERSONAL_RECOMMENDATION_GENERATION },
     source: {
       mode: "authenticated_profile",
-      label: "Private to this signed-in account",
-      detail:
-        "Fixed written rules calculated this result from your existing saved profile. No AI model generated it. The result itself was not saved or forwarded to a provider or external recipient."
+      label: PERSONAL_RECOMMENDATION_SOURCE_LABEL,
+      detail: PERSONAL_RECOMMENDATION_SOURCE_DETAIL
     }
   };
 }

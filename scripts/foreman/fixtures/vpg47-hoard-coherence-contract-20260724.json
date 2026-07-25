@@ -1,0 +1,113 @@
+{
+  "schema": "werkles.vpg47-hoard-coherence-contract/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+  "source_commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "branch": "codex/werkles-vpg31-20260721",
+  "historical_dependency_receipt": "foreman/receipts/WERKLES_VPG43_G_ENDER_DEPENDENCY_INTEGRITY_20260724.md",
+  "historical_dependency_hashes": {
+    "package.json": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "package-lock.json": "f0bcbc04f494e214812bdc88eec6e1d6b6a3bc0909610819710e92858e31c392",
+    "scripts/foreman/dependency-security-integrity-guard-vpg43-20260724.mjs": "ef0cf7abe3c98fc014543022a3e41fb649ced1fd2a31f57a8666bff27e2434bb",
+    "scripts/foreman/fixtures/vpg43-dependency-security-candidate-20260724.json": "7b0dbdfa1a9f3f95a562362542f8b54c87345b374aba8e6c5b40977444c34113",
+    "scripts/foreman/test-dependency-security-integrity-guard-vpg43-20260724.mjs": "cf3a405604d214d9dd392d9c82c368140e40772902ec47edc7dc6f2c6be1c31d"
+  },
+  "historical_current_state_snapshots": [
+    "foreman/receipts/WERKLES_VPG42_PREVIEW_ROUTE_MATRIX_20260724.json",
+    "foreman/receipts/WERKLES_VPG42_PROMOTION_CANDIDATE_MANIFEST_20260724.json",
+    "scripts/foreman/fixtures/vpg43-harvey-public-coexistence-current-20260724.json",
+    "scripts/foreman/fixtures/vpg44-release-custody-current-20260724.json",
+    "scripts/foreman/fixtures/vpg45-composite-release-custody-complete-20260724.json",
+    "foreman/receipts/WERKLES_VPG45_ENDER_CURRENT_STATE_STOP_20260724.json"
+  ],
+  "current_source_files": [
+    "package.json",
+    "package-lock.json",
+    "lib/supabase/request.ts",
+    "scripts/deploy/deploy-alias-guard.mjs",
+    "scripts/deploy/deploy-alias-guard-smoke.mjs",
+    "app/beta-signup-form.tsx",
+    "app/page.tsx",
+    "components/foundry/home-value-fold.tsx",
+    "components/squibb/confidence-meter.tsx",
+    "app/dashboard/profile/page.tsx",
+    "lib/profile-builder-options.ts",
+    "lib/matching/personal-recommendation-disclosure.ts",
+    "lib/matching/personal-recommendation-contract.ts",
+    "lib/matching/profile-recommendation.ts",
+    "lib/squibb/recommendations.ts",
+    "components/squibb/recommendation-surface.tsx"
+  ],
+  "current_behavior_commands": [
+    {
+      "id": "vpg43_dependency_current_production_guard",
+      "path": "scripts/foreman/dependency-security-integrity-guard-vpg43-20260724.mjs"
+    },
+    {
+      "id": "vpg43_dependency_guard_smoke",
+      "path": "scripts/foreman/test-dependency-security-integrity-guard-vpg43-20260724.mjs"
+    },
+    {
+      "id": "vpg44_alias_guard_smoke",
+      "path": "scripts/deploy/deploy-alias-guard-smoke.mjs"
+    },
+    {
+      "id": "vpg44_api_boundary_red_team",
+      "path": "scripts/foreman/test-public-tester-api-boundary-red-team-vpg44-20260724.mjs"
+    },
+    {
+      "id": "vpg45_accessibility_semantics",
+      "path": "scripts/foreman/test-accessible-self-contained-public-flows-vpg45-20260724.mjs"
+    },
+    {
+      "id": "vpg46_profile_first_save_contract",
+      "path": "scripts/foreman/test-profile-builder-first-save-contract-vpg46-20260724.mjs"
+    },
+    {
+      "id": "vpg46_matching_hostile_contract",
+      "path": "scripts/foreman/test-matching-explanation-human-gate-red-team-vpg46-20260724.mjs"
+    },
+    {
+      "id": "vpg46_matching_per_option_contract",
+      "path": "scripts/foreman/test-matching-personal-per-option-gate-truth-vpg46-20260724.mjs"
+    }
+  ],
+  "opaque_machine_results": [
+    {
+      "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+      "blob": "foreman/receipts/WERKLES_VPG44_ENDER_RUNTIME_RED_TEAM_20260724.json",
+      "receipt": "foreman/receipts/WERKLES_VPG44_G_ENDER_RUNTIME_ABUSE_RED_TEAM_20260724.md"
+    },
+    {
+      "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+      "blob": "foreman/receipts/WERKLES_VPG44_ENDER_IMAGE_ABUSE_RED_TEAM_20260724.json",
+      "receipt": "foreman/receipts/WERKLES_VPG44_G_ENDER_RUNTIME_ABUSE_RED_TEAM_20260724.md"
+    },
+    {
+      "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+      "blob": "foreman/receipts/WERKLES_VPG45_LADY_JESSICA_ACCESSIBLE_FONT_RESULTS_20260724.json",
+      "receipt": "foreman/receipts/WERKLES_VPG45_G_LADY_JESSICA_ACCESSIBLE_FONT_RESILIENCE_20260724.md"
+    },
+    {
+      "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+      "blob": "foreman/receipts/WERKLES_VPG46_LADY_JESSICA_PROFILE_FIRST_SAVE_RESULTS_20260724.json",
+      "receipt": "foreman/receipts/WERKLES_VPG46_G_LADY_JESSICA_PROFILE_FIRST_SAVE_TRUTH_20260724.md"
+    }
+  ],
+  "harvey_smoke_edge": {
+    "source": "scripts/foreman/test-harvey-public-coexistence-guard-vpg43-20260724.mjs",
+    "guard": "scripts/foreman/harvey-public-coexistence-guard-vpg43-20260724.mjs",
+    "fixture": "scripts/foreman/fixtures/vpg43-harvey-public-coexistence-current-20260724.json",
+    "receipt": "foreman/receipts/WERKLES_VPG43_G_HEIMERDINKER_HARVEY_COEXISTENCE_20260724.md",
+    "receipt_phrase": "plus six-case smoke coverage"
+  },
+  "aggregate_ledger_gaps": [
+    {
+      "legacy_label": "VPG42",
+      "aggregate": "foreman/receipts/WERKLES_FULL_FLOCK_VPG42_20260724.md"
+    },
+    {
+      "legacy_label": "VPG43",
+      "aggregate": "foreman/receipts/WERKLES_FULL_FLOCK_VPG43_20260724.md"
+    }
+  ]
+}

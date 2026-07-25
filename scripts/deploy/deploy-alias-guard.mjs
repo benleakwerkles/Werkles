@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const REQUIRED_ALIAS_GATE = "TIER_1_HUMAN_GATE";
+export const REQUIRED_ALIAS_APPROVAL_PHRASE = "APPROVE WERKLES PRODUCTION ALIAS";
 export const DEFAULT_PRODUCTION_ALIAS_CONFIG = "deploy/production-aliases.json";
 
 const PREVIEW_BLOCK_RULES = [
@@ -98,6 +100,17 @@ export function evaluateAliasGuard(input = {}) {
         });
       }
     }
+
+    const approvalResult = validateProductionAliasApproval(
+      input.aliasApproval,
+      [...requestedAliases, ...appliedAliases]
+    );
+    if (!approvalResult.ok) {
+      reasons.push({
+        reason: "PRODUCTION_ALIAS_APPROVAL_INVALID",
+        detail: approvalResult.detail
+      });
+    }
   }
 
   const aliasGuardResult = reasons.length ? "STOP" : "PASS";
@@ -109,6 +122,13 @@ export function evaluateAliasGuard(input = {}) {
     alias_guard_result: aliasGuardResult,
     human_gate: humanGate || null,
     required_human_gate: aliasChangePresent ? REQUIRED_ALIAS_GATE : null,
+    production_approval_bound:
+      deployTarget === "production" &&
+      aliasChangePresent &&
+      validateProductionAliasApproval(
+        input.aliasApproval,
+        [...requestedAliases, ...appliedAliases]
+      ).ok,
     production_alias_config_loaded: productionAliasConfigLoaded,
     blocked_aliases: blockedAliases,
     reasons
@@ -118,6 +138,49 @@ export function evaluateAliasGuard(input = {}) {
     ok: aliasGuardResult === "PASS",
     receipt
   };
+}
+
+export function productionAliasApprovalDigest(approval) {
+  const aliases = uniqueAliases(approval?.aliases ?? []);
+  const body = {
+    schema: approval?.schema ?? "",
+    decision: approval?.decision ?? "",
+    phrase: approval?.phrase ?? "",
+    cycle_id: approval?.cycle_id ?? "",
+    candidate_deployment_id: approval?.candidate_deployment_id ?? "",
+    rollback_deployment_id: approval?.rollback_deployment_id ?? "",
+    aliases
+  };
+  return createHash("sha256").update(JSON.stringify(body)).digest("hex");
+}
+
+function validateProductionAliasApproval(approval, requestedAliases) {
+  if (!approval || typeof approval !== "object" || Array.isArray(approval)) {
+    return { ok: false, detail: "A structured, hash-bound Production alias approval is required." };
+  }
+
+  const expectedAliases = uniqueAliases(requestedAliases);
+  const approvedAliases = uniqueAliases(approval.aliases ?? []);
+  const fieldsValid =
+    approval.schema === "werkles.production-alias-approval/v1" &&
+    approval.decision === "APPROVE" &&
+    approval.phrase === REQUIRED_ALIAS_APPROVAL_PHRASE &&
+    typeof approval.cycle_id === "string" &&
+    approval.cycle_id.trim().length > 0 &&
+    /^dpl_[A-Za-z0-9]+$/.test(String(approval.candidate_deployment_id ?? "")) &&
+    /^dpl_[A-Za-z0-9]+$/.test(String(approval.rollback_deployment_id ?? "")) &&
+    approvedAliases.length === expectedAliases.length &&
+    approvedAliases.every((alias, index) => alias === expectedAliases[index]);
+
+  if (!fieldsValid) {
+    return { ok: false, detail: "Approval fields do not match the requested alias mutation." };
+  }
+
+  if (approval.digest !== productionAliasApprovalDigest(approval)) {
+    return { ok: false, detail: "Approval digest does not bind the supplied release fields." };
+  }
+
+  return { ok: true };
 }
 
 export function normalizeAlias(alias) {

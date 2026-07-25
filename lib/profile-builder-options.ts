@@ -83,3 +83,23 @@ export const PRIMARY_GOAL_SUGGESTIONS = [
   "Venture Scale/Exit",
   "Sell or transition a business"
 ] as const;
+
+export function normalizeUsStateCode(value: unknown): string {
+  const candidate = String(value ?? "").trim();
+  if (!candidate) return "";
+  const upper = candidate.toUpperCase();
+  const byCode = US_STATE_OPTIONS.find(([code]) => code === upper);
+  if (byCode) return byCode[0];
+  const byLabel = US_STATE_OPTIONS.find(
+    ([, label]) => label.toLowerCase() === candidate.toLowerCase()
+  );
+  return byLabel?.[0] ?? "";
+}
+
+export function isProfileLaneValue(value: unknown): boolean {
+  return PROFILE_LANE_OPTIONS.some(([option]) => option === value);
+}
+
+export function isProfileVisibilityValue(value: unknown): boolean {
+  return PROFILE_VISIBILITY_OPTIONS.some(([option]) => option === value);
+}

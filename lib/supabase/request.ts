@@ -13,8 +13,8 @@ type AuthenticatedClient =
 
 function bearerToken(request: NextRequest) {
   const header = request.headers.get("authorization") || "";
-  const [scheme, token] = header.split(" ");
-  return scheme?.toLowerCase() === "bearer" && token ? token : null;
+  const match = /^Bearer ([^\s]+)$/i.exec(header);
+  return match?.[1] ?? null;
 }
 
 export function getSupabaseForRequest(request: NextRequest) {

@@ -39,7 +39,7 @@ assert.doesNotMatch(demoCatalog, visitorOwnership);
 assert.match(liveRanked, /source: "Your intake"/);
 
 assert.match(surface, /const isExample = source\.mode === "demo"/);
-assert.match(surface, /\{isExample \? "Example need" : "What you need"\}/);
+assert.match(surface, /\{isExample \? "Example situation" : "Your situation"\}/);
 assert.match(surface, /<ReasoningPanel reasoning=\{selected\.reasoning\} isExample=\{isExample\}/);
 assert.match(surface, /isExample=\{isExample\}/);
 assert.doesNotMatch(surface, /showIntakePrompt|Start an intake|to create the first one/);

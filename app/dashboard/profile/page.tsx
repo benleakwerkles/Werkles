@@ -11,6 +11,9 @@ import {
   PUBLIC_TEST_PROVIDER_ACTIONS_OPEN
 } from "@/lib/app-infra-preview";
 import {
+  isProfileLaneValue,
+  isProfileVisibilityValue,
+  normalizeUsStateCode,
   PRIMARY_GOAL_SUGGESTIONS,
   PROFILE_LANE_OPTIONS,
   PROFILE_VISIBILITY_OPTIONS,
@@ -89,6 +92,7 @@ export default function ProfilePage() {
   const [recommendationReturnPath, setRecommendationReturnPath] = useState("/bellows/recommendations");
   const [isRecommendationJourney, setIsRecommendationJourney] = useState(false);
   const [profileAuthState, setProfileAuthState] = useState<ProfileAuthState>("checking");
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     async function loadProfile() {
@@ -135,7 +139,13 @@ export default function ProfilePage() {
         return;
       }
 
-      const loadedProfile = data || {};
+      const loadedProfile = data
+        ? {
+            ...data,
+            location_state:
+              normalizeUsStateCode(data.location_state) || data.location_state
+          }
+        : {};
       setProfile(loadedProfile);
       setRecommendationReady(hasUsableMemberProfileSignal(loadedProfile));
       setProfileAuthState("signed_in");
@@ -147,6 +157,8 @@ export default function ProfilePage() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (isSaving) return;
+    const formElement = event.currentTarget;
     let supabase: ReturnType<typeof getSupabaseBrowser>;
 
     try {
@@ -164,7 +176,9 @@ export default function ProfilePage() {
       return;
     }
 
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
+    const lane = String(form.get("lane") || "").trim();
+    const visibilityMode = String(form.get("visibility_mode") || "").trim();
     const row = {
       id: userData.user.id,
       email: String(form.get("contact_email") || "").trim() || userData.user.email || null,
@@ -172,8 +186,8 @@ export default function ProfilePage() {
       first_name: String(form.get("first_name") || "").trim() || null,
       last_name: String(form.get("last_name") || "").trim() || null,
       location_city: String(form.get("location_city") || "").trim(),
-      location_state: String(form.get("location_state") || "").trim().toUpperCase(),
-      lane: String(form.get("lane") || "Builder"),
+      location_state: normalizeUsStateCode(form.get("location_state")),
+      lane: isProfileLaneValue(lane) ? lane : "",
       work_preference: String(form.get("work_preference") || "Local Only"),
       current_employer: String(form.get("current_employer") || "").trim() || null,
       phone:
@@ -189,31 +203,44 @@ export default function ProfilePage() {
       profile_depth: String(form.get("profile_depth") || "quick_weld"),
       turf_zip: String(form.get("turf_zip") || "").trim() || null,
       blueprint_narrative: String(form.get("blueprint_narrative") || "").trim() || null,
-      visibility_mode: String(form.get("visibility_mode") || "full_name"),
+      visibility_mode: isProfileVisibilityValue(visibilityMode) ? visibilityMode : "",
       show_employer: form.get("show_employer") === "on"
     };
 
-    if (!row.display_name || !row.location_city || !row.location_state) {
-      setStatus("Display name, city, and state are required.");
+    if (
+      !row.display_name ||
+      !row.location_city ||
+      !row.location_state ||
+      !row.lane ||
+      !row.visibility_mode
+    ) {
+      setStatus("Display name, city, state, lane, and visibility are required.");
       return;
     }
 
-    const { error } = await supabase.from("profiles").upsert(row);
-    if (error) {
+    setIsSaving(true);
+    try {
+      const { error } = await supabase.from("profiles").upsert(row);
+      if (error) {
+        setStatus("Profile could not be saved. Try again.");
+        return;
+      }
+
+      const isRecommendationReady = hasUsableMemberProfileSignal(row);
+      setRecommendationReady(isRecommendationReady);
+      setStatus(
+        isRecommendationReady
+          ? "Profile saved. Your private recommendation is ready."
+          : `Profile saved. ${recommendationSignalGuidance}`
+      );
+
+      if (isRecommendationJourney && isRecommendationReady) {
+        window.location.assign(recommendationReturnPath);
+      }
+    } catch {
       setStatus("Profile could not be saved. Try again.");
-      return;
-    }
-
-    const isRecommendationReady = hasUsableMemberProfileSignal(row);
-    setRecommendationReady(isRecommendationReady);
-    setStatus(
-      isRecommendationReady
-        ? "Profile saved. Your private recommendation is ready."
-        : `Profile saved. ${recommendationSignalGuidance}`
-    );
-
-    if (isRecommendationJourney && isRecommendationReady) {
-      window.location.assign(recommendationReturnPath);
+    } finally {
+      setIsSaving(false);
     }
   }
 
@@ -247,6 +274,23 @@ export default function ProfilePage() {
   }
 
   const encodedRecommendationReturnPath = encodeURIComponent(recommendationReturnPath);
+  const normalizedProfileState = normalizeUsStateCode(profile.location_state);
+  const hasUnrecognizedProfileState =
+    Boolean(profile.location_state) && !normalizedProfileState;
+  const laneDefaultValue = profile.lane
+    ? isProfileLaneValue(profile.lane)
+      ? profile.lane
+      : ""
+    : "Builder";
+  const hasUnrecognizedLane = Boolean(profile.lane) && !isProfileLaneValue(profile.lane);
+  const visibilityDefaultValue = profile.visibility_mode
+    ? isProfileVisibilityValue(profile.visibility_mode)
+      ? profile.visibility_mode
+      : ""
+    : "full_name";
+  const hasUnrecognizedVisibility =
+    Boolean(profile.visibility_mode) &&
+    !isProfileVisibilityValue(profile.visibility_mode);
   const displayNameField = (
     <label className="field">
       <span>Display name</span>
@@ -262,8 +306,12 @@ export default function ProfilePage() {
   const stateField = (
     <label className="field">
       <span>State or territory</span>
-      <select name="location_state" defaultValue={profile.location_state || ""} required>
-        <option value="" disabled>Choose a state or territory</option>
+      <select name="location_state" defaultValue={normalizedProfileState} required>
+        <option value="" disabled>
+          {hasUnrecognizedProfileState
+            ? `Choose a state or territory; “${profile.location_state}” needs review`
+            : "Choose a state or territory"}
+        </option>
         {US_STATE_OPTIONS.map(([code, label]) => (
           <option key={code} value={code}>{label} ({code})</option>
         ))}
@@ -278,8 +326,8 @@ export default function ProfilePage() {
       {profile.location_city ? (
         <input type="hidden" name="location_city" value={profile.location_city} />
       ) : cityField}
-      {profile.location_state ? (
-        <input type="hidden" name="location_state" value={profile.location_state} />
+      {normalizedProfileState ? (
+        <input type="hidden" name="location_state" value={normalizedProfileState} />
       ) : stateField}
     </>
   );
@@ -390,7 +438,12 @@ export default function ProfilePage() {
           <span>ID: {profile.id_status || "none"}</span>
           <span>Assets: {profile.funds_status || "none"}</span>
         </div>
-        <form className="profile-grid" key={`${email || "anonymous"}:${profile.display_name || "new"}`} onSubmit={handleSubmit}>
+        <form
+          className="profile-grid"
+          key={`${email || "anonymous"}:${profile.display_name || "new"}`}
+          onSubmit={handleSubmit}
+          aria-busy={isSaving}
+        >
           <p className="profile-field-help wide-field">
             This form saves details to your signed-in account. Read the{" "}
             <Link href="/privacy">Public Test Data Notice</Link> before adding anything you do not want in your profile.
@@ -408,15 +461,17 @@ export default function ProfilePage() {
               <div className="profile-actions wide-field recommendation-activation-actions">
                 {recommendationReady ? (
                   <>
-                    <button className="button button-dark" type="submit">
-                      Save changes and refresh recommendation
+                    <button className="button button-dark" type="submit" disabled={isSaving}>
+                      {isSaving ? "Saving…" : "Save changes and refresh recommendation"}
                     </button>
                     <Link className="button button-outline" href={recommendationReturnPath}>
                       See current saved recommendation
                     </Link>
                   </>
                 ) : (
-                  <button className="button button-dark" type="submit">Save and see my recommendation</button>
+                  <button className="button button-dark" type="submit" disabled={isSaving}>
+                    {isSaving ? "Saving…" : "Save and see my recommendation"}
+                  </button>
                 )}
                 <p className="profile-field-help">
                   {recommendationReady
@@ -474,7 +529,10 @@ export default function ProfilePage() {
           </label>
           <label className="field">
             <span>Lane (broad role)</span>
-            <select name="lane" defaultValue={profile.lane || "Builder"}>
+            <select name="lane" defaultValue={laneDefaultValue} required>
+              {hasUnrecognizedLane ? (
+                <option value="" disabled>Choose a supported lane; the saved value needs review</option>
+              ) : null}
               {PROFILE_LANE_OPTIONS.map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
               ))}
@@ -499,7 +557,10 @@ export default function ProfilePage() {
           </label>
           <label className="field">
             <span>Visibility</span>
-            <select name="visibility_mode" defaultValue={profile.visibility_mode || "full_name"}>
+            <select name="visibility_mode" defaultValue={visibilityDefaultValue} required>
+              {hasUnrecognizedVisibility ? (
+                <option value="" disabled>Choose a visibility setting; the saved value needs review</option>
+              ) : null}
               {PROFILE_VISIBILITY_OPTIONS.map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
               ))}
@@ -530,7 +591,9 @@ export default function ProfilePage() {
           {!isRecommendationJourney ? blueprintNarrativeField : null}
           {!isRecommendationJourney ? (
             <div className="profile-actions">
-              <button className="button button-dark" type="submit">Save profile</button>
+              <button className="button button-dark" type="submit" disabled={isSaving}>
+                {isSaving ? "Saving…" : "Save profile"}
+              </button>
               {recommendationReady ? (
                 <Link className="button button-outline" href={recommendationReturnPath}>
                   See my private recommendation

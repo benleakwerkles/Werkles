@@ -1,0 +1,46 @@
+{
+  "schema": "werkles.vpg47-direct-browser-acceptance-summary/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+  "legacy_label": "VPG47",
+  "candidate_build_id": "8Mabi-W8b-FQcfFBl1avl",
+  "runtime": {
+    "origin": "http://127.0.0.1:31248",
+    "isolated_pid": 42196,
+    "stopped_after_proof": true,
+    "port_3000_pid": 26556,
+    "port_3000_untouched": true,
+    "synthetic_public_supabase_origin": "https://vpg46-local-only.supabase.co",
+    "live_provider_or_data_used": false
+  },
+  "vpg45_accessibility_font_resilience": {
+    "source_harness": "scripts/foreman/test-accessible-font-resilient-public-flows-vpg45-20260724.mjs",
+    "idea_count": 2,
+    "viewport_count": 2,
+    "case_count": 4,
+    "route_snapshots": 16,
+    "assertion_count": 474,
+    "failure_count": 0,
+    "verdict": "PASS",
+    "raw_temporary_result_sha256": "dc072a2a23732a9b20311a38096ffe14357d21fc8656524a68f98a018e739111"
+  },
+  "vpg46_profile_first_save": {
+    "source_harness": "scripts/foreman/test-profile-builder-first-save-browser-vpg46-20260724.mjs",
+    "idea_count": 2,
+    "viewport_count": 2,
+    "case_count": 10,
+    "assertion_count": 214,
+    "failure_count": 0,
+    "verdict": "PASS",
+    "raw_temporary_result_sha256": "82b5b19ccf9efc652b27b271b87ca2a9419159ee31bff70c8c91e2ce847ba2e1"
+  },
+  "vpg44_wrapper_caveat": {
+    "product_assertions_passed": 150,
+    "strict_assertions_total": 156,
+    "strict_failure_count": 6,
+    "failure_class": "OBSOLETE_HEADLESS_COMPILED_CHUNK_INSTRUMENTATION_SENTINEL",
+    "product_defect_proven": false,
+    "repair_limit_exhausted": true,
+    "historical_result_path": "foreman/receipts/WERKLES_VPG47_LADY_JESSICA_FULL_STORY_ACCEPTANCE_RESULTS_20260724.json"
+  },
+  "result": "PASS_PRODUCT_WITH_DISCLOSED_STALE_VPG44_HARNESS_SENTINELS"
+}

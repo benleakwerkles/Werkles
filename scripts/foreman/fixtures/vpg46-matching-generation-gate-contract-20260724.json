@@ -1,0 +1,130 @@
+{
+  "schema": "werkles.vpg46-matching-generation-gate-contract/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-224709-ET-BETSY-01",
+  "legacy_label": "VPG46",
+  "generation": {
+    "method": "fixed_written_rules",
+    "input": "saved_profile",
+    "execution": "in_memory",
+    "false_fields": [
+      "aiModelUsed",
+      "providerContacted",
+      "externalRecipientContacted",
+      "recommendationPersisted",
+      "introSent",
+      "contactMade",
+      "paymentInitiated",
+      "actionTaken"
+    ],
+    "explanation_max_length": 240,
+    "explanation_phrase_groups": [
+      [
+        "fixed written rules",
+        "fixed rules"
+      ],
+      [
+        "saved profile"
+      ],
+      [
+        "in memory"
+      ],
+      [
+        "no ai model",
+        "no ai"
+      ],
+      [
+        "no provider",
+        "ai or provider"
+      ],
+      [
+        "no person",
+        "no external recipient",
+        "shared with anyone",
+        "sent to anyone"
+      ],
+      [
+        "no intro",
+        "no introduction",
+        "nothing was introduced"
+      ],
+      [
+        "no contact",
+        "nothing was contacted"
+      ],
+      [
+        "no payment",
+        "nothing was paid"
+      ],
+      [
+        "no action",
+        "nothing was acted on"
+      ]
+    ]
+  },
+  "universal_gate": {
+    "id": "matching-human-review",
+    "kind": "operator_approval",
+    "severity": "blocker",
+    "benMustApprove": true
+  },
+  "required_domain_gate_kind": {
+    "translate_need": {
+      "id": "matching-translation-review",
+      "kind": "operator_approval"
+    },
+    "verify_proof": {
+      "id": "matching-proof-review",
+      "kind": "crucible_proof"
+    },
+    "stage_intro_candidate": {
+      "id": "matching-candidate-review",
+      "kind": "external_intro"
+    },
+    "find_partner": {
+      "id": "matching-partner-review",
+      "kind": "external_intro"
+    },
+    "find_equipment": {
+      "id": "matching-equipment-review",
+      "kind": "financial_commitment"
+    },
+    "find_banker": {
+      "id": "matching-banker-review",
+      "kind": "financial_commitment"
+    },
+    "find_credit_union": {
+      "id": "matching-credit-union-review",
+      "kind": "financial_commitment"
+    },
+    "find_better_job": {
+      "id": "matching-job-review",
+      "kind": "legal_review"
+    },
+    "stay_current_job": {
+      "id": "matching-stay-job-review",
+      "kind": "operator_approval"
+    },
+    "relocate": {
+      "id": "matching-relocation-review",
+      "kind": "operator_approval"
+    },
+    "get_training": {
+      "id": "matching-training-review",
+      "kind": "legal_review"
+    },
+    "raise_capital": {
+      "id": "matching-capital-review",
+      "kind": "financial_commitment"
+    }
+  },
+  "forbidden_positive_claim_fields": [
+    "llmUsed",
+    "providerContacted",
+    "externalRecipientContacted",
+    "introSent",
+    "contactMade",
+    "paymentInitiated",
+    "actionTaken",
+    "automated"
+  ]
+}

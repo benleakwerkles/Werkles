@@ -23,8 +23,8 @@ const signedOutDelivery = delivery.slice(
 const createAccountIndex = signedOutDelivery.indexOf('href="/signup?next=%2Fbellows%2Frecommendations"');
 const signInIndex = signedOutDelivery.indexOf('href="/login?next=%2Fbellows%2Frecommendations"');
 assert.match(signedOutDelivery, /<h2 id="personalRecommendationCtaTitle">Want one for your situation\?<\/h2>/);
-assert.match(signedOutDelivery, /private rules-based\s+recommendation/);
-assert.match(signedOutDelivery, /The result is not saved or forwarded\./);
+assert.match(signedOutDelivery, /private rules-based\s+result/);
+assert.match(signedOutDelivery, /result is not saved or forwarded\./);
 assert.match(signedOutDelivery, /aria-live="polite"/);
 assert.ok(createAccountIndex > -1, "signed-out recommendation must offer account creation");
 assert.ok(signInIndex > createAccountIndex, "Create account must be primary and appear before Sign in");
@@ -49,7 +49,8 @@ assert.ok(profileSignInIndex > profileCreateAccountIndex, "Profile Builder must 
 assert.doesNotMatch(profileSignedOut, /<form\b|Save profile/);
 
 const signedInGateIndex = profile.indexOf('profileAuthState === "signed_in" ? (');
-const profileFormIndex = profile.indexOf('<form className="profile-grid"');
+const profileFormMatch = /<form\s+className="profile-grid"/.exec(profile);
+const profileFormIndex = profileFormMatch?.index ?? -1;
 assert.ok(signedInGateIndex > -1 && profileFormIndex > signedInGateIndex, "profile form must follow the signed-in gate");
 assert.match(
   profile,

@@ -20,9 +20,10 @@ const bellowsHeroActions = bellows.slice(
   bellows.indexOf('<section className="bellows-hero'),
   bellows.indexOf("</section>", bellows.indexOf('<section className="bellows-hero'))
 );
-assert.equal((bellowsHeroActions.match(/<Link\b/g) || []).length, 2);
+assert.equal((bellowsHeroActions.match(/<Link\b/g) || []).length, 3);
 assert.match(bellowsHeroActions, /Review the intake/);
 assert.match(bellowsHeroActions, /See recommendations/);
+assert.match(bellowsHeroActions, /Build your profile/);
 assert.match(bellows, /<Image/);
 assert.match(bellows, /href="\/proof"/);
 assert.doesNotMatch(
@@ -75,7 +76,7 @@ for (const sensitiveStep of ["requireUser(request)", "request.json()", "getSupab
 console.log(JSON.stringify({
   pass: true,
   checks: [
-    "bellows_two_choice_human_language",
+    "bellows_three_choice_human_language",
     "discovery_internal_state_removed_fail_closed",
     "public_commerce_plumbing_removed",
     "single_availability_message_per_page",

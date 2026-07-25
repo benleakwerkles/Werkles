@@ -1,0 +1,83 @@
+{
+  "schema": "werkles.harvey-public-coexistence-current/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+  "production": {
+    "commit": "3998101aed1835e7478a83cc44bd823502676648",
+    "branch": "codex/harvey-cloud-relay-20260717",
+    "deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "domain": "werkles.com"
+  },
+  "candidate": {
+    "commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "branch": "codex/werkles-vpg31-20260721",
+    "deployment_id": "dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd",
+    "target": "preview"
+  },
+  "rollback": {
+    "deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "commit": "3998101aed1835e7478a83cc44bd823502676648",
+    "is_coexistence": false
+  },
+  "merge_base": "294f98396b122b413275a3f8c45524987de284fe",
+  "divergence": {
+    "production_only_commits": 10,
+    "candidate_only_commits": 95
+  },
+  "protected_pathspecs": [
+    "app/api/harvey",
+    "app/api/harvey-private-access",
+    "app/harvey",
+    "app/harvey-access"
+  ],
+  "missing_path_count": 37,
+  "missing_path_inventory_sha256_lf": "3b746a15ed0beaebb375d08152cda25b6ed2bb2c4633cd5850d707403a4bdc46",
+  "missing_paths": [
+    "app/api/harvey/commands/route.ts",
+    "app/api/harvey/handeye-pairing/route.ts",
+    "app/api/harvey/knock/route.ts",
+    "app/api/harvey/machines/route.ts",
+    "app/api/harvey/password-incident/route.ts",
+    "app/api/harvey/relay/claim/route.ts",
+    "app/api/harvey/relay/receipt/route.ts",
+    "app/api/harvey/relay-events/route.ts",
+    "app/api/harvey/snapshot/route.ts",
+    "app/api/harvey/synapse/route.ts",
+    "app/api/harvey/task-bridge/route.ts",
+    "app/api/harvey/witness/route.ts",
+    "app/api/harvey/work-orders/route.ts",
+    "app/api/harvey-private-access/login/route.ts",
+    "app/api/harvey-private-access/logout/route.ts",
+    "app/harvey/HarveyAeyeMonitorWall.tsx",
+    "app/harvey/HarveyCommandDeck.tsx",
+    "app/harvey/HarveyFleetControls.tsx",
+    "app/harvey/HarveyHandeyePairing.tsx",
+    "app/harvey/HarveyLiveCockpit.tsx",
+    "app/harvey/HarveyLiveControlSurface.tsx",
+    "app/harvey/HarveyMachineControls.tsx",
+    "app/harvey/HarveyOperationStatus.tsx",
+    "app/harvey/HarveyPasswordIncident.tsx",
+    "app/harvey/HarveyRelayWall.tsx",
+    "app/harvey/HarveySallyWitness.tsx",
+    "app/harvey/HarveySshOnboarding.tsx",
+    "app/harvey/HarveyStationIdentity.tsx",
+    "app/harvey/HarveySynapse.tsx",
+    "app/harvey/HarveyTaskBridge.tsx",
+    "app/harvey/HarveyWatchtowerBrief.tsx",
+    "app/harvey/HarveyWorkboard.tsx",
+    "app/harvey/layout.tsx",
+    "app/harvey/operator-bridge.ts",
+    "app/harvey/page.tsx",
+    "app/harvey-access/HarveyPrivateLoginForm.tsx",
+    "app/harvey-access/page.tsx"
+  ],
+  "authorized_removals": [],
+  "decision": {
+    "state": "UNRESOLVED",
+    "default": "PRESERVE_HARVEY",
+    "allowed_resolutions": [
+      "INTEGRATE_ALL_PROTECTED_PATHS",
+      "RELOCATE_TO_PROVEN_PRIVATE_ORIGIN",
+      "EXPLICIT_REPLACEMENT_HUMAN_GATE"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "werkles.vpg45-ender-current-release-custody-attestation/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-221246-ET-BETSY-01",
+  "legacy_label": "VPG45",
+  "seat": "Ender@Betsy",
+  "execution_context": "CODEX_LOCAL on local BETSY Windows",
+  "network_or_provider_contact": false,
+  "source": {
+    "branch": "codex/werkles-vpg31-20260721",
+    "head_sha": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "upstream_sha": "67c38ace103ba5f1ba473b984c91e243d9120630"
+  },
+  "observed_at_proof": {
+    "tracked_dirty_count": 20,
+    "untracked_count": 78,
+    "staged_count": 0,
+    "cycle_ledger_row_present": false,
+    "cycle_approval_row_count": 1,
+    "production_release_approval_row_count": 0,
+    "current_cycle_j_receipt_count": 0,
+    "snapshot_digest": "85c74529a466985dd8240d7c6ff40429f279c08689d5c940438067144e5c25f8"
+  },
+  "requested_release": {
+    "candidate_deployment_id": "dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd",
+    "production_deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "rollback_deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "aliases": [
+      "werkles.com"
+    ],
+    "harvey_mode": null
+  },
+  "reason_codes": [
+    "DIRTY_WORKTREE",
+    "UNTRACKED_EVIDENCE",
+    "RELEASE_INTEGRITY_NOT_PASS",
+    "CYCLE_INCOMPLETE",
+    "J_RECEIPT_MISSING",
+    "APPROVAL_RECORD_NOT_AUTHORITATIVE",
+    "HARVEY_DISPOSITION_UNRESOLVED",
+    "HARVEY_AUTHORITY_MISSING",
+    "HARVEY_BINDING_MISMATCH"
+  ],
+  "result": "STOP"
+}

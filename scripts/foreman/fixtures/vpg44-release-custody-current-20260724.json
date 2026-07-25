@@ -1,0 +1,60 @@
+{
+  "schema": "werkles.vpg44-release-custody-current/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+  "legacy_label": "VPG44",
+  "machine": "BETSY",
+  "execution_context": "CODEX_LOCAL on local BETSY Windows",
+  "repository": "benleakwerkles/Werkles",
+  "repo_path": "C:\\w8",
+  "candidate": {
+    "branch": "codex/werkles-vpg31-20260721",
+    "head": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "upstream": "origin/codex/werkles-vpg31-20260721",
+    "upstream_head": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "deployment_id": "dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd",
+    "deployment_source": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "target": "preview",
+    "access": "VERCEL_SSO_PROTECTED"
+  },
+  "main": {
+    "ref": "origin/main",
+    "head": "294f98396b122b413275a3f8c45524987de284fe",
+    "main_only_commits": 0,
+    "candidate_only_commits": 95
+  },
+  "production": {
+    "commit": "3998101aed1835e7478a83cc44bd823502676648",
+    "branch": "codex/harvey-cloud-relay-20260717",
+    "deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "primary_alias": "werkles.com"
+  },
+  "candidate_production_graph": {
+    "merge_base": "294f98396b122b413275a3f8c45524987de284fe",
+    "production_only_commits": 10,
+    "candidate_only_commits": 95
+  },
+  "dependency_patch": {
+    "manifest_path": "package.json",
+    "lock_path": "package-lock.json",
+    "committed_next_range": "^15.3.2",
+    "working_next_range": "^15.5.21",
+    "must_be_committed": false,
+    "must_be_in_bound_preview": false
+  },
+  "harvey": {
+    "fixture_path": "scripts/foreman/fixtures/vpg43-harvey-public-coexistence-current-20260724.json",
+    "guard_path": "scripts/foreman/harvey-public-coexistence-guard-vpg43-20260724.mjs",
+    "decision_contract_path": "foreman/receipts/WERKLES_VPG43_HARVEY_COEXISTENCE_DECISION_CONTRACT_20260724.json",
+    "protected_path_count": 37,
+    "inventory_sha256_lf": "3b746a15ed0beaebb375d08152cda25b6ed2bb2c4633cd5850d707403a4bdc46",
+    "expected_decision_state": "UNRESOLVED",
+    "rollback_is_coexistence": false
+  },
+  "gate": {
+    "path": "foreman/reviews/GATE-werkles-vpg42-public-test-cutover-20260724.md",
+    "required_status": "BLOCKED_TECHNICAL_PRECONDITIONS",
+    "promotion_manifest_path": "foreman/receipts/WERKLES_VPG42_PROMOTION_CANDIDATE_MANIFEST_20260724.json",
+    "required_promotion_eligible": false
+  },
+  "expected_verdict": "STOP_UNCOMMITTED_CANDIDATE_AND_UNRESOLVED_HARVEY"
+}

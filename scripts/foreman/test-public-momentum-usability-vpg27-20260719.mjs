@@ -27,7 +27,7 @@ assert.match(signedOutDoorway, /href="\/login\?next=%2Fbellows%2Frecommendations
 
 const recommendationFirst = profile.slice(
   profile.indexOf("{isRecommendationJourney ? ("),
-  profile.indexOf('This form saves details to your signed-in account.')
+  profile.indexOf("<RecommendationOptionalProfileTail")
 );
 const basicsIndex = recommendationFirst.indexOf("{recommendationBaseFields}");
 const goalIndex = recommendationFirst.indexOf("{primaryGoalField}");

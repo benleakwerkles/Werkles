@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function BetaSignupDoorway() {
   return (
-    <div className="beta-form" aria-label="Public testing doorway">
+    <section className="beta-form" aria-label="Public testing doorway">
       <p className="status-line">
         Public testing is open. This page does not collect your email; account details are handled through the
         account doorway.
@@ -15,6 +15,6 @@ export default function BetaSignupDoorway() {
           See the recommendation example
         </Link>
       </div>
-    </div>
+    </section>
   );
 }

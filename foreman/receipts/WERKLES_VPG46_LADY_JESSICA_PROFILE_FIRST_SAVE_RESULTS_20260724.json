@@ -1,0 +1,2521 @@
+{
+  "schema": "werkles.vpg46-lady-jessica-profile-first-save/v1",
+  "origin": "http://127.0.0.1:31247",
+  "expectedPid": 43228,
+  "buildId": "QnbNuizMNiQunIha-bZQ7",
+  "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+  "browser": "Microsoft Edge headless via Playwright",
+  "ideas": [
+    {
+      "idea": 1,
+      "name": "Mocked signed-in first-save and reload truth",
+      "cases": [
+        {
+          "name": "desktop-ordinary-first-save-reload",
+          "assertions": [
+            {
+              "label": "Profile Builder route returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "privacy notice precedes first collected field",
+              "passed": true
+            },
+            {
+              "label": "state picker has 56 choices plus placeholder",
+              "passed": true
+            },
+            {
+              "label": "lane picker has exactly five stable choices",
+              "passed": true
+            },
+            {
+              "label": "visibility picker has exactly three human choices",
+              "passed": true
+            },
+            {
+              "label": "Primary Goal exposes suggestions and custom input",
+              "passed": true
+            },
+            {
+              "label": "account email is distinct and read-only",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "preferred contact email is independently editable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "territory choice is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "stable broad lane is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "visibility is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "Primary Goal accepts custom text",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "completed first-save form is natively valid",
+              "passed": true,
+              "evidence": {
+                "valid": true,
+                "invalid": [],
+                "activeName": "blueprint_narrative"
+              }
+            },
+            {
+              "label": "ordinary route reports one successful save",
+              "passed": true
+            },
+            {
+              "label": "first save performs exactly one upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "save row is bound to synthetic auth user",
+              "passed": true,
+              "evidence": "46000000-0000-4000-8000-000000000046"
+            },
+            {
+              "label": "save row uses only the established profile schema",
+              "passed": true,
+              "evidence": [
+                "blueprint_narrative",
+                "current_employer",
+                "display_name",
+                "email",
+                "first_name",
+                "id",
+                "industry_tags",
+                "lane",
+                "last_name",
+                "location_city",
+                "location_state",
+                "past_roles",
+                "phone",
+                "primary_goal",
+                "profile_depth",
+                "show_employer",
+                "skills_offered",
+                "skills_sought",
+                "timeline_to_launch",
+                "turf_zip",
+                "visibility_mode",
+                "work_preference"
+              ]
+            },
+            {
+              "label": "preferred contact email does not overwrite account identity",
+              "passed": true,
+              "evidence": "contact@vpg46.invalid"
+            },
+            {
+              "label": "requested values are canonical in the write",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "contact@vpg46.invalid",
+                "display_name": "VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "San Juan",
+                "location_state": "PR",
+                "lane": "Connector",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [
+                  "books",
+                  "permits"
+                ],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Build a durable worker-owned repair shop",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": "A repair shop needs a steady operating partner.",
+                "visibility_mode": "alias",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "phone stays null without explicit consent",
+              "passed": true,
+              "evidence": null
+            },
+            {
+              "label": "reload preserves account and preferred contact emails",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves human-readable territory",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves broad lane label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves visibility label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves custom Primary Goal",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload causes no additional upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.3336251903384060.552153798048424",
+                    "length": 39
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.3336251903384060.552153798048424"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "desktop-recommendation-short-first-save-reload",
+          "assertions": [
+            {
+              "label": "Profile Builder route returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "privacy notice precedes first collected field",
+              "passed": true
+            },
+            {
+              "label": "state picker has 56 choices plus placeholder",
+              "passed": true
+            },
+            {
+              "label": "lane picker has exactly five stable choices",
+              "passed": true
+            },
+            {
+              "label": "visibility picker has exactly three human choices",
+              "passed": true
+            },
+            {
+              "label": "Primary Goal exposes suggestions and custom input",
+              "passed": true
+            },
+            {
+              "label": "account email is distinct and read-only",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "preferred contact email is independently editable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "territory choice is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "stable broad lane is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "visibility is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "Primary Goal accepts custom text",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "completed first-save form is natively valid",
+              "passed": true,
+              "evidence": {
+                "valid": true,
+                "invalid": [],
+                "activeName": "blueprint_narrative"
+              }
+            },
+            {
+              "label": "short route returns only to the allowlisted recommendation page",
+              "passed": true
+            },
+            {
+              "label": "first save performs exactly one upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "save row is bound to synthetic auth user",
+              "passed": true,
+              "evidence": "46000000-0000-4000-8000-000000000046"
+            },
+            {
+              "label": "save row uses only the established profile schema",
+              "passed": true,
+              "evidence": [
+                "blueprint_narrative",
+                "current_employer",
+                "display_name",
+                "email",
+                "first_name",
+                "id",
+                "industry_tags",
+                "lane",
+                "last_name",
+                "location_city",
+                "location_state",
+                "past_roles",
+                "phone",
+                "primary_goal",
+                "profile_depth",
+                "show_employer",
+                "skills_offered",
+                "skills_sought",
+                "timeline_to_launch",
+                "turf_zip",
+                "visibility_mode",
+                "work_preference"
+              ]
+            },
+            {
+              "label": "preferred contact email does not overwrite account identity",
+              "passed": true,
+              "evidence": "contact@vpg46.invalid"
+            },
+            {
+              "label": "requested values are canonical in the write",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "contact@vpg46.invalid",
+                "display_name": "VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "San Juan",
+                "location_state": "PR",
+                "lane": "Connector",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [
+                  "books",
+                  "permits"
+                ],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Build a durable worker-owned repair shop",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": "A repair shop needs a steady operating partner.",
+                "visibility_mode": "alias",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "phone stays null without explicit consent",
+              "passed": true,
+              "evidence": null
+            },
+            {
+              "label": "reload preserves account and preferred contact emails",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves human-readable territory",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves broad lane label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves visibility label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves custom Primary Goal",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload causes no additional upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": false,
+              "evidence": [
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31247/_next/static/chunks/app/dashboard/profile/page-50cc2b5689bd2339.js",
+                  "error": "net::ERR_ABORTED",
+                  "expected": false
+                }
+              ]
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.64340653751039510.24012549456764676",
+                    "length": 42
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.64340653751039510.24012549456764676"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": [
+            "no unexpected failed request"
+          ]
+        },
+        {
+          "name": "mobile-ordinary-first-save-reload",
+          "assertions": [
+            {
+              "label": "Profile Builder route returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "privacy notice precedes first collected field",
+              "passed": true
+            },
+            {
+              "label": "state picker has 56 choices plus placeholder",
+              "passed": true
+            },
+            {
+              "label": "lane picker has exactly five stable choices",
+              "passed": true
+            },
+            {
+              "label": "visibility picker has exactly three human choices",
+              "passed": true
+            },
+            {
+              "label": "Primary Goal exposes suggestions and custom input",
+              "passed": true
+            },
+            {
+              "label": "account email is distinct and read-only",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "preferred contact email is independently editable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "territory choice is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "stable broad lane is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "visibility is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "Primary Goal accepts custom text",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "completed first-save form is natively valid",
+              "passed": true,
+              "evidence": {
+                "valid": true,
+                "invalid": [],
+                "activeName": "blueprint_narrative"
+              }
+            },
+            {
+              "label": "ordinary route reports one successful save",
+              "passed": true
+            },
+            {
+              "label": "first save performs exactly one upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "save row is bound to synthetic auth user",
+              "passed": true,
+              "evidence": "46000000-0000-4000-8000-000000000046"
+            },
+            {
+              "label": "save row uses only the established profile schema",
+              "passed": true,
+              "evidence": [
+                "blueprint_narrative",
+                "current_employer",
+                "display_name",
+                "email",
+                "first_name",
+                "id",
+                "industry_tags",
+                "lane",
+                "last_name",
+                "location_city",
+                "location_state",
+                "past_roles",
+                "phone",
+                "primary_goal",
+                "profile_depth",
+                "show_employer",
+                "skills_offered",
+                "skills_sought",
+                "timeline_to_launch",
+                "turf_zip",
+                "visibility_mode",
+                "work_preference"
+              ]
+            },
+            {
+              "label": "preferred contact email does not overwrite account identity",
+              "passed": true,
+              "evidence": "contact@vpg46.invalid"
+            },
+            {
+              "label": "requested values are canonical in the write",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "contact@vpg46.invalid",
+                "display_name": "VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "San Juan",
+                "location_state": "PR",
+                "lane": "Connector",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [
+                  "books",
+                  "permits"
+                ],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Build a durable worker-owned repair shop",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": "A repair shop needs a steady operating partner.",
+                "visibility_mode": "alias",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "phone stays null without explicit consent",
+              "passed": true,
+              "evidence": null
+            },
+            {
+              "label": "reload preserves account and preferred contact emails",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves human-readable territory",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves broad lane label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves visibility label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves custom Primary Goal",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload causes no additional upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.84477068540592480.7244768869528125",
+                    "length": 41
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.84477068540592480.7244768869528125"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "mobile-recommendation-short-first-save-reload",
+          "assertions": [
+            {
+              "label": "Profile Builder route returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "privacy notice precedes first collected field",
+              "passed": true
+            },
+            {
+              "label": "state picker has 56 choices plus placeholder",
+              "passed": true
+            },
+            {
+              "label": "lane picker has exactly five stable choices",
+              "passed": true
+            },
+            {
+              "label": "visibility picker has exactly three human choices",
+              "passed": true
+            },
+            {
+              "label": "Primary Goal exposes suggestions and custom input",
+              "passed": true
+            },
+            {
+              "label": "account email is distinct and read-only",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "preferred contact email is independently editable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "territory choice is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "stable broad lane is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "visibility is human-readable",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "Primary Goal accepts custom text",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "completed first-save form is natively valid",
+              "passed": true,
+              "evidence": {
+                "valid": true,
+                "invalid": [],
+                "activeName": "blueprint_narrative"
+              }
+            },
+            {
+              "label": "short route returns only to the allowlisted recommendation page",
+              "passed": true
+            },
+            {
+              "label": "first save performs exactly one upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "save row is bound to synthetic auth user",
+              "passed": true,
+              "evidence": "46000000-0000-4000-8000-000000000046"
+            },
+            {
+              "label": "save row uses only the established profile schema",
+              "passed": true,
+              "evidence": [
+                "blueprint_narrative",
+                "current_employer",
+                "display_name",
+                "email",
+                "first_name",
+                "id",
+                "industry_tags",
+                "lane",
+                "last_name",
+                "location_city",
+                "location_state",
+                "past_roles",
+                "phone",
+                "primary_goal",
+                "profile_depth",
+                "show_employer",
+                "skills_offered",
+                "skills_sought",
+                "timeline_to_launch",
+                "turf_zip",
+                "visibility_mode",
+                "work_preference"
+              ]
+            },
+            {
+              "label": "preferred contact email does not overwrite account identity",
+              "passed": true,
+              "evidence": "contact@vpg46.invalid"
+            },
+            {
+              "label": "requested values are canonical in the write",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "contact@vpg46.invalid",
+                "display_name": "VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "San Juan",
+                "location_state": "PR",
+                "lane": "Connector",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [
+                  "books",
+                  "permits"
+                ],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Build a durable worker-owned repair shop",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": "A repair shop needs a steady operating partner.",
+                "visibility_mode": "alias",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "phone stays null without explicit consent",
+              "passed": true,
+              "evidence": null
+            },
+            {
+              "label": "reload preserves account and preferred contact emails",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves human-readable territory",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves broad lane label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves visibility label",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload preserves custom Primary Goal",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "reload causes no additional upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.103906234204530820.1336064126377553",
+                    "length": 42
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.103906234204530820.1336064126377553"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        }
+      ],
+      "caseCount": 4,
+      "assertionCount": 132,
+      "failureCount": 1
+    },
+    {
+      "idea": 2,
+      "name": "Failure, retry, duplicate-submit, auth-loss, and legacy-value custody",
+      "cases": [
+        {
+          "name": "desktop-validation-failure-retry-double-submit",
+          "assertions": [
+            {
+              "label": "required-field validation causes zero write",
+              "passed": true,
+              "evidence": 0
+            },
+            {
+              "label": "required-field validation focuses display name",
+              "passed": true
+            },
+            {
+              "label": "first mocked failure performs one attempted upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "failure does not redirect",
+              "passed": true,
+              "evidence": "http://127.0.0.1:31247/dashboard/profile"
+            },
+            {
+              "label": "failure preserves every requested value",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "rapid repeat activation creates only one retry upsert",
+              "passed": true,
+              "evidence": 2
+            },
+            {
+              "label": "successful retry persists the same values",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "contact@vpg46.invalid",
+                "display_name": "VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "San Juan",
+                "location_state": "PR",
+                "lane": "Connector",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [
+                  "books",
+                  "permits"
+                ],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Build a durable worker-owned repair shop",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": "A repair shop needs a steady operating partner.",
+                "visibility_mode": "alias",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "retry result survives reload",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": [
+                "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+              ]
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                },
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.40031239604516910.3054275751409571",
+                    "length": 41
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.40031239604516910.3054275751409571"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "desktop-auth-loss-zero-write",
+          "assertions": [
+            {
+              "label": "auth loss performs zero profile upsert",
+              "passed": true,
+              "evidence": 0
+            },
+            {
+              "label": "auth loss reports signed-out state",
+              "passed": true
+            },
+            {
+              "label": "auth loss does not redirect outside Profile Builder",
+              "passed": true
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": [
+                "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+              ]
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.78832045295095480.6967126804916004",
+                    "length": 41
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.78832045295095480.6967126804916004"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "desktop-legacy-state-unknown-enum-custody",
+          "assertions": [
+            {
+              "label": "legacy full-name state hydrates to canonical code",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "",
+                "laneLabel": "Choose a supported lane; the saved value needs review",
+                "visibility": "",
+                "visibilityLabel": "Choose a visibility setting; the saved value needs review",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "unknown lane does not silently become a valid lane",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "",
+                "laneLabel": "Choose a supported lane; the saved value needs review",
+                "visibility": "",
+                "visibilityLabel": "Choose a visibility setting; the saved value needs review",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "unknown visibility does not silently become a valid visibility",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "",
+                "laneLabel": "Choose a supported lane; the saved value needs review",
+                "visibility": "",
+                "visibilityLabel": "Choose a visibility setting; the saved value needs review",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "unknown saved values expose explicit review choices",
+              "passed": true,
+              "evidence": {
+                "lane": "",
+                "visibility": "",
+                "formText": "This form saves details to your signed-in account. Read the Public Test Data Notice before adding anything you do not want in your profile.\n\nDisplay name\nFirst name\nLast name\nAccount email\nUsed to sign in. Your preferred contact email can be different.\nPreferred contact email (optional)\nUse another inbox for Werkles contact. This is not shown on your public profile.\nPhone\nI consent to phone checks for account security when that feature is live.\nCity\nState or territory\nChoose a state or territory\nAlabama (AL)\nAlaska (AK)\nArizona (AZ)\nArkansas (AR)\nCalifornia (CA)\nColorado (CO)\nConnecticut (CT)\nDelaware (DE)\nDistrict of Columbia (DC)\nFlorida (FL)\nGeorgia (GA)\nHawaii (HI)\nIdaho (ID)\nIllinois (IL)\nIndiana (IN)\nIowa (IA)\nKansas (KS)\nKentucky (KY)\nLouisiana (LA)\nMaine (ME)\nMaryland (MD)\nMassachusetts (MA)\nMichigan (MI)\nMinnesota (MN)\nMississippi (MS)\nMissouri (MO)\nMontana (MT)\nNebraska (NE)\nNevada (NV)\nNew Hampshire (NH)\nNew Jersey (NJ)\nNew Mexico (NM)\nNew York (NY)\nNorth Carolina (NC)\nNorth Dakota (ND)\nOhio (OH)\nOklahoma (OK)\nOregon (OR)\nPennsylvania (PA)\nRhode Island (RI)\nSouth Carolina (SC)\nSouth Dakota (SD)\nTennessee (TN)\nTexas (TX)\nUtah (UT)\nVermont (VT)\nVirginia (VA)\nWashington (WA)\nWest Virginia (WV)\nWisconsin (WI)\nWyoming (WY)\nAmerican Samoa (AS)\nGuam (GU)\nNorthern Mariana Islands (MP)\nPuerto Rico (PR)\nU.S. Virgin Islands (VI)\nTurf ZIP\nLane (broad role)\nChoose a supported lane; the saved value needs review\nBuilder — owns or builds the thing\nOperator — turns plans into repeatable work\nBacker — supplies capital or financial muscle\nConnector — knows who or what is missing\nSpark — brings the opening, idea, or unusual edge\nLanes route matching; they are not job titles. Put your specific niche in skills and your blueprint.\nWork preference\nLocal Only\nRemote Only\nOpen to Travel\nWilling to Relocate\nCurrent employer\nShow employer on public profile\nVisibility\nChoose a visibility setting; the saved value needs review\nFull name\nFirst name only\nDisplay name or alias\nProfile depth\nQuick Weld\nFull Audit\nBlueprint\nTimeline\nPrimary goal\nPick a suggestion or write a goal in your own words.\nSkills offered\nSkills sought\nIndustry tags\nBlueprint narrative\nSave profile\nSee my private recommendation\n\nYour profile has enough detail for a private recommendation.\n\nProfile loaded."
+              }
+            },
+            {
+              "label": "unreviewed unknown values cause zero write",
+              "passed": true,
+              "evidence": 0
+            },
+            {
+              "label": "unknown enum review focuses a required picker",
+              "passed": true
+            },
+            {
+              "label": "explicit review performs one upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "reviewed write canonicalizes state and chosen enums",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "account@vpg46.invalid",
+                "display_name": "Legacy VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "Atlanta",
+                "location_state": "GA",
+                "lane": "Operator",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Keep a local shop healthy",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": null,
+                "visibility_mode": "first_name_only",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "reviewed legacy values survive reload",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "Operator",
+                "laneLabel": "Operator — turns plans into repeatable work",
+                "visibility": "first_name_only",
+                "visibilityLabel": "First name only",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.108352021240034620.24002890199774485",
+                    "length": 43
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.108352021240034620.24002890199774485"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "mobile-validation-failure-retry-double-submit",
+          "assertions": [
+            {
+              "label": "required-field validation causes zero write",
+              "passed": true,
+              "evidence": 0
+            },
+            {
+              "label": "required-field validation focuses display name",
+              "passed": true
+            },
+            {
+              "label": "first mocked failure performs one attempted upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "failure does not redirect",
+              "passed": true,
+              "evidence": "http://127.0.0.1:31247/dashboard/profile"
+            },
+            {
+              "label": "failure preserves every requested value",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "rapid repeat activation creates only one retry upsert",
+              "passed": true,
+              "evidence": 2
+            },
+            {
+              "label": "successful retry persists the same values",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "contact@vpg46.invalid",
+                "display_name": "VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "San Juan",
+                "location_state": "PR",
+                "lane": "Connector",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [
+                  "books",
+                  "permits"
+                ],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Build a durable worker-owned repair shop",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": "A repair shop needs a steady operating partner.",
+                "visibility_mode": "alias",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "retry result survives reload",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "contact@vpg46.invalid",
+                "displayName": "VPG46 Tester",
+                "city": "San Juan",
+                "state": "PR",
+                "stateLabel": "Puerto Rico (PR)",
+                "lane": "Connector",
+                "laneLabel": "Connector — knows who or what is missing",
+                "visibility": "alias",
+                "visibilityLabel": "Display name or alias",
+                "primaryGoal": "Build a durable worker-owned repair shop"
+              }
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": [
+                "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+              ]
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                },
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.083707573492509460.20579388986466318",
+                    "length": 43
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.083707573492509460.20579388986466318"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "mobile-auth-loss-zero-write",
+          "assertions": [
+            {
+              "label": "auth loss performs zero profile upsert",
+              "passed": true,
+              "evidence": 0
+            },
+            {
+              "label": "auth loss reports signed-out state",
+              "passed": true
+            },
+            {
+              "label": "auth loss does not redirect outside Profile Builder",
+              "passed": true
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": [
+                "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+              ]
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.35536721384298610.37769488425971787",
+                    "length": 42
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.35536721384298610.37769488425971787"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "name": "mobile-legacy-state-unknown-enum-custody",
+          "assertions": [
+            {
+              "label": "legacy full-name state hydrates to canonical code",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "",
+                "laneLabel": "Choose a supported lane; the saved value needs review",
+                "visibility": "",
+                "visibilityLabel": "Choose a visibility setting; the saved value needs review",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "unknown lane does not silently become a valid lane",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "",
+                "laneLabel": "Choose a supported lane; the saved value needs review",
+                "visibility": "",
+                "visibilityLabel": "Choose a visibility setting; the saved value needs review",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "unknown visibility does not silently become a valid visibility",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "",
+                "laneLabel": "Choose a supported lane; the saved value needs review",
+                "visibility": "",
+                "visibilityLabel": "Choose a visibility setting; the saved value needs review",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "unknown saved values expose explicit review choices",
+              "passed": true,
+              "evidence": {
+                "lane": "",
+                "visibility": "",
+                "formText": "This form saves details to your signed-in account. Read the Public Test Data Notice before adding anything you do not want in your profile.\n\nDisplay name\nFirst name\nLast name\nAccount email\nUsed to sign in. Your preferred contact email can be different.\nPreferred contact email (optional)\nUse another inbox for Werkles contact. This is not shown on your public profile.\nPhone\nI consent to phone checks for account security when that feature is live.\nCity\nState or territory\nChoose a state or territory\nAlabama (AL)\nAlaska (AK)\nArizona (AZ)\nArkansas (AR)\nCalifornia (CA)\nColorado (CO)\nConnecticut (CT)\nDelaware (DE)\nDistrict of Columbia (DC)\nFlorida (FL)\nGeorgia (GA)\nHawaii (HI)\nIdaho (ID)\nIllinois (IL)\nIndiana (IN)\nIowa (IA)\nKansas (KS)\nKentucky (KY)\nLouisiana (LA)\nMaine (ME)\nMaryland (MD)\nMassachusetts (MA)\nMichigan (MI)\nMinnesota (MN)\nMississippi (MS)\nMissouri (MO)\nMontana (MT)\nNebraska (NE)\nNevada (NV)\nNew Hampshire (NH)\nNew Jersey (NJ)\nNew Mexico (NM)\nNew York (NY)\nNorth Carolina (NC)\nNorth Dakota (ND)\nOhio (OH)\nOklahoma (OK)\nOregon (OR)\nPennsylvania (PA)\nRhode Island (RI)\nSouth Carolina (SC)\nSouth Dakota (SD)\nTennessee (TN)\nTexas (TX)\nUtah (UT)\nVermont (VT)\nVirginia (VA)\nWashington (WA)\nWest Virginia (WV)\nWisconsin (WI)\nWyoming (WY)\nAmerican Samoa (AS)\nGuam (GU)\nNorthern Mariana Islands (MP)\nPuerto Rico (PR)\nU.S. Virgin Islands (VI)\nTurf ZIP\nLane (broad role)\nChoose a supported lane; the saved value needs review\nBuilder — owns or builds the thing\nOperator — turns plans into repeatable work\nBacker — supplies capital or financial muscle\nConnector — knows who or what is missing\nSpark — brings the opening, idea, or unusual edge\nLanes route matching; they are not job titles. Put your specific niche in skills and your blueprint.\nWork preference\nLocal Only\nRemote Only\nOpen to Travel\nWilling to Relocate\nCurrent employer\nShow employer on public profile\nVisibility\nChoose a visibility setting; the saved value needs review\nFull name\nFirst name only\nDisplay name or alias\nProfile depth\nQuick Weld\nFull Audit\nBlueprint\nTimeline\nPrimary goal\nPick a suggestion or write a goal in your own words.\nSkills offered\nSkills sought\nIndustry tags\nBlueprint narrative\nSave profile\nSee my private recommendation\n\nYour profile has enough detail for a private recommendation.\n\nProfile loaded."
+              }
+            },
+            {
+              "label": "unreviewed unknown values cause zero write",
+              "passed": true,
+              "evidence": 0
+            },
+            {
+              "label": "unknown enum review focuses a required picker",
+              "passed": true
+            },
+            {
+              "label": "explicit review performs one upsert",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "reviewed write canonicalizes state and chosen enums",
+              "passed": true,
+              "evidence": {
+                "id": "46000000-0000-4000-8000-000000000046",
+                "email": "account@vpg46.invalid",
+                "display_name": "Legacy VPG46 Tester",
+                "first_name": null,
+                "last_name": null,
+                "location_city": "Atlanta",
+                "location_state": "GA",
+                "lane": "Operator",
+                "work_preference": "Local Only",
+                "current_employer": null,
+                "phone": null,
+                "past_roles": [],
+                "skills_offered": [],
+                "skills_sought": [],
+                "industry_tags": [],
+                "timeline_to_launch": null,
+                "primary_goal": "Keep a local shop healthy",
+                "profile_depth": "quick_weld",
+                "turf_zip": null,
+                "blueprint_narrative": null,
+                "visibility_mode": "first_name_only",
+                "show_employer": false
+              }
+            },
+            {
+              "label": "reviewed legacy values survive reload",
+              "passed": true,
+              "evidence": {
+                "accountEmail": "account@vpg46.invalid",
+                "accountReadOnly": "",
+                "accountName": null,
+                "contactEmail": "",
+                "displayName": "Legacy VPG46 Tester",
+                "city": "Atlanta",
+                "state": "GA",
+                "stateLabel": "Georgia (GA)",
+                "lane": "Operator",
+                "laneLabel": "Operator — turns plans into repeatable work",
+                "visibility": "first_name_only",
+                "visibilityLabel": "First name only",
+                "primaryGoal": "Keep a local shop healthy"
+              }
+            },
+            {
+              "label": "mock received no unknown request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no live external request escaped interception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "no unexpected failed request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "only expected mocked profile writes occurred",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "POST",
+                  "url": "https://vpg46-local-only.supabase.co/rest/v1/profiles"
+                }
+              ]
+            },
+            {
+              "label": "browser storage contains only the synthetic auth fixture",
+              "passed": true,
+              "evidence": {
+                "localKeys": [
+                  "sb-vpg46-local-only-auth-token"
+                ],
+                "sessionKeys": [],
+                "authValuePresent": true,
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "sb-vpg46-local-only-auth-token",
+                    "length": 952
+                  },
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.68938428096995110.42912071281904385",
+                    "length": 42
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.68938428096995110.42912071281904385"
+                  }
+                ]
+              }
+            }
+          ],
+          "failures": []
+        }
+      ],
+      "caseCount": 6,
+      "assertionCount": 82,
+      "failureCount": 0
+    }
+  ],
+  "summary": {
+    "ideaCount": 2,
+    "viewportCount": 2,
+    "caseCount": 10,
+    "assertionCount": 214,
+    "failureCount": 1,
+    "verdict": "FAIL"
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "schema": "werkles.harvey-coexistence-decision-contract/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-153458-ET-BETSY-01",
+  "legacy_label": "VPG43",
+  "owner": "Thufir@Betsy",
+  "integration_owner": "Heimerdinker@Betsy",
+  "status": "DECISION_REQUIRED_FAIL_CLOSED",
+  "default_policy": "PRESERVE_HARVEY",
+  "selected_mode": null,
+  "operator_attestation": null,
+  "execution_authorized": false,
+  "source_evidence": {
+    "packet": "foreman/handoffs/outbox/TO_HEIMERDINKER_THUFIR_WERKLES_HARVEY_PUBLIC_SITE_COEXISTENCE_CONTRACT_VPG43_20260724.md",
+    "vpg40_receipt": "foreman/receipts/WERKLES_FULL_FLOCK_VPG40_20260723.md",
+    "vpg41_receipt": "foreman/receipts/WERKLES_FULL_FLOCK_VPG41_20260724.md",
+    "vpg42_manifest": "foreman/receipts/WERKLES_VPG42_PROMOTION_CANDIDATE_MANIFEST_20260724.json",
+    "vpg42_gate": "foreman/reviews/GATE-werkles-vpg42-public-test-cutover-20260724.md"
+  },
+  "candidate": {
+    "commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "branch": "codex/werkles-vpg31-20260721",
+    "deployment_id": "dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd",
+    "immutable_url": "https://werkles1-hxw3gmw0b-werkles.vercel.app",
+    "state": "READY",
+    "target": "preview",
+    "role": "VERCEL_SSO_PROTECTED_PREVIEW",
+    "aliases": [
+      "werkles1-git-codex-werkles-vpg31-20260721-werkles.vercel.app"
+    ]
+  },
+  "current_production": {
+    "commit": "3998101aed1835e7478a83cc44bd823502676648",
+    "branch": "codex/harvey-cloud-relay-20260717",
+    "deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "immutable_url": "https://werkles1-5l7giazkq-werkles.vercel.app",
+    "state": "READY",
+    "target": "production",
+    "primary_alias": "werkles.com",
+    "aliases": [
+      "werkles.com",
+      "werkles1.vercel.app",
+      "werkles1-werkles.vercel.app",
+      "werkles1-benleak-2090-werkles.vercel.app"
+    ]
+  },
+  "rollback": {
+    "deployment_id": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "commit": "3998101aed1835e7478a83cc44bd823502676648",
+    "immutable_url": "https://werkles1-5l7giazkq-werkles.vercel.app",
+    "purpose": "RECOVER_PRIOR_PRODUCTION_AFTER_FAILED_CUTOVER",
+    "is_coexistence": false,
+    "warning": "Rollback can restore Harvey after a failed cutover; it does not keep Harvey continuously available while the candidate owns werkles.com."
+  },
+  "commit_graph": {
+    "merge_base": "294f98396b122b413275a3f8c45524987de284fe",
+    "production_only_commits": 10,
+    "candidate_only_commits": 95,
+    "direct_selective_integration_conflicts": 17
+  },
+  "current_anonymous_route_boundary": [
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/dashboard/profile",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/bellows/recommendations",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/bellows/intake",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/api/bellows/recommendations/personal",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/harvey",
+      "status": 307,
+      "location": "https://werkles.com/harvey-access"
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/harvey-access",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/api/harvey/knock",
+      "status": 401,
+      "error": "HARVEY_PRIVATE_SESSION_REQUIRED"
+    },
+    {
+      "method": "GET",
+      "origin": "https://werkles.com",
+      "path": "/api/harvey/snapshot",
+      "status": 401
+    }
+  ],
+  "raw_candidate_cutover": {
+    "deleted_path_count": 229,
+    "deleted_harvey_app_api_path_count": 37,
+    "effect": "REPLACES_HARVEY_NOT_COEXISTENCE",
+    "harvey_loss_inventory": {
+      "api_path_count": 15,
+      "ui_operator_path_count": 22,
+      "canonical_serialization": "UTF-8 paths in listed order, joined by LF, with one trailing LF",
+      "sha256": "3b746a15ed0beaebb375d08152cda25b6ed2bb2c4633cd5850d707403a4bdc46",
+      "paths": [
+        "app/api/harvey-private-access/login/route.ts",
+        "app/api/harvey-private-access/logout/route.ts",
+        "app/api/harvey/commands/route.ts",
+        "app/api/harvey/handeye-pairing/route.ts",
+        "app/api/harvey/knock/route.ts",
+        "app/api/harvey/machines/route.ts",
+        "app/api/harvey/password-incident/route.ts",
+        "app/api/harvey/relay-events/route.ts",
+        "app/api/harvey/relay/claim/route.ts",
+        "app/api/harvey/relay/receipt/route.ts",
+        "app/api/harvey/snapshot/route.ts",
+        "app/api/harvey/synapse/route.ts",
+        "app/api/harvey/task-bridge/route.ts",
+        "app/api/harvey/witness/route.ts",
+        "app/api/harvey/work-orders/route.ts",
+        "app/harvey-access/HarveyPrivateLoginForm.tsx",
+        "app/harvey-access/page.tsx",
+        "app/harvey/HarveyAeyeMonitorWall.tsx",
+        "app/harvey/HarveyCommandDeck.tsx",
+        "app/harvey/HarveyFleetControls.tsx",
+        "app/harvey/HarveyHandeyePairing.tsx",
+        "app/harvey/HarveyLiveCockpit.tsx",
+        "app/harvey/HarveyLiveControlSurface.tsx",
+        "app/harvey/HarveyMachineControls.tsx",
+        "app/harvey/HarveyOperationStatus.tsx",
+        "app/harvey/HarveyPasswordIncident.tsx",
+        "app/harvey/HarveyRelayWall.tsx",
+        "app/harvey/HarveySallyWitness.tsx",
+        "app/harvey/HarveySshOnboarding.tsx",
+        "app/harvey/HarveyStationIdentity.tsx",
+        "app/harvey/HarveySynapse.tsx",
+        "app/harvey/HarveyTaskBridge.tsx",
+        "app/harvey/HarveyWatchtowerBrief.tsx",
+        "app/harvey/HarveyWorkboard.tsx",
+        "app/harvey/layout.tsx",
+        "app/harvey/operator-bridge.ts",
+        "app/harvey/page.tsx"
+      ]
+    }
+  },
+  "decision_modes": [
+    {
+      "id": "PRESERVE_RECONCILE",
+      "classification": "COEXISTENCE",
+      "decision_phrase": "CHOOSE WERKLES HARVEY COEXISTENCE - RECONCILE HARVEY INTO A NEW PUBLIC CANDIDATE",
+      "execution_authorized_by_phrase": false,
+      "requirements": [
+        "Build a new candidate that preserves all 37 listed Harvey app/API paths or an explicitly approved function-equivalent inventory.",
+        "Preserve the private-session boundary and verify Harvey anonymous redirects and 401 responses.",
+        "Patch the high-severity production dependencies and rebuild a READY protected Preview.",
+        "Re-run candidate, Harvey, public-route, privacy, cache, and rollback proof before opening a cutover gate."
+      ],
+      "current_eligibility": false
+    },
+    {
+      "id": "PRESERVE_RELOCATE",
+      "classification": "COEXISTENCE",
+      "decision_phrase": "CHOOSE WERKLES HARVEY COEXISTENCE - RELOCATE HARVEY TO A PROVEN PRIVATE ORIGIN",
+      "execution_authorized_by_phrase": false,
+      "requirements": [
+        "Create and name a separate private Harvey origin before moving any current Production alias.",
+        "Bind that origin to an exact READY deployment and prove the 37-path inventory, private-session boundary, and operator access.",
+        "Define independent Harvey rollback and public-site rollback targets and prove neither rollback depends on the other origin.",
+        "Patch the high-severity production dependencies and rebuild a READY protected public Preview before opening either release gate."
+      ],
+      "current_eligibility": false
+    },
+    {
+      "id": "REPLACE_HARVEY",
+      "classification": "REPLACEMENT_NOT_COEXISTENCE",
+      "decision_phrase": "APPROVE WERKLES VPG42 PUBLIC TEST CUTOVER - REPLACE HARVEY PRODUCTION",
+      "execution_authorized_by_phrase": false,
+      "requirements": [
+        "Explicitly acknowledge removal of the 37 listed Harvey app/API paths and interruption of the current private Harvey service.",
+        "Patch the high-severity production dependencies and rebuild a READY protected Preview.",
+        "Re-bind candidate, current Production, alias ownership, route matrix, and rollback immediately before opening the cutover gate.",
+        "Describe rollback only as recovery after failure, never as simultaneous Harvey preservation."
+      ],
+      "current_eligibility": false
+    }
+  ],
+  "global_stop_conditions": [
+    "selected_mode is null",
+    "operator_attestation does not exactly match the selected mode decision_phrase",
+    "selected mode requirements are not all freshly proven",
+    "candidate, current Production, alias, or rollback binding differs",
+    "the exact Harvey loss inventory differs",
+    "high-severity production dependency findings remain",
+    "release language describes replacement or rollback as coexistence",
+    "any product, route, auth, environment, alias, data, schema, provider, payment, or infrastructure change is attempted under this evidence-only contract"
+  ],
+  "verdict": "STOP_NO_COEXISTENCE_MODE_SELECTED",
+  "live_state_changed": false
+}

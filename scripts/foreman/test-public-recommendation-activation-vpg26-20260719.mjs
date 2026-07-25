@@ -23,7 +23,7 @@ assert.equal(
 assert.match(profile, /const \[isRecommendationJourney, setIsRecommendationJourney\] = useState\(false\)/);
 assert.match(profile, /setIsRecommendationJourney\(params\.get\("next"\) === "\/bellows\/recommendations"\)/);
 
-const profileForm = profile.slice(profile.indexOf('<form className="profile-grid"'), profile.indexOf("</form>"));
+const profileForm = profile.slice(profile.indexOf("<form"), profile.indexOf("</form>"));
 const recommendationFirst = profileForm.slice(
   profileForm.indexOf("{isRecommendationJourney ? ("),
   profileForm.indexOf("{!isRecommendationJourney ? displayNameField : null}")
@@ -53,14 +53,18 @@ const profileActions = profileForm.slice(profileForm.indexOf('<div className="pr
 assert.doesNotMatch(profileActions, /Save remaining profile details/);
 assert.match(profileForm, /<RecommendationOptionalProfileTail collapsed=\{isRecommendationJourney\}>/);
 assert.match(profile, /<summary>Add more profile details \(optional\)<\/summary>/);
-assert.match(profileActions, /<button className="button button-dark" type="submit">Save profile<\/button>/);
+assert.match(
+  profileActions,
+  /<button className="button button-dark" type="submit" disabled=\{isSaving\}>[\s\S]*Save profile/
+);
 assert.match(profileActions, /<Link className="button button-outline" href=\{recommendationReturnPath\}>/);
 
 assert.match(
   surface,
   /className="squibb-rec-surface__personal-custody" role="note" aria-label="Private recommendation"/
 );
-assert.match(surface, /<strong>Built from your saved profile\.<\/strong>/);
+assert.match(surface, /<strong>Fixed rules, private result\.<\/strong>/);
+assert.match(surface, /personalGeneration\?\.explanation/);
 assert.match(
   surface,
   /<h1>\{isPersonal \? "Your private recommendation" : "One possible next move, explained\."\}<\/h1>/

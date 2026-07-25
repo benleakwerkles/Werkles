@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const repoRoot = path.resolve(new URL("../../", import.meta.url).pathname.slice(1));
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const receiptPath = path.join(repoRoot, "foreman/receipts/WERKLES_INTERNAL_EXTERNAL_ROUTE_BOUNDARY_20260712.json");
 const before = readFileSync(receiptPath, "utf8");
 

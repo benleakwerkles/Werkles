@@ -23,13 +23,13 @@ export function ConfidenceMeter({ score, label, why, variant = "confidence", isE
     const band = ruleSupportBand(label);
 
     return (
-      <div className="squibb-confidence" aria-labelledby="squibbRulesScoreTitle">
+      <div className="squibb-confidence" role="group" aria-labelledby="squibbRulesScoreTitle">
         <div className="squibb-confidence__header">
           <h3 id="squibbRulesScoreTitle">Rules score</h3>
           <span className={`squibb-confidence__badge squibb-confidence__badge--${label}`}>
             Support band: {band}
           </span>
-          <span className="squibb-confidence__score" aria-label={`Rules score ${rulesScore} out of 100`}>
+          <span className="squibb-confidence__score">
             {rulesScore} out of 100
           </span>
         </div>
@@ -52,11 +52,11 @@ export function ConfidenceMeter({ score, label, why, variant = "confidence", isE
   }
 
   return (
-    <div className="squibb-confidence" aria-labelledby="squibbConfidenceTitle">
+    <div className="squibb-confidence" role="group" aria-labelledby="squibbConfidenceTitle">
       <div className="squibb-confidence__header">
         <h3 id="squibbConfidenceTitle">Confidence</h3>
         <span className={`squibb-confidence__badge squibb-confidence__badge--${label}`}>{label}</span>
-        <span className="squibb-confidence__score" aria-label={`Confidence score ${clamped} out of 100`}>
+        <span className="squibb-confidence__score">
           {clamped}%
         </span>
       </div>

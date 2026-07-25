@@ -1,0 +1,2144 @@
+{
+  "schema": "werkles.vpg44-ender-runtime-red-team/v1",
+  "origin": "http://127.0.0.1:31245",
+  "created_at": "2026-07-24T23:14:43.648Z",
+  "pass": true,
+  "inventory": {
+    "page_files": 69,
+    "api_files": 115,
+    "total_routes": 184,
+    "page_reads": 69,
+    "safe_api_reads": 2,
+    "classified_api_not_read": 113,
+    "closed_boundary_probes": 3,
+    "total_http_requests": 74
+  },
+  "api_classification": [
+    {
+      "file": "app/api/auth-first/dev-preview-login/route.ts",
+      "route": "/api/auth-first/dev-preview-login",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/auth-first/logout/route.ts",
+      "route": "/api/auth-first/logout",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/bellows/intake/route.ts",
+      "route": "/api/bellows/intake",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/bellows/recommendations/packet/route.ts",
+      "route": "/api/bellows/recommendations/packet",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/bellows/recommendations/personal/route.ts",
+      "route": "/api/bellows/recommendations/personal",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/beta/route.ts",
+      "route": "/api/beta",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/billing/portal/route.ts",
+      "route": "/api/billing/portal",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/cron/ttl/route.ts",
+      "route": "/api/cron/ttl",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/discovery/intake/route.ts",
+      "route": "/api/discovery/intake",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/goop-cycle/cycle/route.ts",
+      "route": "/api/goop-cycle/cycle",
+      "methods": [
+        "GET"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/goop-cycle/duel/route.ts",
+      "route": "/api/goop-cycle/duel",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/goop-cycle/fusion/route.ts",
+      "route": "/api/goop-cycle/fusion",
+      "methods": [
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/intros/route.ts",
+      "route": "/api/intros",
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/matches/route.ts",
+      "route": "/api/matches",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/membership/checkout/route.ts",
+      "route": "/api/membership/checkout",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/actions/route.ts",
+      "route": "/api/nerdkle/actions",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/assemble/route.ts",
+      "route": "/api/nerdkle/assemble",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/brief/route.ts",
+      "route": "/api/nerdkle/brief",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/detail/route.ts",
+      "route": "/api/nerdkle/detail",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/duplicates/route.ts",
+      "route": "/api/nerdkle/duplicates",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/events/route.ts",
+      "route": "/api/nerdkle/events",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/gates/route.ts",
+      "route": "/api/nerdkle/gates",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/lineage/route.ts",
+      "route": "/api/nerdkle/lineage",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/objects/route.ts",
+      "route": "/api/nerdkle/objects",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/owners/route.ts",
+      "route": "/api/nerdkle/owners",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/packet/route.ts",
+      "route": "/api/nerdkle/packet",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/plan/route.ts",
+      "route": "/api/nerdkle/plan",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/preview/route.ts",
+      "route": "/api/nerdkle/preview",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/quality/route.ts",
+      "route": "/api/nerdkle/quality",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/queue/route.ts",
+      "route": "/api/nerdkle/queue",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/receipt/route.ts",
+      "route": "/api/nerdkle/receipt",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/receipts/route.ts",
+      "route": "/api/nerdkle/receipts",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/resolve/route.ts",
+      "route": "/api/nerdkle/resolve",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/snapshot/route.ts",
+      "route": "/api/nerdkle/snapshot",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/stale/route.ts",
+      "route": "/api/nerdkle/stale",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/status/route.ts",
+      "route": "/api/nerdkle/status",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/nerdkle/templates/route.ts",
+      "route": "/api/nerdkle/templates",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/onboarding/first-weld/route.ts",
+      "route": "/api/onboarding/first-weld",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider",
+        "external-fetch"
+      ]
+    },
+    {
+      "file": "app/api/operator/matching/document-score/route.ts",
+      "route": "/api/operator/matching/document-score",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/pearls/v0/route.ts",
+      "route": "/api/pearls/v0",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": []
+    },
+    {
+      "file": "app/api/soledash/command/capsule/route.ts",
+      "route": "/api/soledash/command/capsule",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/command/classify/route.ts",
+      "route": "/api/soledash/command/classify",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/command/mission/route.ts",
+      "route": "/api/soledash/command/mission",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/command/receipt/route.ts",
+      "route": "/api/soledash/command/receipt",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/agent-inventory/route.ts",
+      "route": "/api/soledash/v1/agent-inventory",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/artifact-shelf/route.ts",
+      "route": "/api/soledash/v1/artifact-shelf",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/automatica-relay/action/route.ts",
+      "route": "/api/soledash/v1/automatica-relay/action",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/automatica-relay/fire/route.ts",
+      "route": "/api/soledash/v1/automatica-relay/fire",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/automatica-relay/receipt/route.ts",
+      "route": "/api/soledash/v1/automatica-relay/receipt",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/automatica-relay/route.ts",
+      "route": "/api/soledash/v1/automatica-relay",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/cousin-dispatch/route.ts",
+      "route": "/api/soledash/v1/cousin-dispatch",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/decide/route.ts",
+      "route": "/api/soledash/v1/decide",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/decision-surface/action/route.ts",
+      "route": "/api/soledash/v1/decision-surface/action",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/decision-surface/chat/route.ts",
+      "route": "/api/soledash/v1/decision-surface/chat",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/decision-surface/queue-override/route.ts",
+      "route": "/api/soledash/v1/decision-surface/queue-override",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/dispatch-matrix/route.ts",
+      "route": "/api/soledash/v1/dispatch-matrix",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/focus-theft/receipt/route.ts",
+      "route": "/api/soledash/v1/focus-theft/receipt",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/focus-theft/report/route.ts",
+      "route": "/api/soledash/v1/focus-theft/report",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/freeform/route.ts",
+      "route": "/api/soledash/v1/freeform",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/intent-memory/action/route.ts",
+      "route": "/api/soledash/v1/intent-memory/action",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/intent-memory/route.ts",
+      "route": "/api/soledash/v1/intent-memory",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/intent-router/action/route.ts",
+      "route": "/api/soledash/v1/intent-router/action",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/intent-router/route.ts",
+      "route": "/api/soledash/v1/intent-router",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/mock-test/run/route.ts",
+      "route": "/api/soledash/v1/mock-test/run",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/next-step/route.ts",
+      "route": "/api/soledash/v1/next-step",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/packet/route.ts",
+      "route": "/api/soledash/v1/packet",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/permission-fly/action/route.ts",
+      "route": "/api/soledash/v1/permission-fly/action",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/permission-fly/receipt/route.ts",
+      "route": "/api/soledash/v1/permission-fly/receipt",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/permission-fly/route.ts",
+      "route": "/api/soledash/v1/permission-fly",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/permission-swatter/scoreboard/route.ts",
+      "route": "/api/soledash/v1/permission-swatter/scoreboard",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/petra-empty-link-live-fire/route.ts",
+      "route": "/api/soledash/v1/petra-empty-link-live-fire",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/petra-empty-link-live-fire/verify/route.ts",
+      "route": "/api/soledash/v1/petra-empty-link-live-fire/verify",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/petra-status/route.ts",
+      "route": "/api/soledash/v1/petra-status",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/petra-transport/route.ts",
+      "route": "/api/soledash/v1/petra-transport",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/receipt-drawer/route.ts",
+      "route": "/api/soledash/v1/receipt-drawer",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/receipt-graph/route.ts",
+      "route": "/api/soledash/v1/receipt-graph",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/self-knowledge/route.ts",
+      "route": "/api/soledash/v1/self-knowledge",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/shakespeare/receipt/route.ts",
+      "route": "/api/soledash/v1/shakespeare/receipt",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/shakespeare/verdict/route.ts",
+      "route": "/api/soledash/v1/shakespeare/verdict",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/state/route.ts",
+      "route": "/api/soledash/v1/state",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/wisdom-watcher/action/route.ts",
+      "route": "/api/soledash/v1/wisdom-watcher/action",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/wisdom-watcher/report/route.ts",
+      "route": "/api/soledash/v1/wisdom-watcher/report",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/wisdom-watcher/route.ts",
+      "route": "/api/soledash/v1/wisdom-watcher",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/wonka-den/aeye-loop/route.ts",
+      "route": "/api/soledash/v1/wonka-den/aeye-loop",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/soledash/v1/wonka-den/run-safe-command/route.ts",
+      "route": "/api/soledash/v1/wonka-den/run-safe-command",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "process",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/speaker/inheritance/route.ts",
+      "route": "/api/speaker/inheritance",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/thinkit/book/chapter_text/route.ts",
+      "route": "/api/thinkit/book/chapter_text",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/thinkit/elwood/status/route.ts",
+      "route": "/api/thinkit/elwood/status",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family",
+        "external-fetch",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/thinkit/momentum/next_three/route.ts",
+      "route": "/api/thinkit/momentum/next_three",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/thinkit/swanson/[...path]/route.ts",
+      "route": "/api/thinkit/swanson/[...path]",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "external-fetch"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/autopaste-events/route.ts",
+      "route": "/api/tinkerden/autopaste-events",
+      "methods": [],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/autopaste/route.ts",
+      "route": "/api/tinkerden/autopaste",
+      "methods": [],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/bridge/decision/route.ts",
+      "route": "/api/tinkerden/bridge/decision",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/bridge/execute/route.ts",
+      "route": "/api/tinkerden/bridge/execute",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/command-surface/route.ts",
+      "route": "/api/tinkerden/command-surface",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/drift-log/route.ts",
+      "route": "/api/tinkerden/drift-log",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/filesystem-transport/route.ts",
+      "route": "/api/tinkerden/filesystem-transport",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/human-gates/route.ts",
+      "route": "/api/tinkerden/human-gates",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/intake/route.ts",
+      "route": "/api/tinkerden/intake",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/packet-inbox/route.ts",
+      "route": "/api/tinkerden/packet-inbox",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/packet-relay-events/route.ts",
+      "route": "/api/tinkerden/packet-relay-events",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/packet-relay/route.ts",
+      "route": "/api/tinkerden/packet-relay",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "process"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/packets/route.ts",
+      "route": "/api/tinkerden/packets",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/real-aeye-relay/route.ts",
+      "route": "/api/tinkerden/real-aeye-relay",
+      "methods": [
+        "GET",
+        "PATCH",
+        "POST",
+        "PUT"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/receipt-stream/route.ts",
+      "route": "/api/tinkerden/receipt-stream",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/receipts/route.ts",
+      "route": "/api/tinkerden/receipts",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/relay-status/route.ts",
+      "route": "/api/tinkerden/relay-status",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/relay/route.ts",
+      "route": "/api/tinkerden/relay",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/return-system/route.ts",
+      "route": "/api/tinkerden/return-system",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "risk": [
+        "internal-family"
+      ]
+    },
+    {
+      "file": "app/api/tinkerden/workspace-relay/route.ts",
+      "route": "/api/tinkerden/workspace-relay",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "internal-family",
+        "external-fetch",
+        "process",
+        "filesystem-write"
+      ]
+    },
+    {
+      "file": "app/api/verification/funds/exchange/route.ts",
+      "route": "/api/verification/funds/exchange",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/verification/funds/route.ts",
+      "route": "/api/verification/funds",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/verification/identity/route.ts",
+      "route": "/api/verification/identity",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/webhooks/stripe/route.ts",
+      "route": "/api/webhooks/stripe",
+      "methods": [
+        "POST"
+      ],
+      "risk": [
+        "provider"
+      ]
+    },
+    {
+      "file": "app/api/zip/route.ts",
+      "route": "/api/zip",
+      "methods": [
+        "GET"
+      ],
+      "risk": [
+        "external-fetch"
+      ]
+    }
+  ],
+  "page_results": [
+    {
+      "pathname": "/archetypes",
+      "status": 200,
+      "duration_ms": 36,
+      "bytes": 42786,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "b54833bab31cf2821c7d190a64e2c33a72b65c93b1a4efc421aa7bc69f1d58a9",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/auth/callback",
+      "status": 200,
+      "duration_ms": 22,
+      "bytes": 7509,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "08bbbb2bf9882ab7c8a01cc2622349a211a46e4b5ecb9f79f8d32815652b0ca5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/bellows/intake",
+      "status": 200,
+      "duration_ms": 23,
+      "bytes": 22893,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "fd11281b4a63030b47039e460e4a53e393025f8ab3b847b9b62e1fa89a2d78b2",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/bellows",
+      "status": 200,
+      "duration_ms": 23,
+      "bytes": 25248,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0d4b0555004d74e1c76b7cff179efd23ae515a78f05512c950c7b1d885e251ce",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/bellows/recommendations",
+      "status": 200,
+      "duration_ms": 47,
+      "bytes": 53063,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "e4d0d98bd7a4cc960646e43b30564443a0a9e3dbc888bfb7495c32d4ad20b6df",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/bellows/recommendations/test-case-0",
+      "status": 200,
+      "duration_ms": 47,
+      "bytes": 37193,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "19cf7e3cbff2461df7c1af001fcf8fdd882c449e687669997945329282a952f9",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard/billing",
+      "status": 200,
+      "duration_ms": 45,
+      "bytes": 12600,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "31f6416979061932ae367a2afa85273d3faece8fbc12d6cec9034afee7ad63c1",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard/blueprints/vpg44-sample",
+      "status": 200,
+      "duration_ms": 44,
+      "bytes": 9297,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "20a3bdde42aecf3d993602f884b4cb1154dadfef48c30405e7d6cf50888434cb",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard/blueprints",
+      "status": 200,
+      "duration_ms": 15,
+      "bytes": 9302,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "835bbaa5d388ac74387186659d0b3880cd2ca266392204b03dad9567aadff7de",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard/crucible",
+      "status": 200,
+      "duration_ms": 15,
+      "bytes": 17228,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "f8df6d8d2027ce489b3e7575366bc20c7ed8de2d5865b20f07ace18bd0cdc8b4",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard/intros",
+      "status": 200,
+      "duration_ms": 14,
+      "bytes": 8329,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "5f5aa691bafef5f3ba5d7ca558fcab7276e97bf5af047f58b1f2c58cd1770251",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard",
+      "status": 200,
+      "duration_ms": 13,
+      "bytes": 6936,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "d5ae12a5c0177da05b386e64b9025e920ea8233c9582f625499c98aec9f2f2c8",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/dashboard/profile",
+      "status": 200,
+      "duration_ms": 40,
+      "bytes": 7993,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "88a95e462276148fbd1031228f532c99eab50374902703050344b290ad0db3c5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/discovery",
+      "status": 200,
+      "duration_ms": 41,
+      "bytes": 21435,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "5ad47504b6445b541971d7082ac5722f336bbb76092de1ed7154c5e30045db8f",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/formation",
+      "status": 200,
+      "duration_ms": 40,
+      "bytes": 34041,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "48a2786a2c494de48b90b5f49a4e9196f579b88eb1f19643d48de5b413fda6f5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/gd/command-console",
+      "status": 404,
+      "duration_ms": 32,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/gd/speaker",
+      "status": 404,
+      "duration_ms": 3,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/login",
+      "status": 200,
+      "duration_ms": 19,
+      "bytes": 10555,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "1263dbc54ee343b0d1e0ae1b09f3aec107c754d3feb013ec9fd685ae4b0ff62b",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/membership",
+      "status": 200,
+      "duration_ms": 27,
+      "bytes": 15378,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "c035eeab84f730d00eeedf473e149e5f14630dcaf7220e9154f92827799c2e7c",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/membership/success",
+      "status": 200,
+      "duration_ms": 27,
+      "bytes": 15698,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "7d236933c76f6379d21a7103e789a03b4149ba56f7a897324f251c94ed993a98",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/nerdkle",
+      "status": 404,
+      "duration_ms": 12,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/onboarding",
+      "status": 200,
+      "duration_ms": 17,
+      "bytes": 10959,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "69e51ab2a4b4579947ed3bc32b9a8253c7bbe9ae62ee5d391f1e1566998eba7f",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/decision-packet",
+      "status": 404,
+      "duration_ms": 10,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/dependencies",
+      "status": 404,
+      "duration_ms": 3,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/dry-run",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/evidence",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/faq",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/fcra-policy",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/handoff",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/live-checkout-smoke",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/preflight",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/provider-queue",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/provider-scope",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/recap",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/risks",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/rollout-readiness",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/scope",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/scorecard",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/secret-entry",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/sign-in-hunt",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/stripe-blocked",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/stripe-offline",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/test-checkout-smoke",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/gate-knockout/webhook-matrix",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/human-gates",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/kind-sir",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/matching/document-score",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator/matching/shadow",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/operator",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/",
+      "status": 200,
+      "duration_ms": 6,
+      "bytes": 68044,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "4fb696b8033319f08cab4f5b286894f2951c2ea388163da0da932960cc24917a",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/pricing",
+      "status": 200,
+      "duration_ms": 13,
+      "bytes": 36190,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "98766d110c6e9622a5dca2fe87c0a6eb163a203b40ce3490d84c3cee3c744122",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/privacy",
+      "status": 200,
+      "duration_ms": 11,
+      "bytes": 11260,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "7cdeb8d1c834a581adc7b582579057ca226a81d93e44fbe69bb333c9519781fa",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/proof/den",
+      "status": 200,
+      "duration_ms": 11,
+      "bytes": 20469,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "e02d664e348d9efe0c8fe99bbda0d72807509d2c8626f8651e338575a74ec090",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/proof/goop-cycle",
+      "status": 200,
+      "duration_ms": 11,
+      "bytes": 90714,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0e50d0487f058bc96ab073881ac4b4e882b1fc1f48f6a71cefe5a948b712faba",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/proof",
+      "status": 200,
+      "duration_ms": 11,
+      "bytes": 36387,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "f5d3743a9f05cfc1c0edbfba0a860edd025ae8f6a3787369903d7093ce642e4f",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/signup",
+      "status": 200,
+      "duration_ms": 10,
+      "bytes": 10465,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "066a85fe434830dae49ba99d0e9c494368cfd1797652cb3fd8bdcb5b365968a2",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/soledash",
+      "status": 404,
+      "duration_ms": 5,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/space",
+      "status": 200,
+      "duration_ms": 8,
+      "bytes": 31932,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "d3d80cceb0602e67253814fb0b6248ab6a9fb12ed21f31b96979c820183af3ce",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/spark",
+      "status": 200,
+      "duration_ms": 9,
+      "bytes": 21159,
+      "content_type": "text/html; charset=utf-8",
+      "location": null,
+      "cache_control": "s-maxage=31536000",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "34d2f7a256a1e4ca5c57fb27bcfbbbb20f6961087ce619bec105689a86f3a398",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/thinkit",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/autopaste",
+      "status": 404,
+      "duration_ms": 3,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/human-gates",
+      "status": 404,
+      "duration_ms": 3,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/inbox",
+      "status": 404,
+      "duration_ms": 3,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/intake",
+      "status": 404,
+      "duration_ms": 3,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/mission-control",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden",
+      "status": 404,
+      "duration_ms": 4,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/receipts",
+      "status": 404,
+      "duration_ms": 2,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/tinkerden/relay-proof",
+      "status": 404,
+      "duration_ms": 2,
+      "bytes": 9,
+      "content_type": "text/plain;charset=UTF-8",
+      "location": null,
+      "cache_control": "no-store",
+      "vary": "Accept-Encoding",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+      "leak_patterns": []
+    }
+  ],
+  "api_read_results": [
+    {
+      "pathname": "/api/goop-cycle/cycle",
+      "status": 200,
+      "duration_ms": 7,
+      "bytes": 1898,
+      "content_type": "application/json",
+      "location": null,
+      "cache_control": null,
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "5e2fa19344709d8c7cf5ef4e88c08501331d2700895a8b658fcf6e3c84e48a0c",
+      "leak_patterns": []
+    },
+    {
+      "pathname": "/api/pearls/v0",
+      "status": 200,
+      "duration_ms": 9,
+      "bytes": 3680,
+      "content_type": "application/json",
+      "location": null,
+      "cache_control": null,
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "x_content_type_options": "nosniff",
+      "body_sha256": "55640941c84f1e26325899ffddd02356b02c8929cb6fa574cf17d2d5f0e5164d",
+      "leak_patterns": []
+    }
+  ],
+  "closed_results": [
+    {
+      "name": "anonymous-personal-delivery",
+      "pathname": "/api/bellows/recommendations/personal",
+      "method": "GET",
+      "status": 401,
+      "expected_status": 401,
+      "body_contract": true,
+      "cache_control": "private, no-store",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Authorization",
+      "pragma": "no-cache",
+      "x_content_type_options": "nosniff"
+    },
+    {
+      "name": "saving-closed",
+      "pathname": "/api/bellows/recommendations/packet",
+      "method": "POST",
+      "status": 403,
+      "expected_status": 403,
+      "body_contract": true,
+      "cache_control": null,
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "pragma": null,
+      "x_content_type_options": "nosniff"
+    },
+    {
+      "name": "intake-closed",
+      "pathname": "/api/bellows/intake",
+      "method": "POST",
+      "status": 503,
+      "expected_status": 503,
+      "body_contract": true,
+      "cache_control": null,
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "pragma": null,
+      "x_content_type_options": "nosniff"
+    }
+  ],
+  "failures": []
+}

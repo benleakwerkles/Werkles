@@ -9,6 +9,7 @@ const read = (relativePath) => readFileSync(path.join(root, relativePath), "utf8
 const requestAuth = read("lib/supabase/request.ts");
 const personalRoute = read("app/api/bellows/recommendations/personal/route.ts");
 const personalBuilder = read("lib/matching/profile-recommendation.ts");
+const personalDisclosure = read("lib/matching/personal-recommendation-disclosure.ts");
 const signals = read("lib/matching/signals.ts");
 const delivery = read("components/squibb/personal-recommendation-delivery.tsx");
 const contract = read("lib/matching/personal-recommendation-contract.ts");
@@ -63,10 +64,18 @@ assert.match(personalBuilder, /memberCausalDraft: null/);
 assert.match(personalBuilder, /llmUsed: false/);
 assert.match(personalBuilder, /receiptPath: ""/);
 assert.match(personalBuilder, /mode: "authenticated_profile"/);
-assert.match(personalBuilder, /Private to this signed-in account/);
-assert.match(personalBuilder, /No AI model generated it/);
-assert.match(personalBuilder, /existing saved profile/);
-assert.match(personalBuilder, /result itself was not saved or forwarded to a provider or external recipient/);
+assert.match(personalBuilder, /PERSONAL_RECOMMENDATION_GENERATION/);
+assert.match(personalDisclosure, /fixed_written_rules/);
+assert.match(personalDisclosure, /saved_profile/);
+assert.match(personalDisclosure, /in_memory/);
+assert.match(personalDisclosure, /aiModelUsed: false/);
+assert.match(personalDisclosure, /providerContacted: false/);
+assert.match(personalDisclosure, /externalRecipientContacted: false/);
+assert.match(personalDisclosure, /recommendationPersisted: false/);
+assert.match(personalDisclosure, /introSent: false/);
+assert.match(personalDisclosure, /contactMade: false/);
+assert.match(personalDisclosure, /paymentInitiated: false/);
+assert.match(personalDisclosure, /actionTaken: false/);
 assert.doesNotMatch(personalBuilder, /persistShadowRun|writeFile|fetch\s*\(/);
 
 // Browser delivery keeps the anonymous example until an authenticated personal response succeeds.
@@ -79,8 +88,8 @@ assert.match(delivery, /delivery\.status === "personal" \? delivery\.session : e
 assert.match(delivery, /Want one for your situation\?/);
 assert.match(delivery, /Open Profile Builder/);
 assert.match(delivery, /example stays here/);
-assert.match(surface, /Built from your saved profile/);
-assert.match(surface, /This result was[\s\S]*not saved or sent/);
+assert.match(surface, /Fixed rules, private result/);
+assert.match(surface, /personalGeneration\?\.explanation/);
 assert.match(delivery, /setAttempt\(\(current\) => current \+ 1\)/);
 assert.match(contract, /value\.success !== true/);
 assert.match(contract, /value\.persisted !== false/);

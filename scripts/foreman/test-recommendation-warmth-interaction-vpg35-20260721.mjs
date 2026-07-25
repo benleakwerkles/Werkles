@@ -9,7 +9,7 @@ const read = (relativePath) => readFileSync(path.join(root, relativePath), "utf8
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
 
-function loadTs(source) {
+function loadTs(source, localRequire = (specifier) => require(specifier)) {
   const output = ts.transpileModule(source, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
@@ -17,15 +17,26 @@ function loadTs(source) {
     }
   }).outputText;
   const loaded = { exports: {} };
-  new Function("exports", "module", output)(loaded.exports, loaded);
+  new Function("require", "exports", "module", output)(localRequire, loaded.exports, loaded);
   return loaded.exports;
 }
 
 const delivery = read("components/squibb/personal-recommendation-delivery.tsx");
 const surface = read("components/squibb/recommendation-surface.tsx");
 const css = read("app/bellows/recommendations/squibb-recommendations.css");
-const contract = loadTs(read("lib/matching/personal-recommendation-contract.ts"));
 const focus = loadTs(read("lib/squibb/continuation-focus.ts"));
+const recommendations = loadTs(read("lib/squibb/recommendations.ts"));
+const disclosure = loadTs(read("lib/matching/personal-recommendation-disclosure.ts"));
+const gates = loadTs(read("lib/matching/public-recommendation-gates.ts"));
+const contract = loadTs(
+  read("lib/matching/personal-recommendation-contract.ts"),
+  (specifier) => {
+    if (specifier === "@/lib/squibb/recommendations") return recommendations;
+    if (specifier === "@/lib/matching/personal-recommendation-disclosure") return disclosure;
+    if (specifier === "@/lib/matching/public-recommendation-gates") return gates;
+    return require(specifier);
+  }
+);
 
 for (const status of ["loading", "signed_out", "reauth_required", "profile_required", "personal", "error"]) {
   assert.match(delivery, new RegExp(`status: "${status}"`));
@@ -36,8 +47,8 @@ assert.match(delivery, /Your profile needs a goal or project detail\./);
 assert.match(delivery, /We could not load your result, so the example stays here\./);
 assert.doesNotMatch(delivery, /Inputs: goal/);
 assert.match(surface, /This is a walkthrough, not your result\./);
-assert.match(surface, /Built from your saved profile\./);
-assert.match(surface, /This result was[\s\S]*not saved or sent\./);
+assert.match(surface, /Fixed rules, private result\./);
+assert.match(surface, /personalGeneration\?\.explanation/);
 const deliveryStatusPredicate = delivery.slice(
   delivery.indexOf("const showDeliveryStatus"),
   delivery.indexOf("const continuationAction")
@@ -71,14 +82,36 @@ assert.match(delivery, /focusTargetId: PERSONAL_RECOMMENDATION_CTA_ID/);
 assert.match(surface, /onClick=\{followContinuation\}/);
 
 const profile = { success: true, persisted: false, status: "profile_required" };
+const ranked = recommendations.loadSquibbRecommendationSession().ranked.map((item, index) => ({
+  ...item,
+  rank: index + 1,
+  title: recommendations.RECOMMENDATION_KIND_LABELS[item.kind],
+  squibbNote:
+    index === 0
+      ? "This is the highest-ranked path not ruled out by the current rules."
+      : "This is another path not ruled out by the current rules to compare before deciding what to do.",
+  confidence: {
+    ...item.confidence,
+    why: "Rules-based path score from what you entered and the proof gaps recorded here. It is not a probability of success or eligibility."
+  },
+  humanGates: gates.publicMatchingHumanGates(item.kind),
+  suggestedAgent: "Werkles human review",
+  suggestedTool: undefined,
+  keepOriginalPathLabel: "Keep my current approach"
+}));
 const session = {
   version: "v1",
-  statedNeed: "Need",
-  operatorContext: "Context",
-  squibbIntro: "Intro",
-  source: { mode: "authenticated_profile", label: "Private", detail: "Private detail" },
-  ranked: [],
-  catalog: []
+  statedNeed: "I need a next step.",
+  operatorContext: disclosure.PERSONAL_RECOMMENDATION_OPERATOR_CONTEXT,
+  squibbIntro: disclosure.PERSONAL_RECOMMENDATION_INTRO,
+  source: {
+    mode: "authenticated_profile",
+    label: disclosure.PERSONAL_RECOMMENDATION_SOURCE_LABEL,
+    detail: disclosure.PERSONAL_RECOMMENDATION_SOURCE_DETAIL
+  },
+  generation: { ...disclosure.PERSONAL_RECOMMENDATION_GENERATION },
+  ranked,
+  catalog: structuredClone(ranked)
 };
 const personal = { success: true, persisted: false, status: "personal", session };
 const decide = (status, ok, payload) =>

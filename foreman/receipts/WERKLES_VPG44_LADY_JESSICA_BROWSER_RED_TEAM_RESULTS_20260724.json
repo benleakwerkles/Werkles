@@ -1,0 +1,151 @@
+{
+  "schema": "werkles.vpg44-lady-jessica-browser-red-team-result/v1",
+  "created_at": "2026-07-24T19:21:25-04:00",
+  "cycle_id": "WERKLES-FLOCK-20260724-185700-ET-BETSY-01",
+  "legacy_label": "VPG44",
+  "seat": "LadyJessica@Betsy",
+  "host": "BETSY",
+  "repository": "C:\\w8",
+  "branch": "codex/werkles-vpg31-20260721",
+  "source_commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+  "runtime": {
+    "origin": "http://127.0.0.1:31245",
+    "pid": 38940,
+    "listener": "127.0.0.1:31245",
+    "snapshot_owner": "Ender@Betsy",
+    "port_3000_touched": false
+  },
+  "browser": {
+    "engine": "Microsoft Edge via Playwright chromium",
+    "version": "150.0.4078.96",
+    "headless": true,
+    "visible_browser_control": false,
+    "cursor_or_desktop_control": false
+  },
+  "harness": {
+    "path": "scripts/foreman/test-public-tester-browser-red-team-vpg44-20260724.mjs",
+    "sha256": "7a2200c4376d74e59010a0aefc1b708940f0c5918f09ae837885b6d38b8c48fe",
+    "bytes": 27182
+  },
+  "idea_1": {
+    "name": "Headless desktop/mobile/keyboard/accessibility full journey",
+    "viewports": [
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "cases": 1,
+        "assertions": 33,
+        "failures": 0
+      },
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "cases": 1,
+        "assertions": 33,
+        "failures": 0
+      }
+    ],
+    "case_count": 2,
+    "assertion_count": 66,
+    "failure_count": 0,
+    "covered": [
+      "homepage to Bellows to recommendations navigation",
+      "keyboard-only links, tabs, recommendation selection, proof disclosure, and continuation",
+      "selection announcement and detail synchronization",
+      "Profile Builder safe return path",
+      "desktop and mobile overflow",
+      "duplicate IDs, accessible control names, image alt attributes, and aria-controls targets",
+      "framework overlay, console error, page exception, request-failure, mutation, and browser-storage checks"
+    ],
+    "expected_transport_events": {
+      "next_rsc_prefetch_get_aborts": 6,
+      "reason": "Benign speculative GETs aborted when navigation superseded their prefetch; no page or console error."
+    }
+  },
+  "idea_2": {
+    "name": "Personal-delivery failure, fallback, retry, custody, and no-write adversary",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "cases": [
+      {
+        "name": "slow-profile-required",
+        "assertions": 16,
+        "failures": 0
+      },
+      {
+        "name": "aborted-request",
+        "assertions": 15,
+        "failures": 0
+      },
+      {
+        "name": "401-private-sentinel",
+        "assertions": 15,
+        "failures": 0
+      },
+      {
+        "name": "500-private-sentinel",
+        "assertions": 15,
+        "failures": 0
+      },
+      {
+        "name": "malformed-json",
+        "assertions": 15,
+        "failures": 0
+      },
+      {
+        "name": "abort-then-retry-recovery",
+        "assertions": 14,
+        "failures": 0
+      }
+    ],
+    "case_count": 6,
+    "assertion_count": 90,
+    "failure_count": 0,
+    "covered": [
+      "non-blocking loading state",
+      "abort, 401, 500, malformed JSON, and retry recovery",
+      "example fallback and reauthentication/profile guidance",
+      "retry focus restoration",
+      "private-sentinel non-disclosure and private-custody non-rendering",
+      "zero mutating network calls",
+      "zero persistent localStorage or sessionStorage keys",
+      "storage writes limited to self-deleting lswt capability probes",
+      "zero unexpected console errors, request failures, page exceptions, or error overlays"
+    ],
+    "expected_transport_events": {
+      "deliberate_personal_get_aborts": 2
+    },
+    "headless_only_instrumentation": {
+      "reason": "The local production snapshot intentionally has no compiled Supabase public configuration.",
+      "method": "Playwright served an in-memory patched copy of only the recommendation client chunk to supply a synthetic session and routed only the personal GET responses.",
+      "disk_or_runtime_mutation": false,
+      "secret_or_live_account_used": false
+    }
+  },
+  "summary": {
+    "idea_count": 2,
+    "viewport_count": 2,
+    "case_count": 8,
+    "assertion_count": 156,
+    "failure_count": 0,
+    "unexpected_console_errors": 0,
+    "page_exceptions": 0,
+    "unexpected_request_failures": 0,
+    "mutating_requests": 0,
+    "persistent_browser_storage_keys": 0,
+    "product_defects_proven": 0,
+    "product_repairs_by_this_seat": 0,
+    "verdict": "PASS"
+  },
+  "custody": {
+    "product_files_edited_by_this_seat": [],
+    "install": false,
+    "server_start_or_stop": false,
+    "j_stage_commit_push": false,
+    "deploy_or_live_change": false
+  }
+}
