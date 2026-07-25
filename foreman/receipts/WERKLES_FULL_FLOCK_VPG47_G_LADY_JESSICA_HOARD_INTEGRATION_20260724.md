@@ -9,7 +9,7 @@ EXACT_IDEAS_PER_SEAT: `2`
 ## Integrated result
 
 - The accumulated VPG42-VPG47 work is a coherent candidate, not an unexplained Lady Jessica side folder.
-- Final ownership manifest: 157/157 paths included and attributed; zero unexplained, excluded, duplicate, or secret-bearing paths.
+- Final ownership manifest: 160/160 paths included and attributed; zero unexplained, excluded, duplicate, or secret-bearing paths.
 - Cross-cycle seam: 71/71.
 - Root static suite: 12/12.
 - Focused successor contracts: 9/9.

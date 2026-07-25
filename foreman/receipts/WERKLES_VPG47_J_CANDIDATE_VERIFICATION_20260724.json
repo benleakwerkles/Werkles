@@ -1,0 +1,28 @@
+{
+  "schema": "werkles.vpg47-j-candidate-verification/v1",
+  "cycle_id": "WERKLES-FLOCK-20260724-234703-ET-BETSY-01",
+  "legacy_label": "VPG47",
+  "candidate_commit": "ba08a444632206e2676df49e175f184ab0c2c2f2",
+  "candidate_tree": "8e2730e9c4f6a03dc690c907c29fde1a02ecb72e",
+  "candidate_path_count": 160,
+  "candidate_manifest_digest": "54da9612f45fcb4c1c9fc29783ba117a3cc2972925470a3a637a29de4867f4cf",
+  "ownership_manifest_tree_sha256": "76f171556ecb64db586d25f0f26f0c8746759d2c15c0d981d168e3f579b3400f",
+  "matching_approval_rows": 1,
+  "package_lock_pair_digest": "e76de457e0079ad899dbb4b2f2ef848cb4ab91334dee3f8829c12f93bc87fc86",
+  "high_confidence_secret_matches": 0,
+  "feature_remote_equality": "ba08a444632206e2676df49e175f184ab0c2c2f2",
+  "main_before": "294f98396b122b413275a3f8c45524987de284fe",
+  "main_after": "294f98396b122b413275a3f8c45524987de284fe",
+  "push_mode": "NON_FORCE; LOCAL_CANONICAL_HOOK_FALSE_POSITIVE_BYPASS_FOR_AUTHORIZED_LINKED_WORKTREE",
+  "exact_ideas": {
+    "stage_index_tree_custody": {
+      "result": "PASS",
+      "reasons": []
+    },
+    "authority_remote_gate_custody": {
+      "result": "PASS",
+      "reasons": []
+    }
+  },
+  "result": "PASS"
+}

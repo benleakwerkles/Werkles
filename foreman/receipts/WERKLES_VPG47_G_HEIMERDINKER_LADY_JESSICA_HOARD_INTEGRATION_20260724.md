@@ -9,7 +9,7 @@ EXACT_IDEAS_EXECUTED: `2`
 
 ## Idea 1 - Machine-readable hoard ownership and liveness
 
-- Integrated Lady Jessica's final ownership manifest: 157 dirty paths, 28 tracked modifications, 129 untracked files, 157 include, zero exclude/review/unexplained.
+- Integrated Lady Jessica's final ownership manifest: 160 dirty paths, 28 tracked modifications, 132 untracked files, 160 include, zero exclude/review/unexplained.
 - The manifest binds every path to a VPG42-VPG47 cycle, owner, artifact class, disposition, and SHA-256 except its named self-reference.
 - Ender's independent liveness graph passed 34 checks across its 148-path pre-result snapshot, with zero byte duplicates, zero secret hits, and seven explicit evidence/supersession edges.
 - Root's independent high-confidence candidate secret scan found zero matches.

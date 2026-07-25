@@ -1,7 +1,7 @@
 # VPG47 - Lady Jessica Hoard Integration
 
 PACKET_ID: `TO_HEIMERDINKER_LADY_JESSICA_ENDER_WERKLES_LADY_JESSICA_HOARD_INTEGRATION_VPG47_20260724`
-STATUS: `G_COMPLETED_J_PENDING`
+STATUS: `COMPLETED`
 FROM: `Heimerdinker@Betsy`
 TO: `Heimerdinker@Betsy`, `LadyJessica@Betsy`, `Ender@Betsy`
 INTEGRATION_OWNER: `Heimerdinker@Betsy`
