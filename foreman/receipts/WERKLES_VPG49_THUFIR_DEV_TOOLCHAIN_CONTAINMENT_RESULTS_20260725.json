@@ -1,0 +1,71 @@
+{
+  "schema": "werkles.vpg49-thufir-dev-toolchain-containment-result/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "legacyLabel": "VPG49",
+  "seat": "Thufir@Betsy",
+  "hostnameProof": "Betsy",
+  "branch": "codex/werkles-vpg31-20260721",
+  "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "exactIdeasExecuted": 2,
+  "baseline": {
+    "packageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "lockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+    "packageUnchangedAfterRejectedExperiment": true,
+    "lockUnchangedAfterRejectedExperiment": true
+  },
+  "idea1": {
+    "id": "CURRENT_DUAL_AUDIT_DEPENDENCY_PEER_BOUNDARY",
+    "currentState": "CONTAINED_DEV_ONLY",
+    "fullAudit": {
+      "high": 9,
+      "critical": 0,
+      "total": 9,
+      "allSevereNodesDevOnly": true
+    },
+    "productionAudit": {
+      "high": 0,
+      "critical": 0,
+      "total": 0,
+      "productionDependencyCount": 51
+    },
+    "peerBoundary": {
+      "nextMajor": 15,
+      "eslintMajor": 9,
+      "eslintConfigNextMajor": 15,
+      "eslint10Accepted": false,
+      "next16Accepted": false
+    },
+    "clearedSyntheticControl": "CLEARED",
+    "syntheticControlAuthoritative": false
+  },
+  "idea2": {
+    "id": "OVERRIDE_OMISSION_SEVERITY_PRODUCTION_SCOPE_ADVERSARY",
+    "attackCount": 67,
+    "rejectedCount": 67,
+    "bypassCount": 0,
+    "bypassIds": [],
+    "rejectedFalseFix": {
+      "id": "rejected_false_fix_expand_not_function",
+      "observedExperimentFailure": "expand is not a function",
+      "guardResult": "STOP",
+      "globalMinimatchOverrideRejected": true,
+      "directToolchainBehaviorProofRequiredForCleared": true
+    }
+  },
+  "proof": {
+    "guardSyntax": "PASS",
+    "testSyntax": "PASS",
+    "currentFixture": "PASS",
+    "adversarySuite": "PASS",
+    "repairAttemptsUsed": 0
+  },
+  "scope": {
+    "dependencyFilesEditedByThufir": false,
+    "nodeModulesEditedByThufir": false,
+    "productEdited": false,
+    "j": false,
+    "stageCommitPush": false,
+    "deployBrowserLiveAction": false
+  },
+  "result": "PASS"
+}

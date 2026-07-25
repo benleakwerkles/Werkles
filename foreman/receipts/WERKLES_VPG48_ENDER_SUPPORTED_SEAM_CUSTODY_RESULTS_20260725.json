@@ -1,0 +1,119 @@
+{
+  "schema": "werkles.vpg48-ender-supported-seam-custody-result/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "legacyLabel": "VPG48",
+  "seat": "Ender@Betsy",
+  "hostname": "Betsy",
+  "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "fixture": "scripts/foreman/fixtures/vpg48-ender-supported-seam-auth-data-contract-20260725.json",
+  "guard": "scripts/foreman/vpg48-supported-seam-custody-guard-20260725.mjs",
+  "test": "scripts/foreman/test-vpg48-supported-seam-custody-20260725.mjs",
+  "baselineAllowed": true,
+  "attackCount": 20,
+  "blockedAttackCount": 20,
+  "bypassCount": 0,
+  "failureCount": 0,
+  "attacks": [
+    {
+      "name": "production-environment",
+      "blocked": true,
+      "reason": "LOCAL_TEST_ENVIRONMENT_REQUIRED"
+    },
+    {
+      "name": "non-loopback-origin",
+      "blocked": true,
+      "reason": "LOOPBACK_REQUIRED"
+    },
+    {
+      "name": "implicit-default-port",
+      "blocked": true,
+      "reason": "EXPLICIT_ISOLATED_PORT_REQUIRED"
+    },
+    {
+      "name": "port-3000-target",
+      "blocked": true,
+      "reason": "PORT_3000_FORBIDDEN"
+    },
+    {
+      "name": "observed-origin-mismatch",
+      "blocked": true,
+      "reason": "OBSERVED_ORIGIN_MISMATCH"
+    },
+    {
+      "name": "pid-mismatch",
+      "blocked": true,
+      "reason": "PID_CUSTODY_MISMATCH"
+    },
+    {
+      "name": "build-mismatch",
+      "blocked": true,
+      "reason": "BUILD_CUSTODY_MISMATCH"
+    },
+    {
+      "name": "live-supabase-origin",
+      "blocked": true,
+      "reason": "SYNTHETIC_ORIGIN_REQUIRED"
+    },
+    {
+      "name": "non-synthetic-key",
+      "blocked": true,
+      "reason": "SYNTHETIC_ANON_KEY_REQUIRED"
+    },
+    {
+      "name": "non-synthetic-credential",
+      "blocked": true,
+      "reason": "NON_SYNTHETIC_CREDENTIAL_FORBIDDEN"
+    },
+    {
+      "name": "external-origin-allowlisted",
+      "blocked": true,
+      "reason": "NETWORK_ALLOWLIST_MISMATCH"
+    },
+    {
+      "name": "network-fallthrough-continues",
+      "blocked": true,
+      "reason": "NETWORK_FALLTHROUGH_MUST_ABORT"
+    },
+    {
+      "name": "overbroad-interception",
+      "blocked": true,
+      "reason": "INTERCEPTION_SCOPE_MISMATCH"
+    },
+    {
+      "name": "compiled-chunk-rewrite",
+      "blocked": true,
+      "reason": "COMPILED_CHUNK_REWRITE_FORBIDDEN"
+    },
+    {
+      "name": "compiled-chunk-route",
+      "blocked": true,
+      "reason": "COMPILED_CHUNK_ROUTE_FORBIDDEN"
+    },
+    {
+      "name": "minified-source-needle",
+      "blocked": true,
+      "reason": "SOURCE_NEEDLE_FORBIDDEN"
+    },
+    {
+      "name": "product-bypass",
+      "blocked": true,
+      "reason": "PRODUCT_BYPASS_FORBIDDEN"
+    },
+    {
+      "name": "product-file-modified",
+      "blocked": true,
+      "reason": "PRODUCT_MODIFICATION_FORBIDDEN"
+    },
+    {
+      "name": "port-3000-touched",
+      "blocked": true,
+      "reason": "PORT_3000_CUSTODY_VIOLATION"
+    },
+    {
+      "name": "not-test-only",
+      "blocked": true,
+      "reason": "TEST_ONLY_REQUIRED"
+    }
+  ],
+  "pass": true
+}

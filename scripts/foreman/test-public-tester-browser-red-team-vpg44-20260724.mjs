@@ -1,10 +1,30 @@
+import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { writeFileSync } from "node:fs";
 import { chromium } from "playwright";
 
-const ORIGIN = process.env.VPG44_BROWSER_ORIGIN || "http://127.0.0.1:31245";
-const EXPECTED_PID = Number(process.env.VPG44_BROWSER_PID || "38940");
+const ORIGIN = process.env.VPG48_BROWSER_ORIGIN;
+const EXPECTED_PID = Number(process.env.VPG48_BROWSER_PID || "0");
+const EXPECTED_BUILD_ID = process.env.VPG48_BROWSER_BUILD_ID || "";
 const BROWSER_EXECUTABLE =
-  process.env.VPG44_BROWSER_EXECUTABLE ||
+  process.env.VPG48_BROWSER_EXECUTABLE ||
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+const RESULT_PATH =
+  process.env.VPG48_BROWSER_RESULT ||
+  "foreman/receipts/WERKLES_VPG48_LADY_JESSICA_BROWSER_ACCEPTANCE_RESULTS_20260725.json";
+const MOCK_SUPABASE_ORIGIN = "https://vpg46-local-only.supabase.co";
+const MOCK_AUTH_KEY = "sb-vpg46-local-only-auth-token";
+const SYNTHETIC_USER_ID = "48000000-0000-4000-8000-000000000048";
+
+assert.ok(ORIGIN, "VPG48_BROWSER_ORIGIN is required");
+const originUrl = new URL(ORIGIN);
+assert.ok(
+  ["127.0.0.1", "localhost"].includes(originUrl.hostname),
+  "VPG48 browser proof must use a loopback runtime"
+);
+assert.notEqual(originUrl.port, "3000", "Port 3000 is outside VPG48 custody");
+assert.ok(EXPECTED_PID > 0, "VPG48_BROWSER_PID is required");
+assert.ok(EXPECTED_BUILD_ID, "VPG48_BROWSER_BUILD_ID is required");
 
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
@@ -12,11 +32,18 @@ const viewports = [
 ];
 
 const results = {
-  schema: "werkles.vpg44-lady-jessica-browser-red-team/v1",
+  schema: "werkles.vpg48-lady-jessica-current-browser-acceptance/v1",
+  generatedAt: new Date().toISOString(),
+  cycleId: "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  seat: "LadyJessica@Betsy",
   origin: ORIGIN,
   expectedPid: EXPECTED_PID,
+  expectedBuildId: EXPECTED_BUILD_ID,
+  mockSupabaseOrigin: MOCK_SUPABASE_ORIGIN,
+  mockAuthKey: MOCK_AUTH_KEY,
   viewports,
   ideas: [],
+  runtimeCustody: {},
   summary: {}
 };
 
@@ -153,8 +180,8 @@ async function storageSnapshot(page) {
   return page.evaluate(() => ({
     localKeys: Object.keys(localStorage),
     sessionKeys: Object.keys(sessionStorage),
-    writes: Array.isArray(window.__vpg44StorageWrites)
-      ? window.__vpg44StorageWrites
+    writes: Array.isArray(window.__vpg48StorageWrites)
+      ? window.__vpg48StorageWrites
       : []
   }));
 }
@@ -352,95 +379,191 @@ async function executeFullJourney(browser) {
   }
 }
 
-function syntheticSessionInitScript() {
-  const syntheticSession = {
-    access_token:
-      "eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ2cGc0NC1icm93c2VyLXRlc3QiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJleHAiOjQxMDI0NDQ4MDB9.",
-    refresh_token: "vpg44-local-headless-refresh",
-    expires_in: 2_000_000_000,
-    expires_at: 4_102_444_800,
+function base64url(value) {
+  return Buffer.from(JSON.stringify(value))
+    .toString("base64")
+    .replaceAll("+", "-")
+    .replaceAll("/", "_")
+    .replaceAll("=", "");
+}
+
+function syntheticSession() {
+  const nowSeconds = Math.floor(Date.now() / 1000);
+  const accessToken = [
+    base64url({ alg: "none", typ: "JWT" }),
+    base64url({
+      aud: "authenticated",
+      exp: nowSeconds + 86400,
+      iat: nowSeconds,
+      sub: SYNTHETIC_USER_ID,
+      email: "lady-jessica-vpg48@example.invalid",
+      role: "authenticated",
+      aal: "aal1",
+      session_id: "48000000-0000-4000-8000-000000000084"
+    }),
+    "vpg48-local-signature"
+  ].join(".");
+  const now = new Date().toISOString();
+  return {
+    access_token: accessToken,
     token_type: "bearer",
+    expires_in: 86400,
+    expires_at: nowSeconds + 86400,
+    refresh_token: "vpg48-local-refresh-token",
     user: {
-      id: "vpg44-browser-test",
+      id: SYNTHETIC_USER_ID,
       aud: "authenticated",
       role: "authenticated",
-      email: "vpg44-browser-test@example.invalid",
+      email: "lady-jessica-vpg48@example.invalid",
+      email_confirmed_at: now,
+      phone: "",
+      confirmed_at: now,
+      last_sign_in_at: now,
       app_metadata: { provider: "email", providers: ["email"] },
       user_metadata: {},
       identities: [],
-      created_at: "2026-07-24T00:00:00.000Z"
+      created_at: now,
+      updated_at: now,
+      is_anonymous: false
     }
-  };
-
-  const originalGetItem = Storage.prototype.getItem;
-  const originalSetItem = Storage.prototype.setItem;
-  const originalRemoveItem = Storage.prototype.removeItem;
-  const writes = [];
-  Object.defineProperty(window, "__vpg44StorageWrites", {
-    value: writes,
-    configurable: false
-  });
-
-  Storage.prototype.getItem = function getItem(key) {
-    if (
-      this === window.localStorage &&
-      typeof key === "string" &&
-      /^sb-.+-auth-token$/.test(key)
-    ) {
-      return JSON.stringify(syntheticSession);
-    }
-    return originalGetItem.call(this, key);
-  };
-  Storage.prototype.setItem = function setItem(key, value) {
-    writes.push({ operation: "set", key: String(key) });
-    if (
-      this === window.localStorage &&
-      typeof key === "string" &&
-      /^sb-.+-auth-token$/.test(key)
-    ) {
-      return;
-    }
-    return originalSetItem.call(this, key, value);
-  };
-  Storage.prototype.removeItem = function removeItem(key) {
-    writes.push({ operation: "remove", key: String(key) });
-    if (
-      this === window.localStorage &&
-      typeof key === "string" &&
-      /^sb-.+-auth-token$/.test(key)
-    ) {
-      return;
-    }
-    return originalRemoveItem.call(this, key);
   };
 }
 
-async function installPersonalDeliveryTestInstrumentation(page, instrumentation) {
-  await page.route(
-    "**/_next/static/chunks/app/bellows/recommendations/page-*.js",
-    async (route) => {
-      const response = await route.fetch();
-      const source = await response.text();
-      let patched = source;
-      const configNeedle = 'if(!(0,b.J)()){e&&i({status:"signed_out"});return}';
-      const sessionNeedle =
-        "let{data:t}=await (0,b.n)().auth.getSession(),s=null==(n=t.session)?void 0:n.access_token;";
-      const sessionReplacement =
-        'let{data:t}=await Promise.resolve({data:{session:{access_token:"vpg44-headless-test-token"}}}),s=null==(n=t.session)?void 0:n.access_token;';
+const SYNTHETIC_SESSION = syntheticSession();
 
-      if (patched.includes(configNeedle)) {
-        patched = patched.replace(configNeedle, 'if(!1){e&&i({status:"signed_out"});return}');
-        instrumentation.configBypassCount += 1;
-      }
-      if (patched.includes(sessionNeedle)) {
-        patched = patched.replace(sessionNeedle, sessionReplacement);
-        instrumentation.sessionBypassCount += 1;
-      }
+async function installSyntheticSession(context) {
+  await context.addInitScript(
+    ({ authKey, authSession }) => {
+      const originalSet = Storage.prototype.setItem;
+      const originalRemove = Storage.prototype.removeItem;
+      originalSet.call(localStorage, authKey, JSON.stringify(authSession));
+      const writes = [];
+      Object.defineProperty(window, "__vpg48StorageWrites", {
+        value: writes,
+        configurable: false,
+        writable: false
+      });
+      Object.defineProperty(window, "__vpg48ClearSyntheticAuth", {
+        value: () => originalRemove.call(localStorage, authKey),
+        configurable: false,
+        writable: false
+      });
+      Storage.prototype.setItem = function instrumentedSet(key, value) {
+        writes.push({ operation: "set", key: String(key) });
+        return originalSet.call(this, key, value);
+      };
+      Storage.prototype.removeItem = function instrumentedRemove(key) {
+        writes.push({ operation: "remove", key: String(key) });
+        return originalRemove.call(this, key);
+      };
+    },
+    { authKey: MOCK_AUTH_KEY, authSession: SYNTHETIC_SESSION }
+  );
+}
 
-      const headers = { ...response.headers() };
-      delete headers["content-length"];
-      await route.fulfill({ response, headers, body: patched });
+async function clearSyntheticSessionFixture(page) {
+  await page.evaluate(() => window.__vpg48ClearSyntheticAuth());
+}
+
+function createSupportedSeamState() {
+  return {
+    personalRequests: [],
+    mockSupabaseRequests: [],
+    unexpectedMockSupabaseRequests: [],
+    compiledChunkInterceptionCount: 0
+  };
+}
+
+function mockSupabaseHeaders() {
+  return {
+    "access-control-allow-origin": ORIGIN,
+    "access-control-allow-credentials": "true",
+    "content-type": "application/json"
+  };
+}
+
+async function installSupportedPersonalDeliverySeam(context, seam, responder) {
+  await context.route(`${MOCK_SUPABASE_ORIGIN}/**`, async (route) => {
+    const request = route.request();
+    const url = new URL(request.url());
+    seam.mockSupabaseRequests.push({
+      method: request.method(),
+      path: url.pathname,
+      search: url.search
+    });
+    if (request.method() === "OPTIONS") {
+      await route.fulfill({
+        status: 204,
+        headers: {
+          ...mockSupabaseHeaders(),
+          "access-control-allow-headers":
+            request.headers()["access-control-request-headers"] ||
+            "authorization,apikey,x-client-info",
+          "access-control-allow-methods": "GET,POST,OPTIONS"
+        }
+      });
+      return;
     }
+    if (request.method() === "GET" && url.pathname === "/auth/v1/user") {
+      await route.fulfill({
+        status: 200,
+        headers: mockSupabaseHeaders(),
+        body: JSON.stringify(SYNTHETIC_SESSION.user)
+      });
+      return;
+    }
+    seam.unexpectedMockSupabaseRequests.push({
+      method: request.method(),
+      path: url.pathname,
+      search: url.search
+    });
+    await route.fulfill({
+      status: 418,
+      headers: mockSupabaseHeaders(),
+      body: JSON.stringify({ error: "Unexpected VPG48 synthetic Supabase request" })
+    });
+  });
+
+  await context.route(`${ORIGIN}/api/bellows/recommendations/personal`, async (route) => {
+    const request = route.request();
+    seam.personalRequests.push({
+      method: request.method(),
+      url: request.url(),
+      authorization: request.headers().authorization || ""
+    });
+    await responder(route);
+  });
+}
+
+function supportedSeamEvidence(seam, expectedRequestCount) {
+  const expectedAuthorization = `Bearer ${SYNTHETIC_SESSION.access_token}`;
+  return {
+    mockSupabaseOrigin: MOCK_SUPABASE_ORIGIN,
+    mockAuthKey: MOCK_AUTH_KEY,
+    personalRequestCount: seam.personalRequests.length,
+    expectedRequestCount,
+    personalRequestMethods: seam.personalRequests.map((request) => request.method),
+    bearerCredentialMatches: seam.personalRequests.map(
+      (request) => request.authorization === expectedAuthorization
+    ),
+    mockSupabaseRequestCount: seam.mockSupabaseRequests.length,
+    unexpectedMockSupabaseRequests: seam.unexpectedMockSupabaseRequests,
+    compiledChunkInterceptionCount: seam.compiledChunkInterceptionCount,
+    buildId: results.runtimeCustody.buildId,
+    pid: results.runtimeCustody.owningProcess
+  };
+}
+
+function supportedSeamPassed(seam, expectedRequestCount) {
+  const evidence = supportedSeamEvidence(seam, expectedRequestCount);
+  return (
+    evidence.personalRequestCount === expectedRequestCount &&
+    evidence.personalRequestMethods.every((method) => method === "GET") &&
+    evidence.bearerCredentialMatches.every(Boolean) &&
+    evidence.unexpectedMockSupabaseRequests.length === 0 &&
+    evidence.compiledChunkInterceptionCount === 0 &&
+    evidence.buildId === EXPECTED_BUILD_ID &&
+    evidence.pid === EXPECTED_PID
   );
 }
 
@@ -507,181 +630,247 @@ async function executeDeliveryAdversary(browser) {
     }
   ];
 
-  for (const adversary of cases) {
-    const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-    await context.addInitScript(syntheticSessionInitScript);
-    const page = await context.newPage();
-    const observations = installObservation(page, adversary.name === "aborted-request");
-    const { check, testCase } = makeRecorder(idea, adversary.name);
-    let personalRequestCount = 0;
-    const instrumentation = { configBypassCount: 0, sessionBypassCount: 0 };
+  for (const viewport of viewports) {
+    for (const adversary of cases) {
+      const context = await browser.newContext({
+        viewport: { width: viewport.width, height: viewport.height },
+        isMobile: Boolean(viewport.isMobile),
+        hasTouch: Boolean(viewport.isMobile)
+      });
+      await installSyntheticSession(context);
+      const seam = createSupportedSeamState();
+      await installSupportedPersonalDeliverySeam(context, seam, adversary.run);
+      const page = await context.newPage();
+      const observations = installObservation(page, adversary.name === "aborted-request");
+      const { check, testCase } = makeRecorder(
+        idea,
+        `${viewport.name}-${adversary.name}`
+      );
 
-    await installPersonalDeliveryTestInstrumentation(page, instrumentation);
-    await page.route("**/api/bellows/recommendations/personal", async (route) => {
-      personalRequestCount += 1;
-      await adversary.run(route);
+      try {
+        const navigation = page.goto(`${ORIGIN}/bellows/recommendations`, {
+          waitUntil: "domcontentloaded"
+        });
+        if (adversary.initialText) {
+          await page.getByText(adversary.initialText, { exact: false }).waitFor();
+          check("slow response exposes non-blocking loading state", true);
+        }
+        const response = await navigation;
+        check("recommendation shell returns 200", response?.status() === 200, response?.status());
+        await page.getByText(adversary.expectedText, { exact: false }).waitFor({ timeout: 10_000 });
+        check("expected recovery state renders", true, adversary.expectedText);
+        const seamEvidence = supportedSeamEvidence(seam, 1);
+        check(
+          "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+          supportedSeamPassed(seam, 1),
+          seamEvidence
+        );
+        check(
+          "personal endpoint was requested exactly once",
+          seam.personalRequests.length === 1,
+          seam.personalRequests.length
+        );
+        check(
+          "example fallback remains visible",
+          await page.getByRole("note", { name: "Example mode" }).isVisible()
+        );
+        check(
+          "private custody never renders",
+          (await page.getByText("Private account result", { exact: true }).count()) === 0
+        );
+        check(
+          "private sentinel never leaks",
+          !(await page.locator("body").innerText()).includes("PRIVATE_SENTINEL_VPG44")
+        );
+        const integrity = await browserIntegritySnapshot(page);
+        check("failure state has no framework overlay", !integrity.overlay);
+        check("failure state remains nonblank", integrity.bodyTextLength > 500, integrity.bodyTextLength);
+        await clearSyntheticSessionFixture(page);
+        const storage = await storageSnapshot(page);
+        check(
+          "failure state leaves real browser storage empty",
+          storage.localKeys.length === 0 && storage.sessionKeys.length === 0,
+          storage
+        );
+        check(
+          "storage writes are limited to self-deleting capability probes",
+          onlySelfDeletingStorageProbes(storage),
+          storage.writes
+        );
+        check(
+          "failure state causes no mutating request",
+          observations.mutatingRequests.length === 0,
+          observations.mutatingRequests
+        );
+        check("failure state causes no page exception", observations.pageErrors.length === 0, observations.pageErrors);
+        const unexpectedFailures = observations.requestFailures.filter((entry) => !entry.expected);
+        check("failure state causes no unexpected request failure", unexpectedFailures.length === 0, unexpectedFailures);
+        const unexpectedConsoleErrors = observations.consoleErrors.filter(
+          (message) => !message.includes("Failed to load resource")
+        );
+        check(
+          "failure state causes no unexpected console error",
+          unexpectedConsoleErrors.length === 0,
+          unexpectedConsoleErrors
+        );
+        testCase.expectedNetworkFailures = observations.requestFailures.filter((entry) => entry.expected);
+      } catch (error) {
+        check("adversarial case completes without harness exception", false, error instanceof Error ? error.message : String(error));
+      } finally {
+        await context.close();
+      }
+    }
+  }
+
+  for (const viewport of viewports) {
+    const context = await browser.newContext({
+      viewport: { width: viewport.width, height: viewport.height },
+      isMobile: Boolean(viewport.isMobile),
+      hasTouch: Boolean(viewport.isMobile)
     });
+    await installSyntheticSession(context);
+    const seam = createSupportedSeamState();
+    await installSupportedPersonalDeliverySeam(context, seam, async (route) => {
+      if (seam.personalRequests.length === 1) {
+        await route.abort("failed");
+        return;
+      }
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          success: true,
+          persisted: false,
+          status: "profile_required"
+        })
+      });
+    });
+    const page = await context.newPage();
+    const observations = installObservation(page, true);
+    const { check, testCase } = makeRecorder(
+      idea,
+      `${viewport.name}-abort-then-retry-recovery`
+    );
 
     try {
-      const navigation = page.goto(`${ORIGIN}/bellows/recommendations`, {
+      const response = await page.goto(`${ORIGIN}/bellows/recommendations`, {
         waitUntil: "domcontentloaded"
       });
-      if (adversary.initialText) {
-        await page.getByText(adversary.initialText, { exact: false }).waitFor();
-        check("slow response exposes non-blocking loading state", true);
-      }
-      const response = await navigation;
-      check("recommendation shell returns 200", response?.status() === 200, response?.status());
-      await page.getByText(adversary.expectedText, { exact: false }).waitFor({ timeout: 10_000 });
-      check("expected recovery state renders", true, adversary.expectedText);
+      check("recovery shell returns 200", response?.status() === 200, response?.status());
+      await page
+        .getByText("We could not load your result, so the example stays here.", { exact: false })
+        .waitFor();
+      check("first failure preserves example fallback", await page.getByRole("note", { name: "Example mode" }).isVisible());
+      const retry = page.getByRole("button", { name: "Try again", exact: true });
+      await retry.focus();
+      await page.keyboard.press("Enter");
+      await page.getByText("Your profile needs a goal or project detail.", { exact: false }).waitFor();
+      check("retry reaches profile-required recovery", true);
+      const seamEvidence = supportedSeamEvidence(seam, 2);
       check(
-        "headless-only delivery instrumentation activated",
-        instrumentation.configBypassCount === 1 && instrumentation.sessionBypassCount === 1,
-        instrumentation
-      );
-      check("personal endpoint was requested exactly once", personalRequestCount === 1, personalRequestCount);
-      check(
-        "example fallback remains visible",
-        await page.getByRole("note", { name: "Example mode" }).isVisible()
+        "supported synthetic auth recovery seam carries GET bearer requests without compiled-chunk interception",
+        supportedSeamPassed(seam, 2),
+        seamEvidence
       );
       check(
-        "private custody never renders",
+        "retry makes exactly two personal requests",
+        seam.personalRequests.length === 2,
+        seam.personalRequests.length
+      );
+      check(
+        "retry focuses the delivery status",
+        await page.locator(".squibb-rec-delivery-status").evaluate(
+          (element) => element === document.activeElement
+        )
+      );
+      check(
+        "recovered state offers Profile Builder",
+        await page.getByRole("link", { name: "Open Profile Builder", exact: true }).isVisible()
+      );
+      check(
+        "recovery never renders private custody",
         (await page.getByText("Private account result", { exact: true }).count()) === 0
       );
-      check(
-        "private sentinel never leaks",
-        !(await page.locator("body").innerText()).includes("PRIVATE_SENTINEL_VPG44")
-      );
-      const integrity = await browserIntegritySnapshot(page);
-      check("failure state has no framework overlay", !integrity.overlay);
-      check("failure state remains nonblank", integrity.bodyTextLength > 500, integrity.bodyTextLength);
+      await clearSyntheticSessionFixture(page);
       const storage = await storageSnapshot(page);
       check(
-        "failure state leaves real browser storage empty",
+        "recovery leaves real browser storage empty",
         storage.localKeys.length === 0 && storage.sessionKeys.length === 0,
         storage
       );
       check(
-        "storage writes are limited to self-deleting capability probes",
+        "recovery storage writes are limited to self-deleting capability probes",
         onlySelfDeletingStorageProbes(storage),
         storage.writes
       );
+      check("recovery causes no mutating request", observations.mutatingRequests.length === 0, observations.mutatingRequests);
+      check("recovery causes no page exception", observations.pageErrors.length === 0, observations.pageErrors);
       check(
-        "failure state causes no mutating request",
-        observations.mutatingRequests.length === 0,
-        observations.mutatingRequests
+        "recovery causes no unexpected failed request",
+        observations.requestFailures.filter((entry) => !entry.expected).length === 0,
+        observations.requestFailures
       );
-      check("failure state causes no page exception", observations.pageErrors.length === 0, observations.pageErrors);
-      const unexpectedFailures = observations.requestFailures.filter((entry) => !entry.expected);
-      check("failure state causes no unexpected request failure", unexpectedFailures.length === 0, unexpectedFailures);
       const unexpectedConsoleErrors = observations.consoleErrors.filter(
         (message) => !message.includes("Failed to load resource")
       );
       check(
-        "failure state causes no unexpected console error",
+        "recovery causes no unexpected console error",
         unexpectedConsoleErrors.length === 0,
         unexpectedConsoleErrors
       );
       testCase.expectedNetworkFailures = observations.requestFailures.filter((entry) => entry.expected);
     } catch (error) {
-      check("adversarial case completes without harness exception", false, error instanceof Error ? error.message : String(error));
+      check("retry recovery completes without harness exception", false, error instanceof Error ? error.message : String(error));
     } finally {
       await context.close();
     }
   }
-
-  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  await context.addInitScript(syntheticSessionInitScript);
-  const page = await context.newPage();
-  const observations = installObservation(page, true);
-  const { check, testCase } = makeRecorder(idea, "abort-then-retry-recovery");
-  let attempt = 0;
-  const instrumentation = { configBypassCount: 0, sessionBypassCount: 0 };
-  await installPersonalDeliveryTestInstrumentation(page, instrumentation);
-  await page.route("**/api/bellows/recommendations/personal", async (route) => {
-    attempt += 1;
-    if (attempt === 1) {
-      await route.abort("failed");
-      return;
-    }
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({
-        success: true,
-        persisted: false,
-        status: "profile_required"
-      })
-    });
-  });
-
-  try {
-    const response = await page.goto(`${ORIGIN}/bellows/recommendations`, {
-      waitUntil: "domcontentloaded"
-    });
-    check("recovery shell returns 200", response?.status() === 200, response?.status());
-    await page
-      .getByText("We could not load your result, so the example stays here.", { exact: false })
-      .waitFor();
-    check("first failure preserves example fallback", await page.getByRole("note", { name: "Example mode" }).isVisible());
-    const retry = page.getByRole("button", { name: "Try again", exact: true });
-    await retry.focus();
-    await page.keyboard.press("Enter");
-    await page.getByText("Your profile needs a goal or project detail.", { exact: false }).waitFor();
-    check("retry reaches profile-required recovery", true);
-    check(
-      "headless-only recovery instrumentation activated",
-      instrumentation.configBypassCount === 1 && instrumentation.sessionBypassCount === 1,
-      instrumentation
-    );
-    check("retry makes exactly two personal requests", attempt === 2, attempt);
-    check(
-      "retry focuses the delivery status",
-      await page.locator(".squibb-rec-delivery-status").evaluate(
-        (element) => element === document.activeElement
-      )
-    );
-    check(
-      "recovered state offers Profile Builder",
-      await page.getByRole("link", { name: "Open Profile Builder", exact: true }).isVisible()
-    );
-    check(
-      "recovery never renders private custody",
-      (await page.getByText("Private account result", { exact: true }).count()) === 0
-    );
-    const storage = await storageSnapshot(page);
-    check(
-      "recovery leaves real browser storage empty",
-      storage.localKeys.length === 0 && storage.sessionKeys.length === 0,
-      storage
-    );
-    check(
-      "recovery storage writes are limited to self-deleting capability probes",
-      onlySelfDeletingStorageProbes(storage),
-      storage.writes
-    );
-    check("recovery causes no mutating request", observations.mutatingRequests.length === 0, observations.mutatingRequests);
-    check("recovery causes no page exception", observations.pageErrors.length === 0, observations.pageErrors);
-    check(
-      "recovery causes no unexpected failed request",
-      observations.requestFailures.filter((entry) => !entry.expected).length === 0,
-      observations.requestFailures
-    );
-    const unexpectedConsoleErrors = observations.consoleErrors.filter(
-      (message) => !message.includes("Failed to load resource")
-    );
-    check(
-      "recovery causes no unexpected console error",
-      unexpectedConsoleErrors.length === 0,
-      unexpectedConsoleErrors
-    );
-    testCase.expectedNetworkFailures = observations.requestFailures.filter((entry) => entry.expected);
-  } catch (error) {
-    check("retry recovery completes without harness exception", false, error instanceof Error ? error.message : String(error));
-  } finally {
-    await context.close();
-  }
 }
+
+async function verifyRuntimeCustody() {
+  const port = Number(originUrl.port);
+  const command = [
+    `$listener = Get-NetTCPConnection -LocalPort ${port} -State Listen -ErrorAction Stop | Select-Object -First 1`,
+    "$process = Get-CimInstance Win32_Process -Filter \"ProcessId = $($listener.OwningProcess)\"",
+    "[ordered]@{ owningProcess = [int]$listener.OwningProcess; processName = $process.Name; commandLine = $process.CommandLine } | ConvertTo-Json -Compress"
+  ].join("; ");
+  const processEvidence = JSON.parse(
+    execFileSync("powershell.exe", ["-NoProfile", "-Command", command], {
+      encoding: "utf8"
+    }).trim()
+  );
+  assert.equal(
+    processEvidence.owningProcess,
+    EXPECTED_PID,
+    "The isolated runtime listener must be owned by the expected PID"
+  );
+  assert.match(
+    processEvidence.commandLine || "",
+    /next[\\/]dist[\\/]bin[\\/]next.*start/i,
+    "The isolated listener must be the expected Next start runtime"
+  );
+
+  const buildManifestUrl = `${ORIGIN}/_next/static/${EXPECTED_BUILD_ID}/_buildManifest.js`;
+  const buildManifestResponse = await fetch(buildManifestUrl, { cache: "no-store" });
+  assert.equal(
+    buildManifestResponse.status,
+    200,
+    "The isolated runtime must serve the expected build manifest"
+  );
+
+  return {
+    port,
+    owningProcess: processEvidence.owningProcess,
+    processName: processEvidence.processName,
+    commandLine: processEvidence.commandLine,
+    buildId: EXPECTED_BUILD_ID,
+    buildManifestUrl,
+    buildManifestStatus: buildManifestResponse.status,
+    port3000Touched: false
+  };
+}
+
+results.runtimeCustody = await verifyRuntimeCustody();
 
 const browser = await chromium.launch({
   headless: true,
@@ -709,5 +898,6 @@ results.summary = {
   verdict: results.ideas.every((idea) => idea.failureCount === 0) ? "PASS" : "FAIL"
 };
 
+writeFileSync(RESULT_PATH, `${JSON.stringify(results, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(results, null, 2));
 if (results.summary.failureCount > 0) process.exitCode = 1;

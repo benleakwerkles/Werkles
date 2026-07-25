@@ -1,37 +1,42 @@
-# Human Gate - Werkles VPG42 Public Test Cutover
+# Human Gate - Werkles Public Test Cutover
 
-STATUS: `BLOCKED_TECHNICAL_PRECONDITIONS`
-CYCLE_ID: `WERKLES-FLOCK-20260724-145708-ET-BETSY-01`
+STATUS: `BLOCKED_CURRENT_PREVIEW_HARVEY_AND_FRESH_RELEASE_BINDINGS`
+ORIGINATING_CYCLE: `WERKLES-FLOCK-20260724-145708-ET-BETSY-01`
+TRUTH_REFRESH_CYCLE: `WERKLES-FLOCK-20260725-013031-ET-BETSY-01`
 TARGET: `werkles.com`
-CANDIDATE: `67c38ace103ba5f1ba473b984c91e243d9120630`
-CANDIDATE_DEPLOYMENT: `dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd`
-ROLLBACK_DEPLOYMENT: `dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn`
+CURRENT_SOURCE_HEAD: `bd24b45d3a01b51ee05c951d5f96e1bac6398686`
+CURRENT_PRODUCT_COMMIT: `ba08a444632206e2676df49e175f184ab0c2c2f2`
+CURRENT_CANDIDATE_DEPLOYMENT: `NONE_PROVEN`
+HISTORICAL_VPG42_DEPLOYMENT: `dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd` (`STALE_FOR_CURRENT_SOURCE`)
+CURRENT_ROLLBACK_BINDING: `STALE_UNVERIFIED`
 
-## Reserved approval phrase
+## Current truth
 
-`APPROVE WERKLES VPG42 PUBLIC TEST CUTOVER — REPLACE HARVEY PRODUCTION`
+The VPG42 dependency blocker is solved for the local current candidate: a fresh Production-only audit reports zero findings across 51 Production dependencies.
 
-This is the next Human Gate phrase, but the gate is not open yet.
+That does not open this gate. The VPG42 Preview is bound to the older `67c38ace103ba5f1ba473b984c91e243d9120630` candidate. No READY Preview, route matrix, Production alias binding, or rollback binding has been proven for the current source head.
 
-## Why it is not open
+Harvey disposition also remains unresolved. The fail-closed default is preserve Harvey. The current public candidate must not be described as coexistence unless it preserves or relocates Harvey with fresh proof.
 
-1. The candidate would replace the current Harvey Production build and remove 37 Harvey app/API paths. The phrase explicitly acknowledges that replacement; a preservation/reconciliation build is the alternative.
-2. Fresh production dependency audit reports 3 high-severity findings with fixes available. Public promotion is fail-closed until the patched candidate is rebuilt and re-smoked.
+## Historical reserved phrase
 
-## Required preflight before the phrase can execute
+`APPROVE WERKLES VPG42 PUBLIC TEST CUTOVER - REPLACE HARVEY PRODUCTION`
 
-- Patch the production dependency findings and produce a new READY Preview.
-- Re-run the exact Preview route matrix.
-- Re-bind the candidate commit/deployment and rollback deployment.
-- Confirm either Harvey route preservation or deliberate replacement.
-- Reconfirm Production alias ownership and zero unexpected runtime errors.
+This phrase is historical and not executable for the current candidate. It cannot bind a different commit, deployment, route matrix, alias state, rollback target, or Harvey decision.
 
-## Approved action after preflight
+## Required work before any release gate can open
 
-Promote the bound READY candidate to `werkles.com`; run ordered smoke for `/`, `/bellows`, `/bellows/recommendations`, `/dashboard/profile`, `/privacy`, anonymous personal `401`, saving `403`, and intake `503`; immediately roll back on any mismatch or unexpected `5xx`.
+- Choose and prove one Harvey disposition: preserve/reconcile, preserve/relocate, or deliberately replace.
+- Build the exact current source and produce a new immutable READY Preview.
+- Run the current Preview route, auth, privacy, cache, and unexpected-`5xx` matrices.
+- Bind the exact candidate commit, deployment, Production alias owner, current Production deployment, and rollback deployment.
+- Re-run the release-integrity and alias guards against those fresh bindings.
+- Obtain a separate direct release instruction. VPG47 J and VPG48 VPG do not authorize release.
 
 ## Exclusions
 
-No PR, merge, `main` change, environment change, SQL/schema/RLS/data mutation, auth expansion, saving/Tier B, intake opening, providers/LLM, payments, or infrastructure change.
+No PR, merge, `main` change, Preview creation, deployment, promotion, alias, environment change, Production action, public launch, gate execution, SQL/schema/RLS/data mutation, auth expansion, saving/Tier B, intake opening, providers/LLM, payments, browser/cursor control, or machine control is authorized by this refresh.
 
-BLOCKER: `DEPENDENCY_PATCH_AND_HARVEY_CUTOVER_DECISION_REQUIRED`
+Machine truth: `foreman/receipts/WERKLES_VPG48_PUBLIC_CUTOVER_TRUTH_20260725.json`
+
+BLOCKER: `CURRENT_PREVIEW_HARVEY_DECISION_AND_FRESH_RELEASE_BINDINGS_REQUIRED`

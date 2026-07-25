@@ -1,0 +1,1844 @@
+{
+  "schema": "werkles.vpg48-lady-jessica-current-browser-acceptance/v1",
+  "generatedAt": "2026-07-25T05:38:15.695Z",
+  "cycleId": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "seat": "LadyJessica@Betsy",
+  "origin": "http://127.0.0.1:31249",
+  "expectedPid": 41700,
+  "expectedBuildId": "8Mabi-W8b-FQcfFBl1avl",
+  "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+  "mockAuthKey": "sb-vpg46-local-only-auth-token",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "isMobile": true
+    }
+  ],
+  "ideas": [
+    {
+      "idea": 1,
+      "name": "Headless desktop/mobile/keyboard/accessibility full journey",
+      "cases": [
+        {
+          "case": "desktop-full-journey",
+          "assertions": [
+            {
+              "label": "home returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "home explains worked-example entry",
+              "passed": true
+            },
+            {
+              "label": "home is not blank",
+              "passed": true,
+              "evidence": 5755
+            },
+            {
+              "label": "home has no framework error overlay",
+              "passed": true
+            },
+            {
+              "label": "home has no page-level horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "keyboard navigation reaches Bellows",
+              "passed": true
+            },
+            {
+              "label": "Bellows recommendation doorway is visible",
+              "passed": true
+            },
+            {
+              "label": "Bellows doorway reaches recommendations",
+              "passed": true
+            },
+            {
+              "label": "example custody is explicit",
+              "passed": true
+            },
+            {
+              "label": "example is not misrepresented as private",
+              "passed": true
+            },
+            {
+              "label": "keyboard switches to all-options view",
+              "passed": true
+            },
+            {
+              "label": "all-options view exposes multiple choices",
+              "passed": true,
+              "evidence": 12
+            },
+            {
+              "label": "keyboard selects a different recommendation",
+              "passed": true
+            },
+            {
+              "label": "selection updates the detail heading",
+              "passed": true,
+              "evidence": "Verify proof"
+            },
+            {
+              "label": "selection announces the updated detail",
+              "passed": true
+            },
+            {
+              "label": "proof disclosure opens from keyboard",
+              "passed": true
+            },
+            {
+              "label": "proof disclosure moves focus to its summary",
+              "passed": true
+            },
+            {
+              "label": "continuation keeps the user on the recommendation page",
+              "passed": true
+            },
+            {
+              "label": "continuation focuses the account doorway",
+              "passed": true
+            },
+            {
+              "label": "profile return route returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "profile return path remains allowlisted",
+              "passed": true
+            },
+            {
+              "label": "profile route explains its auth state",
+              "passed": true
+            },
+            {
+              "label": "recommendation surface has no duplicate IDs",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recommendation aria-controls targets exist",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recommendation images have alt attributes",
+              "passed": true
+            },
+            {
+              "label": "recommendation controls have accessible names",
+              "passed": true
+            },
+            {
+              "label": "recommendation surface has no error overlay",
+              "passed": true
+            },
+            {
+              "label": "recommendation page has no horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "journey caused no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "journey caused no unexpected failed request",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/bellows/recommendations?_rsc=1p-R_iEY6bj0jY31",
+                  "error": "net::ERR_ABORTED",
+                  "expected": true
+                },
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/bellows/recommendations?_rsc=pztsxhwkvmiI8QAn",
+                  "error": "net::ERR_ABORTED",
+                  "expected": true
+                },
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/dashboard?_rsc=5VN19_VP70lYdoxj",
+                  "error": "net::ERR_ABORTED",
+                  "expected": true
+                }
+              ]
+            },
+            {
+              "label": "journey caused no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "journey caused no console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "journey left browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": []
+              }
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "mobile-full-journey",
+          "assertions": [
+            {
+              "label": "home returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "home explains worked-example entry",
+              "passed": true
+            },
+            {
+              "label": "home is not blank",
+              "passed": true,
+              "evidence": 5755
+            },
+            {
+              "label": "home has no framework error overlay",
+              "passed": true
+            },
+            {
+              "label": "home has no page-level horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "keyboard navigation reaches Bellows",
+              "passed": true
+            },
+            {
+              "label": "Bellows recommendation doorway is visible",
+              "passed": true
+            },
+            {
+              "label": "Bellows doorway reaches recommendations",
+              "passed": true
+            },
+            {
+              "label": "example custody is explicit",
+              "passed": true
+            },
+            {
+              "label": "example is not misrepresented as private",
+              "passed": true
+            },
+            {
+              "label": "keyboard switches to all-options view",
+              "passed": true
+            },
+            {
+              "label": "all-options view exposes multiple choices",
+              "passed": true,
+              "evidence": 12
+            },
+            {
+              "label": "keyboard selects a different recommendation",
+              "passed": true
+            },
+            {
+              "label": "selection updates the detail heading",
+              "passed": true,
+              "evidence": "Verify proof"
+            },
+            {
+              "label": "selection announces the updated detail",
+              "passed": true
+            },
+            {
+              "label": "proof disclosure opens from keyboard",
+              "passed": true
+            },
+            {
+              "label": "proof disclosure moves focus to its summary",
+              "passed": true
+            },
+            {
+              "label": "continuation keeps the user on the recommendation page",
+              "passed": true
+            },
+            {
+              "label": "continuation focuses the account doorway",
+              "passed": true
+            },
+            {
+              "label": "profile return route returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "profile return path remains allowlisted",
+              "passed": true
+            },
+            {
+              "label": "profile route explains its auth state",
+              "passed": true
+            },
+            {
+              "label": "recommendation surface has no duplicate IDs",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recommendation aria-controls targets exist",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recommendation images have alt attributes",
+              "passed": true
+            },
+            {
+              "label": "recommendation controls have accessible names",
+              "passed": true
+            },
+            {
+              "label": "recommendation surface has no error overlay",
+              "passed": true
+            },
+            {
+              "label": "recommendation page has no horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "journey caused no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "journey caused no unexpected failed request",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/bellows/recommendations?_rsc=1p-R_iEY6bj0jY31",
+                  "error": "net::ERR_ABORTED",
+                  "expected": true
+                },
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/bellows/recommendations?_rsc=pztsxhwkvmiI8QAn",
+                  "error": "net::ERR_ABORTED",
+                  "expected": true
+                },
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/dashboard?_rsc=5VN19_VP70lYdoxj",
+                  "error": "net::ERR_ABORTED",
+                  "expected": true
+                }
+              ]
+            },
+            {
+              "label": "journey caused no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "journey caused no console error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "journey left browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": []
+              }
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        }
+      ],
+      "caseCount": 2,
+      "assertionCount": 66,
+      "failureCount": 0
+    },
+    {
+      "idea": 2,
+      "name": "Personal-delivery failure, fallback, retry, custody, and no-write adversary",
+      "cases": [
+        {
+          "case": "desktop-slow-profile-required",
+          "assertions": [
+            {
+              "label": "slow response exposes non-blocking loading state",
+              "passed": true
+            },
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "Your profile needs a goal or project detail."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2672
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.090730157650343870.1739626564277379"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.090730157650343870.1739626564277379"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.090730157650343870.1739626564277379"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.090730157650343870.1739626564277379"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "desktop-aborted-request",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "We could not load your result, so the example stays here."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2641
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.236799449705552670.3256463499656965"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.236799449705552670.3256463499656965"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.236799449705552670.3256463499656965"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.236799449705552670.3256463499656965"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": [
+            {
+              "method": "GET",
+              "url": "http://127.0.0.1:31249/api/bellows/recommendations/personal",
+              "error": "net::ERR_FAILED",
+              "expected": true
+            }
+          ]
+        },
+        {
+          "case": "desktop-401-private-sentinel",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "Your session ended."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2649
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.46642946174647880.30180995769487384"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.46642946174647880.30180995769487384"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.46642946174647880.30180995769487384"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.46642946174647880.30180995769487384"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "desktop-500-private-sentinel",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "We could not load your result, so the example stays here."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2641
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.9650700108508050.9073233142627407"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.9650700108508050.9073233142627407"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.9650700108508050.9073233142627407"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.9650700108508050.9073233142627407"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "desktop-malformed-json",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "We could not load your result, so the example stays here."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2641
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.97855706096320830.5458507901612597"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.97855706096320830.5458507901612597"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.97855706096320830.5458507901612597"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.97855706096320830.5458507901612597"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "mobile-slow-profile-required",
+          "assertions": [
+            {
+              "label": "slow response exposes non-blocking loading state",
+              "passed": true
+            },
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "Your profile needs a goal or project detail."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2701
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.88489810539794440.7621383364482769"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.88489810539794440.7621383364482769"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.88489810539794440.7621383364482769"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.88489810539794440.7621383364482769"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "mobile-aborted-request",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "We could not load your result, so the example stays here."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2670
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.54644195782452830.5228263918124456"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.54644195782452830.5228263918124456"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.54644195782452830.5228263918124456"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.54644195782452830.5228263918124456"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": [
+            {
+              "method": "GET",
+              "url": "http://127.0.0.1:31249/api/bellows/recommendations/personal",
+              "error": "net::ERR_FAILED",
+              "expected": true
+            }
+          ]
+        },
+        {
+          "case": "mobile-401-private-sentinel",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "Your session ended."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2678
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.84081850662576720.40894892711570896"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.84081850662576720.40894892711570896"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.84081850662576720.40894892711570896"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.84081850662576720.40894892711570896"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "mobile-500-private-sentinel",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "We could not load your result, so the example stays here."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2670
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.22538801077328240.23172698533591385"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.22538801077328240.23172698533591385"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.22538801077328240.23172698533591385"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.22538801077328240.23172698533591385"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "mobile-malformed-json",
+          "assertions": [
+            {
+              "label": "recommendation shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "expected recovery state renders",
+              "passed": true,
+              "evidence": "We could not load your result, so the example stays here."
+            },
+            {
+              "label": "supported synthetic auth seam carries GET bearer request without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 1,
+                "expectedRequestCount": 1,
+                "personalRequestMethods": [
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "personal endpoint was requested exactly once",
+              "passed": true,
+              "evidence": 1
+            },
+            {
+              "label": "example fallback remains visible",
+              "passed": true
+            },
+            {
+              "label": "private custody never renders",
+              "passed": true
+            },
+            {
+              "label": "private sentinel never leaks",
+              "passed": true
+            },
+            {
+              "label": "failure state has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "failure state remains nonblank",
+              "passed": true,
+              "evidence": 2670
+            },
+            {
+              "label": "failure state leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.81048100407219210.6285844272918142"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.81048100407219210.6285844272918142"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.81048100407219210.6285844272918142"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.81048100407219210.6285844272918142"
+                }
+              ]
+            },
+            {
+              "label": "failure state causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "failure state causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": []
+        },
+        {
+          "case": "desktop-abort-then-retry-recovery",
+          "assertions": [
+            {
+              "label": "recovery shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "first failure preserves example fallback",
+              "passed": true
+            },
+            {
+              "label": "retry reaches profile-required recovery",
+              "passed": true
+            },
+            {
+              "label": "supported synthetic auth recovery seam carries GET bearer requests without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 2,
+                "expectedRequestCount": 2,
+                "personalRequestMethods": [
+                  "GET",
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true,
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "retry makes exactly two personal requests",
+              "passed": true,
+              "evidence": 2
+            },
+            {
+              "label": "retry focuses the delivery status",
+              "passed": true
+            },
+            {
+              "label": "recovered state offers Profile Builder",
+              "passed": true
+            },
+            {
+              "label": "recovery never renders private custody",
+              "passed": true
+            },
+            {
+              "label": "recovery leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.295690463327404450.6277543688721949"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.295690463327404450.6277543688721949"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "recovery storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.295690463327404450.6277543688721949"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.295690463327404450.6277543688721949"
+                }
+              ]
+            },
+            {
+              "label": "recovery causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recovery causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recovery causes no unexpected failed request",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/api/bellows/recommendations/personal",
+                  "error": "net::ERR_FAILED",
+                  "expected": true
+                }
+              ]
+            },
+            {
+              "label": "recovery causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": [
+            {
+              "method": "GET",
+              "url": "http://127.0.0.1:31249/api/bellows/recommendations/personal",
+              "error": "net::ERR_FAILED",
+              "expected": true
+            }
+          ]
+        },
+        {
+          "case": "mobile-abort-then-retry-recovery",
+          "assertions": [
+            {
+              "label": "recovery shell returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "first failure preserves example fallback",
+              "passed": true
+            },
+            {
+              "label": "retry reaches profile-required recovery",
+              "passed": true
+            },
+            {
+              "label": "supported synthetic auth recovery seam carries GET bearer requests without compiled-chunk interception",
+              "passed": true,
+              "evidence": {
+                "mockSupabaseOrigin": "https://vpg46-local-only.supabase.co",
+                "mockAuthKey": "sb-vpg46-local-only-auth-token",
+                "personalRequestCount": 2,
+                "expectedRequestCount": 2,
+                "personalRequestMethods": [
+                  "GET",
+                  "GET"
+                ],
+                "bearerCredentialMatches": [
+                  true,
+                  true
+                ],
+                "mockSupabaseRequestCount": 0,
+                "unexpectedMockSupabaseRequests": [],
+                "compiledChunkInterceptionCount": 0,
+                "buildId": "8Mabi-W8b-FQcfFBl1avl",
+                "pid": 41700
+              }
+            },
+            {
+              "label": "retry makes exactly two personal requests",
+              "passed": true,
+              "evidence": 2
+            },
+            {
+              "label": "retry focuses the delivery status",
+              "passed": true
+            },
+            {
+              "label": "recovered state offers Profile Builder",
+              "passed": true
+            },
+            {
+              "label": "recovery never renders private custody",
+              "passed": true
+            },
+            {
+              "label": "recovery leaves real browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": [],
+                "writes": [
+                  {
+                    "operation": "set",
+                    "key": "lswt-0.92627327684538540.17078019393781196"
+                  },
+                  {
+                    "operation": "remove",
+                    "key": "lswt-0.92627327684538540.17078019393781196"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "recovery storage writes are limited to self-deleting capability probes",
+              "passed": true,
+              "evidence": [
+                {
+                  "operation": "set",
+                  "key": "lswt-0.92627327684538540.17078019393781196"
+                },
+                {
+                  "operation": "remove",
+                  "key": "lswt-0.92627327684538540.17078019393781196"
+                }
+              ]
+            },
+            {
+              "label": "recovery causes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recovery causes no page exception",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "recovery causes no unexpected failed request",
+              "passed": true,
+              "evidence": [
+                {
+                  "method": "GET",
+                  "url": "http://127.0.0.1:31249/api/bellows/recommendations/personal",
+                  "error": "net::ERR_FAILED",
+                  "expected": true
+                }
+              ]
+            },
+            {
+              "label": "recovery causes no unexpected console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": [],
+          "expectedNetworkFailures": [
+            {
+              "method": "GET",
+              "url": "http://127.0.0.1:31249/api/bellows/recommendations/personal",
+              "error": "net::ERR_FAILED",
+              "expected": true
+            }
+          ]
+        }
+      ],
+      "caseCount": 12,
+      "assertionCount": 180,
+      "failureCount": 0
+    }
+  ],
+  "runtimeCustody": {
+    "port": 31249,
+    "owningProcess": 41700,
+    "processName": "node.exe",
+    "commandLine": "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/next/dist/bin/next start -H 127.0.0.1 -p 31249 ",
+    "buildId": "8Mabi-W8b-FQcfFBl1avl",
+    "buildManifestUrl": "http://127.0.0.1:31249/_next/static/8Mabi-W8b-FQcfFBl1avl/_buildManifest.js",
+    "buildManifestStatus": 200,
+    "port3000Touched": false
+  },
+  "summary": {
+    "ideaCount": 2,
+    "viewportCount": 2,
+    "caseCount": 14,
+    "assertionCount": 246,
+    "failureCount": 0,
+    "verdict": "PASS"
+  }
+}

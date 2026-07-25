@@ -1,0 +1,304 @@
+{
+  "schema": "werkles.vpg49-dev-toolchain-containment-evidence/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "branch": "codex/werkles-vpg31-20260721",
+  "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "baseline": {
+    "packageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "lockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621"
+  },
+  "candidate": {
+    "packageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "lockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+    "observedPackageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "observedLockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+    "productionDependencyCount": 51,
+    "root": {
+      "dependencies": {
+        "@supabase/ssr": "^0.6.1",
+        "@supabase/supabase-js": "^2.49.4",
+        "chokidar": "^5.0.0",
+        "next": "^15.5.21",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "server-only": "^0.0.1",
+        "stripe": "^17.7.0"
+      },
+      "devDependencies": {
+        "@types/node": "^22.15.18",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "autoprefixer": "^10.4.21",
+        "eslint": "^9.27.0",
+        "eslint-config-next": "^15.3.2",
+        "playwright": "^1.60.0",
+        "postcss": "^8.5.18",
+        "tailwindcss": "^3.4.17",
+        "typescript": "^5.8.3"
+      },
+      "overrides": {
+        "next": {
+          "postcss": "8.5.18",
+          "sharp": "0.35.0"
+        }
+      }
+    },
+    "lockRoot": {
+      "dependencies": {
+        "@supabase/ssr": "^0.6.1",
+        "@supabase/supabase-js": "^2.49.4",
+        "chokidar": "^5.0.0",
+        "next": "^15.5.21",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "server-only": "^0.0.1",
+        "stripe": "^17.7.0"
+      },
+      "devDependencies": {
+        "@types/node": "^22.15.18",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "autoprefixer": "^10.4.21",
+        "eslint": "^9.27.0",
+        "eslint-config-next": "^15.3.2",
+        "playwright": "^1.60.0",
+        "postcss": "^8.5.18",
+        "tailwindcss": "^3.4.17",
+        "typescript": "^5.8.3"
+      }
+    },
+    "installed": {
+      "next": "15.5.21",
+      "eslint": "9.39.4",
+      "eslintConfigNext": "15.5.18",
+      "typescript": "5.9.3",
+      "nextNestedPostcss": "8.5.18",
+      "sharp": "0.35.0"
+    },
+    "peerBoundary": {
+      "eslintConfigNextAcceptsEslint": "^7.23.0 || ^8.0.0 || ^9.0.0",
+      "typescriptMinimum": ">=3.3.1"
+    },
+    "commands": {
+      "lint": "eslint --max-warnings=0 app/dashboard/profile/page.tsx components/squibb/evidence-section.tsx components/squibb/personal-recommendation-delivery.tsx components/squibb/recommendation-card.tsx components/squibb/recommendation-surface.tsx",
+      "typecheck": "tsc --noEmit",
+      "build": "next build"
+    },
+    "worktree": {
+      "dependencyPathsDirty": false,
+      "untrackedDependencyPaths": []
+    }
+  },
+  "audits": {
+    "full": {
+      "command": "npm.cmd audit --json",
+      "fresh": true,
+      "auditReportVersion": 2,
+      "exitCode": 1,
+      "packageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+      "lockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 9,
+        "critical": 0,
+        "total": 9
+      },
+      "dependencyCounts": {
+        "prod": 51,
+        "dev": 344,
+        "optional": 67,
+        "total": 432
+      },
+      "vulnerabilities": [
+        {
+          "name": "@eslint/config-array",
+          "severity": "high",
+          "nodes": ["node_modules/@eslint/config-array"]
+        },
+        {
+          "name": "@eslint/eslintrc",
+          "severity": "high",
+          "nodes": ["node_modules/@eslint/eslintrc"]
+        },
+        {
+          "name": "brace-expansion",
+          "severity": "high",
+          "nodes": ["node_modules/brace-expansion"]
+        },
+        {
+          "name": "eslint",
+          "severity": "high",
+          "nodes": ["node_modules/eslint"]
+        },
+        {
+          "name": "eslint-config-next",
+          "severity": "high",
+          "nodes": ["node_modules/eslint-config-next"]
+        },
+        {
+          "name": "eslint-plugin-import",
+          "severity": "high",
+          "nodes": ["node_modules/eslint-plugin-import"]
+        },
+        {
+          "name": "eslint-plugin-jsx-a11y",
+          "severity": "high",
+          "nodes": ["node_modules/eslint-plugin-jsx-a11y"]
+        },
+        {
+          "name": "eslint-plugin-react",
+          "severity": "high",
+          "nodes": ["node_modules/eslint-plugin-react"]
+        },
+        {
+          "name": "minimatch",
+          "severity": "high",
+          "nodes": ["node_modules/minimatch"]
+        }
+      ]
+    },
+    "production": {
+      "command": "npm.cmd audit --omit=dev --json",
+      "fresh": true,
+      "auditReportVersion": 2,
+      "exitCode": 0,
+      "packageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+      "lockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+      "counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencyCounts": {
+        "prod": 51,
+        "dev": 344,
+        "optional": 67,
+        "total": 432
+      },
+      "vulnerabilities": []
+    }
+  },
+  "severeGraph": [
+    {
+      "name": "@eslint/config-array",
+      "path": "node_modules/@eslint/config-array",
+      "version": "0.21.2",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.21.2.tgz",
+      "integrity": "sha512-nJl2KGTlrf9GjLimgIru+V/mzgSK0ABCDQRvxw5BjURL7WfH5uoWmizbH7QB6MmnMBd8cIC9uceWnezL1VZWWw==",
+      "parents": [{ "path": "node_modules/eslint", "range": "^0.21.2" }]
+    },
+    {
+      "name": "@eslint/eslintrc",
+      "path": "node_modules/@eslint/eslintrc",
+      "version": "3.3.5",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-3.3.5.tgz",
+      "integrity": "sha512-4IlJx0X0qftVsN5E+/vGujTRIFtwuLbNsVUe7TO6zYPDR1O6nFwvwhIKEKSrl6dZchmYBITazxKoUYOjdtjlRg==",
+      "parents": [{ "path": "node_modules/eslint", "range": "^3.3.5" }]
+    },
+    {
+      "name": "brace-expansion",
+      "path": "node_modules/brace-expansion",
+      "version": "1.1.16",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.16.tgz",
+      "integrity": "sha512-IDw48K2/2kRkg9LdJxurvq3lV3aBgq0REY89duEqFRthjlPdXHKMj7EnQOXVckxzgisinf3nHfrcE2FufFLXMw==",
+      "parents": [{ "path": "node_modules/minimatch", "range": "^1.1.7" }]
+    },
+    {
+      "name": "eslint",
+      "path": "node_modules/eslint",
+      "version": "9.39.4",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.39.4.tgz",
+      "integrity": "sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==",
+      "parents": [{ "path": "<root-dev>", "range": "^9.27.0" }]
+    },
+    {
+      "name": "eslint-config-next",
+      "path": "node_modules/eslint-config-next",
+      "version": "15.5.18",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-15.5.18.tgz",
+      "integrity": "sha512-HuoJU6uUPD00eyiud78IBnT4HLhztFj2V+ild2Uon5ZUrYZKe0Olu2QRD99e9IgL4/H1eg5Onka3BsfRW2U0Xw==",
+      "parents": [{ "path": "<root-dev>", "range": "^15.3.2" }]
+    },
+    {
+      "name": "eslint-plugin-import",
+      "path": "node_modules/eslint-plugin-import",
+      "version": "2.32.0",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.32.0.tgz",
+      "integrity": "sha512-whOE1HFo/qJDyX4SnXzP4N6zOWn79WhnCUY/iDR0mPfQZO8wcYE4JClzI2oZrhBnnMUCBCHZhO6VQyoBU95mZA==",
+      "parents": [{ "path": "node_modules/eslint-config-next", "range": "^2.31.0" }]
+    },
+    {
+      "name": "eslint-plugin-jsx-a11y",
+      "path": "node_modules/eslint-plugin-jsx-a11y",
+      "version": "6.10.2",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.10.2.tgz",
+      "integrity": "sha512-scB3nz4WmG75pV8+3eRUQOHZlNSUhFNq37xnpgRkCCELU3XMvXAxLk1eqWWyE22Ki4Q01Fnsw9BA3cJHDPgn2Q==",
+      "parents": [{ "path": "node_modules/eslint-config-next", "range": "^6.10.0" }]
+    },
+    {
+      "name": "eslint-plugin-react",
+      "path": "node_modules/eslint-plugin-react",
+      "version": "7.37.5",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.37.5.tgz",
+      "integrity": "sha512-Qteup0SqU15kdocexFNAJMvCJEfa2xUKNV4CC1xsVMrIIqEy3SQ/rqyxCWNzfrd3/ldy6HMlD2e0JDVpDg2qIA==",
+      "parents": [{ "path": "node_modules/eslint-config-next", "range": "^7.37.0" }]
+    },
+    {
+      "name": "minimatch",
+      "path": "node_modules/minimatch",
+      "version": "3.1.5",
+      "dev": true,
+      "devOptional": false,
+      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.5.tgz",
+      "integrity": "sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==",
+      "parents": [
+        { "path": "node_modules/@eslint/config-array", "range": "^3.1.5" },
+        { "path": "node_modules/@eslint/eslintrc", "range": "^3.1.5" },
+        { "path": "node_modules/@typescript-eslint/typescript-estree", "range": "^10.2.2" },
+        { "path": "node_modules/eslint", "range": "^3.1.5" },
+        { "path": "node_modules/eslint-plugin-import", "range": "^3.1.2" },
+        { "path": "node_modules/eslint-plugin-jsx-a11y", "range": "^3.1.2" },
+        { "path": "node_modules/eslint-plugin-react", "range": "^3.1.2" }
+      ]
+    }
+  ],
+  "repair": {
+    "attempted": false
+  },
+  "qc": null,
+  "scope": {
+    "thufirDependencyEdit": false,
+    "jAuthorized": false,
+    "productionAuthorized": false,
+    "deployAuthorized": false,
+    "browserAuthorized": false,
+    "liveActionAuthorized": false
+  },
+  "evidenceBinding": {
+    "source": "INDEPENDENT_LOCAL_ADAPTER",
+    "independentlyCollected": true,
+    "rawCallerAuthoritative": false,
+    "selectedHistoricalAuthority": null
+  }
+}

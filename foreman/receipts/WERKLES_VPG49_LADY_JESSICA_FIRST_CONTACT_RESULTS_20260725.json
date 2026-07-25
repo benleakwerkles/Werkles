@@ -1,0 +1,835 @@
+{
+  "schema": "werkles.vpg49-lady-jessica-public-first-contact/v1",
+  "generatedAt": "2026-07-25T06:09:43.574Z",
+  "cycleId": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "seat": "LadyJessica@Betsy",
+  "origin": "http://127.0.0.1:31250",
+  "expectedPid": 18148,
+  "expectedBuildId": "-LNqnqcdVDwUbbtWaElVL",
+  "runtimeCustody": {
+    "port": 31250,
+    "owningProcess": 18148,
+    "processName": "node.exe",
+    "commandLine": "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/next/dist/bin/next start -H 127.0.0.1 -p 31250 ",
+    "pidMatches": true,
+    "commandMatches": true,
+    "buildId": "-LNqnqcdVDwUbbtWaElVL",
+    "buildManifestUrl": "http://127.0.0.1:31250/_next/static/-LNqnqcdVDwUbbtWaElVL/_buildManifest.js",
+    "buildManifestStatus": 200,
+    "port3000Touched": false
+  },
+  "sourceBoundaryHashes": {
+    "lib/squibb/public-recommendation-session-server.ts": "df3637fdf20dfc3fed61d36dcdf3ec4900b12ade01cd8f4739f3b7017f812f62",
+    "components/squibb/personal-recommendation-delivery.tsx": "ed6af7d4f81036fdd77e9056618a2bd9109f69df726ce1205f5117886f88cdf3",
+    "app/api/bellows/recommendations/personal/route.ts": "b8bb72b3bf9a73dd321bacb6b4fa077558e2098e34c3f41d75c1856c8fd403a2"
+  },
+  "ideas": [
+    {
+      "idea": 1,
+      "name": "Warm concise homepage hierarchy",
+      "cases": [
+        {
+          "case": "source-contract",
+          "assertions": [
+            {
+              "label": "worked example remains the hero primary route",
+              "passed": true
+            },
+            {
+              "label": "repeated Three safe doors card is removed",
+              "passed": true
+            },
+            {
+              "label": "homepage has exactly one quiet account handoff",
+              "passed": true
+            },
+            {
+              "label": "account handoff has exactly one button",
+              "passed": true
+            },
+            {
+              "label": "account creation preserves recommendation return",
+              "passed": true
+            },
+            {
+              "label": "subordinate homepage destination remains /login",
+              "passed": true
+            },
+            {
+              "label": "subordinate homepage destination remains /pricing",
+              "passed": true
+            },
+            {
+              "label": "subordinate homepage destination remains /dashboard",
+              "passed": true
+            },
+            {
+              "label": "subordinate homepage destination remains /onboarding",
+              "passed": true
+            },
+            {
+              "label": "subordinate homepage destination remains /proof",
+              "passed": true
+            },
+            {
+              "label": "home account handoff has a named subordinate navigation",
+              "passed": true
+            },
+            {
+              "label": "existing homepage narrative imagery remains wired",
+              "passed": true
+            },
+            {
+              "label": "homepage handoff has desktop and mobile layout contracts",
+              "passed": true
+            }
+          ],
+          "failures": []
+        },
+        {
+          "case": "isolated-runtime-custody",
+          "assertions": [
+            {
+              "label": "runtime listener is the expected isolated PID",
+              "passed": true,
+              "evidence": {
+                "port": 31250,
+                "owningProcess": 18148,
+                "processName": "node.exe",
+                "commandLine": "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/next/dist/bin/next start -H 127.0.0.1 -p 31250 ",
+                "pidMatches": true,
+                "commandMatches": true,
+                "buildId": "-LNqnqcdVDwUbbtWaElVL",
+                "buildManifestUrl": "http://127.0.0.1:31250/_next/static/-LNqnqcdVDwUbbtWaElVL/_buildManifest.js",
+                "buildManifestStatus": 200,
+                "port3000Touched": false
+              }
+            },
+            {
+              "label": "runtime command is Next start",
+              "passed": true,
+              "evidence": "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/next/dist/bin/next start -H 127.0.0.1 -p 31250 "
+            },
+            {
+              "label": "runtime serves the exact expected build manifest",
+              "passed": true,
+              "evidence": {
+                "port": 31250,
+                "owningProcess": 18148,
+                "processName": "node.exe",
+                "commandLine": "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/next/dist/bin/next start -H 127.0.0.1 -p 31250 ",
+                "pidMatches": true,
+                "commandMatches": true,
+                "buildId": "-LNqnqcdVDwUbbtWaElVL",
+                "buildManifestUrl": "http://127.0.0.1:31250/_next/static/-LNqnqcdVDwUbbtWaElVL/_buildManifest.js",
+                "buildManifestStatus": 200,
+                "port3000Touched": false
+              }
+            }
+          ],
+          "failures": []
+        },
+        {
+          "case": "desktop-homepage",
+          "assertions": [
+            {
+              "label": "homepage returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "main has one prominent worked-example action",
+              "passed": true
+            },
+            {
+              "label": "repeated entry card is absent",
+              "passed": true
+            },
+            {
+              "label": "quiet account handoff renders",
+              "passed": true
+            },
+            {
+              "label": "handoff has one button-style link",
+              "passed": true
+            },
+            {
+              "label": "handoff has five subordinate routes",
+              "passed": true
+            },
+            {
+              "label": "homepage has one h1 and valid heading order",
+              "passed": true,
+              "evidence": [
+                {
+                  "level": 1,
+                  "text": "Find the people and proof that move your business forward."
+                },
+                {
+                  "level": 2,
+                  "text": "What it is"
+                },
+                {
+                  "level": 2,
+                  "text": "Why you need it"
+                },
+                {
+                  "level": 2,
+                  "text": "Why Foundry Dues"
+                },
+                {
+                  "level": 2,
+                  "text": "Six lanes. Real people. Visible potential."
+                },
+                {
+                  "level": 3,
+                  "text": "Spark"
+                },
+                {
+                  "level": 3,
+                  "text": "Operator"
+                },
+                {
+                  "level": 3,
+                  "text": "Backer"
+                },
+                {
+                  "level": 3,
+                  "text": "Connector"
+                },
+                {
+                  "level": 3,
+                  "text": "Builder"
+                },
+                {
+                  "level": 3,
+                  "text": "Worker"
+                },
+                {
+                  "level": 2,
+                  "text": "Maria thought she needed customers."
+                },
+                {
+                  "level": 3,
+                  "text": "Wrong need"
+                },
+                {
+                  "level": 3,
+                  "text": "One question under it"
+                },
+                {
+                  "level": 3,
+                  "text": "Money reveal"
+                },
+                {
+                  "level": 3,
+                  "text": "Equipment reveal"
+                },
+                {
+                  "level": 3,
+                  "text": "Shop open"
+                },
+                {
+                  "level": 2,
+                  "text": "Name it. Verify it. Move."
+                },
+                {
+                  "level": 3,
+                  "text": "State the need."
+                },
+                {
+                  "level": 3,
+                  "text": "Translate the bottleneck."
+                },
+                {
+                  "level": 3,
+                  "text": "Check proof. Then act."
+                },
+                {
+                  "level": 2,
+                  "text": "Safe to act, not alone."
+                },
+                {
+                  "level": 2,
+                  "text": "Ready to try it with your situation?"
+                }
+              ]
+            },
+            {
+              "label": "homepage has no horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "homepage controls have accessible names",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage imagery remains substantial",
+              "passed": true,
+              "evidence": 27
+            },
+            {
+              "label": "homepage images have alt attributes",
+              "passed": true
+            },
+            {
+              "label": "homepage has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "homepage remains nonblank",
+              "passed": true,
+              "evidence": 4682
+            },
+            {
+              "label": "homepage leaves browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": []
+              }
+            },
+            {
+              "label": "homepage primary action accepts keyboard focus",
+              "passed": true
+            },
+            {
+              "label": "homepage keyboard action reaches the public example",
+              "passed": true
+            },
+            {
+              "label": "homepage journey makes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage journey has no page error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage journey has no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage journey has no console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": []
+        },
+        {
+          "case": "mobile-homepage",
+          "assertions": [
+            {
+              "label": "homepage returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "main has one prominent worked-example action",
+              "passed": true
+            },
+            {
+              "label": "repeated entry card is absent",
+              "passed": true
+            },
+            {
+              "label": "quiet account handoff renders",
+              "passed": true
+            },
+            {
+              "label": "handoff has one button-style link",
+              "passed": true
+            },
+            {
+              "label": "handoff has five subordinate routes",
+              "passed": true
+            },
+            {
+              "label": "homepage has one h1 and valid heading order",
+              "passed": true,
+              "evidence": [
+                {
+                  "level": 1,
+                  "text": "Find the people and proof that move your business forward."
+                },
+                {
+                  "level": 2,
+                  "text": "What it is"
+                },
+                {
+                  "level": 2,
+                  "text": "Why you need it"
+                },
+                {
+                  "level": 2,
+                  "text": "Why Foundry Dues"
+                },
+                {
+                  "level": 2,
+                  "text": "Six lanes. Real people. Visible potential."
+                },
+                {
+                  "level": 3,
+                  "text": "Spark"
+                },
+                {
+                  "level": 3,
+                  "text": "Operator"
+                },
+                {
+                  "level": 3,
+                  "text": "Backer"
+                },
+                {
+                  "level": 3,
+                  "text": "Connector"
+                },
+                {
+                  "level": 3,
+                  "text": "Builder"
+                },
+                {
+                  "level": 3,
+                  "text": "Worker"
+                },
+                {
+                  "level": 2,
+                  "text": "Maria thought she needed customers."
+                },
+                {
+                  "level": 3,
+                  "text": "Wrong need"
+                },
+                {
+                  "level": 3,
+                  "text": "One question under it"
+                },
+                {
+                  "level": 3,
+                  "text": "Money reveal"
+                },
+                {
+                  "level": 3,
+                  "text": "Equipment reveal"
+                },
+                {
+                  "level": 3,
+                  "text": "Shop open"
+                },
+                {
+                  "level": 2,
+                  "text": "Name it. Verify it. Move."
+                },
+                {
+                  "level": 3,
+                  "text": "State the need."
+                },
+                {
+                  "level": 3,
+                  "text": "Translate the bottleneck."
+                },
+                {
+                  "level": 3,
+                  "text": "Check proof. Then act."
+                },
+                {
+                  "level": 2,
+                  "text": "Safe to act, not alone."
+                },
+                {
+                  "level": 2,
+                  "text": "Ready to try it with your situation?"
+                }
+              ]
+            },
+            {
+              "label": "homepage has no horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "homepage controls have accessible names",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage imagery remains substantial",
+              "passed": true,
+              "evidence": 27
+            },
+            {
+              "label": "homepage images have alt attributes",
+              "passed": true
+            },
+            {
+              "label": "homepage has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "homepage remains nonblank",
+              "passed": true,
+              "evidence": 4682
+            },
+            {
+              "label": "homepage leaves browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": []
+              }
+            },
+            {
+              "label": "homepage primary action accepts keyboard focus",
+              "passed": true
+            },
+            {
+              "label": "homepage keyboard action reaches the public example",
+              "passed": true
+            },
+            {
+              "label": "homepage journey makes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage journey has no page error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage journey has no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "homepage journey has no console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": []
+        }
+      ],
+      "caseCount": 4,
+      "assertionCount": 56,
+      "failureCount": 0
+    },
+    {
+      "idea": 2,
+      "name": "One illustrated Bellows bridge to the example",
+      "cases": [
+        {
+          "case": "source-and-boundary-contract",
+          "assertions": [
+            {
+              "label": "Bellows has one recommendation route",
+              "passed": true
+            },
+            {
+              "label": "Bellows has one Profile Builder route with sanitized return",
+              "passed": true
+            },
+            {
+              "label": "Bellows has one closed-intake route",
+              "passed": true
+            },
+            {
+              "label": "recommendations-first truth is in the illustrated hero",
+              "passed": true
+            },
+            {
+              "label": "only recommendations is styled as the prominent Bellows action",
+              "passed": true
+            },
+            {
+              "label": "Profile Builder and closed intake are named subordinate links",
+              "passed": true
+            },
+            {
+              "label": "all three Bellows images and captions remain",
+              "passed": true
+            },
+            {
+              "label": "Bellows stacks copy before imagery on mobile",
+              "passed": true
+            },
+            {
+              "label": "public recommendation loader remains demo-only",
+              "passed": true
+            },
+            {
+              "label": "personal delivery remains authenticated same-origin GET only",
+              "passed": true
+            },
+            {
+              "label": "personal API remains owner-bound private and unsaved",
+              "passed": true
+            }
+          ],
+          "failures": []
+        },
+        {
+          "case": "desktop-bellows",
+          "assertions": [
+            {
+              "label": "Bellows returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "Bellows has one prominent recommendation action",
+              "passed": true
+            },
+            {
+              "label": "Bellows renders one recommendation Profile Builder and intake route",
+              "passed": true
+            },
+            {
+              "label": "Bellows recommendations-first truth is visible",
+              "passed": true
+            },
+            {
+              "label": "Bellows optional paths are visibly subordinate",
+              "passed": true
+            },
+            {
+              "label": "Bellows keeps three Squibb images",
+              "passed": true
+            },
+            {
+              "label": "Bellows keeps three visible image captions",
+              "passed": true
+            },
+            {
+              "label": "Bellows has one h1 and valid heading order",
+              "passed": true,
+              "evidence": [
+                {
+                  "level": 1,
+                  "text": "Learn how the floor actually works."
+                },
+                {
+                  "level": 2,
+                  "text": "Squibb on the Bellows floor"
+                },
+                {
+                  "level": 2,
+                  "text": "Learn how the floor actually works"
+                }
+              ]
+            },
+            {
+              "label": "Bellows has no horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "Bellows controls have accessible names",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows images have alt attributes",
+              "passed": true
+            },
+            {
+              "label": "Bellows has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "Bellows remains nonblank",
+              "passed": true,
+              "evidence": 1147
+            },
+            {
+              "label": "Bellows leaves browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": []
+              }
+            },
+            {
+              "label": "desktop Bellows keeps balanced copy and image columns",
+              "passed": true,
+              "evidence": {
+                "columns": "1142px 280px"
+              }
+            },
+            {
+              "label": "Bellows primary action accepts keyboard focus",
+              "passed": true
+            },
+            {
+              "label": "Bellows keyboard action reaches recommendations",
+              "passed": true
+            },
+            {
+              "label": "recommendations remain public example-first",
+              "passed": true
+            },
+            {
+              "label": "Bellows journey makes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows journey has no page error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows journey has no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows journey has no console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": []
+        },
+        {
+          "case": "mobile-bellows",
+          "assertions": [
+            {
+              "label": "Bellows returns 200",
+              "passed": true,
+              "evidence": 200
+            },
+            {
+              "label": "Bellows has one prominent recommendation action",
+              "passed": true
+            },
+            {
+              "label": "Bellows renders one recommendation Profile Builder and intake route",
+              "passed": true
+            },
+            {
+              "label": "Bellows recommendations-first truth is visible",
+              "passed": true
+            },
+            {
+              "label": "Bellows optional paths are visibly subordinate",
+              "passed": true
+            },
+            {
+              "label": "Bellows keeps three Squibb images",
+              "passed": true
+            },
+            {
+              "label": "Bellows keeps three visible image captions",
+              "passed": true
+            },
+            {
+              "label": "Bellows has one h1 and valid heading order",
+              "passed": true,
+              "evidence": [
+                {
+                  "level": 1,
+                  "text": "Learn how the floor actually works."
+                },
+                {
+                  "level": 2,
+                  "text": "Squibb on the Bellows floor"
+                },
+                {
+                  "level": 2,
+                  "text": "Learn how the floor actually works"
+                }
+              ]
+            },
+            {
+              "label": "Bellows has no horizontal overflow",
+              "passed": true
+            },
+            {
+              "label": "Bellows controls have accessible names",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows images have alt attributes",
+              "passed": true
+            },
+            {
+              "label": "Bellows has no framework overlay",
+              "passed": true
+            },
+            {
+              "label": "Bellows remains nonblank",
+              "passed": true,
+              "evidence": 1147
+            },
+            {
+              "label": "Bellows leaves browser storage empty",
+              "passed": true,
+              "evidence": {
+                "localKeys": [],
+                "sessionKeys": []
+              }
+            },
+            {
+              "label": "mobile Bellows uses one column with copy before image",
+              "passed": true,
+              "evidence": {
+                "columns": "390px",
+                "copyTop": 384,
+                "imageTop": 1013.046875
+              }
+            },
+            {
+              "label": "Bellows primary action accepts keyboard focus",
+              "passed": true
+            },
+            {
+              "label": "Bellows keyboard action reaches recommendations",
+              "passed": true
+            },
+            {
+              "label": "recommendations remain public example-first",
+              "passed": true
+            },
+            {
+              "label": "Bellows journey makes no mutating request",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows journey has no page error",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows journey has no unexpected request failure",
+              "passed": true,
+              "evidence": []
+            },
+            {
+              "label": "Bellows journey has no console error",
+              "passed": true,
+              "evidence": []
+            }
+          ],
+          "failures": []
+        }
+      ],
+      "caseCount": 3,
+      "assertionCount": 55,
+      "failureCount": 0
+    }
+  ],
+  "summary": {
+    "ideaCount": 2,
+    "viewportCount": 2,
+    "caseCount": 7,
+    "assertionCount": 111,
+    "failureCount": 0,
+    "verdict": "PASS"
+  }
+}

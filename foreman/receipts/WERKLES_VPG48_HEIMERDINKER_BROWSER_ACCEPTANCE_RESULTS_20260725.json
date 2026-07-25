@@ -1,0 +1,37 @@
+{
+  "schema": "werkles.vpg48-heimerdinker-browser-acceptance/v1",
+  "cycle_id": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "seat": "Heimerdinker@Betsy",
+  "host": "BETSY",
+  "repository": "C:\\w8",
+  "source_commit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "product_commit": "ba08a444632206e2676df49e175f184ab0c2c2f2",
+  "build_id": "8Mabi-W8b-FQcfFBl1avl",
+  "isolated_origin": "http://127.0.0.1:31249",
+  "isolated_pid": 43724,
+  "port_3000_before": 26556,
+  "port_3000_after": 26556,
+  "port_31249_after_listener_count": 0,
+  "assertion_custody": {
+    "historical_assertions": 156,
+    "current_assertions": 246,
+    "current_cases": 14,
+    "mapped_personal_cases": 12,
+    "supported_seam_assertions": 12,
+    "bearer_requests_verified": 14,
+    "check_count": 73,
+    "failure_count": 0,
+    "result": "PASS"
+  },
+  "independent_browser_rerun": {
+    "idea_count": 2,
+    "viewport_count": 2,
+    "case_count": 14,
+    "assertion_count": 246,
+    "failure_count": 0,
+    "result": "PASS"
+  },
+  "compiled_chunk_rewrite_used": false,
+  "product_source_changed": false,
+  "result": "PASS"
+}

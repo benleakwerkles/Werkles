@@ -1,0 +1,62 @@
+{
+  "schema": "werkles.vpg48-public-cutover-truth/v1",
+  "cycle_id": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "legacy_label": "VPG48",
+  "repository": "benleakwerkles/Werkles",
+  "branch": "codex/werkles-vpg31-20260721",
+  "current_source_head": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "product_commit": "ba08a444632206e2676df49e175f184ab0c2c2f2",
+  "source_remote_equality": "PASS",
+  "facts": {
+    "production_dependency_audit": {
+      "status": "SOLVED_LOCAL_CANDIDATE",
+      "finding_count": 0,
+      "production_dependency_count": 51,
+      "evidence": "fresh npm audit --omit=dev --json plus foreman/receipts/WERKLES_FULL_FLOCK_VPG47_20260724.md"
+    },
+    "current_source_preview": {
+      "status": "UNRESOLVED",
+      "deployment_id": null,
+      "ready_proven": false,
+      "route_matrix_proven": false
+    },
+    "vpg42_preview": {
+      "status": "STALE",
+      "source_commit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+      "deployment_id": "dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd",
+      "eligible_for_current_cutover": false
+    },
+    "harvey_disposition": {
+      "status": "UNRESOLVED",
+      "default_policy": "PRESERVE_HARVEY",
+      "selected_mode": null,
+      "execution_authorized": false,
+      "evidence": "foreman/receipts/WERKLES_VPG43_HARVEY_COEXISTENCE_DECISION_CONTRACT_20260724.json"
+    },
+    "production_alias_binding": {
+      "status": "STALE_UNVERIFIED_FOR_CURRENT_SOURCE"
+    },
+    "rollback_binding": {
+      "status": "STALE_UNVERIFIED_FOR_CURRENT_SOURCE"
+    },
+    "release_authority": {
+      "status": "NOT_AUTHORIZED",
+      "vpg47_j_scope": "GIT_BRANCH_PUSH_ONLY",
+      "vpg48_scope": "LOCAL_VPG_ONLY"
+    }
+  },
+  "solved_blockers": [
+    "PRODUCTION_DEPENDENCY_FINDINGS"
+  ],
+  "remaining_blockers": [
+    "CURRENT_SOURCE_READY_PREVIEW",
+    "CURRENT_SOURCE_ROUTE_MATRIX",
+    "HARVEY_PRESERVE_RELOCATE_OR_REPLACE_DECISION",
+    "FRESH_PRODUCTION_ALIAS_BINDING",
+    "FRESH_ROLLBACK_BINDING",
+    "SEPARATE_RELEASE_AUTHORITY"
+  ],
+  "gate_open": false,
+  "verdict": "BLOCKED_CURRENT_PREVIEW_HARVEY_AND_FRESH_RELEASE_BINDINGS",
+  "live_state_changed": false
+}

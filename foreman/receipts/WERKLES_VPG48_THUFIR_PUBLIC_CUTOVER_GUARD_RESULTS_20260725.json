@@ -1,0 +1,47 @@
+{
+  "schema": "werkles.vpg48-thufir-public-cutover-guard-result/v1",
+  "cycle_id": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "legacy_label": "VPG48",
+  "seat": "Thufir@Betsy",
+  "hostname_proof": "Betsy",
+  "exact_ideas_executed": 2,
+  "idea_1": {
+    "id": "CURRENT_EVIDENCE_CUTOVER_STATE_MACHINE",
+    "current_result": "STOP",
+    "current_verdict": "STOP_CURRENT_PREVIEW_HARVEY_AND_PRODUCTION_BINDINGS_REQUIRED",
+    "current_states": {
+      "candidate": "SOLVED",
+      "dependency": "SOLVED",
+      "preview": "UNRESOLVED",
+      "route_matrix": "UNRESOLVED",
+      "harvey": "UNRESOLVED",
+      "production": "STALE",
+      "alias": "STALE",
+      "rollback": "STALE",
+      "release_state": "UNRESOLVED",
+      "approval": "UNRESOLVED"
+    },
+    "current_required_reasons_observed": true,
+    "authorized_ready_synthetic_control": "PASS",
+    "raw_synthetic_control_authoritative": false
+  },
+  "idea_2": {
+    "id": "STALE_EVIDENCE_AND_AUTHORITY_LAUNDERING_ADVERSARY",
+    "attack_count": 44,
+    "rejected_count": 44,
+    "bypass_count": 0,
+    "bypass_ids": []
+  },
+  "proof": {
+    "guard_syntax": "PASS",
+    "test_syntax": "PASS",
+    "test_result": "PASS",
+    "repair_attempts_used": 0
+  },
+  "authority": {
+    "raw_caller_evidence_is_authoritative": false,
+    "no_production_authority_created": true,
+    "no_approval_created": true
+  },
+  "result": "PASS"
+}

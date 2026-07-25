@@ -1,0 +1,104 @@
+{
+  "schema": "werkles.vpg48-public-cutover-evidence/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "legacyLabel": "VPG48",
+  "candidate": {
+    "branch": "codex/werkles-vpg31-20260721",
+    "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+    "productCommit": "ba08a444632206e2676df49e175f184ab0c2c2f2",
+    "productIsAncestor": true,
+    "pageRouteFiles": 69,
+    "apiRouteFiles": 115,
+    "harveyProtectedPaths": 0
+  },
+  "dependency": {
+    "sourceCommit": "ba08a444632206e2676df49e175f184ab0c2c2f2",
+    "packageSha256": "56570ee3dbf03ccfa371311fbfb9df13bdc5171c389c47c87c9d2f68442354fa",
+    "lockSha256": "655c4c86ef294ee940d39722b93aa5297c92c9903b01ceb6cd7eee20a4801621",
+    "next": "15.5.21",
+    "nextPostcss": "8.5.18",
+    "sharp": "0.35.0",
+    "productionAudit": {
+      "command": "npm audit --omit=dev",
+      "exitCode": 0,
+      "total": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "fullAuditResidual": {
+      "high": 9,
+      "critical": 0,
+      "allSevereNodesDevOnly": true,
+      "disposition": "DEFER_DEV_TOOLCHAIN_MAJOR_REPAIR_TO_FUTURE_DEPENDENCY_LANE"
+    },
+    "independentlyCollected": true
+  },
+  "historicalVpg42": {
+    "classification": "STALE",
+    "sourceCommit": "67c38ace103ba5f1ba473b984c91e243d9120630",
+    "previewDeploymentId": "dpl_9KrWte1jcoMSDVHEXdK2MQg6QhMd",
+    "productionDeploymentId": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "rollbackDeploymentId": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "gateStatus": "BLOCKED_TECHNICAL_PRECONDITIONS",
+    "promotionEligible": false,
+    "productionAuditHighAtObservation": 3,
+    "reservedPhrase": "APPROVE WERKLES VPG42 PUBLIC TEST CUTOVER - REPLACE HARVEY PRODUCTION",
+    "executionAuthorized": false
+  },
+  "currentPreview": null,
+  "currentRouteMatrix": null,
+  "harvey": {
+    "selectedMode": null,
+    "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+    "inventoryCount": 37,
+    "inventoryDigest": "3b746a15ed0beaebb375d08152cda25b6ed2bb2c4633cd5850d707403a4bdc46",
+    "preservationProven": false,
+    "preservedBoundaryCount": 0,
+    "requirementsProven": false,
+    "productionDeploymentId": "dpl_4Psq6XYTVxrCNSWdTebByJY8LzUn",
+    "operatorSelection": null,
+    "independentlyCollected": false,
+    "historicalVerdict": "STOP_NO_COEXISTENCE_MODE_SELECTED"
+  },
+  "currentProduction": null,
+  "currentRollback": null,
+  "releaseState": {
+    "dirty": true,
+    "untrackedCount": 30,
+    "indexMatchesCandidate": false,
+    "classification": "LOCAL_VPG48_WORK_IN_PROGRESS"
+  },
+  "productionApproval": null,
+  "authorityClaims": [
+    {
+      "sourcePath": "foreman/reviews/GATE-werkles-vpg42-public-test-cutover-20260724.md",
+      "phraseClass": "QUOTED_RESERVED_PHRASE_IN_BLOCKED_GATE",
+      "scope": "NO_EXECUTION",
+      "authoritative": false
+    },
+    {
+      "sourcePath": "foreman/receipts/WERKLES_VPG43_HARVEY_COEXISTENCE_DECISION_CONTRACT_20260724.json",
+      "phraseClass": "MODE_SELECTION_ONLY",
+      "scope": "NO_EXECUTION",
+      "authoritative": false
+    },
+    {
+      "sourcePath": "foreman/gates/APPROVAL_LOG.md#VPG47",
+      "phraseClass": "GIT_J_ONLY",
+      "scope": "GIT_STAGE_COMMIT_PUSH_CURRENT_BRANCH_ONLY",
+      "authoritative": false
+    },
+    {
+      "sourcePath": "foreman/gates/APPROVAL_LOG.md#VPG48",
+      "phraseClass": "LOCAL_VPG_ONLY",
+      "scope": "LOCAL_EVIDENCE_AND_GATE_RECONCILIATION_ONLY",
+      "authoritative": false
+    },
+    {
+      "sourcePath": "foreman/receipts/WERKLES_VPG_CYCLE_EVIDENCE_LEDGER.jsonl",
+      "phraseClass": "SELF_REPORTED_CYCLE_EVIDENCE",
+      "scope": "NO_EXECUTION",
+      "authoritative": false
+    }
+  ]
+}

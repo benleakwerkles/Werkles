@@ -1,0 +1,43 @@
+{
+  "status": "REJECTED_COMPATIBILITY_FAILURE",
+  "cycle_id": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "legacy_label": "VPG49",
+  "seat": "Heimerdinker@Betsy",
+  "hostname": "BETSY",
+  "source_commit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "experiment": {
+    "workspace": "disposable detached worktree",
+    "package_change": "top-level npm override brace-expansion=5.0.8",
+    "attempts": 1,
+    "full_audit_after_override": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 0,
+      "low": 0,
+      "total": 0
+    },
+    "install": {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "status": "PASS",
+      "packages_added": 368
+    },
+    "direct_compatibility": {
+      "status": "FAIL",
+      "consumer": "minimatch legacy CommonJS implementation",
+      "error": "TypeError: expand is not a function",
+      "source": "node_modules/minimatch/minimatch.js:271"
+    }
+  },
+  "decision": {
+    "integrated": false,
+    "reason": "A zero-finding audit is not a valid repair when the forced transitive override breaks a direct toolchain consumer.",
+    "main_package_json_changed": false,
+    "main_package_lock_changed": false,
+    "disposable_worktree_removed": true,
+    "next_boundary": "Preserve the current dependency graph and prove the nine high findings are contained to dev-only execution until a peer-compatible upstream repair exists."
+  },
+  "tokens": {
+    "cycle_id": "CYCLE_ID: WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+    "legacy_label": "LEGACY_LABEL: VPG49"
+  }
+}

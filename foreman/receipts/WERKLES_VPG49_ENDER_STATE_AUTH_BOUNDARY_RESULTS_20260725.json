@@ -1,0 +1,93 @@
+{
+  "schema": "werkles.vpg49-ender-state-auth-boundary-result/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "legacyLabel": "VPG49",
+  "seat": "Ender@Betsy",
+  "hostname": "Betsy",
+  "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "fixture": "scripts/foreman/fixtures/vpg49-ender-first-contact-contract-20260725.json",
+  "guard": "scripts/foreman/vpg49-first-contact-boundary-guard-20260725.mjs",
+  "test": "scripts/foreman/test-vpg49-state-auth-boundary-20260725.mjs",
+  "states": [
+    "loading",
+    "signed_out",
+    "reauth_required",
+    "profile_required",
+    "personal",
+    "error"
+  ],
+  "nextSteps": {
+    "loading": "NONE",
+    "signed_out": "/signup?next=%2Fbellows%2Frecommendations",
+    "reauth_required": "/login?next=%2Fbellows%2Frecommendations",
+    "profile_required": "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+    "personal": "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+    "error": "RETRY"
+  },
+  "maximumTransientCopyWordsObserved": 19,
+  "signedOutDoorwayWords": 48,
+  "exampleFallbackPreserved": true,
+  "closedIntakeTruthPreserved": true,
+  "custodyTruthPreserved": true,
+  "privateSentinelLeakCount": 0,
+  "unsafeReturnCount": 0,
+  "auth": {
+    "exactBearer": true,
+    "getUserValidation": true,
+    "ownerSource": "auth.user.id",
+    "missingOrInvalidStatus": 401
+  },
+  "routes": {
+    "personalMethod": "GET",
+    "personalWrongMethodStatus": 405,
+    "packetPostStatus": 403,
+    "intakePostStatus": 503
+  },
+  "response": {
+    "cacheControl": "private, no-store",
+    "pragma": "no-cache",
+    "vary": "Authorization",
+    "persisted": false
+  },
+  "writeCount": 0,
+  "directStorageCallCount": 0,
+  "absoluteNetworkTargetCount": 0,
+  "boundarySourceHashes": {
+    "lib/supabase/request.ts": "6ed3f9f6fa4788afb7ca5eb44d6efdccf6eece3379211d1d85c69dd87f605d3d",
+    "app/api/bellows/recommendations/personal/route.ts": "b8bb72b3bf9a73dd321bacb6b4fa077558e2098e34c3f41d75c1856c8fd403a2",
+    "app/api/bellows/recommendations/packet/route.ts": "bcb84297904c65b6c491b7fbeb8b06e8e94f6824dab75d14d51859df0c41b60d",
+    "app/api/bellows/intake/route.ts": "76886d18d8734e49853862bcc5e9de0893e02193f8bc638d9a7b10bb197bed6c",
+    "lib/squibb/concierge-intake-availability.ts": "aeb5fb905788cace1aaa9bf542a53ae86dd2fb1fd1d74d1a8d3c31143a8bda0a",
+    "lib/matching/personal-recommendation-contract.ts": "c813647a525624ca7c09d28a179ac1c9bcbbd2b9f54ee77c360ff134016e8d78"
+  },
+  "boundarySourceDrift": [],
+  "attackCount": 22,
+  "blockedAttackCount": 22,
+  "bypassCount": 0,
+  "failureCount": 0,
+  "blockedAttacks": [
+    "missing-state",
+    "loading-action",
+    "signed-out-route-drift",
+    "error-no-retry",
+    "dense-transient-copy",
+    "dense-signed-out-copy",
+    "example-removed-on-failure",
+    "intake-sounds-open",
+    "custody-language-removed",
+    "private-sentinel-leak",
+    "unsafe-auth-return",
+    "bearer-validation-bypass",
+    "owner-from-caller",
+    "personal-auth-200",
+    "personal-post-open",
+    "packet-saving-open",
+    "intake-open",
+    "public-cache",
+    "persisted-claim",
+    "storage-write",
+    "external-fetch",
+    "boundary-drift"
+  ],
+  "pass": true
+}

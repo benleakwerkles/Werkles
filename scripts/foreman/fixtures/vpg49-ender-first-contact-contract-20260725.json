@@ -1,0 +1,199 @@
+{
+  "schema": "werkles.vpg49-ender-first-contact-contract/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "legacyLabel": "VPG49",
+  "seat": "Ender@Betsy",
+  "topologyPolicy": {
+    "baseline": {
+      "bellowsDestinationCounts": {
+        "/bellows/recommendations": 2,
+        "/dashboard/profile?next=%2Fbellows%2Frecommendations": 2,
+        "/bellows/intake": 2
+      },
+      "bellowsDuplicateExcess": 3,
+      "bellowsPrimaryCount": 2,
+      "homeMainAccountTrustLinkCount": 9
+    },
+    "requiredRoutes": [
+      "/",
+      "/bellows",
+      "/bellows/recommendations",
+      "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+      "/proof",
+      "/login",
+      "/signup?next=%2Fbellows%2Frecommendations",
+      "/login?next=%2Fbellows%2Frecommendations",
+      "/bellows/intake",
+      "/privacy"
+    ],
+    "allowedFirstContactRoutes": [
+      "/#lanes",
+      "/spark",
+      "/proof",
+      "/bellows",
+      "/bellows/recommendations",
+      "/bellows/intake",
+      "/membership",
+      "/pricing",
+      "/signup",
+      "/signup?next=%2Fbellows%2Frecommendations",
+      "/login",
+      "/login?next=%2Fbellows%2Frecommendations",
+      "/dashboard",
+      "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+      "/onboarding",
+      "/privacy"
+    ],
+    "requiredDecisionSurfaces": {
+      "site-header": {
+        "primaryCount": 1,
+        "primaryRoute": "/bellows/recommendations"
+      },
+      "home-hero": {
+        "primaryCount": 1,
+        "primaryRoute": "/bellows/recommendations"
+      },
+      "bellows-page": {
+        "primaryCount": 1,
+        "primaryRoute": "/bellows/recommendations"
+      },
+      "recommendation-signed-out": {
+        "primaryCount": 1,
+        "primaryRoute": "/signup?next=%2Fbellows%2Frecommendations"
+      }
+    },
+    "supersededLegacyTopologyAssertions": [
+      "VPG17_BELLOWS_EQUAL_CHOICE_BUTTON_TOPOLOGY",
+      "VPG23_CLOSED_INTAKE_GHOST_BUTTON",
+      "VPG45_HOME_THREE_SAFE_DOORS_LIST",
+      "VPG45_HOME_REQUIRED_ACCOUNT_GATE_LIST"
+    ],
+    "maximumHomeMainAccountTrustLinks": 5,
+    "minimumBellowsDuplicateReduction": 3,
+    "minimumHomeMainLinkReduction": 4
+  },
+  "statePolicy": {
+    "requiredStates": [
+      "loading",
+      "signed_out",
+      "reauth_required",
+      "profile_required",
+      "personal",
+      "error"
+    ],
+    "requiredNextSteps": {
+      "loading": "NONE",
+      "signed_out": "/signup?next=%2Fbellows%2Frecommendations",
+      "reauth_required": "/login?next=%2Fbellows%2Frecommendations",
+      "profile_required": "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+      "personal": "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+      "error": "RETRY"
+    },
+    "maximumTransientCopyWords": 26,
+    "maximumSignedOutDoorwayWords": 70,
+    "boundarySourceHashes": {
+      "lib/supabase/request.ts": "6ed3f9f6fa4788afb7ca5eb44d6efdccf6eece3379211d1d85c69dd87f605d3d",
+      "app/api/bellows/recommendations/personal/route.ts": "b8bb72b3bf9a73dd321bacb6b4fa077558e2098e34c3f41d75c1856c8fd403a2",
+      "app/api/bellows/recommendations/packet/route.ts": "bcb84297904c65b6c491b7fbeb8b06e8e94f6824dab75d14d51859df0c41b60d",
+      "app/api/bellows/intake/route.ts": "76886d18d8734e49853862bcc5e9de0893e02193f8bc638d9a7b10bb197bed6c",
+      "lib/squibb/concierge-intake-availability.ts": "aeb5fb905788cace1aaa9bf542a53ae86dd2fb1fd1d74d1a8d3c31143a8bda0a",
+      "lib/matching/personal-recommendation-contract.ts": "c813647a525624ca7c09d28a179ac1c9bcbbd2b9f54ee77c360ff134016e8d78"
+    }
+  },
+  "canonicalTopologyEvidence": {
+    "schema": "werkles.vpg49-first-contact-topology-evidence/v1",
+    "bellowsDestinationCounts": {
+      "/bellows/recommendations": 1,
+      "/dashboard/profile?next=%2Fbellows%2Frecommendations": 1,
+      "/bellows/intake": 1
+    },
+    "bellowsDuplicateExcess": 0,
+    "bellowsPrimaryCount": 1,
+    "homeMainAccountTrustLinkCount": 5,
+    "decisionSurfaces": {
+      "site-header": {
+        "primaryCount": 1,
+        "primaryRoute": "/bellows/recommendations"
+      },
+      "home-hero": {
+        "primaryCount": 1,
+        "primaryRoute": "/bellows/recommendations"
+      },
+      "bellows-page": {
+        "primaryCount": 1,
+        "primaryRoute": "/bellows/recommendations"
+      },
+      "recommendation-signed-out": {
+        "primaryCount": 1,
+        "primaryRoute": "/signup?next=%2Fbellows%2Frecommendations"
+      }
+    },
+    "missingRequiredRoutes": [],
+    "newRoutes": [],
+    "unsafeReturnCount": 0,
+    "promotedSecondaryCount": 0,
+    "closedIntakeTruthCount": 1,
+    "accessibleNameErrors": 0,
+    "headingReferenceErrors": 0,
+    "nestedInteractiveErrors": 0,
+    "duplicateIdErrors": 0,
+    "legacySupersession": {
+      "supersededAssertions": [
+        "VPG17_BELLOWS_EQUAL_CHOICE_BUTTON_TOPOLOGY",
+        "VPG23_CLOSED_INTAKE_GHOST_BUTTON",
+        "VPG45_HOME_THREE_SAFE_DOORS_LIST",
+        "VPG45_HOME_REQUIRED_ACCOUNT_GATE_LIST"
+      ],
+      "staleTopologyRestoredCount": 0,
+      "successorIntentFailureCount": 0
+    }
+  },
+  "canonicalStateEvidence": {
+    "schema": "werkles.vpg49-state-auth-boundary-evidence/v1",
+    "states": [
+      "loading",
+      "signed_out",
+      "reauth_required",
+      "profile_required",
+      "personal",
+      "error"
+    ],
+    "nextSteps": {
+      "loading": "NONE",
+      "signed_out": "/signup?next=%2Fbellows%2Frecommendations",
+      "reauth_required": "/login?next=%2Fbellows%2Frecommendations",
+      "profile_required": "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+      "personal": "/dashboard/profile?next=%2Fbellows%2Frecommendations",
+      "error": "RETRY"
+    },
+    "maximumTransientCopyWordsObserved": 20,
+    "signedOutDoorwayWords": 45,
+    "exampleFallbackPreserved": true,
+    "closedIntakeTruthPreserved": true,
+    "custodyTruthPreserved": true,
+    "privateSentinelLeakCount": 0,
+    "unsafeReturnCount": 0,
+    "auth": {
+      "exactBearer": true,
+      "getUserValidation": true,
+      "ownerSource": "auth.user.id",
+      "missingOrInvalidStatus": 401
+    },
+    "routes": {
+      "personalMethod": "GET",
+      "personalWrongMethodStatus": 405,
+      "packetPostStatus": 403,
+      "intakePostStatus": 503
+    },
+    "response": {
+      "cacheControl": "private, no-store",
+      "pragma": "no-cache",
+      "vary": "Authorization",
+      "persisted": false
+    },
+    "writeCount": 0,
+    "directStorageCallCount": 0,
+    "absoluteNetworkTargetCount": 0,
+    "boundarySourceDrift": []
+  }
+}

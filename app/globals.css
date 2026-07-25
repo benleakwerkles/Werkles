@@ -4692,6 +4692,50 @@ main .proof-warning.proof-boundary .trust-badge {
   align-items: start;
 }
 
+.bellows-hero__path {
+  max-width: 58ch;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--werkles-copper-frame-soft);
+}
+
+.bellows-hero__path p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.bellows-hero__path p + p {
+  margin-top: 0.35rem;
+}
+
+.bellows-hero__primary-action {
+  margin-top: 1rem;
+}
+
+.bellows-hero__secondary-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.bellows-hero__secondary-links a {
+  color: var(--werkles-ink-muted-on-paper);
+  text-decoration: underline;
+  text-decoration-color: var(--werkles-copper-frame);
+  text-underline-offset: 0.2em;
+}
+
+.bellows-hero__secondary-links a:hover {
+  color: var(--werkles-ink-on-paper);
+}
+
+.bellows-hero__secondary-links a:focus-visible {
+  outline: 3px solid var(--werkles-ember);
+  outline-offset: 3px;
+}
+
 .bellows-hero__squibb {
   margin: 0;
   text-align: center;
@@ -5098,6 +5142,100 @@ main .proof-warning.proof-boundary .workshop-band__panel > p {
   padding: 14px;
   background: rgba(255, 252, 247, 0.72);
   box-shadow: 0 8px 20px rgba(44, 35, 29, 0.07);
+}
+
+.home-account-handoff {
+  margin: 0 22px 22px;
+}
+
+.home-account-handoff__band.workshop-band {
+  margin: 0;
+}
+
+.home-account-handoff__band .workshop-band__panel {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.home-account-handoff__copy {
+  max-width: 58ch;
+}
+
+.home-account-handoff__copy h2,
+.home-account-handoff__copy p {
+  text-wrap: pretty;
+}
+
+.home-account-handoff__copy p:last-child {
+  margin-bottom: 0;
+}
+
+.home-account-handoff__actions {
+  display: grid;
+  justify-items: start;
+  gap: 0.8rem;
+}
+
+.home-account-handoff__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  font-size: 0.88rem;
+}
+
+.home-account-handoff__links a {
+  color: var(--werkles-ink-muted-on-paper);
+  text-decoration: underline;
+  text-decoration-color: var(--werkles-copper-frame);
+  text-underline-offset: 0.2em;
+}
+
+.home-account-handoff__links a:hover {
+  color: var(--werkles-ink-on-paper);
+}
+
+.home-account-handoff__links a:focus-visible {
+  outline: 3px solid var(--werkles-ember);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .home-account-handoff__band .workshop-band__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-hero__squibb {
+    width: min(100%, 22rem);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-account-handoff {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
+  .home-account-handoff__actions,
+  .home-account-handoff__actions > .button {
+    width: 100%;
+  }
+
+  .home-account-handoff__actions > .button {
+    justify-content: center;
+  }
+
+  .home-account-handoff__links,
+  .bellows-hero__secondary-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-hero__primary-action .button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .workshop-band--workshop {

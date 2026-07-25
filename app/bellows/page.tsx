@@ -24,20 +24,30 @@ export default function BellowsPage() {
             <p>{copy.bellows.body}</p>
             <p className="muted">{copy.bellows.host}</p>
             <p className="trust-badge">{copy.bellows.shellNote}</p>
-            <div className="actions" style={{ marginTop: "1rem" }}>
+            <div className="bellows-hero__path">
+              <p>
+                <strong>Recommendations first. Your profile makes them personal.</strong>
+              </p>
+              <p>
+                Start with the public example. Build your profile when you want a private, rules-based result.
+                Intake submission is temporarily closed.
+              </p>
+            </div>
+            <div className="bellows-hero__primary-action">
               <Link className="button button-dark" href="/bellows/recommendations">
                 See recommendations
               </Link>
+            </div>
+            <nav className="bellows-hero__secondary-links" aria-label="Optional Bellows paths">
               <Link
-                className="button button-outline"
                 href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
               >
                 Build your profile
               </Link>
-              <Link className="button button-ghost" href="/bellows/intake">
+              <Link href="/bellows/intake">
                 Review the intake (closed)
               </Link>
-            </div>
+            </nav>
           </div>
           {RENDER_BATCH_4_SQUIBB_ENABLED ? (
             <figure className="bellows-hero__squibb">
@@ -81,32 +91,6 @@ export default function BellowsPage() {
             </div>
           </section>
         ) : null}
-
-        <section className="narrative-act-body panel" aria-labelledby="bellowsPathTitle">
-          <p className="eyebrow">Start here</p>
-          <h2 id="bellowsPathTitle">Recommendations first. Your profile makes them personal.</h2>
-          <p>
-            Start with the public example. Sign in and build your profile when you want a private, rules-based result.
-            Intake submission is temporarily closed while secure account storage is connected.
-          </p>
-          <div className="actions" style={{ marginTop: "1rem" }}>
-            <Link className="button button-dark" href="/bellows/recommendations">
-              See a recommendation
-            </Link>
-            <Link
-              className="button button-outline"
-              href="/dashboard/profile?next=%2Fbellows%2Frecommendations"
-            >
-              Build your profile
-            </Link>
-            <Link className="button button-ghost" href="/bellows/intake">
-              Review the intake (closed)
-            </Link>
-            <Link className="button button-outline" href="/proof">
-              Inspect proof
-            </Link>
-          </div>
-        </section>
 
         {foundryAct ? (
           <section className="narrative-act-body panel">

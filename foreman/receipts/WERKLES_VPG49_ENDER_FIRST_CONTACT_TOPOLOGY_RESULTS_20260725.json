@@ -1,0 +1,92 @@
+{
+  "schema": "werkles.vpg49-ender-first-contact-topology-result/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-015952-ET-BETSY-01",
+  "legacyLabel": "VPG49",
+  "seat": "Ender@Betsy",
+  "hostname": "Betsy",
+  "sourceCommit": "bd24b45d3a01b51ee05c951d5f96e1bac6398686",
+  "fixture": "scripts/foreman/fixtures/vpg49-ender-first-contact-contract-20260725.json",
+  "guard": "scripts/foreman/vpg49-first-contact-boundary-guard-20260725.mjs",
+  "test": "scripts/foreman/test-vpg49-first-contact-topology-20260725.mjs",
+  "baseline": {
+    "bellowsDuplicateExcess": 3,
+    "bellowsPrimaryCount": 2,
+    "homeMainAccountTrustLinkCount": 9
+  },
+  "current": {
+    "bellowsDestinationCounts": {
+      "/bellows/recommendations": 1,
+      "/dashboard/profile?next=%2Fbellows%2Frecommendations": 1,
+      "/bellows/intake": 1
+    },
+    "bellowsDuplicateExcess": 0,
+    "bellowsPrimaryCount": 1,
+    "homeMainAccountTrustLinkCount": 5,
+    "missingRequiredRoutes": [],
+    "newRoutes": [],
+    "unsafeReturnCount": 0,
+    "promotedSecondaryCount": 0,
+    "accessibleNameErrors": 0,
+    "headingReferenceErrors": 0,
+    "nestedInteractiveErrors": 0,
+    "duplicateIdErrors": 0
+  },
+  "bellowsDuplicateReduction": 3,
+  "homeMainLinkReduction": 4,
+  "decisionSurfaces": {
+    "site-header": {
+      "primaryCount": 1,
+      "primaryRoute": "/bellows/recommendations"
+    },
+    "home-hero": {
+      "primaryCount": 1,
+      "primaryRoute": "/bellows/recommendations"
+    },
+    "bellows-page": {
+      "primaryCount": 1,
+      "primaryRoute": "/bellows/recommendations"
+    },
+    "recommendation-signed-out": {
+      "primaryCount": 1,
+      "primaryRoute": "/signup?next=%2Fbellows%2Frecommendations"
+    }
+  },
+  "legacySupersession": {
+    "supersededAssertions": [
+      "VPG17_BELLOWS_EQUAL_CHOICE_BUTTON_TOPOLOGY",
+      "VPG23_CLOSED_INTAKE_GHOST_BUTTON",
+      "VPG45_HOME_THREE_SAFE_DOORS_LIST",
+      "VPG45_HOME_REQUIRED_ACCOUNT_GATE_LIST"
+    ],
+    "staleTopologyRestoredCount": 0,
+    "successorIntentFailureCount": 0
+  },
+  "attackCount": 21,
+  "blockedAttackCount": 21,
+  "bypassCount": 0,
+  "failureCount": 0,
+  "blockedAttacks": [
+    "duplicate-recommendation",
+    "duplicate-profile",
+    "duplicate-intake",
+    "duplicate-primary",
+    "home-links-not-reduced",
+    "header-primary-duplicated",
+    "hero-primary-route-drift",
+    "bellows-primary-promotes-intake",
+    "signed-out-promotes-login",
+    "required-proof-missing",
+    "new-route",
+    "unsafe-return",
+    "secondary-promoted",
+    "closed-intake-truth-removed",
+    "missing-accessible-name",
+    "broken-heading-reference",
+    "nested-control",
+    "duplicate-id",
+    "legacy-map-missing",
+    "stale-topology-restored",
+    "legacy-intent-lost"
+  ],
+  "pass": true
+}

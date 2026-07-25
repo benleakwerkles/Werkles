@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import BetaSignupDoorway from "./beta-signup-form";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { HomeValueFold } from "@/components/foundry/home-value-fold";
 import { LanesDocumentarySection } from "@/components/foundry/lanes-documentary-section";
@@ -26,51 +25,6 @@ export default function HomePage() {
         <LanesDocumentarySection />
         <SquibbStoryBeat />
         <VisualStorySection />
-
-        <section className="operations-grid" aria-labelledby="startDoorwayTitle">
-          <WorkshopBandPanel tone="foundry" layout="bare" className="operations-grid__band" atmosphere={false}>
-            <article className="ops-card">
-              <div className="card-heading">
-                <p>Start here</p>
-                <h2 id="startDoorwayTitle">Three safe doors into Werkles.</h2>
-              </div>
-              <p>
-                If you are new, start free. If you are deciding whether it is worth joining, compare pricing. If you
-                need trust before movement, inspect proof first.
-              </p>
-              <div className="trust-state-strip" role="list" aria-label="Werkles entry paths">
-                <span role="listitem">Free account</span>
-                <span role="listitem">Transparent pricing</span>
-                <span role="listitem">Proof before trust</span>
-              </div>
-              <div className="member-selected-surface__actions">
-                <Link className="button button-dark" href="/signup">
-                  Start free
-                </Link>
-                <Link className="button button-outline" href="/pricing">
-                  Compare pricing
-                </Link>
-                <Link className="button button-outline" href="/proof">
-                  Inspect proof
-                </Link>
-              </div>
-              <p className="muted" style={{ marginTop: "1rem" }}>
-                Returning member?
-              </p>
-              <div className="member-selected-surface__actions">
-                <Link className="button button-outline" href="/login">
-                  Log in
-                </Link>
-                <Link className="button button-outline" href="/dashboard">
-                  Member home
-                </Link>
-                <Link className="button button-outline" href="/onboarding">
-                  Onboarding
-                </Link>
-              </div>
-            </article>
-          </WorkshopBandPanel>
-        </section>
 
         <section id="how" className="manifesto" aria-labelledby="howTitle">
           <WorkshopBandPanel tone="workshop" layout="split" atmosphere={false}>
@@ -106,49 +60,27 @@ export default function HomePage() {
           </WorkshopBandPanel>
         </section>
 
-        <section className="operations-grid">
-          <WorkshopBandPanel tone="foundry" layout="bare" className="operations-grid__band" atmosphere={false}>
-            <div className="operations-grid__cards">
-              <article id="beta" className="ops-card">
-                <div className="card-heading">
-                  <p>{copy.home.foundry.eyebrow}</p>
-                  <h2>{copy.home.foundry.headline}</h2>
-                </div>
-                <p>{copy.home.foundry.body}</p>
-                <BetaSignupDoorway />
-              </article>
-
-              <article className="ops-card">
-                <div className="card-heading">
-                  <p>{copy.home.forge.eyebrow}</p>
-                  <h2>{copy.home.forge.headline}</h2>
-                </div>
-                <p>{copy.home.forge.body}</p>
-                <div className="gate-list" role="list" aria-label="Required account gate">
-                  {copy.home.accountGate.map((item) => (
-                    <span role="listitem" key={item}>{item}</span>
-                  ))}
-                </div>
-                <Link className="button button-outline" href="/proof">
-                  {copy.home.forge.primaryCta}
-                </Link>
-              </article>
-
-              <article className="ops-card">
-                <div className="card-heading">
-                  <p>{copy.home.dashboardTeaser.kicker}</p>
-                  <h2>{copy.home.dashboardTeaser.headline}</h2>
-                </div>
-                <p className="status-line">{copy.home.dashboardTeaser.body}</p>
-                <div className="member-selected-surface__actions">
-                  <Link className="button button-dark" href="/login">
-                    Log in
-                  </Link>
-                  <Link className="button button-outline" href="/dashboard">
-                    Member home
-                  </Link>
-                </div>
-              </article>
+        <section className="home-account-handoff" aria-labelledby="homeAccountHandoffTitle">
+          <WorkshopBandPanel tone="foundry" className="home-account-handoff__band" atmosphere={false}>
+            <div className="home-account-handoff__copy">
+              <p className="eyebrow">After the example</p>
+              <h2 id="homeAccountHandoffTitle">Ready to try it with your situation?</h2>
+              <p>
+                Create a free account when you want a private path tied to you. The public example stays available
+                without one.
+              </p>
+            </div>
+            <div className="home-account-handoff__actions">
+              <Link className="button button-dark" href="/signup?next=%2Fbellows%2Frecommendations">
+                Create a free account
+              </Link>
+              <nav className="home-account-handoff__links" aria-label="Other ways to continue">
+                <Link href="/login">Sign in</Link>
+                <Link href="/pricing">Pricing</Link>
+                <Link href="/dashboard">Member home</Link>
+                <Link href="/onboarding">Continue onboarding</Link>
+                <Link href="/proof">How trust is checked</Link>
+              </nav>
             </div>
           </WorkshopBandPanel>
         </section>

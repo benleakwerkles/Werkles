@@ -1,0 +1,72 @@
+{
+  "schema": "werkles.vpg48-ender-supported-seam-auth-data-contract/v1",
+  "cycleId": "WERKLES-FLOCK-20260725-013031-ET-BETSY-01",
+  "legacyLabel": "VPG48",
+  "seat": "Ender@Betsy",
+  "custody": {
+    "schema": "werkles.vpg48-supported-seam-custody/v1",
+    "testOnly": true,
+    "operation": "LOCAL_BROWSER_ACCEPTANCE",
+    "runtimeEnvironment": "local-test",
+    "candidate": {
+      "expectedOrigin": "http://127.0.0.1:31248",
+      "observedOrigin": "http://127.0.0.1:31248",
+      "expectedPid": 48123,
+      "observedPid": 48123,
+      "expectedBuildId": "vpg48-synthetic-current-build",
+      "observedBuildId": "vpg48-synthetic-current-build"
+    },
+    "syntheticSupabase": {
+      "origin": "https://vpg48-local-only.supabase.co",
+      "anonKey": "vpg48-local-anon-key",
+      "credentialClass": "synthetic-only",
+      "nonSyntheticCredentialCount": 0
+    },
+    "network": {
+      "allowedOrigins": [
+        "http://127.0.0.1:31248",
+        "https://vpg48-local-only.supabase.co"
+      ],
+      "fallthrough": "abort",
+      "interceptions": [
+        {
+          "pattern": "http://127.0.0.1:31248/api/bellows/recommendations/personal",
+          "method": "GET",
+          "action": "fulfill",
+          "boundary": "personal-response-contract"
+        },
+        {
+          "pattern": "https://vpg48-local-only.supabase.co/**",
+          "method": "ANY",
+          "action": "fulfill_or_abort",
+          "boundary": "synthetic-supabase-only"
+        }
+      ]
+    },
+    "implementation": {
+      "compiledChunkRewrite": false,
+      "compiledChunkRoutes": [],
+      "sourceNeedles": [],
+      "productBypass": false,
+      "productFilesModified": [],
+      "configSource": "synthetic-build-env"
+    },
+    "port3000": {
+      "targeted": false,
+      "touched": false,
+      "action": "none",
+      "observedPid": 26556,
+      "ownerRoot": "C:\\Users\\Ben Leak\\github\\Werkles"
+    }
+  },
+  "productSources": {
+    "lib/supabase/request.ts": "6ed3f9f6fa4788afb7ca5eb44d6efdccf6eece3379211d1d85c69dd87f605d3d",
+    "lib/supabase/client.ts": "b1e050d8ea03d6d783b873b0920688b3f5edaf32ba76e5df9175d729febd9bae",
+    "app/api/bellows/recommendations/personal/route.ts": "b8bb72b3bf9a73dd321bacb6b4fa077558e2098e34c3f41d75c1856c8fd403a2",
+    "app/api/bellows/recommendations/packet/route.ts": "bcb84297904c65b6c491b7fbeb8b06e8e94f6824dab75d14d51859df0c41b60d",
+    "app/api/bellows/intake/route.ts": "76886d18d8734e49853862bcc5e9de0893e02193f8bc638d9a7b10bb197bed6c",
+    "lib/squibb/concierge-intake-availability.ts": "aeb5fb905788cace1aaa9bf542a53ae86dd2fb1fd1d74d1a8d3c31143a8bda0a",
+    "components/squibb/personal-recommendation-delivery.tsx": "ed6af7d4f81036fdd77e9056618a2bd9109f69df726ce1205f5117886f88cdf3",
+    "lib/matching/personal-recommendation-contract.ts": "c813647a525624ca7c09d28a179ac1c9bcbbd2b9f54ee77c360ff134016e8d78"
+  }
+}
