@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export const brandMarkAssetPath = "/assets/werkles-app-icon-board.png";
+export const brandMarkAssetPath = "/assets/werkles-w-mark-transparent.png";
 
 type BrandMarkPresentation = "board" | "soft" | "blend";
 

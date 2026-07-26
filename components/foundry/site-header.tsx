@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import { BrandMark } from "@/components/foundry/brand-mark";
 
-import { NavDocumentaryIcon } from "@/components/foundry/nav-documentary-icon";
-
 import { copy } from "@/lib/copy";
 
 import { primaryNavItems } from "@/lib/site-nav";
@@ -30,8 +28,6 @@ export function SiteHeader() {
 
           <Link key={item.id} href={item.href} className="site-nav-link" title={item.symbol}>
 
-            <NavDocumentaryIcon item={item} />
-
             <span className="site-nav-link__label">{item.label}</span>
 
           </Link>
@@ -48,7 +44,7 @@ export function SiteHeader() {
 
         </Link>
 
-        <Link className="header-cta" href="/signup">
+        <Link className="header-cta" href="/bellows/intake">
 
           {copy.hero.primaryCta}
 

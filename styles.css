@@ -1,3 +1,10 @@
+/* LEGACY DARK THEME — entire file demoted to the `legacy` cascade layer.
+   Layered rules lose to any unlayered rule (app/globals.css) that sets the
+   same property, regardless of bundle order or selector specificity. The
+   bundler appends this file AFTER globals.css, which used to let these dark
+   styles silently override the warm-paper redesign. Do not add new rules here. */
+@layer legacy {
+
 :root {
   color-scheme: dark;
   --werkles-violet: #3d16ca;
@@ -1846,3 +1853,5 @@ textarea {
     padding: 16px;
   }
 }
+
+} /* end @layer legacy */

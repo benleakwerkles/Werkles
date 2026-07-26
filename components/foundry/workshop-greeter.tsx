@@ -5,7 +5,6 @@ type WorkshopGreeterProps = {
   className?: string;
 };
 
-/** Decorative brand mark — canonical W app icon board (Squibb cutout is separate). */
 export function WorkshopGreeter({ size = "sm", className = "" }: WorkshopGreeterProps) {
   return (
     <div
