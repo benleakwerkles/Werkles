@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
+import { SiteIcon } from "@/components/foundry/site-icon";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
@@ -129,13 +130,16 @@ export default function MembershipPage() {
             ))}
           </ol>
           <p className="muted">
-            <Link href="/operator/gate-knockout/test-checkout-smoke">Full test checkout smoke runbook</Link>
+            <Link href="/operator/gate-knockout/test-checkout-smoke" prefetch={false}>
+              Full test checkout smoke runbook
+            </Link>
           </p>
         </section>
       ) : null}
 
       <section className="tier2-page-header">
         <div className="tier2-page-header__copy membership-hero">
+          <SiteIcon icon="product-membership" size="lg" className="site-icon--product product-hero-icon" />
           <p className="eyebrow">{copy.membership.eyebrow}</p>
           <h1>{copy.membership.headline}</h1>
           <p>{copy.membership.subhead}</p>

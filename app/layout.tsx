@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
+import "./product-icons.css";
 
 export const metadata: Metadata = {
   title: "Werkles | Business partner matching",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { SiteHeader } from "@/components/foundry/site-header";
+import { SiteIcon } from "@/components/foundry/site-icon";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
 import { narrativeArcAttribution, getNarrativeAct } from "@/lib/narrative-arc";
@@ -18,6 +19,7 @@ export default function BellowsPage() {
 
         <section className="bellows-hero panel bellows-hero--wired">
           <div className="bellows-hero__copy">
+            <SiteIcon icon="product-bellows" size="lg" className="site-icon--product product-hero-icon" />
             <p className="eyebrow">{copy.bellows.eyebrow}</p>
             <h1>{copy.bellows.headline}</h1>
             <p>{copy.bellows.body}</p>

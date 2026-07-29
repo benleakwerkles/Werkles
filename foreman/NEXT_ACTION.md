@@ -6,6 +6,17 @@ Updated: 2026-07-16
 
 ---
 
+## Lady Jessica product icons (active, approved 2026-07-29)
+
+- Lane: `Lady Jessica Product Icons Production Publish`
+- Environment: isolated worktree `C:\w_icons_prod` → Vercel Production `werkles/werkles1`
+- Allowed action: extract and publish six individually generated transparent icons; wire them to Bellows, Workshop, Profile, Intros, Proof/Crucible, and Membership/Foundry; rename the primary navigation item `Dues` to `Membership`; test; commit; push; deploy.
+- Limit: exact icon/navigation slice only. Do not include the unrelated dirty `C:\w59` worktree.
+- Stop condition: exact commit live at Werkles.com with read-only smoke checks passing, or two bounded repair attempts exhausted.
+- Operator approvals: creative direction, transparent individual assets, push/live publish, and removal of standalone Dues navigation are recorded in `foreman/gates/APPROVAL_LOG.md`.
+
+---
+
 ## G lane - Matching (active)
 
 Branch: `maker/site-g-20260703` @ `92a3081` (Autonomous Matching public go-live)

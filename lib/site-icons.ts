@@ -19,6 +19,12 @@ export type SiteIconId =
   | "icon-dossier"
   | "icon-knock"
   | "icon-register"
+  | "product-bellows"
+  | "product-workshop"
+  | "product-profile"
+  | "product-intros"
+  | "product-proof"
+  | "product-membership"
   | "check-identity"
   | "check-funds"
   | "check-license"
@@ -34,6 +40,7 @@ type SiteIconRecord = {
 };
 
 const iconRoot = "/assets/draft/icons";
+const productIconRoot = "/assets/brand/product-icons/lady-jessica-v1";
 
 export const siteIcons: Record<SiteIconId, SiteIconRecord> = {
   "lane-builder": { id: "lane-builder", filename: "icon-lane-builder-v0.1.png", publicPath: `${iconRoot}/icon-lane-builder-v0.1.png` },
@@ -60,7 +67,37 @@ export const siteIcons: Record<SiteIconId, SiteIconRecord> = {
   "icon-deck": { id: "icon-deck", filename: "icon-deck-v0.1.png", publicPath: `${iconRoot}/icon-deck-v0.1.png` },
   "icon-dossier": { id: "icon-dossier", filename: "icon-dossier-v0.1.png", publicPath: `${iconRoot}/icon-dossier-v0.1.png` },
   "icon-knock": { id: "icon-knock", filename: "icon-knock-v0.1.png", publicPath: `${iconRoot}/icon-knock-v0.1.png` },
-  "icon-register": { id: "icon-register", filename: "icon-register-v0.1.png", publicPath: `${iconRoot}/icon-register-v0.1.png` }
+  "icon-register": { id: "icon-register", filename: "icon-register-v0.1.png", publicPath: `${iconRoot}/icon-register-v0.1.png` },
+  "product-bellows": {
+    id: "product-bellows",
+    filename: "werkles-bellows-v1.png",
+    publicPath: `${productIconRoot}/werkles-bellows-v1.png`
+  },
+  "product-workshop": {
+    id: "product-workshop",
+    filename: "werkles-workshop-v1.png",
+    publicPath: `${productIconRoot}/werkles-workshop-v1.png`
+  },
+  "product-profile": {
+    id: "product-profile",
+    filename: "werkles-profile-v1.png",
+    publicPath: `${productIconRoot}/werkles-profile-v1.png`
+  },
+  "product-intros": {
+    id: "product-intros",
+    filename: "werkles-intros-v1.png",
+    publicPath: `${productIconRoot}/werkles-intros-v1.png`
+  },
+  "product-proof": {
+    id: "product-proof",
+    filename: "werkles-proof-v1.png",
+    publicPath: `${productIconRoot}/werkles-proof-v1.png`
+  },
+  "product-membership": {
+    id: "product-membership",
+    filename: "werkles-membership-v1.png",
+    publicPath: `${productIconRoot}/werkles-membership-v1.png`
+  }
 };
 
 /** Tier 3 micro icons — PNG slots in `public/assets/draft/icons/` (SVG fallback until landed). */

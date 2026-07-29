@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { SiteIcon } from "@/components/foundry/site-icon";
 import { copy } from "@/lib/copy";
 
 export default function BlueprintsPage() {
@@ -12,9 +13,12 @@ export default function BlueprintsPage() {
           <Link href="/dashboard/intros">Intros</Link>
         </nav>
         <section className="ops-card">
-          <div className="card-heading">
-            <p>{copy.dashboard.workshops.kicker}</p>
-            <h1>{copy.dashboard.workshops.headline}</h1>
+          <div className="card-heading product-heading">
+            <SiteIcon icon="product-workshop" size="lg" className="site-icon--product" />
+            <div className="product-heading__copy">
+              <p>{copy.dashboard.workshops.kicker}</p>
+              <h1>{copy.dashboard.workshops.headline}</h1>
+            </div>
           </div>
           <p>{copy.dashboard.workshops.body}</p>
           <p className="muted">

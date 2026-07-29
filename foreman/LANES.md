@@ -248,3 +248,31 @@ Each lane must define:
   - Stop after local typecheck/build, route smoke test, and screenshots are produced for Ben review.
 - Repair limit:
   - 2 bounded repair attempts for local UI/build issues.
+
+## Lane: Lady Jessica Product Icons Production Publish
+
+- Status: `APPROVED`
+- Environment: isolated local worktree `C:\w_icons_prod`; branch `codex/werkles-lj-icons-20260729`; Vercel Production project `werkles/werkles1`
+- Budget reference: no paid external calls; six individually generated source images already exist
+- Current scope source:
+  - `foreman/reviews/GATE-lady-jessica-product-icons-production-publish-20260729.md`
+  - `foreman/gates/APPROVAL_LOG.md`
+- Allowed actions:
+  - remove the generated chroma backgrounds from the six approved individual icon sources
+  - publish exactly six transparent product icon PNGs
+  - wire one icon each to Bellows, Workshop, Profile, Intros, Proof/Crucible, and Membership/Foundry
+  - rename the primary navigation item `Dues` to `Membership`
+  - run local typecheck, build, asset-alpha checks, and bounded route smoke tests
+  - commit and push only this isolated slice
+  - deploy this exact isolated slice to Werkles.com and run read-only production smoke tests
+- Forbidden actions:
+  - merge or deploy the unrelated dirty `C:\w59` worktree
+  - SQL/schema/RLS/policy changes
+  - production data mutation
+  - secret or provider-account changes
+  - Stripe, Twilio, Matching, or verification behavior changes
+  - adding a Forge destination or a standalone Dues destination
+- Current stop condition:
+  - Stop after the exact isolated commit is live on Werkles.com and production route/asset smoke checks pass, or after two bounded repair attempts fail.
+- Repair limit:
+  - 2 bounded repair attempts for icon extraction, build, or route-smoke failures.

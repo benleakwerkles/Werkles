@@ -1,6 +1,6 @@
 import { iconsV2Assets, RENDER_BATCH_3_WIRE_ENABLED } from "@/lib/render-batch-3-imagery";
 
-export type PrimaryNavId = "people" | "story" | "proof" | "bellows" | "dues";
+export type PrimaryNavId = "people" | "story" | "proof" | "bellows" | "membership";
 
 export type PrimaryNavItem = {
   id: PrimaryNavId;
@@ -41,11 +41,11 @@ export const primaryNavItems: PrimaryNavItem[] = [
     symbol: "Squibb hosts the floor"
   },
   {
-    id: "dues",
+    id: "membership",
     href: "/membership",
-    label: "Dues",
+    label: "Membership",
     lane: "backer",
-    symbol: "Foundry access"
+    symbol: "Foundry membership"
   }
 ];
 

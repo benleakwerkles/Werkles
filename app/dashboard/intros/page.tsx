@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { SiteIcon } from "@/components/foundry/site-icon";
 import { copy } from "@/lib/copy";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
@@ -56,9 +57,12 @@ export default function IntrosPage() {
           <Link href="/dashboard/blueprints">{copy.dashboard.workshops.navLabel}</Link>
         </nav>
         <section className="ops-card">
-          <div className="card-heading">
-            <p>{copy.dashboard.intros.kicker}</p>
-            <h1>{copy.dashboard.intros.headline}</h1>
+          <div className="card-heading product-heading">
+            <SiteIcon icon="product-intros" size="lg" className="site-icon--product" />
+            <div className="product-heading__copy">
+              <p>{copy.dashboard.intros.kicker}</p>
+              <h1>{copy.dashboard.intros.headline}</h1>
+            </div>
           </div>
           <button className="button button-dark" type="button" onClick={loadIntros}>Load intros</button>
           <p className="muted">

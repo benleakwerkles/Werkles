@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
+import { SiteIcon } from "@/components/foundry/site-icon";
 import { copy } from "@/lib/copy";
 import { deriveAccessWeight } from "@/lib/access-weight-client";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
@@ -183,9 +184,12 @@ export default function ProfilePage() {
       </nav>
 
       <section className="ops-card profile-editor">
-        <div className="card-heading">
-          <p>{copy.dashboard.profile.kicker}</p>
-          <h1>{copy.dashboard.profile.headline}</h1>
+        <div className="card-heading product-heading">
+          <SiteIcon icon="product-profile" size="lg" className="site-icon--product" />
+          <div className="product-heading__copy">
+            <p>{copy.dashboard.profile.kicker}</p>
+            <h1>{copy.dashboard.profile.headline}</h1>
+          </div>
         </div>
         <div className="trust-state-strip" aria-label="Trust state">
           <span>{deriveAccessWeight(profile)} Foundry record</span>
