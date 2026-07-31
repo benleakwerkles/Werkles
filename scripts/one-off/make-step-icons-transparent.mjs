@@ -13,7 +13,13 @@ const FILES = [
   ["werkles-icon-armory-lj-v1-raw.png", "werkles-armory-v1.png"],
   ["werkles-check-funds-lj-v1-raw.png", "werkles-check-funds-v1.png"],
   ["werkles-nav-proof-lj-v1-raw.png", "werkles-proof-shield-v1.png"],
-  ["werkles-icon-dossier-lj-v1-raw.png", "werkles-dossier-folder-v1.png"]
+  ["werkles-icon-dossier-lj-v1-raw.png", "werkles-dossier-folder-v1.png"],
+  ["werkles-lane-spark-lj-v1-raw.png", "werkles-lane-spark-v1.png"],
+  ["werkles-lane-builder-lj-v1-raw.png", "werkles-lane-builder-v1.png"],
+  ["werkles-lane-worker-lj-v1-raw.png", "werkles-lane-worker-v1.png"],
+  ["werkles-lane-operator-lj-v1-raw.png", "werkles-lane-operator-v1.png"],
+  ["werkles-lane-backer-lj-v1-raw.png", "werkles-lane-backer-v1.png"],
+  ["werkles-lane-connector-lj-v1-raw.png", "werkles-lane-connector-v1.png"]
 ];
 
 const NEAR_WHITE = 235;
