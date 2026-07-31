@@ -3,10 +3,14 @@ import Image from "next/image";
 
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
-import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
 import { narrativeArcAttribution, getNarrativeAct } from "@/lib/narrative-arc";
-import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED, renderBatch4AttributionNote } from "@/lib/render-batch-4-imagery";
+import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED } from "@/lib/render-batch-4-imagery";
+
+export const metadata = {
+  title: "Learn the floor",
+  description: "Practical lessons and anti-guru operator knowledge, hosted by Squibb. No pretend certainty."
+};
 
 export default function BellowsPage() {
   const foundryAct = getNarrativeAct("/proof");
@@ -15,8 +19,6 @@ export default function BellowsPage() {
     <>
       <SiteHeader />
       <main className="bellows-main narrative-act-page">
-        <NarrativeJourneyRail currentSlug="/bellows" />
-
         <section className="bellows-hero panel bellows-hero--wired">
           <div className="bellows-hero__copy">
             <SiteIcon icon="product-bellows" size="lg" className="site-icon--product product-hero-icon" />
@@ -80,10 +82,6 @@ export default function BellowsPage() {
                 <figcaption>Wide host scene — Bellows curriculum direction</figcaption>
               </figure>
             </div>
-            <p className="bellows-squibb-gallery__note" role="note">
-              {renderBatch4AttributionNote} Compare against manual cutout path in{" "}
-              <code>public/assets/mascot/README.md</code>.
-            </p>
           </section>
         ) : null}
 
@@ -92,7 +90,8 @@ export default function BellowsPage() {
           <h2 id="bellowsPathTitle">Intake first, recommendation second, proof always visible.</h2>
           <p>
             Bellows should not start by asking which service you want. It starts with the heaviest thing you are trying
-            to lift, formats that into a Speaker-readable packet, then shows Squibb's reversible next-step options.
+            to lift, turns that into a clear picture of your situation, then shows Squibb's reversible next-step
+            options.
           </p>
           <div className="actions" style={{ marginTop: "1rem" }}>
             <Link className="button button-outline" href="/bellows/recommendations">

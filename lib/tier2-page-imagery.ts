@@ -99,11 +99,13 @@ export const tier2ForgeBatch7Assets = {
 export const tier2PageImagery: Record<Tier2PageKey, Tier2PageImagery> = {
   membership: {
     act: "forge",
+    // Owner walkthrough 2026-07-27: the work-van image read authentic but
+    // emotionally bleak. The dues page sells the leap — opening day.
     featured: {
-      eyebrow: "Act III · working life",
-      caption: "Van at dawn — one tool out of the rack. Formation starts before the crew arrives.",
-      path: narrativeV2Assets.spaceD05VanDawn,
-      alt: "Work van at dawn with tools in rack — documentary Space beat",
+      eyebrow: "Opening day",
+      caption: "The sign goes up. First customer, first sale — the milestones dues are for.",
+      path: "/assets/draft/industry-breadth/werkles-opening-day-sign.png",
+      alt: "Shop owner hanging the sign on her front door on opening morning",
       featured: true
     },
     forgeBand: {
@@ -162,11 +164,13 @@ export const tier2PageImagery: Record<Tier2PageKey, Tier2PageImagery> = {
   },
   signup: {
     act: "forge",
+    // Universal collaboration scene (owner keep list: people discussing a
+    // project over coffee) instead of the solitary kitchen table.
     featured: {
-      eyebrow: "Act III · Spark meets Forge",
-      caption: "Thought becoming plan — kitchen table to shared work.",
-      path: narrativeV1Assets.sparkC01KitchenTable,
-      alt: "Person at kitchen table with notes — Spark beat"
+      eyebrow: "Where it starts",
+      caption: "Two people and a plan on the table — what signing up points toward.",
+      path: "/assets/draft/industry-breadth/werkles-collab-coffee-plans.png",
+      alt: "Two people working through business plans together over coffee"
     },
     forgeBand: {
       eyebrow: "Act III · Forge",

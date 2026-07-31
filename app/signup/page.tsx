@@ -142,8 +142,8 @@ export default function SignupPage() {
               <h2>Free account first. Dues only when the floor earns it.</h2>
             </div>
             <p>
-              After signup you land in onboarding: lane, arena, turf, then a profile depth that fits your pace. You can
-              explore proof and pricing before paying Foundry Dues.
+              After signup we ask three quick questions — your lane, your trade, and where you work — then you choose
+              how deep to build your profile. You can explore proof and pricing before paying Foundry Dues.
             </p>
             <div className="trust-state-strip" aria-label="Signup path">
               <span>Onboarding</span>
@@ -166,15 +166,12 @@ export default function SignupPage() {
               <h2>Check email, then onboarding.</h2>
             </div>
             <p>
-              If confirmation is slow or the link expired, try logging in or open the auth callback page to see the
-              exact status message from Supabase.
+              If the email is slow or the link expired, try logging in — your confirmation may have already gone
+              through.
             </p>
             <div className="member-selected-surface__actions">
               <Link className="button button-outline" href="/login">
                 Log in
-              </Link>
-              <Link className="button button-outline" href="/auth/callback">
-                Auth callback status
               </Link>
             </div>
           </section>

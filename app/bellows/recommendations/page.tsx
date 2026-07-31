@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/foundry/site-header";
-import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { SquibbRecommendationSurface } from "@/components/squibb/recommendation-surface";
 import { copy } from "@/lib/copy";
 import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-recommendation-session-server";
@@ -22,7 +21,6 @@ export default async function SquibbRecommendationsPage() {
     <>
       <SiteHeader />
       <main className="bellows-main narrative-act-page workshop-route--bellows squibb-rec-page">
-        <NarrativeJourneyRail currentSlug="/bellows" />
 
         <nav className="squibb-rec-page__nav" aria-label="Bellows">
           <Link className="button button-ghost" href="/bellows">

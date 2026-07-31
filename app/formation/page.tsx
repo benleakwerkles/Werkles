@@ -1,11 +1,15 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/foundry/site-header";
-import { IconComparisonSheet } from "@/components/narrative/icon-comparison-sheet";
 import { NarrativeActPageLayout } from "@/components/narrative/narrative-act-page-layout";
 import { NarrativePhotoGallery } from "@/components/narrative/narrative-photo-gallery";
 import { copy } from "@/lib/copy";
 import { allForgeGallery, getNarrativeAct } from "@/lib/narrative-arc";
+
+export const metadata = {
+  title: "The right people",
+  description: "Builders, operators, backers, connectors — Werkles helps you name which lane is missing and meet it with proof attached."
+};
 
 export default function FormationPage() {
   const act = getNarrativeAct("/formation");
@@ -16,7 +20,6 @@ export default function FormationPage() {
       <SiteHeader />
       <NarrativeActPageLayout act={act}>
         <NarrativePhotoGallery title="Forge beat library" items={allForgeGallery} />
-        <IconComparisonSheet />
         <section className="narrative-act-body panel">
           <h2>Lanes meeting on the work</h2>
           <p>

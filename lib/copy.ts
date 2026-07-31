@@ -17,7 +17,9 @@ export const copy = {
     billing: "Billing",
     login: "Sign in",
     workbench: "Workbench",
-    verification: "Verification"
+    verification: "Verification",
+    // Compact form of the hero primary for the header pill.
+    cta: "Discover what you need"
   },
   squibb: {
     default: "Squibb: This option is closer than it looks. You can ignore this and keep your original path.",
@@ -56,7 +58,8 @@ export const copy = {
       "For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
     beforeState: "People first. Trust visible. Opportunity you can actually reach.",
     brandPromise: "People, trust, momentum, opportunity.",
-    primaryCta: "Tell us what you need",
+    // Owner CTA direction, verbatim (walkthrough 2026-07-27).
+    primaryCta: "Let us help you discover what you need",
     secondaryCta: "See how trust is checked",
     trustLine: "Real human help, with proof shown before you rely on it.",
     signupPreview: "Start with one business need. Werkles turns it into a practical next move and the proof to check."
@@ -126,7 +129,7 @@ export const copy = {
     body:
       "The proof is a shop opening, a route getting bought, a crew taking equity, a practice seeing patients, a bakery line finally running. Not because the founder was fixed. Because the missing piece became visible, and the next move became safe enough to make.",
     cta: "Join the Foundry",
-    idle: "Mock-only copy. No production signup behavior is claimed here.",
+    idle: "Choose your lane and join the Foundry interest list. Follow-up is manual; no automated email is sent.",
     loading: "Checking…",
     success: "Request saved. We follow up manually — no auto-email from this form. For a full account now, use Start free (/signup) and confirm via email."
   },
@@ -135,16 +138,16 @@ export const copy = {
     headline: "Learn how the floor actually works.",
     body:
       "Practical lessons, SOPs, and anti-guru operator knowledge. Squibb hosts — no guru fog, no pretend certainty.",
-    shellNote: "Route shell only — full Bellows curriculum ships after separate approval.",
+    shellNote: "Full lessons are on the way — this page shows how the path will work.",
     host: "Hosted by Squibb"
   },
   onboarding: {
     headline: "Your first pass",
-    subhead: "Pick your lane. Arena and turf come next before the profile gets heavier.",
+    subhead: "Three answers: your lane, your trade, and where you work. Takes a minute.",
     pickLane: "Pick your lane",
     lane: "Lane",
-    arena: "Arena",
-    turf: "Turf",
+    arena: "Trade or industry",
+    turf: "Where you work (ZIP)",
     doorsHeadline: "Choose your first door.",
     doors: {
       quickWeld: {
@@ -173,9 +176,9 @@ export const copy = {
     signupTitle: "Start your profile",
     loginTitle: "Welcome back",
     loginSubhead: "Same floor, same rules — glad you're back.",
-    signupSubhead: "Your profile starts here. We'll walk you through the gates.",
+    signupSubhead: "Your profile starts here. Free to create — verification comes later, at your pace.",
     loginIdle: "Use the account you created for Werkles.",
-    signupIdle: "Activation still waits on ID, face capture, phone, and proof gates.",
+    signupIdle: "Free to start. ID and verification steps come later, when you choose to be vouched for.",
     signupCta: "Start your profile",
     phoneConsent: "I consent to phone checks for account security when that feature is live."
   },
@@ -191,18 +194,19 @@ export const copy = {
     firewallHeadline: "The money we do not move."
   },
   home: {
+    // De-worded (owner walkthrough): one strong thought per card.
     valueFold: {
       what: {
         label: "What it is",
-        body: "A discovery and verification floor for Main Street builders. You state the need. Werkles translates the bottleneck, surfaces reachable means, and shows itemized proof before you rely on anyone."
+        body: "You state the need. Werkles finds what's actually missing and shows itemized proof before you rely on anyone."
       },
       whyNeed: {
         label: "Why you need it",
-        body: "Most stalls are misnamed problems — customers when it's equipment, a cofounder when it's a lender, capital when it's proof. Acting on the wrong need burns time. Acting without proof burns cash."
+        body: "Most stalls are misnamed problems — customers when it's equipment, capital when it's proof. The wrong need burns time and cash."
       },
       whyPay: {
         label: "Why Foundry Dues",
-        body: "Dues open the workbench: need translation, Crucible checks, guarded intros, and published verification costs. You pay for runway — not a match guarantee, not hype, not algorithm fog."
+        body: "Dues buy runway — discovery, verification, guarded intros. Not a match guarantee, not hype, not algorithm fog."
       }
     },
     visualStory: {
@@ -363,7 +367,7 @@ export const copy = {
       eyebrow: "Foundry Dues",
       headline: "Pay for the floor — not the fantasy.",
       body:
-        "Foundry Dues unlock discovery, verification workflows, and guarded intros. Published verification costs. No pay-to-play trust. The work still has to prove itself — but you won't move blind.",
+        "Foundry Dues unlock discovery, verification workflows, and guarded intros. Published verification costs. No pay-to-play trust. The work still has to prove itself — but you won't move blind. The form below joins the interest list; it does not collect payment.",
       cta: "Join the Foundry",
       priceLine:
         "Foundry Dues start at {price}/mo. Checkout stays disabled until the billing gate clears."
@@ -457,7 +461,7 @@ export const copy = {
       headline: "Billing",
       summary:
         "A plain record of Foundry Dues and invoices, kept human because real money deserves plain language.",
-      disabledReason: "Stripe checkout and the billing portal stay disabled until Ben clears the billing gate.",
+      disabledReason: "Checkout and the billing portal are unavailable until payment setup and review are complete.",
       checkoutCta: "Start Foundry Dues checkout",
       portalCta: "Open dues portal",
       downloadCta: "Download invoices",
@@ -488,16 +492,18 @@ export const copy = {
   },
   membership: {
     eyebrow: "Foundry access",
-    headline: "Join the Foundry",
+    // Owner walkthrough 2026-07-27: sell the leap honestly through first
+    // customer, first sale, opening day; state exactly what payment unlocks.
+    headline: "Dues buy the runway to your first customer.",
     subhead:
-      "Foundry Dues open the Werkles workflows: discovery, proof, guarded intros, and the operating surfaces that help the next move take shape.",
+      "First customer. First sale. Opening day. Foundry Dues open the working layer that gets you there: discovery, verification workflows, guarded intros, and a Workshop for your venture.",
     disclaimer:
       "Foundry Dues do not guarantee verification, background clearance, funding, legal approval, partner quality, or business outcomes.",
     unlocks: [
-      "Discovery workbench for surfacing the real missing piece",
-      "Crucible preview for proof and runway checks",
-      "Guarded intro desk and proof checklist",
-      "Billing dashboard preview while payment gates remain closed"
+      "Discovery workbench — name the real missing piece between you and your first sale",
+      "Verification workflows — itemized proof on the people and resources you'd rely on",
+      "Guarded intro desk — introductions made with proof attached, not cold hope",
+      "A Workshop — the working room where your venture gets planned and built"
     ],
     monthly: "Monthly",
     annual: "The Long Run",
@@ -526,7 +532,7 @@ export const copy = {
         cta: "Start free"
       },
       monthly: {
-        body: "Unlock intro requests, workspace access, proof workflows, and the path toward heavier proof weight."
+        body: "Everything between you and your first sale: intro requests, your Workshop, and verification on the people you'd rely on."
       },
       annual: {
         body: "Same access. One yearly payment. Keep roughly twenty bucks in your pocket."
@@ -714,7 +720,7 @@ export const copy = {
     cockpitEyebrow: "Werkles",
     proofAtmosphere: "Evidence over promises."
   },
-  laneOptions: ["Builder", "Operator", "Backer", "Connector", "Spark"] as const,
+  laneOptions: ["Builder", "Operator", "Backer", "Connector", "Spark", "Worker"] as const,
   workPreferences: ["Local Only", "Remote Only", "Open to Travel", "Willing to Relocate"] as const,
   visibilityModes: ["full_name", "first_name_only", "alias"] as const,
   introStatuses: ["Pending Co-Sign", "Auto-Approved", "Co-Signed", "Declined", "Expired", "Locked"] as const

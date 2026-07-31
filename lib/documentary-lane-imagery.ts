@@ -1,6 +1,5 @@
 import { ANYONE_NARRATIVE_V2_ENABLED } from "@/lib/anyone-narrative-v2-imagery";
-import { narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
-import { iconsV2Assets, narrativeV2Assets } from "@/lib/render-batch-3-imagery";
+import { iconsV2Assets } from "@/lib/render-batch-3-imagery";
 import type { LaneId } from "@/lib/visual-system/types";
 
 export type DocumentaryLanePhoto = {
@@ -15,36 +14,38 @@ export type DocumentaryLaneIcon = {
   label: string;
 };
 
+// Owner walkthrough 2026-07-27: broaden industries beyond construction-heavy
+// imagery. Six lanes, six trades — none of them a toolbelt.
 const legacyDocumentaryLanePhotos: Record<LaneId, DocumentaryLanePhoto> = {
   spark: {
-    path: narrativeV1Assets.sparkC01KitchenTable,
-    caption: "Act I — thought in progress",
-    alt: "Person at kitchen table with notes — Spark beat"
+    path: "/assets/draft/industry-breadth/werkles-industry-dj.png",
+    caption: "The weekend rig that wants to be a company",
+    alt: "DJ setting up her mobile rig before an event — Spark lane"
   },
   builder: {
-    path: narrativeV1Assets.forgeA03HalfBuiltPair,
-    caption: "Two lanes on the plan",
-    alt: "Builder and partner reviewing plans in half-built space"
+    path: "/assets/draft/industry-breadth/werkles-industry-florist.png",
+    caption: "Craft hands making the thing real",
+    alt: "Florist arranging a bouquet behind her shop counter — Builder lane"
   },
   worker: {
-    path: narrativeV2Assets.spaceD03ToolAtRest,
-    caption: "Tool at rest — placed by use",
-    alt: "Workshop tool at rest on bench — Worker lane"
+    path: "/assets/draft/industry-breadth/werkles-industry-dogwalker.png",
+    caption: "Shows up on schedule, every route",
+    alt: "Dog walker with four dogs on a neighborhood route — Worker lane"
   },
   operator: {
-    path: narrativeV2Assets.forgeA06BuilderOperatorPlan,
-    caption: "Operator lane at the numbers",
-    alt: "Builder and operator reviewing plan together"
+    path: "/assets/draft/industry-breadth/werkles-industry-veterinarian.png",
+    caption: "Delivery when promises meet Tuesday",
+    alt: "Veterinarian examining a dog in a small clinic — Operator lane"
   },
   backer: {
-    path: narrativeV2Assets.spaceD04ReceptionQuiet,
-    caption: "Back-office before the crew",
-    alt: "Quiet reception desk — capital discipline without theater"
+    path: "/assets/draft/industry-breadth/werkles-industry-accountant.png",
+    caption: "Questions before checks",
+    alt: "Accountant working through ledgers at a home office desk — Backer lane"
   },
   connector: {
-    path: narrativeV2Assets.forgeA07ConnectorIntroTable,
+    path: "/assets/draft/industry-breadth/werkles-collab-coffee-plans.png",
     caption: "Introduction without performance",
-    alt: "Three people at table — Connector beat"
+    alt: "Two people discussing plans over coffee — Connector lane"
   }
 };
 

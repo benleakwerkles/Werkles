@@ -3516,8 +3516,11 @@ textarea:focus {
   /* --werkles-story-v2-hero holds two url() layers (render + stock fallback);
      shorthand would only size the last layer, leaving the first tiling at
      natural size. Longhand applies center/cover/no-repeat to every layer. */
+  /* Ben, walkthrough 2026-07-30: the heavy cream wash read as fog over Maria
+     ("reverb on the vocal"). Keep just enough scrim on the text side for the
+     headline; let the photo breathe everywhere else. */
   background-image:
-    linear-gradient(112deg, rgba(246, 239, 229, 0.78) 0%, rgba(246, 239, 229, 0.5) 40%, rgba(31, 24, 20, 0.62) 100%),
+    linear-gradient(112deg, rgba(246, 239, 229, 0.46) 0%, rgba(246, 239, 229, 0.14) 42%, rgba(31, 24, 20, 0.45) 100%),
     var(--werkles-story-v2-hero);
   background-position: center;
   background-size: cover;
@@ -8362,6 +8365,36 @@ main:not(.foundry-cockpit) strong {
   border-radius: calc(var(--radius) - 2px);
 }
 
+/* "You could do this without us" — own layout; how-steps' icon grid crushed
+   these headline-only cards (walkthrough fix, 2026-07-30). */
+.honest-answers {
+  display: grid;
+  gap: 14px;
+}
+
+.honest-answers article {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.honest-answers article h3 {
+  margin: 0 0 6px;
+}
+
+.honest-answers article p {
+  margin: 0;
+}
+
+.squibb-story-beat__intro {
+  margin: 0 0 10px;
+  color: var(--werkles-ink-on-paper);
+  opacity: 0.85;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
 .squibb-story-beat__line {
   margin: 0;
   color: var(--werkles-ink-on-paper);
@@ -10503,11 +10536,11 @@ main:not(.foundry-cockpit) strong {
   background: rgba(255, 252, 247, 0.85);
 }
 
-/* Cream-on-teal CTA sat at 3.0:1 — deepen the teal ramp to clear AA. */
+/* Cream-on-teal CTA sat at 3.0:1 — solid deep teal clears AA. */
 .button-light {
   color: #fdf8ee;
   border-color: rgba(1, 70, 60, 0.65);
-  background: linear-gradient(180deg, #0aa38c 0%, #027665 55%, #01463c 100%);
+  background: #027665;
 }
 
 /* The Squibb recommendations surface is a deliberate dark cockpit whose CSS
@@ -10538,24 +10571,23 @@ main.squibb-rec-page {
    This block sits after the contrast floor on purpose: same specificity,
    later order, so it owns these elements. */
 
-/* Primary CTAs: the V0i blend instead of the copper forge gradient.
-   Text stays white — the ramp bottoms out at deep teal (#027665, ~5.5:1). */
+/* Primary CTAs: solid brand violet (Ben, walkthrough 2026-07-27: solid-color
+   buttons; the wave/gradient belongs to the logo, not every control).
+   White on #4520c9 is ~8.6:1. */
 .header-cta,
 .button-dark,
 .segment.is-active,
 .round-action.loud {
   color: #ffffff;
-  border-color: rgba(103, 46, 237, 0.5);
-  background: linear-gradient(135deg, #5b2be0 0%, #4520c9 42%, #027665 100%);
-  box-shadow: 0 12px 28px rgba(61, 22, 202, 0.22);
+  border-color: #3d16ca;
+  background: #4520c9;
 }
 
-/* Secondary CTA keeps its deep-teal ramp but picks up the violet edge so the
-   pair reads as one family. */
+/* Secondary CTA: solid deep teal. Cream on #027665 is ~5.5:1. */
 .button-light {
   color: #fdf8ee;
-  border-color: rgba(69, 32, 201, 0.4);
-  background: linear-gradient(135deg, #0aa38c 0%, #027665 55%, #2a0e8c 130%);
+  border-color: #015e51;
+  background: #027665;
 }
 
 /* Micro-labels: deep violet instead of copper. Clears AA on warm paper. */
@@ -10595,4 +10627,389 @@ main.squibb-rec-page a:where(:not([class])):hover {
 :focus-visible {
   outline: 2px solid rgba(91, 43, 224, 0.75);
   outline-offset: 2px;
+}
+
+/* Brand V0i polish pass v2 (2026-07-26) — motion and interaction states for
+   the new color system. Buttons breathe: rest, hover lift, press. Maker +
+   Ender design lane. */
+
+.header-cta,
+.button-dark,
+.button-light,
+.button-ghost,
+.round-action,
+.segment,
+.site-header__login,
+.site-header nav a.site-nav-link {
+  transition:
+    color 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease,
+    filter 140ms ease;
+}
+
+/* Primary CTAs lift on hover and settle on press. The gradient brightens
+   slightly rather than swapping, so the V0i identity holds. */
+.header-cta:hover,
+.button-dark:hover,
+.round-action.loud:hover {
+  filter: brightness(1.08) saturate(1.05);
+  transform: translateY(-1px);
+}
+
+.header-cta:active,
+.button-dark:active,
+.round-action.loud:active {
+  filter: brightness(0.97);
+  transform: translateY(0);
+}
+
+.button-light:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.button-light:active {
+  filter: brightness(0.97);
+  transform: translateY(0);
+}
+
+/* Ghost buttons pick up the violet edge on hover instead of staying copper,
+   so every interactive element answers with the same brand voice. */
+.button-ghost:hover {
+  color: var(--werkles-violet-deep, #2a0e8c);
+  border-color: rgba(69, 32, 201, 0.5);
+  background: rgba(255, 252, 247, 0.96);
+}
+
+/* Text selection joins the brand. */
+::selection {
+  background: rgba(91, 43, 224, 0.2);
+  color: inherit;
+}
+
+/* Footer: close the page with the brand instead of a copper hairline.
+   A thin V0i seam on top, settled spacing, centered disclaimer. */
+.site-footer {
+  position: relative;
+  padding: 26px 22px 34px;
+  border-top: none;
+  background: rgba(255, 252, 247, 0.72);
+}
+
+/* One accent per element (Ben, walkthrough 2026-07-27): the seam is a single
+   solid violet line, not another wave — the wave belongs to the logo. */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #4520c9;
+  opacity: 0.45;
+}
+
+.site-footer p {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* The hero's primary CTA carried the secondary teal while the header's
+   identical "Tell us what you need" wore the primary violet. Same action,
+   same color: the hero primary joins the solid violet. Other .button-light
+   uses (membership, previews) stay teal secondaries. */
+.hero-actions .button-light {
+  color: #ffffff;
+  border-color: #3d16ca;
+  background: #4520c9;
+}
+
+/* Phone pass (2026-07-26): at true phone widths the header actions overlapped
+   the wordmark and the hero headline swallowed the first screen. */
+@media (max-width: 520px) {
+  .site-header,
+  .site-header--nav-doc {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 10px;
+  }
+
+  /* Brand on row 1; login + CTA get their own full-width row 2; nav row 3. */
+  .site-header__actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .site-header__actions .header-cta {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .site-header nav {
+    grid-row: 3;
+  }
+
+  .hero.hero--rewrite-v1 h1,
+  .hero h1 {
+    font-size: clamp(2.2rem, 10vw, 2.9rem);
+    line-height: 1.04;
+  }
+
+  .hero .hero-lead {
+    font-size: 1.05rem;
+  }
+
+  /* Stacked, full-width, thumb-sized hero actions. */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Squibb walkthrough dark cards: the sitewide warm-paper ink landed on these
+   near-black surfaces and vanished (found by contrast crawl, 1.0–1.8:1).
+   Cream ink for the containers and their bold/heading text; class-scoped
+   accent colors inside keep their own values. */
+/* !important is required: the page-level walkthrough CSS loads after globals
+   and paints these via re-pointed theme variables. Scope stays inside the
+   five dark surfaces. */
+.concierge-flow-rail,
+.concierge-flow-rail a,
+.concierge-flow-rail li,
+.concierge-symptom__quote,
+.concierge-speaker-confidence,
+.concierge-speaker-confidence h3,
+.concierge-speaker-confidence .squibb-confidence__why,
+.concierge-alt-chip,
+.concierge-alt-chip strong,
+.concierge-experiment-card,
+.concierge-experiment-card strong,
+.concierge-experiment-card h3 {
+  color: #f3e9d7 !important;
+}
+
+/* The V0i micro-label violet assumed warm paper. Dark cockpit surfaces
+   (intake, squibb recommendations) need the light violet instead. */
+.concierge-intake-page .eyebrow,
+.concierge-intake-page .plan-kicker,
+.concierge-intake-page .card-heading p,
+main.squibb-rec-page .eyebrow,
+main.squibb-rec-page .plan-kicker,
+main.squibb-rec-page .card-heading p {
+  color: #b9a4ff;
+}
+
+/* The auth panel's split layout uses a doubled selector to beat the legacy
+   width cap, which also (accidentally) beats its own 900px collapse rule.
+   Re-state the collapse at matching specificity so phones get one column. */
+@media (max-width: 900px) {
+  .auth-panel.auth-panel--split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Owner walkthrough 2026-07-27: "Reduce repeated image libraries, especially
+   on mobile." On phones, keep each page's one featured image and drop the
+   decorative repeats — icon rails and secondary forge bands. */
+@media (max-width: 520px) {
+  .tier2-visual__icon-rail,
+  .tier2-visual .tier2-visual__figure:not(.tier2-visual__figure--featured) {
+    display: none;
+  }
+}
+
+/* Story page (/spark) rebuild — plain-answer sections. */
+.spark-signup-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 16px;
+  padding-left: 20px;
+}
+
+.spark-taxonomy-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* One accent per chip (owner direction): a single solid violet edge. */
+.spark-taxonomy-chip {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 4px solid #4520c9;
+  border-radius: calc(var(--radius) - 4px);
+  background: rgba(255, 252, 247, 0.85);
+}
+
+.spark-taxonomy-chip strong {
+  font-size: 1.02rem;
+}
+
+.spark-taxonomy-chip span {
+  font-size: 0.92rem;
+  color: rgba(50, 34, 24, 0.78);
+}
+
+.spark-industry-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.spark-industry-card {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.spark-industry-photo {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+}
+
+.spark-industry-card figcaption {
+  font-size: 0.9rem;
+  color: rgba(50, 34, 24, 0.78);
+}
+
+@media (max-width: 720px) {
+  .spark-taxonomy-strip,
+  .spark-industry-strip {
+    grid-template-columns: 1fr;
+  }
+
+  /* Phones keep one portrait — the breadth message, without the photo pile. */
+  .spark-industry-card:nth-child(n + 2) {
+    display: none;
+  }
+}
+
+/* Owner walkthrough: reduce repeated image libraries, especially on mobile.
+   Maria's five-beat story keeps its first photo on phones; beats 2–5 keep
+   their words and drop their pictures. */
+@media (max-width: 520px) {
+  .visual-story__beat:nth-child(n + 2) .visual-story__figure {
+    display: none;
+  }
+}
+
+/* Profile builder staged flow (owner walkthrough: split autofill facts from
+   narrative discovery; less intimidating). Three numbered stages with air
+   between them instead of one twenty-field wall. */
+.profile-form-staged {
+  display: grid;
+  gap: 22px;
+}
+
+.profile-stage {
+  margin: 0;
+  padding: 18px 18px 20px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) - 2px);
+  background: rgba(255, 252, 247, 0.6);
+}
+
+.profile-stage legend {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.profile-stage legend small {
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: rgba(50, 34, 24, 0.66);
+}
+
+.profile-stage__num {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #4520c9;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .profile-stage legend {
+    flex-wrap: wrap;
+  }
+}
+
+/* Buttons stay flat and clean — no drop shadows anywhere, any state
+   (Ben, 2026-07-26: shadows read as dirty). !important on purpose: this is a
+   site-wide kill switch over every legacy declaration and hover state. */
+.button,
+.button-dark,
+.button-light,
+.button-ghost,
+.header-cta,
+.round-action,
+.segment,
+button,
+[class*="button"]:where(a, button) {
+  box-shadow: none !important;
+}
+
+/* Show-humans QA sweep (2026-07-29): internal draft-provenance badges
+   ("Render Batch 3…", "not final brand approval") read as construction
+   debris to a first-time visitor. One kill switch instead of editing a
+   dozen components; flip back by deleting this block when a provenance
+   audit is needed. */
+.stock-preview-badge,
+.draft-review-badge,
+.icon-comparison-sheet__note,
+.narrative-extras__note,
+.space-beat__note,
+.narrative-scroll-rhyme__note,
+.documentary-icons-strip__note,
+.bellows-home-preview__note,
+.bellows-squibb-gallery__note,
+.tier2-visual__note,
+.narrative-act-page__note {
+  display: none !important;
+}
+
+/* Motion is a courtesy, not a requirement. */
+@media (prefers-reduced-motion: reduce) {
+  .header-cta,
+  .button-dark,
+  .button-light,
+  .button-ghost,
+  .round-action,
+  .segment,
+  .site-header__login,
+  .site-header nav a.site-nav-link {
+    transition: none;
+  }
+
+  .header-cta:hover,
+  .button-dark:hover,
+  .round-action.loud:hover,
+  .button-light:hover {
+    transform: none;
+  }
 }

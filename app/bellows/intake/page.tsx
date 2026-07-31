@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/foundry/site-header";
-import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { ConciergeIntakeForm } from "@/components/squibb/concierge-intake-form";
 import { copy } from "@/lib/copy";
 
@@ -9,7 +8,7 @@ import "./concierge-intake.css";
 
 export const metadata = {
   title: "Concierge Intake | Bellows",
-  description: "Symptom-only intake for Speaker — no matching, no profiles, no solution questions."
+  description: "Describe what is stuck so Werkles can recommend a practical next step."
 };
 
 export default function ConciergeIntakePage() {
@@ -17,30 +16,27 @@ export default function ConciergeIntakePage() {
     <>
       <SiteHeader />
       <main className="bellows-main narrative-act-page workshop-route--bellows concierge-intake-page">
-        <NarrativeJourneyRail currentSlug="/bellows" />
 
         <nav className="concierge-intake-page__nav" aria-label="Bellows">
           <Link className="button button-ghost" href="/bellows">
             ← Back to Bellows
           </Link>
-          <Link className="button button-ghost" href="/bellows/recommendations">
-            Squibb recommendations
-          </Link>
           <Link className="button button-ghost" href="/bellows/recommendations/test-case-0">
-            Concierge walkthrough
-          </Link>
-          <Link className="button button-ghost" href="/dashboard">
-            Member home
+            See a worked example
           </Link>
         </nav>
 
         <section className="panel concierge-intake-page__guide" aria-labelledby="intakeGuideTitle">
-          <p className="eyebrow">How intake works</p>
-          <h2 id="intakeGuideTitle">Symptoms in, engine out, Squibb speaks.</h2>
+          <p className="eyebrow">Start with the real problem</p>
+          <h2 id="intakeGuideTitle">You do not have to arrive knowing exactly what you need.</h2>
+          <p>
+            Bring the tangled version. Werkles helps separate the pressure you feel from the partner, funding,
+            hire, or tool you may—or may not—need.
+          </p>
           <ol>
-            <li>Answer symptom questions — not “what partner do you want.”</li>
-            <li>Submit — matching engine runs (shadow until go-live).</li>
-            <li>Speaker facts + Squibb-ranked paths on the recommendation surface.</li>
+            <li>Tell us what feels heavy or stuck.</li>
+            <li>See the need underneath the first request.</li>
+            <li>Compare practical options, risks, and next steps.</li>
           </ol>
         </section>
 

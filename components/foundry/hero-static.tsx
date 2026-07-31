@@ -28,19 +28,19 @@ export function HeroStatic() {
         <WorkshopMomentEyebrow />
         <HeroCopyBlock />
         <div className="hero-actions">
-          <Link className="button button-light" href="/signup">
+          <Link className="button button-light" href="/bellows/intake">
             {copy.hero.primaryCta}
           </Link>
           <Link className="button button-ghost" href="/proof">
             {copy.hero.secondaryCta}
           </Link>
         </div>
+        {/* De-worded (owner walkthrough): one support line under the CTAs. */}
         <p className="hero-trust-line">{copy.hero.trustLine}</p>
-        <p className="hero-signup-preview">{copy.hero.signupPreview}</p>
       </div>
 
       <aside className="hero-artifact" aria-label="Example Werkles output">
-        <p className="hero-artifact__label">{artifact.label}</p>
+        <p className="hero-artifact__label">Example Werkles output</p>
         <div className="hero-artifact__plate">
           <strong className="hero-artifact__title">{artifact.title}</strong>
           <p className="hero-artifact__means">{artifact.meansLine}</p>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import BetaSignupForm from "./beta-signup-form";
-import { DraftReviewBadge } from "@/components/foundry/draft-review-badge";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { HomeValueFold } from "@/components/foundry/home-value-fold";
 import { LanesDocumentarySection } from "@/components/foundry/lanes-documentary-section";
@@ -21,60 +20,59 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="top" className={routeAtmosphere.home}>
-        <div className="home-draft-badge">
-          <DraftReviewBadge />
-        </div>
-
         <HeroStatic />
         <HomeValueFold />
+
+        <section className="manifesto" aria-labelledby="honestTitle">
+          <WorkshopBandPanel tone="workshop" layout="split" atmosphere={false}>
+            <div>
+              <p className="eyebrow">The honest question</p>
+              <h2 id="honestTitle">You could do this without us.</h2>
+              <p>
+                Another AI. A consultant. The SBA. All real options — so here&apos;s the honest math on each,
+                because if we can&apos;t win this comparison out loud, we don&apos;t deserve your ten bucks.
+              </p>
+            </div>
+            <div className="honest-answers">
+              <article>
+                <h3>Another AI will agree with you.</h3>
+                <p>
+                  Ask a chatbot about your plan and it cheers you on. Werkles checks your plan against real
+                  prices, real sellers, and verifiable proof — and tells you when you&apos;re wrong. That&apos;s
+                  the difference between a mirror and a scout.
+                </p>
+              </article>
+              <article>
+                <h3>A good consultant runs $150 an hour.</h3>
+                <p>
+                  Some are worth it. But you shouldn&apos;t need to pay consulting rates to find out your real
+                  bottleneck is a $4,200 oven. Werkles is $9.99 a month because your runway matters more than
+                  our margin.
+                </p>
+              </article>
+              <article>
+                <h3>The SBA is genuinely good. Use it.</h3>
+                <p>
+                  Seriously — free counseling, real programs. Werkles sits beside it, not against it: the SBA
+                  hands you the textbook; Werkles names <em>your</em> missing piece and verifies the specific
+                  people you&apos;d rely on to get it.
+                </p>
+              </article>
+              <article>
+                <h3>No schemes. No gouging. That&apos;s the pitch.</h3>
+                <p>
+                  We&apos;re not selling a get-rich-quick anything. We listen to your reality and show you how
+                  it fits the reality the world throws back. If that&apos;s not worth ten dollars, cancel — it
+                  takes one click.
+                </p>
+              </article>
+            </div>
+          </WorkshopBandPanel>
+        </section>
+
         <LanesDocumentarySection />
         <SquibbStoryBeat />
         <VisualStorySection />
-
-        <section className="operations-grid" aria-labelledby="startDoorwayTitle">
-          <WorkshopBandPanel tone="foundry" layout="bare" className="operations-grid__band" atmosphere={false}>
-            <article className="ops-card">
-              <div className="card-heading">
-                <p>Start here</p>
-                <h2 id="startDoorwayTitle">Three safe doors into Werkles.</h2>
-              </div>
-              <p>
-                If you are new, start free. If you are deciding whether it is worth joining, compare pricing. If you
-                need trust before movement, inspect proof first.
-              </p>
-              <div className="trust-state-strip" aria-label="Werkles entry paths">
-                <span>Free account</span>
-                <span>Transparent pricing</span>
-                <span>Proof before trust</span>
-              </div>
-              <div className="member-selected-surface__actions">
-                <Link className="button button-dark" href="/signup">
-                  Start free
-                </Link>
-                <Link className="button button-outline" href="/pricing">
-                  Compare pricing
-                </Link>
-                <Link className="button button-outline" href="/proof">
-                  Inspect proof
-                </Link>
-              </div>
-              <p className="muted" style={{ marginTop: "1rem" }}>
-                Returning member?
-              </p>
-              <div className="member-selected-surface__actions">
-                <Link className="button button-outline" href="/login">
-                  Log in
-                </Link>
-                <Link className="button button-outline" href="/dashboard">
-                  Member home
-                </Link>
-                <Link className="button button-outline" href="/onboarding">
-                  Onboarding
-                </Link>
-              </div>
-            </article>
-          </WorkshopBandPanel>
-        </section>
 
         <section id="how" className="manifesto" aria-labelledby="howTitle">
           <WorkshopBandPanel tone="workshop" layout="split" atmosphere={false}>

@@ -6,6 +6,11 @@ import { NarrativePhotoGallery } from "@/components/narrative/narrative-photo-ga
 import { copy } from "@/lib/copy";
 import { allSpaceGallery, getNarrativeAct } from "@/lib/narrative-arc";
 
+export const metadata = {
+  title: "The place your business happens",
+  description: "Storefronts, kitchens, garages, benches — Werkles helps you find and verify the space your work needs."
+};
+
 export default function SpacePage() {
   const act = getNarrativeAct("/space");
   if (!act) return null;

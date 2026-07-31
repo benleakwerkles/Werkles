@@ -179,12 +179,9 @@ export default function LoginPage() {
             </div>
             <p>
               If the confirm email never arrived or the link expired, try logging in anyway — your account may already
-              be active. The auth callback page shows what Supabase returned without exposing secrets.
+              be active.
             </p>
             <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/auth/callback">
-                Open auth callback
-              </Link>
               <Link className="button button-outline" href="/signup">
                 Create a new account
               </Link>

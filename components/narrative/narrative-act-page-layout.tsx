@@ -5,7 +5,6 @@ import { SiteIcon } from "@/components/foundry/site-icon";
 import type { NarrativeActPage } from "@/lib/narrative-arc";
 import { narrativeArcAttribution } from "@/lib/narrative-arc";
 import type { SiteIconId } from "@/lib/site-icons";
-import { NarrativeJourneyRail } from "./narrative-journey-rail";
 
 type Props = {
   act: NarrativeActPage;
@@ -14,10 +13,11 @@ type Props = {
 };
 
 export function NarrativeActPageLayout({ act, icon, children }: Props) {
+  // Owner walkthrough 2026-07-27: primary nav stacked above the act rail is
+  // repetitive and clunky. Every page using this layout mounts SiteHeader,
+  // so the rail is dropped here rather than per page.
   return (
     <main className="narrative-act-page">
-      <NarrativeJourneyRail currentSlug={act.slug} />
-
       <section className="narrative-act-hero">
         <div className="narrative-act-hero__copy">
           {icon ? <SiteIcon icon={icon} size="lg" className="site-icon--product product-hero-icon" /> : null}

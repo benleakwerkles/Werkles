@@ -5,13 +5,12 @@ import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { SiteIcon } from "@/components/foundry/site-icon";
+import { SiteHeader } from "@/components/foundry/site-header";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
-import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { isAuthStripeTestBlocked, isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
-import { productGateTestCheckoutPreflight } from "@/lib/product-human-gates";
 import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getClientAccessToken } from "@/lib/client-auth";
 
@@ -27,8 +26,8 @@ export default function MembershipPage() {
       : devPreview
         ? copy.localPreview.membershipIdle
         : paymentsPaused
-          ? "Foundry Dues checkout is paused while operator payment setup finishes."
-          : "Test-mode Foundry Dues checkout is open. Live keys stay gated."
+          ? "Foundry Dues checkout is paused while payment setup finishes. Everything else works free."
+          : "Checkout is open. Start free anytime — dues only when the floor earns it."
   );
   const [highlightPlan, setHighlightPlan] = useState<Plan | null>(null);
 
@@ -106,36 +105,14 @@ export default function MembershipPage() {
 
   return (
     <CockpitShell>
+      {/* Public sales page wears the standard Werkles header (owner
+         walkthrough 2026-07-27); the reduced pill nav was for focused tasks
+         like login. Operator preflight/runbook copy moved off this page —
+         it lives at /operator/gate-knockout/test-checkout-smoke. */}
+      <SiteHeader />
       <main className={`dashboard-main membership-page ${routeAtmosphere.membership}`}>
-      <NarrativeJourneyRail currentSlug="/proof" />
-      <nav className="dashboard-nav" aria-label="Foundry navigation">
-        <Link href="/">Home</Link>
-        <Link href="/signup">Start free</Link>
-        <Link href="/dashboard">Member home</Link>
-        <Link href="/pricing">{copy.nav.pricing}</Link>
-        <Link href="/proof">Proof</Link>
-      </nav>
 
       <RouteUnlockBanner blockedDetail={copy.infraPreview.membershipCheckout} />
-
-      {!checkoutDisabled && !devPreview ? (
-        <section className="ops-card membership-preflight" aria-label="Before you click checkout">
-          <div className="card-heading">
-            <p>Read first</p>
-            <h2>Before you click Pay</h2>
-          </div>
-          <ol>
-            {productGateTestCheckoutPreflight.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
-          <p className="muted">
-            <Link href="/operator/gate-knockout/test-checkout-smoke" prefetch={false}>
-              Full test checkout smoke runbook
-            </Link>
-          </p>
-        </section>
-      ) : null}
 
       <section className="tier2-page-header">
         <div className="tier2-page-header__copy membership-hero">
@@ -229,27 +206,31 @@ export default function MembershipPage() {
         <p className="status-line" role="status">{status}</p>
       </section>
 
-      <section className="ops-card membership-trust" aria-label="Payments paused">
-        <div className="card-heading">
-          <p>Foundry Dues</p>
-          <h2>Payments are paused while operator setup finishes.</h2>
-        </div>
-        <p>
-          Werkles still works on the free path: account, profile, onboarding, and member surfaces stay open. Foundry
-          Dues checkout returns when payment wiring is cleared — not because the workshop stopped.
-        </p>
-        <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href="/dashboard">
-            Go to member home
-          </Link>
-          <Link className="button button-outline" href="/dashboard/profile">
-            Update profile
-          </Link>
-          <Link className="button button-outline" href="/proof">
-            Inspect proof
-          </Link>
-        </div>
-      </section>
+      {/* Only when checkout is actually paused — this rendered unconditionally
+         and contradicted the "checkout is open" status line above it. */}
+      {paymentsPaused ? (
+        <section className="ops-card membership-trust" aria-label="Payments paused">
+          <div className="card-heading">
+            <p>Foundry Dues</p>
+            <h2>Payments are paused while operator setup finishes.</h2>
+          </div>
+          <p>
+            Werkles still works on the free path: account, profile, onboarding, and member surfaces stay open. Foundry
+            Dues checkout returns when payment wiring is cleared — not because the workshop stopped.
+          </p>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-dark" href="/dashboard">
+              Go to member home
+            </Link>
+            <Link className="button button-outline" href="/dashboard/profile">
+              Update profile
+            </Link>
+            <Link className="button button-outline" href="/proof">
+              Inspect proof
+            </Link>
+          </div>
+        </section>
+      ) : null}
       </main>
     </CockpitShell>
   );

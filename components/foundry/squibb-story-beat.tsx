@@ -16,6 +16,11 @@ export function SquibbStoryBeat() {
         height={320}
         className="squibb-story-beat__photo"
       />
+      <p className="squibb-story-beat__intro">
+        <strong>This is Squibb.</strong> He&apos;s the workshop&apos;s scout — when you tell Werkles what&apos;s
+        stuck, he checks it against real numbers and points at the option everyone overlooked. He doesn&apos;t
+        flatter and he doesn&apos;t sell.
+      </p>
       <p className="squibb-story-beat__line">{squibbBeat.line}</p>
     </aside>
   );

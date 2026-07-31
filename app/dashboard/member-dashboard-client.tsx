@@ -113,11 +113,11 @@ export function MemberDashboardClient({
       <section className="ops-card" aria-label="Member floor">
         <div className="card-heading">
           <p>Member floor</p>
-          <h2>Build the record before you chase the next surface.</h2>
+          <h2>Build the record that makes intros easy.</h2>
         </div>
         <p>
-          Profile, workshops, intros, and checks each do one job. Foundry Dues test checkout is wired — live keys and
-          Crucible provider sessions stay gated.
+          Profile, workshops, intros, and checks each do one job. Start wherever your work is — everything here adds
+          to the same record.
         </p>
         <div className="member-selected-surface__actions">
           <Link className="button button-dark" href="/dashboard/profile">
@@ -142,14 +142,14 @@ export function MemberDashboardClient({
         </div>
         <div className="member-works-now__grid">
           <div>
-            <h3>Works now (free + test billing)</h3>
+            <h3>Available now</h3>
             <ul>
               <li>Account, login, onboarding, and profile</li>
               <li>Member home, workshops, and intros queue</li>
               <li>Bellows intake and Squibb recommendations (demo + saved intake)</li>
               <li>Proof, pricing, and narrative entry paths</li>
-              <li>Test-mode Foundry Dues checkout on /membership (Stripe test keys)</li>
-              <li>Crucible Identity + Funds provider test on /dashboard/crucible (active members)</li>
+              <li>Foundry membership enrollment where checkout is available</li>
+              <li>Identity and account-connection checks for eligible active members</li>
             </ul>
             <div className="member-selected-surface__actions">
               <Link className="button button-dark" href="/bellows/intake">
@@ -161,16 +161,14 @@ export function MemberDashboardClient({
             </div>
           </div>
           <div>
-            <h3>Paused (operator gates)</h3>
+            <h3>Still being prepared</h3>
             <ul>
-              <li>Live Stripe keys and live checkout go-live</li>
-              <li>Phone, license, reference, employment checks — no API yet</li>
-              <li>Background checks — FCRA / counsel blocked</li>
-              <li>Push/merge to main without explicit Ben gate</li>
+              <li>Paid checkout where payment setup is not yet complete</li>
+              <li>Phone, license, reference, and employment checks</li>
+              <li>Background checks pending the required legal and member protections</li>
             </ul>
             <p className="muted">
-              Crucible Identity + Funds provider test is open for active Foundry members. Other checks stay explicit
-              placeholders.
+              Available checks are labeled clearly. Anything still being prepared will not be presented as verified.
             </p>
             <div className="member-selected-surface__actions">
               <Link className="button button-outline" href="/dashboard/crucible">

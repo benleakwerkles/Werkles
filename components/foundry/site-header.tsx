@@ -46,7 +46,7 @@ export function SiteHeader() {
 
         <Link className="header-cta" href="/bellows/intake">
 
-          {copy.hero.primaryCta}
+          {copy.nav.cta}
 
         </Link>
 

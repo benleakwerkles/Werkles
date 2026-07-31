@@ -197,106 +197,166 @@ export default function ProfilePage() {
           <span>ID: {profile.id_status || "none"}</span>
           <span>Assets: {profile.funds_status || "none"}</span>
         </div>
-        <form className="profile-grid" key={`${email || "anonymous"}:${profile.display_name || "new"}`} onSubmit={handleSubmit}>
-          <label className="field">
-            <span>Display name</span>
-            <input name="display_name" defaultValue={profile.display_name || ""} required />
-          </label>
-          <label className="field">
-            <span>First name</span>
-            <input name="first_name" defaultValue={profile.first_name || ""} />
-          </label>
-          <label className="field">
-            <span>Last name</span>
-            <input name="last_name" defaultValue={profile.last_name || ""} />
-          </label>
-          <label className="field">
-            <span>Email</span>
-            <input value={email || ""} readOnly />
-          </label>
-          <label className="field">
-            <span>Phone</span>
-            <input name="phone" type="tel" placeholder="Twilio Verify wiring next" />
-          </label>
-          <label className="consent-line">
-            <input name="phone_consent" type="checkbox" />
-            <span>{copy.auth.phoneConsent}</span>
-          </label>
-          <label className="field">
-            <span>City</span>
-            <input name="location_city" defaultValue={profile.location_city || ""} required />
-          </label>
-          <label className="field">
-            <span>State</span>
-            <input name="location_state" defaultValue={profile.location_state || ""} maxLength={2} required />
-          </label>
-          <label className="field">
-            <span>Turf ZIP</span>
-            <input name="turf_zip" defaultValue={profile.turf_zip || ""} inputMode="numeric" maxLength={5} />
-          </label>
-          <label className="field">
-            <span>Lane</span>
-            <select name="lane" defaultValue={profile.lane || "Builder"}>
-              {copy.laneOptions.map((lane) => <option key={lane}>{lane}</option>)}
-            </select>
-          </label>
-          <label className="field">
-            <span>Work preference</span>
-            <select name="work_preference" defaultValue={profile.work_preference || "Local Only"}>
-              {copy.workPreferences.map((preference) => <option key={preference}>{preference}</option>)}
-            </select>
-          </label>
-          <label className="field">
-            <span>Current employer</span>
-            <input name="current_employer" defaultValue={profile.current_employer || ""} />
-          </label>
-          <label className="consent-line">
-            <input name="show_employer" type="checkbox" defaultChecked={Boolean(profile.show_employer)} />
-            <span>Show employer on public profile</span>
-          </label>
-          <label className="field">
-            <span>Visibility</span>
-            <select name="visibility_mode" defaultValue={profile.visibility_mode || "full_name"}>
-              {copy.visibilityModes.map((mode) => <option key={mode} value={mode}>{mode}</option>)}
-            </select>
-          </label>
-          <label className="field">
-            <span>{copy.dashboard.profile.depthLabel}</span>
-            <select name="profile_depth" defaultValue={profile.profile_depth || "quick_weld"}>
-              <option value="quick_weld">Quick Weld</option>
-              <option value="full_audit">Full Audit</option>
-              <option value="blueprint">Blueprint</option>
-            </select>
-          </label>
-          <label className="field">
-            <span>Timeline</span>
-            <input name="timeline_to_launch" defaultValue={profile.timeline_to_launch || ""} placeholder="0-3 months" />
-          </label>
-          <label className="field">
-            <span>Primary goal</span>
-            <input name="primary_goal" defaultValue={profile.primary_goal || ""} placeholder="Generational Family Business" />
-          </label>
-          <label className="field wide-field">
-            <span>Skills offered</span>
-            <input name="skills_offered" defaultValue={joinTags(profile.skills_offered)} placeholder="field, sales, books" />
-          </label>
-          <label className="field wide-field">
-            <span>Skills sought</span>
-            <input name="skills_sought" defaultValue={joinTags(profile.skills_sought)} placeholder="capital, license, admin" />
-          </label>
-          <label className="field wide-field">
-            <span>Industry tags</span>
-            <input name="industry_tags" defaultValue={joinTags(profile.industry_tags)} placeholder="plumbing, home services" />
-          </label>
-          <label className="field wide-field">
-            <span>Blueprint narrative</span>
-            <textarea
-              name="blueprint_narrative"
-              defaultValue={profile.blueprint_narrative || ""}
-              rows={5}
-              placeholder="What are you building, who is missing, and where does this thing live?"
-            />
-          </label>
+        {/* Owner walkthrough 2026-07-27: the profile felt like a form to
+           survive. Same fields, same save — regrouped into three short
+           stages so autofill facts and reflective questions stop
+           interleaving. */}
+        <form className="profile-form-staged" key={`${email || "anonymous"}:${profile.display_name || "new"}`} onSubmit={handleSubmit}>
+          <fieldset className="profile-stage">
+            <legend>
+              <span className="profile-stage__num">1</span> The facts
+              <small>Name, contact, location — the autofill stuff. One pass, done.</small>
+            </legend>
+            <div className="profile-grid">
+              <label className="field">
+                <span>Display name</span>
+                <input name="display_name" defaultValue={profile.display_name || ""} required />
+              </label>
+              <label className="field">
+                <span>First name</span>
+                <input name="first_name" defaultValue={profile.first_name || ""} autoComplete="given-name" />
+              </label>
+              <label className="field">
+                <span>Last name</span>
+                <input name="last_name" defaultValue={profile.last_name || ""} autoComplete="family-name" />
+              </label>
+              <label className="field">
+                <span>Email</span>
+                <input value={email || ""} readOnly />
+              </label>
+              <label className="field">
+                <span>Phone</span>
+                <input name="phone" type="tel" autoComplete="tel" placeholder="Optional" />
+              </label>
+              <label className="consent-line">
+                <input name="phone_consent" type="checkbox" />
+                <span>{copy.auth.phoneConsent}</span>
+              </label>
+              <label className="field">
+                <span>City</span>
+                <input name="location_city" defaultValue={profile.location_city || ""} autoComplete="address-level2" required />
+              </label>
+              <label className="field">
+                <span>State</span>
+                <input name="location_state" defaultValue={profile.location_state || ""} maxLength={2} autoComplete="address-level1" required />
+              </label>
+              <label className="field">
+                <span>Turf ZIP</span>
+                <input name="turf_zip" defaultValue={profile.turf_zip || ""} inputMode="numeric" maxLength={5} autoComplete="postal-code" />
+              </label>
+              <label className="field">
+                <span>Current employer</span>
+                <input name="current_employer" defaultValue={profile.current_employer || ""} autoComplete="organization" />
+              </label>
+              <label className="consent-line">
+                <input name="show_employer" type="checkbox" defaultChecked={Boolean(profile.show_employer)} />
+                <span>Show employer on public profile</span>
+              </label>
+              <label className="field">
+                <span>Visibility</span>
+                <select name="visibility_mode" defaultValue={profile.visibility_mode || "full_name"}>
+                  {copy.visibilityModes.map((mode) => <option key={mode} value={mode}>{mode}</option>)}
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset className="profile-stage">
+            <legend>
+              <span className="profile-stage__num">2</span> Your work
+              <small>Pick from lists — what you do and what you're looking for.</small>
+            </legend>
+            <div className="profile-grid">
+              <label className="field">
+                <span>Lane</span>
+                <select name="lane" defaultValue={profile.lane || "Builder"}>
+                  {copy.laneOptions.map((lane) => <option key={lane}>{lane}</option>)}
+                </select>
+              </label>
+              <label className="field">
+                <span>Work preference</span>
+                <select name="work_preference" defaultValue={profile.work_preference || "Local Only"}>
+                  {copy.workPreferences.map((preference) => <option key={preference}>{preference}</option>)}
+                </select>
+              </label>
+              <label className="field">
+                <span>{copy.dashboard.profile.depthLabel}</span>
+                <select name="profile_depth" defaultValue={profile.profile_depth || "quick_weld"}>
+                  <option value="quick_weld">Quick Weld</option>
+                  <option value="full_audit">Full Audit</option>
+                  <option value="blueprint">Blueprint</option>
+                </select>
+              </label>
+              <label className="field wide-field">
+                <span>Skills offered</span>
+                <input name="skills_offered" defaultValue={joinTags(profile.skills_offered)} placeholder="field, sales, books" />
+              </label>
+              <label className="field wide-field">
+                <span>Skills sought</span>
+                <input name="skills_sought" defaultValue={joinTags(profile.skills_sought)} placeholder="capital, license, admin" />
+              </label>
+              <label className="field wide-field">
+                <span>Industry tags</span>
+                <input name="industry_tags" defaultValue={joinTags(profile.industry_tags)} placeholder="plumbing, home services" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset className="profile-stage">
+            <legend>
+              <span className="profile-stage__num">3</span> Your story
+              <small>The thinking questions — take your time, or come back later.</small>
+            </legend>
+            <div className="profile-grid">
+              {/* Guided choices plus custom entry (owner walkthrough) — a
+                 datalist keeps free text while offering real options. */}
+              <label className="field">
+                <span>Timeline</span>
+                <input
+                  name="timeline_to_launch"
+                  defaultValue={profile.timeline_to_launch || ""}
+                  list="timeline-options"
+                  placeholder="Pick or type your own"
+                />
+                <datalist id="timeline-options">
+                  <option value="Already operating" />
+                  <option value="0-3 months" />
+                  <option value="3-6 months" />
+                  <option value="6-12 months" />
+                  <option value="1-2 years" />
+                  <option value="Exploring, no date yet" />
+                </datalist>
+              </label>
+              <label className="field">
+                <span>Primary goal</span>
+                <input
+                  name="primary_goal"
+                  defaultValue={profile.primary_goal || ""}
+                  list="goal-options"
+                  placeholder="Pick or type your own"
+                />
+                <datalist id="goal-options">
+                  <option value="First customer" />
+                  <option value="First sale" />
+                  <option value="Opening day" />
+                  <option value="Steady income replacing my job" />
+                  <option value="Generational family business" />
+                  <option value="Grow an existing business" />
+                  <option value="Find the right partner" />
+                </datalist>
+              </label>
+              <label className="field wide-field">
+                <span>Blueprint narrative</span>
+                <textarea
+                  name="blueprint_narrative"
+                  defaultValue={profile.blueprint_narrative || ""}
+                  rows={5}
+                  placeholder="What are you building, who is missing, and where does this thing live?"
+                />
+              </label>
+            </div>
+          </fieldset>
+
           <div className="profile-actions">
             <button className="button button-dark" type="submit">Save profile</button>
             <p className="status-line" role="status">{status}</p>

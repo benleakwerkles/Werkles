@@ -24,6 +24,11 @@ const foundryProofGallery = [
   }))
 ];
 
+export const metadata = {
+  title: "Proof you can check",
+  description: "Identity, credentials, references, funds — verified at the moment you need to rely on someone."
+};
+
 export default function ProofPage() {
   const act = getNarrativeAct("/proof");
   if (!act) return null;

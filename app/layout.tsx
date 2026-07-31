@@ -3,10 +3,30 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import "./product-icons.css";
 
+const siteDescription =
+  "Werkles helps small business builders name what they need, find reachable help, and verify the facts before they rely on anyone.";
+
 export const metadata: Metadata = {
-  title: "Werkles | Business partner matching",
-  description:
-    "Werkles helps builders, operators, backers, connectors, and sparks find the missing piece for a real business.",
+  metadataBase: new URL("https://werkles.com"),
+  title: {
+    default: "Werkles — Find the people and proof that move your business forward",
+    template: "%s | Werkles"
+  },
+  description: siteDescription,
+  openGraph: {
+    siteName: "Werkles",
+    type: "website",
+    title: "Werkles — Find the people and proof that move your business forward",
+    description: siteDescription,
+    images: [{ url: "/assets/og/werkles-og-card.jpg", width: 1200, height: 630, alt: "Opening day at a small business — Werkles" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Werkles — Find the people and proof that move your business forward",
+    description: siteDescription,
+    images: ["/assets/og/werkles-og-card.jpg"]
+  },
+  // Pre-launch: stay out of search indexes until Ben opens that gate.
   robots: {
     index: false,
     follow: false,
@@ -18,8 +38,8 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: "/assets/werkles-app-icon-board.png",
-    apple: "/assets/werkles-app-icon-board.png"
+    icon: "/assets/og/werkles-favicon-256.png",
+    apple: "/assets/og/werkles-favicon-256.png"
   }
 };
 

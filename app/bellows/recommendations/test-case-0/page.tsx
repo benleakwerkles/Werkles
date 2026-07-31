@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { SiteHeader } from "@/components/foundry/site-header";
-import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
 import { ConciergeWalkthrough } from "@/components/squibb/concierge-walkthrough";
 import { copy } from "@/lib/copy";
 import { loadConciergeUser0Flow } from "@/lib/squibb/concierge-walkthrough-test-case-0";
@@ -23,7 +22,6 @@ export default function ConciergeWalkthroughTestCase0Page() {
     <>
       <SiteHeader />
       <main className="bellows-main narrative-act-page workshop-route--bellows squibb-walkthrough-page">
-        <NarrativeJourneyRail currentSlug="/bellows" />
 
         <nav className="squibb-rec-page__nav" aria-label="Bellows">
           <Link className="button button-ghost" href="/bellows">

@@ -21,7 +21,7 @@ function splitTags(value: FormDataEntryValue | null) {
 
 export default function OnboardingPage() {
   const [phase, setPhase] = useState<Phase>("first-weld");
-  const [status, setStatus] = useState("The machine needs lane, arena, and turf.");
+  const [status, setStatus] = useState("Three answers and you're in.");
   const [busy, setBusy] = useState(false);
 
   async function currentUser() {
@@ -37,7 +37,7 @@ export default function OnboardingPage() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     setBusy(true);
-    setStatus("Heating the first weld.");
+    setStatus("Saving…");
 
     try {
       const lane = String(form.get("lane") || "Builder");
@@ -45,7 +45,7 @@ export default function OnboardingPage() {
       const turf = String(form.get("turf") || "").replace(/\D/g, "").slice(0, 5);
 
       if (!arena || turf.length !== 5) {
-        setStatus("Arena and a valid ZIP are required.");
+        setStatus("Add your trade and a 5-digit ZIP to continue.");
         return;
       }
 
@@ -80,7 +80,7 @@ export default function OnboardingPage() {
       setStatus(`${copy.onboarding.saved} Pick a door below, or go straight to Foundry Dues.`);
       setPhase("doors");
     } catch {
-      setStatus("First weld jammed. Try again.");
+      setStatus("That didn't save. Try again.");
     } finally {
       setBusy(false);
     }
@@ -120,7 +120,7 @@ export default function OnboardingPage() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     setBusy(true);
-    setStatus("Locking the quick weld.");
+    setStatus("Saving…");
     const user = await currentUser();
     if (!user) {
       setBusy(false);
@@ -167,7 +167,7 @@ export default function OnboardingPage() {
     }
 
     setBusy(true);
-    setStatus("Rolling out the Workshop.");
+    setStatus("Saving…");
     const user = await currentUser();
     if (!user) {
       setBusy(false);
@@ -227,8 +227,8 @@ export default function OnboardingPage() {
         <h1>{copy.onboarding.headline}</h1>
         <p>{copy.onboarding.subhead}</p>
         <p className="muted">
-          Onboarding is free. After the first weld you can open the member floor, build your profile, or compare
-          Foundry Dues — nothing here requires payment.
+          Everything on this page is free. After this one step you can explore the member floor, build your profile,
+          or compare Foundry Dues — nothing here requires payment.
         </p>
         <div className="member-selected-surface__actions">
           <Link className="button button-outline" href="/formation">
@@ -261,7 +261,7 @@ export default function OnboardingPage() {
               <input name="turf" inputMode="numeric" maxLength={5} placeholder="ZIP code" required />
             </label>
             <button className="button button-light" type="submit" disabled={busy}>
-              Set the First Weld
+              Save and continue
             </button>
           </form>
           <p className="status-line" role="status">{status}</p>
@@ -361,7 +361,7 @@ export default function OnboardingPage() {
         <section className="ops-card onboarding-panel">
           <div className="card-heading">
             <p>The Workshop</p>
-            <h2>Tell the machine what wants to exist.</h2>
+            <h2>Tell us what you're building.</h2>
           </div>
           <form className="form-stack" onSubmit={saveBlueprint}>
             <label className="field">
