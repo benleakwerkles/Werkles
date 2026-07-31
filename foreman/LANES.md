@@ -67,23 +67,7 @@ Each lane must define:
 - Forbidden actions:
   - more than 10 images in this lane
   - image spend above `$2.50`
-  - Claude prompt spend above `## Lane: Ghost Forge Batch Asset Generation
-
-- Status: `BLOCKED`
-- Environment: Render service `werkles-ghost-forge1`
-- Budget reference: `foreman/BUDGET.md#lane-ghost-forge-batch-asset-generation`
-- Allowed actions:
-  - none until Ben approves creative direction and batch budget
-- Forbidden actions:
-  - batch image generation
-  - background generation
-  - approving generated images
-  - publishing or using generated assets in the app as approved brand assets
-- Current stop condition:
-  - Await Ben's creative direction approval and explicit batch budget approval.
-- Repair limit:
-  - 0 until approved.
-.10`
+  - Claude prompt spend above `$0.10`
   - daily spend above `$3.00`
   - publish or treat generated assets as final brand approval
   - deploy
@@ -276,3 +260,54 @@ Each lane must define:
   - Stop after the exact isolated commit is live on Werkles.com and production route/asset smoke checks pass, or after two bounded repair attempts fail.
 - Repair limit:
   - 2 bounded repair attempts for icon extraction, build, or route-smoke failures.
+
+## Lane: Werkles.com Foreman — Lady Jessica
+
+- Status: `APPROVED`
+- Appointed: Ben, 2026-07-29 ("Yeah, take the lead"); Heimerdinker informed
+  directly by Ben the same day.
+- Seat: Lady Jessica (Cursor @ Sally). Identity record:
+  `foreman/SEAT_IDENTITY_LADY_JESSICA.md`
+- Environment: local repos on Sally, cockpit files, localhost verification
+- Budget reference: no paid external calls without a scoped packet
+- Role (allowed actions):
+  - author Vision (V) packets for Werkles.com and record them in the outbox
+  - design, UX, copy, and QA direction for the site
+  - slice sealing: file lists + SHA-256 manifests for push packets
+  - human-gate preparation (cards, preflights, readback) — never approval
+  - cross-crew coordination via cockpit handoffs (Betsy/Codex, Ender, Dink)
+  - cockpit doctrine updates within Werkles.com scope
+- Two-key control (amended by Ben, 2026-07-31):
+  - Original rule: Lady Jessica seals; Heimerdinker pushes on Ben's phrase.
+  - Ben authorized the foreman to execute production deploys directly
+    ("You can tell him… a very Harvey thing to do" / "Already gave you
+    permission"). Ben's authorization per slice is still the gate; the
+    foreman records each executed push in `foreman/gates/APPROVAL_LOG.md`.
+- Single-writer rule (2026-07-31, after production deploy collision):
+  - Only the foreman seat runs `vercel --prod` / `vercel promote` for
+    werkles1. All pre-2026-07-31 sealed push packets are VOID (already
+    executed and stamped). Any other seat holding a push order must check
+    the approval log and branch tip first, and stop if its tree is stale.
+  - Incident record:
+    `foreman/handoffs/outbox/TO_ALL_SEATS_PRODUCTION_DEPLOY_FREEZE_SINGLE_WRITER_20260731.md`
+- Forbidden actions (standing law, deploy clause amended 2026-07-31):
+  - approving or simulating human gates
+  - deploy/push/merge of a slice Ben has NOT authorized (authorized slices
+    may be executed by the foreman per the amendment above)
+  - secrets, billing, provider accounts, OAuth
+  - SQL/schema/RLS/policy apply
+  - opening intake; flipping any live-money or LLM flag
+- Current stop condition:
+  - True human gates per `foreman/HUMAN_GATES.md`.
+- Repair limit:
+  - 2 bounded repair attempts per failed technical proof.
+- Red-team rule (Operator, 2026-07-29): sealed slices go to the cousins for
+  red-team review before Ben's push phrase. The foreman requests it via a
+  cockpit card; findings land as blocker cards, same as Dink's seal-drift
+  protocol.
+- Walkthrough loop rule (Operator, 2026-07-30, after foreman violation):
+  Ben's live review feedback does NOT get built straight onto the floor.
+  Loop: feedback → findings card → red team passes → foreman lands the
+  change. Exception: mechanical defect repair (broken layout, typos,
+  rendering bugs) may be fixed immediately, then noted in the red-team
+  card.

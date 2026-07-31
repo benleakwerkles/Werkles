@@ -104,7 +104,7 @@ export default function MembershipPage() {
   const checkoutDisabled = previewBlocked || paymentsPaused;
 
   return (
-    <CockpitShell>
+    <CockpitShell showDraftBadge={false}>
       {/* Public sales page wears the standard Werkles header (owner
          walkthrough 2026-07-27); the reduced pill nav was for focused tasks
          like login. Operator preflight/runbook copy moved off this page —

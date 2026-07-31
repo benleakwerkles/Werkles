@@ -7,9 +7,11 @@ type CockpitShellProps = {
   className?: string;
 };
 
+/* Default flipped off 2026-07-31 (Demo stranger-eyes review): the draft badge
+   is internal scaffolding and was reaching public DOM on every cockpit page. */
 export function CockpitShell({
   children,
-  showDraftBadge = true,
+  showDraftBadge = false,
   className = ""
 }: CockpitShellProps) {
   return (

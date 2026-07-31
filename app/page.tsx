@@ -62,8 +62,8 @@ export default function HomePage() {
                 <h3>No schemes. No gouging. That&apos;s the pitch.</h3>
                 <p>
                   We&apos;re not selling a get-rich-quick anything. We listen to your reality and show you how
-                  it fits the reality the world throws back. If that&apos;s not worth ten dollars, cancel — it
-                  takes one click.
+                  it fits the reality the world throws back. If that&apos;s not worth ten dollars, cancel
+                  anytime from your billing page.
                 </p>
               </article>
             </div>

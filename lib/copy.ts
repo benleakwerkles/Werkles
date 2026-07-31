@@ -557,7 +557,7 @@ export const copy = {
       "Returned from Stripe Identity. Status updates from webhook proof — refresh profile in a moment.",
     providerFundsLink: "Opening Plaid Link (sandbox). Werkles stores the result, not your account numbers.",
     providerFundsSandboxOnly:
-      "Plaid credentials not configured — sandbox stub only. Add PLAID_CLIENT_ID and PLAID_SECRET for Link test.",
+      "Funds verification isn't available yet on this build — a practice run is shown instead.",
     providerFundsVerified: "Funds check recorded (sandbox).",
     providerFundsExchangeFailed: "Plaid exchange failed. Try again or use sandbox stub.",
     providerFundsExit: "Plaid Link closed before completion.",

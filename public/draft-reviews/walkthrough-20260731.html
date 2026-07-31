@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Werkles walkthrough — July 31, 2026</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: #f6efe5; color: #241c16; margin: 0; padding: 32px 18px 80px; line-height: 1.55; }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 1.7rem; margin: 0 0 4px; }
+  .sub { color: #6b5d4f; margin: 0 0 28px; font-size: 0.95rem; }
+  .stop { background: #fffdf8; border: 1px solid #d9c9b2; border-radius: 12px; padding: 18px 22px; margin: 0 0 18px; }
+  .stop h2 { font-size: 1.12rem; margin: 0 0 8px; }
+  .stop .num { display: inline-block; background: #4520c9; color: #fffdf8; border-radius: 999px; width: 26px; height: 26px; text-align: center; line-height: 26px; font-size: 0.85rem; margin-right: 8px; font-family: Arial, sans-serif; }
+  .stop p { margin: 0 0 8px; }
+  .stop a.go { display: inline-block; background: #4520c9; color: #fffdf8; text-decoration: none; padding: 7px 16px; border-radius: 8px; font-family: Arial, sans-serif; font-size: 0.9rem; margin-top: 4px; }
+  .stop a.go.local { background: #027665; }
+  .tag { font-family: Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6b5d4f; }
+  .decision { border-left: 4px solid #027665; padding-left: 12px; margin: 10px 0 0; font-style: italic; }
+  .crew { background: #241c16; color: #f3e9d7; border-radius: 12px; padding: 18px 22px; margin: 28px 0 18px; }
+  .crew h2 { margin: 0 0 10px; font-size: 1.12rem; }
+  .crew .pending { color: #b9a4ff; }
+  .crew ul { margin: 8px 0 0; padding-left: 20px; }
+  .crew li { margin-bottom: 6px; }
+  footer { color: #6b5d4f; font-size: 0.85rem; margin-top: 30px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Walkthrough — Friday, July 31</h1>
+  <p class="sub">Everything below shipped to the public site overnight unless marked LOCAL DRAFT. Crew red-team verdicts at the bottom. All links open the real pages.</p>
+
+  <div class="stop">
+    <h2><span class="num">1</span>Six lane icons — the set you hated is dead</h2>
+    <p class="tag">Live on production · shipped 5:40 AM</p>
+    <p>The "Six lanes" cards were still using the old sepia Ghost Forge photographs (the flint-on-a-workbench set). All six are now flat vectors in the logo family: flint strike, T-square, crucible tongs, keyring, ingot stack, interlocking rings.</p>
+    <a class="go" href="https://werkles.com/#lanes" target="_blank" rel="noopener">See the lane cards</a>
+    <p class="decision">Your call: do the six metaphors still read right now that they're drawn clean, or should any lane get a new symbol entirely?</p>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">2</span>Step + pricing + discovery icons</h2>
+    <p class="tag">Live on production · shipped 1:20 AM</p>
+    <p>The "Name it. Verify it. Move." steps (clipboard, caliper, door-with-check), the pricing page's Armory toolbox, funds ledger, and proof shield, and the discovery dossier folder — all redrawn in the same violet/teal family. Zero old icons remain on any public route (this time verified against <em>every</em> icon folder, not just the one I knew about).</p>
+    <a class="go" href="https://werkles.com/pricing" target="_blank" rel="noopener">Pricing page</a>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">3</span>"You could do this without us." — the bite is back</h2>
+    <p class="tag">Live on production · your walkthrough feedback, landed</p>
+    <p>Four honest cards after the value fold: another AI will agree with you; a consultant runs $150/hour; the SBA is genuinely good — use it; no schemes, no gouging, that's the pitch. Layout rebuilt after the first version stacked on itself.</p>
+    <a class="go" href="https://werkles.com/" target="_blank" rel="noopener">Homepage — scroll to the section</a>
+    <p class="decision">Locke is auditing every factual claim in these cards (the $150/hour figure, "cancel takes one click"). His verdict below before we call this copy final.</p>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">4</span>Squibb gets an introduction + Maria breathes</h2>
+    <p class="tag">Live on production</p>
+    <p>Squibb's first appearance now opens with "This is Squibb. He's the workshop's scout…" so the owl isn't a stranger giving business advice. The hero photo's cream fog was cut roughly in half — Maria reads as a photo now, not a watermark.</p>
+    <a class="go" href="https://werkles.com/" target="_blank" rel="noopener">Homepage top</a>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">5</span>Privacy + Terms drafts</h2>
+    <p class="tag">LOCAL DRAFT — not deployed, not linked</p>
+    <p>Plain-language drafts covering email collection, Stripe payments, verification data (Stripe Identity + Plaid), and the not-FCRA / not-legal-advice line. They stay unlinked until you and counsel bless them. Locke is red-teaming them today.</p>
+    <a class="go local" href="http://localhost:3000/privacy" target="_blank" rel="noopener">Privacy draft (local)</a>
+    <a class="go local" href="http://localhost:3000/terms" target="_blank" rel="noopener">Terms draft (local)</a>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">6</span>Plaid funds verification — the model is confirmed</h2>
+    <p class="tag">Decision point · from this morning's Zoom debrief</p>
+    <p>Your read from the Plaid rep is right and matches our drafted schema: connect once, then answer "do they have $X?" on demand — as a yes/no or a band, never the raw balance, with receipts that expire in 30 days. One flag: our test wiring requests Plaid's <strong>Assets</strong> product (expensive full reports); for threshold checks their <strong>Balance</strong> product is the cheaper, correct tool.</p>
+    <p class="decision">Worth confirming with the rep which product they quoted — it drives what we publish as the funds-check price.</p>
+  </div>
+
+  <div class="crew" id="crew">
+    <h2>Crew red-team verdicts</h2>
+    <p><strong>Locke (claims + legal audit) — 13 findings, 3 high.</strong></p>
+    <ul>
+      <li><strong>HIGH — "cancel, it takes one click" was false.</strong> Real path: login + ~5 clicks through the Stripe portal, which can even be disabled. Foreman already landed the fix: now reads "cancel anytime from your billing page." A false claim inside the honesty section was the worst possible bug.</li>
+      <li><strong>HIGH — Pricing page contradicts the Terms.</strong> /pricing publishes three background-check tiers ($34.99/$59.99/$94.99) while Terms and Privacy both say background checks "are not offered." <em>Your call: pull the tiers off /pricing, or reword to "planned, gated on counsel review."</em></li>
+      <li><strong>HIGH — Privacy draft is already behind reality.</strong> It says verification is "previews," but Stripe Identity and Plaid test flows are live-wired today. Needs to name both processors before it links. Foreman will redraft for your review.</li>
+      <li><strong>MED — Jargon leaks:</strong> "Quick Weld" heading survives on onboarding, "human gate" on the login surface, "Lock the Joints" as a button, and a raw <code>PLAID_CLIENT_ID</code> env-var name was shown to end users (that one's already fixed).</li>
+      <li><strong>MED — Four Crucible check icons 404'd on disk</strong> (identity, license, employment, reference). All four regenerated in the logo family today and wired — the full verification card row now matches.</li>
+      <li><strong>Clean:</strong> every price on the site is consistent ($9.99/$99, the $20.88 annual savings math checks out), the "$150/hour consultant" claim is defensible, and all 38 other image references verified present.</li>
+    </ul>
+    <p><strong>Demo (stranger eyes, live site)</strong> — reviewed all six public pages as a first-time visitor. 28 findings. Verdict: "Would I sign up free? Maybe. Would I pay? Not yet." His one biggest ask: kill every internal draft note and test-mode leftover — they read as "shipped before ready."</p>
+    <ul>
+      <li><strong>HIGH — pricing/membership icon rails still wore the old sepia/nav icons</strong> while the homepage had the new flat vectors. Fixed today: the Tier-2 icon rail (pricing, membership, billing, crucible, signup) now uses the same lady-jessica-v1 lane set. Needs the next deploy to go live.</li>
+      <li><strong>HIGH — draft badge in public DOM.</strong> "Draft visual — review only" was rendering (CSS-hidden) on every cockpit page. Default flipped off at the source today.</li>
+      <li><strong>MED — jargon barrier:</strong> "Foundry Dues," "Crucible," "Bellows," and "Tier-2" appear without plain-language definitions; "face capture" on signup sounds invasive without a why. <em>Queued for polish v3 — copy judgment, your call on direction.</em></li>
+      <li><strong>What works (his words):</strong> "You could do this without us" is the strongest trust-builder on the site; the published verification price table beats "contact us" fog; "Free account first. Dues only when the floor earns it" reads as confidence, not pressure.</li>
+    </ul>
+    <p><strong>Incident, 1:22 PM:</strong> while Demo was mid-review, two uncoordinated deploys overwrote production with a stale build — everything you approved (icons, honest section, Squibb intro) vanished from the live site. I caught it at 1:45, promoted the known-good build back, and verified restored by 1:48. A single-writer deploy rule is now in the lanes doctrine; some of Demo's harshest findings (test-card instructions, "payments paused") were him seeing that stale build, and they are not on the restored site.</p>
+  </div>
+
+  <footer>Lady Jessica — Werkles.com Foreman · Review hub: <a href="/draft-reviews/index.html">all review pages</a></footer>
+</main>
+</body>
+</html>

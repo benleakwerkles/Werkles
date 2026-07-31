@@ -5,14 +5,13 @@
  */
 
 import { narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
-import { iconsV2Assets, narrativeV2Assets } from "@/lib/render-batch-3-imagery";
+import { narrativeV2Assets } from "@/lib/render-batch-3-imagery";
 
 export const TIER2_IMAGERY_ENABLED = true;
 
 export const tier2ImageryAttribution =
   "Tier-2 preview — Act III Forge + hybrid prop icons. Draft only; not final brand approval.";
 
-const transparentNavFolder = "/assets/draft/icons-nav-transparent-v1";
 const tier2ForgeFolder = "/assets/draft/tier2-forge-v1";
 const hybridIconsFolder = "/assets/draft/icons-hybrid-v1";
 
@@ -25,44 +24,18 @@ export const tier2HybridIconBatch8Paths = {
   connector: `${hybridIconsFolder}/werkles-tier2-icon-connector-hybrid.png`
 } as const;
 
-/** Hybrid icons: batch-6 transparent nav (landed) until batch-8 renders exist. */
+/* Icon rail joins the lady-jessica-v1 family (Demo stranger-eyes review,
+   2026-07-31: pricing/membership rails still showed the old sepia/nav set
+   while the homepage wore the new flat vectors). No sepia fallbacks. */
+const laneIconRoot = "/assets/brand/product-icons/lady-jessica-v1";
+
 export const tier2HybridIcons = [
-  {
-    id: "spark",
-    label: "Spark",
-    path: `${transparentNavFolder}/werkles-nav-icon-spark-transparent.png`,
-    fallback: iconsV2Assets.find((i) => i.lane === "spark")?.path
-  },
-  {
-    id: "builder",
-    label: "Builder",
-    path: `${transparentNavFolder}/werkles-nav-icon-builder-transparent.png`,
-    fallback: iconsV2Assets.find((i) => i.lane === "builder")?.path
-  },
-  {
-    id: "worker",
-    label: "Worker",
-    path: `${transparentNavFolder}/werkles-nav-icon-worker-transparent.png`,
-    fallback: iconsV2Assets.find((i) => i.lane === "worker")?.path
-  },
-  {
-    id: "operator",
-    label: "Operator",
-    path: iconsV2Assets.find((i) => i.lane === "operator")?.path ?? `${transparentNavFolder}/werkles-nav-icon-builder-transparent.png`,
-    fallback: undefined
-  },
-  {
-    id: "backer",
-    label: "Backer",
-    path: `${transparentNavFolder}/werkles-nav-icon-backer-transparent.png`,
-    fallback: iconsV2Assets.find((i) => i.lane === "backer")?.path
-  },
-  {
-    id: "connector",
-    label: "Connector",
-    path: `${transparentNavFolder}/werkles-nav-icon-connector-transparent.png`,
-    fallback: iconsV2Assets.find((i) => i.lane === "connector")?.path
-  }
+  { id: "spark", label: "Spark", path: `${laneIconRoot}/werkles-lane-spark-v1.png`, fallback: undefined },
+  { id: "builder", label: "Builder", path: `${laneIconRoot}/werkles-lane-builder-v1.png`, fallback: undefined },
+  { id: "worker", label: "Worker", path: `${laneIconRoot}/werkles-lane-worker-v1.png`, fallback: undefined },
+  { id: "operator", label: "Operator", path: `${laneIconRoot}/werkles-lane-operator-v1.png`, fallback: undefined },
+  { id: "backer", label: "Backer", path: `${laneIconRoot}/werkles-lane-backer-v1.png`, fallback: undefined },
+  { id: "connector", label: "Connector", path: `${laneIconRoot}/werkles-lane-connector-v1.png`, fallback: undefined }
 ] as const;
 
 export type Tier2PageKey =
