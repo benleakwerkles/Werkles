@@ -4,13 +4,7 @@
  * Run B (Icons): transparent nav icons now; batch-8 hybrid icons in icons-hybrid-v1/.
  */
 
-import { narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
-import { narrativeV2Assets } from "@/lib/render-batch-3-imagery";
-
 export const TIER2_IMAGERY_ENABLED = true;
-
-export const tier2ImageryAttribution =
-  "Tier-2 preview — Act III Forge + hybrid prop icons. Draft only; not final brand approval.";
 
 const tier2ForgeFolder = "/assets/draft/tier2-forge-v1";
 const hybridIconsFolder = "/assets/draft/icons-hybrid-v1";
@@ -24,18 +18,18 @@ export const tier2HybridIconBatch8Paths = {
   connector: `${hybridIconsFolder}/werkles-tier2-icon-connector-hybrid.png`
 } as const;
 
-/* Icon rail joins the lady-jessica-v1 family (Demo stranger-eyes review,
-   2026-07-31: pricing/membership rails still showed the old sepia/nav set
-   while the homepage wore the new flat vectors). No sepia fallbacks. */
-const laneIconRoot = "/assets/brand/product-icons/lady-jessica-v1";
+/* Icon rail: clear-v1 family (Ben + red-team, 2026-08-02). One-second rule —
+   every icon is an object a stranger names instantly. Keeps rails in lockstep
+   with the homepage lane icons. */
+const laneIconRoot = "/assets/brand/product-icons/clear-v1";
 
 export const tier2HybridIcons = [
-  { id: "spark", label: "Spark", path: `${laneIconRoot}/werkles-lane-spark-v1.png`, fallback: undefined },
-  { id: "builder", label: "Builder", path: `${laneIconRoot}/werkles-lane-builder-v1.png`, fallback: undefined },
-  { id: "worker", label: "Worker", path: `${laneIconRoot}/werkles-lane-worker-v1.png`, fallback: undefined },
-  { id: "operator", label: "Operator", path: `${laneIconRoot}/werkles-lane-operator-v1.png`, fallback: undefined },
-  { id: "backer", label: "Backer", path: `${laneIconRoot}/werkles-lane-backer-v1.png`, fallback: undefined },
-  { id: "connector", label: "Connector", path: `${laneIconRoot}/werkles-lane-connector-v1.png`, fallback: undefined }
+  { id: "spark", label: "Spark", path: `${laneIconRoot}/icon-spark-match.png`, fallback: undefined },
+  { id: "builder", label: "Builder", path: `${laneIconRoot}/icon-builder-hammer.png`, fallback: undefined },
+  { id: "worker", label: "Worker", path: `${laneIconRoot}/icon-worker-glove.png`, fallback: undefined },
+  { id: "operator", label: "Operator", path: `${laneIconRoot}/icon-operator-clipboard.png`, fallback: undefined },
+  { id: "backer", label: "Backer", path: `${laneIconRoot}/icon-backer-coins.png`, fallback: undefined },
+  { id: "connector", label: "Connector", path: `${laneIconRoot}/icon-connector-plug.png`, fallback: undefined }
 ] as const;
 
 export type Tier2PageKey =
@@ -72,84 +66,81 @@ export const tier2ForgeBatch7Assets = {
 export const tier2PageImagery: Record<Tier2PageKey, Tier2PageImagery> = {
   membership: {
     act: "forge",
-    // Owner walkthrough 2026-07-27: the work-van image read authentic but
-    // emotionally bleak. The dues page sells the leap — opening day.
+    /* people-v1 pass (Ben + Lady Jessica, 2026-08-02): bright, clean,
+       photoreal documentary frames replace the dim render-batch plates. */
     featured: {
       eyebrow: "Opening day",
-      caption: "The sign goes up. First customer, first sale — the milestones dues are for.",
-      path: "/assets/draft/industry-breadth/werkles-opening-day-sign.png",
-      alt: "Shop owner hanging the sign on her front door on opening morning",
+      caption: "The sign flips. First customer, first sale — the milestones dues are for.",
+      path: "/assets/draft/people-v1/people-open-sign-flip.jpg",
+      alt: "Shop owner flipping her door sign to OPEN on opening morning",
       featured: true
     },
     forgeBand: {
-      eyebrow: "Act III · Forge",
-      caption: "Introduction without performance — people around the work, not the pitch.",
-      path: narrativeV2Assets.forgeA07ConnectorIntroTable,
-      alt: "Three people at table reviewing plans — Connector forge beat"
+      eyebrow: "The first customer",
+      caption: "The whole point, mid-laugh — a real person on the other side of the counter.",
+      path: "/assets/draft/people-v1/people-first-customer.jpg",
+      alt: "Baker handing a paper bag across the counter to his first customer"
     },
     showIconRail: true
   },
   pricing: {
     act: "forge",
-    forgeBand: {
-      eyebrow: "Act III · lanes meeting",
-      caption: "Builder and operator on the same plan — fit you can read.",
-      path: narrativeV2Assets.forgeA06BuilderOperatorPlan,
-      alt: "Builder and operator reviewing plan together"
-    },
+    /* forgeBand removed: a price page earns exactly one photograph (Ender). */
     featured: {
-      eyebrow: "Act III · nearly open",
+      eyebrow: "The week before open",
       caption: "Last fixture before open — Werkles forming around the idea.",
-      path: narrativeV2Assets.forgeA05NearlyFinishedPair,
-      alt: "Two people finishing commercial space — nearly open forge beat"
+      path: "/assets/draft/people-v1/people-stepladder-lamp.jpg",
+      alt: "Owner on a stepladder hanging the last pendant lamp while her partner steadies the ladder"
     },
     showIconRail: true
   },
   billing: {
     act: "forge",
     featured: {
-      eyebrow: "Act III · assembly",
-      caption: "Three at the plan — small scale, real stakes.",
-      path: narrativeV2Assets.forgeA04ThreeAtPlan,
-      alt: "Three people at plan table in working space"
+      eyebrow: "What the dues are for",
+      caption: "First customer, first sale — the milestones the runway buys.",
+      path: "/assets/draft/people-v1/people-first-customer.jpg",
+      alt: "Baker handing a paper bag across the counter to a smiling customer"
     },
     showIconRail: true
   },
   crucible: {
     act: "forge",
+    /* Red team 2026-08-02: the smiling florist didn't match "checking" —
+       the clipboard pair is an actual reviewing gesture. */
     forgeBand: {
-      eyebrow: "Act III · proof in formation",
+      eyebrow: "Proof in formation",
       caption: "Checking happens around work that already exists.",
-      path: narrativeV1Assets.forgeA03HalfBuiltPair,
-      alt: "Two people in half-built space reviewing plans"
+      path: "/assets/draft/people-v1/people-partners-clipboard.png",
+      alt: "Two partners reviewing a checklist together in their shop"
     },
     showIconRail: true
   },
   membershipSuccess: {
     act: "foundry",
+    /* Red team 2026-08-02: don't replay the homepage hero right after
+       payment. Moving in is the moment that just happened. */
     featured: {
-      eyebrow: "Act IV · outcome",
-      caption: "Finished product on the bench — evidence, not promise.",
-      path: narrativeV1Assets.foundryB02FinishedProduct,
-      alt: "Finished product on workshop bench — Foundry beat"
+      eyebrow: "You're on the floor",
+      caption: "Keys in hand, boxes through the door — welcome in.",
+      path: "/assets/draft/people-v1/people-boxes-through-door.jpg",
+      alt: "New owner carrying boxes through the door of her empty shop"
     },
     showIconRail: false
   },
   signup: {
     act: "forge",
-    // Universal collaboration scene (owner keep list: people discussing a
-    // project over coffee) instead of the solitary kitchen table.
     featured: {
       eyebrow: "Where it starts",
-      caption: "Two people and a plan on the table — what signing up points toward.",
-      path: "/assets/draft/industry-breadth/werkles-collab-coffee-plans.png",
-      alt: "Two people working through business plans together over coffee"
+      caption: "One person, one notebook, one idea worth taking seriously.",
+      path: "/assets/draft/people-v1/people-spark-idea-moment.jpg",
+      alt: "Man at his kitchen table at dawn, looking up from a notebook mid-idea"
     },
     forgeBand: {
-      eyebrow: "Act III · Forge",
-      caption: "When the idea earns a second pair of hands.",
-      path: narrativeV2Assets.forgeA05NearlyFinishedPair,
-      alt: "Two people finishing space together"
+      eyebrow: "Moving in",
+      caption: "When the idea gets a set of keys.",
+      path: "/assets/draft/people-v1/people-boxes-through-door.jpg",
+      alt: "New owner carrying boxes through the door of her empty shop"
     },
     showIconRail: true
   }

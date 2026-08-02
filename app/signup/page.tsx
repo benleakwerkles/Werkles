@@ -11,8 +11,9 @@ import { signInDevPreview } from "@/lib/dev-preview-session";
 import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
-import { NARRATIVE_V1_WIRE_ENABLED, narrativeV1Assets } from "@/lib/homepage-narrative-imagery";
+import { NARRATIVE_V1_WIRE_ENABLED } from "@/lib/homepage-narrative-imagery";
 import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
+import { BrandMark } from "@/components/foundry/brand-mark";
 
 export default function SignupPage() {
   const previewBlocked = isAuthStripeTestBlocked();
@@ -30,9 +31,17 @@ export default function SignupPage() {
     if (previewBlocked) return;
 
     const form = new FormData(event.currentTarget);
-    const email = String(form.get("email") || "");
+    const email = String(form.get("email") || "").trim();
+    // Passwords are compared and validated as-typed except for the
+    // whitespace-only case: minLength counts spaces, so "        " was a
+    // valid credential (Bean #16).
     const password = String(form.get("password") || "");
     const confirm = String(form.get("confirm") || "");
+
+    if (password.trim().length < 8) {
+      setStatus("Password needs at least 8 real characters — spaces alone don't count.");
+      return;
+    }
 
     if (password !== confirm) {
       setStatus("Passwords do not match.");
@@ -83,18 +92,26 @@ export default function SignupPage() {
 
   return (
     <main className={`auth-shell auth-shell--spark ${routeAtmosphere.auth}`}>
+      {/* Way home from a credential page (Ender: "an auth page with no exit
+         reads as a trap"). Brand mark only — full nav stays off signup. */}
+      <Link className="brand brand--tight auth-shell__brand" href="/" aria-label="Werkles home">
+        <BrandMark size="header" presentation="board" />
+        <span className="brand-word brand-word--workshop-serif">erkles</span>
+      </Link>
       <NarrativeJourneyRail currentSlug="/spark" />
       <section className="auth-panel auth-panel--split">
         {NARRATIVE_V1_WIRE_ENABLED ? (
           <figure className="auth-panel__spark-photo">
+            {/* people-v1 swap (red team 2026-08-02): the CGI kitchen render
+               was still shipping here while the config pointed elsewhere. */}
             <Image
-              src={narrativeV1Assets.sparkC01KitchenTable}
-              alt="Spark beat — thought in progress at the kitchen table"
+              src="/assets/draft/people-v1/people-spark-idea-moment.jpg"
+              alt="Man at his kitchen table in morning light, notebook open, mid-idea"
               width={640}
               height={360}
               className="auth-panel__spark-image"
             />
-            <figcaption>Act I — Spark</figcaption>
+            <figcaption>Where it starts</figcaption>
           </figure>
         ) : null}
         <div className="auth-panel__form-col">

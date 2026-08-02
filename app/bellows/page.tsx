@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { copy } from "@/lib/copy";
-import { narrativeArcAttribution, getNarrativeAct } from "@/lib/narrative-arc";
+import { getNarrativeAct } from "@/lib/narrative-arc";
 import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED } from "@/lib/render-batch-4-imagery";
 
 export const metadata = {
@@ -19,11 +19,16 @@ export default function BellowsPage() {
     <>
       <SiteHeader />
       <main className="bellows-main narrative-act-page">
+
         <section className="bellows-hero panel bellows-hero--wired">
           <div className="bellows-hero__copy">
-            <SiteIcon icon="product-bellows" size="lg" className="site-icon--product product-hero-icon" />
-            <p className="eyebrow">{copy.bellows.eyebrow}</p>
-            <h1>{copy.bellows.headline}</h1>
+            <div className="product-heading">
+              <SiteIcon icon="product-bellows" size="lg" className="site-icon--product" />
+              <div className="product-heading__copy">
+                <p className="eyebrow">{copy.bellows.eyebrow}</p>
+                <h1>{copy.bellows.headline}</h1>
+              </div>
+            </div>
             <p>{copy.bellows.body}</p>
             <p className="muted">{copy.bellows.host}</p>
             <p className="trust-badge">{copy.bellows.shellNote}</p>
@@ -52,7 +57,7 @@ export default function BellowsPage() {
                 className="bellows-hero__squibb-photo"
                 priority
               />
-              <figcaption>Squibb hosts — draft exploration, not canonical cutout</figcaption>
+              <figcaption>Squibb, your guide through the Bellows</figcaption>
             </figure>
           ) : null}
         </section>
@@ -69,17 +74,17 @@ export default function BellowsPage() {
                   height={600}
                   className="bellows-squibb-gallery__photo"
                 />
-                <figcaption>Lesson card host — anti-guru, operator scale</figcaption>
+                <figcaption>Squibb walks each lesson at your pace — no guru talk</figcaption>
               </figure>
               <figure>
                 <Image
-                  src={squibbBellowsAssets.workshopDesk}
-                  alt="Squibb at workshop desk reviewing notes"
+                  src="/assets/draft/people-v1/people-bellows-learning.jpg"
+                  alt="Man at his desk at home, working through a Bellows lesson on his laptop"
                   width={1280}
                   height={720}
                   className="bellows-squibb-gallery__photo"
                 />
-                <figcaption>Wide host scene — Bellows curriculum direction</figcaption>
+                <figcaption>What a lesson actually looks like — twenty minutes at the kitchen desk</figcaption>
               </figure>
             </div>
           </section>
@@ -119,10 +124,6 @@ export default function BellowsPage() {
             </Link>
           </section>
         ) : null}
-
-        <p className="narrative-act-page__note" role="note">
-          {narrativeArcAttribution}
-        </p>
       </main>
       <footer className="site-footer">
         <p>{copy.disclaimer}</p>

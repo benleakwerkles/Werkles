@@ -90,7 +90,10 @@ export function PricingTable() {
 
       <WorkshopPanel facet="register" className="ops-card pricing-section">
         <div className="card-heading card-heading--icon">
-          <SiteIcon icon="nav-proof" size="md" />
+          {/* Folder, not pencil-tag: this card is about reading, and a pencil
+             writing on a price tag reads as "prices being rewritten" here
+             (red team 2026-08-02). */}
+          <SiteIcon icon="icon-dossier" size="md" />
           <div>
             <p>How to read this page</p>
             <h2>Start free, pay when the floor is useful.</h2>

@@ -19,8 +19,9 @@ export const storyV2Assets = {
   beat03MoneyReveal: `${storyV2Folder}/werkles-story-v2-beat03-money-reveal.png`,
   beat04EquipmentReveal: `${storyV2Folder}/werkles-story-v2-beat04-equipment-reveal.png`,
   beat05ShopOpen: `${storyV2Folder}/werkles-story-v2-beat05-shop-open.png`,
-  heroKey: `${storyV2Folder}/werkles-story-v2-hero-wide.png`,
-  heroFallback: `${storyV2Folder}/werkles-story-v2-beat01-wrong-need.png`
+  /* people-v1 hero swap (Ben + Lady Jessica, 2026-08-02) — mirrors globals.css */
+  heroKey: "/assets/draft/people-v1/people-partners-cafe.png",
+  heroFallback: `${storyV2Folder}/werkles-story-v2-hero-wide.png`
 } as const;
 
 export const squibbV3Assets = {

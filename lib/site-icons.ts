@@ -41,24 +41,28 @@ type SiteIconRecord = {
 
 const iconRoot = "/assets/draft/icons";
 const productIconRoot = "/assets/brand/product-icons/lady-jessica-v1";
+/* clear-v1: the one-second-rule icon family (Ben + red-team, 2026-08-02).
+   Every icon is an object a stranger names instantly. */
+const clearIconRoot = "/assets/brand/product-icons/clear-v1";
 
 export const siteIcons: Record<SiteIconId, SiteIconRecord> = {
-  "lane-builder": { id: "lane-builder", filename: "icon-lane-builder-v0.1.png", publicPath: `${iconRoot}/icon-lane-builder-v0.1.png` },
-  "lane-operator": { id: "lane-operator", filename: "icon-lane-operator-v0.1.png", publicPath: `${iconRoot}/icon-lane-operator-v0.1.png` },
-  "lane-backer": { id: "lane-backer", filename: "icon-lane-backer-v0.1.png", publicPath: `${iconRoot}/icon-lane-backer-v0.1.png` },
-  "lane-connector": { id: "lane-connector", filename: "icon-lane-connector-v0.1.png", publicPath: `${iconRoot}/icon-lane-connector-v0.1.png` },
-  "lane-spark": { id: "lane-spark", filename: "icon-lane-spark-v0.1.png", publicPath: `${iconRoot}/icon-lane-spark-v0.1.png` },
+  "lane-builder": { id: "lane-builder", filename: "icon-builder-hammer.png", publicPath: `${clearIconRoot}/icon-builder-hammer.png` },
+  "lane-operator": { id: "lane-operator", filename: "icon-operator-clipboard.png", publicPath: `${clearIconRoot}/icon-operator-clipboard.png` },
+  "lane-backer": { id: "lane-backer", filename: "icon-backer-coins.png", publicPath: `${clearIconRoot}/icon-backer-coins.png` },
+  "lane-connector": { id: "lane-connector", filename: "icon-connector-plug.png", publicPath: `${clearIconRoot}/icon-connector-plug.png` },
+  "lane-spark": { id: "lane-spark", filename: "icon-spark-match.png", publicPath: `${clearIconRoot}/icon-spark-match.png` },
   "nav-people": { id: "nav-people", filename: "icon-lane-builder-v0.1.png", publicPath: `${iconRoot}/icon-lane-builder-v0.1.png` },
   "nav-how": { id: "nav-how", filename: "icon-step-dossier-v0.1.png", publicPath: `${iconRoot}/icon-step-dossier-v0.1.png` },
-  "nav-proof": { id: "nav-proof", filename: "werkles-proof-shield-v1.png", publicPath: `${productIconRoot}/werkles-proof-shield-v1.png` },
+  "nav-proof": { id: "nav-proof", filename: "icon-crucible-ribbon.png", publicPath: `${clearIconRoot}/icon-crucible-ribbon.png` },
   "nav-dues": { id: "nav-dues", filename: "icon-dues-v0.1.png", publicPath: `${iconRoot}/icon-dues-v0.1.png` },
   "nav-bellows": { id: "nav-bellows", filename: "icon-dossier-v0.1.png", publicPath: `${iconRoot}/icon-dossier-v0.1.png` },
   "nav-deck": { id: "nav-deck", filename: "icon-deck-v0.1.png", publicPath: `${iconRoot}/icon-deck-v0.1.png` },
-  /* Step icons upgraded to the lady-jessica-v1 family (Ben, walkthrough
-     2026-07-30: old v0.1 icons out, logo-tone icons in). */
-  "step-dossier": { id: "step-dossier", filename: "werkles-step-dossier-v1.png", publicPath: `${productIconRoot}/werkles-step-dossier-v1.png` },
-  "step-fit": { id: "step-fit", filename: "werkles-step-fit-v1.png", publicPath: `${productIconRoot}/werkles-step-fit-v1.png` },
-  "step-knock": { id: "step-knock", filename: "werkles-step-knock-v1.png", publicPath: `${productIconRoot}/werkles-step-knock-v1.png` },
+  /* Step icons: clear-v1, matched to the card copy (red team 2026-08-02:
+     stamp was landing on the "translate" card). State the need = pencil on a
+     tag; Translate the bottleneck = itemized checklist; Check proof = stamp. */
+  "step-dossier": { id: "step-dossier", filename: "icon-name-penciltag.png", publicPath: `${clearIconRoot}/icon-name-penciltag.png` },
+  "step-fit": { id: "step-fit", filename: "icon-operator-clipboard.png", publicPath: `${clearIconRoot}/icon-operator-clipboard.png` },
+  "step-knock": { id: "step-knock", filename: "icon-verify-stamp.png", publicPath: `${clearIconRoot}/icon-verify-stamp.png` },
   "check-identity": { id: "check-identity", filename: "werkles-check-identity-v1.png", publicPath: `${productIconRoot}/werkles-check-identity-v1.png` },
   "check-funds": { id: "check-funds", filename: "werkles-check-funds-v1.png", publicPath: `${productIconRoot}/werkles-check-funds-v1.png` },
   "check-license": { id: "check-license", filename: "werkles-check-license-v1.png", publicPath: `${productIconRoot}/werkles-check-license-v1.png` },
@@ -72,8 +76,8 @@ export const siteIcons: Record<SiteIconId, SiteIconRecord> = {
   "icon-register": { id: "icon-register", filename: "icon-register-v0.1.png", publicPath: `${iconRoot}/icon-register-v0.1.png` },
   "product-bellows": {
     id: "product-bellows",
-    filename: "werkles-bellows-v1.png",
-    publicPath: `${productIconRoot}/werkles-bellows-v1.png`
+    filename: "icon-bellows.png",
+    publicPath: `${clearIconRoot}/icon-bellows.png`
   },
   "product-workshop": {
     id: "product-workshop",
@@ -96,9 +100,10 @@ export const siteIcons: Record<SiteIconId, SiteIconRecord> = {
     publicPath: `${productIconRoot}/werkles-proof-v1.png`
   },
   "product-membership": {
+    /* The OPEN sign — dues buy the runway to opening day. */
     id: "product-membership",
-    filename: "werkles-membership-v1.png",
-    publicPath: `${productIconRoot}/werkles-membership-v1.png`
+    filename: "icon-move-opensign.png",
+    publicPath: `${clearIconRoot}/icon-move-opensign.png`
   }
 };
 
