@@ -16,6 +16,45 @@ import { getClientAccessToken } from "@/lib/client-auth";
 
 type Plan = "monthly" | "annual";
 
+const membershipFloorPreview = [
+  {
+    kicker: "Workbench",
+    title: "The opening plan stays in one room.",
+    body: "Keep the ask, the people, the proof still needed, and the next move where the whole crew can see them.",
+    rows: ["Opening plan", "2 possible partners", "License proof next"]
+  },
+  {
+    kicker: "Guarded Intro",
+    title: "An introduction arrives with reasons.",
+    body: "See why the connection may help before either person is exposed. You decide whether the door opens.",
+    rows: ["Skills complement", "Same opening window", "Your call: open or pass"]
+  },
+  {
+    kicker: "Rolling Workshop",
+    title: "Once the joints lock, the work keeps moving.",
+    body: "Track the partner, the proof, and the outside help the venture needs without turning Werkles into the dealmaker.",
+    rows: ["Partner found", "Proof reviewed", "Vendor options compared"]
+  }
+] as const;
+
+const verificationProviders = [
+  {
+    name: "Stripe Identity",
+    purpose: "Identity",
+    status: "Test integration ready"
+  },
+  {
+    name: "Plaid",
+    purpose: "Funds",
+    status: "Sandbox integration ready"
+  },
+  {
+    name: "Twilio",
+    purpose: "Phone",
+    status: "Planned — not connected yet"
+  }
+] as const;
+
 export default function MembershipPage() {
   const previewBlocked = isAuthStripeTestBlocked();
   const devPreview = shouldUseDevPreviewAuth();
@@ -125,13 +164,59 @@ export default function MembershipPage() {
         <Tier2PageVisual page="membership" featured forgeBand />
       </section>
 
-      <Tier2PageVisual page="membership" iconRail showAttribution={false} />
+      <section className="ops-card membership-floor" aria-labelledby="membership-floor-title">
+        <div className="card-heading membership-floor__heading">
+          <p>Step onto the floor</p>
+          <h2 id="membership-floor-title">See what membership unlocks.</h2>
+        </div>
+        <p className="membership-floor__intro">
+          This is the shape of the real member Workshop — a working room, a guarded introduction, and the venture in
+          motion. The free Workshop sandbox is the next product slice; this preview shows the floor without pretending
+          it is already open.
+        </p>
+        <div className="membership-floor__grid">
+          {membershipFloorPreview.map((surface, index) => (
+            <article className="membership-floor__surface" key={surface.kicker}>
+              <div className="membership-floor__surface-head">
+                <span aria-hidden="true">0{index + 1}</span>
+                <p>{surface.kicker}</p>
+              </div>
+              <h3>{surface.title}</h3>
+              <p>{surface.body}</p>
+              <ul aria-label={`${surface.kicker} preview`}>
+                {surface.rows.map((row) => (
+                  <li key={row}>{row}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <div className="membership-floor__actions">
+          <Link className="button button-dark" href="/signup">
+            Start free
+          </Link>
+          <Link className="button button-outline" href="/dashboard">
+            Visit the member Workshop
+          </Link>
+        </div>
+      </section>
 
-      <section className="ops-card membership-unlocks" aria-label="What Foundry Dues unlock">
-        <h2>What membership unlocks</h2>
-        <ul>
-          {copy.membership.unlocks.map((item) => (
-            <li key={item}>{item}</li>
+      <section className="ops-card membership-verifiers" aria-labelledby="membership-verifiers-title">
+        <div className="card-heading">
+          <p>Verification through names you know</p>
+          <h2 id="membership-verifiers-title">Providers do the checking. Werkles keeps the receipt.</h2>
+        </div>
+        <p>
+          Werkles is building on specialist providers instead of asking members to trust a homemade badge. Status is
+          stated plainly here: test and sandbox wiring are not live verification.
+        </p>
+        <ul className="membership-verifiers__list">
+          {verificationProviders.map((provider) => (
+            <li key={provider.name}>
+              <span className="membership-verifiers__name">{provider.name}</span>
+              <span className="membership-verifiers__purpose">{provider.purpose}</span>
+              <span className="membership-verifiers__status">{provider.status}</span>
+            </li>
           ))}
         </ul>
       </section>
@@ -172,8 +257,10 @@ export default function MembershipPage() {
           <p className="plan-kicker">{copy.membership.monthly}</p>
           <h2>{pricing.foundryDues.monthly.displayPrice}</h2>
           <p>{copy.membership.plans.monthly.body}</p>
+          {/* Featured card wears the violet primary; the other card goes quiet
+             (Ender: button hierarchy was inverted against card hierarchy). */}
           <button
-            className="button button-light"
+            className={`button ${monthlyFeatured ? "button-dark" : "button-light"}`}
             type="button"
             disabled={checkoutDisabled}
             onClick={() => startCheckout("monthly")}
@@ -189,7 +276,7 @@ export default function MembershipPage() {
           <h2>{pricing.foundryDues.annual.displayPrice}</h2>
           <p>{copy.membership.plans.annual.body}</p>
           <button
-            className="button button-dark"
+            className={`button ${annualFeatured ? "button-dark" : "button-light"}`}
             type="button"
             disabled={checkoutDisabled}
             onClick={() => startCheckout("annual")}
