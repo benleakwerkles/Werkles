@@ -36,7 +36,7 @@ export default function ProofPage() {
   return (
     <>
       <SiteHeader />
-      <NarrativeActPageLayout act={act} icon="product-proof">
+      <NarrativeActPageLayout act={act}>
         <NarrativePhotoGallery title="Foundry beat library" items={foundryProofGallery} />
         <ProofDoctrineSection />
 
@@ -45,7 +45,7 @@ export default function ProofPage() {
           <h2 id="proofPathsTitle">Three safe doors after proof.</h2>
           <p>
             Proof is the trust layer. Once you know what Werkles shows and what it refuses to fake, pick the next move
-            that matches where you are: exploring, joining, or choosing membership.
+            that matches where you are: exploring, joining, or paying dues.
           </p>
           <div className="trust-state-strip" aria-label="Proof exit paths">
             <span>Start free</span>
@@ -60,7 +60,7 @@ export default function ProofPage() {
               Compare pricing
             </Link>
             <Link className="button button-outline" href="/membership">
-              Review membership
+              Review Foundry Dues
             </Link>
           </div>
         </section>

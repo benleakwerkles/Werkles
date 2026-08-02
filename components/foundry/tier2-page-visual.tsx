@@ -4,7 +4,6 @@ import { Tier2HybridIconTile } from "@/components/foundry/tier2-hybrid-icon-tile
 import {
   TIER2_IMAGERY_ENABLED,
   tier2HybridIcons,
-  tier2ImageryAttribution,
   tier2PageImagery,
   type Tier2FeaturedImage,
   type Tier2PageKey
@@ -18,8 +17,6 @@ type Props = {
   forgeBand?: boolean;
   /** Show hybrid icon rail. */
   iconRail?: boolean;
-  /** Draft attribution line (default true). */
-  showAttribution?: boolean;
 };
 
 function FeaturedFigure({ image }: { image: Tier2FeaturedImage }) {
@@ -46,8 +43,7 @@ export function Tier2PageVisual({
   page,
   featured = false,
   forgeBand = false,
-  iconRail = false,
-  showAttribution = true
+  iconRail = false
 }: Props) {
   if (!TIER2_IMAGERY_ENABLED) return null;
 
@@ -75,11 +71,6 @@ export function Tier2PageVisual({
             />
           ))}
         </div>
-      ) : null}
-      {showAttribution ? (
-        <p className="tier2-visual__note" role="note">
-          {tier2ImageryAttribution}
-        </p>
       ) : null}
     </div>
   );
