@@ -81,7 +81,7 @@ type PathStatus = (typeof PATH_STATUSES)[number];
 
 const IDLE_MESSAGE = BELLOWS_INTAKE_SUBMISSION_OPEN
   ? "Your draft is kept in this browser as you type. Submit when you want Werkles to rebuild the results."
-  : `${BELLOWS_INTAKE_CLOSED_MESSAGE} Nothing you type here is saved or sent.`;
+  : "Your draft is kept in this browser on this device. Account submission is temporarily paused.";
 
 type ConciergeIntakeFormProps = {
   initialAnswers?: ConciergeIntakeAnswers;
@@ -189,39 +189,6 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
     CONCIERGE_INTAKE_QUESTIONS.filter((q) => q.required).every(
       (q) => answers[q.id].trim().length > 0
   );
-
-  if (!BELLOWS_INTAKE_SUBMISSION_OPEN) {
-    return (
-      <section className="concierge-intake concierge-intake__closed panel" aria-labelledby="closedIntakeTitle">
-        <div>
-          <p className="eyebrow">A better first conversation is almost ready</p>
-          <h1 id="closedIntakeTitle">See what Werkles will help you untangle.</h1>
-          <p className="concierge-intake__lead">
-            We are finishing the private room where your answers will live. Until then, preview the questions
-            and see a complete Werkles answer.
-          </p>
-        </div>
-
-        <ul className="concierge-intake__question-preview" aria-label="A preview of intake questions">
-          <li>What feels heaviest right now?</li>
-          <li>Where is your time disappearing?</li>
-          <li>Which decision keeps circling?</li>
-        </ul>
-
-        <div className="concierge-intake__closed-actions">
-          <Link className="button button-dark" href="/bellows/recommendations/test-case-0">
-            See a complete example
-          </Link>
-          <Link className="button button-outline" href="/bellows">
-            Explore the Bellows
-          </Link>
-        </div>
-        <p className="concierge-intake__closed-note" role="status">
-          {BELLOWS_INTAKE_CLOSED_MESSAGE}
-        </p>
-      </section>
-    );
-  }
 
   function updateField(id: keyof ConciergeIntakeAnswers, value: string) {
     setHasDirtyBrowserDraft(true);
@@ -331,6 +298,22 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
 
   return (
     <div className="concierge-intake">
+      {!BELLOWS_INTAKE_SUBMISSION_OPEN ? (
+        <section className="concierge-intake__closed panel" aria-labelledby="closedIntakeTitle">
+          <div>
+            <p className="eyebrow">The questions are open</p>
+            <h2 id="closedIntakeTitle">Build your Intake now. Keep the draft here.</h2>
+            <p className="concierge-intake__lead">
+              Your answers stay in this browser while account submission is paused. You can review and edit the
+              complete Intake without losing the worksheet again.
+            </p>
+          </div>
+          <p className="concierge-intake__closed-note" role="status">
+            {BELLOWS_INTAKE_CLOSED_MESSAGE}
+          </p>
+        </section>
+      ) : null}
+
       <header className="concierge-intake__hero panel">
         <p className="eyebrow">Tell Werkles what you are building</p>
         <h1>Let&apos;s figure out what would help most.</h1>
@@ -342,7 +325,9 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
           We will not choose the solution before hearing you.
         </p>
         <p className="concierge-intake__storage-truth" role="note">
-          {accountSaveAvailable ? (
+          {!BELLOWS_INTAKE_SUBMISSION_OPEN ? (
+            <><strong>Browser draft only for now.</strong> Account submission is paused, but this worksheet remains available.</>
+          ) : accountSaveAvailable ? (
             <><strong>Account saving is on.</strong> Submit once and your latest Intake follows this sign-in.</>
           ) : (
             <><strong>Saved in this browser only.</strong> It will not follow you to another device until account saving is connected.</>
@@ -580,7 +565,7 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
             disabled={!BELLOWS_INTAKE_SUBMISSION_OPEN || !canSubmit || saveState.status === "saving"}
           >
             {!BELLOWS_INTAKE_SUBMISSION_OPEN
-              ? "Submission temporarily closed"
+              ? "Account submission paused"
               : saveState.status === "saving"
                 ? "Reviewing your answers"
                 : "Show me what might help"}
