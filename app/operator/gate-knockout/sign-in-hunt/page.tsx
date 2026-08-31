@@ -10,7 +10,16 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }
 };
 
-const tierOrder: ProductGateSignInTier[] = ["v0_ship", "github_push", "crucible_later", "optional"];
+const tierOrder: ProductGateSignInTier[] = [
+  "tier_0_infra",
+  "tier_1_money",
+  "tier_2_crucible",
+  "tier_3_crucible_extended",
+  "tier_4_fcra",
+  "tier_5_repo",
+  "tier_6_discovery",
+  "optional"
+];
 
 function targetsForTier(tier: ProductGateSignInTier) {
   return productGateSignInHunt.filter((target) => target.tier === tier);
