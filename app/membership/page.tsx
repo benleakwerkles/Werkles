@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { SiteIcon } from "@/components/foundry/site-icon";
-import { SiteHeader } from "@/components/foundry/site-header";
 import { Tier2PageVisual } from "@/components/foundry/tier2-page-visual";
 import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
@@ -13,45 +11,41 @@ import { routeAtmosphere } from "@/lib/workshop-facets";
 import { isAuthStripeTestBlocked, isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
 import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getClientAccessToken } from "@/lib/client-auth";
+import {
+  WERKLES_MEMBERSHIP_PROMISE,
+  WERKLES_TERMS,
+  WERKLES_VALUE_LADDER
+} from "@/lib/membership-value-ladder";
 
 type Plan = "monthly" | "annual";
 
+type OwnerState = {
+  hasIntake: boolean;
+  answeredCount: number;
+  totalQuestions: number;
+  candidates: { count: number; reviewRequired: number };
+  duesUnlocked: string[];
+  duesDoNotChange: string[];
+};
+
 const membershipFloorPreview = [
   {
-    kicker: "Workbench",
+    kicker: "Your Workshop",
     title: "The opening plan stays in one room.",
-    body: "Keep the ask, the people, the proof still needed, and the next move where the whole crew can see them.",
-    rows: ["Opening plan", "2 possible partners", "License proof next"]
+    body: "Keep the goal, the people, the facts still needed, and the next move where you can find them.",
+    rows: ["Opening plan", "2 people to consider", "License check next"]
   },
   {
-    kicker: "Guarded Intro",
+    kicker: "A thoughtful intro",
     title: "An introduction arrives with reasons.",
     body: "See why the connection may help before either person is exposed. You decide whether the door opens.",
     rows: ["Skills complement", "Same opening window", "Your call: open or pass"]
   },
   {
-    kicker: "Rolling Workshop",
-    title: "Once the joints lock, the work keeps moving.",
-    body: "Track the partner, the proof, and the outside help the venture needs without turning Werkles into the dealmaker.",
-    rows: ["Partner found", "Proof reviewed", "Vendor options compared"]
-  }
-] as const;
-
-const verificationProviders = [
-  {
-    name: "Stripe Identity",
-    purpose: "Identity",
-    status: "Test integration ready"
-  },
-  {
-    name: "Plaid",
-    purpose: "Funds",
-    status: "Sandbox integration ready"
-  },
-  {
-    name: "Twilio",
-    purpose: "Phone",
-    status: "Planned — not connected yet"
+    kicker: "A shared Werkle",
+    title: "Once the work is shared, the plan keeps moving.",
+    body: "Track who is doing what, which facts still matter, and which outside help the business needs.",
+    rows: ["People connected", "Facts reviewed", "Supplier options compared"]
   }
 ] as const;
 
@@ -65,10 +59,26 @@ export default function MembershipPage() {
       : devPreview
         ? copy.localPreview.membershipIdle
         : paymentsPaused
-          ? "Foundry Dues checkout is paused while payment setup finishes. Everything else works free."
-          : "Checkout is open. Start free anytime — dues only when the floor earns it."
+          ? "Membership checkout is paused while payment setup finishes. Everything else works free."
+          : "Checkout is open. Start free anytime—join only when Werkles earns it."
   );
   const [highlightPlan, setHighlightPlan] = useState<Plan | null>(null);
+  const [ownerState, setOwnerState] = useState<OwnerState | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/owner/state")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!cancelled && data?.state) setOwnerState(data.state);
+      })
+      .catch(() => {
+        /* Dues page still renders without a session readout */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -84,14 +94,14 @@ export default function MembershipPage() {
           ? `${copy.infraPreview.membershipCheckout} Highlighting ${planLabel}.`
           : devPreview
             ? `${copy.localPreview.membershipIdle} Highlighting ${planLabel}.`
-            : `Showing ${planLabel} from dues.`
+            : `Showing ${planLabel}.`
       );
     }
   }, [previewBlocked, devPreview]);
 
   async function startCheckout(plan: Plan) {
     if (paymentsPaused) {
-      setStatus("Foundry Dues checkout is paused while operator payment setup finishes.");
+      setStatus("Membership checkout is paused while payment setup finishes.");
       return;
     }
     if (previewBlocked) {
@@ -109,7 +119,7 @@ export default function MembershipPage() {
     const token = await getClientAccessToken();
 
     if (!token) {
-      setStatus("Log in before paying dues.");
+      setStatus("Log in before starting membership.");
       return;
     }
 
@@ -144,14 +154,7 @@ export default function MembershipPage() {
 
   return (
     <CockpitShell showDraftBadge={false}>
-      {/* Public sales page wears the standard Werkles header (owner
-         walkthrough 2026-07-27); the reduced pill nav was for focused tasks
-         like login. Operator preflight/runbook copy moved off this page —
-         it lives at /operator/gate-knockout/test-checkout-smoke. */}
-      <SiteHeader />
       <main className={`dashboard-main membership-page ${routeAtmosphere.membership}`}>
-
-      <RouteUnlockBanner blockedDetail={copy.infraPreview.membershipCheckout} />
 
       <section className="tier2-page-header">
         <div className="tier2-page-header__copy membership-hero">
@@ -164,15 +167,97 @@ export default function MembershipPage() {
         <Tier2PageVisual page="membership" featured forgeBand />
       </section>
 
+      <section className="ops-card membership-language" aria-labelledby="membership-language-title">
+        <div className="card-heading">
+          <p>One person, then shared work</p>
+          <h2 id="membership-language-title">A Workshop is yours. A Werkle is what you build together.</h2>
+        </div>
+        <div className="membership-language__grid">
+          <article>
+            <span>Start here</span>
+            <h3>{WERKLES_TERMS.workshop.term}</h3>
+            <p>{WERKLES_TERMS.workshop.definition}</p>
+          </article>
+          <article>
+            <span>Connect when it fits</span>
+            <h3>{WERKLES_TERMS.werkle.term}</h3>
+            <p>{WERKLES_TERMS.werkle.definition}</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="ops-card membership-ladder" aria-labelledby="membership-ladder-title">
+        <div className="card-heading">
+          <p>Use it before you buy it</p>
+          <h2 id="membership-ladder-title">Free should be useful. Membership should feel like a steal.</h2>
+        </div>
+        <p className="membership-ladder__promise">{WERKLES_MEMBERSHIP_PROMISE}</p>
+        <div className="membership-ladder__grid">
+          {WERKLES_VALUE_LADDER.map((step) => (
+            <article className={`membership-ladder__step membership-ladder__step--${step.id}`} key={step.id}>
+              <p>{step.status}</p>
+              <h3>{step.label}</h3>
+              <strong>{step.price}</strong>
+              <ul>
+                {step.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <p className="membership-ladder__truth" role="note">
+          You can use Intake, recommendations, matching, and a browser-local practice Werkle today. Real member-to-member sharing and account-saved Werkle records are still being built.
+        </p>
+      </section>
+
+      {ownerState ? (
+        <section className="ops-card" aria-labelledby="membership-standing-title">
+          <div className="card-heading">
+            <p>Where you actually stand</p>
+            <h2 id="membership-standing-title">
+              {ownerState.hasIntake
+                ? `Intake on file · ${ownerState.answeredCount} of ${ownerState.totalQuestions} answered · ${ownerState.candidates.count} ranked candidates`
+                : "No intake on file yet"}
+            </h2>
+          </div>
+          {ownerState.hasIntake ? (
+            <ul className="workshop-list">
+              {ownerState.duesUnlocked.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>
+              Membership buys ongoing tools, not outcomes. Run the Intake first—it is free, and it is what
+              every other surface reads from.
+            </p>
+          )}
+          <ul className="workshop-list">
+            {ownerState.duesDoNotChange.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+          <div className="member-selected-surface__actions">
+            <Link className="button button-outline" href="/bellows/intake">
+              {ownerState.hasIntake ? "Update intake" : "Run intake"}
+            </Link>
+            <Link className="button button-outline" href="/dashboard/blueprints">
+              Open workshop
+            </Link>
+            <Link className="button button-outline" href="/dashboard/billing">
+              Manage membership
+            </Link>
+          </div>
+        </section>
+      ) : null}
+
       <section className="ops-card membership-floor" aria-labelledby="membership-floor-title">
         <div className="card-heading membership-floor__heading">
           <p>Step onto the floor</p>
-          <h2 id="membership-floor-title">See what membership unlocks.</h2>
+          <h2 id="membership-floor-title">See what membership adds.</h2>
         </div>
         <p className="membership-floor__intro">
-          This is the shape of the real member Workshop — a working room, a guarded introduction, and the venture in
-          motion. The free Workshop sandbox is the next product slice; this preview shows the floor without pretending
-          it is already open.
+          Membership keeps your Workshop moving and gives a shared Werkle more room to work: a living plan, thoughtful
+          introductions, and useful tools gathered around the business instead of scattered across tabs and texts.
         </p>
         <div className="membership-floor__grid">
           {membershipFloorPreview.map((surface, index) => (
@@ -195,47 +280,27 @@ export default function MembershipPage() {
           <Link className="button button-dark" href="/signup">
             Start free
           </Link>
-          <Link className="button button-outline" href="/dashboard">
+          <Link className="button button-outline" href="/dashboard/blueprints">
             Visit the member Workshop
           </Link>
         </div>
       </section>
 
-      <section className="ops-card membership-verifiers" aria-labelledby="membership-verifiers-title">
-        <div className="card-heading">
-          <p>Verification through names you know</p>
-          <h2 id="membership-verifiers-title">Providers do the checking. Werkles keeps the receipt.</h2>
-        </div>
-        <p>
-          Werkles is building on specialist providers instead of asking members to trust a homemade badge. Status is
-          stated plainly here: test and sandbox wiring are not live verification.
-        </p>
-        <ul className="membership-verifiers__list">
-          {verificationProviders.map((provider) => (
-            <li key={provider.name}>
-              <span className="membership-verifiers__name">{provider.name}</span>
-              <span className="membership-verifiers__purpose">{provider.purpose}</span>
-              <span className="membership-verifiers__status">{provider.status}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="ops-card membership-trust" aria-label="Try before dues">
+      <section className="ops-card membership-trust" aria-label="Try before joining">
         <div className="card-heading">
           <p>Before you pay</p>
           <h2>Use the free path to see whether Werkles helps.</h2>
         </div>
         <p>
-          You should not need to pay just to understand the floor. Start with a free account, inspect the proof layer,
-          and only choose dues when the workshop feels worth keeping.
+          Start with a free account and let Werkles solve something real. Join only when the time saved, included
+          packets, and shared tools are clearly worth more than $9.99 a month.
         </p>
         <div className="member-selected-surface__actions">
           <Link className="button button-dark" href="/signup">
             Start free
           </Link>
           <Link className="button button-outline" href="/proof">
-            Inspect proof
+            See how checks work
           </Link>
           <Link className="button button-outline" href="/pricing">
             Review pricing
@@ -243,7 +308,7 @@ export default function MembershipPage() {
         </div>
       </section>
 
-      <section className="membership-grid" aria-label="Foundry Dues plans">
+      <section className="membership-grid" aria-label="Werkles membership plans">
         <article className="ops-card plan-card">
           <p className="plan-kicker">{copy.membership.plans.free.kicker}</p>
           <h2>{copy.membership.plans.free.price}</h2>
@@ -298,12 +363,12 @@ export default function MembershipPage() {
       {paymentsPaused ? (
         <section className="ops-card membership-trust" aria-label="Payments paused">
           <div className="card-heading">
-            <p>Foundry Dues</p>
+            <p>Werkles membership</p>
             <h2>Payments are paused while operator setup finishes.</h2>
           </div>
           <p>
-            Werkles still works on the free path: account, profile, onboarding, and member surfaces stay open. Foundry
-            Dues checkout returns when payment wiring is cleared — not because the workshop stopped.
+            Werkles still works on the free path: account, Intake, recommendations, and matching stay open. Membership
+            checkout returns when payment wiring is cleared—not because the Workshop stopped.
           </p>
           <div className="member-selected-surface__actions">
             <Link className="button button-dark" href="/dashboard">
@@ -313,7 +378,7 @@ export default function MembershipPage() {
               Update profile
             </Link>
             <Link className="button button-outline" href="/proof">
-              Inspect proof
+              See how checks work
             </Link>
           </div>
         </section>

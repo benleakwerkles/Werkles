@@ -7,6 +7,7 @@ export type DevPreviewSession = {
 
 const STORAGE_KEY = "werkles_dev_preview_session";
 const COOKIE_KEY = STORAGE_KEY;
+const MEMBER_NAV_PRESENTATION_KEY = "werkles_member_nav_present";
 
 function readCookieSession(): DevPreviewSession | null {
   if (typeof document === "undefined") return null;
@@ -47,6 +48,7 @@ export function clearDevPreviewSession() {
   if (typeof window === "undefined") return;
   localStorage.removeItem(STORAGE_KEY);
   sessionStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem(MEMBER_NAV_PRESENTATION_KEY);
   document.cookie = `${COOKIE_KEY}=; path=/; max-age=0; samesite=lax`;
 }
 

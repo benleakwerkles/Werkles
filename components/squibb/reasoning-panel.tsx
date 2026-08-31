@@ -6,8 +6,10 @@ type ReasoningPanelProps = {
 
 export function ReasoningPanel({ reasoning }: ReasoningPanelProps) {
   return (
-    <section className="squibb-reasoning" aria-labelledby="squibbReasoningTitle">
-      <h3 id="squibbReasoningTitle">Reasoning</h3>
+    <details className="squibb-reasoning squibb-rec-collapse">
+      <summary className="squibb-rec-collapse__summary" id="squibbReasoningTitle">
+        Reasoning
+      </summary>
       <dl className="squibb-reasoning__need">
         <div>
           <dt>You said</dt>
@@ -15,7 +17,7 @@ export function ReasoningPanel({ reasoning }: ReasoningPanelProps) {
         </div>
         {reasoning.translatedNeed ? (
           <div>
-            <dt>Squibb reads it as</dt>
+            <dt>Werkles reads it as</dt>
             <dd>{reasoning.translatedNeed}</dd>
           </div>
         ) : null}
@@ -30,6 +32,6 @@ export function ReasoningPanel({ reasoning }: ReasoningPanelProps) {
           <strong>Counterpoint:</strong> {reasoning.counterpoint}
         </p>
       ) : null}
-    </section>
+    </details>
   );
 }

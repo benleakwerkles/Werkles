@@ -1,5 +1,6 @@
 import { pricing } from "@/lib/pricing";
 import { copy } from "@/lib/copy";
+import { providerReadinessFor } from "@/lib/crucible-provider-readiness";
 
 export type CrucibleState =
   | "not_started"
@@ -8,6 +9,10 @@ export type CrucibleState =
   | "ready_to_start"
   | "provider_redirect"
   | "pending"
+  | "sandbox_pending"
+  | "sandbox_verified"
+  | "live_verified"
+  | "legacy_unbacked"
   | "verified"
   | "failed"
   | "expired"
@@ -21,6 +26,10 @@ export const crucibleStateCopy: Record<CrucibleState, string> = {
   ready_to_start: "Ready to verify",
   provider_redirect: "Continue with the provider — Werkles waits for the receipt.",
   pending: "Checking…",
+  sandbox_pending: "Stored status: sandbox pending",
+  sandbox_verified: "Stored status: sandbox verified",
+  live_verified: "Stored status: live verified",
+  legacy_unbacked: "Legacy funds flag - no proof receipt on file",
   verified: "Verified",
   failed: "Couldn't verify",
   expired: "Needs renewing",
@@ -29,24 +38,22 @@ export const crucibleStateCopy: Record<CrucibleState, string> = {
 };
 
 export const crucibleTrustCopy = [
-  copy.crucible.principle,
   copy.proofDisclaimer,
   "Paid status alone is not a proof signal.",
   copy.crucible.storesDefault
 ] as const;
 
 export const crucibleChecks = pricing.crucible.map((check) => {
-  const active = check.key === "identity" || check.key === "funds";
+  const providerReadiness = providerReadinessFor(check.key);
+  const active =
+    providerReadiness.adapterStage === "test_adapter" ||
+    providerReadiness.adapterStage === "sandbox_demo";
 
   return {
     ...check,
+    providerReadiness,
     state: active ? "ready_to_start" : "unavailable",
-    route:
-      check.key === "identity"
-        ? "/api/verification/identity"
-        : check.key === "funds"
-          ? "/api/verification/funds"
-          : null,
+    route: providerReadiness.route,
     stores:
       check.key === "funds"
         ? copy.crucible.storesFunds

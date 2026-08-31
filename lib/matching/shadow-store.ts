@@ -1,5 +1,6 @@
 import "server-only";
 
+import { readFileSync } from "node:fs";
 import { appendFile, mkdir, readFile } from "node:fs/promises";
 
 import { getSupabaseService } from "@/lib/supabase/server";
@@ -121,9 +122,53 @@ async function readSupabaseRuns(limit: number): Promise<ShadowMatchingRun[]> {
   return (data ?? []).map((row) => normalizeShadowRun(row.payload));
 }
 
+function readFileRunForIntake(intakeId: string): ShadowMatchingRun | null {
+  let content: string;
+  try {
+    /* Keep the full cross-owner JSONL string out of React's async Flight
+       instrumentation. Only the selected run may cross this function boundary. */
+    content = readFileSync(dataPath(FILE_RECEIPT_PATH), "utf8");
+  } catch (error) {
+    const code = error && typeof error === "object" && "code" in error ? error.code : null;
+    if (code === "ENOENT") return null;
+    throw error;
+  }
+
+  const lines = content.trim().split(/\r?\n/).filter(Boolean);
+  for (let index = lines.length - 1; index >= 0; index -= 1) {
+    const run = normalizeShadowRun(JSON.parse(lines[index]));
+    if (run.intakeId === intakeId) return run;
+  }
+  return null;
+}
+
+async function readSupabaseRunForIntake(intakeId: string): Promise<ShadowMatchingRun | null> {
+  const { data, error } = await getSupabaseService()
+    .from("matching_shadow_runs")
+    .select("payload")
+    .eq("intake_id", intakeId)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw new Error(`Matching shadow durable owner read failed: ${error.message}`);
+  return data ? normalizeShadowRun(data.payload) : null;
+}
+
 export async function readMatchingShadowRuns(limit = 10): Promise<ShadowMatchingRun[]> {
   const boundedLimit = Math.max(1, Math.min(100, Math.floor(limit)));
   return getMatchingStorageMode() === "supabase"
     ? readSupabaseRuns(boundedLimit)
     : readFileRuns(boundedLimit);
+}
+
+/** Read only the run tied to an already owner-scoped intake. Personal Server
+ * Components must use this instead of loading a cross-owner recent-run list. */
+export async function readMatchingShadowRunForIntake(
+  intakeId: string
+): Promise<ShadowMatchingRun | null> {
+  if (!intakeId) return null;
+  return getMatchingStorageMode() === "supabase"
+    ? readSupabaseRunForIntake(intakeId)
+    : readFileRunForIntake(intakeId);
 }

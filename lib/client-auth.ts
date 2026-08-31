@@ -3,20 +3,22 @@ import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser, hasSupabaseBrowserConfig } from "@/lib/supabase/client";
 
 export async function getClientAccessToken(): Promise<string | null> {
-  if (isLocalRoutePreviewUnlocked() && readDevPreviewSession()) {
-    return "dev-preview-token";
+  if (hasSupabaseBrowserConfig()) {
+    const { data } = await getSupabaseBrowser().auth.getSession();
+    if (data.session?.access_token) return data.session.access_token;
   }
-  if (!hasSupabaseBrowserConfig()) return null;
-  const { data } = await getSupabaseBrowser().auth.getSession();
-  return data.session?.access_token ?? null;
+  return isLocalRoutePreviewUnlocked() && readDevPreviewSession()
+    ? "dev-preview-token"
+    : null;
 }
 
 export async function getClientAuthEmail(): Promise<string | null> {
+  if (hasSupabaseBrowserConfig()) {
+    const { data } = await getSupabaseBrowser().auth.getUser();
+    if (data.user?.email) return data.user.email;
+  }
   const dev = readDevPreviewSession();
-  if (isLocalRoutePreviewUnlocked() && dev) return dev.email;
-  if (!hasSupabaseBrowserConfig()) return null;
-  const { data } = await getSupabaseBrowser().auth.getUser();
-  return data.user?.email ?? null;
+  return isLocalRoutePreviewUnlocked() && dev ? dev.email : null;
 }
 
 export function isDevPreviewSignedIn() {

@@ -7,13 +7,11 @@ import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { copy } from "@/lib/copy";
 import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
-import { signInDevPreview } from "@/lib/dev-preview-session";
-import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
+import { localAuthPreviewTruth } from "@/lib/local-auth-preview-truth";
 import { isLocalRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 import { NARRATIVE_V1_WIRE_ENABLED } from "@/lib/homepage-narrative-imagery";
-import { NarrativeJourneyRail } from "@/components/narrative/narrative-journey-rail";
-import { BrandMark } from "@/components/foundry/brand-mark";
+import { SiteHeader } from "@/components/foundry/site-header";
 
 export default function SignupPage() {
   const previewBlocked = isAuthStripeTestBlocked();
@@ -22,7 +20,7 @@ export default function SignupPage() {
     previewBlocked
       ? copy.infraPreview.signup
       : devPreview
-        ? copy.localPreview.signupIdle
+        ? localAuthPreviewTruth.signup
         : copy.auth.signupIdle
   );
 
@@ -45,12 +43,6 @@ export default function SignupPage() {
 
     if (password !== confirm) {
       setStatus("Passwords do not match.");
-      return;
-    }
-
-    if (shouldUseDevPreviewAuth()) {
-      signInDevPreview(email);
-      window.location.href = "/onboarding";
       return;
     }
 
@@ -91,109 +83,121 @@ export default function SignupPage() {
   }
 
   return (
-    <main className={`auth-shell auth-shell--spark ${routeAtmosphere.auth}`}>
-      {/* Way home from a credential page (Ender: "an auth page with no exit
-         reads as a trap"). Brand mark only — full nav stays off signup. */}
-      <Link className="brand brand--tight auth-shell__brand" href="/" aria-label="Werkles home">
-        <BrandMark size="header" presentation="board" />
-        <span className="brand-word brand-word--workshop-serif">erkles</span>
-      </Link>
-      <NarrativeJourneyRail currentSlug="/spark" />
-      <section className="auth-panel auth-panel--split">
-        {NARRATIVE_V1_WIRE_ENABLED ? (
-          <figure className="auth-panel__spark-photo">
-            {/* people-v1 swap (red team 2026-08-02): the CGI kitchen render
-               was still shipping here while the config pointed elsewhere. */}
-            <Image
-              src="/assets/draft/people-v1/people-spark-idea-moment.jpg"
-              alt="Man at his kitchen table in morning light, notebook open, mid-idea"
-              width={640}
-              height={360}
-              className="auth-panel__spark-image"
-            />
-            <figcaption>Where it starts</figcaption>
-          </figure>
-        ) : null}
-        <div className="auth-panel__form-col">
-        <RouteUnlockBanner blockedDetail={copy.infraPreview.signup} />
-        <p className="eyebrow">{copy.brand}</p>
-        <h1>{copy.auth.signupTitle}</h1>
-        <p>{copy.auth.signupSubhead}</p>
-        <form className="form-stack" onSubmit={handleSubmit}>
-          <label className="field">
-            <span>Email</span>
-            <input name="email" type="email" autoComplete="email" required disabled={previewBlocked} />
-          </label>
-          <label className="field">
-            <span>Password</span>
-            <input
-              name="password"
-              type="password"
-              autoComplete="new-password"
-              required
-              minLength={8}
-              disabled={previewBlocked}
-            />
-          </label>
-          <label className="field">
-            <span>Confirm password</span>
-            <input
-              name="confirm"
-              type="password"
-              autoComplete="new-password"
-              required
-              minLength={8}
-              disabled={previewBlocked}
-            />
-          </label>
-          <button className="button button-dark" type="submit" disabled={previewBlocked}>
-            {previewBlocked ? "Sign-up disabled (preview)" : copy.auth.signupCta}
-          </button>
-          <p className="status-line" role="status">{status}</p>
-        </form>
-        <Link className="button button-outline" href="/login">I already have an account</Link>
-
-          <section className="ops-card auth-doorway" aria-label="What happens next">
-            <div className="card-heading">
-              <p>What happens next</p>
-              <h2>Free account first. Dues only when the floor earns it.</h2>
-            </div>
+    <>
+      <SiteHeader />
+      <main className={`auth-shell auth-shell--spark ${routeAtmosphere.auth}`}>
+        <section className="auth-panel auth-panel--split">
+          {NARRATIVE_V1_WIRE_ENABLED ? (
+            <figure className="auth-panel__spark-photo">
+              {/* people-v1 swap (red team 2026-08-02): the CGI kitchen render
+                 was still shipping here while the config pointed elsewhere. */}
+              <Image
+                src="/assets/draft/people-v1/people-spark-idea-moment.jpg"
+                alt="Man at his kitchen table in morning light, notebook open, mid-idea"
+                width={640}
+                height={360}
+                className="auth-panel__spark-image"
+              />
+              <figcaption>Where it starts</figcaption>
+            </figure>
+          ) : null}
+          <div className="auth-panel__form-col">
+            <RouteUnlockBanner blockedDetail={copy.infraPreview.signup} />
+            <p className="eyebrow">{copy.brand}</p>
+            <h1>{devPreview ? "Use Werkles on this device" : copy.auth.signupTitle}</h1>
             <p>
-              After signup we ask three quick questions — your lane, your trade, and where you work — then you choose
-              how deep to build your profile. You can explore proof and pricing before paying Foundry Dues.
+              {devPreview
+                ? "Account creation is unavailable in this local build. Continue with the private practice member already prepared on this device."
+                : copy.auth.signupSubhead}
             </p>
-            <div className="trust-state-strip" aria-label="Signup path">
-              <span>Onboarding</span>
-              <span>Profile</span>
-              <span>Dues optional</span>
-            </div>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/proof">
-                Inspect proof first
-              </Link>
-              <Link className="button button-outline" href="/pricing">
-                Compare pricing
-              </Link>
-            </div>
-          </section>
+            {devPreview ? (
+              <form className="form-stack" action="/api/auth-first/dev-preview-login" method="post">
+                <input type="hidden" name="next" value="/onboarding" />
+                <input type="hidden" name="email" value="walkthrough@werkles.local" />
+                <input type="hidden" name="password" value="local-walkthrough" />
+                <p className="status-line" role="status">{localAuthPreviewTruth.signup}</p>
+                <button className="button button-dark" style={{ minHeight: 44 }} type="submit">
+                  Continue to Werkles
+                </button>
+              </form>
+            ) : <>
+            <form className="form-stack" onSubmit={handleSubmit}>
+              <label className="field">
+                <span>Email</span>
+                <input name="email" type="email" autoComplete="email" required disabled={previewBlocked} />
+              </label>
+              <label className="field">
+                <span>Password</span>
+                <input
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  minLength={8}
+                  disabled={previewBlocked}
+                />
+              </label>
+              <label className="field">
+                <span>Confirm password</span>
+                <input
+                  name="confirm"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  minLength={8}
+                  disabled={previewBlocked}
+                />
+              </label>
+              <button className="button button-dark" type="submit" disabled={previewBlocked}>
+                {previewBlocked ? "Sign-up disabled (preview)" : copy.auth.signupCta}
+              </button>
+              <p className="status-line" role="status">{status}</p>
+            </form>
+            <Link className="button button-outline" href="/login">I already have an account</Link>
 
-          <section className="ops-card auth-doorway" aria-label="After signup">
-            <div className="card-heading">
-              <p>After signup</p>
-              <h2>Check email, then onboarding.</h2>
-            </div>
-            <p>
-              If the email is slow or the link expired, try logging in — your confirmation may have already gone
-              through.
-            </p>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/login">
-                Log in
-              </Link>
-            </div>
-          </section>
-        </div>
-      </section>
-    </main>
+            <section className="ops-card auth-doorway" aria-label="What happens next">
+              <div className="card-heading">
+                <p>What happens next</p>
+                <h2>Free account first. Dues only when the floor earns it.</h2>
+              </div>
+              <p>
+                After signup we ask three quick questions — your lane, your trade, and where you work — then you choose
+                how deep to build your profile. You can explore proof and pricing before paying Foundry Dues.
+              </p>
+              <div className="trust-state-strip" aria-label="Signup path">
+                <span>Onboarding</span>
+                <span>Profile</span>
+                <span>Dues optional</span>
+              </div>
+              <div className="member-selected-surface__actions">
+                <Link className="button button-outline" href="/proof">
+                  Inspect proof first
+                </Link>
+                <Link className="button button-outline" href="/pricing">
+                  Compare pricing
+                </Link>
+              </div>
+            </section>
+
+            <section className="ops-card auth-doorway" aria-label="After signup">
+              <div className="card-heading">
+                <p>After signup</p>
+                <h2>Check email, then onboarding.</h2>
+              </div>
+              <p>
+                If the email is slow or the link expired, try logging in — your confirmation may have already gone
+                through.
+              </p>
+              <div className="member-selected-surface__actions">
+                <Link className="button button-outline" href="/login">
+                  Log in
+                </Link>
+              </div>
+            </section>
+            </>}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }

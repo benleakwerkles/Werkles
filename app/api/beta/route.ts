@@ -1,24 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { copy, type UserLane } from "@/lib/copy";
 import { getSupabaseService } from "@/lib/supabase/server";
 
-const laneMap: Record<string, string> = {
-  builder: "Builder",
-  operator: "Operator",
-  backer: "Backer",
-  connector: "Connector",
-  spark: "Spark",
-  Builder: "Builder",
-  Operator: "Operator",
-  Backer: "Backer",
-  Connector: "Connector",
-  Spark: "Spark"
-};
+const laneMap = new Map<string, UserLane>(
+  copy.laneOptions.map((lane) => [lane.toLowerCase(), lane])
+);
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const email = String(body?.email || "").trim().toLowerCase();
-    const lane = laneMap[String(body?.lane || "").trim()] || null;
+    const lane = laneMap.get(String(body?.lane || "").trim().toLowerCase()) || null;
 
     if (!email || !email.includes("@")) {
       return NextResponse.json({ error: "Valid email is required" }, { status: 400 });

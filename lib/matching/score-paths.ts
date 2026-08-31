@@ -3,6 +3,7 @@ import type { RecommendationKind } from "@/lib/squibb/recommendations";
 import { RECOMMENDATION_KIND_LABELS } from "@/lib/squibb/recommendations";
 
 import { isPathDisqualified } from "@/lib/matching/not-match";
+import { starterProfileForSignals } from "@/lib/matching/starter-profile";
 
 import type {
 
@@ -34,18 +35,58 @@ const RULES: PathRule[] = [
 
   {
     kind: "verify_proof",
-    base: 35,
+    base: 20,
     score: (s, layer0) => {
-      const points = s.capitalSeeking ? 30 : layer0.confidence === "low" ? 20 : 0;
+      const hasDemandDecision = s.blockerKeywords.some((keyword) =>
+        ["customer", "customers", "sales", "demand", "order", "orders", "preorder", "validate"].includes(keyword)
+      );
+      const hasCapacityDecision = s.blockerKeywords.some((keyword) =>
+        ["tool", "tools", "equipment", "space", "kitchen", "oven", "capacity", "lease", "leasing"].includes(keyword)
+      );
+      const points = s.capitalSeeking
+        ? 30
+        : hasDemandDecision && hasCapacityDecision
+          ? 28
+          : layer0.confidence === "low"
+            ? 20
+            : 0;
       return {
         points,
         reasons: [
           s.capitalSeeking
             ? "Money or dilution paths require proof before reliance."
+            : hasDemandDecision && hasCapacityDecision
+              ? "You are weighing customer demand against a capacity commitment, so a paid-demand test should lead."
             : layer0.confidence === "low"
               ? "Low-confidence translation needs proof before a specific path can lead."
               : "Keep proof visible without crowding out directly evidenced low-risk paths."
         ]
+      };
+    }
+  },
+  {
+    kind: "translate_need",
+    base: 0,
+    score: (s, layer0) => {
+      const isDigitalReadinessDecision =
+        /\b(apps?|websites?|sites?|software|platform|code|programmer)\b/i.test(s.intakeTextBlob) &&
+        /\b(ready|built enough|customer ready|mentor|investor|investment|funding|launch)\b/i.test(s.intakeTextBlob) &&
+        /\b(testing|prototype|idea|planning|starting|pre[- ]?launch)\b/i.test(
+          `${s.intakeTextBlob} ${starterProfileForSignals(s).stage}`
+        );
+      const hasNamedChoice = s.blockerKeywords.some((keyword) =>
+        ["choose", "whether", "decide", "decision", "before", "versus"].includes(keyword)
+      );
+      const points = isDigitalReadinessDecision ? 44 : hasNamedChoice ? 24 : layer0.confidence === "low" ? 16 : 0;
+      return {
+        points,
+        reasons: isDigitalReadinessDecision
+          ? ["You are deciding whether two early products are ready for different audiences; that calls for a written readiness test before more polishing."]
+          : hasNamedChoice
+          ? ["You named a real choice; Werkles can turn it into a written decision rule."]
+          : layer0.confidence === "low"
+            ? ["The next decision still needs a clearer boundary before a larger commitment."]
+            : []
       };
     }
   },
@@ -57,13 +98,25 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.capitalSeeking ? 42 : 8,
+      points:
+        s.capitalSeeking &&
+        /\b(testing|prototype|idea|planning|starting|pre[- ]?launch)\b/i.test(starterProfileForSignals(s).stage) &&
+        !s.assets.includes("Customers")
+          ? 8
+          : s.capitalSeeking
+            ? 42
+            : 0,
 
       reasons: s.capitalSeeking
 
-        ? ["Capital language detected — member-owned lending may fit before equity."]
+        ? [
+            /\b(testing|prototype|idea|planning|starting|pre[- ]?launch)\b/i.test(starterProfileForSignals(s).stage) &&
+            !s.assets.includes("Customers")
+              ? "Borrowing is premature until the use of funds and repayment evidence are concrete."
+              : "Capital language detected — member-owned lending may fit before equity."
+          ]
 
-        : ["Low capital signal — CU path is secondary."]
+        : []
 
     })
 
@@ -87,7 +140,7 @@ const RULES: PathRule[] = [
 
             ? 18
 
-            : 6,
+            : 0,
 
       reasons: s.partnerSeeking
 
@@ -107,9 +160,13 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.capitalSeeking && s.assets.includes("Idea") ? 28 : 12,
+      points: s.capitalSeeking && s.assets.includes("Idea") ? 28 : s.capitalSeeking ? 18 : 0,
 
-      reasons: ["Capital seek with idea asset — structure review before dilution."]
+      reasons: s.capitalSeeking
+        ? s.assets.includes("Idea")
+          ? ["You named funding and a product, idea, prototype, or plan already in hand."]
+          : ["You named funding, but the Intake does not yet show what is ready to fund."]
+        : []
 
     })
 
@@ -123,13 +180,13 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.trainingSeeking ? 36 : s.jobSeeking ? 18 : 10,
+      points: s.trainingSeeking ? 36 : s.jobSeeking ? 18 : 0,
 
       reasons: s.trainingSeeking
 
         ? ["Training or credential language detected."]
 
-        : ["Training may close skill gap cheaper than a partner."]
+        : []
 
     })
 
@@ -143,9 +200,9 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.jobSeeking ? 40 : 8,
+      points: s.jobSeeking ? 40 : 0,
 
-      reasons: s.jobSeeking ? ["Employment change language detected."] : ["Weak job-change signal."]
+      reasons: s.jobSeeking ? ["You named a job, career, or role change."] : []
 
     })
 
@@ -159,7 +216,7 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.relocationSignal ? 34 : 5,
+      points: s.relocationSignal ? 34 : 0,
 
       reasons: s.relocationSignal ? ["Geography or relocation mentioned."] : []
 
@@ -175,9 +232,21 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.goalKeywords.some((k) => ["equipment", "oven", "truck", "tool", "lease"].includes(k)) ? 32 : 6,
+      points:
+        s.assets.includes("Tools") ||
+        [...s.goalKeywords, ...s.blockerKeywords].some((k) =>
+          ["equipment", "oven", "truck", "tool", "tools", "machine", "space", "kitchen", "capacity", "lease", "leasing"].includes(k)
+        )
+          ? 32
+          : 0,
 
-      reasons: ["Equipment/asset goal keywords checked."]
+      reasons:
+        s.assets.includes("Tools") ||
+        [...s.goalKeywords, ...s.blockerKeywords].some((k) =>
+          ["equipment", "oven", "truck", "tool", "tools", "machine", "space", "kitchen", "capacity", "lease", "leasing"].includes(k)
+        )
+          ? ["Your goal, obstacle, or next decision names equipment, space, capacity, or a lease."]
+          : []
 
     })
 
@@ -191,9 +260,13 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.capitalSeeking && s.leverage.constrained.includes("structural") ? 26 : 10,
+      points: s.capitalSeeking && s.leverage.constrained.includes("structural") ? 26 : s.capitalSeeking ? 14 : 0,
 
-      reasons: ["Banking relationship path scored when capital + structural signals align."]
+      reasons: s.capitalSeeking
+        ? s.leverage.constrained.includes("structural")
+          ? ["You named funding plus a banking, entity, lease, credit, or paperwork constraint."]
+          : ["You named funding; a small-business banking conversation may help define requirements before applying."]
+        : []
 
     })
 
@@ -207,7 +280,7 @@ const RULES: PathRule[] = [
 
     score: (s) => ({
 
-      points: s.partnerSeeking && s.assets.includes("Network") ? 14 : 4,
+      points: s.partnerSeeking && s.assets.includes("Network") ? 14 : 0,
 
       reasons: ["Guarded candidate staging only after translation and proof gaps are visible."]
 

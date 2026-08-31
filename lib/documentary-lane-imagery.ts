@@ -17,11 +17,9 @@ export type DocumentaryLaneIcon = {
 // imagery. Six lanes, six trades — none of them a toolbelt.
 const legacyDocumentaryLanePhotos: Record<LaneId, DocumentaryLanePhoto> = {
   spark: {
-    /* people-v1 swap (2026-08-02): the DJ rig read as "is she djing?" —
-       the baker's job is legible in one look. */
-    path: "/assets/draft/people-v1/people-baker-portrait.png",
-    caption: "The home kitchen that ran out of room",
-    alt: "Baker at her flour-dusted counter, looking up with quiet confidence — Spark lane"
+    path: "/assets/draft/people-v1/people-spark-idea-moment.jpg",
+    caption: "The moment the next move becomes worth testing",
+    alt: "Person pausing over a notebook to consider a new direction — Spark lane"
   },
   builder: {
     path: "/assets/draft/industry-breadth/werkles-industry-florist.png",

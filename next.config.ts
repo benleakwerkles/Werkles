@@ -18,7 +18,7 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      `default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}; connect-src 'self' https://*.supabase.co; img-src 'self' data: https://images.unsplash.com;`
+      `default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' https://cdn.plaid.com${isDevelopment ? " 'unsafe-eval'" : ""}; frame-src 'self' https://cdn.plaid.com; connect-src 'self' https://*.supabase.co https://sandbox.plaid.com; img-src 'self' data: https://images.unsplash.com;`
   },
   {
     key: "Strict-Transport-Security",
@@ -31,6 +31,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Keep the interactive walkthrough and release build from overwriting each
+  // other's CSS/chunk manifests when they run at the same time.
+  distDir: isDevelopment ? ".next-dev" : ".next",
   async headers() {
     return [
       {

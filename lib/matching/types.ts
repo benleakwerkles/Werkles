@@ -3,6 +3,7 @@ import type { DiscoveryAsset, DiscoveryLane } from "@/lib/discovery/schema";
 import type { RecommendationKind } from "@/lib/squibb/recommendations";
 
 import type { EvidenceStrength } from "@/lib/squibb/recommendations";
+import type { StructuredPathStatus } from "@/lib/matching/path-state";
 
 
 
@@ -36,6 +37,19 @@ export type LeverageDiagnosis = {
 
 };
 
+export type StarterProfileDraft = {
+  version: "v1";
+  source: "self_reported_intake";
+  project: string;
+  stage: string;
+  goal: string;
+  resources: string[];
+  offers: string[];
+  seeks: string[];
+  constraints: string[];
+  missing: string[];
+};
+
 
 export type StructuredSignals = {
 
@@ -46,6 +60,8 @@ export type StructuredSignals = {
   statedNeed: string;
 
   intakeTextBlob: string;
+
+  historicalAttemptText: string;
 
   lane: DiscoveryLane | "Unsure";
 
@@ -68,6 +84,16 @@ export type StructuredSignals = {
   leverage: LeverageDiagnosis;
 
   llmTranslatedBottleneck: string | null;
+
+  starterProfile: StarterProfileDraft;
+
+  pathStatuses: readonly StructuredPathStatus[];
+
+  consideringKinds: readonly RecommendationKind[];
+
+  triedKinds: readonly RecommendationKind[];
+
+  ruledOutKinds: readonly RecommendationKind[];
 
 };
 

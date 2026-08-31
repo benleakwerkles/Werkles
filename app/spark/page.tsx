@@ -129,7 +129,7 @@ export default function SparkPage() {
           </div>
           <p>
             Foundry Dues add the working layer when you are ready: guarded introductions, verification workflows,
-            and a Workshop where your venture gets built. Dues buy runway and tools — never a guaranteed outcome.
+            and a Workshop where your venture gets built. Membership supports the tools and guarded access—never a guaranteed outcome.
           </p>
         </section>
 

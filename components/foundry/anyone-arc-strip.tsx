@@ -40,7 +40,7 @@ const beats = [
     label: "Momentum",
     render: anyoneNarrativeAssets.arcMomentum,
     stock: anyoneStockAssets.batchMomentumHero.bakerWorking,
-    alt: "Small business running — same person further along"
+    alt: "Business running — same person further along"
   }
 ] as const;
 

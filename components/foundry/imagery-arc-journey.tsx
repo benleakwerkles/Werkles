@@ -68,7 +68,7 @@ export function ImageryArcJourney() {
           <AnyoneNarrativePhoto
             renderSrc={anyoneNarrativeAssets.arcMomentum}
             stockSrc={anyoneStockAssets.batchMomentumHero.bakerWorking}
-            alt="Small business momentum — real progress"
+            alt="Business momentum — real progress"
             width={960}
             height={540}
             className="imagery-arc-journey__momentum-photo"

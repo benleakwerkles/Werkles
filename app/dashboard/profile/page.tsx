@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
-import { SiteIcon } from "@/components/foundry/site-icon";
+import { MemberDataCustodyMap } from "@/components/profile/member-data-custody-map";
 import { copy } from "@/lib/copy";
 import { deriveAccessWeight } from "@/lib/access-weight-client";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
@@ -45,10 +46,21 @@ function joinTags(value?: string[]) {
   return (value || []).join(", ");
 }
 
+function profileDepthLabel(profile: ProfileRow) {
+  const weight = deriveAccessWeight(profile);
+  if (weight === "heavyweight") return "Verified details";
+  if (weight === "middleweight") return "More details";
+  return "Basic";
+}
+
+function checkStatusLabel(value?: string | null) {
+  if (!value || value === "none") return "Not started";
+  return value.replaceAll("_", " ");
+}
+
 export default function ProfilePage() {
   const [profile, setProfile] = useState<ProfileRow>({});
   const [status, setStatus] = useState("Loading profile...");
-  const [verificationStatus, setVerificationStatus] = useState(copy.verification.pending);
   const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
@@ -57,8 +69,8 @@ export default function ProfilePage() {
 
       try {
         supabase = getSupabaseBrowser();
-      } catch (error) {
-        setStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+      } catch {
+        setStatus("Profile saving is temporarily unavailable. Nothing on this page was sent or changed.");
         return;
       }
 
@@ -95,8 +107,8 @@ export default function ProfilePage() {
 
     try {
       supabase = getSupabaseBrowser();
-    } catch (error) {
-      setStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
+    } catch {
+      setStatus("Profile saving is temporarily unavailable. Your edits remain on this page and were not sent.");
       return;
     }
 
@@ -145,68 +157,51 @@ export default function ProfilePage() {
     setStatus(error ? error.message : "Profile saved.");
   }
 
-  async function triggerVerification(kind: "identity" | "funds") {
-    let supabase: ReturnType<typeof getSupabaseBrowser>;
-
-    try {
-      supabase = getSupabaseBrowser();
-    } catch (error) {
-      setVerificationStatus(error instanceof Error ? error.message : "The steel is not connected yet.");
-      return;
-    }
-
-    const { data } = await supabase.auth.getSession();
-    const token = data.session?.access_token;
-
-    if (!token) {
-      setVerificationStatus("Log in before preparing verification.");
-      return;
-    }
-
-    setVerificationStatus(copy.verification.pending);
-    const response = await fetch(`/api/verification/${kind}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    const payload = await response.json();
-    setVerificationStatus(payload.error || payload.label || copy.verification.prepared);
-  }
-
   return (
     <CockpitShell>
-      <main className="dashboard-main">
-      <nav className="dashboard-nav" aria-label="Dashboard navigation">
-        <Link href="/dashboard">Match deck</Link>
-        <Link href="/dashboard/blueprints">{copy.dashboard.workshops.navLabel}</Link>
-        <Link href="/dashboard/intros">Intros</Link>
-      </nav>
-
-      <section className="ops-card profile-editor">
-        <div className="card-heading product-heading">
-          <SiteIcon icon="product-profile" size="lg" className="site-icon--product" />
-          <div className="product-heading__copy">
-            <p>{copy.dashboard.profile.kicker}</p>
-            <h1>{copy.dashboard.profile.headline}</h1>
+      <main className="dashboard-main profile-page">
+      <section className="profile-member-hero" aria-labelledby="profile-page-title">
+        <div className="profile-member-hero__copy">
+          <p className="profile-member-hero__eyebrow">Your member card</p>
+          <h1 id="profile-page-title">Who you are—and what you want to build.</h1>
+          <p>
+            Give Werkles enough context to find useful work, people, and next moves. You can change it whenever your
+            plans change.
+          </p>
+          <div className="profile-member-hero__status" aria-label="Profile status">
+            <span><strong>{profileDepthLabel(profile)}</strong> profile</span>
+            <span><strong>{profile.membership_tier || "Free"}</strong> membership</span>
+            <span><strong>{profile.location_city || "Location"}</strong>{profile.location_state ? `, ${profile.location_state}` : " not added"}</span>
           </div>
         </div>
-        <div className="trust-state-strip" aria-label="Trust state">
-          <span>{deriveAccessWeight(profile)} Foundry record</span>
-          <span>Membership: {profile.membership_tier || "free"}</span>
-          <span>ID: {profile.id_status || "none"}</span>
-          <span>Assets: {profile.funds_status || "none"}</span>
+        <figure className="profile-member-hero__visual">
+          <Image
+            src="/assets/draft/people-v1/people-spark-idea-moment.jpg"
+            alt="A business owner shaping an idea at a worktable"
+            width={1536}
+            height={1024}
+            sizes="(max-width: 820px) 100vw, 42vw"
+            priority
+          />
+          <figcaption>Your profile should sound like a person, not an application file.</figcaption>
+        </figure>
+      </section>
+
+      <section className="ops-card profile-editor" id="profile-form">
+        <div className="card-heading">
+          <p>Who you are</p>
+          <h2>Build the profile people will meet.</h2>
         </div>
         {/* Owner walkthrough 2026-07-27: the profile felt like a form to
            survive. Same fields, same save — regrouped into three short
            stages so autofill facts and reflective questions stop
            interleaving. */}
         <form className="profile-form-staged" key={`${email || "anonymous"}:${profile.display_name || "new"}`} onSubmit={handleSubmit}>
-          <fieldset className="profile-stage">
-            <legend>
+          <details className="profile-stage" open>
+            <summary>
               <span className="profile-stage__num">1</span> The facts
               <small>Name, contact, location — the autofill stuff. One pass, done.</small>
-            </legend>
+            </summary>
             <div className="profile-grid">
               <label className="field">
                 <span>Display name</span>
@@ -241,7 +236,7 @@ export default function ProfilePage() {
                 <input name="location_state" defaultValue={profile.location_state || ""} maxLength={2} autoComplete="address-level1" required />
               </label>
               <label className="field">
-                <span>Turf ZIP</span>
+                <span>ZIP code</span>
                 <input name="turf_zip" defaultValue={profile.turf_zip || ""} inputMode="numeric" maxLength={5} autoComplete="postal-code" />
               </label>
               <label className="field">
@@ -259,16 +254,16 @@ export default function ProfilePage() {
                 </select>
               </label>
             </div>
-          </fieldset>
+          </details>
 
-          <fieldset className="profile-stage">
-            <legend>
+          <details className="profile-stage">
+            <summary>
               <span className="profile-stage__num">2</span> Your work
               <small>Pick from lists — what you do and what you're looking for.</small>
-            </legend>
+            </summary>
             <div className="profile-grid">
               <label className="field">
-                <span>Lane</span>
+                <span>Role you want to play</span>
                 <select name="lane" defaultValue={profile.lane || "Builder"}>
                   {copy.laneOptions.map((lane) => <option key={lane}>{lane}</option>)}
                 </select>
@@ -282,9 +277,9 @@ export default function ProfilePage() {
               <label className="field">
                 <span>{copy.dashboard.profile.depthLabel}</span>
                 <select name="profile_depth" defaultValue={profile.profile_depth || "quick_weld"}>
-                  <option value="quick_weld">Quick Weld</option>
-                  <option value="full_audit">Full Audit</option>
-                  <option value="blueprint">Blueprint</option>
+                  <option value="quick_weld">Quick profile</option>
+                  <option value="full_audit">Detailed profile</option>
+                  <option value="blueprint">Business plan</option>
                 </select>
               </label>
               <label className="field wide-field">
@@ -300,13 +295,13 @@ export default function ProfilePage() {
                 <input name="industry_tags" defaultValue={joinTags(profile.industry_tags)} placeholder="plumbing, home services" />
               </label>
             </div>
-          </fieldset>
+          </details>
 
-          <fieldset className="profile-stage">
-            <legend>
+          <details className="profile-stage">
+            <summary>
               <span className="profile-stage__num">3</span> Your story
               <small>The thinking questions — take your time, or come back later.</small>
-            </legend>
+            </summary>
             <div className="profile-grid">
               {/* Guided choices plus custom entry (owner walkthrough) — a
                  datalist keeps free text while offering real options. */}
@@ -346,7 +341,7 @@ export default function ProfilePage() {
                 </datalist>
               </label>
               <label className="field wide-field">
-                <span>Blueprint narrative</span>
+                <span>What you are building</span>
                 <textarea
                   name="blueprint_narrative"
                   defaultValue={profile.blueprint_narrative || ""}
@@ -355,7 +350,7 @@ export default function ProfilePage() {
                 />
               </label>
             </div>
-          </fieldset>
+          </details>
 
           <div className="profile-actions">
             <button className="button button-dark" type="submit">Save profile</button>
@@ -364,65 +359,55 @@ export default function ProfilePage() {
         </form>
       </section>
 
-      <section className="ops-card" aria-label="Member floor map">
+      <section className="ops-card profile-proof-overview" aria-labelledby="profile-proof-title">
         <div className="card-heading">
-          <p>Member floor</p>
-          <h2>Profile is the anchor. Everything else hangs off it.</h2>
+          <p>Prove it</p>
+          <h2 id="profile-proof-title">Add a check only when a decision needs one.</h2>
         </div>
-        <p>
-          Save lane, turf, and skills here first. Then use the member surfaces to move work forward — intros, checks, and
-          proof stay separate from profile depth.
+        <p className="profile-proof-overview__lead">
+          A check confirms one narrow fact. It does not rank your worth, reveal your balance to the community, or make
+          every profile claim true.
         </p>
-        <div className="member-selected-surface__actions">
-          <Link className="button button-outline" href="/dashboard">
-            Member home
-          </Link>
-          <Link className="button button-outline" href="/dashboard/intros">
-            Intros
-          </Link>
+        <div className="profile-proof-overview__grid">
+          <article>
+            <span>Identity</span>
+            <strong>{checkStatusLabel(profile.id_status)}</strong>
+            <p>Confirms that a real person completed the identity step.</p>
+            <Link href="/dashboard/crucible#check-identity">Review identity check →</Link>
+          </article>
+          <article>
+            <span>Phone</span>
+            <strong>Not started</strong>
+            <p>Confirms control of a phone number without publishing it.</p>
+            <Link href="/dashboard/crucible#check-phone">Review phone check →</Link>
+          </article>
+          <article>
+            <span>Funds</span>
+            <strong>{checkStatusLabel(profile.funds_status)}</strong>
+            <p>Can confirm a threshold and date—not display or rank account balances.</p>
+            <Link href="/dashboard/crucible#check-funds">Review funds check →</Link>
+          </article>
+          <article>
+            <span>Claim review</span>
+            <strong>{checkStatusLabel(profile.deep_audit_status)}</strong>
+            <p>For a specific claim that needs human review. This is not available yet.</p>
+            <span className="profile-proof-overview__unavailable">Coming later</span>
+          </article>
+        </div>
+        <div className="profile-proof-overview__actions">
           <Link className="button button-outline" href="/dashboard/crucible">
-            Crucible checks
+            Open detailed checks
           </Link>
           <Link className="button button-outline" href="/proof">
-            Proof doctrine
+            How checks work
           </Link>
         </div>
       </section>
 
-      <section className="ops-card verification-card">
-        <div className="card-heading">
-          <p>Verification Gates</p>
-          <h2>{copy.dashboard.profile.verificationHeadline}</h2>
-        </div>
-        <p>{copy.dashboard.profile.verificationBody}</p>
-        <p className="muted">
-          Verification is optional and separate from Foundry Dues. Provider wiring may be paused — profile and Crucible
-          surfaces still show readiness without pretending a check ran.
-        </p>
-        <div className="verification-actions">
-          <button className="button button-outline" type="button" onClick={() => triggerVerification("identity")}>
-            Prepare ID Check
-          </button>
-          <button className="button button-outline" type="button" onClick={() => triggerVerification("funds")}>
-            Prepare Asset Check
-          </button>
-        </div>
-        <p className="status-line" role="status">{verificationStatus}</p>
-      </section>
-
-      <section className="ops-card deep-audit-card">
-        <div className="card-heading">
-          <p>{copy.deepAudit.title}</p>
-          <h2>Manual review for claims that need more weight.</h2>
-        </div>
-        <p>{copy.deepAudit.body}</p>
-        <button className="button button-light deep-audit-button" type="button" disabled>
-          {copy.deepAudit.cta}
-        </button>
-        <p className="status-line">
-          Status: {profile.deep_audit_status || "none"}. {copy.deepAudit.placeholder}
-        </p>
-      </section>
+      <details className="profile-custody-disclosure">
+        <summary>Where this information saves</summary>
+        <MemberDataCustodyMap />
+      </details>
       </main>
     </CockpitShell>
   );

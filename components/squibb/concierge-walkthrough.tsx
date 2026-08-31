@@ -7,7 +7,7 @@ import { HumanGateStrip } from "./human-gate-strip";
 
 const FLOW_STEPS = [
   { id: "symptom", label: "Your symptom" },
-  { id: "think", label: "Speaker's read" },
+  { id: "think", label: "Squibb's read" },
   { id: "why", label: "Why" },
   { id: "wrong", label: "Prove wrong" },
   { id: "test", label: "Your test" }
@@ -71,7 +71,7 @@ export function ConciergeWalkthrough({ walkthrough, speakerRead }: ConciergeWalk
   return (
     <div className="concierge-user-flow concierge-user-flow--60s">
       <header className="concierge-user-flow__hero panel">
-        <p className="eyebrow">Squibb · User #{walkthrough.testCaseId} · 60-second read</p>
+        <p className="eyebrow">Squibb · worked example · 60-second read</p>
         <h1>What is actually going on?</h1>
         <p className="concierge-user-flow__lead">
           Five cards. No matching. No candidate list.
@@ -88,7 +88,7 @@ export function ConciergeWalkthrough({ walkthrough, speakerRead }: ConciergeWalk
 
         {speakerRead ? (
           <>
-            <FlowCard step={2} title="What does Speaker think?" variant="speaker">
+            <FlowCard step={2} title="What does Squibb think?" variant="speaker">
               <p className="concierge-speaker-headline">{speakerRead.speakersRead.headline}</p>
               <p className="concierge-speaker-summary">{speakerRead.speakersRead.summary}</p>
               <div className="concierge-speaker-confidence">
@@ -100,7 +100,7 @@ export function ConciergeWalkthrough({ walkthrough, speakerRead }: ConciergeWalk
               </div>
             </FlowCard>
 
-            <FlowCard step={3} title="Why does Speaker think it?" variant="why">
+            <FlowCard step={3} title="Why does Squibb think it?" variant="why">
               <ul className="concierge-bullet-list">
                 {speakerRead.whySpeakerThinksThis.reasons.map((reason) => (
                   <li key={reason}>{reason}</li>
@@ -120,7 +120,7 @@ export function ConciergeWalkthrough({ walkthrough, speakerRead }: ConciergeWalk
               </div>
             </FlowCard>
 
-            <FlowCard step={4} title="What would prove Speaker wrong?" variant="falsify">
+            <FlowCard step={4} title="What would prove Squibb wrong?" variant="falsify">
               <ul className="concierge-bullet-list concierge-bullet-list--falsify">
                 {speakerRead.wouldProveWrong.map((item) => (
                   <li key={item}>{item}</li>

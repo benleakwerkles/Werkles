@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RouteUnlockBanner } from "@/components/foundry/route-unlock-banner";
+import { SiteHeader } from "@/components/foundry/site-header";
 import { copy } from "@/lib/copy";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
@@ -94,8 +95,10 @@ export default function AuthCallbackPage() {
   }, [router]);
 
   return (
-    <main className="auth-shell">
-      <section className="auth-panel">
+    <>
+      <SiteHeader />
+      <main className="auth-shell">
+        <section className="auth-panel">
         <RouteUnlockBanner blockedDetail={copy.infraPreview.login} />
         <p className="eyebrow">Werkles</p>
         <h1>Opening the gate.</h1>
@@ -133,7 +136,8 @@ export default function AuthCallbackPage() {
             </Link>
           </div>
         </section>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }

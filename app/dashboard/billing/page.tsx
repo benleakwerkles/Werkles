@@ -8,7 +8,7 @@ import { copy } from "@/lib/copy";
 import { pricing } from "@/lib/pricing";
 import { routeAtmosphere } from "@/lib/workshop-facets";
 import { isAuthStripeTestBlocked, isFoundryDuesCheckoutPaused } from "@/lib/app-infra-preview";
-import { shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
+import { isSignedInForDevPreview, shouldUseDevPreviewAuth } from "@/lib/dev-preview-auth";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
 
 type BillingProfile = {
@@ -33,6 +33,40 @@ export default function BillingPage() {
   const [status, setStatus] = useState(
     preview ? copy.dashboard.billing.disabledReason : copy.dashboard.billing.idle
   );
+  const [authState, setAuthState] = useState<"checking" | "signed-in">("checking");
+
+  // Anonymous visitors were getting the full billing surface (Bean #5).
+  // Same client-side guard pattern as member-dashboard-client.
+  useEffect(() => {
+    let cancelled = false;
+
+    async function checkAuth() {
+      const target = "/login?next=/dashboard/billing";
+      if (shouldUseDevPreviewAuth()) {
+        if (!isSignedInForDevPreview()) {
+          window.location.replace(target);
+          return;
+        }
+        if (!cancelled) setAuthState("signed-in");
+        return;
+      }
+      try {
+        const { data } = await getSupabaseBrowser().auth.getUser();
+        if (!data.user) {
+          window.location.replace(target);
+          return;
+        }
+        if (!cancelled) setAuthState("signed-in");
+      } catch {
+        window.location.replace(target);
+      }
+    }
+
+    void checkAuth();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (preview) return;
@@ -120,16 +154,22 @@ export default function BillingPage() {
     ? copy.dashboard.billing.customerLinked
     : copy.dashboard.billing.customerNotLinked;
 
+  if (authState !== "signed-in") {
+    return (
+      <CockpitShell>
+        <main className="dashboard-main">
+          <section className="ops-card billing-panel" aria-live="polite">
+            <p className="eyebrow">Billing</p>
+            <h1>Checking session...</h1>
+          </section>
+        </main>
+      </CockpitShell>
+    );
+  }
+
   return (
     <CockpitShell>
       <main className={`dashboard-main ${routeAtmosphere.billing}`}>
-      <nav className="dashboard-nav" aria-label="Billing navigation">
-        <Link href="/dashboard">{copy.nav.workbench}</Link>
-        <Link href="/membership">{copy.nav.membership}</Link>
-        <Link href="/pricing">{copy.nav.pricing}</Link>
-        <Link href="/dashboard/crucible">{copy.nav.crucible}</Link>
-      </nav>
-
       <div className="tier2-visual-band">
         <Tier2PageVisual page="billing" featured iconRail />
       </div>
@@ -142,8 +182,8 @@ export default function BillingPage() {
         <p>{copy.dashboard.billing.summary}</p>
         <p className="muted">
           {paymentsPaused
-            ? "Foundry Dues checkout is paused while operator payment setup finishes. Your free member path stays open."
-            : "Test-mode billing is wired. Membership state still updates from Stripe webhooks — not from this page alone."}
+            ? "Foundry Dues checkout is paused while payment setup finishes. Your free member path stays open."
+            : "Membership state updates automatically after payment confirms — it can take a moment to reflect here."}
         </p>
         {preview ? <p className="muted">{copy.dashboard.billing.disabledReason}</p> : null}
         <div className="trust-state-strip">
@@ -166,7 +206,7 @@ export default function BillingPage() {
         </p>
         <div className="billing-actions">
           <Link className="button button-dark" href="/membership">
-            {copy.dashboard.billing.checkoutCta}
+            Review Membership Value
           </Link>
           <button className="button button-outline" type="button" onClick={openPortal} disabled={preview || paymentsPaused}>
             {paymentsPaused ? "Portal paused" : copy.dashboard.billing.portalCta}
@@ -191,6 +231,9 @@ export default function BillingPage() {
         <div className="member-selected-surface__actions">
           <Link className="button button-outline" href="/pricing">
             Compare pricing
+          </Link>
+          <Link className="button button-outline" href="/membership">
+            What membership includes
           </Link>
           <Link className="button button-outline" href="/dashboard/crucible">
             Review Crucible checks

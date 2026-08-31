@@ -1,17 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { getClientAccessToken } from "@/lib/client-auth";
 import { isSignedInForDevPreview, shouldUseRuntimePreviewAuth } from "@/lib/dev-preview-auth";
 import { clearDevPreviewSession, readDevPreviewSession, writeDevPreviewSession } from "@/lib/dev-preview-session";
 import { getSupabaseBrowser } from "@/lib/supabase/client";
+import { firstSharedStepFromOperatingBrief } from "@/lib/werkle/operating-brief";
+import {
+  storedWerkleOperatingBriefFrom,
+  storedWerkleOperatingBriefHref,
+  WERKLE_OPERATING_BRIEF_DEVICE_KEY
+} from "@/lib/werkle/operating-brief-device";
 
 type AuthState = "checking" | "signed-in" | "signed-out";
 
 type MemberDashboardClientProps = {
   initialSignedIn?: boolean;
   initialEmail?: string | null;
+  initialHasIntake?: boolean;
 };
 
 function clearSupabaseBrowserStorage() {
@@ -19,37 +28,29 @@ function clearSupabaseBrowserStorage() {
   for (const storage of [window.localStorage, window.sessionStorage]) {
     for (let index = storage.length - 1; index >= 0; index -= 1) {
       const key = storage.key(index);
-      if (key?.includes("supabase") || key?.startsWith("sb-")) {
-        storage.removeItem(key);
-      }
+      if (key?.includes("supabase") || key?.startsWith("sb-")) storage.removeItem(key);
     }
   }
 }
 
 export function MemberDashboardClient({
   initialSignedIn = false,
-  initialEmail = null
+  initialEmail = null,
+  initialHasIntake = false
 }: MemberDashboardClientProps) {
   const [authState, setAuthState] = useState<AuthState>(initialSignedIn ? "signed-in" : "checking");
   const [email, setEmail] = useState<string | null>(initialEmail);
+  const [hasIntake, setHasIntake] = useState(initialHasIntake);
+  const [savedWerkle, setSavedWerkle] = useState<null | { href: string; step: string | null }>(null);
 
   useEffect(() => {
     let cancelled = false;
-
     async function checkAuth() {
-      const preview = shouldUseRuntimePreviewAuth();
-
-      if (preview) {
+      if (shouldUseRuntimePreviewAuth()) {
         const session = readDevPreviewSession();
         if (!session && initialSignedIn && initialEmail) {
-          writeDevPreviewSession({
-            userId: "dev-preview-user",
-            email: initialEmail
-          });
-          if (!cancelled) {
-            setEmail(initialEmail);
-            setAuthState("signed-in");
-          }
+          writeDevPreviewSession({ userId: "dev-preview-user", email: initialEmail });
+          if (!cancelled) { setEmail(initialEmail); setAuthState("signed-in"); }
           return;
         }
         if (!session || !isSignedInForDevPreview()) {
@@ -57,10 +58,7 @@ export function MemberDashboardClient({
           window.location.replace("/login?next=/dashboard");
           return;
         }
-        if (!cancelled) {
-          setEmail(session.email);
-          setAuthState("signed-in");
-        }
+        if (!cancelled) { setEmail(session.email); setAuthState("signed-in"); }
         return;
       }
 
@@ -71,277 +69,130 @@ export function MemberDashboardClient({
           window.location.replace("/login?next=/dashboard");
           return;
         }
-        if (!cancelled) {
-          setEmail(data.user.email ?? null);
-          setAuthState("signed-in");
-        }
+        if (!cancelled) { setEmail(data.user.email ?? null); setAuthState("signed-in"); }
       } catch {
         if (!cancelled) setAuthState("signed-out");
         window.location.replace("/login?next=/dashboard");
       }
     }
-
     void checkAuth();
-
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [initialEmail, initialSignedIn]);
+
+  useEffect(() => {
+    if (authState !== "signed-in") return;
+    let active = true;
+    void (async () => {
+      const token = await getClientAccessToken();
+      if (!token || token === "dev-preview-token") return;
+      const response = await fetch("/api/bellows/workshop/current", {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store"
+      });
+      if (!response.ok || !active) return;
+      const result = await response.json().catch(() => ({}));
+      if (active && typeof result?.state?.hasIntake === "boolean") setHasIntake(result.state.hasIntake);
+    })().catch(() => undefined);
+    return () => { active = false; };
+  }, [authState]);
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(WERKLE_OPERATING_BRIEF_DEVICE_KEY);
+      if (!raw) return;
+      const stored = storedWerkleOperatingBriefFrom(JSON.parse(raw));
+      if (!stored) return;
+      setSavedWerkle({
+        href: storedWerkleOperatingBriefHref(stored),
+        step: firstSharedStepFromOperatingBrief(stored.brief)?.text ?? null
+      });
+    } catch {
+      setSavedWerkle(null);
+    }
+  }, []);
 
   async function logout() {
     clearDevPreviewSession();
     clearSupabaseBrowserStorage();
-    try {
-      await getSupabaseBrowser().auth.signOut({ scope: "global" });
-    } catch {
-      // Preview mode may not have Supabase env. Storage clearing above is the required local logout.
-    }
+    try { await getSupabaseBrowser().auth.signOut({ scope: "global" }); } catch { /* Preview may have no Supabase env. */ }
     window.location.replace("/login?logged_out=1");
   }
 
   if (authState !== "signed-in") {
-    return (
-      <section className="member-dashboard member-dashboard--checking" aria-live="polite">
-        <p className="eyebrow">Member dashboard</p>
-        <h1>{authState === "checking" ? "Checking session..." : "Redirecting to login..."}</h1>
-      </section>
-    );
+    return <section className="member-dashboard member-dashboard--checking" aria-live="polite"><p className="eyebrow">Member home</p><h1>{authState === "checking" ? "Checking session..." : "Redirecting to login..."}</h1></section>;
   }
 
   return (
-    <section className="member-dashboard" aria-label="Member dashboard">
-      <section className="ops-card" aria-label="Member floor">
-        <div className="card-heading">
-          <p>Member floor</p>
-          <h2>Build the record that makes intros easy.</h2>
+    <section className="member-dashboard" aria-label="Member home">
+      <div className="member-dashboard__topbar">
+        <div>
+          <p className="eyebrow">Werkles member home</p>
+          <h1>Welcome back.</h1>
+          <p className="member-dashboard__subhead">{email ? `Signed in as ${email}. ` : ""}Pick up the work, the learning, or the people search.</p>
         </div>
-        <p>
-          Profile, workshops, intros, and checks each do one job. Start wherever your work is — everything here adds
-          to the same record.
-        </p>
-        <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href="/dashboard/profile">
-            Update profile
-          </Link>
-          <Link className="button button-outline" href="/dashboard/blueprints">
-            Open workshops
-          </Link>
-          <Link className="button button-outline" href="/dashboard/intros">
-            Intros
-          </Link>
-          <Link className="button button-outline" href="/dashboard/crucible">
-            Crucible checks
-          </Link>
-        </div>
-      </section>
-
-      <section className="ops-card member-works-now" aria-label="What works now">
-        <div className="card-heading">
-          <p>Honest status</p>
-          <h2>What works now · what&apos;s paused</h2>
-        </div>
-        <div className="member-works-now__grid">
-          <div>
-            <h3>Available now</h3>
-            <ul>
-              <li>Account, login, onboarding, and profile</li>
-              <li>Member home, workshops, and intros queue</li>
-              <li>Bellows intake and Squibb recommendations (demo + saved intake)</li>
-              <li>Proof, pricing, and narrative entry paths</li>
-              <li>Foundry membership enrollment where checkout is available</li>
-              <li>Identity and account-connection checks for eligible active members</li>
-            </ul>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-dark" href="/bellows/intake">
-                Start intake
-              </Link>
-              <Link className="button button-outline" href="/dashboard/profile">
-                Update profile
-              </Link>
-            </div>
-          </div>
-          <div>
-            <h3>Still being prepared</h3>
-            <ul>
-              <li>Paid checkout where payment setup is not yet complete</li>
-              <li>Phone, license, reference, and employment checks</li>
-              <li>Background checks pending the required legal and member protections</li>
-            </ul>
-            <p className="muted">
-              Available checks are labeled clearly. Anything still being prepared will not be presented as verified.
-            </p>
-            <div className="member-selected-surface__actions">
-              <Link className="button button-outline" href="/dashboard/crucible">
-                Open Crucible
-              </Link>
-              <Link className="button button-outline" href="/proof">
-                Inspect proof
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+        <form action="/api/auth-first/logout" method="post" onSubmit={(event) => { event.preventDefault(); void logout(); }}>
+          <button className="button button-outline member-dashboard__logout" type="submit">Log out</button>
+        </form>
+      </div>
 
       <section className="member-next-move-card" aria-label="Your next move">
         <div className="member-next-move-card__copy">
           <p className="member-next-move-card__kicker">Your next move</p>
-          <h2>Start intake.</h2>
-          <p>
-            Give Werkles one real decision, stuck idea, or business problem to shape into a useful first artifact.
-          </p>
+          <h2>{hasIntake ? "Your Intake is here. Keep moving." : "Start with one real piece of work."}</h2>
+          <p>{hasIntake
+            ? "Review the ideas Werkles built from it, continue a Bellows draft, or see who may fit the work."
+            : "Tell Werkles what you are trying to make happen and what is getting in the way."}</p>
         </div>
-        <dl className="member-next-move-card__facts">
-          <div>
-            <dt>Action</dt>
-            <dd>Click Start intake.</dd>
-          </div>
-          <div>
-            <dt>Reason</dt>
-            <dd>Werkles needs one clear piece of work before it can help.</dd>
-          </div>
-          <div>
-            <dt>Expected outcome</dt>
-            <dd>A plain-English next step you can read and use.</dd>
-          </div>
-        </dl>
-        <Link className="button button-dark member-next-move-card__button" href="/bellows/intake">
-          Start intake
-        </Link>
-      </section>
-
-      <section className="ops-card" aria-label="Member work queue">
-        <div className="card-heading">
-          <p>Work queue</p>
-          <h2>Turn one messy need into a useful next step.</h2>
-        </div>
-        <p>
-          Start with Bellows intake, then compare Squibb's recommendation surface and the concierge walkthrough.
-          This keeps the member path on the work itself: symptoms, context, evidence, and a reversible next move.
-        </p>
         <div className="member-selected-surface__actions">
-          <Link className="button button-dark" href="/bellows/intake">
-            Start intake
-          </Link>
-          <Link className="button button-outline" href="/bellows/recommendations">
-            See recommendations
-          </Link>
-          <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
-            Walk through an example
-          </Link>
-          <Link className="button button-outline" href="/dashboard/profile">
-            Update profile
-          </Link>
+          {hasIntake ? (
+            <>
+              <Link className="button button-dark" href="/bellows/recommendations">Open Recommendations</Link>
+              <Link className="button button-outline" href="/bellows/personal">Open My Bellows</Link>
+              <Link className="button button-outline" href="/dashboard/intros">Open Match Deck</Link>
+              <Link className="button button-outline" href="/bellows/intake">Review Intake</Link>
+            </>
+          ) : <Link className="button button-dark" href="/bellows/intake">Start Intake</Link>}
         </div>
       </section>
 
-      <details className="member-dashboard-secondary">
-        <summary>Secondary: what Werkles is, what you can do, and supporting links</summary>
-        <div className="member-dashboard-secondary__body">
-      <div className="member-dashboard__topbar">
-        <div>
-          <p className="eyebrow">Werkles member home</p>
-          <h1>Find the right human help for real work.</h1>
-          <p className="member-dashboard__subhead">
-            Werkles helps a member turn a messy business need into a clear ask, a short list of
-            useful next steps, and a more thoughtful search for people who can actually help.
-          </p>
-        </div>
-        <form action="/api/auth-first/logout" method="post" onSubmit={(event) => {
-          event.preventDefault();
-          void logout();
-        }}>
-          <button className="button button-outline member-dashboard__logout" type="submit">
-            Logout
-          </button>
-        </form>
-      </div>
-      <section className="member-first-screen" aria-label="Werkles member home">
-        <article className="member-first-screen__answer member-first-screen__answer--where">
-          <p className="member-first-screen__kicker">1. What is Werkles?</p>
-          <h2>A guided workshop for getting unstuck.</h2>
-          <p>
-            Werkles helps people explain what they are building, what decision is in front of them,
-            and what kind of person or artifact would move the work forward.
-          </p>
-        </article>
-        <article className="member-first-screen__answer">
-          <p className="member-first-screen__kicker">2. Why am I here?</p>
-          <h2>You have work that needs a clearer next move.</h2>
-          <p>
-            You are here to turn a messy idea, decision, or business problem into something a
-            useful person can understand and act on.
-          </p>
-        </article>
-        <article className="member-first-screen__answer">
-          <p className="member-first-screen__kicker">3. What can I do today?</p>
-          <h2>Describe one problem and get a useful first artifact.</h2>
-          <p>
-            Start intake, name the outcome you want, and let Werkles shape it into a checklist,
-            recommendation, or candidate comparison.
-          </p>
-        </article>
-        <article className="member-first-screen__answer">
-          <p className="member-first-screen__kicker">4. What should I click next?</p>
-          <h2>Click Start intake.</h2>
-          <p>
-            Start intake is the first member path. It asks what you are trying to move, then turns
-            the answer into the next useful surface.
-          </p>
-        </article>
-      </section>
-
-      <section className="member-selected-surface" aria-label="First member action">
-        <div className="member-selected-surface__copy">
-          <p className="member-selected-surface__kicker">First useful thing</p>
-          <h2>Start with one decision.</h2>
-          <p>
-            The simplest member path is Bellows: tell Squibb what you are trying to sort out, then
-            get a plain-English artifact that makes the next decision easier.
-          </p>
-        </div>
-        <div className="member-selected-surface__offer" aria-label="Member artifact details">
-          <dl>
-            <div>
-              <dt>Start here</dt>
-              <dd>Use intake when you have one decision, one idea, or one stuck piece of work.</dd>
-            </div>
-            <div>
-              <dt>You get</dt>
-              <dd>A clearer description of the work and a practical next step you can read.</dd>
-            </div>
-            <div>
-              <dt>No guessing</dt>
-              <dd>This page starts with the member’s work, the decision, and the next useful step.</dd>
-            </div>
-          </dl>
-          <div className="member-selected-surface__actions">
-            <Link className="button button-dark" href="/bellows/intake">
-              Start intake
-            </Link>
-            <Link className="button button-outline" href="/bellows">
-              See Bellows
-            </Link>
+      {savedWerkle ? (
+        <section className="member-dashboard__werkle-resume" aria-labelledby="member-werkle-resume-title">
+          <div>
+            <p className="eyebrow">Shared work in progress</p>
+            <h2 id="member-werkle-resume-title">Your practice Werkle has a way back in.</h2>
+            <p>{savedWerkle.step ?? "A Werkle Operating Brief is saved on this device."}</p>
+            <small>Saved on this device, not to your Werkles account. Nothing was sent to another person.</small>
           </div>
+          <Link className="button button-dark" href={savedWerkle.href}>Continue This Werkle</Link>
+        </section>
+      ) : null}
+
+      <figure className="member-dashboard__human-break">
+        <Image
+          src="/assets/draft/people-v1/people-partners-clipboard.png"
+          alt="Two business partners reviewing a checklist together in their shop"
+          width={1536}
+          height={1024}
+          sizes="(max-width: 900px) 100vw, 900px"
+        />
+        <figcaption>The point is not another dashboard. It is a clearer conversation around real work.</figcaption>
+      </figure>
+
+      <section className="ops-card member-room-map" aria-label="Your Werkles rooms">
+        <div className="card-heading"><p>Your rooms</p><h2>The same four doors stay with you.</h2></div>
+        <div className="member-room-map__grid">
+          <Link href="/dashboard/blueprints"><span>01</span><strong>My Work</strong><small>Shape the plan and return to the next useful move.</small></Link>
+          <Link href="/dashboard/intros"><span>02</span><strong>Match Deck</strong><small>Compare people when another person could help.</small></Link>
+          <Link href="/bellows/personal"><span>03</span><strong>Bellows</strong><small>Learn what this work needs, then make something usable.</small></Link>
+          <Link href="/dashboard/profile"><span>04</span><strong>About Me</strong><small>Correct your profile and choose which claims need proof.</small></Link>
         </div>
       </section>
 
-      <section className="member-next-five" aria-label="First five minutes">
-        <div>
-          <p className="member-next-five__kicker">First 5 minutes</p>
-          <h2>Answer one question: what are you trying to move?</h2>
-        </div>
-        <p>
-          Best next move: start intake, name the outcome, and let Werkles turn the messy description
-          into a clearer first artifact.
-        </p>
-      </section>
-
-      <nav className="dashboard-nav member-dashboard__nav" aria-label="Dashboard navigation">
-        <Link href="/">Home</Link>
-        <Link href="/bellows/intake">Start intake</Link>
-        <Link href="/bellows">Bellows</Link>
-        <Link href="/dashboard/profile">Profile</Link>
-      </nav>
+      <details className="ops-card member-works-now member-works-now--disclosure">
+        <summary><span>Service readiness</span><strong>See what works today and what is still being connected.</strong></summary>
+        <div className="member-works-now__grid">
+          <div><h3>Available now</h3><ul><li>Intake readback, Workshop, and Recommendations</li><li>Personal Bellows lessons and device drafts</li><li>Practice Match Deck and Werkle formation</li><li>Profile and member navigation</li></ul></div>
+          <div><h3>Still being prepared</h3><ul><li>Paid checkout where Stripe setup is incomplete</li><li>Live phone, identity, financial, and background checks</li><li>Real introductions and shared member workspaces</li></ul><p className="muted">A preparation screen or sandbox demonstration is never labeled as a completed check.</p></div>
         </div>
       </details>
     </section>

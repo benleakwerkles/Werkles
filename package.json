@@ -49,6 +49,7 @@
     "test:human-gate": "npx --yes tsx scripts/soledash/human-gate-tiers-smoke.ts",
     "test:human-gates": "npx --yes tsx scripts/foreman/human-gates-smoke.ts",
     "test:delivery-verification": "npx --yes tsx scripts/soledash/delivery-verification-smoke.ts",
+    "test:three-surface-member-value": "node scripts/foreman/three-surface-member-value-smoke.mjs",
     "deploy:alias-guard": "node scripts/deploy/deploy-alias-guard.mjs",
     "test:deploy-alias-guard": "node scripts/deploy/deploy-alias-guard-smoke.mjs"
   },
@@ -69,10 +70,10 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9.27.0",
     "eslint-config-next": "^15.3.2",
+    "playwright": "^1.60.0",
     "postcss": "^8.5.3",
+    "puppeteer-core": "^25.5.0",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3",
-    "playwright": "^1.60.0"
-  },
-  "optionalDependencies": {}
+    "typescript": "^5.8.3"
+  }
 }

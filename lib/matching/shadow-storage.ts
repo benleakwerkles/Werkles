@@ -3,7 +3,11 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 
 import type { ShadowMatchingRun } from "@/lib/matching/types";
-import { persistMatchingShadowRun, readMatchingShadowRuns } from "@/lib/matching/shadow-store";
+import {
+  persistMatchingShadowRun,
+  readMatchingShadowRunForIntake,
+  readMatchingShadowRuns
+} from "@/lib/matching/shadow-store";
 
 export { readMatchingShadowRuns, matchingReceiptPath, getMatchingStorageMode } from "@/lib/matching/shadow-store";
 
@@ -18,4 +22,8 @@ export function newShadowRunId() {
 
 export async function readLatestShadowRuns(limit = 10): Promise<ShadowMatchingRun[]> {
   return readMatchingShadowRuns(limit);
+}
+
+export async function readShadowRunForIntake(intakeId: string): Promise<ShadowMatchingRun | null> {
+  return readMatchingShadowRunForIntake(intakeId);
 }

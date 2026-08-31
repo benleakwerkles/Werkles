@@ -2,15 +2,16 @@ import "server-only";
 
 import { getStripe } from "@/lib/stripe";
 import { isCrucibleProviderTestEnabled } from "@/lib/app-infra-preview";
+import {
+  checkPlaidSandboxSafety,
+  checkStripeIdentityTestSafety
+} from "@/lib/crucible-provider-safety";
+import { buildPlaidSandboxLinkTokenRequest } from "@/lib/plaid/link-token-request";
+import { PLAID_LINK_CUSTOMIZATION_NAME } from "@/lib/plaid/link-config";
 
-export type CrucibleProviderMode = "sandbox_stub" | "stripe_identity_test" | "plaid_link_test";
+export type CrucibleProviderMode = "stripe_identity_test" | "plaid_link_test";
 
-export function getPlaidApiBase() {
-  const env = (process.env.PLAID_ENV || "sandbox").toLowerCase();
-  if (env === "production") return "https://production.plaid.com";
-  if (env === "development") return "https://development.plaid.com";
-  return "https://sandbox.plaid.com";
-}
+const PLAID_SANDBOX_API_BASE = "https://sandbox.plaid.com";
 
 export function hasPlaidCredentials() {
   return Boolean(process.env.PLAID_CLIENT_ID?.trim() && process.env.PLAID_SECRET?.trim());
@@ -24,8 +25,12 @@ export async function createStripeIdentityVerificationSession(input: {
   userId: string;
   returnUrl: string;
 }) {
-  if (!canRunCrucibleProviderTest()) {
-    return { ok: false as const, reason: "provider_test_disabled" };
+  const safety = checkStripeIdentityTestSafety({
+    providerTestEnabled: canRunCrucibleProviderTest(),
+    secretKey: process.env.STRIPE_SECRET_KEY
+  });
+  if (!safety.ok) {
+    return { ok: false as const, reason: safety.reason };
   }
 
   const stripe = getStripe();
@@ -53,31 +58,54 @@ export async function createStripeIdentityVerificationSession(input: {
   };
 }
 
-export async function createPlaidLinkToken(input: { userId: string }) {
-  if (!canRunCrucibleProviderTest()) {
-    return { ok: false as const, reason: "provider_test_disabled" };
+export async function createPlaidLinkToken(input: {
+  userId: string;
+  linkCustomizationName: typeof PLAID_LINK_CUSTOMIZATION_NAME;
+}) {
+  if (input.linkCustomizationName !== PLAID_LINK_CUSTOMIZATION_NAME) {
+    return { ok: false as const, reason: "plaid_link_configuration_invalid" };
   }
 
-  if (!hasPlaidCredentials()) {
+  const safety = checkPlaidSandboxSafety({
+    providerTestEnabled: canRunCrucibleProviderTest(),
+    plaidEnv: process.env.PLAID_ENV
+  });
+  if (!safety.ok) {
+    return { ok: false as const, reason: safety.reason };
+  }
+
+  const clientId = process.env.PLAID_CLIENT_ID?.trim();
+  const secret = process.env.PLAID_SECRET?.trim();
+  if (!clientId || !secret) {
     return { ok: false as const, reason: "plaid_credentials_missing" };
   }
 
-  const response = await fetch(`${getPlaidApiBase()}/link/token/create`, {
+  let publicRequest;
+  try {
+    publicRequest = buildPlaidSandboxLinkTokenRequest({
+      ownerUserId: input.userId,
+      linkCustomizationName: input.linkCustomizationName
+    });
+  } catch {
+    return { ok: false as const, reason: "plaid_link_configuration_invalid" };
+  }
+
+  const response = await fetch(`${PLAID_SANDBOX_API_BASE}/link/token/create`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      client_id: process.env.PLAID_CLIENT_ID,
-      secret: process.env.PLAID_SECRET,
-      user: { client_user_id: input.userId },
-      client_name: "Werkles",
-      products: ["assets"],
-      country_codes: ["US"],
-      language: "en"
+      client_id: clientId,
+      secret,
+      ...publicRequest
     })
   });
 
   const payload = await response.json().catch(() => ({}));
-  if (!response.ok || !payload.link_token) {
+  if (
+    !response.ok ||
+    typeof payload.link_token !== "string" ||
+    payload.link_token.trim().length === 0
+  ) {
     return { ok: false as const, reason: "plaid_link_token_failed" };
   }
 
@@ -85,33 +113,6 @@ export async function createPlaidLinkToken(input: { userId: string }) {
     ok: true as const,
     mode: "plaid_link_test" as const,
     linkToken: payload.link_token as string
-  };
-}
-
-export async function exchangePlaidPublicToken(publicToken: string) {
-  if (!hasPlaidCredentials()) {
-    return { ok: false as const, reason: "plaid_credentials_missing" };
-  }
-
-  const response = await fetch(`${getPlaidApiBase()}/item/public_token/exchange`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      client_id: process.env.PLAID_CLIENT_ID,
-      secret: process.env.PLAID_SECRET,
-      public_token: publicToken
-    })
-  });
-
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok || !payload.access_token) {
-    return { ok: false as const, reason: "plaid_exchange_failed" };
-  }
-
-  return {
-    ok: true as const,
-    itemId: payload.item_id as string,
-    accessToken: payload.access_token as string
   };
 }
 

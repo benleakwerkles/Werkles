@@ -22,10 +22,10 @@ export default function DiscoveryPage() {
         <section className="discovery-hero" aria-labelledby="discoveryTitle">
           <div>
             <p className="eyebrow">Werkles discovery intake</p>
-            <h1 id="discoveryTitle">Tell us where you are. Get paths ranked by the engine.</h1>
+            <h1 id="discoveryTitle">Tell us where you are. See the clearest next paths.</h1>
             <p>
-              Intake feeds the Werkles hybrid matcher — deterministic scoring plus optional translation.
-              Speaker delivers plain facts; Squibb is the voice. No payment gate on this path.
+              Share what you are trying to build, change, or get unstuck. Werkles compares possible next steps,
+              explains the reasoning, and keeps this starting path free.
             </p>
             <div className="hero-actions">
               <Link className="button button-light" href="#intake">Start intake</Link>
@@ -34,8 +34,8 @@ export default function DiscoveryPage() {
           </div>
           <aside className="discovery-hero__panel" aria-label="Human-operated promise">
             <SiteIcon icon="icon-dossier" size="lg" />
-            <strong>Algorithm-operated</strong>
-            <p>Software scores paths. Speaker states facts. Squibb speaks. Shadow review until public flip.</p>
+            <strong>Reasoned, not automatic</strong>
+            <p>Werkles shows its reasons and uncertainty. Consequential actions still require your choice and review.</p>
           </aside>
         </section>
 

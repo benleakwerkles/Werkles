@@ -4,7 +4,6 @@ import { AnyoneNarrativePhoto } from "@/components/foundry/anyone-narrative-phot
 import { copy } from "@/lib/copy";
 import {
   storyV2Assets,
-  storyV2Attribution,
   storyV2StockFallback
 } from "@/lib/anyone-narrative-v2-imagery";
 
@@ -62,9 +61,6 @@ export function VisualStorySection() {
           {visualStory.cta}
         </Link>
       </div>
-      <p className="visual-story__note" role="note">
-        {storyV2Attribution}
-      </p>
     </section>
   );
 }

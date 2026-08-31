@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { copy } from "@/lib/copy";
 import { isAuthStripeTestBlocked } from "@/lib/app-infra-preview";
+import { localAuthPreviewTruth } from "@/lib/local-auth-preview-truth";
 import { isLocalRoutePreviewUnlocked, isRuntimeRoutePreviewUnlocked } from "@/lib/local-route-preview";
 
 type RouteUnlockBannerProps = {
@@ -19,7 +20,7 @@ export function RouteUnlockBanner({ blockedDetail }: RouteUnlockBannerProps) {
   if (previewUnlocked) {
     return (
       <p className="trust-badge local-preview-banner" role="status">
-        {copy.localPreview.banner}
+        {localAuthPreviewTruth.banner}
       </p>
     );
   }

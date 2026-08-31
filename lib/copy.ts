@@ -1,12 +1,14 @@
 export const copy = {
   brand: "Werkles",
-  tagline: "Find trusted help and move with proof.",
+  tagline: "Understand the situation. Find an honest next step.",
+  // No-ceiling rule (Ben, 2026-07-31): never "small business" — anything can
+  // be conceived here, corner bakery to the next behemoth.
   longPositioning:
-    "Werkles helps small business builders find the person, money, space, or equipment that can move the work forward — then verifies before they act.",
+    "Werkles helps people understand a situation, compare useful options, and make something real without pretending uncertainty is certainty.",
   disclaimer:
-    "Foundry Dues unlock Werkles workflows. They do not guarantee trust, verification, funding, legal clearance, or partner outcomes.",
+    "Foundry Dues unlock Werkles tools. They do not guarantee verification, funding, legal clearance, or a particular outcome.",
   proofDisclaimer:
-    "Proof and Crucible surfaces are preview placeholders until counsel and providers approve live checks.",
+    "Only checks labeled available can be started. Live production checks remain off until provider and legal requirements are met.",
   loginPreview:
     "Sign-in is a preview surface. OAuth and production login require a human gate, and no secrets belong in this build.",
   nav: {
@@ -27,7 +29,7 @@ export const copy = {
       eyebrow: "The Scout",
       headline: "Squibb notices what is easy to miss.",
       body:
-        "Squibb is the scout. He points toward the overlooked option, asks the question under the question, and steps back.",
+        "Squibb is the workshop's Pooka and its scout. He points toward the overlooked option, asks the question under the question, and steps back.",
       closing:
         "He does not decide for you. He does not become a chatbot. He does not turn your life into a profile. He helps you see the door.",
       microcopy: [
@@ -50,19 +52,19 @@ export const copy = {
     foundryRecord: "Your profile"
   },
   hero: {
-    eyebrow: "For people building real businesses",
-    headline: "Find the people and proof that move your business forward.",
+    eyebrow: "A practical place to begin",
+    headline: "Figure out your next step. Build something real.",
     subhead:
-      "Werkles helps small business builders name what they need, find reachable help, and verify the facts before they rely on anyone.",
+      "Whether you are starting an idea, growing a business, solving a problem, or looking for the right help, Werkles helps you understand the situation, explore honest options, and move forward with confidence.",
     positioning:
-      "For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
-    beforeState: "People first. Trust visible. Opportunity you can actually reach.",
-    brandPromise: "People, trust, momentum, opportunity.",
+      "Discover people, knowledge, services, opportunities, and practical next steps—organized around what actually moves you forward.",
+    beforeState: "People, knowledge, services, and opportunities—without a predetermined answer.",
+    brandPromise: "Understand. Compare. Move forward.",
     // Owner CTA direction, verbatim (walkthrough 2026-07-27).
     primaryCta: "Let us help you discover what you need",
-    secondaryCta: "See how trust is checked",
-    trustLine: "Real human help, with proof shown before you rely on it.",
-    signupPreview: "Start with one business need. Werkles turns it into a practical next move and the proof to check."
+    secondaryCta: "See how evidence works",
+    trustLine: "When evidence exists, Werkles shows it. When something is uncertain, it stays uncertain.",
+    signupPreview: "Start with one situation. Werkles helps you compare practical next moves."
   },
   lanes: {
     builder: {
@@ -81,7 +83,7 @@ export const copy = {
       title: "Backer",
       headline: "Fuel without a throne.",
       description:
-        "Runway, assets, credit, or practical support — capital without pretending money is the whole machine."
+        "Capital, assets, credit, or practical support—without pretending money is the whole machine."
     },
     connector: {
       title: "Connector",
@@ -98,36 +100,36 @@ export const copy = {
   },
   howItWorks: {
     eyebrow: "How it works",
-    headline: "Name it. Verify it. Move.",
+    headline: "Name it. Check it. Move.",
     steps: [
       {
         title: "State the need.",
         body: "In your words — what you think is blocking you. No compatibility score."
       },
       {
-        title: "Translate the bottleneck.",
-        body: "Werkles surfaces the real constraint and the reachable person, lender, space, or tool."
+        title: "Look underneath the problem.",
+        body: "Werkles helps you compare what may be in the way and what could help next."
       },
       {
-        title: "Check proof. Then act.",
-        body: "Itemized verification at the moment of reliance. You choose the next step."
+        title: "Check what matters. Then act.",
+        body: "See what is known, what is still uncertain, and what you may want to check. You choose the next step."
       }
     ]
   },
   trust: {
     eyebrow: "Proof before pressure",
     badge: "Verified means itemized",
-    headline: "Safe to act, not alone.",
+    headline: "Check what matters before you rely on it.",
     supporting:
       "When a resource matters, trust cannot be vague.",
     body:
-      "Werkles shows the facts at the moment you need them: identity, credentials, references, funds, background, current status, and what has lapsed. Warm enough to use. Specific enough to trust."
+      "Werkles separates what has been checked from what has not: identity, credentials, references, funds, background, current status, and what has lapsed."
   },
   beta: {
     eyebrow: "The Foundry",
     headline: "People leave different than they arrived.",
     body:
-      "The proof is a shop opening, a route getting bought, a crew taking equity, a practice seeing patients, a bakery line finally running. Not because the founder was fixed. Because the missing piece became visible, and the next move became safe enough to make.",
+      "The result might be a shop opening, a route getting bought, a crew taking equity, or a practice seeing patients. The point is not to fix the founder. It is to make the missing piece visible and the next move clear enough to try.",
     cta: "Join the Foundry",
     idle: "Choose your lane and join the Foundry interest list. Follow-up is manual; no automated email is sent.",
     loading: "Checking…",
@@ -137,8 +139,8 @@ export const copy = {
     eyebrow: "Bellows",
     headline: "Learn how the floor actually works.",
     body:
-      "Practical lessons, SOPs, and anti-guru operator knowledge. Squibb hosts — no guru fog, no pretend certainty.",
-    shellNote: "Full lessons are on the way — this page shows how the path will work.",
+      "Practical lessons, checklists, and working tools. Squibb helps you understand the decision and leave with something useful.",
+    shellNote: "Browse every lesson or start with the shorter path shaped by your current answers.",
     host: "Hosted by Squibb"
   },
   onboarding: {
@@ -198,64 +200,64 @@ export const copy = {
     valueFold: {
       what: {
         label: "What it is",
-        body: "You state the need. Werkles finds what's actually missing and shows itemized proof before you rely on anyone."
+        body: "Tell us what you are trying to do. Werkles helps sort what may be in the way and what is worth checking next."
       },
       whyNeed: {
         label: "Why you need it",
-        body: "Most stalls are misnamed problems — customers when it's equipment, capital when it's proof. The wrong need burns time and cash."
+        body: "The thing holding a plan up is not always the thing you noticed first. Find out before it burns time and cash."
       },
       whyPay: {
         label: "Why Foundry Dues",
-        body: "Dues buy runway — discovery, verification, guarded intros. Not a match guarantee, not hype, not algorithm fog."
+        body: "The free path should solve something real. Dues add deeper tools, optional checks, and carefully handled introductions."
       }
     },
     visualStory: {
-      eyebrow: "One story — not a photo pile",
-      headline: "Maria thought she needed customers.",
-      lede: "Five beats. One person. The real missing piece was cheaper and closer than she assumed.",
+      eyebrow: "One decision, five useful moves",
+      headline: "Start with the need. Test what is actually in the way.",
+      lede: "A practical path from a rough idea to a decision you can explain and use.",
       beats: [
         {
           id: "wrong-need",
-          title: "Wrong need",
-          thought: "I need more customers to justify a real bakery.",
-          reveal: "She was pricing a dream before pricing the oven.",
-          imageAlt: "Home baker at kitchen counter — unnamed need",
-          imageCaption: "Same person, beat 1 — the misnamed problem"
+          title: "Name the need",
+          thought: "Say what you are trying to change in ordinary words.",
+          reveal: "The first answer is a starting point, not a verdict.",
+          imageAlt: "Notebook and work materials at the start of a decision",
+          imageCaption: "Begin with what is true today"
         },
         {
           id: "squibb",
-          title: "One question under it",
-          thought: "Squibb: What would have to be true before customers matter?",
-          reveal: "Equipment. A price. A seller she could verify.",
-          imageAlt: "Baker pauses — the real constraint surfaces",
-          imageCaption: "Beat 2 — underneath the ask"
+          title: "Look underneath it",
+          thought: "What would have to be true before this move makes sense?",
+          reveal: "Separate the likely blocker from the loudest worry.",
+          imageAlt: "Worktable with notes being compared",
+          imageCaption: "Test the likely blocker"
         },
         {
           id: "money",
-          title: "Money reveal",
-          thought: "She assumed a bank would say no.",
-          reveal: "Credit union desk. Loan sized to the oven, not a pitch deck.",
-          imageAlt: "Community lender conversation — accessible finance",
-          imageCaption: "Beat 3 — money that fits the step"
+          title: "Compare real options",
+          thought: "A person, place, tool, lesson, or check may change the next move.",
+          reveal: "Compare the choices against the same need and constraints.",
+          imageAlt: "Several practical options laid out for comparison",
+          imageCaption: "Put every option against the same question"
         },
         {
           id: "equipment",
-          title: "Equipment reveal",
-          thought: "She assumed $12k for a commercial oven.",
-          reveal: "$4,200 used. Listed. Seller checkable.",
-          imageAlt: "Used commercial oven — within reach",
-          imageCaption: "Beat 4 — the number that changes the decision"
+          title: "Check the claim",
+          thought: "Important facts stay unconfirmed until someone checks them.",
+          reveal: "Show what is known, what is dated, and what still needs proof.",
+          imageAlt: "Checklist beside a finished piece of work",
+          imageCaption: "Evidence stays attached to the decision"
         },
         {
           id: "open",
-          title: "Shop open",
-          thought: "Customers came after the oven — not before.",
-          reveal: "Momentum from the right first piece, not the loudest ask.",
-          imageAlt: "Small bakery serving — same baker further along",
-          imageCaption: "Beat 5 — momentum from the real first move"
+          title: "Make the next move",
+          thought: "Choose the smallest useful action that teaches you something.",
+          reveal: "Carry the decision, the open questions, and the next check forward.",
+          imageAlt: "Work van and tools ready for the next day",
+          imageCaption: "Move with the unanswered questions still visible"
         }
       ],
-      closing: "Your story won't be Maria's. The pattern will be: wrong ask → real bottleneck → reachable means → proof → move.",
+      closing: "Need → likely blocker → options → evidence → next move.",
       cta: "Open the Foundry"
     },
     squibbBeat: {
@@ -266,7 +268,7 @@ export const copy = {
         eyebrow: "The Door",
         headline: "The door is usually closer than it looks.",
         body:
-          "Most people do not need a bigger speech about possibility. They need the first real opening: a lender who understands the work, a used oven priced within reach, a shop bay that is actually available, a partner who can make the leap safer.",
+          "Most people do not need a bigger speech about possibility. They need the first real opening: a lender who understands the work, a used tool priced within reach, a shop bay that is actually available, or a partner who can make the leap safer.",
         closing: "Werkles looks for those openings before it asks you to become someone else.",
         cta: "See how the path opens"
       },
@@ -308,7 +310,7 @@ export const copy = {
         equipment: {
           headline: "The tool might be cheaper than you thought.",
           body:
-            "A used commercial oven. A lift. A machine. A van. The piece you assumed was out of reach until the real number showed up. Possibility becomes believable when it has a price, a seller, and a next step."
+            "A lift. A machine. A van. The piece you assumed was out of reach until the real number showed up. Possibility becomes believable when it has a price, a seller, and a next step."
         }
       },
       formation: {
@@ -373,11 +375,11 @@ export const copy = {
         "Foundry Dues start at {price}/mo. Checkout stays disabled until the billing gate clears."
     },
     artifact: {
-      label: "Example reveal — draft illustration",
-      title: "Equipment · Used commercial oven",
-      meansLine: "Within budget after credit-union desk — closer than you assumed",
-      body: "Seller checks: identity · license · references · funds posture",
-      note: "Stylized example. Reachable means, not a profile score."
+      label: "Example Werkles output",
+      title: "Decision brief · Expansion options",
+      meansLine: "Three paths compared by cost, timing, and evidence",
+      body: "Known: constraints · capacity · evidence gaps · next check",
+      note: "General example. Not a guarantee or completed verification."
     },
     foldTrust: {
       before: "You came looking for one answer. Werkles helps name the one underneath.",
@@ -393,8 +395,8 @@ export const copy = {
     },
     proofStack: {
       kicker: "Proof before pressure",
-      headline: "Trust clears the runway.",
-      cta: "Check the runway"
+      headline: "A useful check answers one clear question.",
+      cta: "See how checks work"
     },
     dashboardTeaser: {
       kicker: "Workbench",
@@ -406,17 +408,17 @@ export const copy = {
       "1 · Account → pick your lane",
       "2 · Profile → arena, turf, skills",
       "3 · Proof preview → ID, face, phone (before full access)",
-      "4 · Crucible → inspect runway, then intro"
+      "4 · Crucible → inspect a claim before relying on it"
     ],
     bellowsPreview: {
       eyebrow: "Bellows",
-      headline: "Operator lessons without guru fog.",
+      headline: "Learn the part nobody explained.",
       body:
-        "Squibb hosts practical SOPs, anti-guru math, and floor knowledge — the curriculum that sits after proof, before you pretend certainty.",
+        "Squibb hosts practical lessons, working examples, and tools you can return to when the business question changes.",
       host: "Hosted by Squibb",
       cta: "Explore Bellows",
-      squibbCaption: "Squibb hosts — draft exploration, not canonical cutout",
-      lessonCaption: "Lesson card on the workshop desk — operator scale, not TED talk"
+      squibbCaption: "Squibb keeps the lesson grounded in the work.",
+      lessonCaption: "A lesson should leave you with something useful to do."
     }
   },
   proof: {
@@ -491,48 +493,48 @@ export const copy = {
     }
   },
   membership: {
-    eyebrow: "Foundry access",
+    eyebrow: "Werkles membership",
     // Owner walkthrough 2026-07-27: sell the leap honestly through first
-    // customer, first sale, opening day; state exactly what payment unlocks.
-    headline: "Dues buy the runway to your first customer.",
+    // customer, first sale, opening day; state exactly what membership adds.
+    headline: "Use Werkles free. Join when it earns it.",
     subhead:
-      "First customer. First sale. Opening day. Foundry Dues open the working layer that gets you there: discovery, verification workflows, guarded intros, and a Workshop for your venture.",
+      "Start with a personal Workshop, practical next moves, and people who may fit. Membership adds the ongoing tools, included packets, and shared Werkle layer for $9.99 a month.",
     disclaimer:
-      "Foundry Dues do not guarantee verification, background clearance, funding, legal approval, partner quality, or business outcomes.",
+      "Membership adds tools and continuity. It does not guarantee a match, funding, approval, safety, or business success.",
     unlocks: [
-      "Discovery workbench — name the real missing piece between you and your first sale",
-      "Verification workflows — itemized proof on the people and resources you'd rely on",
-      "Guarded intro desk — introductions made with proof attached, not cold hope",
-      "A Workshop — the working room where your venture gets planned and built"
+      "A personal Workshop that keeps the goal, the snag, and the next move together",
+      "Optional checks for the specific facts a serious decision depends on",
+      "Thoughtful introductions with visible reasons—not a cold list of names",
+      "A shared Werkle where people can plan and build together"
     ],
     monthly: "Monthly",
     annual: "The Long Run",
-    checkout: "Start Foundry Dues checkout",
-    annualCheckout: "Start Foundry Dues checkout",
-    processing: "Foundry workflow opening.",
-    successEyebrow: "Threshold",
-    successHeadline: "Welcome to the Foundry",
+    checkout: "Start membership checkout",
+    annualCheckout: "Start membership checkout",
+    processing: "Opening membership checkout.",
+    successEyebrow: "Membership",
+    successHeadline: "Welcome to Werkles",
     successBody:
-      "Preview mode did not process a payment. In production, this is the moment your Foundry workflow opens: discovery, proof, and guarded intros can start moving.",
-    successPrimaryCta: "Enter the Crucible",
+      "Your membership is ready. Return to your Workshop to keep the plan moving, compare people, and use the included tools.",
+    successPrimaryCta: "Open my Workshop",
     successSecondaryCtas: {
       billing: "Open billing",
       proof: "Read Proof",
       home: "Back home"
     },
     cancelled: "Checkout cancelled. Your account is unchanged.",
-    trustHeadline: "Trust still has to be earned.",
+    trustHeadline: "We should earn the $9.99 before asking for it.",
     trust:
-      "Foundry Dues open the workshop. They do not guarantee verification, clearance, funding, or partner outcomes.",
+      "The free product should already help. Membership pays for more tools, more continuity, and the shared Werkle—not an intentionally broken free experience.",
     plans: {
       free: {
         kicker: "Free",
         price: "$0",
-        body: "Pick your lane, build your profile, and browse the workbench before you pay.",
+        body: "Build a Workshop, get useful next moves, and see people who may fit before you pay.",
         cta: "Start free"
       },
       monthly: {
-        body: "Everything between you and your first sale: intro requests, your Workshop, and verification on the people you'd rely on."
+        body: "All free features, Bellows packets included, ongoing Workshop tools, and the full shared Werkle layer."
       },
       annual: {
         body: "Same access. One yearly payment. Keep roughly twenty bucks in your pocket."
@@ -540,72 +542,84 @@ export const copy = {
     }
   },
   crucible: {
-    pageEyebrow: "Runway clearing",
-    pageHeadline: "Crucible",
-    principle: "The Crucible clears the way to act. It does not promise trust, clearance, or outcomes.",
-    intro: "Squibb walks the checks forward so a real intro can start with less guessing.",
-    readyStatus: "Runway check available.",
-    unavailableStatus: "Not offered in this preview.",
+    pageEyebrow: "Crucible · optional checks",
+    pageHeadline: "Check what matters before you rely on it",
+    principle: "Each check answers one narrow question. It does not prove that a person or opportunity is trustworthy.",
+    intro: "Use a check only when it helps with the next real decision. The result stays specific and visible.",
+    readyStatus: "A test check can be started.",
+    unavailableStatus: "This check is not available here yet.",
     inspectingStatus: "Checking…",
     loginRequired: "Log in before starting verification.",
     claimPrepared: "Verification prepared.",
     genericError: "Something went wrong. Try again.",
     providerTestBanner:
-      "Crucible provider test — Stripe Identity and Plaid Link run in test/sandbox mode only. Background checks stay blocked.",
-    providerIdentityRedirect: "Opening Stripe Identity (test mode). Werkles stores the receipt, not your ID images.",
+      "Live production checks remain off. Stripe and Plaid testing is limited to connected test members.",
+    providerIdentityRedirect:
+      "Opening Stripe Identity (test mode). No identity result is recorded until Stripe reports its status.",
     providerIdentityReturn:
       "Returned from Stripe Identity. Status updates from webhook proof — refresh profile in a moment.",
-    providerFundsLink: "Opening Plaid Link (sandbox). Werkles stores the result, not your account numbers.",
-    providerFundsSandboxOnly:
-      "Funds verification isn't available yet on this build — a practice run is shown instead.",
-    providerFundsVerified: "Funds check recorded (sandbox).",
-    providerFundsExchangeFailed: "Plaid exchange failed. Try again or use sandbox stub.",
+    providerIdentityUnavailable:
+      "Stripe Identity test mode is unavailable. No identity check was started.",
+    providerIdentityFailed:
+      "Stripe Identity could not start. No identity check was recorded.",
+    providerFundsReady:
+      "Plaid Link's sandbox demo is ready. Completing it will not create a funds proof.",
+    providerFundsLink:
+      "Opening Plaid Link (sandbox). Connecting a bank does not create a funds proof.",
+    providerFundsConnectionDeferred:
+      "Plaid Link completed in sandbox, but Werkles did not exchange or save the connection. No funds proof exists.",
+    providerFundsCustodyRequired:
+      "Funds connection is paused until owner-bound encrypted storage, revocation, and retry safety are built. No token was exchanged.",
+    providerFundsUnavailable:
+      "Plaid sandbox is unavailable. No bank connection or funds proof was recorded.",
+    providerFundsExchangeFailed:
+      "Plaid sandbox connection failed. No bank connection or funds proof was recorded.",
     providerFundsExit: "Plaid Link closed before completion.",
-    storesDefault: "We keep the result, not your documents.",
-    storesFunds: "We keep the result, not your account numbers.",
-    storesIdentity: "We keep the result, not your ID images.",
+    storesDefault: "The live design keeps a narrow result and its date—not a copy of the source document.",
+    storesFunds: "This sandbox demo keeps no funds result or account numbers.",
+    storesIdentity: "The live design keeps identity status and its date—not your ID images.",
     workflowStates: [
       {
         key: "locked",
-        title: "Runway not open yet",
-        summary: "Join Foundry to start the verification path. No live checks run in this preview.",
+        title: "Sign in before starting a check",
+        summary: "Provider checks require a signed-in member. No live checks run in this preview.",
         memberNote: "Membership opens the workflow, not a guarantee about any person.",
-        cta: "Open Foundry Dues"
+        cta: "See membership options"
       },
       {
         key: "membership_required",
-        title: "Foundry Dues needed",
-        summary: "Foundry Dues unlock the Crucible workflow.",
-        memberNote: "Dues do not guarantee verification, clearance, funding, or partner outcomes.",
-        cta: "View Foundry Dues"
+        title: "Membership is required for provider checks",
+        summary: "Membership opens the check workflow.",
+        memberNote: "Membership does not guarantee verification, clearance, funding, or partner outcomes.",
+        cta: "See membership options"
       },
       {
         key: "workflow_available",
-        title: "Runway check available",
-        summary: "Identity uses Stripe Identity (test). Funds uses Plaid Link when configured, otherwise sandbox stub.",
+        title: "A test check can be started",
+        summary: "Identity uses Stripe Identity (test). Funds requests the configured Plaid Link sandbox demo and fails closed if it is unavailable.",
         memberNote: "Membership unlocks the workflow, not verification outcomes. No clearance or trust guarantees.",
-        cta: "Continue runway check"
+        cta: "Continue test check"
       },
       {
         key: "provider_pending",
-        title: "Provider connection pending",
+        title: "Some checks are not connected yet",
         summary: "Phone, license, reference, employment, and background vendors are not wired yet.",
-        memberNote: "Identity and funds provider test paths are active for Foundry members.",
+        memberNote: "Identity has a test path. Funds has a sandbox demonstration; neither is live production proof.",
         cta: "Other checks unavailable"
       },
       {
         key: "unavailable",
-        title: "Not offered in this preview",
+        title: "This check is not available here yet",
         summary: "This verification path is not available in the current local build.",
-        memberNote: "No dead ends. Return to Proof or Foundry Dues.",
-        cta: "Back to Proof"
+        memberNote: "You can still read what the check could and could not establish.",
+        cta: "How checks work"
       },
       {
         key: "counsel_review",
-        title: "Counsel review required",
-        summary: "Background-check copy and flows remain placeholders until legal review.",
+        title: "Background screening is not available",
+        summary: "The background-check flow stays off until its legal and provider reviews are complete.",
         memberNote: "Do not imply clearance, credit approval, or trust guarantees from this surface.",
-        cta: "Read Proof checklist"
+        cta: "How checks work"
       }
     ]
   },
@@ -623,10 +637,10 @@ export const copy = {
     failed: "Couldn't verify. Fix the claim or try again."
   },
   deepAudit: {
-    title: "Deep audit",
-    body: "A future heavy check for claims that need more than a quick pass. Not live in this mock.",
-    cta: "Request deep audit",
-    placeholder: "Mock-only placeholder. No checkout, queue, or provider workflow is claimed."
+    title: "Detailed claim review",
+    body: "Some claims need documents or a qualified human reviewer, not a quick automated check. That service is not available yet.",
+    cta: "Detailed review coming later",
+    placeholder: "No review has been requested."
   },
   actions: {
     pending: "Checking…",

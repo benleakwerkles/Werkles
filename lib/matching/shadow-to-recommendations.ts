@@ -1,37 +1,50 @@
 import type { ShadowMatchingRun } from "@/lib/matching/types";
+import { recommendationGuidance } from "@/lib/matching/recommendation-guidance";
+import { scorePaths } from "@/lib/matching/score-paths";
 import {
   eligiblePublicMatchingPaths,
   publicMatchingHumanGates
 } from "@/lib/matching/public-recommendation-gates";
 import {
   RECOMMENDATION_KIND_LABELS,
+  loadSquibbRecommendationSession,
   type SquibbRecommendation,
   type SquibbRecommendationSession
 } from "@/lib/squibb/recommendations";
+import { memberRecommendationPresentation } from "@/lib/squibb/member-recommendation-insight";
+import { buildOpportunityCase } from "@/lib/matching/opportunity-case";
+import { starterProfileForSignals } from "@/lib/matching/starter-profile";
 
 export function shadowRunToRecommendationSession(run: ShadowMatchingRun): SquibbRecommendationSession {
+  const starterProfile = starterProfileForSignals(run.signals);
   const card = run.readout.recommendationCard;
-  const eligiblePaths = eligiblePublicMatchingPaths(run.readout.scoredPaths);
+  // Stored shadow runs preserve the original audit record. The member-facing
+  // deck applies the current deterministic rules to those same saved signals
+  // so rule repairs do not force the member to re-enter an Intake.
+  const currentScoredPaths = scorePaths(run.signals, run.layer0, run.notMatch);
+  const eligiblePaths = eligiblePublicMatchingPaths(currentScoredPaths);
+  const opportunityCase = buildOpportunityCase(run, currentScoredPaths);
 
-  const ranked: SquibbRecommendation[] = eligiblePaths.map((path) => ({
+  const ranked: SquibbRecommendation[] = eligiblePaths.map((path) => {
+    const guidance = recommendationGuidance(path.kind);
+    const presentation = memberRecommendationPresentation(path.kind, run.signals, {
+      title: RECOMMENDATION_KIND_LABELS[path.kind],
+      headline: guidance.headline
+    });
+    return ({
     id: `automated-${path.kind}`,
     kind: path.kind,
     rank: path.rank,
-    title: RECOMMENDATION_KIND_LABELS[path.kind],
-    headline: publicSystemText(
-      run.readout.primaryBottleneck,
-      "Review this possible next step and its limits before acting."
-    ),
+    title: presentation.title,
+    headline: presentation.headline,
     squibbNote:
       path.rank === 1
         ? "This is the highest-ranked eligible path from the current rules."
         : "This is another eligible path to compare before deciding what to do.",
     reasoning: {
       statedNeed: card.whatYouAskedFor,
-      translatedNeed: publicSystemText(
-        card.whatWeHeardUnderneath,
-        "Werkles inferred a possible next step from the information you entered."
-      ),
+      translatedNeed: guidance.summary,
+      nextSteps: guidance.nextSteps,
       rationale: [...card.visibleReasons, ...path.rationale].map((reason) =>
         publicSystemText(
           reason,
@@ -66,24 +79,54 @@ export function shadowRunToRecommendationSession(run: ShadowMatchingRun): Squibb
     humanGates: publicMatchingHumanGates(path.kind),
     suggestedAgent: "Werkles human review",
     keepOriginalPathLabel: "Keep my current approach"
-  }));
+    });
+  });
 
   return {
     version: "v1",
     statedNeed: run.signals.statedNeed,
     operatorContext: `Automated beta recommendation generated ${run.createdAt}.`,
-    squibbIntro:
-      "Werkles ranked these paths from what you entered. They are suggestions, not decisions, verified matches, or guaranteed outcomes.",
+    squibbIntro: "Start with the first idea, then compare it with the others.",
     source: {
       mode: "latest_intake",
-      label: "Autonomous Matching",
+      label: "Werkles rules applied to your answers",
       detail:
         "The recommendation itself is not a verified match, eligibility or funding decision, introduction, or guaranteed outcome. Evidence labels may be incomplete. Werkles has not sent this to anyone.",
       intakeId: run.intakeId,
-      capturedAt: run.createdAt
+      capturedAt: run.createdAt,
+      starterProfile,
+      opportunityCase,
+      fedDocument: {
+        id: run.intakeId,
+        title: "Your intake (scored text)",
+        kind: "member_intake",
+        summary: "Plain text the matching rules scored for this run.",
+        body: run.signals.intakeTextBlob || run.signals.statedNeed || "(empty intake)",
+        excerpts: [
+          {
+            id: "stated-need",
+            label: "Stated need",
+            text: run.signals.statedNeed || "(not provided)",
+            feeds: currentScoredPaths.map((path) => path.kind)
+          },
+          ...run.readout.facts
+            .filter(
+              (fact) =>
+                fact.id !== "stated-need" &&
+                (fact.strength === "self_reported" || fact.strength === "missing")
+            )
+            .slice(0, 6)
+            .map((fact) => ({
+              id: fact.id,
+              label: fact.label,
+              text: fact.value,
+              feeds: currentScoredPaths.map((path) => path.kind)
+            }))
+        ]
+      }
     },
     ranked,
-    catalog: ranked
+    catalog: loadSquibbRecommendationSession().catalog
   };
 }
 

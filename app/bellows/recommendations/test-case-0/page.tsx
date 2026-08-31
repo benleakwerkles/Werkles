@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { SiteHeader } from "@/components/foundry/site-header";
+import { LocalAwareSiteHeader } from "@/components/foundry/local-aware-site-header";
 import { ConciergeWalkthrough } from "@/components/squibb/concierge-walkthrough";
 import { copy } from "@/lib/copy";
 import { loadConciergeUser0Flow } from "@/lib/squibb/concierge-walkthrough-test-case-0";
@@ -9,7 +9,7 @@ import { loadSpeakerHumanReadTestCase0 } from "@/lib/squibb/speaker-transparency
 import "./concierge-walkthrough.css";
 
 export const metadata = {
-  title: "Concierge User #0 | Bellows",
+  title: "Worked Recommendation Example | Bellows",
   description:
     "60-second diagnosis — symptom, Speaker read, falsifiers, and a reversible test. No matching."
 };
@@ -20,7 +20,7 @@ export default function ConciergeWalkthroughTestCase0Page() {
 
   return (
     <>
-      <SiteHeader />
+      <LocalAwareSiteHeader />
       <main className="bellows-main narrative-act-page workshop-route--bellows squibb-walkthrough-page">
 
         <nav className="squibb-rec-page__nav" aria-label="Bellows">
@@ -28,7 +28,7 @@ export default function ConciergeWalkthroughTestCase0Page() {
             ← Back to Bellows
           </Link>
           <Link className="button button-ghost" href="/bellows/intake">
-            Concierge intake
+            Werkles questions
           </Link>
         </nav>
 

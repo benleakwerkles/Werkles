@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { SiteHeader } from "@/components/foundry/site-header";
 import { NarrativeActPageLayout } from "@/components/narrative/narrative-act-page-layout";
 import { NarrativePhotoGallery } from "@/components/narrative/narrative-photo-gallery";
 import { ProofDoctrineSection } from "@/components/narrative/proof-doctrine-section";
@@ -13,7 +12,7 @@ const foundryProofGallery = [
   {
     id: "foundry-b02",
     title: "Finished product on bench",
-    caption: "Canonical Act IV — outcome carries the weight.",
+    caption: "A finished result you can inspect.",
     path: narrativeV1Assets.foundryB02FinishedProduct
   },
   ...forgeV2Gallery.map((item) => ({
@@ -35,17 +34,16 @@ export default function ProofPage() {
 
   return (
     <>
-      <SiteHeader />
       <NarrativeActPageLayout act={act}>
-        <NarrativePhotoGallery title="Foundry beat library" items={foundryProofGallery} />
+        <NarrativePhotoGallery title="What checked work can look like" items={foundryProofGallery} />
         <ProofDoctrineSection />
 
         <section className="narrative-act-body panel" aria-labelledby="proofPathsTitle">
           <p className="eyebrow">Where to go next</p>
-          <h2 id="proofPathsTitle">Three safe doors after proof.</h2>
+          <h2 id="proofPathsTitle">Choose what to do next.</h2>
           <p>
-            Proof is the trust layer. Once you know what Werkles shows and what it refuses to fake, pick the next move
-            that matches where you are: exploring, joining, or paying dues.
+            Once you know what Werkles can check—and what it cannot—pick the next move that fits where you are:
+            exploring, joining, or paying dues.
           </p>
           <div className="trust-state-strip" aria-label="Proof exit paths">
             <span>Start free</span>
@@ -66,11 +64,11 @@ export default function ProofPage() {
         </section>
 
         <section className="narrative-act-body panel" aria-labelledby="proofArcTitle">
-          <p className="eyebrow">The arc</p>
-          <h2 id="proofArcTitle">Walk the story in order.</h2>
+          <p className="eyebrow">See the pieces</p>
+          <h2 id="proofArcTitle">See how an idea becomes shared work.</h2>
           <p>
-            Spark, Formation, and Space set the tone before Foundry proof. Each act is optional reading — together they
-            show what Werkles refuses to fake.
+            Start with the idea, look at the place it needs, and decide who belongs in the work. Each page stands on
+            its own; together they show where checks become useful.
           </p>
           <div className="member-selected-surface__actions">
             <Link className="button button-outline" href="/spark">
@@ -89,8 +87,7 @@ export default function ProofPage() {
           <section className="narrative-act-body panel">
             <h2>After proof — learn the floor</h2>
             <p>
-              Bellows sits next in the arc. Squibb hosts operator lessons without guru fog once you know what signal
-              to inspect.
+              Bellows gives you practical lessons and working tools once you know which question needs attention.
             </p>
             <Link className="button button-light" href={act.nextSlug}>
               Continue → {act.nextLabel}

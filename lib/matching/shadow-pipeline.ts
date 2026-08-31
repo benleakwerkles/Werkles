@@ -5,15 +5,20 @@ import type { DiscoveryIntakeInput } from "@/lib/discovery/schema";
 import { isMatchingShadowEnabled, isMatchingLlmEnabled } from "@/lib/matching/feature-flags";
 import { runLayer0 } from "@/lib/matching/layer0";
 import { evaluateNotMatch } from "@/lib/matching/not-match";
-import { signalsFromConcierge, signalsFromDiscovery } from "@/lib/matching/signals";
+import { signalsFromConcierge, signalsFromDiscovery, signalsFromDocumentText } from "@/lib/matching/signals";
 import { scorePaths } from "@/lib/matching/score-paths";
 import { buildMatchingReadout, buildSquibbVoice } from "@/lib/matching/deliver";
 import { buildMemberCausalDraft } from "@/lib/matching/member-causal-draft";
-import { newShadowRunId, persistShadowRun, readLatestShadowRuns } from "@/lib/matching/shadow-storage";
+import {
+  newShadowRunId,
+  persistShadowRun,
+  readLatestShadowRuns,
+  readShadowRunForIntake
+} from "@/lib/matching/shadow-storage";
 import { matchingReceiptPath } from "@/lib/matching/shadow-store";
 import type { ShadowMatchingRun, StructuredSignals } from "@/lib/matching/types";
 
-export { readLatestShadowRuns };
+export { readLatestShadowRuns, readShadowRunForIntake };
 
 export function shadowRunSmokeSummary(run: ShadowMatchingRun) {
   const topEligible = run.readout.scoredPaths.find((candidate) => !candidate.disqualified)?.kind ?? null;
@@ -98,4 +103,36 @@ export async function runShadowMatchingFromConcierge(
   const run = finalizeRun(await runMatchingCore(signals), newShadowRunId());
   await persistShadowRun(run);
   return run;
+}
+
+/**
+ * Builds the current deterministic member readout without writing a shadow-run
+ * receipt. Durable member Intake custody and operator matching audit custody
+ * remain separate concerns.
+ */
+export async function runEphemeralMatchingFromConcierge(
+  intakeId: string,
+  answers: ConciergeIntakeAnswers
+): Promise<ShadowMatchingRun | null> {
+  if (!isMatchingShadowEnabled()) return null;
+  const signals = await maybeLlmTranslate(signalsFromConcierge(intakeId, answers));
+  return finalizeRun(await runMatchingCore(signals), newShadowRunId());
+}
+
+/**
+ * Score a pasted real-world document against Autonomous Matching.
+ * Ephemeral: does not write to Supabase / shadow-runs store.
+ */
+export async function runEphemeralMatchingFromDocument(input: {
+  title: string;
+  body: string;
+}): Promise<ShadowMatchingRun | null> {
+  if (!isMatchingShadowEnabled()) return null;
+  const title = input.title.trim().slice(0, 200) || "Pasted document";
+  const body = input.body.trim().slice(0, 20000);
+  if (body.length < 40) return null;
+
+  const intakeId = `doc_${Date.now().toString(36)}`;
+  const signals = await maybeLlmTranslate(signalsFromDocumentText(intakeId, title, body));
+  return finalizeRun(await runMatchingCore(signals), newShadowRunId());
 }

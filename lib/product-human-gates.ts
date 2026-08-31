@@ -160,7 +160,39 @@ export type ProductProviderConsoleLink = {
   blockedBy: string;
 };
 
-export type ProductGateSignInTier = "v0_ship" | "github_push" | "crucible_later" | "optional";
+export type ProductGateSignInTier =
+  | "tier_0_infra"
+  | "tier_1_money"
+  | "tier_2_crucible"
+  | "tier_3_crucible_extended"
+  | "tier_4_fcra"
+  | "tier_5_repo"
+  | "tier_6_discovery"
+  | "optional";
+
+export type ProductGateCredentialStatus =
+  | "completed"
+  | "collect_now"
+  | "collect_planning"
+  | "policy_blocked"
+  | "optional"
+  | "paused";
+
+export type ProductGateCredentialTarget = {
+  id: string;
+  tier: number;
+  tierLabel: string;
+  provider: string;
+  url: string;
+  loginMethods: string;
+  gatePhrase: string | null;
+  status: ProductGateCredentialStatus;
+  onePasswordVault: string | null;
+  onePasswordItem: string | null;
+  fieldsToStore: string[];
+  crewAction: string;
+  forbiddenUntil: string;
+};
 
 export type ProductGateSignInTarget = {
   order: number;
@@ -450,7 +482,7 @@ export const productGateDependencies: ProductGateDependency[] = [
   },
   {
     gateKey: "stripe-live-products",
-    status: "blocked_by_prior_gate",
+    status: "review_now",
     dependsOn: ["stripe-test-checkout-webhook"],
     skipRisk: "Creating live products before test proof can bake the wrong prices or product shape into live Stripe.",
     unlocks: ["stripe-live-secret-entry"],
@@ -474,11 +506,43 @@ export const productGateDependencies: ProductGateDependency[] = [
   },
   {
     gateKey: "crucible-provider-test",
+    status: "review_now",
+    dependsOn: ["stripe-test-checkout-webhook"],
+    skipRisk: "Extended Crucible providers (phone, license, reference) still need separate setup phrases.",
+    unlocks: ["crucible-phone-provider", "crucible-reference-provider", "crucible-license-provider"],
+    nextAllowedAction: "HG-2 approved. Extended provider setup phrases unlock Tier 3 logins."
+  },
+  {
+    gateKey: "crucible-phone-provider",
+    status: "blocked_by_prior_gate",
+    dependsOn: ["crucible-provider-test"],
+    skipRisk: "SMS verification before Twilio scope approval can send messages or incur spend.",
+    unlocks: [],
+    nextAllowedAction: "Collect Twilio login only. Stop at Verify service create or SMS send."
+  },
+  {
+    gateKey: "crucible-reference-provider",
+    status: "blocked_by_prior_gate",
+    dependsOn: ["crucible-provider-test"],
+    skipRisk: "Reference checks before provider scope approval can collect PII without workflow.",
+    unlocks: [],
+    nextAllowedAction: "Collect Checkr login for planning. Stop at candidate or report create."
+  },
+  {
+    gateKey: "crucible-license-provider",
+    status: "blocked_by_prior_gate",
+    dependsOn: ["crucible-provider-test"],
+    skipRisk: "License lookups before vendor selection can imply clearance without API proof.",
+    unlocks: [],
+    nextAllowedAction: "Document state vendor options. Stop at paid check launch."
+  },
+  {
+    gateKey: "discovery-response-go-live",
     status: "blocked_by_prior_gate",
     dependsOn: ["stripe-test-checkout-webhook"],
-    skipRisk: "Provider testing before receipt expectations are clear can imply trust or clearance Werkles cannot support.",
-    unlocks: ["production-rollout"],
-    nextAllowedAction: "Prepare provider-mode and receipt expectations; stop at account, OAuth, billing, or activation."
+    skipRisk: "Public discovery SLA without operator read capacity creates false promise of response.",
+    unlocks: [],
+    nextAllowedAction: "No new login. Formalize operator turnaround when Ben gives discovery phrase."
   },
   {
     gateKey: "background-fcra",
@@ -521,6 +585,18 @@ export const productGateOperatorSurfaces: ProductGateOperatorSurface[] = [
     href: "/operator/gate-knockout",
     purpose: "Single-session runbook with exact phrases, proof requirements, stop conditions, and Ben/agent split.",
     useWhen: "Start here before any Stripe, provider, background-check, or production gate session."
+  },
+  {
+    title: "Sign-In Hunt",
+    href: "/operator/gate-knockout/sign-in-hunt",
+    purpose: "Ordered provider login list for Human Gate sessions.",
+    useWhen: "Use when Ben needs to open consoles in gate order."
+  },
+  {
+    title: "Credential Handoff",
+    href: "/operator/gate-knockout/credential-handoff",
+    purpose: "Full tier list for password collection crew — logins, 1Password targets, gate phrases, and status.",
+    useWhen: "Hand off to credential crew before a gate session or provider onboarding sprint."
   },
   {
     title: "Dependencies",
@@ -623,6 +699,12 @@ export const productGateOperatorSurfaces: ProductGateOperatorSurface[] = [
     href: "/operator/gate-knockout/test-checkout-smoke",
     purpose: "Active Gate 1 checklist: test Stripe checkout, webhook proof, and membership state update.",
     useWhen: "Use now that tier-A env is 8/8 and checkout is unpaused in test mode."
+  },
+  {
+    title: "Test Crucible Smoke",
+    href: "/operator/gate-knockout/test-crucible-smoke",
+    purpose: "Gate 2 checklist: identity + funds provider test on /dashboard/crucible after active membership.",
+    useWhen: "Use after Gate 1 test checkout proof or when member + active is already webhook-backed."
   },
   {
     title: "Live Checkout Smoke",
@@ -1104,116 +1186,334 @@ export const productProviderConsoleLinks: ProductProviderConsoleLink[] = [
   }
 ];
 
-export const productGateSignInHunt: ProductGateSignInTarget[] = [
+export const productGateCredentialHandoff: ProductGateCredentialTarget[] = [
   {
-    order: 1,
-    tier: "v0_ship",
-    tierLabel: "Ship a usable member site",
+    id: "1password-operator",
+    tier: 0,
+    tierLabel: "Tier 0 — Infrastructure shell",
+    provider: "1Password (operator + automation)",
+    url: "https://my.1password.com/",
+    loginMethods: "Master password + account unlock; service account token in Windows Credential Manager on Betsy",
+    gatePhrase: null,
+    status: "completed",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets (+ service account item)",
+    fieldsToStore: ["OP_SERVICE_ACCOUNT_TOKEN", "All tier-A + Plaid field names in Werkles Vercel Secrets"],
+    crewAction: "Confirm Ben can unlock 1Password desktop app and CLI integration is on. Do not rotate service account without Ben.",
+    forbiddenUntil: "Never paste values into chat, repo, or receipts."
+  },
+  {
+    id: "supabase",
+    tier: 0,
+    tierLabel: "Tier 0 — Infrastructure shell",
     provider: "Supabase",
     url: "https://supabase.com/dashboard/projects",
+    loginMethods: "Email, GitHub, or SSO; 2FA if enabled",
     gatePhrase: "PROVIDER LOGIN DONE",
-    authenticatorNote: "Email or GitHub sign-in; 2FA if enabled on account."
+    status: "completed",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    crewAction: "Collect login. Confirm project access. Keys already synced — verify 2FA recovery.",
+    forbiddenUntil: "No SQL migrations or auth URL changes without Ben gate."
   },
   {
-    order: 2,
-    tier: "v0_ship",
-    tierLabel: "Ship a usable member site",
+    id: "vercel",
+    tier: 0,
+    tierLabel: "Tier 0 — Infrastructure shell",
     provider: "Vercel",
     url: "https://vercel.com/login",
+    loginMethods: "GitHub, email, or SSO; team werkles / project werkles1",
     gatePhrase: "APPROVE SECRET ENTRY",
-    authenticatorNote: "Continue with GitHub is fastest if GitHub session is already open."
+    status: "completed",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: ["All tier-A env var names", "Plaid fields when syncing"],
+    crewAction: "Collect login with access to werkles/werkles1 Production + Preview env settings.",
+    forbiddenUntil: "No production deploy or live key swap without explicit phrase."
   },
   {
-    order: 3,
-    tier: "v0_ship",
-    tierLabel: "Ship a usable member site",
-    provider: "Stripe",
-    url: "https://dashboard.stripe.com/login?redirect=%2Ftest%2Fproducts",
+    id: "stripe-master",
+    tier: 1,
+    tierLabel: "Tier 1 — Money path (Stripe)",
+    provider: "Stripe (master login — test + live + Identity)",
+    url: "https://dashboard.stripe.com/login",
+    loginMethods: "Email/password + authenticator, passkey, Google, or SSO",
     gatePhrase: "APPROVE STRIPE PRODUCT PREP",
-    authenticatorNote: "Email/password + authenticator, passkey, Google, or SSO — known blocker."
+    status: "collect_now",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: [
+      "STRIPE_SECRET_KEY",
+      "STRIPE_WEBHOOK_SECRET",
+      "STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID",
+      "STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID",
+      "STRIPE_CRUCIBLE_* price IDs (see lib/stripe-manifest.ts)"
+    ],
+    crewAction: "One login covers all Stripe sub-consoles below. Store in 1Password Login item + secret fields separately.",
+    forbiddenUntil: "No live product create without APPROVE LIVE STRIPE PRODUCT CREATE."
   },
   {
-    order: 4,
-    tier: "v0_ship",
-    tierLabel: "Ship a usable member site",
-    provider: "Stripe (test webhooks)",
+    id: "stripe-test-webhooks",
+    tier: 1,
+    tierLabel: "Tier 1 — Money path (Stripe)",
+    provider: "Stripe — test webhooks",
     url: "https://dashboard.stripe.com/test/webhooks",
+    loginMethods: "Same Stripe login",
     gatePhrase: "APPROVE PAID CHECKOUT GO-LIVE (test mode)",
-    authenticatorNote: "Same Stripe login as above."
+    status: "completed",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: ["STRIPE_WEBHOOK_SECRET (test endpoint whsec_*)"],
+    crewAction: "Approved 2026-07-07. Endpoint we_1Tq0y6BzNBvy0VkUWOJLgD6l → werkles.com/api/webhooks/stripe.",
+    forbiddenUntil: "Test mode only until live checkout gate."
   },
   {
-    order: 5,
-    tier: "v0_ship",
-    tierLabel: "Ship a usable member site",
-    provider: "Stripe (live products)",
+    id: "stripe-live-products",
+    tier: 1,
+    tierLabel: "Tier 1 — Money path (Stripe)",
+    provider: "Stripe — live products & prices",
     url: "https://dashboard.stripe.com/products",
+    loginMethods: "Same Stripe login; toggle Test mode OFF",
     gatePhrase: "APPROVE LIVE STRIPE PRODUCT CREATE",
-    authenticatorNote: "After test checkout + webhook proof."
+    status: "collect_now",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: [
+      "STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID (live)",
+      "STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID (live)",
+      "STRIPE_CRUCIBLE_* live price IDs when Crucible paid checks ship"
+    ],
+    crewAction: "Phrase approved 2026-07-23. Ben creates live Foundry Dues products; crew does not click create/save. Next: APPROVE SECRET ENTRY after IDs exist in 1Password.",
+    forbiddenUntil: "Crew must not enter credentials or paste price IDs into chat. HG-4/HG-5 still gated."
   },
   {
-    order: 6,
-    tier: "github_push",
-    tierLabel: "Push / merge / PR",
-    provider: "GitHub (web)",
-    url: "https://github.com/login",
-    gatePhrase: null,
-    authenticatorNote: "Repo: benleakwerkles/Werkles (id 1242158598)."
+    id: "stripe-live-webhooks",
+    tier: 1,
+    tierLabel: "Tier 1 — Money path (Stripe)",
+    provider: "Stripe — live webhooks + billing portal",
+    url: "https://dashboard.stripe.com/webhooks",
+    loginMethods: "Same Stripe login; live mode",
+    gatePhrase: "APPROVE PAID CHECKOUT GO-LIVE",
+    status: "collect_planning",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: ["STRIPE_SECRET_KEY (sk_live_*)", "STRIPE_WEBHOOK_SECRET (live whsec_*)"],
+    crewAction: "Also collect portal settings URL: dashboard.stripe.com/settings/billing/portal",
+    forbiddenUntil: "Blocked until live products + APPROVE SECRET ENTRY."
   },
   {
-    order: 7,
-    tier: "github_push",
-    tierLabel: "Push / merge / PR",
-    provider: "GitHub CLI",
-    url: "https://cli.github.com/manual/gh_auth_login",
-    gatePhrase: null,
-    authenticatorNote: "Terminal: gh auth login — separate from web session."
-  },
-  {
-    order: 8,
-    tier: "crucible_later",
-    tierLabel: "Crucible / verification (later)",
-    provider: "Stripe Identity",
-    url: "https://dashboard.stripe.com/identity/application",
-    gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
-    authenticatorNote: "Same Stripe login."
-  },
-  {
-    order: 9,
-    tier: "crucible_later",
-    tierLabel: "Crucible / verification (later)",
+    id: "plaid",
+    tier: 2,
+    tierLabel: "Tier 2 — Crucible core providers",
     provider: "Plaid",
     url: "https://dashboard.plaid.com/",
-    gatePhrase: null,
-    authenticatorNote: "Explicit setup approval before credentials."
+    loginMethods: "Email/password; 2FA if enabled",
+    gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
+    status: "completed",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets",
+    fieldsToStore: ["PLAID_CLIENT_ID", "PLAID_SECRET", "PLAID_ENV"],
+    crewAction: "Approved 2026-07-07. Sandbox keys synced. Collect login for future production key rotation.",
+    forbiddenUntil: "Production Plaid keys require separate Ben approval."
   },
   {
-    order: 10,
-    tier: "crucible_later",
-    tierLabel: "Crucible / verification (later)",
-    provider: "Twilio",
+    id: "stripe-identity",
+    tier: 2,
+    tierLabel: "Tier 2 — Crucible core providers",
+    provider: "Stripe Identity",
+    url: "https://dashboard.stripe.com/identity/application",
+    loginMethods: "Same Stripe login",
+    gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
+    status: "completed",
+    onePasswordVault: null,
+    onePasswordItem: null,
+    fieldsToStore: [],
+    crewAction: "Approved 2026-07-07. Enable Identity application in Stripe for live redirect (optional upgrade from stub).",
+    forbiddenUntil: "No live identity claims without provider test scope."
+  },
+  {
+    id: "twilio",
+    tier: 3,
+    tierLabel: "Tier 3 — Crucible extended (future)",
+    provider: "Twilio Verify",
     url: "https://console.twilio.com/",
-    gatePhrase: null,
-    authenticatorNote: "Explicit setup approval before SMS."
+    loginMethods: "Email/password + 2FA",
+    gatePhrase: "APPROVE CRUCIBLE PHONE PROVIDER SETUP",
+    status: "collect_planning",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets (future fields)",
+    fieldsToStore: ["TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_VERIFY_SERVICE_SID"],
+    crewAction: "Collect login for planning. Phone check UI exists; API not wired.",
+    forbiddenUntil: "No SMS send or Verify service create without phrase."
   },
   {
-    order: 11,
-    tier: "crucible_later",
-    tierLabel: "Crucible / verification (later)",
-    provider: "Checkr",
+    id: "checkr-reference",
+    tier: 3,
+    tierLabel: "Tier 3 — Crucible extended (future)",
+    provider: "Checkr — reference & employment",
     url: "https://dashboard.checkr.com/",
-    gatePhrase: null,
-    authenticatorNote: "FCRA/counsel blocked until policy proof."
+    loginMethods: "Email/password; employer onboarding may apply",
+    gatePhrase: "APPROVE CRUCIBLE REFERENCE PROVIDER SETUP",
+    status: "collect_planning",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets (future fields)",
+    fieldsToStore: ["CHECKR_API_KEY", "CHECKR_WEBHOOK_SECRET"],
+    crewAction: "Collect login for reference/employment prep only — not background tier yet.",
+    forbiddenUntil: "No candidate create, consent, or report order without phrase."
   },
   {
-    order: 12,
-    tier: "optional",
-    tierLabel: "Optional",
-    provider: "Google Cloud",
-    url: "https://console.cloud.google.com/apis/credentials",
+    id: "license-vendors",
+    tier: 3,
+    tierLabel: "Tier 3 — Crucible extended (future)",
+    provider: "State / county license lookup vendors",
+    url: "https://werkles.com/pricing",
+    loginMethods: "Varies by state board API vendor (TBD)",
+    gatePhrase: "APPROVE CRUCIBLE LICENSE PROVIDER SETUP",
+    status: "collect_planning",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "TBD per vendor",
+    fieldsToStore: ["Per-vendor API keys when selected"],
+    crewAction: "No vendor selected yet. Track hospitality states (liquor, food handler, contractor) when Ben picks vendor.",
+    forbiddenUntil: "No paid license check launch without phrase."
+  },
+  {
+    id: "checkr-background",
+    tier: 4,
+    tierLabel: "Tier 4 — Background / FCRA (policy-blocked)",
+    provider: "Checkr — background tiers",
+    url: "https://dashboard.checkr.com/",
+    loginMethods: "Same Checkr account as Tier 3 if used",
     gatePhrase: null,
-    authenticatorNote: "Only if enabling Google OAuth in Supabase."
+    status: "policy_blocked",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Werkles Vercel Secrets (future)",
+    fieldsToStore: ["CHECKR_API_KEY", "CHECKR_PACKAGE_IDS"],
+    crewAction: "May collect login for planning. Do NOT start checks, consent flows, or store reports.",
+    forbiddenUntil: "Counsel-reviewed FCRA flow + Ben approval after policy proof."
+  },
+  {
+    id: "github-web",
+    tier: 5,
+    tierLabel: "Tier 5 — Repo / merge",
+    provider: "GitHub (web)",
+    url: "https://github.com/login",
+    loginMethods: "Email/password, passkey, or SSO; org benleakwerkles/Werkles",
+    gatePhrase: null,
+    status: "collect_now",
+    onePasswordVault: null,
+    onePasswordItem: "Ben personal vault — GitHub login",
+    fieldsToStore: ["GitHub username/password or SSO identity", "PAT only if Ben explicitly requests gh automation"],
+    crewAction: "Collect for push/PR/merge gates. Canonical guard may block push until merge resolved.",
+    forbiddenUntil: "No push to main or force push without explicit Ben gate."
+  },
+  {
+    id: "github-cli",
+    tier: 5,
+    tierLabel: "Tier 5 — Repo / merge",
+    provider: "GitHub CLI (gh)",
+    url: "https://cli.github.com/manual/gh_auth_login",
+    loginMethods: "Separate from web session — gh auth login on Betsy",
+    gatePhrase: null,
+    status: "collect_now",
+    onePasswordVault: null,
+    onePasswordItem: "Ben personal vault or machine keyring",
+    fieldsToStore: ["gh auth token on Betsy"],
+    crewAction: "Verify gh auth status on Betsy: gh auth status",
+    forbiddenUntil: "Same as GitHub web."
+  },
+  {
+    id: "discovery-operator",
+    tier: 6,
+    tierLabel: "Tier 6 — Discovery (no new provider login)",
+    provider: "Werkles Discovery queue (operator)",
+    url: "https://werkles.com/discovery",
+    loginMethods: "No new vendor — uses Supabase + operator human read",
+    gatePhrase: "APPROVE DISCOVERY RESPONSE GO-LIVE",
+    status: "collect_planning",
+    onePasswordVault: null,
+    onePasswordItem: null,
+    fieldsToStore: [],
+    crewAction: "No password to collect. Gate formalizes operator SLA for /discovery intake response.",
+    forbiddenUntil: "Phrase not yet in APPROVAL_LOG — prep only."
+  },
+  {
+    id: "google-oauth",
+    tier: 7,
+    tierLabel: "Tier 7 — Optional",
+    provider: "Google Cloud (OAuth)",
+    url: "https://console.cloud.google.com/apis/credentials",
+    loginMethods: "Google account; OAuth consent screen admin",
+    gatePhrase: "APPROVE SUPABASE GOOGLE OAUTH",
+    status: "optional",
+    onePasswordVault: "Werkles Automation",
+    onePasswordItem: "Google OAuth client (future)",
+    fieldsToStore: ["GOOGLE_OAUTH_CLIENT_ID", "GOOGLE_OAUTH_CLIENT_SECRET"],
+    crewAction: "Only if enabling Google sign-in in Supabase. App currently email/password only.",
+    forbiddenUntil: "Optional future social auth."
+  },
+  {
+    id: "render-ghost-forge",
+    tier: 7,
+    tierLabel: "Tier 7 — Optional",
+    provider: "Render (Ghost Forge)",
+    url: "https://dashboard.render.com/",
+    loginMethods: "Email/GitHub",
+    gatePhrase: "RESUME_GATE_05_* or new render batch GO",
+    status: "paused",
+    onePasswordVault: null,
+    onePasswordItem: null,
+    fieldsToStore: ["RENDER_API_KEY if batch scripts need it"],
+    crewAction: "Gate 05 PAUSE — no spend. Collect only if Ben resumes Ghost Forge renders.",
+    forbiddenUntil: "Ghost Forge hourly cap / budget gate."
+  },
+  {
+    id: "credit-bureau",
+    tier: 7,
+    tierLabel: "Tier 7 — Optional",
+    provider: "Credit bureau partner (not in stack)",
+    url: "https://werkles.com/pricing",
+    loginMethods: "N/A — not wired",
+    gatePhrase: null,
+    status: "optional",
+    onePasswordVault: null,
+    onePasswordItem: null,
+    fieldsToStore: [],
+    crewAction: "Skip unless Ben adds credit pull product. Plaid is not a credit bureau.",
+    forbiddenUntil: "Not in product roadmap yet."
   }
 ];
+
+export const productGateSignInHunt: ProductGateSignInTarget[] = productGateCredentialHandoff
+  .filter((target) => target.url.startsWith("http"))
+  .map((target, index) => ({
+    order: index + 1,
+    tier:
+      target.tier === 0
+        ? "tier_0_infra"
+        : target.tier === 1
+          ? "tier_1_money"
+          : target.tier === 2
+            ? "tier_2_crucible"
+            : target.tier === 3
+              ? "tier_3_crucible_extended"
+              : target.tier === 4
+                ? "tier_4_fcra"
+                : target.tier === 5
+                  ? "tier_5_repo"
+                  : target.tier === 6
+                    ? "tier_6_discovery"
+                    : "optional",
+    tierLabel: target.tierLabel,
+    provider: target.provider,
+    url: target.url,
+    gatePhrase: target.gatePhrase,
+    authenticatorNote: `${target.loginMethods} — ${target.crewAction}`
+  }));
 
 export const productGateSecretEntryItems: ProductGateSecretEntryItem[] = [
   {
@@ -1372,6 +1672,59 @@ export const productGateTestCheckoutSmokeSteps: ProductGateLiveCheckoutSmokeStep
   }
 ];
 
+export const productGateCruciblePreflight: string[] = [
+  "Complete Gate 1 first — Crucible provider checks require active Foundry membership (member + active).",
+  "Log in and open /dashboard/crucible — not the operator runbook alone.",
+  "Identity: enable Stripe Identity on your test account, or accept sandbox stub if redirect is unavailable.",
+  "Funds: Plaid Link runs in sandbox — follow Plaid test institution flow in the Link UI.",
+  "Proof = /dashboard/profile shows id_status and funds_status after webhook or exchange — not the button alone."
+];
+
+export const productGateCrucibleSmokeSteps: ProductGateLiveCheckoutSmokeStep[] = [
+  {
+    order: 1,
+    title: "Confirm provider env + mule",
+    actor: "Agent",
+    proof: "Plaid 3/3 valid in 1Password + Vercel Production; Stripe webhook has 7 events including identity.*; Plaid link_token smoke PASS.",
+    mustNotDo: "Do not print secret values."
+  },
+  {
+    order: 2,
+    title: "Confirm active membership",
+    actor: "Ben",
+    proof: "/dashboard/billing shows member + active (from Gate 1 webhook, not manual patch).",
+    mustNotDo: "Do not run Crucible checks on a non-member account."
+  },
+  {
+    order: 3,
+    title: "Run Identity check",
+    actor: "Ben",
+    proof: "Identity POST on /dashboard/crucible opens Stripe Identity test redirect OR records sandbox_pending stub.",
+    mustNotDo: "Do not treat return URL alone as verified."
+  },
+  {
+    order: 4,
+    title: "Run Funds check",
+    actor: "Ben",
+    proof: "Plaid Link token creation can run in sandbox; public-token exchange and funds-status proof remain disabled until owner-bound encrypted custody exists.",
+    mustNotDo: "Do not enter real bank credentials."
+  },
+  {
+    order: 5,
+    title: "Verify profile signals",
+    actor: "Both",
+    proof: "/dashboard/profile reflects id_status and funds_status after webhook or exchange.",
+    mustNotDo: "Do not imply clearance or legal approval in copy."
+  },
+  {
+    order: 6,
+    title: "Record provider test approval",
+    actor: "Ben",
+    proof: "Say APPROVE CRUCIBLE PROVIDER TEST after hands proof, or confirm provider test complete.",
+    mustNotDo: "Do not open live/paid provider sessions."
+  }
+];
+
 export const productGateLiveCheckoutSmokeSteps: ProductGateLiveCheckoutSmokeStep[] = [
   {
     order: 1,
@@ -1518,7 +1871,7 @@ export const productHumanGates: ProductHumanGate[] = [
   {
     key: "stripe-test-webhook",
     title: "Stripe test checkout + webhook",
-    status: "ready_for_review",
+    status: "completed",
     area: "stripe",
     gatePhrase: "APPROVE PAID CHECKOUT GO-LIVE (test mode)",
     visibleProof: "Tier-A env 8/8 on Preview and Production; checkout routes unpaused in test mode.",
@@ -1548,7 +1901,7 @@ export const productHumanGates: ProductHumanGate[] = [
   {
     key: "crucible-identity-provider",
     title: "Crucible identity provider",
-    status: "operator_gate",
+    status: "completed",
     area: "crucible",
     gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
     visibleProof: "Crucible route and pricing surface exist; identity/funds are preview states until provider wiring is approved.",
@@ -1583,7 +1936,7 @@ export const productGateKnockoutSteps: ProductGateKnockoutStep[] = [
     key: "stripe-test-checkout-webhook",
     title: "Stripe test checkout + webhook review",
     gatePhrase: "APPROVE PAID CHECKOUT GO-LIVE (test mode)",
-    status: "ready_for_review",
+    status: "completed",
     operatorUrl: "https://dashboard.stripe.com/test/webhooks",
     localRoutes: ["/membership", "/dashboard/billing"],
     benAction: "Review the test checkout path and confirm webhook-backed membership state.",
@@ -1688,13 +2041,13 @@ export const productGateKnockoutSteps: ProductGateKnockoutStep[] = [
     key: "crucible-provider-test",
     title: "Crucible identity/funds provider test",
     gatePhrase: "APPROVE CRUCIBLE PROVIDER TEST",
-    status: "ready_for_review",
+    status: "completed",
     operatorUrl: "https://dashboard.stripe.com/identity/application",
     localRoutes: ["/dashboard/crucible", "/dashboard/profile"],
     benAction: "Complete Stripe Identity test session and Plaid Link sandbox when credentials are configured.",
     agentPrep: [
       "Crucible sandbox unlocked; identity POST redirects to Stripe when Identity is enabled.",
-      "Funds POST opens Plaid Link when PLAID_CLIENT_ID/PLAID_SECRET are set; otherwise sandbox stub.",
+      "Funds POST requests the configured Plaid Link sandbox experience and fails closed when credentials or configuration are unavailable.",
       "Add Stripe webhook events: identity.verification_session.*"
     ],
     forbiddenActions: [
@@ -1764,7 +2117,93 @@ export const productGateKnockoutSteps: ProductGateKnockoutStep[] = [
       "Rollback note exists in rollout readiness receipt."
     ],
     stopCondition: "Stop any new production mutation without explicit approval.",
-    notes: "Completed for tier-A env custody. Test checkout review is the next payment gate."
+    notes: "Completed for tier-A env custody. HG-1 and HG-2 approved 2026-07-07."
+  },
+  {
+    order: 8,
+    key: "discovery-response-go-live",
+    title: "Discovery public response go-live",
+    gatePhrase: "APPROVE DISCOVERY RESPONSE GO-LIVE",
+    status: "operator_gate",
+    operatorUrl: "https://werkles.com/discovery",
+    localRoutes: ["/discovery", "/bellows"],
+    benAction: "Commit to human-read turnaround on public discovery intakes.",
+    agentPrep: [
+      "No new provider login required.",
+      "Show intake form and operator queue path.",
+      "Keep Squibb translation human-read until live deck is approved."
+    ],
+    forbiddenActions: [
+      "Do not promise auto-matching or instant responses.",
+      "Do not expose intake PII in receipts."
+    ],
+    proofRequired: [
+      "/discovery intake saves successfully.",
+      "Operator SLA documented.",
+      "Ben gives exact discovery go-live phrase."
+    ],
+    stopCondition: "Stop if intake route fails or operator capacity undefined.",
+    notes: "Zero-barrier front door — no dues required."
+  },
+  {
+    order: 9,
+    key: "crucible-phone-provider",
+    title: "Crucible phone provider (Twilio)",
+    gatePhrase: "APPROVE CRUCIBLE PHONE PROVIDER SETUP",
+    status: "operator_gate",
+    operatorUrl: "https://console.twilio.com/",
+    localRoutes: ["/dashboard/crucible"],
+    benAction: "Approve Twilio Verify setup and private credential entry.",
+    agentPrep: ["Collect Twilio login.", "Document TWILIO_* env var names only."],
+    forbiddenActions: ["Do not send SMS.", "Do not create Verify service without phrase."],
+    proofRequired: ["Twilio login works.", "Env var names listed in secret-entry matrix."],
+    stopCondition: "Stop at SMS send, billing activation, or secret paste into chat.",
+    notes: "Tier 3 extended Crucible — not wired yet."
+  },
+  {
+    order: 10,
+    key: "crucible-reference-provider",
+    title: "Crucible reference & employment (Checkr)",
+    gatePhrase: "APPROVE CRUCIBLE REFERENCE PROVIDER SETUP",
+    status: "operator_gate",
+    operatorUrl: "https://dashboard.checkr.com/",
+    localRoutes: ["/dashboard/crucible", "/pricing"],
+    benAction: "Approve Checkr for reference/employment prep only.",
+    agentPrep: ["Collect Checkr login.", "Keep separate from FCRA background tier."],
+    forbiddenActions: ["Do not order background reports.", "Do not collect FCRA consent."],
+    proofRequired: ["Checkr employer account access.", "Package scope documented."],
+    stopCondition: "Stop at candidate create, consent, or report order.",
+    notes: "Reference/employment only — not background-complete tier."
+  },
+  {
+    order: 11,
+    key: "crucible-license-provider",
+    title: "Crucible license lookup vendor",
+    gatePhrase: "APPROVE CRUCIBLE LICENSE PROVIDER SETUP",
+    status: "operator_gate",
+    operatorUrl: "https://werkles.com/pricing",
+    localRoutes: ["/dashboard/crucible"],
+    benAction: "Pick state/county license vendor and approve API scope.",
+    agentPrep: ["Document hospitality license types by state.", "No vendor selected yet."],
+    forbiddenActions: ["Do not launch paid license check without vendor API proof."],
+    proofRequired: ["Vendor selected.", "API credentials stored in 1Password privately."],
+    stopCondition: "Stop at per-state paid check launch.",
+    notes: "$14.99/state in pricing — API TBD."
+  },
+  {
+    order: 12,
+    key: "github-push-merge",
+    title: "GitHub push / merge / PR",
+    gatePhrase: null,
+    status: "operator_gate",
+    operatorUrl: "https://github.com/benleakwerkles/Werkles",
+    localRoutes: [],
+    benAction: "Approve branch push, PR merge, or main integration when canonical guard clears.",
+    agentPrep: ["Collect GitHub web + gh CLI sessions on Betsy."],
+    forbiddenActions: ["No force push to main.", "No --no-verify without Ben."],
+    proofRequired: ["gh auth status PASS.", "Canonical guard blockers resolved or Ben waives."],
+    stopCondition: "Stop at main merge or force push.",
+    notes: "Separate from product money gates."
   }
 ];
 

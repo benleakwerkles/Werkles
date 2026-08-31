@@ -3,6 +3,8 @@
  * No AI model. No matching engine. Operator-facing presentation only.
  */
 
+import type { OpportunityCase } from "@/lib/matching/opportunity-case";
+
 export type RecommendationKind =
   | "translate_need"
   | "verify_proof"
@@ -58,6 +60,7 @@ export interface SquibbRecommendation {
   reasoning: {
     statedNeed: string;
     translatedNeed?: string;
+    nextSteps?: readonly string[];
     rationale: string[];
     counterpoint?: string;
   };
@@ -94,6 +97,34 @@ export type SquibbRecommendationSessionSource = {
   answeredCount?: number;
   totalQuestions?: number;
   symptomBlock?: string;
+  starterProfile?: {
+    version: "v1";
+    source: "self_reported_intake";
+    project: string;
+    stage: string;
+    goal: string;
+    resources: string[];
+    offers: string[];
+    seeks: string[];
+    constraints: string[];
+    missing: string[];
+  };
+  /** Shared deterministic causal case. Self-report and rule hypotheses remain distinct. */
+  opportunityCase?: OpportunityCase;
+  /** Document / intake text the ratings were scored against. */
+  fedDocument?: {
+    id: string;
+    title: string;
+    kind: "example_fixture" | "member_intake" | "uploaded_document";
+    summary: string;
+    body: string;
+    excerpts: Array<{
+      id: string;
+      label: string;
+      text: string;
+      feeds: string[];
+    }>;
+  };
 };
 
 export type SquibbRecommendationSessionInput = {
@@ -105,19 +136,27 @@ export type SquibbRecommendationSessionInput = {
 };
 
 export const RECOMMENDATION_KIND_LABELS: Record<RecommendationKind, string> = {
-  translate_need: "Translate need",
-  verify_proof: "Verify proof",
-  stage_intro_candidate: "Stage intro candidate",
-  find_partner: "Find partner",
-  find_equipment: "Find equipment",
-  find_banker: "Find banker",
-  find_credit_union: "Find credit union",
-  find_better_job: "Find better job",
-  stay_current_job: "Stay in current job",
-  relocate: "Relocate",
-  get_training: "Get training",
-  raise_capital: "Raise capital"
+  translate_need: "Choose the Next Decision",
+  verify_proof: "Strengthen Your Evidence",
+  stage_intro_candidate: "See Who Might Help",
+  find_partner: "Explore Working with Someone",
+  find_equipment: "Find Tools or Equipment",
+  find_banker: "Talk with a Business Banker",
+  find_credit_union: "Compare Credit-Union Options",
+  find_better_job: "Explore a Better-Fit Job",
+  stay_current_job: "Keep Your Current Income for Now",
+  relocate: "Compare Locations",
+  get_training: "Build a Missing Skill",
+  raise_capital: "Prepare to Seek Funding"
 };
+
+export const RECOMMENDATION_KINDS = Object.freeze(
+  Object.keys(RECOMMENDATION_KIND_LABELS) as RecommendationKind[]
+);
+
+export function isRecommendationKind(value: string | undefined): value is RecommendationKind {
+  return Boolean(value && RECOMMENDATION_KINDS.includes(value as RecommendationKind));
+}
 
 const DEMO_STATED_NEED =
   "I need a business partner and investor before I can buy the bakery equipment.";
@@ -229,7 +268,7 @@ function makeRecommendation(
 const rankedDeck: SquibbRecommendation[] = [
   makeRecommendation("find_equipment", 1, {
     id: "rec-equipment",
-    title: "Find equipment first",
+    title: "Find Equipment First",
     headline: "The oven quote is the nearer bottleneck — not the partner.",
     squibbNote:
       "Squibb: You said partner and investor. The priced asset is already on the table. Partners show up faster when the machine is real.",
@@ -270,7 +309,7 @@ const rankedDeck: SquibbRecommendation[] = [
   }),
   makeRecommendation("find_credit_union", 2, {
     id: "rec-cu",
-    title: "Find credit union",
+    title: "Find Credit Union",
     headline: "Member-owned lending may fit equipment better than equity.",
     squibbNote:
       "Squibb: Credit unions often underwrite equipment when the story is boring and documented. Less theater than a 'strategic partner.'",
@@ -286,11 +325,11 @@ const rankedDeck: SquibbRecommendation[] = [
     confidence: {
       score: 62,
       label: "medium",
-      why: "Structure fits, but liquidity band and personal guarantee appetite are unverified."
+      why: "Structure fits, but a current funds check and your comfort with a personal guarantee are still unresolved."
     },
     evidence: [
       { id: "e5", label: "Working style: Builder / hands-on operator", strength: "self_reported" },
-      { id: "e6", label: "Liquidity band verified", strength: "missing" },
+      { id: "e6", label: "Funds verification is current", strength: "missing" },
       { id: "e7", label: "Local CU programs researched", strength: "inferred" }
     ],
     suggestedAgent: "Werkles research guide",
@@ -299,7 +338,7 @@ const rankedDeck: SquibbRecommendation[] = [
   }),
   makeRecommendation("get_training", 3, {
     id: "rec-training",
-    title: "Get training",
+    title: "Get Training",
     headline: "Commercial baking ops training reduces expensive partner dependency.",
     squibbNote:
       "Squibb: Sometimes the missing 'partner' is a week of operator training, not a co-founder.",
@@ -336,7 +375,7 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
   return [
     makeRecommendation("translate_need", 1, {
       id: "rec-translate-need",
-      title: "Translate the bottleneck",
+      title: "Translate the Bottleneck",
       headline: "Turn the intake into one plain next-move hypothesis before chasing people or money.",
       squibbNote:
         "Squibb: The stated ask is source material, not the verdict. Translate it before anyone starts shopping for a solution.",
@@ -344,7 +383,7 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
         statedNeed,
         translatedNeed: "Human-readable bottleneck statement from the latest intake.",
         rationale: [
-          "The intake is symptom-only by design, so the first action is translation rather than matching.",
+          "The Intake begins with the member's own words, so Werkles should explain its read before suggesting a person or an expensive move.",
           "A translated bottleneck gives reviewers something concrete to critique.",
           "This prevents the first packet from becoming an unearned intro, funding ask, or vendor hunt."
         ],
@@ -364,7 +403,7 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
     }),
     makeRecommendation("verify_proof", 2, {
       id: "rec-proof-gap",
-      title: "Name the proof gap",
+      title: "Name the Proof Gap",
       headline: "List the one or two facts that would make the next move safer.",
       squibbNote:
         "Squibb: Before asking who can help, ask what proof would change the decision.",
@@ -389,7 +428,7 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
     }),
     makeRecommendation("stage_intro_candidate", 3, {
       id: "rec-intro-candidate",
-      title: "Stage one guarded candidate",
+      title: "Stage One Guarded Candidate",
       headline: "Create a candidate packet only after translation and proof gap are visible.",
       squibbNote:
         "Squibb: A candidate is not an intro. It is a thing a human can approve, reject, or sharpen.",
@@ -417,26 +456,26 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
 
 /** Full catalog — one exemplar card per recommendation type for UI reference. */
 const catalogDeck: SquibbRecommendation[] = (
-  Object.keys(RECOMMENDATION_KIND_LABELS) as RecommendationKind[]
+  RECOMMENDATION_KINDS
 ).map((kind, index) => {
   const label = RECOMMENDATION_KIND_LABELS[kind];
   return makeRecommendation(kind, index + 1, {
     id: `catalog-${kind}`,
     title: label,
     headline: `Consider whether “${label.toLowerCase()}” fits your situation.`,
-    squibbNote: `Squibb: This is one option to consider — not a decision made for you.`,
+    squibbNote: `This is one option to consider—not a decision made for you.`,
     reasoning: {
       statedNeed: DEMO_STATED_NEED,
       rationale: [
         `Frames ${label.toLowerCase()} as one possible next step.`,
-        "Reasoning stays evidence-led; Squibb widens the map without deciding.",
+        "The rules widen the map without deciding for you.",
         "Ground this option in your intake before acting."
       ]
     },
     confidence: {
       score: 40 + (index % 3) * 15,
       label: index % 3 === 0 ? "low" : index % 3 === 1 ? "medium" : "high",
-      why: "This example is not yet grounded in your intake."
+      why: "This option is not grounded in your intake yet."
     },
     evidence: [
       { id: `${kind}-ev-1`, label: "Your stated need on file", strength: "self_reported" },
@@ -454,7 +493,7 @@ export function loadSquibbRecommendationSession(): SquibbRecommendationSession {
     statedNeed: DEMO_STATED_NEED,
     operatorContext: "First commercial bakery · equipment financing decision",
     squibbIntro:
-      "Squibb notices what is easy to miss. These are ranked options — not orders. You hold the decision.",
+      "These are options to compare, not orders. Your answers shape the list, and you hold the decision.",
     ranked: rankedDeck,
     catalog: catalogDeck
   };

@@ -13,11 +13,13 @@ type EvidenceSectionProps = {
 
 export function EvidenceSection({ items }: EvidenceSectionProps) {
   return (
-    <section className="squibb-evidence" aria-labelledby="squibbEvidenceTitle">
-      <h3 id="squibbEvidenceTitle">Proof & evidence</h3>
+    <details className="squibb-evidence squibb-rec-collapse">
+      <summary className="squibb-rec-collapse__summary" id="squibbEvidenceTitle">
+        Proof & evidence
+      </summary>
       <p className="squibb-evidence__lead">
-        Squibb stays quiet when evidence is thin. Verified proof clears the path — it does not make the call for
-        you.
+        When evidence is thin, Werkles should say so. A completed check can support a decision; it does not make
+        the decision for you.
       </p>
       <ul className="squibb-evidence__list">
         {items.map((item) => (
@@ -32,6 +34,6 @@ export function EvidenceSection({ items }: EvidenceSectionProps) {
           </li>
         ))}
       </ul>
-    </section>
+    </details>
   );
 }

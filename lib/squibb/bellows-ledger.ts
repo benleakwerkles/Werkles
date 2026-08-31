@@ -8,6 +8,8 @@ export type BellowsLedgerIntakeRow = {
   answeredCount: number;
   totalQuestions: number;
   headline: string;
+  /** Present on owner-bound intakes (member_* or bellows_owner_*). Legacy rows omit this. */
+  ownerId?: string | null;
 };
 
 export type BellowsLedgerOptionRow = {

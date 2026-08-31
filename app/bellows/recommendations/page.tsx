@@ -1,49 +1,39 @@
-import Link from "next/link";
-
-import { SiteHeader } from "@/components/foundry/site-header";
-import { SquibbRecommendationSurface } from "@/components/squibb/recommendation-surface";
-import { copy } from "@/lib/copy";
+import { LocalAwareSiteHeader } from "@/components/foundry/local-aware-site-header";
+import { AccountAwareRecommendationSurface } from "@/components/squibb/account-aware-recommendation-surface";
+import { AccountAwarePeopleContinuation } from "@/components/ghost-fleet/account-aware-people-continuation";
 import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-recommendation-session-server";
+import { isRecommendationKind } from "@/lib/squibb/recommendations";
 
 import "./squibb-recommendations.css";
 
 export const metadata = {
   title: "Werkles Recommendations | Bellows",
-  description: "Compare possible next steps with their reasoning, evidence, limitations, and required human review."
+  description: "Compare practical next steps, see why they fit, and choose what to explore next."
 };
 
 export const dynamic = "force-dynamic";
 
-export default async function SquibbRecommendationsPage() {
-  const { session, ledger } = await loadPublicBellowsRecommendationPageData();
+export default async function SquibbRecommendationsPage({
+  searchParams
+}: {
+  searchParams: Promise<{ option?: string }>;
+}) {
+  const { session, ledger, ghostFleetBridge } = await loadPublicBellowsRecommendationPageData();
+  const requestedOption = (await searchParams).option;
+  const initialKind = isRecommendationKind(requestedOption) ? requestedOption : undefined;
 
   return (
     <>
-      <SiteHeader />
+      <LocalAwareSiteHeader />
       <main className="bellows-main narrative-act-page workshop-route--bellows squibb-rec-page">
 
-        <nav className="squibb-rec-page__nav" aria-label="Bellows">
-          <Link className="button button-ghost" href="/bellows">
-            ← Back to Bellows
-          </Link>
-          <Link className="button button-ghost" href="/bellows/intake">
-            Concierge intake
-          </Link>
-          <Link className="button button-ghost" href="/dashboard">
-            Member home
-          </Link>
-        </nav>
+        <AccountAwareRecommendationSurface initialSession={session} ledger={ledger} initialKind={initialKind} />
 
-        <SquibbRecommendationSurface session={session} ledger={ledger} />
+        <AccountAwarePeopleContinuation initialBridge={ghostFleetBridge} />
 
-        <p className="squibb-rec-page__test-case-link">
-          <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
-            Concierge walkthrough · Test Case #0
-          </Link>
-        </p>
       </main>
       <footer className="site-footer">
-        <p>{copy.disclaimer}</p>
+        <p>Werkles helps you compare possible next steps. It does not guarantee funding, verification, legal clearance, or a particular outcome.</p>
       </footer>
     </>
   );

@@ -10,8 +10,9 @@ export const storyV2Folder = "/assets/draft/anyone-narrative-v2";
 export const squibbV3Folder = "/assets/draft/squibb-classy-v3";
 export const storyV2StockFolder = "/assets/draft/anyone-narrative-v2-stock";
 
-/** Same woman throughout — late-30s home baker scaling to storefront */
-export const storyProtagonistId = "baker-maria";
+/** Retired named-founder story. Kept only as a legacy asset map until the old
+ * visual-story component is removed from the archive. */
+export const storyProtagonistId = "retired-named-founder-story";
 
 export const storyV2Assets = {
   beat01WrongNeed: `${storyV2Folder}/werkles-story-v2-beat01-wrong-need.png`,

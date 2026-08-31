@@ -319,7 +319,7 @@ export default function OnboardingPage() {
       {phase === "quick-weld" && (
         <section className="ops-card onboarding-panel">
           <div className="card-heading">
-            <p>The Quick Weld</p>
+            <p>Quick pass</p>
             <h2>Five answers. No marble lobby.</h2>
           </div>
           <form className="profile-grid" onSubmit={saveQuickWeld}>
@@ -349,7 +349,7 @@ export default function OnboardingPage() {
             </label>
             <div className="profile-actions">
               <button className="button button-light" type="submit" disabled={busy}>
-                Save Quick Weld
+                Save and continue
               </button>
               <p className="status-line" role="status">{status}</p>
             </div>

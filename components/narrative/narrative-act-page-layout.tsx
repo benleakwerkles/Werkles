@@ -12,7 +12,7 @@ export function NarrativeActPageLayout({ act, children }: Props) {
   // repetitive and clunky. Every page using this layout mounts SiteHeader,
   // so the rail is dropped here rather than per page.
   return (
-    <main className="narrative-act-page">
+    <main className={`narrative-act-page route-room route-room--${act.id === "foundry" ? "proof" : act.id === "forge" ? "people" : "story"}`}>
       <section className="narrative-act-hero">
         <div className="narrative-act-hero__copy">
           <p className="eyebrow">{act.eyebrow}</p>

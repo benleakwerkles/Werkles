@@ -1,15 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { SiteHeader } from "@/components/foundry/site-header";
+import { LocalAwareSiteHeader } from "@/components/foundry/local-aware-site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
 import { copy } from "@/lib/copy";
 import { getNarrativeAct } from "@/lib/narrative-arc";
 import { squibbBellowsAssets, RENDER_BATCH_4_SQUIBB_ENABLED } from "@/lib/render-batch-4-imagery";
 
+const publicBellowsSamples = [
+  {
+    title: "Compare Suppliers",
+    body: "Put every quote against the same requirement, full first-year cost, service response, and missing facts.",
+    output: "Leave with a reusable supplier comparison.",
+    href: "/bellows/library/supplier-comparison"
+  },
+  {
+    title: "Test the Riskiest Assumption",
+    body: "Choose what could sink the next move, set a time and cost limit, and decide what result changes the plan.",
+    output: "Leave with a small, honest test.",
+    href: "/bellows/library/assumption-test-design"
+  },
+  {
+    title: "Prepare for a Partnership",
+    body: "Compare separate answers about work, money, authority, absence, conflict, and exit before drafting an agreement.",
+    output: "Leave with the disagreements visible.",
+    href: "/bellows/library/partnership-alignment"
+  }
+] as const;
+
 export const metadata = {
   title: "Learn the floor",
-  description: "Practical lessons and anti-guru operator knowledge, hosted by Squibb. No pretend certainty."
+  description: "Practical business lessons, working tools, and clear next steps hosted by Squibb."
 };
 
 export default function BellowsPage() {
@@ -17,8 +38,8 @@ export default function BellowsPage() {
 
   return (
     <>
-      <SiteHeader />
-      <main className="bellows-main narrative-act-page">
+      <LocalAwareSiteHeader />
+      <main className="bellows-main narrative-act-page route-room route-room--bellows workshop-route--bellows">
 
         <section className="bellows-hero panel bellows-hero--wired">
           <div className="bellows-hero__copy">
@@ -33,17 +54,17 @@ export default function BellowsPage() {
             <p className="muted">{copy.bellows.host}</p>
             <p className="trust-badge">{copy.bellows.shellNote}</p>
             <div className="actions" style={{ marginTop: "1rem" }}>
+              <Link className="button button-light" href="/bellows/library">
+                Browse the Public Bellows
+              </Link>
               <Link className="button button-dark" href="/bellows/intake">
-                Start concierge intake
+                Tell Werkles what you are building
               </Link>
               <Link className="button button-dark" href="/bellows/recommendations">
-                See Squibb recommendations
-              </Link>
-              <Link className="button button-outline" href="/bellows/recommendations/test-case-0">
-                Walk through an example
+                See what Werkles recommends
               </Link>
               <Link className="button button-outline" href="/proof">
-                Inspect proof first
+                See how Werkles checks claims
               </Link>
             </div>
           </div>
@@ -90,34 +111,52 @@ export default function BellowsPage() {
           </section>
         ) : null}
 
+        <section className="bellows-sample-tools" aria-labelledby="bellowsSampleToolsTitle">
+          <div className="bellows-sample-tools__heading">
+            <p className="eyebrow">Try the work, not a sales pitch</p>
+            <h2 id="bellowsSampleToolsTitle">Three things you can make here.</h2>
+            <p>Public lessons are open to everyone. Each one ends with a decision tool you can use and revisit.</p>
+          </div>
+          <div className="bellows-sample-tools__grid">
+            {publicBellowsSamples.map((sample) => (
+              <article key={sample.href}>
+                <h3>{sample.title}</h3>
+                <p>{sample.body}</p>
+                <strong>{sample.output}</strong>
+                <Link className="button button-outline" href={sample.href}>Open This Lesson</Link>
+              </article>
+            ))}
+          </div>
+          <Link className="button button-light" href="/bellows/library">Browse Every Public Lesson</Link>
+        </section>
+
         <section className="narrative-act-body panel" aria-labelledby="bellowsPathTitle">
-          <p className="eyebrow">First useful path</p>
-          <h2 id="bellowsPathTitle">Intake first, recommendation second, proof always visible.</h2>
+          <p className="eyebrow">A useful place to begin</p>
+          <h2 id="bellowsPathTitle">Tell us what is happening. Leave with something you can use.</h2>
           <p>
-            Bellows should not start by asking which service you want. It starts with the heaviest thing you are trying
-            to lift, turns that into a clear picture of your situation, then shows Squibb's reversible next-step
-            options.
+            Start with the part of the business that feels stuck. Werkles turns your answers into a shorter path,
+            practical lessons, and working tools you can return to as the situation changes.
           </p>
           <div className="actions" style={{ marginTop: "1rem" }}>
             <Link className="button button-outline" href="/bellows/recommendations">
-              Compare recommendation types
+              See my recommended next moves
             </Link>
             <Link className="button button-outline" href="/dashboard">
               Member home
             </Link>
             <Link className="button button-outline" href="/proof">
-              Inspect proof
+              See how checks work
             </Link>
           </div>
         </section>
 
         {foundryAct ? (
           <section className="narrative-act-body panel">
-            <p className="eyebrow">After Foundry</p>
-            <h2>Learn how the floor actually works</h2>
+            <p className="eyebrow">When you need to look closer</p>
+            <h2>Learn enough to make the next decision with your eyes open.</h2>
             <p>
-              Bellows sits after the proof act in the journey — once you know what signal to inspect, Squibb helps
-              you learn operator math without guru fog.
+              Squibb helps you compare claims, costs, partners, suppliers, and plans without pretending one lesson
+              can make the decision for you.
             </p>
             <Link className="button button-ghost" href={foundryAct.slug}>
               ← {foundryAct.eyebrow}

@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { isRuntimeRoutePreviewUnlocked } from "@/lib/local-route-preview";
 import { routeAtmosphere } from "@/lib/workshop-facets";
+import { loadOwnerSurfaceState } from "@/lib/owner-surfaces/owner-state";
+import { readBellowsOwnerIdFromCookies } from "@/lib/squibb/bellows-owner-session";
 import { MemberDashboardClient } from "./member-dashboard-client";
 
 const COOKIE_KEY = "werkles_dev_preview_session";
@@ -24,11 +26,16 @@ export default async function DashboardPage() {
   if (isRuntimeRoutePreviewUnlocked() && !previewSession) {
     redirect("/login?next=/dashboard");
   }
+  const ownerState = await loadOwnerSurfaceState(await readBellowsOwnerIdFromCookies());
 
   return (
     <CockpitShell showDraftBadge={false}>
       <main className={`dashboard-main ${routeAtmosphere.dashboard}`}>
-        <MemberDashboardClient initialSignedIn={Boolean(previewSession)} initialEmail={previewSession?.email ?? null} />
+        <MemberDashboardClient
+          initialSignedIn={Boolean(previewSession)}
+          initialEmail={previewSession?.email ?? null}
+          initialHasIntake={ownerState.hasIntake}
+        />
       </main>
     </CockpitShell>
   );

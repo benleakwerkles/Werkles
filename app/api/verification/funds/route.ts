@@ -3,7 +3,7 @@ import { isCruciblePreview } from "@/lib/app-infra-preview";
 import { requireActiveMembership } from "@/lib/access-weight";
 import { createPlaidLinkToken } from "@/lib/crucible-providers";
 import { copy } from "@/lib/copy";
-import { getSupabaseService } from "@/lib/supabase/server";
+import { PLAID_LINK_CUSTOMIZATION_NAME } from "@/lib/plaid/link-config";
 import { requireUser } from "@/lib/supabase/request";
 
 export async function POST(request: NextRequest) {
@@ -20,40 +20,28 @@ export async function POST(request: NextRequest) {
   const gate = await requireActiveMembership(auth.user.id);
   if (!gate.ok) return gate.response;
 
-  const plaid = await createPlaidLinkToken({ userId: auth.user.id });
+  const plaid = await createPlaidLinkToken({
+    userId: auth.user.id,
+    linkCustomizationName: PLAID_LINK_CUSTOMIZATION_NAME
+  });
   if (plaid.ok) {
-    const { error } = await getSupabaseService()
-      .from("profiles")
-      .update({ funds_status: "sandbox_pending" })
-      .eq("id", auth.user.id);
-
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-
     return NextResponse.json({
       mode: plaid.mode,
-      status: "sandbox_pending",
-      label: copy.crucible.providerFundsLink,
+      status: "sandbox_ready",
+      label: copy.crucible.providerFundsReady,
       link_token: plaid.linkToken
     });
   }
 
-  const assetReportToken = `sandbox_asset_report_${auth.user.id}_${Date.now()}`;
-  const { error } = await getSupabaseService()
-    .from("profiles")
-    .update({ funds_status: "sandbox_pending" })
-    .eq("id", auth.user.id);
+  const configurationFailure = [
+    "provider_test_disabled",
+    "plaid_sandbox_required",
+    "plaid_credentials_missing",
+    "plaid_link_configuration_invalid"
+  ].includes(plaid.reason);
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  return NextResponse.json({
-    mode: "sandbox_stub",
-    status: "sandbox_pending",
-    label: copy.verification.prepared,
-    asset_report_token: assetReportToken,
-    provider_note: copy.crucible.providerFundsSandboxOnly
-  });
+  return NextResponse.json(
+    { error: copy.crucible.providerFundsUnavailable },
+    { status: configurationFailure ? 503 : 502 }
+  );
 }

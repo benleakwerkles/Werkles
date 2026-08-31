@@ -1,8 +1,22 @@
 import type { RecommendationKind } from "@/lib/squibb/recommendations";
 import type { Layer0Translation, NotMatchResult, StructuredSignals } from "@/lib/matching/types";
+import { recommendationKindsForIntakePath } from "@/lib/matching/path-state";
 
 const PERSON_PATHS: RecommendationKind[] = ["find_partner", "stage_intro_candidate"];
 const CAPITAL_PATHS: RecommendationKind[] = ["raise_capital", "find_banker", "find_credit_union"];
+
+const HELD_PATHS: readonly RecommendationKind[] = [
+  "stage_intro_candidate",
+  "find_partner",
+  "find_equipment",
+  "find_banker",
+  "find_credit_union",
+  "find_better_job",
+  "stay_current_job",
+  "relocate",
+  "get_training",
+  "raise_capital"
+];
 
 function isUnclearAsk(signals: StructuredSignals): boolean {
   const need = signals.statedNeed.trim();
@@ -24,7 +38,8 @@ function isPartnerSymptom(signals: StructuredSignals, layer0: Layer0Translation)
     signals.partnerSeeking &&
     (signals.leverage.primaryHypothesis === "intrinsic" ||
       signals.leverage.primaryHypothesis === "amplification" ||
-      layer0.translatedNeed.toLowerCase().includes("not co-ownership"))
+      layer0.translatedNeed.toLowerCase().includes("not co-ownership") ||
+      layer0.translatedNeed.toLowerCase().includes("not a person"))
   );
 }
 
@@ -47,16 +62,26 @@ export function evaluateNotMatch(signals: StructuredSignals, layer0: Layer0Trans
   const disqualified: NotMatchResult["disqualified"] = [];
   const warnings: string[] = [];
 
+  for (const memberChoice of signals.pathStatuses ?? []) {
+    if (memberChoice.status !== "ruled_out") continue;
+    for (const kind of recommendationKindsForIntakePath(memberChoice.pathId)) {
+      disqualified.push({
+        kind,
+        reason: `You marked “${memberChoice.pathLabel}” as ruled out. Change that answer before Werkles ranks this path.`
+      });
+    }
+  }
+
   if (isUnclearAsk(signals)) {
     return {
       outcome: "pause",
       headline: "Intake too thin to rank paths safely.",
       reason:
         "The ask is unclear or too short. Layer 0 requires enough context to translate symptoms into constraints.",
-      disqualified: CAPITAL_PATHS.concat(PERSON_PATHS).map((kind) => ({
+      disqualified: dedupeDisqualified(disqualified.concat(HELD_PATHS.map((kind) => ({
         kind,
         reason: "Paused until stated need and constraints are clearer."
-      })),
+      })))),
       warnings: ["Correct answer may be silence or a proof request, not a ranked person list."],
       recommendPause: true
     };
@@ -87,7 +112,7 @@ export function evaluateNotMatch(signals: StructuredSignals, layer0: Layer0Trans
       headline: "Multiple high-risk paths named with low confidence — proof before people or money.",
       reason: "Capital plus partnership with thin evidence triggers Rule 7 (pause / proof request).",
       disqualified: dedupeDisqualified(disqualified.concat(
-        ["find_partner", "stage_intro_candidate", "raise_capital"].map((kind) => ({
+        HELD_PATHS.map((kind) => ({
           kind: kind as RecommendationKind,
           reason: "Proof-only mode until evidence strengthens the read."
         }))

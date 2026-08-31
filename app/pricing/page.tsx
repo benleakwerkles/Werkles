@@ -40,7 +40,7 @@ export default function PricingPage() {
       </section>
 
       <div className="tier2-visual-band">
-        <Tier2PageVisual page="pricing" featured forgeBand iconRail />
+        <Tier2PageVisual page="pricing" featured iconRail />
       </div>
 
       <PricingTable />

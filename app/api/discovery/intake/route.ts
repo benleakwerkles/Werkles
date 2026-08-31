@@ -4,8 +4,8 @@ import {
   validateDiscoveryIntake,
   writeDiscoveryIntake
 } from "@/lib/discovery/concierge";
-import { runShadowMatchingFromDiscovery, shadowRunSmokeSummary } from "@/lib/matching/shadow-pipeline";
-import { isMatchingPublicEnabled, matchingPublicModeLabel } from "@/lib/matching/feature-flags";
+import { runShadowMatchingFromDiscovery } from "@/lib/matching/shadow-pipeline";
+import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
 
 export const runtime = "nodejs";
 
@@ -25,19 +25,18 @@ export async function POST(request: NextRequest) {
     }
 
     const record = await writeDiscoveryIntake(input);
-    const shadowRun = await runShadowMatchingFromDiscovery(record.user_id, input);
+    await runShadowMatchingFromDiscovery(record.user_id, input);
 
+    // Public response carries only what the submitter needs. Storage paths,
+    // shadow-run ids, and smoke telemetry are internal (Locke, correction-side
+    // review 2026-07-31: "the API is the leak; a UI-only fix is one curl away").
     return NextResponse.json({
       success: true,
       intake_id: record.user_id,
       state: record.state,
-      record_path: record.record_path,
-      shadow_run_id: shadowRun?.runId ?? null,
-      matching_mode: isMatchingPublicEnabled() ? matchingPublicModeLabel() : "shadow",
-      ...(shadowRun ? shadowRunSmokeSummary(shadowRun) : {}),
       meaning: isMatchingPublicEnabled()
-        ? "Intake processed by Autonomous Matching. Matching readout and Squibb paths are ready."
-        : "Intake saved. Matching engine ran in shadow mode — operator review before public delivery."
+        ? "Intake received. Your matching readout is being prepared."
+        : "Intake received for review. We'll follow up at the contact you gave us."
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not save discovery intake.";

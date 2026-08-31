@@ -4,7 +4,11 @@ export const INTERNAL_ROUTE_ROOTS = [
   "/tinkerden",
   "/soledash",
   "/gd",
-  "/nerdkle"
+  "/nerdkle",
+  // Internal preview scenes only — /proof itself stays public (Bean #6;
+  // exact paths on purpose, not /proof/:path*).
+  "/proof/den",
+  "/proof/goop-cycle"
 ] as const;
 
 export const INTERNAL_API_ROOTS = [
@@ -13,7 +17,8 @@ export const INTERNAL_API_ROOTS = [
   "/api/thinkit",
   "/api/nerdkle",
   "/api/organism",
-  "/api/speaker"
+  "/api/speaker",
+  "/api/operator"
 ] as const;
 
 function pathMatchesRoot(pathname: string, root: string) {

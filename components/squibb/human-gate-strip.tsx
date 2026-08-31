@@ -17,10 +17,10 @@ export function HumanGateStrip({ gates, variant = "default" }: HumanGateStripPro
   if (variant === "compact") {
     return (
       <section className="squibb-gates squibb-gates--compact" aria-labelledby="squibbGatesTitle">
-        <h3 id="squibbGatesTitle">Before anything moves</h3>
+        <h3 id="squibbGatesTitle">Before you act</h3>
         {blockers.length > 0 ? (
           <p className="squibb-gates__summary" role="status">
-            {blockers.length} blocker{blockers.length === 1 ? "" : "s"} — paused until cleared.
+            {blockers.length} important item{blockers.length === 1 ? "" : "s"} must be handled first.
           </p>
         ) : null}
         <ul className="squibb-gates__list squibb-gates__list--compact">
@@ -33,7 +33,7 @@ export function HumanGateStrip({ gates, variant = "default" }: HumanGateStripPro
         </ul>
         {approvalGates.length > 0 ? (
           <p className="squibb-gates__operator-note">
-            An authorized reviewer must approve: {approvalGates.map((g) => g.label.toLowerCase()).join(", ")}.
+            Decide before acting: {approvalGates.map((g) => g.label.toLowerCase()).join(", ")}.
           </p>
         ) : null}
       </section>
@@ -42,15 +42,15 @@ export function HumanGateStrip({ gates, variant = "default" }: HumanGateStripPro
 
   return (
     <section className="squibb-gates" aria-labelledby="squibbGatesTitle">
-      <h3 id="squibbGatesTitle">Before anything moves</h3>
+      <h3 id="squibbGatesTitle">Before you act</h3>
       {blockers.length > 0 ? (
         <p className="squibb-gates__summary" role="status">
-          {blockers.length} blocker{blockers.length === 1 ? "" : "s"} — action paused until cleared.
+          {blockers.length} important item{blockers.length === 1 ? "" : "s"} must be handled first.
         </p>
       ) : null}
       {approvalGates.length > 0 ? (
         <p className="squibb-gates__operator-note">
-          An authorized reviewer must approve: {approvalGates.map((g) => g.label).join(" · ")}
+          Decide before acting: {approvalGates.map((g) => g.label).join(" · ")}
         </p>
       ) : null}
       <ul className="squibb-gates__list">
@@ -58,13 +58,13 @@ export function HumanGateStrip({ gates, variant = "default" }: HumanGateStripPro
           <li key={gate.id} className={`squibb-gate squibb-gate--${gate.severity}`}>
             <div className="squibb-gate__head">
               <span className={`squibb-gate__severity squibb-gate__severity--${gate.severity}`}>
-                {gate.severity}
+                {gate.severity === "blocker" ? "Not ready" : gate.severity === "warning" ? "Important" : "Note"}
               </span>
               <strong>{gate.label}</strong>
               {gate.benMustApprove ? (
-                <span className="squibb-gate__approval">Review required</span>
+                <span className="squibb-gate__approval">Your decision needed</span>
               ) : (
-                <span className="squibb-gate__approval squibb-gate__approval--auto">No additional review</span>
+                <span className="squibb-gate__approval squibb-gate__approval--auto">No extra review</span>
               )}
             </div>
             <p>{gate.reason}</p>

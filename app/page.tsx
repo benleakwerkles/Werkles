@@ -3,16 +3,70 @@ import Link from "next/link";
 import BetaSignupForm from "./beta-signup-form";
 import { HeroStatic } from "@/components/foundry/hero-static";
 import { HomeValueFold } from "@/components/foundry/home-value-fold";
+import { HomeObjectInterlude } from "@/components/foundry/home-object-interlude";
 import { LanesDocumentarySection } from "@/components/foundry/lanes-documentary-section";
 import { SiteHeader } from "@/components/foundry/site-header";
 import { SiteIcon } from "@/components/foundry/site-icon";
-import { SquibbStoryBeat } from "@/components/foundry/squibb-story-beat";
-import { VisualStorySection } from "@/components/foundry/visual-story-section";
 import { WorkshopBandPanel } from "@/components/foundry/workshop-band-panel";
-import { ANYONE_NARRATIVE_V2_ENABLED } from "@/lib/anyone-narrative-v2-imagery";
 import { copy } from "@/lib/copy";
 import { homeStepIcons } from "@/lib/site-icons";
 import { routeAtmosphere, stepFacets, workshopFacets } from "@/lib/workshop-facets";
+
+/* Owner review 2026-08-02: "How it works" was three paragraphs — READ READ READ.
+   Each step now shows a stylized mini-screen of the actual product surface and
+   links to the real page, so visitors see and click instead of reading. */
+const howStepDemos = [
+  {
+    href: "/bellows/intake",
+    cta: "Try stating a need",
+    mock: (
+      <div className="how-mock" aria-hidden="true">
+        <p className="how-mock__label">You type</p>
+        <div className="how-mock__field">
+          I need to win larger contracts
+          <span className="how-mock__caret" />
+        </div>
+        <span className="how-mock__send">Name it</span>
+      </div>
+    )
+  },
+  {
+    href: "/spark",
+    cta: "See a real translation",
+    mock: (
+      <div className="how-mock" aria-hidden="true">
+        <p className="how-mock__label">Werkles answers</p>
+        <div className="how-mock__swap">
+          <span className="how-mock__said">Goal: larger contracts</span>
+          <span className="how-mock__real">What may be in the way: proof you can deliver</span>
+        </div>
+      </div>
+    )
+  },
+  {
+    href: "/proof",
+    cta: "See how proof looks",
+    mock: (
+      <div className="how-mock" aria-hidden="true">
+        <p className="how-mock__label">Seller checks</p>
+        <ul className="how-mock__checks">
+          <li>
+            <span>Identity</span>
+            <em>verified</em>
+          </li>
+          <li>
+            <span>License</span>
+            <em>current</em>
+          </li>
+          <li>
+            <span>Funds</span>
+            <em>not checked yet</em>
+          </li>
+        </ul>
+      </div>
+    )
+  }
+];
 
 export default function HomePage() {
   return (
@@ -22,48 +76,45 @@ export default function HomePage() {
       <main id="top" className={routeAtmosphere.home}>
         <HeroStatic />
         <HomeValueFold />
+        <HomeObjectInterlude />
 
         <section className="manifesto" aria-labelledby="honestTitle">
           <WorkshopBandPanel tone="workshop" layout="split" atmosphere={false}>
             <div>
               <p className="eyebrow">The honest question</p>
-              <h2 id="honestTitle">You could do this without us.</h2>
+              <h2 id="honestTitle">Werkles should earn its place in your week.</h2>
               <p>
-                Another AI. A consultant. The SBA. All real options — so here&apos;s the honest math on each,
-                because if we can&apos;t win this comparison out loud, we don&apos;t deserve your ten bucks.
+                You already have search, AI, advisers, and people you trust. Werkles earns its keep only when it
+                turns that scattered help into a clearer decision and something useful you can carry forward.
               </p>
             </div>
             <div className="honest-answers">
               <article>
-                <h3>Another AI will agree with you.</h3>
+                <h3>Use AI for ideas. Use Werkles to organize the decision.</h3>
                 <p>
-                  Ask a chatbot about your plan and it cheers you on. Werkles checks your plan against real
-                  prices, real sellers, and verifiable proof — and tells you when you&apos;re wrong. That&apos;s
-                  the difference between a mirror and a scout.
+                  Werkles keeps your goal, constraints, possible next moves, and unanswered questions together.
+                  When a fact matters, it stays visibly unconfirmed until you or a narrow check supports it.
                 </p>
               </article>
               <article>
-                <h3>A good consultant runs $150 an hour.</h3>
+                <h3>Bring in an expert when the question deserves one.</h3>
                 <p>
-                  Some are worth it. But you shouldn&apos;t need to pay consulting rates to find out your real
-                  bottleneck is a $4,200 oven. Werkles is $9.99 a month because your runway matters more than
-                  our margin.
+                  Werkles helps you arrive with the decision, facts, and gaps already laid out. You spend expert
+                  time on judgment that needs expertise—not reconstructing your story from scratch.
                 </p>
               </article>
               <article>
-                <h3>The SBA is genuinely good. Use it.</h3>
+                <h3>Free public help belongs in the plan too.</h3>
                 <p>
-                  Seriously — free counseling, real programs. Werkles sits beside it, not against it: the SBA
-                  hands you the textbook; Werkles names <em>your</em> missing piece and verifies the specific
-                  people you&apos;d rely on to get it.
+                  A public program, library, trade group, or local adviser may be the best next door. Werkles is
+                  not here to hide a better free answer; it helps you decide what to ask and what to bring.
                 </p>
               </article>
               <article>
-                <h3>No schemes. No gouging. That&apos;s the pitch.</h3>
+                <h3>Pay only when the continuity is worth it.</h3>
                 <p>
-                  We&apos;re not selling a get-rich-quick anything. We listen to your reality and show you how
-                  it fits the reality the world throws back. If that&apos;s not worth ten dollars, cancel
-                  anytime from your billing page.
+                  The free path should solve something real. Membership is for deeper tools, saved continuity,
+                  and shared Werkle work. It is not a promise of funding, success, or the perfect partner.
                 </p>
               </article>
             </div>
@@ -71,25 +122,110 @@ export default function HomePage() {
         </section>
 
         <LanesDocumentarySection />
-        <SquibbStoryBeat />
-        <VisualStorySection />
+
+        <section id="what-comes-back" className="home-output" aria-labelledby="homeOutputTitle">
+          <WorkshopBandPanel tone="workshop" layout="bare" atmosphere={false}>
+            <header className="home-output__header">
+              <p className="eyebrow">What Werkles can produce</p>
+              <h2 id="homeOutputTitle">From a messy need to a usable next move.</h2>
+              <p>
+                Tell us what you are trying to do once. Werkles uses your answers to build practical next moves
+                and compare possible people against the same need.
+              </p>
+            </header>
+
+            <div className="home-output__demo">
+              <div className="home-output__prompt">
+                <span>Start here</span>
+                <strong>What are you trying to make happen?</strong>
+                <p>Bring the notes, screenshots, emails, ideas, and loose ends.</p>
+              </div>
+
+              <ol className="home-output__grid" aria-label="What Werkles can produce from your answers">
+                <li>
+                  <div className="home-output__card-head">
+                    <span className="home-output__number" aria-hidden="true">01</span>
+                    <small>Hypothesis, not verdict</small>
+                  </div>
+                  <h3>Find what may be holding the plan up</h3>
+                  <p>Separate what you want from what may be getting in the way.</p>
+                  <div className="home-output__mini">
+                    <span>Goal</span>
+                    <strong>What should change</strong>
+                    <span>Likely blocker</span>
+                    <strong>What to test first</strong>
+                  </div>
+                </li>
+                <li data-output="artifact">
+                  <div className="home-output__card-head">
+                    <span className="home-output__number" aria-hidden="true">02</span>
+                    <small>Editable output</small>
+                  </div>
+                  <h3>Make something you can use</h3>
+                  <p>Create something you can review, correct, and take with you.</p>
+                  <ul className="home-output__artifact-list">
+                    <li>Working brief</li>
+                    <li>Decision checklist</li>
+                    <li>Comparison</li>
+                    <li>Evidence request</li>
+                  </ul>
+                </li>
+                <li>
+                  <div className="home-output__card-head">
+                    <span className="home-output__number" aria-hidden="true">03</span>
+                    <small>Evidence stays visible</small>
+                  </div>
+                  <h3>Show possible people or resources</h3>
+                  <p>Show why each option connects to what you told us, along with gaps and limits.</p>
+                  <div className="home-output__proof-lines" aria-label="Example evidence boundaries">
+                    <span>Why it may fit</span>
+                    <span>What is known</span>
+                    <span>What still needs proof</span>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div className="home-output__actions">
+              <Link className="button button-dark" href="/bellows/intake">
+                Start with your situation
+              </Link>
+              <Link className="button button-outline" href="/proof">
+                See how proof works
+              </Link>
+              <p>Options, not outcomes. Nothing is contacted, verified, approved, or sent here.</p>
+            </div>
+          </WorkshopBandPanel>
+        </section>
 
         <section id="how" className="manifesto" aria-labelledby="howTitle">
           <WorkshopBandPanel tone="workshop" layout="split" atmosphere={false}>
             <div>
               <p className="eyebrow">{copy.howItWorks.eyebrow}</p>
               <h2 id="howTitle">{copy.howItWorks.headline}</h2>
+              <p className="how-steps-note">Stylized previews — tap any step to see the real thing.</p>
             </div>
             <div className="how-steps">
-              {copy.howItWorks.steps.map((step, index) => (
-                <article key={step.title} className={workshopFacets[stepFacets[index] ?? "blueprint"]}>
-                  <SiteIcon icon={homeStepIcons[index] ?? "step-dossier"} size="lg" className="how-step-icon" />
-                  <div>
-                    <h3>{step.title}</h3>
-                    <p>{step.body}</p>
-                  </div>
-                </article>
-              ))}
+              {copy.howItWorks.steps.map((step, index) => {
+                const demo = howStepDemos[index];
+                return (
+                  <article key={step.title} className={workshopFacets[stepFacets[index] ?? "blueprint"]}>
+                    <SiteIcon icon={homeStepIcons[index] ?? "step-dossier"} size="lg" className="how-step-icon" />
+                    <div>
+                      <h3>{step.title}</h3>
+                      <p>{step.body}</p>
+                      {demo ? (
+                        <>
+                          {demo.mock}
+                          <Link className="how-step-cta" href={demo.href}>
+                            {demo.cta} <span aria-hidden="true">→</span>
+                          </Link>
+                        </>
+                      ) : null}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </WorkshopBandPanel>
         </section>
@@ -155,9 +291,6 @@ export default function HomePage() {
           </WorkshopBandPanel>
         </section>
 
-        {ANYONE_NARRATIVE_V2_ENABLED ? null : (
-          <p className="home-legacy-note">Legacy narrative sections hidden during visual-story v2 pass.</p>
-        )}
       </main>
 
       <footer className="site-footer">

@@ -1,0 +1,1997 @@
+.bellows-library {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 72px;
+  color: var(--werkles-ink-on-paper);
+}
+
+.bellows-library .practice-boundary-readout h3 { color: #fffaf2 !important; }
+.bellows-library .practice-boundary-readout header p { color: #f5ad62 !important; }
+
+.bellows-library__nav,
+.bellows-library__hero,
+.bellows-library__map,
+.bellows-lesson,
+.alignment-memo,
+.bellows-example,
+.bellows-sources,
+.bellows-library__next {
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-personal__path,
+.bellows-personal__empty {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-personal__path > ol {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bellows-personal__resume {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 1.4rem 0 1.75rem;
+  padding: 1.2rem 1.35rem;
+  border: 2px solid var(--werkles-copper);
+  border-radius: 1.35rem;
+  background: linear-gradient(135deg, rgba(246, 144, 62, 0.12), rgba(255, 255, 255, 0.04));
+}
+
+.bellows-personal__resume h3,
+.bellows-personal__resume p {
+  margin: 0;
+}
+
+.bellows-personal__resume > div {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.bellows-personal__resume > div > p:last-child {
+  max-width: 66ch;
+}
+
+.bellows-personal__path > ol > li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-violet);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-personal__path > ol > li:nth-child(2) {
+  border-left-color: var(--werkles-teal);
+}
+
+.bellows-personal__path > ol > li:nth-child(3) {
+  border-left-color: var(--werkles-copper);
+}
+
+.bellows-personal__path > ol > li > span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: white;
+  background: var(--werkles-violet-deep);
+  font-weight: 900;
+}
+
+.bellows-personal__path h3,
+.bellows-personal__empty h2 {
+  margin: 5px 0 8px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+}
+
+.bellows-personal__path > ol > li p {
+  color: var(--werkles-ink-muted-on-paper);
+}
+
+.bellows-personal__lesson {
+  min-width: 0;
+}
+
+.bellows-personal__lesson > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.bellows-personal__lesson > summary::-webkit-details-marker { display: none; }
+.bellows-personal__lesson > summary > span { display: grid; gap: 7px; }
+.bellows-personal__lesson > summary small { color: var(--werkles-violet-deep); font-weight: 900; }
+.bellows-personal__lesson > summary strong { font-family: Fraunces, Georgia, serif; font-size: clamp(1.35rem, 2.6vw, 2.15rem); line-height: 1.08; }
+.bellows-personal__lesson > summary span span { max-width: 68ch; color: var(--werkles-ink-muted-on-paper); line-height: 1.55; }
+.bellows-personal__lesson > summary b { align-self: start; padding: 8px 11px; border: 1px solid var(--werkles-violet); border-radius: 999px; color: var(--werkles-violet-deep); font-size: 0.78rem; white-space: nowrap; }
+.bellows-personal__lesson[open] > summary b { color: white; background: var(--werkles-violet-deep); }
+.bellows-personal__lesson-body { padding-top: 8px; }
+
+.bellows-personal__lesson-description {
+  max-width: 66ch;
+}
+
+.bellows-personal__exercise-list {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bellows-personal__exercise-list li {
+  padding: 14px 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.75);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-personal__exercise-list strong {
+  color: var(--werkles-violet-deep);
+}
+
+.bellows-personal__exercise-list p {
+  margin: 7px 0;
+}
+
+.bellows-personal__exercise-list small {
+  color: var(--werkles-teal-deep);
+  font-weight: 850;
+}
+
+.bellows-personal__work {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.bellows-personal__work div {
+  padding: 14px 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.75);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-personal__work dt {
+  margin-bottom: 5px;
+  color: var(--werkles-violet-deep);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bellows-personal__work dd {
+  margin: 0;
+  color: var(--werkles-ink-on-paper);
+  line-height: 1.55;
+}
+
+.bellows-personal__path li a {
+  color: var(--werkles-violet-deep);
+  font-weight: 900;
+}
+
+.bellows-personal__after {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
+  gap: 18px;
+  align-items: center;
+  margin-top: 20px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid rgba(98, 59, 121, 0.22);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff8eb 0%, #f0e6f4 100%);
+  box-shadow: 0 14px 32px rgba(44, 35, 29, 0.1);
+}
+
+.bellows-personal__after h3,
+.bellows-personal__after p {
+  margin: 5px 0 0;
+}
+
+.bellows-personal__after nav {
+  display: grid;
+  gap: 9px;
+}
+
+@media (max-width: 760px) {
+  .bellows-personal__after {
+    grid-template-columns: 1fr;
+  }
+  .bellows-personal__lesson > summary { grid-template-columns: 1fr; }
+  .bellows-personal__lesson > summary b { justify-self: start; }
+}
+
+.bellows-personal__path .bellows-personal__draft-state {
+  display: inline-block;
+  margin: 2px 10px 8px 0;
+  padding: 5px 9px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: 999px;
+  color: var(--werkles-teal-deep);
+  background: var(--werkles-workshop-paper-elevated);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.bellows-personal__boundary {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--werkles-copper);
+  color: var(--werkles-ink-muted-on-paper);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-personal-lesson-focus {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-top: 5px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(207, 139, 64, 0.18), transparent 24%),
+    var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-personal-lesson-focus h2 {
+  margin: 6px 0 10px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+
+.bellows-personal-lesson-focus header p:last-child {
+  max-width: 72ch;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.bellows-personal-lesson-focus > ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bellows-personal-lesson-focus > ol > li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.8);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-personal-lesson-focus > ol > li > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--werkles-violet-deep);
+  font-weight: 900;
+}
+
+.bellows-personal-lesson-focus li p {
+  margin: 6px 0;
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.45;
+}
+
+.bellows-personal-lesson-focus li small {
+  color: var(--werkles-teal-deep);
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.bellows-personal-lesson-focus__finish,
+.bellows-personal-lesson-focus__boundary {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--werkles-copper);
+  background: var(--werkles-workshop-paper);
+  line-height: 1.5;
+}
+
+.bellows-personal-lesson-focus__boundary {
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.9rem;
+}
+
+.bellows-draft-shelf {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-top: 5px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-draft-shelf ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bellows-draft-shelf li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-draft-shelf li > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.bellows-draft-shelf li strong {
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.bellows-draft-shelf li span {
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.bellows-draft-shelf li a {
+  flex: 0 0 auto;
+  padding: 9px 12px;
+  border: 2px solid var(--werkles-violet-deep);
+  border-radius: 999px;
+  color: var(--werkles-violet-deep);
+  background: var(--werkles-workshop-paper-elevated);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.bellows-draft-shelf li a:hover,
+.bellows-draft-shelf li a:focus-visible {
+  color: white;
+  background: var(--werkles-violet-deep);
+}
+
+.bellows-draft-shelf__continuity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin: 18px 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(192, 139, 82, 0.32);
+  border-radius: 20px;
+  background: linear-gradient(125deg, rgba(255, 249, 239, 0.96), rgba(245, 237, 250, 0.94));
+  box-shadow: 0 14px 32px rgba(52, 31, 75, 0.09);
+}
+
+.bellows-draft-shelf__continuity h3,
+.bellows-draft-shelf__continuity p { margin: 4px 0 0; }
+.bellows-draft-shelf__continuity h3 { color: var(--werkles-violet-deep); font-family: Fraunces, Georgia, serif; }
+.bellows-draft-shelf__continuity > div > p:last-child { color: var(--werkles-ink-on-paper); line-height: 1.55; }
+.bellows-draft-shelf__continuity dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0 0;
+}
+.bellows-draft-shelf__continuity dl div {
+  padding: 10px 12px;
+  border: 1px solid rgba(65, 46, 86, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.66);
+}
+.bellows-draft-shelf__continuity dt {
+  color: var(--werkles-copper);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+.bellows-draft-shelf__continuity dd {
+  margin: 4px 0 0;
+  color: var(--werkles-ink-on-paper);
+  font-weight: 760;
+  line-height: 1.4;
+}
+.bellows-draft-shelf__continuity > a {
+  flex: 0 0 auto;
+  padding: 11px 16px;
+  border: 2px solid var(--werkles-violet-deep);
+  border-radius: 999px;
+  color: white;
+  background: var(--werkles-violet-deep);
+  box-shadow: 0 8px 18px rgba(65, 46, 86, 0.2);
+  font-weight: 900;
+  text-decoration: none;
+}
+.bellows-draft-shelf__continuity > a:hover,
+.bellows-draft-shelf__continuity > a:focus-visible {
+  color: var(--werkles-violet-deep);
+  background: white;
+}
+
+.bellows-draft-shelf__shared-step {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(240px, 1.2fr);
+  gap: 14px 20px;
+  align-items: start;
+  margin-top: 16px;
+  padding: clamp(18px, 3vw, 26px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 6px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-draft-shelf__shared-step h3 { color: var(--werkles-violet-deep); font-family: Fraunces, Georgia, serif; }
+.bellows-draft-shelf__shared-step blockquote { display: grid; gap: 5px; margin: 0; }
+.bellows-draft-shelf__shared-step blockquote strong { color: var(--werkles-copper); }
+.bellows-draft-shelf__shared-step blockquote span,
+.bellows-draft-shelf__shared-step > p { color: var(--werkles-ink-on-paper); line-height: 1.55; }
+.bellows-draft-shelf__shared-step > p,
+.bellows-draft-shelf__shared-step-actions { grid-column: 1 / -1; }
+
+.bellows-draft-shelf__shared-step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.bellows-draft-shelf__shared-step-actions a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.9rem;
+  border: 2px solid var(--werkles-copper);
+  border-radius: 999px;
+  background: var(--werkles-copper);
+  color: #24170e;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.bellows-draft-shelf__shared-step-actions a + a {
+  background: transparent;
+  color: var(--werkles-violet-deep);
+}
+
+@media (max-width: 720px) {
+  .bellows-draft-shelf__continuity dl { grid-template-columns: 1fr; }
+
+  .bellows-draft-shelf__continuity { align-items: flex-start; flex-direction: column; }
+  .bellows-draft-shelf__shared-step { grid-template-columns: 1fr; }
+  .bellows-draft-shelf__shared-step > p,
+  .bellows-draft-shelf__shared-step-actions { grid-column: auto; }
+}
+
+.bellows-library__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+}
+
+.bellows-library__nav a {
+  color: var(--werkles-violet-deep);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.bellows-library__nav a:hover,
+.bellows-library__nav a:focus-visible,
+.bellows-sources a:hover,
+.bellows-sources a:focus-visible {
+  color: var(--werkles-teal-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bellows-library__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(240px, 0.8fr);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: end;
+  padding: clamp(26px, 6vw, 72px);
+  border-top: 5px solid var(--werkles-violet);
+}
+
+.bellows-library__hero h1 {
+  max-width: 11ch;
+  margin: 8px 0 18px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(3rem, 8vw, 6.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.bellows-library__lede {
+  max-width: 680px;
+  margin: 0;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.bellows-library__promise {
+  display: grid;
+  gap: 9px;
+  padding: 20px;
+  border-left: 4px solid var(--werkles-teal);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-library__promise strong {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.bellows-library__promise span {
+  color: var(--werkles-ink-muted-on-paper);
+  font-weight: 750;
+}
+
+.bellows-library__boundary {
+  display: grid;
+  gap: 4px;
+  margin: 14px 0 32px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--werkles-copper);
+  color: var(--werkles-ink-muted-on-paper);
+  background: rgba(255, 252, 247, 0.8);
+  font-size: 0.9rem;
+}
+
+.bellows-library__map,
+.alignment-memo,
+.bellows-sources {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+}
+
+.bellows-library__section-heading {
+  max-width: 760px;
+}
+
+.bellows-library__section-heading h2,
+.bellows-example h2,
+.bellows-library__next h2 {
+  margin: 6px 0 12px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+
+.bellows-library__map-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.bellows-library__map-card {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 180px;
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-top: 4px solid var(--werkles-violet);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper);
+  text-decoration: none;
+}
+
+.bellows-library__map-card:nth-child(even) {
+  border-top-color: var(--werkles-teal);
+}
+
+.bellows-library__map-card:hover,
+.bellows-library__map-card:focus-visible {
+  border-color: var(--werkles-violet);
+  outline: 3px solid rgba(69, 32, 201, 0.16);
+  outline-offset: 2px;
+}
+
+.bellows-library__map-card > span {
+  color: var(--werkles-copper);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.bellows-library__map-card p {
+  margin: 10px 0 0;
+  color: var(--werkles-teal-deep);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bellows-library__map-card strong {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.05;
+}
+
+.bellows-library__map-card small {
+  color: var(--werkles-ink-on-paper);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.bellows-library__map-card b {
+  align-self: end;
+  margin-top: 8px;
+  color: var(--werkles-violet-deep);
+  font-size: 0.88rem;
+}
+
+.bellows-library__lessons {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.bellows-lesson {
+  overflow: hidden;
+}
+
+.bellows-lesson__header {
+  padding: clamp(24px, 5vw, 52px);
+  border-bottom: 1px solid var(--werkles-copper-frame-soft);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-lesson:nth-child(even) .bellows-lesson__header {
+  border-top: 4px solid var(--werkles-teal);
+}
+
+.bellows-lesson:nth-child(odd) .bellows-lesson__header {
+  border-top: 4px solid var(--werkles-violet);
+}
+
+.bellows-lesson__number {
+  color: #75451f;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bellows-lesson__header h2 {
+  max-width: 18ch;
+  margin: 8px 0 14px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 0.98;
+}
+
+.bellows-lesson-page .bellows-lesson__header h1 {
+  max-width: 18ch;
+  margin: 8px 0 14px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 5.4rem);
+  line-height: 0.95;
+}
+
+.bellows-lesson-page .bellows-lesson__body h2 {
+  margin: 0 0 10px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.bellows-evidence-examples,
+.evidence-brief {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.bellows-evidence-examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bellows-evidence-examples > header {
+  grid-column: 1 / -1;
+}
+
+.bellows-evidence-examples h2,
+.evidence-brief h2 {
+  margin: 6px 0 12px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+}
+
+.bellows-evidence-example {
+  padding: 20px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-evidence-example--fails {
+  border-left-color: var(--werkles-copper);
+}
+
+.bellows-evidence-example h3 {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.evidence-brief__form,
+.evidence-brief__preview dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.evidence-brief__form label {
+  display: grid;
+  gap: 7px;
+  font-weight: 850;
+}
+
+.evidence-brief__form textarea {
+  width: 100%;
+  min-height: 112px;
+  padding: 12px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.75);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper);
+  font: inherit;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.evidence-brief__form textarea:focus-visible {
+  border-color: var(--werkles-violet);
+  outline: 3px solid rgba(69, 32, 201, 0.2);
+  outline-offset: 2px;
+}
+
+.evidence-brief__decision-inputs {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0 0;
+  padding: 18px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+
+.evidence-brief__decision-inputs legend { padding: 0 8px; font-weight: 900; }
+.evidence-brief__decision-inputs label { display: grid; gap: 8px; font-weight: 800; }
+.evidence-brief__decision-inputs select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.7);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper);
+}
+
+.evidence-brief__decision {
+  margin-top: 16px;
+  padding: 18px;
+  border-left: 6px solid var(--werkles-copper);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.evidence-brief__decision--ready_for_next_check { border-left-color: var(--werkles-teal); }
+.evidence-brief__decision--contradiction,
+.evidence-brief__decision--human_review { border-left-color: var(--werkles-violet); }
+.evidence-brief__decision h3 {
+  margin: 4px 0 8px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.45rem;
+}
+
+.evidence-brief__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.evidence-brief__actions button {
+  min-height: 44px;
+}
+
+.evidence-brief__status {
+  color: var(--werkles-ink-muted-on-paper);
+  font-weight: 750;
+}
+
+.evidence-brief__preview {
+  margin-top: 20px;
+  padding: 20px;
+  border-left: 5px solid var(--werkles-violet);
+  background: var(--werkles-workshop-paper);
+}
+
+.evidence-brief__preview dl div {
+  padding: 12px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.7);
+}
+
+.evidence-brief__preview dt {
+  color: var(--werkles-teal-deep);
+  font-weight: 900;
+}
+
+.evidence-brief__preview dd {
+  margin: 6px 0 0;
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.5;
+}
+
+.supplier-comparison {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.supplier-comparison h2 {
+  margin: 6px 0 10px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+}
+
+.supplier-comparison__requirement,
+.supplier-comparison fieldset label {
+  display: grid;
+  gap: 6px;
+  font-weight: 850;
+}
+
+.supplier-comparison__requirement {
+  margin: 20px 0;
+}
+
+.supplier-comparison textarea,
+.supplier-comparison input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper);
+  font: inherit;
+}
+
+.supplier-comparison textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.supplier-comparison textarea:focus-visible,
+.supplier-comparison input:focus-visible {
+  border-color: var(--werkles-violet);
+  outline: 3px solid rgba(69, 32, 201, 0.2);
+  outline-offset: 2px;
+}
+
+.supplier-comparison__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.supplier-comparison fieldset {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.8);
+  background: var(--werkles-workshop-paper);
+}
+
+.supplier-comparison legend {
+  padding: 0 6px;
+  color: var(--werkles-violet-deep);
+  font-weight: 950;
+}
+
+.supplier-comparison output {
+  padding-top: 10px;
+  border-top: 1px solid var(--werkles-copper-frame-soft);
+}
+
+.supplier-comparison__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.supplier-comparison__actions p {
+  color: var(--werkles-ink-muted-on-paper);
+}
+
+.alignment-workbook {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-top: 5px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.alignment-workbook__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 0.28fr);
+  gap: 24px;
+  align-items: end;
+}
+
+.alignment-workbook__header h2 {
+  max-width: 19ch;
+  margin: 6px 0 12px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.alignment-workbook__header p,
+.alignment-workbook__actions p {
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.55;
+}
+
+.alignment-workbook__count {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-copper);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.alignment-workbook__count strong {
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.alignment-workbook__count span {
+  color: var(--werkles-ink-muted-on-paper);
+  font-weight: 800;
+}
+
+.alignment-workbook__match-context {
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(24, 197, 174, 0.08), var(--werkles-workshop-paper));
+}
+
+.alignment-workbook__accepted-context {
+  display: grid;
+  gap: 18px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid color-mix(in srgb, var(--werkles-copper) 44%, transparent);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 248, 237, 0.98), rgba(249, 237, 218, 0.92));
+  box-shadow: 0 18px 45px rgba(53, 31, 77, 0.12);
+}
+
+.alignment-workbook__accepted-context h3,
+.alignment-workbook__accepted-context p { margin: 0; }
+.alignment-workbook__accepted-context h3 { color: var(--werkles-violet-deep); font-family: Fraunces, Georgia, serif; }
+.alignment-workbook__accepted-context > div > p:last-child { margin-top: 8px; color: var(--werkles-ink-on-paper); line-height: 1.55; }
+.alignment-workbook__accepted-context ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.alignment-workbook__accepted-context li { display: grid; gap: 5px; padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.76); }
+.alignment-workbook__accepted-context li strong { color: var(--werkles-violet-deep); }
+.alignment-workbook__accepted-context li span { color: var(--werkles-ink-on-paper); line-height: 1.5; }
+.alignment-workbook__accepted-context li small { color: #704a25; font-weight: 750; }
+
+.bellows-draft-shelf__accepted-work {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(102, 70, 132, .22);
+  border-radius: 22px;
+  background: rgba(255,255,255,.82);
+}
+.bellows-draft-shelf__accepted-work summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; color: var(--werkles-violet-deep); }
+.bellows-draft-shelf__accepted-work summary span { font-family: Fraunces, Georgia, serif; font-size: 1.1rem; font-weight: 800; }
+.bellows-draft-shelf__accepted-work summary strong { color: var(--werkles-copper); }
+.bellows-draft-shelf__accepted-work > p { color: var(--werkles-ink-on-paper); line-height: 1.55; }
+.bellows-draft-shelf__accepted-work > div { display: grid; gap: 12px; margin: 16px 0; }
+.bellows-draft-shelf__accepted-work section { padding: 14px; border-radius: 16px; background: rgba(247, 241, 251, .78); }
+.bellows-draft-shelf__accepted-work h4 { margin: 0 0 8px; color: var(--werkles-violet-deep); }
+.bellows-draft-shelf__accepted-work ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.bellows-draft-shelf__accepted-work li { display: grid; gap: 4px; }
+.bellows-draft-shelf__accepted-work li strong { color: var(--werkles-copper); }
+.bellows-draft-shelf__accepted-work li span,
+.bellows-draft-shelf__accepted-work section > span { color: var(--werkles-ink-on-paper); line-height: 1.5; }
+.bellows-draft-shelf__accepted-work > a { display: inline-flex; color: var(--werkles-violet-deep); font-weight: 850; }
+.bellows-draft-shelf__reading { display: grid; gap: 7px; margin-top: 13px; padding-top: 12px; border-top: 1px solid rgba(102, 70, 132, .14); }
+.bellows-draft-shelf__reading > strong { color: var(--werkles-violet-deep); font-size: .86rem; }
+.bellows-draft-shelf__reading a { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; color: #4e2d70; font-weight: 760; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.bellows-draft-shelf__reading a small { color: #704a25; font-weight: 750; text-align: right; }
+.bellows-draft-shelf__source-date { display: block; margin-bottom: 12px; color: #5e5267; line-height: 1.45; }
+
+.alignment-workbook__match-context h3 {
+  margin: 5px 0 10px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+}
+
+.alignment-workbook__match-context p {
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.55;
+}
+
+.alignment-workbook__match-context dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.alignment-workbook__match-context dl > div {
+  padding: 14px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.7);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.alignment-workbook__match-context dt {
+  color: var(--werkles-violet-deep);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.alignment-workbook__match-context dd {
+  margin: 6px 0 0;
+  color: var(--werkles-ink-on-paper);
+  line-height: 1.5;
+}
+
+.alignment-workbook__practice {
+  margin: 18px 0;
+  padding: 16px;
+  border-radius: calc(var(--radius) * 0.8);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.alignment-workbook__practice h4,
+.alignment-workbook__practice p {
+  margin: 0;
+}
+
+.alignment-workbook__practice p {
+  margin-top: 6px;
+  font-size: 0.94rem;
+}
+
+.alignment-workbook__practice ol {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding-left: 1.25rem;
+}
+
+.alignment-workbook__practice li {
+  padding-left: 0.25rem;
+}
+
+.alignment-workbook__practice li strong,
+.alignment-workbook__practice li span,
+.alignment-workbook__practice li small {
+  display: block;
+}
+
+.alignment-workbook__practice li span {
+  margin-top: 5px;
+  color: var(--werkles-ink-on-paper);
+  line-height: 1.5;
+}
+
+.alignment-workbook__practice li small {
+  margin-top: 5px;
+  color: var(--werkles-violet-deep);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.alignment-workbook__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.alignment-workbook__fields label {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.alignment-workbook__fields label > span {
+  display: grid;
+  gap: 5px;
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.45;
+}
+
+.alignment-workbook__fields label > span strong {
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.alignment-workbook__fields textarea {
+  width: 100%;
+  min-height: 116px;
+  padding: 13px 14px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.75);
+  color: var(--werkles-ink-on-paper);
+  background: #fffdfa;
+  font: inherit;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.alignment-workbook__fields textarea:focus-visible {
+  border-color: var(--werkles-violet);
+  outline: 3px solid rgba(69, 32, 201, 0.16);
+  outline-offset: 2px;
+}
+
+.alignment-workbook__boundary {
+  display: grid;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-left: 5px solid var(--werkles-violet);
+  color: var(--werkles-ink-muted-on-paper);
+  background: var(--werkles-workshop-paper);
+  line-height: 1.5;
+}
+
+.alignment-workbook__boundary strong {
+  color: var(--werkles-ink-on-paper);
+}
+
+.alignment-workbook__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.launch-floor {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-top: 5px solid var(--werkles-copper);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.launch-floor__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.3fr);
+  gap: 24px;
+  align-items: end;
+}
+
+.launch-floor__header h2 {
+  max-width: 18ch;
+  margin: 6px 0 12px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.launch-floor__header p,
+.launch-floor__plain-language p,
+.launch-floor__rows p,
+.launch-floor__actions p {
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.55;
+}
+
+.launch-floor__count {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.launch-floor__count strong {
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.launch-floor__count span {
+  color: var(--werkles-ink-muted-on-paper);
+  font-weight: 800;
+}
+
+.launch-floor__plain-language {
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-violet);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.launch-floor__plain-language h3 {
+  margin: 0 0 10px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+}
+
+.launch-floor__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.launch-floor__sources a {
+  padding: 10px 13px;
+  border: 2px solid var(--werkles-violet-deep);
+  border-radius: 999px;
+  color: var(--werkles-violet-deep);
+  background: var(--werkles-workshop-paper-elevated);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.launch-floor__sources a:hover,
+.launch-floor__sources a:focus-visible {
+  color: white;
+  background: var(--werkles-violet-deep);
+}
+
+.launch-floor__rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.launch-floor__rows fieldset {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.launch-floor__rows legend {
+  padding: 0 7px;
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.launch-floor__rows label {
+  display: grid;
+  gap: 6px;
+  color: var(--werkles-ink-on-paper);
+  font-weight: 800;
+}
+
+.launch-floor__rows select,
+.launch-floor__rows textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.7);
+  color: var(--werkles-ink-on-paper);
+  background: #fffdfa;
+  font: inherit;
+}
+
+.launch-floor__rows textarea {
+  min-height: 112px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.launch-floor__rows select:focus-visible,
+.launch-floor__rows textarea:focus-visible {
+  border-color: var(--werkles-violet);
+  outline: 3px solid rgba(69, 32, 201, 0.16);
+  outline-offset: 2px;
+}
+
+.launch-floor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.constraint-map {
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-top: 5px solid var(--werkles-violet);
+  border-radius: var(--radius);
+  color: var(--werkles-ink-on-paper);
+  background: var(--werkles-workshop-paper-elevated);
+}
+
+.constraint-map__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 0.28fr);
+  gap: 24px;
+  align-items: end;
+}
+
+.constraint-map__header h2 {
+  max-width: 17ch;
+  margin: 6px 0 12px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.constraint-map__header p,
+.constraint-map__causes p,
+.constraint-map__actions p {
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.55;
+}
+
+.constraint-map__count {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-copper);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.constraint-map__count strong {
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.constraint-map__count span {
+  color: var(--werkles-ink-muted-on-paper);
+  font-weight: 800;
+}
+
+.constraint-map__stop,
+.constraint-map__date {
+  display: grid;
+  gap: 7px;
+  margin-top: 22px;
+  color: var(--werkles-violet-deep);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.constraint-map__causes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.constraint-map__causes fieldset {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.constraint-map__causes legend {
+  padding: 0 7px;
+  color: var(--werkles-violet-deep);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.constraint-map__causes label {
+  display: grid;
+  gap: 6px;
+  color: var(--werkles-ink-on-paper);
+  font-weight: 800;
+}
+
+.constraint-map textarea,
+.constraint-map input {
+  width: 100%;
+  padding: 12px 13px;
+  border: 2px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 0.7);
+  color: var(--werkles-ink-on-paper);
+  background: #fffdfa;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.constraint-map textarea {
+  resize: vertical;
+}
+
+.constraint-map textarea:focus-visible,
+.constraint-map input:focus-visible {
+  border-color: var(--werkles-violet);
+  outline: 3px solid rgba(69, 32, 201, 0.16);
+  outline-offset: 2px;
+}
+
+.constraint-map__date input {
+  max-width: 240px;
+}
+
+.constraint-map__boundary {
+  display: grid;
+  gap: 5px;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-left: 5px solid var(--werkles-teal);
+  color: var(--werkles-ink-muted-on-paper);
+  background: var(--werkles-workshop-paper);
+  line-height: 1.5;
+}
+
+.constraint-map__boundary strong {
+  color: var(--werkles-ink-on-paper);
+}
+
+.constraint-map__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+@media (max-width: 820px) {
+  .supplier-comparison__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alignment-workbook__header,
+  .alignment-workbook__fields,
+  .alignment-workbook__match-context dl,
+  .launch-floor__header,
+  .launch-floor__rows,
+  .constraint-map__header {
+    grid-template-columns: 1fr;
+  }
+
+  .constraint-map__causes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bellows-lesson__promise {
+  max-width: 760px;
+  margin: 0;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.bellows-lesson__body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bellows-lesson__body section {
+  padding: clamp(22px, 4vw, 38px);
+  border-right: 1px solid var(--werkles-copper-frame-soft);
+  border-bottom: 1px solid var(--werkles-copper-frame-soft);
+}
+
+.bellows-lesson__body section:nth-child(even) {
+  border-right: 0;
+}
+
+.bellows-lesson__body h3,
+.alignment-memo__grid h3 {
+  margin: 0 0 10px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.bellows-lesson__body p,
+.bellows-lesson__body li,
+.alignment-memo p,
+.bellows-example p,
+.bellows-sources p {
+  color: var(--werkles-ink-muted-on-paper);
+  line-height: 1.62;
+}
+
+.bellows-lesson__body ul,
+.bellows-lesson__body ol {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.bellows-lesson__truth {
+  background: rgba(24, 197, 174, 0.07);
+}
+
+.bellows-lesson__action {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 18px;
+  padding: clamp(22px, 4vw, 38px);
+}
+
+.bellows-lesson__action p {
+  margin: 6px 0 0;
+  line-height: 1.55;
+}
+
+.bellows-lesson__boundary {
+  padding: 14px 16px;
+  border-left: 3px solid var(--werkles-copper);
+  color: var(--werkles-ink-muted-on-paper);
+  background: var(--werkles-workshop-paper);
+  font-size: 0.88rem;
+}
+
+.alignment-memo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.alignment-memo__grid article {
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 4px solid var(--werkles-teal);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.alignment-memo__grid span {
+  color: var(--werkles-copper);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.alignment-memo__grid h3,
+.alignment-memo__grid p {
+  margin-bottom: 0;
+}
+
+.alignment-memo__warning {
+  margin: 20px 0 0;
+  padding: 16px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-left: 5px solid var(--werkles-violet);
+  font-weight: 750;
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-example {
+  margin-top: 24px;
+  padding: clamp(24px, 5vw, 52px);
+  border-top: 5px solid var(--werkles-teal);
+}
+
+.bellows-example p {
+  max-width: 780px;
+}
+
+.bellows-sources ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bellows-sources li {
+  padding: 18px;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: var(--radius);
+  background: var(--werkles-workshop-paper);
+}
+
+.bellows-sources a {
+  color: var(--werkles-violet-deep);
+  font-weight: 850;
+}
+
+.bellows-sources p {
+  margin-bottom: 0;
+}
+
+.bellows-sources .bellows-sources__reviewed {
+  margin-top: 16px;
+  color: var(--werkles-ink-muted-on-paper);
+  font-size: 0.85rem;
+}
+
+.bellows-library__next {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding: clamp(22px, 4vw, 42px);
+}
+
+.bellows-library__next h2 {
+  max-width: 18ch;
+}
+
+@media (max-width: 820px) {
+  .bellows-library__hero,
+  .bellows-lesson__action,
+  .bellows-personal-lesson-focus > ol {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-library__map-grid,
+  .alignment-memo__grid,
+  .bellows-sources ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bellows-library__next {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .bellows-personal__resume {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .bellows-library {
+    width: min(100% - 20px, 1180px);
+    padding-top: 12px;
+  }
+
+  .bellows-library__map-grid,
+  .alignment-memo__grid,
+  .bellows-sources ul,
+  .bellows-lesson__body {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-personal__work {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-draft-shelf ul {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-draft-shelf li {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bellows-draft-shelf li a {
+    flex: 1 1 auto;
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .bellows-evidence-examples,
+  .evidence-brief__form,
+  .evidence-brief__preview dl,
+  .evidence-brief__decision-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-lesson__body section {
+    border-right: 0;
+  }
+
+  .bellows-library__hero h1 {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .bellows-library__nav,
+  .bellows-library__next {
+    display: none !important;
+  }
+
+  .bellows-library,
+  .bellows-lesson,
+  .alignment-memo {
+    width: 100%;
+    break-inside: avoid;
+  }
+}
+
+.bellows-visual-pause {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 0;
+  min-height: 320px;
+  margin: 24px 0;
+  overflow: hidden;
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 1.15);
+  color: #fffaf1;
+  background: linear-gradient(135deg, #24154f, #4b216f 58%, #743853);
+  box-shadow: 0 24px 60px rgba(31, 18, 64, 0.2);
+}
+
+.bellows-visual-pause figure {
+  min-height: 320px;
+  margin: 0;
+}
+
+.bellows-visual-pause__image {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+
+.bellows-visual-pause > div {
+  display: grid;
+  align-content: center;
+  padding: clamp(26px, 5vw, 56px);
+}
+
+.bellows-library .bellows-visual-pause h2 {
+  max-width: 18ch;
+  margin: 8px 0 12px;
+  color: #fffaf1;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3.1rem);
+  line-height: 1.02;
+}
+
+.bellows-library .bellows-visual-pause p {
+  max-width: 48ch;
+  margin: 0;
+  color: #fffaf1 !important;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.bellows-library .bellows-visual-pause .eyebrow {
+  color: #ffb25f;
+}
+
+.bellows-visual-pause--tools {
+  background: linear-gradient(135deg, #152e3a, #244e58 58%, #7c442d);
+}
+
+.bellows-visual-pause--workspace {
+  background: linear-gradient(135deg, #2c184f, #54316f 58%, #9a5935);
+}
+
+.bellows-personal-progress {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+  margin: 24px 0;
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid var(--werkles-copper-frame-soft);
+  border-radius: calc(var(--radius) * 1.15);
+  background: var(--werkles-paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.bellows-personal-progress h2 {
+  margin: 6px 0 10px;
+}
+
+.bellows-personal-progress > div:last-child {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.bellows-personal-progress [role="status"],
+.bellows-personal__progress-state {
+  color: var(--werkles-ink-muted-on-paper);
+}
+
+@media (max-width: 760px) {
+  .bellows-visual-pause {
+    grid-template-columns: 1fr;
+  }
+
+  .bellows-visual-pause figure,
+  .bellows-visual-pause__image {
+    min-height: 230px;
+    max-height: 340px;
+  }
+
+  .bellows-personal-progress {
+    grid-template-columns: 1fr;
+  }
+}
+.bellows-draft-shelf__action {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  padding: clamp(18px, 3vw, 26px);
+  border-left: 6px solid var(--werkles-teal);
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f4fff9, #fff8eb);
+  box-shadow: 0 12px 30px rgba(44, 35, 29, 0.1);
+}
+
+.bellows-draft-shelf__action h3,
+.bellows-draft-shelf__action p {
+  margin: 4px 0 0;
+}
+
+.bellows-draft-shelf__action dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.bellows-draft-shelf__action dl div {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.bellows-draft-shelf__action dt {
+  color: var(--werkles-teal-deep);
+  font-weight: 900;
+}
+
+.bellows-draft-shelf__action dd {
+  margin: 4px 0 0;
+}
+
+.bellows-draft-shelf__test-return {
+  display: grid;
+  gap: 6px;
+  padding: 13px 15px;
+  border-left: 4px solid var(--werkles-copper);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--werkles-ink-on-paper);
+}
+
+.bellows-draft-shelf__test-return a {
+  width: fit-content;
+  color: var(--werkles-teal-deep);
+  font-weight: 900;
+}
+
+.bellows-draft-shelf__result {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  padding: clamp(18px, 3vw, 26px);
+  border-left: 6px solid var(--werkles-copper);
+  border-radius: 22px;
+  background: linear-gradient(135deg, #fff4df, #f4fff9);
+  box-shadow: 0 12px 30px rgba(44, 35, 29, 0.1);
+  color: var(--werkles-ink-on-paper);
+}
+
+.bellows-draft-shelf__result h3,
+.bellows-draft-shelf__result p { margin: 4px 0 0; }
+.bellows-draft-shelf__result dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.bellows-draft-shelf__result dl div { padding: 13px; border-radius: 14px; background: rgba(255, 255, 255, 0.82); }
+.bellows-draft-shelf__result dt { color: var(--werkles-copper); font-weight: 900; }
+.bellows-draft-shelf__result dd { margin: 5px 0 0; line-height: 1.5; }
+.bellows-draft-shelf__result > a { width: fit-content; color: var(--werkles-teal-deep); font-weight: 900; }
+
+@media (max-width: 620px) {
+  .bellows-draft-shelf__action dl {
+    grid-template-columns: 1fr;
+  }
+  .bellows-draft-shelf__result dl { grid-template-columns: 1fr; }
+}

@@ -10,18 +10,21 @@ import {
 type SubmissionState =
   | { status: "idle"; message: string }
   | { status: "saving"; message: string }
-  | { status: "saved"; message: string; intakeId: string; recordPath: string }
+  | { status: "saved"; message: string; intakeId: string }
   | { status: "error"; message: string };
 
 export function DiscoveryIntakeForm() {
   const [submission, setSubmission] = useState<SubmissionState>({
     status: "idle",
-    message: "One intake. The matching engine processes it. Speaker delivers facts; Squibb delivers voice."
+    message: "One intake. Werkles compares practical next paths and explains what shaped the recommendation."
   });
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    // Capture before any await: React nulls currentTarget once the
+    // synchronous dispatch ends (crashed the success path — Bean #14).
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const payload = {
       name: String(form.get("name") || ""),
       contact: String(form.get("contact") || ""),
@@ -40,26 +43,32 @@ export function DiscoveryIntakeForm() {
 
     setSubmission({ status: "saving", message: "Saving the intake record." });
 
-    const response = await fetch("/api/discovery/intake", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json().catch(() => ({}));
+    try {
+      const response = await fetch("/api/discovery/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json().catch(() => ({}));
 
-    if (!response.ok) {
-      const missing = Array.isArray(result.missing) ? ` Missing: ${result.missing.join(", ")}.` : "";
-      setSubmission({ status: "error", message: `${result.error || "Could not save intake."}${missing}` });
-      return;
+      if (!response.ok) {
+        const missing = Array.isArray(result.missing) ? ` Missing: ${result.missing.join(", ")}.` : "";
+        setSubmission({ status: "error", message: `${result.error || "Could not save intake."}${missing}` });
+        return;
+      }
+
+      formElement.reset();
+      setSubmission({
+        status: "saved",
+        message: result.meaning || "Received for human review.",
+        intakeId: String(result.intake_id || "")
+      });
+    } catch {
+      setSubmission({
+        status: "error",
+        message: "Could not reach the workshop. Check your connection and try again — nothing you typed was lost."
+      });
     }
-
-    event.currentTarget.reset();
-    setSubmission({
-      status: "saved",
-      message: result.meaning || "Received for human review.",
-      intakeId: String(result.intake_id || ""),
-      recordPath: String(result.record_path || "")
-    });
   }
 
   return (
@@ -159,9 +168,7 @@ export function DiscoveryIntakeForm() {
           {submission.status === "saved" ? (
             <>
               <br />
-              Intake: <code>{submission.intakeId}</code>
-              <br />
-              Record: <code>{submission.recordPath}</code>
+              Your reference number: <code>{submission.intakeId}</code>
             </>
           ) : null}
         </p>
