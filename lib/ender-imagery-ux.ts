@@ -18,7 +18,7 @@ export const enderImageryArcBeats = [
     label: "Searching",
     feeling: "Maybe what I came for isn't what I need.",
     imagery: "The same person noticing something off the obvious path.",
-    uxFeel: "The world starts to open; Squibb appears to notice, not help."
+    uxFeel: "The world starts to open; the guide appears to notice, not take over."
   },
   {
     id: "discovery",
@@ -78,7 +78,7 @@ export const enderDiscoveryMechanismSteps = [
   },
   {
     step: 2,
-    title: "Squibb notices once",
+    title: "The guide notices once",
     body: "One question about what's under it — not a quiz."
   },
   {

@@ -1,0 +1,68 @@
+{
+  "base": "http://127.0.0.1:3000",
+  "limit": 3,
+  "pass": 3,
+  "fail": 0,
+  "fleetCount": 150,
+  "blockedInFleet": 13,
+  "distinctTopScores": 3,
+  "results": [
+    {
+      "ghostId": "ghost_001",
+      "displayName": "Imani Alvarez",
+      "handeyeSeat": "LadyJessica",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": null,
+      "candidateCount": 12,
+      "topScore": 42,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_002",
+      "displayName": "Ava Salazar",
+      "handeyeSeat": "Ender",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 70,
+      "topReasons": [
+        "Capital posture fits",
+        "Open to partnership",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_003",
+      "displayName": "Ray Hayes",
+      "handeyeSeat": "Bean",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 44,
+      "topReasons": [
+        "Open to partnership",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    }
+  ]
+}

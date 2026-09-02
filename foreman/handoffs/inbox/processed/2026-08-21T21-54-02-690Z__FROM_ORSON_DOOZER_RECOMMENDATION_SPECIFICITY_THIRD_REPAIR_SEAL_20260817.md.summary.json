@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T21:54:02.691Z",
+  "file": "FROM_ORSON_DOOZER_RECOMMENDATION_SPECIFICITY_THIRD_REPAIR_SEAL_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "ORSON",
+  "consumed_by": "FOREMAN",
+  "note": "Read: exact-byte narrow repair passed, but the reviewer explicitly did not grant member-facing readiness. No broader readiness claim adopted.",
+  "auto_merge": false
+}

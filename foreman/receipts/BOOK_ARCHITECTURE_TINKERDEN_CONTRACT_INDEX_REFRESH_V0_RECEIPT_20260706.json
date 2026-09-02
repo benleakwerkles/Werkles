@@ -1,0 +1,69 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_REFRESH_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:09:30.805Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_REFRESH_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_REFRESH_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-contract-index-refresh-smoke.mjs",
+  "files_changed": [
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-contract-index-refresh-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_REFRESH_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "bridge_script_syntax": "passed",
+    "hydrate_contract_index_present": true,
+    "contract_index_panel_hook_present": true,
+    "contract_index_list_hook_present": true,
+    "contract_index_api_hook_present": true,
+    "hydrate_contract_index_call_count": 6,
+    "live_api_url": "http://127.0.0.1:3000/api/organism/contracts/index?limit=25",
+    "live_api_ok": true,
+    "live_api_count": 4,
+    "live_api_packet_count": 4,
+    "live_api_receipt_count": 6,
+    "live_api_event_count": 10,
+    "tinkerden_record_count": 2,
+    "tinkerden_lanes_present": [
+      "TinkerDen bridge execute",
+      "TinkerDen packet relay"
+    ],
+    "joined_event_proof_present": true,
+    "tinkerden_page_live_readback": {
+      "url": "http://127.0.0.1:3000/tinkerden",
+      "status_code": 200,
+      "has_contract_lane": true,
+      "has_panel_hook": true,
+      "has_refresh_function": true,
+      "has_bridge_execute_lane": true,
+      "has_packet_relay_lane": true
+    }
+  },
+  "bridge_script_check": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "contract_file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "178f5088be2371cf8edfad165ae6128aef2584758be37a13b94e3dd0f888b139",
+      "bytes": 62013
+    },
+    {
+      "path": "scripts/foreman/tinkerden-contract-index-refresh-smoke.mjs",
+      "sha256": "b415b476a89facfbdaae8e69c80ac1ae828a10899dc7c5176c6baece36e48179",
+      "bytes": 6968
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "read-only API proof except receipt artifact"
+  ],
+  "next_safe_action": "Wire the next packet producer lane into canonical contract writes, or add a compact visual badge for contract freshness."
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_LATEST_POSTED_DRAWER_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:58:11.291Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_LATEST_POSTED_DRAWER_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receiver-handoff-latest-posted-drawer-smoke.mjs",
+  "files_changed": [
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-receiver-handoff-latest-posted-drawer-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_LATEST_POSTED_DRAWER_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "page_source_has_latest_posted_hook": true,
+    "page_source_has_latest_posted_label": true,
+    "playwright_read_latest_posted_drawer": true,
+    "playwright_browser_executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "expected_bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "drawer_bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "expected_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "drawer_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "expected_contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json",
+    "drawer_contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json",
+    "handoff_count_before": 14,
+    "handoff_count_after": 14,
+    "posted_count_before": 3,
+    "posted_count_after": 3,
+    "pending_count_after": 7,
+    "returned_unposted_count_after": 3,
+    "template_return_blocked_count_after": 1,
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "The latest posted drawer is a read-only cockpit summary backed by the receiver handoff index; it does not create, fill, post, or mutate handoffs."
+  },
+  "expected_record": {
+    "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "bundle_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "Maker@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:56:11.032Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/receipt-template.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "returned_status": "partial",
+    "returned_receiver": "Maker@Betsy",
+    "contract_event_joined": true,
+    "state": "posted",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by Maker@Betsy",
+    "truth_boundary": "Returned receipt status is partial; contract receipt posted at data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json."
+  },
+  "drawer_readback": {
+    "text": "Latest posted td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn / receipt receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh / contract data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json / joined YES",
+    "state": "posted",
+    "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json"
+  },
+  "file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "cf529ce0e1dd116c5ffbcaccb0b98c5b18348b0236536e74b20b7a4e57630d82",
+      "bytes": 89974
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receiver-handoff-latest-posted-drawer-smoke.mjs",
+      "sha256": "3e98b6437dbc0d0870f30310097b000e3c6278f5a298146c3768ba38b686150b",
+      "bytes": 9434
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no handoff created",
+    "no returned receipt filled",
+    "no contract receipt posted"
+  ],
+  "next_safe_action": "Add the same latest posted summary to a dedicated receipt drawer route, or expose a filtered posted-only handoff API for broader cockpit reuse."
+}

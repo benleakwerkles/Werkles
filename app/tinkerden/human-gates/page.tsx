@@ -1,13 +1,13 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 
 import HumanGatesClient from "@/components/tinkerden/human-gates-client";
+import { TinkerDenSurfaceSwitcher } from "@/components/tinkerden/tinkerden-surface-switcher";
 import { readHumanGateDashboard } from "@/lib/tinkerden/human-gates";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Active Human Gates | Werkles",
+  title: "Active Human Gates",
   description: "Local cockpit surface for active Human Gate review artifacts and durable operator decisions.",
   robots: { index: false, follow: false }
 };
@@ -22,24 +22,14 @@ export default async function TinkerDenHumanGatesPage() {
 
   return (
     <main className="td-mission-control">
-      <nav className="td-surface-switcher" aria-label="TinkerDen surface switcher">
-        <Link className="td-surface-switcher__link" href="/tinkerden/mission-control">
-          Mission Control
-        </Link>
-        <Link className="td-surface-switcher__link" href="/tinkerden">
-          Bridge
-        </Link>
-        <Link className="td-surface-switcher__link td-surface-switcher__link--active" href="/tinkerden/human-gates">
-          Human Gates
-        </Link>
-      </nav>
+      <TinkerDenSurfaceSwitcher active="human-gates" />
 
       <header className="td-mission-control__hero">
         <p className="td-mission-control__eyebrow">Active Human Gates</p>
-        <h1>Ben-only authority, visible and durable.</h1>
+        <h1>Operator-only authority, visible and durable.</h1>
         <p>
           This surface turns gate doctrine into local artifacts: active queue, review dashboards, Markdown packets, and
-          append-only approval log entries. It never approves a gate without Ben&apos;s exact phrase.
+          append-only approval log entries. It never approves a gate without Operator&apos;s exact phrase.
         </p>
       </header>
 
@@ -212,7 +202,7 @@ export default async function TinkerDenHumanGatesPage() {
               <p>DECISION RECEIPTS</p>
               <h2>No machine receipt written yet</h2>
             </header>
-            <p>Receipts appear here after Ben&apos;s exact phrase is recorded.</p>
+            <p>Receipts appear here after Operator&apos;s exact phrase is recorded.</p>
           </article>
         )}
       </section>

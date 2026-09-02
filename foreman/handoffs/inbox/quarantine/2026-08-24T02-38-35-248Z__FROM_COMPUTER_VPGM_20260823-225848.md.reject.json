@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-24T02:38:35.249Z",
+  "file": "FROM_COMPUTER_VPGM_20260823-225848.md",
+  "reason": "Incomplete conflicting M11 harvest missing required terminal metadata; superseded by the complete 230047 and post-build 230704 receipts."
+}

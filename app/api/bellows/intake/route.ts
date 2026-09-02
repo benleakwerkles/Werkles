@@ -41,7 +41,11 @@ function normalizeAnswers(value: unknown): ConciergeIntakeAnswers {
 }
 
 export async function POST(request: NextRequest) {
-  if (!BELLOWS_INTAKE_SUBMISSION_OPEN) {
+  const authorization = request.headers.get("authorization") || "";
+  const bearer = authorization.match(/^Bearer\s+(.+)$/i)?.[1] ?? null;
+  const accountSubmission = Boolean(bearer && bearer !== "dev-preview-token");
+
+  if (!BELLOWS_INTAKE_SUBMISSION_OPEN && !accountSubmission) {
     return NextResponse.json(
       {
         error: BELLOWS_INTAKE_CLOSED_MESSAGE,
@@ -70,8 +74,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const authorization = request.headers.get("authorization") || "";
-    const bearer = authorization.match(/^Bearer\s+(.+)$/i)?.[1] ?? null;
     if (bearer && bearer !== "dev-preview-token") {
       const auth = await requireUser(request);
       if ("response" in auth) return auth.response;

@@ -1,0 +1,59 @@
+{
+  "missionId": "WERKLES_M19_GHOSTS_WITH_OPINIONS_PREBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Prebuild challenge for a two-sided Formation studio where synthetic Ghosts answer as consistent fictional people instead of asking the member to impersonate them.",
+  "sharedContext": [
+    "Current UI says Shared Werkle / Decide what crosses the line. The Operator reasonably reads this as deciding whether another person's words crossed a personal boundary. Intended behavior is actually deciding which exact source wording or new joint wording enters the proposed shared company plan.",
+    "The selected Ghost already has a synthetic Workshop source and deterministic prefilled choices, but most reasoning is hidden. The page asks the member to switch actors and enter decisions as the Ghost, which weakens the simulation.",
+    "Target: member always answers as themself; Ghost has visible deterministic answers, opinions, counterpositions, and reasons across all twelve Formation topics.",
+    "Ghost depth may include work pace, follow-through style, decision style, disagreement style, risk posture, availability, contribution expectations, and a fictional financial scenario useful for negotiating a proposed Werkle.",
+    "Financial scenario must never use real account numbers, imply a real bank connection, claim Plaid verification, rank wealth, or leak a public amount. In a one-to-one practice Formation it may simulate a fictional disclosed band, spending boundary, liquidity timing, or refusal to disclose, all labeled synthetic/unverified.",
+    "No compatibility score. Differences are useful data, not failure. Ghost answers should vary coherently by member lane/profile rather than being twelve random quips.",
+    "The active Shared Werkle area should explain: compare my answer with the Ghost's answer; use mine, use theirs, write a third answer together, keep the subject private, or leave it unresolved.",
+    "The local draft must remain revisitable and may let the member reset/replay. Nothing contacts a real person or saves to an account.",
+    "Implementation is React/Next local preview only. No provider, schema/RLS, secrets, spend, push, deploy, or production action."
+  ],
+  "liveStrings": [
+    "Build the answer you would both work from",
+    "What Rosa says",
+    "Why Rosa sees it that way",
+    "Your answer",
+    "Use my answer",
+    "Use Rosa's answer",
+    "Write a new answer together",
+    "Keep this out of the shared plan",
+    "Leave this unresolved"
+  ],
+  "knownGaps": [
+    "Ghosts are fictional local test data, not autonomous accounts or real members.",
+    "No real second-member custody exists in this candidate.",
+    "Fictional funds posture is simulation data and never provider evidence."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Red-team the human experience and design the strongest two-sided Ghost conversation for Formation.",
+      "pull": "Attack unclear language, member impersonation, flat Ghosts, random personality, uncanny dialogue, homework tone, and hidden consequences.",
+      "go": [
+        "Return ENDER_M19_GHOST_AGENCY_GO, PATCH, or STOP with the two strongest UX corrections.",
+        "Define the exact active-topic hierarchy and plain member copy, including what replaces Decide what crosses the line.",
+        "Specify how a coherent Ghost personality changes at least six materially different topic answers without becoming cartoonish.",
+        "Give desktop, 390px, reset/replay, agreement, disagreement, and long-answer acceptance checks."
+      ],
+      "momentum": "Name the smallest buildable first stake and postbuild evidence owed, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Hostile trust review of fictional Ghost personalities, opinions, work ethics, and financial scenarios.",
+      "pull": "Attack false verification, fake-bank realism, public wealth ranking, stereotyping, deterministic bias, misleading autonomy, and accidental claims about a real person.",
+      "go": [
+        "Return BEAN_M19_GHOST_TRUST_GO, PATCH, or STOP with the two strongest trust corrections.",
+        "Define the safe minimum fictional financial fields and exact point-of-use disclosure language.",
+        "Specify what may influence the simulation and what must never influence matching or member trust.",
+        "Give hostile checks for a Backer, a cash-poor skilled Worker, refusal to disclose, stale fictional data, and a self-match."
+      ],
+      "momentum": "Name the exact postbuild trust evidence owed, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

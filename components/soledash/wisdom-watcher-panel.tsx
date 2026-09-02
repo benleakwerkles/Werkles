@@ -106,7 +106,7 @@ export function WisdomWatcherPanel({ onRefresh }: { onRefresh?: () => void | Pro
     <section className="sd-wisdom" aria-label="Wisdom Watcher">
       <div className="sd-wisdom__head">
         <div>
-          <p className="sd-wisdom__eyebrow">Speaker · doctrine conflict scan</p>
+          <p className="sd-wisdom__eyebrow">Doctrine conflict scan</p>
           <h2 className="sd-wisdom__title">Wisdom Watcher</h2>
           <p className="sd-wisdom__report-title">{panel.report.title}</p>
           <p className="sd-wisdom__hint">

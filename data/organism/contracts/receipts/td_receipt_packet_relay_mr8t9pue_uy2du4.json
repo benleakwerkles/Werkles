@@ -1,0 +1,50 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "td_receipt_packet_relay_mr8t9pue_uy2du4",
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "created_at": "2026-07-06T06:00:24.857Z",
+  "receiver": "PacketRelaySystem@Betsy",
+  "status": "completed",
+  "what_was_attempted": "Create a TinkerDen Packet Relay ready packet, persist the relay receipt, and mirror both into the canonical organism contract store.",
+  "what_changed": [
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "data/tinkerden/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+    "data/organism/receipt_pickup.jsonl",
+    "foreman/soledash/tinkerden-return-system-v0/state.json",
+    "data/organism/events.jsonl",
+    "data/organism/contracts/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "data/organism/contracts/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "what_did_not_change": [
+    "Receiver-side Aeye completion proof was not claimed by this relay receipt.",
+    "No auto-send.",
+    "No account automation.",
+    "No browser credential control.",
+    "No deploy.",
+    "No push."
+  ],
+  "proof": [
+    {
+      "kind": "artifact_path",
+      "value": "data/tinkerden/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json"
+    },
+    {
+      "kind": "artifact_path",
+      "value": "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json"
+    },
+    {
+      "kind": "hash",
+      "value": "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json sha256 af86b604cb85cd7da60388c83918f199ba8ef790ad3b80ac1e158f941e6a3819"
+    },
+    {
+      "kind": "readback",
+      "value": "relay_id=td_relay_mr8t9pue_3e26qq; event_type=packet_relay_ready; receipt_id=td_receipt_packet_relay_mr8t9pue_uy2du4"
+    }
+  ],
+  "blocked_reason": null,
+  "next_safe_action": "Wait for downstream receiver proof before claiming Aeye work completion; keep this relay receipt as custody proof only.",
+  "source_hashes_used": {
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json": "af86b604cb85cd7da60388c83918f199ba8ef790ad3b80ac1e158f941e6a3819"
+  }
+}

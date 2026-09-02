@@ -1,0 +1,85 @@
+{
+  "missionId": "WERKLES_BVPGM_FORMATION_TO_RETURNING_MEMBER_VALUE_M11",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Review the source-bound local Werkles candidate from Match Deck conversation through Formation, Personal Bellows return value, and one narrow Crucible check.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; the current candidate is local only.",
+    "Exact candidate digest is c8e9e755e4ec320c9e781ef272fef29dd6dd6feb556a93f3c702ee2d1cac8ece across 282 bound paths with zero dependency leaks.",
+    "Thirty-four contracts, TypeScript, production build, 20/20 rendered acceptance, and 10/10 member-route smoke pass.",
+    "Formation now summarizes large source records while preserving exact wording, and names the next unresolved joint decision.",
+    "Match Deck conversation practice remains synthetic and must not silently edit profiles, rank trust, contact anyone, or imply consent.",
+    "Personal Bellows should become more useful as real Werkle questions emerge; Crucible may answer one narrow dated question but never rank people.",
+    "This packet is a review request, not proof of notification, custody, response, or participation."
+  ],
+  "liveStrings": [
+    "A match opened the door. It did not create a partnership.",
+    "Work on next",
+    "Only mutual decisions cross this line.",
+    "The part I know best is",
+    "No compatibility score is calculated here."
+  ],
+  "knownGaps": [
+    "No M10 exact-digest CBCC review receipt has returned.",
+    "Formation drafts remain device-local practice rather than a durable multi-member room.",
+    "Provider production actions remain disabled and outside this review.",
+    "Lady Jessica release custody remains separate and unissued."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Walk Match Deck conversation into Formation and back into Personal Bellows as a human relationship, not a workflow diagram.",
+      "pull": "Inspect emotional continuity, conversational language, button consequences, homework feeling, and whether the next useful action is obvious.",
+      "go": [
+        "Return the three strongest P0/P1 human-experience defects with exact route and smallest repair.",
+        "Name where a real person would feel heard and where the interface turns them back into data.",
+        "Give ENDER_M11_GO, PATCH, or STOP."
+      ],
+      "momentum": "Name the two routes that require a post-build walk and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack the same flow for false consent, synthetic impersonation, private-note leakage, stale mutual wording, and verification-as-character-rank.",
+      "pull": "Treat every generated conversation and provider check as untrusted until its source, scope, and consequence are explicit.",
+      "go": [
+        "Return only P0/P1 trust defects with exploit or false belief, harm, and minimum invariant.",
+        "Check that practice conversation cannot silently become profile evidence or mutual agreement.",
+        "Give BEAN_M11_GO, PATCH, or STOP."
+      ],
+      "momentum": "Name one fail-closed regression for conversation evidence and one for provider evidence, then stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether this loop creates enough practical and emotional return value for a member to come back next week.",
+      "pull": "Inspect Match Deck, Formation, Personal Bellows, and Crucible as one product story rather than four adjacent features.",
+      "go": [
+        "Name the strongest current value handoff and the weakest dead end.",
+        "Propose one bounded bridge that increases return value without cheap paywall teasing.",
+        "Give SKYBRO_M11_GO, PATCH, or STOP."
+      ],
+      "momentum": "Name one Bellows topic the emerging Werkle should unlock naturally and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or canon-by-flattery."
+    },
+    "PETRA": {
+      "vision": "Keep M11 broad but bounded and decide what can advance without confusing local practice, account custody, and production capability.",
+      "pull": "Use the candidate digest, proof summary, device-local boundary, missing review receipts, and provider hard stops.",
+      "go": [
+        "Return GO, PATCH, or STOP for this local M11 implementation scope only.",
+        "Name any scope collapse or claim that outruns current custody.",
+        "State the exact next machine checkpoint."
+      ],
+      "momentum": "Separate a useful local improvement from a blocked durable-account or production step and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or Operator approval."
+    },
+    "COMPUTER": {
+      "vision": "Research-check the plain-language business usefulness of the current Formation-to-Bellows loop without inventing legal or financial advice.",
+      "pull": "Use the supplied route and copy facts; distinguish ordinary planning guidance from claims requiring a professional or verified source.",
+      "go": [
+        "Identify two places the experience could offer a concrete tool, template, or reputable source instead of generic advice.",
+        "Flag any formation topic whose wording implies legal, tax, lending, or investment certainty.",
+        "Give COMPUTER_M11_GO, PATCH, or STOP."
+      ],
+      "momentum": "Name the smallest source-backed Bellows addition and stop.",
+      "outOfLane": "No code, legal conclusion, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final release approval."
+    }
+  }
+}

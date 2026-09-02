@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T06:22:34.104Z",
+  "file": "FROM_BEAN_OPERATING_BRIEF_SOURCE_CONTRACT_POSTBUILD_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "BEAN",
+  "consumed_by": "FOREMAN",
+  "note": "Read now; prior PATCH requirements were already assimilated into M7/M8 source and stale-state contracts. Not counted as current release review.",
+  "auto_merge": false
+}

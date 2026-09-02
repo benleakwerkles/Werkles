@@ -199,6 +199,7 @@ export async function POST(request: Request) {
       dispatch_state_path: result.dispatch_state_path,
       event_path: result.event_path,
       relay_event: result.relay_event,
+      contract_write: result.contract_write,
       workspace_target: result.workspace_target,
       workspace_focus: focus,
       clipboard_set: clipboard.set || verified,

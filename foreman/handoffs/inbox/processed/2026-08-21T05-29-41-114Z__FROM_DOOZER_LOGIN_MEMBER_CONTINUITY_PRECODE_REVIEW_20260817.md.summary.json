@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:29:41.115Z",
+  "file": "FROM_DOOZER_LOGIN_MEMBER_CONTINUITY_PRECODE_REVIEW_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "DOOZER",
+  "consumed_by": "FOREMAN",
+  "note": "Assimilated: redirect is not continuity; downstream owner state must remain consistent.",
+  "auto_merge": false
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "LADY_JESSICA_TIER_A_ENV_READY_REVERIFY_V1",
+  "status": "PASS",
+  "timestamp": "2026-07-05T23:41:46.4776512-04:00",
+  "machine": "BETSY",
+  "packetId": "LADY_JESSICA_WERKLES_TIER_A_ENV_READY_PACKET_20260705",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "secretValuesPrinted": "NO",
+  "secretValuesWrittenToRepo": "NO",
+  "onePasswordDesktopPromptUsed": "NO",
+  "checks": [
+    {
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Test-WerklesVercelSecretItem.ps1",
+      "status": "PASS_ALL_FIELDS_VALID",
+      "validFieldCount": 8,
+      "dirtyFieldCount": 0,
+      "emptyOrMissingFieldCount": 0,
+      "validFields": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID",
+        "STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID",
+        "CRON_SECRET"
+      ]
+    },
+    {
+      "command": "npx.cmd vercel env ls",
+      "status": "PASS_NAMES_PRESENT",
+      "project": "werkles/werkles1",
+      "previewFieldCount": 8,
+      "productionFieldCount": 8,
+      "valuesEncrypted": "YES",
+      "previewFields": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID",
+        "STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID",
+        "CRON_SECRET"
+      ],
+      "productionFields": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "STRIPE_FOUNDRY_DUES_MONTHLY_PRICE_ID",
+        "STRIPE_FOUNDRY_DUES_ANNUAL_PRICE_ID",
+        "CRON_SECRET"
+      ]
+    }
+  ],
+  "result": "No tier-A environment regression observed. Continue Werkles.com build work from verified 8/8 baseline."
+}

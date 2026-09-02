@@ -1,0 +1,47 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIVER_PROOF_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T04:46:50.7550052-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIVER_PROOF_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "what_changed": [
+    "Added the Receiver Proof Everywhere coverage audit to the current packet set.",
+    "Added the one-command receiver proof coverage audit section.",
+    "Added the audit receipt and index-update receipt rows to the receipt table."
+  ],
+  "validation": {
+    "index_lists_receiver_proof_audit_script": true,
+    "index_lists_receiver_proof_audit_command": true,
+    "index_preserves_artifact_with_blockers_boundary": true,
+    "index_lists_receiver_proof_audit_receipt": true,
+    "universal_receiver_proof_not_claimed": true
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "6dde99e7e5347c7f6db0b5a6b43a129cd16e116b015aa276f5b31c45c16082f8",
+      "bytes": 17841
+    },
+    {
+      "path": "scripts/foreman/receiver-proof-everywhere-audit.mjs",
+      "sha256": "9e49612730749228b6afda79b3855a2e05d4de739b41843641b4197d8f637606",
+      "bytes": 28410
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706.json",
+      "sha256": "7a4d5bcc665249c0b8e14e1c56912d3f33ba81a5d632ef1c5e129ca943012fb8",
+      "bytes": 17303
+    }
+  ],
+  "truth_boundary": "The index now surfaces the receiver proof coverage audit as an ARTIFACT_WITH_BLOCKERS. It does not claim universal receiver proof, Mack review return, deployment, or external send.",
+  "stop_conditions_respected": [
+    "no external send",
+    "no Mack receipt claim",
+    "no universal receiver proof claim",
+    "no deploy",
+    "no push"
+  ]
+}

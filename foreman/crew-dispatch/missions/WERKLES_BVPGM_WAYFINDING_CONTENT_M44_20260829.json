@@ -1,0 +1,51 @@
+{
+  "missionId": "WERKLES_BVPGM_WAYFINDING_CONTENT_M44",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad pre-code review of member wayfinding, distinct page jobs, content depth, and non-human visual rhythm.",
+  "sharedContext": [
+    "The Operator often gets lost among a growing number of member pages and wants dependable recovery without deleting valuable content.",
+    "Similar pages must not feel like the same monster with a different skin; each surface needs a unique job and a clear handoff.",
+    "Visual pauses may use people, places, tools, vehicles, rooms, or unfinished work. The existing van-at-dawn image is a favored object/place scene.",
+    "The persistent member header already exists; Workshop, Match Deck, and Formation also have a local location readout, while other major member surfaces invent their own recovery language.",
+    "No provider activation, credentials, schema/RLS, production data, spend, push, deploy, new environment, subagent, or foreground input is allowed."
+  ],
+  "liveStrings": [
+    "Your Workshop",
+    "Match Deck",
+    "Possible Werkle",
+    "My Bellows",
+    "Who you are",
+    "Prove it"
+  ],
+  "knownGaps": [
+    "The local route readout covers only Workshop, Match Deck, and Formation.",
+    "Recommendations, Personal Bellows, Profile, Crucible, and Member Home do not share one local orientation grammar.",
+    "Several long pages contain repeated explanation or distant next actions.",
+    "Lady Jessica has a source-bound packet but no proved direct relay route in this mission manifest."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the route system understandable to an ordinary member without adding another wall of explanatory cards.",
+      "pull": "Walk Member Home, Intake, Recommendations, Workshop, Match Deck, Formation, Personal Bellows, Profile, and Crucible for route identity, recovery, and next-step continuity.",
+      "go": [
+        "Return the three worst lost-member moments and their human consequence.",
+        "Define the shortest stable local route-readout grammar and where it should appear.",
+        "Name two concrete subtractions or relocations that improve recovery without adding a new page."
+      ],
+      "momentum": "Return one desktop and one 390px post-build test, then end with ENDER_M44_GO, PATCH, or STOP.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, new task, subagent, or final aesthetic approval."
+    },
+    "BEAN": {
+      "vision": "Attack duplicate content, false depth, custody claims, and subscription fatigue across the member journey.",
+      "pull": "Treat every card and page as suspect if it merely repeats a nearby surface's job or narrates the interface.",
+      "go": [
+        "Return the three worst semantic duplicates and the unique value job each page should own.",
+        "Flag any save, personalization, provider, human-response, or intelligence claim that outruns evidence.",
+        "Name two cuts or consolidations that make the site feel deeper rather than merely smaller."
+      ],
+      "momentum": "Return one custody assertion and one unique-page-job assertion for post-build proof, then end with BEAN_M44_GO, PATCH, or STOP.",
+      "outOfLane": "No code, legal approval, provider action, credentials, schema/RLS, spend, push, deploy, new task, or subagent."
+    }
+  }
+}

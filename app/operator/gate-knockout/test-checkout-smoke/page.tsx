@@ -55,12 +55,12 @@ export default function TestCheckoutSmokePage() {
           </div>
           <p>
             Tier-A env is 8/8 and test checkout is unpaused. Use the checklist below to prove webhook-backed membership
-            state before Ben gives the test-mode gate phrase. Stripe test keys only — not live money.
+            state before Operator gives the test-mode gate phrase. Stripe test keys only — not live money.
           </p>
           <div className="gate-list" aria-label="Test checkout smoke hard stops">
             <span>Requires APPROVE PAID CHECKOUT GO-LIVE (test mode)</span>
             <span>Webhook proof required</span>
-            <span>Ben handles test payment</span>
+            <span>Operator handles test payment</span>
             <span>No live Stripe keys</span>
           </div>
         </section>

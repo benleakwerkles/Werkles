@@ -1,0 +1,148 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:06:37.336Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-contract-index-smoke.mjs",
+  "files_changed": [
+    "lib/organism/contracts/read-index.ts",
+    "app/api/organism/contracts/index/route.ts",
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-contract-index-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_INDEX_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "contract_index_ok": true,
+    "source_path": "data/organism/contracts",
+    "source_paths": [
+      "data/organism/contracts/packets",
+      "data/organism/contracts/receipts",
+      "data/organism/contracts/events.jsonl"
+    ],
+    "total_records": 4,
+    "packet_count": 4,
+    "receipt_count": 6,
+    "event_count": 10,
+    "malformed_count": 0,
+    "invalid_count": 0,
+    "tinkerden_record_count": 2,
+    "tinkerden_lanes_present": [
+      "TinkerDen bridge execute",
+      "TinkerDen packet relay"
+    ],
+    "joined_events_for_tinkerden_records": true,
+    "partial_dispatch_receipt_visible": true,
+    "completed_relay_receipt_visible": true,
+    "api_route_source_calls_reader": true,
+    "tinkerden_page_renders_contract_lane": true,
+    "api_route_live_readback": {
+      "url": "http://127.0.0.1:3000/api/organism/contracts/index?limit=10",
+      "ok": true,
+      "count": 4,
+      "packet_count": 4,
+      "receipt_count": 6,
+      "event_count": 10,
+      "tinkerden_records": 2,
+      "lanes": "TinkerDen bridge execute, TinkerDen packet relay"
+    }
+  },
+  "latest_tinkerden_records": [
+    {
+      "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+      "packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+      "packet_created_at": "2026-07-06T06:03:50.533Z",
+      "lane": "TinkerDen bridge execute",
+      "from": "TinkerDen@Betsy",
+      "to": "Maker@Betsy",
+      "operator_intent": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0",
+      "receipt_id": "td_receipt_bridge_execute_mr8te4ju_mwoqyw",
+      "receipt_path": "data/organism/contracts/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json",
+      "receipt_status": "partial",
+      "receiver": "TinkerDen@Betsy",
+      "receipt_created_at": "2026-07-06T06:03:50.538Z",
+      "event_count": 2,
+      "latest_event_type": "packet_receipted",
+      "latest_event_at": "2026-07-06T06:03:50.544Z",
+      "joined_event_count": 1,
+      "truth_boundary": "Receiver-side Aeye completion proof was not claimed by this dispatch receipt."
+    },
+    {
+      "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+      "packet_path": "data/organism/contracts/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+      "packet_created_at": "2026-07-06T06:00:24.853Z",
+      "lane": "TinkerDen packet relay",
+      "from": "TinkerDen@Betsy",
+      "to": "Maker@Betsy",
+      "operator_intent": "BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0",
+      "receipt_id": "td_receipt_packet_relay_mr8t9pue_uy2du4",
+      "receipt_path": "data/organism/contracts/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+      "receipt_status": "completed",
+      "receiver": "PacketRelaySystem@Betsy",
+      "receipt_created_at": "2026-07-06T06:00:24.857Z",
+      "event_count": 2,
+      "latest_event_type": "packet_receipted",
+      "latest_event_at": "2026-07-06T06:00:24.864Z",
+      "joined_event_count": 1,
+      "truth_boundary": "Receiver-side Aeye completion proof was not claimed by this relay receipt."
+    }
+  ],
+  "contract_file_hashes": [
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "lib/organism/contracts/read-index.ts",
+      "sha256": "0f6800edfdf7af4f3b101737b0de8d589c65bb8dbd32ab5e5492accead4cbf08",
+      "bytes": 7395
+    },
+    {
+      "path": "app/api/organism/contracts/index/route.ts",
+      "sha256": "4e0440a15b8cf72d1899a44996fa57a885a7af37832b149ac493a6fafac6ab06",
+      "bytes": 711
+    },
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "724c9426a709836b436b9a1a67e22f35c6a9233c8b60397bb0382095a7457df1",
+      "bytes": 59381
+    },
+    {
+      "path": "scripts/foreman/tinkerden-contract-index-smoke.mjs",
+      "sha256": "5cfe9aac1c975c794eccd1319398edfc9992cfba055c9c8dc6f6856223e1f79e",
+      "bytes": 7678
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "read-only index except receipt artifact"
+  ],
+  "next_safe_action": "Add a compact contract-index refresh endpoint to the TinkerDen client script, or wire the index into another packet producer lane."
+}

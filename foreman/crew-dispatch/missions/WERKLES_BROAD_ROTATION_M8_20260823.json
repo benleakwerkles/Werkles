@@ -1,0 +1,65 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M8",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build broad review of the Practice Boundary Readout, the August 2 live-versus-local product delta, and release-readiness boundaries for the Formation to Personal Bellows loop.",
+  "sharedContext": [
+    "Remote maker/site-g-20260703 and the live Membership page prove commit 93b79d1 from August 2 is live; later Broad VPGM work remains local and unpushed.",
+    "Petra's custody-valid M7 receipt approved one exact next bounded slice: a compact Practice Boundary Readout naming source, included/excluded material, restore rule, non-agreement status, and unavailable providers.",
+    "A reusable readout now appears beside Formation and appears in Personal Bellows only when a structurally valid saved Operating Brief exists.",
+    "The readout states that only mutually accepted practice wording is included; private/generated/objected/parked/withdrawn material and provider claims remain excluded.",
+    "TypeScript, source contract, M8 rendered browser walk, and the full M7 stale-source regression pass with a clean console and a 16px text floor.",
+    "No push, deploy, promotion, provider call, secrets, SQL/schema/RLS, production mutation, new task, subagent, secondary model, environment, or foreground input is authorized."
+  ],
+  "liveStrings": [
+    "Know exactly what is—and is not—in this practice brief.",
+    "Only wording both practice records accepted",
+    "Private notes, predictions, proposals, objections, and parked or withdrawn material",
+    "Shown again only when it still matches the current accepted wording",
+    "Practice summary—not an agreement",
+    "No identity, funds, payment, phone, or background provider is active here"
+  ],
+  "knownGaps": [
+    "This is a browser-local synthetic practice loop, not real two-member custody or account persistence.",
+    "The shared dirty worktree is not yet a source-bound release candidate.",
+    "The connected Vercel account exposes the Werkles team but returned zero projects; authenticated deployment history is incomplete.",
+    "Push/deploy requires Heimerdinker, Lady Jessica, and Ben; only Lady Jessica executes it."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge whether M8 faithfully implements your M7 boundary strip and whether it is safe to package for a future release gate.",
+      "pull": "Review exact visible strings, conditional Bellows visibility, proof, live/local distinction, and non-claims.",
+      "go": ["Return GO, PATCH, or NO_GO with the three highest gate consequences.", "Attack every release, provider, account, matching, custody, or agreement overclaim.", "Name the next bounded release-readiness slice without opening a gate."],
+      "momentum": "Return a terminal scope ruling and stop.",
+      "outOfLane": "Review only; no code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Test whether the readout increases trust without turning the experience into compliance homework.",
+      "pull": "Review its language, value, placement, and the broader M2-M8 live/local product story.",
+      "go": ["Name the strongest member-value consequence and weakest experience consequence.", "Propose two pithy improvements that retain every truth boundary.", "Judge whether the local product now has a coherent sellable arc."],
+      "momentum": "Return VALUE_READY, PATCH, or BLOCKED and nominate the next reviewer.",
+      "outOfLane": "No code, provider action, spend, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Walk the readout as a human and attack visual monotony, homework tone, legibility, placement, and emotional pressure.",
+      "pull": "Inspect Formation and conditional Personal Bellows at desktop and narrow width using the exact visible strings.",
+      "go": ["Return five concrete human consequences.", "Attack whether six boundary facts are scannable or feel like legal boilerplate.", "Give Lady Jessica a bounded visual patch and re-walk checklist."],
+      "momentum": "Return HUMAN_READY, PATCH, or BLOCKED.",
+      "outOfLane": "No code, providers, secrets, SQL, push, deploy, new task, subagent, secondary model, or final creative approval."
+    },
+    "BEAN": {
+      "vision": "Hostile-review the readout and release manifest for false custody, privacy, provider, matching, agreement, and deployment claims.",
+      "pull": "Attack exact strings, conditional rendering, source parser use, live evidence, and forbidden claims.",
+      "go": ["Try to make Personal Bellows show the strip without a valid saved Brief.", "Try to turn the strip into proof of account, provider, matching, or legal state.", "Return executable blockers or an explicit pass with residual debt."],
+      "momentum": "Return TRUST_READY, PATCH, or BLOCK.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Independently map the August 2 live proof and later local delta without treating cache metadata as an authenticated deployment record.",
+      "pull": "Check Git remote facts, unique live markers, explicit deploy receipts, and M2-M8 receipt coverage.",
+      "go": ["Return verified facts, inferences, and unknowns separately.", "Attack any unsupported last-deploy claim.", "Propose one bounded release-evidence checklist with rollback fields."],
+      "momentum": "Return SOURCE_BOUND_READY, NEEDS_FACT_CHECK, or BLOCKED.",
+      "outOfLane": "No code, provider call, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

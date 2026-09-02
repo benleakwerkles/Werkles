@@ -1,0 +1,34 @@
+{
+  "missionId": "FORMATION_COMPOSITION_SOURCE_BINDING",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Bind Computer's proposed accepted-only Formation to Personal Bellows composition contract to the actual Werkles source tree and return a valid terminal receipt.",
+  "sharedContext": [
+    "Your first Formation Value Loop response was harvested and substantively useful, but the terminal Relay metadata was truncated and did not validate.",
+    "Actual source paths include lib/werkle/formation.ts, components/werkle/formation-workbench.tsx, components/werkle/partner-perspective-exercise.tsx, app/dashboard/werkles/formation/page.tsx, components/bellows/partnership-alignment-memo.tsx, lib/bellows/partnership-preparation-context.ts, app/bellows/personal/[slug]/page.tsx, components/bellows/account-aware-personal-bellows.tsx, lib/client-auth.ts, and lib/squibb/bellows-owner-session.ts.",
+    "Current Formation and Personal Bellows artifacts use browser-local storage and must not be described as account-backed or cross-device.",
+    "No code mutation, provider call, secret, schema/RLS, push, deploy, new task, agent, subagent, or secondary model is authorized."
+  ],
+  "liveStrings": [
+    "Only exact wording accepted by both people enters the shared room.",
+    "This practice draft is not saved to your Werkles account and will not follow you to another browser or device."
+  ],
+  "knownGaps": [
+    "The existing Partnership Alignment memo does not yet prove accepted-only Formation Ledger composition.",
+    "Partner-perspective private predictions must never enter a shared or Personal Bellows artifact.",
+    "The earlier response proposed source paths that did not match the actual tree and needs exact rebinding."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Turn the proposed Personal Bellows composition contract into an exact source-bound candidate for the actual Werkles tree.",
+      "pull": "Use only the named actual paths and the already-returned Formation Value Loop analysis; correct invented paths and incomplete receipt metadata.",
+      "go": [
+        "Name the exact current files to read, the smallest exact files to add or change, and which existing function/type supplies accepted-only Formation rows.",
+        "Return the pure contract signature and five executable regression cases using actual path names; preserve browser-only and private-prediction boundaries.",
+        "Give Doozer a bounded implementation brief and give Bean plus Ender exact post-build attack/walk checks."
+      ],
+      "momentum": "Return SOURCE_BOUND_CANDIDATE_READY, NEEDS_LOCAL_FACT_CHECK, or BLOCKED, with a complete valid Relay metadata block.",
+      "outOfLane": "No code mutation, provider calls, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

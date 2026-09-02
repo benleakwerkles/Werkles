@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T04:02:24.223Z",
+  "file": "FROM_PETRA_VPGM_20260824-040053.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Consumed as independent Petra PATCH on Ender M18 Formation stake; two corrections incorporated before build.",
+  "auto_merge": false
+}

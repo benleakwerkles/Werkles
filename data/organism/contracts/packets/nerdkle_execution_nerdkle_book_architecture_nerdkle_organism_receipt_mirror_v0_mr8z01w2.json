@@ -1,0 +1,43 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "nerdkle_execution_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2",
+  "created_at": "2026-07-06T08:40:51.605Z",
+  "from": "Nerdkle@Werkles",
+  "to": "MirrorSmoke@Betsy",
+  "lane": "Nerdkle execution",
+  "operator_intent": "Prove Nerdkle legacy packet and receipt records can be mirrored into the canonical organism packet/receipt/event contract.",
+  "source_paths": [
+    "data/organism/nerdkle/objects/nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.json",
+    "foreman/handoffs/outbox/TO_MIRROR_SMOKE_NERDKLE_EXECUTE_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.md"
+  ],
+  "source_hashes": {
+    "data/organism/nerdkle/objects/nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.json": "e52083ae954857742047457d2fc28983701c3f67ff3636a4a465a9fafef6fed9",
+    "foreman/handoffs/outbox/TO_MIRROR_SMOKE_NERDKLE_EXECUTE_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.md": "822a1d4907988fa71d93f5926ebe1d31ebdad961066af572aa6a31d04a51e60c"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Write a legacy Nerdkle receipt and mirror it into the organism contract store.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "deploy",
+    "push",
+    "secret_access",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "Stop if any canonical contract write is schema-invalid.",
+    "Stop if required evidence cannot be produced."
+  ],
+  "acceptance_criteria": [
+    "canonical organism packet write exists",
+    "canonical organism receipt write exists",
+    "packet_receipted event joins packet_id and receipt_id"
+  ],
+  "receipt_required": true,
+  "receipt_destination": "data/organism/contracts/receipts",
+  "idempotency_key": "nerdkle:nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2:organism-packet",
+  "expires_at": "2026-07-13T08:40:51.605Z"
+}

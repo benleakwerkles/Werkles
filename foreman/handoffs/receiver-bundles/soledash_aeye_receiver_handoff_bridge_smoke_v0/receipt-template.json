@@ -1,0 +1,35 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "receiver_receipt_template_soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi_mr8z7eyv",
+  "packet_id": "soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+  "created_at": "2026-07-06T08:46:35.143Z",
+  "receiver": "Dink@Betsy",
+  "status": "blocked",
+  "what_was_attempted": "TEMPLATE: replace this with what Dink@Betsy actually attempted for packet soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.",
+  "what_changed": [
+    "TEMPLATE_NOT_FILLED"
+  ],
+  "what_did_not_change": [
+    "No receiver completion proof has been claimed by this template.",
+    "Do not post this unchanged unless the receiver is intentionally returning a blocked receipt."
+  ],
+  "proof": [
+    {
+      "kind": "artifact_path",
+      "value": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/packet.json"
+    },
+    {
+      "kind": "hash",
+      "value": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/packet.json sha256 f8e89e523be90b16fe887dcbf50b9ad18b48ecee42bcc2951a6511e92a731a3e"
+    },
+    {
+      "kind": "readback",
+      "value": "TEMPLATE_NOT_FILLED: replace with receiver readback before claiming partial or completed status."
+    }
+  ],
+  "blocked_reason": "TEMPLATE_NOT_FILLED",
+  "next_safe_action": "Receiver edits this receipt with real proof, then posts it with organism-receiver-receipt-post.mjs.",
+  "source_hashes_used": {
+    "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/packet.json": "f8e89e523be90b16fe887dcbf50b9ad18b48ecee42bcc2951a6511e92a731a3e"
+  }
+}

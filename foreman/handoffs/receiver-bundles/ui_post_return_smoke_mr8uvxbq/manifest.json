@@ -1,0 +1,34 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T06:45:40.680Z",
+  "bundle_id": "ui_post_return_smoke_mr8uvxbq",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receiver": "ReceiverPostReturnSmoke@Betsy",
+  "lane": "TinkerDen bridge execute",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+  "source_packet_sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/packet.json",
+      "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+      "sha256": "f6c7545a3e6347ed852069d0d7172129dd2f4c480aad3e615e92bab9a2f20a64"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/HANDOFF.md",
+      "sha256": "2fed89d035c44c7e8c5316d38c2d88a52963b87116dc8e963e81a50482031aa5"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverPostReturnSmoke@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

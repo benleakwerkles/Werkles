@@ -1,0 +1,178 @@
+﻿{
+    "schema":  "MACK_ARCHITECTURE_REVIEW_DESK_HEALTHCHECK_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:13:35.9260715Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "MACK_ARCHITECTURE_REVIEW_DESK_HEALTHCHECK_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Test-MackArchitectureReviewDeskHealth.ps1 -WithTypecheck",
+    "validation":  {
+                       "launcher_smoke_passed":  true,
+                       "status_refresh_smoke_passed":  true,
+                       "return_drop_watcher_smoke_passed":  true,
+                       "review_lane_smoke_passed":  true,
+                       "readiness_passed":  true,
+                       "typecheck_status":  "PASSED",
+                       "no_external_send_claimed":  true,
+                       "no_clipboard_write_by_healthcheck":  true,
+                       "no_canonical_next_build_packet_generated":  true,
+                       "no_long_running_watcher_left":  true,
+                       "truth_boundary":  "This healthcheck runs local safe smokes and readiness. It does not open windows, refresh status outside smoke fixtures, write the clipboard, send anything to Mack, claim Mack returned, mutate canonical intake, or generate a canonical next-build packet."
+                   },
+    "checks":  [
+                   {
+                       "name":  "launcher-smoke",
+                       "status":  "ARTIFACT",
+                       "ok":  true,
+                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_SMOKE_RECEIPT_20260706.json",
+                       "receipt_sha256":  "69BFBA31B0B883B3A7CC8E59CAE56118D18091984D95267AA18EA82420F3614D",
+                       "summary":  {
+                                       "ok":  true,
+                                       "status":  "ARTIFACT",
+                                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_SMOKE_RECEIPT_20260706.json",
+                                       "receipt_sha256":  "69BFBA31B0B883B3A7CC8E59CAE56118D18091984D95267AA18EA82420F3614D",
+                                       "default_dry_run_ready":  true,
+                                       "refresh_status_dry_run_does_not_refresh":  true,
+                                       "copy_mack_block_dry_run_does_not_copy":  true,
+                                       "open_all_proof_dry_run_exposes_four_links":  true,
+                                       "status_note_unchanged":  true
+                                   }
+                   },
+                   {
+                       "name":  "status-refresh-smoke",
+                       "status":  "ARTIFACT",
+                       "ok":  true,
+                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_SMOKE_RECEIPT_20260706.json",
+                       "receipt_sha256":  "8EFC5A6C84AB6E74726A69EEAEDFF1D705BFDB7890D6F5FC21B40B2B94269F22",
+                       "summary":  {
+                                       "ok":  true,
+                                       "status":  "ARTIFACT",
+                                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_SMOKE_RECEIPT_20260706.json",
+                                       "receipt_sha256":  "8EFC5A6C84AB6E74726A69EEAEDFF1D705BFDB7890D6F5FC21B40B2B94269F22",
+                                       "empty_status_reports_waiting_for_drop":  true,
+                                       "drop_status_reports_ready_for_commit_without_writing":  true,
+                                       "watcher_once_exits":  true,
+                                       "canonical_intake_unchanged":  true,
+                                       "canonical_next_build_exists":  false
+                                   }
+                   },
+                   {
+                       "name":  "return-drop-watcher-smoke",
+                       "status":  "ARTIFACT",
+                       "ok":  true,
+                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_RETURN_DROP_WATCH_SMOKE_RECEIPT_20260706.json",
+                       "receipt_sha256":  "BAC87CAE0B088B73339D6C991AD95713C95B93131EDAB5A02D97C47645A903D7",
+                       "summary":  {
+                                       "ok":  true,
+                                       "status":  "ARTIFACT",
+                                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_RETURN_DROP_WATCH_SMOKE_RECEIPT_20260706.json",
+                                       "receipt_sha256":  "BAC87CAE0B088B73339D6C991AD95713C95B93131EDAB5A02D97C47645A903D7",
+                                       "empty_once_reports_drop_empty":  true,
+                                       "drop_once_reports_ready_for_commit_without_writing":  true,
+                                       "once_mode_exits":  true,
+                                       "canonical_intake_unchanged":  true,
+                                       "canonical_next_build_exists":  false
+                                   }
+                   },
+                   {
+                       "name":  "review-lane-smoke",
+                       "status":  "ARTIFACT",
+                       "ok":  true,
+                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_SMOKE_RECEIPT_20260706.json",
+                       "receipt_sha256":  "C86A5EDEF43013D9718C96593F056C72BA35422B71C5F41DE4FEB2E574DCCDE8",
+                       "summary":  {
+                                       "ok":  true,
+                                       "status":  "ARTIFACT",
+                                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_SMOKE_RECEIPT_20260706.json",
+                                       "receipt_sha256":  "C86A5EDEF43013D9718C96593F056C72BA35422B71C5F41DE4FEB2E574DCCDE8",
+                                       "empty_lane_reports_drop_empty":  true,
+                                       "drop_dry_run_selects_file_without_writing":  true,
+                                       "commit_return_writes_fixture_intake_only":  true,
+                                       "commit_acceptance_with_ben_accepted_writes_fixture_next_build":  true,
+                                       "canonical_intake_unchanged":  true,
+                                       "canonical_next_build_exists":  false
+                                   }
+                   },
+                   {
+                       "name":  "readiness",
+                       "status":  null,
+                       "ok":  true,
+                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_READINESS_RECEIPT_20260706.json",
+                       "receipt_sha256":  "8bf24c3b6b18646b28ff7a1b86f2395a68b5908f10d65d59bd8f440acf57958e",
+                       "summary":  {
+                                       "ok":  true,
+                                       "receipt_path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_READINESS_RECEIPT_20260706.json",
+                                       "receipt_sha256":  "8bf24c3b6b18646b28ff7a1b86f2395a68b5908f10d65d59bd8f440acf57958e",
+                                       "validator_blocker":  "MACK_RETURN_NOT_RECEIVED",
+                                       "launcher_status":  "READY_TO_OPEN",
+                                       "return_receiver_smoke_status":  "ARTIFACT",
+                                       "return_acceptance_smoke_status":  "ARTIFACT",
+                                       "review_flow_state":  "WAITING_FOR_MACK_RETURN",
+                                       "return_drop_blocker":  "MACK_RETURN_DROP_EMPTY",
+                                       "review_lane_state":  "WAITING_FOR_MACK_RETURN_DROP",
+                                       "return_drop_watch_state":  "WAITING_FOR_MACK_RETURN_DROP",
+                                       "status_refresh_state":  "WAITING_FOR_MACK_RETURN_DROP",
+                                       "healthcheck_status":  "ARTIFACT",
+                                       "healthcheck_typecheck_status":  "PASSED",
+                                       "connection_map_status":  "ARTIFACT",
+                                       "attack_scorecard_status":  "ARTIFACT",
+                                       "scorecard_return_blocker":  "MACK_SCORECARD_RETURN_NOT_RECEIVED",
+                                       "canonical_next_build_exists":  false,
+                                       "counts":  {
+                                                      "count":  19,
+                                                      "posted_count":  6,
+                                                      "pending_count":  9,
+                                                      "returned_unposted_count":  3,
+                                                      "template_return_blocked_count":  1,
+                                                      "invalid_count":  0,
+                                                      "malformed_count":  0
+                                                  }
+                                   }
+                   }
+               ],
+    "typecheck":  {
+                      "name":  "typecheck",
+                      "status":  "PASSED",
+                      "output_tail":  "\u003e werkles@0.2.0 typecheck\r\n\u003e tsc --noEmit"
+                  },
+    "file_hashes":  [
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReviewDeskHealth.ps1",
+                            "sha256":  "E7209F6737F0A800281CFFEF73E782A3BC2F525CBA049B6A892E94622DD4F1C9"
+                        },
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReviewDeskLauncher.ps1",
+                            "sha256":  "8EE1FE4D1398AD624FC00A5B3557E9F4537AF7307542C998F1111E09DDFC3B43"
+                        },
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReviewDeskStatus.ps1",
+                            "sha256":  "98A5F380068C924FDFBA7DF034E907F3C9A40BCC0C91E1605EDF59C6F3920A59"
+                        },
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReturnDropWatcher.ps1",
+                            "sha256":  "DD42B73659273504AACD13A6664044D887B72FAA056C2241204A55BF828E1603"
+                        },
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReviewLane.ps1",
+                            "sha256":  "C46B538DCE16DE0A2EC69E31D58454369BF6A889F2928FBE29D790FE7878EE6A"
+                        },
+                        {
+                            "path":  "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+                            "sha256":  "25DC5EA98AB91256E17CFFEC472F7B7AFFCB909B2EB97ACEFEB21F8F402D35A1"
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no window opening",
+                                      "no clipboard write",
+                                      "no Mack receipt claim",
+                                      "no canonical intake mutation",
+                                      "no canonical next-build packet generated"
+                                  ]
+}

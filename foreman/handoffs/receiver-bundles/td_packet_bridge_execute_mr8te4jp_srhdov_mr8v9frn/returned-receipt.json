@@ -1,0 +1,38 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "created_at": "2026-07-06T06:56:11.273Z",
+  "receiver": "Maker@Betsy",
+  "status": "partial",
+  "what_was_attempted": "Round-trip smoke filled this returned receipt from the cockpit.",
+  "what_changed": [
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json"
+  ],
+  "what_did_not_change": [
+    "The source packet copy was not rewritten by the fill-return helper.",
+    "The returned receipt was not posted to the canonical contract store by the fill-return helper.",
+    "No deploy.",
+    "No push."
+  ],
+  "proof": [
+    {
+      "kind": "artifact_path",
+      "value": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/packet.json"
+    },
+    {
+      "kind": "hash",
+      "value": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/packet.json sha256 8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    {
+      "kind": "readback",
+      "value": "Round-trip smoke read the created bundle td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn and submitted receiver proof through TinkerDen."
+    }
+  ],
+  "blocked_reason": null,
+  "next_safe_action": "Post this returned receipt through the Receiver Handoff Lane after receiver review.",
+  "source_hashes_used": {
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/packet.json": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+  }
+}

@@ -41,6 +41,20 @@ Anchor: `lane-ghost-forge-batch-asset-generation`
   - Stop at `429`, daily cap, or budget cap.
   - Generated assets are not final brand approval and must not be published without later approval.
 
+## Lane: CBCC Ghost Fleet Face Batch 150
+
+Anchor: `lane-cbcc-ghost-fleet-face-batch-150`
+
+- Paid calls allowed: `no` until Operator phrase `APPROVE GHOST FLEET FACE BATCH 150`
+- Max cost per test: `$0.00` (blocked)
+- Max cost per run: `$0.00` (blocked)
+- Daily cap: `$0.00` (blocked)
+- Stop condition when budget is exceeded:
+  - N/A while blocked. After phrase, Foreman must write numeric caps here before any render.
+- Notes:
+  - Packet: `foreman/handoffs/outbox/TO_IMAGE_SNIPER_CBCC_GHOST_FLEET_FACES_150_20260802.md`
+  - Text profiles (150) already generated; faces are the gated spend.
+
 ## Lane: Doctrine And Cockpit Maintenance
 
 Anchor: `lane-doctrine-and-cockpit-maintenance`

@@ -1,0 +1,109 @@
+﻿{
+    "schema":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_TIGHTENING_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:10:57.9552387Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_TIGHTENING_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "command":  "manual receipt refresh after launcher order and Mack scorecard return contract update",
+    "validation":  {
+                       "handoff_ready_to_paste":  true,
+                       "handoff_includes_readout_first_instruction":  true,
+                       "handoff_includes_connection_map_paths":  true,
+                       "handoff_includes_attack_scorecard_paths":  true,
+                       "handoff_includes_readout_paths":  true,
+                       "handoff_includes_current_19_6_9_3_1_counts":  true,
+                       "handoff_includes_four_hour_no_babysitting_test":  true,
+                       "handoff_preserves_return_contract":  true,
+                       "handoff_preserves_scorecard_return_contract":  true,
+                       "handoff_preserves_universal_receiver_proof_boundary":  true,
+                       "index_lists_tightening_receipt":  true,
+                       "index_next_human_gate_points_to_paste_packet":  true,
+                       "index_next_human_gate_points_to_paste_block_helper":  true,
+                       "readiness_verifier_enforces_handoff_readout_and_counts":  true,
+                       "readiness_verifier_enforces_paste_packet_current":  true,
+                       "readiness_verifier_enforces_paste_block_helper_current":  true,
+                       "readiness_verifier_enforces_connection_map_receipt":  true,
+                       "readiness_verifier_enforces_attack_scorecard_receipt":  true,
+                       "readiness_verifier_enforces_scorecard_return_validator":  true,
+                       "readiness_verifier_enforces_launcher_status_first":  true,
+                       "readiness_verifier_enforces_launcher_connection_map_third":  true,
+                       "readiness_verifier_enforces_launcher_attack_scorecard_fourth":  true,
+                       "readiness_verifier_enforces_launcher_paste_packet_fifth":  true,
+                       "readiness_verifier_enforces_launcher_smoke_current":  true,
+                       "readiness_verifier_enforces_healthcheck_receipt":  true,
+                       "index_next_human_gate_points_to_readout_first":  true,
+                       "index_next_human_gate_points_to_connection_map":  true,
+                       "index_next_human_gate_points_to_attack_scorecard":  true,
+                       "index_next_human_gate_points_to_scorecard_return_validator":  true,
+                       "index_next_human_gate_points_to_healthcheck":  true,
+                       "no_external_send_claim":  true,
+                       "no_mack_receipt_claim":  true,
+                       "no_mack_scorecard_receipt_claim":  true,
+                       "truth_boundary":  "This receipt proves the local handoff text was sharpened before paste. It does not claim the handoff was sent to Mack or that Mack returned a review or scorecard."
+                   },
+    "inserted_or_updated_lines":  [
+                                      "Read the Mack review desk readout first, then inspect the connection map and attack scorecard, then read the V0.2 Harvey/Nerdkle architecture review packet, inspect the operator-only proof surfaces, and return the structured review and scorecard below.",
+                                      "Return both MACK REVIEW RETURN and MACK SCORECARD RETURN blocks.",
+                                      "Launcher order now surfaces connection map third and attack scorecard fourth before the paste packet."
+                                  ],
+    "file_hashes":  [
+                        {
+                            "path":  "foreman/handoffs/outbox/TO_MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706.md",
+                            "sha256":  "6FB8433525E16C53CE37B8DB181A00FB0DF3C767870E8FC722FE130C8C8A8426",
+                            "bytes":  6447
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+                            "sha256":  "BFF7A756DD253021E6A08B655543CCECED272918621C00FA1A794478FE0E4E38",
+                            "bytes":  43035
+                        },
+                        {
+                            "path":  "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+                            "sha256":  "25DC5EA98AB91256E17CFFEC472F7B7AFFCB909B2EB97ACEFEB21F8F402D35A1",
+                            "bytes":  173523
+                        },
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReviewDeskHealth.ps1",
+                            "sha256":  "E7209F6737F0A800281CFFEF73E782A3BC2F525CBA049B6A892E94622DD4F1C9",
+                            "bytes":  8523
+                        },
+                        {
+                            "path":  "foreman/receipts/BOOK_ARCHITECTURE_CONNECTION_MAP_RECEIPT_20260706.json",
+                            "sha256":  "8C43AD1E0234567BA4CDF161C2E4FFD7293D4B20A1991BE2AE8F2C358A5DA51F",
+                            "bytes":  3996
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_ATTACK_SCORECARD_RECEIPT_20260706.json",
+                            "sha256":  "A6F9B1915810A225D1E8FFFC7F704E040AB00CF058133EB4F2AC9886D5FA3E96",
+                            "bytes":  3781
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_ATTACK_SCORECARD_RETURN_INTAKE_RECEIPT_20260706.json",
+                            "sha256":  "BADD614EB040ED7CA01DE4153D6B0A8175F20E8BC8A23341F1F9E6CD62B0C33E",
+                            "bytes":  2759
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_RECEIPT_20260706.json",
+                            "sha256":  "937C2E748F01B7646285275672460E85B1AB8AA2755509A38C42C365008A2DA3",
+                            "bytes":  8612
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_SMOKE_RECEIPT_20260706.json",
+                            "sha256":  "4FA670955BB58A67BD2F86075CFC51731CCEE0A8CBCC6F3125D3E5B00272254C",
+                            "bytes":  5616
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack receipt claim",
+                                      "no Mack scorecard receipt claim",
+                                      "no canonical next-build packet generated"
+                                  ]
+}

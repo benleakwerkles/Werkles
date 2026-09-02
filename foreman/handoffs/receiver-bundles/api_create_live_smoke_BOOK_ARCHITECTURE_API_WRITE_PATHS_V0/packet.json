@@ -1,0 +1,43 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+  "created_at": "2026-07-06T05:55:43.353Z",
+  "from": "Ben@Betsy",
+  "to": "NextApi@Betsy",
+  "lane": "Harvey/Nerdkle architecture",
+  "operator_intent": "Verify API write route uses organism contract validation and storage.",
+  "source_paths": [
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md"
+  ],
+  "source_hashes": {
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md": "822769D5BA324F57618107868567BFADACAB200A9AADECBA12D29AB9B8D1D7BF"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Persist packet through POST /api/organism/contracts/packets.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "run_safe_command",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "deploy",
+    "push",
+    "enter_secret",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "source_missing",
+    "gate_required",
+    "breach_risk"
+  ],
+  "acceptance_criteria": [
+    "API accepts valid packet",
+    "API rejects invalid packet",
+    "API accepts valid receipt"
+  ],
+  "receipt_required": true,
+  "receipt_destination": "data/organism/contracts/receipts/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0_RECEIPT_20260706.json",
+  "idempotency_key": "book-architecture-api-write-paths-v0-20260706",
+  "expires_at": "2026-07-07T05:55:43.353Z"
+}

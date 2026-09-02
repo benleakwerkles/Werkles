@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T02:38:35.333Z",
+  "file": "FROM_COMPUTER_VPGM_20260823-230704.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "COMPUTER",
+  "consumed_by": "FOREMAN",
+  "note": "Assimilated Computer M11 postbuild PATCH: reconcile FTC URL and verify residual Exit and Work-on-next wording before M15.",
+  "auto_merge": false
+}

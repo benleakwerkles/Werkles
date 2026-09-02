@@ -1,0 +1,94 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_BOOT_CONTEXT_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:21:00.843Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_BOOT_CONTEXT_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node inline receipt writer after wiring Boot Context Refresh into Mack review desk index and readiness audit",
+  "validation": {
+    "index_lists_boot_context_files": true,
+    "index_lists_boot_context_smoke_command": true,
+    "index_lists_boot_context_receipt": true,
+    "readiness_audit_tracks_boot_context": true,
+    "boot_receipt_status": "ARTIFACT",
+    "boot_receipt_proves_stale_world_state_block": true,
+    "boot_receipt_proves_aeye_dry_run_bootpack_injection": true,
+    "no_external_provider_call": true,
+    "no_external_send_claim": true,
+    "no_mack_receipt_claim": true,
+    "truth_boundary": "This receipt proves Boot Context Refresh V0 is indexed and readiness-wired. It does not call an external provider, deploy, push, or claim Mack returned a review."
+  },
+  "boot_context_readback": {
+    "wormeyes": {
+      "output_path": "tinkarden/nervous_system/world_state.json",
+      "output_sha256": "3562B8AB2A932E77A7D37EDC8338B0E91AAC8427616E33DD73D28840D41101B0",
+      "changed_file_count": 321
+    },
+    "bootloader": {
+      "output_path": "tinkarden/nervous_system/active_context.txt",
+      "sha256": "2fc3fdaeb852c8c3e29d4e5a74c21907063b2c811c07d928c635293838201a32",
+      "source_count": 4
+    },
+    "stale_block": {
+      "code": 1,
+      "stderr": "{\n  \"ok\": false,\n  \"status\": \"BOOTLOADER_BLOCKED\",\n  \"error\": \"BOOTLOADER_WORLD_STATE_STALE: tinkarden/nervous_system/world_state.json world_state.json is stale; refresh before boot. age_minutes=0.01, max_age_minutes=-1\"\n}"
+    },
+    "aeye_dry_run": {
+      "status": "BOOTPACK_INJECTED_DRY_RUN_COMPLETE",
+      "bootpack_loaded": false,
+      "bootpack_path": "speaker/bootpacks/out/Heimerdinker.Betsy.BOOTPACK.md",
+      "system_payload_contains_bootpack": true,
+      "call_log_backend": "wrapper_jsonl_only",
+      "call_log_degraded_reason": "Cannot find module 'better-sqlite3'\nRequire stack:\n- C:\\Users\\Ben Leak\\github\\Werkles\\tinkarden\\nervous_system\\aeye_client.js"
+    }
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "7E0788B4FA008FC9B0E0489AC462C490F3386778A8EC54A2FEF67D147D32EDE4",
+      "bytes": 13007
+    },
+    {
+      "path": "scripts/foreman/organism-boot-context-refresh-smoke.mjs",
+      "sha256": "0C280AB091B07AE0D57F1D8827B7FDE9B6EBE803005C4D91C6E6A12E407823C7",
+      "bytes": 8520
+    },
+    {
+      "path": "scripts/foreman/wormeyes-world-state.mjs",
+      "sha256": "583E992AAB4361BE49D65F2CFB6A21CD005EC4C0DDBC41931E55F933B41A9FFF",
+      "bytes": 8335
+    },
+    {
+      "path": "tinkarden/nervous_system/bootloader.js",
+      "sha256": "24112C0DFC649019378E8A4F44CA86EC5824FBBDB34188579242EFA48B81F5FB",
+      "bytes": 5566
+    },
+    {
+      "path": "tinkarden/nervous_system/aeye_client.js",
+      "sha256": "8F23845EF7FF3F5720D4F2BCF9CC9AA597761830FBCA68745962120F93CDA0BE",
+      "bytes": 15178
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0_RECEIPT_20260706.json",
+      "sha256": "207413CDF0EA4A949606A8F95663F801E16DE4C0D69DFBC494717DF182465D73",
+      "bytes": 3807
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+      "sha256": "8106C3329E4BB80DEDF93FACA0B6F239F5FEE9503276B1F6545376B2E41A5845",
+      "bytes": 28774
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external provider call",
+    "no external send claim",
+    "no Mack receipt claim"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "processed_at": "2026-08-03T15:32:43.721Z",
+  "file": "FROM_ENDER_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+  "status": "GD_RECEIPT",
+  "cousin": "ENDER",
+  "benReview": false,
+  "warnings": [
+    "GD router receipt: no cockpit hash, so staleness cannot be checked. Treat as advisory and confirm against live cockpit files before acting."
+  ],
+  "errors": [],
+  "stale": false,
+  "auto_merge": false
+}

@@ -1,0 +1,29 @@
+{
+  "missionId": "WERKLES_M17_HEIMERDINKER_NAVIGATION_STAKE_REDTEAM",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Exact-artifact red team of the Heimerdinker Workshop-to-Werkle next-decision stake.",
+  "sharedContext": [
+    "The proposed feature is a compact Where this work lives readout directly below the signed-in header and at the first decision block.",
+    "It exposes exactly one stage and one next decision: Your Workshop, Match Deck, Possible Werkle, or Existing Werkle on this device.",
+    "Live boundary: This tells you which room you are in. It does not mean another person responded, agreed, paid, or joined a company.",
+    "It derives only from route plus validated device-local artifacts and cannot create account, partner, provider, membership, production, or release state.",
+    "Controls use explicit verbs and destinations: Improve My Workshop, Compare Matches, Continue This Possible Werkle, Review the Saved Brief.",
+    "Acceptance covers empty state, Match Deck, candidate-only Formation, valid local Operating Brief, corrupt/stale invalidation, standard member header, 390px overflow, and forbidden custody claims."
+  ],
+  "liveStrings": ["Where this work lives", "Your Workshop", "Match Deck", "Possible Werkle", "Existing Werkle on this device", "Improve My Workshop", "Compare Matches", "Continue This Possible Werkle", "Review the Saved Brief"],
+  "knownGaps": ["No implementation exists yet.", "The artifact must not add another confusing header or duplicate existing navigation.", "The four stages must be mutually exclusive under hostile local state."],
+  "cousins": {
+    "PETRA": {
+      "vision": "Red-team the exact navigation stake against the M17 integration matrix before implementation.",
+      "pull": "Attack exclusivity, custody boundaries, header duplication, and executable evidence.",
+      "go": ["Return PETRA_M17_NAV_GO, PATCH, or STOP with the two strongest corrections and exact acceptance checks.", "If GO, retain Gate 05 HOLD and name the postbuild evidence owed."],
+      "momentum": "Name only the next bounded postbuild review, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    },
+    "ENDER": {"vision":"Human-walk the navigation stake.","pull":"Attack confusion and homework copy.","go":["Return ENDER_M17_NAV_GO, PATCH, or STOP."],"momentum":"Name one copy repair, then stop.","outOfLane":"No code or release action."},
+    "BEAN": {"vision":"Attack hostile/stale state exclusivity.","pull":"Try to make two stages appear at once.","go":["Return BEAN_M17_NAV_GO, PATCH, or STOP."],"momentum":"Name one regression, then stop.","outOfLane":"No code or release action."},
+    "SKYBRO": {"vision":"Judge whether the readout improves movement and return value.","pull":"Attack dead ends and redundant controls.","go":["Return SKYBRO_M17_NAV_GO, PATCH, or STOP."],"momentum":"Name one value repair, then stop.","outOfLane":"No code or release action."},
+    "COMPUTER": {"vision":"Research-check navigation and state language.","pull":"Attack ambiguous stages and false completion semantics.","go":["Return COMPUTER_M17_NAV_GO, PATCH, or STOP."],"momentum":"Name one bounded correction, then stop.","outOfLane":"No code or release action."}
+  }
+}

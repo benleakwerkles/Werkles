@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 
 import type { BellowsLedgerOptionRow, BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
@@ -20,12 +21,13 @@ type SquibbRecommendationSurfaceProps = {
   session: SquibbRecommendationSession;
   ledger: BellowsPacketLedger;
   initialKind?: RecommendationKind;
+  peopleGateway?: ReactNode;
 };
 
 const SAVE_CLOSED_MESSAGE =
   "This page can build, save on this device, and copy your working draft. It does not contact a provider, submit an application, or start an introduction.";
 
-export function SquibbRecommendationSurface({ session, ledger, initialKind }: SquibbRecommendationSurfaceProps) {
+export function SquibbRecommendationSurface({ session, ledger, initialKind, peopleGateway }: SquibbRecommendationSurfaceProps) {
   const hasRankedRecommendations = session.ranked.length > 0;
   const requestedRanked = initialKind ? session.ranked.find((item) => item.kind === initialKind) : undefined;
   const requestedCatalog = initialKind ? session.catalog.find((item) => item.kind === initialKind) : undefined;
@@ -46,6 +48,7 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
     label: "Demo scenario",
     detail: "No saved intake was found."
   };
+  const hasPersonalIntake = source.mode === "latest_intake" || source.mode === "browser_intake";
 
   const activeList = view === "ranked" ? session.ranked : session.catalog;
   const isRankedView = view === "ranked";
@@ -91,7 +94,7 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
         <div className="squibb-rec-hero__topline">
           <div className="squibb-rec-hero__copy">
             <p className="eyebrow">Recommendations</p>
-            <h1>{isRankedView ? "Here's the strongest place to start." : "Compare another possible path."}</h1>
+            <h1>{isRankedView ? "Here is a useful place to start." : "Compare possible paths."}</h1>
             <p className="squibb-rec-surface__intro">{session.squibbIntro}</p>
           </div>
           <div className="squibb-rec-hero__visual">
@@ -118,7 +121,7 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
           </Link>
         </aside>
 
-        {source.mode !== "latest_intake" ? (
+        {!hasPersonalIntake ? (
           <p className="squibb-rec-surface__meta">
             <>
               <span><strong>Need:</strong> {session.statedNeed}</span>
@@ -130,14 +133,14 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
           </p>
         ) : null}
 
-        {selected && source.mode !== "latest_intake" ? (
+        {selected && !hasPersonalIntake ? (
           <p className="squibb-rec-surface__squibb-note" role="note">
             {selected.squibbNote}
           </p>
         ) : null}
       </header>
 
-      {source.mode === "latest_intake" && source.symptomBlock && !source.fedDocument ? (
+      {hasPersonalIntake && source.symptomBlock && !source.fedDocument ? (
         <details className="squibb-rec-source panel">
           <summary className="squibb-rec-source__summary">
             <span className="eyebrow">What we heard</span>
@@ -170,12 +173,11 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
 
       {!hasRankedRecommendations ? (
         <p className="squibb-rec-surface__deck-truth" role="status">
-          <strong>Why personalized options are empty:</strong> this browser has not submitted a Werkles conversation yet.
-          “All options” is the unranked catalog—not a personalized result.
+          <strong>No personal ranking yet.</strong> Complete Intake to connect these options to your situation.
         </p>
       ) : null}
 
-      <div className="squibb-rec-surface__layout">
+      <div id="recommendation-results" className="squibb-rec-surface__layout">
         <aside className="squibb-rec-surface__stack" aria-label="Recommendation cards">
           <div className="squibb-rec-stack">
             {activeList.map((rec) => (
@@ -204,7 +206,11 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
               <h2 id="squibbDetailTitle">{selected.title}</h2>
               <p>{selected.headline}</p>
               <p className="squibb-rec-detail__input-boundary">
-                Based on {source.mode === "latest_intake" ? "your latest saved Intake" : source.label.toLowerCase()}.
+                Based on {source.mode === "latest_intake"
+                  ? "your latest account-saved Intake"
+                  : source.mode === "browser_intake"
+                    ? "the Intake saved in this browser"
+                    : source.label.toLowerCase()}.
                 These inputs have not been independently verified.
               </p>
             </div>
@@ -246,7 +252,7 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
 
           {selectedAnswerExcerpts.length > 0 ? (
             <details className="squibb-rec-detail__answer-trace">
-              <summary id="selectedAnswerTraceTitle">Why this appeared</summary>
+              <summary id="selectedAnswerTraceTitle">Answers that influenced this</summary>
               <ul>
                 {selectedAnswerExcerpts.map((excerpt, index) => (
                   <li key={`${excerpt.id}-${index}`}>
@@ -258,6 +264,20 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
               <p>Your answers can move, add, or remove options when you submit them again.</p>
             </details>
           ) : null}
+
+          {peopleGateway}
+
+          <section className="squibb-rec-next squibb-rec-next--inline" aria-labelledby="squibbRecNextTitle">
+            <div>
+              <p className="eyebrow">Keep this result moving</p>
+              <h2 id="squibbRecNextTitle">Choose what this recommendation needs next.</h2>
+              <p>Build the plan in your Workshop, learn the method in My Bellows, or compare people above.</p>
+            </div>
+            <div className="squibb-rec-next__actions">
+              <Link className="button button-dark" href="/dashboard/blueprints">Open My Workshop</Link>
+              <Link className="button button-outline" href="/bellows/personal">Open My Bellows</Link>
+            </div>
+          </section>
 
           <RecommendationWorkPath
             key={selected.id}
@@ -301,18 +321,27 @@ export function SquibbRecommendationSurface({ session, ledger, initialKind }: Sq
         )}
       </div>
 
-      <section className="squibb-rec-next panel" aria-labelledby="squibbRecNextTitle">
-        <div>
-          <p className="eyebrow">Next: make it usable</p>
-          <h2 id="squibbRecNextTitle">
-            {isRankedView ? "Put your strongest idea in your Workshop." : "Put an idea you want to test in your Workshop."}
-          </h2>
-          <p>Turn it into a plan you can keep, change, and bring into a real conversation.</p>
+      <details className="squibb-rec-resource-gateway panel">
+        <summary>
+          <span>
+            <span className="eyebrow">Tools, places, and practical help</span>
+            <strong>Explore resources beyond people.</strong>
+          </span>
+          <span aria-hidden="true">+</span>
+        </summary>
+        <div className="squibb-rec-resource-gateway__body">
+          <p>
+            Compare suppliers, think through equipment and location choices, or start with an open Bellows guide.
+            Local meeting places and deals belong here once Werkles can check them against your location.
+          </p>
+          <div className="squibb-rec-resource-gateway__links">
+            <Link href="/bellows/library/supplier-comparison">Compare Suppliers</Link>
+            <Link href="/bellows/recommendations?option=find_equipment">Explore Equipment Options</Link>
+            <Link href="/bellows/recommendations?option=compare_locations">Compare Business Locations</Link>
+            <Link href="/bellows/library">Browse the Public Bellows</Link>
+          </div>
         </div>
-        <div className="squibb-rec-next__actions">
-          <Link className="button button-dark" href="/dashboard/blueprints">Open My Workshop</Link>
-        </div>
-      </section>
+      </details>
 
       {showLedger ? (
         <details className="squibb-rec-ledger panel">

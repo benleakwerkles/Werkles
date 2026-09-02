@@ -46,7 +46,7 @@ export default function SignInHuntPage() {
             links only — never enter passwords, 2FA codes, or secrets.
           </p>
           <div className="trust-state-strip" aria-label="Hunt rules">
-            <span>Ben-only login</span>
+            <span>Operator-only login</span>
             <span>No secrets in chat</span>
             <span>v0 first: Supabase → Vercel → Stripe</span>
           </div>

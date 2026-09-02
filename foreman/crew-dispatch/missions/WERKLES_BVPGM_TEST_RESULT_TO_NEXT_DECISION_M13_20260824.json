@@ -1,0 +1,63 @@
+{
+  "missionId": "WERKLES_BVPGM_TEST_RESULT_TO_NEXT_DECISION_M13",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Review Formation test-result capture and Personal Bellows return before implementation.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; current candidate work is local only.",
+    "M12 maps each Formation topic to a field test or adviser handoff and returns valid proposed actions through Personal Bellows.",
+    "M13 must separate observation, interpretation, and proposed next decision.",
+    "A result authored by one member is not the partner's answer, mutual acceptance, or a company decision.",
+    "No completed test automatically requires a provider check.",
+    "This packet is not proof of delivery, custody, response, participation, or approval."
+  ],
+  "liveStrings": [
+    "A useful starting shape",
+    "Compare the result with the original test",
+    "This is a proposed shared action, not an assignment or agreement",
+    "Choose a Narrow Outside Check"
+  ],
+  "knownGaps": [
+    "Members can save a proposed action but cannot yet record its result.",
+    "Personal Bellows cannot yet turn a completed test into a next conversation.",
+    "All artifacts remain browser-local practice.",
+    "Fresh M13 external review and Lady Jessica release custody are owed."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make returning with a test result feel like progress between two people, not a lab report or homework submission.",
+      "pull": "Review the proposed observation → interpretation → next conversation flow for human rhythm and emotional consequence.",
+      "go": ["Return three P0/P1 UX or copy defects with the smallest repair.", "Propose the clearest compact visual hierarchy for the three states.", "Give ENDER_M13_GO, PATCH, or STOP."],
+      "momentum": "Name the sentence that should make a member want to reopen the Werkle, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack result storage for stale-source reuse, partner impersonation, silent consent, false evidence, and provider laundering.",
+      "pull": "Treat localStorage, synthetic partners, dates, and member prose as untrusted.",
+      "go": ["Return P0/P1 defects with exploit, harm, and minimum invariant.", "Specify stale-action and malformed-result fail-closed tests.", "Give BEAN_M13_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest custody statement that must be visible, then stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether the completed-test return creates repeatable membership value and a natural next loop.",
+      "pull": "Inspect the bridge from result to next decision to Bellows without cheap paywall teasing.",
+      "go": ["Name the strongest value bridge and weakest dead end.", "Propose one bounded next-loop mechanic.", "Give SKYBRO_M13_GO, PATCH, or STOP."],
+      "momentum": "Name what Werkles should remember after the next conversation, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "PETRA": {
+      "vision": "Keep local practice result, account custody, partner consent, provider evidence, and release proof separate.",
+      "pull": "Review the proposed exact-source validation and visible consequence boundaries.",
+      "go": ["Return GO, PATCH, or STOP for the local slice.", "Name any claim that outruns custody.", "State the next exact machine checkpoint."],
+      "momentum": "Name the strongest safe local slice and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or Operator approval."
+    },
+    "COMPUTER": {
+      "vision": "Research-check lightweight after-action review patterns suitable for small business experiments without professional-advice drift.",
+      "pull": "Look for bounded observation-versus-interpretation and decision-log patterns from primary or reputable operator sources.",
+      "go": ["Return three concrete prompt patterns.", "Flag language that overstates what one small test proves.", "Give COMPUTER_M13_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest research-backed improvement, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

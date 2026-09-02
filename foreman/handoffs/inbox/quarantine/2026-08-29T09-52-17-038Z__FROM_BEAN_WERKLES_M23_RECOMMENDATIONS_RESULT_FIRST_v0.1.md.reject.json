@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-29T09:52:17.038Z",
+  "file": "FROM_BEAN_WERKLES_M23_RECOMMENDATIONS_RESULT_FIRST_v0.1.md",
+  "reason": "Read 2026-08-29 during M44 pull. Custody and deterministic-input boundaries were already applied in M23/M24; response is hash-stale and not re-applied."
+}

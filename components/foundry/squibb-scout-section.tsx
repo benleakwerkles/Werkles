@@ -12,7 +12,7 @@ export function SquibbScoutSection() {
         <AnyoneNarrativePhoto
           renderSrc={squibbClassyAssets.scoutPoint}
           stockSrc={squibbBellowsAssets.bustHost}
-          alt="Squibb the scout — points toward the overlooked option"
+          alt="A brass workshop guide pointing toward an overlooked option"
           width={560}
           height={420}
           className="squibb-scout-section__photo"
@@ -25,7 +25,7 @@ export function SquibbScoutSection() {
         <p>{scout.body}</p>
         <p>{scout.closing}</p>
       </div>
-      <ul className="squibb-scout-section__microcopy" aria-label="Squibb microcopy examples">
+      <ul className="squibb-scout-section__microcopy" aria-label="Guidance examples">
         {scout.microcopy.map((line) => (
           <li key={line}>{line}</li>
         ))}

@@ -32,7 +32,7 @@ export default function LiveCheckoutSmokePage() {
           </p>
           <div className="gate-list" aria-label="Live checkout smoke hard stops">
             <span>Requires APPROVE PAID CHECKOUT GO-LIVE</span>
-            <span>Ben handles payment details</span>
+            <span>Operator handles payment details</span>
             <span>Webhook proof required</span>
             <span>No manual state patching</span>
           </div>

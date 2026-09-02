@@ -1,0 +1,51 @@
+{
+  "missionId": "LOCATION_AWARE_GHOST_SHORTLIST_ACTUAL_CBCC_20260820",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Personally attack the new location-aware Ghost shortlist and return an exact receipt. Outgoing packets do not count as review.",
+  "sharedContext": [
+    "Operator reported every match was far away; Birmingham, Alabama was closest.",
+    "Root cause: Ghost ranking did not consume the signed-in Profile city/state/work preference and only weakly guessed a place from Intake prose.",
+    "Local candidate now uses same-city, same-state, neighboring-state, farther-away bands; no exact mileage; location cannot manufacture an otherwise unsupported match.",
+    "Authenticated path reads only the member's saved Intake and profile location fields through the request-scoped RLS client. Local walkthrough has a one-time owner-bound preference control so Intake is not repeated.",
+    "Read the self-contained packet named in your seat and personally return P0/P1/P2 findings. Do not create agents, build, push, deploy, apply schema, inspect secrets, or contact providers."
+  ],
+  "liveStrings": [
+    "How close should these people be?",
+    "Add this once; you do not need to redo Intake.",
+    "Same city",
+    "Same state",
+    "Neighboring state",
+    "Farther away",
+    "Location preference not on file"
+  ],
+  "knownGaps": [
+    "No fresh CBCC receipt exists yet for this exact candidate.",
+    "No geocoder is used, so Werkles intentionally does not claim mileage.",
+    "Production push/deploy is prohibited."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make travel fit understandable and lightweight without turning people into filter rows.",
+      "pull": "Read foreman/handoffs/outbox/TO_ENDER_LOCATION_AWARE_GHOST_SHORTLIST_REVIEW_20260820.md and the named source files.",
+      "go": [
+        "Walk desktop and phone People views and attack comprehension, hierarchy, focus, touch, and whether the control feels like repeated Intake.",
+        "Decide whether the travel labels make the ordering understandable without overwhelming substantive fit.",
+        "Return exact P0/P1/P2 findings and name the pages/files inspected."
+      ],
+      "momentum": "Give one smallest bounded correction if the candidate is not ready.",
+      "outOfLane": "No schema, security design, provider work, push, deploy, or implementation."
+    },
+    "BEAN": {
+      "vision": "Prevent geography, cookies, or malformed profile data from laundering weak matches or cross-member data.",
+      "pull": "Read foreman/handoffs/outbox/TO_BEAN_LOCATION_AWARE_GHOST_SHORTLIST_ATTACK_20260820.md and the named source files.",
+      "go": [
+        "Attack owner/account precedence, cross-user reads, forged cookies, malformed states/preferences, replayed preference writes, and location-only match manufacture.",
+        "Attack distant-candidate suppression and diversity laundering; confirm fit remains primary and no raw profile data leaks.",
+        "Return exact P0/P1/P2 findings, executed proofs, and GO/PATCH/REJECT."
+      ],
+      "momentum": "Name the narrowest fail-closed repair for every P0/P1.",
+      "outOfLane": "No UX redesign, schema apply, provider calls, secrets, push, deploy, or implementation."
+    }
+  }
+}

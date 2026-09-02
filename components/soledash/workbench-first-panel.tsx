@@ -137,21 +137,21 @@ const RECENT_CHANGE_CAPSULES: ChangeCapsule[] = [
     id: "member-first-win",
     whatChanged: "Member dashboard now opens on YOUR NEXT MOVE with Start intake as the only primary action.",
     whyItMatters: "A member gets one useful first step instead of a dashboard full of internal surfaces.",
-    whoNeedsToKnow: "Ben, Ender, and anyone reviewing the member landing flow.",
+    whoNeedsToKnow: "Operator, Ender, and anyone reviewing the member landing flow.",
     nextAction: "Open the member dashboard and confirm Start intake is the first useful click."
   },
   {
     id: "wonkaeye-workstations",
     whatChanged: "Wonka Den now leads with WonkAyees: Swanson, Maker, Bean, Ender, Skybro, and Thufir.",
     whyItMatters: "The Den answers what the people are doing before it shows machine or status clutter.",
-    whoNeedsToKnow: "Ben and every Aeye being tracked in the Den.",
+    whoNeedsToKnow: "Operator and every Aeye being tracked in the Den.",
     nextAction: "Use the WonkAyees cards to spot current mission, blocker, last receipt, and last win."
   },
   {
     id: "pearl-shelf-real",
     whatChanged: "Pearl Shelf became a real source-of-truth panel with status counts and promotion state.",
     whyItMatters: "Pearls stopped being decoration and now show what is new, reviewed, promoted, archived, or killed.",
-    whoNeedsToKnow: "Ben, Maker, and anyone deciding whether a pearl should become work.",
+    whoNeedsToKnow: "Operator, Maker, and anyone deciding whether a pearl should become work.",
     nextAction: "Open Pearl Shelf when a promoted or reviewed pearl needs action."
   }
 ];
@@ -405,7 +405,7 @@ export function WorkbenchFirstPanel({
       rows.push({
         id: "draft-build",
         task: draftTask,
-        owner: "Ben",
+        owner: "Operator",
         status: "DRAFT",
         receipt: "Not sent yet"
       });
@@ -523,7 +523,7 @@ export function WorkbenchFirstPanel({
   const whatIsBlocked = firstBlocked
     ? `${firstBlocked.title} - ${firstBlocked.nextAction || firstBlocked.purpose}`
     : "No active blocker surfaced.";
-  const whatNeedsBen = hasDraft
+  const whatNeedsOperator = hasDraft
     ? "Press Approve / Send on the TinkerDen packet card."
     : firstBlocked
       ? firstBlocked.nextAction || "Review the blocked build and clear the dependency."
@@ -547,8 +547,8 @@ export function WorkbenchFirstPanel({
       tone: firstBlocked ? "blocked" : "clear"
     },
     {
-      label: "4. What needs Ben?",
-      value: whatNeedsBen,
+      label: "4. What needs Operator?",
+      value: whatNeedsOperator,
       tone: "ben"
     }
   ];
@@ -936,7 +936,7 @@ export function WorkbenchFirstPanel({
       <section className="sd-spanzee-access" aria-label="Spanzee Access">
         <div className="sd-spanzee-access__head">
           <h3>Spanzee Access</h3>
-          <p>Keep this here so Ben does not have to context switch.</p>
+          <p>Keep this here so Operator does not have to context switch.</p>
         </div>
         <ul className="sd-spanzee-access__checks" aria-label="Spanzee access checklist">
           <li className="sd-spanzee-access__check sd-spanzee-access__check--done">
@@ -964,7 +964,7 @@ export function WorkbenchFirstPanel({
       <section className="sd-whispers-panel" aria-label="Recent Whispers">
         <div className="sd-whispers-panel__head">
           <h3>Recent Whispers</h3>
-          <p>Birdies worth seeing before Ben moves.</p>
+          <p>Birdies worth seeing before Operator moves.</p>
         </div>
         <div className="sd-whispers-panel__list">
           {RECENT_WHISPERS.map((whisper) => (

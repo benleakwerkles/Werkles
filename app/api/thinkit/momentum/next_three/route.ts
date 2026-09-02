@@ -33,14 +33,14 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       title: "Put relay health in one honest top card.",
       target: "Swanson.Doss",
       packet_type: "WERKLES_RELAY_HEALTH_CARD",
-      why: "Ben should not have to interpret scattered queue, sent, received, completed, and missing-proof numbers to know whether ThinkIt is alive.",
+      why: "Operator should not have to interpret scattered queue, sent, received, completed, and missing-proof numbers to know whether ThinkIt is alive.",
       command:
         "Make one top-card readout that says: queued, sent, received, completed, waiting targets, and the next exact blocker. It must not call local packet creation success.",
       doozer_question: "What is the smallest UI/API readback that proves whether the relay is moving?",
       review_question: "Does this card expose the real failure point, or does it still hide behind optimistic status words?",
       proof_required: "One card screenshot/readback plus exact endpoint fields used for queued, sent, received, completed, and waiting.",
       risk: "LOW",
-      human_gate: "Ben gates only claims of success/canonical status."
+      human_gate: "Operator gates only claims of success/canonical status."
     },
     {
       move_id: "werkles_005_sally_lan_truth",
@@ -53,14 +53,14 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "Is this a real second-machine check or just a local URL rewrite?",
       proof_required: "Doss URL, LAN URL, second-machine pass/fail field, timestamp, and blocker if failed.",
       risk: "MEDIUM",
-      human_gate: "Ben gates network/share changes."
+      human_gate: "Operator gates network/share changes."
     },
     {
       move_id: "werkles_006_click_receipt",
       title: "Make every action button write an action receipt.",
       target: "Maker.Betsy",
       packet_type: "WERKLES_CLICK_RECEIPT",
-      why: "If a button fails silently, Ben cannot tell whether the system ignored him or work moved somewhere invisible.",
+      why: "If a button fails silently, Operator cannot tell whether the system ignored him or work moved somewhere invisible.",
       command: "For each active ThinkIt button, write a tiny durable click receipt with button name, endpoint, target, packet id if any, and next proof needed.",
       doozer_question: "Which receipt fields make a button impossible to fake?",
       review_question: "Does the click receipt distinguish local action from receiver-side proof?",
@@ -81,20 +81,20 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "Is this concrete enough for a real yes/no from a human buyer?",
       proof_required: "One-page offer path or returned text, one audience, one proof-of-use test, and one no-go claim.",
       risk: "LOW",
-      human_gate: "Ben approves any public-facing wording."
+      human_gate: "Operator approves any public-facing wording."
     },
     {
       move_id: "kind_sir_005_first_client_packet",
       title: "Build the first Kind Sir client-intake packet.",
       target: "Maker.Betsy",
       packet_type: "KIND_SIR_CLIENT_PACKET",
-      why: "If Ben has to explain the service from scratch every time, Kind Sir becomes another mule lane.",
+      why: "If Operator has to explain the service from scratch every time, Kind Sir becomes another mule lane.",
       command: "Create a first client-intake packet template: context needed, proof needed, human gates, deliverable, and stop condition.",
       doozer_question: "What fields let the machine start useful work without pretending it knows the client?",
       review_question: "Where does this packet over-automate judgment or invite vague work?",
       proof_required: "Template path, required fields, example filled packet, and stop condition.",
       risk: "MEDIUM",
-      human_gate: "Ben gates client-facing sends and pricing."
+      human_gate: "Operator gates client-facing sends and pricing."
     },
     {
       move_id: "kind_sir_006_proof_of_value",
@@ -105,9 +105,9 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       command: "Return one test that proves Kind Sir reduced repeated human labor: input, output, time saved, receipt, and failure condition.",
       doozer_question: "What artifact would make the value visible in under one hour?",
       review_question: "Would this test show actual reduced mule labor or just more documentation?",
-      proof_required: "Test definition, required artifact, pass/fail rule, and Ben dependency.",
+      proof_required: "Test definition, required artifact, pass/fail rule, and Operator dependency.",
       risk: "LOW",
-      human_gate: "Ben chooses whether to run the test."
+      human_gate: "Operator chooses whether to run the test."
     }
   ],
   nerdkle: [
@@ -122,11 +122,11 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "Where would this naming still confuse a restarted Aeye?",
       proof_required: "Naming boundary text, affected surfaces, and one Brainboot line updated.",
       risk: "LOW",
-      human_gate: "Ben gates canonical naming."
+      human_gate: "Operator gates canonical naming."
     },
     {
       move_id: "nerdkle_005_incoming_response_workbench",
-      title: "Make incoming Aeye returns something Ben can answer.",
+      title: "Make incoming Aeye returns something Operator can answer.",
       target: "Dink.Betsy",
       packet_type: "NERDKLE_INCOMING_RESPONSE_WORKBENCH",
       why: "Sending works only halfway if the returned report lands as a passive card instead of a decision surface.",
@@ -135,7 +135,7 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "Does this preserve receipt boundaries, or does it pretend assimilation happened?",
       proof_required: "One returned Aeye report, one operator response action, and one successor receipt path.",
       risk: "MEDIUM",
-      human_gate: "Ben gates assimilation and permanent behavior rules."
+      human_gate: "Operator gates assimilation and permanent behavior rules."
     },
     {
       move_id: "nerdkle_006_source_truth_brainboot",
@@ -148,7 +148,7 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "What is stale, local-only, or not suitable as source truth?",
       proof_required: "Source list with URLs/paths, current hash if available, and missing proof flags.",
       risk: "HIGH",
-      human_gate: "Ben gates canonical source-truth promotion."
+      human_gate: "Operator gates canonical source-truth promotion."
     }
   ],
   oddly_godly: [
@@ -163,7 +163,7 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "What would make this a false-motion candidate?",
       proof_required: "Packet id, receiver surface, receipt path/id, and missing-proof list.",
       risk: "MEDIUM",
-      human_gate: "Ben gates any new Spanzee remote setup."
+      human_gate: "Operator gates any new Spanzee remote setup."
     },
     {
       move_id: "oddly_godly_005_auto_g_dry_run",
@@ -189,7 +189,7 @@ const replacementBacklog: Record<string, JsonRecord[]> = {
       review_question: "Is the packet bounded enough to run, or should it stay held?",
       proof_required: "Packet draft, route proof reference, and explicit GO/NO-GO for sending.",
       risk: "HIGH",
-      human_gate: "Ben approves live send."
+      human_gate: "Operator approves live send."
     }
   ]
 };
@@ -382,7 +382,7 @@ function chooseReplacementMove(state: JsonRecord, laneId: string, killedMoveId: 
     review_question: "Is this replacement grounded in current project reality, or should the lane pause?",
     proof_required: "One grounded replacement idea with source path/proof gap, or BLOCKER.",
     risk: "MEDIUM",
-    human_gate: "Ben gates promotion from proposed idea to execution.",
+    human_gate: "Operator gates promotion from proposed idea to execution.",
     generated_at: nowIso(),
     replacement_for: killedMoveId,
     replacement_reason: "Operator killed the prior idea and this lane had no unused deterministic replacement left."

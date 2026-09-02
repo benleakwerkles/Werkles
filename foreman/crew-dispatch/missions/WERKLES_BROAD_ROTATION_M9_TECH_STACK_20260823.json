@@ -1,0 +1,62 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M9_TECH_STACK",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Review the four-wave provider activation approach before any member-facing Crucible change.",
+  "sharedContext": [
+    "Broad VPGMs currently treat Supabase account custody as the spine, Stripe Billing as a separate money lane, Stripe Identity/Plaid/Twilio as narrow dated checks, and Checkr as policy-blocked.",
+    "Every provider must have one job, one member surface, one minimal retained receipt, one deletion or expiry rule, one executable proof, and one stopping line.",
+    "Adapters and sandbox access are infrastructure, not finished member capabilities.",
+    "No production provider action, credential work, schema/RLS, spend, push, deploy, new task, subagent, or foreground input is authorized."
+  ],
+  "liveStrings": [
+    "One member journey. Different tools for different jobs.",
+    "Keep one member connected to their work",
+    "Connect membership without turning payment into trust",
+    "Add only the check a conversation needs",
+    "Keep background screening blocked until the rules are ready",
+    "Only checks labeled available can be started. Test and sandbox activity is not live verification."
+  ],
+  "knownGaps": [
+    "The member-stage list currently places Stripe Billing beside account creation while the activation roadmap puts owner-bound records before billing.",
+    "Readiness uses multiple compatible but potentially drifting vocabularies across the slot catalog and ledger.",
+    "Plaid sandbox access and scaffolding do not yet provide a complete Link-to-minimal-receipt-to-removal proof.",
+    "Twilio has an adapter contract but no provider route; Checkr is intentionally policy-blocked.",
+    "All M9 architecture and proof work is local and unpushed."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge whether the four-wave activation order is correctly scoped and whether it should become the canonical local release plan.",
+      "pull": "Inspect the current slot catalog, readiness ledger, data boundaries, and Crucible activation waves.",
+      "go": [
+        "Return GO, PATCH, or NO_GO on the order: account custody, billing, narrow checks, policy-blocked screening.",
+        "Name any provider whose current state is overstated or internally contradictory.",
+        "Specify the smallest next source-bound proof that advances the stack without opening a human gate."
+      ],
+      "momentum": "Return a terminal scope ruling and stop.",
+      "outOfLane": "Review only; no code, provider action, legal approval, secret, schema/RLS, spend, push, deploy, new task, subagent, or gate approval."
+    },
+    "ENDER": {
+      "vision": "Judge whether the four-wave member explanation clarifies the journey or reads like internal infrastructure homework.",
+      "pull": "Review the existing Crucible roadmap and proposed provider grouping.",
+      "go": [
+        "Name the human question each wave must answer.",
+        "Cut insider language and vendor-first framing.",
+        "Return a bounded visual/copy recommendation without implementing it."
+      ],
+      "momentum": "Return HUMAN_READY, PATCH, or BLOCKED.",
+      "outOfLane": "No code, providers, secrets, spend, push, deploy, new task, subagent, or final creative approval."
+    },
+    "BEAN": {
+      "vision": "Attack the activation plan for false readiness, privacy leakage, proof inflation, and provider-specific trust claims.",
+      "pull": "Review routes, adapters, slot states, retention boundaries, and hard gates.",
+      "go": [
+        "Identify every place code-path-present could be mistaken for usable or live.",
+        "Attack Plaid amount privacy, Twilio possession claims, Stripe payment-versus-trust separation, and Checkr legal gating.",
+        "Return executable blockers or an explicit bounded pass."
+      ],
+      "momentum": "Return TRUST_READY, PATCH, or BLOCK.",
+      "outOfLane": "No code, provider action, legal approval, secrets, schema/RLS, spend, push, deploy, new task, or subagent."
+    }
+  }
+}

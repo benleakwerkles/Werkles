@@ -56,7 +56,7 @@ export default function SparkPage() {
             Not a feature list — this is the shape of the four free surfaces. (Sample data; verification
             providers are listed with live status on the <Link href="/privacy">privacy page</Link>.)
           </p>
-          {/* Show-don't-tell (Ben, Spark review 2026-07-31): each former bullet
+          {/* Show-don't-tell (Operator, Spark review 2026-07-31): each former bullet
              is now a miniature of the real surface, in the membership-floor
              mock language the Codex crew established. */}
           <div className="membership-floor__grid spark-floor">
@@ -71,8 +71,8 @@ export default function SparkPage() {
                   &ldquo;I need $40k for a second van and ceramic-coating gear.&rdquo;
                 </p>
                 <p className="spark-mock-intake__squibb">
-                  Squibb: The need under the ask might be one lender sized to the step and one bay lease. Want to
-                  see both?
+                  A useful next comparison might be one lender sized to the step and one bay lease. Want to see
+                  what each route would cost?
                 </p>
               </div>
             </article>

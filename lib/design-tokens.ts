@@ -52,7 +52,7 @@ export const designTokens = {
     "Primary CTAs use the violet or teal gradient.",
     "Forge orange is atmosphere, not a CTA color.",
     "Copper is the frame, not the content.",
-    "Ghost Forge draft assets are review-only until Ben approves final creative direction."
+    "Ghost Forge draft assets are review-only until the Operator approves final creative direction."
   ],
   den: {
     source: "foreman/design/WONKA_DEN_MOOD_REFERENCE.md",

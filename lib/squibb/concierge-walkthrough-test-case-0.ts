@@ -162,7 +162,7 @@ export const CONCIERGE_USER_0_FLOW: ConciergeUser0Flow = {
 
         id: "gate-ben-partner-outreach",
 
-        label: "Ben review before outreach",
+        label: "Your review before outreach",
 
         kind: "operator_approval",
 

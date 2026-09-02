@@ -8,7 +8,6 @@ export default function OperatorIndexPage() {
       <main className={`dashboard-main operator-page ${routeAtmosphere.dashboard}`}>
         <nav className="dashboard-nav" aria-label="Operator navigation">
           <Link href="/">Werkles</Link>
-          <Link href="/thinkit">ThinkIt</Link>
           <Link href="/operator/kind-sir">Kind Sir Ops</Link>
         </nav>
 

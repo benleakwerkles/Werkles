@@ -1,0 +1,87 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_RECEIPT_INTAKE_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:19:23.643Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_RECEIPT_INTAKE_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-receiver-receipt-intake-smoke.mjs",
+  "files_changed": [
+    "app/api/organism/contracts/receiver-receipts/route.ts",
+    "scripts/foreman/organism-receiver-receipt-intake-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_RECEIPT_INTAKE_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "data/organism/contracts/receipts/receiver_receipt_intake_smoke_mr8ty4j7.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "receiver_receipt_route_exists": true,
+    "receiver_receipt_route_calls_contract_writer": true,
+    "receiver_receipt_route_returns_contract_write": true,
+    "receiver_receipt_route_exposes_schema_invalid": true,
+    "receiver_receipt_written": true,
+    "receiver_receipt_status": "partial",
+    "packet_receipted_event_written": true,
+    "truth_boundary": "Receiver intake exists, but the smoke receipt remains fixture proof rather than real downstream completion."
+  },
+  "attached_to_contract_packet": {
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "contract_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "lane": "TinkerDen bridge execute"
+  },
+  "receiver_contract_write": {
+    "ok": true,
+    "artifact_path": "data/organism/contracts/receipts/receiver_receipt_intake_smoke_mr8ty4j7.json",
+    "event_path": "data/organism/contracts/events.jsonl",
+    "sha256": "98a242c3d1d3ec82cf497d1fce71cf53ff9ac6108c59dda702caf4d1568a5a21"
+  },
+  "contract_file_hashes": [
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-receipts/route.ts",
+      "sha256": "8855edfdd90a5a1dac6245dcc4f532d6d62d78c35263604279cae32a87586d51",
+      "bytes": 2075
+    },
+    {
+      "path": "scripts/foreman/organism-receiver-receipt-intake-smoke.mjs",
+      "sha256": "54ed84af2d4025e12bf4afe39b5afd6e08e69d8054efa256b86c3d4e8f8121e3",
+      "bytes": 10444
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no account automation",
+    "no browser credential control"
+  ],
+  "next_safe_action": "Wire a real receiver client or separate Codex thread to POST its receipt to the intake route."
+}

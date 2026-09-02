@@ -1,0 +1,76 @@
+﻿{
+    "schema":  "MACK_ARCHITECTURE_REVIEW_FLOW_STATE_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:12:34.9555253Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "MACK_ARCHITECTURE_REVIEW_FLOW_STATE_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Get-MackArchitectureReviewFlowState.ps1",
+    "intake_path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_20260706.md",
+    "next_build_packet_path":  "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\MACK_ARCHITECTURE_NEXT_BUILD_PACKET_FROM_RETURN_20260706.md",
+    "flow_state":  "WAITING_FOR_MACK_RETURN",
+    "blocker_code":  "MACK_RETURN_NOT_RECEIVED",
+    "next_legal_command":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Receive-MackArchitectureReturn.ps1",
+    "ben_action_required":  "Send manually only if ready, then run the receive wrapper dry-run after Mack returns text.",
+    "classification":  {
+                           "return_block_found":  true,
+                           "waiting_marker_found":  true,
+                           "required_fields_present":  true,
+                           "required_fields_filled":  false,
+                           "filled_required_count":  1,
+                           "status_value":  "",
+                           "status_valid":  false,
+                           "missing":  [
+
+                                       ],
+                           "empty":  [
+                                         "status",
+                                         "strongest_objection",
+                                         "simplest_viable_architecture",
+                                         "highest_risk_fake_success_path",
+                                         "first_momentum_build",
+                                         "must_change_before_book",
+                                         "optional_later",
+                                         "score_0_to_10"
+                                     ],
+                           "canonical_next_build_exists":  false
+                       },
+    "validation":  {
+                       "read_only_state_check":  true,
+                       "no_clipboard_read":  true,
+                       "no_intake_write":  true,
+                       "no_next_build_packet_write":  true,
+                       "external_send_not_claimed":  true,
+                       "mack_return_not_claimed_unless_required_fields_complete":  false,
+                       "ben_acceptance_not_claimed":  true,
+                       "truth_boundary":  "This state receipt reads local files and returns the next legal command. It does not send anything, read the clipboard, mutate intake, write a next-build packet, or claim Mack returned review while the intake is waiting."
+                   },
+    "file_hashes":  [
+                        {
+                            "path":  "scripts/foreman/Get-MackArchitectureReviewFlowState.ps1",
+                            "sha256":  "47E9C838843550CD7158193DFB155B9E216984FC188859725A946E0C43EB9A46"
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_20260706.md",
+                            "sha256":  "157C43155CF43C99C9AD9260A28E3957849326BC0B776A2C600F705FCC971FCF"
+                        },
+                        {
+                            "path":  "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\MACK_ARCHITECTURE_NEXT_BUILD_PACKET_FROM_RETURN_20260706.md",
+                            "sha256":  ""
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no clipboard read",
+                                      "no intake mutation",
+                                      "no next-build packet generated",
+                                      "no Mack receipt claim",
+                                      "no Ben acceptance claim"
+                                  ]
+}

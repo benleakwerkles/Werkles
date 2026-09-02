@@ -1,0 +1,58 @@
+{
+  "missionId": "WERKLES_BVPGM_MEMBER_RETURN_VALUE_M18",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Five distinct member-return-value feature stakes followed by cross-cousin red-team rotation.",
+  "sharedContext": [
+    "Production remains at 93b79d1; no push or deploy is authorized.",
+    "M17 added mutually exclusive Workshop, Match Deck, Possible Werkle, and device-local Existing Werkle wayfinding and earned Petra post-build GO.",
+    "This M18 cycle must deepen matching, Formation empathy, Personal Bellows repeat value, provider readiness, and copy/visual rhythm.",
+    "A packet is not participation. Produce a bounded feature artifact with natural member copy, state boundary, hostile cases, and executable checks.",
+    "Do not imply account durability, partner response, professional advice, provider completion, production readiness, or release custody."
+  ],
+  "liveStrings": ["Match Deck", "Possible Werkle", "Personal Bellows", "Prepare for a real conversation", "What happens next", "Where this work lives"],
+  "knownGaps": [
+    "Match ranking can still feel cloned, same-lane, or over-sensitive to one click.",
+    "Formation does not yet fully teach mismatched-expectation discovery from both viewpoints.",
+    "Personal Bellows needs a clear reason to return after the first lesson or saved action.",
+    "Provider readiness can still read like an internal activation dashboard.",
+    "Long text-and-bubble runs and insider language remain on member routes."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Challenge the M18 integration order and decide what may enter build rotation first.",
+      "pull": "Attack dependency order, false custody, privacy creep, paywall manipulation, and release/gate overreach.",
+      "go": ["Return PETRA_M18_ORDER_GO, PATCH, or STOP with the exact artifact rotation order.", "Name the two highest-risk acceptance checks each downstream reviewer must enforce."],
+      "momentum": "Name one bounded integration seam for Heimerdinker, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Produce a Match Deck feature stake that improves diversity and explainability without surveillance or wealth/status ranking.",
+      "pull": "Attack cloned matches, identical prompts, geographic overreach, last-click dogma, popularity gaming, and stale-state ranking.",
+      "go": ["Return BEAN_M18_MATCH_STAKE with scoring inputs, excluded inputs, member-visible why, and hostile regressions.", "Define how meaningful member actions may update ranking without creepy tracking."],
+      "momentum": "Name the exact Computer research-check artifact, then stop.",
+      "outOfLane": "No code, legal conclusion, private-data expansion, credentials, schema/RLS, provider action, spend, push, deploy, or subagent."
+    },
+    "ENDER": {
+      "vision": "Produce a Formation empathy feature stake that helps two people expose mismatched expectations before commitment.",
+      "pull": "Attack homework tone, mind-reading, duplicated questions, low contrast, text deserts, and false symmetry.",
+      "go": ["Return ENDER_M18_FORMATION_STAKE with a two-viewpoint exercise, natural copy, and 390px/desktop walk checks.", "Name one visual break that is not merely another portrait."],
+      "momentum": "Name the exact Skybro value artifact to human-walk next, then stop.",
+      "outOfLane": "No code, image generation, credentials, provider action, spend, push, deploy, or subagent."
+    },
+    "SKYBRO": {
+      "vision": "Produce a Personal Bellows seven-day return loop with honest free value and a classy paid extension.",
+      "pull": "Turn saved work, observations, and next decisions into fresh value without nagging, fake urgency, or a frustrating paywall tease.",
+      "go": ["Return SKYBRO_M18_BELLOWS_STAKE with day-one, return, completed-test, and stale-work states.", "Include natural member copy and executable acceptance checks."],
+      "momentum": "Name the exact Ender human-walk artifact, then stop.",
+      "outOfLane": "No code, pricing change, purchase flow, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "COMPUTER": {
+      "vision": "Produce a member-facing provider-readiness feature stake grounded in current primary sources.",
+      "pull": "Separate benefit, evidence needed, data holder/disposal boundary, cost trigger, and stopping line for Plaid, Stripe, Twilio, and account continuity.",
+      "go": ["Return COMPUTER_M18_PROVIDER_STAKE with a four-provider evidence ladder and a primary-source check manifest.", "Flag any language that implies activation or policy completion."],
+      "momentum": "Name the exact Bean trust artifact to challenge next, then stop.",
+      "outOfLane": "No code, provider settings, credentials, schema/RLS, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

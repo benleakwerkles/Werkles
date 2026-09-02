@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CockpitShell } from "@/components/foundry/cockpit-shell";
 import { DashboardAuthGuard } from "@/components/foundry/dashboard-auth-guard";
 import { MemberWorkLocationReadout } from "@/components/foundry/member-work-location-readout";
+import { OpportunityWalkthroughDoor } from "@/components/opportunities/opportunity-walkthrough-door";
 import { WerkleFormationWorkbench } from "@/components/werkle/formation-workbench";
 import { isGhostFleetEnabled, listGhostMembers, matchGhostsForOwner } from "@/lib/ghost-fleet";
 import { loadOwnerSurfaceState } from "@/lib/owner-surfaces/owner-state";
@@ -238,7 +239,7 @@ export default async function WerkleFormationPage({
 
   return (
     <CockpitShell>
-      <main className="dashboard-main werkle-formation-page">
+      <main className="dashboard-main werkle-formation-page route-room route-room--werkle workshop-route--werkle">
         <DashboardAuthGuard next="/dashboard/werkles/formation" allowGhostWalkthrough={fleetOn}>
           <MemberWorkLocationReadout surface="formation" formationId={formationId} />
           <section className="werkle-formation-hero">
@@ -268,6 +269,7 @@ export default async function WerkleFormationPage({
           </nav>
 
           <WerkleFormationWorkbench seed={seed} />
+          {fleetOn ? <OpportunityWalkthroughDoor surface="werkle" /> : null}
         </DashboardAuthGuard>
       </main>
     </CockpitShell>

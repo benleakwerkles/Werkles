@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_lady_jessica_werkles_human_rhythm_release_20260831",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "werkles_human_rhythm_production_release_20260831",
+  "target_aeye": "Lady Jessica",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "NOW: open and personally execute foreman/handoffs/outbox/TO_LADY_JESSICA_WERKLES_HUMAN_RHYTHM_PRODUCTION_RELEASE_20260831.md. Packet SHA-256 7752A1BC9903736998D7A71635F7990E3547D24871B9304E5699BE84A71F7A0C. Ben approved the bounded production push and Heimerdinker signed candidate digest c68727d5dac4a72dc0bce922281fcd8813fe101777317b097f73193a0e598c70 with binary patch SHA-256 2c245d0662ec8009198785b6879143191b9ca228a0ae8b8a8dc62f03573de685. Assimilate Thufir Hawat's PATCH receipt at foreman/handoffs/inbox/FROM_COMPUTER_VPGM_20260831-051604.md. Inspect Maria removal, selective real-object relief, People/Bellows/Proof room differentiation, copy humanity, desktop/phone header continuity, and provider-claim honesty. You alone may stage the exact manifest, commit, push, candidate-deploy, promote after smoke, and live-smoke. Never stage all. No schema/providers/secrets. Return a terminal signed receipt to foreman/handoffs/inbox/."
+  },
+  "status": "SENT",
+  "created_at": "2026-08-31T05:28:00-04:00"
+}

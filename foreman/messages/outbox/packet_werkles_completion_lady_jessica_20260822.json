@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_werkles_completion_lady_jessica_20260822",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "werkles_completion_campaign_visual_hands_20260822",
+  "target_aeye": "Lady Jessica",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Lady Jessica: personally pull foreman/handoffs/outbox/TO_LADY_JESSICA_WERKLES_COMPLETION_VISUAL_HANDS_20260822.md. The larger checkpoint is completing the coherent Werkles member journey, not polishing one page. Return the bounded visual-system plan and exact Handeye ownership/collision map to foreman/handoffs/inbox/FROM_LADY_JESSICA_WERKLES_COMPLETION_VISUAL_HANDS_20260822.md. Ender review remains required before judgment-heavy implementation. ACK is not completion. No new task/subagent/environment, push, deploy, provider, secret, SQL/schema/RLS, or production mutation."
+  },
+  "status": "QUEUED",
+  "created_at": "2026-08-22T07:30:00-04:00"
+}

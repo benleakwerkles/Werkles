@@ -13,6 +13,12 @@ import {
   type AeyeTransportReason,
   type AeyeTransportStop
 } from "@/lib/soledash/aeye-inbox-v0/protocol";
+import { receiverProofBoundary } from "@/lib/organism/contracts/receiver-proof-boundary";
+import {
+  writeSoleDashAeyeTransportPacketRecord,
+  writeSoleDashAeyeTransportReceiptRecord
+} from "@/lib/soledash/aeye-inbox-v0/organism-contract-mirror";
+import { createSoleDashAeyeReceiverHandoffBundle } from "@/lib/soledash/aeye-inbox-v0/receiver-handoff-bridge";
 
 export const dynamic = "force-dynamic";
 
@@ -98,12 +104,20 @@ export async function POST(request: Request) {
       from_aeye?: string;
       from_machine?: string;
       receipt_message?: string;
+      create_receiver_handoff?: boolean;
+      receiver_handoff_bundle_id?: string;
     };
 
     if (body.mode === "verify_sent") {
       const verified = await verifySentOutbox(body.packet_id ?? "");
       if (!verified.ok) return stopResponse(verified);
-      return NextResponse.json({ ok: true, verdict: "GO", packet: verified.packet, path: path.relative(REPO_ROOT, verified.path) });
+      return NextResponse.json({
+        ok: true,
+        verdict: "GO",
+        packet: verified.packet,
+        path: path.relative(REPO_ROOT, verified.path),
+        receiver_proof: receiverProofBoundary("transport_ack_only")
+      });
     }
 
     if (body.mode === "receipt_only") {
@@ -116,6 +130,25 @@ export async function POST(request: Request) {
         message: body.receipt_message ?? "Dink@Betsy received this task."
       });
       if (!receipt.ok) return stopResponse(receipt);
+      const organism_packet_contract = await writeSoleDashAeyeTransportPacketRecord({
+        packet: receipt.inbox_packet,
+        outbox_path: receipt.paths.outbox,
+        inbox_path: receipt.paths.inbox
+      });
+      const organism_receipt_contract = await writeSoleDashAeyeTransportReceiptRecord({
+        packet: receipt.inbox_packet,
+        receipt: receipt.receipt,
+        outbox_path: receipt.paths.outbox,
+        inbox_path: receipt.paths.inbox,
+        receipt_path: receipt.paths.receipt
+      });
+      const receiver_handoff = body.create_receiver_handoff === true
+        ? await createSoleDashAeyeReceiverHandoffBundle({
+            packet: receipt.inbox_packet,
+            receiver: `${receipt.receipt.from_aeye}@${receipt.receipt.from_machine}`,
+            bundle_id: body.receiver_handoff_bundle_id
+          })
+        : null;
       return NextResponse.json({
         ok: true,
         verdict: "GO",
@@ -125,7 +158,13 @@ export async function POST(request: Request) {
           message_outbox: path.relative(REPO_ROOT, receipt.paths.outbox),
           message_inbox: path.relative(REPO_ROOT, receipt.paths.inbox),
           message_receipt: path.relative(REPO_ROOT, receipt.paths.receipt)
-        }
+        },
+        organism_contract: {
+          packet: organism_packet_contract,
+          receipt: organism_receipt_contract
+        },
+        receiver_handoff,
+        receiver_proof: receiverProofBoundary("transport_receipt_mirrored")
       });
     }
 
@@ -211,6 +250,25 @@ export async function POST(request: Request) {
 
     await writeJson(packetPath, packet);
     await writeJson(responsePath, response);
+    const organism_packet_contract = await writeSoleDashAeyeTransportPacketRecord({
+      packet: transport.packet,
+      outbox_path: transport.paths.outbox,
+      inbox_path: transport.paths.inbox
+    });
+    const organism_receipt_contract = await writeSoleDashAeyeTransportReceiptRecord({
+      packet: transport.packet,
+      receipt: transport.receipt,
+      outbox_path: transport.paths.outbox,
+      inbox_path: transport.paths.inbox,
+      receipt_path: transport.paths.receipt
+    });
+    const receiver_handoff = body.create_receiver_handoff === true
+      ? await createSoleDashAeyeReceiverHandoffBundle({
+          packet: transport.packet,
+          receiver: `${transport.receipt.from_aeye}@${transport.receipt.from_machine}`,
+          bundle_id: body.receiver_handoff_bundle_id
+        })
+      : null;
 
     return NextResponse.json({
       ok: true,
@@ -227,7 +285,13 @@ export async function POST(request: Request) {
         message_outbox: path.relative(REPO_ROOT, transport.paths.outbox),
         message_inbox: path.relative(REPO_ROOT, transport.paths.inbox),
         message_receipt: path.relative(REPO_ROOT, transport.paths.receipt)
-      }
+      },
+      organism_contract: {
+        packet: organism_packet_contract,
+        receipt: organism_receipt_contract
+      },
+      receiver_handoff,
+      receiver_proof: receiverProofBoundary("transport_receipt_mirrored")
     });
   } catch (err) {
     return NextResponse.json(

@@ -1,0 +1,170 @@
+# Werkles VPGM — WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901 v0.1
+
+**To Thufir Hawat** (Doctrine / research cousin · Perplexity · Edge tab 5)
+**Issued by:** Heimerdinker@Betsy, Werkles Foreman
+**Doctrine:** STOP BEFORE SEND — Foreman prepares and pastes; Ben clicks Send.
+
+## Slice under review
+
+Complete the already acknowledged Werkles production walk from packet TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831_v0.1_20260901-0248.md. The prior response stopped at 'walking now' and is not terminal. Personally finish the walk and return the requested complete review in this same existing Perplexity task.
+
+## Context handed to the cousin
+
+- Do not restate the acknowledgment.
+- Return observed URLs and strings, top five issues, quick wins, structural repairs, strongest elements, three retention upgrades, and terminal GO/PATCH/STOP.
+- Declare that this is personal work in the existing Thufir Hawat seat and name the exact prior packet.
+- No subagent, replacement persona, new task, account creation, purchase, production mutation, provider activation, push, or deploy.
+
+## Verbatim member-facing strings
+
+- walking now
+- TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831_v0.1_20260901-0248.md
+
+## Known gaps disclosed up front
+
+- Member-only pages may remain behind login; report the gate rather than crossing it.
+
+## Assignment
+
+- **V:** Finish the previously acknowledged live-site review personally.
+- **P:** Use the production walk already begun; do not substitute generic market commentary.
+- **M:** Name the three value upgrades most likely to improve paid retention.
+- **Out of lane:** No implementation, account creation, provider activation, production mutation, push, deploy, or delegation.
+
+### G — work items
+
+1. Return the complete evidence-based review requested by the parent packet.
+
+2. Separate observed production facts from researched context.
+
+3. End with a terminal verdict and complete relay metadata.
+
+## Expected return
+
+`foreman/handoffs/inbox/FROM_COMPUTER_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1.md`
+with a filled `## Relay metadata` block. Validate with
+`node foreman/crew-dispatch/crew-response-intake.mjs validate`.
+
+## Paste block delivered to the chat tab
+
+```text
+[WERKLES VPGM — WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901 v0.1]
+
+Thufir Hawat (Doctrine / research cousin, Perplexity). Your lane: Synthesis, current-world checks, cited research — not unsourced deploy decisions.
+
+CUSTODY_TOKEN: CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A
+
+This is a real work request from the Werkles Foreman, not a role-sync ping. Everything
+you need is in this message — do not ask for repo files.
+
+SLICE UNDER REVIEW
+Complete the already acknowledged Werkles production walk from packet TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831_v0.1_20260901-0248.md. The prior response stopped at 'walking now' and is not terminal. Personally finish the walk and return the requested complete review in this same existing Perplexity task.
+
+CONTEXT
+- Do not restate the acknowledgment.
+- Return observed URLs and strings, top five issues, quick wins, structural repairs, strongest elements, three retention upgrades, and terminal GO/PATCH/STOP.
+- Declare that this is personal work in the existing Thufir Hawat seat and name the exact prior packet.
+- No subagent, replacement persona, new task, account creation, purchase, production mutation, provider activation, push, or deploy.
+
+WHAT THE MEMBER ACTUALLY SEES (verbatim strings)
+- walking now
+- TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831_v0.1_20260901-0248.md
+
+KNOWN GAPS (already admitted — do not spend your answer rediscovering these)
+- Member-only pages may remain behind login; report the gate rather than crossing it.
+
+--- YOUR ASSIGNMENT ---
+
+V (vision): Finish the previously acknowledged live-site review personally.
+
+P (pull): Use the production walk already begun; do not substitute generic market commentary.
+
+G (go) — work these, in this order:
+
+1. Return the complete evidence-based review requested by the parent packet.
+
+2. Separate observed production facts from researched context.
+
+3. End with a terminal verdict and complete relay metadata.
+
+M (momentum): Name the three value upgrades most likely to improve paid retention.
+
+OUT OF LANE: No implementation, account creation, provider activation, production mutation, push, deploy, or delegation.
+
+--- HOW TO ANSWER ---
+
+Reply as a markdown document Ben can save to foreman/handoffs/inbox/ as
+FROM_COMPUTER_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1.md
+
+OPEN your reply with this exact block, filled in. It is how the cockpit proves the
+packet reached you rather than a composer, a wrong tab, or a stale thread:
+
+RECEIVED
+CUSTODY_TOKEN: CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A
+COUSIN: COMPUTER
+PACKET: TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300.md
+LANE_CHECK: IN_LANE | OUT_OF_LANE — <one line>
+BLOCKER: NONE | <exact>
+
+End your reply with this exact block, filled in:
+
+## Relay metadata
+
+```json
+{
+  "schemaVersion": "aeye-crew-relay/v0.1",
+  "cousin": "COMPUTER",
+  "custody_token": "CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A",
+  "VERDICT": "<one line>",
+  "CONFIDENCE": "HIGH | LOW",
+  "UNKNOWNS": "none | <list> | outside my lane",
+  "source_packet_id": "TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300",
+  "source_packet_file": "TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300.md",
+  "nextActionHash": "5f2af4ceae635a69ba939b347cec66a0478babcafe748237cdb20fc11bcc6490",
+  "currentStateHash": "78e580fb3019107585768920e8d2f5fc289e6533f4b1716081bea719d772242a"
+}
+```
+
+Do not recommend deploy, push, SQL apply, secret entry, or spending money. Those are
+Operator gates. Say what you would do and stop.
+
+```
+
+---
+
+## Relay metadata
+
+```json
+{
+  "schemaVersion": "aeye-crew-relay/v0.1",
+  "cousin": "COMPUTER",
+  "generated_at": "2026-09-01T03:00:06.453Z",
+  "currentStateHash": "78e580fb3019107585768920e8d2f5fc289e6533f4b1716081bea719d772242a",
+  "nextActionHash": "5f2af4ceae635a69ba939b347cec66a0478babcafe748237cdb20fc11bcc6490",
+  "source_files_included": [
+    "foreman/NEXT_ACTION.md",
+    "foreman/CURRENT_STATE.md"
+  ],
+  "REQUIRED_RESPONSE_FIELDS": [
+    "schemaVersion",
+    "cousin",
+    "source_packet_id",
+    "source_packet_file",
+    "generated_at",
+    "nextActionHash",
+    "CONFIDENCE",
+    "VERDICT",
+    "UNKNOWNS"
+  ],
+  "custody_token": "CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A",
+  "packet_id": "TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300",
+  "source_packet_file": "TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300.md",
+  "network_command": "WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901",
+  "network_command_version": "v0.1",
+  "role_lane": "Synthesis, current-world checks, cited research — not unsourced deploy decisions.",
+  "human_gate_required": true,
+  "edge_tab_index": 5,
+  "edge_url": "https://www.perplexity.ai/"
+}
+```
+

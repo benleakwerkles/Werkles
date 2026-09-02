@@ -1,0 +1,29 @@
+{
+  "base": "http://127.0.0.1:3000",
+  "limit": 1,
+  "pass": 1,
+  "fail": 0,
+  "fleetCount": 150,
+  "blockedInFleet": 13,
+  "distinctTopScores": 1,
+  "results": [
+    {
+      "ghostId": "ghost_001",
+      "displayName": "Imani Alvarez",
+      "handeyeSeat": "LadyJessica",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": null,
+      "candidateCount": 12,
+      "topScore": 42,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you"
+      ],
+      "ok": true,
+      "failures": []
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+﻿{
+    "schema":  "MACK_ARCHITECTURE_PASTE_BLOCK_CLIPBOARD_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:03:25.9468127Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "MACK_ARCHITECTURE_PASTE_BLOCK_CLIPBOARD_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Copy-MackArchitecturePasteBlock.ps1",
+    "source_path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.md",
+    "block_sha256":  "9A9E02AA925C908869A4FBE5BCF8B467EA20304897A54FF3236B67E05C604088",
+    "block_bytes":  5225,
+    "block_line_count":  118,
+    "first_line":  "Mack, tear this architecture apart.",
+    "copy_committed":  false,
+    "validation":  {
+                       "source_paste_packet_found":  true,
+                       "source_block_markers_present":  true,
+                       "scorecard_return_block_present":  true,
+                       "clipboard_write_requires_copy_switch":  true,
+                       "dry_run_default":  true,
+                       "external_send_not_claimed":  true,
+                       "mack_return_not_claimed":  true,
+                       "truth_boundary":  "This helper extracts the Mack paste block and only writes it to the local clipboard when -Copy is provided. It never sends the block to Mack and never claims Mack returned a review."
+                   },
+    "file_hashes":  [
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.md",
+                            "sha256":  "A9B665B3E3F2212B86CD97183836BE0659C210D798E0189E908FD3C2192A4C0B"
+                        },
+                        {
+                            "path":  "scripts/foreman/Copy-MackArchitecturePasteBlock.ps1",
+                            "sha256":  "AE6BC3CF908B26E750F5F3090C281BE3FC40178A5B6F852EBFDC487C7723793A"
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack receipt claim"
+                                  ]
+}

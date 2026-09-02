@@ -1,0 +1,32 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T06:24:50.353Z",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receiver": "ReceiverHandoffFixture@Betsy",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+  "source_packet_sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+      "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+      "sha256": "1fd78272f54a12fb4be25933d66f3839ae5ae0facadce473a2ce8f123ed0ee09"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+      "sha256": "0ce82de6193653879127e3d68c6c204ee07f65bc8c75b6f34cc7cc003de6474e"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverHandoffFixture@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

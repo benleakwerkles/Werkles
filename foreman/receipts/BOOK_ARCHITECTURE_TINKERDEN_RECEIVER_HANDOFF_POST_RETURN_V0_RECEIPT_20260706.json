@@ -1,0 +1,152 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_POST_RETURN_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:45:43.712Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_POST_RETURN_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receiver-handoff-post-return-smoke.mjs",
+  "files_changed": [
+    "lib/organism/contracts/receiver-handoff-return-post.ts",
+    "app/api/organism/contracts/receiver-handoffs/post-return/route.ts",
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-receiver-handoff-post-return-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_POST_RETURN_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/packet.json",
+    "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/manifest.json",
+    "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/returned-receipt.json",
+    "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd.json"
+  ],
+  "validation": {
+    "page_source_has_post_label": true,
+    "page_source_has_post_hook": true,
+    "page_source_has_status_hook": true,
+    "route_calls_return_post_helper": true,
+    "playwright_clicked_post_return": true,
+    "playwright_browser_executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "bundle_state_before_click": "returned_unposted",
+    "bundle_state_after_click": "posted",
+    "contract_event_joined_after_click": true,
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd.json",
+    "click_status_text": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd / partial.",
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "The post-return control posts only an existing non-template returned-receipt.json; it does not create receiver proof or claim completion without the returned artifact."
+  },
+  "created_bundle": {
+    "ok": true,
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverPostReturnSmoke@Betsy",
+    "bundle_id": "ui_post_return_smoke_mr8uvxbq",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq",
+    "handoff_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/manifest.json",
+    "manifest_written": true,
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverPostReturnSmoke@Betsy",
+    "receipt_template_status": "blocked",
+    "receipt_template_blocked_reason": "TEMPLATE_NOT_FILLED"
+  },
+  "return_helper_result": {
+    "ok": true,
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverPostReturnSmoke@Betsy",
+    "status": "partial",
+    "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/returned-receipt.json",
+    "returned_receipt_sha256": "01b40fcc13acea320b6ea96f9ad331a55c98dabde66461185508a35d5522e17f",
+    "template_source_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/manifest.json",
+    "posted": false
+  },
+  "before_record": {
+    "bundle_id": "ui_post_return_smoke_mr8uvxbq",
+    "bundle_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverPostReturnSmoke@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:45:40.680Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/returned-receipt.json",
+    "contract_receipt_path": "NO_CONTRACT_RECEIPT",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd",
+    "returned_status": "partial",
+    "returned_receiver": "ReceiverPostReturnSmoke@Betsy",
+    "contract_event_joined": false,
+    "state": "returned_unposted",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverPostReturnSmoke@Betsy",
+    "truth_boundary": "Returned receipt exists locally but has not been found in the canonical contract receipt store."
+  },
+  "after_record": {
+    "bundle_id": "ui_post_return_smoke_mr8uvxbq",
+    "bundle_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverPostReturnSmoke@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:45:40.680Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd.json",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd",
+    "returned_status": "partial",
+    "returned_receiver": "ReceiverPostReturnSmoke@Betsy",
+    "contract_event_joined": true,
+    "state": "posted",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/ui_post_return_smoke_mr8uvxbq/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverPostReturnSmoke@Betsy",
+    "truth_boundary": "Returned receipt status is partial; contract receipt posted at data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd.json."
+  },
+  "click_readback": {
+    "posted_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd.json",
+    "status_text": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8uvxfd / partial."
+  },
+  "file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "b75e529856c1330de9a5df8a1964b50a1d4407e9c4432be3d0dc8eb9c981415d",
+      "bytes": 80722
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-return-post.ts",
+      "sha256": "b5b49763bf145e178fa3ae5a54aac557e4e36bacac32191283df02c64e677d89",
+      "bytes": 5668
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-handoffs/post-return/route.ts",
+      "sha256": "5d8851d3df0e52080d3bd227901a0b4480e5f0781df65659367c7f5bd6dcf28a",
+      "bytes": 1113
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receiver-handoff-post-return-smoke.mjs",
+      "sha256": "209df77aa710b6d21ae214f1455d6146264f55ddcdc66dfc5e591cfcc1bf29f2",
+      "bytes": 12056
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no synthetic receiver proof",
+    "no template receipt posted"
+  ],
+  "next_safe_action": "Expose the same post-return route in any non-TinkerDen receiver cockpit, then hand a bundle to a separate Aeye and require a real returned-receipt.json before posting."
+}

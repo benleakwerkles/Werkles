@@ -1,0 +1,176 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_FILL_RETURN_API_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:50:56.292Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_FILL_RETURN_API_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/receiver-handoff-fill-return-api-smoke.mjs",
+  "files_changed": [
+    "lib/organism/contracts/receiver-handoff-return-fill.ts",
+    "app/api/organism/contracts/receiver-handoffs/fill-return/route.ts",
+    "scripts/foreman/receiver-handoff-fill-return-api-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_HANDOFF_FILL_RETURN_API_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/packet.json",
+    "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/manifest.json",
+    "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/returned-receipt.json",
+    "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/packet.json",
+    "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/manifest.json"
+  ],
+  "validation": {
+    "route_calls_fill_helper": true,
+    "helper_rejects_duplicate_write": true,
+    "helper_rejects_template_attempted_text": true,
+    "fill_status": 201,
+    "fill_bundle_state_after": "returned_unposted",
+    "fill_returned_receipt_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/returned-receipt.json",
+    "fill_contract_receipt_path_after": "NO_CONTRACT_RECEIPT",
+    "duplicate_fill_status": 409,
+    "duplicate_fill_error": "RETURNED_RECEIPT_ALREADY_EXISTS",
+    "template_fill_status": 400,
+    "template_fill_error": "ATTEMPTED_STILL_TEMPLATE",
+    "template_blocker_bundle_state": "pending_receiver",
+    "posted_count_before": 2,
+    "posted_count_after": 2,
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "fill-return creates a local non-template returned-receipt.json from explicit receiver fields, refuses placeholder and duplicate writes, and does not post canonical receipts."
+  },
+  "success_bundle": {
+    "ok": true,
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+    "bundle_id": "fill_return_api_smoke_mr8v2omm",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm",
+    "handoff_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/manifest.json",
+    "manifest_written": true,
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverFillReturnApiSmoke@Betsy",
+    "receipt_template_status": "blocked",
+    "receipt_template_blocked_reason": "TEMPLATE_NOT_FILLED"
+  },
+  "fill_result": {
+    "ok": true,
+    "bundle_id": "fill_return_api_smoke_mr8v2omm",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+    "status": "partial",
+    "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v2otl",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/returned-receipt.json",
+    "returned_receipt_sha256": "1170b9a2787b1e82bf1f6ef6df764732de852c2af828f83123bf7b0a32ef94c6",
+    "proof_count": 4,
+    "changed_count": 2,
+    "truth_boundary": "fill-return wrote a non-template returned-receipt.json from explicit receiver proof fields and did not post it canonically."
+  },
+  "success_index_record": {
+    "bundle_id": "fill_return_api_smoke_mr8v2omm",
+    "bundle_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:50:56.038Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/receipt-template.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/returned-receipt.json",
+    "contract_receipt_path": "NO_CONTRACT_RECEIPT",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v2otl",
+    "returned_status": "partial",
+    "returned_receiver": "ReceiverFillReturnApiSmoke@Betsy",
+    "contract_event_joined": false,
+    "state": "returned_unposted",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/fill_return_api_smoke_mr8v2omm/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverFillReturnApiSmoke@Betsy",
+    "truth_boundary": "Returned receipt exists locally but has not been found in the canonical contract receipt store."
+  },
+  "duplicate_fill_result": {
+    "ok": false,
+    "error": "RETURNED_RECEIPT_ALREADY_EXISTS"
+  },
+  "template_bundle": {
+    "ok": true,
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+    "bundle_id": "fill_return_template_blocker_mr8v2omm",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm",
+    "handoff_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/manifest.json",
+    "manifest_written": true,
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverFillReturnApiSmoke@Betsy",
+    "receipt_template_status": "blocked",
+    "receipt_template_blocked_reason": "TEMPLATE_NOT_FILLED"
+  },
+  "template_fill_result": {
+    "ok": false,
+    "error": "ATTEMPTED_STILL_TEMPLATE"
+  },
+  "template_index_record": {
+    "bundle_id": "fill_return_template_blocker_mr8v2omm",
+    "bundle_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:50:56.224Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/receipt-template.json",
+    "returned_receipt_path": "NO_RETURNED_RECEIPT",
+    "contract_receipt_path": "NO_CONTRACT_RECEIPT",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "NO_RETURNED_RECEIPT",
+    "returned_status": "missing",
+    "returned_receiver": "UNKNOWN",
+    "contract_event_joined": false,
+    "state": "pending_receiver",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/fill_return_template_blocker_mr8v2omm/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverFillReturnApiSmoke@Betsy",
+    "truth_boundary": "Receiver handoff is waiting on a non-template returned receipt."
+  },
+  "file_hashes": [
+    {
+      "path": "lib/organism/contracts/receiver-handoff-return-fill.ts",
+      "sha256": "3094e21dd40290f19127b6810a84a41658b512aecbe98be977db01268afa9816",
+      "bytes": 10003
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-handoffs/fill-return/route.ts",
+      "sha256": "b3a6646371e36618913940346e7a45c04587e97b131128df28939fa4b541a3a7",
+      "bytes": 1039
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "sha256": "dbbcc1d4bd4d6d84ae045b4beb10bb1e4ab492204db3cda5eef10c86a8a1fd2d",
+      "bytes": 10767
+    },
+    {
+      "path": "scripts/foreman/receiver-handoff-fill-return-api-smoke.mjs",
+      "sha256": "f371fc00fb117011f03af7f4dee394e80f95d5c9d625c2488fae167a8ddf4dc6",
+      "bytes": 12487
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no canonical receipt posted by fill-return",
+    "no overwrite of existing returned receipt",
+    "no template placeholder returned receipt written by fill-return"
+  ],
+  "next_safe_action": "Wire a browser-visible fill-return form for pending receiver handoff bundles, then keep post-return as a separate explicit action."
+}

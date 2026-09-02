@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:20:18.405Z",
+  "file": "FROM_DOOZER_WORKSHOP_FACT_REPAIRED_CANDIDATE_PASS_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "DOOZER",
+  "consumed_by": "FOREMAN",
+  "note": "Read and incorporated: repaired Workshop fact helper passed exact-source review; residual matching/custody boundaries preserved.",
+  "auto_merge": false
+}

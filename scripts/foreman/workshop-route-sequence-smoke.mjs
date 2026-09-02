@@ -86,9 +86,9 @@ assert.match(
 assert.match(bridgeContract, /result\.intakeId !== expectedIntakeId/);
 assert.match(bridgeContract, /GHOST_FLEET_WORKSHOP_ROUTE = "\/dashboard\/blueprints"/);
 assert.match(bridgeContract, /GHOST_FLEET_INTROS_ROUTE = "\/dashboard\/intros"/);
-assert.match(recommendationsPage, /AccountAwarePeopleContinuation initialBridge={ghostFleetBridge}/);
+assert.match(recommendationsPage, /AccountAwarePeopleContinuation key="recommendation-people-gateway" initialBridge={ghostFleetBridge}/);
 assert.match(recommendationsSurface, /href="\/dashboard\/blueprints">Open My Workshop/);
-assert.match(recommendationsContinuation, /href="\/dashboard\/intros">Open Match Deck/);
+assert.match(recommendationsContinuation, /href="\/dashboard\/intros">Meet People Who May Fit/);
 assert.doesNotMatch(recommendationsContinuation, /href="\/dashboard\/blueprints"/);
 assert.match(recommendationsContinuation, /These are practice profiles, not real members/);
 

@@ -1,0 +1,63 @@
+﻿{
+    "schema":  "BOOK_ARCHITECTURE_CONNECTION_MAP_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:10:41.2532231Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "BOOK_ARCHITECTURE_CONNECTION_MAP_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "mission":  "Create and index the human and machine-readable architecture connection map companion.",
+    "validation":  {
+                       "markdown_written":  true,
+                       "html_written":  true,
+                       "json_manifest_valid":  true,
+                       "mermaid_written":  true,
+                       "index_points_to_connection_map":  true,
+                       "node_count":  12,
+                       "edge_count":  12,
+                       "no_mack_return_claimed":  true,
+                       "no_external_send_claimed":  true,
+                       "no_universal_receiver_proof_claimed":  true,
+                       "no_solved_shared_cognition_claimed":  true,
+                       "truth_boundary":  "This receipt proves the local connection map companion exists and is indexed. It does not claim Mack reviewed it, Mack returned a receipt, universal receiver proof exists, production deployment occurred, or continuous shared Aeye cognition is solved."
+                   },
+    "file_hashes":  [
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.md",
+                            "sha256":  "E102323E4908D509AC458D68874DA14297C53DC301EEF691EE472EF637F1F94E",
+                            "bytes":  7703
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.html",
+                            "sha256":  "197D76942587F09F08EC7191652BC6CD7388A7E23230791458CEAE368432ED8A",
+                            "bytes":  7647
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.json",
+                            "sha256":  "55DEA06D8DA24BA6EDB69854FF1D21DD7C4B9CEDB15801256559D3474997C7FE",
+                            "bytes":  5349
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.mmd",
+                            "sha256":  "1FFA929C8776A7D6AB0B12BAF1CA6F9598D9C8C673E2C79A7606A1BEEC1A09F6",
+                            "bytes":  966
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+                            "sha256":  "BFF7A756DD253021E6A08B655543CCECED272918621C00FA1A794478FE0E4E38",
+                            "bytes":  43035
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack receipt claim",
+                                      "no universal receiver proof claim",
+                                      "no solved shared cognition claim",
+                                      "no canonical next-build packet generated"
+                                  ]
+}

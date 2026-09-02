@@ -3,6 +3,8 @@ import { AccountAwarePersonalBellows } from "@/components/bellows/account-aware-
 import { BellowsDeviceDraftShelf } from "@/components/bellows/bellows-device-draft-shelf";
 import { BellowsVisualPause } from "@/components/bellows/bellows-visual-pause";
 import { PersonalPlanCheckIn } from "@/components/bellows/personal-plan-check-in";
+import { OpportunityWalkthroughDoor } from "@/components/opportunities/opportunity-walkthrough-door";
+import { isGhostFleetEnabled } from "@/lib/ghost-fleet";
 import { loadPublicBellowsRecommendationPageData } from "@/lib/squibb/public-recommendation-session-server";
 
 import "../library/bellows-library.css";
@@ -17,11 +19,12 @@ export const metadata = {
 export default async function PersonalBellowsPage() {
   const { session } = await loadPublicBellowsRecommendationPageData();
   const isPersonal = session.source?.mode === "latest_intake";
+  const fleetOn = isGhostFleetEnabled();
 
   return (
     <>
       <LocalAwareSiteHeader />
-      <main className="bellows-library bellows-personal">
+      <main className="bellows-library bellows-personal route-room route-room--personal-bellows workshop-route--personal-bellows">
         <header className="bellows-library__hero">
           <div>
             <p className="eyebrow">My Bellows</p>
@@ -42,6 +45,7 @@ export default async function PersonalBellowsPage() {
 
         <BellowsVisualPause variant="workspace" />
         <AccountAwarePersonalBellows initialSession={session} />
+        {fleetOn ? <OpportunityWalkthroughDoor surface="bellows" /> : null}
         <PersonalPlanCheckIn />
         <div id="my-bellows-work">
           <BellowsDeviceDraftShelf />

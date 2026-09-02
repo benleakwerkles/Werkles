@@ -1,14 +1,14 @@
 {
   "receipt_id": "WORMEYES_WORLD_STATE_RECEIPT",
   "mission": "WORMEYES_WORLD_STATE",
-  "owner": "Swanson@Doss",
-  "created_at": "2026-06-27T20:17:09.375Z",
+  "owner": "Wormeyes@BETSY",
+  "created_at": "2026-07-06T08:20:02.856Z",
   "status": "ARTIFACT",
-  "output_path": "C:\\tinkarden\\world_state.json",
-  "output_hash": "726A5350D20B1DAB7B58C9ED3833043013C0E95B32150C6F552F8B7FC0369852",
-  "output_byte_count": 59075,
+  "output_path": "C:\\Users\\Ben Leak\\github\\Werkles\\tinkarden\\nervous_system\\world_state.json",
+  "output_hash": "3562B8AB2A932E77A7D37EDC8338B0E91AAC8427616E33DD73D28840D41101B0",
+  "output_byte_count": 289334,
   "readback_path": "foreman/source-truth/readbacks/WORMEYES_WORLD_STATE_READBACK.json",
-  "readback_hash": "2AB6AC69574387939C46E9F9F66F08764E3BA74953ED91264BE4E08ED174A840",
-  "changed_file_count": 65,
+  "readback_hash": "55010CB3B1C7F2E9F148A5B5795A3381E322396EA3EC79D6D4EC5D5C58339159",
+  "changed_file_count": 321,
   "fake_work_created": false
 }

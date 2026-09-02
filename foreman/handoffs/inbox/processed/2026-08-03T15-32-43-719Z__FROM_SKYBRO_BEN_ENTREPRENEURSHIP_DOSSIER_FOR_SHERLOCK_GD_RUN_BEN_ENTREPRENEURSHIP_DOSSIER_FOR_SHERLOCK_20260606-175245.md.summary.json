@@ -1,0 +1,14 @@
+{
+  "processed_at": "2026-08-03T15:32:43.723Z",
+  "file": "FROM_SKYBRO_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_GD_RUN_BEN_ENTREPRENEURSHIP_DOSSIER_FOR_SHERLOCK_20260606-175245.md",
+  "status": "GD_RECEIPT",
+  "cousin": "SKYBRO",
+  "benReview": true,
+  "warnings": [
+    "GD router receipt: no cockpit hash, so staleness cannot be checked. Treat as advisory and confirm against live cockpit files before acting.",
+    "[SKYBRO overreach] Skybro recommending deploy — human gate required"
+  ],
+  "errors": [],
+  "stale": false,
+  "auto_merge": false
+}

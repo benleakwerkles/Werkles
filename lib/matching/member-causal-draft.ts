@@ -27,7 +27,7 @@ export function buildMemberCausalDraft(args: {
   return [
     `# Member causal draft — matching`,
     ``,
-    `Status: DRAFT — member journey memory (Speaker office shape)`,
+    `Status: DRAFT — member journey memory`,
     `Run: ${runId}`,
     `Intake: ${signals.intakeId} (${signals.source})`,
     `Generated: ${readout.generatedAt}`,
@@ -57,10 +57,10 @@ export function buildMemberCausalDraft(args: {
     ``,
     disqualified || `- (none disqualified)`,
     ``,
-    `## Speaker office note`,
+    `## Internal continuity note`,
     ``,
     `This draft is for member-side causal memory over time.`,
-    `It must not be confused with MatchingReadout (one-shot packaging) or with Harvey/Nerdkle org Speaker doctrine.`,
+    `It must not be confused with MatchingReadout (one-shot packaging) or with organization-level memory doctrine.`,
     ``
   ].join("\n");
 }

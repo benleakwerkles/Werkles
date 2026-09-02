@@ -1,0 +1,77 @@
+{
+  "missionId": "WERKLES_BVPGM_SOURCE_BOUND_RELEASE_REVIEW",
+  "version": "v0.3",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Independent review of the 278-file, source-bound local Werkles candidate with digest e64ae1c67e7e065884781891a2139d8e699488b4bfdcceb2b4449e820b6c3386 before any Foreman or push-custody sign-off.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; this candidate is local only.",
+    "The deterministic inventory contains 247 product-source files, 30 receipt-bound checks, and one static Ghost Fleet member file; changed-import leakage is zero.",
+    "Thirty contracts, TypeScript, a 100-route production build, ten local member routes, and a seven-route shared-header sweep pass.",
+    "BVPGM M3 names Personal Bellows tool controls, adds a grounded Formation pause, collapses the four-stage Crucible provider map, removes member-facing control-plane labels, and fixes the resulting mobile overflow.",
+    "A production build had overwritten the active development CSS manifest and left Proof plus the shared header unstyled. Development now uses .next-dev while production builds use .next; Proof remained styled while the production build ran.",
+    "The full build ran against the shared local tree; exact isolated reconstruction is not claimed because the Operator prohibited new environments.",
+    "One Supabase Intake migration is explicitly quarantined and unapplied. Account-durable Intake is not part of this release claim.",
+    "The review target and hashes are recorded in foreman/releases/WERKLES_BVPGM_RELEASE_CANDIDATE_INVENTORY_20260823.json; no push, deploy, provider, schema, secret, spend, or production action is authorized."
+  ],
+  "liveStrings": [
+    "Workshop — one member's private working space",
+    "Werkle — shared work explicitly accepted by two or more members",
+    "Match Deck — possible collaborators with visible reasons",
+    "Public Bellows — the general library",
+    "Personal Bellows — lessons and work shaped by the member's current work",
+    "Crucible — optional narrow checks, never a universal trust score",
+    "Membership — access and billing, never proof of merit"
+  ],
+  "knownGaps": [
+    "The current copy-continuity rotation has no terminal Ender, Bean, or Skybro receipt.",
+    "The quarantined Intake migration is not approved or applied; cross-device account durability remains unavailable.",
+    "Provider production actions remain disabled.",
+    "This packet is a review request, not proof that any cousin participated."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Walk the complete member journey as an ordinary person and attack robotic, insider, homework, repetitive, or destination-unclear language.",
+      "pull": "Use the supplied terminology definitions, proof summary, known gaps, and exact candidate digest. Treat visual rhythm and conversation as release behavior, not decoration.",
+      "go": [
+        "Return only P0/P1 release defects with route, exact visible pattern, human consequence, and smallest repair rule.",
+        "Check Home through Intake, Recommendations, Workshop, Match Deck, Formation, Personal/Public Bellows, Crucible, Membership, Login, and Profile for one coherent human voice.",
+        "Give a terminal HUMAN_RELEASE_GO, PATCH, or STOP verdict scoped to copy/UX only."
+      ],
+      "momentum": "Name the three routes Lady Jessica must personally re-walk and stop.",
+      "outOfLane": "No code, legal ruling, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final release approval."
+    },
+    "BEAN": {
+      "vision": "Hostile-audit the source-bound candidate for false custody, false provider readiness, unsafe trust claims, privacy leakage, and misleading save language.",
+      "pull": "Use the supplied source boundary, quarantined schema fact, proof summary, and candidate digest. Do not assume the full dirty tree is the candidate.",
+      "go": [
+        "Return only P0/P1 trust defects with route/source pattern, exploit or member harm, and invariant required for repair.",
+        "Attack auth/save, matching, generated dialogue, practice Werkle boundaries, Membership, Plaid, Twilio, Stripe Identity, and Checkr claims.",
+        "Give a terminal TRUST_RELEASE_GO, PATCH, or STOP verdict without approving production."
+      ],
+      "momentum": "Separate release blockers from later provider/schema work and stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Test whether the full candidate tells one memorable, democratic product story and delivers enough practical value to justify returning and paying.",
+      "pull": "Use the supplied product nouns, route spine, proof summary, candidate digest, and known persistence/provider limits.",
+      "go": [
+        "Find the five largest lifecycle or value discontinuities across Workshop, Werkle, Match Deck, Bellows, Crucible, and Membership.",
+        "Check that the candidate does not canonize the Operator's latest phrase merely because he said it.",
+        "Give a terminal VALUE_RELEASE_GO, PATCH, or STOP verdict and nominate any trust cross-check."
+      ],
+      "momentum": "Name one smallest high-leverage repair if the candidate is not ready and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final product canon."
+    },
+    "PETRA": {
+      "vision": "Judge whether the evidence supports advancing this exact candidate to Lady Jessica's independent release-custody review.",
+      "pull": "Use the candidate digest, classification counts, zero changed-import leaks, passing proof, isolated-build limitation, open copy receipts, and quarantined schema artifact.",
+      "go": [
+        "Return GO, PATCH, or STOP for advancing to Lady Jessica review—not for push or deploy.",
+        "List any evidence gap that makes the candidate identity or regression proof non-reproducible.",
+        "Confirm which claims must stay explicitly excluded from the later release gate."
+      ],
+      "momentum": "Name the exact next machine checkpoint and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or Operator approval."
+    }
+  }
+}

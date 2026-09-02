@@ -10,6 +10,7 @@ const repoRoot = path.resolve(path.dirname(__filename), "..", "..");
 const writeMode = process.argv.includes("--write");
 const outputPath = path.resolve(valueAfter("--output") || process.env.WORMEYES_WORLD_STATE || "C:\\tinkarden\\world_state.json");
 const explicitRepos = valuesAfter("--repo");
+const machine = process.env.COMPUTERNAME || "UNKNOWN_MACHINE";
 const defaultRepos = [
   repoRoot,
   "C:\\Users\\BenLeak\\Desktop\\github\\Werkles",
@@ -168,7 +169,7 @@ const worldState = {
   world_state_id: "WORMEYES_WORLD_STATE_V0",
   generated_at: new Date().toISOString(),
   generated_by: "scripts/foreman/wormeyes-world-state.mjs",
-  machine: "Doss",
+  machine,
   output_path: outputPath,
   repos: repoReadbacks.map(({ files: _files, ...repo }) => repo),
   files,
@@ -192,8 +193,8 @@ if (writeMode) {
 const readback = {
   readback_id: "WORMEYES_WORLD_STATE_READBACK",
   created_at: new Date().toISOString(),
-  owner: "Swanson@Doss",
-  machine: "Doss",
+  owner: `Wormeyes@${machine}`,
+  machine,
   status: writeMode ? "ARTIFACT" : "ACK",
   mode: writeMode ? "WRITE" : "READ_ONLY",
   output_path: outputPath,
@@ -219,7 +220,7 @@ if (writeMode) {
   const receipt = {
     receipt_id: "WORMEYES_WORLD_STATE_RECEIPT",
     mission: "WORMEYES_WORLD_STATE",
-    owner: "Swanson@Doss",
+    owner: `Wormeyes@${machine}`,
     created_at: new Date().toISOString(),
     status: "ARTIFACT",
     output_path: outputPath,

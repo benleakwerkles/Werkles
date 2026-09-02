@@ -1,0 +1,13 @@
+{
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "relay_id": "td_relay_mr8t9pue_3e26qq",
+  "receipt_id": "td_receipt_packet_relay_mr8t9pue_uy2du4",
+  "relay_status": "PACKET_RELAY_COMPLETE",
+  "receipt_status": "RECEIPT_ASSIMILATED",
+  "created_at": "2026-07-06T06:00:24.853Z",
+  "owner": "Maker@Betsy",
+  "mission": "BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0",
+  "artifact_path": "data/tinkerden/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+  "packet_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+  "receipt_path": "data/tinkerden/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json"
+}

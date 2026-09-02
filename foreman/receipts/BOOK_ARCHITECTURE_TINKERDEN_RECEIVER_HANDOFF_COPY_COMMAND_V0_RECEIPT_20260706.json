@@ -1,0 +1,66 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_COPY_COMMAND_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:41:11.163Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "RECEIVER_HANDOFF_COPY_COMMAND_UI",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_COPY_COMMAND_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receiver-handoff-copy-command-smoke.mjs",
+  "files_changed": [
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-receiver-handoff-copy-command-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_COPY_COMMAND_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "page_source_has_copy_command_label": true,
+    "page_source_has_copy_command_hook": true,
+    "page_source_has_copy_status_hook": true,
+    "playwright_clicked_copy_command": true,
+    "playwright_browser_executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "copied_command_calls_post_client": true,
+    "copied_command_has_receipt_argument": true,
+    "click_status_text": "Command copied.",
+    "handoff_count_before": 4,
+    "handoff_count_after": 4,
+    "posted_count_before": 1,
+    "posted_count_after": 1,
+    "pending_count_before": 3,
+    "pending_count_after": 3,
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "The copy command control only copies the return command; it does not create, post, or complete a receiver receipt."
+  },
+  "click_readback": {
+    "command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8unhs2/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by Maker@Betsy",
+    "status_text": "Command copied."
+  },
+  "file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "e59ae607700b2188c214e860b72ee956c02172b4f595464aa9b37ec6d3776e21",
+      "bytes": 77979
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "sha256": "ce0e5d4ee895b8e655b87bd2f09fd7b052509c08f280bf1e92a401f6d7851528",
+      "bytes": 9937
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receiver-handoff-copy-command-smoke.mjs",
+      "sha256": "0e06999150d07a60e4c6e955742ff08eb54155845deaa17c6391c7a688f85437",
+      "bytes": 7790
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no handoff created",
+    "no receiver receipt posted",
+    "no synthetic completion receipt"
+  ],
+  "next_safe_action": "Use the copied command with a real receiver-edited receipt, then verify the Receiver Handoff Lane changes from pending to posted."
+}

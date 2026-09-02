@@ -1,11 +1,11 @@
-# Matching Preview Runbook — V/P/G Cycle 8
+# Matching Preview Rollout Readiness Receipt
 
 Machine: BETSY  
 Execution context: `LOCAL_SALLY_WINDOWS`  
 Repo: `C:\Users\Ben Leak\github\Werkles`  
 Branch: `maker/site-g-20260703`  
 HEAD: `017fa2a`  
-Packet: `TO_LADY_JESSICA_MATCHING_PREVIEW_RUNBOOK_VPG8_20260711`
+Packet: `TO_LADY_JESSICA_MATCHING_PREVIEW_ROLLOUT_READINESS_20260711`
 
 ## Verdict
 

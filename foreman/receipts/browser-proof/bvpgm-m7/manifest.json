@@ -1,0 +1,5461 @@
+{
+  "generatedAt": "2026-08-23T22:47:13.431Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "status": "PASS",
+  "routes": 10,
+  "viewports": 2,
+  "checks": 20,
+  "passed": 20,
+  "failed": 0,
+  "failures": [],
+  "results": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "name": "home",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-home.png",
+      "audit": {
+        "title": "Werkles — Figure out your next step. Build something real.",
+        "textCharacters": 7049,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Person pausing over a notebook to consider a new direction — Spark lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-spark-idea-moment.jpg&w=640&q=75",
+            "width": 412.65625,
+            "height": 232.109375
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-spark-match.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Veterinarian gently examining a golden retriever in a bright clinic — Operator lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-vet-exam.jpg&w=640&q=75",
+            "width": 412.671875,
+            "height": 232.125
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Accountant working through ledgers at a home office desk — Backer lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-industry-accountant.png&w=640&q=75",
+            "width": 412.65625,
+            "height": 232.109375
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-backer-coins.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Two people discussing plans over coffee — Connector lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-collab-coffee-plans.png&w=1920&q=75",
+            "width": 412.65625,
+            "height": 232.109375
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-connector-plug.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Florist arranging a bouquet behind her shop counter — Builder lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-industry-florist.png&w=1920&q=75",
+            "width": 412.671875,
+            "height": 232.125
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-builder-hammer.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Dog walker with four dogs on a neighborhood route — Worker lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-industry-dogwalker.png&w=1920&q=75",
+            "width": 412.65625,
+            "height": 232.109375
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-worker-glove.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-name-penciltag.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-verify-stamp.png",
+            "width": 46,
+            "height": 46
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Let us help you discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how evidence works",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.72)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start with your situation",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how proof works",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          },
+          {
+            "label": "Try stating a need →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "See a real translation →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how proof looks →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Join the Foundry",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See verified means itemized",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Log in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Member home",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/login",
+      "name": "login",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-login.png",
+      "audit": {
+        "title": "Sign in | Werkles",
+        "textCharacters": 980,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Business owner reviewing notes beside a laptop",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-bellows-learning.jpg&w=640&q=75",
+            "width": 391.25,
+            "height": 296
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Continue as gimprobotester",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/bellows/intake",
+      "name": "intake",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-intake.png",
+      "audit": {
+        "title": "Tell Werkles What You Are Building | Werkles",
+        "textCharacters": 3640,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "A person pausing over a notebook to think through a real next move",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-spark-idea-moment.jpg&w=3840&q=75",
+            "width": 982.8125,
+            "height": 384
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Just an idea",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Testing it",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "First customers or users",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Running and trying to grow",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Changing or rebuilding it",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Customers or sales",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Money to keep going",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Time or capacity",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Tools, equipment, or space",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Skills or credentials",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "A teammate or adviser",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Paperwork, legal, or compliance",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Choosing between two paths",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Not sure yet",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "An idea or prototype",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Skills or credentials",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Customers or revenue",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Money or credit",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Time to work on it",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Tools, equipment, or a place",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "A team or useful relationships",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "An existing company or documents",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Nothing yet",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Continue with my last Intake",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Show me what might help",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/bellows/recommendations",
+      "name": "recommendations",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-recommendations.png",
+      "audit": {
+        "title": "Werkles Recommendations | Bellows | Werkles",
+        "textCharacters": 6598,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 9,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Two people comparing ideas together at a cafe table",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-partners-cafe.png&w=1080&q=75",
+            "width": 495.5,
+            "height": 208
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-proof-v1.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-backer-coins.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-armory-v1.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-proof-v1.png",
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Why this appeared",
+            "tag": "SUMMARY",
+            "width": 1078.40625,
+            "height": 21
+          },
+          {
+            "label": "Reasoning",
+            "tag": "SUMMARY",
+            "width": 1080.40625,
+            "height": 21
+          },
+          {
+            "label": "Proof & evidence",
+            "tag": "SUMMARY",
+            "width": 1080.40625,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update my answers",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(113, 85, 199)",
+            "shadow": "none"
+          },
+          {
+            "label": "Possible next steps based on what you wrote (4)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(113, 85, 199)",
+            "shadow": "none"
+          },
+          {
+            "label": "All options (12)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(33, 27, 23)",
+            "shadow": "none"
+          },
+          {
+            "label": "#1Strengthen Your EvidenceStrengthen Your EvidenceBuild an evidence brief someon",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(38, 59, 43)",
+            "shadow": "none"
+          },
+          {
+            "label": "#2Compare Credit-Union OptionsCompare Credit-Union OptionsCompare eligibility an",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(51, 40, 32)",
+            "shadow": "none"
+          },
+          {
+            "label": "#3Find Tools or EquipmentFind Tools or EquipmentPrice the exact tool three ways ",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(51, 40, 32)",
+            "shadow": "none"
+          },
+          {
+            "label": "#4Choose the Next DecisionChoose the Next DecisionTurn the idea into one decisio",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(51, 40, 32)",
+            "shadow": "none"
+          },
+          {
+            "label": "Save on this device",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(106, 79, 161)",
+            "shadow": "none"
+          },
+          {
+            "label": "Copy Draft to Clipboard",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(36, 87, 55)",
+            "shadow": "none"
+          },
+          {
+            "label": "Clear this draft",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(59, 44, 33)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open My Bellows Lesson →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(106, 79, 161)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Public Version →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(106, 79, 161)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open my Workshop",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See people who may fit",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/dashboard/blueprints",
+      "name": "workshop",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-workshop.png",
+      "audit": {
+        "title": "Your Workshop",
+        "textCharacters": 3400,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-workshop-v1.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "Two people working together to finish a real business space",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-stepladder-lamp.jpg&w=1200&q=75",
+            "width": 1392,
+            "height": 480
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Review My Plan →",
+            "tag": "A",
+            "width": 143.234375,
+            "height": 21
+          },
+          {
+            "label": "Open My Drafts →",
+            "tag": "A",
+            "width": 143,
+            "height": 21
+          },
+          {
+            "label": "Open Match Deck →",
+            "tag": "A",
+            "width": 156.375,
+            "height": 21
+          },
+          {
+            "label": "Practice a Werkle →",
+            "tag": "A",
+            "width": 155.140625,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open my Intake",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Review or Change My Intake",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Recommendations",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Review My Plan →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open My Drafts →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Match Deck →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Practice a Werkle →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare My Next Moves",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Return to Member Home",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.04)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/dashboard/intros",
+      "name": "match-deck",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-match-deck.png",
+      "audit": {
+        "title": "Match Deck | Werkles",
+        "textCharacters": 4921,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-intros-v1.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "Two people reviewing a plan together",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-partners-clipboard.png&w=1080&q=75",
+            "width": 625.84375,
+            "height": 288
+          },
+          {
+            "alt": "Two people considering materials and possibilities in a shared workshop and kitchen",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-shared-possibility-v1.png&w=1200&q=75",
+            "width": 1392,
+            "height": 496
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "See the fuller reasoning",
+            "tag": "SUMMARY",
+            "width": 1358,
+            "height": 21
+          },
+          {
+            "label": "How Werkles orders these matches",
+            "tag": "SUMMARY",
+            "width": 1324,
+            "height": 21
+          },
+          {
+            "label": "See the matching privacy boundary.",
+            "tag": "A",
+            "width": 252.765625,
+            "height": 21
+          },
+          {
+            "label": "Edit your Intake",
+            "tag": "A",
+            "width": 125.609375,
+            "height": 21
+          },
+          {
+            "label": "profile",
+            "tag": "A",
+            "width": 53.109375,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Add to your answers",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Knock on this door",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare practical next moves",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See what could be checked",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "See the matching privacy boundary.",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "ASCurrent order #1Ava SalazarRetired contractor · Birmingham, AL · Location pref",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(230, 213, 242)",
+            "shadow": "rgb(93, 55, 127) 6px 0px 0px 0px inset"
+          },
+          {
+            "label": "IACurrent order #2Imani AlvarezKitchen operator · Charlotte, NC · Location prefe",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(242, 232, 216)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not a Fit for This Practice",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(255, 250, 240)",
+            "shadow": "none"
+          },
+          {
+            "label": "Edit your Intake",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "profile",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Hey Ava, I see you bring co-signer capacity. What part of that are you best at, ",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          },
+          {
+            "label": "What would make this worth your time, Ava, and what would you need from me?Built",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          },
+          {
+            "label": "Before we promise each other anything, what would you want us to be clear about?",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          },
+          {
+            "label": "Hey Ava, if we started small, what would you want the first round of money to ac",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/dashboard/werkles/formation?candidate=ghost_095",
+      "name": "formation",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-formation.png",
+      "audit": {
+        "title": "Form a Werkle | Werkles",
+        "textCharacters": 7554,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 11,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Two people comparing plans in a shared work space",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-shared-possibility-v1.png&w=1920&q=75",
+            "width": 643.90625,
+            "height": 709.234375
+          },
+          {
+            "alt": "An empty storefront with keys and a lease waiting on the counter",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fplace-space-just-leased.jpg&w=3840&q=75",
+            "width": 1394,
+            "height": 498
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start comparing Workshops",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Back to Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Work on next: Purpose →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "rgba(8, 2, 17, 0.28) 0px 10px 26px 0px"
+          },
+          {
+            "label": "Answer as yourself",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Try Ava Salazar's side (practice only)",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "1TimeNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "2Personal moneyNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "3First payNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "4Decision authorityNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "5ProfitNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "6LeavingNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Clear my private exercise",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Next question",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "PurposeWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "First customer or use caseWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "First 30-day testWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "ResponsibilitiesWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Decision rightsWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "ContributionsWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Money questionsWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Claims that need checkingWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "A fair way to stopWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Work product and intellectual propertyWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "What may leave the roomWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "What neither person knows yetWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Carry the statement from Your Workshop into the proposed Werkle.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Carry the statement from the other Workshop into the proposed Werkle.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Create new joint wording while keeping links to both originals.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Leave both source statements in their original Workshops.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Keep the disagreement visible without pretending it is settled.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Accept revision 1",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Use the Partnership Alignment questions",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Build the Operating Brief",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Copy current brief",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Save on this device",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open the Personal Bellows handoff",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Return to Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Reset this practice formation",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/bellows/personal",
+      "name": "personal-bellows",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-personal-bellows.png",
+      "audit": {
+        "title": "My Bellows | Werkles",
+        "textCharacters": 5203,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "An empty commercial space ready to be shaped into a working business",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-space-just-leased.png&w=1920&q=75",
+            "width": 706.796875,
+            "height": 503.890625
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Open Evidence Brief →",
+            "tag": "A",
+            "width": 176.75,
+            "height": 21
+          },
+          {
+            "label": "Open Company Starter Floor →",
+            "tag": "A",
+            "width": 242.1875,
+            "height": 21
+          },
+          {
+            "label": "Open Supplier Comparison →",
+            "tag": "A",
+            "width": 228.609375,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Continue This Lesson",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Evidence Brief →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Company Starter Floor →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Supplier Comparison →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Use It in My Workshop",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare My Matches",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update My Situation",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Werkle Operating Brief",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Constraint Map",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Company Starter Floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Evidence Brief",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Partnership Alignment Memo",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Assumption Test",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Supplier Comparison",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/dashboard/crucible",
+      "name": "crucible",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-crucible.png",
+      "audit": {
+        "title": "Crucible Checks",
+        "textCharacters": 12653,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Two partners reviewing a checklist together in their shop",
+            "src": "http://127.0.0.1:3000/assets/draft/people-v1/people-partners-clipboard.png",
+            "width": 1370,
+            "height": 766.609375
+          },
+          {
+            "alt": "Spark lane prop",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-spark-match.png",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "alt": "Builder lane prop",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-builder-hammer.png",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "alt": "Worker lane prop",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-worker-glove.png",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "alt": "Operator lane prop",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "alt": "Backer lane prop",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-backer-coins.png",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "alt": "Connector lane prop",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-connector-plug.png",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-identity-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-identity-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-identity-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-funds-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-funds-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-license-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-reference-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-employment-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "Not live yet: what would happen to the data",
+            "tag": "SUMMARY",
+            "width": 612.421875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "View the six-field fictional example",
+            "tag": "SUMMARY",
+            "width": 338,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start identity practice",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Show an on-screen practice code",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Connected test account required",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Connected test account required",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update my answers",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "How checks work",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare next moves",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update profile",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "See check pricing",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "How checks work",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "desktop",
+      "route": "/membership",
+      "name": "membership",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/desktop-membership.png",
+      "audit": {
+        "title": "Membership | Werkles",
+        "textCharacters": 4304,
+        "overlay": false,
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-move-opensign.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "Shop owner flipping her door sign to OPEN on opening morning",
+            "src": "http://127.0.0.1:3000/assets/draft/people-v1/people-open-sign-flip.jpg",
+            "width": 558.3125,
+            "height": 372.203125
+          },
+          {
+            "alt": "Baker handing a paper bag across the counter to his first customer",
+            "src": "http://127.0.0.1:3000/assets/draft/people-v1/people-first-customer.jpg",
+            "width": 560.3125,
+            "height": 373.53125
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start free",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Visit the member Workshop",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start free",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how checks work",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Review pricing",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start free",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Mock checkout (preview)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Mock checkout (preview)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(2, 118, 101)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "name": "home",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-home.png",
+      "audit": {
+        "title": "Werkles — Figure out your next step. Build something real.",
+        "textCharacters": 7049,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Person pausing over a notebook to consider a new direction — Spark lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-spark-idea-moment.jpg&w=1920&q=75",
+            "width": 272,
+            "height": 153
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-spark-match.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Veterinarian gently examining a golden retriever in a bright clinic — Operator lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-vet-exam.jpg&w=1920&q=75",
+            "width": 272,
+            "height": 153
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Accountant working through ledgers at a home office desk — Backer lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-industry-accountant.png&w=1920&q=75",
+            "width": 272,
+            "height": 153
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-backer-coins.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Two people discussing plans over coffee — Connector lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-collab-coffee-plans.png&w=1920&q=75",
+            "width": 272,
+            "height": 153
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-connector-plug.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Florist arranging a bouquet behind her shop counter — Builder lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-industry-florist.png&w=1920&q=75",
+            "width": 272,
+            "height": 153
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-builder-hammer.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "Dog walker with four dogs on a neighborhood route — Worker lane",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-industry-dogwalker.png&w=1920&q=75",
+            "width": 272,
+            "height": 153
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-worker-glove.png",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-name-penciltag.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-verify-stamp.png",
+            "width": 46,
+            "height": 46
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Let us help you discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how evidence works",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.72)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start with your situation",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how proof works",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          },
+          {
+            "label": "Try stating a need →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "See a real translation →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how proof looks →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Join the Foundry",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See verified means itemized",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Log in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Member home",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/login",
+      "name": "login",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-login.png",
+      "audit": {
+        "title": "Sign in | Werkles",
+        "textCharacters": 980,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Business owner reviewing notes beside a laptop",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-bellows-learning.jpg&w=640&q=75",
+            "width": 362,
+            "height": 186
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Continue as gimprobotester",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/bellows/intake",
+      "name": "intake",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-intake.png",
+      "audit": {
+        "title": "Tell Werkles What You Are Building | Werkles",
+        "textCharacters": 3640,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "A person pausing over a notebook to think through a real next move",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-spark-idea-moment.jpg&w=3840&q=75",
+            "width": 348.8125,
+            "height": 336
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Just an idea",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Testing it",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "First customers or users",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Running and trying to grow",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Changing or rebuilding it",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Customers or sales",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Money to keep going",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Time or capacity",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Tools, equipment, or space",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Skills or credentials",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "A teammate or adviser",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Paperwork, legal, or compliance",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Choosing between two paths",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Not sure yet",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "An idea or prototype",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Skills or credentials",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Customers or revenue",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Money or credit",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Time to work on it",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Tools, equipment, or a place",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "A team or useful relationships",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "An existing company or documents",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          },
+          {
+            "label": "Nothing yet",
+            "tag": "INPUT",
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Continue with my last Intake",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Show me what might help",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/bellows/recommendations",
+      "name": "recommendations",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-recommendations.png",
+      "audit": {
+        "title": "Werkles Recommendations | Bellows | Werkles",
+        "textCharacters": 6598,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 9,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Two people comparing ideas together at a cafe table",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-partners-cafe.png&w=1080&q=75",
+            "width": 351.625,
+            "height": 144
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-proof-v1.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-backer-coins.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-armory-v1.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-operator-clipboard.png",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-proof-v1.png",
+            "width": 48,
+            "height": 48
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Why this appeared",
+            "tag": "SUMMARY",
+            "width": 350,
+            "height": 21
+          },
+          {
+            "label": "Reasoning",
+            "tag": "SUMMARY",
+            "width": 352,
+            "height": 21
+          },
+          {
+            "label": "Proof & evidence",
+            "tag": "SUMMARY",
+            "width": 352,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update my answers",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(113, 85, 199)",
+            "shadow": "none"
+          },
+          {
+            "label": "Possible next steps based on what you wrote (4)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(113, 85, 199)",
+            "shadow": "none"
+          },
+          {
+            "label": "All options (12)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(33, 27, 23)",
+            "shadow": "none"
+          },
+          {
+            "label": "#1Strengthen Your EvidenceStrengthen Your EvidenceBuild an evidence brief someon",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(38, 59, 43)",
+            "shadow": "none"
+          },
+          {
+            "label": "#2Compare Credit-Union OptionsCompare Credit-Union OptionsCompare eligibility an",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(51, 40, 32)",
+            "shadow": "none"
+          },
+          {
+            "label": "#3Find Tools or EquipmentFind Tools or EquipmentPrice the exact tool three ways ",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(51, 40, 32)",
+            "shadow": "none"
+          },
+          {
+            "label": "#4Choose the Next DecisionChoose the Next DecisionTurn the idea into one decisio",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(51, 40, 32)",
+            "shadow": "none"
+          },
+          {
+            "label": "Save on this device",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(106, 79, 161)",
+            "shadow": "none"
+          },
+          {
+            "label": "Copy Draft to Clipboard",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(36, 87, 55)",
+            "shadow": "none"
+          },
+          {
+            "label": "Clear this draft",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(59, 44, 33)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open My Bellows Lesson →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(106, 79, 161)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Public Version →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(106, 79, 161)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open my Workshop",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See people who may fit",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/dashboard/blueprints",
+      "name": "workshop",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-workshop.png",
+      "audit": {
+        "title": "Your Workshop",
+        "textCharacters": 3400,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-workshop-v1.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "Two people working together to finish a real business space",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-stepladder-lamp.jpg&w=3840&q=75",
+            "width": 342,
+            "height": 384
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Review My Plan →",
+            "tag": "A",
+            "width": 143.234375,
+            "height": 21
+          },
+          {
+            "label": "Open My Drafts →",
+            "tag": "A",
+            "width": 143,
+            "height": 21
+          },
+          {
+            "label": "Open Match Deck →",
+            "tag": "A",
+            "width": 156.375,
+            "height": 21
+          },
+          {
+            "label": "Practice a Werkle →",
+            "tag": "A",
+            "width": 155.140625,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open my Intake",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Review or Change My Intake",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Recommendations",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Review My Plan →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open My Drafts →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Match Deck →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Practice a Werkle →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare My Next Moves",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Return to Member Home",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.04)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/dashboard/intros",
+      "name": "match-deck",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-match-deck.png",
+      "audit": {
+        "title": "Match Deck | Werkles",
+        "textCharacters": 4921,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-intros-v1.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "Two people reviewing a plan together",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-partners-clipboard.png&w=1080&q=75",
+            "width": 304,
+            "height": 192
+          },
+          {
+            "alt": "Two people considering materials and possibilities in a shared workshop and kitchen",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-shared-possibility-v1.png&w=3840&q=75",
+            "width": 342,
+            "height": 384
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "See the fuller reasoning",
+            "tag": "SUMMARY",
+            "width": 308,
+            "height": 21
+          },
+          {
+            "label": "profile",
+            "tag": "A",
+            "width": 53.109375,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Add to your answers",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Knock on this door",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare practical next moves",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See what could be checked",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "See the matching privacy boundary.",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "ASCurrent order #1Ava SalazarRetired contractor · Birmingham, AL · Location pref",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(230, 213, 242)",
+            "shadow": "rgb(93, 55, 127) 6px 0px 0px 0px inset"
+          },
+          {
+            "label": "IACurrent order #2Imani AlvarezKitchen operator · Charlotte, NC · Location prefe",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(242, 232, 216)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not a Fit for This Practice",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(255, 250, 240)",
+            "shadow": "none"
+          },
+          {
+            "label": "Edit your Intake",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "profile",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Hey Ava, I see you bring co-signer capacity. What part of that are you best at, ",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          },
+          {
+            "label": "What would make this worth your time, Ava, and what would you need from me?Built",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          },
+          {
+            "label": "Before we promise each other anything, what would you want us to be clear about?",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          },
+          {
+            "label": "Hey Ava, if we started small, what would you want the first round of money to ac",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(58, 40, 73)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/dashboard/werkles/formation?candidate=ghost_095",
+      "name": "formation",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-formation.png",
+      "audit": {
+        "title": "Form a Werkle | Werkles",
+        "textCharacters": 7406,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 11,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "Two people comparing plans in a shared work space",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fpeople-shared-possibility-v1.png&w=1920&q=75",
+            "width": 344,
+            "height": 340
+          },
+          {
+            "alt": "An empty storefront with keys and a lease waiting on the counter",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Fpeople-v1%2Fplace-space-just-leased.jpg&w=3840&q=75",
+            "width": 344,
+            "height": 278
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start comparing Workshops",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Back to Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Work on next: Purpose →",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "rgba(8, 2, 17, 0.28) 0px 10px 26px 0px"
+          },
+          {
+            "label": "Answer as yourself",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Try Ava Salazar's side (practice only)",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "1TimeNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "2Personal moneyNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "3First payNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "4Decision authorityNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "5ProfitNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "6LeavingNot started",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Clear my private exercise",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Next question",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "PurposeWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "First customer or use caseWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "First 30-day testWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "ResponsibilitiesWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Decision rightsWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "ContributionsWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Money questionsWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Claims that need checkingWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "A fair way to stopWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Work product and intellectual propertyWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "What may leave the roomWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "What neither person knows yetWaiting on someone",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 255, 255, 0.035)",
+            "shadow": "none"
+          },
+          {
+            "label": "Carry the statement from Your Workshop into the proposed Werkle.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Carry the statement from the other Workshop into the proposed Werkle.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Create new joint wording while keeping links to both originals.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Leave both source statements in their original Workshops.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Keep the disagreement visible without pretending it is settled.",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(54, 35, 68)",
+            "shadow": "none"
+          },
+          {
+            "label": "Accept revision 1",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Use the Partnership Alignment questions",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Build the Operating Brief",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Copy current brief",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Save on this device",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open the Personal Bellows handoff",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Return to Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Reset this practice formation",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/bellows/personal",
+      "name": "personal-bellows",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-personal-bellows.png",
+      "audit": {
+        "title": "My Bellows | Werkles",
+        "textCharacters": 5203,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "An empty commercial space ready to be shaped into a working business",
+            "src": "http://127.0.0.1:3000/_next/image?url=%2Fassets%2Fdraft%2Findustry-breadth%2Fwerkles-space-just-leased.png&w=1920&q=75",
+            "width": 368,
+            "height": 249.328125
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "Open Evidence Brief →",
+            "tag": "A",
+            "width": 176.75,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Continue This Lesson",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Evidence Brief →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Company Starter Floor →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Supplier Comparison →",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Use It in My Workshop",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare My Matches",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update My Situation",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.88)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Werkle Operating Brief",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Constraint Map",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Company Starter Floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Evidence Brief",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Partnership Alignment Memo",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Assumption Test",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start Supplier Comparison",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "background": "rgb(255, 250, 242)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/dashboard/crucible",
+      "name": "crucible",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-crucible.png",
+      "audit": {
+        "title": "Crucible Checks",
+        "textCharacters": 12535,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-identity-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-identity-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-identity-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-funds-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-funds-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-license-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-reference-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/lady-jessica-v1/werkles-check-employment-v1.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-crucible-ribbon.png",
+            "width": 42,
+            "height": 42
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          },
+          {
+            "label": "What moves this forward",
+            "tag": "SUMMARY",
+            "width": 247.21875,
+            "height": 17
+          },
+          {
+            "label": "See where this lives",
+            "tag": "A",
+            "width": 153.859375,
+            "height": 21
+          }
+        ],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Open Match Deck",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "See where this lives",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start identity practice",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Show an on-screen practice code",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Connected test account required",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Connected test account required",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Not available yet",
+            "cursor": "not-allowed",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update my answers",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "How checks work",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Compare next moves",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Update profile",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "See check pricing",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "How checks work",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "mobile",
+      "route": "/membership",
+      "name": "membership",
+      "status": "PASS",
+      "failures": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m7/mobile-membership.png",
+      "audit": {
+        "title": "Membership | Werkles",
+        "textCharacters": 4206,
+        "overlay": false,
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "headerVisible": true,
+        "navLinks": 8,
+        "visibleImages": [
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/werkles-w-mark-transparent.png",
+            "width": 51.359375,
+            "height": 34
+          },
+          {
+            "alt": "",
+            "src": "http://127.0.0.1:3000/assets/brand/product-icons/clear-v1/icon-move-opensign.png",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "alt": "Shop owner flipping her door sign to OPEN on opening morning",
+            "src": "http://127.0.0.1:3000/assets/draft/people-v1/people-open-sign-flip.jpg",
+            "width": 318,
+            "height": 212
+          }
+        ],
+        "unlabeled": [],
+        "tinyTargets": [],
+        "smallText": [],
+        "actionSignals": [
+          {
+            "label": "Werkles home",
+            "cursor": "pointer",
+            "borderStyle": "none",
+            "borderWidth": "0px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Six lanes on the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Four-act journey",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Inspect the steel",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Squibb hosts the floor",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 248, 240, 0.9)",
+            "shadow": "none"
+          },
+          {
+            "label": "Foundry membership",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Sign in",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none"
+          },
+          {
+            "label": "Discover what you need",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start free",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Visit the member Workshop",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start free",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "See how checks work",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Review pricing",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Start free",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgba(255, 252, 247, 0.92)",
+            "shadow": "none"
+          },
+          {
+            "label": "Mock checkout (preview)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(69, 32, 201)",
+            "shadow": "none"
+          },
+          {
+            "label": "Mock checkout (preview)",
+            "cursor": "pointer",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "background": "rgb(2, 118, 101)",
+            "shadow": "none"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "missionId": "WERKLE_FORMATION_VISUAL_REDESIGN_POSTBUILD_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build red team of the formation studio after applying the returned two-Workshops-to-one-Werkle composition.",
+  "sharedContext": [
+    "The twelve simultaneously expanded administrative cards were replaced with a persistent topic index and one active workbench.",
+    "The active workbench visibly separates Your Workshop, Their Workshop, and Shared Werkle while preserving all existing choices, exact-revision acceptance, notes, provenance, and Bellows help.",
+    "A Formation Ledger now grows only from topics that both participants accepted.",
+    "The approved deep-purple/copper direction now governs the topic index, source cards, and shared Werkle instead of warm beige paper cards.",
+    "At 320px the live walk clicked Purpose to Responsibilities, confirmed the heading and active topic update, found and repaired overlapping topic/status text, and found and repaired global black heading inheritance.",
+    "TypeScript, formation contract, and browser studio checks pass; the browser check covers clean console, desktop/mobile overflow, visible mutuality, source custody, and a 16px trust/provenance floor."
+  ],
+  "liveStrings": [
+    "The Werkle taking shape",
+    "Only mutual decisions cross this line.",
+    "Choose one question. Work it together.",
+    "Your Workshop",
+    "Their Workshop",
+    "Shared Werkle",
+    "Decide what crosses the line"
+  ],
+  "knownGaps": [
+    "Computer cannot reach Betsy's localhost from its sandbox, so rendered facts are supplied as explicit walk evidence.",
+    "The existing page still includes arrival, readout, actor switch, shared floor, history, and save sections around the new studio.",
+    "Account persistence and production company formation are not claimed by this visual slice.",
+    "No actual Ender desktop return is available for this round."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Confirm that the implemented composition materially answers the returned F1-F5 visual failures without weakening trust boundaries.",
+      "pull": "Attack the supplied post-build structure and rendered evidence for cosmetic compliance, lost state, hidden topics, misleading progress, or narrow-screen fatigue.",
+      "go": [
+        "Return only PASS or BLOCK.",
+        "Map the build against R1 active three-part canvas and R2 persistent state/topic rail.",
+        "Name any single P0/P1 visual or trust defect that should block Ben's next walk.",
+        "If PASS, give one narrow walkthrough instruction that proves the redesign is real."
+      ],
+      "momentum": "Return one small in-lane polish idea only if it is materially better than stopping.",
+      "outOfLane": "No implementation, provider call, schema, deploy, secrets, spend, new agents, or new product scope."
+    }
+  }
+}

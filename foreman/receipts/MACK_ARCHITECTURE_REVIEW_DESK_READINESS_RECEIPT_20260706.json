@@ -1,0 +1,1428 @@
+{
+  "schema": "MACK_ARCHITECTURE_REVIEW_DESK_READINESS_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T11:13:45.728Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_READINESS_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+  "validation": {
+    "required_artifacts_exist": true,
+    "required_receipts_parse": true,
+    "index_boundaries_present": true,
+    "connection_map_indexed": true,
+    "connection_map_receipt_current": true,
+    "connection_map_json_valid": true,
+    "connection_map_no_mack_return_claimed": true,
+    "connection_map_no_universal_receiver_proof_claimed": true,
+    "attack_scorecard_indexed": true,
+    "attack_scorecard_receipt_current": true,
+    "attack_scorecard_json_valid": true,
+    "attack_scorecard_unfilled_template": true,
+    "attack_scorecard_no_mack_review_return_claimed": true,
+    "attack_scorecard_ben_gate_required_for_conversion": true,
+    "scorecard_return_intake_indexed": true,
+    "scorecard_return_validator_indexed": true,
+    "scorecard_return_waiting_for_mack": true,
+    "scorecard_return_smoke_current": true,
+    "contract_canon_smoke_current": true,
+    "event_spine_smoke_current": true,
+    "event_spine_fixture_events_still_join": true,
+    "boot_context_refresh_current": true,
+    "boot_context_world_state_fresh_under_12h": true,
+    "clipboard_importer_indexed": true,
+    "clipboard_importer_smoke_current": true,
+    "return_receiver_wrapper_indexed": true,
+    "return_receiver_smoke_indexed": true,
+    "return_receiver_smoke_current": true,
+    "return_acceptance_wrapper_indexed": true,
+    "return_acceptance_smoke_indexed": true,
+    "return_acceptance_smoke_current": true,
+    "review_flow_state_indexed": true,
+    "review_flow_state_smoke_indexed": true,
+    "review_flow_state_current": true,
+    "review_flow_state_waiting_for_mack": true,
+    "return_drop_processor_indexed": true,
+    "return_drop_processor_smoke_indexed": true,
+    "return_drop_processor_live_empty": true,
+    "return_drop_processor_smoke_current": true,
+    "review_lane_coordinator_indexed": true,
+    "review_lane_coordinator_live_drop_empty": true,
+    "review_lane_coordinator_smoke_current": true,
+    "return_drop_watcher_indexed": true,
+    "return_drop_watcher_smoke_indexed": true,
+    "return_drop_watcher_live_once_drop_empty": true,
+    "return_drop_watcher_smoke_current": true,
+    "status_refresh_indexed": true,
+    "status_refresh_smoke_indexed": true,
+    "status_refresh_live_waiting_for_drop": true,
+    "status_refresh_smoke_current": true,
+    "send_return_roundtrip_smoke_indexed": true,
+    "send_return_roundtrip_smoke_current": true,
+    "receiver_proof_coverage_audit_indexed": true,
+    "receiver_proof_coverage_audit_current": true,
+    "receiver_proof_universal_claim_absent": true,
+    "mack_review_desk_readout_indexed": true,
+    "mack_review_desk_status_indexed": true,
+    "mack_review_desk_readout_current": true,
+    "mack_paste_packet_indexed": true,
+    "mack_paste_packet_current": true,
+    "mack_paste_block_clipboard_helper_indexed": true,
+    "mack_paste_block_clipboard_helper_current": true,
+    "mack_handoff_receipts_current": true,
+    "workspace_relay_receiver_handoff_bridge_pending": true,
+    "handoff_ready_to_paste": true,
+    "intake_waiting_for_mack": true,
+    "validator_reports_mack_not_received": true,
+    "launcher_dry_run_ready": true,
+    "launcher_smoke_indexed": true,
+    "launcher_smoke_current": true,
+    "healthcheck_indexed": true,
+    "healthcheck_receipt_valid": true,
+    "healthcheck_typecheck_status": "PASSED",
+    "healthcheck_no_external_send_claimed": true,
+    "healthcheck_no_clipboard_write": true,
+    "healthcheck_no_canonical_next_build_packet_generated": true,
+    "canonical_next_build_packet_absent": true,
+    "live_receiver_handoff_counts_match_index": true,
+    "no_external_send_claim": true,
+    "no_mack_receipt_claim": true,
+    "truth_boundary": "This readiness audit proves the local Mack review desk is assembled and waiting. It does not send anything to Mack and does not claim Mack returned a review."
+  },
+  "receiver_handoff_readback": {
+    "count": 19,
+    "posted_count": 6,
+    "pending_count": 9,
+    "returned_unposted_count": 3,
+    "template_return_blocked_count": 1,
+    "invalid_count": 0,
+    "malformed_count": 0
+  },
+  "source_readbacks": {
+    "index_has_no_send_boundary": true,
+    "index_has_ben_pre_mack_brief": true,
+    "index_has_connection_map": true,
+    "index_has_connection_map_receipt": true,
+    "connection_map_markdown_valid": true,
+    "connection_map_html_valid": true,
+    "connection_map_json_valid": true,
+    "connection_map_mermaid_valid": true,
+    "index_has_attack_scorecard": true,
+    "index_has_attack_scorecard_receipt": true,
+    "attack_scorecard_markdown_valid": true,
+    "attack_scorecard_html_valid": true,
+    "attack_scorecard_json_valid": true,
+    "attack_scorecard_unfilled_template": true,
+    "index_has_scorecard_return_intake": true,
+    "index_has_scorecard_return_validator": true,
+    "index_has_scorecard_return_validator_smoke": true,
+    "scorecard_return_intake_waiting": true,
+    "index_has_mack_review_desk_readout": true,
+    "index_has_mack_review_desk_status": true,
+    "index_has_mack_paste_packet": true,
+    "index_has_mack_paste_packet_update_receipt": true,
+    "index_has_mack_paste_block_clipboard_helper": true,
+    "index_has_mack_paste_block_clipboard_helper_receipt": true,
+    "index_has_mack_paste_block_helper_update_receipt": true,
+    "index_has_contract_canon": true,
+    "index_has_event_spine": true,
+    "index_has_boot_context_refresh": true,
+    "ben_brief_preserves_mack_not_received_boundary": true,
+    "index_has_clipboard_importer": true,
+    "index_has_return_receiver_wrapper": true,
+    "index_has_return_receiver_smoke": true,
+    "index_has_return_receiver_smoke_receipt": true,
+    "index_has_return_receiver_update_receipt": true,
+    "index_has_return_acceptance_wrapper": true,
+    "index_has_return_acceptance_smoke": true,
+    "index_has_return_acceptance_smoke_receipt": true,
+    "index_has_return_acceptance_update_receipt": true,
+    "index_has_review_flow_state": true,
+    "index_has_review_flow_state_smoke": true,
+    "index_has_review_flow_state_receipt": true,
+    "index_has_review_flow_state_update_receipt": true,
+    "index_has_return_drop_folder": true,
+    "index_has_return_drop_processor": true,
+    "index_has_return_drop_processor_smoke": true,
+    "index_has_return_drop_processor_receipt": true,
+    "index_has_return_drop_processor_update_receipt": true,
+    "index_has_lane_coordinator": true,
+    "index_has_lane_coordinator_smoke": true,
+    "index_has_lane_coordinator_receipt": true,
+    "index_has_lane_coordinator_update_receipt": true,
+    "index_has_return_drop_watcher": true,
+    "index_has_return_drop_watcher_smoke": true,
+    "index_has_return_drop_watcher_receipt": true,
+    "index_has_return_drop_watcher_smoke_receipt": true,
+    "index_has_return_drop_watcher_update_receipt": true,
+    "index_has_status_refresh": true,
+    "index_has_status_refresh_smoke": true,
+    "index_has_status_refresh_receipt": true,
+    "index_has_status_refresh_smoke_receipt": true,
+    "index_has_status_refresh_update_receipt": true,
+    "index_has_send_return_roundtrip_smoke": true,
+    "index_has_send_return_roundtrip_smoke_receipt": true,
+    "index_has_send_return_roundtrip_update_receipt": true,
+    "index_has_receiver_proof_audit": true,
+    "index_has_receiver_proof_boundary_helper": true,
+    "index_preserves_receiver_proof_blockers": true,
+    "index_has_nerdkle_mirror_smoke": true,
+    "index_has_soledash_mirror_smoke": true,
+    "index_has_soledash_receiver_handoff_bridge_smoke": true,
+    "index_has_workspace_relay_receiver_handoff_bridge_smoke": true,
+    "index_has_status_first_launcher_instruction": true,
+    "index_has_readout_second_launcher_instruction": true,
+    "index_has_paste_packet_launcher_instruction": true,
+    "index_has_launcher_refresh_status_option": true,
+    "index_has_launcher_copy_mack_block_option": true,
+    "index_has_launcher_smoke": true,
+    "index_has_launcher_smoke_receipt": true,
+    "index_has_healthcheck": true,
+    "index_has_healthcheck_receipt": true,
+    "index_has_healthcheck_typecheck_option": true,
+    "index_next_human_gate_points_to_readout_first": true,
+    "index_next_human_gate_points_to_healthcheck": true,
+    "index_next_human_gate_points_to_connection_map": true,
+    "index_next_human_gate_points_to_attack_scorecard": true,
+    "index_next_human_gate_points_to_scorecard_return_validator": true,
+    "index_next_human_gate_points_to_launcher_refresh_status": true,
+    "index_next_human_gate_points_to_paste_packet": true,
+    "index_next_human_gate_points_to_paste_block_helper": true,
+    "index_next_human_gate_points_to_drop_processor": true,
+    "index_next_human_gate_points_to_return_drop_watcher": true,
+    "index_next_human_gate_points_to_status_refresh": true,
+    "index_next_human_gate_points_to_lane_coordinator": true,
+    "index_next_human_gate_points_to_receive_wrapper": true,
+    "index_next_human_gate_points_to_acceptance_wrapper": true,
+    "index_next_human_gate_points_to_flow_state": true,
+    "main_packet_has_readout_first_front_door": true,
+    "handoff_ready_to_paste": true,
+    "ben_brief_has_readout_first_read_order": true,
+    "handoff_includes_readout_first_instruction": true,
+    "handoff_counts_current": true,
+    "handoff_preserves_universal_receiver_proof_boundary": true,
+    "handoff_includes_four_hour_no_babysitting_test": true,
+    "intake_waiting_for_mack": true,
+    "status_note_waiting_for_mack_return_drop": true,
+    "status_note_has_no_raw_mack_return_block": true
+  },
+  "connection_map_readback": {
+    "status": "ARTIFACT",
+    "markdown_written": true,
+    "html_written": true,
+    "json_manifest_valid": true,
+    "mermaid_written": true,
+    "index_points_to_connection_map": true,
+    "file_hashes_current": true,
+    "node_count": 12,
+    "edge_count": 12,
+    "no_mack_return_claimed": true,
+    "no_external_send_claimed": true,
+    "no_universal_receiver_proof_claimed": true,
+    "no_solved_shared_cognition_claimed": true
+  },
+  "attack_scorecard_readback": {
+    "status": "ARTIFACT",
+    "markdown_written": true,
+    "html_written": true,
+    "json_manifest_valid": true,
+    "index_points_to_scorecard": true,
+    "file_hashes_current": true,
+    "dimension_count": 12,
+    "fatal_flag_count": 8,
+    "unfilled_template": true,
+    "no_mack_scorecard_return_claimed": true,
+    "no_mack_review_return_claimed": true,
+    "ben_gate_required_for_conversion": true
+  },
+  "scorecard_return_readback": {
+    "intake_receipt_status": "ARTIFACT",
+    "live_validator_status": "BLOCKER",
+    "live_blocker_code": "MACK_SCORECARD_RETURN_NOT_RECEIVED",
+    "smoke_receipt_status": "ARTIFACT",
+    "waiting_scorecard_not_received_blocks": true,
+    "incomplete_scorecard_blocks": true,
+    "invalid_dimension_score_blocks": true,
+    "total_mismatch_blocks": true,
+    "complete_scorecard_passes": true,
+    "no_next_build_packet_generated": true,
+    "current_script_hashes_match_receipt": true
+  },
+  "contract_canon_readback": {
+    "status": "ARTIFACT",
+    "tsc_compile": "passed",
+    "valid_packet_parses": true,
+    "invalid_packet_returns_schema_invalid": true,
+    "receipt_requires_packet_id": true,
+    "receipt_requires_terminal_status": true,
+    "event_joins_packet_id_and_receipt_id": true,
+    "current_contract_hashes_match_receipt": true
+  },
+  "event_spine_readback": {
+    "status": "ARTIFACT",
+    "packet_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_mr8y3e9y",
+    "receipt_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_mr8y3e9y",
+    "packet_event_id": "packet_dispatched_20260706081528_ff773b",
+    "receipt_event_id": "packet_receipted_20260706081528_a32e9c",
+    "current_script_hashes_match_receipt": true,
+    "fixture_events_still_join": true
+  },
+  "boot_context_readback": {
+    "status": "ARTIFACT",
+    "world_state_path": "tinkarden/nervous_system/world_state.json",
+    "active_context_path": "tinkarden/nervous_system/active_context.txt",
+    "stale_block_code": 1,
+    "aeye_dry_run_status": "BOOTPACK_INJECTED_DRY_RUN_COMPLETE",
+    "aeye_call_log_backend": "wrapper_jsonl_only",
+    "current_script_hashes_match_receipt": true,
+    "world_state_fresh_under_12h": true
+  },
+  "clipboard_importer_smoke_readback": {
+    "status": "ARTIFACT",
+    "canonical_intake_not_mutated": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "empty-dry-run",
+      "unstructured-dry-run",
+      "structured-dry-run",
+      "structured-commit"
+    ]
+  },
+  "return_receiver_smoke_readback": {
+    "status": "ARTIFACT",
+    "empty_dry_run_blocks": true,
+    "structured_dry_run_does_not_write": true,
+    "structured_commit_writes_fixture_and_validates": true,
+    "real_clipboard_not_read": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "empty-dry-run",
+      "structured-dry-run",
+      "structured-commit"
+    ]
+  },
+  "return_acceptance_smoke_readback": {
+    "status": "ARTIFACT",
+    "canonical_waiting_dry_run_blocks": true,
+    "complete_dry_run_requires_ben_acceptance": true,
+    "complete_commit_without_ben_accepted_blocks": true,
+    "complete_commit_with_ben_accepted_writes_fixture_next_build": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "canonical-waiting-dry-run",
+      "complete-dry-run",
+      "complete-commit-without-ben-accepted",
+      "complete-commit-with-ben-accepted"
+    ]
+  },
+  "review_flow_state_readback": {
+    "live_status": "ARTIFACT",
+    "live_flow_state": "WAITING_FOR_MACK_RETURN",
+    "live_blocker_code": "MACK_RETURN_NOT_RECEIVED",
+    "live_next_legal_command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Receive-MackArchitectureReturn.ps1",
+    "smoke_status": "ARTIFACT",
+    "waiting_state_blocks": true,
+    "incomplete_state_blocks": true,
+    "complete_state_points_to_acceptance_dry_run": true,
+    "next_build_state_detects_existing_packet": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "waiting",
+      "incomplete",
+      "complete",
+      "next-build-exists"
+    ]
+  },
+  "return_drop_processor_readback": {
+    "live_status": "BLOCKER",
+    "live_blocker_code": "MACK_RETURN_DROP_EMPTY",
+    "live_candidates_seen": 0,
+    "smoke_status": "ARTIFACT",
+    "empty_drop_blocks": true,
+    "structured_dry_run_selects_newest_and_does_not_write": true,
+    "structured_commit_writes_fixture_and_validates": true,
+    "real_clipboard_not_read": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "empty-drop",
+      "structured-dry-run",
+      "structured-commit"
+    ]
+  },
+  "review_lane_coordinator_readback": {
+    "live_status": "ARTIFACT_WITH_BLOCKERS",
+    "live_lane_state": "WAITING_FOR_MACK_RETURN_DROP",
+    "live_blocker_code": "MACK_RETURN_DROP_EMPTY",
+    "smoke_status": "ARTIFACT",
+    "empty_lane_reports_drop_empty": true,
+    "drop_dry_run_selects_file_without_writing": true,
+    "commit_return_writes_fixture_intake_only": true,
+    "commit_acceptance_with_ben_accepted_writes_fixture_next_build": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "empty-default",
+      "drop-dry-run",
+      "drop-commit-return",
+      "full-fixture-next-build"
+    ]
+  },
+  "return_drop_watcher_readback": {
+    "live_status": "ARTIFACT",
+    "live_stop_reason": "ONCE",
+    "live_last_lane_state": "WAITING_FOR_MACK_RETURN_DROP",
+    "live_last_blocker_code": "MACK_RETURN_DROP_EMPTY",
+    "smoke_status": "ARTIFACT",
+    "empty_once_reports_drop_empty": true,
+    "drop_once_reports_ready_for_commit_without_writing": true,
+    "once_mode_exits": true,
+    "coordinator_runs_on_first_iteration": true,
+    "real_clipboard_not_read": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "empty-once",
+      "drop-once"
+    ]
+  },
+  "status_refresh_readback": {
+    "live_status": "ARTIFACT",
+    "live_lane_status": "WAITING_FOR_MACK_RETURN_DROP",
+    "live_flow_state": "WAITING_FOR_MACK_RETURN",
+    "live_flow_blocker_code": "MACK_RETURN_NOT_RECEIVED",
+    "live_return_drop_state": "WAITING_FOR_MACK_RETURN_DROP",
+    "live_return_drop_blocker_code": "MACK_RETURN_DROP_EMPTY",
+    "live_drop_candidates": 0,
+    "smoke_status": "ARTIFACT",
+    "empty_status_reports_waiting_for_drop": true,
+    "drop_status_reports_ready_for_commit_without_writing": true,
+    "status_markdown_written": true,
+    "watcher_once_exits": true,
+    "real_clipboard_not_read": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "empty-drop-status",
+      "drop-ready-status"
+    ]
+  },
+  "send_return_roundtrip_smoke_readback": {
+    "status": "ARTIFACT",
+    "outbound_copy_helper_dry_run_passed": true,
+    "outbound_copy_helper_did_not_touch_clipboard": true,
+    "return_importer_fixture_commit_passed": true,
+    "return_validator_fixture_artifact_ready": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "current_script_hashes_match_receipt": true
+  },
+  "receiver_proof_coverage_readback": {
+    "status": "ARTIFACT_WITH_BLOCKERS",
+    "receiver_handoff_lane_enforced": true,
+    "nerdkle_receipts_mirror_to_organism_contract": true,
+    "soledash_transport_acks_mirror_to_organism_contract": true,
+    "soledash_transport_ack_remains_partial": true,
+    "soledash_receiver_handoff_bridge_pending": true,
+    "workspace_relay_receiver_handoff_bridge_pending": true,
+    "universal_receiver_proof_claimed": false,
+    "non_proof_routes_self_label_receiver_boundary": true,
+    "blocker_count": 4,
+    "coverage_statuses": [
+      {
+        "surface_id": "tinkerden.receiver_handoff",
+        "coverage_status": "enforced",
+        "proof_level": "receiver-return-required"
+      },
+      {
+        "surface_id": "tinkerden.bridge_execute",
+        "coverage_status": "canonical-custody",
+        "proof_level": "packet-and-local-receipt-mirrored"
+      },
+      {
+        "surface_id": "tinkerden.workspace_relay",
+        "coverage_status": "custody-with-pending-receiver-handoff",
+        "proof_level": "runner-receipt-mirrored-plus-receiver-return-template"
+      },
+      {
+        "surface_id": "soledash.aeye_loop",
+        "coverage_status": "transport-receipt-mirrored-plus-pending-handoff",
+        "proof_level": "transport-ack-to-organism-contract-plus-receiver-return-template"
+      },
+      {
+        "surface_id": "nerdkle.packet_receipt",
+        "coverage_status": "organism-receipt-mirrored",
+        "proof_level": "legacy-object-receipt-to-organism-contract"
+      }
+    ],
+    "current_script_hashes_match_receipt": true,
+    "live_handoff_counts_match_current_index": true
+  },
+  "mack_review_desk_readout_readback": {
+    "status": "ARTIFACT",
+    "markdown_written": true,
+    "html_written": true,
+    "docx_written": true,
+    "mack_return_not_received_preserved": true,
+    "external_send_not_claimed": true,
+    "canonical_next_build_packet_absent": true,
+    "workspace_relay_receiver_handoff_bridge_pending": true,
+    "universal_receiver_proof_not_claimed": true,
+    "live_handoff_counts_match_current_index": true,
+    "generated_artifact_hashes_match_receipt": true,
+    "no_readiness_hash_cycle": true
+  },
+  "mack_paste_packet_readback": {
+    "status": "ARTIFACT",
+    "markdown_written": true,
+    "html_written": true,
+    "docx_written": true,
+    "ready_to_copy_not_sent": true,
+    "mack_return_not_received_preserved": true,
+    "canonical_next_build_packet_absent": true,
+    "external_send_not_claimed": true,
+    "universal_receiver_proof_not_claimed": true,
+    "live_handoff_counts_match_current_index": true,
+    "generated_artifact_hashes_match_receipt": true
+  },
+  "mack_paste_block_clipboard_helper_readback": {
+    "status": "ARTIFACT",
+    "copy_committed": false,
+    "block_hash_current": true,
+    "block_line_count": 118,
+    "clipboard_write_requires_copy_switch": true,
+    "external_send_not_claimed": true,
+    "mack_return_not_claimed": true,
+    "source_hashes_current": true
+  },
+  "mack_handoff_receipts_readback": {
+    "handoff_receipt_status": "ARTIFACT",
+    "tightening_receipt_status": "ARTIFACT",
+    "readout_first_instruction_receipted": true,
+    "current_counts_receipted": true,
+    "universal_receiver_proof_boundary_receipted": true,
+    "receipt_hashes_current": true
+  },
+  "validator_readback": {
+    "stdout": {
+      "ok": true,
+      "status": "BLOCKER",
+      "blocker_code": "MACK_RETURN_NOT_RECEIVED",
+      "receipt_path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_RECEIPT_20260706.json",
+      "receipt_sha256": "20badeb33d73523eb3c5396f9f5f5883c9cc996bcdcda5d8280c927353feb41f",
+      "intake_path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_20260706.md",
+      "next_build_packet": null
+    },
+    "receipt_status": "BLOCKER",
+    "blocker_code": "MACK_RETURN_NOT_RECEIVED"
+  },
+  "launcher_dry_run_readback": {
+    "status": "READY_TO_OPEN",
+    "dry_run": true,
+    "proof_links": [
+      "http://127.0.0.1:3000/tinkerden?handoff_provenance=operator",
+      "http://127.0.0.1:3000/tinkerden/receipts?handoff_provenance=operator"
+    ]
+  },
+  "launcher_smoke_readback": {
+    "status": "ARTIFACT",
+    "default_dry_run_ready": true,
+    "status_note_opens_first": true,
+    "connection_map_opens_third": true,
+    "attack_scorecard_opens_fourth": true,
+    "paste_packet_opens_fifth": true,
+    "refresh_status_dry_run_does_not_refresh": true,
+    "copy_mack_block_dry_run_does_not_copy": true,
+    "open_all_proof_dry_run_exposes_four_links": true,
+    "status_note_not_mutated": true,
+    "current_script_hashes_match_receipt": true,
+    "scenario_names": [
+      "default-dry-run",
+      "refresh-status-dry-run",
+      "copy-mack-block-dry-run",
+      "open-all-proof-dry-run"
+    ]
+  },
+  "healthcheck_readback": {
+    "status": "ARTIFACT",
+    "launcher_smoke_passed": true,
+    "status_refresh_smoke_passed": true,
+    "return_drop_watcher_smoke_passed": true,
+    "review_lane_smoke_passed": true,
+    "readiness_passed": true,
+    "typecheck_status": "PASSED",
+    "no_external_send_claimed": true,
+    "no_clipboard_write_by_healthcheck": true,
+    "no_canonical_next_build_packet_generated": true,
+    "no_long_running_watcher_left": true,
+    "subchecks": [
+      "launcher-smoke",
+      "status-refresh-smoke",
+      "return-drop-watcher-smoke",
+      "review-lane-smoke",
+      "readiness"
+    ]
+  },
+  "parsed_receipts": [
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_V02_REFRESH_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_V02_REFRESH_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_V02_REFRESH_RECEIPT_20260706",
+      "sha256": "7eedf9f79542c4a839ba25e417f23478a3a70cfab153d13c31a16334f1fc8c9b"
+    },
+    {
+      "path": "foreman/receipts/BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_RECEIPT_20260706.json",
+      "schema": "BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_RECEIPT_20260706",
+      "sha256": "e5b0e1e21d0fbcc37892aae7a2d193407b8bfad1cee303361a3058babac0bfa7"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_CONNECTION_MAP_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_CONNECTION_MAP_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_CONNECTION_MAP_RECEIPT_20260706",
+      "sha256": "8c43ad1e0234567ba4cdf161c2e4ffd7293d4b20a1991be2ae8f2c358a5da51f"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_ATTACK_SCORECARD_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_ATTACK_SCORECARD_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_ATTACK_SCORECARD_RECEIPT_20260706",
+      "sha256": "a6f9b1915810a225d1e8fffc7f704e040ab00cf058133eb4f2ac9886d5fa3e96"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_ATTACK_SCORECARD_RETURN_INTAKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_ATTACK_SCORECARD_RETURN_INTAKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_ATTACK_SCORECARD_RETURN_INTAKE_RECEIPT_20260706",
+      "sha256": "badd614eb040ed7ca01de4153d6b0a8175f20e8bc8a23341f1f9e6cd62b0c33e"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_RECEIPT",
+      "status": "BLOCKER",
+      "receipt_id": "MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_RECEIPT_20260706",
+      "sha256": "937c2e748f01b7646285275672460e85b1ab8aa2755509a38c42c365008a2da3"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_SMOKE_RECEIPT_20260706",
+      "sha256": "4fa670955bb58a67bd2f86075cfc51731ccee0a8cbcc6f3125d3e5b00272254c"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_CONTRACT_CANON_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_CONTRACT_CANON_V0_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_CONTRACT_CANON_V0_RECEIPT_20260706",
+      "sha256": "948a521b53df67076c7f48209fb20e0fb3f7c7825b8e28d6ceb431ae915b138c"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CONTRACT_CANON_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CONTRACT_CANON_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CONTRACT_CANON_UPDATE_RECEIPT_20260706",
+      "sha256": "0c4137d344f1d472dfafce23db181452ea5e236c7ba476608eb562b0329cce65"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_20260706",
+      "sha256": "555613a8389926a7852efafc82a7afbe1b4dd11caf473f77c0b435e7518b039d"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_EVENT_SPINE_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_EVENT_SPINE_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_EVENT_SPINE_UPDATE_RECEIPT_20260706",
+      "sha256": "7c31a3293fcae10092258b59f36f8c53c893e7644562c631eb5ef9dcb1a93398"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0_RECEIPT_20260706",
+      "sha256": "207413cdf0ea4a949606a8f95663f801e16de4c0d69dfbc494717df182465d73"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_BOOT_CONTEXT_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_BOOT_CONTEXT_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_BOOT_CONTEXT_UPDATE_RECEIPT_20260706",
+      "sha256": "65dabefb06a3f1841967ad189f23bfccb0943dee21278e95cc744e30082dc95e"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_RECEIPT_20260706",
+      "sha256": "2dcf0716791e1d597a5532ac53b9a6c13e1bc9ee4e4d21c6dbc3814cc5bf8f83"
+    },
+    {
+      "path": "foreman/receipts/MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_RECEIPT_20260706.json",
+      "schema": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_RECEIPT_20260706",
+      "sha256": "7742ce516116163ac9652a17ca95dbe753d41038f8f07f2f3dbe334094ddd07a"
+    },
+    {
+      "path": "foreman/receipts/MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_TIGHTENING_RECEIPT_20260706.json",
+      "schema": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_TIGHTENING_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_HANDOFF_TIGHTENING_RECEIPT_20260706",
+      "sha256": "1f89a3dc6dcaa4eeddd85316d1a6b63b889c612d6779bec8347765603da91fe6"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIPT_20260706",
+      "sha256": "57c3e6aea552e05c06a3fdd24356b3307f13bb01e66e3ad3b7099425e9f7d7c5"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_RECEIPT_20260706",
+      "sha256": "e5390c21f8ea6d8f71f080397ff21f4607d4fbeff5d0656e226647d4ee37c8e9"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_RECEIPT",
+      "status": "BLOCKER",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_RECEIPT_20260706",
+      "sha256": "f5c0a07ff49eafc38af0b8c41a4f81e776793c8aac96e5ed03ba899f3ad6471d"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_UPDATE_RECEIPT_20260706",
+      "sha256": "f12e306fbe6ba1040e9721884dff451d7f1a4c1c993d4f269e3126b1e884cc91"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT_20260706",
+      "sha256": "39672827a5b0e155d33cd216a43050e090e080efbf6e5b8ae98e72b55e288928"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_SMOKE_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_SMOKE_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_SMOKE_UPDATE_RECEIPT_20260706",
+      "sha256": "120fce8beda3fd47d56b9dffcacf4eace0a23343a9b193ec16fa2ca5a6680383"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_CLIPBOARD_IMPORT_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_CLIPBOARD_IMPORT_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_CLIPBOARD_IMPORT_SMOKE_RECEIPT_20260706",
+      "sha256": "9e7058c5606c397943b927581d4bb0178117f2e2d02a6d32c1aaf76c3a368204"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CLIPBOARD_IMPORT_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CLIPBOARD_IMPORT_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CLIPBOARD_IMPORT_UPDATE_RECEIPT_20260706",
+      "sha256": "290a03c2e1a25cb598ee86bb0efa0b4f6a85fa76ab4f6e3ee3e9493fa093f4f9"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_RECEIVER_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_RECEIVER_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_RECEIVER_SMOKE_RECEIPT_20260706",
+      "sha256": "ee4657971e5302c80b42ade34167e07ced4cf9f8ec99b30e61d6b20bb43b295e"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_RECEIVER_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_RECEIVER_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_RECEIVER_UPDATE_RECEIPT_20260706",
+      "sha256": "ead9f1d7f968dede4203772db02c6f08c3a09c6c38a1497c21872a4ea57c8235"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_ACCEPTANCE_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_ACCEPTANCE_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_ACCEPTANCE_SMOKE_RECEIPT_20260706",
+      "sha256": "ffd8917fe4170d5457060dbbce3401fc6ca3265e8d0265460376fab4ded65965"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_ACCEPTANCE_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_ACCEPTANCE_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_ACCEPTANCE_UPDATE_RECEIPT_20260706",
+      "sha256": "005f94ccf885c438f3b12d280def4a04ae9275f08f44e97b216956e186e0fce5"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_FLOW_STATE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_FLOW_STATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_FLOW_STATE_RECEIPT_20260706",
+      "sha256": "355a95d845e818aa1781d7a2369c8e7330c38092e30a222216b7728e841b3bd8"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_FLOW_STATE_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_FLOW_STATE_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_FLOW_STATE_SMOKE_RECEIPT_20260706",
+      "sha256": "0ecea8600c3113dc5edf5cfb069ffd256d1e3485027a7f20ddb5bcf7f872332f"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_FLOW_STATE_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_FLOW_STATE_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_FLOW_STATE_UPDATE_RECEIPT_20260706",
+      "sha256": "26ddf23de2fb3e6374dc66617a826e8993547b2d908a6f13fccde81f5cd27539"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_DROP_PROCESS_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_DROP_PROCESS_RECEIPT",
+      "status": "BLOCKER",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_DROP_PROCESS_RECEIPT_20260706",
+      "sha256": "3ba862008a3c9d88a8f63e27abecb3a48aeacc874c762fd4f3b693f9770bb460"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_DROP_PROCESSOR_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_DROP_PROCESSOR_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_DROP_PROCESSOR_SMOKE_RECEIPT_20260706",
+      "sha256": "9b47543f4a02236146618c80f5dd8fe5419e316f773ebf229dc17aaceac97c37"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_DROP_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_DROP_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_DROP_UPDATE_RECEIPT_20260706",
+      "sha256": "17b2f603623ed9f8c3f5c7fbda0e3a5336bd2c2164f6c18d700987aaf1c6131c"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_RECEIPT",
+      "status": "ARTIFACT_WITH_BLOCKERS",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_RECEIPT_20260706",
+      "sha256": "7852034ff4cfe4bd073f04ea6454d3272f68f6bf185b7c9820c4e67646c2d893"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_LANE_COORDINATOR_SMOKE_RECEIPT_20260706",
+      "sha256": "c86a5edef43013d9718c96593f056c72ba35422b71c5f41de4feb2e574dccde8"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_LANE_COORDINATOR_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_LANE_COORDINATOR_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_LANE_COORDINATOR_UPDATE_RECEIPT_20260706",
+      "sha256": "6138dae537423a5f0980cc51383447d3ff84caef07b41c5fdec537168687da2e"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_DROP_WATCH_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_DROP_WATCH_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_DROP_WATCH_RECEIPT_20260706",
+      "sha256": "e05148b514874f44cb8f757e66a50af9977d31a140e3bf034f82d6aeccf686c8"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_DROP_WATCH_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_RETURN_DROP_WATCH_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_RETURN_DROP_WATCH_SMOKE_RECEIPT_20260706",
+      "sha256": "bac87cae0b088b73339d6c991ad95713c95b93131edab5a02d97c47645a903d7"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_DROP_WATCH_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_DROP_WATCH_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RETURN_DROP_WATCH_UPDATE_RECEIPT_20260706",
+      "sha256": "2f7271f92381280e0bf260e7c0a355c720517c0c71e9f1a02c1fded92a69dc31"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_RECEIPT_20260706",
+      "sha256": "c291527dd7d8939af797c90ec620d407ac7f752917d60142fbe5b3e0b4ea999b"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_STATUS_REFRESH_SMOKE_RECEIPT_20260706",
+      "sha256": "8efc5a6c84ab6e74726a69eeaedff1d705bfdb7890d6f5fc21b40b2b94269f22"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_STATUS_REFRESH_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_STATUS_REFRESH_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_STATUS_REFRESH_UPDATE_RECEIPT_20260706",
+      "sha256": "e42b8ff3acbe2e49cd9dfd5692d00a9206a616c2c57a5294711c5bf95afe11f7"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_SEND_RETURN_ROUNDTRIP_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_SEND_RETURN_ROUNDTRIP_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_SEND_RETURN_ROUNDTRIP_SMOKE_RECEIPT_20260706",
+      "sha256": "917ded00a9744f111d6d1f257e910e7fca20a3964e0a69da6dfc3b9cf6316273"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_RECEIPT_20260706",
+      "sha256": "75625b97ecddd0e26719e50b851f71fcd06ec488711b1fe578b96f2d35f4a89f"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_SMOKE_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_SMOKE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_SMOKE_RECEIPT_20260706",
+      "sha256": "69bfba31b0b883b3a7cc8e59cae56118d18091984d95267aa18ea82420f3614d"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_HEALTHCHECK_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_DESK_HEALTHCHECK_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_HEALTHCHECK_RECEIPT_20260706",
+      "sha256": "b82faa76b09da14a7360eefcb80a9335a7a16e6824b9f7f0a635db529c59ef01"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_RECEIVER_HANDOFF_PROVENANCE_FILTER_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_RECEIVER_HANDOFF_PROVENANCE_FILTER_V0_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_RECEIVER_HANDOFF_PROVENANCE_FILTER_V0_RECEIPT_20260706",
+      "sha256": "6cc57546a506ca427d4a6e5bd458d20a929962d750b4361eaad392c3c580da9b"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROVENANCE_DEEPLINK_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROVENANCE_DEEPLINK_V0_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROVENANCE_DEEPLINK_V0_RECEIPT_20260706",
+      "sha256": "632bc3375656e61b222b890bf010e8c19e205a48f58f23469ddec6d77458f396"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0",
+      "status": "ARTIFACT_WITH_BLOCKERS",
+      "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706",
+      "sha256": "eabdbbe63ab9c2efb7f07e90e0136153ff3d5023b6943bec5bc83ce27fbc7bb9"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIVER_PROOF_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIVER_PROOF_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_RECEIVER_PROOF_UPDATE_RECEIPT_20260706",
+      "sha256": "bf2098edfa6c8ca8851510d5f9a6656ca82beb2a81bf214f8e8cf88634af7f6c"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0_RECEIPT_20260706",
+      "sha256": "92c16c1c8dd0a8a5fd15341bfafa6154070334efa92a29acd8115643da3fae0c"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_NERDKLE_MIRROR_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_NERDKLE_MIRROR_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_NERDKLE_MIRROR_UPDATE_RECEIPT_20260706",
+      "sha256": "a2f0302c76c48296231055552b4371620684a4cc256bc4f53b4f3ba4967e895d"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_SOLEDASH_AEYE_TRANSPORT_MIRROR_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_TRANSPORT_MIRROR_V0",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_TRANSPORT_MIRROR_V0_RECEIPT_20260706",
+      "sha256": "9d9af2d71e9eb3c58b580335b6232e41d7785541ad683ae3dc9d2b5892c38429"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_MIRROR_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_MIRROR_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_MIRROR_UPDATE_RECEIPT_20260706",
+      "sha256": "39f5be6b189ab79726c6353a662beb8f7ed94c864c60cd7a88dae0eb3424af6a"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_SOLEDASH_AEYE_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_RECEIVER_HANDOFF_BRIDGE_V0",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706",
+      "sha256": "de67cfe327c46238b3705cf01e88c1789edd78729c3d0015b2c1ff03d19ca7b2"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_HANDOFF_BRIDGE_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_HANDOFF_BRIDGE_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_HANDOFF_BRIDGE_UPDATE_RECEIPT_20260706",
+      "sha256": "f77c61b1a24efacbbae5e947c26a884ea66647c8200c1b0240945ad524ebfc48"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706",
+      "sha256": "8c5451ef84dea772302dfd8e4b60a1803b50e8a9a4deba9d785cabf54fd5a251"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_WORKSPACE_RELAY_HANDOFF_BRIDGE_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_WORKSPACE_RELAY_HANDOFF_BRIDGE_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_WORKSPACE_RELAY_HANDOFF_BRIDGE_UPDATE_RECEIPT_20260706",
+      "sha256": "183fcc7bd00bf31bf2e8d5c65f4a19e5daf6039700f15feae933beae93287d4c"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_REVIEW_DESK_READOUT_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_READOUT_RECEIPT_20260706",
+      "sha256": "d97add9d27b94e453502430eb75506de0f45169c2f103ec62c6457ece87533e7"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706_RECEIPT.json",
+      "schema": "MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706_RECEIPT",
+      "sha256": "a5a61fc843d25f2a535f7de9eedf8e6d6b5d1f717eb73a428a37d991c141f043"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_PASTE_BLOCK_CLIPBOARD_RECEIPT_20260706.json",
+      "schema": "MACK_ARCHITECTURE_PASTE_BLOCK_CLIPBOARD_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "MACK_ARCHITECTURE_PASTE_BLOCK_CLIPBOARD_RECEIPT_20260706",
+      "sha256": "0c892253697e80f9a1f4c608f4585c46e302489b7aa079b66863afb751883d7a"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_PACKET_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_PACKET_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_PACKET_UPDATE_RECEIPT_20260706",
+      "sha256": "7bf21fb3d1e254a44fb6eb9f46f8a750c7c41f9a6d3f052ec7a47c00eb7c9fb5"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_BLOCK_HELPER_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_BLOCK_HELPER_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_BLOCK_HELPER_UPDATE_RECEIPT_20260706",
+      "sha256": "5b861452decf3d2b05d13381998c4412896caa2c2b452e8c27b87034afc73e58"
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SEND_RETURN_ROUNDTRIP_UPDATE_RECEIPT_20260706.json",
+      "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SEND_RETURN_ROUNDTRIP_UPDATE_RECEIPT",
+      "status": "ARTIFACT",
+      "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SEND_RETURN_ROUNDTRIP_UPDATE_RECEIPT_20260706",
+      "sha256": "ed7f2ae6f3d08a3c8fb718c9cc0d1b0b1efd5c22c6b5f2dda640c69ee4f32ae2"
+    }
+  ],
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "bff7a756dd253021e6a08b655543cceced272918621c00fa1a794478fe0e4e38",
+      "bytes": 43035
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md",
+      "sha256": "c8a75ee440ff2ec0d02a694c4eb4ff647d8cec827c807289d0f3988223ba3cc6",
+      "bytes": 19847
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.docx",
+      "sha256": "4f47b3fb0931290e7663f7bc33bfba201d70625b4d941ebc366a4b6502d1ee2f",
+      "bytes": 46579
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.html",
+      "sha256": "2d3dcd33e28237b0d7c1a9a4e8692c02cf9dd5b31c6d653570f816ccfe5a73d0",
+      "bytes": 25179
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.md",
+      "sha256": "e102323e4908d509ac458d68874da14297c53dc301eef691ee472ef637f1f94e",
+      "bytes": 7703
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.html",
+      "sha256": "197d76942587f09f08ec7191652bc6cd7388a7e23230791458ceae368432ed8a",
+      "bytes": 7647
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.json",
+      "sha256": "55dea06d8da24ba6edb69854ff1d21dd7c4b9cedb15801256559d3474997c7fe",
+      "bytes": 5349
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_CONNECTION_MAP_20260706.mmd",
+      "sha256": "1ffa929c8776a7d6ab0b12baf1ca6f9598d9c8c673e2c79a7606a1beec1a09f6",
+      "bytes": 966
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_20260706.md",
+      "sha256": "a2b903be17de80758ee63be0abaf457a019c59d3b1823453f276c53bf3e71cde",
+      "bytes": 4774
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_20260706.html",
+      "sha256": "a248907cf026001d5a5e259cd22e5fa46fb6fb8d748cc4f851a1e9e5646a9715",
+      "bytes": 6978
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_20260706.json",
+      "sha256": "7ccf636a090736eaf1f87d114a4da24be3883e4185c7d7b93fb0d41d39312da2",
+      "bytes": 5473
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_RETURN_INTAKE_20260706.md",
+      "sha256": "3ec1dfc6937933919a985727075426151382044619e68f8beaa94722e61f483e",
+      "bytes": 1866
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-scorecard-return-validator.mjs",
+      "sha256": "12c9a1ded4c03ab3852792d212c698002b9e8b6c4890b40b26ab57da0dd1f8f9",
+      "bytes": 10002
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-scorecard-return-validator-smoke.mjs",
+      "sha256": "3458fb62c10b74a03eb725c11f8dfb2d77a7373c64593ec86c3643682f72d642",
+      "bytes": 10696
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.md",
+      "sha256": "89e9d1bc60bee46d594d44035cc1e73b8c7525baa584d3c905d0dbdfd770234d",
+      "bytes": 6501
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.docx",
+      "sha256": "30d0809dd3ccd63582f9d4912d8d3b9232f9c95c923ac964647a9a631163d3e3",
+      "bytes": 40637
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.html",
+      "sha256": "155b9c2f54477f7d269c5ad0e1c06cb3125fa9293700ffbe09866096453bb970",
+      "bytes": 9005
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_STATUS_20260706.md",
+      "sha256": "9397907e10028de0145c1768b4f488e50c5c8d7be676782b541751d0d4791336",
+      "bytes": 1466
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.md",
+      "sha256": "a9b665b3e3f2212b86cd97183836be0659c210d798e0189e908fd3c2192a4c0b",
+      "bytes": 10669
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.docx",
+      "sha256": "0af2bc5e1cdcd37ed798452e07a48f8be6594c76a867e96053eb802c127176db",
+      "bytes": 41443
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.html",
+      "sha256": "35324c72d7eb933a64a3cbc1cc9e6ecefea0215112152d793aaa7ecfa1c588aa",
+      "bytes": 13099
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_STACK_LOCK_V0_20260706.md",
+      "sha256": "4998779208a17002a361b0c8aac4fd40246bd159a33778286c533123b30a34e1",
+      "bytes": 20061
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_20260706.md",
+      "sha256": "803f0f9e2f37de177f7858cb134c3a903b1d0be6d94e6cc6dfbbb438fdf92324",
+      "bytes": 7325
+    },
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/gate.ts",
+      "sha256": "9dadf2ce3a309c104e656a78d25fa1959da7e0f0594020f5ae408b7263d8ef5d",
+      "bytes": 3601
+    },
+    {
+      "path": "lib/organism/contracts/boot-context.ts",
+      "sha256": "480ee01afa51e06f1cfa22efd23f9682aa90e5b564c15b2b6f16f5c70e6c6524",
+      "bytes": 3536
+    },
+    {
+      "path": "lib/organism/contracts/receiver-proof-boundary.ts",
+      "sha256": "66a4847fc918b70e967deaf47bf9e88f3c51f29a1b98eb3fb8f86f93e18eec88",
+      "bytes": 2813
+    },
+    {
+      "path": "scripts/foreman/organism-contracts-smoke.mjs",
+      "sha256": "13ae15e1ba98caa6c91586a06af61c174183ce2d24b3a0bf55a9cdc5d20d4a69",
+      "bytes": 11127
+    },
+    {
+      "path": "scripts/foreman/chokidar-neurocirculymphatic-v0.mjs",
+      "sha256": "bda1121b75b2de7b70afa2a2a48dd6e1cdb9f634822b8f6f6c5cd35a35c6c5d5",
+      "bytes": 8248
+    },
+    {
+      "path": "scripts/foreman/organism-event-spine-normalization-smoke.mjs",
+      "sha256": "3c9ed13257fdc1833b29f8f07f62f6428ff2f27d6df7812714c3993d321849fe",
+      "bytes": 9031
+    },
+    {
+      "path": "scripts/foreman/organism-boot-context-refresh-smoke.mjs",
+      "sha256": "0c280ab091b07ae0d57f1d8827b7fde9b6ebe803005c4d91c6e6a12e407823c7",
+      "bytes": 8520
+    },
+    {
+      "path": "scripts/foreman/wormeyes-world-state.mjs",
+      "sha256": "583e992aab4361be49d65f2cfb6a21cd005ec4c0ddbc41931e55f933b41a9fff",
+      "bytes": 8335
+    },
+    {
+      "path": "tinkarden/nervous_system/bootloader.js",
+      "sha256": "24112c0dfc649019378e8a4f44ca86ec5824fbbdb34188579242efa48b81f5fb",
+      "bytes": 5566
+    },
+    {
+      "path": "tinkarden/nervous_system/aeye_client.js",
+      "sha256": "8f23845ef7ff3f5720d4f2bcf9cc9aa597761830fbca68745962120f93cda0be",
+      "bytes": 15178
+    },
+    {
+      "path": "tinkarden/nervous_system/world_state.json",
+      "sha256": "3562b8ab2a932e77a7d37edc8338b0e91aac8427616e33dd73d28840d41101b0",
+      "bytes": 289334
+    },
+    {
+      "path": "tinkarden/nervous_system/active_context.txt",
+      "sha256": "2fc3fdaeb852c8c3e29d4e5a74c21907063b2c811c07d928c635293838201a32",
+      "bytes": 294801
+    },
+    {
+      "path": "lib/nerdkle/organism-contract-mirror.ts",
+      "sha256": "a8080c4d526c56726e87456b3cae30bb262bbbf057a32f059a4aec95fd5d817f",
+      "bytes": 9509
+    },
+    {
+      "path": "scripts/foreman/nerdkle-organism-receipt-mirror-smoke.mjs",
+      "sha256": "e3521929ebb0bf0ead8b468e86181bc9054e8f0299e24c879802a848f2fb9cc2",
+      "bytes": 10716
+    },
+    {
+      "path": "lib/soledash/aeye-inbox-v0/organism-contract-mirror.ts",
+      "sha256": "4db51bdf37f8c2065928d1f906b2065a6b194a8dc0b6973d61c37756f0b0c11f",
+      "bytes": 8643
+    },
+    {
+      "path": "scripts/foreman/soledash-aeye-transport-organism-mirror-smoke.mjs",
+      "sha256": "ae6e0b234fc945dddbef2f01d24f3d8b625621d70f9a2325b3c02e7aa7a8bd8c",
+      "bytes": 10407
+    },
+    {
+      "path": "lib/soledash/aeye-inbox-v0/receiver-handoff-bridge.ts",
+      "sha256": "319b3bc756015ad8c203373a82430566d6ab6663e9865e4aba53446886c2d2c9",
+      "bytes": 1460
+    },
+    {
+      "path": "scripts/foreman/soledash-aeye-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "58fcb7f2e0fee799f90361eaa22df44d0ff9211b0bc470c0ccbaf29255d60cf2",
+      "bytes": 10338
+    },
+    {
+      "path": "lib/tinkerden/workspace-relay-receiver-handoff.ts",
+      "sha256": "0ea315f2d1b951e8aa75a98490e4fb48c38e257af2a82f116c57850e897c58a9",
+      "bytes": 1089
+    },
+    {
+      "path": "scripts/foreman/workspace-relay-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "a9594daa52c7112f5a98b19a491a140d630b7fe42ba6db7214090e24ec69ac24",
+      "bytes": 10214
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_20260706.md",
+      "sha256": "6d028e44578d6b68a081ffea6a6ebe1d0c749fbf16064ab9af822cbbad19eabf",
+      "bytes": 2814
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_INTAKE_20260706.md",
+      "sha256": "157c43155cf43c99c9ad9260a28e3957849326bc0b776a2c600f705fcc971fcf",
+      "bytes": 1744
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706.md",
+      "sha256": "6fb8433525e16c53ce37b8db181a00fb0df3c767870e8fc722fe130c8c8a8426",
+      "bytes": 6447
+    },
+    {
+      "path": "scripts/foreman/Open-MackArchitectureReviewDesk.ps1",
+      "sha256": "dd79ed9fffa0493376da85ccf3fcb303a50dbdeab1515e284c986110cda8f37d",
+      "bytes": 5523
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-return-intake-validator.mjs",
+      "sha256": "3b65fb8777e324faf0f7b90b6751c1e66cedea332ba4606ee704387289185abd",
+      "bytes": 10088
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-return-intake-validator-smoke.mjs",
+      "sha256": "94b59c4d267a43e1fdf65b93d660b911a1c5ad5c2e57bac5014338a0e57e234b",
+      "bytes": 9926
+    },
+    {
+      "path": "scripts/foreman/Import-MackArchitectureReturnFromClipboard.ps1",
+      "sha256": "d0abef8a7c6a49d904db606378935c81aeb8416d70ddab409492f8acd130ba15",
+      "bytes": 7303
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReturnClipboardImporter.ps1",
+      "sha256": "3b79ed735924be73eb578df79f41666a7304d88d00991f04bd603798e5788525",
+      "bytes": 8915
+    },
+    {
+      "path": "scripts/foreman/Receive-MackArchitectureReturn.ps1",
+      "sha256": "51b5be04f1d1ad1a2b86ab64698fca6edf816ca555058c65ee2b6dbcc84f01fc",
+      "bytes": 10107
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReturnReceiver.ps1",
+      "sha256": "d219aab8c08195c81cf581e0a4aba4f5efa7ebc2d8963f28f805a4f6a8d6121a",
+      "bytes": 10944
+    },
+    {
+      "path": "scripts/foreman/Accept-MackArchitectureReturn.ps1",
+      "sha256": "bc8aac51e9cd2b0a23ad9eca44f380dfd33a5d095b4ca772940336b99ddf1f08",
+      "bytes": 10111
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReturnAcceptance.ps1",
+      "sha256": "f67d3ab02f85dfa42bc2a20db91e7237ec6bba66486d6b68635c85d0d550ab6c",
+      "bytes": 11916
+    },
+    {
+      "path": "scripts/foreman/Get-MackArchitectureReviewFlowState.ps1",
+      "sha256": "47e9c838843550cd7158193dfb155b9e216984fc188859725a946e0c43eb9a46",
+      "bytes": 9704
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReviewFlowState.ps1",
+      "sha256": "250345415a5d389f13022b3cea536428cc62f0d6b787023670e284e6472a19ca",
+      "bytes": 12169
+    },
+    {
+      "path": "foreman/handoffs/inbox/mack-architecture-return-drop/README.md",
+      "sha256": "8bafce1f4e16dc954d890ebd6bcfdbc4931c9ed825a5cb13d9947773317165c6",
+      "bytes": 648
+    },
+    {
+      "path": "scripts/foreman/Process-MackArchitectureReturnDrop.ps1",
+      "sha256": "54333c15c5125a3d8a5a2502b15803920c760fb8a487414fc0d5061f07ca70b7",
+      "bytes": 9654
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReturnDropProcessor.ps1",
+      "sha256": "a0341f8f44ee078868b1568d57c7ba713bbe36ec1a917bab73dfb0714905c263",
+      "bytes": 12052
+    },
+    {
+      "path": "scripts/foreman/Invoke-MackArchitectureReviewLane.ps1",
+      "sha256": "ef549ee8c7c9b2647c301567a8e5d1a061b3612a2a819667eb1a7dce29a70306",
+      "bytes": 15812
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReviewLane.ps1",
+      "sha256": "c46b538dce16de0a2ec69e31d58454369bf6a889f2928fbe29d790fe7878ee6a",
+      "bytes": 12855
+    },
+    {
+      "path": "scripts/foreman/Watch-MackArchitectureReturnDrop.ps1",
+      "sha256": "9c645413c4e73d77238699f4e64f7b8e052410ad42e662a34dbd1c4d9c710498",
+      "bytes": 11979
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReturnDropWatcher.ps1",
+      "sha256": "dd42b73659273504aacd13a6664044d887b72faa056c2241204a55bf828e1603",
+      "bytes": 11275
+    },
+    {
+      "path": "scripts/foreman/Update-MackArchitectureReviewDeskStatus.ps1",
+      "sha256": "8fb5bc52622be259d073daf0ff8cc1d93b4b58eeb724073f6fbc4384b13448c0",
+      "bytes": 13579
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReviewDeskStatus.ps1",
+      "sha256": "98a5f380068c924fdfba7df034e907f3c9a40bcc0c91e1605edf59c6f3920a59",
+      "bytes": 12230
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureSendReturnRoundTrip.ps1",
+      "sha256": "dcdd898ba67fa4fe9dea415de5f1a272006ca6a1b4940b89c5b06d6d2dcd6b0f",
+      "bytes": 10746
+    },
+    {
+      "path": "scripts/foreman/Copy-MackArchitecturePasteBlock.ps1",
+      "sha256": "ae6bc3cf908b26e750f5f3090c281be3fc40178a5b6f852ebfdc487c7723793a",
+      "bytes": 5317
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReviewDeskLauncher.ps1",
+      "sha256": "8ee1fe4d1398ad624fc00a5b3557e9f4537af7307542c998f1111e09ddfc3b43",
+      "bytes": 11562
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReviewDeskHealth.ps1",
+      "sha256": "e7209f6737f0a800281cffef73e782a3bc2f525cba049b6a892e94622dd4f1c9",
+      "bytes": 8523
+    },
+    {
+      "path": "scripts/foreman/receiver-proof-everywhere-audit.mjs",
+      "sha256": "1b0bb5376bb40ce96ff9f1372ab58bc1aea6252545076541ef72060cd0115c6e",
+      "bytes": 33340
+    },
+    {
+      "path": "scripts/foreman/build-mack-architecture-review-desk-readout.py",
+      "sha256": "52d0b9b611217f18ea09dd58418055128e64f5920132fbc67aa1966d038c8fcd",
+      "bytes": 29352
+    },
+    {
+      "path": "scripts/foreman/build-mack-architecture-paste-packet.py",
+      "sha256": "bc17e226062077948c8107af4354cd314f85a90697c1d672d4c11acd30fd2cc4",
+      "bytes": 28778
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack receipt claim",
+    "no canonical next-build packet generated",
+    "no long-running watcher started by readiness"
+  ],
+  "next_safe_action": "Use scripts/foreman/Get-MackArchitectureReviewFlowState.ps1 first. If Mack returned a file, put it in foreman/handoffs/inbox/mack-architecture-return-drop/ and run scripts/foreman/Watch-MackArchitectureReturnDrop.ps1 -Once or scripts/foreman/Invoke-MackArchitectureReviewLane.ps1 before any -Commit."
+}

@@ -1,0 +1,105 @@
+﻿{
+    "schema":  "WERKLES_CRUCIBLE_SMOKE_MULE_V1",
+    "timestamp":  "2026-07-07T15:35:32.6290623-04:00",
+    "machine":  "BETSY",
+    "secret_values_printed":  "NO",
+    "overall":  "PASS",
+    "steps":  [
+                  {
+                      "step":  "provider_mule",
+                      "status":  "PARTIAL",
+                      "detail":  "NEEDS_OPERATOR"
+                  },
+                  {
+                      "step":  "production_crucible_smoke",
+                      "status":  "PASS",
+                      "detail":  [
+                                     "stripe_test_mode=PASS",
+                                     "plaid_credentials_present=PASS",
+                                     "stripe_identity_api_direct=PARTIAL",
+                                     "plaid_link_token_direct=PASS",
+                                     "production_crucible_route=PASS",
+                                     "supabase_member_profile=PASS",
+                                     "supabase_member_session=PASS",
+                                     "production_identity_api=\u003cconcealed by 1Password\u003e_pending",
+                                     "production_funds_api=PASS",
+                                     "profile_status_after_api_calls=PASS",
+                                     "identity_verified_webhook=PASS",
+                                     "profile_id_status_after_webhook=PASS",
+                                     "membership_still_active=PASS"
+                                 ]
+                  }
+              ],
+    "checks":  [
+                   {
+                       "name":  "stripe_test_mode",
+                       "status":  "PASS",
+                       "mode":  "test"
+                   },
+                   {
+                       "name":  "plaid_credentials_present",
+                       "status":  "PASS",
+                       "plaid_env":  "\u003cconcealed by 1Password\u003e"
+                   },
+                   {
+                       "name":  "stripe_identity_api_direct",
+                       "status":  "PARTIAL",
+                       "note":  "restricted_key_or_identity_disabled",
+                       "error":  "Permission denied. The provided key \u0027rk_test_***************************************************************************"
+                   },
+                   {
+                       "name":  "plaid_link_token_direct",
+                       "status":  "PASS",
+                       "plaid_env":  "\u003cconcealed by 1Password\u003e"
+                   },
+                   {
+                       "name":  "production_crucible_route",
+                       "status":  "PASS",
+                       "http_status":  200
+                   },
+                   {
+                       "name":  "supabase_member_profile",
+                       "status":  "PASS",
+                       "user_id":  "177143a4-b5f9-46be-823c-380844481fea"
+                   },
+                   {
+                       "name":  "supabase_member_session",
+                       "status":  "PASS"
+                   },
+                   {
+                       "name":  "production_identity_api",
+                       "status":  "\u003cconcealed by 1Password\u003e_pending",
+                       "http_status":  200,
+                       "mode":  "\u003cconcealed by 1Password\u003e_stub"
+                   },
+                   {
+                       "name":  "production_funds_api",
+                       "status":  "PASS",
+                       "http_status":  200,
+                       "mode":  "plaid_link_test",
+                       "has_link_token":  true
+                   },
+                   {
+                       "name":  "profile_status_after_api_calls",
+                       "status":  "PASS",
+                       "id_status":  "\u003cconcealed by 1Password\u003e_pending",
+                       "funds_status":  "\u003cconcealed by 1Password\u003e_pending"
+                   },
+                   {
+                       "name":  "identity_verified_webhook",
+                       "status":  "PASS",
+                       "http_status":  200
+                   },
+                   {
+                       "name":  "profile_id_status_after_webhook",
+                       "status":  "PASS",
+                       "id_status":  "\u003cconcealed by 1Password\u003e_verified"
+                   },
+                   {
+                       "name":  "membership_still_active",
+                       "status":  "PASS",
+                       "membership_tier":  "member",
+                       "subscription_status":  "active"
+                   }
+               ]
+}

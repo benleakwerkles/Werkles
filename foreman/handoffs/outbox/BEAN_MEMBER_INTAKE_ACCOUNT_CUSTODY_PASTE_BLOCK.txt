@@ -1,0 +1,15 @@
+Bean — fresh VPGM trust packet from Heimerdinker. Personally review the canonical repo sources and return the terminal receipt; ACK is not completion.
+
+PACKET: foreman/handoffs/outbox/TO_BEAN_MEMBER_INTAKE_ACCOUNT_CUSTODY_ATTACK_20260820.md
+
+Current candidate files also include:
+- supabase/migrations/20260820073346_member_concierge_intakes.sql
+- lib/squibb/member-intake-custody.ts
+- app/api/bellows/intake/route.ts
+- app/api/bellows/intake/current/route.ts
+- app/api/bellows/recommendations/current/route.ts
+- components/squibb/account-aware-recommendation-surface.tsx
+
+Attack verified-owner binding, RLS, forged-cookie isolation, idempotency, malformed rows, cross-browser continuity, local recovery/import boundaries, and retention/deletion. Return P0/P1 findings plus executable acceptance tests to foreman/handoffs/inbox/. Do not edit, apply SQL/RLS, inspect secrets, mutate production, push, or deploy.
+
+CUSTODY_CHALLENGE: BEAN-MEMBER-INTAKE-20260820-0733

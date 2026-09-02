@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-21T05:21:35.946Z",
+  "file": "FROM_PETRA_VPGM_20260805-012208.md",
+  "reason": "Read; harvested envelope names a different answer packet than its relay metadata source. Findings retained, file quarantined as conflicting lineage."
+}

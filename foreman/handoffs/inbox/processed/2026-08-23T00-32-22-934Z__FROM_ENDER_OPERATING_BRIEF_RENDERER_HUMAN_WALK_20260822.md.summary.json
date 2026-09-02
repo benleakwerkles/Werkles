@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T00:32:22.934Z",
+  "file": "FROM_ENDER_OPERATING_BRIEF_RENDERER_HUMAN_WALK_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "ENDER",
+  "consumed_by": "FOREMAN",
+  "note": "Read and assimilated: plain-language headings, named stale-state cause, and update action control the next Formation renderer pass.",
+  "auto_merge": false
+}

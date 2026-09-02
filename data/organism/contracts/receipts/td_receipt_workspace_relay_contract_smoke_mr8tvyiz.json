@@ -1,0 +1,50 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "td_receipt_workspace_relay_contract_smoke_mr8tvyiz",
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "created_at": "2026-07-06T06:17:42.542Z",
+  "receiver": "WorkspaceRelayRunner@Betsy",
+  "status": "partial",
+  "what_was_attempted": "Hand a TinkerDen packet to the verified workspace runner and mirror the runner receipt into the canonical organism contract store.",
+  "what_changed": [
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "data/organism/contracts/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+    "data/tinkerden/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "tinkerden/machine-runner/requests/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "data/organism/events.jsonl",
+    "data/organism/receipt_pickup.jsonl",
+    "data/organism/contracts/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "what_did_not_change": [
+    "Receiver-side Aeye completion proof was not claimed by this workspace relay receipt.",
+    "Downstream work remains awaiting receiver proof.",
+    "No account automation.",
+    "No browser credential control.",
+    "No deploy.",
+    "No push."
+  ],
+  "proof": [
+    {
+      "kind": "artifact_path",
+      "value": "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json"
+    },
+    {
+      "kind": "hash",
+      "value": "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json sha256 af86b604cb85cd7da60388c83918f199ba8ef790ad3b80ac1e158f941e6a3819"
+    },
+    {
+      "kind": "artifact_path",
+      "value": "data/tinkerden/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json"
+    },
+    {
+      "kind": "readback",
+      "value": "relay_id=td_relay_workspace_contract_smoke_mr8tvyiz; runner_mode=fixture; runner_status=WORKSPACE_RELAY_CONTRACT_SMOKE; clipboard_verified=N; workspace_focused=N; downstream_receiver_proof=required"
+    }
+  ],
+  "blocked_reason": null,
+  "next_safe_action": "Keep the packet visible until the downstream Aeye returns a separate receipt; this runner receipt proves custody only.",
+  "source_hashes_used": {
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json": "af86b604cb85cd7da60388c83918f199ba8ef790ad3b80ac1e158f941e6a3819"
+  }
+}

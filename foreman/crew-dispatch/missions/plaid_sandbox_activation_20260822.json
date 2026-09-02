@@ -1,0 +1,58 @@
+{
+  "missionId": "PLAID_SANDBOX_ACTIVATION",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Pre-code review of the smallest truthful Plaid sandbox lifecycle now that sandbox access exists and production credentials are under review.",
+  "sharedContext": [
+    "Werkles uses Plaid only in the Backer lane for a user-initiated, point-in-time minimum-funds check. Public ranking by wealth is forbidden; the intended durable result is a dated narrow pass/fail receipt, not balances or wealth bands.",
+    "Plaid onboarding was completed with Auth + Balance requested. The current local Link request still asks for Assets, and the provider-neutral adapter prototype models Fast Assets creation, signed readiness webhook handling, threshold evaluation, Item/report deletion, and revocation.",
+    "The current live exchange route is deliberately disabled. The browser Link launcher discards the public token and reports completed-not-saved. Link success alone is not funds verification.",
+    "Sandbox is available. Production credentials are pending provider review. No production call, billing change, secret handling, SQL/schema/RLS, push, or deploy is in scope.",
+    "Werkles policy: raw financial and identity evidence is not retained; raw values must not be logged, returned to the browser, used for matching rank, or exposed to other members. Provider access should be removed after the narrow check when technically supported."
+  ],
+  "liveStrings": [
+    "Funds verified — <date>",
+    "completed-not-saved",
+    "A Plaid window can open here. Finishing it does not save a bank connection or create a funds check yet."
+  ],
+  "knownGaps": [
+    "Official product-fit evidence is needed for Auth + Balance versus Fast Assets for a one-shot threshold check and disposal lifecycle.",
+    "No sandbox public-token exchange, reusable Item custody, Balance/Assets retrieval, signed webhook endpoint, or durable receipt persistence is currently enabled in the route.",
+    "Production access is pending and must not be implied or exercised."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Establish the official Plaid product and lifecycle facts that decide whether Werkles should use Auth + Balance, Fast Assets, or a staged experiment for its narrow threshold claim.",
+      "pull": "Use current official Plaid documentation only. Resolve Link products, API calls, webhooks, sandbox mechanics, pricing-relevant call shape if publicly documented, and exact Item/report deletion behavior.",
+      "go": [
+        "Return a decision table comparing Auth + Balance and Fast Assets for one user-initiated point-in-time minimum-funds threshold, including data exposed, completion authority, latency, deletion/revocation, and whether a reusable Item is required.",
+        "Name the smallest sandbox experiment that can falsify the preferred choice without storing raw values or printing secrets, with exact official endpoints/webhooks and cleanup calls.",
+        "Identify any question that still requires Sophia/Plaid rather than local inference."
+      ],
+      "momentum": "Return PRODUCT_FIT_READY, STAGED_EXPERIMENT_REQUIRED, or BLOCKED_PLAID_CLARIFICATION with links to official Plaid sources.",
+      "outOfLane": "No dashboard mutation, provider submission, secret handling, paid call, code, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "BEAN": {
+      "vision": "Prevent sandbox plumbing from becoming a wealth-ranking system, a raw-data retention path, or a fake verification badge.",
+      "pull": "Attack both Auth + Balance and Fast Assets against Werkles' narrow claim, zero-raw-data posture, transient token custody, deletion promises, replay/idempotency, cross-member isolation, and partial-cleanup failures.",
+      "go": [
+        "Return GO_FOR_BUILD, PASS_WITH_CONDITIONS, or BLOCK with the minimum invariant set the first sandbox lifecycle must enforce.",
+        "Attack the exact transition from Link success to server evaluation to dated receipt, including replay, stale evidence, threshold manipulation, Item/report deletion failure, logging, and browser leakage.",
+        "List the highest-value hostile tests and the member-facing claims that must remain forbidden until production review and durable persistence are complete."
+      ],
+      "momentum": "End with the two strongest pre-code conditions and one exact stop condition.",
+      "outOfLane": "Review only. No form/dashboard action, credentials, provider calls, legal approval, code, SQL, push, deploy, new tasks, subagents, or secondary models."
+    },
+    "ENDER": {
+      "vision": "Make the sandbox walkthrough feel like a real, understandable product step without pretending a test-bank exercise verified real money.",
+      "pull": "Review the current completed-not-saved state and the intended dated receipt. Design the smallest human flow for opening Link, selecting a sandbox account, seeing what was tested, and understanding what remains pending.",
+      "go": [
+        "Return a five-state member flow with concise copy for ready, Link open, evaluating, sandbox result, and cleanup/failure.",
+        "Separate operator/testing language from eventual member language and flag every robotic, insider, or misleading phrase.",
+        "Specify what the Crucible card should show after a successful sandbox threshold check and what it must never call verified."
+      ],
+      "momentum": "Return UX_READY_WITH_COPY or BLOCKED, plus the two strongest visual/interaction requirements.",
+      "outOfLane": "No code, provider calls, dashboard action, security audit, legal approval, secrets, SQL, push, deploy, new tasks, subagents, or secondary models."
+    }
+  }
+}

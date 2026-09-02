@@ -1,0 +1,48 @@
+{
+  "schema": "BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:10:01.145Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node inline receipt writer after creating Ben pre-Mack Aeye input brief",
+  "validation": {
+    "brief_exists": true,
+    "index_lists_brief": true,
+    "brief_includes_actual_aeye_input": true,
+    "brief_recommends_contract_canon_first": true,
+    "brief_preserves_mack_not_received_boundary": true,
+    "no_external_send_claim": true,
+    "no_mack_receipt_claim": true,
+    "no_next_build_generated_from_mack": true,
+    "truth_boundary": "This receipt proves the Ben-facing pre-Mack brief exists and is indexed. It does not claim Mack has reviewed the packet or returned feedback."
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BEN_PRE_MACK_ARCHITECTURE_BRIEF_AND_AEYE_INPUT_20260706.md",
+      "sha256": "3218FF2055D693D7B675103569868852C1D27D8E9C62222B7BF42493B5CB3EB4",
+      "bytes": 7092
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "6447D8E8A4856C7AB365FE21B009822C2416557CDA3525935EAAE8D50547EE9D",
+      "bytes": 9118
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+      "sha256": "42052B6C3A6F43BD691973BC603DCFED56A7087478A5FA0545404489E3D5B4C7",
+      "bytes": 16371
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack receipt claim",
+    "no canonical next-build packet generated"
+  ]
+}

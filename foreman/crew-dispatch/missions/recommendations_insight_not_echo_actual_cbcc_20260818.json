@@ -1,0 +1,66 @@
+{
+  "missionId": "RECOMMENDATIONS_INSIGHT_NOT_ECHO_ACTUAL_CBCC",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Attack a local Recommendations candidate that replaces prominent verbatim member-answer echo with deterministic synthesis, three distinct work paths, artifacts, and decision rules. Review only; return defects that should block Ben's next walkthrough.",
+  "sharedContext": [
+    "Sanitized worked case: a first-time software builder is testing two digital products and deciding whether to seek mentors/funding or become customer-ready first.",
+    "Previous output copied the member's long decision paragraph into the plan title and first task. The candidate prohibits member paragraphs from prominent headings, insights, and actions; exact answers remain only in a collapsed audit trail.",
+    "The rule engine now recognizes early digital-product readiness and ranks: 1 Test one product with one audience; 2 Choose which product goes first; 3 Why borrowing should wait.",
+    "The first path distinguishes customer-, mentor-, and investor-readiness, prescribes five uncoached sessions, and ends in a written go/rework/park rule.",
+    "The second path creates a three-column readiness map and freezes the competing product backlog for seven days.",
+    "The third path separates learning spend from capacity spend and blocks lender comparison until use, maximum amount, and repayment source are concrete.",
+    "Focused recommendation, Intake-to-Recommendations, dual-purpose Intake, TypeScript, and browser checks pass. Browser shows no fresh React duplicate-key error after the ledger dedupe repair."
+  ],
+  "liveStrings": [
+    "The hidden problem is that ‘ready’ means three different things. Customers need one useful job to work; mentors need evidence that you learn from real use; investors need a milestone that can grow.",
+    "Two products divide the evidence: activity on one cannot prove demand for the other.",
+    "Run five uncoached sessions.",
+    "Five behavior records, not five compliments.",
+    "You do not have one readiness decision. You have a customer-readiness question, a mentor-readiness question, and an investor-readiness question.",
+    "Do not borrow to finance an unanswered product question.",
+    "Credit can finance a priced asset with a credible repayment source. It is a poor substitute for learning which of two early products creates demand."
+  ],
+  "knownGaps": [
+    "This is deterministic reviewed-rule output, not an LLM conversation or professional adviser.",
+    "The generic catalog still exists and not every possible business pattern has a bespoke synthesis branch.",
+    "No provider directory, named supplier, current pricing, locality research, account custody, SQL, provider call, push, or deploy is included.",
+    "The existing full Recommendations page remains text-dense below the main work path; this slice targets intellectual value and echo removal first."
+  ],
+  "cousins": {
+    "BEAN": {
+      "vision": "Prove the new synthesis is faithful, falsifiable, and safer than attractive paraphrase.",
+      "pull": "Attack causal support, financial boundaries, arbitrary thresholds, unfavorable evidence, and whether any result implies readiness, eligibility, or investment quality.",
+      "go": [
+        "Judge whether the three recommendations follow from the sanitized facts without inventing member attributes or certainty.",
+        "Attack the five-session experiment and go/rework/park rule for self-confirmation, threshold gaming, and missing counterevidence.",
+        "Attack the borrowing path for financial-advice, eligibility, repayment, and lender-comparison overclaims."
+      ],
+      "momentum": "Return PASS or BLOCK with the smallest exact repair and one hostile regression case.",
+      "outOfLane": "No implementation, visual styling, provider research, SQL, secrets, push, deploy, or new chats/subagents."
+    },
+    "ENDER": {
+      "vision": "Decide whether this finally sounds like an intelligent concierge rather than a form echo or startup consultant.",
+      "pull": "Attack comprehension, voice, hierarchy, jargon, whether the insight is genuinely new, and whether three options feel meaningfully different.",
+      "go": [
+        "Apply the ordinary-person and Ben's-mother tests to every live string; flag startup/finance/Werkles vocabulary that requires translation.",
+        "Judge whether the first path creates a useful ‘I had not connected that’ moment or merely rearranges the member's statement.",
+        "Judge whether the three cards and their first screens are distinct, pithy, and compelling enough to keep reading."
+      ],
+      "momentum": "Return PASS or BLOCK with exact replacement copy for the single worst line and one human walkthrough test.",
+      "outOfLane": "No code, trust policy, provider research, SQL, secrets, push, deploy, or new chats/subagents."
+    },
+    "COMPUTER": {
+      "vision": "Prove the candidate forms a defensible path from diagnosis to experiment to evidence to the next appropriate expert or resource.",
+      "pull": "Attack experiment design, mentor/customer/investor sequencing, evidence value, and the bridge from current output to future provider and match research.",
+      "go": [
+        "Judge whether five uncoached sessions and the recorded behaviors can actually distinguish product readiness from interface polish.",
+        "Identify the highest-value missing measurement or falsifier for this exact two-product case.",
+        "Specify the minimum sourced-resource seam needed after the sprint so Werkles can recommend a mentor, supplier, lender, or other next resource without fake neutrality."
+      ],
+      "momentum": "Return PASS or BLOCK with one stronger experiment and a minimum evidence schema for the next resource step.",
+      "outOfLane": "No live web research, named providers, purchases, outreach, code, SQL, secrets, push, deploy, or new chats/subagents."
+    }
+  }
+}
+

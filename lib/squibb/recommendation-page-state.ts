@@ -21,7 +21,9 @@ export function getRecommendationPageState({
   rankedCount,
   hasPublishedSourceDocument
 }: RecommendationPageStateInput): RecommendationPageStateCopy {
-  if (source.mode === "latest_intake" && rankedCount === 0) {
+  const hasPersonalIntake = source.mode === "latest_intake" || source.mode === "browser_intake";
+
+  if (hasPersonalIntake && rankedCount === 0) {
     return {
       state: "intake",
       eyebrow: "Your answers are connected",
@@ -32,7 +34,7 @@ export function getRecommendationPageState({
   }
 
   if (rankedCount > 0) {
-    return source.mode === "latest_intake"
+    return hasPersonalIntake
       ? {
           state: "ready",
           eyebrow: "Ideas Based on Your Answers",
@@ -41,10 +43,10 @@ export function getRecommendationPageState({
         }
       : {
           state: "ready",
-          eyebrow: hasPublishedSourceDocument ? "Published catalog readout" : "Catalog readout",
+          eyebrow: hasPublishedSourceDocument ? "Worked example" : "General options",
           body: hasPublishedSourceDocument
-            ? "These ratings use the published source document on this page, not a personal intake. Choosing an option changes only the readout below."
-            : "These options are a general catalog, not personal recommendations. Choosing one changes only the readout below.",
+            ? "This example shows how Werkles compares possible paths. It is not based on your Intake."
+            : "These are general options, not a personal ranking. Complete Intake to put them in a useful order.",
           actionLabel: "Tell Werkles About My Goal"
         };
   }

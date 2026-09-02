@@ -1,0 +1,42 @@
+{
+  "missionId": "PARTNER_PERSPECTIVE_PRODUCT_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Product and doctrine review of a private expectation-prediction exercise for prospective Werkle partners.",
+  "sharedContext": [
+    "The current local formation room has a tester-only switch that lets Ben operate both sides of a synthetic partner exercise.",
+    "The proposed real product separates each member's self-report from the other member's private prediction and compares them only to prepare a conversation.",
+    "The first local slice should cover weekly time, personal cash, first-pay expectations, decision authority, reinvestment/distributions, profitability timeline, and exit.",
+    "No prediction becomes attributed fact, match score, shared company language, or professional advice.",
+    "Bean is independently attacking trust, consent, attribution, and coercive gap labels.",
+    "Ender's desktop route is currently unavailable and no Ender review is claimed."
+  ],
+  "liveStrings": [
+    "Your private prediction",
+    "Their actual answer",
+    "Where your expectations differ",
+    "Talk this through before you promise anything",
+    "Only mutual decisions enter the Werkle"
+  ],
+  "knownGaps": [
+    "No prediction or gap model exists yet.",
+    "The practice partner is synthetic and the current draft is browser-local.",
+    "The exercise needs useful questions and prompts, not a numerical compatibility score.",
+    "Computer cannot render Betsy's localhost from its sandbox, so this is a product/doctrine review, not a visual inspection."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Design a useful, non-scored path from mismatched expectations to one concrete partner conversation and a revisitable working agreement.",
+      "pull": "Attack whether the proposed questions surface real operational disputes and whether the output is substantive enough to earn member trust.",
+      "go": [
+        "Return GO, PATCH, or REJECT.",
+        "Define six plain-language questions with answer structures that support honest comparison without false precision.",
+        "For each question, give one conversation prompt that turns a mismatch into a decision or experiment.",
+        "Define a deterministic, explainable comparison rule that does not create a compatibility score.",
+        "Name the minimum revisitable artifact this exercise should produce."
+      ],
+      "momentum": "Add one bounded idea for revisiting expectations after 30 days of actual work.",
+      "outOfLane": "No implementation, visual claims, live research, provider call, schema, push, deploy, secrets, spend, or new doctrine beyond this review."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "missionId": "WERKLE_FORMATION_VISUAL_REDESIGN_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Walk and redesign the visual hierarchy of the live Werkle formation room so two Workshops becoming one Werkle is obvious, humane, and visually substantial.",
+  "sharedContext": [
+    "Live route: http://127.0.0.1:3000/dashboard/werkles/formation?candidate=ghost_095",
+    "Ben likes the deep-purple direction and wants copper/orange used with confidence.",
+    "The prior pass repaired measurable legibility but still feels like a long administrative stack; that is the failure under review.",
+    "Existing formation logic, source custody, mutual consent, objections, and local draft behavior are protected.",
+    "The reviewer must inspect the rendered route at desktop and narrow width before answering."
+  ],
+  "liveStrings": [
+    "A match opened the door. It did not create a partnership.",
+    "Agreement is a state, not a vibe.",
+    "Whose answer are you entering?",
+    "The company underneath the idea",
+    "How the work would run",
+    "The questions friendship cannot answer for you",
+    "Only mutual decisions enter this room."
+  ],
+  "knownGaps": [
+    "The page still reads as a long stack of administrative cards even after font and contrast repairs.",
+    "The two-source-to-one-Werkle transformation is described in copy but is not visually embodied.",
+    "Warm paper topic cards compete with the approved dark-purple direction.",
+    "Twelve full topic cards create scroll fatigue and obscure a clear sense of progress.",
+    "Bean supplied a real trust review, but no actual visual-design cousin has reviewed this post-patch page."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Make the formation room visibly communicate two private Workshops becoming one shared Werkle while remaining easy to scan during a consequential conversation.",
+      "pull": "Act as the actual visual Handeye: walk the rendered page, inspect hierarchy and fatigue, and provide an evidence-backed composition critique.",
+      "go": [
+        "Return GO, PATCH, or REJECT and rank the first five visual failures by human harm.",
+        "Propose one visibly different desktop composition and one narrow-width scan path.",
+        "Separate always-visible trust/state information from safe progressive disclosure.",
+        "Give exact purple, copper, teal, spacing, typography, depth, and interaction remedies.",
+        "Name the smallest implementation that would look unmistakably redesigned rather than merely restyled."
+      ],
+      "momentum": "Include one additional in-lane idea that makes the Workshop-to-Werkle transformation feel tangible without changing decision logic.",
+      "outOfLane": "No implementation, provider call, schema, deploy, secrets, spend, new agents, or alteration of formation decisions."
+    }
+  }
+}

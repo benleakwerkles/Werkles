@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-03T15:32:39.407Z",
+  "file": "FROM_ENDER_IMAGERY_AND_UX_FOR_MAKER_1.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "ENDER",
+  "consumed_by": "FOREMAN",
+  "note": "Read 2026-08-03. Legibility requirement (WCAG AA, called a blocking bug that had come up twice) verified on the new Recommendation View: dark high-contrast text on light panels, screenshot in foreman/receipts. Itemized trust signals honored by owner-bound proof checks on /dashboard/crucible. NOT implemented: imagery and casting direction, the closer/cheaper-than-you-thought reveal, Squibb-as-scout placement, and the five-beat arc. Homepage imagery remains open work.",
+  "auto_merge": false
+}

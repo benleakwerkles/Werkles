@@ -1,0 +1,59 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_MIRROR_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T04:46:50.7550052-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_TRANSPORT_MIRROR_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SOLEDASH_MIRROR_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "what_changed": [
+    "Added the SoleDash Aeye transport organism mirror helper to the packet set.",
+    "Added the SoleDash Aeye transport mirror smoke command and proof section.",
+    "Updated receiver-proof coverage language from transport ACK only to transport receipt mirrored.",
+    "Added the SoleDash mirror receipt rows to the receipt table."
+  ],
+  "validation": {
+    "index_lists_soledash_mirror_helper": true,
+    "index_lists_soledash_mirror_smoke": true,
+    "index_lists_soledash_mirror_smoke_command": true,
+    "index_preserves_transport_ack_partial_boundary": true,
+    "index_preserves_universal_receiver_proof_not_claimed": true,
+    "receiver_proof_audit_updated_after_soledash_mirror": true
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "6dde99e7e5347c7f6db0b5a6b43a129cd16e116b015aa276f5b31c45c16082f8",
+      "bytes": 17841
+    },
+    {
+      "path": "lib/soledash/aeye-inbox-v0/organism-contract-mirror.ts",
+      "sha256": "4db51bdf37f8c2065928d1f906b2065a6b194a8dc0b6973d61c37756f0b0c11f",
+      "bytes": 8643
+    },
+    {
+      "path": "scripts/foreman/soledash-aeye-transport-organism-mirror-smoke.mjs",
+      "sha256": "ae6e0b234fc945dddbef2f01d24f3d8b625621d70f9a2325b3c02e7aa7a8bd8c",
+      "bytes": 10407
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_SOLEDASH_AEYE_TRANSPORT_MIRROR_V0_RECEIPT_20260706.json",
+      "sha256": "9d9af2d71e9eb3c58b580335b6232e41d7785541ad683ae3dc9d2b5892c38429",
+      "bytes": 3663
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706.json",
+      "sha256": "7a4d5bcc665249c0b8e14e1c56912d3f33ba81a5d632ef1c5e129ca943012fb8",
+      "bytes": 17303
+    }
+  ],
+  "truth_boundary": "SoleDash Aeye transport ACKs now mirror into canonical organism packet/receipt/event records as partial transport proof. This does not claim receiver work completion or universal receiver proof.",
+  "stop_conditions_respected": [
+    "no receiver work completion claim",
+    "no Mack receipt claim",
+    "no universal receiver proof claim",
+    "no deploy",
+    "no push"
+  ]
+}

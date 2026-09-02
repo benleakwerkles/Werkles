@@ -1,0 +1,79 @@
+{
+  "missionId": "WERKLES_PRODUCTION_RELEASE_ROTATION_20260829",
+  "version": "v1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Final independent attack of the sealed Werkles production candidate before Lady Jessica alone stages the exact manifest, commits, pushes, deploys a candidate, promotes, and runs the live smoke.",
+  "sharedContext": [
+    "Baseline is 93b79d128f33b27ca5c7d3f9b65d76ad74260c81.",
+    "The exact candidate inventory is foreman/releases/WERKLES_BVPGM_RELEASE_CANDIDATE_INVENTORY_20260829.json and its digest is e9659ca736e470b0cdefa7a5e3d7e591229299fd50ed5c2f5f323b78b44220d7.",
+    "Candidate evidence is foreman/releases/WERKLES_PRODUCTION_CANDIDATE_EVIDENCE_20260829.md: TypeScript, production build, 40 candidate tests, local route smoke, member flow, and Formation desktop/mobile checks pass.",
+    "The dirty tree is intentionally larger than the release. No one may use git add dot. Lady Jessica must stage only the 301-path exact manifest.",
+    "The migration supabase/migrations/20260820073346_member_concierge_intakes.sql is explicitly excluded. No schema, provider, secret, billing, or credential mutation is approved.",
+    "Ben approved the bounded production push. Heimerdinker signed the exact candidate. Lady Jessica owns the independent seal and is the only push/deploy seat.",
+    "A synthetic Ghost-response control was added so one human can test the Formation floor; it is labeled practice data and must never imply that a real person answered.",
+    "Review only. Do not edit, stage, commit, push, deploy, or touch providers, schema, secrets, or spend."
+  ],
+  "liveStrings": [
+    "Apply the partner's synthetic response",
+    "Practice response only. A real member would have to review and accept their own answer.",
+    "Saved on this device",
+    "Werkles recovered the latest answers saved in this browser.",
+    "Funds verified — date only; no public balance ranking"
+  ],
+  "knownGaps": [
+    "Current production still requires Lady Jessica's exact-manifest push, candidate deployment, promotion, and live smoke.",
+    "The excluded account-persistence migration is not part of this release, so no cross-device persistence may be claimed.",
+    "Provider activation remains scaffolded or sandbox-bound unless explicitly labeled live.",
+    "Bean and Skybro have no currently callable Chrome task on Betsy; their packets may remain delivery owed unless a background route becomes available."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make sure the sealed member journey feels clear, humane, useful, and honest before it reaches production.",
+      "pull": "Attack Home through Crucible as a human, with special attention to copy, legibility, visual grounding, page purpose, and obvious next action.",
+      "go": [
+        "Return GO, PATCH, or STOP for the exact digest, naming the first member-breaking problem.",
+        "Attack robotic, tautological, insider, homework-like, or capability-inflating copy.",
+        "Attack the Formation synthetic-response control for false consent or confusing practice boundaries.",
+        "List only release-blocking or smallest high-value fixes with exact paths."
+      ],
+      "momentum": "If GO, state the strongest reason this candidate is materially better than current production.",
+      "outOfLane": "No edits, staging, commit, push, deploy, schema, providers, secrets, credentials, or spend."
+    },
+    "BEAN": {
+      "vision": "Stop false trust, false persistence, false provider readiness, or synthetic-person impersonation from shipping.",
+      "pull": "Hostile-audit the exact candidate and release scope.",
+      "go": [
+        "Return GO, PATCH, or STOP with exact evidence.",
+        "Attack save, send, apply, verify, purchase, connect, and human-response claims.",
+        "Attack Plaid/backer equality and data-minimization boundaries.",
+        "Confirm the excluded migration and unrelated dirty-tree work cannot enter via the exact manifest."
+      ],
+      "momentum": "Name the single most dangerous surviving overclaim, or say none found.",
+      "outOfLane": "No edits, staging, commit, push, deploy, schema, providers, secrets, credentials, or spend."
+    },
+    "SKYBRO": {
+      "vision": "Ensure the production candidate tells one coherent, valuable Werkles story rather than a pile of adjacent pages.",
+      "pull": "Attack narrative continuity, product value, navigation, duplicate concepts, and the free-to-paid value ladder.",
+      "go": [
+        "Return GO, PATCH, or STOP for the exact candidate.",
+        "Check that Workshop, Match Deck, Werkle Formation, Personal Bellows, and Crucible have distinct jobs.",
+        "Flag shallow advice, duplicate pages, and unclear next steps.",
+        "Separate blockers from later product expansion."
+      ],
+      "momentum": "Name the clearest sellable member outcome in this release and the weakest continuity seam.",
+      "outOfLane": "No edits, staging, commit, push, deploy, schema, providers, secrets, credentials, or spend."
+    },
+    "COMPUTER": {
+      "vision": "Verify that the release evidence supports the claims and the exact-manifest path cannot absorb excluded dirty-tree work.",
+      "pull": "Audit the evidence, manifest, test claims, provider boundaries, and rollback story.",
+      "go": [
+        "Return GO, PATCH, or STOP with exact evidence.",
+        "Find any unsupported test, build, route, or provider claim.",
+        "Attack the 301-path manifest and temporary-index procedure for contamination.",
+        "Confirm the live plan stops before alias promotion if candidate smoke fails."
+      ],
+      "momentum": "Name any evidence that Lady Jessica must personally re-run before sealing.",
+      "outOfLane": "No edits, staging, commit, push, deploy, schema, providers, secrets, credentials, or spend."
+    }
+  }
+}

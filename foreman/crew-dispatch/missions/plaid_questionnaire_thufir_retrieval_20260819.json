@@ -1,0 +1,31 @@
+{
+  "missionId": "PLAID_QUESTIONNAIRE_THUFIR_RETRIEVAL",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Recover and validate Thufir's prior Data Privacy and Data Security answers to Ben's Plaid questionnaire, then return a question-by-question source-backed fill packet. Research and review only; no provider submission.",
+  "sharedContext": [
+    "Ben says he previously sent the Plaid Data Privacy/Data Security questionnaire to Thufir and expects prior answers to exist in Thufir's custody.",
+    "Werkles currently has a sandbox Link-token path, but public-token exchange, Item custody, evidence persistence, and production provider composition remain intentionally disabled.",
+    "The questionnaire is needed before implementation of actual Plaid Link can advance responsibly.",
+    "The final provider form may contain company attestations. Current facts, planned controls, unknowns, and legal/Operator approvals must remain distinct."
+  ],
+  "liveStrings": [],
+  "knownGaps": [
+    "The exact prior questionnaire and Thufir answer transcript are not present in the canonical repo.",
+    "No claim may be upgraded merely because it sounds like a standard security answer.",
+    "Final form submission and any legal/compliance attestation remain human gates."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Recover your prior Plaid questionnaire work and make it usable without making Ben repeat or courier it.",
+      "pull": "Locate the prior Data Privacy/Data Security questionnaire conversation and your responses in your own current task history. If exact custody is unavailable, return a precise blocker rather than recreating the questionnaire from memory.",
+      "go": [
+        "Return every exact question you can prove was asked, paired with your prior proposed answer and the basis for it.",
+        "Classify each answer as CURRENTLY_PROVEN, PLANNED_NOT_IMPLEMENTED, NEEDS_OPERATOR_OR_LEGAL_APPROVAL, or UNKNOWN, and identify the supporting Werkles artifact or external primary source.",
+        "Produce a fill-ready ordered table plus a short list of evidence artifacts Heimerdinker must inspect before placing answers into Plaid's page."
+      ],
+      "momentum": "End with READY_FOR_PACKET, NEEDS_SOURCE_ARTIFACT, or BLOCKED_NO_PRIOR_CUSTODY. State whether Heimerdinker may mechanically fill the page after validation, and name every field that must remain blank or require Ben's final attestation.",
+      "outOfLane": "No provider submission, account mutation, secrets, credentials, legal approval, invented controls, code, SQL, push, deploy, new chats, subagents, or secondary models."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+﻿# SHA-256 push-slice manifest — generated 2026-07-25 noon
+# Base: maker/site-g-20260703 @ 674f3db
+# Recompute after any intentional edit; never push unexplained drift.
+f9c33ec51523a5ba5ab49cef4bd63c6f8136d5a3b09673fd0cbfa094730813bc  .env.example
+802bbeec299136cf9d685ab8f31070b99f636949bad945863eaebb64ddfe435f  app/api/bellows/intake/route.ts
+61ecdeb54ff59f4e16488a350944152899dbff8c36c8a2a29265f20ca4b46359  components/squibb/concierge-intake-form.tsx
+8afba67be7fa3e15d811c2cbff8d41134a425bd5c98aefd9d78fb70fa78452b6  lib/squibb/concierge-intake-availability.ts
+12c1c81edce5ff50de9be428dd09cd95e6d7982313829298a8e8db53b67b448e  scripts/foreman/test-bellows-intake-closed-gate.mjs
+1c8dfb642935e6acaeeb51c855e621f6cb575feb09e897b07730f369631929b4  components/squibb/recommendation-surface.tsx
+edeba34981f250c78bb0e2f7649d371fc4f026dd6da816d9ac3b9af8f86b485d  components/squibb/reasoning-panel.tsx
+7421ca95a9f1444e4a979c4b0d5c7e3e6c18deade470dd467506eea642217a2b  components/squibb/evidence-section.tsx
+c8a4196c5f4a8e017416949db9b6ee2442a27dea2e3ed4e7103655fe96fdc5ae  components/squibb/source-document-panel.tsx
+3b90d3a92b3623ebef5e167fecad699285f756b88819aa825bd25de9d9688ee2  app/bellows/recommendations/squibb-recommendations.css
+b1cc1cecda9b8f55930a49d61c879ce6e89e10e58c8001b43942edcde4287089  scripts/foreman/test-matching-vpg8-surface.mjs

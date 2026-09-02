@@ -1,0 +1,65 @@
+{
+  "missionId": "WERKLES_BVPGM_M12_TOPIC_EXPERIMENT_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build red team of exact local Formation topic-test and Personal Bellows return candidate.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; no push or deploy occurred.",
+    "Exact eight-file content digest: ddcdab3d5e1525df636e91c3f3d612859ca8ef5b98492abb13cbe2b7a1f6dae3.",
+    "Formation now maps every topic to either a concrete field test or an independent-adviser handoff.",
+    "Saving a proposed shared action also preserves its accepted Operating Brief source; Personal Bellows validates both before restoring the action.",
+    "Only Claims that need checking links to Crucible. Ordinary conversation tests do not invoke provider checks.",
+    "TypeScript, focused M12 browser walk, M11 return regression, Match Deck to Formation regression, Crucible journey, practice boundary regression, and 100-route production build pass.",
+    "A posted packet is not custody, response, approval, or release sign-off."
+  ],
+  "liveStrings": [
+    "Try this before the next conversation",
+    "Prepare a clean adviser handoff",
+    "A useful starting shape",
+    "Compare the result with the original test",
+    "Accepted source and proposed action saved on this device. This is not an assignment or agreement."
+  ],
+  "knownGaps": [
+    "The candidate remains browser-local practice, not durable account or real-partner custody.",
+    "The map is deterministic Werkles-authored guidance, not a runtime LLM or personalized professional advice.",
+    "No external CBCC post-build receipt has yet been counted.",
+    "Lady Jessica release custody remains separate and owed."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Walk the exact candidate for human rhythm, legibility, homework fatigue, and whether the next test feels worth returning to.",
+      "pull": "Inspect Formation at candidate ghost_095, save one action, then inspect Personal Bellows.",
+      "go": ["Return the three strongest P0/P1 experience defects with route and smallest repair.", "Confirm whether tests and adviser handoffs read differently enough.", "Give ENDER_M12_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the one moment that now creates return value and the one remaining dead spot, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack the exact candidate for silent consent, stale-source restoration, assignment laundering, private leakage, and provider overreach.",
+      "pull": "Treat all localStorage and generated profile content as untrusted.",
+      "go": ["Return P0/P1 defects with exploit and minimum invariant.", "Challenge the combined accepted-source plus proposed-action save boundary.", "Give BEAN_M12_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest missing fail-closed regression, then stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether the exact loop creates revisitable paid-member value rather than another static suggestion.",
+      "pull": "Inspect specificity, observable result, Bellows return, and the next natural paid-value bridge.",
+      "go": ["Name the strongest value bridge and weakest dead end.", "Propose one bounded completed-test follow-up without cheap paywall teasing.", "Give SKYBRO_M12_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one next Bellows transformation that uses the returned result, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or canon-by-flattery."
+    },
+    "PETRA": {
+      "vision": "Verify exact candidate custody and machine boundaries before it can approach release custody.",
+      "pull": "Separate local practice, account durability, real-member consent, provider evidence, and release gates.",
+      "go": ["Return GO, PATCH, or STOP for local candidate integrity.", "Name any claim that outruns custody and the next exact checkpoint.", "Verify digest and evidence claims are not presented as production proof."],
+      "momentum": "Name the strongest safe slice and the remaining release blocker, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or Operator approval."
+    },
+    "COMPUTER": {
+      "vision": "Research-check the exact topic-test map and adviser-handoff boundary for practical usefulness and category errors.",
+      "pull": "Review the twelve mappings; ordinary tests must stay observational and adviser topics must not simulate legal, tax, or investment advice.",
+      "go": ["Flag the three weakest mappings with a better bounded alternative.", "Name any topic routed to the wrong test or adviser class.", "Give COMPUTER_M12_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest research-backed improvement that materially changes member value, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final release approval."
+    }
+  }
+}

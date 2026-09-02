@@ -1,6 +1,5 @@
 import "server-only";
 
-import { isMatchingPublicEnabled } from "@/lib/matching/feature-flags";
 import { GHOST_FLEET_DISCLOSURE, isGhostFleetEnabled } from "@/lib/ghost-fleet/enabled";
 import { matchGhostsForOwner } from "@/lib/ghost-fleet/loader";
 import {
@@ -8,7 +7,6 @@ import {
   type GhostFleetPlayableLoopBridge
 } from "@/lib/ghost-fleet/playable-loop";
 import type { BellowsPacketLedger } from "@/lib/squibb/bellows-ledger";
-import { BAKERY_EQUIPMENT_SOURCE_DOCUMENT } from "@/lib/squibb/example-matching-source-document";
 import { readBellowsOwnerIdFromCookies } from "@/lib/squibb/bellows-owner-session";
 import {
   loadBellowsPacketLedger,
@@ -39,27 +37,19 @@ function canServePersonalBellowsRecommendations() {
   return process.env.NODE_ENV === "development";
 }
 
-function examplePageData(publicEnabled: boolean): PublicBellowsRecommendationPageData {
-  const demo = loadSquibbRecommendationSession();
-  const doc = BAKERY_EQUIPMENT_SOURCE_DOCUMENT;
-
+function emptyPageData(): PublicBellowsRecommendationPageData {
+  const catalog = loadSquibbRecommendationSession();
   return {
     session: {
-      ...demo,
+      ...catalog,
+      statedNeed: "Complete Intake to connect these options to your situation.",
+      operatorContext: "General option library",
+      squibbIntro: "Browse the possibilities, or complete Intake to see which ones fit your situation first.",
+      ranked: [],
       source: {
         mode: "demo",
-        label: publicEnabled ? "Published source document" : "Catalog scenario",
-        detail: publicEnabled
-          ? "Catalog ratings are scored against the source document on this page, not against a personal intake."
-          : "Personal recommendations are closed during this beta. This catalog readout uses a published fixture.",
-        fedDocument: {
-          id: doc.id,
-          title: doc.title,
-          kind: doc.kind,
-          summary: doc.summary,
-          body: doc.body,
-          excerpts: doc.excerpts
-        }
+        label: "General option library",
+        detail: "Nothing here is ranked for you until an Intake is connected."
       }
     },
     ledger: {
@@ -77,7 +67,7 @@ function examplePageData(publicEnabled: boolean): PublicBellowsRecommendationPag
  */
 export async function loadPublicBellowsRecommendationPageData(): Promise<PublicBellowsRecommendationPageData> {
   if (!canServePersonalBellowsRecommendations()) {
-    return examplePageData(isMatchingPublicEnabled());
+    return emptyPageData();
   }
 
   const ownerId = await readBellowsOwnerIdFromCookies();

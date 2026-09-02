@@ -432,10 +432,10 @@
   text-transform: uppercase;
 }
 
-.concierge-intake__choice-field > p,
-.concierge-intake__path-field > p {
+main.concierge-intake-page .concierge-intake__choice-field > p,
+main.concierge-intake-page .concierge-intake__path-field > p {
   margin: 0 0 0.75rem;
-  color: #d9c29a;
+  color: #fff0d0;
   line-height: 1.45;
 }
 
@@ -582,9 +582,9 @@
   margin: 0.15rem 0 0.35rem;
 }
 
-.concierge-intake__brief header > p:last-child,
-.concierge-intake__unknowns {
-  color: #d9ccff;
+main.concierge-intake-page .concierge-intake__brief header > p:last-child,
+main.concierge-intake-page .concierge-intake__form .concierge-intake__unknowns {
+  color: #f2ebff;
   line-height: 1.5;
 }
 

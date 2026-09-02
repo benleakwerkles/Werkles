@@ -1,0 +1,72 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_WORKSPACE_RELAY_HANDOFF_BRIDGE_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T04:56:35.0102299-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_WORKSPACE_RELAY_HANDOFF_BRIDGE_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "what_changed": [
+    "Added the Workspace Relay receiver-handoff bridge helper to the packet set.",
+    "Added the Workspace Relay receiver-handoff bridge smoke command and proof section.",
+    "Updated receiver proof counts to include the fixed pending Workspace Relay receiver-handoff bundle.",
+    "Added the Workspace Relay receiver-handoff bridge receipt rows to the receipt table."
+  ],
+  "validation": {
+    "index_lists_workspace_relay_receiver_handoff_bridge_helper": true,
+    "index_lists_workspace_relay_receiver_handoff_bridge_smoke": true,
+    "index_lists_workspace_relay_receiver_handoff_bridge_command": true,
+    "index_counts_updated_to_19_total_9_pending": true,
+    "workspace_relay_organism_packet_fixture_written": true,
+    "receiver_handoff_template_blocked_template_not_filled": true,
+    "returned_receipt_not_created": true,
+    "receiver_work_completion_not_claimed": true
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "ec4f56fc317764b605a19db3d38ef8dd73c4c0491098365997953ee04f785bea",
+      "bytes": 18990
+    },
+    {
+      "path": "lib/tinkerden/workspace-relay-receiver-handoff.ts",
+      "sha256": "0ea315f2d1b951e8aa75a98490e4fb48c38e257af2a82f116c57850e897c58a9",
+      "bytes": 1089
+    },
+    {
+      "path": "app/api/tinkerden/workspace-relay/route.ts",
+      "sha256": "5c8995b661b1651291e7c59176edaf369026963fb473fb3f2bdcf7fd11b0d819",
+      "bytes": 9516
+    },
+    {
+      "path": "scripts/foreman/workspace-relay-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "a9594daa52c7112f5a98b19a491a140d630b7fe42ba6db7214090e24ec69ac24",
+      "bytes": 10214
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706.json",
+      "sha256": "8c5451ef84dea772302dfd8e4b60a1803b50e8a9a4deba9d785cabf54fd5a251",
+      "bytes": 3281
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706.json",
+      "sha256": "eabdbbe63ab9c2efb7f07e90e0136153ff3d5023b6943bec5bc83ce27fbc7bb9",
+      "bytes": 19887
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+      "sha256": "266b05c0904a672e862ca874fb3cfbc6c1157b72e57eba30a74b644f34f52b81",
+      "bytes": 1763
+    }
+  ],
+  "truth_boundary": "Workspace Relay can now open a pending receiver-handoff return lane for relayed work. The generated receipt template is blocked with TEMPLATE_NOT_FILLED and is not receiver completion proof.",
+  "stop_conditions_respected": [
+    "no returned receipt created",
+    "no receiver work completion claim",
+    "no Mack receipt claim",
+    "no universal receiver proof claim",
+    "no deploy",
+    "no push"
+  ]
+}

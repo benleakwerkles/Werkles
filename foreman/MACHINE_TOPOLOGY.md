@@ -16,10 +16,11 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 |------------|------------------|-------------------|----------------|----------------|------------|-----------|----------|
 | **Sally** | `DESKTOP-SJSJMNK` | `C:\Users\benle\Desktop\github\Werkles` | `rescue/sally-dirty-worktree-2026-06-01` | `8ba905b` | **mirror forge** | `:3000` running on host (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK`; historical: `foreman/reviews/WORKTREE_STABILIZATION_2026-06-01.md`, `FROM_DINK_BETSY_SETUP_RECORD_V1.md` |
 | **Sally** *(second surface, same host)* | `DESKTOP-SJSJMNK` | `C:\Dev\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | `437792b` | **mirror forge** (snapshot lane) | shares host `:3000` (live) | Live readback 2026-06-12 on `DESKTOP-SJSJMNK` |
-| **Betsy** | `DESKTOP-KTBH0LA` | `C:\Users\Ben Leak\Desktop\github\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | *(see live readback)* | **primary forge** | `:3000` when dev server running | Operator readback 2026-06-12 on `DESKTOP-KTBH0LA`; baseline `foreman/BETSY_BASELINE_v1.md` |
+| **Betsy** | `Betsy` | `C:\Users\Ben Leak\github\Werkles` | `maker/site-g-20260703` | `19333c9` | **primary forge** | verify at session start | Operator bind 2026-07-03; local pointer `foreman/source-truth/LOCAL_SOURCE_TRUTH_POINTER.json`; baseline `foreman/BETSY_BASELINE_v1.md` |
 | **Doss** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNASSIGNED** | **UNKNOWN** | **NOT PROVEN** — awaiting `LOCAL_DOSS_WINDOWS` readback or confirmed hostname |
 | **Atlas** | **UNKNOWN** | vault path per `foreman/ATLAS_MACHINE_PLAN.md` | n/a (not a git writer) | n/a | **archive forge** | n/a | Plan doc only — no live readback recorded |
-| **Medullina** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **auxiliary forge candidate** | **UNKNOWN** | Operator reports RustDesk installed/running 2026-06-30. RustDesk ID reported as `254196301`; Betsy launched connect attempt, but no fresh peer config/logged success yet. Needs owner consent readback, `LOCAL_MEDULLINA_WINDOWS`, and workstation receipt. See `foreman/MEDULLINA_ONBOARDING_PACKET.md`. |
+| **Medullina** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **auxiliary forge candidate** | **UNKNOWN** | RustDesk on **Betsy private server** — Operator PASS 2026-07-18 (`RECEIPT_RUSTDESK_BETSY_SERVER_FLEET_ALIGNED_20260718`). ID historically `254196301`. Still needs `LOCAL_MEDULLINA_WINDOWS` hostname/path readback + workstation receipt. See `foreman/MEDULLINA_ONBOARDING_PACKET.md`. |
+| **Spanzee** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **remote forge / former RD host** | **UNKNOWN** | RustDesk on **Betsy private server** — Operator PASS 2026-07-18. Legacy hbbs at `10.1.10.63` retired; do not re-point peers there. PowerToys pack `spanzee_forge` still capture_pending. |
 
 ### Sally work-surface detail (live 2026-06-12, host `DESKTOP-SJSJMNK`)
 
@@ -30,13 +31,13 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 
 **Localhost on `DESKTOP-SJSJMNK`:** `127.0.0.1:3000` listening (live). Foreman/GD default `4317` not observed listening at last readback.
 
-### Betsy (live 2026-06-12, host `DESKTOP-KTBH0LA`)
+### Betsy (live 2026-07-03, host `Betsy`)
 
 | Path | Branch | Commit | Working tree | Notes |
 |------|--------|--------|--------------|-------|
-| `C:\Users\Ben Leak\Desktop\github\Werkles` | `snapshot/sally-good-werkles-2026-06-12` | *(see live readback)* | verify at session start | Primary build desktop; Windows user `Ben Leak`. Baseline: `foreman/BETSY_BASELINE_v1.md`. |
+| `C:\Users\Ben Leak\github\Werkles` | `maker/site-g-20260703` | `19333c9` | dirty (`app/globals.css` modified; ahead 2 of upstream) | **Active local source-truth repo folder.** Supersedes `C:\Users\Ben Leak\Desktop\github\Werkles` (retired). Pointer: `foreman/source-truth/LOCAL_SOURCE_TRUTH_POINTER.json`. Remote: `https://github.com/benleakwerkles/Werkles.git`. |
 
-**Rename pending:** Betsy still uses the factory Windows hostname. Operator may rename the PC to `Betsy` in Windows Settings. Update this table when the hostname changes.
+**Prior path retired:** `C:\Users\Ben Leak\Desktop\github\Werkles` is no longer the Betsy canonical checkout. Do not use Desktop path for new sessions.
 
 ### Doss (unproven machine)
 
@@ -51,10 +52,10 @@ Status: cockpit reference — **machine registry + forge roles**. Pairs with `fo
 ## Unresolved identity conflicts
 
 1. **Two Werkles clones on Sally (`DESKTOP-SJSJMNK`)** — rescue mirror at Desktop path vs clean snapshot at `C:\Dev\Werkles`. Same host, different branches/commits. Operator must name which surface is canonical for each task.
-2. **Betsy hostname vs Sally hostname** — Betsy → `DESKTOP-KTBH0LA`; Sally work → `DESKTOP-SJSJMNK`. These are **different hosts**; do not collapse them without Operator confirmation.
+2. **Betsy hostname vs Sally hostname** — Betsy → `Betsy`; Sally work → `DESKTOP-SJSJMNK`. These are **different hosts**; do not collapse them without Operator confirmation.
 3. **Doss: machine vs operator role** — live handoff files use "Doss" as a crew operator name. Physical machine mapping (hostname, repo path, forge role) is **still unknown**.
 4. **BLDer legacy name** — earlier docs reference **BLDer** (Builder). Relationship to Betsy is unconfirmed. Do not alias BLDer → Betsy without Operator say-so.
-5. **Medullina: household auxiliary machine** — requested as a new Aeye Workstation loop machine. Do not mark live, schedule background jobs, or claim unattended access until Betsy has a fresh RustDesk connection plus a local readback receipt.
+5. **Medullina: household auxiliary machine** — RustDesk server world aligned with Betsy (Operator 2026-07-18). Do not schedule background jobs or claim unattended access until `LOCAL_MEDULLINA_WINDOWS` readback + workstation receipt exist.
 
 ---
 
@@ -101,7 +102,7 @@ Atlas **may** be used for:
 | Machine / surface | Typical `EXECUTION_CONTEXT` | LOCAL HANDS READBACK machine field |
 |-------------------|------------------------------|-------------------------------------|
 | Sally (`DESKTOP-SJSJMNK`) | `LOCAL_SALLY_WINDOWS` | `DESKTOP-SJSJMNK` |
-| Betsy (`DESKTOP-KTBH0LA` when verified) | `LOCAL_SALLY_WINDOWS`-class (declare **Betsy** + hostname) | `DESKTOP-KTBH0LA` |
+| Betsy (`Betsy`) | `LOCAL_SALLY_WINDOWS`-class (declare **Betsy** + hostname) | `Betsy` |
 | Doss (when proven) | `LOCAL_DOSS_WINDOWS` (reserved) | confirmed hostname only |
 | Atlas (vault box) | local context, archive-only — declare `ATLAS` intent | confirmed hostname only |
 | Medullina (when proven) | `LOCAL_MEDULLINA_WINDOWS` (reserved) | confirmed hostname only |
@@ -126,4 +127,4 @@ When taking LOCAL HANDS READBACK on any forge machine, update the registry row f
 7. Evidence source: `live readback YYYY-MM-DD` or cite handoff path
 8. For Medullina: owner consent state, allowed work windows, RustDesk ID, and resource limits
 
-**Last registry readback:** 2026-06-12 — `DESKTOP-SJSJMNK` (Sally) and `DESKTOP-KTBH0LA` (Betsy), paths above.
+**Last registry readback:** 2026-07-03 — `Betsy` canonical path `C:\Users\Ben Leak\github\Werkles`; Sally rows unchanged on `DESKTOP-SJSJMNK`.

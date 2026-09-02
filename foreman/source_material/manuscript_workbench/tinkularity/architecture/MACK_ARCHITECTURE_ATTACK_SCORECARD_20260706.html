@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mack Architecture Attack Scorecard</title>
+  <style>
+    :root {
+      --ink: #202428;
+      --muted: #5d6670;
+      --line: #cfd7de;
+      --panel: #f7f9fb;
+      --accent: #215f7d;
+      --warn: #8a4f00;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.45;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 30px 22px 46px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 28px 0 10px;
+      color: var(--accent);
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .truth {
+      border-left: 4px solid var(--warn);
+      background: #fff8ec;
+      padding: 12px 14px;
+      margin: 18px 0;
+      max-width: 900px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #edf3f6;
+    }
+    td.score {
+      width: 72px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    pre, code {
+      font-family: Consolas, "Courier New", monospace;
+    }
+    pre {
+      white-space: pre-wrap;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 12px;
+      overflow: auto;
+    }
+    ul {
+      max-width: 880px;
+    }
+    @media (max-width: 640px) {
+      main {
+        padding: 24px 14px 36px;
+      }
+      table {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Mack Architecture Attack Scorecard</h1>
+    <div class="meta">Status: COMPANION ARTIFACT V0.1 | Date: 2026-07-06 | Lane: Harvey/Nerdkle architecture review</div>
+
+    <p>This scorecard turns "Mack, tear this apart" into a review surface that Ben and the Aeyes can use without translating loose critique back into build work.</p>
+
+    <div class="truth"><strong>Truth boundary:</strong> this scorecard has not been filled by Mack. It does not claim external send, Mack review, Mack return, universal receiver proof, or solved real-time Aeye cooperation.</div>
+
+    <h2>Scoring Scale</h2>
+    <table>
+      <thead><tr><th>Score</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="score">0</td><td>Not credible, not specified, or mostly vibes.</td></tr>
+        <tr><td class="score">1</td><td>Interesting but underspecified; likely to fake success.</td></tr>
+        <tr><td class="score">2</td><td>Buildable with clear blockers and receipts.</td></tr>
+        <tr><td class="score">3</td><td>Strong enough to ship into the next build packet.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Attack Dimensions</h2>
+    <table>
+      <thead><tr><th>Dimension</th><th>Attack question</th><th>Score</th><th>Required evidence</th></tr></thead>
+      <tbody>
+        <tr><td>Central claim</td><td>Is human as missing message bus true enough to carry Chapter One?</td><td class="score">TBD</td><td>Quote the strongest sentence and the weakest overreach.</td></tr>
+        <tr><td>Cooperation model</td><td>Does shared body-state, not shared mind, solve the actual Aeye cooperation problem?</td><td class="score">TBD</td><td>Name the first place packeted cooperation still fails.</td></tr>
+        <tr><td>Custody spine</td><td>Does the custody spine cover the real workflow?</td><td class="score">TBD</td><td>Identify one missing transition or unnecessary organ.</td></tr>
+        <tr><td>Contract canon</td><td>Are packet, receipt, event, gate, and boot-context contracts the right first build?</td><td class="score">TBD</td><td>Name one missing required field or decorative field.</td></tr>
+        <tr><td>Gate model</td><td>Is classifier decides, policy narrows, OS enforces, receipts prove enough?</td><td class="score">TBD</td><td>Name where enforcement is still prose instead of OS/API boundary.</td></tr>
+        <tr><td>Receiver proof</td><td>Does the architecture prevent sender-side custody from masquerading as receiver completion?</td><td class="score">TBD</td><td>Name one path where ACK, custody, and completion can still blur.</td></tr>
+        <tr><td>Boot context</td><td>Does stale world-state reliably block Aeye action?</td><td class="score">TBD</td><td>Name one Aeye surface that can still bypass boot context.</td></tr>
+        <tr><td>Event spine</td><td>Can packet, event, receipt, artifact, and next action join by id?</td><td class="score">TBD</td><td>Name the join that would fail first under stress.</td></tr>
+        <tr><td>Cockpit readback</td><td>Can Ben return after four hours and see state without reconstructing the thread?</td><td class="score">TBD</td><td>Name the one screen or field still missing.</td></tr>
+        <tr><td>Secret and human gates</td><td>Do secrets, provider dashboards, deploy, money, and legal gates stay human-owned?</td><td class="score">TBD</td><td>Name one gate that must never be automated silently.</td></tr>
+        <tr><td>Minimal MVP</td><td>What is the smallest build that proves momentum?</td><td class="score">TBD</td><td>Choose one: contract canon, event join, boot enforcement, receiver proof, cockpit readback.</td></tr>
+        <tr><td>Manuscript balance</td><td>Does the prose preserve myth without overclaiming the machinery?</td><td class="score">TBD</td><td>Mark one sentence to keep and one sentence to cut or quarantine in appendix.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Fatal Flags</h2>
+    <ul>
+      <li>Claims real-time shared Aeye consciousness without a falsifiable mechanism.</li>
+      <li>Treats a prompt, watcher, or classifier as containment.</li>
+      <li>Treats sender-side packet write as delivery proof.</li>
+      <li>Treats transport ACK as receiver work completion.</li>
+      <li>Routes secrets through chat, logs, or source files.</li>
+      <li>Lets stale world-state become current truth.</li>
+      <li>Requires Ben to keep being the clipboard/message bus after claiming otherwise.</li>
+      <li>Cannot produce a next legal command from the cockpit.</li>
+    </ul>
+
+    <h2>Return Block</h2>
+    <pre>MACK SCORECARD RETURN
+status: ACCEPT | REVISE | REJECT
+overall_score_0_to_36:
+central_claim_score:
+cooperation_model_score:
+custody_spine_score:
+contract_canon_score:
+gate_model_score:
+receiver_proof_score:
+boot_context_score:
+event_spine_score:
+cockpit_readback_score:
+secret_and_human_gates_score:
+minimal_mvp_score:
+manuscript_balance_score:
+strongest_objection:
+highest_risk_fake_success_path:
+first_momentum_build:
+must_change_before_book:
+optional_later:</pre>
+  </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "schema": "tinkerden_bridge_execute_packet_v0",
+  "packet": {
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "created_at": "2026-07-06T06:03:50.533Z",
+    "origin": "TinkerDen Bridge",
+    "assigned_to": "Maker",
+    "machine": "Betsy",
+    "mission": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0",
+    "why": "Ben asked for Aeye momentum that keeps building actual cooperating paths.",
+    "owner": "Maker@Betsy",
+    "reviewer": "Petra",
+    "return_destination": "TinkerDen Intake",
+    "receipt_required": true,
+    "receipt_type": "proof",
+    "due_status": "AWAITING_RECEIPT",
+    "assimilation_destination": "Speaker + TinkerDen Intake",
+    "status": "DISPATCHED"
+  },
+  "bridge_card": {
+    "card_id": "book_architecture_bridge_execute_contract_smoke",
+    "operator_selection": "KEEP",
+    "recommendation": "Mirror the TinkerDen bridge-execute lane into the canonical organism packet and receipt contracts.",
+    "composite_score": 100,
+    "operator_reason": "Approved by + continuation in the book architecture thread.",
+    "why_now": "Ben asked for Aeye momentum that keeps building actual cooperating paths.",
+    "recommended_because": "Bridge execute is the other TinkerDen dispatch lane that must stop living outside the canonical contract store."
+  },
+  "status": "DISPATCHED",
+  "next_status": "AWAITING_RECEIPT"
+}

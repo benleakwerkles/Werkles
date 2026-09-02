@@ -13,7 +13,12 @@ import {
   type SpeakerIntakePacket
 } from "@/lib/squibb/concierge-intake-v0";
 import {
-  BELLOWS_INTAKE_CLOSED_MESSAGE,
+  BELLOWS_BROWSER_INTAKE_KEY,
+  isBrowserIntakeAnswers,
+  readBrowserIntakeDraft,
+  writeBrowserIntakeDraft
+} from "@/lib/squibb/browser-intake-draft";
+import {
   BELLOWS_INTAKE_SUBMISSION_OPEN
 } from "@/lib/squibb/concierge-intake-availability";
 import { getClientAccessToken } from "@/lib/client-auth";
@@ -33,7 +38,6 @@ type IntakeSaveState =
 
 const INTAKE_FIELD_MAX = 600;
 const INTAKE_GOAL_FIELD_MAX = conciergeIntakeFieldLimit("heaviest_lift");
-const INTAKE_DRAFT_KEY = "werkles_concierge_intake_draft_v1";
 
 const BUSINESS_STAGES = [
   "Just an idea",
@@ -81,7 +85,7 @@ type PathStatus = (typeof PATH_STATUSES)[number];
 
 const IDLE_MESSAGE = BELLOWS_INTAKE_SUBMISSION_OPEN
   ? "Your draft is kept in this browser as you type. Submit when you want Werkles to rebuild the results."
-  : "Your draft is kept in this browser on this device. Account submission is temporarily paused.";
+  : "Your draft stays in this browser until you choose Show me what might help.";
 
 type ConciergeIntakeFormProps = {
   initialAnswers?: ConciergeIntakeAnswers;
@@ -96,15 +100,6 @@ function pathStatusesFromAnswer(value: string): Record<string, PathStatus> {
     }
   }
   return next;
-}
-
-function isDraftAnswers(value: unknown): value is ConciergeIntakeAnswers {
-  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
-  const record = value as Record<string, unknown>;
-  return CONCIERGE_INTAKE_QUESTIONS.every((question) => {
-    const answer = record[question.id];
-    return typeof answer === "string" && answer.length <= conciergeIntakeFieldLimit(question.id);
-  });
 }
 
 export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: ConciergeIntakeFormProps) {
@@ -122,20 +117,19 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
 
   useEffect(() => {
     try {
-      const raw = window.localStorage.getItem(INTAKE_DRAFT_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as { answers?: unknown; dirty?: unknown };
-        if (isDraftAnswers(parsed.answers)) {
+      const parsed = readBrowserIntakeDraft(window.localStorage);
+      if (parsed) {
           setAnswers(parsed.answers);
-          setHasDirtyBrowserDraft(parsed.dirty === true);
+          setHasDirtyBrowserDraft(parsed.dirty);
           setPathStatuses(pathStatusesFromAnswer(parsed.answers.already_tried));
           setSaveState({
             status: "idle",
-            message: parsed.dirty === true
+            message: parsed.dirty
               ? "Your unfinished browser draft is back."
-              : "Checking for your latest account-saved Intake."
+              : parsed.completed
+                ? "Your completed browser Intake is back."
+                : "Checking for your latest account-saved Intake."
           });
-        }
       } else {
         setPathStatuses(pathStatusesFromAnswer(initialAnswers.already_tried));
       }
@@ -163,7 +157,7 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
       if (!response.ok || !active) return;
       const result = await response.json().catch(() => ({}));
       const restored = result?.intake?.answers;
-      if (isDraftAnswers(restored)) {
+      if (isBrowserIntakeAnswers(restored)) {
         setAnswers(restored);
         setPathStatuses(pathStatusesFromAnswer(restored.already_tried));
         setSaveState({ status: "idle", message: "Your latest account-saved Intake is back." });
@@ -178,15 +172,10 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
 
   useEffect(() => {
     if (!draftReady || !hasDirtyBrowserDraft) return;
-    window.localStorage.setItem(
-      INTAKE_DRAFT_KEY,
-      JSON.stringify({ version: "v2", dirty: true, updatedAt: new Date().toISOString(), answers })
-    );
+    writeBrowserIntakeDraft(window.localStorage, answers, { dirty: true, completed: false });
   }, [answers, draftReady, hasDirtyBrowserDraft]);
 
-  const canSubmit =
-    BELLOWS_INTAKE_SUBMISSION_OPEN &&
-    CONCIERGE_INTAKE_QUESTIONS.filter((q) => q.required).every(
+  const canSubmit = CONCIERGE_INTAKE_QUESTIONS.filter((q) => q.required).every(
       (q) => answers[q.id].trim().length > 0
   );
 
@@ -240,12 +229,28 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    if (!BELLOWS_INTAKE_SUBMISSION_OPEN || !canSubmit) return;
+    if (!canSubmit) return;
     const packet = buildSpeakerIntakePacket(answers);
     setSubmitted(null);
+
+    if (!BELLOWS_INTAKE_SUBMISSION_OPEN && !accountSaveAvailable) {
+      writeBrowserIntakeDraft(window.localStorage, answers, { dirty: false, completed: true });
+      setHasDirtyBrowserDraft(false);
+      setSaveState({
+        status: "saved",
+        message: "Ready in this browser. Sign in later if you want this Intake to follow your account.",
+        intakeId: "browser-intake",
+        packetPath: "",
+        speakerEntryPath: "",
+        shadowRunId: ""
+      });
+      window.location.assign("/bellows/recommendations");
+      return;
+    }
+
     setSaveState({
       status: "saving",
-      message: accountSaveAvailable ? "Saving this Intake to your account." : "Saving this Betsy walkthrough."
+      message: accountSaveAvailable ? "Saving this Intake to your account." : "Preparing your results."
     });
 
     try {
@@ -281,7 +286,7 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
         speakerEntryPath: String(result.speakerEntryPath || ""),
         shadowRunId: String(result.shadow_run_id || "")
       });
-      window.localStorage.removeItem(INTAKE_DRAFT_KEY);
+      window.localStorage.removeItem(BELLOWS_BROWSER_INTAKE_KEY);
       setHasDirtyBrowserDraft(false);
       submissionId.current = null;
       /* This must be a document navigation, not a cached App Router transition.
@@ -301,15 +306,15 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
       {!BELLOWS_INTAKE_SUBMISSION_OPEN ? (
         <section className="concierge-intake__closed panel" aria-labelledby="closedIntakeTitle">
           <div>
-            <p className="eyebrow">The questions are open</p>
-            <h2 id="closedIntakeTitle">Build your Intake now. Keep the draft here.</h2>
+            <p className="eyebrow">Try it before joining</p>
+            <h2 id="closedIntakeTitle">Finish the Intake and see your first ideas.</h2>
             <p className="concierge-intake__lead">
-              Your answers stay in this browser while account submission is paused. You can review and edit the
-              complete Intake without losing the worksheet again.
+              Without an account, your answers stay in this browser on this device. Sign in when you want your
+              latest Intake to follow you.
             </p>
           </div>
           <p className="concierge-intake__closed-note" role="status">
-            {BELLOWS_INTAKE_CLOSED_MESSAGE}
+            No account is required for this first result.
           </p>
         </section>
       ) : null}
@@ -326,18 +331,18 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
         </p>
         <p className="concierge-intake__storage-truth" role="note">
           {!BELLOWS_INTAKE_SUBMISSION_OPEN ? (
-            <><strong>Browser draft only for now.</strong> Account submission is paused, but this worksheet remains available.</>
+            <><strong>Saved only in this browser profile.</strong> Clearing browser data removes it, and another browser or device will not have it.</>
           ) : accountSaveAvailable ? (
             <><strong>Account saving is on.</strong> Submit once and your latest Intake follows this sign-in.</>
           ) : (
-            <><strong>Saved in this browser only.</strong> It will not follow you to another device until account saving is connected.</>
+            <><strong>Saved only in this browser profile.</strong> Clearing browser data removes it, and another browser or device will not have it.</>
           )}
         </p>
-        <div className="gate-list" aria-label="What intake produces">
-          <span>One working Snapshot</span>
-          <span>Practical next moves</span>
-          <span>Possible people to explore</span>
-          <span>Nothing sent automatically</span>
+        <div className="gate-list" role="list" aria-label="What intake produces">
+          <span role="listitem">One working Snapshot</span>
+          <span role="listitem">Practical next moves</span>
+          <span role="listitem">Possible people to explore</span>
+          <span role="listitem">Nothing sent automatically</span>
         </div>
       </header>
 
@@ -562,11 +567,9 @@ export function ConciergeIntakeForm({ initialAnswers = EMPTY_INTAKE_ANSWERS }: C
           <button
             type="submit"
             className="button button-dark"
-            disabled={!BELLOWS_INTAKE_SUBMISSION_OPEN || !canSubmit || saveState.status === "saving"}
+            disabled={!canSubmit || saveState.status === "saving"}
           >
-            {!BELLOWS_INTAKE_SUBMISSION_OPEN
-              ? "Account submission paused"
-              : saveState.status === "saving"
+            {saveState.status === "saving"
                 ? "Reviewing your answers"
                 : "Show me what might help"}
           </button>

@@ -1,0 +1,60 @@
+﻿{
+    "schema":  "MACK_ARCHITECTURE_ATTACK_SCORECARD_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:10:41.3259916Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "MACK_ARCHITECTURE_ATTACK_SCORECARD_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "mission":  "Create and index the Mack architecture attack scorecard companion.",
+    "validation":  {
+                       "markdown_written":  true,
+                       "html_written":  true,
+                       "json_manifest_valid":  true,
+                       "index_points_to_scorecard":  true,
+                       "dimension_count":  12,
+                       "fatal_flag_count":  8,
+                       "unfilled_template":  true,
+                       "no_mack_scorecard_return_claimed":  true,
+                       "no_mack_review_return_claimed":  true,
+                       "no_external_send_claimed":  true,
+                       "no_universal_receiver_proof_claimed":  true,
+                       "ben_gate_required_for_conversion":  true,
+                       "truth_boundary":  "This receipt proves the local attack scorecard companion exists and is indexed. It does not claim Mack filled it, Mack returned a review, external send occurred, universal receiver proof exists, or real-time Aeye cooperation is solved.",
+                       "index_points_to_scorecard_return_validator":  true,
+                       "readiness_verifier_requires_scorecard_return_validator":  true
+                   },
+    "file_hashes":  [
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_20260706.md",
+                            "sha256":  "A2B903BE17DE80758EE63BE0ABAF457A019C59D3B1823453F276C53BF3E71CDE",
+                            "bytes":  4774
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_20260706.html",
+                            "sha256":  "A248907CF026001D5A5E259CD22E5FA46FB6FB8D748CC4F851A1E9E5646A9715",
+                            "bytes":  6978
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_ATTACK_SCORECARD_20260706.json",
+                            "sha256":  "7CCF636A090736EAF1F87D114A4DA24BE3883E4185C7D7B93FB0D41D39312DA2",
+                            "bytes":  5473
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+                            "sha256":  "BFF7A756DD253021E6A08B655543CCECED272918621C00FA1A794478FE0E4E38",
+                            "bytes":  43035
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack review return claim",
+                                      "no Mack scorecard return claim",
+                                      "no canonical next-build packet generated"
+                                  ]
+}

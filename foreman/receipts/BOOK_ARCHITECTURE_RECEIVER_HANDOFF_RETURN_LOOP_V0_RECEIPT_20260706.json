@@ -1,0 +1,185 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_RETURN_LOOP_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:26:58.509Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_RETURN_LOOP_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-receiver-handoff-return-loop-smoke.mjs",
+  "files_changed": [
+    "scripts/foreman/organism-receiver-handoff-return.mjs",
+    "scripts/foreman/organism-receiver-handoff-return-loop-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_HANDOFF_RETURN_LOOP_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/returned-receipt.json",
+    "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "return_helper_rejects_template_attempts": true,
+    "return_helper_requires_nonblocked_proof": true,
+    "return_helper_posts_through_receiver_client": true,
+    "returned_receipt_written": true,
+    "returned_receipt_status": "partial",
+    "returned_receipt_has_no_template_marker": true,
+    "live_post_returned_ok": true,
+    "contract_receipt_written": true,
+    "packet_receipted_event_written": true,
+    "contract_index_receipt_count": 12,
+    "contract_index_event_count": 16,
+    "contract_index_invalid_count": 0,
+    "contract_index_malformed_count": 0,
+    "contract_index_shows_joined_returned_receipt": true,
+    "truth_boundary": "This proves the handoff return loop mechanically; the returned receipt remains fixture partial proof, not real separate-Aeye completion."
+  },
+  "return_helper_output": {
+    "ok": true,
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverHandoffReturnFixture@Betsy",
+    "status": "partial",
+    "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/returned-receipt.json",
+    "returned_receipt_sha256": "76f9ea6fe44c827a5e87fa442bdff65b3b52f3bf2971894ca62086576e2da29f",
+    "template_source_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/manifest.json",
+    "posted": true,
+    "post_result": {
+      "ok": true,
+      "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+      "source_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/returned-receipt.json",
+      "source_receipt_sha256": "76f9ea6fe44c827a5e87fa442bdff65b3b52f3bf2971894ca62086576e2da29f",
+      "detected_by": "ReceiverHandoffReturnLoopSmoke@Betsy",
+      "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde",
+      "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+      "receipt_status": "partial",
+      "contract_write": {
+        "ok": true,
+        "artifact_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde.json",
+        "event_path": "data/organism/contracts/events.jsonl",
+        "sha256": "76f9ea6fe44c827a5e87fa442bdff65b3b52f3bf2971894ca62086576e2da29f"
+      },
+      "local_contract_artifact_exists": true
+    },
+    "local_contract_artifact_exists": true
+  },
+  "contract_index_readback": {
+    "packet_count": 4,
+    "receipt_count": 12,
+    "event_count": 16,
+    "invalid_count": 0,
+    "malformed_count": 0,
+    "latest_records": [
+      {
+        "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+        "packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+        "packet_created_at": "2026-07-06T06:03:50.533Z",
+        "lane": "TinkerDen bridge execute",
+        "from": "TinkerDen@Betsy",
+        "to": "Maker@Betsy",
+        "operator_intent": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0",
+        "receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde",
+        "receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde.json",
+        "receipt_status": "partial",
+        "receiver": "ReceiverHandoffReturnFixture@Betsy",
+        "receipt_created_at": "2026-07-06T06:26:58.322Z",
+        "event_count": 6,
+        "latest_event_type": "packet_receipted",
+        "latest_event_at": "2026-07-06T06:26:58.413Z",
+        "joined_event_count": 5,
+        "truth_boundary": "Receipt status is partial."
+      },
+      {
+        "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+        "packet_path": "data/organism/contracts/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+        "packet_created_at": "2026-07-06T06:00:24.853Z",
+        "lane": "TinkerDen packet relay",
+        "from": "TinkerDen@Betsy",
+        "to": "Maker@Betsy",
+        "operator_intent": "BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0",
+        "receipt_id": "td_receipt_workspace_relay_contract_smoke_mr8tvyiz",
+        "receipt_path": "data/organism/contracts/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+        "receipt_status": "partial",
+        "receiver": "WorkspaceRelayRunner@Betsy",
+        "receipt_created_at": "2026-07-06T06:17:42.542Z",
+        "event_count": 4,
+        "latest_event_type": "packet_receipted",
+        "latest_event_at": "2026-07-06T06:17:42.544Z",
+        "joined_event_count": 3,
+        "truth_boundary": "Receiver-side Aeye completion proof was not claimed by this workspace relay receipt."
+      },
+      {
+        "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+        "packet_path": "data/organism/contracts/packets/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0.json",
+        "packet_created_at": "2026-07-06T05:55:43.353Z",
+        "lane": "Harvey/Nerdkle architecture",
+        "from": "Ben@Betsy",
+        "to": "NextApi@Betsy",
+        "operator_intent": "Verify API write route uses organism contract validation and storage.",
+        "receipt_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0_RECEIPT_20260706",
+        "receipt_path": "data/organism/contracts/receipts/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0_RECEIPT_20260706.json",
+        "receipt_status": "completed",
+        "receiver": "NextApi@Betsy",
+        "receipt_created_at": "2026-07-06T05:55:43.353Z",
+        "event_count": 2,
+        "latest_event_type": "packet_receipted",
+        "latest_event_at": "2026-07-06T05:55:43.918Z",
+        "joined_event_count": 1,
+        "truth_boundary": "Receipt claims completed status."
+      },
+      {
+        "packet_id": "BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0",
+        "packet_path": "data/organism/contracts/packets/BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0.json",
+        "packet_created_at": "2026-07-06T05:54:48.156Z",
+        "lane": "Harvey/Nerdkle architecture",
+        "from": "Ben@Betsy",
+        "to": "Heimerdinker@Betsy",
+        "operator_intent": "Wire organism contract validators into real packet and receipt write paths.",
+        "receipt_id": "BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT_20260706",
+        "receipt_path": "data/organism/contracts/receipts/BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT_20260706.json",
+        "receipt_status": "completed",
+        "receiver": "Heimerdinker@Betsy",
+        "receipt_created_at": "2026-07-06T05:54:48.162Z",
+        "event_count": 2,
+        "latest_event_type": "packet_receipted",
+        "latest_event_at": "2026-07-06T05:54:48.163Z",
+        "joined_event_count": 1,
+        "truth_boundary": "Receipt claims completed status."
+      }
+    ]
+  },
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/organism-receiver-handoff-return.mjs",
+      "sha256": "d06da5cc23ed5d44fd2e1c9280751f13523dd659715f72b7edc06975c4e1a0a3",
+      "bytes": 9227
+    },
+    {
+      "path": "scripts/foreman/organism-receiver-handoff-return-loop-smoke.mjs",
+      "sha256": "cd8e4f0146e0db39b53950fcb769f52a2024e1077b746cf8b1f3d2eb455e0829",
+      "bytes": 9811
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/returned-receipt.json",
+      "sha256": "76f9ea6fe44c827a5e87fa442bdff65b3b52f3bf2971894ca62086576e2da29f",
+      "bytes": 1747
+    },
+    {
+      "path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde.json",
+      "sha256": "76f9ea6fe44c827a5e87fa442bdff65b3b52f3bf2971894ca62086576e2da29f",
+      "bytes": 1747
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no account automation",
+    "no browser credential control",
+    "no synthetic completed receipt"
+  ],
+  "next_safe_action": "Replace the fixture receiver with a separate Aeye process or thread and require the same returned receipt path plus contract_write readback."
+}

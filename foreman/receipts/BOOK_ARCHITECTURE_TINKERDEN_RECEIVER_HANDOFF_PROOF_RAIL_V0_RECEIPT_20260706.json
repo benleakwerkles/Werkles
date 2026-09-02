@@ -1,0 +1,89 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROOF_RAIL_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:33:15.417Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROOF_RAIL_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receiver-handoff-proof-rail-smoke.mjs",
+  "files_changed": [
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-receiver-handoff-proof-rail-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROOF_RAIL_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "page_source_imports_receiver_handoff_index": true,
+    "page_source_renders_receiver_handoff_lane": true,
+    "page_source_has_hydration_hooks": true,
+    "live_handoff_api_ok": true,
+    "live_handoff_api_status": 200,
+    "live_handoff_count": 1,
+    "live_handoff_posted_count": 1,
+    "live_handoff_invalid_count": 0,
+    "live_handoff_malformed_count": 0,
+    "target_state": "posted",
+    "target_returned_status": "partial",
+    "target_contract_event_joined": true,
+    "live_tinkerden_page_ok": true,
+    "live_tinkerden_status": 200,
+    "live_tinkerden_contains_receiver_handoff_lane": true,
+    "live_tinkerden_contains_posted_freshness": true,
+    "truth_boundary": "TinkerDen now surfaces receiver handoff state, while preserving returned receipt status as partial."
+  },
+  "receiver_handoff_record": {
+    "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "bundle_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverHandoffFixture@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:24:50.353Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde.json",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde",
+    "returned_status": "partial",
+    "returned_receiver": "ReceiverHandoffReturnFixture@Betsy",
+    "contract_event_joined": true,
+    "state": "posted",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverHandoffFixture@Betsy",
+    "truth_boundary": "Returned receipt status is partial; contract receipt posted at data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8u7vde.json."
+  },
+  "file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "67e7fbb9ba63ee257b152c2309d5f05c7c5ad597eba6bf10570561baf0d8a176",
+      "bytes": 73294
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "sha256": "ce0e5d4ee895b8e655b87bd2f09fd7b052509c08f280bf1e92a401f6d7851528",
+      "bytes": 9937
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-handoffs/route.ts",
+      "sha256": "c532a230f171e47f9c5b112c0d03c6efca15004a204d13a2b1d7a8a1d51b2cea",
+      "bytes": 720
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receiver-handoff-proof-rail-smoke.mjs",
+      "sha256": "006380a2bd3e1e649c2e02f7224f785e85d794a627f50204c38ab63b3d29da7a",
+      "bytes": 7372
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "read-only UI/API verification except receipt artifact",
+    "no synthetic completion receipt"
+  ],
+  "next_safe_action": "Use the visible Receiver Handoff Lane while routing a real separate-Aeye handoff through the same bundle and return loop."
+}

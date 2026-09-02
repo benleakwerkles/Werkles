@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-22T07:49:32.487Z",
+  "file": "FROM_COMPUTER_VPGM_20260822-074915.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "COMPUTER",
+  "consumed_by": "FOREMAN",
+  "note": "Terminal Computer identity-source correction read, validated, and cross-reviewed by Petra; Computer broad auth rewrite rejected in favor of a Recommendations-local pre-gate truth repair.",
+  "auto_merge": false
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T11:03:11.838272Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706_RECEIPT",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "python scripts/foreman/build-mack-architecture-paste-packet.py",
+  "validation": {
+    "markdown_written": true,
+    "html_written": true,
+    "docx_written": true,
+    "source_handoff_ready_to_paste": true,
+    "contains_readout_first_instruction": true,
+    "contains_connection_map_paths": true,
+    "contains_attack_scorecard_paths": true,
+    "contains_return_contract": true,
+    "contains_scorecard_return_contract": true,
+    "contains_scorecard_validator_command": true,
+    "mack_return_not_received_preserved": true,
+    "canonical_next_build_packet_absent": true,
+    "external_send_not_claimed": true,
+    "universal_receiver_proof_not_claimed": true,
+    "docx_structural_markers_present": true
+  },
+  "receiver_handoff_readback": {
+    "count": 19,
+    "posted_count": 6,
+    "pending_count": 9,
+    "returned_unposted_count": 3,
+    "template_return_blocked_count": 1,
+    "invalid_count": 0,
+    "malformed_count": 0
+  },
+  "source_receipts": [
+    "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_READINESS_RECEIPT_20260706.json"
+  ],
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.md",
+      "sha256": "a9b665b3e3f2212b86cd97183836be0659c210d798e0189e908fd3c2192a4c0b",
+      "bytes": 10669
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.html",
+      "sha256": "35324c72d7eb933a64a3cbc1cc9e6ecefea0215112152d793aaa7ecfa1c588aa",
+      "bytes": 13099
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.docx",
+      "sha256": "0af2bc5e1cdcd37ed798452e07a48f8be6594c76a867e96053eb802c127176db",
+      "bytes": 41443
+    },
+    {
+      "path": "foreman/handoffs/outbox/TO_MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706.md",
+      "sha256": "6fb8433525e16c53ce37b8db181a00fb0df3c767870e8fc722fe130c8c8a8426",
+      "bytes": 6447
+    },
+    {
+      "path": "scripts/foreman/build-mack-architecture-paste-packet.py",
+      "sha256": "bc17e226062077948c8107af4354cd314f85a90697c1d672d4c11acd30fd2cc4",
+      "bytes": 28778
+    }
+  ],
+  "truth_boundary": "This paste packet is a local generated copy surface. It does not send anything to Mack, claim Mack returned review, claim universal receiver proof, or generate a next-build packet.",
+  "stop_conditions_respected": [
+    "no external send",
+    "no Mack receipt claim",
+    "no universal receiver proof claim",
+    "no next-build packet generated",
+    "no deploy",
+    "no push",
+    "no secrets"
+  ]
+}

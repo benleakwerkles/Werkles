@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T21:55:14.552Z",
+  "file": "FROM_ORSON_DOOZER_RECOMMENDATION_SPECIFICITY_HOSTILE_REVIEW_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "ORSON",
+  "consumed_by": "FOREMAN",
+  "note": "Read: original blockers were generic rationale, internal-language leakage, and missing next-step collapse; current code must prove deterministic nonblank member-facing outputs.",
+  "auto_merge": false
+}

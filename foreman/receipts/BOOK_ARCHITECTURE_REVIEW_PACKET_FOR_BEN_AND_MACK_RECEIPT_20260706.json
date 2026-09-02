@@ -1,0 +1,66 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_RECEIPT_V0",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T01:42:34.6351086-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "repo_head": "7e7be0d6552ee96efbaa89003b84e11ac6b2c39a",
+  "source_request": "Create the architecture packet in MD, DOCX, and another human-accessible file; approach it as input Ben can read before Mack tears it apart; build momentum without babysitting.",
+  "primary_stack_lock": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\BOOK_ARCHITECTURE_STACK_LOCK_V0_20260706.md",
+  "deliverables": [
+    {
+      "kind": "markdown",
+      "path": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md",
+      "sha256": "822769D5BA324F57618107868567BFADACAB200A9AADECBA12D29AB9B8D1D7BF"
+    },
+    {
+      "kind": "docx",
+      "path": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.docx",
+      "sha256": "42D0D5D9422A80BD784BAA087AB6B2BA53B9B7BF626347205592109D10C4D74C"
+    },
+    {
+      "kind": "html",
+      "path": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.html",
+      "sha256": "F8F1D08FBE6446022E3989666682933D797EFB413A6EF13EC1E22200F357A1CD"
+    }
+  ],
+  "included_for_ben": [
+    "blunt architecture read",
+    "one-page architecture",
+    "apps and languages that must connect",
+    "packet/gate/receipt/event/boot-context contracts",
+    "current reality versus not-yet-seamless gaps",
+    "recommended build sequence",
+    "Ben review questions",
+    "Mack tear-apart brief",
+    "proposed manuscript insertion",
+    "red lines for all Aeyes",
+    "no-babysitting operating rule",
+    "first momentum packet"
+  ],
+  "qa": {
+    "markdown_written": true,
+    "html_written": true,
+    "docx_written": true,
+    "docx_structural_open_check": {
+      "passed": true,
+      "paragraphs": 140,
+      "tables": 2,
+      "sections": 1,
+      "first_paragraph": "Harvey/Nerdkle Architecture Review Packet"
+    },
+    "docx_render_visual_qa": {
+      "attempted": true,
+      "passed": false,
+      "reason": "LibreOffice/soffice was not available to render DOCX pages to PNG in this environment.",
+      "effect": "DOCX was structurally checked but not visually inspected through the canonical render gate."
+    }
+  },
+  "truthfulness_notes": [
+    "The packet does not claim current seamless real-time cooperation.",
+    "The packet says current reality is packeted, file-backed, and not yet one canonical cockpit.",
+    "The packet includes explicit no-babysitting operating rules but preserves true human gates.",
+    "The Mack brief asks for attacks on central claim, cooperation model, stack, safety model, proof model, and build sequence."
+  ]
+}

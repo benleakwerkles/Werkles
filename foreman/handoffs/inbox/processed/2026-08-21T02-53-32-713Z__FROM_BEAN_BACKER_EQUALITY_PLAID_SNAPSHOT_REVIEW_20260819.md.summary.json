@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T02:53:32.713Z",
+  "file": "FROM_BEAN_BACKER_EQUALITY_PLAID_SNAPSHOT_REVIEW_20260819.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "BEAN",
+  "consumed_by": "FOREMAN",
+  "note": "Read; its PATCH findings were superseded and closed by Bean's later PASS_TO_BUILD patch review.",
+  "auto_merge": false
+}

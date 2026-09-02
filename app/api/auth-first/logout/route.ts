@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { BELLOWS_OWNER_COOKIE } from "@/lib/squibb/bellows-owner-session";
+
 const COOKIE_KEY = "werkles_dev_preview_session";
 
 export async function POST(request: NextRequest) {
@@ -8,6 +10,12 @@ export async function POST(request: NextRequest) {
     path: "/",
     maxAge: 0,
     sameSite: "lax"
+  });
+  response.cookies.set(BELLOWS_OWNER_COOKIE, "", {
+    path: "/",
+    maxAge: 0,
+    sameSite: "lax",
+    httpOnly: true
   });
   return response;
 }

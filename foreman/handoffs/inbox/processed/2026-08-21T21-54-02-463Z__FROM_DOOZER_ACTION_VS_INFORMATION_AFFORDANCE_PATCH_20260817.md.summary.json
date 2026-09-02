@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T21:54:02.464Z",
+  "file": "FROM_DOOZER_ACTION_VS_INFORMATION_AFFORDANCE_PATCH_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "DOOZER",
+  "consumed_by": "FOREMAN",
+  "note": "Read and assimilated: persistent action rail belongs only on standard CTA contracts; information bubbles and choice chips stay visually noninteractive.",
+  "auto_merge": false
+}

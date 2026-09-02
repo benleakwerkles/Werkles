@@ -382,8 +382,8 @@ export default function HumanGatesClient({ gates }: HumanGatesClientProps) {
         </label>
         <p className="td-command-console__status">Expected phrase: {expectedPhrase}</p>
         <label>
-          <span>Exact Ben phrase</span>
-          <textarea name="exact_ben_phrase" required rows={2} placeholder="Paste only the gate phrase Ben actually gave." />
+          <span>Exact Operator phrase</span>
+          <textarea name="exact_ben_phrase" required rows={2} placeholder="Paste only the gate phrase Operator actually gave." />
         </label>
         <label>
           <span>Next gate</span>
@@ -401,7 +401,7 @@ export default function HumanGatesClient({ gates }: HumanGatesClientProps) {
             VALIDATE PHRASE ONLY
           </button>
           <button type="submit" disabled={pending}>
-            {pending ? "Recording..." : "RECORD BEN PHRASE"}
+            {pending ? "Recording..." : "RECORD OPERATOR PHRASE"}
           </button>
         </div>
       </form>

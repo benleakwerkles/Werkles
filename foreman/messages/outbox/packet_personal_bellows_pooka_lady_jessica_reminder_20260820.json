@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_personal_bellows_pooka_lady_jessica_reminder_20260820",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "personal_bellows_pooka_review_reminder_20260820",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Lady Jessica: fresh Personal Bellows packets are waiting. Pull PGM_TO_LADY_JESSICA_PERSONAL_BELLOWS_POOKA_20260820.md plus the Vision and architecture packets. Bean's first return was hypothetical because it lacked source bytes; a source-bytes correction is now in outbox and the validated Bean receipt remains pending. Ender's source-bytes packet is also ready. Personally return the route/data/component architecture and review receipt to foreman/handoffs/inbox/. ACK is not completion. No push, deploy, publish, image spend, secrets, providers, schema, or RLS."
+  },
+  "status": "SENT",
+  "created_at": "2026-08-20T03:45:00-04:00"
+}

@@ -1,7 +1,7 @@
 ﻿{
     "ok":  true,
     "schema":  "WERKLES_MATCHING_SHADOW_SMOKE_V1",
-    "timestamp":  "2026-07-10T19:22:38.143Z",
+    "timestamp":  "2026-07-11T03:22:48.439Z",
     "site_origin":  "http://localhost:3000",
     "checks":  [
                    {
@@ -9,8 +9,8 @@
                        "label":  "Capital + partner (symptom trap)",
                        "pass":  true,
                        "status":  200,
-                       "intake_id":  "WZ-20260710-eaafcb6d",
-                       "shadow_run_id":  "shadow_20260710192237_acfaf917",
+                       "intake_id":  "WZ-20260711-e8e2b04b",
+                       "shadow_run_id":  "shadow_20260711032245_dab0a9ff",
                        "matching_mode":  "shadow",
                        "error":  null
                    },
@@ -19,8 +19,8 @@
                        "label":  "Employment / job change",
                        "pass":  true,
                        "status":  200,
-                       "intake_id":  "WZ-20260710-b87d9f06",
-                       "shadow_run_id":  "shadow_20260710192237_2ed2a5cc",
+                       "intake_id":  "WZ-20260711-7328e5a6",
+                       "shadow_run_id":  "shadow_20260711032245_283bf43e",
                        "matching_mode":  "shadow",
                        "error":  null
                    },
@@ -29,8 +29,8 @@
                        "label":  "Partner language but training gap",
                        "pass":  true,
                        "status":  200,
-                       "intake_id":  "WZ-20260710-2b187b5d",
-                       "shadow_run_id":  "shadow_20260710192237_86feedf4",
+                       "intake_id":  "WZ-20260711-ba70b809",
+                       "shadow_run_id":  "shadow_20260711032245_2b298bcc",
                        "matching_mode":  "shadow",
                        "error":  null
                    },
@@ -38,7 +38,7 @@
                        "name":  "semantic_capital_partner",
                        "scenario":  "capital_partner",
                        "pass":  true,
-                       "shadow_run_id":  "shadow_20260710192237_acfaf917",
+                       "shadow_run_id":  "shadow_20260711032245_dab0a9ff",
                        "expected_top_path":  "verify_proof",
                        "actual_top_path":  "verify_proof",
                        "disqualified_kinds":  [
@@ -52,7 +52,7 @@
                        "name":  "semantic_job_change",
                        "scenario":  "job_change",
                        "pass":  true,
-                       "shadow_run_id":  "shadow_20260710192237_2ed2a5cc",
+                       "shadow_run_id":  "shadow_20260711032245_283bf43e",
                        "expected_top_path":  "find_better_job",
                        "actual_top_path":  "find_better_job",
                        "disqualified_kinds":  [
@@ -65,7 +65,7 @@
                        "name":  "semantic_training_not_partner",
                        "scenario":  "training_not_partner",
                        "pass":  true,
-                       "shadow_run_id":  "shadow_20260710192237_86feedf4",
+                       "shadow_run_id":  "shadow_20260711032245_2b298bcc",
                        "expected_top_path":  "get_training",
                        "actual_top_path":  "get_training",
                        "disqualified_kinds":  [

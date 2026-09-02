@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gate Review — Live Crucible HG-3 → HG-5</title>
+<style>
+  :root { --bg: #0a0a0a; --card: #141414; --border: #262626; --text: #e5e5e5; --muted: #999; --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --blue: #3b82f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+  .subtitle { color: var(--muted); font-size: .875rem; margin-bottom: 2rem; }
+  .badge { display: inline-block; padding: .2rem .6rem; border-radius: 4px; font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+  .badge-tier1 { background: #1e1b4b; color: #818cf8; }
+  .badge-med { background: #1a1a00; color: var(--amber); }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+  .section h2 { font-size: 1rem; margin-bottom: .75rem; color: var(--blue); }
+  .section h3 { font-size: .875rem; margin: .75rem 0 .5rem; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+  .status-pass { color: var(--green); }
+  .status-blocked { color: var(--red); }
+  .phrase-box { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: .75rem 1rem; font-family: ui-monospace, monospace; font-size: .85rem; margin: .5rem 0; white-space: pre-wrap; }
+  ul, ol { padding-left: 1.25rem; font-size: .85rem; }
+  li { margin-bottom: .35rem; }
+  p { font-size: .875rem; }
+</style>
+</head>
+<body>
+
+<h1>Live Crucible path (HG-3 → HG-5)</h1>
+<p class="subtitle">
+  <span class="badge badge-tier1">Tier 1 — Money / secrets / live providers</span>
+  <span class="badge badge-med" style="margin-left:.5rem">Confidence: MEDIUM</span>
+  &nbsp;&middot;&nbsp; 2026-07-21
+</p>
+
+<div class="section">
+  <h2>Decision</h2>
+  <p>Open live Stripe products → live secrets → live checkout so Crucible can leave sandbox provider-test. <strong>Three phrases, in order.</strong> Sandbox HG-2 stays as-is until then.</p>
+</div>
+
+<div class="section">
+  <h2>Already done</h2>
+  <table>
+    <tr><th>Gate</th><th>Phrase</th><th>Status</th></tr>
+    <tr><td>HG-1 Test checkout</td><td><code>APPROVE PAID CHECKOUT GO-LIVE (test mode)</code></td><td class="status-pass">APPROVED</td></tr>
+    <tr><td>HG-2 Crucible sandbox</td><td><code>APPROVE CRUCIBLE PROVIDER TEST</code></td><td class="status-pass">APPROVED</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Ordered phrases</h2>
+  <h3>HG-3 — Live products</h3>
+  <div class="phrase-box">APPROVE LIVE STRIPE PRODUCT CREATE</div>
+  <p>Stripe live mode: create Foundry Dues monthly + annual. No price IDs in chat.</p>
+
+  <h3>HG-4 — Live secrets</h3>
+  <div class="phrase-box">APPROVE SECRET ENTRY</div>
+  <p>Requires HG-3. Enter <code>sk_live_*</code>, live webhook secret, live price IDs (and live Plaid/Identity if flipping providers) privately only.</p>
+
+  <h3>HG-5 — Live checkout</h3>
+  <div class="phrase-box">APPROVE PAID CHECKOUT GO-LIVE</div>
+  <p>Requires HG-3 + HG-4. First real charge + live webhook proof. Different from the already-used <strong>test mode</strong> phrase.</p>
+</div>
+
+<div class="section">
+  <h2>Blast radius</h2>
+  <ul>
+    <li>Real member charges</li>
+    <li>Live webhooks and billing portal</li>
+    <li>Possible live Identity / Plaid traffic</li>
+    <li>FCRA background checks stay <span class="status-blocked">policy-blocked</span></li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Why MEDIUM</h2>
+  <ul>
+    <li>Sandbox proven; live modes not</li>
+    <li>Irreversible money + secret blast radius</li>
+    <li>Test Identity previously needed stub fallback — live may need extra dashboard work</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Reject / patch</h2>
+  <div class="phrase-box">REJECT LIVE CRUCIBLE HG-3-HG-5 PATH</div>
+  <div class="phrase-box">PATCH LIVE CRUCIBLE HG-3-HG-5: &lt;instructions&gt;</div>
+</div>
+
+<div class="section">
+  <h2>Packet</h2>
+  <p><code>foreman/reviews/GATE-live-crucible-hg3-hg5-20260721.md</code></p>
+</div>
+
+</body>
+</html>

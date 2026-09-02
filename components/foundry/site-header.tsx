@@ -14,12 +14,28 @@ import { memberNavIsCurrent, memberNavItems, memberRouteContext, primaryNavItems
 const MEMBER_NAV_PRESENTATION_KEY = "werkles_member_nav_present";
 
 function roomForPath(pathname: string) {
+  if (pathname.startsWith("/bellows/personal")) return "personal-bellows";
   if (pathname.startsWith("/bellows")) return "bellows";
   if (pathname.startsWith("/proof") || pathname.startsWith("/dashboard/crucible")) return "proof";
-  if (pathname.startsWith("/formation") || pathname.startsWith("/dashboard/intros") || pathname.startsWith("/dashboard/werkles")) return "people";
-  if (pathname.startsWith("/dashboard/blueprints")) return "work";
+  if (pathname.startsWith("/membership") || pathname.startsWith("/pricing") || pathname.startsWith("/dashboard/billing")) return "membership";
+  if (pathname.startsWith("/dashboard/werkles")) return "werkle";
+  if (pathname.startsWith("/formation") || pathname.startsWith("/dashboard/intros")) return "people";
+  if (pathname.startsWith("/dashboard")) return "workshop";
+  if (pathname.startsWith("/login") || pathname.startsWith("/signup") || pathname.startsWith("/onboarding")) return "welcome";
   return "home";
 }
+
+const roomLabels: Record<string, string> = {
+  home: "Home",
+  people: "People",
+  bellows: "Public Bellows",
+  "personal-bellows": "Private Bellows",
+  proof: "Proof Workspace",
+  membership: "Membership",
+  workshop: "Workshop",
+  werkle: "Shared Werkle",
+  welcome: "Welcome",
+};
 
 export function SiteHeader({ localWalkthrough = false }: { localWalkthrough?: boolean }) {
   const pathname = usePathname();
@@ -61,11 +77,12 @@ export function SiteHeader({ localWalkthrough = false }: { localWalkthrough?: bo
 
   return (
 
-    <header id="werkles-site-header" data-room={room} className={`site-header site-header--nav-doc site-header--room-${room}${memberMode ? " site-header--member" : ""}`}>
+    <header id="werkles-site-header" data-room={room} data-werkles-room={room} className={`site-header site-header--nav-doc site-header--room-${room}${memberMode ? " site-header--member" : ""}`}>
       <div className="site-header__primary-row">
         <Link className="brand brand--tight" href="/" aria-label="Werkles home">
           <BrandMark size="header" presentation="board" />
           <span className="brand-word brand-word--workshop-serif">erkles</span>
+          <span className="site-header__room-tag" aria-hidden="true">{roomLabels[room] ?? "Home"}</span>
         </Link>
 
         <nav aria-label="Primary navigation">

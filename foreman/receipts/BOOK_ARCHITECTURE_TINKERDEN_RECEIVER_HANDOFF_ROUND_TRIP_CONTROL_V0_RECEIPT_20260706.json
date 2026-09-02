@@ -1,0 +1,127 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_ROUND_TRIP_CONTROL_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:56:12.023Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_ROUND_TRIP_CONTROL_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receiver-handoff-round-trip-control-smoke.mjs",
+  "files_changed": [
+    "scripts/foreman/tinkerden-receiver-handoff-round-trip-control-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_ROUND_TRIP_CONTROL_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/packet.json",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json",
+    "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json"
+  ],
+  "validation": {
+    "page_source_has_create_control": true,
+    "page_source_has_fill_control": true,
+    "page_source_has_post_control": true,
+    "playwright_clicked_create_fill_post": true,
+    "playwright_browser_executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "state_after_fill": "returned_unposted",
+    "state_after_post": "posted",
+    "contract_event_joined_after_post": true,
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json",
+    "handoff_count_before": 13,
+    "handoff_count_after": 14,
+    "posted_count_before": 2,
+    "posted_count_after": 3,
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "This smoke proves the cockpit can create, fill, and post one receiver handoff through deliberate browser controls; it does not merge those controls into one operator action."
+  },
+  "create_readback": {
+    "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "handoff_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/HANDOFF.md",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "Maker@Betsy",
+    "label": "HANDOFF CREATED"
+  },
+  "fill_readback": {
+    "state": "returned_unposted",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json",
+    "contract_receipt_path": "NO_CONTRACT_RECEIPT"
+  },
+  "post_readback": {
+    "state": "posted",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "returned_status": "partial",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json",
+    "contract_event_joined": true
+  },
+  "final_index_record": {
+    "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "bundle_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "Maker@Betsy",
+    "lane": "TinkerDen bridge execute",
+    "generated_at": "2026-07-06T06:56:11.032Z",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "handoff_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/receipt-template.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/returned-receipt.json",
+    "contract_receipt_path": "data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json",
+    "template_status": "blocked",
+    "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "returned_receipt_id": "receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh",
+    "returned_status": "partial",
+    "returned_receiver": "Maker@Betsy",
+    "contract_event_joined": true,
+    "state": "posted",
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by Maker@Betsy",
+    "truth_boundary": "Returned receipt status is partial; contract receipt posted at data/organism/contracts/receipts/receiver_handoff_return_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9fyh.json."
+  },
+  "file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "9d25051889366b2350524ea17df7ca68f53aeba812444cbf9c64915e18d17172",
+      "bytes": 87236
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-return-fill.ts",
+      "sha256": "3094e21dd40290f19127b6810a84a41658b512aecbe98be977db01268afa9816",
+      "bytes": 10003
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-return-post.ts",
+      "sha256": "b5b49763bf145e178fa3ae5a54aac557e4e36bacac32191283df02c64e677d89",
+      "bytes": 5668
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-handoffs/fill-return/route.ts",
+      "sha256": "b3a6646371e36618913940346e7a45c04587e97b131128df28939fa4b541a3a7",
+      "bytes": 1039
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-handoffs/post-return/route.ts",
+      "sha256": "5d8851d3df0e52080d3bd227901a0b4480e5f0781df65659367c7f5bd6dcf28a",
+      "bytes": 1113
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receiver-handoff-round-trip-control-smoke.mjs",
+      "sha256": "ab59c46ab3a124cc90c58bca1327bac4e47cdeeed81652c3023d63cfbafcf609",
+      "bytes": 13925
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no synthetic receiver proof",
+    "operator UI remains split into create, fill, and post controls"
+  ],
+  "next_safe_action": "Add a compact mission receipt drawer entry for round-trip handoffs so the cockpit can show the newest completed loop without reading raw JSON."
+}

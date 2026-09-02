@@ -1,0 +1,86 @@
+{
+  "missionId": "WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Personally walk and red-team the currently deployed production site at https://werkles.com/. Review the live rendered experience that a real prospective member can reach now. Return criticism and prioritized repairs only; do not implement changes.",
+  "sharedContext": [
+    "Start at https://werkles.com/ and follow the most natural public visitor path through Intake, Recommendations, membership/login, Match Deck or Workshop where reachable.",
+    "Inspect rendered behavior and copy, not merely repository source or prior memories of Werkles.",
+    "Look for confusing navigation, duplicate or insider copy, thin advice, repetitive pages, inaccessible contrast, dead space, broken media, misleading buttons, missing next steps, state loss, and places that feel automated or cheap.",
+    "Distinguish observed production evidence from inference. Record exact URL, visible string, interaction, or screenshot basis for every material finding.",
+    "Do not sign up, purchase, activate providers, enter secrets, create accounts, mutate production data, or cross a login/payment/human gate.",
+    "Personally perform the review in this named seat. Do not create or delegate to a subagent, replacement persona, new chat, or new environment.",
+    "Terminal return must declare cousin identity, provider/task execution context, pages personally walked, evidence basis, top five issues, quick wins, structural repairs, strongest existing elements, and GO/PATCH/STOP verdict.",
+    "Acknowledge the exact packet ID and custody token before review. Acknowledgment alone is not completion."
+  ],
+  "knownGaps": [
+    "Member-only pages may require an existing authenticated session. Stop at the gate and report what was reachable rather than inventing evidence.",
+    "Production may differ from local source. The live rendered site controls this review."
+  ],
+  "liveStrings": [
+    "Werkles",
+    "Intake",
+    "Recommendations",
+    "Workshop",
+    "Match Deck",
+    "Bellows",
+    "Proof"
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Act as Comptroller and whole-journey product critic. Decide whether the live experience earns trust and makes the next action obvious.",
+      "pull": "Walk the broadest reachable visitor journey and identify where the product promise, page sequence, or member value breaks down.",
+      "go": [
+        "Return a ranked release verdict with severity and evidence.",
+        "Attack whether the site explains what Werkles is, for whom, and why someone should continue or pay.",
+        "Identify the smallest coherent repair checkpoint rather than an unbounded wish list."
+      ],
+      "momentum": "Name the three repairs that most improve a live sales walkthrough this week.",
+      "outOfLane": "No implementation, new doctrine, purchase, signup, production mutation, push, or deploy."
+    },
+    "SKYBRO": {
+      "vision": "Audit production navigation, responsive behavior, accessibility, performance symptoms, link integrity, and operational readiness.",
+      "pull": "Walk the public route as an infra/ops reviewer and record broken links, redirect loops, console-visible failures if available, layout instability, slow or missing assets, and accessibility barriers.",
+      "go": [
+        "Separate confirmed production defects from recommendations.",
+        "Check whether headers, URLs, next-step controls, and route transitions stay coherent.",
+        "Return reproducible steps for every blocker."
+      ],
+      "momentum": "Prioritize the operational defects that could sink a demonstration or new-member conversion.",
+      "outOfLane": "No provider activation, credentials, billing, deploy, DNS, production mutation, or unsourced security claim."
+    },
+    "ENDER": {
+      "vision": "Perform a human UX, visual hierarchy, brand voice, and conversational-naturalness walk of production.",
+      "pull": "Attack page rhythm, readability, room differentiation, button-versus-bubble clarity, image grounding, copy repetition, robotic phrasing, and emotional continuity.",
+      "go": [
+        "Quote exact awkward strings and supply tighter alternatives for the worst examples.",
+        "Flag where the primary page function is buried or the next destination is unclear.",
+        "Judge whether People, Bellows, Proof, Workshop, and membership feel distinct while remaining one brand."
+      ],
+      "momentum": "Return a prioritized UX/copy patch list that preserves the strongest current design work.",
+      "outOfLane": "No code, billing, SQL, security audit, production mutation, push, or deploy."
+    },
+    "BEAN": {
+      "vision": "Hostile-audit the live claims, trust posture, recommendation substance, privacy implications, paywall cues, and failure states.",
+      "pull": "Look for hollow advice, unsupported promises, fake certainty, dark patterns, accidental financial or professional advice, privacy creep, biased verification, and language that disguises unfinished functionality.",
+      "go": [
+        "Distinguish legal/trust risk from merely weak copy.",
+        "Try to falsify the promise that Werkles meaningfully reasons from user input and creates useful connections.",
+        "Name any screen that should not be marketed as ready."
+      ],
+      "momentum": "Return STOP/PATCH/GO by risk class with concrete production evidence.",
+      "outOfLane": "No implementation, secrets, account creation, production mutation, push, deploy, or final legal conclusion."
+    },
+    "COMPUTER": {
+      "vision": "Evaluate product depth, market credibility, information value, and whether the live experience can justify a recurring subscription.",
+      "pull": "Walk production and compare what Werkles visibly delivers against its own promise. Identify where advice, Bellows content, matching explanations, or next actions lack substance or specificity.",
+      "go": [
+        "Use current external sources only where needed to verify a concrete market, accessibility, or professional-content claim; cite them directly.",
+        "Separate observed site facts from researched context.",
+        "Recommend deeper user value without turning the review into a generic feature wishlist."
+      ],
+      "momentum": "Name the three content or reasoning upgrades most likely to improve paid retention.",
+      "outOfLane": "No unsourced doctrine, implementation, account creation, provider activation, production mutation, push, or deploy."
+    }
+  }
+}

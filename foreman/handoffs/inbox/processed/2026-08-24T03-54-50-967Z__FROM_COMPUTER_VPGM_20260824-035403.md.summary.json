@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T03:54:50.968Z",
+  "file": "FROM_COMPUTER_VPGM_20260824-035403.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "COMPUTER",
+  "consumed_by": "FOREMAN",
+  "note": "Quarantined from M18 assimilation: stale M11 reply, expected custody challenge not echoed, no M17/M18 route binding.",
+  "auto_merge": false
+}

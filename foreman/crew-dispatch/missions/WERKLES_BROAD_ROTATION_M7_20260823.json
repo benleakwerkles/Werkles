@@ -1,0 +1,65 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M7",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build broad review of the Formation Operating Brief, validated device return through Personal Bellows, stale-consent invalidation, unresolved-conversation readout, and continued matching/provider boundaries.",
+  "sharedContext": [
+    "Actual custody-validated Bean and Skybro Formation/Operating Brief receipts controlled this local build.",
+    "A member-authored revision accepted by both practice records can enter the Operating Brief; untouched generated joint prompts, private notes, predictions, proposals, objections, parked, and withdrawn material cannot.",
+    "Partly completed sections now show topic labels and current state under Still to settle without copying private content or drafting clauses.",
+    "Save on this device now restores the Brief only after validating it against the restored Formation source; changing accepted wording removes the saved Brief and derived shared-action draft.",
+    "TypeScript, source contracts, Bean hostile browser walk, 16px desktop/mobile legibility walk, and Formation to Personal Bellows round trip pass with a clean console.",
+    "No provider call, credentials, paid call, SQL/schema/RLS, production mutation, push, deploy, merge, new task, subagent, secondary model, environment, or foreground input is authorized."
+  ],
+  "liveStrings": [
+    "Werkle Operating Brief",
+    "Still to settle",
+    "Not yet written by both people.",
+    "Operating Brief restored from this device and checked against the current accepted wording.",
+    "An accepted answer changed, so the older brief and shared-action draft were removed.",
+    "Practice summary—not an agreement."
+  ],
+  "knownGaps": [
+    "This is still a synthetic browser-local practice Werkle, not real two-member account custody.",
+    "Formation behavior and private prediction data must remain excluded from matching and Bellows personalization.",
+    "Provider activation remains separate in Crucible; no financial, identity, phone, payment, or background result exists from this build.",
+    "Lady Jessica and Doozer require their own machine routes and may not be counted merely because outbox packets exist."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge whether M7 is an honest, sellable local success moment and whether it should remain bounded as practice.",
+      "pull": "Review the stated build, proof, non-claims, and the Match Deck to Formation to Bellows product loop.",
+      "go": ["Return GO, PATCH, or NO_GO with the three highest product/gate consequences.", "Attack any claim that exceeds browser-local evidence.", "Name the next bounded slice that best advances completion without crossing a gate."],
+      "momentum": "Return a terminal scope ruling and stop.",
+      "outOfLane": "Review only; no code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Test whether the revised Operating Brief and Bellows return feel substantial enough to revisit and eventually pay for.",
+      "pull": "Review the accepted wording payoff, unresolved topic treatment, shared-action return, and free-to-paid boundary.",
+      "go": ["Name the strongest value delivered and the weakest remaining value gap.", "Propose two non-gated improvements across Bellows or Formation, not another questionnaire.", "Cross-check that honest empty and stale states still feel useful."],
+      "momentum": "Return VALUE_READY, PATCH, or BLOCKED and nominate the next reviewer.",
+      "outOfLane": "No code, provider action, spend, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Walk M7 as a human and attack homework rhythm, legibility, false buttons, emotional pressure, and dead ends.",
+      "pull": "Inspect Formation, its Operating Brief, the stale-state transition, and Personal Bellows return at desktop and narrow width.",
+      "go": ["Return five concrete human consequences, not abstract taste.", "Attack whether Still to settle is scannable and motivating rather than punitive.", "Give Lady Jessica and Doozer a bounded visual/interaction patch and a re-walk checklist."],
+      "momentum": "Return HUMAN_READY, PATCH, or BLOCKED.",
+      "outOfLane": "No code, providers, secrets, SQL, push, deploy, new task, subagent, secondary model, or final creative approval."
+    },
+    "BEAN": {
+      "vision": "Hostile-review exact accepted-only composition, device restoration, stale invalidation, and matching/privacy separation.",
+      "pull": "Attack the stated M7 source and browser evidence against your prior P0/P1 invariants.",
+      "go": ["Try to resurrect a stale action after accepted wording changes.", "Try to leak generated, private, predicted, proposed, parked, withdrawn, wealth, or telemetry data into the Brief, Bellows, or matching.", "Return executable blockers or an explicit pass with residual debt."],
+      "momentum": "Return TRUST_READY, PATCH, or BLOCK.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Independently map M7's source and verification boundary and identify the next reversible cross-route slice.",
+      "pull": "Check the stated files, contracts, storage keys, matching exclusion, Personal Bellows consumer, and Crucible separation.",
+      "go": ["Return exact source risks and missing negative contracts.", "Propose one bounded multi-route implementation with rollback and proof matrix.", "Separate facts you can verify from assumptions and unknowns."],
+      "momentum": "Return SOURCE_BOUND_READY, NEEDS_FACT_CHECK, or BLOCKED.",
+      "outOfLane": "No code, provider call, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

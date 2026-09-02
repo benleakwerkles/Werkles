@@ -1,0 +1,57 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SEND_RETURN_ROUNDTRIP_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T09:34:30Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_SEND_RETURN_ROUNDTRIP_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "mission": "Index and require the fixture-only Mack send/return round-trip smoke proof.",
+  "validation": {
+    "index_lists_send_return_roundtrip_script": true,
+    "index_lists_send_return_roundtrip_receipt": true,
+    "readiness_verifier_requires_send_return_roundtrip": true,
+    "roundtrip_smoke_status": "ARTIFACT",
+    "outbound_copy_helper_dry_run_passed": true,
+    "return_importer_fixture_commit_passed": true,
+    "return_validator_fixture_artifact_ready": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_absence_preserved": true,
+    "external_send_not_claimed": true,
+    "truth_boundary": "This receipt proves the index now points to the fixture-only Mack send/return round-trip smoke. It does not send anything to Mack, touch the real clipboard, mutate the canonical intake, or claim Mack returned review."
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "FD4CB0C62FE1AA6A3562CA65F9C50B45F56BA4E7EA0EB2CF6B4CBD2E0D307ABD",
+      "bytes": 22438
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+      "sha256": "DDF48CF6538FD0A9DDB1CBC13175E087153E525C49023AF0B00A05591B058E64",
+      "bytes": 77790
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureSendReturnRoundTrip.ps1",
+      "sha256": "DCDD898BA67FA4FE9DEA415DE5F1A272006CA6A1B4940B89C5B06D6D2DCD6B0F",
+      "bytes": 10746
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_SEND_RETURN_ROUNDTRIP_SMOKE_RECEIPT_20260706.json",
+      "sha256": "C6B7C5F4D0BA6C9490E9D4345FEB7CB2BAE9EE55122A4BAFAAF2E325A0001980",
+      "bytes": 4862
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no real clipboard mutation",
+    "no canonical intake mutation",
+    "no Mack receipt claim",
+    "no canonical next-build packet generated"
+  ]
+}

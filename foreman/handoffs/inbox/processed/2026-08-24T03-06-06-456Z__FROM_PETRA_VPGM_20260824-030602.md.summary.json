@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T03:06:06.456Z",
+  "file": "FROM_PETRA_VPGM_20260824-030602.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "M16 Petra terminal exact-candidate postbuild verdict consumed for digest 058600a6241e569dd51d46e0866366bc74b7ac66a7f64ac9e8ae87be68f20912; Gate 05 remains HOLD.",
+  "auto_merge": false
+}

@@ -279,6 +279,17 @@ assert.equal(first.evidence[2].source, "Not supplied");
 assert.equal(first.keepOriginalPathLabel, "Keep my current approach");
 assert.match(converted.source.detail, /recommendation itself is not a verified match/i);
 assert.doesNotMatch(converted.source.detail, /No identity.*was verified/i);
+const excerptIds = converted.source.fedDocument.excerpts.map((excerpt) => excerpt.id);
+assert.equal(
+  new Set(excerptIds).size,
+  excerptIds.length,
+  "source-document excerpt IDs must remain unique React keys"
+);
+assert.equal(
+  excerptIds.filter((id) => id === "stated-need").length,
+  1,
+  "the explicit stated-need excerpt must not be duplicated by matching facts"
+);
 
 const internalLanguage = /Layer 0|not-match|Squibb|autonomous|shadow|\b(?:Petra|Skybro|Dink|Thufir|Bean|Ender)\b/i;
 const systemGeneratedStrings = [

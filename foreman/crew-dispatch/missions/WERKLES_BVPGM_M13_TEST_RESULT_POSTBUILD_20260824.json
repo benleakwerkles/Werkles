@@ -1,0 +1,66 @@
+{
+  "missionId": "WERKLES_BVPGM_M13_TEST_RESULT_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build red team of the exact local test-result and Personal Bellows return candidate.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; no push or deploy occurred.",
+    "Exact eleven-file content digest: 9055ee78acc3ce5ca79c9b6d57e2edb5321b350595ee38bf33c88aa007b3d81f.",
+    "Result notes bind to the exact accepted source, proposed action text, and action timestamp; a changed action invalidates the old result.",
+    "Result fields separate observed facts, one member's interpretation, and a proposed next decision.",
+    "Personal Bellows restores a valid chain and labels it as one member's notes, not partner answer, evidence of mutual agreement, or company decision.",
+    "Empty-Intake copy now acknowledges saved Werkle work; Personal Bellows boundary contrast is repaired.",
+    "TypeScript, exact-schema contract, focused M13 walk, M11/M12 regressions, Match Deck route, Crucible route, practice boundary, legacy draft shelf, and 100-route production build pass.",
+    "A posted packet is not custody, response, approval, or release sign-off."
+  ],
+  "liveStrings": [
+    "What happened—and what should you discuss next?",
+    "What did you actually observe?",
+    "What might that mean?",
+    "What decision should you discuss next?",
+    "These are one member's notes—not the other person's answer, evidence of mutual agreement, or a company decision."
+  ],
+  "knownGaps": [
+    "Artifacts remain browser-local practice, not account-durable or real-partner custody.",
+    "A next decision is proposed but not mutually accepted inside the result artifact.",
+    "No fresh external M13 receipt has been counted.",
+    "Lady Jessica independent release custody remains owed."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Walk the exact result-return candidate for human rhythm, visual hierarchy, and homework fatigue.",
+      "pull": "Inspect Formation result entry and Personal Bellows return at desktop and narrow width.",
+      "go": ["Return three P0/P1 experience defects with the smallest repair.", "Judge whether observation, interpretation, and next decision read distinctly.", "Give ENDER_M13_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the strongest return-value moment and weakest dead spot, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack the exact saved-result chain for stale reuse, malformed data, silent consent, and false evidence.",
+      "pull": "Treat every device record and synthetic profile as untrusted.",
+      "go": ["Return P0/P1 defects with exploit and minimum invariant.", "Challenge action timestamp binding and clear behavior.", "Give BEAN_M13_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest missing hostile regression, then stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether the exact return loop earns repeat use and membership value.",
+      "pull": "Inspect whether the next decision naturally reopens collaboration rather than ending at a note card.",
+      "go": ["Name the strongest value bridge and weakest dead end.", "Propose one bounded next-loop mechanic.", "Give SKYBRO_M13_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name what should happen after both members discuss the result, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "PETRA": {
+      "vision": "Verify exact local custody, source closure, and claim boundaries before release review.",
+      "pull": "Separate member notes, mutual decisions, provider evidence, account durability, and release proof.",
+      "go": ["Return GO, PATCH, or STOP for local candidate integrity.", "Name any claim that outruns custody and the next machine checkpoint.", "Verify digest and test claims are not production claims."],
+      "momentum": "Name the remaining release blocker, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or Operator approval."
+    },
+    "COMPUTER": {
+      "vision": "Research-check the exact observation, interpretation, and next-decision prompts for overclaiming and practical usefulness.",
+      "pull": "Compare the candidate with bounded after-action review and decision-log practice.",
+      "go": ["Flag the three weakest prompts with a better bounded alternative.", "Name any language that overstates one small test.", "Give COMPUTER_M13_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest research-backed improvement, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, secrets, schema/RLS, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

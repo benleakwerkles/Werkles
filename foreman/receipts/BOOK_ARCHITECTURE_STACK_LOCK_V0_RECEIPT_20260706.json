@@ -1,0 +1,53 @@
+{
+  "schema": "BOOK_ARCHITECTURE_STACK_LOCK_RECEIPT_V0",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T00:48:47.2047307-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "repo_head": "7e7be0d6552ee96efbaa89003b84e11ac6b2c39a",
+  "source_request": "Build the actual architecture for this prose: what apps and languages need to connect to allow seamless communication and cooperation among packeted Aeyes.",
+  "source_attachment_path": "C:\\Users\\Ben Leak\\.codex\\attachments\\81ea7b38-a161-4f26-a124-432b2888f5ab\\pasted-text.txt",
+  "source_attachment_sha256": "5009788EE2B15A2D2A23AB81675D379B20C67EA55835C91AEEF85D831FB7786F",
+  "artifact_path": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\architecture\\BOOK_ARCHITECTURE_STACK_LOCK_V0_20260706.md",
+  "artifact_type": "book architecture stack lock",
+  "manuscript_text_edited": "NO",
+  "existing_architecture_companions_edited": "NO",
+  "prior_artifacts_read": [
+    "foreman/source_material/manuscript_workbench/tinkularity/chapters/chapter-01/CHAPTER_01_MESSAGE_BUS_ARCHITECTURE_20260705.md",
+    "foreman/source_material/manuscript_workbench/tinkularity/chapters/chapter-01/CHAPTER_01_MESSAGE_BUS_HLD_20260705.md",
+    "foreman/source_material/TINKULARITY_CHAPTER_ONE_THE_HUMAN_INFRASTRUCTURE_PROBLEM.md",
+    "docs/tinkularity/PEARL_0000_THE_TINKULARITY.md",
+    "docs/tinkularity/ORGANISM_FRONTIER.md",
+    "tinkarden/medulla_command_surface/MEDULLA_COMMAND_SURFACE_V0.md",
+    "tinkarden/nervous_system/bootloader.js",
+    "tinkarden/nervous_system/aeye_client.js",
+    "scripts/foreman/chokidar-neurocirculymphatic-v0.mjs",
+    "app/api/nerdkle/_lib.ts",
+    "lib/tinkerden/packet-relay.ts",
+    "app/api/tinkerden/workspace-relay/route.ts",
+    "foreman/source-truth/SOURCE_TRUTH_POINTER.json",
+    "foreman/source-truth/LOCAL_SOURCE_TRUTH_POINTER.json"
+  ],
+  "deliverables": [
+    "Apps that must connect",
+    "Languages and file protocols",
+    "Packet contract",
+    "Receipt contract",
+    "Event contract",
+    "Boot context contract",
+    "Cooperation model",
+    "State machine",
+    "Current reality readback",
+    "Build plan",
+    "Chapter insertion candidate",
+    "Hard red lines",
+    "Architecture acceptance criteria"
+  ],
+  "truthfulness_notes": [
+    "The artifact does not claim current seamless real-time cooperation.",
+    "The artifact marks current cooperation as packeted, file-backed, and partially stitched.",
+    "The artifact names stale world-state as a known weakness.",
+    "The artifact preserves the rule that receiver-side receipts, not sender-side writes, prove custody transfer."
+  ]
+}

@@ -8,16 +8,16 @@ export function ReasoningPanel({ reasoning }: ReasoningPanelProps) {
   return (
     <details className="squibb-reasoning squibb-rec-collapse">
       <summary className="squibb-rec-collapse__summary" id="squibbReasoningTitle">
-        Reasoning
+        How Werkles reached this idea
       </summary>
       <dl className="squibb-reasoning__need">
         <div>
-          <dt>You said</dt>
+          <dt>Starting point</dt>
           <dd>{reasoning.statedNeed}</dd>
         </div>
         {reasoning.translatedNeed ? (
           <div>
-            <dt>Werkles reads it as</dt>
+          <dt>A practical interpretation</dt>
             <dd>{reasoning.translatedNeed}</dd>
           </div>
         ) : null}

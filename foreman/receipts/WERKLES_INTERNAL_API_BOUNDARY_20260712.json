@@ -1,0 +1,35 @@
+{
+  "schema": "werkles_internal_api_boundary_v1",
+  "date": "2026-07-12",
+  "status": "PASS_LOCAL_IMPLEMENTATION",
+  "protected_api_families": [
+    "/api/soledash/**",
+    "/api/tinkerden/**",
+    "/api/thinkit/**",
+    "/api/nerdkle/**",
+    "/api/organism/**",
+    "/api/speaker/**"
+  ],
+  "explicitly_unaffected_public_families": [
+    "/api/auth-first/**",
+    "/api/bellows/**",
+    "/api/discovery/**",
+    "/api/membership/**",
+    "/api/verification/**",
+    "/api/webhooks/stripe"
+  ],
+  "verification": {
+    "route_and_api_policy_cases": 35,
+    "typecheck": "PASS",
+    "production_build": "PASS",
+    "middleware_bundled": true,
+    "localhost_development_access": "PRESERVED"
+  },
+  "security_boundary": "All HTTP methods under protected prefixes deny outside local development. This is not operator authentication.",
+  "remaining_work": [
+    "Design authenticated operator access before enabling internal pages or APIs remotely.",
+    "Classify remaining standalone APIs such as cron, pearls, zip, beta, and goop-cycle before production launch.",
+    "Run deployed-preview anonymous denial tests after an approved push and preview deployment."
+  ],
+  "mutations": "No push or deployment performed."
+}

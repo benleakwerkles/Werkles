@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T02:46:37.855Z",
+  "file": "FROM_PETRA_VPGM_20260824-024601.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Foreman assimilated PETRA_M15_POSTBUILD_GO for exact digest 258c6d994d20139399b872293e2864bed0609b1fd3a7b3e0d5996eba93bb979f; Gate 05 remains HOLD.",
+  "auto_merge": false
+}

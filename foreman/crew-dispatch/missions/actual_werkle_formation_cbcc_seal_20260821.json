@@ -1,0 +1,74 @@
+{
+  "missionId": "ACTUAL_WERKLE_FORMATION_CBCC_SEAL_20260821",
+  "version": "v0.2",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build personal review of the current local Workshop-to-Werkle formation room. Decide whether the merge experience is emotionally safe, conversational, useful, consent-preserving, and valuable beyond a shared document.",
+  "sharedContext": [
+    "Ben ordered a return to Werkles with an actual CBCC rhythm. No further formation edits occur until a personal Ender or Bean terminal response is assimilated.",
+    "The local route is /dashboard/werkles/formation?candidate=<ranked synthetic id>. It compares the signed-in member's Workshop with one selected synthetic practice profile.",
+    "Twelve topics retain immutable owner and partner source statements. Decisions can use owner wording, use partner wording, write jointly, keep out, park unresolved, or withdraw a pending answer.",
+    "Joint wording enters the shared floor only when both sides accept identical text on the same revision. Editing accepted text increments the revision and resets both approvals.",
+    "Different answers, private material, and parked subjects never become shared company language. Objection notes stay in the history after later agreement.",
+    "The page states that the draft is synthetic, saved only in this browser on this device, not saved to the Werkles account, and will not follow the member to another browser or device.",
+    "Computer/Thufir returned a substantive PASS. This mission requests independent UX and trust review, not agreement with Computer.",
+    "No real person, invite, message, company, partnership, legal agreement, filing, ownership share, schema, provider call, or production record exists in this slice."
+  ],
+  "liveStrings": [
+    "Two Workshops. One proposed Werkle. Nothing moves without a decision.",
+    "A match opened the conversation. It did not merge your work, create a company, or make an agreement.",
+    "Waiting on someone",
+    "Both accepted",
+    "Different answers",
+    "Parked on purpose",
+    "Take back my pending answer",
+    "Only mutual decisions enter this room.",
+    "The room remembers how the answer changed.",
+    "Your source Workshops are untouched.",
+    "This practice draft is not saved to your Werkles account and will not follow you to another browser or device."
+  ],
+  "knownGaps": [
+    "The second participant is synthetic; one human operator enters both sides during the walkthrough.",
+    "Persistence is localStorage only and cannot prove cross-device, cross-browser, or production-account continuity.",
+    "Authenticated parity still needs a focused mechanical walk; anonymous access should redirect to login.",
+    "No actual notification, invitation, concurrent editing, conflict resolution, signature, adviser handoff, or durable event schema exists.",
+    "Current source provides twelve topics and contextual Bellows links but has no personal Ender or Bean terminal review."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the first proposed Werkle feel like two adults building together, not one operator role-playing both sides of a compliance form.",
+      "pull": "Personally attack the emotional arc, labels, hierarchy, tension, sense of progress, and whether the room helps people make hard decisions without feeling tricked or over-lawyered.",
+      "go": [
+        "Return GO, PATCH, or REJECT on the current flow and identify the first moment a member would feel confused, exposed, bored, or steamrolled.",
+        "Attack every quoted live string for ordinary human speech. Supply exact replacements only where the current line materially harms comprehension or trust.",
+        "Decide whether the actor switch, twelve-topic ledger, shared floor, and history form one understandable story or feel like four tools stacked together.",
+        "Name the smallest interaction or visual change that makes the room worth revisiting and paying for without adding fake people, fake activity, or more explanatory copy."
+      ],
+      "momentum": "Describe one deliberate disagreement scenario that feels real and teaches the value of Werkles without turning the walkthrough into therapy or legal theater.",
+      "outOfLane": "No implementation, trust-policy ruling, schema, provider work, push, deploy, secrets, or spend."
+    },
+    "BEAN": {
+      "vision": "Prevent the shared-room UX from laundering unilateral wording, synthetic consent, hidden dissent, private material, or a practice draft into a real partnership claim.",
+      "pull": "Personally attack state transitions, provenance, exact-revision approval, withdrawal, objection history, restore boundaries, adviser gating, and every member-facing claim.",
+      "go": [
+        "Construct hostile transition sequences that try to make unilateral or disputed text appear mutual, including edit-after-accept, withdraw-before-accept, object-then-agree, private-to-shared, stale restore, and wrong-room restore.",
+        "Attack the one-operator-two-actors walkthrough for false consent. Define the exact visible boundary required so practice acceptance cannot be mistaken for another person's action.",
+        "Attack the twelve-topic floor and adviser gate for omission, private-data laundering, coerced disclosure, accidental legal guidance, and false readiness.",
+        "Return P0/P1/P2 findings, GO/PATCH/REJECT, and the smallest deterministic acceptance cases required before the formation candidate can be called sealed."
+      ],
+      "momentum": "Name the single most dangerous overclaim remaining in this local synthetic room and a plain-language replacement.",
+      "outOfLane": "No UI taste ruling, implementation, personal-data expansion, provider calls, schema, push, deploy, secrets, or spend."
+    },
+    "COMPUTER": {
+      "vision": "Prove that the signed-in Match Deck and formation room behave like one member product after the provenance repair.",
+      "pull": "Personally walk the current local Match Deck into the formation route as the signed-in practice member. Attack member-header continuity, candidate handoff, source labels, unanswered states, joint wording, browser persistence disclosure, console failures, and the ability to understand what to do next.",
+      "go": [
+        "Return GO, PATCH, or REJECT with exact route evidence and the first broken or confusing transition.",
+        "Confirm whether the standard member navigation survives both pages after hydration and whether Back to Match Deck returns to the same understandable context.",
+        "Verify that raw Intake prose stays source material, generated copy stays a proposal, and unanswered member topics are not silently filled by Werkles.",
+        "Run one hostile edit-after-accept or withdraw-before-accept sequence and report whether the visible state remains honest."
+      ],
+      "momentum": "Name the smallest cross-surface change that would make the Match Deck to Werkle handoff feel worth revisiting rather than like a one-off form.",
+      "outOfLane": "No implementation, real-member contact, provider work, schema, push, deploy, secrets, or spend."
+    }
+  }
+}

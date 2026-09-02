@@ -1,57 +1,62 @@
-# WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW — paste block for COMPUTER (Perplexity)
+[WERKLES VPGM — WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901 v0.1]
 
-Werkles WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW
+Thufir Hawat (Doctrine / research cousin, Perplexity). Your lane: Synthesis, current-world checks, cited research — not unsourced deploy decisions.
 
-To: COMPUTER (Perplexity)
-Packet: TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216
-Lens: Market / competitor / trust — category norms, competitor homepages, credibility signals, citations
+CUSTODY_TOKEN: CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A
 
-Start with RECEIVED on its own line, then:
-1. Top 3 homepage problems
-2. Top 3 homepage opportunities
-3. One recommended hero message
-4. One thing not to change
+This is a real work request from the Werkles Foreman, not a role-sync ping. Everything
+you need is in this message — do not ask for repo files.
 
-No code. No deploy. No SQL.
+SLICE UNDER REVIEW
+Complete the already acknowledged Werkles production walk from packet TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831_v0.1_20260901-0248.md. The prior response stopped at 'walking now' and is not terminal. Personally finish the walk and return the requested complete review in this same existing Perplexity task.
 
----
+CONTEXT
+- Do not restate the acknowledgment.
+- Return observed URLs and strings, top five issues, quick wins, structural repairs, strongest elements, three retention upgrades, and terminal GO/PATCH/STOP.
+- Declare that this is personal work in the existing Thufir Hawat seat and name the exact prior packet.
+- No subagent, replacement persona, new task, account creation, purchase, production mutation, provider activation, push, or deploy.
 
-Full packet:
+WHAT THE MEMBER ACTUALLY SEES (verbatim strings)
+- walking now
+- TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_FULL_RED_TEAM_20260831_v0.1_20260901-0248.md
 
-# To Research / current-world checks (Perplexity): Werkles homepage discovery — full crew
+KNOWN GAPS (already admitted — do not spend your answer rediscovering these)
+- Member-only pages may remain behind login; report the gate rather than crossing it.
 
-## Status
+--- YOUR ASSIGNMENT ---
 
-**WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW** — generated 2026-06-06T13:52:16.732Z.
+V (vision): Finish the previously acknowledged live-site review personally.
 
-Discovery only. No code changes. No homepage rewrite yet. No deploy. No push. No SQL.
+P (pull): Use the production walk already begun; do not substitute generic market commentary.
 
----
+G (go) — work these, in this order:
 
-## Mission
+1. Return the complete evidence-based review requested by the parent packet.
 
-Review current Werkles homepage direction. Return top 3 problems, top 3 opportunities, one recommended hero message, and one thing not to change. Discovery only — no rewrite, no code.
+2. Separate observed production facts from researched context.
 
----
+3. End with a terminal verdict and complete relay metadata.
 
-## Your lens
+M (momentum): Name the three value upgrades most likely to improve paid retention.
 
-Market / competitor / trust lens
+OUT OF LANE: No implementation, account creation, provider activation, production mutation, push, deploy, or delegation.
 
----
+--- HOW TO ANSWER ---
 
-## Your reply (required structure)
+Reply as a markdown document Ben can save to foreman/handoffs/inbox/ as
+FROM_COMPUTER_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1.md
 
-Start with **RECEIVED** on its own line, then return:
+OPEN your reply with this exact block, filled in. It is how the cockpit proves the
+packet reached you rather than a composer, a wrong tab, or a stale thread:
 
-1. **Top 3 homepage problems**
-2. **Top 3 homepage opportunities**
-3. **One recommended hero message**
-4. **One thing not to change**
+RECEIVED
+CUSTODY_TOKEN: CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A
+COUSIN: COMPUTER
+PACKET: TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300.md
+LANE_CHECK: IN_LANE | OUT_OF_LANE — <one line>
+BLOCKER: NONE | <exact>
 
-Stay in your lane. No implementation patches.
-
----
+End your reply with this exact block, filled in:
 
 ## Relay metadata
 
@@ -59,31 +64,16 @@ Stay in your lane. No implementation patches.
 {
   "schemaVersion": "aeye-crew-relay/v0.1",
   "cousin": "COMPUTER",
-  "generated_at": "2026-06-06T13:52:16.732Z",
-  "currentStateHash": "825a6e62583c9491cce68d836b7e8c345a803ad34effb97db1d82359454d13cf",
-  "nextActionHash": "e5e1660283c42c971e5cdf8892f6dca22152ab12a9578e818356bd2e6a2fa801",
-  "source_files_included": [
-    "foreman/NEXT_ACTION.md",
-    "foreman/CURRENT_STATE.md"
-  ],
-  "REQUIRED_RESPONSE_FIELDS": [
-    "schemaVersion",
-    "cousin",
-    "source_packet_id",
-    "source_packet_file",
-    "generated_at",
-    "nextActionHash",
-    "CONFIDENCE",
-    "VERDICT",
-    "UNKNOWNS"
-  ],
-  "packet_id": "TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216",
-  "source_packet_file": "TO_COMPUTER_WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW_v1_20260606-135216.md",
-  "template": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
-  "packet_template": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
-  "dispatch_class": "WERKLES_HOMEPAGE_DISCOVERY_FULL_CREW",
-  "autonomous_round_trip_test": true,
-  "role_lane": "doctrine synthesis — not unsourced deploy decisions",
-  "human_gate_required": false
+  "custody_token": "CUSTODY-COMPUTER-C07A90011A0D32E44AF62A0713E0284A",
+  "VERDICT": "<one line>",
+  "CONFIDENCE": "HIGH | LOW",
+  "UNKNOWNS": "none | <list> | outside my lane",
+  "source_packet_id": "TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300",
+  "source_packet_file": "TO_COMPUTER_VPGM_WERKLES_LIVE_SITE_RED_TEAM_THUFIR_TERMINAL_CHASER_20260901_v0.1_20260901-0300.md",
+  "nextActionHash": "5f2af4ceae635a69ba939b347cec66a0478babcafe748237cdb20fc11bcc6490",
+  "currentStateHash": "78e580fb3019107585768920e8d2f5fc289e6533f4b1716081bea719d772242a"
 }
 ```
+
+Do not recommend deploy, push, SQL apply, secret entry, or spending money. Those are
+Operator gates. Say what you would do and stop.

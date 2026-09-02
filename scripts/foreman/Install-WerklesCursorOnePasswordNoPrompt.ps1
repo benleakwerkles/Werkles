@@ -49,6 +49,12 @@ $receipt = [ordered]@{
   tokenWrittenToRepo = "NO"
   secretValuesRead = "NO"
   secretValuesPrinted = "NO"
+  storedServiceAccountTokenPresent = $false
+  wrapperVerifyExitCode = $null
+  wrapperVisibleItemCount = $null
+  cursorDefaultProfile = $null
+  cursorBiometricUnlockEnabled = $null
+  cursorPathShimConfigured = $false
 }
 
 try {

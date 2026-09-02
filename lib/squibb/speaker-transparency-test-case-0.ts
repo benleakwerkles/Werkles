@@ -74,7 +74,7 @@ export const SPEAKER_HUMAN_READ_TEST_CASE_0: SpeakerHumanRead = {
 
     headline: "Partner might be the wrong word",
 
-    summary: "The real gap isn't confirmed yet. Speaker isn't saying you're wrong — just that the need isn't named."
+    summary: "The real gap is not confirmed yet. This read does not say you are wrong; it says the need is not specific enough yet."
 
   },
 

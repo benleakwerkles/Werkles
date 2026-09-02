@@ -1,0 +1,64 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_RECEIPT_POST_CLIENT_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:22:32.743Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_RECEIPT_POST_CLIENT_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-receiver-receipt-post-client-smoke.mjs",
+  "files_changed": [
+    "scripts/foreman/organism-receiver-receipt-post.mjs",
+    "scripts/foreman/organism-receiver-receipt-post-client-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_RECEIPT_POST_CLIENT_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/messages/receiver-receipts/receiver_receipt_post_client_mr8u26ct.json",
+    "data/organism/contracts/receipts/receiver_receipt_post_client_mr8u26ct.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "post_client_helpful_args_present": true,
+    "post_client_targets_receiver_intake_route": true,
+    "post_client_fails_closed_on_bad_response": true,
+    "live_post_client_returned_ok": true,
+    "receipt_id_round_tripped": true,
+    "packet_id_round_tripped": true,
+    "local_contract_artifact_verified": true,
+    "packet_receipted_event_written": true,
+    "contract_receipt_status": "partial",
+    "truth_boundary": "The post client works, but this receipt remains fixture proof rather than real downstream completion."
+  },
+  "attached_to_contract_packet": {
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "contract_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "lane": "TinkerDen bridge execute"
+  },
+  "post_client_output": {
+    "ok": true,
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "source_receipt_path": "foreman/messages/receiver-receipts/receiver_receipt_post_client_mr8u26ct.json",
+    "source_receipt_sha256": "471aa396c6e7ef2f1d2a8508a4bc19039f2f496cbf3cfd56ea2a965fa8e55847",
+    "detected_by": "ReceiverReceiptPostClientSmoke@Betsy",
+    "receipt_id": "receiver_receipt_post_client_mr8u26ct",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receipt_status": "partial",
+    "contract_write": {
+      "ok": true,
+      "artifact_path": "data/organism/contracts/receipts/receiver_receipt_post_client_mr8u26ct.json",
+      "event_path": "data/organism/contracts/events.jsonl",
+      "sha256": "471aa396c6e7ef2f1d2a8508a4bc19039f2f496cbf3cfd56ea2a965fa8e55847"
+    },
+    "local_contract_artifact_exists": true
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no account automation",
+    "no browser credential control"
+  ],
+  "next_safe_action": "Hand a real receiving Aeye the post client command and require its non-fixture receipt artifact path in return."
+}

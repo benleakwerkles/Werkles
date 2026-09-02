@@ -340,7 +340,7 @@ function ChatEntry({ entry }: { entry: OperatorChatEntry }) {
   const { message } = entry;
   return (
     <div className={`ds-chat__msg ds-chat__msg--${message.role}`}>
-      <span className="ds-chat__role">{message.role === "operator" ? "Ben" : "System"}</span>
+      <span className="ds-chat__role">{message.role === "operator" ? "Operator" : "System"}</span>
       <p>{message.text}</p>
     </div>
   );

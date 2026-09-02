@@ -25,11 +25,14 @@ export default async function SquibbRecommendationsPage({
   return (
     <>
       <LocalAwareSiteHeader />
-      <main className="bellows-main narrative-act-page workshop-route--bellows squibb-rec-page">
+      <main className="bellows-main narrative-act-page route-room route-room--bellows workshop-route--bellows squibb-rec-page">
 
-        <AccountAwareRecommendationSurface initialSession={session} ledger={ledger} initialKind={initialKind} />
-
-        <AccountAwarePeopleContinuation initialBridge={ghostFleetBridge} />
+        <AccountAwareRecommendationSurface
+          initialSession={session}
+          ledger={ledger}
+          initialKind={initialKind}
+          peopleGateway={<AccountAwarePeopleContinuation key="recommendation-people-gateway" initialBridge={ghostFleetBridge} />}
+        />
 
       </main>
       <footer className="site-footer">

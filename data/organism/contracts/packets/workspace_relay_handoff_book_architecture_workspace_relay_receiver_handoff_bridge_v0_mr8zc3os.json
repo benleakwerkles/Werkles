@@ -1,0 +1,43 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os",
+  "created_at": "2026-07-06T08:50:13.807Z",
+  "from": "TinkerDenWorkspaceRelay@Betsy",
+  "to": "Maker@Betsy",
+  "lane": "TinkerDen workspace relay",
+  "operator_intent": "Prove Workspace Relay can open a pending receiver-handoff return lane after custody proof.",
+  "source_paths": [
+    "data/tinkerden/executions/workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os.json"
+  ],
+  "source_hashes": {
+    "data/tinkerden/executions/workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os.json": "c91ad2b444f5cff5f57d72adc7a77f8188030b882e403be418808fc43c01c038"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Hand the workspace relay packet to the receiver and require a non-template returned receipt before claiming work completion.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "dispatch_packet",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "deploy",
+    "push",
+    "secret_access",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "receiver_receipt_missing",
+    "source_missing",
+    "contract_schema_invalid"
+  ],
+  "acceptance_criteria": [
+    "Workspace relay custody packet is mirrored into the organism contract store.",
+    "Receiver handoff bundle is created.",
+    "Receipt template remains blocked until receiver proof is returned."
+  ],
+  "receipt_required": true,
+  "receipt_destination": "data/organism/contracts/receipts",
+  "idempotency_key": "workspace-relay-handoff-smoke:workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os",
+  "expires_at": "2026-07-07T08:50:13.807Z"
+}

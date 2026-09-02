@@ -118,8 +118,11 @@ function Open-AeyeCrewBay {
   $profile = Join-Path $Root "foreman\.edge-aeye-crew-profile"
   $urls = @($config.tabs | Sort-Object tabIndex | ForEach-Object { $_.url })
   if ($urls.Count -eq 0) { throw "No crew tab URLs in config" }
-  $args = @("--new-window", "--user-data-dir=$profile") + $urls
-  Start-Process -FilePath $edge -ArgumentList $args | Out-Null
+  if (-not (Test-Path $profile)) { New-Item -ItemType Directory -Path $profile -Force | Out-Null }
+  # Repo paths contain spaces; an unquoted --user-data-dir splits and Edge silently
+  # falls back to the default profile, so the bay is never detectable.
+  $argList = @("--new-window", "`"--user-data-dir=$profile`"") + $urls
+  Start-Process -FilePath $edge -ArgumentList $argList | Out-Null
   Start-Sleep -Seconds 6
 }
 

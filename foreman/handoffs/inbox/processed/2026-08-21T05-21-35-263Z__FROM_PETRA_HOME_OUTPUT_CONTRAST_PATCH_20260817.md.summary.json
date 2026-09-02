@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:21:35.264Z",
+  "file": "FROM_PETRA_HOME_OUTPUT_CONTRAST_PATCH_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Read and preserved: rendered contrast and invitation hierarchy remain required.",
+  "auto_merge": false
+}

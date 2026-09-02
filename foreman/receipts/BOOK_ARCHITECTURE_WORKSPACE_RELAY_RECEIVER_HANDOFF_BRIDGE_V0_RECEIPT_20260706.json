@@ -1,0 +1,66 @@
+{
+  "schema": "BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:50:13.813Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_WORKSPACE_RELAY_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/workspace-relay-receiver-handoff-bridge-smoke.mjs",
+  "validation": {
+    "workspace_relay_organism_packet_fixture_written": true,
+    "receiver_handoff_bundle_created": true,
+    "receiver_handoff_template_blocked": true,
+    "receiver_handoff_template_not_filled": true,
+    "receiver_handoff_return_not_created": true,
+    "receiver_work_completion_not_claimed": true,
+    "fixed_bundle_id_prevents_count_growth_on_repeated_runs": true
+  },
+  "fixture_readback": {
+    "relay_id": "workspace_relay_handoff_bridge_mr8zc3ot",
+    "organism_packet_id": "workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os",
+    "organism_packet_path": "data/organism/contracts/packets/workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os.json",
+    "bundle_id": "workspace_relay_receiver_handoff_bridge_smoke_v0",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0",
+    "handoff_path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/manifest.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/returned-receipt.json",
+    "returned_receipt_exists": false
+  },
+  "file_hashes": [
+    {
+      "path": "lib/tinkerden/workspace-relay-receiver-handoff.ts",
+      "sha256": "0ea315f2d1b951e8aa75a98490e4fb48c38e257af2a82f116c57850e897c58a9",
+      "bytes": 1089
+    },
+    {
+      "path": "app/api/tinkerden/workspace-relay/route.ts",
+      "sha256": "5c8995b661b1651291e7c59176edaf369026963fb473fb3f2bdcf7fd11b0d819",
+      "bytes": 9516
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-bundle.ts",
+      "sha256": "22b02f2a81d21cfa05eeadc30049d685fce0511752e437b3b877f88eb5d35703",
+      "bytes": 10122
+    },
+    {
+      "path": "scripts/foreman/workspace-relay-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "a9594daa52c7112f5a98b19a491a140d630b7fe42ba6db7214090e24ec69ac24",
+      "bytes": 10214
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "truth_boundary": "This smoke proves Workspace Relay can create a pending receiver-handoff return lane. The generated receipt template is blocked and is not receiver work completion proof.",
+  "stop_conditions_respected": [
+    "no returned receipt created",
+    "no receiver work completion claim",
+    "no deploy",
+    "no push"
+  ]
+}

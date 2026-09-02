@@ -1,0 +1,79 @@
+{
+    "schema":  "brainstation_workspace_control_receipt_v1",
+    "controller":  "Heimerdinker@Betsy",
+    "action":  "Status",
+    "timestamp":  "2026-07-15T06:24:57.110Z",
+    "scope":  "PowerToys Workspace status and launch only",
+    "results":  [
+                    {
+                        "machine":  "Betsy",
+                        "connected":  true,
+                        "status":  "READY",
+                        "workspace_id":  "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+                        "workspace_name":  "Betsy Autopaste Workspace",
+                        "monitor_indexes":  [
+                                                1,
+                                                2
+                                            ],
+                        "available_workspaces":  2,
+                        "workspace_options":  [
+                                                  {
+                                                      "id":  "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+                                                      "name":  "Betsy Autopaste Workspace",
+                                                      "application_count":  13,
+                                                      "monitor_indexes":  [
+                                                                              1,
+                                                                              2
+                                                                          ]
+                                                  },
+                                                  {
+                                                      "id":  "{C55AFEAC-4DED-4293-B3C1-241B333598DA}",
+                                                      "name":  "Betsy Autopaste Workspace [Self-Heal]",
+                                                      "application_count":  9,
+                                                      "monitor_indexes":  [
+                                                                              1,
+                                                                              2
+                                                                          ]
+                                                  }
+                                              ],
+                        "detail":  "Configured workspace is available."
+                    },
+                    {
+                        "machine":  "Spanzee",
+                        "connected":  false,
+                        "status":  "NOT_CONNECTED",
+                        "workspace_id":  null,
+                        "workspace_name":  null,
+                        "monitor_indexes":  [
+
+                                            ],
+                        "available_workspaces":  0,
+                        "workspace_options":  [
+
+                                              ],
+                        "detail":  "The operation has timed out."
+                    },
+                    {
+                        "machine":  "Medullina",
+                        "connected":  false,
+                        "status":  "NOT_CONNECTED",
+                        "workspace_id":  null,
+                        "workspace_name":  null,
+                        "monitor_indexes":  [
+
+                                            ],
+                        "available_workspaces":  0,
+                        "workspace_options":  [
+
+                                              ],
+                        "detail":  "The remote name could not be resolved: \u0027medullina\u0027"
+                    }
+                ],
+    "all_ready":  false,
+    "guardrails":  [
+                       "No general remote commands.",
+                       "No browser control or auto-send.",
+                       "Each machine may launch only a workspace already present in its local PowerToys configuration."
+                   ],
+    "receipt_path":  "foreman/receipts/BRAINSTATION_WORKSPACE_CONTROL_20260715T062457Z.json"
+}

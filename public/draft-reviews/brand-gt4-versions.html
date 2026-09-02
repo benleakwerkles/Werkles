@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Werkles — GT4 versions vs your pick</title>
+<style>
+  body {
+    margin: 0;
+    padding: 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #efe7da;
+    color: #2c231d;
+  }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  p.note { font-family: Segoe UI, sans-serif; font-size: 13.5px; color: #6b5a49; margin: 0 0 26px; }
+  h2 { font-size: 16px; font-family: Segoe UI, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; color: #7d4a1e; margin: 34px 0 12px; }
+  .card {
+    border: 1px solid rgba(80, 52, 28, 0.25);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    margin: 0 0 18px;
+    max-width: 860px;
+  }
+  .card header {
+    font-family: Segoe UI, sans-serif;
+    font-size: 13.5px;
+    padding: 9px 14px;
+    background: #fbf7f0;
+    border-bottom: 1px solid rgba(80, 52, 28, 0.15);
+    color: #4a3a2c;
+  }
+  .card header strong { display: inline; font-size: 15px; color: #2c231d; margin-right: 8px; }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 34px 40px;
+    background: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(246, 239, 229, 0.96));
+  }
+  .bar img { height: 96px; width: auto; display: block; transform: translateY(-5px); }
+  .word {
+    font-weight: 700;
+    font-size: 76px;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    margin-left: -8px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .w2blend { background-image: linear-gradient(172deg, #18c5ae 0%, #06957f 30%, #5b2be0 64%, #3d16ca 100%); }
+  .w2blend-inv { background-image: linear-gradient(172deg, #6a35f2 0%, #4b1fd6 30%, #0aa38c 64%, #027665 100%); }
+</style>
+</head>
+<body>
+  <h1>GT4 versions — against your W2 pick</h1>
+  <p class="note">V0 is your pick untouched. V1 is your pick continued through the W. V2–V6 are the curved GT4 in different paints — all with softer shading so the color stops swinging too dark and too light.</p>
+
+  <div class="card"><header><strong>V0 — Your pick (W2)</strong>original W, straight green-to-purple blend in the word only</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w2blend">erkles</span></div></div>
+
+  <div class="card"><header><strong>V0i — Your pick, inverted</strong>original W, purple fading down into green in the word</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w2blend-inv">erkles</span></div></div>
+
+  <div class="card"><header><strong>V1 — Your pick, through the W</strong>the same straight blend flowing across the whole lockup</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-w2-straight.png" alt=""><span class="word w2blend">erkles</span></div></div>
+
+  <div class="card"><header><strong>V1i — Through the W, inverted</strong>purple crest fading down into green across the whole lockup</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-w2-straight-inverted.png" alt=""><span class="word w2blend-inv">erkles</span></div></div>
+
+  <div class="card"><header><strong>V2 — GT4 as before</strong>the one you saw — old harsh shading, for comparison</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-green-over-purple.png" alt=""><span class="word" data-palette="std">erkles</span></div></div>
+
+  <div class="card"><header><strong>V3 — GT4, fixed shading</strong>same palette, gloss toned down so the greens/purples stay even</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-gt4-soft.png" alt=""><span class="word" data-palette="std">erkles</span></div></div>
+
+  <div class="card"><header><strong>V4 — GT4 bright</strong>brighter seafoam crest, lighter violet deep</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-gt4-bright.png" alt=""><span class="word" data-palette="bright">erkles</span></div></div>
+
+  <div class="card"><header><strong>V5 — GT4 deep jewel</strong>darker pine crest over indigo — richest read</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-gt4-deep.png" alt=""><span class="word" data-palette="deep">erkles</span></div></div>
+
+  <div class="card"><header><strong>V6 — GT4 pastel</strong>lifted, softer both ways — friendliest read</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-gt4-pastel.png" alt=""><span class="word" data-palette="pastel">erkles</span></div></div>
+
+<script>
+// Curved swell word gradients (x 120..520 window of the shared canvas),
+// green over purple, no seam — one per palette, matching the painted Ws.
+const SEAM = "M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52";
+const PALETTES = {
+  std:    { g: ["#0aa38c", "#027665"], p: ["#6a35f2", "#4520c9"] },
+  bright: { g: ["#2fe0c2", "#08a58c"], p: ["#6a35f2", "#4b1fd6"] },
+  deep:   { g: ["#0f9d84", "#076a58"], p: ["#341bb0", "#241075"] },
+  pastel: { g: ["#5fdcc4", "#24b89b"], p: ["#8a63f0", "#6a44db"] },
+};
+for (const el of document.querySelectorAll(".word[data-palette]")) {
+  const pal = PALETTES[el.dataset.palette];
+  const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='120 0 400 80' preserveAspectRatio='none'>" +
+    "<defs>" +
+    "<linearGradient id='gg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='" + pal.g[0] + "'/><stop offset='1' stop-color='" + pal.g[1] + "'/></linearGradient>" +
+    "<linearGradient id='pp' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='" + pal.p[0] + "'/><stop offset='1' stop-color='" + pal.p[1] + "'/></linearGradient>" +
+    "</defs>" +
+    "<rect x='100' y='-10' width='440' height='100' fill='url(#pp)'/>" +
+    "<path d='" + SEAM + " L520,0 L0,0 Z' fill='url(#gg)'/>" +
+    "</svg>";
+  el.style.backgroundImage = "url(\"data:image/svg+xml," + encodeURIComponent(svg) + "\")";
+}
+</script>
+</body>
+</html>

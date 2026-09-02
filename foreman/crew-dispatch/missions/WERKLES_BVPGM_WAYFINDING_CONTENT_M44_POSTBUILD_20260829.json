@@ -1,0 +1,34 @@
+{
+  "missionId": "WERKLES_BVPGM_WAYFINDING_CONTENT_M44_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build red team of the M44 persistent route line, duplicate cuts, and van/tools visual substitution.",
+  "sharedContext": [
+    "The member header now states current room, that room's unique job, a permanent Member Home escape, and one next door across seven primary surfaces.",
+    "Redundant location cards were removed from Workshop and Match Deck; Workshop's repeated flow disclosure and one duplicate Crucible proof door were removed.",
+    "Match Deck stays on the candidate list until a person is chosen. Workshop now uses the existing van/tools scene in place of a stock-human break.",
+    "TypeScript, seven route-line assertions, desktop/390px renders, and focused header accessibility pass. No provider, schema, secret, push, or deploy action occurred."
+  ],
+  "liveStrings": ["Here:", "Member Home", "Next:", "Choose a Match", "Optional Checks"],
+  "knownGaps": [
+    "The existing mobile header is already tall before the route line is added.",
+    "The Formation page retains its dynamic local-state readout because it communicates saved-vs-possible state, not generic navigation.",
+    "The candidate is inside a large shared dirty tree and is not a sealed release slice."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Attack whether the new route line lowers anxiety without becoming a new lecture.",
+      "pull": "Walk Intake, Recommendations, My Work, Match Deck, My Bellows, About Me, and Optional Checks at desktop and 390px.",
+      "go": ["Judge current-room and next-door comprehension.", "Attack mobile header burden and misleading next actions.", "Name any removed context that was actually useful."],
+      "momentum": "Return ENDER_M44_POSTBUILD_GO, PATCH, or STOP.",
+      "outOfLane": "No code, provider action, schema, secrets, push, deploy, new task, or subagent."
+    },
+    "BEAN": {
+      "vision": "Attack remaining semantic duplication and any trust claim created by the new route grammar.",
+      "pull": "Check unique page jobs, next-action truth, self-reported input boundaries, and save/provider/human-response implications.",
+      "go": ["Name any remaining same-monster page pair.", "Attack next links that cannot complete their promise.", "Judge whether the cuts increase clarity without reducing substantive value."],
+      "momentum": "Return BEAN_M44_POSTBUILD_GO, PATCH, or STOP.",
+      "outOfLane": "No code, legal approval, provider action, schema, secrets, push, deploy, new task, or subagent."
+    }
+  }
+}

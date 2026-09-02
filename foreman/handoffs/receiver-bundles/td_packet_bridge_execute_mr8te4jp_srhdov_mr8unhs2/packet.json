@@ -1,0 +1,48 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "created_at": "2026-07-06T06:03:50.533Z",
+  "from": "TinkerDen@Betsy",
+  "to": "Maker@Betsy",
+  "lane": "TinkerDen bridge execute",
+  "operator_intent": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0",
+  "source_paths": [
+    "tinkerden/dispatch/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json"
+  ],
+  "source_hashes": {
+    "tinkerden/dispatch/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json": "3e9780ff0a651973f393d906c000b6d795b5e95824d8effc46f3d50154c056b3"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Ben asked for Aeye momentum that keeps building actual cooperating paths.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "dispatch_packet",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "fake_delivery",
+    "claim_downstream_completion_without_receiver_receipt",
+    "account_automation",
+    "browser_credential_control",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "source_missing",
+    "gate_required",
+    "breach_risk",
+    "receiver_receipt_missing",
+    "contract_schema_invalid"
+  ],
+  "acceptance_criteria": [
+    "Legacy TinkerDen bridge execute packet artifact is written.",
+    "Legacy TinkerDen dispatch receipt is written.",
+    "Canonical organism packet mirror validates and writes.",
+    "Canonical organism receipt mirror validates and writes.",
+    "Dispatch receipt does not claim downstream Aeye completion."
+  ],
+  "receipt_required": true,
+  "receipt_destination": "data/organism/contracts/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json",
+  "idempotency_key": "tinkerden-bridge-execute:td_packet_bridge_execute_mr8te4jp_srhdov:td_receipt_bridge_execute_mr8te4ju_mwoqyw",
+  "expires_at": "2026-07-07T06:03:50.533Z"
+}

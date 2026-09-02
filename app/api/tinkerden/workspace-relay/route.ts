@@ -5,6 +5,8 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 
 import { createBridgePacketRelayReadyPacket } from "@/lib/tinkerden-return-system-v0/store";
+import { writeWorkspaceRelayRunnerContractReceipt } from "@/lib/tinkerden/workspace-relay-contract";
+import { createWorkspaceRelayReceiverHandoffBundle } from "@/lib/tinkerden/workspace-relay-receiver-handoff";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +19,8 @@ type WorkspaceRelayBody = {
   operator_reason?: string;
   why_now?: string;
   recommended_because?: string;
+  create_receiver_handoff?: boolean;
+  receiver_handoff_bundle_id?: string;
 };
 
 type WorkspaceDestination = {
@@ -179,6 +183,32 @@ export async function POST(request: Request) {
       workspace_target: result.workspace_target,
       packet_text: result.packet_relay_text,
     });
+    const runnerContractWrite = await writeWorkspaceRelayRunnerContractReceipt({
+      packet_id: result.packet.packet_id,
+      runner_receipt_id: runner.receipt_id,
+      relay_id: result.relay_id,
+      packet_path: result.packet_path,
+      packet_relay_receipt_path: result.receipt_path,
+      runner_receipt_path: runner.runner_receipt_path,
+      receipt_path: runner.receipt_path,
+      runner_request_path: runner.runner_request_path,
+      event_path: runner.event_path,
+      receipt_pickup_path: runner.pickup_path,
+      receiver: `WorkspaceRelayRunner@${targetMachine}`,
+      runner_mode: runner.runner_mode,
+      runner_status: runner.status,
+      clipboard_set: runner.clipboard_set,
+      clipboard_verified: runner.clipboard_verified,
+      workspace_focused: runner.workspace_focused,
+    });
+    const receiverHandoff = body.create_receiver_handoff === true
+      ? await createWorkspaceRelayReceiverHandoffBundle({
+          packet_id: result.packet.packet_id,
+          relay_id: result.relay_id,
+          receiver: `${targetAeye}@${targetMachine}`,
+          bundle_id: body.receiver_handoff_bundle_id,
+        })
+      : null;
 
     return NextResponse.json({
       ok: true,
@@ -196,6 +226,11 @@ export async function POST(request: Request) {
       workspace_target: result.workspace_target,
       destination,
       runner,
+      contract_write: {
+        ...result.contract_write,
+        runner_receipt: runnerContractWrite,
+      },
+      receiver_handoff: receiverHandoff,
       clipboard_set: runner.clipboard_set,
       clipboard_verified: runner.clipboard_verified,
       workspace_focused: runner.workspace_focused,

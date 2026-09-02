@@ -115,6 +115,7 @@ export function MemberDashboardClient({
     clearDevPreviewSession();
     clearSupabaseBrowserStorage();
     try { await getSupabaseBrowser().auth.signOut({ scope: "global" }); } catch { /* Preview may have no Supabase env. */ }
+    try { await fetch("/api/auth-first/logout", { method: "POST", credentials: "same-origin" }); } catch { /* The client redirect below still closes the visible session. */ }
     window.location.replace("/login?logged_out=1");
   }
 

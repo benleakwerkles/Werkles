@@ -1,0 +1,63 @@
+{
+  "missionId": "WERKLES_BVPGM_UNRESOLVED_DECISION_TO_REAL_TEST_M12",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Review the local Formation → small observable test → Personal Bellows return → optional narrow Crucible check loop before implementation.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; current candidate work is local only.",
+    "M11 already returns validated accepted Formation wording through Personal Bellows and the private memo.",
+    "M11 candidate digest is 8174569f5c306bc65fdd4f27f0375778d8c899d4054a5b3cb8c804f61b9df800 with zero dependency leaks and local regression pass.",
+    "M12 must add useful action without inventing consent, partner answers, ownership, deadlines, legal terms, financing choices, or provider necessity.",
+    "This packet is a notification and review request, not proof of custody, response, participation, or approval."
+  ],
+  "liveStrings": [
+    "Work on next",
+    "What you have settled together",
+    "First Shared Step",
+    "The claim that would change your next decision",
+    "Werkles will not invent the owner, deadline, or promise."
+  ],
+  "knownGaps": [
+    "The accepted decision can be revisited, but no topic-specific same-week experiment is yet attached to it.",
+    "Formation and returned artifacts remain device-local practice.",
+    "No real second member, account-durable shared room, or production provider result exists.",
+    "Lady Jessica release custody remains separate."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the next unresolved decision feel like two people trying something together, not another worksheet.",
+      "pull": "Walk Formation, Personal Bellows, and Crucible for emotional continuity, legibility, consequence clarity, and homework fatigue.",
+      "go": ["Return the three strongest P0/P1 experience defects with route and smallest repair.", "Propose one compact visual/action pattern for the same-week test.", "Give ENDER_M12_GO, PATCH, or STOP."],
+      "momentum": "Name the moment that should make a member want to return next week, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack the test loop for silent consent, assignment laundering, private-note leakage, stale source wording, and provider overreach.",
+      "pull": "Treat device storage and generated prompts as untrusted; require exact source and consequence boundaries.",
+      "go": ["Return P0/P1 defects with exploit, harm, and minimum invariant.", "Name one fail-closed regression for proposed tests and one for provider evidence.", "Give BEAN_M12_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest trust boundary the new test artifact must display and stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether the loop creates repeatable paid-member value rather than one more generated suggestion.",
+      "pull": "Inspect whether the experiment is specific enough to run, useful enough to revisit, and naturally connected to Bellows.",
+      "go": ["Name the strongest value bridge and weakest dead end.", "Propose one bounded return-value mechanic without cheap paywall teasing.", "Give SKYBRO_M12_GO, PATCH, or STOP."],
+      "momentum": "Name one Bellows follow-up that should unlock from a completed test, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or canon-by-flattery."
+    },
+    "PETRA": {
+      "vision": "Keep the experiment loop useful, local, and bounded without confusing proposal, acceptance, evidence, and release custody.",
+      "pull": "Separate local practice improvements from durable account, real-member, provider, and production gates.",
+      "go": ["Return GO, PATCH, or STOP for the local implementation scope.", "Name any claim that outruns current custody.", "State the exact next machine checkpoint."],
+      "momentum": "Name the strongest safe local slice and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or Operator approval."
+    },
+    "COMPUTER": {
+      "vision": "Research-check concrete same-week experiment patterns that are useful but do not become legal, tax, lending, or investment advice.",
+      "pull": "Map the current Formation topic classes to public primary or reputable operator sources and preserve the no-advice boundary.",
+      "go": ["Return three concrete experiment patterns suitable for deterministic local rendering.", "Flag any topic that must lead to adviser questions instead of an experiment.", "Give COMPUTER_M12_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest source-backed addition that materially improves the return loop and stop.",
+      "outOfLane": "No code, legal conclusion, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final release approval."
+    }
+  }
+}

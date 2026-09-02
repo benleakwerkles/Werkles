@@ -1,0 +1,58 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_FRESHNESS_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:12:15.972Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_FRESHNESS_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_FRESHNESS_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-contract-freshness-smoke.mjs",
+  "files_changed": [
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-contract-freshness-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_CONTRACT_FRESHNESS_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "bridge_script_syntax": "passed",
+    "client_freshness_function_present": true,
+    "client_freshness_setter_present": true,
+    "server_freshness_function_present": true,
+    "freshness_badge_hook_present": true,
+    "hydrate_updates_freshness": true,
+    "live_api_url": "http://127.0.0.1:3000/api/organism/contracts/index?limit=25",
+    "live_api_ok": true,
+    "tinkerden_record_count": 2,
+    "invalid_count": 0,
+    "missing_join_count": 0,
+    "tinkerden_page_url": "http://127.0.0.1:3000/tinkerden",
+    "tinkerden_page_status": 200,
+    "rendered_contract_lane": true,
+    "rendered_freshness_state": "LIVE",
+    "rendered_freshness_label": "LIVE · 2 lanes · 8m"
+  },
+  "bridge_script_check": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "contract_file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "d5795d46cf09ee2aabf16d6b57b8c2e54d5e087134c09e34b5e797c8cbc4ac1f",
+      "bytes": 64822
+    },
+    {
+      "path": "scripts/foreman/tinkerden-contract-freshness-smoke.mjs",
+      "sha256": "62cb14c8ba761a518f7d6a76a0bfda431ca980793d24185368308fbd51a84245",
+      "bytes": 7959
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "read-only API/page proof except receipt artifact"
+  ],
+  "next_safe_action": "Wire the next packet producer lane into canonical contract writes."
+}

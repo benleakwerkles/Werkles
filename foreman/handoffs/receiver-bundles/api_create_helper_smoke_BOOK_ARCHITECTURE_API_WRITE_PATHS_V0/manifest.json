@@ -1,0 +1,34 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T06:36:04.341Z",
+  "bundle_id": "api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+  "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+  "receiver": "ReceiverCreateApiHelperSmoke@Betsy",
+  "lane": "Harvey/Nerdkle architecture",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0.json",
+  "source_packet_sha256": "de32b8aa6bc5e3132b4739d506e79f9b3bdffab9e321a0eaa7d0b0893ad382a7",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+      "sha256": "de32b8aa6bc5e3132b4739d506e79f9b3bdffab9e321a0eaa7d0b0893ad382a7"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+      "sha256": "b2007ca3b5899703449bd061a8d55d90a8de3fa0dd0d0da954d655ce3aa16c89"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+      "sha256": "8c59c6d4a64532142349e696d5bd5fa8da756f9837aa85a2c328107ea2fb53f3"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverCreateApiHelperSmoke@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

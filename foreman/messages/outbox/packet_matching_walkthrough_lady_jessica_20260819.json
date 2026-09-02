@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_matching_walkthrough_lady_jessica_20260819",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "matching_overhaul_live_walkthrough_20260819",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Open and personally execute foreman/handoffs/outbox/TO_LADY_JESSICA_MATCHING_OVERHAUL_LIVE_WALKTHROUGH_20260819.md. Packet SHA-256 991F3633FB3904B36450E1EEDAEB16BCAE56A449F4B2D33E2ED962940657AB7A. No subagents. Return terminal GO, PATCH, or REJECT with live browser evidence. Opening or ACK is not completion."
+  },
+  "status": "SENT",
+  "created_at": "2026-08-19T00:00:00-04:00"
+}

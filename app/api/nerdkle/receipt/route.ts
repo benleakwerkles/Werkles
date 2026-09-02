@@ -9,6 +9,8 @@ import {
   sha256,
   writeJsonAtomic
 } from "../_lib";
+import { receiverProofBoundary } from "@/lib/organism/contracts/receiver-proof-boundary";
+import { writeNerdkleOrganismReceiptRecord } from "@/lib/nerdkle/organism-contract-mirror";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -67,12 +69,20 @@ export async function POST(request: NextRequest) {
     stage: updatedObject.status.stage,
     created_at: now
   });
+  const organism_contract = await writeNerdkleOrganismReceiptRecord({
+    object: updatedObject,
+    object_path: filePath,
+    legacy_receipt: receipt,
+    legacy_receipt_path: receiptPath
+  });
 
   return NextResponse.json({
     ok: true,
     object: updatedObject,
     receipt,
     artifact_path: repoRelative(filePath),
-    receipt_path: repoRelative(receiptPath)
+    receipt_path: repoRelative(receiptPath),
+    organism_contract,
+    receiver_proof: receiverProofBoundary("organism_receipt_mirrored")
   });
 }

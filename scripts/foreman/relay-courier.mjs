@@ -2,10 +2,13 @@
 /**
  * Relay Courier — deterministic local browser courier (not an AI cousin).
  *
+ * DEPRECATED for delivery as of 2026-08-03. `deliver` drives the Edge SendKeys path,
+ * which steals the Operator's cursor and cannot prove the paste reached a composer.
+ * Use `scripts/foreman/chrome-cdp-courier.mjs` instead. `verify` and `status` are still
+ * the dispatch-policy gate and remain in use.
+ *
  *   node scripts/foreman/relay-courier.mjs verify --cousin PETRA --kind network
- *   node scripts/foreman/relay-courier.mjs deliver --cousin PETRA --kind network
  *   node scripts/foreman/relay-courier.mjs status
- *   node scripts/foreman/relay-courier.mjs self-test
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -94,6 +97,13 @@ export async function courierDeliver(cousinId, options = {}) {
   const kind = options.kind || "network";
   const tabOnly = Boolean(options.tabOnly);
   const ensureEdge = Boolean(options.ensureEdge);
+
+  /* stderr only — callers parse stdout as JSON. */
+  console.error(
+    "[deprecated] Edge SendKeys delivery steals the cursor and cannot verify the composer. " +
+      "Use: node scripts/foreman/chrome-cdp-courier.mjs deliver --cousin " +
+      String(cousinId).toUpperCase()
+  );
 
   let resolved;
   try {

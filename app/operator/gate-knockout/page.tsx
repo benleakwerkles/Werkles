@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 
 const hardStops = [
   "No secrets in chat or repo.",
-  "No live Stripe products, live checkout, or live webhook promotion without Ben approval.",
-  "No provider identity/funds/background check without Ben approval.",
+  "No live Stripe products, live checkout, or live webhook promotion without Operator approval.",
+  "No provider identity/funds/background check without Operator approval.",
   "No background-check consent or FCRA-sensitive flow before counsel/provider approval.",
   "No deploy, push, merge, SQL, production data mutation, or public launch without explicit approval."
 ];
@@ -47,10 +47,12 @@ export default function GateKnockoutPage() {
           <Link href="/operator/gate-knockout/stripe-offline">Stripe Offline</Link>
           <Link href="/operator/gate-knockout/provider-queue">Provider Queue</Link>
           <Link href="/operator/gate-knockout/sign-in-hunt">Sign-In Hunt</Link>
+          <Link href="/operator/gate-knockout/credential-handoff">Credential Handoff</Link>
           <Link href="/operator/gate-knockout/secret-entry">Secret Entry</Link>
           <Link href="/operator/gate-knockout/webhook-matrix">Webhook Matrix</Link>
           <Link href="/operator/gate-knockout/live-checkout-smoke">Live Checkout Smoke</Link>
           <Link href="/operator/gate-knockout/test-checkout-smoke">Test Checkout Smoke</Link>
+          <Link href="/operator/gate-knockout/test-crucible-smoke">Test Crucible Smoke</Link>
           <Link href="/operator/gate-knockout/provider-scope">Provider Scope</Link>
           <Link href="/operator/gate-knockout/fcra-policy">FCRA Policy</Link>
           <Link href="/operator/gate-knockout/rollout-readiness">Rollout Readiness</Link>
@@ -84,7 +86,7 @@ export default function GateKnockoutPage() {
           </div>
           <div className="trust-state-strip">
             <span>{productGateKnockoutSteps.length} total gates</span>
-            <span>{operatorGateCount} Ben approval gates</span>
+            <span>{operatorGateCount} Operator approval gates</span>
             <span>{blockedSteps.length} policy blockers</span>
           </div>
           <p>
@@ -172,12 +174,12 @@ export default function GateKnockoutPage() {
 
         <section className="ops-card" aria-label="Operator session brief">
           <div className="card-heading">
-            <p>Before Ben Starts</p>
+            <p>Before Operator Starts</p>
             <h2>Session Brief</h2>
           </div>
           <p>
             Treat this as the checklist for one focused gate session. Gather proof as you go, but stop before any
-            Ben-only action unless the matching gate phrase has been given.
+            Operator-only action unless the matching gate phrase has been given.
           </p>
           <div className="crucible-state-grid">
             <article className="ops-card crucible-state-card">
@@ -238,7 +240,7 @@ export default function GateKnockoutPage() {
                   </li>
                 ))}
               </ul>
-              <h3>Ben Does</h3>
+              <h3>Operator Does</h3>
               <p>{step.benAction}</p>
               <h3>Agents May Prepare</h3>
               <ul>

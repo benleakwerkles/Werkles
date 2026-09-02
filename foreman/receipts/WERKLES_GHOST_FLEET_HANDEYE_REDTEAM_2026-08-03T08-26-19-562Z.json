@@ -1,0 +1,394 @@
+{
+  "base": "http://127.0.0.1:3000",
+  "limit": 20,
+  "pass": 20,
+  "fail": 0,
+  "fleetCount": 150,
+  "blockedInFleet": 13,
+  "distinctTopScores": 12,
+  "results": [
+    {
+      "ghostId": "ghost_001",
+      "displayName": "Imani Alvarez",
+      "handeyeSeat": "LadyJessica",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": null,
+      "candidateCount": 12,
+      "topScore": 42,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_002",
+      "displayName": "Ava Salazar",
+      "handeyeSeat": "Ender",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 58,
+      "topReasons": [
+        "Capital posture fits",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_003",
+      "displayName": "Ray Hayes",
+      "handeyeSeat": "Bean",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 58,
+      "topReasons": [
+        "Open to partnership",
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_004",
+      "displayName": "Ingrid Brooks",
+      "handeyeSeat": "Heimerdinker",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 36,
+      "topReasons": [
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_005",
+      "displayName": "Bao Nguyen",
+      "handeyeSeat": "Petra",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 40,
+      "topReasons": [
+        "Open to partnership",
+        "Carries what is blocking you",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_006",
+      "displayName": "Camille Alvarez",
+      "handeyeSeat": "Skybro",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 48,
+      "topReasons": [
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_007",
+      "displayName": "Renata Marchetti",
+      "handeyeSeat": "Computer",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 32,
+      "topReasons": [
+        "Open to partnership",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_008",
+      "displayName": "Rosa Hayes",
+      "handeyeSeat": "ImageSniper",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 34,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_009",
+      "displayName": "Imani Rivera",
+      "handeyeSeat": "LadyJessica",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 72,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_010",
+      "displayName": "Elena Kim",
+      "handeyeSeat": "Ender",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 52,
+      "topReasons": [
+        "Open to partnership",
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_011",
+      "displayName": "Jonas Marchetti",
+      "handeyeSeat": "Bean",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 44,
+      "topReasons": [
+        "Open to partnership",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_012",
+      "displayName": "Vic Shah",
+      "handeyeSeat": "Heimerdinker",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 14,
+      "topReasons": [
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_013",
+      "displayName": "Frankie Okafor",
+      "handeyeSeat": "Petra",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 42,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_014",
+      "displayName": "Bo Tran",
+      "handeyeSeat": "Skybro",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 46,
+      "topReasons": [
+        "Capital posture fits",
+        "Two-way, not extractive",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_015",
+      "displayName": "Halle Coleman",
+      "handeyeSeat": "Computer",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 58,
+      "topReasons": [
+        "Open to partnership",
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_016",
+      "displayName": "Marcus Tran",
+      "handeyeSeat": "ImageSniper",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 48,
+      "topReasons": [
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_017",
+      "displayName": "Grant Pham",
+      "handeyeSeat": "LadyJessica",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 40,
+      "topReasons": [
+        "Open to partnership",
+        "Carries what is blocking you",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_018",
+      "displayName": "Jonas Ortiz",
+      "handeyeSeat": "Ender",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 48,
+      "topReasons": [
+        "Carries what is blocking you",
+        "Two-way, not extractive",
+        "Has stood where you are",
+        "Same area named"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_019",
+      "displayName": "Kenji Brooks",
+      "handeyeSeat": "Bean",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 32,
+      "topReasons": [
+        "Open to partnership",
+        "Has stood where you are"
+      ],
+      "ok": true,
+      "failures": []
+    },
+    {
+      "ghostId": "ghost_020",
+      "displayName": "Rosa Diaz",
+      "handeyeSeat": "Heimerdinker",
+      "postStatus": 200,
+      "testRun": true,
+      "ownerCookie": true,
+      "mine": true,
+      "crossOwnerClean": true,
+      "candidateCount": 12,
+      "topScore": 34,
+      "topReasons": [
+        "Capital posture fits",
+        "Carries what is blocking you"
+      ],
+      "ok": true,
+      "failures": []
+    }
+  ]
+}

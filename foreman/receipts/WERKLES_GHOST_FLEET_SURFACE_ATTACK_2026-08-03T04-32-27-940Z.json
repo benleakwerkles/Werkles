@@ -1,0 +1,37 @@
+{
+  "base": "http://127.0.0.1:3000",
+  "pass": 6,
+  "fail": 0,
+  "results": [
+    {
+      "name": "fleet",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "name": "workshop",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "name": "intros_no_intake",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "name": "proof",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "name": "workshop_page",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "name": "membership_page",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}

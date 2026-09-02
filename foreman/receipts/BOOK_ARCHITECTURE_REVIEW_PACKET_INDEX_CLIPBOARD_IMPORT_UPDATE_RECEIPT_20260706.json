@@ -1,0 +1,58 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CLIPBOARD_IMPORT_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:07:51.865Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_CLIPBOARD_IMPORT_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node inline receipt writer after importer smoke pass",
+  "validation": {
+    "index_lists_clipboard_importer": true,
+    "index_lists_dry_run_and_commit_commands": true,
+    "index_lists_clipboard_importer_smoke": true,
+    "smoke_receipt_status": "ARTIFACT",
+    "smoke_proves_canonical_intake_not_mutated": true,
+    "readiness_audit_tracks_clipboard_importer": true,
+    "no_external_send_claim": true,
+    "no_mack_receipt_claim": true,
+    "truth_boundary": "This receipt proves the local index now points to the clipboard importer and its fixture smoke. It does not read the real clipboard and does not claim Mack returned a review."
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "AA1C424D7AD731328512B01F5364ED6328083C33D21F34757C553A3547CE099A",
+      "bytes": 8404
+    },
+    {
+      "path": "scripts/foreman/Import-MackArchitectureReturnFromClipboard.ps1",
+      "sha256": "D0ABEF8A7C6A49D904DB606378935C81AEB8416D70DDAB409492F8ACD130BA15",
+      "bytes": 7303
+    },
+    {
+      "path": "scripts/foreman/Test-MackArchitectureReturnClipboardImporter.ps1",
+      "sha256": "3B79ED735924BE73EB578DF79F41666A7304D88D00991F04BD603798E5788525",
+      "bytes": 8915
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_CLIPBOARD_IMPORT_SMOKE_RECEIPT_20260706.json",
+      "sha256": "9E7058C5606C397943B927581D4BB0178117F2E2D02A6D32C1AAF76C3A368204",
+      "bytes": 6071
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+      "sha256": "FC1A1F4EBB77BC9F2D60216B422DC1CB5F18E73DE24BBC983911CFB38C550920",
+      "bytes": 15439
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack receipt claim",
+    "no canonical intake mutation"
+  ]
+}

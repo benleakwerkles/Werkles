@@ -40,7 +40,7 @@ export function SpeakerHumanReadPanel({ read }: SpeakerHumanReadPanelProps) {
 
       <header className="speaker-read__header">
 
-        <p className="eyebrow">Speaker</p>
+        <p className="eyebrow">Werkles read</p>
 
         <h2 id="speakerReadTitle">{read.speakersRead.headline}</h2>
 
@@ -88,7 +88,7 @@ export function SpeakerHumanReadPanel({ read }: SpeakerHumanReadPanelProps) {
 
       <div className="speaker-read__block speaker-read__block--falsify">
 
-        <h3 className="speaker-read__label">What would prove Speaker wrong?</h3>
+        <h3 className="speaker-read__label">What would challenge this read?</h3>
 
         <ul className="concierge-bullet-list concierge-bullet-list--falsify">
 

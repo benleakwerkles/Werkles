@@ -16,6 +16,60 @@
           "type": "powertoys_workspace_self_heal",
           "workspace_id": "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
           "local_only": true
+        },
+        {
+          "id": "betsy_hub",
+          "label": "Betsy Forge Hub",
+          "type": "fleet_powertoys_pack",
+          "workspace_id": "{23606CAF-A5C1-43C0-AD4A-6BF460DCED44}",
+          "pack_key": "betsy_hub",
+          "local_only": true
+        },
+        {
+          "id": "betsy_autopaste",
+          "label": "Betsy Autopaste",
+          "type": "fleet_powertoys_pack",
+          "workspace_id": "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+          "pack_key": "betsy_autopaste",
+          "local_only": true
+        }
+      ]
+    },
+    {
+      "id": "spanzee_forge",
+      "aeye": "Operator",
+      "machine": "Spanzee",
+      "endpoint": null,
+      "verified": false,
+      "transport": "rustdesk_then_local_powertoys",
+      "workspace_targets": [
+        {
+          "id": "spanzee_forge",
+          "label": "Spanzee Forge",
+          "type": "fleet_powertoys_pack",
+          "workspace_id": null,
+          "pack_key": "spanzee_forge",
+          "local_only": true,
+          "status": "capture_pending"
+        }
+      ]
+    },
+    {
+      "id": "medullina_aux",
+      "aeye": "Operator",
+      "machine": "Medullina",
+      "endpoint": null,
+      "verified": false,
+      "transport": "rustdesk_then_local_powertoys",
+      "workspace_targets": [
+        {
+          "id": "medullina_aux",
+          "label": "Medullina Aux",
+          "type": "fleet_powertoys_pack",
+          "workspace_id": null,
+          "pack_key": "medullina_aux",
+          "local_only": true,
+          "status": "capture_pending"
         }
       ]
     }

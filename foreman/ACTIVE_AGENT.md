@@ -2,42 +2,30 @@
 
 ## Effective gate
 
-`[IN PROGRESS: SALLY_RESCUE_MAIN_MERGE_INTEGRATION]`
+`[IN PROGRESS: WERKLES_COM_SITE_LANE — MAKER_DINK_BETSY | HARVEY NURSERY — OTHER AEYES]`
 
-## Active writer
+## Active writers
 
-**Ben (Operator)** — review merged rescue branch locally. Production rollout remains a separate human gate.
+| Agent | Machine | Lane | Branch |
+|-------|---------|------|--------|
+| **Lady Jessica (Maker@Betsy) — second in command** | Betsy | Werkles.com design/UX/site craft; sole push/deploy executor after three-key sign-off | `maker/site-g-20260703` |
+| **Heimerdinker / Direwolf Dink@Betsy — Foreman** | Betsy | Werkles.com orchestration, integration, cockpit, Foreman sign-off; no push execution | `maker/site-g-20260703` |
+| **Other Aeyes** | DOSS / relay hosts | Harvey nursery only | `feature/harvey-nursery-v0` |
 
-**Maker (Cursor)** — integrate `origin/main` @ `0c727a2` into `rescue/sally-dirty-worktree-2026-06-01`. Homepage + dispatch lanes preserved.
+**Ben (Operator)** — preview Werkles.com on Betsy localhost; assign Harvey packets to non-Betsy Aeyes only. No cross-lane merge without explicit gate.
 
-**Petra (Comptroller)** — homepage synthesis handoff pending (`TO_PETRA_WERKLES_HOMEPAGE_DISCOVERY_SYNTHESIS_v1_*`). GATE_05 **PAUSE**.
+## Lock files
 
-**Codex** — cockpit sync on request.
-
-## Deliverables on this branch
-
-| Lane | Status |
-|------|--------|
-| APP_INFRA on main @ `0c727a2` | Merged into rescue branch |
-| SUPABASE_AUTH_STRIPE Preview proof | **PASS** (recorded) |
-| Homepage rewrite v1 | Local lane — preserved |
-| Autonomous dispatch proofs | Local lane — preserved |
-
-## Preview gates (split model — from main)
-
-- **Auth / Stripe test wiring:** enabled (`AUTH_STRIPE_TEST_WIRING_ENABLED = true`)
-- **Crucible / live verification:** blocked (`APP_INFRA_PREVIEW_CRUCIBLE = true`)
-- **Production / live Stripe:** human gates — not opened
-
-## Gate 05 / Ghost Forge
-
-**PAUSE** — no image spend.
+- Werkles.com: `foreman/werkles-com/WERKLES_COM_PROJECT_LOCK.md`
+- Lady Jessica: `foreman/messages/LADY_JESSICA_NAME_DECREE_20260704.md`
+- Direwolf Dink: `foreman/messages/DIREWOLF_DINK_NAME_DECREE_20260704.md`, `DINK_BETSY_WERKLES_COM_ONLY_PACKET_20260704.md`
+- Harvey: `foreman/messages/HARVEY_NERDKLE_EARLY_WORK_AEYES_PACKET_20260704.md`
 
 ## Preview
 
-- Local: http://localhost:3000
-- Production: https://werkles.com — rollout **not** authorized by this merge
+- Local site lane: http://localhost:3000 (Betsy)
+- Production: https://werkles.com — rollout **authorized** 2026-07-05 (`approve rollout`)
 
-## Foreman
+## Hard stops
 
-http://localhost:4317 — operator infra (accepted).
+no cross-lane merge | no push to main | no Harvey on Betsy | no Werkles.com pages on Harvey lane

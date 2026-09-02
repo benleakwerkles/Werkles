@@ -31,7 +31,7 @@ const markOptions = [
   {
     id: "board",
     label: "Full board (PNG)",
-    note: "Ben original W — full app icon board.",
+    note: "Operator original W — full app icon board.",
     presentation: "board" as const
   },
   {

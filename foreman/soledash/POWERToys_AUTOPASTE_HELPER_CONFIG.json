@@ -9,16 +9,18 @@
     "maker_betsy_powertoys_workspaces": {
       "mode": "process",
       "enabled": true,
-      "label": "Maker@Betsy PowerToys Workspaces Self-Heal",
+      "label": "Heimerdinker@Betsy Brainstation Workspace",
       "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
+        "C:\\Users\\Ben Leak\\github\\Werkles\\scripts\\foreman\\powertoys-workspaces-self-heal.ps1",
         "-WorkspaceId",
-        "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}"
+        "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+        "-Producer",
+        "Heimerdinker@Betsy"
       ]
     },
     "example_tinkerden_window": {
@@ -33,6 +35,36 @@
       "label": "Launch a configured PowerToys workspace helper command",
       "command": "PowerToys.WorkspacesLauncher.exe",
       "args": []
+    },
+    "betsy_hub": {
+      "mode": "process",
+      "enabled": true,
+      "label": "Betsy Forge Hub (fleet pack)",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Ben Leak\\github\\Werkles\\scripts\\foreman\\launch-fleet-workspace.ps1",
+        "-Pack",
+        "betsy_hub"
+      ]
+    },
+    "betsy_autopaste": {
+      "mode": "process",
+      "enabled": true,
+      "label": "Betsy Autopaste (fleet pack)",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Ben Leak\\github\\Werkles\\scripts\\foreman\\launch-fleet-workspace.ps1",
+        "-Pack",
+        "betsy_autopaste"
+      ]
     }
   }
 }

@@ -1,0 +1,8 @@
+WERKLES VPGM — COMPUTER / THUFIR — FINISH PLAID CITATIONS + COUNSEL QUESTIONS — 2026-08-20
+
+Your substantive continuation is harvested at foreman/handoffs/inbox/FROM_COMPUTER_VPGM_20260820-055608.md. It contains sections 1–6, but direct primary-source URLs are missing and section 7 is truncated.
+
+Read foreman/handoffs/outbox/TO_COMPUTER_THUFIR_FINISH_PLAID_CITATIONS_AND_COUNSEL_20260820.md and return only the compact primary-source URL ledger, complete numbered counsel questions, and QUALIFY flags for any prior sentence that assumed statutory applicability or threshold facts not established.
+
+Write the finishing receipt to foreman/handoffs/inbox/. Do not submit Plaid, alter provider settings, inspect credentials, make production calls, publish policy, or claim legal approval.
+

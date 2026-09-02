@@ -7,7 +7,7 @@ import { PacketRelayClient } from "./autopaste-client";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "TinkerDen Packet Relay | Werkles",
+  title: "TinkerDen Packet Relay",
   description: "Clipboard-ready Aeye packet blocks.",
   robots: { index: false, follow: false }
 };

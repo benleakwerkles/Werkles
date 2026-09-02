@@ -1,0 +1,48 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "created_at": "2026-07-06T06:00:24.853Z",
+  "from": "TinkerDen@Betsy",
+  "to": "Maker@Betsy",
+  "lane": "TinkerDen packet relay",
+  "operator_intent": "BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0",
+  "source_paths": [
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json"
+  ],
+  "source_hashes": {
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json": "af86b604cb85cd7da60388c83918f199ba8ef790ad3b80ac1e158f941e6a3819"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Ben asked the Aeyes to build momentum instead of stopping at prose.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "dispatch_packet",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "account_automation",
+    "unauthorized_auto_send",
+    "browser_credential_control",
+    "fake_delivery",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "source_missing",
+    "gate_required",
+    "breach_risk",
+    "receiver_receipt_missing",
+    "clipboard_or_workspace_focus_failed"
+  ],
+  "acceptance_criteria": [
+    "Legacy TinkerDen packet artifact is written.",
+    "Canonical organism packet mirror validates and writes.",
+    "Canonical organism receipt mirror validates and writes.",
+    "Packet relay receipt remains visible in the TinkerDen receipt stream.",
+    "No auto-send is performed."
+  ],
+  "receipt_required": true,
+  "receipt_destination": "data/organism/contracts/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+  "idempotency_key": "tinkerden-packet-relay:td_packet_relay_ready_mr8t9pue_3vkkme:td_receipt_packet_relay_mr8t9pue_uy2du4",
+  "expires_at": "2026-07-07T06:00:24.853Z"
+}

@@ -1,9 +1,12 @@
 import { NerdkleConsole } from "./nerdkle-console";
+import { HarveyLegacyEvidence } from "./harvey-legacy-evidence";
 
 export const metadata = {
   title: "Nerdkle | Werkles",
   robots: { index: false, follow: false }
 };
+
+export const dynamic = "force-dynamic";
 
 export default function NerdklePage() {
   return (
@@ -29,6 +32,8 @@ export default function NerdklePage() {
             execution owner, receipt requirement, next action, evidence, and failure condition.
           </p>
         </header>
+
+        <HarveyLegacyEvidence />
 
         <NerdkleConsole />
       </div>

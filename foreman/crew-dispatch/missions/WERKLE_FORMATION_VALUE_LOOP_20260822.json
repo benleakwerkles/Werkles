@@ -1,0 +1,84 @@
+{
+  "missionId": "WERKLE_FORMATION_VALUE_LOOP",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Complete one member-value loop: ranked Match Deck candidate to natural conversation, two private Workshops, mutually authored Werkle, and a revisitable Personal Bellows artifact.",
+  "sharedContext": [
+    "The Operator explicitly rejected a thin page answer as a VPGM. This mission must create a real crew rotation around one larger product checkpoint.",
+    "The current Formation studio is browser-runnable and its local contract passes, but it is a one-person synthetic exercise, not account-backed collaboration.",
+    "The Match Deck handoff currently reaches Formation and preserves the selected synthetic candidate; Personal Bellows has a browser-local partnership memo.",
+    "A packet, queue, open tab, or visible response is not participation. Each cousin must personally return a terminal response and nominate the next cross-review.",
+    "Current local source is C:\\Users\\Ben Leak\\github\\Werkles on branch maker/site-g-20260703 in a dirty shared tree. No new environment is authorized.",
+    "No push, deploy, production mutation, provider submission, secret handling, paid call, SQL/schema/RLS apply, new agent, or subagent is authorized."
+  ],
+  "liveStrings": [
+    "Build the company without erasing either person.",
+    "Only exact wording accepted by both people enters the shared room.",
+    "This synthetic walkthrough lets one tester enter both practice records. In a real Werkle, each signed-in member controls only their own actual answers.",
+    "This practice draft is not saved to your Werkles account and will not follow you to another browser or device."
+  ],
+  "knownGaps": [
+    "Real two-member identity, custody, invitations, and account persistence are not implemented in this local exercise.",
+    "The Formation page is dense and may still feel like a long internal workbench instead of a guided human collaboration.",
+    "Generated partner answers and private predictions must never impersonate the other member or cross into shared Werkle language.",
+    "The value of finishing multiple Formation topics and the downstream Personal Bellows artifact is not yet proved as something a member would revisit or pay for.",
+    "Match ranking, generated conversation, formation decisions, and personalized Bellows must not quietly become behavioral surveillance or wealth/status sorting."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge the vertical loop as one sellable member outcome, not four pages.",
+      "pull": "Reconcile value, consent, persistence truth, and completion criteria across Match Deck, Formation, and Personal Bellows.",
+      "go": [
+        "Return a compact acceptance matrix for entry state, meaningful member action, durable output, and honest stop condition at each transition.",
+        "Rank the top three changes that most improve the loop without requiring schema, providers, or production gates.",
+        "Assign exact cross-review ownership for those three changes across Ender, Bean, Computer, Skybro, Doozer, and Lady Jessica."
+      ],
+      "momentum": "Return FORMATION_LOOP_ACCEPTANCE_READY or BLOCKED and seed the next bounded packet.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or human-gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Make the result of the Formation loop valuable enough that members want to return and eventually pay.",
+      "pull": "Attack shallow outputs, worksheet fatigue, obvious advice, dead-end lessons, and the absence of a useful company artifact after the exercise.",
+      "go": [
+        "Design three concrete revisitable outputs created from mutual Formation decisions, each with input, reasoning, visible result, next action, and future update trigger.",
+        "Choose the strongest free-to-paid boundary that feels generous rather than frustrating, while preserving a complete free success moment.",
+        "Write a bounded product brief for Computer feasibility, Bean trust, and Ender experience review of the strongest output."
+      ],
+      "momentum": "Return FORMATION_VALUE_READY or BLOCKED and name the exact artifact the loop should produce first.",
+      "outOfLane": "No code, provider action, secrets, paid calls, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Make forming a Werkle feel like two people learning to work together, not completing an administrative database.",
+      "pull": "Walk Match Deck to conversation to Formation to Personal Bellows. Attack density, comprehension, emotional safety, partner perspective, progress, legibility, navigation, and what the member believes will happen next.",
+      "go": [
+        "Return only the five human-experience failures most likely to cause confusion, abandonment, false confidence, or resentment.",
+        "Rewrite the interaction sequence for one Formation topic so a normal person understands whose answer they are entering, what remains private, and how mutual wording crosses the line.",
+        "Give Lady Jessica a visual brief and Doozer an interaction brief, then name the exact routes Ender must re-walk after their candidate returns."
+      ],
+      "momentum": "Return FORMATION_EXPERIENCE_READY or BLOCKED with an explicit post-build walk packet seed.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or aesthetic final approval."
+    },
+    "BEAN": {
+      "vision": "Prevent a warm Formation experience from laundering guesses, coercion, surveillance, or false agreement into a shared company record.",
+      "pull": "Attack ranking inputs, generated conversations, private predictions, actor switching, exact-text consent, revision resets, local restoration, Bellows personalization, and membership upsells as one trust boundary.",
+      "go": [
+        "Return only P0/P1 attack cases and the invariant that closes each one.",
+        "Specify which member actions may improve future matching or Bellows personalization, which require separate consent, and which must never be tracked or ranked.",
+        "Give Computer an executable hostile regression matrix and Lady Jessica a visible-proof checklist for privacy, synthetic identity, consent, and save scope."
+      ],
+      "momentum": "Return FORMATION_TRUST_READY, PASS_WITH_CONDITIONS, or BLOCK and name the exact post-build evidence required.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Map the smallest technically honest vertical slice that turns the current practice flow into durable member value without pretending browser-local state is an account record.",
+      "pull": "Inspect route handoff, candidate custody, formation storage, perspective storage, consent/revision contracts, Personal Bellows memo persistence, auth boundaries, and current tests.",
+      "go": [
+        "Return a source-bound dependency map classifying each part as real, browser-local practice, scaffold, gated, duplicated, or stale.",
+        "Design the strongest non-gated contract or test improvement that can land now without changing schema, auth APIs, provider configuration, or production state.",
+        "Give Doozer an implementation-ready candidate brief and Heimerdinker exact verification commands, then name Bean and Ender post-build checks."
+      ],
+      "momentum": "Return FORMATION_TECHNICAL_READY, NEEDS_FACT_CHECK, or BLOCKED and seed the next executable packet.",
+      "outOfLane": "No code mutation, provider calls, secrets, SQL/schema/RLS apply, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

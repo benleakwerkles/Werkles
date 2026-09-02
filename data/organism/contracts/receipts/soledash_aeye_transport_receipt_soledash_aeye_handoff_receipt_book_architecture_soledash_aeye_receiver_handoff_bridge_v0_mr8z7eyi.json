@@ -1,0 +1,60 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "soledash_aeye_transport_receipt_soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+  "packet_id": "soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+  "created_at": "2026-07-06T08:46:35.130Z",
+  "receiver": "Dink@Betsy",
+  "status": "partial",
+  "what_was_attempted": "Mirror a SoleDash Aeye transport ACK into the canonical organism receipt/event contract without claiming receiver work completion.",
+  "what_changed": [
+    "foreman/messages/outbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json",
+    "foreman/messages/inbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json",
+    "foreman/messages/receipts/soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json",
+    "data/organism/contracts/receipts/soledash_aeye_transport_receipt_soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "what_did_not_change": [
+    "Transport ACK was not upgraded into completed receiver work proof.",
+    "No receiver-side artifact change is claimed by this receipt.",
+    "No external send beyond the local SoleDash message transport.",
+    "No deploy.",
+    "No push."
+  ],
+  "proof": [
+    {
+      "kind": "artifact_path",
+      "value": "foreman/messages/receipts/soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json"
+    },
+    {
+      "kind": "hash",
+      "value": "foreman/messages/receipts/soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json sha256 061120b219e3b25ed247ede3ade164ca9420757fe44293ea62d001aab1b88cfe"
+    },
+    {
+      "kind": "artifact_path",
+      "value": "foreman/messages/outbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json"
+    },
+    {
+      "kind": "hash",
+      "value": "foreman/messages/outbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json sha256 45bb714e005b70544b3fa330849c1bf0b9311061e5a33e405c8f116b0ca61a3e"
+    },
+    {
+      "kind": "artifact_path",
+      "value": "foreman/messages/inbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json"
+    },
+    {
+      "kind": "hash",
+      "value": "foreman/messages/inbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json sha256 fa7a24c913b173ac0bbb1fe07491a50e1ebca8d1e730883951bcbf6d1d937902"
+    },
+    {
+      "kind": "readback",
+      "value": "transport_status=ACKNOWLEDGED; message=Transport acknowledged; receiver work remains pending handoff return."
+    }
+  ],
+  "blocked_reason": null,
+  "next_safe_action": "Route the packet through a receiver-handoff return before claiming receiver work completion.",
+  "source_hashes_used": {
+    "foreman/messages/outbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json": "45bb714e005b70544b3fa330849c1bf0b9311061e5a33e405c8f116b0ca61a3e",
+    "foreman/messages/inbox/soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json": "fa7a24c913b173ac0bbb1fe07491a50e1ebca8d1e730883951bcbf6d1d937902",
+    "foreman/messages/receipts/soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json": "061120b219e3b25ed247ede3ade164ca9420757fe44293ea62d001aab1b88cfe"
+  }
+}

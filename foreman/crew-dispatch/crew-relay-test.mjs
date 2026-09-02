@@ -2,7 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
-import { computeCockpitHashes, validateResponseFile, processInbox, validateInbox } from "./crew-relay-lib.mjs";
+import {
+  computeCockpitHashes,
+  validateResponseFile,
+  processInbox,
+  validateInbox,
+  inboxStatus,
+  formatInboxAlarm,
+} from "./crew-relay-lib.mjs";
 
 const FIXTURES_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "tests", "fixtures");
 
@@ -144,7 +151,53 @@ export function runFixtureTests() {
     });
   }
 
-  // 8 dry-run moves nothing
+  // 8 hand-delivered receipt is classified as needing a read, not as corruption
+  {
+    const content = loadFixture("legacy-manual-response.md");
+    const tmpFile = path.join(os.tmpdir(), "FROM_BEAN_legacy.md");
+    fs.writeFileSync(tmpFile, content, "utf8");
+    const r = validateResponseFile(tmpFile);
+    fs.unlinkSync(tmpFile);
+    cases.push({
+      name: "hand-delivered receipt reported as LEGACY_MANUAL",
+      pass: !r.ok && r.status === "LEGACY_MANUAL" && r.errors.length === 1,
+      detail: `${r.status}, ${r.errors.length} error(s)`,
+    });
+  }
+
+  // 9 GD router receipt validates on its own envelope
+  {
+    const content = loadFixture("gd-receipt-response.md");
+    const tmpFile = path.join(os.tmpdir(), "FROM_BEAN_gd.md");
+    fs.writeFileSync(tmpFile, content, "utf8");
+    const r = validateResponseFile(tmpFile);
+    fs.unlinkSync(tmpFile);
+    cases.push({
+      name: "GD router receipt accepted without relay fields",
+      pass: r.ok && r.status === "GD_RECEIPT" && r.warnings.some((w) => w.includes("advisory")),
+      detail: `${r.status}, ${r.errors.join("; ") || "no errors"}`,
+    });
+  }
+
+  // 10 unread replies raise an alarm and report their age
+  {
+    const content = loadFixture("legacy-manual-response.md");
+    const status = withTempInbox([["FROM_BEAN_unread.md", content]], ({ inbox, processed }) =>
+      inboxStatus({ inboxDir: inbox, processedDir: processed })
+    );
+    const alarm = formatInboxAlarm(status, { staleAfterDays: 0 });
+    cases.push({
+      name: "unread reply raises a loud alarm",
+      pass:
+        status.total === 1 &&
+        status.blockedCount === 1 &&
+        status.legacyCount === 1 &&
+        alarm.includes("UNREAD CBCC RECEIPTS"),
+      detail: `total ${status.total}, blocked ${status.blockedCount}`,
+    });
+  }
+
+  // 11 dry-run moves nothing
   {
     const content = loadFixture("fresh-response-passes.md");
     const result = withTempInbox([["FROM_BEAN_fresh.md", content]], ({ inbox, processed }) => {

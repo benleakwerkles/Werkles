@@ -38,7 +38,7 @@ const TRANSLATION_RULES: TranslationRule[] = [
     hypotheses: ["Missing endurance leverage", "Missing amplification leverage", "Partner may be a symptom"],
     reasons: [
       "Partnership language with intrinsic constraint signals (stalling, overwhelm, confidence).",
-      "Speaker check: missing another person vs missing supervised reps or delegation.",
+      "Check whether the gap is another person, supervised practice, or delegation.",
       "Equity and shared control should wait for evidence thresholds."
     ]
   },

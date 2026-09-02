@@ -1,0 +1,22 @@
+{
+  "schema": "LADY_JESSICA_WERKLES_TIER_A_HANDOFF_READY_V1",
+  "status": "READY_TO_PASTE",
+  "timestamp": "2026-07-05T14:05:06.3296946-04:00",
+  "machine": "BETSY",
+  "from": "Heimerdinker@Betsy",
+  "to": "Lady Jessica / Maker@Betsy",
+  "lane": "Werkles.com only",
+  "packetId": "LADY_JESSICA_WERKLES_TIER_A_ENV_READY_PACKET_20260705",
+  "packetPath": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\messages\\LADY_JESSICA_WERKLES_TIER_A_ENV_READY_PACKET_20260705.md",
+  "outboxLauncherPath": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\handoffs\\outbox\\TO_LADY_JESSICA_WERKLES_TIER_A_ENV_READY_20260705.md",
+  "finalGateReceiptPath": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\receipts\\WERKLES_COM_TIER_A_SECRET_GATE_FINAL_20260704.json",
+  "finalGateStatus": "PASS_1PASSWORD_AND_VERCEL_TIER_A_ENV_READY_8_OF_8",
+  "secretValuesPrinted": "NO",
+  "secretValuesWrittenToRepo": "NO",
+  "packetSecretPatternHitCount": 0,
+  "handoffInstructions": [
+    "Paste the packet into Lady Jessica's thread.",
+    "Expected response is ACK, BLOCKER, or ARTIFACT with packet id.",
+    "Do not include secret values."
+  ]
+}

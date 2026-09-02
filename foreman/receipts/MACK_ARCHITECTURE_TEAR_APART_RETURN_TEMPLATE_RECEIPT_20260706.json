@@ -1,0 +1,37 @@
+{
+  "schema": "MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T07:54:00-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "receipt_id": "MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_RECEIPT_20260706",
+  "mission": "Create a structured Mack return template for the Harvey/Nerdkle architecture tear-apart pass.",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "files_changed": [
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_20260706.md",
+    "foreman/receipts/MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_RECEIPT_20260706.json"
+  ],
+  "template_path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_20260706.md",
+  "validation": {
+    "contains_operator_bridge_link": true,
+    "contains_operator_receipts_link": true,
+    "contains_mack_review_return_contract": true,
+    "contains_proof_surface_readback_fields": true,
+    "contains_first_build_bottom_line": true,
+    "truth_boundary": "This is a local review-return template. It does not claim Mack has reviewed the architecture yet."
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_RETURN_TEMPLATE_20260706.md",
+      "sha256": "6D028E44578D6B68A081FFEA6A6EBE1D0C749FBF16064AB9AF822CBBAD19EABF"
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no handoff mutation"
+  ],
+  "next_safe_action": "Attach or reference this template when handing the V0.2 architecture packet to Mack."
+}

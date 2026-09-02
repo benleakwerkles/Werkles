@@ -1,0 +1,58 @@
+{
+  "missionId": "WERKLES_PUBLIC_INTAKE_RECOMMENDATIONS_RELEASE_REVIEW_20260901",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build red-team of the final exact 22-file public Intake to Recommendations repair candidate before Lady Jessica seals or promotes it. Candidate digest: 1c8a07b7813105346422c24b5037a92d44a59374ba8abbd5d223f4ea22fc757a.",
+  "sharedContext": [
+    "The live production review found that Intake could dead-end when anonymous submission was closed, Recommendations could expose a bakery/example fixture as if personal, anonymous visitors could inherit a ghost owner's Intake, copy repeated internal reasoning labels, and several dark-surface helper/link colors failed production-shaped contrast checks.",
+    "The candidate now lets an anonymous visitor complete Intake and carry a completed device-local draft into ranked Recommendations without claiming account custody. Signed-in account-capable submission still uses the account API.",
+    "The server no longer supplies the bakery fixture as a production personal result. With no account or completed browser Intake, Recommendations shows an empty personal ranking plus the general option catalog.",
+    "A clean anonymous Intake no longer falls back to member_dev-preview-user or any other ghost owner.",
+    "Recommendation labels were pruned toward ordinary language, and bakery-specific plan text was generalized. The exact personal-input boundary says either account-saved Intake or the Intake saved in this browser.",
+    "Verification passed: TypeScript, optimized Next production build, Intake-to-Recommendations handoff contract, public browser-handoff honesty contract, Intake legibility contract, desktop/mobile production renders, and axe WCAG 2A/2AA with zero violations on both routes. Axe left only gradient/pseudo-element contrast items as incomplete manual checks.",
+    "No provider, secret, billing, schema/RLS, production-data mutation, push, deploy, or alias promotion is part of this review packet.",
+    "Personally perform this review in the named existing seat. Do not create or delegate to a subagent, replacement persona, new chat, or new environment.",
+    "A dispatch is not a receipt. Return a terminal response that echoes the custody token and gives a GO, PATCH, or STOP verdict with evidence and unknowns."
+  ],
+  "knownGaps": [
+    "Browser-profile Intake does not follow the visitor to another browser or device, disappears if browser data is cleared, and the page says so.",
+    "Account persistence remains dependent on the existing signed-in account path; this candidate does not add schema or cross-device custody.",
+    "General catalog options remain visible when no personal ranking exists, but are explicitly labeled non-personal.",
+    "Automated contrast tooling cannot resolve every gradient or pseudo-element background; rendered desktop/mobile evidence is therefore part of Lady Jessica's manual seal."
+  ],
+  "liveStrings": [
+    "Try it before joining",
+    "Finish the Intake and see your first ideas.",
+    "Saved only in this browser profile. Clearing browser data removes it, and another browser or device will not have it.",
+    "Show me what might help",
+    "Save in this browser",
+    "Compare possible paths.",
+    "No personal ranking yet. Complete Intake to connect these options to your situation.",
+    "Answers that influenced this",
+    "Name the Real Blocker"
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Judge the repaired Intake-to-Recommendations journey as a human visitor: clarity, warmth, hierarchy, natural language, and whether the device/account boundary interrupts the experience.",
+      "pull": "Attack the supplied strings and change summary for robotic phrasing, repeated explanation, buried primary action, button-versus-information confusion, and desktop/mobile legibility risk.",
+      "go": [
+        "Return GO/PATCH/STOP for the exact bounded candidate and quote every string that still needs correction before release.",
+        "Verify that the no-account path feels like a usable first experience rather than a disabled demo or technical diagnostic.",
+        "Name any visual/manual checks Lady Jessica must reproduce from the four screenshots before sealing."
+      ],
+      "momentum": "Give the smallest release-blocking patch list; keep later polish separate.",
+      "outOfLane": "No code, new task, provider action, account creation, push, deploy, or production mutation."
+    },
+    "BEAN": {
+      "vision": "Hostile-audit custody, privacy, claim honesty, state separation, and the risk of presenting example or stale data as personal advice.",
+      "pull": "Try to falsify the candidate's claims about browser-only custody, account saving, anonymous isolation, recommendation personalization, and automation boundaries.",
+      "go": [
+        "Return GO/PATCH/STOP with release-blocking trust failures separated from later hardening.",
+        "Attack cross-user leakage, stale ghost data, false persistence, fake personalization, and accidental professional-advice claims.",
+        "Specify the exact browser or source proof Lady Jessica must reproduce for every remaining risk."
+      ],
+      "momentum": "Name the minimum rollback or halt condition for this bounded release.",
+      "outOfLane": "No implementation, legal conclusion, secrets, production mutation, push, or deploy."
+    }
+  }
+}

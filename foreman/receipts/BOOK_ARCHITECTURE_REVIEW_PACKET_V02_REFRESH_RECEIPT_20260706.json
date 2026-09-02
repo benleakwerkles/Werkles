@@ -1,0 +1,72 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_V02_REFRESH_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T07:52:00-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_V02_REFRESH_RECEIPT_20260706",
+  "mission": "Refresh the Harvey/Nerdkle architecture review packet so Ben and Mack get operator-only proof entry points before the tear-apart pass.",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "files_changed": [
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md",
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.html",
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.docx",
+    "scripts/foreman/build-book-architecture-review-packet.py",
+    "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_V02_REFRESH_RECEIPT_20260706.json"
+  ],
+  "review_entry_points_added": {
+    "bridge_operator_scope": "http://127.0.0.1:3000/tinkerden?handoff_provenance=operator",
+    "receipts_operator_scope": "http://127.0.0.1:3000/tinkerden/receipts?handoff_provenance=operator",
+    "bridge_all_scope": "http://127.0.0.1:3000/tinkerden",
+    "receipts_all_scope": "http://127.0.0.1:3000/tinkerden/receipts"
+  },
+  "receiver_handoff_readback": {
+    "count": 17,
+    "operator_scope_visible": 1,
+    "synthetic_scope_visible": 16,
+    "posted_count": 6,
+    "pending_count": 7,
+    "returned_unposted_count": 3,
+    "template_return_blocked_count": 1,
+    "invalid_count": 0,
+    "malformed_count": 0
+  },
+  "validation": {
+    "markdown_contains_v02_status": true,
+    "markdown_contains_review_entry_points": true,
+    "markdown_contains_mack_preface": true,
+    "html_browser_readback_passed": true,
+    "html_first_screen_screenshot": "foreman/source_material/manuscript_workbench/tinkularity/architecture/rendered_review_packet_v02/html-first-screen.png",
+    "docx_structural_readback_passed": true,
+    "docx_visual_render_attempted": true,
+    "docx_visual_render_status": "BLOCKED",
+    "docx_visual_render_blocker": "LibreOffice/soffice was not found by the packaged renderer, and Word COM is not registered on this Windows machine.",
+    "truth_boundary": "The DOCX was rebuilt and structurally read back with python-docx, but full DOCX-to-PNG visual QA could not be completed without a local DOCX renderer."
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md",
+      "sha256": "C9A2996DF7AABB5B7B40D77B562955DF49EAAFD3E301F6003B317A8A13CD7D98"
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.html",
+      "sha256": "945914AA175D181B57307F78E2BF5761D7BAC8FAB25D839BFDB07DA137BA81DB"
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.docx",
+      "sha256": "5AF77692618C01222ED2531AAB1E4125AD4F5454AB0D26DF4811193792543E9F"
+    },
+    {
+      "path": "scripts/foreman/build-book-architecture-review-packet.py",
+      "sha256": "767DF1B93DE59F6763A785A900B813E338AB2310C4DEC0D21DF1D3D06787752A"
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no handoff mutation"
+  ],
+  "next_safe_action": "Create a Mack-return packet template that already includes the operator-only proof links and the requested return fields."
+}

@@ -1,0 +1,86 @@
+{
+  "missionId": "WERKLES_M20_SELLABLE_MEMBER_WALK",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Prebuild and postbuild rotation for a sellable full member walkthrough from homepage through Formation, Personal Bellows, Crucible, and Membership.",
+  "sharedContext": [
+    "Ben is actively walking the local site as gimprobotester and expects a coherent product rather than disconnected demo pages.",
+    "The current target journey is Home, Login, Intake, Recommendations, Workshop, Match Deck, Formation, then Personal Bellows, Crucible, and Membership.",
+    "Existing work includes account-bound Intake/recommendations, ranked Ghost matching, provider scaffolds, browser-local Formation and Operating Briefs, and a two-sided Ghost personality candidate.",
+    "Known historical failures include lost Intake answers, bakery/demo leakage, inconsistent headers, generic recommendation scraps, robotic match dialogue, flat Ghost profiles, homework pages, insider language, and dead-end Bellows pages.",
+    "Local preview only. No provider activation, credentials, schema/RLS, production data, spend, push, deploy, new environment, subagent, or foreground input."
+  ],
+  "liveStrings": [
+    "Discover what you need",
+    "Welcome back",
+    "Werkles received your answers",
+    "Match Deck",
+    "You answer for you. The synthetic partner answers from a fictional profile.",
+    "Build the answer you would both work from",
+    "My Bellows",
+    "Crucible"
+  ],
+  "knownGaps": [
+    "Production provider activation is not part of this local candidate.",
+    "Formation and Operating Brief persistence are device-local rather than account-saved.",
+    "Fresh external CBCC route proof and terminal receipts are not yet present for this M20 packet.",
+    "The shared working tree contains unrelated user and earlier campaign changes that must be preserved."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Hostile full-journey UX review for human clarity, visual rhythm, confidence, and emotional momentum.",
+      "pull": "Attack navigation discontinuity, cold/text-heavy pages, confusing controls, illegible contrast, homework tone, fake interactivity, and dead ends.",
+      "go": [
+        "Return ENDER_M20_MEMBER_WALK_GO, PATCH, or STOP with the three highest-impact corrections.",
+        "Name the exact first confusion on each journey step and the one change that earns the next click.",
+        "Give desktop and 390px acceptance checks for headers, controls, visual pauses, and return paths."
+      ],
+      "momentum": "Name the strongest postbuild red-team route and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, new task, or release approval."
+    },
+    "BEAN": {
+      "vision": "Hostile trust review for member memory, synthetic Ghosts, recommendations, matching, money, and provider claims.",
+      "pull": "Attack identity drift, stale or lost Intake data, demo leakage, fake consensus, fake verification, creepy tracking, wealth ranking, and provider overclaim.",
+      "go": [
+        "Return BEAN_M20_MEMBER_TRUST_GO, PATCH, or STOP with the three strongest corrections.",
+        "Define what must persist to the member account, what may remain device-local, and what must never be inferred.",
+        "Give hostile checks for returning member, stale Intake, self-match, varied Ghosts, funds claims, and provider-offline behavior."
+      ],
+      "momentum": "Name the postbuild trust evidence owed and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, new task, or release approval."
+    },
+    "SKYBRO": {
+      "vision": "Review whether the journey communicates an ambitious, democratic, paid-value product without gatekeeper language.",
+      "pull": "Attack generic positioning, thin advice, copied Operator phrasing, feature lists without outcomes, and paywalls that tease before trust is earned.",
+      "go": [
+        "Return SKYBRO_M20_VALUE_GO, PATCH, or STOP with the three strongest value corrections.",
+        "Name the moment a free user should say this already helped me and the moment a member should understand what payment unlocks.",
+        "Give a plain-language continuity check across Home, Recommendations, Matching, Formation, and Bellows."
+      ],
+      "momentum": "Name the strongest postbuild value check and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, new task, or release approval."
+    },
+    "COMPUTER": {
+      "vision": "Factual review of provider-readiness copy and stopping boundaries across the member journey.",
+      "pull": "Attack claims that imply active Stripe, Plaid, Twilio, identity, email, or production storage when only local scaffolds exist.",
+      "go": [
+        "Return COMPUTER_M20_PROVIDER_COPY_GO, PATCH, or STOP with the three strongest factual corrections.",
+        "Separate local UI scaffold, sandbox-ready code, credential gate, production review, and live member behavior.",
+        "Name any provider wording that could mislead a tester or customer."
+      ],
+      "momentum": "Name the strongest postbuild provider-readiness check and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, new task, or release approval."
+    },
+    "PETRA": {
+      "vision": "Comptroller acceptance synthesis for the sellable local member walkthrough.",
+      "pull": "Attack scope drift, false completion, unproved routes, unsafe provider claims, and missing independent review.",
+      "go": [
+        "Return PETRA_M20_MEMBER_WALK_GO, PATCH, or STOP with acceptance conditions.",
+        "Distinguish local candidate readiness from push/deploy/provider readiness.",
+        "Name the exact evidence Lady Jessica must inspect before any release gate."
+      ],
+      "momentum": "Name the next bounded checkpoint and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, new task, or release approval."
+    }
+  }
+}

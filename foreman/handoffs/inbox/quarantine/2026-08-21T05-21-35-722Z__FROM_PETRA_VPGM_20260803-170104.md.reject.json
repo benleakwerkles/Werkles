@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-21T05:21:35.723Z",
+  "file": "FROM_PETRA_VPGM_20260803-170104.md",
+  "reason": "Read; legacy relay receipt conflicts with current envelope and has no custody proof. Findings retained in summary, file quarantined from automatic intake."
+}

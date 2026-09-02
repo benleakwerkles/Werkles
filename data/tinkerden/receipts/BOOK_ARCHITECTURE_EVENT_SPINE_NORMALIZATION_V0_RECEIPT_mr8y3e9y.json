@@ -1,0 +1,9 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_mr8y3e9y",
+  "packet_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_mr8y3e9y",
+  "created_at": "2026-07-06T08:15:28.006Z",
+  "receiver": "EventSpineSmokeReceiver@Betsy",
+  "status": "completed",
+  "what_was_attempted": "Prove watcher event normalization extracts packet and receipt ids."
+}

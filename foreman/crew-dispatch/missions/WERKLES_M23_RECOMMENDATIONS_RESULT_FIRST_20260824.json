@@ -1,0 +1,73 @@
+{
+  "missionId": "WERKLES_M23_RECOMMENDATIONS_RESULT_FIRST",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Result-first, substantial, custody-honest Recommendations page leading into Workshop.",
+  "sharedContext": [
+    "The current page contains genuinely deeper work, but a full Working Snapshot still interrupts the member before the ranked results.",
+    "The selected readout repeats selection/status language and the lower ledger can imply recommendation account-saving even though that endpoint remains closed.",
+    "The member must keep access to reasoning, evidence, a working artifact, and Personal Bellows depth.",
+    "No provider action, credentials, schema/RLS, production data, spend, push, deploy, new environment, subagent, or foreground input is allowed."
+  ],
+  "liveStrings": [
+    "Your Working Snapshot",
+    "Selected option readout",
+    "Why This Came First",
+    "How strongly your answers support it",
+    "What held it down",
+    "Your recent intake and saved options",
+    "No recommendation options saved yet"
+  ],
+  "knownGaps": [
+    "Working recommendation drafts save only on the current device.",
+    "Account-bound recommendation selection is not implemented and requires a separately reviewed custody path.",
+    "The exact local candidate sits inside a large shared dirty tree.",
+    "No fresh M23 cousin or Lady Jessica review has been received yet."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Judge whether the page reaches a rewarding result before it asks the member to inspect their own answers or learn the machinery.",
+      "pull": "Attack pre-result clutter, robotic labels, repeated selection narration, weak hierarchy, and any cold homework feeling.",
+      "go": [
+        "Return ENDER_M23_GO, PATCH, or STOP with the three strongest experience corrections.",
+        "Name exactly what should remain above the ranked deck and what should move below or disappear.",
+        "Rewrite the five supplied result labels as conversational website language without losing meaning."
+      ],
+      "momentum": "Name one hostile desktop and one 390px postbuild check, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "BEAN": {
+      "vision": "Attack whether the page overstates intelligence, account custody, verification, or safety while presenting an automated result.",
+      "pull": "Look for answer echo masquerading as reasoning, impossible save claims, empty-ledger deception, stale selection, and advice without a visible boundary.",
+      "go": [
+        "Return BEAN_M23_GO, PATCH, or STOP with the three strongest trust corrections.",
+        "Separate account-saved Intake history from device-local recommendation drafts in the smallest visible copy possible.",
+        "Name the minimum evidence and uncertainty language that should remain in the result."
+      ],
+      "momentum": "Name one custody assertion and one causal-result assertion for the postbuild contract, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "SKYBRO": {
+      "vision": "Make the selected result feel like valuable work that naturally becomes a Workshop plan rather than a catalog card with an essay underneath.",
+      "pull": "Attack timid payoff, internal nouns, generic transitions, and places where the useful artifact is buried.",
+      "go": [
+        "Return SKYBRO_M23_GO, PATCH, or STOP with the three strongest value corrections.",
+        "Name the shortest honest result-to-Workshop narrative.",
+        "Preserve depth while cutting anything that merely narrates the interface."
+      ],
+      "momentum": "Name one member-value test for the next walkthrough, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "PETRA": {
+      "vision": "Decide whether M23 remains a bounded local presentation/custody correction with no release, provider, schema, or intelligence claim.",
+      "pull": "Attack false completion, hidden Operator labor, dirty-tree drift, fabricated cousin credit, and gate crossing.",
+      "go": [
+        "Return PETRA_M23_GO, PATCH, or STOP with acceptance conditions.",
+        "Separate account Intake custody, device-local draft custody, and future recommendation saving.",
+        "Name the exact evidence Lady Jessica needs for independent review."
+      ],
+      "momentum": "Name the next bounded checkpoint and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    }
+  }
+}

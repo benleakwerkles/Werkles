@@ -1,0 +1,62 @@
+{
+  "missionId": "WERKLES_BVPGM_M16_BELLOWS_CRUCIBLE_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Exact-candidate post-build review of the two Petra-selected M16 changes.",
+  "sharedContext": [
+    "Exact changed-candidate digest: 058600a6241e569dd51d46e0866366bc74b7ac66a7f64ac9e8ae87be68f20912.",
+    "Personal Bellows now marks the existing saved Werkle as device-local, shows partner inactivity, and provides Continue Existing Werkle.",
+    "Every Crucible verification card now separates what a completed check can establish, cannot establish, and what happens next for the current readiness state.",
+    "TypeScript, Crucible boundary/readiness contracts, Match Deck to Formation to Personal Bellows to Crucible, the M8 practice boundary, and the Personal Bellows browser walk pass.",
+    "No account, provider, schema, production, push, deploy, or release state changed."
+  ],
+  "liveStrings": [
+    "Reopen the work already saved on this device.",
+    "Continue Existing Werkle",
+    "No new response or acceptance shown",
+    "What a completed check can establish",
+    "What happens next"
+  ],
+  "knownGaps": [
+    "Gate 05 remains held.",
+    "Account-durable custody and provider activation remain gated.",
+    "Other current M16 receiver routes remain unproved or signed out."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge whether the exact candidate faithfully implements the two approved M16 changes and preserves all boundaries.",
+      "pull": "Compare the candidate digest and live strings with the M16 acceptance checks.",
+      "go": ["Return PETRA_M16_POSTBUILD_GO, PATCH, or STOP for digest 058600a6241e569dd51d46e0866366bc74b7ac66a7f64ac9e8ae87be68f20912.", "Name any exact failed acceptance check."],
+      "momentum": "If GO, name only the next bounded cross-page checkpoint, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, legal approval, spend, push, deploy, subagent, or Operator approval."
+    },
+    "ENDER": {
+      "vision": "Post-build human-rhythm and legibility review.",
+      "pull": "Check button clarity, mobile reading order, and homework fatigue.",
+      "go": ["Return ENDER_M16_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one exact visual regression if present, then stop.",
+      "outOfLane": "No code or release action."
+    },
+    "BEAN": {
+      "vision": "Post-build hostile boundary review.",
+      "pull": "Attack local custody, partner response, provider proof, and readiness claims.",
+      "go": ["Return BEAN_M16_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one missing hostile test if present, then stop.",
+      "outOfLane": "No code or release action."
+    },
+    "SKYBRO": {
+      "vision": "Post-build repeat-value review.",
+      "pull": "Judge whether the two surfaces now form a useful return loop.",
+      "go": ["Return SKYBRO_M16_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one next repeat-use checkpoint, then stop.",
+      "outOfLane": "No code or release action."
+    },
+    "COMPUTER": {
+      "vision": "Post-build provider-language accuracy review.",
+      "pull": "Check that readiness copy does not imply a completed provider check.",
+      "go": ["Return COMPUTER_M16_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one exact inaccurate phrase if present, then stop.",
+      "outOfLane": "No code or release action."
+    }
+  }
+}

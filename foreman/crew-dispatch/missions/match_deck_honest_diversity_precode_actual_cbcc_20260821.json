@@ -1,0 +1,76 @@
+{
+  "missionId": "MATCH_DECK_HONEST_DIVERSITY_PRECODE_ACTUAL_CBCC_20260821",
+  "version": "v0.3",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Pre-code challenge of the Match Deck shortlist and first-conversation experience. Decide how Werkles should prefer useful variety without padding the deck with weak or cloned people, and how the page should explain a short honest result.",
+  "sharedContext": [
+    "Ben caught the Foreman implementing beyond actual cousin receipts. Product edits are paused until this mission returns and is assimilated.",
+    "The rendered owner walkthrough previously showed Ava and Bo as different people but effectively the same Backer archetype: retired contractors with the same offers, asks, proof gap, and first-test answer.",
+    "The current unreviewed local candidate prefers distinct lane/role/offer/ask contribution signatures after preserving the strongest scored result, never admits a zero-reason candidate, and can return only two honest profiles instead of padding to three.",
+    "Current rendered candidate result is only two people and both are in Virginia. Geographic repetition now compounds the thin-deck problem even if the profiles are not exact clones.",
+    "Ben's live walkthrough exposed three offered conversation prompts: 'How could Chair space help this project?', 'How would we clear up Funds not verified?', and 'Which part of the day-to-day work would you test first?' These are the actual quality evidence, not hypothetical placeholder copy.",
+    "A fourth live prompt is 'What would you need from me around Ownership?' It confirms the generator is exposing category labels as awkward pseudo-tailoring rather than reasoning about this member and this candidate.",
+    "The current signed-in header violates Ben's standing navigation rule: it replaces the standard public navigation with member links. Required behavior is the standard Werkles header remaining visible, with a second stable member-navigation row locked beneath it after sign-in.",
+    "The product question is not merely whether two honest profiles beat three with one clone. It is whether the engine has enough grounded information to offer two genuinely useful people and person-specific conversations at all, and how to fail usefully when it does not.",
+    "Existing controlling rulings require one causal evaluator, path-specific reasons, authoritative suppressions, stable IDs, provenance-aware interpretations, and separate business readiness from member-match eligibility.",
+    "Werkles culture must match interests, temperament, goals, and complementary contributions before money; Backers are not ranked by account value. The Deck is a possibility set, not a verdict or introduction.",
+    "No cousin is being asked to implement. Return independent product, UX, trust, or research judgment for one bounded repair packet."
+  ],
+  "liveStrings": [
+    "Match Deck",
+    "Two possibilities to explore",
+    "A shortlist is a beginning, not a verdict.",
+    "Why this person may fit",
+    "What to test before relying on this fit",
+    "Try a working conversation",
+    "Nothing is sent, saved, or introduced by this practice conversation."
+  ],
+  "knownGaps": [
+    "The current candidate has automated local proof but no actual-CBCC review receipt.",
+    "Synthetic profile fields are bounded and cannot support invented biography, chemistry, availability, or willingness.",
+    "The current deterministic engine has limited temperament/personality evidence; it must not pretend otherwise.",
+    "Two honest results can look sparse unless the page explains why Werkles withheld weaker repeats and offers a useful next action; two geographically similar results may still be poor variety.",
+    "Current conversation prompts appear assembled from raw labels such as Chair space and Funds not verified rather than interpreted into an ordinary, decision-bearing question.",
+    "The current header swaps public and member navigation instead of composing both layers, which makes location and site identity less stable after sign-in.",
+    "No real member contact, introduction, provider call, account write, payment, or production matching is in scope."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the Match Deck feel selective, human, and alive while staying honest about a small synthetic evidence base.",
+      "pull": "Challenge the two-result-versus-three-padded tradeoff, the conversation prompts, the page hierarchy, and the language a first-time member needs to understand what happened and what to do next.",
+      "go": [
+        "Choose GO, PATCH, or REJECT on returning fewer honest profiles instead of padding with a near-clone; give the exact member-facing explanation and empty-space treatment you would use.",
+        "Rewrite or reject each of the four quoted prompts, and state what missing person/project context prevents a genuinely tailored question.",
+        "Attack whether the current headings and first-conversation flow feel like people and possibilities rather than another quiz or scorecard.",
+        "Specify the smallest pre-code acceptance checklist for first-glance clarity, useful variety, human grounding, mobile rhythm, a single obvious next action, and the two-tier public-plus-member header."
+      ],
+      "momentum": "Name one visual or interaction move that adds humanity without inventing facts, stock-photo promises, or more copy.",
+      "outOfLane": "No trust-policy ruling, scoring implementation, provider work, schema, push, deploy, secrets, or spend."
+    },
+    "BEAN": {
+      "vision": "Prevent diversity polish from laundering weak matches, invented compatibility, discriminatory proxies, or hidden money/status ranking.",
+      "pull": "Hostile-review the contribution-signature concept and the rule that the strongest score stays first while later results may be diversified only among honestly scored candidates.",
+      "go": [
+        "Attack lane/role/offer/ask signatures for gaming, proxy discrimination, duplicate laundering, false negatives, and loss of the strongest relevant candidate.",
+        "Define fail-closed rules for minimum reasons, explicit suppressions, unknown temperament, Backer equality, and when the deck must return fewer results or no match.",
+        "Attack the quoted Chair space, Funds not verified, Ownership, and day-to-day prompts for raw-field leakage, nonsense composition, false specificity, and repeated-template camouflage; define a fail-closed alternative.",
+        "Return P0/P1/P2 findings and exact acceptance cases that a deterministic test can enforce without claiming chemistry or readiness."
+      ],
+      "momentum": "Name the single most dangerous member-facing overclaim in this slice and a plain-language replacement.",
+      "outOfLane": "No UI taste ruling, implementation, personal-data expansion, provider calls, schema, push, deploy, secrets, or spend."
+    },
+    "PETRA": {
+      "vision": "Set the product boundary for an honest, useful Match Deck that values complementary fit without becoming a deterministic oracle.",
+      "pull": "Reconcile the current candidate with the prior Matching Not Matching ruling: provenance, one evaluator, stable IDs, authoritative suppressions, and separation of business readiness from match eligibility.",
+      "go": [
+        "Rule on whether contribution-signature diversity is permissible as a shortlist tiebreak/preference and exactly what must never be overridden.",
+        "Rule on two Virginia profiles versus three padded profiles, including whether geographic diversity is relevant, the minimum useful explanation, and the next action when the honest pool is too thin.",
+        "Rule whether the four quoted prompts are fit for any member-facing release and define the minimum causal inputs a tailored conversation question must bind.",
+        "Confirm the standing navigation contract: public header remains; authenticated member navigation is a second stable row beneath it. Define the post-code proof required across public and member routes.",
+        "Return a bounded pre-code build authorization or rejection, required invariants, and the exact post-code evidence another cousin must inspect."
+      ],
+      "momentum": "Identify the next smallest matching primitive after this slice that would materially improve quality without pretending the full engine is finished.",
+      "outOfLane": "No implementation, legal approval, provider/account action, schema, push, deploy, secrets, or spend."
+    }
+  }
+}

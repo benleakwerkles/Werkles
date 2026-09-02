@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:29:41.338Z",
+  "file": "FROM_DOOZER_LOGIN_FINAL_CANDIDATE_SOURCE_MISMATCH_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "DOOZER",
+  "consumed_by": "FOREMAN",
+  "note": "Read and preserved as transport/source mismatch evidence; not counted as a review.",
+  "auto_merge": false
+}

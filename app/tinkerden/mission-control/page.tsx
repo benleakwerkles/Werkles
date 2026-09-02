@@ -1,11 +1,14 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 
+import { TinkerDenSurfaceSwitcher } from "@/components/tinkerden/tinkerden-surface-switcher";
+
 export const metadata: Metadata = {
-  title: "TinkerDen Mission Control | Werkles",
+  title: "TinkerDen Mission Control",
   description: "Mission Control is WHY: destination, frontier, success conditions, and non-goals.",
   robots: { index: false, follow: false }
 };
+
+export const dynamic = "force-dynamic";
 
 type MissionCard = {
   title: string;
@@ -62,7 +65,7 @@ const missions: MissionCard[] = [
     sourceMaterial:
       "TinkerDen spinal cord, filesystem blood and synapses, receipt provenance, and Speaker inheritance feed.",
     currentFrontier:
-      "Separate WHY from NOW so Ben can see where the work is going before touching queues or receipts.",
+      "Separate WHY from NOW so Operator can see where the work is going before touching queues or receipts.",
     successConditions: [
       "Mission Control answers where we are going within 10 seconds.",
       "Bridge remains the operational surface for queues, receipts, and dispatch.",
@@ -78,20 +81,10 @@ const missions: MissionCard[] = [
   }
 ];
 
-export default function TinkerDenMissionControlPage() {
+export default async function TinkerDenMissionControlPage() {
   return (
     <main className="td-mission-control">
-      <nav className="td-surface-switcher" aria-label="TinkerDen surface switcher">
-        <Link className="td-surface-switcher__link td-surface-switcher__link--active" href="/tinkerden/mission-control">
-          Mission Control
-        </Link>
-        <Link className="td-surface-switcher__link" href="/tinkerden">
-          Bridge
-        </Link>
-        <Link className="td-surface-switcher__link" href="/tinkerden/human-gates">
-          Human Gates
-        </Link>
-      </nav>
+      <TinkerDenSurfaceSwitcher active="mission-control" />
 
       <header className="td-mission-control__hero">
         <p className="td-mission-control__eyebrow">Mission Control is WHY</p>

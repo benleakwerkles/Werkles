@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import CommandDashClient, { type CommandDashDestination, type CommandDashQuickCommand } from "@/components/tinkerden/command-dash-client";
-import SwansonRelayControl from "@/components/tinkerden/swanson-relay-control";
-import { readTinkerdenCommandDestinations } from "@/lib/tinkerden/command-surface";
+import { TinkerDenSurfaceSwitcher } from "@/components/tinkerden/tinkerden-surface-switcher";
 import { listRealAeyeRelays } from "@/lib/tinkerden/real-aeye-relay";
 
 export const metadata: Metadata = {
-  title: "ThinkIt | Werkles",
-  description: "ThinkIt routes questions to Aeye-backed thinking lanes with file receipts.",
+  title: "ThinkIt",
+  description: "Read-only archive of the pre-Harvey ThinkIt compatibility layer.",
   robots: { index: false, follow: false }
 };
 
@@ -48,78 +45,32 @@ const questions: ThinkItQuestion[] = [
   }
 ];
 
-function destinationIdFor(owner: ThinkItQuestion["owner"], destinations: CommandDashDestination[]) {
-  return destinations.find((destination) => destination.aeye === owner && destination.machine === "Betsy")?.id ?? destinations[0]?.id;
-}
-
-function quickCommandFor(item: ThinkItQuestion, destinations: CommandDashDestination[]): CommandDashQuickCommand {
-  return {
-    label: `Relay ${item.owner}`,
-    destination_id: destinationIdFor(item.owner, destinations),
-    relay: true,
-    command: [
-      `TO: ${item.owner}@Betsy`,
-      "FROM: ThinkIt@Betsy",
-      "MISSION: Return one thinking-lane receipt for this question.",
-      `QUESTION: ${item.question}`,
-      "RETURN: ACK / BLOCKER / ARTIFACT with receipt evidence.",
-      "RULES: Do not execute filesystem mutations from ThinkIt. Do not call SENT proof. Return BLOCKER if this Aeye cannot act."
-    ].join("\n")
-  };
-}
-
 function yesNo(value: boolean | undefined) {
   return value ? "YES" : "NO";
 }
 
 export default async function ThinkItPage() {
-  const destinations = await readTinkerdenCommandDestinations();
   const relays = await listRealAeyeRelays(50);
   const latestThinkItReturn = relays.find((relay) => relay.request.source_surface === "ThinkIt@Betsy") ?? null;
   const latestReceipt = latestThinkItReturn?.receipt ?? null;
   const originReturn = latestReceipt?.origin_return ?? null;
-  const quickCommands = questions.map((item) => quickCommandFor(item, destinations));
 
   return (
     <main className="thinkit">
-      <nav className="td-surface-switcher" aria-label="TinkerDen surface switcher">
-        <Link className="td-surface-switcher__link" href="/tinkerden/mission-control">
-          Mission Control
-        </Link>
-        <Link className="td-surface-switcher__link" href="/tinkerden">
-          Bridge
-        </Link>
-        <Link className="td-surface-switcher__link td-surface-switcher__link--active" href="/thinkit">
-          ThinkIt
-        </Link>
-      </nav>
+      <TinkerDenSurfaceSwitcher active="thinkit" />
 
       <header className="thinkit__hero">
         <p className="td-bridge__eyebrow">ThinkIt</p>
-        <h1>Thinking relay.</h1>
-        <p>Questions route through the verified Aeye destination directory and return file-backed relay receipts.</p>
+        <h1>Retired ThinkIt archive.</h1>
+        <p>
+          This page preserves pre-Harvey relay evidence for compatibility review. It does not poll, dispatch, approve, or
+          route current work.
+        </p>
       </header>
-
-      <SwansonRelayControl />
-
-      <section className="thinkit__panel" aria-label="ThinkIt command dash">
-        <CommandDashClient
-          destinations={destinations}
-          sourceSurface="ThinkIt@Betsy"
-          stream="THINKIT / COGNITIVE RELAY"
-          commandType="THINKING_PACKET"
-          title="Relay a thinking question to an Aeye and wait for ACK / BLOCKER / ARTIFACT."
-          eyebrow="ThinkIt Command Dash"
-          badge="one-click question relay"
-          submitLabel="RELAY QUESTION"
-          idleText="Click a thinking-lane relay button or write a new question directly."
-          quickCommands={quickCommands}
-        />
-      </section>
 
       <section className="thinkit__panel" aria-label="Latest ThinkIt returned answer">
         <header>
-          <h2>Latest returned answer</h2>
+          <h2>Latest archived ThinkIt return</h2>
           <p>
             <strong>{latestThinkItReturn?.relay_id ?? "NO_THINKIT_RELAY"}</strong>
           </p>
@@ -167,13 +118,10 @@ export default async function ThinkItPage() {
         )}
       </section>
 
-      <section className="thinkit__panel" aria-label="ThinkIt question queue">
+      <section className="thinkit__panel" aria-label="Archived ThinkIt question queue">
         <header>
-          <h2>Question routing queue</h2>
-          <p>
-            Verified relay targets:{" "}
-            <strong>{destinations.length > 0 ? destinations.map((destination) => destination.label).join(", ") : "NO VERIFIED DESTINATION"}</strong>
-          </p>
+          <h2>Archived question-routing examples</h2>
+          <p>These rows are historical examples, not a live queue or evidence of current crew activity.</p>
         </header>
 
         <div className="thinkit__grid">

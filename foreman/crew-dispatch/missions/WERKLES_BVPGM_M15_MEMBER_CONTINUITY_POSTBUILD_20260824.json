@@ -1,0 +1,66 @@
+{
+  "missionId": "WERKLES_BVPGM_M15_MEMBER_CONTINUITY_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build red team of the exact M15 Match Deck and Personal Bellows local-continuity candidate.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; no push or deploy occurred.",
+    "Petra returned PETRA_M15_PATCH authorizing two bounded client-only walkthrough changes while retaining Gate 05 HOLD.",
+    "Match Deck now detects a validated local Operating Brief, distinguishes Continue Existing Werkle from Start Another Practice Werkle, and does not replace or mutate the saved room.",
+    "Personal Bellows now identifies the same validated local practice chain with saved date and accepted-topic count while denying any new partner response or acceptance.",
+    "Exact five-file digest: 258c6d994d20139399b872293e2864bed0609b1fd3a7b3e0d5996eba93bb979f.",
+    "TypeScript, Match Deck to Formation to Bellows to Crucible browser walk, M11, M12, M13, practice-boundary, device-shelf, and 100-route production build pass.",
+    "The initial build failed only because the dedicated minimized Edge crew profile held its Cookies file open inside the repo; the dedicated crew process was closed and the unchanged build then passed."
+  ],
+  "liveStrings": [
+    "A practice Werkle is already on this device",
+    "Continue that work—or deliberately start another.",
+    "Continue Existing Werkle",
+    "Start Another Practice Werkle",
+    "Same local practice chain",
+    "Returning here does not mean the other person responded or accepted anything new."
+  ],
+  "knownGaps": [
+    "These improvements remain device-local and do not add account durability.",
+    "Ender, Bean, Skybro, and Computer receiver sessions were signed out at the last proved route check.",
+    "Lady Jessica independent exact-candidate custody remains owed.",
+    "Gate 05 remains HOLD."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Verify the exact M15 candidate stayed inside the approved client-only custody boundary and met both acceptance gates.",
+      "pull": "Separate restored local continuity from account custody, partner response, agreement, provider evidence, and release proof.",
+      "go": ["Return PETRA_M15_POSTBUILD_GO, PATCH, or STOP with any exact claim that outruns custody.", "Verify the listed tests and digest are local candidate evidence only."],
+      "momentum": "Name the next machine checkpoint and Gate 05 posture, then stop.",
+      "outOfLane": "No code, provider action, legal approval, credentials, schema/RLS, spend, push, deploy, subagent, or Operator approval."
+    },
+    "ENDER": {
+      "vision": "Walk the exact continuity candidate for visual hierarchy, human comprehension, and competing-button confusion.",
+      "pull": "Inspect desktop and narrow Match Deck and Personal Bellows states with and without a saved Operating Brief.",
+      "go": ["Return the two highest-impact P0/P1 experience defects and smallest repair.", "Give ENDER_M15_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the strongest restored-context moment and weakest dead spot, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack validated local detection, stale/hostile storage, false continuity, and silent consent claims.",
+      "pull": "Treat the Operating Brief and every displayed date/count/link as hostile input.",
+      "go": ["Return P0/P1 exploit and minimum invariant findings.", "Give BEAN_M15_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest missing hostile regression, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether the restored-context bridge improves repeat use without becoming a dead-end or paywall tease.",
+      "pull": "Inspect the Continue Existing versus Start Another choice and the Bellows same-chain return.",
+      "go": ["Name the strongest value bridge and any confusing dead end.", "Give SKYBRO_M15_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name what should happen when the member returns tomorrow, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "COMPUTER": {
+      "vision": "Research-check the exact continuity wording and interaction choices for bounded decision-history usefulness.",
+      "pull": "Compare the candidate with transparent local-draft and decision-log practices.",
+      "go": ["Flag the two weakest claims or controls with bounded alternatives.", "Give COMPUTER_M15_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest research-backed improvement, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

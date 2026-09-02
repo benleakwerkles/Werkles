@@ -53,7 +53,7 @@ export default function StripeOfflinePrepPage() {
             ))}
           </div>
           <p className="compliance-note">
-            Record live price IDs only after Ben creates or verifies them in Stripe. Never invent IDs.
+            Record live price IDs only after Operator creates or verifies them in Stripe. Never invent IDs.
           </p>
         </section>
       </main>

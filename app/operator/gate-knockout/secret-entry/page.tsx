@@ -27,7 +27,7 @@ export default function SecretEntryChecklistPage() {
             <h1>Secret Entry Checklist</h1>
           </div>
           <p>
-            This page lists names, destinations, and proof rules only. Ben enters values privately in the hosting or
+            This page lists names, destinations, and proof rules only. Operator enters values privately in the hosting or
             provider console. Agents must not request, read, print, save, or commit secret values.
           </p>
           <div className="gate-list" aria-label="Secret entry hard stops">

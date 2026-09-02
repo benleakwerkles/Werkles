@@ -7,6 +7,7 @@ import { SiteIcon } from "@/components/foundry/site-icon";
 import { AccountAwareWorkshopState } from "@/components/workshop/account-aware-workshop-state";
 import { GhostWerklePreview } from "@/components/workshop/ghost-werkle-preview";
 import { WorkshopActionBoard } from "@/components/workshop/workshop-action-board";
+import { OpportunityWalkthroughDoor } from "@/components/opportunities/opportunity-walkthrough-door";
 import { GHOST_FLEET_DISCLOSURE, isGhostFleetEnabled } from "@/lib/ghost-fleet";
 import { loadOwnerSurfaceState } from "@/lib/owner-surfaces/owner-state";
 import { readBellowsOwnerIdFromCookies } from "@/lib/squibb/bellows-owner-session";
@@ -26,7 +27,7 @@ export default async function BlueprintsPage() {
 
   return (
     <CockpitShell>
-      <main className="dashboard-main workshop-page">
+      <main className="dashboard-main workshop-page route-room route-room--workshop workshop-route--dashboard">
         <DashboardAuthGuard next="/dashboard/blueprints" allowGhostWalkthrough={fleetOn}>
         <section className="workshop-hero" aria-labelledby="workshop-title">
           <div className="workshop-hero__copy">
@@ -60,6 +61,8 @@ export default async function BlueprintsPage() {
         <div id="action-plan">
           <WorkshopActionBoard />
         </div>
+
+        {fleetOn ? <OpportunityWalkthroughDoor surface="workshop" /> : null}
 
         <section className="workshop-people-door" aria-labelledby="workshop-people-title">
           <div>

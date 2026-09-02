@@ -1,0 +1,100 @@
+{
+  "missionId": "CBCC_WALKTHROUGH_HOLES",
+  "version": "v0.3",
+  "issuedBy": "Foreman (Lady Jessica, LOCAL_SALLY_WINDOWS)",
+  "slice": "Find the HOLES that block Ben from walking Intake → Workshop → Intros → Proof → Dues on Betsy tomorrow. v0.2 red team was incomplete (partial dispatches, invalid harvests, missing seats). Mechanical handeye now passes 150/150 — that is NOT a UX walkthrough sign-off. Your job is hole-spotting: what breaks trust, continuity, or the path for a tradesman walking cold.",
+  "sharedContext": [
+    "OPERATOR MANDATE (2026-08-04): Quality over speed. Cousins red-team; Foreman assimilates and dispatches Maker missions. Foreman must NOT solo-build product fixes from your replies.",
+    "MECHANICAL BASELINE (2026-08-04): node scripts/foreman/ghost-fleet-handeye-attack.mjs http://127.0.0.1:3000 150 → 150/150 PASS. Receipt: foreman/receipts/WERKLES_GHOST_FLEET_HANDEYE_REDTEAM_2026-08-04T19-46-13-773Z.json. This proves API/matching coherence, not that the five surfaces tell one honest story.",
+    "LIVE TREE: C:\\Users\\Ben Leak\\github\\Werkles @ 127.0.0.1:3000. NEXT_PUBLIC_GHOST_FLEET_UI=1 locally.",
+    "WALKTHROUGH PATH (in order): /bellows/intake → /bellows/recommendations → /dashboard/blueprints → /dashboard/intros → /dashboard/crucible → /membership",
+    "v0.2 STATUS: Skybro replied (infra guards). Thufir posted on desktop (research). Petra + Ender Chrome legs quarantined partial. Bean never received (DeepSeek sign-in). Assimilation receipt: foreman/receipts/CBCC_v0.2_ASSIMILATED_PARTIAL_20260804.md",
+    "KNOWN BLOCKERS (do not rediscover — rule on them): intake saves only on Submit (data loss on reload); two-tree Operator gate; 896 uncommitted files; proof checks described but not runnable; Preview intake EROFS without SQL gate; faces placeholder until APPROVE GHOST FLEET FACE BATCH 150",
+    "CORRECTED INTROS (Foreman-only, not second-seat signed): band split Strong/Medium/Slim vs Counts against; de-name when no doors; Next move: verdict; squeeze clause; Put your numbers in enabled; 13px floor; verdict-first order"
+  ],
+  "liveStrings": [
+    "Intros verdict (capital): 'Next move: put your numbers on paper before you ask anyone for money.'",
+    "Intros squeeze: 'without dropping the road jobs that pay the bills'",
+    "Intros enabled CTA: 'Put your numbers in' → /bellows/intake",
+    "Intros disabled knock: 'Knocks are closed while every member in this readout is unverified.'",
+    "Bands: Strong evidence / Medium evidence / Slim evidence / Counts against",
+    "De-named reason example: 'One member in the pool is positioned to back or co-sign...'",
+    "Doors heading (capital, no doors): 'Why no door yet'",
+    "Workshop: owner-bound readout from intake cookie — not generic demo",
+    "Crucible: proof posture dry-run tied to owner state",
+    "Membership: dues path dry-run until activation gates"
+  ],
+  "knownGaps": [
+    "Handeye 150/150 is mechanical only — not cousin UX sign-off",
+    "v0.2 Ender/Petra partial dispatches may have confused receivers — answer v0.3 fresh",
+    "Bean seat still blocked on DeepSeek sign-in — Foreman will retry when route proves",
+    "Ender desktop CDP repair with Heimerdinker — Chrome tab available as fallback"
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Ben walks tomorrow without Foreman patching mid-path or burning credits on rework.",
+      "pull": "Given handeye 150/150 + v0.2 partial cycle, is walkthrough GO for Operator?",
+      "go": [
+        "WALKTHROUGH GO/NO-GO/GO-WITH-CONDITIONS for Ben walking all five surfaces tomorrow on Betsy.",
+        "List every HOLE ranked BLOCKER / SERIOUS / NOTE that would embarrass us if Ben walks cold.",
+        "Process: what must happen before ANY more Foreman product code lands (second seat, assimilation, Maker dispatch)?",
+        "Rank next Foreman spend: (1) cousin hole fixes via Maker (2) infra guards from Skybro (3) Bean dispatch (4) two-tree (5) intake draft save.",
+        "Credit discipline: one rule Foreman must obey every session to stop triple rework."
+      ],
+      "momentum": "Verdict block + ranked holes + ranked next actions. No code.",
+      "outOfLane": "No UX copy rewrites. No SQL/deploy."
+    },
+    "SKYBRO": {
+      "vision": "The walkthrough machine does not lie about which tree, which server, which flags.",
+      "pull": "Validate your v0.2 infra guards against live Betsy state; find holes in the walkthrough preflight story.",
+      "go": [
+        "Review your v0.2 preflight/health/flag proposals — what is wrong or missing for tomorrow's walk?",
+        "Two-tree: minimum safe guard Foreman can run EVERY session without Operator paste (command-level).",
+        "Port 3000: how Foreman proves the responding server is THIS repo's current process (node fetch only).",
+        "Ghost fleet flags: confirm production impossibility — any hole where synthetic UI could leak?",
+        "What is the single highest-value infra guard to implement FIRST via Maker (not Foreman solo)?"
+      ],
+      "momentum": "Ranked guards with implement-now vs later. Concrete node commands OK.",
+      "outOfLane": "No copy/UX opinions."
+    },
+    "ENDER": {
+      "vision": "Five surfaces feel like one tradesman's story, not five tabs.",
+      "pull": "Hole-spot the full path UX — especially corrected Intros and continuity to Workshop/Proof/Dues.",
+      "go": [
+        "Walk the path in order mentally with the live strings above — where does the story break?",
+        "Intros corrected copy: second-seat read — ship to walkthrough or what HOLE remains?",
+        "One BLOCKER hole each on Workshop, Crucible, Membership if any (verbatim fix copy if UX).",
+        "De-naming policy: clearer or evasive for a tradesman?",
+        "Type floor 13px: any surface still failing truck/daylight legibility?"
+      ],
+      "momentum": "Top 3 UX holes ranked with verbatim replacement copy. WALKTHROUGH UX GO/NO-GO.",
+      "outOfLane": "No security/billing/SQL."
+    },
+    "BEAN": {
+      "vision": "No silent wrong verdict, no trust copy that overclaims during the walk.",
+      "pull": "Trust holes that would fool Ben or a tradesman during a cold walkthrough.",
+      "go": [
+        "RULE de-naming: may named unverified synthetic members appear at all during walkthrough?",
+        "One concrete false-positive intake pattern that would produce a wrong verdict on Intros.",
+        "Disabled knock on every path — honest dead-end or trust hole?",
+        "Intake no-autosave — BLOCKER for walkthrough tomorrow?",
+        "Any signal pattern in live strings that overclaims certainty?"
+      ],
+      "momentum": "Findings BLOCKER/SERIOUS/NOTE. Smallest fix per BLOCKER. One false-positive written out.",
+      "outOfLane": "No visual design."
+    },
+    "COMPUTER": {
+      "vision": "Recommendations sit on defensible precedent, not invented doctrine.",
+      "pull": "Cited research on the holes cousins are debating (bands, de-naming, advice boundary, type floor).",
+      "go": [
+        "Cited examples: qualitative fit bands without numeric scores — do our bands match precedent?",
+        "Cited guidance: non-advisor presenting financing-adjacent copy — is trust note enough for walkthrough?",
+        "De-naming unverified members — precedent in matching/recruiting products?",
+        "13px body floor on mobile — pass or fail against accessibility guidance (cite)?",
+        "Echo CUSTODY_TOKEN in RECEIVED block — required."
+      ],
+      "momentum": "Cited findings only. Flag unsourced gaps.",
+      "outOfLane": "No deploy. No new doctrine."
+    }
+  }
+}

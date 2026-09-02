@@ -1,6 +1,12 @@
 # TO_OPERATOR_MEDULLINA_JOIN_SPANZEE_RUSTDESK_SERVER_20260630
 
-Status: ACTION_PACKET
+Status: SUPERSEDED 2026-07-18 — private RustDesk server is now **Betsy** (`10.1.10.194`), not Spanzee. Operator confirmed Spanzee + Medullina aligned. See `foreman/receipts/RUSTDESK_BETSY_SERVER_FLEET_ALIGNED_RECEIPT_20260718.md`.
+
+Historical packet below kept for audit only.
+
+---
+
+Status: ACTION_PACKET (historical)
 From: Dink@Betsy
 To: Ben / Operator at Medullina
 Machine: Medullina

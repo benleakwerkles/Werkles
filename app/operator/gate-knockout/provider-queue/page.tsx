@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default function ProviderQueuePage() {
+  const providerCount = new Set(productProviderConsoleLinks.map((link) => link.provider)).size;
+
   return (
     <CockpitShell>
       <main className="dashboard-main workshop-route--billing">
@@ -28,8 +30,13 @@ export default function ProviderQueuePage() {
           </div>
           <p>
             These are the actual provider dashboards for the gates. Opening them is fine; logging in, entering secrets,
-            creating live products, starting provider sessions, or approving production remains Ben-only.
+            creating live products, starting provider sessions, or approving production remains Operator-only.
           </p>
+          <div className="trust-state-strip" aria-label="Provider queue summary">
+            <span>{productProviderConsoleLinks.length} console stops</span>
+            <span>{providerCount} providers</span>
+            <span>No provider action runs from this page</span>
+          </div>
         </section>
 
         <section className="crucible-state-grid" aria-label="Provider console links">
@@ -42,7 +49,7 @@ export default function ProviderQueuePage() {
               <p className="status-line">Blocked by: {link.blockedBy}</p>
               <p>
                 <a className="button button-outline" href={link.url} rel="noreferrer">
-                  Open provider console
+                  Open {link.provider}: {link.title}
                 </a>
               </p>
             </article>

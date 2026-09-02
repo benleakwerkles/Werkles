@@ -174,7 +174,7 @@ function buildHumanStatus(snapshot: JsonRecord) {
     "- Local packet creation is not delivery.",
     "- SENT is not completion.",
     "- Receiver proof means RECEIVED, then COMPLETED or BLOCKER, then origin dash readback.",
-    "- Brainboot exists to stop Ben from re-teaching the room."
+    "- Brainboot exists to stop Operator from re-teaching the room."
   ].join("\n");
 }
 
@@ -187,7 +187,7 @@ function buildBrainboot(snapshot: JsonRecord) {
     "# Brainboot Project Anchor",
     "",
     "## Core Directive",
-    "We are building Harvey, the Nerdkle: a distributed asynchronous organism. ThinkIt is the command surface, Speaker is memory, and Relay is transport. Harvey moves packets, proves receipt, preserves memory, and helps write the book without making Ben the message bus.",
+    "We are building Harvey, the Nerdkle: a distributed asynchronous organism. ThinkIt is the command surface, Speaker is memory, and Relay is transport. Harvey moves packets, proves receipt, preserves memory, and helps write the book without making Operator the message bus.",
     "",
     "## Naming Boundary",
     "Elwood is the Operator role, not the machine. Harvey is the Nerdkle organism. ThinkIt is the command dash. Speaker is memory. Relay is transport.",
@@ -213,7 +213,7 @@ function buildBrainboot(snapshot: JsonRecord) {
     "",
     "## Non-Negotiables",
     "- Do not call SENT success.",
-    "- Do not ask Ben to carry context already present in these files.",
+    "- Do not ask Operator to carry context already present in these files.",
     "- Return ACK / BLOCKER / ARTIFACT with evidence.",
     "- If you cannot see ThinkIt directly, read the status mirror and name the missing proof."
   ].join("\n");

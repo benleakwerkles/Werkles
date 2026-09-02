@@ -1,0 +1,52 @@
+{
+  "missionId": "INTAKE_DUAL_PURPOSE_ACTUAL_CBCC",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Red-team the current Werkles Intake as one instrument with two jobs: help an ordinary person find useful next moves for the business they are trying to make real, and begin an honest starter profile for future matching. Review only; implementation waits for returned CBCC judgment.",
+  "sharedContext": [
+    "Ben's 76-year-old mother read Werkles copy and said she did not know what it meant and was not from this world. Werkles must not require insider identity or vocabulary.",
+    "The Intake answers appear in the Recommendations source readback, but the option ranking has not yet convincingly reflected those answers.",
+    "The existing five open-text questions can trigger keyword and negation mistakes and do not cleanly separate present need, tried-and-rejected paths, assets, constraints, and what the member can offer.",
+    "The intended product flow is Intake to an editable working brief, then Recommendations, then an Intro only when a person is actually part of the answer.",
+    "This request must return real seat judgment before Heimerdinker, Lady Jessica, or Doozer builds the next bounded slice."
+  ],
+  "liveStrings": [
+    "What feels like the heaviest lift right now?",
+    "What have you already tried?",
+    "Where is time costing you the most?",
+    "What decision are you stuck on?",
+    "If the next 12 months went well, what would be true?",
+    "Best next steps",
+    "All options"
+  ],
+  "knownGaps": [
+    "Current local Intake custody is browser/session-bound and is not yet durable gimptest account storage.",
+    "The current rule-based matcher is useful as coarse triage, not a proven semantic matching engine.",
+    "Past-tense and negated language can falsely activate current intent flags.",
+    "Recommendations are readouts, not executed actions, professional advice, or introductions."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the Intake understandable, welcoming, and obviously useful to someone with no startup, finance, or platform vocabulary.",
+      "pull": "Evaluate the five prompts, first-screen hierarchy, emotional burden, plain-language comprehension, and the handoff from answers to useful options and a starter profile.",
+      "go": [
+        "Describe what a first-time ordinary Werkler should understand in the first 60 seconds, and identify every phrase or interaction that makes the page feel like it belongs to somebody else's world.",
+        "Propose the smallest coherent Intake structure that serves both immediate solution-finding and future matching without feeling like a psychiatric essay exam. Include question wording, structured choices, optional prose, editable readback, and page sequence.",
+        "Return a prioritized visual and UX build brief for Lady Jessica or Doozer: what belongs above the fold, what should be grouped, and how Recommendations must visibly explain which answers changed which options."
+      ],
+      "momentum": "Give two concrete mobile and desktop acceptance tests that require human visual judgment, not only DOM or unit checks.",
+      "outOfLane": "Do not design database custody, legal disclaimers, provider integrations, or deploy steps."
+    },
+    "BEAN": {
+      "vision": "Make the dual-purpose Intake useful without laundering weak inference into certainty, advice, eligibility, or a trustworthy member profile.",
+      "pull": "Attack the present signal model, negation/history handling, solution ranking, starter-profile claims, privacy/custody boundaries, and the explanation owed to the member.",
+      "go": [
+        "Define the minimum honest signal contract for goal, blocker, assets, constraints, tried/considering/ruled-out paths, time horizon, and what the member can offer. Identify which fields may rank solutions and which may seed matching.",
+        "Specify fail-closed rules for negation, historical attempts, missing prerequisites, financial or legal adjacency, low-confidence inference, and profile fields that must remain explicitly unknown rather than guessed.",
+        "Give an explanation contract for Recommendations: how each ranked option must cite the exact member answers and rule paths that raised, lowered, or excluded it, without presenting a score as probability or advice."
+      ],
+      "momentum": "Return P0, P1, and P2 tests that should block implementation acceptance until the matching behavior is trustworthy.",
+      "outOfLane": "Do not make visual-style choices, write implementation code, apply schema, or recommend deployment."
+    }
+  }
+}

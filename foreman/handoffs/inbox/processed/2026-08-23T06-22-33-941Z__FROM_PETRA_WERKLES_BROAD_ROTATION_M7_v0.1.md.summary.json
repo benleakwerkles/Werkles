@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T06:22:33.942Z",
+  "file": "FROM_PETRA_WERKLES_BROAD_ROTATION_M7_v0.1.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Read now; bounded local-practice GO already assimilated in M8. Not counted as current release review.",
+  "auto_merge": false
+}

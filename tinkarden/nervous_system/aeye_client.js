@@ -150,6 +150,21 @@ function appendWrapperLog(event) {
   fs.appendFileSync(WRAPPER_LOG_PATH, `${JSON.stringify(event)}\n`, "utf8");
 }
 
+function openCirculationDbForCall(input) {
+  try {
+    return {
+      db: openCirculationDb(),
+      error: null
+    };
+  } catch (error) {
+    if (!input.dryRun) throw error;
+    return {
+      db: null,
+      error
+    };
+  }
+}
+
 function parseAeyeMachine(aeye, explicitMachine) {
   const value = text(aeye);
   const [name, machineFromAeye] = value.includes("@") ? value.split("@", 2) : [value, ""];
@@ -363,21 +378,24 @@ async function callAeye(input) {
   try {
     const systemContent = buildSystemMessage(aeye, bootpack);
     const payload = buildProviderPayload(provider, model, systemContent, prompt);
-    const db = openCirculationDb();
+    const dbOpen = openCirculationDbForCall(input);
+    const db = dbOpen.db;
     const startStatus = input.dryRun ? "BOOTPACK_INJECTED_DRY_RUN" : "BOOTPACK_INJECTED_PROVIDER_CALL_STARTED";
 
-    logCallStart(db, {
-      call_id: callId,
-      created_at: stamp(),
-      aeye,
-      provider,
-      model,
-      prompt_hash: sha256(prompt),
-      active_context_path: bootpack.relPath,
-      active_context_hash: bootpack.hash,
-      request_json: JSON.stringify(payload),
-      status: startStatus
-    });
+    if (db) {
+      logCallStart(db, {
+        call_id: callId,
+        created_at: stamp(),
+        aeye,
+        provider,
+        model,
+        prompt_hash: sha256(prompt),
+        active_context_path: bootpack.relPath,
+        active_context_hash: bootpack.hash,
+        request_json: JSON.stringify(payload),
+        status: startStatus
+      });
+    }
 
     appendWrapperLog({
       event: "speaker_bootpack_injected",
@@ -393,12 +411,16 @@ async function callAeye(input) {
       bootpack_path: bootpack.relPath,
       bootpack_sha256: bootpack.hash,
       system_payload_sha256: sha256(systemContent),
+      sqlite_log_available: Boolean(db),
+      sqlite_log_error: dbOpen.error?.message || null,
       status: startStatus
     });
 
     if (input.dryRun) {
-      logCallFinish(db, callId, "BOOTPACK_INJECTED_DRY_RUN_COMPLETE", "", { dry_run: true, payload }, null);
-      db.close();
+      if (db) {
+        logCallFinish(db, callId, "BOOTPACK_INJECTED_DRY_RUN_COMPLETE", "", { dry_run: true, payload }, null);
+        db.close();
+      }
       return {
         ok: true,
         call_id: callId,
@@ -409,7 +431,9 @@ async function callAeye(input) {
         bootpack_loaded: bootpack.loaded,
         bootpack_path: bootpack.relPath,
         bootpack_sha256: bootpack.hash,
-        system_payload_contains_bootpack: systemContent.includes(bootpack.content)
+        system_payload_contains_bootpack: systemContent.includes(bootpack.content),
+        call_log_backend: db ? "sqlite" : "wrapper_jsonl_only",
+        call_log_degraded_reason: dbOpen.error?.message || null
       };
     }
 

@@ -19,7 +19,7 @@ export default async function CruciblePage() {
 
   return (
     <CockpitShell>
-      <main className={`dashboard-main ${routeAtmosphere.crucible}`}>
+      <main className={`dashboard-main route-room route-room--proof ${routeAtmosphere.crucible}`}>
       <DashboardAuthGuard next="/dashboard/crucible" allowGhostWalkthrough={fleetOn}>
       <div className="tier2-visual-band">
         <Tier2PageVisual page="crucible" forgeBand iconRail />

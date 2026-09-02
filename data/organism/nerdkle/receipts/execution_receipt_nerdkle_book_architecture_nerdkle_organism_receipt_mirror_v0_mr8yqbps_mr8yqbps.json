@@ -1,0 +1,10 @@
+{
+  "id": "execution_receipt_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8yqbps_mr8yqbps",
+  "object_id": "nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8yqbps",
+  "pass": true,
+  "outcome": "Fixture Nerdkle work completed and artifact read back.",
+  "artifact_path": "data/organism/nerdkle/objects/nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8yqbps.json",
+  "notes": "Smoke fixture only; proves contract mirroring, not external delivery.",
+  "object_hash": "656828846f2a3ed796d0b5e45ca8ea80481379b1822b2762655cb18921d0300e",
+  "created_at": "2026-07-06T08:33:17.782Z"
+}

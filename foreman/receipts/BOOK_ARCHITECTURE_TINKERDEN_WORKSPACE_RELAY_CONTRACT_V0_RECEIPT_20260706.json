@@ -1,0 +1,101 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_WORKSPACE_RELAY_CONTRACT_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:17:42.549Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_WORKSPACE_RELAY_CONTRACT_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-workspace-relay-contract-smoke.mjs",
+  "files_changed": [
+    "lib/tinkerden/workspace-relay-contract.ts",
+    "app/api/tinkerden/workspace-relay/route.ts",
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-workspace-relay-contract-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_WORKSPACE_RELAY_CONTRACT_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "data/tinkerden/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "tinkerden/machine-runner/requests/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "data/organism/contracts/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "workspace_relay_route_calls_runner_contract_writer": true,
+    "workspace_relay_route_returns_runner_contract_write": true,
+    "ui_status_surfaces_runner_contract_receipt": true,
+    "runner_contract_receipt_written": true,
+    "runner_contract_receipt_status": "partial",
+    "runner_contract_packet_receipted_event": true,
+    "truth_boundary": "Workspace Relay custody proof remains partial and does not claim downstream Aeye completion."
+  },
+  "attached_to_contract_packet": {
+    "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+    "contract_packet_path": "data/organism/contracts/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "source_path": "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json"
+  },
+  "runner_contract_write": {
+    "ok": true,
+    "artifact_path": "data/organism/contracts/receipts/td_receipt_workspace_relay_contract_smoke_mr8tvyiz.json",
+    "event_path": "data/organism/contracts/events.jsonl",
+    "sha256": "c1dc6693d2175b4b03d1a701e21460339badd55d78a6bed61c8ba5a1a86c5aac"
+  },
+  "contract_file_hashes": [
+    {
+      "path": "lib/tinkerden/workspace-relay-contract.ts",
+      "sha256": "a379cd88acc330caed36d9912b0b051ff4cde885144a9b230bdb4a3f542b9e91",
+      "bytes": 5498
+    },
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "app/api/tinkerden/workspace-relay/route.ts",
+      "sha256": "9b8c61786086c20ed8f279fc5588298157452c8e3b57782e089d9e32a34818b3",
+      "bytes": 8953
+    },
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "bf257ee6420bbd40c7df6970815d287debd3cb97c820d53d21c15864762f431a",
+      "bytes": 65343
+    },
+    {
+      "path": "scripts/foreman/tinkerden-workspace-relay-contract-smoke.mjs",
+      "sha256": "5147a0cdd1cf580a7989210ee4f584cb7a25c126153cf32e19c42ed6590f012e",
+      "bytes": 12169
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "workspace relay route not invoked",
+    "no clipboard mutation",
+    "no workspace focus"
+  ],
+  "next_safe_action": "Add the next non-TinkerDen producer lane to the canonical organism contract store or start a receiver-side receipt intake path."
+}

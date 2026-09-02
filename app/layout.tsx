@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: ["/assets/og/werkles-og-card.jpg"]
   },
-  // Pre-launch: stay out of search indexes until Ben opens that gate.
+  // Pre-launch: stay out of search indexes until Operator opens that gate.
   robots: {
     index: false,
     follow: false,

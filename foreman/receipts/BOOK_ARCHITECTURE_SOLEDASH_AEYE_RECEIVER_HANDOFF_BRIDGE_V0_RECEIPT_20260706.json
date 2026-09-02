@@ -1,0 +1,73 @@
+{
+  "schema": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_RECEIVER_HANDOFF_BRIDGE_V0",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:46:35.146Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_RECEIVER_HANDOFF_BRIDGE_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_SOLEDASH_AEYE_RECEIVER_HANDOFF_BRIDGE_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/soledash-aeye-receiver-handoff-bridge-smoke.mjs",
+  "validation": {
+    "soledash_transport_packet_mirrored": true,
+    "soledash_transport_receipt_mirrored_partial": true,
+    "receiver_handoff_bundle_created": true,
+    "receiver_handoff_template_blocked": true,
+    "receiver_handoff_template_not_filled": true,
+    "receiver_handoff_return_not_created": true,
+    "receiver_work_completion_not_claimed": true,
+    "fixed_bundle_id_prevents_count_growth_on_repeated_runs": true
+  },
+  "fixture_readback": {
+    "source_message_packet_id": "soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "source_message_receipt_id": "soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "organism_packet_id": "soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "organism_receipt_id": "soledash_aeye_transport_receipt_soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "bundle_id": "soledash_aeye_receiver_handoff_bridge_smoke_v0",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0",
+    "handoff_path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/manifest.json",
+    "returned_receipt_path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/returned-receipt.json",
+    "returned_receipt_exists": false
+  },
+  "file_hashes": [
+    {
+      "path": "lib/soledash/aeye-inbox-v0/receiver-handoff-bridge.ts",
+      "sha256": "319b3bc756015ad8c203373a82430566d6ab6663e9865e4aba53446886c2d2c9",
+      "bytes": 1460
+    },
+    {
+      "path": "lib/soledash/aeye-inbox-v0/organism-contract-mirror.ts",
+      "sha256": "4db51bdf37f8c2065928d1f906b2065a6b194a8dc0b6973d61c37756f0b0c11f",
+      "bytes": 8643
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-bundle.ts",
+      "sha256": "22b02f2a81d21cfa05eeadc30049d685fce0511752e437b3b877f88eb5d35703",
+      "bytes": 10122
+    },
+    {
+      "path": "app/api/soledash/v1/wonka-den/aeye-loop/route.ts",
+      "sha256": "b2ca30cdac1ca1de076b20566103db16bc8c97689a55b37b3c943481b34ca616",
+      "bytes": 10554
+    },
+    {
+      "path": "scripts/foreman/soledash-aeye-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "58fcb7f2e0fee799f90361eaa22df44d0ff9211b0bc470c0ccbaf29255d60cf2",
+      "bytes": 10338
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "truth_boundary": "This smoke proves SoleDash transport can create a pending receiver-handoff return lane. The generated receipt template is blocked and is not receiver work completion proof.",
+  "stop_conditions_respected": [
+    "no returned receipt created",
+    "no receiver work completion claim",
+    "no deploy",
+    "no push"
+  ]
+}

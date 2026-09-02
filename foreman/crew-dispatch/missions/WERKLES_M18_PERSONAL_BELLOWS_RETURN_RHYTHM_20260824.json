@@ -1,0 +1,37 @@
+{
+  "missionId": "WERKLES_M18_PERSONAL_BELLOWS_RETURN_RHYTHM",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Design one bounded, buildable seven-day return rhythm for Personal Bellows so it feels like useful ongoing help rather than a static reading list.",
+  "sharedContext": [
+    "Personal Bellows currently derives a ranked lesson path from the latest recommendation session, tracks lesson completion on this device, identifies saved device-local drafts, and can return to a saved practice Werkle.",
+    "The current resume card only chooses the first incomplete lesson or first lesson after completion. It does not show what changed, what work is open today, or why returning now helps.",
+    "Saved artifacts already include Bellows tool drafts, recommendation drafts, an Operating Brief, a proposed shared action, and one member's result notes.",
+    "No background tracking, engagement surveillance, push notification, fabricated message, fake partner activity, or account-backed persistence may be implied.",
+    "The user wants Personal Bellows to remain valuable after two weeks and to connect learning to Workshop, Match Deck, and a real Possible Werkle.",
+    "The member should leave with a useful business artifact or decision, not merely a completion badge or more reading.",
+    "Use plain human copy. Avoid runway, pitch deck, proof, stake, lane, packet, artifact, return rhythm, curriculum, or other internal/product jargon in rendered member copy.",
+    "A visible graphic should break the text-and-bubble monotony, but it need not be a portrait. It must explain state or time rather than decorate emptiness.",
+    "The implementation target is one bounded React/Next slice that can be walked headlessly at desktop and 390px. No provider, schema, RLS, secrets, spend, push, or deploy."
+  ],
+  "liveStrings": [],
+  "knownGaps": [
+    "Account persistence is not part of this slice; use and label device-local state honestly.",
+    "There is no real partner event feed or message inbox.",
+    "The learning path may change after a new Intake and must not pretend to be permanent."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Produce a sharp member-facing concept for one seven-day Personal Bellows return loop that makes saved work useful again.",
+      "pull": "Red-team boredom, homework tone, fake urgency, false partner activity, creepy tracking, dead-end completion, repeated copy, and mobile density.",
+      "go": [
+        "Return one preferred UI slice with exact rendered title, helper copy, seven visible states or beats, empty-state behavior, and the one member action that creates value.",
+        "Specify the minimum existing inputs it may read, the exact device-local output it writes, and where that output returns through Workshop, Match Deck, Formation, or the Bellows shelf.",
+        "Specify one non-portrait visual metaphor whose geometry communicates the week's state in grayscale, plus desktop and 390px acceptance checks.",
+        "Give hostile cases for no Intake path, no saved drafts, all lessons complete, stale saved Werkle, long member text, second device, and synthetic partner context."
+      ],
+      "momentum": "Name the smallest first implementation stake and the independent red-team evidence owed, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

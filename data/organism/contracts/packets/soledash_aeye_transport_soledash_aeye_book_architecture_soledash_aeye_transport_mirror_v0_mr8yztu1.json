@@ -1,0 +1,44 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "soledash_aeye_transport_soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8yztu1",
+  "created_at": "2026-07-06T08:40:41.161Z",
+  "from": "SoleDash Mirror Smoke",
+  "to": "Dink@Betsy",
+  "lane": "SoleDash Aeye transport",
+  "operator_intent": "Transport a SoleDash Aeye message and preserve canonical custody proof.",
+  "source_paths": [
+    "foreman/messages/outbox/soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8yztu1.json",
+    "foreman/messages/inbox/soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8yztu1.json"
+  ],
+  "source_hashes": {
+    "foreman/messages/outbox/soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8yztu1.json": "967b80f43e09d6e4ab7342381d17482f0692538c5865c0b52e0d1b81604ec959",
+    "foreman/messages/inbox/soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8yztu1.json": "90020d6d3d6b530954659d8867035ed5e80f71701ca08769f4428895cceb39e9"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Record transport custody for a SoleDash Aeye packet.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "dispatch_packet",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "deploy",
+    "push",
+    "secret_access",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "Stop if the destination is not verified.",
+    "Stop if the transport packet cannot be written or read back."
+  ],
+  "acceptance_criteria": [
+    "SoleDash message packet is written to outbox.",
+    "Canonical organism packet mirror is written.",
+    "Receiver work proof remains separate from transport ACK proof."
+  ],
+  "receipt_required": true,
+  "receipt_destination": "data/organism/contracts/receipts",
+  "idempotency_key": "soledash-aeye:soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8yztu1:organism-packet",
+  "expires_at": "2026-07-13T08:40:41.165Z"
+}

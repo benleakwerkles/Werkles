@@ -1,6 +1,6 @@
 ﻿{
     "schema":  "WERKLES_CRUCIBLE_PROVIDER_MULE_V1",
-    "timestamp":  "2026-07-06T01:07:54.7701827-04:00",
+    "timestamp":  "2026-07-07T15:35:14.7836101-04:00",
     "machine":  "BETSY",
     "secret_values_printed":  "NO",
     "steps":  [
@@ -26,8 +26,8 @@
                   },
                   {
                       "step":  "vercel_sync_plaid",
-                      "status":  "EXECUTED",
-                      "detail":  "SYNC_CRUCIBLE_PROVIDER: op run -\u003e Vercel | --- TARGET: preview --- | ADDED PLAID_CLIENT_ID -\u003e preview | ADDED PLAID_SECRET -\u003e preview | ADDED PLAID_ENV -\u003e preview | --- TARGET: production --- | ADDED PLAID_CLIENT_ID -\u003e production | ADDED PLAID_SECRET -\u003e production | ADDED PLAID_ENV -\u003e production | CRUCIBLE_PROVIDER_SYNC_COMPLETE_NAMES_ONLY"
+                      "status":  "SKIPPED",
+                      "detail":  "plaid_secrets_not_valid"
                   }
               ],
     "overall":  "NEEDS_OPERATOR"

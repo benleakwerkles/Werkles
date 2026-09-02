@@ -1,70 +1,40 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import CommandDashClient from "@/components/tinkerden/command-dash-client";
+import { TinkerDenSurfaceSwitcher } from "@/components/tinkerden/tinkerden-surface-switcher";
 import { readLatestNerdkleAnswerProofs } from "@/lib/tinkerden/answer-proof";
-import { readTinkerdenCommandDestinations, readTinkerdenCommandInbox } from "@/lib/tinkerden/command-surface";
+import { readTinkerdenCommandInbox } from "@/lib/tinkerden/command-surface";
 
 export const metadata: Metadata = {
-  title: "TinkerDen Inbox | Werkles",
-  description: "Minimal file-backed command surface for TinkerDen.",
+  title: "TinkerDen Inbox",
+  description: "Read-only archive of the retired TinkerDen command inbox.",
   robots: { index: false, follow: false }
 };
 
 export const dynamic = "force-dynamic";
 
 export default async function TinkerdenInboxPage() {
-  const [packets, destinations, answerProofs] = await Promise.all([
+  const [packets, answerProofs] = await Promise.all([
     readTinkerdenCommandInbox(12),
-    readTinkerdenCommandDestinations(),
-    readLatestNerdkleAnswerProofs(6)
+    readLatestNerdkleAnswerProofs(6),
   ]);
 
   return (
     <main className="td-bridge">
-      <nav className="td-surface-switcher" aria-label="TinkerDen surface switcher">
-        <Link className="td-surface-switcher__link" href="/tinkerden">
-          Bridge
-        </Link>
-        <Link className="td-surface-switcher__link td-surface-switcher__link--active" href="/tinkerden/inbox">
-          Inbox
-        </Link>
-        <Link className="td-surface-switcher__link" href="/tinkerden/receipts">
-          Receipts
-        </Link>
-        <Link className="td-surface-switcher__link" href="/thinkit">
-          ThinkIt
-        </Link>
-      </nav>
+      <TinkerDenSurfaceSwitcher active="inbox" />
 
       <header className="td-bridge__hero">
-        <p className="td-bridge__eyebrow">TinkerDen / Command Surface / Build Lane</p>
-        <h1>Command inbox.</h1>
+        <p className="td-bridge__eyebrow">TinkerDen / Legacy archive</p>
+        <h1>Retired command inbox.</h1>
         <p>
-          First usable command surface: write a command, create a packet in <code>tinkerden/inbox</code>, require a receiver
-          hash read, and show the returned ACK / BLOCKER / ARTIFACT.
+          This read-only page preserves old packet evidence for forensic compatibility. Its receiver-hash experiment does
+          not satisfy current Harvey custody standards, and this page cannot issue or relay work.
         </p>
       </header>
 
-      <section className="td-command-section" aria-labelledby="command-form-title">
-        <header className="td-command-section__header">
-          <p className="td-bridge__eyebrow">NOW</p>
-          <h2 id="command-form-title">Issue command</h2>
-        </header>
-        <CommandDashClient
-          destinations={destinations}
-          sourceSurface="TinkerDenInbox@Betsy"
-          title="Write one packet, relay it to a verified Aeye, and show the returned custody receipt."
-          eyebrow="Command Inbox"
-          badge="no free-text routing"
-          submitLabel="RELAY PACKET"
-        />
-      </section>
-
       <section className="td-command-section" aria-labelledby="packet-list-title">
         <header className="td-command-section__header">
-          <p className="td-bridge__eyebrow">PROOF</p>
-          <h2 id="packet-list-title">Latest command packets</h2>
+          <p className="td-bridge__eyebrow">HISTORICAL EVIDENCE</p>
+          <h2 id="packet-list-title">Archived command packets</h2>
           <p>Source: <code>tinkerden/inbox</code></p>
         </header>
 
@@ -108,8 +78,8 @@ export default async function TinkerdenInboxPage() {
 
       <section className="td-command-section" aria-labelledby="answer-proof-title">
         <header className="td-command-section__header">
-          <p className="td-bridge__eyebrow">REAL ANSWER LOOP</p>
-          <h2 id="answer-proof-title">Packet left, received, answered, returned</h2>
+          <p className="td-bridge__eyebrow">LEGACY ANSWER PROOF</p>
+          <h2 id="answer-proof-title">Archived packet and answer records</h2>
           <p>Source: <code>foreman/messages/receipts/nerdkle_answer_receipt_*.json</code></p>
         </header>
 

@@ -34,6 +34,21 @@ foreman/**/tmp/
 # Local scratch
 sandbox/
 .cursor/
+.codex-logs/
+.vscode/
+tmp/
+*.code-workspace
+__pycache__/
+*.pyc
+
+# Local walkthrough/member-derived records — never publish from a workstation
+data/squibb/
+data/matching/shadow-runs.jsonl
+
+# One-off local visual and malformed browser scratch
+/icon-contact-sheet.png
+/({src
+/x.textContent)})
 
 # Ghost Forge import scratch (Cursor workspace paths — not repo assets)
 public/assets/draft/ghost-forge/_import/

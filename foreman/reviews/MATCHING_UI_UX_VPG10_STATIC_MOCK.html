@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VPG10 UI cleanup mock — Autonomous Matching</title>
+  <style>
+    :root {
+      --ink: #faf6eb;
+      --body: #f0e6d0;
+      --soft: #ddd0b5;
+      --label: #cfc0a3;
+      --eyebrow: #e8b878;
+      --accent: #5fd178;
+      --iron: #3b342a;
+      --night: #191817;
+      --smoke: #2c231d;
+      --bg: #121110;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(165deg, #1a1714 0%, var(--bg) 45%, #0e0d0c 100%);
+      color: var(--ink);
+      padding: 1.25rem;
+      line-height: 1.45;
+    }
+    .banner {
+      font-family: Consolas, monospace;
+      font-size: 0.78rem;
+      color: var(--soft);
+      margin-bottom: 1rem;
+      padding: 0.65rem 0.85rem;
+      border: 1px dashed var(--iron);
+      background: #0a0908;
+    }
+    .banner strong { color: var(--accent); }
+    .surface { max-width: 1100px; margin: 0 auto; display: grid; gap: 0.75rem; }
+    .panel {
+      background: color-mix(in srgb, var(--smoke) 80%, transparent);
+      border: 1px solid var(--iron);
+      border-radius: 0.5rem;
+      padding: 1rem 1.1rem;
+    }
+    .hero { border-left: 3px solid var(--accent); }
+    .eyebrow {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--eyebrow);
+    }
+    h1 { margin: 0.25rem 0 0.5rem; font-size: 1.85rem; font-weight: 600; }
+    .intro { margin: 0; color: var(--body); max-width: 52rem; }
+    .example {
+      margin: 0.45rem 0 0.35rem;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+    .example a { color: var(--accent); }
+    .meta {
+      display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem;
+      margin: 0.35rem 0 0; font-size: 0.92rem; color: var(--body);
+    }
+    .meta strong { color: var(--label); font-weight: 600; margin-right: 0.35rem; }
+    .note {
+      margin: 0.55rem 0 0;
+      padding: 0.55rem 0.85rem;
+      border-radius: 0.4rem;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+    details.source {
+      border-left: 3px solid #fbc368;
+    }
+    details.source summary {
+      cursor: pointer;
+      list-style: none;
+      display: grid;
+      gap: 0.15rem;
+    }
+    details.source summary::-webkit-details-marker { display: none; }
+    .tabs { display: flex; gap: 0.5rem; }
+    .tab {
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      border: 1px solid var(--iron);
+      background: var(--night);
+      color: #f4e2b1;
+      font: inherit;
+    }
+    .tab.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 300px) 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .card {
+      width: 100%;
+      text-align: left;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.65rem;
+      border-radius: 0.65rem;
+      border: 1px solid var(--iron);
+      background: var(--smoke);
+      color: #f4e2b1;
+      font: inherit;
+    }
+    .card.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+    .card .rank { color: var(--accent); font-weight: 700; font-size: 0.72rem; margin-right: 0.4rem; }
+    .card h4 { margin: 0.25rem 0; font-size: 1.05rem; }
+    .card p { margin: 0; font-size: 0.9rem; color: #c9b896; }
+    .detail { display: grid; gap: 0.85rem; }
+    .detail h2 { margin: 0.15rem 0; font-size: 1.35rem; }
+    .score-head {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    }
+    .score-head h3 { margin: 0; flex: 1; }
+    .badge {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.35rem;
+      border: 1px solid var(--accent);
+      background: var(--smoke);
+    }
+    .score-num { font-weight: 700; white-space: nowrap; }
+    .track {
+      height: 0.5rem; border-radius: 999px; background: var(--iron); overflow: hidden; margin-top: 0.5rem;
+    }
+    .fill { height: 100%; width: 72%; background: linear-gradient(90deg, #015e51, var(--accent)); }
+    .why { margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--body); }
+    .gate {
+      padding: 0.65rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid color-mix(in srgb, #c44 50%, var(--iron));
+      background: color-mix(in srgb, #c44 8%, var(--night));
+      font-size: 0.9rem;
+    }
+    .collapse {
+      border: 1px solid var(--iron);
+      border-radius: 0.5rem;
+      padding: 0.55rem 0.75rem;
+      background: color-mix(in srgb, var(--night) 55%, transparent);
+    }
+    .collapse summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+    }
+    .collapse summary::-webkit-details-marker { display: none; }
+    .collapse[open] summary {
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--iron);
+    }
+    .buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .btn {
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.35rem;
+      border: 1px solid var(--iron);
+      background: #2a241e;
+      color: var(--soft);
+      opacity: 0.45;
+      cursor: not-allowed;
+      font: inherit;
+    }
+    .btn.primary { background: #1f2a22; border-color: #355; }
+    .closed {
+      margin: 0.75rem 0 0;
+      font-size: 0.82rem;
+      color: var(--soft);
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <strong>STATIC MOCK</strong> of VPG10 cleanup (not live Next).
+    Canonical files live in <code>C:\Users\Ben Leak\github\Werkles</code> —
+    not the Desktop clone Cursor may have open.
+    Production still serves older VPG8 containment until push/deploy.
+  </div>
+
+  <div class="surface">
+    <header class="panel hero">
+      <p class="eyebrow">Werkles recommendations</p>
+      <h1>What should you do next?</h1>
+      <p class="intro">
+        Squibb ranks honest next steps from what you entered — not a promise that any path will work.
+      </p>
+      <p class="example">
+        Example only — this public beta will not connect it to this page yet.
+        <a href="#">Start concierge intake</a>
+      </p>
+      <p class="meta">
+        <span><strong>Need:</strong> Commercial kitchen equipment for a bakery build-out</span>
+        <span><strong>Based on:</strong> Autonomous Matching example</span>
+      </p>
+      <p class="note" role="note">
+        Start with the path that clears proof gates first; do not treat a high rules score as a green light.
+      </p>
+    </header>
+
+    <details class="panel source">
+      <summary>
+        <span class="eyebrow">Source for these ratings</span>
+        <strong>Owner note + oven equipment quote (example)</strong>
+        <span style="color:var(--label);font-size:0.85rem">Example fixture — open to inspect</span>
+      </summary>
+      <p style="color:var(--body)">Collapsed by default. Full document + lines that feed the selected option live here when opened.</p>
+    </details>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab active">Best next steps (3)</button>
+      <button type="button" class="tab">All options (12)</button>
+    </div>
+
+    <div class="layout">
+      <aside>
+        <button type="button" class="card selected">
+          <span class="rank">#1</span>
+          <span style="font-size:0.72rem;color:#c9b896;text-transform:uppercase">Path</span>
+          <h4>Prove equipment readiness before intros</h4>
+          <p>Gather vendor quotes and capacity proof first.</p>
+        </button>
+        <button type="button" class="card">
+          <span class="rank">#2</span>
+          <h4>Keep refining the original path</h4>
+          <p>Stay on the current plan while missing proof is filled in.</p>
+        </button>
+        <button type="button" class="card">
+          <span class="rank">#3</span>
+          <h4>Ask what proof is still missing</h4>
+          <p>Turn blockers into a short evidence checklist.</p>
+        </button>
+      </aside>
+
+      <article class="panel detail">
+        <header>
+          <p class="eyebrow">Selected</p>
+          <h2>Prove equipment readiness before intros</h2>
+          <p style="margin:0;color:var(--body)">Gather vendor quotes and capacity proof first.</p>
+        </header>
+
+        <div>
+          <div class="score-head">
+            <h3>Rules score</h3>
+            <span class="badge">Support band: Moderate rule support</span>
+            <span class="score-num">72 out of 100</span>
+          </div>
+          <div class="track"><div class="fill"></div></div>
+          <p class="why">
+            This rules score shows how strongly the current rules support this option based on what you entered.
+            It is not a probability of success, a measure of eligibility, or a predicted outcome.
+          </p>
+        </div>
+
+        <div class="gate">
+          <strong>Before anything moves</strong> — An authorized reviewer must approve before intros or money moves.
+          Review required.
+        </div>
+
+        <details class="collapse">
+          <summary>Reasoning</summary>
+          <p style="color:var(--body);margin:0">Collapsed by default in VPG10. Full “You said / Squibb reads it as / rationale” stays here.</p>
+        </details>
+
+        <details class="collapse">
+          <summary>Proof & evidence</summary>
+          <p style="color:var(--body);margin:0">Collapsed by default. Evidence rows open on demand.</p>
+        </details>
+
+        <footer>
+          <div class="buttons">
+            <button type="button" class="btn primary" disabled>Save this option</button>
+            <button type="button" class="btn" disabled>Keep original path</button>
+            <button type="button" class="btn" disabled>Ask what proof is needed</button>
+          </div>
+          <p class="closed">
+            Saving is unavailable during this beta. Nothing is sent to another person or organization from these controls.
+          </p>
+        </footer>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

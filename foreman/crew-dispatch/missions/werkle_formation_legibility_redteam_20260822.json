@@ -1,0 +1,54 @@
+{
+  "missionId": "WERKLE_FORMATION_LEGIBILITY_REDTEAM_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Red-team the rendered Werkle formation room for genuine human legibility and scanability after a too-shallow mechanical font-size repair.",
+  "sharedContext": [
+    "Ben approves the dark-purple direction and believes copper/orange fits it.",
+    "The prior pass raised several labels from 12.48px to 14px and explanatory small copy to 15px, but Ben reports that it barely corrected the real legibility problem.",
+    "The page is dense: hero, arrival explanation, formation readout, actor switch, twelve decision topics, shared floor, retained history, and local-device save disclosure.",
+    "Formation mechanics and member answers are protected. This is a visual reading/hierarchy review, not a state-model redesign.",
+    "The reviewer must judge the actual human scan path, not merely WCAG-like numeric thresholds."
+  ],
+  "liveStrings": [
+    "A match opened the door. It did not create a partnership.",
+    "Agreement is a state, not a vibe.",
+    "No score means compatible. These states only show what the two people have actually decided.",
+    "Your latest Intake · self-reported, not verified",
+    "Proposed joint wording · revision 1",
+    "Only mutual decisions enter this room.",
+    "This practice draft is not saved to your Werkles account and will not follow you to another browser or device."
+  ],
+  "knownGaps": [
+    "Compact labels now satisfy a 14px floor but may remain visually subordinate or tiring.",
+    "Warm paper cards sit inside dark-purple section containers, creating several competing contrast systems.",
+    "Source/provenance lines are important but repeated and visually dense.",
+    "The mobile route contains twelve substantial cards and could become an exhausting wall even without horizontal overflow.",
+    "No fresh actual cousin has reviewed the post-legibility rendered page."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the formation room readable at a glance and humane over a long decision session without flattening the approved dark-purple character.",
+      "pull": "Review hierarchy, contrast, type scale, spacing, density, repeated provenance, interaction cues, narrow-width scan path, and cognitive fatigue.",
+      "go": [
+        "Return GO, PATCH, or REJECT and rank the first five legibility failures by human harm.",
+        "Give exact visual remedies, not generic requests for more contrast.",
+        "Separate information that must remain visible from information that can move behind progressive disclosure without harming trust.",
+        "Define one coherent desktop hierarchy and one mobile hierarchy for the first decision card."
+      ],
+      "momentum": "Name the smallest patch that would make Ben immediately feel this was more than a token font-size correction.",
+      "outOfLane": "No implementation, new task, subagent, schema, provider call, push, deploy, secrets, spend, or formation-state redesign."
+    },
+    "BEAN": {
+      "vision": "Make sure a legibility cleanup does not hide who said what, whether wording is mutual, or the synthetic/local-only boundary.",
+      "pull": "Attack any progressive-disclosure or visual simplification proposal for trust laundering.",
+      "go": [
+        "Return only P0/P1 trust findings that affect the visual patch.",
+        "Name which provenance and consent signals must remain continuously visible.",
+        "Reject visual noise that looks like legal safety but does not help a member understand the current state."
+      ],
+      "momentum": "Supply one plain-language trust hierarchy for a single topic card.",
+      "outOfLane": "No broad product redesign, implementation, provider work, schema, push, deploy, secrets, or spend."
+    }
+  }
+}

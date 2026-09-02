@@ -87,7 +87,7 @@ export interface SquibbRecommendationSession {
 }
 
 export type SquibbRecommendationSessionSource = {
-  mode: "demo" | "latest_intake";
+  mode: "demo" | "browser_intake" | "latest_intake";
   label: string;
   detail: string;
   intakeId?: string;
@@ -271,9 +271,9 @@ const rankedDeck: SquibbRecommendation[] = [
     title: "Find Equipment First",
     headline: "The oven quote is the nearer bottleneck — not the partner.",
     squibbNote:
-      "Squibb: You said partner and investor. The priced asset is already on the table. Partners show up faster when the machine is real.",
+      "You mentioned a partner or investor. A priced asset is already on the table, and a concrete need makes a useful conversation easier.",
     reasoning: {
-      statedNeed: DEMO_STATED_NEED,
+      statedNeed: "No personal Intake is connected to this catalog option.",
       translatedNeed: "Validate equipment cost and seller before raising or partnering.",
       rationale: [
         "A specific oven quote exists — capital ask can be sized to a number.",
@@ -312,7 +312,7 @@ const rankedDeck: SquibbRecommendation[] = [
     title: "Find Credit Union",
     headline: "Member-owned lending may fit equipment better than equity.",
     squibbNote:
-      "Squibb: Credit unions often underwrite equipment when the story is boring and documented. Less theater than a 'strategic partner.'",
+      "Credit unions may finance equipment when the need and repayment plan are documented. That can be more direct than seeking a strategic partner.",
     reasoning: {
       statedNeed: DEMO_STATED_NEED,
       translatedNeed: "Equipment-backed member lending before equity partner search.",
@@ -341,7 +341,7 @@ const rankedDeck: SquibbRecommendation[] = [
     title: "Get Training",
     headline: "Commercial baking ops training reduces expensive partner dependency.",
     squibbNote:
-      "Squibb: Sometimes the missing 'partner' is a week of operator training, not a co-founder.",
+      "Sometimes the missing help is a week of practical training, not a co-founder.",
     reasoning: {
       statedNeed: DEMO_STATED_NEED,
       translatedNeed: "Close skill gap before sharing equity for operational coverage.",
@@ -375,13 +375,13 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
   return [
     makeRecommendation("translate_need", 1, {
       id: "rec-translate-need",
-      title: "Translate the Bottleneck",
+      title: "Name the Real Blocker",
       headline: "Turn the intake into one plain next-move hypothesis before chasing people or money.",
       squibbNote:
-        "Squibb: The stated ask is source material, not the verdict. Translate it before anyone starts shopping for a solution.",
+        "Treat the first request as source material, not a verdict. Translate the need before shopping for a solution.",
       reasoning: {
         statedNeed,
-        translatedNeed: "Human-readable bottleneck statement from the latest intake.",
+        translatedNeed: "a clear statement of what is actually blocking the next move",
         rationale: [
           "The Intake begins with the member's own words, so Werkles should explain its read before suggesting a person or an expensive move.",
           "A translated bottleneck gives reviewers something concrete to critique.",
@@ -406,7 +406,7 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
       title: "Name the Proof Gap",
       headline: "List the one or two facts that would make the next move safer.",
       squibbNote:
-        "Squibb: Before asking who can help, ask what proof would change the decision.",
+        "Before asking who can help, decide what evidence would change the decision.",
       reasoning: {
         statedNeed,
         translatedNeed: "A proof request that can be answered before dispatch.",
@@ -431,7 +431,7 @@ export function buildLiveIntakeRankedDeck(statedNeed: string, symptomBlock?: str
       title: "Stage One Guarded Candidate",
       headline: "Create a candidate packet only after translation and proof gap are visible.",
       squibbNote:
-        "Squibb: A candidate is not an intro. It is a thing a human can approve, reject, or sharpen.",
+        "A possible match is not an introduction yet. You can approve it, reject it, or sharpen what you need first.",
       reasoning: {
         statedNeed,
         translatedNeed: "A guarded candidate packet for a person, lender, space, tool, or training path.",
@@ -478,7 +478,7 @@ const catalogDeck: SquibbRecommendation[] = (
       why: "This option is not grounded in your intake yet."
     },
     evidence: [
-      { id: `${kind}-ev-1`, label: "Your stated need on file", strength: "self_reported" },
+      { id: `${kind}-ev-1`, label: "Your Intake connection", strength: "missing" },
       { id: `${kind}-ev-2`, label: "Verification step", strength: "missing" },
       { id: `${kind}-ev-3`, label: "Third-party proof", strength: "missing" }
     ],

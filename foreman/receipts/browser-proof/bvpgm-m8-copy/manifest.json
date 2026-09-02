@@ -1,0 +1,125 @@
+{
+  "generatedAt": "2026-08-31T06:03:55.251Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "status": "PASS",
+  "checks": 6,
+  "passed": 6,
+  "failed": 0,
+  "failures": [],
+  "results": [
+    {
+      "viewport": "desktop",
+      "name": "intake",
+      "route": "/bellows/intake",
+      "required": [
+        "Continue where you left off",
+        "Your last Intake is still here.",
+        "Continue with my last Intake"
+      ],
+      "forbidden": [
+        "Betsy walkthrough",
+        "last local Intake",
+        "local walkthrough storage",
+        "Saved on Betsy only"
+      ],
+      "colorCheck": {
+        "selector": ".concierge-intake-page__recovery > p:not(.eyebrow)",
+        "expected": "rgb(244, 226, 177)"
+      },
+      "status": "PASS",
+      "failures": [],
+      "runtimeErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m8-copy/desktop-intake.png"
+    },
+    {
+      "viewport": "desktop",
+      "name": "login",
+      "route": "/login",
+      "required": [
+        "Pick up where you left off.",
+        "practice member work saved in this browser"
+      ],
+      "forbidden": [
+        "local server",
+        "local test-member work on Betsy"
+      ],
+      "status": "PASS",
+      "failures": [],
+      "runtimeErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m8-copy/desktop-login.png"
+    },
+    {
+      "viewport": "desktop",
+      "name": "evidence-brief",
+      "route": "/bellows/library/proof-before-reliance",
+      "required": [
+        "Build an Evidence Brief.",
+        "Next check or outside review"
+      ],
+      "forbidden": [
+        "Next bounded check or Human Gate"
+      ],
+      "status": "PASS",
+      "failures": [],
+      "runtimeErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m8-copy/desktop-evidence-brief.png"
+    },
+    {
+      "viewport": "mobile",
+      "name": "intake",
+      "route": "/bellows/intake",
+      "required": [
+        "Continue where you left off",
+        "Your last Intake is still here.",
+        "Continue with my last Intake"
+      ],
+      "forbidden": [
+        "Betsy walkthrough",
+        "last local Intake",
+        "local walkthrough storage",
+        "Saved on Betsy only"
+      ],
+      "colorCheck": {
+        "selector": ".concierge-intake-page__recovery > p:not(.eyebrow)",
+        "expected": "rgb(244, 226, 177)"
+      },
+      "status": "PASS",
+      "failures": [],
+      "runtimeErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m8-copy/mobile-intake.png"
+    },
+    {
+      "viewport": "mobile",
+      "name": "login",
+      "route": "/login",
+      "required": [
+        "Pick up where you left off.",
+        "practice member work saved in this browser"
+      ],
+      "forbidden": [
+        "local server",
+        "local test-member work on Betsy"
+      ],
+      "status": "PASS",
+      "failures": [],
+      "runtimeErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m8-copy/mobile-login.png"
+    },
+    {
+      "viewport": "mobile",
+      "name": "evidence-brief",
+      "route": "/bellows/library/proof-before-reliance",
+      "required": [
+        "Build an Evidence Brief.",
+        "Next check or outside review"
+      ],
+      "forbidden": [
+        "Next bounded check or Human Gate"
+      ],
+      "status": "PASS",
+      "failures": [],
+      "runtimeErrors": [],
+      "screenshot": "foreman/receipts/browser-proof/bvpgm-m8-copy/mobile-evidence-brief.png"
+    }
+  ]
+}

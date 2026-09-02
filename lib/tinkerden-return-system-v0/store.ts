@@ -13,6 +13,13 @@ import type {
   TinkerDenReceipt,
   TinkerDenState
 } from "./types";
+import { HARVEY_NERDKLE_PACKET_SCHEMA, type OrganismPacket } from "../organism/contracts/packet";
+import { HARVEY_NERDKLE_RECEIPT_SCHEMA, type OrganismReceipt } from "../organism/contracts/receipt";
+import {
+  writeOrganismPacketRecord,
+  writeOrganismReceiptRecord,
+  type OrganismWriteResult
+} from "../organism/contracts/storage";
 import { writeCanonicalExecutionRecord, type CanonicalExecutionRecord } from "../tinkerden/execution-records";
 
 const ROOT = process.cwd();
@@ -103,6 +110,20 @@ type BridgeExecutePacketInput = {
 
 type BridgePacketRelayPacketInput = BridgeExecutePacketInput;
 
+type ContractWritePointer = {
+  ok: boolean;
+  artifact_path: string;
+  event_path: string;
+  sha256?: string;
+  code?: "SCHEMA_INVALID";
+  issues?: Array<{ path: string; message: string }>;
+};
+
+type OrganismContractMirror = {
+  packet: ContractWritePointer;
+  receipt: ContractWritePointer;
+};
+
 export type PacketRelayWorkspaceTarget = {
   id: string;
   label: string;
@@ -145,6 +166,368 @@ function event(packetId: string, name: string, details?: string): TinkerDenEvent
 
 function sha256(contents: string): string {
   return crypto.createHash("sha256").update(contents).digest("hex");
+}
+
+function sourcePath(fullPath: string): string {
+  return path.relative(ROOT, fullPath).replace(/\\/g, "/");
+}
+
+function expiresOneDayAfter(timestamp: string): string {
+  const parsed = Date.parse(timestamp);
+  const base = Number.isFinite(parsed) ? parsed : Date.now();
+  return new Date(base + 24 * 60 * 60 * 1000).toISOString();
+}
+
+function summarizeContractWrite(result: OrganismWriteResult<OrganismPacket> | OrganismWriteResult<OrganismReceipt>): ContractWritePointer {
+  if (result.ok) {
+    return {
+      ok: true,
+      artifact_path: result.path,
+      event_path: result.event_path,
+      sha256: result.sha256
+    };
+  }
+
+  return {
+    ok: false,
+    artifact_path: result.receipt_path,
+    event_path: result.event_path,
+    code: result.code,
+    issues: result.issues
+  };
+}
+
+function organismRelayPacketFor(params: {
+  packet: TinkerDenPacket;
+  receiptId: string;
+  input: BridgePacketRelayPacketInput;
+  packetPath: string;
+  packetContents: string;
+}): OrganismPacket {
+  const packetRelPath = sourcePath(params.packetPath);
+  const packetHash = sha256(params.packetContents);
+
+  return {
+    schema: HARVEY_NERDKLE_PACKET_SCHEMA,
+    packet_id: params.packet.packet_id,
+    created_at: params.packet.created_at,
+    from: "TinkerDen@Betsy",
+    to: `${params.packet.assigned_to}@${params.packet.machine}`,
+    lane: "TinkerDen packet relay",
+    operator_intent: params.input.move,
+    source_paths: [packetRelPath],
+    source_hashes: {
+      [packetRelPath]: packetHash
+    },
+    cwd: ROOT,
+    requested_action: params.packet.why,
+    allowed_actions: ["read", "write", "dispatch_packet", "readback"],
+    forbidden_actions: [
+      "account_automation",
+      "unauthorized_auto_send",
+      "browser_credential_control",
+      "fake_delivery",
+      "production_mutation"
+    ],
+    stop_conditions: [
+      "source_missing",
+      "gate_required",
+      "breach_risk",
+      "receiver_receipt_missing",
+      "clipboard_or_workspace_focus_failed"
+    ],
+    acceptance_criteria: [
+      "Legacy TinkerDen packet artifact is written.",
+      "Canonical organism packet mirror validates and writes.",
+      "Canonical organism receipt mirror validates and writes.",
+      "Packet relay receipt remains visible in the TinkerDen receipt stream.",
+      "No auto-send is performed."
+    ],
+    receipt_required: true,
+    receipt_destination: `data/organism/contracts/receipts/${params.receiptId}.json`,
+    idempotency_key: `tinkerden-packet-relay:${params.packet.packet_id}:${params.receiptId}`,
+    expires_at: expiresOneDayAfter(params.packet.created_at)
+  };
+}
+
+function organismRelayReceiptFor(params: {
+  packet: TinkerDenPacket;
+  receipt: TinkerDenReceipt;
+  relayId: string;
+  packetPath: string;
+  packetContents: string;
+  receiptPath: string;
+  pickupPath: string;
+  relayEvent: Record<string, unknown>;
+}): OrganismReceipt {
+  const packetRelPath = sourcePath(params.packetPath);
+  const packetHash = sha256(params.packetContents);
+
+  return {
+    schema: HARVEY_NERDKLE_RECEIPT_SCHEMA,
+    receipt_id: params.receipt.receipt_id,
+    packet_id: params.packet.packet_id,
+    created_at: params.receipt.timestamp,
+    receiver: params.receipt.returned_by,
+    status: "completed",
+    what_was_attempted: "Create a TinkerDen Packet Relay ready packet, persist the relay receipt, and mirror both into the canonical organism contract store.",
+    what_changed: [
+      packetRelPath,
+      params.receiptPath,
+      params.pickupPath,
+      "foreman/soledash/tinkerden-return-system-v0/state.json",
+      "data/organism/events.jsonl",
+      `data/organism/contracts/packets/${params.packet.packet_id}.json`,
+      `data/organism/contracts/receipts/${params.receipt.receipt_id}.json`,
+      "data/organism/contracts/events.jsonl"
+    ],
+    what_did_not_change: [
+      "Receiver-side Aeye completion proof was not claimed by this relay receipt.",
+      "No auto-send.",
+      "No account automation.",
+      "No browser credential control.",
+      "No deploy.",
+      "No push."
+    ],
+    proof: [
+      {
+        kind: "artifact_path",
+        value: params.receiptPath
+      },
+      {
+        kind: "artifact_path",
+        value: packetRelPath
+      },
+      {
+        kind: "hash",
+        value: `${packetRelPath} sha256 ${packetHash}`
+      },
+      {
+        kind: "readback",
+        value: `relay_id=${params.relayId}; event_type=${String(params.relayEvent.event_type ?? "UNKNOWN")}; receipt_id=${params.receipt.receipt_id}`
+      }
+    ],
+    blocked_reason: null,
+    next_safe_action: "Wait for downstream receiver proof before claiming Aeye work completion; keep this relay receipt as custody proof only.",
+    source_hashes_used: {
+      [packetRelPath]: packetHash
+    }
+  };
+}
+
+async function writePacketRelayContractMirror(params: {
+  packet: TinkerDenPacket;
+  receipt: TinkerDenReceipt;
+  relayId: string;
+  input: BridgePacketRelayPacketInput;
+  packetPath: string;
+  packetContents: string;
+  receiptPath: string;
+  pickupPath: string;
+  relayEvent: Record<string, unknown>;
+}): Promise<OrganismContractMirror> {
+  const packetWrite = await writeOrganismPacketRecord(
+    organismRelayPacketFor({
+      packet: params.packet,
+      receiptId: params.receipt.receipt_id,
+      input: params.input,
+      packetPath: params.packetPath,
+      packetContents: params.packetContents
+    }),
+    { detected_by: "TinkerDenPacketRelay@Betsy" }
+  );
+
+  if (!packetWrite.ok) {
+    throw new Error(`ORGANISM_CONTRACT_PACKET_BLOCKED:${JSON.stringify(packetWrite.issues)}`);
+  }
+
+  const receiptWrite = await writeOrganismReceiptRecord(
+    organismRelayReceiptFor({
+      packet: params.packet,
+      receipt: params.receipt,
+      relayId: params.relayId,
+      packetPath: params.packetPath,
+      packetContents: params.packetContents,
+      receiptPath: params.receiptPath,
+      pickupPath: params.pickupPath,
+      relayEvent: params.relayEvent
+    }),
+    { detected_by: "TinkerDenPacketRelay@Betsy" }
+  );
+
+  if (!receiptWrite.ok) {
+    throw new Error(`ORGANISM_CONTRACT_RECEIPT_BLOCKED:${JSON.stringify(receiptWrite.issues)}`);
+  }
+
+  return {
+    packet: summarizeContractWrite(packetWrite),
+    receipt: summarizeContractWrite(receiptWrite)
+  };
+}
+
+function organismBridgeExecutePacketFor(params: {
+  packet: TinkerDenPacket;
+  receiptId: string;
+  input: BridgeExecutePacketInput;
+  packetPath: string;
+  packetContents: string;
+}): OrganismPacket {
+  const packetRelPath = sourcePath(params.packetPath);
+  const packetHash = sha256(params.packetContents);
+
+  return {
+    schema: HARVEY_NERDKLE_PACKET_SCHEMA,
+    packet_id: params.packet.packet_id,
+    created_at: params.packet.created_at,
+    from: "TinkerDen@Betsy",
+    to: `${params.packet.assigned_to}@${params.packet.machine}`,
+    lane: "TinkerDen bridge execute",
+    operator_intent: params.input.move,
+    source_paths: [packetRelPath],
+    source_hashes: {
+      [packetRelPath]: packetHash
+    },
+    cwd: ROOT,
+    requested_action: params.packet.why,
+    allowed_actions: ["read", "write", "dispatch_packet", "readback"],
+    forbidden_actions: [
+      "fake_delivery",
+      "claim_downstream_completion_without_receiver_receipt",
+      "account_automation",
+      "browser_credential_control",
+      "production_mutation"
+    ],
+    stop_conditions: [
+      "source_missing",
+      "gate_required",
+      "breach_risk",
+      "receiver_receipt_missing",
+      "contract_schema_invalid"
+    ],
+    acceptance_criteria: [
+      "Legacy TinkerDen bridge execute packet artifact is written.",
+      "Legacy TinkerDen dispatch receipt is written.",
+      "Canonical organism packet mirror validates and writes.",
+      "Canonical organism receipt mirror validates and writes.",
+      "Dispatch receipt does not claim downstream Aeye completion."
+    ],
+    receipt_required: true,
+    receipt_destination: `data/organism/contracts/receipts/${params.receiptId}.json`,
+    idempotency_key: `tinkerden-bridge-execute:${params.packet.packet_id}:${params.receiptId}`,
+    expires_at: expiresOneDayAfter(params.packet.created_at)
+  };
+}
+
+function organismBridgeExecuteReceiptFor(params: {
+  packet: TinkerDenPacket;
+  receipt: TinkerDenReceipt;
+  packetPath: string;
+  packetContents: string;
+  receiptPath: string;
+  pickupPath: string;
+  relayEvent: Record<string, unknown>;
+}): OrganismReceipt {
+  const packetRelPath = sourcePath(params.packetPath);
+  const packetHash = sha256(params.packetContents);
+
+  return {
+    schema: HARVEY_NERDKLE_RECEIPT_SCHEMA,
+    receipt_id: params.receipt.receipt_id,
+    packet_id: params.packet.packet_id,
+    created_at: params.receipt.timestamp,
+    receiver: params.receipt.returned_by,
+    status: "partial",
+    what_was_attempted: "Create a TinkerDen bridge execute dispatch packet, persist the dispatch receipt, and mirror both into the canonical organism contract store.",
+    what_changed: [
+      packetRelPath,
+      params.receiptPath,
+      params.pickupPath,
+      "foreman/soledash/tinkerden-return-system-v0/state.json",
+      "data/organism/events.jsonl",
+      `data/organism/contracts/packets/${params.packet.packet_id}.json`,
+      `data/organism/contracts/receipts/${params.receipt.receipt_id}.json`,
+      "data/organism/contracts/events.jsonl"
+    ],
+    what_did_not_change: [
+      "Receiver-side Aeye completion proof was not claimed by this dispatch receipt.",
+      "Downstream work remains awaiting receiver proof.",
+      "No account automation.",
+      "No browser credential control.",
+      "No deploy.",
+      "No push."
+    ],
+    proof: [
+      {
+        kind: "artifact_path",
+        value: params.receiptPath
+      },
+      {
+        kind: "artifact_path",
+        value: packetRelPath
+      },
+      {
+        kind: "hash",
+        value: `${packetRelPath} sha256 ${packetHash}`
+      },
+      {
+        kind: "readback",
+        value: `event_type=${String(params.relayEvent.event_type ?? "UNKNOWN")}; receipt_id=${params.receipt.receipt_id}; downstream_receiver_proof=required`
+      }
+    ],
+    blocked_reason: null,
+    next_safe_action: "Keep the packet visible until downstream receiver proof lands; do not upgrade this dispatch receipt to completion proof.",
+    source_hashes_used: {
+      [packetRelPath]: packetHash
+    }
+  };
+}
+
+async function writeBridgeExecuteContractMirror(params: {
+  packet: TinkerDenPacket;
+  receipt: TinkerDenReceipt;
+  input: BridgeExecutePacketInput;
+  packetPath: string;
+  packetContents: string;
+  receiptPath: string;
+  pickupPath: string;
+  relayEvent: Record<string, unknown>;
+}): Promise<OrganismContractMirror> {
+  const packetWrite = await writeOrganismPacketRecord(
+    organismBridgeExecutePacketFor({
+      packet: params.packet,
+      receiptId: params.receipt.receipt_id,
+      input: params.input,
+      packetPath: params.packetPath,
+      packetContents: params.packetContents
+    }),
+    { detected_by: "TinkerDenBridgeExecute@Betsy" }
+  );
+
+  if (!packetWrite.ok) {
+    throw new Error(`ORGANISM_CONTRACT_PACKET_BLOCKED:${JSON.stringify(packetWrite.issues)}`);
+  }
+
+  const receiptWrite = await writeOrganismReceiptRecord(
+    organismBridgeExecuteReceiptFor({
+      packet: params.packet,
+      receipt: params.receipt,
+      packetPath: params.packetPath,
+      packetContents: params.packetContents,
+      receiptPath: params.receiptPath,
+      pickupPath: params.pickupPath,
+      relayEvent: params.relayEvent
+    }),
+    { detected_by: "TinkerDenBridgeExecute@Betsy" }
+  );
+
+  if (!receiptWrite.ok) {
+    throw new Error(`ORGANISM_CONTRACT_RECEIPT_BLOCKED:${JSON.stringify(receiptWrite.issues)}`);
+  }
+
+  return {
+    packet: summarizeContractWrite(packetWrite),
+    receipt: summarizeContractWrite(receiptWrite)
+  };
 }
 
 async function appendOrganismRelayEvent(params: {
@@ -604,6 +987,7 @@ export async function createBridgeExecutePacket(input: BridgeExecutePacketInput)
   dispatch_state_path: string;
   event_path: string;
   relay_event: Record<string, unknown>;
+  contract_write: OrganismContractMirror;
   state: TinkerDenState;
 }> {
   const timestamp = nowIso();
@@ -672,6 +1056,16 @@ export async function createBridgeExecutePacket(input: BridgeExecutePacketInput)
     receipt,
     relayEvent
   });
+  const contractWrite = await writeBridgeExecuteContractMirror({
+    packet,
+    receipt,
+    input,
+    packetPath,
+    packetContents,
+    receiptPath: receiptPaths.receipt_path,
+    pickupPath: receiptPaths.pickup_path,
+    relayEvent
+  });
   const packetRelPath = path.relative(ROOT, packetPath).replace(/\\/g, "/");
   const execution: CanonicalExecutionRecord = {
     packet_id: packet.packet_id,
@@ -714,6 +1108,7 @@ export async function createBridgeExecutePacket(input: BridgeExecutePacketInput)
     dispatch_state_path: path.relative(ROOT, STORE_PATH).replace(/\\/g, "/"),
     event_path: path.relative(ROOT, ORGANISM_EVENTS_PATH).replace(/\\/g, "/"),
     relay_event: relayEvent,
+    contract_write: contractWrite,
     state: receiptLinkedState,
   };
 }
@@ -731,6 +1126,7 @@ export async function createBridgePacketRelayReadyPacket(input: BridgePacketRela
   event_path: string;
   relay_event: Record<string, unknown>;
   workspace_target: PacketRelayWorkspaceTarget;
+  contract_write: OrganismContractMirror;
   packet_relay_text: string;
   state: TinkerDenState;
 }> {
@@ -822,6 +1218,17 @@ export async function createBridgePacketRelayReadyPacket(input: BridgePacketRela
     receipt,
     relayEvent
   });
+  const contractWrite = await writePacketRelayContractMirror({
+    packet,
+    receipt,
+    relayId,
+    input,
+    packetPath,
+    packetContents,
+    receiptPath: receiptPaths.receipt_path,
+    pickupPath: receiptPaths.pickup_path,
+    relayEvent
+  });
   const packetRelPath = path.relative(ROOT, packetPath).replace(/\\/g, "/");
   const execution: CanonicalExecutionRecord = {
     packet_id: packet.packet_id,
@@ -872,6 +1279,7 @@ export async function createBridgePacketRelayReadyPacket(input: BridgePacketRela
     event_path: path.relative(ROOT, ORGANISM_EVENTS_PATH).replace(/\\/g, "/"),
     relay_event: relayEvent,
     workspace_target: workspaceTarget,
+    contract_write: contractWrite,
     packet_relay_text: packetRelayText,
     state: relayReceiptState,
   };

@@ -27,7 +27,7 @@ export default function TermsPage() {
 
         <section style={sectionStyle}>
           <h2>What Werkles is</h2>
-          {/* No-ceiling rule (Ben, 2026-07-31): no "small business" framing
+          {/* No-ceiling rule (Operator, 2026-07-31): no "small business" framing
              anywhere — anything can be conceived and built here. */}
           <p>
             Werkles is decision support for people building businesses of any size and any ambition: help naming

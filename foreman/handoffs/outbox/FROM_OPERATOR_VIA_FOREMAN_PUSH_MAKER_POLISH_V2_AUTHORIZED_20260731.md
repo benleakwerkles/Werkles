@@ -1,5 +1,12 @@
 # OPERATOR AUTHORIZATION — PUSH MAKER POLISH V2 — relayed by foreman
 
+> **EXECUTED 2026-07-31 ~01:20 ET by the foreman under Operator authority.**
+> Heimerdinker: do NOT re-run this push. Commit `97ca2f7` pushed to
+> `origin/maker/site-g-20260703`; deployment
+> `dpl_GZFsTqBD9siW2J8oD4MqoPrviFhA` promoted to werkles.com; production
+> verified (new icons + honest-answers live). Receipt:
+> `foreman/receipts/WERKLES_LADY_JESSICA_POLISH_V2_PRODUCTION_DEPLOY_20260731.md`.
+
 To: Heimerdinker (executor)
 From: Ben (Operator), relayed verbatim by Lady Jessica (Cursor @ Sally), Werkles.com Foreman
 Date: 2026-07-31 ~00:45 ET

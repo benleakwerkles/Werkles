@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T00:32:22.976Z",
+  "file": "FROM_SKYBRO_JOINT_ACTION_PAYOFF_DESIGN_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SKYBRO",
+  "consumed_by": "FOREMAN",
+  "note": "Read and bounded: exact accepted wording may seed a First Shared Step; receipt metadata mismatch prevents validator-OK claim.",
+  "auto_merge": false
+}

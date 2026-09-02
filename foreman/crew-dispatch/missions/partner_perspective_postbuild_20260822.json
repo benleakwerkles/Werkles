@@ -1,0 +1,56 @@
+{
+  "missionId": "PARTNER_PERSPECTIVE_POSTBUILD_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build attack of the local six-question partner-perspective exercise after reconciling Bean's REJECT with Computer's conditional GO.",
+  "sharedContext": [
+    "The original Review as the other member wording was removed. The tester-only control now says Enter [name]'s generated practice answer and says that a real member controls only their own answers.",
+    "A separate exercise asks for Your answer and Your private prediction, then compares both only with a visibly generated synthetic practice answer.",
+    "Six questions cover weekly time, bounded personal-cash ranges, first pay, decision authority, first-year profit use, and early exit.",
+    "The only result labels are Same answer, Nearby answers, Different answers, One answer needs more context, or Comparison opens after both answers are recorded.",
+    "There is no aggregate compatibility result. A 0/6-style number is explicitly labeled exercise completion, not relationship quality.",
+    "Predictions and optional notes use sessionStorage, never localStorage; the surface says they stay in the tab and provides Clear my private exercise.",
+    "Synthetic answers always say generated/not provided by a real person. Predictions never write into the Formation Ledger or shared Werkle.",
+    "Focused TypeScript, contract, browser interaction, reload-custody, clean-console, desktop/mobile overflow, and exact 320px dark-text checks pass."
+  ],
+  "liveStrings": [
+    "How well do you understand what the other person expects?",
+    "Your private prediction",
+    "Practice mode: the partner's answers are generated—not provided by a real person.",
+    "Completed questions—not a relationship score.",
+    "This exercise stays in this browser tab and clears when the tab closes.",
+    "Clear my private exercise"
+  ],
+  "knownGaps": [
+    "The local practice comparison intentionally uses synthetic answers; a real-member comparison and topic-specific sharing consent are not implemented or claimed.",
+    "There is no server persistence, account sync, shared Expectations Ledger, or 30-Day Re-Ask in this slice.",
+    "The progress number reports completion only and could still be misread if its label is visually weak.",
+    "Ender's established desktop task remained unreachable; no Ender review is claimed."
+  ],
+  "cousins": {
+    "BEAN": {
+      "vision": "Decide whether the implementation actually cures impersonation, consent, inference, and category-laundering defects from the pre-build REJECT.",
+      "pull": "Attack exact labels, session custody, clear behavior, synthetic attribution, progress semantics, comparison leakage, and any path from prediction to shared Werkle.",
+      "go": [
+        "Return only PASS or BLOCK.",
+        "Map each original P0 to the implemented repair and name any surviving P0/P1 blocker.",
+        "Attack the completion counter and neutral per-question labels for concealed scoring.",
+        "Confirm whether a synthetic-only comparison is safe while real-member comparison remains absent."
+      ],
+      "momentum": "Return one hostile browser-state regression that should become a test if materially necessary.",
+      "outOfLane": "No implementation, product expansion, provider call, schema, push, deploy, secrets, spend, or new agents."
+    },
+    "COMPUTER": {
+      "vision": "Decide whether the six-question local slice preserves the reviewed product value while obeying the two doctrine locks.",
+      "pull": "Attack question usefulness, answer precision, prompts, no-score semantics, and separation from Formation Ledger authority.",
+      "go": [
+        "Return only PASS or BLOCK.",
+        "Map the implementation to Lock 1 private attribution and Lock 2 no aggregate score.",
+        "Name any question or prompt that should block Ben's next walk because it is shallow, coercive, or pseudo-professional advice.",
+        "Give one narrow walkthrough sequence that proves the feature has product value."
+      ],
+      "momentum": "Name one small polish only if it is materially better than stopping.",
+      "outOfLane": "No implementation, visual claim, live research, provider call, schema, push, deploy, secrets, spend, or new doctrine."
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_NERDKLE_MIRROR_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T04:46:50.7550052-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_NERDKLE_MIRROR_UPDATE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "what_changed": [
+    "Added the Nerdkle organism contract mirror helper to the packet set.",
+    "Added the Nerdkle organism receipt mirror smoke command and proof section.",
+    "Updated receiver-proof coverage language from legacy-only Nerdkle to organism-receipt-mirrored Nerdkle.",
+    "Added the Nerdkle mirror receipt rows to the receipt table."
+  ],
+  "validation": {
+    "index_lists_nerdkle_mirror_helper": true,
+    "index_lists_nerdkle_mirror_smoke": true,
+    "index_lists_nerdkle_mirror_smoke_command": true,
+    "index_preserves_universal_receiver_proof_not_claimed": true,
+    "index_lists_nerdkle_mirror_receipt": true,
+    "receiver_proof_audit_updated_after_nerdkle_mirror": true
+  },
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "6dde99e7e5347c7f6db0b5a6b43a129cd16e116b015aa276f5b31c45c16082f8",
+      "bytes": 17841
+    },
+    {
+      "path": "lib/nerdkle/organism-contract-mirror.ts",
+      "sha256": "a8080c4d526c56726e87456b3cae30bb262bbbf057a32f059a4aec95fd5d817f",
+      "bytes": 9509
+    },
+    {
+      "path": "scripts/foreman/nerdkle-organism-receipt-mirror-smoke.mjs",
+      "sha256": "e3521929ebb0bf0ead8b468e86181bc9054e8f0299e24c879802a848f2fb9cc2",
+      "bytes": 10716
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0_RECEIPT_20260706.json",
+      "sha256": "92c16c1c8dd0a8a5fd15341bfafa6154070334efa92a29acd8115643da3fae0c",
+      "bytes": 3623
+    },
+    {
+      "path": "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706.json",
+      "sha256": "7a4d5bcc665249c0b8e14e1c56912d3f33ba81a5d632ef1c5e129ca943012fb8",
+      "bytes": 17303
+    }
+  ],
+  "truth_boundary": "Nerdkle now mirrors legacy object-loop receipts into canonical organism packet/receipt/event records. This does not claim universal receiver proof or external delivery.",
+  "stop_conditions_respected": [
+    "no external send",
+    "no Mack receipt claim",
+    "no universal receiver proof claim",
+    "no deploy",
+    "no push"
+  ]
+}

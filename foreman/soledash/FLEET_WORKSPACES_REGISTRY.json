@@ -1,0 +1,96 @@
+{
+  "schema": "fleet_workspaces_registry_v1",
+  "updated_at": "2026-07-18T20:00:00.000Z",
+  "doctrine": "foreman/POWERTOYS_FLEET_WORKSPACES_v1.md",
+  "launcher": "%LOCALAPPDATA%\\PowerToys\\PowerToys.WorkspacesLauncher.exe",
+  "workspaces_file": "%LOCALAPPDATA%\\Microsoft\\PowerToys\\Workspaces\\workspaces.json",
+  "packs": {
+    "betsy_hub": {
+      "machine": "Betsy",
+      "label": "Betsy Forge Hub",
+      "powertoys_name": "Betsy Forge Hub",
+      "role": "primary_forge_hub",
+      "status": "ready",
+      "workspace_id": "{23606CAF-A5C1-43C0-AD4A-6BF460DCED44}",
+      "includes_rustdesk": true,
+      "recipe_apps": [
+        "Cursor",
+        "RustDesk",
+        "Google Chrome",
+        "Claude",
+        "Perplexity",
+        "File Explorer"
+      ],
+      "notes": "Renamed from PowerToys default 'Workspace 1'. Hub pack — RD peers open from here."
+    },
+    "betsy_autopaste": {
+      "machine": "Betsy",
+      "label": "Betsy Autopaste",
+      "powertoys_name": "Betsy Autopaste Workspace",
+      "role": "autopaste_lane",
+      "status": "ready",
+      "workspace_id": "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+      "includes_rustdesk": true,
+      "self_heal_workspace_id": "{C55AFEAC-4DED-4293-B3C1-241B333598DA}",
+      "recipe_apps": [
+        "Cursor",
+        "Codex",
+        "RustDesk",
+        "Claude",
+        "Perplexity",
+        "Google Chrome",
+        "File Explorer"
+      ],
+      "notes": "Existing autopaste / TinkerPit target. Self-heal variant id stored for scripts."
+    },
+    "spanzee_forge": {
+      "machine": "Spanzee",
+      "label": "Spanzee Forge",
+      "powertoys_name": "Spanzee Forge",
+      "role": "remote_forge",
+      "status": "capture_pending",
+      "workspace_id": null,
+      "includes_rustdesk": false,
+      "recipe_apps": [
+        "Cursor",
+        "Google Chrome",
+        "File Explorer",
+        "Claude",
+        "Perplexity"
+      ],
+      "notes": "Capture on Spanzee after RD land. Return id via capture script."
+    },
+    "medullina_aux": {
+      "machine": "Medullina",
+      "label": "Medullina Aux",
+      "powertoys_name": "Medullina Aux",
+      "role": "auxiliary_forge",
+      "status": "capture_pending",
+      "workspace_id": null,
+      "includes_rustdesk": false,
+      "recipe_apps": [
+        "Cursor",
+        "Google Chrome",
+        "File Explorer"
+      ],
+      "notes": "Capture on Medullina after RD land + consent. Keep lighter than Betsy hub."
+    },
+    "sally_mirror": {
+      "machine": "Sally",
+      "label": "Sally Mirror",
+      "powertoys_name": "Sally Mirror",
+      "role": "mirror_forge",
+      "status": "capture_pending",
+      "workspace_id": null,
+      "includes_rustdesk": false,
+      "recipe_apps": [
+        "Cursor",
+        "Google Chrome",
+        "File Explorer",
+        "Claude",
+        "Perplexity"
+      ],
+      "notes": "Capture on Sally (DESKTOP-SJSJMNK). Prefer C:\\Users\\benle\\Desktop\\github\\Werkles or Operator-named surface."
+    }
+  }
+}

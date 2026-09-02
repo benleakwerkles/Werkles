@@ -1,0 +1,42 @@
+{
+  "schema": "CHAPTER_01_MESSAGE_BUS_ARCHITECTURE_RECEIPT_V1",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-05T17:04:01.2560202-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "sourceChapterTitle": "PART I - THE GREAT PLAN / Chapter One: The Message Bus",
+  "sourceAttachmentPath": "C:\\Users\\Ben Leak\\.codex\\attachments\\7b82de9b-1433-4193-a18f-01dc5a90d79c\\pasted-text.txt",
+  "sourceAttachmentSha256": "8D38232166B8A4ADF569A3AB86C6C7D1DF1E18C6FA6177504DBEEEF9E1F7E647",
+  "sourceAttachmentCharacterCount": 7367,
+  "artifactPath": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\chapters\\chapter-01\\CHAPTER_01_MESSAGE_BUS_ARCHITECTURE_20260705.md",
+  "artifactType": "chapter architecture companion",
+  "manuscriptTextEdited": "NO",
+  "existingChapterArtifactEdited": "NO",
+  "chapterSlotUsed": "foreman/source_material/manuscript_workbench/tinkularity/chapters/chapter-01",
+  "memoryGuidanceUsed": [
+    "Preserve mythic voice while grounding technical claims.",
+    "Machine-readable manifests and receipts win over prose.",
+    "Do not treat watcher/classifier as containment; classifier decides, OS enforces, receipts prove."
+  ],
+  "unresolvedSources": [
+    {
+      "source": "BOOK_ARCHITECTURE_STACK_LOCK_V0",
+      "status": "NOT FOUND IN THIS PASS",
+      "effect": "Exact global architecture stack was not invented; artifact stays at chapter-level architecture."
+    },
+    {
+      "source": "SKYBRO_HARVEY_NERDKLE_ARCHITECTURE_PACKET_20260703.md",
+      "status": "NOT FOUND IN THIS PASS",
+      "effect": "Skybro role and architecture lane references were found, but this exact source packet was not used."
+    }
+  ],
+  "deliverables": [
+    "Argument architecture",
+    "System layers under the metaphor",
+    "Reader-facing architecture passage candidate",
+    "Red-team notes",
+    "Keep/cut rules",
+    "Chapter-level acceptance criteria"
+  ]
+}

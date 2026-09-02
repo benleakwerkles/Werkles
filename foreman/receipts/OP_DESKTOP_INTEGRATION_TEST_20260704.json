@@ -1,0 +1,19 @@
+﻿{
+    "receipt_id":  "OP_DESKTOP_INTEGRATION_TEST_20260704",
+    "timestamp":  "2026-07-04T04:56:25.4813541-04:00",
+    "machine":  "BETSY",
+    "repo_root":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "account":  "my.1password.com",
+    "op_binary":  "C:\\Users\\Ben Leak\\AppData\\Local\\Microsoft\\WinGet\\Packages\\AgileBits.1Password.CLI_Microsoft.Winget.Source_8wekyb3d8bbwe\\.\\op.exe",
+    "op_version":  "2.34.1",
+    "command":  "op vault list --account \u003caccount\u003e --format json",
+    "secret_values_read":  "NO",
+    "vault_items_read":  "NO",
+    "secret_refs_expanded":  "NO",
+    "status":  "PASS",
+    "vault_count":  1,
+    "vault_names":  [
+                        "Private",
+                        "Shared"
+                    ]
+}

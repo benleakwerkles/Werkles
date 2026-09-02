@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:29:40.646Z",
+  "file": "FROM_SWANSON_LOCAL_HEADER_CONTINUITY_PRECODE_PASS_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SWANSON",
+  "consumed_by": "FOREMAN",
+  "note": "Assimilated into 20260821 two-tier header synthesis; local preview and real auth remain distinct.",
+  "auto_merge": false
+}

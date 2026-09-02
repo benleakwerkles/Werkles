@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:20:17.714Z",
+  "file": "FROM_PETRA_MATCHING_NOT_MATCHING_RECOVERY_PRODUCT_RULING_20260818.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Read and incorporated into current matching review baseline: provenance types, stable IDs, and separate diagnostic from match readiness.",
+  "auto_merge": false
+}

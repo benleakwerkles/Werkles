@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T06:22:34.185Z",
+  "file": "FROM_SKYBRO_FORMATION_OPERATING_BRIEF_VALUE_REWRITE_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SKYBRO",
+  "consumed_by": "FOREMAN",
+  "note": "Read now; prior value proposal was bounded by Bean and current practice-only contract. Not counted as current release review.",
+  "auto_merge": false
+}

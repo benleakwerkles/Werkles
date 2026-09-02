@@ -1,0 +1,51 @@
+{
+  "schema": "desktop_seats_v1",
+  "updated_at": "2026-08-04",
+  "seats": {
+    "ENDER": {
+      "cousinId": "ENDER",
+      "label": "Ender / Claude Desktop",
+      "processName": "claude.exe",
+      "cdpPort": 9348,
+      "launchCandidates": [
+        "C:\\Program Files\\WindowsApps\\Claude_1.34493.0.0_x64__pzs8sxrjxfjjc\\app\\claude.exe",
+        "%LOCALAPPDATA%\\AnthropicClaude\\claude.exe",
+        "%LOCALAPPDATA%\\Programs\\Claude\\Claude.exe"
+      ],
+      "composers": [
+        "div.ProseMirror[contenteditable='true']",
+        "div[contenteditable='true']",
+        "textarea"
+      ],
+      "sendControls": [
+        "button[aria-label*=\"Send\"]",
+        "button[data-testid=\"send-button\"]",
+        "button[type=\"submit\"]"
+      ],
+      "pageUrlIncludes": ["claude.ai", "anthropic"],
+      "pageUrlPrefer": []
+    },
+    "COMPUTER": {
+      "cousinId": "COMPUTER",
+      "label": "Thufir Hawat / Perplexity Desktop",
+      "processName": "Perplexity.exe",
+      "cdpPort": 9349,
+      "launchCandidates": [
+        "%LOCALAPPDATA%\\Programs\\Perplexity\\Perplexity.exe"
+      ],
+      "composers": [
+        "div[contenteditable='true']",
+        "textarea[placeholder]",
+        "textarea"
+      ],
+      "sendControls": [
+        "button[data-testid=\"submit-button\"]",
+        "button[aria-label*=\"Submit\"]",
+        "button[aria-label*=\"Send\"]",
+        "button[type=\"submit\"]"
+      ],
+      "pageUrlIncludes": ["perplexity.ai"],
+      "pageUrlPrefer": ["https://www.perplexity.ai/"]
+    }
+  }
+}

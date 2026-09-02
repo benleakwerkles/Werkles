@@ -1,0 +1,72 @@
+{
+  "schema": "BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:40:51.613Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_NERDKLE_ORGANISM_RECEIPT_MIRROR_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/nerdkle-organism-receipt-mirror-smoke.mjs",
+  "validation": {
+    "legacy_nerdkle_object_written": true,
+    "organism_packet_mirror_written": true,
+    "legacy_nerdkle_receipt_written": true,
+    "organism_receipt_mirror_written": true,
+    "organism_receipt_status_completed_when_artifact_exists": true,
+    "packet_receipted_event_joins_packet_id_and_receipt_id": true,
+    "route_responses_expose_receiver_proof_boundary": true
+  },
+  "fixture_readback": {
+    "object_id": "nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2",
+    "object_path": "data/organism/nerdkle/objects/nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.json",
+    "packet_path": "foreman/handoffs/outbox/TO_MIRROR_SMOKE_NERDKLE_EXECUTE_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.md",
+    "legacy_receipt_path": "data/organism/nerdkle/receipts/execution_receipt_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2_mr8z01w2.json",
+    "organism_packet_path": "data/organism/contracts/packets/nerdkle_execution_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.json",
+    "organism_packet_event_path": "data/organism/contracts/events.jsonl",
+    "organism_packet_id": "nerdkle_execution_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2",
+    "organism_receipt_path": "data/organism/contracts/receipts/nerdkle_organism_receipt_execution_receipt_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2_mr8z01w2.json",
+    "organism_receipt_event_path": "data/organism/contracts/events.jsonl",
+    "organism_receipt_id": "nerdkle_organism_receipt_execution_receipt_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2_mr8z01w2",
+    "packet_event_id": "packet_dispatched_20260706084051_0ac759",
+    "receipt_event_id": "packet_receipted_20260706084051_d5dc36"
+  },
+  "file_hashes": [
+    {
+      "path": "lib/nerdkle/organism-contract-mirror.ts",
+      "sha256": "a8080c4d526c56726e87456b3cae30bb262bbbf057a32f059a4aec95fd5d817f",
+      "bytes": 9509
+    },
+    {
+      "path": "lib/organism/contracts/receiver-proof-boundary.ts",
+      "sha256": "66a4847fc918b70e967deaf47bf9e88f3c51f29a1b98eb3fb8f86f93e18eec88",
+      "bytes": 2813
+    },
+    {
+      "path": "app/api/nerdkle/packet/route.ts",
+      "sha256": "4b49f0e3140d8f8a2011c820b14b665fd4cb933ec7d3c0dd959df3d252482371",
+      "bytes": 1884
+    },
+    {
+      "path": "app/api/nerdkle/receipt/route.ts",
+      "sha256": "8b7a3d8e23551f7237055ad5c91777cea90f28edf1cd854e9a64a0a2ac346adc",
+      "bytes": 2892
+    },
+    {
+      "path": "scripts/foreman/nerdkle-organism-receipt-mirror-smoke.mjs",
+      "sha256": "e3521929ebb0bf0ead8b468e86181bc9054e8f0299e24c879802a848f2fb9cc2",
+      "bytes": 10716
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "truth_boundary": "This smoke proves Nerdkle legacy receipts can be mirrored into the canonical organism packet/receipt/event contract. It does not claim universal receiver proof across every route.",
+  "stop_conditions_respected": [
+    "no external send",
+    "no deploy",
+    "no push",
+    "fixture-only local writes"
+  ]
+}

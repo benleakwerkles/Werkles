@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Midjourney Art Packet — Werkles</title>
+<style>
+  :root {
+    --violet: #4520c9; --violet-deep: #2a0e8c; --teal: #02917e;
+    --cream: #fdf8ee; --paper: #f6efe5; --ink: #2c231d; --ink-muted: #44362c;
+    --frame: rgba(159, 102, 51, 0.3);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 "DM Sans", "Segoe UI", sans-serif; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; color: var(--ink); }
+  h1 { font-size: 2rem; margin: 0 0 4px; }
+  h2 { font-size: 1.35rem; margin: 2.4rem 0 0.6rem; border-top: 3px solid var(--violet); padding-top: 1.2rem; }
+  h3 { font-size: 1.05rem; margin: 1.4rem 0 0.4rem; }
+  .sub { color: var(--ink-muted); margin: 0 0 8px; }
+  .tag { display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--teal); }
+  .prompt { position: relative; background: #fffaf2; border: 1px solid var(--frame); border-radius: 8px; padding: 14px 14px 12px; margin: 10px 0; }
+  .prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 0.83rem/1.5 Consolas, monospace; color: var(--ink-muted); }
+  .copy { position: absolute; top: 8px; right: 8px; border: 1px solid var(--violet); background: var(--violet); color: #fff; font: 700 0.72rem "DM Sans", sans-serif; padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+  .copy.done { background: var(--teal); border-color: var(--teal); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--frame); vertical-align: top; }
+  th { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #fdf8ee; background: var(--violet-deep); }
+  td code { font-size: 0.8rem; color: var(--ink-muted); }
+  .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+  .icon-grid figure { margin: 0; background: #fffaf2; border: 1px solid var(--frame); border-radius: 8px; padding: 10px; text-align: center; }
+  .icon-grid img { width: 100%; height: auto; border-radius: 6px; }
+  .icon-grid figcaption { font-size: 0.78rem; color: var(--ink-muted); margin-top: 6px; }
+  .note { background: rgba(2, 145, 126, 0.08); border-left: 3px solid var(--teal); border-radius: 6px; padding: 10px 14px; font-size: 0.92rem; color: var(--ink-muted); }
+  footer { margin-top: 3rem; font-size: 0.85rem; color: var(--ink-muted); }
+  a { color: var(--violet); }
+  @media (max-width: 700px) { .icon-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Midjourney Art Packet <span style="font-size:1rem;color:var(--teal);font-family:'DM Sans',sans-serif;font-weight:800;">v3</span></h1>
+  <p class="sub">Art director's handoff — icons that POP + photography that kills the CGI verdict. Every prompt block has a copy button. Source of truth: <code>foreman/handoffs/outbox/TO_OPERATOR_MIDJOURNEY_ART_PACKET_20260731.md</code></p>
+  <div class="note"><strong>v3 — the one-second rule.</strong> The forge concept set (v2) failed red-team: blower cranks, hallmark punches, and quench troughs are objects nobody outside a Renaissance festival can name. New law: <strong>every icon must be an object a stranger names in one second.</strong> Match. Hammer. Coins. Glove. OPEN sign. The Werkles flavor lives in the style — violet, teal, gold hairlines — never in obscure objects. Prompts below are complete and paste-ready.</div>
+
+  <h2>Step 0 — Which tool gets which job</h2>
+  <table>
+    <tr><th>Tool</th><th>Send it</th><th>Why</th></tr>
+    <tr><td><strong>Recraft</strong> (recraft.ai)</td><td>All icon prompts</td><td>Built for design assets: true vector, SVG export, and it accepts <strong>exact hex codes</strong> — violet #2A0E8C, teal #02917E, cream #FDF8EE, gold #C9A227 — in its brand-color controls. The right tool for the icon job.</td></tr>
+    <tr><td><strong>Midjourney</strong></td><td>All photography prompts</td><td>Best-in-class at film-look photography. Bad at icons (see: Barbarella bongs).</td></tr>
+    <tr><td><strong>Ideogram</strong> (ideogram.ai)</td><td>Icon prompts, second opinion</td><td>Strongest at flat graphic design and logo marks after Recraft.</td></tr>
+    <tr><td><strong>Flux</strong> (via krea.ai or fal.ai)</td><td>Photography, second opinion</td><td>Photoreal alternate if MJ keeps missing.</td></tr>
+  </table>
+
+  <h2>Step 1 — Make MJ actually respect a reference image</h2>
+  <p class="sub">Getting ignored? It's almost always one of these two:</p>
+  <table>
+    <tr><th>Trap</th><th>Fix</th></tr>
+    <tr><td><strong>Image not assigned as Style Reference</strong></td><td>In the web app, after your image appears under the prompt bar, <strong>hover the thumbnail and click the paperclip icon</strong>. No paperclip = MJ mostly ignores it for style.</td></tr>
+    <tr><td><strong>Localhost URL in <code>--sref</code></strong></td><td>Any <code>127.0.0.1</code> / <code>localhost</code> link only exists on this machine — MJ's servers can't fetch it and fail silently. <strong>Save the file, upload it into MJ.</strong> Never paste local links.</td></tr>
+  </table>
+  <p class="sub">Then: add <code>--sw 400</code> to the prompt (style weight — default is timid; push toward 800 if it still drifts), and always include a text prompt — a reference image alone won't run.</p>
+
+  <h3>The palette swatch to upload</h3>
+  <p class="sub">MJ can't read hex codes, but it <em>can</em> copy colors from an image. Right-click, save, upload to MJ, paperclip it.</p>
+  <div class="icon-grid" style="grid-template-columns: 1fr;">
+    <figure style="max-width:420px;"><img src="/assets/draft/icons-pop-v1/werkles-palette-sref.png" alt="Werkles brand palette swatch: deep violet, teal, cream, gold"><figcaption>werkles-palette-sref.png — violet · teal · cream · gold</figcaption></figure>
+  </div>
+
+  <h2>The clear set — generated in-house, pick your keeps and kills</h2>
+  <p class="sub">Concept set v3, red-teamed for recognizability before a single pixel was generated. Every object passes the one-second name test. The bellows survives from v2 because it passed the only test that matters: you could tell what it was.</p>
+  <div class="icon-grid">
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-spark-match.png" alt="Struck match icon"><figcaption>Spark — a struck match</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-hammer.png" alt="Hammer icon"><figcaption>Builder — a hammer</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-clipboard.png" alt="Checklist clipboard icon"><figcaption>Operator — checklist clipboard</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-coin-stack.png" alt="Coin stack icon"><figcaption>Backer — stack of coins</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-plug-connect.png" alt="Plug and socket icon"><figcaption>Connector — plug meets socket</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-work-glove.png" alt="Work glove icon"><figcaption>Worker — a work glove</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-pencil-tag.png" alt="Pencil writing on tag icon"><figcaption>Name it — pencil on a tag</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-approval-stamp.png" alt="Approval stamp icon"><figcaption>Verify it — stamp of approval</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-open-sign.png" alt="OPEN shop sign icon"><figcaption>Move — the OPEN sign</figcaption></figure>
+    <figure><img src="/assets/draft/icons-forge-v1/forge-icon-bellows-v2.png" alt="Bellows icon"><figcaption>Bellows — the keeper from v2</figcaption></figure>
+    <figure><img src="/assets/draft/icons-clear-v1/clear-icon-ribbon-check.png" alt="Award ribbon with checkmark icon"><figcaption>Crucible — earned ribbon</figcaption></figure>
+    <figure><img src="/assets/draft/icons-forge-v1/forge-icon-squibb-anvil.png" alt="Squibb owl icon"><figcaption>Squibb — the owl</figcaption></figure>
+  </div>
+
+  <div class="note"><strong>No assembly required.</strong> Every prompt on this page is complete and final — copy, paste, run. If the standard model fights you on icon geometry, swap <code>--v 7</code> for <code>--niji 6</code>.</div>
+  <div class="note"><strong>Consistency trick:</strong> grind ONE icon until you love it, then <em>upload that image into every other prompt and paperclip it</em> (Style Reference) with <code>--sw 400</code> — the whole family inherits its exact style. Midjourney can't do transparency: generate on solid cream, the foreman's flood-fill script strips it on handback.</div>
+
+  <h2>Part 1 — Icon prompts: objects anyone can name, complete, paste as-is</h2>
+  <p class="sub">Concept set v3 — one instantly recognizable object per icon, brand colors carry the identity. "Flat sticker illustration" replaces "enamel pin" because generators understand it better: bold solid shapes, thin gold outline, no 3D. Each block below is the whole prompt: copy, paste, run.</p>
+  <div class="note"><strong>If pasting into Recraft or Ideogram instead of MJ:</strong> drop everything from <code>--ar</code> onward (the <code>--</code> parameters are MJ-only) and keep the rest. In Recraft, also set the style to "vector illustration" and add the exact brand colors in its color controls: <code>#2A0E8C</code>, <code>#02917E</code>, <code>#FDF8EE</code>, <code>#C9A227</code> — unlike MJ, Recraft actually honors hex codes.</div>
+
+  <p class="tag">Spark lane — a struck match</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a single wooden match just struck, dark purple stick, teal flame with a small orange core, two tiny gold spark ticks, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Builder lane — a hammer</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a single claw hammer at a diagonal, dark purple head and handle, teal grip band, one small gold star near the head, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Operator lane — checklist clipboard</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a dark purple clipboard holding a cream paper with three teal checklist lines, the top line checked, a small teal pencil across the corner, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Backer lane — stack of coins</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a neat stack of four teal coins with one dark purple coin leaning against the base, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Connector lane — plug meets socket</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a dark purple electrical plug on a teal cord about to connect into a teal wall socket, small gold energy ticks between them, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Worker lane — a work glove</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a single canvas work glove palm out, dark purple glove with a teal knit cuff and cream stitching lines, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Step: Name it — pencil on a tag</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a dark purple pencil writing on a teal luggage tag with a cord loop, one short cream line on the tag, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Step: Verify it — stamp of approval</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a dark purple rubber stamp with wooden handle pressing down, leaving a teal checkmark inside a teal circle imprint below, two small gold impact ticks, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Step: Move — the OPEN sign</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a hanging shop door sign on a teal cord, dark purple sign board with the word OPEN in bold cream letters, two small gold motion ticks, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, 3d</pre></div>
+
+  <p class="tag">Bellows — the keeper, unchanged</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a blacksmith bellows mid-pump, three teal air lines streaming toward a small glowing orange ember, dark royal purple and teal, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Crucible — earned ribbon</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>an award ribbon medal, teal circular medallion with a bold dark purple checkmark, two dark purple ribbon tails below, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <p class="tag">Squibb mark — the owl</p>
+  <div class="prompt"><button class="copy">Copy</button><pre>a small dignified owl perched on the horn of a dark purple anvil, teal eyes, dark purple body, flat sticker illustration, bold solid shapes, thin gold outline, cream background, minimalist, clean vector --ar 1:1 --v 7 --style raw --stylize 0 --no gradients, shading, shadow, text, 3d</pre></div>
+
+  <h2>Part 2 — Photography: killing the CGI verdict</h2>
+  <p class="sub">The daughter test is the real test. Prompt directly against the sheen — <code>--style raw</code> ON for all photography.</p>
+  <div class="note"><strong>Order is everything: scene first, style words second, <code>--parameters</code> dead last.</strong> Anything you type after <code>--no</code> gets eaten by the negative list — if your scene comes after it, MJ never sees the scene and you get a random person in a cluttered room. Never use semicolons; MJ doesn't understand them.</div>
+  <div class="note"><strong>v3 fix — light and emptiness are the anti-AI moves.</strong> "Dawn," "evening," "documentary," and "film grain" all push MJ toward dark, cluttered frames — and dark-plus-busy is exactly where AI photos rot (shadows hide mushy detail, clutter multiplies fake objects). These prompts now demand bright daylight, clean backgrounds, and minimal props, and put <code>dark, moody, dim, clutter</code> on the negative list.</div>
+  <div class="note"><strong>v3.1 fix — killing the doppelgängers.</strong> Same prompt = same people, same pose, forever. Three rules now baked into every prompt below: (1) <code>--c 20</code> — the chaos parameter is MJ's variety dial, push to 35 if grids stay samey; (2) every prompt describes its people concretely (age, build, background) — undescribed humans all come back as the same catalog model; (3) every prompt has a different verb and camera angle — and half of them don't face the camera at all.</div>
+  <h3>Complete prompts — paste as-is, every one a different trade, action, camera, and cast</h3>
+  <div class="prompt"><button class="copy">Copy</button><pre>a woman in her late 30s at a tidy bakery counter, looking up from a notebook with quiet resolve, bright morning window light, airy white walls, clean uncluttered background, only a bowl and a dusting of flour on the counter, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, dim, clutter</pre></div>
+  <div class="prompt"><button class="copy">Copy</button><pre>a stocky man in his 50s with gray stubble taping a handmade GRAND OPENING sign inside his shop window, seen from outside through the glass, bright daylight, clean storefront, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, clutter</pre></div>
+  <div class="prompt"><button class="copy">Copy</button><pre>a young Black woman carrying a stack of flat cardboard boxes through the door of her empty new shop, laughing, photographed from behind at a distance, wide shot, bright morning light, bare white walls, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, clutter</pre></div>
+  <div class="prompt"><button class="copy">Copy</button><pre>a Latina woman in her 40s up a stepladder hanging a pendant lamp in her unfinished cafe, her teenage daughter steadying the ladder, candid, neither looking at camera, big windows, daylight, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, clutter</pre></div>
+  <div class="prompt"><button class="copy">Copy</button><pre>a wiry older barber sweeping hair from the floor of his one-chair shop at closing, profile view, warm afternoon sun through the front window, spare clean interior, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, clutter</pre></div>
+  <div class="prompt"><button class="copy">Copy</button><pre>a heavyset man in his 30s handing a paper bag across the counter to his first customer, both mid-laugh, shot over the customer's shoulder, bright simple bakery, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, clutter</pre></div>
+  <div class="prompt"><button class="copy">Copy</button><pre>a South Asian woman flipping the door sign of her small shop to OPEN, seen from inside, morning light flaring through the glass around her, candid, back mostly to camera, natural skin texture, Kodak Portra 400, 35mm lens, editorial magazine photo --ar 16:9 --style raw --c 20 --no CGI, 3d render, smooth skin, illustration, dark, moody, clutter</pre></div>
+  <div class="note"><strong>The honest kill-shot:</strong> licensed documentary stock (Stocksy / Offset, $15–125/image) of real shop owners for the 3–5 hero slots ends the CGI conversation permanently. No generator fully beats the daughter test.</div>
+
+  <h2>Handback protocol</h2>
+  <p>Drop whatever you generate into a folder and tell the foreman — raw files go through transparency, resize, wiring, and red-team without you touching the pipeline.</p>
+
+  <footer>Lady Jessica (Cursor) — Werkles.com Foreman · <a href="/draft-reviews/index.html">Review hub</a></footer>
+</main>
+<script>
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      navigator.clipboard.writeText(btn.parentElement.querySelector("pre").textContent).then(function () {
+        btn.textContent = "Copied";
+        btn.classList.add("done");
+        setTimeout(function () { btn.textContent = "Copy"; btn.classList.remove("done"); }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>
+

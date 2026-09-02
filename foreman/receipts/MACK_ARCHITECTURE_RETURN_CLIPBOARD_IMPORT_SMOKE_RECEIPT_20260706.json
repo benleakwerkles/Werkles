@@ -1,0 +1,96 @@
+﻿{
+    "schema":  "MACK_ARCHITECTURE_RETURN_CLIPBOARD_IMPORT_SMOKE_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T08:06:09.5590671Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "MACK_ARCHITECTURE_RETURN_CLIPBOARD_IMPORT_SMOKE_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\foreman\\Test-MackArchitectureReturnClipboardImporter.ps1",
+    "validation":  {
+                       "empty_input_blocks":  true,
+                       "unstructured_input_blocks_without_allow_freeform":  true,
+                       "structured_dry_run_does_not_write":  true,
+                       "structured_commit_writes_fixture_and_validates":  true,
+                       "canonical_intake_not_mutated":  true,
+                       "truth_boundary":  "This smoke uses fixture files only. It does not read the real clipboard and does not claim Mack has returned a review."
+                   },
+    "readbacks":  [
+                      {
+                          "name":  "empty-dry-run",
+                          "status":  "BLOCKER",
+                          "blocker_code":  "MACK_RETURN_INPUT_EMPTY",
+                          "structured_return_detected":  false,
+                          "import_committed":  false,
+                          "receipt_path":  "foreman/tmp/mack-return-clipboard-importer-smoke/empty-dry-run/import-receipt.json",
+                          "receipt_hash":  "3F793099DA3AE5ECB2BED18C5614CA1A12E40E664275B428B2D5081AB5FC3290",
+                          "intake_hash":  "157C43155CF43C99C9AD9260A28E3957849326BC0B776A2C600F705FCC971FCF",
+                          "validator_receipt_exists":  false,
+                          "validator_receipt_path":  null,
+                          "validator_status":  null,
+                          "validator_blocker_code":  null
+                      },
+                      {
+                          "name":  "unstructured-dry-run",
+                          "status":  "BLOCKER",
+                          "blocker_code":  "MACK_RETURN_NOT_STRUCTURED",
+                          "structured_return_detected":  false,
+                          "import_committed":  false,
+                          "receipt_path":  "foreman/tmp/mack-return-clipboard-importer-smoke/unstructured-dry-run/import-receipt.json",
+                          "receipt_hash":  "D573B5D0352282242AE0E12829E31326D21C794FDD452BC6FA77EC1A36A1E3FA",
+                          "intake_hash":  "157C43155CF43C99C9AD9260A28E3957849326BC0B776A2C600F705FCC971FCF",
+                          "validator_receipt_exists":  false,
+                          "validator_receipt_path":  null,
+                          "validator_status":  null,
+                          "validator_blocker_code":  null
+                      },
+                      {
+                          "name":  "structured-dry-run",
+                          "status":  "ARTIFACT",
+                          "blocker_code":  "",
+                          "structured_return_detected":  true,
+                          "import_committed":  false,
+                          "receipt_path":  "foreman/tmp/mack-return-clipboard-importer-smoke/structured-dry-run/import-receipt.json",
+                          "receipt_hash":  "25953AC04360ADA5B256D8FFE3FE8BF5C923A0C978F4F7D229CDBF870D81CBCC",
+                          "intake_hash":  "157C43155CF43C99C9AD9260A28E3957849326BC0B776A2C600F705FCC971FCF",
+                          "validator_receipt_exists":  false,
+                          "validator_receipt_path":  null,
+                          "validator_status":  null,
+                          "validator_blocker_code":  null
+                      },
+                      {
+                          "name":  "structured-commit",
+                          "status":  "ARTIFACT",
+                          "blocker_code":  "",
+                          "structured_return_detected":  true,
+                          "import_committed":  true,
+                          "receipt_path":  "foreman/tmp/mack-return-clipboard-importer-smoke/structured-commit/import-receipt.json",
+                          "receipt_hash":  "8AFF175C3BAB1A6F02699E8C165428807CF14C7C85C2A1421676D37FD0266DAF",
+                          "intake_hash":  "C77C97581A9EB798E90A0C5C169B9BDC18BA01BDA2C90382034DB48F7FD63541",
+                          "validator_receipt_exists":  true,
+                          "validator_receipt_path":  "foreman/tmp/mack-return-clipboard-importer-smoke/structured-commit/import-receipt.validator.json",
+                          "validator_status":  "ARTIFACT",
+                          "validator_blocker_code":  ""
+                      }
+                  ],
+    "file_hashes":  [
+                        {
+                            "path":  "scripts/foreman/Import-MackArchitectureReturnFromClipboard.ps1",
+                            "sha256":  "D0ABEF8A7C6A49D904DB606378935C81AEB8416D70DDAB409492F8ACD130BA15"
+                        },
+                        {
+                            "path":  "scripts/foreman/Test-MackArchitectureReturnClipboardImporter.ps1",
+                            "sha256":  "3B79ED735924BE73EB578DF79F41666A7304D88D00991F04BD603798E5788525"
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack receipt claim",
+                                      "no canonical intake mutation"
+                                  ]
+}

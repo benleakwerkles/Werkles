@@ -1,0 +1,28 @@
+flowchart LR
+  Ben["Ben intent"]
+  Cockpit["TinkerDen / SoleDash cockpit<br/>React + Next.js"]
+  Api["Next.js API routes<br/>TypeScript + Node.js"]
+  Canon["Contract canon<br/>packet / receipt / event / gate / boot-context"]
+  Gate["Gate<br/>policy + human authority + OS boundary"]
+  Relay["Packet and workspace relay<br/>Node.js + JSON"]
+  Boot["Boot context<br/>Tinkarden + Wormeyes + Speaker"]
+  Receiver["Receiver Aeye / machine runner<br/>Node.js + PowerShell"]
+  Tools["Bounded tools<br/>Git, local files, provider dashboards, Supabase, Vercel"]
+  Receipt["Receipt writer<br/>JSON + Markdown"]
+  Event["Event spine<br/>Chokidar + JSONL"]
+  Readback["Cockpit readback<br/>operator proof surface"]
+
+  Ben --> Cockpit
+  Cockpit --> Api
+  Api --> Canon
+  Canon --> Gate
+  Gate --> Relay
+  Relay --> Boot
+  Boot --> Receiver
+  Receiver --> Tools
+  Tools --> Receipt
+  Receipt --> Event
+  Event --> Readback
+  Readback --> Ben
+  Receipt --> Canon
+  Event --> Canon

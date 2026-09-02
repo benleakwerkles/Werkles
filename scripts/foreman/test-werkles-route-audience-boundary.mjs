@@ -80,6 +80,7 @@ const cases = [
   ["nerdkle api production", { pathname: "/api/nerdkle/actions", hostname: "werkles.com", nodeEnv: "production" }, true],
   ["organism api production", { pathname: "/api/organism/contracts/packets", hostname: "werkles.com", nodeEnv: "production" }, true],
   ["speaker api production", { pathname: "/api/speaker/inheritance", hostname: "werkles.com", nodeEnv: "production" }, true],
+  ["operator api production", { pathname: "/api/operator/matching/document-score", hostname: "werkles.com", nodeEnv: "production" }, true],
   ["internal api localhost dev", { pathname: "/api/tinkerden/receipts", hostname: "localhost", nodeEnv: "development" }, false],
   ["bellows api stays public", { pathname: "/api/bellows/intake", hostname: "werkles.com", nodeEnv: "production" }, false],
   ["discovery api stays public", { pathname: "/api/discovery/intake", hostname: "werkles.com", nodeEnv: "production" }, false],

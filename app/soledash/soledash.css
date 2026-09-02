@@ -5,6 +5,29 @@
   font-family: "Segoe UI", system-ui, sans-serif;
 }
 
+.sole-dash-layout__werkles-return {
+  position: fixed;
+  z-index: 1000;
+  top: max(10px, env(safe-area-inset-top));
+  left: max(10px, env(safe-area-inset-left));
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(15, 20, 25, 0.9);
+  color: #f7f1e5;
+  font: 800 0.82rem/1 system-ui, sans-serif;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+}
+
+.sole-dash-layout__werkles-return:focus-visible {
+  outline: 3px solid #9e7cff;
+  outline-offset: 3px;
+}
+
 .sole-dash-layout a {
   color: #8fd4ff;
 }

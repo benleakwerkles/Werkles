@@ -1,0 +1,16 @@
+{
+  "missionId": "WERKLES_BVPGM_M3_MEMBER_VALUE_REVIEW",
+  "version": "v0.2",
+  "issuedBy": "Heimerdinker@Betsy",
+  "visionPacket": "foreman/handoffs/outbox/WERKLES_BVPGM_M3_MEMBER_VALUE_V_20260823.md",
+  "checkpoint": "Member action loop, Bellows value, narrow provider readiness, and human continuity",
+  "candidateDigestAtIssue": "e64ae1c67e7e065884781891a2139d8e699488b4bfdcceb2b4449e820b6c3386",
+  "seats": {
+    "ENDER": "Return P0/P1 ordinary-human defects with route, exact visible pattern, consequence, and smallest repair rule. End with HUMAN_GO, PATCH, or STOP.",
+    "BEAN": "Return P0/P1 false custody, trust, provider, privacy, or agreement claims with exploit and invariant. End with TRUST_GO, PATCH, or STOP.",
+    "SKYBRO": "Return the three largest value discontinuities and one smallest compounding-value repair. End with VALUE_GO, PATCH, or STOP.",
+    "LADY_JESSICA": "After implementation, independently walk and hash the exact candidate. Return LJ_RELEASE_REVIEW_GO, PATCH, or STOP; do not push without three keys."
+  },
+  "transportTruth": "Packet authored. Delivery, response, receipt validation, and assimilation remain separate states.",
+  "hardStop": "No push, deploy, provider action, credentials, schema/RLS, production mutation, spend, new environment, subagent, or invented receipt."
+}

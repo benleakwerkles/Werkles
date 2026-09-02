@@ -329,7 +329,7 @@ export function buildMemberRecommendationPlan(
       tailored: true,
       title: "Prove weekday demand before you lease or buy.",
       verdict:
-        "The first move is a two-cycle demand test—not a lender, partner, lease, or oven search. That test tells you whether added capacity solves a real bottleneck or creates a new fixed cost.",
+        "The first move is a two-cycle demand test—not a lender, partner, lease, or equipment search. That test tells you whether added capacity solves a real bottleneck or creates a new fixed cost.",
       reasons: Object.freeze([
         `You are at: ${stage}.`,
         `You named two linked obstacles: ${blocker}.`,
@@ -338,7 +338,7 @@ export function buildMemberRecommendationPlan(
       sprint: Object.freeze([
         Object.freeze({
           title: "Design one weekday offer",
-          action: "Choose one product or bundle, one price, one pickup window, and one customer group. Do not test the whole bakery at once.",
+          action: "Choose one product or service, one price, one delivery window, and one customer group. Do not test the whole operation at once.",
           output: "A one-sentence offer that can be accepted or declined."
         }),
         Object.freeze({
@@ -360,7 +360,7 @@ export function buildMemberRecommendationPlan(
         "gap-test": constraints ? `${gapTest} Constraint to preserve: ${constraints}` : gapTest,
         spec: "Capacity needed to deliver the tested weekday offer without breaking the promised pickup window.",
         "budget-date": "Set after the demand threshold is met; include delivery, installation, utilities, service, and downtime.",
-        compare: "Current setup, rental/shared kitchen, used equipment, and new equipment—using the same capacity requirement."
+        compare: "Current setup, rental/shared workspace, used equipment, and new equipment—using the same capacity requirement."
       })
     });
   }
@@ -370,7 +370,7 @@ export function buildMemberRecommendationPlan(
       tailored: true,
       title: "Size the smallest capacity upgrade the demand test earns.",
       verdict:
-        "Do not shop for an oven or lease first. Convert paid weekday demand into one capacity requirement, then compare the cheapest credible ways to meet it.",
+        "Do not shop for equipment or a lease first. Convert paid demand into one capacity requirement, then compare the cheapest credible ways to meet it.",
       reasons: Object.freeze([
         `You are at: ${stage}.`,
         `You named a capacity obstacle: ${blocker}.`,
@@ -389,7 +389,7 @@ export function buildMemberRecommendationPlan(
         }),
         Object.freeze({
           title: "Compare four ways to meet it",
-          action: "Price the current setup, rental or shared kitchen, used equipment, and new equipment against the same requirement and first-year all-in cost.",
+          action: "Price the current setup, rental or shared workspace, used equipment, and new equipment against the same requirement and first-year all-in cost.",
           output: "A comparable shortlist with seller evidence and total cost."
         })
       ]),
@@ -400,7 +400,7 @@ export function buildMemberRecommendationPlan(
         "budget-date": constraints
           ? `Set a first-year all-in ceiling while preserving: ${constraints}`
           : "Set a first-year all-in ceiling before requesting quotes.",
-        compare: "Current setup, rental/shared kitchen, used equipment, and new equipment—each against the same capacity requirement.",
+        compare: "Current setup, rental/shared workspace, used equipment, and new equipment—each against the same capacity requirement.",
         hypothesis: "Added capacity is warranted only when the paid-demand result exceeds what the current setup can deliver.",
         support: resources ? `Start with what is already available: ${resources}.` : "Inventory the current setup before comparing additions.",
         "gap-test": "Reject any option without condition, service, delivery, installation, utilities, downtime, and total-cost evidence."
@@ -413,7 +413,7 @@ export function buildMemberRecommendationPlan(
       tailored: true,
       title: "Choose the demand test before the capacity bet.",
       verdict:
-        "The decision is not simply bakery or no bakery. It is which paid-demand result would justify taking on space, equipment, and fixed cost.",
+        "The decision is not simply expand or wait. It is which paid-demand result would justify taking on space, equipment, and fixed cost.",
       reasons: Object.freeze([
         `You are at: ${stage}.`,
         `You named both market and capacity pressure: ${blocker}.`,

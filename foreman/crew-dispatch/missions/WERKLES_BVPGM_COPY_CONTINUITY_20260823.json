@@ -1,0 +1,51 @@
+{
+  "missionId": "WERKLES_BVPGM_COPY_CONTINUITY",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad pre-code review of vocabulary, conversational copy, value language, trust boundaries, and cross-route continuity across Werkles.",
+  "sharedContext": [
+    "Werkles must speak to ordinary people without requiring them to belong to a business or technology world.",
+    "The recurring defects are insider terms, Operator echo, robotic generated dialogue, homework tone, repeated disclaimers, unstable names, and buttons whose destination or consequence is unclear.",
+    "Approved product distinctions include: a person's private space is a Workshop; shared work between two or more Werklers becomes a Werkle; Public Bellows is the general library; Personal Bellows responds to the member's work; Crucible houses optional narrow checks; Match Deck compares possible collaborators.",
+    "Payment, identity, phone possession, funds evidence, and background screening remain separate facts and never become a universal trust score.",
+    "No member-facing copy change lands until actual review receipts are assimilated. No provider, schema, production, push, or deploy action is authorized."
+  ],
+  "liveStrings": ["Workshop", "Werkle", "Match Deck", "Public Bellows", "Personal Bellows", "Crucible", "Membership", "One member journey. Different tools for different jobs."],
+  "knownGaps": [
+    "The August 22 Ender, Bean, and Skybro copy packets have no terminal receipts and are not counted as active work.",
+    "Internal/provider language still appears on some member routes.",
+    "The same action or state may use different nouns across routes.",
+    "Generated conversations have improved but still require cross-route human re-walking.",
+    "The shared dirty worktree is not a clean release candidate."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Own ordinary-human voice and cross-route conversational continuity.",
+      "pull": "Review the supplied vocabulary model and recurring defects across Home, Intake, Recommendations, Match Deck, Formation, Bellows, Crucible, Membership, Login, and Profile.",
+      "go": ["Return the ten highest-impact continuity defects as route, current pattern, human consequence, and replacement rule.", "Define a compact voice grammar for headings, questions, explanations, statuses, and buttons.", "Name the exact routes Lady Jessica must re-walk after implementation."],
+      "momentum": "Return HUMAN_COPY_READY, PATCH, or BLOCKED and stop.",
+      "outOfLane": "No code, trust/legal ruling, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final aesthetic approval."
+    },
+    "SKYBRO": {
+      "vision": "Own the sitewide vocabulary and value narrative without canonizing the Operator's latest phrase merely because he said it.",
+      "pull": "Review the distinction between Workshop, Werkle, Match Deck, Public/Personal Bellows, Crucible, and Membership.",
+      "go": ["Return one plain definition and one forbidden misuse for every core noun.", "Find naming collisions, lifecycle gaps, and copy that makes Werkles feel like a club outsiders cannot enter.", "Propose the smallest continuity map that makes the full journey memorable and sellable."],
+      "momentum": "Return NARRATIVE_READY, PATCH, or BLOCKED and nominate one trust cross-check.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final product canon."
+    },
+    "BEAN": {
+      "vision": "Hostile-audit member copy for false promises, authority inflation, privacy leakage, and legal/provider boilerplate masquerading as product value.",
+      "pull": "Attack auth/save, matching, generated dialogue, membership, Plaid, Twilio, Stripe Identity, and Checkr language.",
+      "go": ["Return only P0/P1 trust discontinuities with exact route/pattern and invariant.", "Separate language that may be shortened from language whose precision must survive.", "Give Ender replacement constraints rather than writing the entire site's voice."],
+      "momentum": "Return TRUST_COPY_READY, PATCH, or BLOCK and stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, new task, or subagent."
+    },
+    "COMPUTER": {
+      "vision": "Independently research and fact-check the vocabulary model and accessibility/plain-language consequences.",
+      "pull": "Use the supplied core nouns and defect classes; distinguish current facts, inferences, and recommendations.",
+      "go": ["Return a terminology matrix: noun, member meaning, first explanation point, later short form, and collision risk.", "Identify established plain-language and accessibility principles relevant to labels, button consequences, jargon introduction, and repeated status wording.", "Flag any requested copy rule that would conflict with provider or legal truth."],
+      "momentum": "Return SOURCE_READY, NEEDS_FACT_CHECK, or BLOCKED and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final copy approval."
+    }
+  }
+}

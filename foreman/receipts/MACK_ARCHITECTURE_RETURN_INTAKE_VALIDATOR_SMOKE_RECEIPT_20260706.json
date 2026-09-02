@@ -1,0 +1,129 @@
+{
+  "schema": "MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T07:58:12.333Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/mack-architecture-return-intake-validator-smoke.mjs",
+  "validation": {
+    "waiting_return_not_received_blocks": true,
+    "incomplete_return_blocks": true,
+    "complete_return_without_ben_gate_blocks": true,
+    "complete_return_with_ben_gate_generates_next_packet": true,
+    "fixture_paths_used": true,
+    "canonical_intake_not_mutated": true,
+    "truth_boundary": "This smoke uses temporary fixture intakes. It proves validator behavior but does not claim Mack has returned a real review."
+  },
+  "readbacks": [
+    {
+      "name": "waiting",
+      "args": [],
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "MACK_RETURN_NOT_RECEIVED",
+        "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/waiting/receipt.json",
+        "receipt_sha256": "e79dea690e529c529456b2b1fe42d0114e909481f908aa7a7fd99b8095bca1f1",
+        "intake_path": "foreman/tmp/mack-return-intake-validator-smoke/waiting/intake.md",
+        "next_build_packet": null
+      },
+      "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/waiting/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "MACK_RETURN_NOT_RECEIVED",
+      "classification_status": "BLOCKER",
+      "next_packet_exists": false,
+      "next_packet": null
+    },
+    {
+      "name": "incomplete",
+      "args": [],
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "MACK_RETURN_INCOMPLETE",
+        "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/incomplete/receipt.json",
+        "receipt_sha256": "9e846a5c0fa629eb33034bf262633c1dc7dfc9cf1fba3f0f1ff446fe0ba8e6d7",
+        "intake_path": "foreman/tmp/mack-return-intake-validator-smoke/incomplete/intake.md",
+        "next_build_packet": null
+      },
+      "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/incomplete/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "MACK_RETURN_INCOMPLETE",
+      "classification_status": "BLOCKER",
+      "next_packet_exists": false,
+      "next_packet": null
+    },
+    {
+      "name": "complete-no-ben-gate",
+      "args": [
+        "--convert"
+      ],
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "BEN_ACCEPTANCE_GATE_REQUIRED",
+        "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/complete-no-ben-gate/receipt.json",
+        "receipt_sha256": "506279b3ad7e2ebc572f2b0501394f0be1dd9bc28963e856ddce7f12391af9e0",
+        "intake_path": "foreman/tmp/mack-return-intake-validator-smoke/complete-no-ben-gate/intake.md",
+        "next_build_packet": null
+      },
+      "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/complete-no-ben-gate/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "BEN_ACCEPTANCE_GATE_REQUIRED",
+      "classification_status": "BLOCKER",
+      "next_packet_exists": false,
+      "next_packet": null
+    },
+    {
+      "name": "complete-with-ben-gate",
+      "args": [
+        "--convert",
+        "--ben-accepted"
+      ],
+      "stdout": {
+        "ok": true,
+        "status": "ARTIFACT",
+        "blocker_code": "",
+        "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/complete-with-ben-gate/receipt.json",
+        "receipt_sha256": "829432e1c62e8fb052ee081c2f8c42a177a6ca4b40276be34d410fc8c7be670d",
+        "intake_path": "foreman/tmp/mack-return-intake-validator-smoke/complete-with-ben-gate/intake.md",
+        "next_build_packet": {
+          "path": "foreman/tmp/mack-return-intake-validator-smoke/complete-with-ben-gate/next-build.md",
+          "sha256": "64abd167fe5fb9588ce15760559f966b1279e567b78614c25295d451f59cb9b3"
+        }
+      },
+      "receipt_path": "foreman/tmp/mack-return-intake-validator-smoke/complete-with-ben-gate/receipt.json",
+      "receipt_status": "ARTIFACT",
+      "blocker_code": "",
+      "classification_status": "ARTIFACT_READY",
+      "next_packet_exists": true,
+      "next_packet": {
+        "path": "foreman/tmp/mack-return-intake-validator-smoke/complete-with-ben-gate/next-build.md",
+        "sha256": "64abd167fe5fb9588ce15760559f966b1279e567b78614c25295d451f59cb9b3",
+        "containsGate": true
+      }
+    }
+  ],
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/mack-architecture-return-intake-validator.mjs",
+      "sha256": "3b65fb8777e324faf0f7b90b6751c1e66cedea332ba4606ee704387289185abd"
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-return-intake-validator-smoke.mjs",
+      "sha256": "94b59c4d267a43e1fdf65b93d660b911a1c5ad5c2e57bac5014338a0e57e234b"
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack receipt claim",
+    "no canonical next-build packet generated"
+  ]
+}

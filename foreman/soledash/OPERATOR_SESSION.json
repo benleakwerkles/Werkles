@@ -1,18 +1,18 @@
 {
   "lastSession": {
-    "task": "Build pages",
+    "task": "Review Operator next hands in foreman/NEXT_ACTION.md",
     "tool": "Cursor / Maker",
-    "commit": "88d261dce0f5 — preserve tinkerden packet engine v0",
-    "receipt": "FROM_COMPUTER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
-    "timestamp": "2026-06-28T19:56:15.421Z",
+    "commit": "866c4587b8f0 — Restore Intake questions behind submission gate",
+    "receipt": "FROM_BEAN_OPERATOR_FIRST_REAL_WORLD_HELP_HOSTILE_REVIEW_20260901.md",
+    "timestamp": "2026-09-02T02:57:27.247Z",
     "status": "blocked",
-    "branch": "preserve/tinkerden-packet-engine-20260622",
+    "branch": "maker/site-g-20260703",
     "hostname": "Betsy"
   },
-  "updatedAt": "2026-06-28T19:56:15.422Z",
+  "updatedAt": "2026-09-02T02:57:27.247Z",
   "lastVisit": {
-    "timestamp": "2026-06-28T19:56:15.420Z",
-    "commit": "88d261dce0f59d576ccc432d9b0c384037fd1846",
+    "timestamp": "2026-09-02T02:57:27.246Z",
+    "commit": "866c4587b8f0f672552aab843d5cdf12e846a6af",
     "receiptCount": 12,
     "urgentGateCount": 10
   }

@@ -17,12 +17,20 @@ import {
   archiveOldSentPackets,
   listOutboxPackets,
   loadSchema,
+  inboxStatus,
+  formatInboxAlarm,
+  consumeReply,
+  quarantineReply,
 } from "./crew-relay-lib.mjs";
 
 function usage() {
   console.log(`Commands:
+  alarm                 Loud report of unread replies; exit 1 if any are waiting
+  status                Inbox status as JSON (counts, ages, per-file status)
   validate              Validate inbox (moves nothing)
   process [--dry-run]   Validate all first; move to processed/ only if all pass
+  consume <file> --note "..."      Record a hand-delivered receipt as read and acted on
+  quarantine <file> --reason "..." Park an unusable reply with the reason recorded
   mark-sent <file>      Move outbox packet to sent/ (rejects stale)
   archive-sent          Move old sent/ packets to archive/
   list-outbox [--sent]  List unsent (default) or include sent
@@ -88,6 +96,32 @@ function main() {
     const result = archiveOldSentPackets();
     console.log(JSON.stringify(result, null, 2));
     return;
+  }
+
+  if (args[0] === "alarm") {
+    const status = inboxStatus();
+    console.log(formatInboxAlarm(status));
+    process.exit(status.total === 0 ? 0 : 1);
+  }
+
+  if (args[0] === "status") {
+    console.log(JSON.stringify(inboxStatus(), null, 2));
+    return;
+  }
+
+  if (args[0] === "consume" || args[0] === "quarantine") {
+    const file = args[1];
+    const flag = args[0] === "consume" ? "--note" : "--reason";
+    const idx = args.indexOf(flag);
+    const text = idx >= 0 ? args.slice(idx + 1).join(" ") : "";
+    if (!file || !text) {
+      console.error(`Usage: ${args[0]} <FROM_COUSIN_*.md> ${flag} "..."`);
+      process.exit(1);
+    }
+    const result =
+      args[0] === "consume" ? consumeReply(file, text) : quarantineReply(file, text);
+    console.log(JSON.stringify(result, null, 2));
+    process.exit(result.ok ? 0 : 1);
   }
 
   if (args[0] === "validate") {

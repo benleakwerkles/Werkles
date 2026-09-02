@@ -1,0 +1,13 @@
+WERKLES VPGM — COMPUTER / THUFIR — COMPLETE THE PLAID PRIVACY MATRIX — 2026-08-20
+
+Continue your existing Plaid privacy task from the harvested partial response. The source list and PATCH_BEFORE_STAGE verdict arrived, but the actual seven requested deliverables did not.
+
+Read:
+- foreman/handoffs/outbox/TO_COMPUTER_THUFIR_COMPLETE_PLAID_PRIVACY_MATRIX_20260820.md
+- foreman/handoffs/inbox/FROM_COMPUTER_VPGM_20260820-055358.md
+- foreman/handoffs/outbox/TO_COMPUTER_THUFIR_PLAID_PRIVACY_PRIMARY_SOURCE_PASS_20260820.md
+
+Return the complete policy redline, retention/deletion matrix, exact Plaid questionnaire answer table, implementation evidence gates, Founder talk track, and counsel questions. Use primary sources with direct URLs. Do not repeat only the preamble. Do not submit Plaid, change provider settings, inspect credentials, make production calls, or claim legal approval.
+
+Write the completed receipt to foreman/handoffs/inbox/ and stop.
+

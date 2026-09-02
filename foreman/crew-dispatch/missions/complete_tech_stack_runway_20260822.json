@@ -1,0 +1,50 @@
+{
+  "missionId": "COMPLETE_TECH_STACK_RUNWAY_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Pre-build review of the complete, member-readable Werkles tech-stack runway.",
+  "sharedContext": [
+    "The current static catalog covers Supabase Auth/Postgres/Storage, Stripe Billing/Identity, Plaid, Twilio Verify, and Checkr.",
+    "Werkles Constitution and pricing canon also name PostHog analytics and Expo Push as infrastructure vendors, but the catalog and Crucible journey omit them.",
+    "Vercel hosts the app and 1Password holds operator secrets; those are operator/runtime infrastructure, not member-facing verification features.",
+    "Every current slot has one narrow purpose, a non-live stage, a blocker, an authority boundary, and a planned data-minimization statement.",
+    "No provider activation, credentials, schema, SQL, tracking, notification send, push, or deploy is in scope."
+  ],
+  "liveStrings": [
+    "One member journey. Different tools for different jobs.",
+    "A provider name never means trusted.",
+    "Not live yet: what would happen to the data",
+    "Only checks labeled available can be started."
+  ],
+  "knownGaps": [
+    "PostHog and Expo Push are canonical vendors but have no catalog slot, adapter, route, member state, or data boundary.",
+    "The current journey does not distinguish member-facing services from hosting and secret custody.",
+    "A destination link is required by the current type even when a future service has no member page."
+  ],
+  "cousins": {
+    "BEAN": {
+      "vision": "Prevent analytics and notifications from becoming surveillance or implied consent when they enter the catalog.",
+      "pull": "Attack proposed PostHog and Expo Push boundaries for unnecessary collection, cross-context tracking, sensitive inference, retention ambiguity, notification leakage, and dishonest readiness claims.",
+      "go": [
+        "Return GO, PATCH, or REJECT.",
+        "State whether each vendor belongs in the member journey at all.",
+        "Give the minimum safe Werkles-keeps, provider-handles, deletion/expiry, and consent language for each.",
+        "Name any wording or state that must block implementation."
+      ],
+      "momentum": "Give one fail-closed regression for analytics and one for push notifications.",
+      "outOfLane": "No implementation, provider call, live research, credentials, schema, SQL, activation, push, deploy, send, secrets, or spend."
+    },
+    "COMPUTER": {
+      "vision": "Make the stack map complete and commercially legible without mixing product features, platform infrastructure, and future plans.",
+      "pull": "Review the proposed three-layer model: product/runtime, member-facing providers, operator custody. Attack omissions and category mistakes from supplied source only.",
+      "go": [
+        "Return GO, PATCH, or REJECT.",
+        "Classify Next.js/React, Vercel, Supabase, 1Password, Stripe Billing, Stripe Identity, Plaid, Twilio Verify, Checkr, PostHog, and Expo Push into the right layer.",
+        "Decide the best member-readable placement and readiness label for PostHog and Expo Push.",
+        "Name two narrow improvements that add real integration readiness instead of dashboard theater."
+      ],
+      "momentum": "Give one concise stack list Ben can use in a vendor conversation.",
+      "outOfLane": "No implementation, visual claim, live research, provider call, credentials, schema, SQL, activation, push, deploy, send, secrets, spend, or new vendor."
+    }
+  }
+}

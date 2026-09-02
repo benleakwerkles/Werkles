@@ -1,0 +1,56 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M6",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad product rotation across matching, Formation, Bellows, provider seams, and human experience.",
+  "sharedContext": [
+    "M5 was too small and over-invested in proof and a Pleasant University side quest; M6 returns to the actual Werkles product loop.",
+    "Current member loop includes Intake, Recommendations, Workshop, Match Deck, Formation, Personal Bellows, and Crucible.",
+    "Formation has private perspective practice and mutual-decision concepts; inspect whether they produce a useful shared artifact rather than another questionnaire.",
+    "No provider call, credentials, paid call, SQL/schema/RLS, production mutation, push, deploy, merge, new task, subagent, secondary model, environment, or foreground input is authorized."
+  ],
+  "liveStrings": ["Match Deck", "Prepare for a real conversation", "Try the other side", "Formation Ledger", "Personal Bellows", "Crucible"],
+  "knownGaps": [
+    "The Match Deck and Formation handoff may still feel like separate exercises rather than one relationship becoming a Werkle.",
+    "Accepted Formation decisions need a useful shared output without leaking private perspective notes.",
+    "Bellows and provider scaffolds must support the work instead of becoming explanation-only pages.",
+    "Actual fresh CBCC custody may be route-blocked and must not be claimed."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge the Match Deck to shared-Werkle loop as a sellable product, not a set of forms.",
+      "pull": "Inspect matching, Formation, Personal Bellows, Workshop, and Crucible transitions.",
+      "go": ["Name the top three cross-route failures.", "Choose what should become one continuous workflow.", "Return acceptance order and stop conditions."],
+      "momentum": "Return BROAD_M6_READY, PASS_WITH_CONDITIONS, or BLOCKED.",
+      "outOfLane": "Review only; no code, providers, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Make the first shared Werkle artifact and Personal Bellows feel surprisingly useful and worth returning to.",
+      "pull": "Attack the current Formation result, Bellows tools, and Workshop continuation.",
+      "go": ["Design two substantial shared-work outputs grounded in current accepted decisions.", "Give one free success and one graceful paid continuation.", "Name the trust and feasibility reviews required."],
+      "momentum": "Return SHARED_VALUE_M6_READY or BLOCKED.",
+      "outOfLane": "No code, provider action, spend, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Walk the member loop like a human and attack homework rhythm, unnatural conversation, illegibility, and unclear click targets.",
+      "pull": "Walk Match Deck, Formation, Workshop, Personal Bellows, and Crucible at desktop and narrow width.",
+      "go": ["Return five route-specific consequences.", "Nominate the strongest visual or interaction fixes.", "Give Lady Jessica and Doozer a bounded implementation and re-walk brief."],
+      "momentum": "Return HUMAN_LOOP_M6_READY or BLOCKED.",
+      "outOfLane": "No code, providers, secrets, SQL, push, deploy, new task, subagent, secondary model, or final creative approval."
+    },
+    "BEAN": {
+      "vision": "Attack privacy and trust where private perspective becomes accepted shared work and where provider checks affect matching.",
+      "pull": "Inspect matching signals, Formation accepted rows, partner-perspective storage, Personal Bellows composition, and Crucible receipts.",
+      "go": ["Return only P0/P1 failures with executable invariants.", "Prove private predictions cannot become shared artifacts or ranking signals.", "Specify post-build hostile regressions."],
+      "momentum": "Return TRUST_M6_READY, PASS_WITH_CONDITIONS, or BLOCK.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Bind the shared-Werkle output and provider seams to the actual source tree with minimal reversible contracts.",
+      "pull": "Audit matching, Formation, Bellows composition, auth continuity, and integration catalogs.",
+      "go": ["Return two source-bound vertical slices spanning multiple routes.", "Name exact prerequisites and negative contracts.", "Give Doozer a build brief and Foreman a verification matrix."],
+      "momentum": "Return SOURCE_BOUND_M6_READY, NEEDS_FACT_CHECK, or BLOCKED.",
+      "outOfLane": "No code, provider call, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

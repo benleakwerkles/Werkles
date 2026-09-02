@@ -1,0 +1,12 @@
+{
+  "packet_id": "soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z4vte",
+  "origin_surface": "SoleDash Receiver Handoff Bridge Smoke",
+  "origin_card_id": "book_architecture_soledash_receiver_handoff_bridge",
+  "target_aeye": "Dink",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Prove a SoleDash transport packet can create a blocked receiver-handoff bundle for real work return proof."
+  },
+  "status": "ACKNOWLEDGED",
+  "created_at": "2026-07-06T08:44:37.010Z"
+}

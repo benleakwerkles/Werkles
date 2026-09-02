@@ -23,5 +23,12 @@ export const metadata: Metadata = {
 };
 
 export default function SoleDashLayout({ children }: Readonly<{ children: ReactNode }>) {
-  return <div className="sole-dash-layout">{children}</div>;
+  return (
+    <div className="sole-dash-layout">
+      <a className="sole-dash-layout__werkles-return" href="/" aria-label="Return to Werkles">
+        ← Werkles
+      </a>
+      {children}
+    </div>
+  );
 }

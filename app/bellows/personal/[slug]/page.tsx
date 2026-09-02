@@ -36,7 +36,7 @@ export default async function PersonalBellowsLessonPage({ params }: PersonalBell
   return (
     <>
       <LocalAwareSiteHeader />
-      <main className="bellows-library bellows-lesson-page bellows-personal-lesson-page">
+      <main className="bellows-library bellows-lesson-page bellows-personal-lesson-page route-room route-room--personal-bellows workshop-route--personal-bellows">
         <nav className="bellows-library__nav" aria-label="Personal Bellows lesson navigation">
           <Link href="/bellows/personal">← My Bellows</Link>
           <Link href={publicLessonHref}>Open Public Version</Link>

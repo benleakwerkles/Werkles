@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T04:09:45.627Z",
+  "file": "FROM_PETRA_VPGM_20260824-040933.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Archived for forensic continuity only. Outbound leg was POSTED_PARTIAL_OR_MUTATED__DO_NOT_REPEAT, so the apparent GO is not assimilated as a terminal gate under canon P.8.",
+  "auto_merge": false
+}

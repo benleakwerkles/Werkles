@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:20:17.948Z",
+  "file": "FROM_DOOZER_MATCHING_NOT_MATCHING_EXACT_SOURCE_REJECT_20260818.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "DOOZER",
+  "consumed_by": "FOREMAN",
+  "note": "Read and incorporated: prior candidate remains rejected; current matching review must test authoritative suppressions, one evaluator, and path-specific causality.",
+  "auto_merge": false
+}

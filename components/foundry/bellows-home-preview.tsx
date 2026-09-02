@@ -34,7 +34,7 @@ export function BellowsHomePreview() {
         <figure className="bellows-home-preview__squibb">
           <Image
             src={squibbBellowsAssets.bustHost}
-            alt="Squibb — brass workshop owl host for Bellows lessons"
+            alt="A brass workshop owl beside the Bellows lesson desk"
             width={420}
             height={420}
             className="bellows-home-preview__squibb-photo"
@@ -44,7 +44,7 @@ export function BellowsHomePreview() {
         <figure className="bellows-home-preview__lesson">
           <Image
             src={squibbBellowsAssets.lessonCard}
-            alt="Squibb beside a lesson card on the workshop desk"
+            alt="A brass workshop owl beside a lesson card"
             width={560}
             height={420}
             className="bellows-home-preview__lesson-photo"

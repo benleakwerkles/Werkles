@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Werkles — W2 pushed</title>
+<style>
+  body {
+    margin: 0;
+    padding: 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #efe7da;
+    color: #2c231d;
+  }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  p.note { font-family: Segoe UI, sans-serif; font-size: 13.5px; color: #6b5a49; margin: 0 0 26px; }
+  h2 { font-size: 16px; font-family: Segoe UI, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; color: #7d4a1e; margin: 34px 0 12px; }
+  .card {
+    border: 1px solid rgba(80, 52, 28, 0.25);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    margin: 0 0 18px;
+    max-width: 860px;
+  }
+  .card header {
+    font-family: Segoe UI, sans-serif;
+    font-size: 13.5px;
+    padding: 9px 14px;
+    background: #fbf7f0;
+    border-bottom: 1px solid rgba(80, 52, 28, 0.15);
+    color: #4a3a2c;
+  }
+  .card header strong { display: inline; font-size: 15px; color: #2c231d; margin-right: 8px; }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 34px 40px;
+    background: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(246, 239, 229, 0.96));
+  }
+  .bar img { height: 96px; width: auto; display: block; transform: translateY(-5px); }
+  .word {
+    font-weight: 700;
+    font-size: 76px;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    margin-left: -8px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  /* straight blends */
+  .g1 { background-image: linear-gradient(172deg, #18c5ae 0%, #06957f 30%, #5b2be0 64%, #3d16ca 100%); }
+  .g2 { background-image: linear-gradient(172deg, #2fe0c2 0%, #08a58c 28%, #3d16ca 60%, #2a0f9e 100%); }
+  .g3 { background-image: linear-gradient(172deg, #18c5ae 0%, #0a9c85 20%, #5b2be0 46%, #2f10a6 100%); }
+</style>
+</head>
+<body>
+  <h1>W2 pushed — green crest over purple deep</h1>
+  <p class="note">Baseline first, then the variations. G-codes are word-only (your original W untouched); GT-codes paint the wave through the W.</p>
+
+  <h2 id="word">Word-only — original W</h2>
+  <div class="card"><header><strong>G1 — W2 baseline</strong>the straight blend you picked</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word g1">erkles</span></div></div>
+  <div class="card"><header><strong>G2 — Hotter crest</strong>brighter seafoam breaking over deeper violet</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word g2">erkles</span></div></div>
+  <div class="card"><header><strong>G3 — High crest</strong>the green rides higher, purple owns two thirds</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word g3">erkles</span></div></div>
+  <div class="card"><header><strong>G4 — Curved swell</strong>same colors, real wave boundary instead of straight blend</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word" data-style="word-soft">erkles</span></div></div>
+  <div class="card"><header><strong>G5 — Curved + foam line</strong>the swell with a thin cream thread riding the break</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word" data-style="word-foam">erkles</span></div></div>
+  <div class="card"><header><strong>G6 — Curved + ink seam</strong>the swell with the black shadow line (word-only T3i)</header>
+    <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word" data-style="word-ink">erkles</span></div></div>
+
+  <h2 id="through">Through the W</h2>
+  <div class="card"><header><strong>GT4 — Curved swell, all the way</strong>green breaks over purple through the whole lockup, no seam</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-green-over-purple.png" alt=""><span class="word" data-style="through-soft">erkles</span></div></div>
+  <div class="card"><header><strong>GT5 — Curved + foam, all the way</strong>the cream thread rides from the W's first stroke out</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-green-over-purple-foam.png" alt=""><span class="word" data-style="through-foam">erkles</span></div></div>
+  <div class="card"><header><strong>GT6 — Curved + ink seam, all the way</strong>the T3i you already saw, here for the lineup</header>
+    <div class="bar"><img src="/assets/draft/brand-rebrand/werkles-w-wave-inkseam-inverted.png" alt=""><span class="word" data-style="through-ink">erkles</span></div></div>
+
+<script>
+// Curved-swell gradients, green over purple. Word-only styles use the word
+// path; through styles clip the x 120..520 window of the shared canvas.
+const SEAM_THROUGH = "M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52";
+const SEAM_WORD = "M0,54 C50,62 90,16 170,20 C240,24 250,66 320,60 C355,57 380,50 400,52";
+const DEFS = "<defs>" +
+  "<linearGradient id='p' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#6a35f2'/><stop offset='1' stop-color='#4520c9'/></linearGradient>" +
+  "<linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#0aa38c'/><stop offset='1' stop-color='#027665'/></linearGradient>" +
+  "</defs>";
+const STYLES = {
+  "word-soft":    { seam: null, word: true },
+  "word-foam":    { seam: "#f2e8d5", sw: 4, word: true },
+  "word-ink":     { seam: "#14121f", sw: 8, word: true },
+  "through-soft": { seam: null },
+  "through-foam": { seam: "#f2e8d5", sw: 4 },
+  "through-ink":  { seam: "#14121f", sw: 8 },
+};
+for (const el of document.querySelectorAll(".word[data-style]")) {
+  const s = STYLES[el.dataset.style];
+  const seamPath = s.word ? SEAM_WORD : SEAM_THROUGH;
+  const viewBox = s.word ? "0 0 400 80" : "120 0 400 80";
+  const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='" + viewBox + "' preserveAspectRatio='none'>" + DEFS +
+    "<rect x='-10' y='-10' width='540' height='100' fill='url(#p)'/>" +
+    "<path d='" + seamPath + " L520,0 L0,0 Z' fill='url(#g)'/>" +
+    (s.seam ? "<path d='" + seamPath + "' fill='none' stroke='" + s.seam + "' stroke-width='" + s.sw + "' stroke-linecap='round'/>" : "") +
+    "</svg>";
+  el.style.backgroundImage = "url(\"data:image/svg+xml," + encodeURIComponent(svg) + "\")";
+}
+</script>
+</body>
+</html>

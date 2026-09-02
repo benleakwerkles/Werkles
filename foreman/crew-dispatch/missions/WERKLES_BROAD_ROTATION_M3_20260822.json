@@ -1,0 +1,84 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M3",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "A broad completion rotation across matching and conversation, Werkle formation, Public and Personal Bellows, provider readiness, and sitewide human rhythm. Review transitions between surfaces, not one page in isolation.",
+  "sharedContext": [
+    "Werkles should help a member move from a real goal to substantial guidance, ranked people, natural conversation, deliberate shared work, revisitable learning, and narrow optional provider checks.",
+    "Workshop means one member's private working space. A Werkle begins only when two or more members deliberately combine selected work.",
+    "The current local candidate adds a device-safe Werkle Operating Brief, reversible Personal Bellows progress, and provider-specific readiness answers in Crucible.",
+    "The Operator requires multiple product lanes and cross-review rotations. Do not collapse your answer into the page nearest the cursor.",
+    "No outgoing request is a receipt. No seat may claim another seat reviewed work it did not inspect.",
+    "No push, deploy, production mutation, provider submission, paid call, secrets, SQL/schema/RLS apply, new task, subagent, secondary model, or environment is authorized."
+  ],
+  "liveStrings": [
+    "Save on this device",
+    "Shared work on this device",
+    "Can I use this now?",
+    "Try the other person's side (practice only)"
+  ],
+  "knownGaps": [
+    "Match Deck variety, ranking explanations, adaptation controls, and generated conversation need proof as one coherent loop.",
+    "Formation has a practice Operating Brief but real two-member custody and consent remain gated.",
+    "Bellows has a useful first slice but needs more substantial lessons, tools, and revisitable member value.",
+    "Provider surfaces must distinguish scaffold, sandbox-ready, configured, and actually runnable without overstating production readiness.",
+    "Some routes still risk internal copy, text-and-bubble monotony, or transitions that strand a member."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge the member journey as one sellable product and prevent local page polish from hiding broken transitions.",
+      "pull": "Inspect the five parallel lanes and the transitions among them. Rank the highest-leverage integrated slices that can be completed without provider, schema, or production gates.",
+      "go": [
+        "Return an acceptance matrix for Intake through Recommendations, Workshop, Match Deck, conversation, Formation, Personal Bellows, Crucible, and membership.",
+        "Name the top five integrated repairs with entry state, exit proof, owner seat, and cross-review order.",
+        "Identify anything that should be removed or merged instead of expanded."
+      ],
+      "momentum": "Return CAMPAIGN_MAP_READY or BLOCKED and seed the exact next two cross-review packets.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Make Bellows and Recommendations deliver enough durable value that a member wants to return and eventually pay.",
+      "pull": "Attack lesson depth, saved tools, Personal Bellows sequencing, free-to-paid value, and the path from advice into people or shared work.",
+      "go": [
+        "Specify three substantial Bellows lesson/tool slices with member input, reasoning, visible artifact, next action, and revisitable value.",
+        "Design one graceful free-to-paid value ladder that gives a complete free success without crippling the paid product.",
+        "Nominate one slice each for Computer feasibility, Bean trust, and Ender experience review."
+      ],
+      "momentum": "Return BELLOWS_VALUE_READY or BLOCKED with exact phase-two packet seeds.",
+      "outOfLane": "No code mutation, provider action, secrets, paid calls, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Make the whole journey feel human, visually grounded, legible, and conversational without confusing buttons and information bubbles.",
+      "pull": "Walk Match Deck through conversation, Formation, Personal Bellows, and Crucible. Attack robotic dialogue, dead space, weak hierarchy, hidden next actions, and inconsistent member navigation.",
+      "go": [
+        "Return the five highest-impact experience defects with exact route, state, human consequence, and repair.",
+        "Give Lady Jessica a bounded visual brief and Doozer a bounded interaction brief for the strongest fixes.",
+        "Define the exact phase-two re-walk required after implementation."
+      ],
+      "momentum": "Return EXPERIENCE_ROTATION_READY or BLOCKED and seed the hands packets.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or final aesthetic approval."
+    },
+    "BEAN": {
+      "vision": "Prevent adaptive matching, generated conversation, shared Formation, Personal Bellows, and provider checks from laundering surveillance or false authority.",
+      "pull": "Attack what is learned, saved, ranked, shared, inferred, invalidated, and deleted across the complete member loop.",
+      "go": [
+        "Return only P0/P1 cross-surface trust failures and the executable invariant that closes each.",
+        "Define allowed adaptive signals, consent-required signals, and signals forbidden from ranking or shared records.",
+        "Give Computer a hostile regression matrix and Ender/Lady Jessica the interface proof each invariant requires."
+      ],
+      "momentum": "Return TRUST_ROTATION_READY, PASS_WITH_CONDITIONS, or BLOCK with the exact post-build review packet.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Separate real functionality from scaffolds and define the smallest executable slices that strengthen multiple member surfaces.",
+      "pull": "Audit matching/conversation state, Formation/Operating Brief custody, Bellows progress, and provider-readiness truth against existing local contracts.",
+      "go": [
+        "Return a dependency graph for the strongest three ungated vertical slices, naming existing source paths and verification commands.",
+        "Classify relevant code as real, device-only, scaffold, duplicated, obsolete, or overclaimed.",
+        "Give Doozer one implementation-ready contract and the Foreman one integration test plan."
+      ],
+      "momentum": "Return TECHNICAL_ROTATION_READY, NEEDS_FACT_CHECK, or BLOCKED and seed the Bean/Ender post-build attack.",
+      "outOfLane": "No code mutation, provider calls, secrets, SQL/schema/RLS apply, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

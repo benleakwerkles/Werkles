@@ -1,0 +1,8 @@
+{
+  "schema": "workspace_relay_receiver_handoff_bridge_fixture_v0",
+  "packet_id": "workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os",
+  "relay_id": "workspace_relay_handoff_bridge_mr8zc3ot",
+  "receiver": "Maker@Betsy",
+  "truth_boundary": "fixture custody only; receiver work proof requires handoff return",
+  "created_at": "2026-07-06T08:50:13.805Z"
+}

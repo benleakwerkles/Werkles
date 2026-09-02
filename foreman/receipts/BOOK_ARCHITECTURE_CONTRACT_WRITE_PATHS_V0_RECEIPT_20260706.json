@@ -1,0 +1,93 @@
+{
+  "schema": "BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T05:54:48.166Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-contract-write-paths-smoke.mjs",
+  "files_changed": [
+    "lib/organism/contracts/storage.ts",
+    "app/api/organism/contracts/packets/route.ts",
+    "app/api/organism/contracts/receipts/route.ts",
+    "scripts/foreman/organism-contract-write-paths-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT_20260706.json"
+  ],
+  "data_artifacts_written": [
+    "data/organism/contracts/packets/BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0.json",
+    "data/organism/contracts/receipts/schema_invalid_BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_INVALID_PACKET_V0_2a4ebd.json",
+    "data/organism/contracts/receipts/BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT_20260706.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "valid_packet_storage_write": true,
+    "invalid_packet_returns_schema_invalid": true,
+    "invalid_packet_writes_blocker_receipt": true,
+    "valid_receipt_storage_write": true,
+    "packet_write_appends_validated_event": true,
+    "receipt_write_appends_validated_event": true,
+    "receipt_event_joins_packet_id_and_receipt_id": true
+  },
+  "contract_file_hashes": [
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/gate.ts",
+      "sha256": "9dadf2ce3a309c104e656a78d25fa1959da7e0f0594020f5ae408b7263d8ef5d",
+      "bytes": 3601
+    },
+    {
+      "path": "lib/organism/contracts/boot-context.ts",
+      "sha256": "480ee01afa51e06f1cfa22efd23f9682aa90e5b564c15b2b6f16f5c70e6c6524",
+      "bytes": 3536
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "app/api/organism/contracts/packets/route.ts",
+      "sha256": "ec9eab7d63cfcdb117ee6c921e106ec25c15efc0699cd0900d2ce7b90ef47c02",
+      "bytes": 492
+    },
+    {
+      "path": "app/api/organism/contracts/receipts/route.ts",
+      "sha256": "8bf75497e1c35016ccc87db18cd184fcae16797d55b6f54e6ea82c887347869e",
+      "bytes": 495
+    },
+    {
+      "path": "scripts/foreman/organism-contract-write-paths-smoke.mjs",
+      "sha256": "5335d74a266602e747380b19da1d95525924f4e3356ff3dfd93bcbeadcce309a",
+      "bytes": 10736
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "next_safe_action": "Replace legacy packet/receipt writers lane by lane with these storage helpers.",
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation"
+  ],
+  "self_sha256_pending": "63bfa7f9f5151fe0c570517ad2a5174d1c8f9890b219ffbb25757065e3fc0f2b"
+}

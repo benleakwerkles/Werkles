@@ -1,0 +1,12 @@
+{
+  "schema": "tinkerden_machine_runner_receipt_v0",
+  "receipt_id": "td_receipt_workspace_relay_contract_smoke_mr8tvyiz",
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "status": "WORKSPACE_RELAY_CONTRACT_SMOKE",
+  "runner_mode": "fixture",
+  "clipboard_set": false,
+  "clipboard_verified": false,
+  "workspace_focused": false,
+  "timestamp": "2026-07-06T06:17:42.540Z",
+  "note": "Smoke fixture only. The workspace relay route was not invoked."
+}

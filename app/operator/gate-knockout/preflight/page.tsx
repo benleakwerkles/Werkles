@@ -58,7 +58,7 @@ export default function GatePreflightPage() {
             <h2>Stripe Environment Names</h2>
           </div>
           <p>
-            These are the names operators may point to. Ben enters private values outside chat and outside the repo.
+            These are the names operators may point to. Operator enters private values outside chat and outside the repo.
           </p>
           <div className="pricing-table" aria-label="Stripe environment variables">
             <span>Name</span>
@@ -67,7 +67,7 @@ export default function GatePreflightPage() {
             {productGatePreflightMatrix.envNames.map((envName) => (
               <div className="pricing-row" key={envName.name}>
                 <strong>{envName.name}</strong>
-                <span>{envName.secretValue ? `${envName.purpose} Secret value: Ben-only.` : envName.purpose}</span>
+                <span>{envName.secretValue ? `${envName.purpose} Secret value: Operator-only.` : envName.purpose}</span>
                 <span>{envName.source}</span>
               </div>
             ))}

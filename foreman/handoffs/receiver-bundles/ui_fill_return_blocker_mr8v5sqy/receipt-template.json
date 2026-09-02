@@ -1,0 +1,35 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "receiver_receipt_template_td_packet_bridge_execute_mr8te4jp_srhdov_mr8v5stn",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "created_at": "2026-07-06T06:53:21.323Z",
+  "receiver": "ReceiverFillReturnControlSmoke@Betsy",
+  "status": "blocked",
+  "what_was_attempted": "TEMPLATE: replace this with what ReceiverFillReturnControlSmoke@Betsy actually attempted for packet td_packet_bridge_execute_mr8te4jp_srhdov.",
+  "what_changed": [
+    "TEMPLATE_NOT_FILLED"
+  ],
+  "what_did_not_change": [
+    "No receiver completion proof has been claimed by this template.",
+    "Do not post this unchanged unless the receiver is intentionally returning a blocked receipt."
+  ],
+  "proof": [
+    {
+      "kind": "artifact_path",
+      "value": "foreman/handoffs/receiver-bundles/ui_fill_return_blocker_mr8v5sqy/packet.json"
+    },
+    {
+      "kind": "hash",
+      "value": "foreman/handoffs/receiver-bundles/ui_fill_return_blocker_mr8v5sqy/packet.json sha256 8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    {
+      "kind": "readback",
+      "value": "TEMPLATE_NOT_FILLED: replace with receiver readback before claiming partial or completed status."
+    }
+  ],
+  "blocked_reason": "TEMPLATE_NOT_FILLED",
+  "next_safe_action": "Receiver edits this receipt with real proof, then posts it with organism-receiver-receipt-post.mjs.",
+  "source_hashes_used": {
+    "foreman/handoffs/receiver-bundles/ui_fill_return_blocker_mr8v5sqy/packet.json": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T07:25:45.243Z",
+  "bundle_id": "receipts_ready_post_success_mr8wbgm7",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+  "lane": "TinkerDen bridge execute",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+  "source_packet_sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/packet.json",
+      "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/receipt-template.json",
+      "sha256": "2595c153a332cf6aa7bbe3ba49035cbd5764c97274990a38a2b5dd4e56056468"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/HANDOFF.md",
+      "sha256": "c709ce2b9000ece18a34fabaefade2774b62e8b78fe79b756106af3b9400bf3f"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/receipts_ready_post_success_mr8wbgm7/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiptsReadyPostSuccessSmoke@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_RECEIPT_INTAKE_LIVE_API_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:20:32.888Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_RECEIPT_INTAKE_LIVE_API_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-receiver-receipt-live-api-smoke.mjs",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "files_changed": [
+    "scripts/foreman/organism-receiver-receipt-live-api-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_RECEIPT_INTAKE_LIVE_API_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "data/organism/contracts/receipts/receiver_receipt_intake_live_api_mr8tzls7.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "live_http_post_returned_ok": true,
+    "receiver_receipt_id_round_tripped": true,
+    "packet_id_round_tripped": true,
+    "contract_receipt_written": true,
+    "contract_receipt_status": "partial",
+    "packet_receipted_event_written": true,
+    "truth_boundary": "Live API intake works, but this receipt remains fixture proof rather than real downstream completion."
+  },
+  "attached_to_contract_packet": {
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "contract_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "lane": "TinkerDen bridge execute"
+  },
+  "live_api_response": {
+    "ok": true,
+    "receipt_id": "receiver_receipt_intake_live_api_mr8tzls7",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receipt_status": "partial",
+    "contract_write": {
+      "ok": true,
+      "artifact_path": "data/organism/contracts/receipts/receiver_receipt_intake_live_api_mr8tzls7.json",
+      "event_path": "data/organism/contracts/events.jsonl",
+      "sha256": "fa8918efb3c398468d3c56118a8a69e2e5d8d2675775237242470712c77d3940"
+    }
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no account automation",
+    "no browser credential control"
+  ],
+  "next_safe_action": "Point a separate Aeye/client at this endpoint for a real non-fixture receiver receipt."
+}

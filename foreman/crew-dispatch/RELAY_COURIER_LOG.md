@@ -288,3 +288,20 @@ Call log:
 Call log:
   - <ws preparing> retrieving websocket url from http://127.0.0.1:9333
 
+
+## 2026-08-03T07:43:23.925Z
+- FAIL ENDER: Aeye Crew Edge not running. Click Open Aeye Crew Bay first, or pass -EnsureEdge
+At C:\Users\Ben Leak\github\Werkles\foreman\crew-dispatch\crew-edge-courier.ps1:257 char:5
++     throw "Aeye Crew Edge not running. Click Open Aeye Crew Bay first ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Aeye Crew Edge ...ass -EnsureEdge:String) [], RuntimeException
+    + FullyQualifiedErrorId : Aeye Crew Edge not running. Click Open Aeye Crew Bay first, or pass -EnsureEdge
+
+## 2026-08-03T07:45:19.276Z
+- LOAD OK ENDER tab 3 class=AUTO_LOAD_HUMAN_SEND engine=powershell
+
+## 2026-08-22T04:19:06.250Z
+- LOAD OK PETRA tab 1 class=AUTO_LOAD_HUMAN_SEND engine=powershell
+
+## 2026-08-23T07:55:08.771Z
+- SELF-TEST PASS channel=msedge — NO SEND

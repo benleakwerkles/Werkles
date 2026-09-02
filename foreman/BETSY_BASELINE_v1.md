@@ -12,7 +12,7 @@ Machine role: **Betsy** — primary build machine. Canonical bind: `foreman/MACH
 | Field | Value |
 |-------|-------|
 | **Werkles name** | Betsy |
-| **Windows hostname** | `DESKTOP-KTBH0LA` *(factory name — Operator rename to `Betsy` pending)* |
+| **Windows hostname** | `Betsy` |
 | **CPU** | AMD Ryzen 9 9950X 16-Core Processor (16 cores / 32 logical) |
 | **RAM** | 31.16 GB (32 GB class) |
 | **GPU** | AMD Radeon(TM) Graphics (integrated; driver 32.0.21042.62) — no discrete GPU detected in audit |
@@ -59,11 +59,11 @@ Machine role: **Betsy** — primary build machine. Canonical bind: `foreman/MACH
 
 | Field | Value |
 |-------|-------|
-| **Repo path** | `C:\Users\Ben Leak\Desktop\github\Werkles` |
-| **Remote** | `https://github.com/benleakwerkles/Werkles1` |
-| **Current branch** | `snapshot/sally-good-werkles-2026-06-12` |
-| **Current commit** | `437792b6ee8e907f80f088e15de9adb0f9525e6d` — `docs(crew): mandate LOCAL HANDS READBACK at session start` |
-| **Working tree** | At audit: 5 gd-intent-router run paths failed checkout (265–273 char paths). Restored 2026-06-12 from verified `foreman/handoffs/` mirrors; `git config core.longpaths true` set locally. Pending local foreman only: `MACHINE_TOPOLOGY.md` (modified), `BETSY_BASELINE_v1.md` (untracked). |
+| **Repo path** | `C:\Users\Ben Leak\github\Werkles` *(canonical local source-truth folder; supersedes Desktop path 2026-07-03)* |
+| **Remote** | `https://github.com/benleakwerkles/Werkles.git` |
+| **Current branch** | `maker/site-g-20260703` |
+| **Current commit** | `19333c9f8326404bb831c78f5cc57e427f873153` — `Add sign-in hunt page and member works-now status card.` |
+| **Working tree** | At bind: 1 modified file (`app/globals.css`); branch ahead 2 of `origin/consolidation/werkles-unified-20260702-push`. |
 
 ### Localhost status (at audit)
 

@@ -1,0 +1,80 @@
+{
+  "missionId": "WERKLES_BVPGM_PRODUCTION_HUMAN_RHYTHM_20260831",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Pre-build attack and production-release planning for a broad human-rhythm pass: remove Maria's bakery narrative, add selective real-object visual relief, distinguish People/Bellows/Proof rooms inside the Werkles palette, humanize copy, then release through exact-manifest custody.",
+  "sharedContext": [
+    "Ben explicitly ordered this BVPGM and a live push on 2026-08-31.",
+    "The working tree is very dirty and unrelated work must remain excluded. No stage-all operation is allowed.",
+    "Current local homepage already uses HeroStatic, HomeValueFold, LanesDocumentarySection, value output, How It Works, Proof boundary, and operations cards; Maria copy remains in lib/copy.ts and old narrative modules/routes may still expose it.",
+    "Existing object and human-space assets include the tool at rest, van at dawn, workshop pegboard, materials staged, reception quiet, workshop interior, proof imagery, kitchens, desks, and documentary lane stills.",
+    "People, Bellows, and Proof already share violet/copper tokens and route classes, but the experience still risks visual sameness across long text-and-bubble pages.",
+    "No new image spend, provider work, schema, secret, production-data mutation, or live verification claim belongs in this slice.",
+    "Lady Jessica remains the sole push/deploy seat after Ben, Heimerdinker, and Lady Jessica sign the exact candidate."
+  ],
+  "liveStrings": [
+    "Maria thought she needed customers.",
+    "Your story won't be Maria's.",
+    "People",
+    "Bellows",
+    "Proof",
+    "From a messy need to a usable next move.",
+    "Werkles should earn its place in your week."
+  ],
+  "knownGaps": [
+    "The exact active Maria exposure path is not yet fully inventoried.",
+    "The precise set of pages needing object imagery must be chosen from rendered evidence, not a blanket every-page rule.",
+    "Section differentiation needs a shared semantic treatment so it does not become three unrelated mini-sites.",
+    "The prior production candidate was prepared but not pushed; this cycle must reseal an exact current candidate after new edits."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make People, Bellows, and Proof feel like distinct rooms in the same Werkles building, and make the journey sound like people talking rather than a machine explaining its own interface.",
+      "pull": "Attack the rendered hierarchy, dead space, object imagery choices, section signatures, legibility, and copy rhythm.",
+      "go": [
+        "Return GO, PATCH, or STOP on the four Operator acceptance targets, with exact smallest changes.",
+        "Define a subtle visual signature for People, Bellows, and Proof using the existing palette, typography, border language, textures, and documentary objects.",
+        "Name where real-object imagery adds orientation and where another image would be clutter.",
+        "Rewrite only the worst Aeye-heavy lines; preserve useful legal/provider boundaries."
+      ],
+      "momentum": "Provide a five-point rendered walk checklist Lady Jessica can use after implementation.",
+      "outOfLane": "No implementation, staging, push, deploy, schema, providers, secrets, credentials, spend, or new image generation."
+    },
+    "BEAN": {
+      "vision": "Prevent visual warmth and concise copy from laundering fake capability, persistence, verification, or human activity into production.",
+      "pull": "Hostile-audit Maria removal, provider/proof claims, next-action promises, synthetic Ghost boundaries, and release scope.",
+      "go": [
+        "Return GO, PATCH, or STOP with exact trust failures.",
+        "Find every active Maria/bakery narrative reference that a member could reach or mistake for their own data.",
+        "Attack Proof and Crucible copy for any live-verification claim unsupported by runtime state.",
+        "Define release-blocking assertions for exact-manifest contamination and stale account-save claims."
+      ],
+      "momentum": "Give one hostile route sequence for post-build smoke.",
+      "outOfLane": "No implementation, staging, push, deploy, schema, providers, secrets, credentials, spend, or new image generation."
+    },
+    "SKYBRO": {
+      "vision": "Turn the broad public/member journey into a coherent product story with distinct chapters instead of one page reskinned a hundred times.",
+      "pull": "Attack narrative continuity, conceptual duplication, Maria residue, section identity, and value progression.",
+      "go": [
+        "Return GO, PATCH, or STOP and identify the strongest and weakest transitions.",
+        "Define the job of People, Bellows, and Proof in one sentence each, then identify duplicate content that violates those jobs.",
+        "Choose the existing object images that best signal each room without making every page photo-led.",
+        "Name the copy lines most likely to sound Aeye-heavy or gatekeeping."
+      ],
+      "momentum": "Give a concise public-home-to-member-flow sequence for the release walk.",
+      "outOfLane": "No implementation, staging, push, deploy, schema, providers, secrets, credentials, spend, or new image generation."
+    },
+    "COMPUTER": {
+      "vision": "Give Lady Jessica an evidence-shaped release attack so exact-manifest staging and promotion cannot absorb unrelated dirty-tree work.",
+      "pull": "Audit the proposed evidence, candidate inventory discipline, route checks, rollback, and production-promotion order.",
+      "go": [
+        "Return GO, PATCH, or STOP with the minimum evidence required for release.",
+        "Attack the active Maria-removal proof and section-signature route matrix for false completeness.",
+        "Attack exact-manifest staging, commit boundary, candidate deployment, and alias promotion order.",
+        "Name the checks Lady Jessica must personally reproduce rather than trust from a packet."
+      ],
+      "momentum": "Provide a compact release-seal checklist that halts before promotion on any failure.",
+      "outOfLane": "No implementation, staging, push, deploy, schema, providers, secrets, credentials, spend, or new image generation."
+    }
+  }
+}

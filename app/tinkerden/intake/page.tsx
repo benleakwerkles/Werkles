@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { TinkerDenIntakeForm } from "./tinkerden-intake-form";
 
 export const metadata: Metadata = {
-  title: "TinkerDen Intake | Werkles",
+  title: "TinkerDen Intake",
   description: "Create a TinkerDen packet card without markdown packet construction.",
   robots: { index: false, follow: false }
 };

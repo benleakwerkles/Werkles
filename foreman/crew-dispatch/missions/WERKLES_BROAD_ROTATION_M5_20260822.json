@@ -1,0 +1,66 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M5",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad rotation across provider activation order, Bellows retention, member language, human rhythm, matching/Formation continuity, and Pleasant University packaging.",
+  "sharedContext": [
+    "M4 added Member Home Werkle resume, Personal Bellows lesson resume, Workshop end navigation, and recovered the stale local Next runtime.",
+    "The eight-service tech-stack journey names current code/scaffold state, next build, and true human gate; no provider action is authorized.",
+    "Public Bellows is a six-card lesson catalog and Personal Bellows holds device-local drafts and progress.",
+    "Fresh M4 crew routes did not return clean custody; outgoing packets remain non-participation.",
+    "A Pleasant University course candidate is being packaged separately for Swanson; it is not doctrine or course approval.",
+    "No provider action, credentials, paid call, SQL/schema/RLS, production mutation, push, deploy, merge, new task, subagent, secondary model, environment, or foreground input is authorized."
+  ],
+  "liveStrings": [
+    "Member Home",
+    "My Bellows",
+    "Workshop",
+    "Match Deck",
+    "Crucible",
+    "First Shared Step"
+  ],
+  "knownGaps": [
+    "The tech stack is described but not yet organized as one prioritized activation ladder for the Operator.",
+    "Bellows needs deeper return value after a member completes the first recommended lesson or artifact.",
+    "Some ordinary member copy still exposes internal build vocabulary or dated preview language.",
+    "Some routes remain visually repetitive despite recent human pauses.",
+    "Actual fresh CBCC custody is route-blocked and must not be claimed."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge whether this broad rotation advances a sellable member journey rather than polishing isolated rooms.",
+      "pull": "Inspect the M4 receipt, provider journey, Bellows return paths, and matching-to-Formation continuity.",
+      "go": ["Name the top three cross-route acceptance failures.", "Choose what should be removed or merged rather than expanded.", "Return exact review order and stop conditions."],
+      "momentum": "Return BROAD_M5_READY, PASS_WITH_CONDITIONS, or BLOCKED.",
+      "outOfLane": "Review only; no code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Make Public and Personal Bellows create recurring practical value worth membership without homework fatigue.",
+      "pull": "Attack lesson completion, saved artifacts, next-best learning, shared Werkle context, and free-to-paid continuity.",
+      "go": ["Design two substantial return loops grounded in current source truth.", "Give one complete free success and one graceful paid continuation.", "Name exact trust, UX, and feasibility reviews."],
+      "momentum": "Return BELLOWS_RETENTION_READY or BLOCKED.",
+      "outOfLane": "No code, provider action, paid call, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Make member routes readable, visually alive, conversational, and obvious about the next action without turning every page into a photo wall.",
+      "pull": "Walk Bellows, Workshop, Match Deck, Formation, Crucible, Membership, and Member Home at desktop and narrow width.",
+      "go": ["Return five route-specific human consequences.", "Nominate non-face visual breaks where better than portraits.", "Give Lady Jessica and Doozer bounded implementation briefs plus a re-walk."],
+      "momentum": "Return HUMAN_RHYTHM_M5_READY or BLOCKED.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or final creative approval."
+    },
+    "BEAN": {
+      "vision": "Attack account custody, device-only state, matching privacy, accepted Formation decisions, and provider availability claims across routes.",
+      "pull": "Inspect M4 changes plus current Crucible, Personal Bellows, Match Deck, and Formation boundaries.",
+      "go": ["Return only P0/P1 failures with executable invariants.", "Attack any stale preview or saved-state wording that changes user expectations.", "Specify post-build regression and visible-proof requirements."],
+      "momentum": "Return TRUST_M5_READY, PASS_WITH_CONDITIONS, or BLOCK.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Turn the provider inventory into the smallest safe activation sequence while keeping functionality, scaffold, sandbox, and human gate distinct.",
+      "pull": "Audit the eight integration slots and current adapter/source paths.",
+      "go": ["Return an ordered activation ladder with source-bound prerequisites.", "Name two ungated vertical slices that improve several routes.", "Give Doozer an implementation contract and Foreman a verification matrix."],
+      "momentum": "Return PROVIDER_LADDER_READY, NEEDS_FACT_CHECK, or BLOCKED.",
+      "outOfLane": "No code, provider call, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

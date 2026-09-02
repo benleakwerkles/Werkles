@@ -44,7 +44,7 @@ export const primaryNavItems: PrimaryNavItem[] = [
     href: "/bellows",
     label: "Bellows",
     lane: "builder",
-    symbol: "Squibb hosts the floor"
+    symbol: "Practical guides and working lessons"
   },
   {
     id: "membership",
@@ -81,7 +81,7 @@ const memberRouteContexts: readonly (Readonly<{
   Object.freeze({ matches: (path: string) => path.startsWith("/dashboard/billing"), label: "Membership", purpose: "Review what is included before changing a plan.", nextHref: "/dashboard", nextLabel: "Member Home" }),
   Object.freeze({ matches: (path: string) => path === "/dashboard", label: "Member Home", purpose: "Choose which piece of work to pick up next.", nextHref: "/dashboard/blueprints", nextLabel: "My Work" }),
   Object.freeze({ matches: (path: string) => path.startsWith("/bellows/intake"), label: "Intake", purpose: "Tell Werkles what you are trying to make happen and what is in the way.", nextHref: "/bellows/recommendations", nextLabel: "Recommendations" }),
-  Object.freeze({ matches: (path: string) => path.startsWith("/bellows/recommendations"), label: "Recommendations", purpose: "Compare possible next moves before choosing what to work on.", nextHref: "/dashboard/blueprints", nextLabel: "My Work" }),
+  Object.freeze({ matches: (path: string) => path.startsWith("/bellows/recommendations"), label: "Recommendations", purpose: "Compare possible next moves before choosing what to work on.", nextHref: "#recommendation-results", nextLabel: "See My Results" }),
   Object.freeze({ matches: (path: string) => path.startsWith("/bellows/personal"), label: "My Bellows", purpose: "Learn one useful method and turn it into working material.", nextHref: "/dashboard/blueprints", nextLabel: "My Work" }),
   Object.freeze({ matches: (path: string) => path.startsWith("/bellows/library"), label: "Bellows Library", purpose: "Browse practical lessons when you want a wider view.", nextHref: "/bellows/personal", nextLabel: "My Bellows" })
 ]);

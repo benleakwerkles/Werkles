@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Werkles — "erkles" color &amp; position options</title>
+<style>
+  body {
+    margin: 0;
+    padding: 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #efe7da;
+    color: #2c231d;
+  }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.note { font-family: Segoe UI, sans-serif; font-size: 13px; color: #6b5a49; margin: 0 0 24px; }
+  h2 { font-size: 15px; font-family: Segoe UI, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; color: #7d4a1e; margin: 30px 0 10px; }
+  .row { display: flex; flex-wrap: wrap; gap: 14px; }
+  .card {
+    flex: 1 1 300px;
+    max-width: 360px;
+    border: 1px solid rgba(80, 52, 28, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .card header {
+    font-family: Segoe UI, sans-serif;
+    font-size: 12.5px;
+    padding: 8px 12px;
+    background: #fbf7f0;
+    border-bottom: 1px solid rgba(80, 52, 28, 0.15);
+    color: #4a3a2c;
+  }
+  .card header strong { display: block; font-size: 13.5px; color: #2c231d; }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 16px;
+    background: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(246, 239, 229, 0.96));
+  }
+  .bar img { height: 34px; width: auto; display: block; }
+  .word {
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  /* color options */
+  .c-ink      { color: #2c231d; }
+  .c-violet   { color: #4b1fd6; }
+  .c-pine     { color: #02705f; }
+  .c-slate    { color: #3b4351; }
+  .c-copper   { color: #9f6633; }
+  .c-gradient {
+    background: linear-gradient(92deg, #5b2be0 0%, #4b1fd6 40%, #08a58c 62%, #02917e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* position options */
+  .p-tight { gap: 0; }
+  .p-tight .word { margin-left: -6px; }
+  .p-word  { gap: 10px; }
+  .p-raised img { transform: translateY(-3px); }
+  .p-raised .word { margin-left: -4px; }
+
+  /* P4+ — W beside the word like a normal first letter (Ben 2026-07-26).
+     The W's stroke leans right at the top, so the word tucks under that
+     overhang to read at normal letter distance. Matches the live header. */
+  .p-wing { gap: 0; }
+  .p-wing img { transform: translateY(-2px); }
+  .p-wing .word { margin-left: -3px; }
+
+  /* wave gradients — top-to-bottom toothpaste swells, uneven on purpose */
+  .w1 { /* purple crest, green body */
+    background: linear-gradient(172deg, #6a35f2 0%, #4b1fd6 34%, #0aa38c 58%, #02917e 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .w2 { /* green crest, purple deep */
+    background: linear-gradient(172deg, #18c5ae 0%, #06957f 30%, #5b2be0 64%, #3d16ca 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .w3 { /* purple over one bold curved ink seam, then green — the swell (LIVE) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 80' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='p' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%236a35f2'/%3E%3Cstop offset='1' stop-color='%234520c9'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230aa38c'/%3E%3Cstop offset='1' stop-color='%23027665'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='80' fill='url(%23g)'/%3E%3Cpath d='M0,54 C50,62 90,16 170,20 C240,24 250,66 320,60 C355,57 380,50 400,52 L400,0 L0,0 Z' fill='url(%23p)'/%3E%3Cpath d='M0,54 C50,62 90,16 170,20 C240,24 250,66 320,60 C355,57 380,50 400,52' fill='none' stroke='%2314121f' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .w4 { /* deep-water swell: ink-to-purple above the curve, green floor below, no seam line */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 80' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='p4' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2317131f'/%3E%3Cstop offset='0.4' stop-color='%233d16ca'/%3E%3Cstop offset='1' stop-color='%235b2be0'/%3E%3C/linearGradient%3E%3ClinearGradient id='g4' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2308a58c'/%3E%3Cstop offset='1' stop-color='%23035c4e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='80' fill='url(%23g4)'/%3E%3Cpath d='M0,54 C50,62 90,16 170,20 C240,24 250,66 320,60 C355,57 380,50 400,52 L400,0 L0,0 Z' fill='url(%23p4)'/%3E%3C/svg%3E");
+    background-size: 100% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .w5 { /* third color: amber glint riding between purple and green */
+    background: linear-gradient(172deg, #5b2be0 0%, #4b1fd6 38%, #f2a33c 51%, #08a58c 62%, #02917e 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .w6 { /* green crest, amber underlight, purple deep */
+    background: linear-gradient(176deg, #18c5ae 0%, #06957f 34%, #e8933a 50%, #5b2be0 66%, #2f10a6 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* Through-the-W set (Ben 2026-07-26): one continuous swell designed on a
+     520x80 canvas — the W owns x 0..120 (baked into the PNG), the word clips
+     the x 120..520 window, so the seam hands off at the same height. */
+  .wt3 { /* ink seam, continued */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='120 0 400 80' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='p' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%236a35f2'/%3E%3Cstop offset='1' stop-color='%234520c9'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230aa38c'/%3E%3Cstop offset='1' stop-color='%23027665'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='100' y='-10' width='440' height='100' fill='url(%23g)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52 L520,0 L0,0 Z' fill='url(%23p)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52' fill='none' stroke='%2314121f' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .wt3i { /* ink seam inverted: green crest over purple deep, continued */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='120 0 400 80' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='p' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%236a35f2'/%3E%3Cstop offset='1' stop-color='%234520c9'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230aa38c'/%3E%3Cstop offset='1' stop-color='%23027665'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='100' y='-10' width='440' height='100' fill='url(%23p)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52 L520,0 L0,0 Z' fill='url(%23g)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52' fill='none' stroke='%2314121f' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .wt4 { /* deep water, continued */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='120 0 400 80' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='p4' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2317131f'/%3E%3Cstop offset='0.4' stop-color='%233d16ca'/%3E%3Cstop offset='1' stop-color='%235b2be0'/%3E%3C/linearGradient%3E%3ClinearGradient id='g4' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2308a58c'/%3E%3Cstop offset='1' stop-color='%23035c4e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='100' y='-10' width='440' height='100' fill='url(%23g4)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52 L520,0 L0,0 Z' fill='url(%23p4)'/%3E%3C/svg%3E");
+    background-size: 100% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .wt5 { /* amber glint, continued */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='120 0 400 80' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='p' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%236a35f2'/%3E%3Cstop offset='1' stop-color='%234520c9'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230aa38c'/%3E%3Cstop offset='1' stop-color='%23027665'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='100' y='-10' width='440' height='100' fill='url(%23g)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52 L520,0 L0,0 Z' fill='url(%23p)'/%3E%3Cpath d='M0,56 C35,64 70,36 120,54 C170,62 210,16 290,20 C360,24 370,66 440,60 C475,57 500,50 520,52' fill='none' stroke='%23f2a33c' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%; background-repeat: no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+</style>
+</head>
+<body>
+  <h1>"erkles" after the W — pick a color, pick a position</h1>
+  <p class="note">Your original purple/teal W, transparent, on the real header cream. Say the letter/number combo you like (e.g. "C2"). Copper included only as the current baseline.</p>
+
+  <h2>Colors (position: current spacing)</h2>
+  <div class="row">
+    <div class="card"><header><strong>C1 — Ink</strong>same near-black as body text; W carries all the color</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-ink">erkles</span></div></div>
+    <div class="card"><header><strong>C2 — Violet</strong>matches the W's left stroke</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-violet">erkles</span></div></div>
+    <div class="card"><header><strong>C3 — Pine teal</strong>matches the W's right stroke</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-pine">erkles</span></div></div>
+    <div class="card"><header><strong>C4 — Purple-to-teal gradient</strong>the word mirrors the W's two-tone sweep</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-gradient">erkles</span></div></div>
+    <div class="card"><header><strong>C5 — Slate</strong>cool neutral; quieter than ink</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-slate">erkles</span></div></div>
+    <div class="card"><header><strong>C0 — Copper (current)</strong>baseline for comparison — the one you don't like</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-copper">erkles</span></div></div>
+  </div>
+
+  <h2>Positions (color: ink)</h2>
+  <div class="row">
+    <div class="card"><header><strong>P1 — Current</strong>small gap, baseline aligned</header>
+      <div class="bar"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-ink">erkles</span></div></div>
+    <div class="card"><header><strong>P2 — Tucked</strong>word pulled into the W like one glyph</header>
+      <div class="bar p-tight"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-ink">erkles</span></div></div>
+    <div class="card"><header><strong>P3 — Standalone mark</strong>W as a badge, full word beside it</header>
+      <div class="bar p-word"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-ink">Werkles</span></div></div>
+    <div class="card"><header><strong>P4 — Raised W</strong>W floats slightly high, word tucked under its wing</header>
+      <div class="bar p-raised"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word c-ink">erkles</span></div></div>
+  </div>
+
+  <h2>Waves (position: P4 tucked closer)</h2>
+  <div class="row">
+    <div class="card"><header><strong>W1 — Purple crest</strong>purple rolls over into green, top to bottom</header>
+      <div class="bar p-wing"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w1">erkles</span></div></div>
+    <div class="card"><header><strong>W2 — Green crest</strong>same wave flipped — green breaks over purple deep</header>
+      <div class="bar p-wing"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w2">erkles</span></div></div>
+    <div class="card"><header><strong>W3 — Ink seam</strong>purple over a thin near-black seam, then green — the wave's shadow line</header>
+      <div class="bar p-wing"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w3">erkles</span></div></div>
+    <div class="card"><header><strong>W4 — Deep water</strong>ink at the very top edge sinking through purple to a green floor</header>
+      <div class="bar p-wing"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w4">erkles</span></div></div>
+    <div class="card"><header><strong>W5 — Amber glint</strong>third color: a band of amber light riding between purple and green</header>
+      <div class="bar p-wing"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w5">erkles</span></div></div>
+    <div class="card"><header><strong>W6 — Sunset set</strong>green crest, amber underlight, purple deep — the flipped ride</header>
+      <div class="bar p-wing"><img src="/assets/werkles-w-mark-transparent.png" alt=""><span class="word w6">erkles</span></div></div>
+  </div>
+
+  <h2 id="through">Through the W — the wave runs the whole word</h2>
+  <div class="row">
+    <div class="card"><header><strong>T3 — Ink seam, all the way</strong>the black seam enters the W's left stroke and rolls out through "erkles"</header>
+      <div class="bar p-wing"><img src="/assets/draft/brand-rebrand/werkles-w-wave-inkseam.png" alt=""><span class="word wt3">erkles</span></div></div>
+    <div class="card"><header><strong>T3i — Ink seam, inverted</strong>green crest breaking over purple deep, same black seam through everything</header>
+      <div class="bar p-wing"><img src="/assets/draft/brand-rebrand/werkles-w-wave-inkseam-inverted.png" alt=""><span class="word wt3i">erkles</span></div></div>
+    <div class="card"><header><strong>T4 — Deep water, all the way</strong>ink sinking through purple to a green floor, W included, no seam line</header>
+      <div class="bar p-wing"><img src="/assets/draft/brand-rebrand/werkles-w-wave-deepwater.png" alt=""><span class="word wt4">erkles</span></div></div>
+    <div class="card"><header><strong>T5 — Amber glint, all the way</strong>the amber band rides the swell from the W's first stroke to the last "s"</header>
+      <div class="bar p-wing"><img src="/assets/draft/brand-rebrand/werkles-w-wave-amber.png" alt=""><span class="word wt5">erkles</span></div></div>
+  </div>
+</body>
+</html>
+

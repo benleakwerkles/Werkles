@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-03T15:32:32.845Z",
+  "file": "FROM_MAKER_RECOMMENDATION_VIEW_V1.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "MAKER",
+  "consumed_by": "FOREMAN",
+  "note": "Implemented 2026-08-03. /dashboard/intros rebuilt as the 7-section Recommendation View; Strong/Medium/Thin/Watch bands replace the fit integer; one verdict; rejected alternatives and change triggers added; intro knock disabled while unverified. Red team asserts no numeric score reaches the view. Receipt: foreman/receipts/CBCC_RECEIPTS_CONSUMED_RECOMMENDATION_VIEW_20260803.md. Not done: /dashboard/recommendation route (kept at /dashboard/intros), sticky desktop action bar, save action.",
+  "auto_merge": false
+}

@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T02:38:35.291Z",
+  "file": "FROM_COMPUTER_VPGM_20260823-230047.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "COMPUTER",
+  "consumed_by": "FOREMAN",
+  "note": "Assimilated Computer M11 prebuild resource-strip and wording findings; implementation state to be verified against current source.",
+  "auto_merge": false
+}

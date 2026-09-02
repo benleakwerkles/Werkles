@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-21T02:53:34.263Z",
+  "file": "FROM_BEAN_PLAID_QUESTIONNAIRE_BEAN_REDTEAM_v0.1.md",
+  "reason": "Envelope is INVALID under relay validation; content was read as non-authoritative caution only and must not block current unrelated work."
+}

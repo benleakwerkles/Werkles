@@ -1,0 +1,63 @@
+{
+  "missionId": "WERKLES_BVPGM_BELLOWS_CRUCIBLE_VALUE_M16",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad member-value pass across Personal Bellows, Crucible provider readiness, copy continuity, and visual rhythm.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; no push or deploy is authorized.",
+    "M15 linked a validated device-local Operating Brief across Match Deck and Personal Bellows and passed Petra post-build review.",
+    "That local state is not account custody, partner response, agreement, provider proof, or production readiness.",
+    "Werkles must turn saved work into substantial revisitable help, not mirrored Intake, surface advice, or an internal integration dashboard.",
+    "Choose member-visible improvements that span Bellows and Crucible without crossing provider, schema, account, or release gates."
+  ],
+  "liveStrings": [
+    "Personal Bellows",
+    "Continue Existing Werkle",
+    "Provider readiness",
+    "What this check can establish",
+    "What happens next"
+  ],
+  "knownGaps": [
+    "Account-durable custody remains gated.",
+    "Production provider activation remains gated.",
+    "Only terminal current-cycle receipts count as CBCC participation.",
+    "Lady Jessica exact-candidate release custody remains independent and owed before any push."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Choose a coherent two-part member-value patch spanning Personal Bellows and Crucible.",
+      "pull": "Separate safe client-only improvements from account, provider, production, and release claims.",
+      "go": ["Select exactly one Bellows change and one Crucible change with exact acceptance checks.", "Return PETRA_M16_GO, PETRA_M16_PATCH, or PETRA_M16_STOP."],
+      "momentum": "Name the next cross-page checkpoint after those two changes, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, legal approval, spend, push, deploy, subagent, or Operator approval."
+    },
+    "ENDER": {
+      "vision": "Walk both pages as a member and attack legibility, homework fatigue, dead visual stretches, and unclear controls.",
+      "pull": "Judge human rhythm and whether the next action is painfully obvious.",
+      "go": ["Return one P0/P1 Bellows repair and one P0/P1 Crucible repair with acceptance checks.", "Return ENDER_M16_GO, PATCH, or STOP."],
+      "momentum": "Name the coldest dead zone and strongest human moment, then stop.",
+      "outOfLane": "No code, credentials, provider action, schema/RLS, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack both surfaces for false proof, consent theater, stale state, security leakage, and custody overclaiming.",
+      "pull": "Treat saved artifacts and every provider/readiness label as hostile input.",
+      "go": ["Return one exploit or invariant per workstream with a minimum regression test.", "Return BEAN_M16_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest missing hostile regression, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether Bellows plus Crucible earns a return visit and classy paid conversion.",
+      "pull": "Look for useful loops instead of dead-end cards or teasing paywalls.",
+      "go": ["Return one repeat-value repair per workstream with a member-visible outcome.", "Return SKYBRO_M16_GO, PATCH, or STOP."],
+      "momentum": "Name the moment most likely to bring a member back tomorrow, then stop.",
+      "outOfLane": "No code, credentials, provider action, schema/RLS, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "COMPUTER": {
+      "vision": "Research-check practical usefulness and provider-language accuracy across Bellows and Crucible.",
+      "pull": "Prefer concrete decision aids, checklists, and accurate readiness language over slogans.",
+      "go": ["Return the weakest claim or prompt on each surface with a bounded replacement.", "Return COMPUTER_M16_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest research-backed improvement, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

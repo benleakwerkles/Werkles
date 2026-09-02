@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T02:32:21.984Z",
+  "file": "FROM_PETRA_VPGM_20260824-022912.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Foreman assimilated Petra local-candidate GO and retained Gate 05 HOLD; no implementation patch requested. Full rotation remains open.",
+  "auto_merge": false
+}

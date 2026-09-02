@@ -10,7 +10,7 @@ export const metadata = {
 
 const sectionStyle = { marginTop: "2rem" } as const;
 
-/* Named providers (Ben, privacy review 2026-07-31: "tell me which specific
+/* Named providers (Operator, privacy review 2026-07-31: "tell me which specific
    apps that I already trust are going to be seeing and holding my private
    information"). Statuses mirror the membership page's verifier list —
    nothing claimed live that isn't. */
@@ -78,7 +78,7 @@ const verificationFlows = [
       "A Plaid window opens and you sign in to your own bank — inside Plaid, not Werkles.",
       /* Locke audit 2026-07-31: current sandbox wiring requests Plaid Assets
          (broader consent scope than yes/no). Wording below stays honest until
-         the product scope is narrowed — engineering decision on Ben's plate. */
+         the product scope is narrowed — engineering decision on Operator's plate. */
       "Plaid confirms whether the threshold is met — Werkles is designed to keep only that answer, never your login. This flow is in sandbox today; before it goes live we will publish exactly what Plaid shares.",
       "The answer is designed to expire after 30 days. Nothing about your account stays on Werkles."
     ]

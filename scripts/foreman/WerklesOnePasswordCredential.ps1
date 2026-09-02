@@ -160,6 +160,47 @@ function Resolve-WerklesOnePasswordCli {
     return $null
 }
 
+# Compatibility contract used by the no-prompt wrapper and older automation
+# scripts. Keep these functions centralized so callers never fall back to a
+# raw desktop-integrated `op` process when helper names evolve.
+function Get-WerklesOpBinary {
+    [CmdletBinding()]
+    param()
+
+    $cli = Resolve-WerklesOnePasswordCli -AllowUnsignedFallback
+    if (-not $cli) {
+        throw '1Password CLI was not found.'
+    }
+
+    return $cli.Path
+}
+
+function Get-WerklesOnePasswordServiceToken {
+    [CmdletBinding()]
+    param()
+
+    return Get-WerklesOnePasswordAutomationSecret
+}
+
+function Set-WerklesOnePasswordServiceToken {
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Token,
+
+        [string]$UserName = $env:USERNAME,
+
+        [string]$TargetName = (Get-WerklesOnePasswordCredentialTarget)
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Token)) {
+        throw 'Refusing to store an empty 1Password automation token.'
+    }
+
+    $secureToken = ConvertTo-SecureString $Token -AsPlainText -Force
+    Set-WerklesOnePasswordAutomationSecret -Secret $secureToken -TargetName $TargetName -WhatIf:$WhatIfPreference
+}
+
 function ConvertTo-WerklesPlainText {
     [CmdletBinding()]
     param(

@@ -1,0 +1,51 @@
+{
+  "missionId": "HOMEPAGE_DEMOCRATIC_PROMISE_COPY_REVIEW",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Rewrite the Homepage promise so an ordinary person immediately understands Werkles as democratic business help, not a proof/compliance gate. Review and copy proposals only.",
+  "sharedContext": [
+    "Operator correction: human readers have immediate negative reactions to the word proof on the Homepage.",
+    "Current headline: Find the people and proof that move your business forward.",
+    "Current subhead: Werkles helps builders name what they need, find reachable help, and verify the facts before they rely on anyone.",
+    "Current positioning: For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
+    "Current CTA: Let us help you discover what you need.",
+    "Werkles should help a person understand what they are trying to make real, discover possible paths, find practical people/resources/services/knowledge/opportunities, compare them honestly, and take a useful next step.",
+    "Proof/verification is one contextual support function. It must not define the entire front-door promise.",
+    "Ben's 76-year-old-mother test: nobody should feel they must already be from a business/startup world to understand or belong."
+  ],
+  "liveStrings": [
+    "Find the people and proof that move your business forward.",
+    "Werkles helps builders name what they need, find reachable help, and verify the facts before they rely on anyone.",
+    "For real operators, builders, connectors, and backers who need momentum without guessing who to trust.",
+    "Real human help, with proof shown before you rely on it."
+  ],
+  "knownGaps": [
+    "The current product cannot honestly promise that every recommendation executes, introduces, purchases, funds, or completes work.",
+    "The matching and recommendation system remains under repair; copy cannot outrun functionality.",
+    "This assignment does not authorize a Homepage redesign or implementation."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the first ten seconds feel welcoming, human, useful, and emotionally alive to someone who does not speak startup or trust-system language.",
+      "pull": "Attack every live line for proof fixation, gatekeeping, insider identity, abstraction, stiffness, and whether it sounds like a compliance product rather than practical help.",
+      "go": [
+        "Return one recommended headline/subhead/positioning/CTA set in plain language.",
+        "Apply Ben's-mother test and explain the single strongest reason the existing promise excludes ordinary people.",
+        "Give a five-line homepage copy-pruning rule that can be reused across the site."
+      ],
+      "momentum": "End with PASS_TO_IMPLEMENT or REWRITE_AGAIN and one live human read-aloud test.",
+      "outOfLane": "No code, page redesign, provider/legal claims, secrets, SQL, push/deploy, new task, subagents, or secondary models."
+    },
+    "SKYBRO": {
+      "vision": "Recover the large democratic Werkles promise without drifting into universal-assistant fantasy or vague inspiration copy.",
+      "pull": "Challenge the product thesis: what Werkles democratizes, what concrete transformation it promises, and how trust/proof should support rather than dominate that story.",
+      "go": [
+        "Return one strategic promise sentence and three concrete supporting outcomes an ordinary person can recognize.",
+        "Rewrite the headline/subhead so the promise includes paths, people, resources, knowledge, and action without becoming a list.",
+        "Name the one thing the Homepage must not promise until the current product can actually deliver it."
+      ],
+      "momentum": "End with PASS_TO_IMPLEMENT or REWRITE_AGAIN and the smallest differentiated Werkles thesis.",
+      "outOfLane": "No code, page redesign, provider/legal claims, secrets, SQL, push/deploy, new task, subagents, or secondary models."
+    }
+  }
+}

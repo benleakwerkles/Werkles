@@ -1,0 +1,13 @@
+{
+  "processed_at": "2026-08-03T15:32:43.721Z",
+  "file": "FROM_COMPUTER_HOMEPAGE_VISUAL_NARRATIVE_GD_RUN_HOMEPAGE_VISUAL_NARRATIVE_20260606-173334.md",
+  "status": "GD_RECEIPT",
+  "cousin": "COMPUTER",
+  "benReview": false,
+  "warnings": [
+    "GD router receipt: no cockpit hash, so staleness cannot be checked. Treat as advisory and confirm against live cockpit files before acting."
+  ],
+  "errors": [],
+  "stale": false,
+  "auto_merge": false
+}

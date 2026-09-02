@@ -27,7 +27,9 @@ Speaker uses this registry to warn when roles blur, absorb each other, or lose c
 
 ---
 
-## Cousin seats (Aeyes)
+## Cousin seats (Aeyes) — CBCC
+
+**CBCC** = Care Bot Cousin Crew (canonical crew name, `foreman/AI_COUSINS_PROTOCOL.md` v0.4).
 
 | Seat | Owns | Does not own | Failure mode |
 |------|------|--------------|--------------|

@@ -1,0 +1,34 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T06:54:19.313Z",
+  "bundle_id": "ui_fill_return_control_mr8v71ia",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receiver": "ReceiverFillReturnControlSmoke@Betsy",
+  "lane": "TinkerDen bridge execute",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+  "source_packet_sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/packet.json",
+      "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/receipt-template.json",
+      "sha256": "7ec01666f5a5c4236625d253da3155330b5ae5ce140e0730ab70706aabc307e2"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/HANDOFF.md",
+      "sha256": "bfa9d1fbec85ebe3d7cf7e3077d9d5e7cc7b044cab015e9c7f9ecddbcc58516c"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/ui_fill_return_control_mr8v71ia/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverFillReturnControlSmoke@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

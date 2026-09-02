@@ -1,0 +1,33 @@
+{
+  "schema": "brainstation_workspaces_v1",
+  "controller": "Heimerdinker@Betsy",
+  "policy": {
+    "scope": "PowerToys Workspace launch and status only",
+    "no_auto_send": true,
+    "no_general_remote_commands": true,
+    "controller_ipv4": "10.1.10.194"
+  },
+  "machines": [
+    {
+      "machine": "Betsy",
+      "endpoint": "http://127.0.0.1:4877",
+      "local": true,
+      "workspace_id": "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+      "workspace_name": "Betsy Autopaste Workspace"
+    },
+    {
+      "machine": "Spanzee",
+      "endpoint": "http://Spanzee:4877",
+      "local": false,
+      "workspace_id": null,
+      "workspace_name": null
+    },
+    {
+      "machine": "Medullina",
+      "endpoint": "http://Medullina:4877",
+      "local": false,
+      "workspace_id": null,
+      "workspace_name": null
+    }
+  ]
+}

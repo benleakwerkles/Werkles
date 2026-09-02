@@ -398,9 +398,9 @@ export function buildSquibbVoice(readout: MatchingReadout): SquibbVoiceDelivery 
 
     readout.notMatch.outcome === "pause"
 
-      ? "Squibb: Matching needs more from you before ranking paths. I'm not sending you to a person or a lender yet."
+      ? "Werkles needs a little more from you before ranking paths. It is too early to point you toward a person or lender."
 
-      : "Squibb: I read what you carried in. Here's the plain-fact readout — I'm offering the path that scored highest, not a person or a guarantee.";
+      : "Werkles compared what you shared and put the strongest path first. This is a starting point, not a person or a guaranteed outcome.";
 
 
 
@@ -408,13 +408,13 @@ export function buildSquibbVoice(readout: MatchingReadout): SquibbVoiceDelivery 
 
     readout.notMatch.outcome === "pause"
 
-      ? `Squibb: "${card.recommendation.headline}" — ${readout.notMatch.reason}`
+      ? `Why this leads: "${card.recommendation.headline}" — ${readout.notMatch.reason}`
 
       : top
 
-        ? `Squibb: "${topLabel}" scored ${top.score}/100. ${top.rationale[0] || ""}`
+        ? `Why this leads: "${topLabel}" scored ${top.score}/100. ${top.rationale[0] || ""}`
 
-        : "Squibb: Start with the smallest reversible step before shopping for solutions.";
+        : "Start with the smallest reversible step before shopping for solutions.";
 
 
 
@@ -428,11 +428,11 @@ export function buildSquibbVoice(readout: MatchingReadout): SquibbVoiceDelivery 
 
       readout.scoredPaths[1] && readout.scoredPaths[1].score > 30 && !readout.scoredPaths[1].disqualified
 
-        ? `Squibb: "${RECOMMENDATION_KIND_LABELS[readout.scoredPaths[1].kind]}" is the runner-up if the top path feels wrong.`
+        ? `Another route: "${RECOMMENDATION_KIND_LABELS[readout.scoredPaths[1].kind]}" is the runner-up if the top path feels wrong.`
 
         : card.whyNotAlternatives[0]
 
-          ? `Squibb: We did not lead with "${card.whyNotAlternatives[0].path}" because ${card.whyNotAlternatives[0].reason.toLowerCase()}`
+          ? `Why not the other route: We did not lead with "${card.whyNotAlternatives[0].path}" because ${card.whyNotAlternatives[0].reason.toLowerCase()}`
 
           : null,
 

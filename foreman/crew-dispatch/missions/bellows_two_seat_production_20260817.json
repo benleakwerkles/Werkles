@@ -1,0 +1,61 @@
+{
+  "missionId": "BELLOWS_TWO_SEAT_PRODUCTION",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Build the first complete Bellows playbook and tool: Proof Before Reliance connected to Strengthen your evidence. Actual Brainstormer research, actual Handeye build candidate, and actual hostile value/trust review must share one join contract.",
+  "sharedContext": [
+    "The Bellows library currently contains four concise lessons, not a finished curriculum or toolset.",
+    "Recommendations now opens a browser-local Evidence Brief for Strengthen your evidence, but the linked Bellows lesson is still a short article and does not teach or guide completion of the artifact.",
+    "Ben wants useful Werkles IP and practical solutions, not fortune-cookie advice or generic homework.",
+    "The first shared slice is Proof Before Reliance plus one reusable Evidence Brief, not three competing worksheets.",
+    "All work is local/draft. No provider, professional, commercial, push, deploy, SQL, secret, or spend action is authorized."
+  ],
+  "liveStrings": [
+    "Proof Before Reliance",
+    "Proof reduces uncertainty. It does not remove judgment.",
+    "claim → document or source → issuer or checker → scope → date → unresolved gap",
+    "Strengthen your evidence",
+    "Build an evidence brief someone can actually inspect.",
+    "Member-authored and not independently verified."
+  ],
+  "knownGaps": [
+    "The Bellows library has four short lessons but no full lesson-and-tool experience.",
+    "The current Evidence Brief is browser-tab work, not durable account custody or independent proof.",
+    "Current primary sources cover general SBA/IRS launch and partnership material; proof-lane sources and retrieval dates need a focused research return.",
+    "No real provider result, verification event, bank connection, professional directory, or commercial resource catalog exists in this slice."
+  ],
+  "sourceFiles": [
+    "lib/bellows/operator-library.ts",
+    "app/bellows/library/page.tsx",
+    "app/bellows/library/bellows-library.css",
+    "lib/squibb/recommendation-solution-path.ts",
+    "components/squibb/recommendation-work-path.tsx",
+    "foreman/bellows/BELLOWS_WORMEYE_SALVAGE_INDEX_20260803.md",
+    "foreman/bellows/BELLOWS_CURRICULUM_MAP.md",
+    "company/WERKLES_TRUST_AND_COMPLIANCE.md"
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Give the first complete Bellows lesson current, primary-source-backed substance that an ordinary operator can use.",
+      "pull": "Audit existing proof doctrine and the Evidence Brief, then research the minimum authoritative material for Proof Before Reliance.",
+      "go": [
+        "Return a complete plain-language lesson brief: answer first, attractive claim, operating truth, failure modes, fictional worked example, primary sources, fifteen-minute move, and next room.",
+        "Separate the evidence lanes Werkles must not collapse: identity/document, license/credential, bank ownership, observed funds, references/attestations, and business records. Give source/freshness boundaries for each.",
+        "Name the next two highest-value Bellows content slices and the exact existing material that can be salvaged for them."
+      ],
+      "momentum": "Return current citations with retrieval dates and one bounded research backlog. Personal terminal response required.",
+      "outOfLane": "Do not write app code, select paid providers, invent rankings, perform outreach, spend, push, deploy, or give professional advice."
+    },
+    "BEAN": {
+      "vision": "Ensure Proof Before Reliance creates real value without laundering evidence into trust or professional conclusions.",
+      "pull": "Attack the lesson/tool contract and the value claim before local integration.",
+      "go": [
+        "Define the minimum outcome that makes this more useful than name the claim and test it, including what the completed Evidence Brief must contain.",
+        "List P0/P1 failure cases for fake verification, stale or irrelevant evidence, self-report laundering, provider status laundering, and legal/financial overreach.",
+        "Give exact copy/interaction acceptance tests that keep the lesson plain enough for a first-time ordinary business owner."
+      ],
+      "momentum": "Return one terminal PASS/BLOCKER contract and the smallest repair required for PASS.",
+      "outOfLane": "Do not implement code, invent sources/providers, push, deploy, apply SQL, or approve professional advice."
+    }
+  }
+}

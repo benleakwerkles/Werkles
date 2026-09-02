@@ -1,0 +1,30 @@
+{
+  "readback_id": "BETSY_LOCAL_SOURCE_TRUTH_READBACK",
+  "created_at": "2026-07-03T00:16:00-04:00",
+  "organ": "Atlas",
+  "machine_context": "Betsy",
+  "windows_hostname": "Betsy",
+  "windows_user": "Ben Leak",
+  "source_truth": {
+    "repository": "https://github.com/benleakwerkles/Werkles.git",
+    "remote": "origin",
+    "branch": "main",
+    "ref": "refs/heads/main",
+    "classification": "CANONICAL_CODE_TRUTH_ON_GITHUB"
+  },
+  "local_workspace": {
+    "path": "C:\\Users\\Ben Leak\\github\\Werkles",
+    "branch": "maker/site-g-20260703",
+    "head": "19333c9f8326404bb831c78f5cc57e427f873153",
+    "upstream": "origin/consolidation/werkles-unified-20260702-push",
+    "ahead_of_upstream": 2,
+    "clean": false,
+    "status_short": "## maker/site-g-20260703...origin/consolidation/werkles-unified-20260702-push [ahead 2]\n M app/globals.css"
+  },
+  "classification": "LOCAL_NONCANONICAL_WORKSPACE",
+  "source_truth_statement": "GitHub origin/main is canonical. Local branches and worktrees are evidence until promoted through a human gate.",
+  "operator_action": "Operator confirmed C:\\Users\\Ben Leak\\github\\Werkles as Betsy local source-truth repo folder; supersedes Desktop\\github\\Werkles.",
+  "supersedes_paths": [
+    "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles"
+  ]
+}

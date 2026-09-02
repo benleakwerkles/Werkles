@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:29:41.559Z",
+  "file": "FROM_SWANSON_LOGIN_FINAL_CANDIDATE_PASS_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SWANSON",
+  "consumed_by": "FOREMAN",
+  "note": "Assimilated exact-source login candidate PASS with durable account and runtime boundaries retained.",
+  "auto_merge": false
+}

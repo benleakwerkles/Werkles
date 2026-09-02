@@ -1,7 +1,8 @@
 # MEDULLINA_ONBOARDING_PACKET.md
 
-Status: pending Betsy-side connection and local readback
+Status: RustDesk server aligned (Operator 2026-07-18) — topology readback still pending
 Created: 2026-06-30
+Updated: 2026-07-18
 Requested by: Ben / Operator
 Machine name: Medullina
 Intended role: auxiliary forge candidate for the Aeye Workstation loop
@@ -10,32 +11,24 @@ Intended role: auxiliary forge candidate for the Aeye Workstation loop
 
 Operator reports RustDesk is installed and running on Medullina.
 
-Betsy-side evidence as of creation:
+**2026-07-18 Operator confirm:** Medullina is lined up with the **Betsy** private RustDesk server (same world as Spanzee). Server-mismatch blocker cleared. Receipt: `foreman/receipts/RUSTDESK_BETSY_SERVER_FLEET_ALIGNED_RECEIPT_20260718.md`.
 
-- Betsy RustDesk executable exists at `C:\Program Files\RustDesk\rustdesk.exe`.
-- Betsy RustDesk service is running with automatic startup.
+Historical Betsy-side evidence (2026-06-30 era — Spanzee-hosted hbbs):
+
 - Medullina RustDesk ID reported by Operator: `254196301`.
-- Operator reports a permanent RustDesk password has been configured on Medullina; the password value must stay out of repo/chat artifacts.
-- Betsy launched `rustdesk.exe --connect 254196301`.
-- Betsy has not yet completed a fresh Medullina reconnect test.
-- Latest Betsy log shows `Session 254196301 start`, then `rendezvous server: 10.1.10.63:21116`, then `Connection closed: ID does not exist(0)`.
-- A `254196301.toml` peer placeholder exists, but it has no hostname, username, platform, or connection proof.
+- Permanent password configured on Medullina; value stays out of repo/chat.
+- Older logs showed `ID does not exist` against rendezvous `10.1.10.63:21116` when Medullina was not on that server world.
 
-## RustDesk Server Mismatch Blocker
+## RustDesk Server Canon (current)
 
-Betsy is currently configured for the Spanzee/private RustDesk server:
+Private ID / relay host is **Betsy**, not Spanzee:
 
 ```text
-ID server: 10.1.10.63:21116
-relay server: 10.1.10.63:21117
-force relay: enabled
+ID server: 10.1.10.194:21116
+relay server: 10.1.10.194:21117
 ```
 
-If Medullina is still using public/default RustDesk, Betsy will not find it from the private server. That does not prove the photographed ID is wrong.
-
-Preferred MaSheen fix: configure Medullina's RustDesk network settings to match the private Spanzee server used by Betsy, then retry the same ID from Betsy.
-
-Fallback one-off fix: use a separate/default RustDesk profile or reset Betsy to public/default servers temporarily, then restore the private Spanzee settings after Medullina is configured.
+Prefer IPv4 over `betsy.local`. All peers (Betsy, Spanzee, Medullina) share this server + key.
 
 ## Boundary
 

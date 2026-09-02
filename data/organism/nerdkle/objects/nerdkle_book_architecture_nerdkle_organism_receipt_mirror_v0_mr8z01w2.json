@@ -1,0 +1,19 @@
+{
+  "id": "nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2",
+  "object_type": "architecture-proof-smoke",
+  "operator_intent": "Prove Nerdkle legacy packet and receipt records can be mirrored into the canonical organism packet/receipt/event contract.",
+  "artifact_created": "data/organism/nerdkle/objects/nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2.json",
+  "unresolved_fields": [],
+  "human_gates": [
+    "none"
+  ],
+  "execution_owner": "MirrorSmoke@Betsy",
+  "next_action": "Write a legacy Nerdkle receipt and mirror it into the organism contract store.",
+  "evidence_required": [
+    "canonical organism packet write exists",
+    "canonical organism receipt write exists",
+    "packet_receipted event joins packet_id and receipt_id"
+  ],
+  "failure_condition": "Stop if any canonical contract write is schema-invalid.",
+  "created_at": "2026-07-06T08:40:51.602Z"
+}

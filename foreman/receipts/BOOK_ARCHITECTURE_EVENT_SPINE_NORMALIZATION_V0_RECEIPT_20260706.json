@@ -1,0 +1,63 @@
+{
+  "schema": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:15:28.011Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-event-spine-normalization-smoke.mjs",
+  "validation": {
+    "watcher_exports_normalization_helpers": true,
+    "packet_id_extracted_from_packet_json": true,
+    "packet_id_and_receipt_id_extracted_from_receipt_json": true,
+    "packet_event_normalizes_to_packet_dispatched": true,
+    "receipt_event_normalizes_to_packet_receipted": true,
+    "normalized_events_include_schema_and_event_id": true,
+    "normalized_events_join_by_packet_id_and_receipt_id": true,
+    "events_jsonl_append_proved": true,
+    "truth_boundary": "This smoke writes fixture packet and receipt files plus two watcher events. It does not start the persistent watcher, send anything externally, or claim Mack returned a review."
+  },
+  "fixture_readback": {
+    "packet_path": "tinkerden/dispatch/packets/BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_mr8y3e9y.json",
+    "receipt_path": "data/tinkerden/receipts/BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_mr8y3e9y.json",
+    "events_path": "data/organism/events.jsonl",
+    "packet_event_id": "packet_dispatched_20260706081528_ff773b",
+    "receipt_event_id": "packet_receipted_20260706081528_a32e9c",
+    "packet_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_mr8y3e9y",
+    "receipt_id": "BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_mr8y3e9y",
+    "event_count_before": 124,
+    "event_count_after": 126
+  },
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/chokidar-neurocirculymphatic-v0.mjs",
+      "sha256": "bda1121b75b2de7b70afa2a2a48dd6e1cdb9f634822b8f6f6c5cd35a35c6c5d5"
+    },
+    {
+      "path": "scripts/foreman/organism-event-spine-normalization-smoke.mjs",
+      "sha256": "3c9ed13257fdc1833b29f8f07f62f6428ff2f27d6df7812714c3993d321849fe"
+    },
+    {
+      "path": "tinkerden/dispatch/packets/BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_mr8y3e9y.json",
+      "sha256": "0697c40f72371baa55a72d9ccdde606798f2856d2e55bd2aaba8fd04fb04ecef"
+    },
+    {
+      "path": "data/tinkerden/receipts/BOOK_ARCHITECTURE_EVENT_SPINE_NORMALIZATION_V0_RECEIPT_mr8y3e9y.json",
+      "sha256": "b3f3b06f34de2d26f73500f1baa6abd8673ea2691f94bf1deb52425bb1efcbb5"
+    },
+    {
+      "path": "data/organism/events.jsonl",
+      "sha256": "a1be5119dbbf943bb143c8879ef3d9b8a1bafd5f64d86f6c3b3aca50f064cbfe"
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack receipt claim"
+  ]
+}

@@ -23,7 +23,7 @@ export default function GateRecapPage() {
 
         <section className="ops-card">
           <div className="card-heading">
-            <p>After Ben decides</p>
+            <p>After Operator decides</p>
             <h1>Gate Session Recap</h1>
           </div>
           <p>

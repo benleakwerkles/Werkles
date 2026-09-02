@@ -1,0 +1,24 @@
+{
+  "schema": "harvey_nerdkle_receipt_v0",
+  "receipt_id": "schema_invalid_BOOK_ARCHITECTURE_API_WRITE_PATHS_INVALID_PACKET_V0_8d9083",
+  "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_INVALID_PACKET_V0",
+  "created_at": "2026-07-06T05:55:43.775Z",
+  "receiver": "app/api/organism/contracts/packets",
+  "status": "blocked",
+  "what_was_attempted": "Validate organism packet before writing it.",
+  "what_changed": [
+    "data/organism/contracts/receipts/schema_invalid_BOOK_ARCHITECTURE_API_WRITE_PATHS_INVALID_PACKET_V0_8d9083.json"
+  ],
+  "what_did_not_change": [
+    "No packet was written."
+  ],
+  "proof": [
+    {
+      "kind": "command_output",
+      "value": "{\"code\":\"SCHEMA_INVALID\",\"issues\":[{\"path\":\"from\",\"message\":\"required non-empty string\"},{\"path\":\"to\",\"message\":\"required non-empty string\"},{\"path\":\"lane\",\"message\":\"required non-empty string\"},{\"path\":\"operator_intent\",\"message\":\"required non-empty string\"},{\"path\":\"cwd\",\"message\":\"required non-empty string\"},{\"path\":\"requested_action\",\"message\":\"required non-empty string\"},{\"path\":\"receipt_destination\",\"message\":\"required non-empty string\"},{\"path\":\"idempotency_key\",\"message\":\"required non-empty string\"},{\"path\":\"created_at\",\"message\":\"required ISO timestamp\"},{\"path\":\"expires_at\",\"message\":\"required ISO timestamp\"},{\"path\":\"source_paths\",\"message\":\"required array of non-empty strings\"},{\"path\":\"forbidden_actions\",\"message\":\"required array of non-empty strings\"},{\"path\":\"stop_conditions\",\"message\":\"required array of non-empty strings\"},{\"path\":\"acceptance_criteria\",\"message\":\"required array of non-empty strings\"},{\"path\":\"allowed_actions\",\"message\":\"required non-empty array\"},{\"path\":\"receipt_required\",\"message\":\"must be true\"},{\"path\":\"source_hashes\",\"message\":\"required object keyed by source path\"}]}"
+    }
+  ],
+  "blocked_reason": "SCHEMA_INVALID: from required non-empty string; to required non-empty string; lane required non-empty string; operator_intent required non-empty string; cwd required non-empty string; requested_action required non-empty string; receipt_destination required non-empty string; idempotency_key required non-empty string; created_at required ISO timestamp; expires_at required ISO timestamp; source_paths required array of non-empty strings; forbidden_actions required array of non-empty strings; stop_conditions required array of non-empty strings; acceptance_criteria required array of non-empty strings; allowed_actions required non-empty array; receipt_required must be true; source_hashes required object keyed by source path",
+  "next_safe_action": "Fix the packet schema and resubmit through the contract write path.",
+  "source_hashes_used": {}
+}

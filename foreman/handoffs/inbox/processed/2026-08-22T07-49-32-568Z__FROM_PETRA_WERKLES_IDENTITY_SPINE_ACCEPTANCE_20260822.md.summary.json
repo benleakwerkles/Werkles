@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-22T07:49:32.569Z",
+  "file": "FROM_PETRA_WERKLES_IDENTITY_SPINE_ACCEPTANCE_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Identity acceptance seal read and assimilated into the Phase 2 completion rotation.",
+  "auto_merge": false
+}

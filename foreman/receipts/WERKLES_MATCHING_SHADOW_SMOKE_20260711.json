@@ -1,0 +1,91 @@
+﻿{
+    "ok":  true,
+    "schema":  "WERKLES_MATCHING_SHADOW_SMOKE_V1",
+    "timestamp":  "2026-07-11T18:33:20.879Z",
+    "site_origin":  "http://localhost:3000",
+    "checks":  [
+                   {
+                       "scenario":  "capital_partner",
+                       "label":  "Capital + partner (symptom trap)",
+                       "pass":  true,
+                       "status":  200,
+                       "intake_id":  "WZ-20260711-d6228e01",
+                       "shadow_run_id":  "shadow_20260711183320_8bf0f2d5",
+                       "matching_mode":  "shadow",
+                       "error":  null
+                   },
+                   {
+                       "scenario":  "job_change",
+                       "label":  "Employment / job change",
+                       "pass":  true,
+                       "status":  200,
+                       "intake_id":  "WZ-20260711-10f7f35d",
+                       "shadow_run_id":  "shadow_20260711183320_28cfa625",
+                       "matching_mode":  "shadow",
+                       "error":  null
+                   },
+                   {
+                       "scenario":  "training_not_partner",
+                       "label":  "Partner language but training gap",
+                       "pass":  true,
+                       "status":  200,
+                       "intake_id":  "WZ-20260711-e429bc91",
+                       "shadow_run_id":  "shadow_20260711183320_1c7b842a",
+                       "matching_mode":  "shadow",
+                       "error":  null
+                   },
+                   {
+                       "name":  "semantic_capital_partner",
+                       "scenario":  "capital_partner",
+                       "pass":  true,
+                       "shadow_run_id":  "shadow_20260711183320_8bf0f2d5",
+                       "expected_top_path":  "verify_proof",
+                       "actual_top_path":  "verify_proof",
+                       "disqualified_kinds":  [
+                                                  "raise_capital",
+                                                  "stage_intro_candidate"
+                                              ],
+                       "partner_suppressed":  true,
+                       "disqualifications_deduplicated":  true
+                   },
+                   {
+                       "name":  "semantic_job_change",
+                       "scenario":  "job_change",
+                       "pass":  true,
+                       "shadow_run_id":  "shadow_20260711183320_28cfa625",
+                       "expected_top_path":  "find_better_job",
+                       "actual_top_path":  "find_better_job",
+                       "disqualified_kinds":  [
+                                                  "stage_intro_candidate"
+                                              ],
+                       "partner_suppressed":  true,
+                       "disqualifications_deduplicated":  true
+                   },
+                   {
+                       "name":  "semantic_training_not_partner",
+                       "scenario":  "training_not_partner",
+                       "pass":  true,
+                       "shadow_run_id":  "shadow_20260711183320_1c7b842a",
+                       "expected_top_path":  "get_training",
+                       "actual_top_path":  "get_training",
+                       "disqualified_kinds":  [
+                                                  "find_partner",
+                                                  "stage_intro_candidate"
+                                              ],
+                       "partner_suppressed":  true,
+                       "disqualifications_deduplicated":  true
+                   },
+                   {
+                       "name":  "operator_shadow_page",
+                       "pass":  true,
+                       "status":  200,
+                       "detail":  "Page loads"
+                   }
+               ],
+    "operator_review_url":  "http://localhost:3000/operator/matching/shadow",
+    "notes":  [
+                  "Review shadow runs at /operator/matching/shadow after deploy.",
+                  "File receipt: foreman/receipts/WERKLES_MATCHING_SHADOW_QA_\u003cdate\u003e.md",
+                  "Report false positives to Maker for layer0/not-match/score-paths tuning."
+              ]
+}

@@ -1,0 +1,36 @@
+{
+  "missionId": "ACTION_VS_INFORMATION_AFFORDANCE",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Red-team one small, site-wide interaction cue that makes real buttons and links immediately distinguishable from rounded information-only bubbles without removing or visually demoting those bubbles.",
+  "sharedContext": [
+    "Ben likes the rounded bubbles and wants them preserved.",
+    "A human user currently tries clicking information bubbles to discover whether they navigate into Intake or elsewhere.",
+    "The distinction must be obvious before hover or tap, but the site must not become louder or more decorated.",
+    "Native semantics remain authoritative: actions are links or buttons; information bubbles are not focusable or clickable."
+  ],
+  "liveStrings": [
+    "Rounded action buttons and rounded information cards currently share similar silhouettes.",
+    "Some static bubbles contain short labels and therefore look like navigation choices.",
+    "The desired repair is small and nearly unnoticeable, not a component rewrite."
+  ],
+  "knownGaps": [
+    "The site has multiple historical button and card classes rather than one fully normalized component library.",
+    "Color alone cannot carry the distinction.",
+    "Hover-only evidence fails on touch devices.",
+    "A global selector that guesses intent from rounded geometry could break unrelated controls."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the action grammar immediately understandable to an ordinary person without sacrificing Werkles' rounded visual language.",
+      "pull": "Evaluate first-glance human expectation, visual affordance, cognitive load, mobile/touch behavior, keyboard focus, reduced motion, and forced-colors behavior.",
+      "go": [
+        "Name the smallest reliable cue real actions should always receive and information bubbles should never receive.",
+        "Define the complementary information-bubble rule so a person understands it is explanatory without needing an 'information only' disclaimer on every card.",
+        "Attack color-only, shadow-everywhere, hover-only, decorative-arrow, pointer-cursor, animation, and overly loud solutions; return a better bounded pattern."
+      ],
+      "momentum": "Give five concrete human/browser acceptance tests, including a first-glance test and a touch-device test.",
+      "outOfLane": "Do not implement code, create subagents/tasks/environments, or recommend push, deploy, provider calls, secrets, SQL, or spend."
+    }
+  }
+}

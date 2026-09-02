@@ -475,14 +475,17 @@ export function resolvePasteForCousin(cousinId, kind = "network") {
     if (!cousin) throw new Error(`${id} not in network manifest`);
     const pastePath = abs(cousin.pastePath);
     if (!fs.existsSync(pastePath)) throw new Error(`Paste missing: ${cousin.pastePath}`);
+    /* Manifests store packetFile as a bare filename; resolving it against the
+       repo root misses every packet. Prefer packetPath, then the outbox. */
+    const packetRel = cousin.packetPath || (cousin.packetFile ? `foreman/handoffs/outbox/${cousin.packetFile}` : null);
     return {
       cousinId: id,
       tabIndex: cousin.edgeTabIndex,
       name: cousin.name,
       pastePath,
-      packetFile: cousin.packetFile ? abs(cousin.packetFile) : null,
+      packetFile: packetRel ? abs(packetRel) : null,
       kind: "network",
-      template: "ROLE_AWARENESS_SYNC",
+      template: manifest.command || "ROLE_AWARENESS_SYNC",
     };
   }
 

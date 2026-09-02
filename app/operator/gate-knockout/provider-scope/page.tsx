@@ -27,7 +27,7 @@ export default function ProviderScopePage() {
             <h1>Provider Test Scope</h1>
           </div>
           <p>
-            This page defines what provider prep is allowed before Ben approves identity, funds, phone, or background
+            This page defines what provider prep is allowed before Operator approves identity, funds, phone, or background
             provider work. It does not authorize account login, credential entry, paid sessions, or live checks.
           </p>
           <div className="gate-list" aria-label="Provider scope hard stops">

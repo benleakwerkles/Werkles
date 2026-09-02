@@ -30,7 +30,7 @@ const publicBellowsSamples = [
 
 export const metadata = {
   title: "Learn the floor",
-  description: "Practical business lessons, working tools, and clear next steps hosted by Squibb."
+  description: "Practical business lessons, working tools, and clear next steps from Werkles."
 };
 
 export default function BellowsPage() {
@@ -72,30 +72,30 @@ export default function BellowsPage() {
             <figure className="bellows-hero__squibb">
               <Image
                 src={squibbBellowsAssets.bustHost}
-                alt="Squibb — brass workshop owl host for Bellows lessons"
+                alt="A brass workshop owl beside the Bellows lesson desk"
                 width={512}
                 height={512}
                 className="bellows-hero__squibb-photo"
                 priority
               />
-              <figcaption>Squibb, your guide through the Bellows</figcaption>
+              <figcaption>A workshop guide for the Bellows</figcaption>
             </figure>
           ) : null}
         </section>
 
         {RENDER_BATCH_4_SQUIBB_ENABLED ? (
           <section className="bellows-squibb-gallery" aria-labelledby="bellowsSquibbTitle">
-            <h2 id="bellowsSquibbTitle">Squibb on the Bellows floor</h2>
+            <h2 id="bellowsSquibbTitle">On the Bellows floor</h2>
             <div className="bellows-squibb-gallery__grid">
               <figure>
                 <Image
                   src={squibbBellowsAssets.lessonCard}
-                  alt="Squibb beside a lesson card on the workshop desk"
+                  alt="A brass workshop owl beside a lesson card"
                   width={800}
                   height={600}
                   className="bellows-squibb-gallery__photo"
                 />
-                <figcaption>Squibb walks each lesson at your pace — no guru talk</figcaption>
+                <figcaption>Take each lesson at your pace—no guru talk</figcaption>
               </figure>
               <figure>
                 <Image
@@ -155,7 +155,7 @@ export default function BellowsPage() {
             <p className="eyebrow">When you need to look closer</p>
             <h2>Learn enough to make the next decision with your eyes open.</h2>
             <p>
-              Squibb helps you compare claims, costs, partners, suppliers, and plans without pretending one lesson
+              Bellows helps you compare claims, costs, partners, suppliers, and plans without pretending one lesson
               can make the decision for you.
             </p>
             <Link className="button button-ghost" href={foundryAct.slug}>

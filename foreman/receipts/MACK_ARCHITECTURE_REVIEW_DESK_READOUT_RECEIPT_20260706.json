@@ -1,0 +1,65 @@
+{
+  "schema": "MACK_ARCHITECTURE_REVIEW_DESK_READOUT_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T09:14:21.131926Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "MACK_ARCHITECTURE_REVIEW_DESK_READOUT_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "python scripts/foreman/build-mack-architecture-review-desk-readout.py",
+  "validation": {
+    "markdown_written": true,
+    "html_written": true,
+    "docx_written": true,
+    "mack_return_not_received_preserved": true,
+    "external_send_not_claimed": true,
+    "canonical_next_build_packet_absent": true,
+    "workspace_relay_receiver_handoff_bridge_pending": true,
+    "universal_receiver_proof_not_claimed": true
+  },
+  "receiver_handoff_readback": {
+    "count": 19,
+    "posted_count": 6,
+    "pending_count": 9,
+    "returned_unposted_count": 3,
+    "template_return_blocked_count": 1,
+    "invalid_count": 0,
+    "malformed_count": 0
+  },
+  "source_receipts": [
+    "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_READINESS_RECEIPT_20260706.json",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706.json"
+  ],
+  "file_hashes": [
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.md",
+      "sha256": "89e9d1bc60bee46d594d44035cc1e73b8c7525baa584d3c905d0dbdfd770234d",
+      "bytes": 6501
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.html",
+      "sha256": "155b9c2f54477f7d269c5ad0e1c06cb3125fa9293700ffbe09866096453bb970",
+      "bytes": 9005
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.docx",
+      "sha256": "30d0809dd3ccd63582f9d4912d8d3b9232f9c95c923ac964647a9a631163d3e3",
+      "bytes": 40637
+    },
+    {
+      "path": "scripts/foreman/build-mack-architecture-review-desk-readout.py",
+      "sha256": "52d0b9b611217f18ea09dd58418055128e64f5920132fbc67aa1966d038c8fcd",
+      "bytes": 29352
+    }
+  ],
+  "truth_boundary": "This readout is a human handoff surface for Ben and Mack. It does not claim Mack returned review, external send, universal receiver proof, or receiver work completion for pending handoffs.",
+  "stop_conditions_respected": [
+    "no external send",
+    "no Mack receipt claim",
+    "no universal receiver proof claim",
+    "no canonical next-build packet generated",
+    "no deploy",
+    "no push"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:03:50.548Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0_RECEIPT_20260706",
+  "source_packet": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-bridge-execute-contract-smoke.mjs",
+  "files_changed": [
+    "lib/tinkerden-return-system-v0/store.ts",
+    "app/api/tinkerden/bridge/execute/route.ts",
+    "app/tinkerden/page.tsx",
+    "scripts/foreman/tinkerden-bridge-execute-contract-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "tinkerden/dispatch/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "data/tinkerden/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json",
+    "data/tinkerden/executions/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "data/organism/receipt_pickup.jsonl",
+    "foreman/soledash/tinkerden-return-system-v0/state.json",
+    "data/organism/events.jsonl",
+    "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "data/organism/contracts/events.jsonl",
+    "data/organism/contracts/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "legacy_tinkerden_bridge_execute_packet_written": true,
+    "legacy_tinkerden_dispatch_receipt_written": true,
+    "canonical_execution_record_written": true,
+    "contract_packet_mirror_written": true,
+    "contract_receipt_mirror_written": true,
+    "contract_packet_schema": "harvey_nerdkle_packet_v0",
+    "contract_receipt_schema": "harvey_nerdkle_receipt_v0",
+    "contract_receipt_status": "partial",
+    "contract_packet_dispatched_event": true,
+    "contract_packet_receipted_event": true,
+    "ui_status_surfaces_contract_packet_path": true,
+    "ui_status_surfaces_contract_receipt_path": true,
+    "truth_boundary": "Dispatch custody proof remains partial and does not claim downstream Aeye completion."
+  },
+  "contract_write": {
+    "packet": {
+      "ok": true,
+      "artifact_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+      "event_path": "data/organism/contracts/events.jsonl",
+      "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+    },
+    "receipt": {
+      "ok": true,
+      "artifact_path": "data/organism/contracts/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json",
+      "event_path": "data/organism/contracts/events.jsonl",
+      "sha256": "6a7921656a32a2fc5740f14c344da3f865f29f9d69e2f19a5abb95b651dfb99f"
+    }
+  },
+  "contract_file_hashes": [
+    {
+      "path": "lib/tinkerden-return-system-v0/store.ts",
+      "sha256": "2437b55aa480328bd9be2d419eccc5f7e57623d0799fa08c6a3ff10e14a373e4",
+      "bytes": 47242
+    },
+    {
+      "path": "lib/tinkerden-return-system-v0/types.ts",
+      "sha256": "235d7ff8d806269f9289ddc23f1ff702fa862221138e8a6c8436864bba87612f",
+      "bytes": 2280
+    },
+    {
+      "path": "lib/tinkerden/execution-records.ts",
+      "sha256": "0335e97a226e024606155dec1e037094fc28c1a2cf7819f34d3f87154b349c54",
+      "bytes": 7886
+    },
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "app/api/tinkerden/bridge/execute/route.ts",
+      "sha256": "6c7a1867e6329e0d79bb2e9e7022fa784ba484cb19cc8268e6d0df8f31fa2e4f",
+      "bytes": 2557
+    },
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "78def0bf6a3b38512e20761bfe7c0c17de5a4f44312616c9925614559fe52674",
+      "bytes": 56561
+    },
+    {
+      "path": "scripts/foreman/tinkerden-bridge-execute-contract-smoke.mjs",
+      "sha256": "cc3bc0f1f02b4f1b16fb6e4091123e9b696aef04e7a296c666c595faad546a2c",
+      "bytes": 10909
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no clipboard mutation",
+    "no workspace focus"
+  ],
+  "next_safe_action": "Add a read-side contract index for TinkerDen so packet, receipt, and event contract mirrors are visible without opening JSON files."
+}

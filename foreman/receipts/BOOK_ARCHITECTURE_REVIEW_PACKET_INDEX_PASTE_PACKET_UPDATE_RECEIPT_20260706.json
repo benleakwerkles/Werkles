@@ -1,0 +1,102 @@
+﻿{
+    "schema":  "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_PACKET_UPDATE_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:10:11.6519480Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_PACKET_UPDATE_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "mission":  "Index the Mack copy/paste packet as the Ben-facing copy surface and preserve no-send, no-Mack-return, and scorecard-return boundaries.",
+    "validation":  {
+                       "index_lists_paste_packet_markdown":  true,
+                       "index_lists_paste_packet_docx":  true,
+                       "index_lists_paste_packet_html":  true,
+                       "index_lists_paste_packet_receipt":  true,
+                       "index_next_human_gate_points_to_paste_packet":  true,
+                       "readiness_verifier_requires_paste_packet":  true,
+                       "paste_packet_structural_docx_readback_passed":  true,
+                       "paste_packet_docx_visual_render_qa":  "BLOCKED_SOFFICE_MISSING",
+                       "paste_packet_includes_connection_map_paths":  true,
+                       "paste_packet_includes_attack_scorecard_paths":  true,
+                       "paste_packet_includes_scorecard_return_contract":  true,
+                       "paste_packet_includes_scorecard_validator_command":  true,
+                       "mack_return_not_received_preserved":  true,
+                       "mack_scorecard_return_not_received_preserved":  true,
+                       "external_send_not_claimed":  true,
+                       "canonical_next_build_packet_absent":  true,
+                       "universal_receiver_proof_not_claimed":  true,
+                       "truth_boundary":  "This receipt proves the local index points to the generated Mack copy/paste packet. It does not send anything to Mack and does not claim Mack returned review or scorecard."
+                   },
+    "receiver_handoff_readback":  {
+                                      "count":  19,
+                                      "posted_count":  6,
+                                      "pending_count":  9,
+                                      "returned_unposted_count":  3,
+                                      "template_return_blocked_count":  1,
+                                      "invalid_count":  0,
+                                      "malformed_count":  0
+                                  },
+    "docx_render_attempt":  {
+                                "tool":  "documents/render_docx.py",
+                                "status":  "BLOCKED",
+                                "error":  "FileNotFoundError [WinError 2]: LibreOffice/soffice executable not found"
+                            },
+    "file_hashes":  [
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+                            "sha256":  "BFF7A756DD253021E6A08B655543CCECED272918621C00FA1A794478FE0E4E38",
+                            "bytes":  43035
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.md",
+                            "sha256":  "A9B665B3E3F2212B86CD97183836BE0659C210D798E0189E908FD3C2192A4C0B",
+                            "bytes":  10669
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.html",
+                            "sha256":  "35324C72D7EB933A64A3CBC1CC9E6ECEFEA0215112152D793AAA7ECFA1C588AA",
+                            "bytes":  13099
+                        },
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706.docx",
+                            "sha256":  "0AF2BC5E1CDCD37ED798452E07A48F8BE6594C76A867E96053EB802C127176DB",
+                            "bytes":  41443
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_TEAR_APART_PASTE_PACKET_20260706_RECEIPT.json",
+                            "sha256":  "A5A61FC843D25F2A535F7DE9EEDF8E6D6B5D1F717EB73A428A37D991C141F043",
+                            "bytes":  3170
+                        },
+                        {
+                            "path":  "scripts/foreman/build-mack-architecture-paste-packet.py",
+                            "sha256":  "BC17E226062077948C8107AF4354CD314F85A90697C1D672D4C11ACD30FD2CC4",
+                            "bytes":  28778
+                        },
+                        {
+                            "path":  "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+                            "sha256":  "25DC5EA98AB91256E17CFFEC472F7B7AFFCB909B2EB97ACEFEB21F8F402D35A1",
+                            "bytes":  173523
+                        },
+                        {
+                            "path":  "scripts/foreman/Open-MackArchitectureReviewDesk.ps1",
+                            "sha256":  "DD79ED9FFFA0493376DA85CCF3FCB303A50DBDEAB1515E284C986110CDA8F37D",
+                            "bytes":  5523
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_RECEIPT_20260706.json",
+                            "sha256":  "75625B97ECDDD0E26719E50B851F71FCD06EC488711B1FE578B96F2D35F4A89F",
+                            "bytes":  14397
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack receipt claim",
+                                      "no Mack scorecard receipt claim",
+                                      "no canonical next-build packet generated"
+                                  ]
+}

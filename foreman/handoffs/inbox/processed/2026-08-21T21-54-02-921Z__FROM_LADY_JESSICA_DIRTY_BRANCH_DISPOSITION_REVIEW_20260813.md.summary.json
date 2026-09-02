@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T21:54:02.922Z",
+  "file": "FROM_LADY_JESSICA_DIRTY_BRANCH_DISPOSITION_REVIEW_20260813.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "LADY",
+  "consumed_by": "FOREMAN",
+  "note": "Read and adopted for this slice: canonical live dirty tree is the salvage source; named product slices only; no wholesale merge or git add; formation/foundry changes remain local and separately proved.",
+  "auto_merge": false
+}

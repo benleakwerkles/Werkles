@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:21:35.498Z",
+  "file": "FROM_PETRA_PLAID_QUESTIONNAIRE_SCOPE_RULING_20260819.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Read and preserved: current controls cannot be represented as implemented; questionnaire attestation remains gated.",
+  "auto_merge": false
+}

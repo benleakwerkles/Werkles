@@ -1,0 +1,68 @@
+{
+  "missionId": "WERKLES_BVPGM_M11_ACCEPTED_WORK_RETURN_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Post-build review of the accepted-only Formation return loop added to Personal Bellows and the private Partnership Alignment Memo.",
+  "sharedContext": [
+    "Exact six-file candidate content digest: 1c87778a4efb9c38f36cdbf85d73a2b04e7bcf3f.",
+    "Production remains at baseline 93b79d1; this candidate is local only.",
+    "Accepted Formation wording now returns through a collapsible Personal Bellows readout and appears as read-only context in the private memo.",
+    "The private memo is never prefilled; partner-perspective predictions, parked questions, objections, and generated suggestions remain excluded.",
+    "Formation labels now say What each of you is putting in, Money questions for an adviser, and Who owns the work.",
+    "Personal Bellows links to a bounded static list of current SBA, IRS, and FTC primary-source pages; Werkles does not select an answer.",
+    "TypeScript, Formation contract, Operating Brief contract, and the M11 headless member walk pass.",
+    "This packet is a notification and review request, not proof of custody, response, or participation."
+  ],
+  "liveStrings": [
+    "What you have settled together",
+    "Only current wording both people accepted appears here.",
+    "Read together before deciding more",
+    "Start the conversation from what both people actually wrote.",
+    "What each of you is putting in",
+    "Money questions for an adviser",
+    "Who owns the work"
+  ],
+  "knownGaps": [
+    "Formation and returned artifacts remain device-local practice.",
+    "No production provider, account-custody, schema, push, or deployment action is part of this candidate.",
+    "Legacy device-draft browser smoke expects older copy and fails before reaching this new slice; the focused M11 browser walk passes.",
+    "Lady Jessica release custody remains separate."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Walk the new accepted-work return surface at desktop and narrow width as a member coming back next week.",
+      "pull": "Inspect hierarchy, legibility, homework feeling, link clarity, and whether read-only context is distinct from editable answers.",
+      "go": ["Return only P0/P1 human-experience defects with exact route and smallest repair.", "Confirm the source strip does not look sponsored or like a recommendation ranking.", "Give ENDER_M11_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one place the return loop feels useful and one place it still feels like homework, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack the accepted-only return boundary for private-note leakage, synthetic impersonation, stale wording, and authority laundering.",
+      "pull": "Treat localStorage as untrusted and verify that validation fails closed before any row is rendered.",
+      "go": ["Return P0/P1 trust defects with exploit, harm, and minimum invariant.", "Check that external sources cannot be mistaken for professional advice or endorsement.", "Give BEAN_M11_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one fail-closed regression for the accepted-work readout and stop.",
+      "outOfLane": "No code, legal approval, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether accepted work plus primary-source reading creates credible return value rather than another dead-end memo.",
+      "pull": "Inspect the product story from Formation to Personal Bellows to the private conversation guide.",
+      "go": ["Name the strongest handoff and weakest dead end.", "Tighten any insider or institutional copy without flattening the member's agency.", "Give SKYBRO_M11_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name one bounded next return-value bridge and stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or canon-by-flattery."
+    },
+    "PETRA": {
+      "vision": "Gate the exact local candidate and keep review claims, source claims, and release claims separate.",
+      "pull": "Use digest 1c87778a4efb9c38f36cdbf85d73a2b04e7bcf3f plus the named checks only.",
+      "go": ["Return GO, PATCH, or STOP for local walk scope only.", "Name any scope collapse or claim that outruns custody.", "State the exact next machine checkpoint."],
+      "momentum": "Separate local usefulness from blocked durable-account and production work, then stop.",
+      "outOfLane": "No code, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or Operator approval."
+    },
+    "COMPUTER": {
+      "vision": "Verify that the implemented primary-source strip stays useful, current, and inside the no-professional-advice boundary.",
+      "pull": "Check the exact SBA, IRS, and FTC destinations and the three repaired Formation labels.",
+      "go": ["Flag broken, stale, misleading, or non-primary links.", "Flag wording that still implies entity, tax, ownership, or legal certainty.", "Give COMPUTER_M11_POSTBUILD_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest necessary correction, if any, and stop.",
+      "outOfLane": "No code, legal conclusion, provider action, secrets, schema/RLS, spend, push, deploy, new task, subagent, or final release approval."
+    }
+  }
+}

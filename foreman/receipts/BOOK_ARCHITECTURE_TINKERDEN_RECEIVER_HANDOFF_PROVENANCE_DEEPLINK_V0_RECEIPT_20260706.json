@@ -1,0 +1,156 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROVENANCE_DEEPLINK_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T07:46:16.939Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROVENANCE_DEEPLINK_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receiver-handoff-provenance-deeplink-smoke.mjs",
+  "files_changed": [
+    "app/tinkerden/page.tsx",
+    "app/tinkerden/receipts/page.tsx",
+    "scripts/foreman/tinkerden-receiver-handoff-provenance-deeplink-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIVER_HANDOFF_PROVENANCE_DEEPLINK_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "bridge_operator_deeplink_hides_synthetic": true,
+    "receipts_operator_deeplink_hides_synthetic": true,
+    "bridge_filter_click_updates_url": true,
+    "receipts_filter_click_updates_url": true,
+    "synthetic_record_count": 16,
+    "operator_record_count": 1,
+    "handoff_count_before": 17,
+    "handoff_count_after": 17,
+    "posted_count_after": 6,
+    "pending_count_after": 7,
+    "returned_unposted_count_after": 3,
+    "template_return_blocked_count_after": 1,
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "The provenance deep link is read-only browser presentation. It sets initial filter scope from the URL and updates the URL when clicked; it does not mutate handoffs, receipts, or events."
+  },
+  "browser_readback": {
+    "playwright_browser_executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "surfaces": [
+      {
+        "surface": "Bridge",
+        "operator_initial": {
+          "path": "/tinkerden",
+          "search": "?handoff_provenance=operator",
+          "param": "operator",
+          "active_filter": "operator",
+          "active_button": "operator",
+          "visible_summary": "1 visible",
+          "total_cards": 17,
+          "visible_cards": 1,
+          "visible_synthetic_cards": 0,
+          "visible_operator_cards": 1,
+          "hidden_synthetic_cards": 16,
+          "hidden_operator_cards": 0
+        },
+        "synthetic_clicked": {
+          "path": "/tinkerden",
+          "search": "?handoff_provenance=synthetic",
+          "param": "synthetic",
+          "active_filter": "synthetic",
+          "active_button": "synthetic",
+          "visible_summary": "16 visible",
+          "total_cards": 17,
+          "visible_cards": 16,
+          "visible_synthetic_cards": 16,
+          "visible_operator_cards": 0,
+          "hidden_synthetic_cards": 0,
+          "hidden_operator_cards": 1
+        },
+        "all_clicked": {
+          "path": "/tinkerden",
+          "search": "",
+          "param": "",
+          "active_filter": "all",
+          "active_button": "all",
+          "visible_summary": "17 visible",
+          "total_cards": 17,
+          "visible_cards": 17,
+          "visible_synthetic_cards": 16,
+          "visible_operator_cards": 1,
+          "hidden_synthetic_cards": 0,
+          "hidden_operator_cards": 0
+        }
+      },
+      {
+        "surface": "Receipts",
+        "operator_initial": {
+          "path": "/tinkerden/receipts",
+          "search": "?handoff_provenance=operator",
+          "param": "operator",
+          "active_filter": "operator",
+          "active_button": "operator",
+          "visible_summary": "1 visible",
+          "total_cards": 17,
+          "visible_cards": 1,
+          "visible_synthetic_cards": 0,
+          "visible_operator_cards": 1,
+          "hidden_synthetic_cards": 16,
+          "hidden_operator_cards": 0
+        },
+        "synthetic_clicked": {
+          "path": "/tinkerden/receipts",
+          "search": "?handoff_provenance=synthetic",
+          "param": "synthetic",
+          "active_filter": "synthetic",
+          "active_button": "synthetic",
+          "visible_summary": "16 visible",
+          "total_cards": 17,
+          "visible_cards": 16,
+          "visible_synthetic_cards": 16,
+          "visible_operator_cards": 0,
+          "hidden_synthetic_cards": 0,
+          "hidden_operator_cards": 1
+        },
+        "all_clicked": {
+          "path": "/tinkerden/receipts",
+          "search": "",
+          "param": "",
+          "active_filter": "all",
+          "active_button": "all",
+          "visible_summary": "17 visible",
+          "total_cards": 17,
+          "visible_cards": 17,
+          "visible_synthetic_cards": 16,
+          "visible_operator_cards": 1,
+          "hidden_synthetic_cards": 0,
+          "hidden_operator_cards": 0
+        }
+      }
+    ]
+  },
+  "file_hashes": [
+    {
+      "path": "app/tinkerden/page.tsx",
+      "sha256": "86e06a4596949a7171aea08304ea2f798dad8a281788646e68986e432ae9e50c",
+      "bytes": 98913
+    },
+    {
+      "path": "app/tinkerden/receipts/page.tsx",
+      "sha256": "1c6667fc10bb5f53f34dd1ff1a84dc4325f75f2f05b286a8a8624269614826fc",
+      "bytes": 28580
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receiver-handoff-provenance-deeplink-smoke.mjs",
+      "sha256": "2369316baf51348a95be08664a77706ee0760d3211fafb45d36bf23a16500592",
+      "bytes": 13897
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no handoff created",
+    "no returned receipt filled",
+    "no contract receipt posted"
+  ],
+  "next_safe_action": "Use the operator-only deep link in Mack-facing review packets so synthetic smoke scaffolding is still inspectable but not the default reading burden."
+}

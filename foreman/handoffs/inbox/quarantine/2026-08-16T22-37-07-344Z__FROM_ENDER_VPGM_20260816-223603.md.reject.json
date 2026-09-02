@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-16T22:37:07.344Z",
+  "file": "FROM_ENDER_VPGM_20260816-223603.md",
+  "reason": "Duplicate stale-leg harvest before latest consumed-leg repair"
+}

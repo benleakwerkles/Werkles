@@ -17,7 +17,6 @@ export default function KindSirOperatorPage() {
         <nav className="dashboard-nav" aria-label="Kind Sir operator navigation">
           <Link href="/operator">Operator</Link>
           <Link href="/">Werkles</Link>
-          <Link href="/thinkit">ThinkIt</Link>
           <a href={kindSirOps.source.searchUrl}>GA eCorp</a>
         </nav>
 

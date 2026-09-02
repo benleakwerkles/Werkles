@@ -1,0 +1,49 @@
+flowchart TD
+  Intent["Intent Capsule<br/>human authorized scope"]
+  Manifest["Scoped Source Manifest<br/>paths, actions, hashes"]
+  Nest["Incubation Nest<br/>bounded simulation chamber"]
+  Lane["Phantom Lane<br/>copy-on-write behavior"]
+  Watcher["Sensory Skin<br/>Chokidar / file events"]
+  Transport["Lymphatic Transport<br/>Redis / message frames"]
+  Brainboot["Brainboot Packet<br/>world-state initialization"]
+  Execute["Fleet Execution<br/>bounded by lane"]
+  Ledger["Stigmergic Gossip Ledger<br/>append-only JSONL"]
+  Gate["Visible Gate Panel<br/>single informed decision"]
+
+  Intent --> Manifest
+  Manifest --> Nest
+  Nest --> Lane
+  Lane --> Brainboot
+  Brainboot --> Execute
+  Transport --> Execute
+  Execute --> Watcher
+  Watcher --> Ledger
+  Execute --> Ledger
+  Ledger --> Gate
+
+  Execute --> Initialized["INITIALIZED"]
+  Initialized --> Partial["PARTIAL"]
+  Partial --> Completed["COMPLETED"]
+
+  Initialized --> Blocked["BLOCKED"]
+  Partial --> Blocked
+  Initialized --> SourceMissing["SOURCE_MISSING"]
+  Partial --> SourceMissing
+  Initialized --> BreachDenied["BREACH_DENIED"]
+  Partial --> BreachDenied
+  Partial --> Interrupted["INTERRUPTED"]
+  Partial --> Superseded["SUPERSEDED"]
+
+  Completed --> Receipt["Receipt Required"]
+  Blocked --> Receipt
+  SourceMissing --> Receipt
+  BreachDenied --> Receipt
+  Interrupted --> Receipt
+  Superseded --> Receipt
+  Receipt --> Ledger
+
+  Unauthorized["Unauthorized write / stale hash / invalid frame / unknown node"] --> Lockout["Lockout Reflex"]
+  Lockout --> BreachDenied
+  Lockout --> Blocked
+  Lockout --> SourceMissing
+  Lockout --> Gate

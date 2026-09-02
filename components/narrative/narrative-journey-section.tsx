@@ -39,7 +39,7 @@ export function NarrativeJourneySection() {
           <div className="narrative-journey-card__copy">
             <span className="narrative-journey-card__act">Guide</span>
             <strong>Bellows</strong>
-            <span>Squibb hosts operator lessons after proof.</span>
+            <span>Practical lessons help turn proof into a useful next move.</span>
           </div>
         </Link>
       </div>

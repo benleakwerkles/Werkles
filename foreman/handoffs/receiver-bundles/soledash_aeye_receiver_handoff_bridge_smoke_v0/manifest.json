@@ -1,0 +1,34 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T08:46:35.144Z",
+  "bundle_id": "soledash_aeye_receiver_handoff_bridge_smoke_v0",
+  "packet_id": "soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+  "receiver": "Dink@Betsy",
+  "lane": "SoleDash Aeye transport",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi.json",
+  "source_packet_sha256": "f8e89e523be90b16fe887dcbf50b9ad18b48ecee42bcc2951a6511e92a731a3e",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/packet.json",
+      "sha256": "f8e89e523be90b16fe887dcbf50b9ad18b48ecee42bcc2951a6511e92a731a3e"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+      "sha256": "9237698869a2a733e9c8f39e1800900c7d82b7233a4c8229a579a894834e2beb"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/HANDOFF.md",
+      "sha256": "89defb387e0b1cfc234bf1976c1c98064f17a4f163bc99424bc5856da7fb8b46"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by Dink@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

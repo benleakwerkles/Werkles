@@ -6,7 +6,7 @@ import { productGateHandoffItems } from "@/lib/product-human-gates";
 
 export const metadata: Metadata = {
   title: "Gate Handoff | Werkles",
-  description: "Ben handoff packet for Werkles product Human Gates.",
+  description: "Operator handoff packet for Werkles product Human Gates.",
   robots: { index: false, follow: false }
 };
 
@@ -23,11 +23,11 @@ export default function GateHandoffPage() {
 
         <section className="ops-card">
           <div className="card-heading">
-            <p>Ben-ready packet</p>
+            <p>Operator-ready packet</p>
             <h1>Gate Handoff</h1>
           </div>
           <p>
-            Use this when the site is almost ready for Ben to pass Human Gates. If any item below cannot be opened or
+            Use this when the site is almost ready for Operator to pass Human Gates. If any item below cannot be opened or
             understood, the gate session is not ready yet.
           </p>
         </section>

@@ -1,0 +1,44 @@
+{
+  "missionId": "WERKLES_M17_HEIMERDINKER_NAVIGATION_STAKE_POSTBUILD",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Exact-artifact post-build red team of the Workshop-to-Werkle next-decision stake.",
+  "sharedContext": [
+    "Candidate digest across the nine named source and smoke-test files: 7b9bf210204ba047230bd8e8cf6cc508e1bf99554754c32789d820c82587298c.",
+    "The implementation renders exactly one route-derived stage: Your Workshop, Match Deck, Possible Werkle, or Existing Werkle on this device.",
+    "Formation promotes to Existing Werkle only after a validated device-local Operating Brief for the current formation; malformed JSON is removed and a brief for another formation is ignored.",
+    "The same-tab save and removal paths dispatch a local change event so the visible stage updates without a reload.",
+    "The card explicitly says it does not mean another person responded, agreed, paid, or joined a company.",
+    "TypeScript PASS; pure mutually-exclusive contract PASS; 1440px complete browser walk PASS; 390px complete browser walk plus overflow checks PASS; production Next.js build PASS.",
+    "Routes exercised: /dashboard/blueprints, /dashboard/intros, /dashboard/werkles/formation, /bellows/personal, /dashboard/crucible.",
+    "Gate 05 remains HOLD. This is local candidate evidence only; no account custody, provider activation, schema, push, deploy, or release approval is claimed."
+  ],
+  "liveStrings": [
+    "Where this work lives",
+    "Your Workshop",
+    "Match Deck",
+    "Possible Werkle",
+    "Existing Werkle on this device",
+    "Improve My Workshop",
+    "Compare Matches",
+    "Continue This Possible Werkle",
+    "Review the Saved Brief"
+  ],
+  "knownGaps": [
+    "Bean, Skybro, Ender, and Computer have not returned terminal review for this M17 candidate.",
+    "The candidate is not pushed or deployed.",
+    "The saved Operating Brief remains device-local rather than account-backed."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge the exact M17 navigation candidate against your PETRA_M17_NAV_GO acceptance conditions.",
+      "pull": "Attack stage exclusivity, stale/corrupt local state, custody language, duplicate-header risk, and 390px behavior using the stated executable evidence.",
+      "go": [
+        "Return PETRA_M17_NAV_POSTBUILD_GO, PATCH, or STOP for digest 7b9bf210204ba047230bd8e8cf6cc508e1bf99554754c32789d820c82587298c.",
+        "Name any failed acceptance check exactly and preserve Gate 05 HOLD."
+      ],
+      "momentum": "If GO, name the next cross-feature rotation target without approving release; then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

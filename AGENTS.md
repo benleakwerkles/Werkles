@@ -4,6 +4,8 @@ Use `foreman/platform-instructions/CODEX_FOREMAN_INSTRUCTIONS.md` as the repo-lo
 
 Repo cockpit files are source of truth. Do not make Ben a copy/paste mule.
 
+**CBCC** = Care Bot Cousin Crew (canonical name). See `foreman/AI_COUSINS_PROTOCOL.md`. Foreman routes trust/UX/push slices through CBCC outbox packets; do not impersonate external Aeyes as Cursor subagents.
+
 ## LOCAL HANDS READBACK (mandatory)
 
 **Hard crew rule.** Any hands-capable agent (Maker, Dink, or any future local operator) must begin every local work session with a **LOCAL HANDS READBACK** before editing files, running migrations, installing packages, switching branches, merging, pushing, or starting dev servers.

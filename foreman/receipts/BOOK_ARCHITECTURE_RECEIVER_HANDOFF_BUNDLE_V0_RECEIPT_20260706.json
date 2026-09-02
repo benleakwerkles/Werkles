@@ -1,0 +1,119 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_BUNDLE_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:24:50.363Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_BUNDLE_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-receiver-handoff-bundle-smoke.mjs",
+  "files_changed": [
+    "scripts/foreman/organism-receiver-handoff-bundle.mjs",
+    "scripts/foreman/organism-receiver-handoff-bundle-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_HANDOFF_BUNDLE_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/manifest.json"
+  ],
+  "validation": {
+    "handoff_bundle_returned_ok": true,
+    "packet_copy_written": true,
+    "receipt_template_written": true,
+    "handoff_markdown_written": true,
+    "manifest_written": true,
+    "manifest_endpoint_points_to_receiver_intake": true,
+    "manifest_post_command_uses_receiver_post_client": true,
+    "receipt_template_status": "blocked",
+    "receipt_template_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "truth_boundary": "The receiver handoff template is blocked until a receiver adds real proof."
+  },
+  "handoff_bundle": {
+    "ok": true,
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverHandoffFixture@Betsy",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov",
+    "handoff_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/manifest.json",
+    "manifest_written": true,
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverHandoffFixture@Betsy"
+  },
+  "handoff_manifest": {
+    "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+    "generated_at": "2026-07-06T06:24:50.353Z",
+    "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+    "receiver": "ReceiverHandoffFixture@Betsy",
+    "base_url": "http://127.0.0.1:3000",
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+    "source_packet_path": "data/organism/contracts/packets/td_packet_bridge_execute_mr8te4jp_srhdov.json",
+    "source_packet_sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866",
+    "bundle_paths": {
+      "packet": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+      "receiptTemplate": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+      "handoff": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+      "manifest": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/manifest.json"
+    },
+    "files": [
+      {
+        "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+        "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866"
+      },
+      {
+        "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+        "sha256": "1fd78272f54a12fb4be25933d66f3839ae5ae0facadce473a2ce8f123ed0ee09"
+      },
+      {
+        "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+        "sha256": "0ce82de6193653879127e3d68c6c204ee07f65bc8c75b6f34cc7cc003de6474e"
+      }
+    ],
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverHandoffFixture@Betsy",
+    "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+  },
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/organism-receiver-handoff-bundle.mjs",
+      "sha256": "46450c43b120b6c08a1071fc6ececdfbc1e4d58c4cea219123864b4be684b57d",
+      "bytes": 9872
+    },
+    {
+      "path": "scripts/foreman/organism-receiver-handoff-bundle-smoke.mjs",
+      "sha256": "9c305096c80db12fb9009eb381bcb6e44110898fbaac34205d2822d4de2f270a",
+      "bytes": 8181
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/HANDOFF.md",
+      "sha256": "0ce82de6193653879127e3d68c6c204ee07f65bc8c75b6f34cc7cc003de6474e",
+      "bytes": 1856
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/packet.json",
+      "sha256": "8981c2d9cf250a9d263925b489917b0126b214ad0d4da66d3a83d3a5dcf0a866",
+      "bytes": 1842
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/receipt-template.json",
+      "sha256": "1fd78272f54a12fb4be25933d66f3839ae5ae0facadce473a2ce8f123ed0ee09",
+      "bytes": 1614
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/td_packet_bridge_execute_mr8te4jp_srhdov/manifest.json",
+      "sha256": "c50f41dc57728a166da8e48ad0518c1a14dd4a02af96eac7e2237968e6167256",
+      "bytes": 1994
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "receiver intake route not posted",
+    "no synthetic completion receipt"
+  ],
+  "next_safe_action": "Give the handoff folder to a separate Aeye and require it to return a non-template receipt through the post client."
+}

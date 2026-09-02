@@ -10,6 +10,8 @@ import {
   safeOwnerName,
   writeTextAtomic
 } from "../_lib";
+import { receiverProofBoundary } from "@/lib/organism/contracts/receiver-proof-boundary";
+import { writeNerdkleOrganismPacketRecord } from "@/lib/nerdkle/organism-contract-mirror";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -39,11 +41,18 @@ export async function POST(request: NextRequest) {
     execution_owner: object.execution_owner,
     created_at: new Date().toISOString()
   });
+  const organism_contract = await writeNerdkleOrganismPacketRecord({
+    object,
+    object_path: filePath,
+    packet_path: packetPath
+  });
 
   return NextResponse.json({
     ok: true,
     object_id: object.id,
     execution_owner: object.execution_owner,
-    packet_path: repoRelative(packetPath)
+    packet_path: repoRelative(packetPath),
+    organism_contract,
+    receiver_proof: receiverProofBoundary("canonical_custody_only")
   });
 }

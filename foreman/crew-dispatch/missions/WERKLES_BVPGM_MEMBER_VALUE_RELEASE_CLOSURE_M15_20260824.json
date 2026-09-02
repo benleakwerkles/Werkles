@@ -1,0 +1,64 @@
+{
+  "missionId": "WERKLES_BVPGM_MEMBER_VALUE_RELEASE_CLOSURE_M15",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad pre-release closure across member continuity, matching/Formation, Bellows value, tech-stack readiness, and copy/visual continuity.",
+  "sharedContext": [
+    "Production remains at baseline 93b79d1; no push or deploy is authorized.",
+    "The exact local M13 result-return candidate passed TypeScript, focused contracts, regressions, route checks, practice-boundary checks, and the 100-route production build.",
+    "Petra returned a terminal local-candidate GO for M13 while retaining Gate 05 HOLD pending independent release custody.",
+    "Browser-local practice state is not account-durable custody, partner response, mutual agreement, provider evidence, or a company decision.",
+    "Werkles must create useful, revisitable work rather than surface advice or mirrored Intake copy.",
+    "A full rotation is not complete until terminal receipts are harvested, validated, assimilated, implemented, and re-reviewed."
+  ],
+  "liveStrings": [
+    "Your Match Deck",
+    "Start a Werkle",
+    "What happened—and what should you discuss next?",
+    "Personal Bellows",
+    "Provider readiness"
+  ],
+  "knownGaps": [
+    "Account-durable custody remains gated by unapplied persistence work.",
+    "Ender, Bean, Skybro, and Computer receiver sessions were signed out at the last proved route check.",
+    "Lady Jessica independent exact-candidate custody remains owed.",
+    "Broad member-value continuity still needs a current external red-team pass."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Audit the broad checkpoint for scope truth, gate posture, and the two highest-value safe local moves.",
+      "pull": "Separate client-only improvements from account, schema, provider, production, and release claims.",
+      "go": ["Name two bounded local changes that materially improve the walkthrough without implying durable custody.", "Give PETRA_M15_GO, PATCH, or STOP with exact acceptance checks."],
+      "momentum": "Name the next machine checkpoint after those two changes, then stop.",
+      "outOfLane": "No code, provider action, legal approval, credentials, schema/RLS, spend, push, deploy, subagent, or Operator approval."
+    },
+    "ENDER": {
+      "vision": "Walk the five workstreams as a real member and attack legibility, human rhythm, confusion, and homework fatigue.",
+      "pull": "Inspect the journey from saved work through Match Deck, Formation, Personal Bellows, and Crucible.",
+      "go": ["Return the two highest-impact P0/P1 experience repairs with exact screens and acceptance checks.", "Give ENDER_M15_GO, PATCH, or STOP."],
+      "momentum": "Name the strongest human moment and coldest dead zone, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Attack the checkpoint for stale state, consent theater, false evidence, and custody overclaiming.",
+      "pull": "Treat every browser record, ghost profile, match explanation, provider badge, and shared artifact as hostile input.",
+      "go": ["Return the two strongest P0/P1 exploits with minimum invariants and tests.", "Give BEAN_M15_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest missing hostile regression, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or aesthetic ruling."
+    },
+    "SKYBRO": {
+      "vision": "Judge whether the broad journey earns repeat use, trust, and a classy free-to-paid conversion.",
+      "pull": "Inspect whether each workstream creates a meaningful next loop rather than a dead-end card or paywall tease.",
+      "go": ["Return the two strongest value-loop repairs with member-visible outcomes.", "Give SKYBRO_M15_GO, PATCH, or STOP."],
+      "momentum": "Name the one moment most likely to make a member return tomorrow, then stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "COMPUTER": {
+      "vision": "Research-check the broad journey for practical usefulness, provider-language accuracy, and commercially substantial next actions.",
+      "pull": "Compare member prompts and provider claims with bounded decision-log, after-action review, and readiness practices.",
+      "go": ["Return the two weakest claims or prompts with better bounded alternatives.", "Give COMPUTER_M15_GO, PATCH, or STOP."],
+      "momentum": "Name the smallest research-backed improvement, then stop.",
+      "outOfLane": "No code, legal conclusion, provider action, credentials, schema/RLS, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

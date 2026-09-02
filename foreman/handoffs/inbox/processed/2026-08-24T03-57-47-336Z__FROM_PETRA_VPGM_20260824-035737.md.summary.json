@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T03:57:47.337Z",
+  "file": "FROM_PETRA_VPGM_20260824-035737.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Consumed as terminal M18 integration-order GO; Gate 05 remains bounded feature acceptance only.",
+  "auto_merge": false
+}

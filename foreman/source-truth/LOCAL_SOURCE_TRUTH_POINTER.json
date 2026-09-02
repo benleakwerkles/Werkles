@@ -1,0 +1,19 @@
+{
+  "pointer_id": "BETSY_LOCAL_SOURCE_TRUTH_V1",
+  "status": "OPERATOR_CONFIRMED",
+  "confirmed_at": "2026-07-03",
+  "confirmed_by": "Operator",
+  "machine": "Betsy",
+  "windows_hostname": "Betsy",
+  "windows_user": "Ben Leak",
+  "local_source_truth_repo_path": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "supersedes_paths": [
+    "C:\\Users\\Ben Leak\\Desktop\\github\\Werkles"
+  ],
+  "remote": "https://github.com/benleakwerkles/Werkles.git",
+  "classification": "LOCAL_NONCANONICAL_WORKSPACE",
+  "source_truth_statement": "GitHub origin/main is canonical code truth. This path is the single active local Werkles checkout on Betsy until Operator rebinds.",
+  "readback": "foreman/source-truth/readbacks/BETSY_LOCAL_SOURCE_TRUTH_READBACK.json",
+  "registry": "foreman/MACHINE_TOPOLOGY.md",
+  "ground_zero_packet": "foreman/messages/WERKLES_GROUND_ZERO_LOCAL_CLOUD_CODEX_CLEANUP_PACKET_20260703.md"
+}

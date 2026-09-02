@@ -27,7 +27,7 @@ export default function StripeBlockedPage() {
             <h1>Stripe Login Blocked</h1>
           </div>
           <p>
-            Stripe password, passkey, 2FA, and account recovery are Ben-only Human Gates. While access is blocked,
+            Stripe password, passkey, 2FA, and account recovery are Operator-only Human Gates. While access is blocked,
             keep preparing local proof and product mapping, but do not mark any live Stripe gate as passed.
           </p>
           <div className="gate-list" aria-label="Stripe blocked hard stops">

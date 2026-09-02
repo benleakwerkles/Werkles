@@ -1,0 +1,67 @@
+{
+  "missionId": "RECOMMENDATION_TO_SOLUTION_ACTUAL_CBCC",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Turn Werkles Recommendations from tiny obvious advice into an actual solution path: a concrete playbook, a useful artifact, a Bellows learning/tool bridge, and an evidence-based provider/resource comparison seam. Review first; Heimerdinker builds only from returned actual-CBCC judgment.",
+  "sharedContext": [
+    "Ben's live result says Strengthen your case, then tells him to name the claim and test its weakest assumption. He correctly judges this as homework, not a marketable product.",
+    "The current selected-option contract exposes only Why it fits, Watch for, and Do next. It has no playbook, completion artifact, Bellows lesson, tool, supplier catalog, comparison criteria, or commercial disclosure model.",
+    "Several different ranked option cards currently collapse into the same generic readout even when their titles promise different help.",
+    "Werkles must help an ordinary person find the best practical route for the business they are trying to make real, while also building truthful profile signals for later matching.",
+    "Ben wants Werkles to surface its own useful IP or the best outside source/provider, including local banks, credit unions, accountants, lawyers, tools, equipment, and training, with transparent sponsored/referral treatment and no fake neutrality.",
+    "Ben expects better from Bean, Ender, and Thufir/Computer. This is a real product review, not a toy copy exercise.",
+    "The page is visually closer but still needs a stronger sense that the selected option opens a valuable working path rather than another text slab."
+  ],
+  "liveStrings": [
+    "Strengthen your case",
+    "Name the claim, then test its weakest assumption.",
+    "Why it fits",
+    "Watch for",
+    "Do next",
+    "Write the exact claim someone must believe, including any amount, date, or promised result.",
+    "Clarify the next step",
+    "Actions are not available here yet. Choosing an option only changes this readout."
+  ],
+  "knownGaps": [
+    "The current recommendation surface is an interactive readout, not an execution workspace.",
+    "The repository contains Bellows content plans and salvageable proof/partnership material, but not a finished full library of company kits, local providers, or professional directories.",
+    "No live commercial partner, sponsorship, affiliate, referral, price, availability, or provider-quality claim may be invented.",
+    "Financial, legal, tax, lending, and regulated recommendations need precise scope, sources, update dates, and appropriate professional boundaries.",
+    "Implementation must remain local: no provider calls, spending, SQL, secrets, push, deploy, or external commercial outreach."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the result feel like Werkles has opened a valuable working path, not handed the member a fortune cookie and homework.",
+      "pull": "Design the selected-option experience from recommendation through concrete work, learning, artifact, and next destination. Also make it visually POP without burying the useful result in rapper-wordy prose.",
+      "go": [
+        "For Strengthen your case, design the smallest genuinely useful end-to-end member experience. Specify the steps, prompts, examples, generated artifact, correction loop, and completion state. The member should leave with something they can actually use with a lender, partner, customer, seller, or reviewer.",
+        "Define a reusable page pattern for all 12 option kinds so Find equipment, Compare credit unions, Build a missing skill, and Clarify the next step cannot collapse into the same advice. Show what is common and what must be option-specific.",
+        "Return a concrete desktop/mobile hierarchy and visual-depth brief for this page: what should expand on selection, what stays compact, where Bellows/tools/providers appear, and how the working path gets more visual energy without becoming decorative noise."
+      ],
+      "momentum": "Give three human visual acceptance tests and name the one bounded UI slice you would build first today.",
+      "outOfLane": "Do not invent providers, prices, sponsorships, legal/financial claims, SQL, deployment, or implementation code."
+    },
+    "BEAN": {
+      "vision": "Make Werkles commercially useful without laundering generic advice, paid placement, incomplete evidence, or professional-advice adjacency into trustworthy answers.",
+      "pull": "Attack the value claim, actionability, provider ranking, sponsorship/referral transparency, evidence burden, and member-profile signals created by completing a recommendation path.",
+      "go": [
+        "Define an acceptance contract that distinguishes a recommendation label, a playbook, a completed artifact, a Bellows resource, a provider comparison, and an actual transaction or introduction. State what Werkles may claim at each level.",
+        "Design the fail-closed ranking/disclosure rules for local banks, credit unions, accountants, lawyers, equipment sellers, trainers, and other suppliers. Include sponsorship, affiliate/referral compensation, geography, freshness, qualifications, conflicts, availability, price evidence, and what happens when evidence is thin.",
+        "Specify which completion evidence may update the member's starter profile for matching, which fields must stay self-reported or unknown, and how disputes/corrections/expiry work. Then red-team Strengthen your case for financial/legal overreach and false confidence."
+      ],
+      "momentum": "Return P0/P1/P2 tests that must block a provider/result from appearing as Best option, plus the one bounded trust slice you would build first today.",
+      "outOfLane": "Do not choose visual styling, invent commercial relationships, write code, apply schema, push, or deploy."
+    },
+    "COMPUTER": {
+      "vision": "Give Werkles a researchable path from a member's problem to the best available own-IP or outside solution, with enough evidence to explain why it is nearest and best.",
+      "pull": "Audit existing Bellows material and define a provider/resource research architecture for concrete recommendations, especially Strengthen your case, equipment, local banking/credit unions, accountants, lawyers, and training.",
+      "go": [
+        "Using current authoritative public sources, identify the minimum evidence fields and comparison criteria Werkles would need to compare local banks/credit unions, accountants, lawyers, equipment suppliers, and training resources without pretending there is one universal best provider. Cite primary sources where available.",
+        "Propose the first three Bellows playbooks/tools that would turn today's top recommendation types into real outcomes. For Strengthen your case, specify the actual worksheet/checklist/artifact and the authoritative sources needed to support it.",
+        "Define a content/provider freshness and locality model: geography, eligibility, update cadence, source attribution, availability, pricing uncertainty, sponsored placement, and a correction/reporting loop. Show how a future search/research adapter plugs in without changing the member-facing contract."
+      ],
+      "momentum": "Return a prioritized research backlog and the one bounded content/resource slice you would build first today, with cited sources rather than market slogans.",
+      "outOfLane": "Do not make unsourced product claims, recommend actual vendors without current evidence, perform outreach, spend money, deploy, or alter doctrine."
+    }
+  }
+}

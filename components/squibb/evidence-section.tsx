@@ -15,7 +15,7 @@ export function EvidenceSection({ items }: EvidenceSectionProps) {
   return (
     <details className="squibb-evidence squibb-rec-collapse">
       <summary className="squibb-rec-collapse__summary" id="squibbEvidenceTitle">
-        Proof & evidence
+        What supports this
       </summary>
       <p className="squibb-evidence__lead">
         When evidence is thin, Werkles should say so. A completed check can support a decision; it does not make

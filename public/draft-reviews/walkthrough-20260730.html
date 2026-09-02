@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Walkthrough — July 30 · Werkles foreman</title>
+<style>
+  :root { --violet:#4520c9; --teal:#027665; --ink:#231a12; --paper:#faf6ef; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.6 Georgia, "Times New Roman", serif; }
+  main { max-width:760px; margin:0 auto; padding:48px 22px 80px; }
+  h1 { font-size:2rem; margin:0 0 4px; }
+  .sub { color:#6d5f4b; margin:0 0 32px; }
+  .stop { background:#fff; border:1px solid #e7ddcc; border-radius:12px; padding:20px 24px; margin:0 0 18px; }
+  .stop h2 { margin:0 0 6px; font-size:1.15rem; }
+  .stop h2 a { color:var(--violet); text-decoration:none; }
+  .stop h2 a:hover { text-decoration:underline; }
+  .num { display:inline-block; width:1.7em; height:1.7em; line-height:1.7em; text-align:center; background:var(--violet); color:#fff; border-radius:50%; font-size:.85rem; margin-right:8px; font-family:system-ui, sans-serif; }
+  .decision { background:#f3edff; border-left:4px solid var(--violet); padding:10px 14px; border-radius:0 8px 8px 0; margin-top:10px; font-size:.95rem; }
+  .decision strong { color:var(--violet); }
+  .quiet { color:#6d5f4b; font-size:.92rem; }
+  .phrasebox { background:var(--ink); color:#f3e9d7; padding:12px 16px; border-radius:8px; font-family:ui-monospace, monospace; font-size:.9rem; margin-top:8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Walkthrough — Thursday, July 30</h1>
+  <p class="sub">Foreman: Lady Jessica · ~15 minutes · every link opens the live local build · decisions flagged in violet</p>
+
+  <div class="stop">
+    <h2><span class="num">1</span><a href="http://127.0.0.1:3000/">Home floor</a></h2>
+    <p>Since your last walk: flat buttons everywhere, de-worded hero and value fold, front-on Maria,
+    six trades on the lane cards (DJ, florist, dog walker, vet, accountant, coffee table), violet CTA family.</p>
+    <p class="quiet">Sanity check only — say "Macmillan" if it holds, point at anything that doesn't.</p>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">2</span><a href="http://127.0.0.1:3000/spark">Story page (rebuilt)</a></h2>
+    <p>The page you couldn't parse last time, rebuilt: what Werkles is, what free gets you,
+    three rooms with plain names, built-for-every-trade portraits.</p>
+    <div class="decision"><strong>Decision:</strong> five-second test — can a stranger tell what this is and what to do next?</div>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">3</span><a href="http://127.0.0.1:3000/bellows">Bellows + the new icons</a></h2>
+    <p>The Betsy crew's product icons are live. Membership and Proof carry theirs inside the hero card;
+    Bellows' floats loose at the top (fix queued for the next slice).</p>
+    <div class="decision"><strong>Decision:</strong> approve the in-card placement as the standard for all six?</div>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">4</span><a href="http://127.0.0.1:3000/membership">Membership</a></h2>
+    <p>Standard header, "runway to your first customer" pitch, opening-day image, honest unlock bullets.</p>
+    <p class="quiet">Check the money story reads earned, not premature.</p>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">5</span><a href="http://127.0.0.1:3000/privacy">Privacy draft</a> &amp; <a href="http://127.0.0.1:3000/terms">Terms draft</a></h2>
+    <p>New. Plain language, in the site's voice, honest about Stripe/Supabase/verification limits.
+    Unlinked from the site until you approve — Locke has a tear-apart assignment on the text too.</p>
+    <div class="decision"><strong>Decision:</strong> approve the drafts (or mark edits) so footer wiring can queue for the next slice.</div>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">6</span><a href="http://127.0.0.1:3000/it-is-not-here">The 404</a></h2>
+    <p>"That bench is empty." Branded dead-end recovery — worth ten seconds.</p>
+  </div>
+
+  <div class="stop">
+    <h2><span class="num">7</span>While you're here, logged in</h2>
+    <p>If you sign into your own account during the walk, we close finding F3 together:
+    the Profile Builder's new three-stage flow with the profile icon — the one page nobody's eyes have checked authed.</p>
+    <div class="decision"><strong>Decision:</strong> HG-3 is a ten-minute Stripe Dashboard session whenever you're ready —
+    the runbook removes all thinking. Schedule it today?</div>
+    <div class="phrasebox">HG-3 DONE: two live products created, two price IDs in 1Password.</div>
+  </div>
+
+  <p class="quiet">Board after this walk: red-team passes (Locke, Demo) → your phrase <code>PUSH MAKER POLISH V2</code> → HG-4 <code>APPROVE SECRET ENTRY</code>.</p>
+</main>
+</body>
+</html>

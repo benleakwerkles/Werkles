@@ -1,0 +1,84 @@
+{
+  "missionId": "WERKLES_COMPLETION_CAMPAIGN",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Parallel discovery, attack, and build planning against the larger checkpoint: a coherent, valuable, revisitable Werkles member journey from first visit through saved Workshop, intelligent recommendations, ranked matches, conversation, Werkle formation, Bellows, membership, and narrow provider checks.",
+  "sharedContext": [
+    "The checkpoint is not one nearby defect. It is COMPLETING WERKLES: a member can understand the promise, sign in, remain known, save work, receive specific help, meet meaningfully ranked people, converse naturally, form a shared Werkle without losing provenance or consent, revisit useful Bellows material, and use narrowly scoped provider checks.",
+    "Current local source is C:\\Users\\Ben Leak\\github\\Werkles on branch maker/site-g-20260703. The tree is intentionally dirty and shared; do not invent commit cleanliness or request a new environment.",
+    "The Operator requires CBCC cooperation: each first-pass receipt must name the next cross-review packet it recommends. The Foreman will route those reviews without returning the Operator to the bottom of the ladder.",
+    "No cousin request is a receipt. No seat may claim another seat reviewed work it did not inspect.",
+    "No push, deploy, production mutation, provider submission, secret handling, paid call, SQL/schema/RLS apply, new agent, subagent, or environment is authorized."
+  ],
+  "liveStrings": [
+    "Werkles helps people turn an idea, skill, need, or opportunity into work they can build with others.",
+    "Workshop while you are working alone; Werkle when two or more members deliberately combine work.",
+    "Funds verified — <date>; never public wealth rank."
+  ],
+  "knownGaps": [
+    "Member identity and saved Intake continuity have repeatedly failed during walkthroughs.",
+    "Recommendations have improved but still risk mirroring input, generic advice, and paths that do not lead to substantial help.",
+    "Match Deck needs diverse, ranked, nearby candidates, human conversation, transparent reasons, and privacy-bounded adaptation over time.",
+    "Werkle formation needs two-party provenance, expectation alignment, reversible decisions, and a comfortable merge from separate Workshops.",
+    "Public and Personal Bellows need depth, personalization, revisitation, and a graceful free-to-paid value ladder.",
+    "Visual continuity, legibility, human grounding, persistent navigation, and button-versus-information affordances require sitewide proof.",
+    "Plaid sandbox access is granted but server credential custody and product choice remain open; production access is under review. Stripe, Twilio, Supabase, and other provider lanes need truthful readiness."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Act as product integrator for the entire member journey, not a page reviewer. Define what 'Werkles is coherent enough to sell' means across the full loop.",
+      "pull": "Reconcile the named gaps into one prioritized completion map. Attack missing transitions, dead ends, duplicated pages, premature paywalls, and places where the product promise exceeds delivered value.",
+      "go": [
+        "Return a journey acceptance matrix covering home, auth, Intake, Recommendations, Workshop, Match Deck, conversation, Werkle formation, Bellows, membership, profile, and Crucible.",
+        "Name the five highest-leverage integrated slices, in order, with explicit entry state, exit proof, dependencies, and what should be built versus removed or merged.",
+        "Specify the phase-two cross-reviews required from Ender, Bean, Computer, Skybro, Doozer, Lady Jessica, and the Foreman."
+      ],
+      "momentum": "Return CAMPAIGN_MAP_READY or BLOCKED, then provide the exact next packet seed the Foreman should issue without waiting for the Operator.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or human-gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Make Werkles materially worth paying for. Find where the product still offers obvious scraps instead of insight, useful artifacts, people, suppliers, lessons, or action paths.",
+      "pull": "Red-team Recommendations, public and Personal Bellows, Workshop, the free-to-paid ladder, and the transition from advice into an actual person, packet, provider, supplier, or working artifact.",
+      "go": [
+        "Return ten specific value upgrades distributed across at least four surfaces; no generic 'add AI' recommendations.",
+        "For the strongest three, give the exact member input, reasoning transformation, visible result, next action, and revisitable saved value.",
+        "Attack insider language and Operator-echo behavior; propose concise replacement copy only where it changes comprehension or action."
+      ],
+      "momentum": "Return VALUE_LADDER_READY or BLOCKED and nominate one idea for Computer feasibility review, one for Bean trust review, and one for Ender experience review.",
+      "outOfLane": "No provider action, secrets, paid calls, code mutation, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Walk the product as a human Handeye and make the full journey feel like one warm, ambitious site rather than a succession of forms and internal dashboards.",
+      "pull": "Attack legibility, navigation continuity, button versus bubble affordance, dead space, human grounding, visual hierarchy, mobile flow, state feedback, and the comfort of merging two Workshops into a Werkle.",
+      "go": [
+        "Return a route-by-route experience audit for the canonical walkthrough, naming only findings that change comprehension, confidence, or action.",
+        "Define one sitewide visual grammar for headers, signed-in member navigation, actions, information bubbles, saved-state feedback, and grounded imagery.",
+        "Give Lady Jessica a bounded implementation brief for the three strongest visual repairs and give Doozer an interaction brief for the strongest formation repair."
+      ],
+      "momentum": "Return EXPERIENCE_SYSTEM_READY or BLOCKED and name the exact phase-two pages you must re-walk after implementation.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or aesthetic final approval."
+    },
+    "BEAN": {
+      "vision": "Attack the whole product for places where friendliness launders false authority, profiling, impersonation, wealth sorting, lost custody, or promises the system cannot prove.",
+      "pull": "Review saved member state, recommendation reasoning, adaptive matching, conversation generation, two-party formation, Personal Bellows personalization, membership gating, and narrow provider evidence as one trust system.",
+      "go": [
+        "Return only P0/P1 cross-surface trust failures and the invariant that closes each one.",
+        "Define what Werkles may learn from explicit member actions over time, what requires consent, and what must never feed ranking or shared records.",
+        "Create a hostile regression matrix that Computer can encode and that Ender/Lady Jessica can visibly prove in the interface."
+      ],
+      "momentum": "Return TRUST_SYSTEM_READY, PASS_WITH_CONDITIONS, or BLOCK, plus the exact post-build packet you expect before any completion claim.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Build the technical dependency and proof map for completing Werkles without confusing scaffolds, sandbox demos, or static ghost behavior with a functioning member product.",
+      "pull": "Audit auth/session continuity, owner-bound storage, recommendations reasoning, matching rank/adaptation, generated conversation, formation custody, Bellows personalization, provider adapters, observability, and deletion paths.",
+      "go": [
+        "Return a dependency graph with the smallest vertical slices that create durable member value before schema/provider gates.",
+        "Name existing code that is real, scaffold-only, duplicated, obsolete, or dangerously overclaimed, with focused verification commands for each proposed slice.",
+        "Give Doozer an implementation-ready contract for the strongest non-gated functional slice and give the Foreman a test plan for integrating it safely into the dirty tree."
+      ],
+      "momentum": "Return TECHNICAL_CAMPAIGN_READY, NEEDS_FACT_CHECK, or BLOCKED and nominate the first phase-two build seal for Bean and Ender.",
+      "outOfLane": "No code mutation, provider calls, secrets, SQL/schema/RLS apply, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

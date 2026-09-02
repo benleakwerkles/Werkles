@@ -11,7 +11,7 @@ import "./concierge-walkthrough.css";
 export const metadata = {
   title: "Worked Recommendation Example | Bellows",
   description:
-    "60-second diagnosis — symptom, Speaker read, falsifiers, and a reversible test. No matching."
+    "A concise worked example: situation, possible read, counterevidence, and a reversible test. No matching."
 };
 
 export default function ConciergeWalkthroughTestCase0Page() {
@@ -21,7 +21,7 @@ export default function ConciergeWalkthroughTestCase0Page() {
   return (
     <>
       <LocalAwareSiteHeader />
-      <main className="bellows-main narrative-act-page workshop-route--bellows squibb-walkthrough-page">
+      <main className="bellows-main narrative-act-page route-room route-room--bellows workshop-route--bellows squibb-walkthrough-page">
 
         <nav className="squibb-rec-page__nav" aria-label="Bellows">
           <Link className="button button-ghost" href="/bellows">

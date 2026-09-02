@@ -1,0 +1,447 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0",
+  "status": "ARTIFACT_WITH_BLOCKERS",
+  "timestamp": "2026-07-06T08:56:21.338Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_PROOF_EVERYWHERE_AUDIT_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/receiver-proof-everywhere-audit.mjs",
+  "validation": {
+    "non_mutating_audit": true,
+    "receiver_handoff_lane_enforced": true,
+    "posted_handoffs_require_contract_receipt_and_packet_receipted_event": true,
+    "pending_handoffs_not_claimed_as_posted": true,
+    "returned_unposted_handoffs_not_claimed_as_posted": true,
+    "template_return_blocked_handoffs_not_claimed_as_posted": true,
+    "workspace_relay_truthfully_marks_downstream_receiver_proof_required": true,
+    "non_proof_routes_self_label_receiver_boundary": true,
+    "nerdkle_receipts_mirror_to_organism_contract": true,
+    "nerdkle_mirror_packet_receipted_event_joins_packet_id_and_receipt_id": true,
+    "soledash_transport_acks_mirror_to_organism_contract": true,
+    "soledash_mirror_packet_receipted_event_joins_packet_id_and_receipt_id": true,
+    "soledash_transport_ack_remains_partial_not_completed_work": true,
+    "soledash_receiver_handoff_bridge_creates_pending_template": true,
+    "soledash_receiver_handoff_bridge_does_not_claim_completion": true,
+    "workspace_relay_receiver_handoff_bridge_creates_pending_template": true,
+    "workspace_relay_receiver_handoff_bridge_does_not_claim_completion": true,
+    "soledash_ack_is_not_receiver_work_proof": true,
+    "nerdkle_cross_aeye_handoff_still_requires_receiver_handoff_bundle": true,
+    "universal_receiver_proof_claimed": false,
+    "blockers_remain": true
+  },
+  "live_receiver_handoff_readback": {
+    "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-handoffs?limit=250",
+    "count": 19,
+    "posted_count": 6,
+    "pending_count": 9,
+    "returned_unposted_count": 3,
+    "template_return_blocked_count": 1,
+    "invalid_count": 0,
+    "malformed_count": 0,
+    "sampled_records_checked": 19,
+    "posted_records_event_joined": 6,
+    "pending_records_waiting_for_return": 9,
+    "returned_unposted_records_not_claimed_posted": 3,
+    "template_blocked_records_not_claimed_posted": 1
+  },
+  "nerdkle_mirror_readback": {
+    "status": "ARTIFACT",
+    "object_id": "nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2",
+    "organism_packet_id": "nerdkle_execution_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2",
+    "organism_receipt_id": "nerdkle_organism_receipt_execution_receipt_nerdkle_book_architecture_nerdkle_organism_receipt_mirror_v0_mr8z01w2_mr8z01w2",
+    "receipt_event_id": "packet_receipted_20260706084051_d5dc36",
+    "current_script_hashes_match_receipt": true,
+    "packet_receipted_event_still_joins": true
+  },
+  "soledash_mirror_readback": {
+    "status": "ARTIFACT",
+    "message_packet_id": "soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8z7exi",
+    "organism_packet_id": "soledash_aeye_transport_soledash_aeye_book_architecture_soledash_aeye_transport_mirror_v0_mr8z7exi",
+    "organism_receipt_id": "soledash_aeye_transport_receipt_soledash_aeye_receipt_book_architecture_soledash_aeye_transport_mirror_v0_mr8z7exi",
+    "receipt_event_id": "packet_receipted_20260706084635_4242e5",
+    "current_script_hashes_match_receipt": true,
+    "packet_receipted_event_still_joins": true,
+    "transport_ack_remains_partial": true
+  },
+  "soledash_receiver_handoff_bridge_readback": {
+    "status": "ARTIFACT",
+    "source_message_packet_id": "soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "organism_packet_id": "soledash_aeye_transport_soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "organism_receipt_id": "soledash_aeye_transport_receipt_soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z7eyi",
+    "bundle_id": "soledash_aeye_receiver_handoff_bridge_smoke_v0",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/soledash_aeye_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+    "current_script_hashes_match_receipt": true,
+    "indexed_state": "pending_receiver",
+    "returned_receipt_exists": false
+  },
+  "workspace_relay_receiver_handoff_bridge_readback": {
+    "status": "ARTIFACT",
+    "relay_id": "workspace_relay_handoff_bridge_mr8zc3ot",
+    "organism_packet_id": "workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os",
+    "bundle_id": "workspace_relay_receiver_handoff_bridge_smoke_v0",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+    "current_script_hashes_match_receipt": true,
+    "indexed_state": "pending_receiver",
+    "returned_receipt_exists": false
+  },
+  "source_invariant_readbacks": [
+    {
+      "surface_id": "organism.receiver_proof_boundary",
+      "path": "lib/organism/contracts/receiver-proof-boundary.ts",
+      "required_markers_present": [
+        "harvey_nerdkle_receiver_proof_boundary_v0",
+        "organism_receipt_mirrored",
+        "transport_receipt_mirrored",
+        "transport_ack_only",
+        "legacy_object_loop",
+        "receiver_work_proof_claimed: false"
+      ]
+    },
+    {
+      "surface_id": "soledash.aeye_transport_mirror",
+      "path": "lib/soledash/aeye-inbox-v0/organism-contract-mirror.ts",
+      "required_markers_present": [
+        "writeSoleDashAeyeTransportPacketRecord",
+        "writeSoleDashAeyeTransportReceiptRecord",
+        "status: \"partial\"",
+        "Transport ACK was not upgraded into completed receiver work proof"
+      ]
+    },
+    {
+      "surface_id": "soledash.aeye_receiver_handoff_bridge",
+      "path": "lib/soledash/aeye-inbox-v0/receiver-handoff-bridge.ts",
+      "required_markers_present": [
+        "createSoleDashAeyeReceiverHandoffBundle",
+        "pending_receiver_return",
+        "createReceiverHandoffBundle",
+        "not completion proof"
+      ]
+    },
+    {
+      "surface_id": "nerdkle.organism_contract_mirror",
+      "path": "lib/nerdkle/organism-contract-mirror.ts",
+      "required_markers_present": [
+        "writeNerdkleOrganismPacketRecord",
+        "writeNerdkleOrganismReceiptRecord",
+        "source_missing",
+        "writeOrganismReceiptRecord"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.receiver_handoff_bundle",
+      "path": "lib/organism/contracts/receiver-handoff-bundle.ts",
+      "required_markers_present": [
+        "TEMPLATE_NOT_FILLED",
+        "receipt_template_status: \"blocked\"",
+        "A posted template is not completion proof",
+        "createReceiverHandoffBundle"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.receiver_handoff_fill_return",
+      "path": "lib/organism/contracts/receiver-handoff-return-fill.ts",
+      "required_markers_present": [
+        "ATTEMPTED_STILL_TEMPLATE",
+        "CHANGED_PATH_REQUIRED_FOR_NON_BLOCKED_RECEIPT",
+        "EXPLICIT_PROOF_REQUIRED_FOR_NON_BLOCKED_RECEIPT",
+        "fill-return wrote a non-template returned-receipt.json"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.receiver_handoff_post_return",
+      "path": "lib/organism/contracts/receiver-handoff-return-post.ts",
+      "required_markers_present": [
+        "RETURNED_RECEIPT_MISSING",
+        "RETURNED_PACKET_MISMATCH",
+        "TEMPLATE_NOT_FILLED_RETURN_RECEIPT",
+        "writeOrganismReceiptRecord"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.receiver_handoff_index",
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "required_markers_present": [
+        "returned_unposted",
+        "template_return_blocked",
+        "contract_event_joined",
+        "packet_receipted",
+        "synthetic_proof"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.workspace_relay",
+      "path": "lib/tinkerden/workspace-relay-contract.ts",
+      "required_markers_present": [
+        "Receiver-side Aeye completion proof was not claimed",
+        "Downstream work remains awaiting receiver proof",
+        "downstream_receiver_proof=required",
+        "writeOrganismReceiptRecord"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.workspace_relay_receiver_handoff_bridge",
+      "path": "lib/tinkerden/workspace-relay-receiver-handoff.ts",
+      "required_markers_present": [
+        "createWorkspaceRelayReceiverHandoffBundle",
+        "pending_receiver_return",
+        "createReceiverHandoffBundle",
+        "runner receipt remains custody proof only"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.workspace_relay_route",
+      "path": "app/api/tinkerden/workspace-relay/route.ts",
+      "required_markers_present": [
+        "createWorkspaceRelayReceiverHandoffBundle",
+        "create_receiver_handoff",
+        "receiver_handoff",
+        "receiver_handoff_bundle_id"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.workspace_relay_receiver_handoff_bridge_smoke",
+      "path": "scripts/foreman/workspace-relay-receiver-handoff-bridge-smoke.mjs",
+      "required_markers_present": [
+        "receiver_handoff_bundle_created",
+        "receiver_handoff_template_blocked",
+        "receiver_handoff_return_not_created",
+        "fixed_bundle_id_prevents_count_growth_on_repeated_runs"
+      ]
+    },
+    {
+      "surface_id": "tinkerden.bridge_execute",
+      "path": "app/api/tinkerden/bridge/execute/route.ts",
+      "required_markers_present": [
+        "createBridgeExecutePacket",
+        "contract_write",
+        "visible_state: \"RECEIPT_LINKED\""
+      ]
+    },
+    {
+      "surface_id": "soledash.aeye_loop",
+      "path": "app/api/soledash/v1/wonka-den/aeye-loop/route.ts",
+      "required_markers_present": [
+        "verify_sent",
+        "receipt_only",
+        "ACKNOWLEDGED",
+        "dispatchAeyeMessage",
+        "writeSoleDashAeyeTransportReceiptRecord",
+        "createSoleDashAeyeReceiverHandoffBundle",
+        "create_receiver_handoff",
+        "organism_contract",
+        "receiver_handoff",
+        "receiverProofBoundary(\"transport_receipt_mirrored\")",
+        "receiverProofBoundary(\"transport_ack_only\")"
+      ]
+    },
+    {
+      "surface_id": "soledash.aeye_receiver_handoff_bridge_smoke",
+      "path": "scripts/foreman/soledash-aeye-receiver-handoff-bridge-smoke.mjs",
+      "required_markers_present": [
+        "receiver_handoff_bundle_created",
+        "receiver_handoff_template_blocked",
+        "receiver_handoff_return_not_created",
+        "fixed_bundle_id_prevents_count_growth_on_repeated_runs"
+      ]
+    },
+    {
+      "surface_id": "soledash.aeye_transport_mirror_smoke",
+      "path": "scripts/foreman/soledash-aeye-transport-organism-mirror-smoke.mjs",
+      "required_markers_present": [
+        "organism_receipt_status_partial_for_transport_ack",
+        "receiver_work_completion_not_claimed",
+        "packet_receipted_event_joins_packet_id_and_receipt_id"
+      ]
+    },
+    {
+      "surface_id": "nerdkle.packet",
+      "path": "app/api/nerdkle/packet/route.ts",
+      "required_markers_present": [
+        "nerdkle_execution_packet_created",
+        "HANDOFF_OUTBOX_DIR",
+        "executionPacketBody",
+        "writeNerdkleOrganismPacketRecord",
+        "organism_contract",
+        "receiverProofBoundary(\"canonical_custody_only\")"
+      ]
+    },
+    {
+      "surface_id": "nerdkle.receipt",
+      "path": "app/api/nerdkle/receipt/route.ts",
+      "required_markers_present": [
+        "nerdkle_execution_receipt_recorded",
+        "artifact_path",
+        "object_hash",
+        "writeNerdkleOrganismReceiptRecord",
+        "organism_contract",
+        "receiverProofBoundary(\"organism_receipt_mirrored\")"
+      ]
+    },
+    {
+      "surface_id": "nerdkle.organism_receipt_mirror_smoke",
+      "path": "scripts/foreman/nerdkle-organism-receipt-mirror-smoke.mjs",
+      "required_markers_present": [
+        "organism_packet_mirror_written",
+        "organism_receipt_mirror_written",
+        "packet_receipted_event_joins_packet_id_and_receipt_id"
+      ]
+    }
+  ],
+  "coverage_matrix": [
+    {
+      "surface_id": "tinkerden.receiver_handoff",
+      "coverage_status": "enforced",
+      "proof_level": "receiver-return-required",
+      "evidence": "Bundle templates are blocked, fill-return rejects template text and requires changed paths plus proof, post-return rejects template or mismatched returns, and the index separates pending, returned_unposted, template_return_blocked, and posted.",
+      "truth_boundary": "This proves the TinkerDen receiver-handoff lane, not every message path in Werkles."
+    },
+    {
+      "surface_id": "tinkerden.bridge_execute",
+      "coverage_status": "canonical-custody",
+      "proof_level": "packet-and-local-receipt-mirrored",
+      "evidence": "The bridge execute API returns contract_write and RECEIPT_LINKED state from the TinkerDen contract mirror.",
+      "truth_boundary": "A bridge execution receipt is local dispatch/custody proof; it is not downstream receiver work proof."
+    },
+    {
+      "surface_id": "tinkerden.workspace_relay",
+      "coverage_status": "custody-with-pending-receiver-handoff",
+      "proof_level": "runner-receipt-mirrored-plus-receiver-return-template",
+      "evidence": "Workspace relay mirrors the runner receipt into the organism receipt store, explicitly says receiver-side Aeye completion proof was not claimed, and can create a blocked receiver-handoff bundle.",
+      "truth_boundary": "The runner receipt plus blocked receiver-handoff template is still pending receiver work until a non-template returned receipt is filled and posted."
+    },
+    {
+      "surface_id": "soledash.aeye_loop",
+      "coverage_status": "transport-receipt-mirrored-plus-pending-handoff",
+      "proof_level": "transport-ack-to-organism-contract-plus-receiver-return-template",
+      "evidence": "The Aeye loop mirrors send and receipt_only ACKs into canonical organism packet/receipt/event records and can create a blocked receiver-handoff bundle when create_receiver_handoff is requested.",
+      "truth_boundary": "A mirrored transport ACK plus blocked receiver-handoff template is still pending receiver work until a non-template returned receipt is filled and posted."
+    },
+    {
+      "surface_id": "nerdkle.packet_receipt",
+      "coverage_status": "organism-receipt-mirrored",
+      "proof_level": "legacy-object-receipt-to-organism-contract",
+      "evidence": "Nerdkle packet creation mirrors a canonical organism packet, and Nerdkle receipt creation mirrors a canonical organism receipt/event joined to the packet id.",
+      "truth_boundary": "Nerdkle now has canonical organism packet/receipt/event proof, but cross-Aeye work should still use receiver-handoff bundles when handoff-return semantics are required."
+    }
+  ],
+  "blockers": [
+    "Universal receiver proof is not implemented across every Werkles message path.",
+    "SoleDash Aeye ACKs now mirror into the organism contract and can open a pending receiver-handoff return lane, but completion still requires a non-template returned receipt.",
+    "Nerdkle now mirrors legacy receipts into the organism contract, but cross-Aeye handoff-return semantics still require receiver-handoff bundles.",
+    "Workspace relay receipts intentionally preserve downstream_receiver_proof=required and can open a pending receiver-handoff return lane, but completion still requires a non-template returned receipt."
+  ],
+  "truth_boundary": "Receiver proof is enforced in the TinkerDen receiver-handoff lane. SoleDash and Workspace Relay can now open pending receiver-return lanes, but completion still requires non-template returned receipts.",
+  "file_hashes": [
+    {
+      "path": "lib/organism/contracts/receiver-proof-boundary.ts",
+      "sha256": "66a4847fc918b70e967deaf47bf9e88f3c51f29a1b98eb3fb8f86f93e18eec88",
+      "bytes": 2813
+    },
+    {
+      "path": "lib/soledash/aeye-inbox-v0/organism-contract-mirror.ts",
+      "sha256": "4db51bdf37f8c2065928d1f906b2065a6b194a8dc0b6973d61c37756f0b0c11f",
+      "bytes": 8643
+    },
+    {
+      "path": "lib/soledash/aeye-inbox-v0/receiver-handoff-bridge.ts",
+      "sha256": "319b3bc756015ad8c203373a82430566d6ab6663e9865e4aba53446886c2d2c9",
+      "bytes": 1460
+    },
+    {
+      "path": "lib/nerdkle/organism-contract-mirror.ts",
+      "sha256": "a8080c4d526c56726e87456b3cae30bb262bbbf057a32f059a4aec95fd5d817f",
+      "bytes": 9509
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-bundle.ts",
+      "sha256": "22b02f2a81d21cfa05eeadc30049d685fce0511752e437b3b877f88eb5d35703",
+      "bytes": 10122
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-return-fill.ts",
+      "sha256": "3094e21dd40290f19127b6810a84a41658b512aecbe98be977db01268afa9816",
+      "bytes": 10003
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-return-post.ts",
+      "sha256": "b5b49763bf145e178fa3ae5a54aac557e4e36bacac32191283df02c64e677d89",
+      "bytes": 5668
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "sha256": "5e75d74a466f1cafddeb4d380ca42b88d4982a4f57c3bdd78daa9ff8a93b55f5",
+      "bytes": 12194
+    },
+    {
+      "path": "lib/tinkerden/workspace-relay-contract.ts",
+      "sha256": "a379cd88acc330caed36d9912b0b051ff4cde885144a9b230bdb4a3f542b9e91",
+      "bytes": 5498
+    },
+    {
+      "path": "lib/tinkerden/workspace-relay-receiver-handoff.ts",
+      "sha256": "0ea315f2d1b951e8aa75a98490e4fb48c38e257af2a82f116c57850e897c58a9",
+      "bytes": 1089
+    },
+    {
+      "path": "app/api/tinkerden/workspace-relay/route.ts",
+      "sha256": "5c8995b661b1651291e7c59176edaf369026963fb473fb3f2bdcf7fd11b0d819",
+      "bytes": 9516
+    },
+    {
+      "path": "scripts/foreman/workspace-relay-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "a9594daa52c7112f5a98b19a491a140d630b7fe42ba6db7214090e24ec69ac24",
+      "bytes": 10214
+    },
+    {
+      "path": "app/api/tinkerden/bridge/execute/route.ts",
+      "sha256": "6c7a1867e6329e0d79bb2e9e7022fa784ba484cb19cc8268e6d0df8f31fa2e4f",
+      "bytes": 2557
+    },
+    {
+      "path": "app/api/soledash/v1/wonka-den/aeye-loop/route.ts",
+      "sha256": "b2ca30cdac1ca1de076b20566103db16bc8c97689a55b37b3c943481b34ca616",
+      "bytes": 10554
+    },
+    {
+      "path": "scripts/foreman/soledash-aeye-receiver-handoff-bridge-smoke.mjs",
+      "sha256": "58fcb7f2e0fee799f90361eaa22df44d0ff9211b0bc470c0ccbaf29255d60cf2",
+      "bytes": 10338
+    },
+    {
+      "path": "scripts/foreman/soledash-aeye-transport-organism-mirror-smoke.mjs",
+      "sha256": "ae6e0b234fc945dddbef2f01d24f3d8b625621d70f9a2325b3c02e7aa7a8bd8c",
+      "bytes": 10407
+    },
+    {
+      "path": "app/api/nerdkle/packet/route.ts",
+      "sha256": "4b49f0e3140d8f8a2011c820b14b665fd4cb933ec7d3c0dd959df3d252482371",
+      "bytes": 1884
+    },
+    {
+      "path": "app/api/nerdkle/receipt/route.ts",
+      "sha256": "8b7a3d8e23551f7237055ad5c91777cea90f28edf1cd854e9a64a0a2ac346adc",
+      "bytes": 2892
+    },
+    {
+      "path": "scripts/foreman/nerdkle-organism-receipt-mirror-smoke.mjs",
+      "sha256": "e3521929ebb0bf0ead8b468e86181bc9054e8f0299e24c879802a848f2fb9cc2",
+      "bytes": 10716
+    },
+    {
+      "path": "scripts/foreman/receiver-proof-everywhere-audit.mjs",
+      "sha256": "1b0bb5376bb40ce96ff9f1372ab58bc1aea6252545076541ef72060cd0115c6e",
+      "bytes": 33340
+    }
+  ],
+  "stop_conditions_respected": [
+    "no bundle creation",
+    "no returned receipt creation",
+    "no canonical receipt post",
+    "no external send",
+    "no deploy",
+    "no push"
+  ],
+  "next_safe_action": "Fill and post real receiver returns for the pending handoff bundles before claiming receiver proof everywhere."
+}

@@ -1,0 +1,13 @@
+{
+  "packet_id": "packet_plaid_privacy_lady_jessica_20260820",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "plaid_privacy_coauthor_cycle_20260820",
+  "target_aeye": "Maker",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Open and personally execute foreman/handoffs/outbox/PGM_TO_LADY_JESSICA_THUFIR_MATRIX_READY_20260820.md. Packet SHA-256 CD5A14999FA5AD8EE6D5FEAB4E2A05203272CB87EFDA3E2EBE9170F0C2F78474. Use the real Thufir inbox returns named inside. Return the policy candidate and receipt to foreman/handoffs/inbox/. Opening or ACK is not completion. Do not publish, push, deploy, alter Plaid, inspect credentials, or submit the questionnaire."
+  },
+  "status": "SENT",
+  "created_at": "2026-08-20T02:04:00-04:00"
+}
+

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/og/werkles-favicon-256.png">
+<title>Free Workshop first mock · Werkles</title>
+<style>
+  :root {
+    --violet:#4520c9; --violet-deep:#2a0e8c; --teal:#027665; --teal-soft:#dff4ed;
+    --ink:#231a12; --muted:#665b51; --paper:#f7f0e6; --card:#fffaf2; --line:#ddcfbd;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:linear-gradient(120deg,#f7efe3 0%,#edf5eb 100%); color:var(--ink); font:16px/1.48 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  a { color:inherit; }
+  .site-head { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:13px 24px; background:rgba(255,250,242,.96); border-bottom:1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:9px; font-weight:900; }
+  .brand img { width:38px; height:38px; object-fit:contain; }
+  .brand small { color:var(--muted); font-weight:700; }
+  .head-links { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .head-links a { text-decoration:none; padding:7px 11px; border:1px solid var(--line); border-radius:999px; background:var(--card); font-size:.82rem; font-weight:800; }
+  .review-flag { background:var(--violet); color:white; padding:7px 11px; border-radius:999px; font-size:.76rem; font-weight:900; letter-spacing:.04em; text-transform:uppercase; }
+  main { max-width:1240px; margin:0 auto; padding:32px 22px 70px; }
+  .hero { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:28px; align-items:center; margin-bottom:22px; }
+  .eyebrow { color:var(--teal); font-size:.77rem; font-weight:900; letter-spacing:.09em; text-transform:uppercase; margin:0 0 8px; }
+  h1,h2,h3,p { margin-top:0; }
+  h1 { max-width:780px; margin-bottom:10px; font:800 clamp(2.1rem,5vw,4.4rem)/.98 Georgia,serif; letter-spacing:-.045em; }
+  .hero p:not(.eyebrow) { max-width:720px; color:var(--muted); font-size:1.04rem; }
+  .hero-icon { width:132px; height:132px; object-fit:contain; }
+  .truthbar { display:flex; gap:9px; flex-wrap:wrap; margin:18px 0 0; }
+  .truthbar span { border:1px solid var(--line); background:var(--card); border-radius:999px; padding:7px 11px; font-size:.8rem; font-weight:800; }
+  .workshop { display:grid; grid-template-columns:220px minmax(0,1fr) 280px; gap:16px; align-items:start; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:15px; }
+  .rail { padding:15px; position:sticky; top:14px; }
+  .rail-title { padding:7px 8px 11px; border-bottom:1px solid var(--line); margin-bottom:10px; }
+  .rail-title strong { display:block; }
+  .rail-title small { color:var(--muted); }
+  .rail h2 { font-size:.72rem; color:var(--muted); letter-spacing:.09em; text-transform:uppercase; margin:16px 8px 7px; }
+  .rail-item { display:flex; align-items:center; gap:9px; padding:10px 9px; border-radius:9px; font-weight:800; font-size:.88rem; }
+  .rail-item.active { background:var(--violet); color:white; }
+  .rail-item.locked { color:#594c42; }
+  .lock { width:20px; height:20px; display:grid; place-items:center; border-radius:6px; background:#eee3d4; font-size:.7rem; }
+  .rail-item.active .lock { background:rgba(255,255,255,.2); }
+  .workspace { padding:20px; }
+  .workspace-head { display:flex; justify-content:space-between; gap:16px; align-items:start; padding-bottom:17px; border-bottom:1px solid var(--line); }
+  .workspace-head h2 { font:800 1.55rem/1.1 Georgia,serif; margin-bottom:5px; }
+  .workspace-head p { color:var(--muted); margin:0; }
+  .free-chip { background:var(--teal-soft); color:var(--teal); padding:7px 10px; border-radius:999px; white-space:nowrap; font-size:.78rem; font-weight:900; }
+  .decision { margin:18px 0; padding:20px; background:var(--violet-deep); color:white; border-radius:13px; position:relative; overflow:hidden; }
+  .decision::after { content:""; position:absolute; width:120px; height:120px; border:18px solid #18c5ae; border-radius:50%; right:-55px; top:-58px; opacity:.55; }
+  .decision small { color:#d9ccff; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
+  .decision h3 { max-width:650px; margin:7px 0 0; font:800 clamp(1.35rem,3vw,2.15rem)/1.08 Georgia,serif; }
+  .board { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+  .board article { padding:16px; border:1px solid var(--line); border-radius:11px; background:white; min-width:0; }
+  .board article:nth-child(2) { border-top:5px solid var(--teal); }
+  .board article:nth-child(3) { border-top:5px solid var(--violet); }
+  .board article:first-child { border-top:5px solid #c6813c; }
+  .board small { color:var(--muted); font-size:.72rem; font-weight:900; letter-spacing:.07em; text-transform:uppercase; }
+  .board h3 { margin:8px 0 6px; font-size:1rem; }
+  .board p { color:var(--muted); margin:0; font-size:.9rem; }
+  .artifact { margin-top:14px; padding:16px; border:1px dashed #b8a68f; border-radius:11px; background:#f7efe3; }
+  .artifact strong { display:block; margin-bottom:5px; }
+  .artifact p { color:var(--muted); margin:0; font-size:.9rem; }
+  .side { display:grid; gap:13px; }
+  .side .panel { padding:17px; }
+  .side h2 { font:800 1.18rem/1.12 Georgia,serif; }
+  .side ul { margin:0; padding:0; list-style:none; display:grid; gap:9px; }
+  .side li { display:grid; grid-template-columns:23px 1fr; gap:8px; color:var(--muted); font-size:.88rem; }
+  .tick { color:var(--teal); font-weight:1000; }
+  .paid { border-top:6px solid var(--violet); }
+  .paid-card { margin-top:9px; padding:11px; border-radius:9px; background:#f1ebff; }
+  .paid-card strong { display:block; font-size:.88rem; }
+  .paid-card span { color:var(--muted); font-size:.77rem; }
+  .not-built { display:inline-block; margin-top:6px; color:var(--violet-deep); font-size:.68rem; font-weight:900; letter-spacing:.07em; text-transform:uppercase; }
+  .questions { margin-top:18px; padding:20px; }
+  .questions h2 { font:800 1.35rem/1.15 Georgia,serif; }
+  .questions ol { margin-bottom:0; padding-left:22px; color:var(--muted); }
+  .questions li + li { margin-top:7px; }
+  .fine { margin-top:16px; color:var(--muted); font-size:.78rem; text-align:center; }
+  @media (max-width:980px) { .workshop { grid-template-columns:190px minmax(0,1fr); } .side { grid-column:1/-1; grid-template-columns:1fr 1fr; } }
+  @media (max-width:720px) { .site-head,.hero,.workspace-head { align-items:flex-start; } .site-head { padding:11px 14px; } .brand small { display:none; } .hero { grid-template-columns:1fr; } .hero-icon { width:92px; height:92px; grid-row:1; } .workshop { grid-template-columns:1fr; } .rail { position:static; } .rail .nav-groups { display:grid; grid-template-columns:1fr 1fr; gap:6px; } .rail h2 { grid-column:1/-1; } .board { grid-template-columns:1fr; } .side { grid-column:auto; grid-template-columns:1fr; } .workspace-head { flex-direction:column; } }
+  @media (max-width:430px) { main { padding:24px 12px 50px; } .head-links a { display:none; } .review-flag { font-size:.66rem; } .rail .nav-groups { grid-template-columns:1fr; } .workspace { padding:14px; } }
+</style>
+</head>
+<body>
+  <header class="site-head">
+    <div class="brand">
+      <img src="/assets/werkles-w-mark-transparent.png" alt="">
+      <span>Werkles <small>· Workshop</small></span>
+    </div>
+    <div class="head-links">
+      <a href="/draft-reviews/index.html">Review hub</a>
+      <span class="review-flag">First mock · static</span>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">The free Workshop</p>
+        <h1>Build one real decision here.</h1>
+        <p>Your first room should be useful before dues: your plan, your facts, and the next move in one place. Paid furniture stays visible—but it never pretends to exist before it does.</p>
+        <div class="truthbar" aria-label="Mock truth status"><span>No account data</span><span>No working controls</span><span>No payment action</span></div>
+      </div>
+      <img class="hero-icon" src="/assets/brand/product-icons/lady-jessica-v1/werkles-workshop-v1.png" alt="Workshop product icon">
+    </section>
+    <section class="workshop" aria-label="Free Workshop concept">
+      <aside class="panel rail">
+        <div class="rail-title"><strong>Opening plan</strong><small>Free Workshop · 1 room</small></div>
+        <div class="nav-groups">
+          <h2>Yours free</h2>
+          <div class="rail-item active"><span class="lock">●</span>Plan board</div>
+          <div class="rail-item"><span class="lock">✓</span>Profile notes</div>
+          <div class="rail-item"><span class="lock">✓</span>First recommendation</div>
+          <h2>Paid direction</h2>
+          <div class="rail-item locked"><span class="lock">◆</span>People bench</div>
+          <div class="rail-item locked"><span class="lock">◆</span>Shared documents</div>
+          <div class="rail-item locked"><span class="lock">◆</span>Whiteboard</div>
+          <div class="rail-item locked"><span class="lock">◆</span>Guarded intro</div>
+        </div>
+      </aside>
+      <section class="panel workspace">
+        <div class="workspace-head"><div><h2>Your opening plan</h2><p>One room. One decision. Nothing to survive.</p></div><span class="free-chip">Free room</span></div>
+        <article class="decision"><small>Decision on the bench</small><h3>Do I need a partner, a lender, or a smaller first move?</h3></article>
+        <div class="board">
+          <article><small>What I know</small><h3>The first customer is reachable.</h3><p>I have the skill and one likely customer. The equipment plan is still fuzzy.</p></article>
+          <article><small>What Werkles noticed</small><h3>Separate the person from the money.</h3><p>A partner may not solve a financing problem. Price the smaller first move before sharing ownership.</p></article>
+          <article><small>Next useful move</small><h3>Build the 90-day version.</h3><p>List only the equipment the first three customers require, then compare cash, lease, and lender paths.</p></article>
+        </div>
+        <div class="artifact"><strong>First artifact · 90-day opening plan</strong><p>This is where the member's saved Bellows result or Workshop narrative could become something they can return to—not another paragraph telling them to imagine it.</p></div>
+      </section>
+      <aside class="side">
+        <section class="panel">
+          <p class="eyebrow">Useful before dues</p><h2>This room is yours free.</h2>
+          <ul><li><span class="tick">✓</span><span>One Workshop home</span></li><li><span class="tick">✓</span><span>Your profile facts in context</span></li><li><span class="tick">✓</span><span>One decision board</span></li><li><span class="tick">✓</span><span>Your first recommendation</span></li></ul>
+        </section>
+        <section class="panel paid">
+          <p class="eyebrow">What dues could open</p><h2>The rest of the room stays visible.</h2>
+          <div class="paid-card"><strong>People bench</strong><span>Invite a partner or advisor into the room.</span><br><span class="not-built">Paid direction · not built yet</span></div>
+          <div class="paid-card"><strong>Shared documents + whiteboard</strong><span>Work on the same plan without emailing versions around.</span><br><span class="not-built">Paid direction · not built yet</span></div>
+          <div class="paid-card"><strong>Guarded intros + checks</strong><span>Ask for the next conversation with proof attached.</span><br><span class="not-built">Provider-gated · not live</span></div>
+        </section>
+      </aside>
+    </section>
+    <section class="panel questions">
+      <p class="eyebrow">Three review questions</p><h2>Does this feel like a room worth returning to?</h2>
+      <ol><li>Is one decision board enough free value, or should the first document shelf also work?</li><li>Do the visible locks feel inviting and honest—or like furniture we are pretending to own?</li><li>Should the first saved artifact be a 90-day plan, a partner/lender comparison, or whatever Bellows produced?</li></ol>
+    </section>
+    <p class="fine">Local review artifact only · no feature, account, provider, or payment behavior is implemented by this mock.</p>
+  </main>
+</body>
+</html>

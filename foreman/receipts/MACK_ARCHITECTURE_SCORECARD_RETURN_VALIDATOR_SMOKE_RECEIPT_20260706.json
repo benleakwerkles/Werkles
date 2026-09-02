@@ -1,0 +1,134 @@
+{
+  "schema": "MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_SMOKE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T10:54:34.397Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "MACK_ARCHITECTURE_SCORECARD_RETURN_VALIDATOR_SMOKE_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/mack-architecture-scorecard-return-validator-smoke.mjs",
+  "validation": {
+    "waiting_scorecard_not_received_blocks": true,
+    "incomplete_scorecard_blocks": true,
+    "invalid_dimension_score_blocks": true,
+    "total_mismatch_blocks": true,
+    "complete_scorecard_passes": true,
+    "fixture_paths_used": true,
+    "canonical_scorecard_intake_not_mutated": true,
+    "no_next_build_packet_generated": true,
+    "truth_boundary": "This smoke uses temporary fixture scorecard intakes. It proves validator behavior but does not claim Mack returned a real scorecard."
+  },
+  "readbacks": [
+    {
+      "name": "waiting",
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "MACK_SCORECARD_RETURN_NOT_RECEIVED",
+        "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/waiting/receipt.json",
+        "receipt_sha256": "2681095b6c9d5dab207d154f637a12de038ed923beed0cd3a4fcbf88203a3be4",
+        "intake_path": "foreman/tmp/mack-scorecard-return-validator-smoke/waiting/scorecard-intake.md",
+        "computed_sum": null
+      },
+      "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/waiting/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "MACK_SCORECARD_RETURN_NOT_RECEIVED",
+      "classification_status": "BLOCKER",
+      "computed_sum": null,
+      "total_matches": false
+    },
+    {
+      "name": "incomplete",
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "MACK_SCORECARD_RETURN_INCOMPLETE",
+        "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/incomplete/receipt.json",
+        "receipt_sha256": "793d37caffc783ae49756d2f6ecfbdad886502f91c204464d8acd0df695cb91b",
+        "intake_path": "foreman/tmp/mack-scorecard-return-validator-smoke/incomplete/scorecard-intake.md",
+        "computed_sum": null
+      },
+      "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/incomplete/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "MACK_SCORECARD_RETURN_INCOMPLETE",
+      "classification_status": "BLOCKER",
+      "computed_sum": null,
+      "total_matches": false
+    },
+    {
+      "name": "invalid-score",
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "MACK_SCORECARD_SCORE_INVALID",
+        "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/invalid-score/receipt.json",
+        "receipt_sha256": "b872dc85c9e928c312c3a5ea7bd29bee5f07269b252d3c71d739fb624a52fe5a",
+        "intake_path": "foreman/tmp/mack-scorecard-return-validator-smoke/invalid-score/scorecard-intake.md",
+        "computed_sum": 30
+      },
+      "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/invalid-score/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "MACK_SCORECARD_SCORE_INVALID",
+      "classification_status": "BLOCKER",
+      "computed_sum": 30,
+      "total_matches": false
+    },
+    {
+      "name": "total-mismatch",
+      "stdout": {
+        "ok": true,
+        "status": "BLOCKER",
+        "blocker_code": "MACK_SCORECARD_TOTAL_MISMATCH",
+        "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/total-mismatch/receipt.json",
+        "receipt_sha256": "c32688128b05d55e4459d8ab57bc65c73d7355980652ee5711eaad2cd828bd79",
+        "intake_path": "foreman/tmp/mack-scorecard-return-validator-smoke/total-mismatch/scorecard-intake.md",
+        "computed_sum": 28
+      },
+      "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/total-mismatch/receipt.json",
+      "receipt_status": "BLOCKER",
+      "blocker_code": "MACK_SCORECARD_TOTAL_MISMATCH",
+      "classification_status": "BLOCKER",
+      "computed_sum": 28,
+      "total_matches": false
+    },
+    {
+      "name": "complete",
+      "stdout": {
+        "ok": true,
+        "status": "ARTIFACT",
+        "blocker_code": "",
+        "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/complete/receipt.json",
+        "receipt_sha256": "bdfcbd6da453dde0f2bc63619821a85065d8cd54263aa4183bcdb6ce533b3777",
+        "intake_path": "foreman/tmp/mack-scorecard-return-validator-smoke/complete/scorecard-intake.md",
+        "computed_sum": 28
+      },
+      "receipt_path": "foreman/tmp/mack-scorecard-return-validator-smoke/complete/receipt.json",
+      "receipt_status": "ARTIFACT",
+      "blocker_code": "",
+      "classification_status": "ARTIFACT_READY",
+      "computed_sum": 28,
+      "total_matches": true
+    }
+  ],
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/mack-architecture-scorecard-return-validator.mjs",
+      "sha256": "12c9a1ded4c03ab3852792d212c698002b9e8b6c4890b40b26ab57da0dd1f8f9"
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-scorecard-return-validator-smoke.mjs",
+      "sha256": "3458fb62c10b74a03eb725c11f8dfb2d77a7373c64593ec86c3643682f72d642"
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack review return claim",
+    "no Mack scorecard return claim",
+    "no canonical next-build packet generated"
+  ]
+}

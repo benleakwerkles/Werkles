@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T06:22:34.024Z",
+  "file": "FROM_PETRA_WERKLES_BROAD_ROTATION_M9_TECH_STACK_20260823.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Read now; canonical local activation order already assimilated. Not counted as current release review.",
+  "auto_merge": false
+}

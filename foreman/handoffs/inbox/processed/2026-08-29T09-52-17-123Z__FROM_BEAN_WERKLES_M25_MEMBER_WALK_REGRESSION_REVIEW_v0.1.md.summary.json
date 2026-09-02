@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-29T09:52:17.123Z",
+  "file": "FROM_BEAN_WERKLES_M25_MEMBER_WALK_REGRESSION_REVIEW_v0.1.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "BEAN",
+  "consumed_by": "FOREMAN",
+  "note": "Read 2026-08-29. GO noted for the prior regression repairs; no fresh M44 review credit.",
+  "auto_merge": false
+}

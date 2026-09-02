@@ -1,0 +1,9 @@
+{
+  "receipt_id": "soledash_aeye_handoff_receipt_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z4vte",
+  "packet_id": "soledash_aeye_handoff_book_architecture_soledash_aeye_receiver_handoff_bridge_v0_mr8z4vte",
+  "from_aeye": "Dink",
+  "from_machine": "Betsy",
+  "status": "ACKNOWLEDGED",
+  "message": "Transport acknowledged; receiver work remains pending handoff return.",
+  "created_at": "2026-07-06T08:44:37.010Z"
+}

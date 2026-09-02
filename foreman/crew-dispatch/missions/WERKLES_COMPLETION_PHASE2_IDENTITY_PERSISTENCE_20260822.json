@@ -1,0 +1,82 @@
+{
+  "missionId": "WERKLES_COMPLETION_PHASE2_IDENTITY_PERSISTENCE",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "First integrated Werkles completion slice: one member signs in once, remains the same owner, saves Intake/Workshop/Profile work, leaves, returns, and resumes without loss, duplication, cross-owner leakage, or false saved-state copy.",
+  "sharedContext": [
+    "Petra personally returned CAMPAIGN_MAP_READY and ranked Identity & Persistence as the first completion SPOF.",
+    "Local route proof is green: the canonical twelve-page spine returns HTTP 200, route inventory and shared-header contracts pass, and formation browser/contract tests pass.",
+    "Those route proofs do not prove durable authenticated member custody. Repeated Operator walkthroughs have shown login loops, lost Intake answers, stale demo/bakery state, and work that appeared saved only inside a tab.",
+    "The exit proof is behavioral: same member after refresh/revisit; Intake, Workshop, and Profile reopen exactly; no duplicate identity; no silent fallback; no cross-owner read; every UI claim distinguishes browser-only, account-saved, recovery, and unsaved states.",
+    "No cousin request is a receipt. No new agent, subagent, task, persona, model, or environment is authorized. No provider submission, secret handling, paid call, production mutation, SQL/schema/RLS apply, push, merge, or deploy is authorized."
+  ],
+  "liveStrings": [
+    "Saved to your Werkles account.",
+    "Saved in this browser only.",
+    "Not saved yet.",
+    "We found work from this browser. Review it before attaching it to your account."
+  ],
+  "knownGaps": [
+    "Authenticated ownership and refresh/revisit continuity are not yet proved end to end.",
+    "Browser recovery and account custody risk being conflated in copy and code.",
+    "The dirty tree contains multiple auth, intake, owner-session, and continuity implementations that may overlap or disagree.",
+    "A schema/RLS change, if truly required, remains a later human gate and cannot be smuggled into this source-only slice."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Own acceptance for the identity/persistence spine as a cross-product behavior, not a login-page feature.",
+      "pull": "Use the campaign map and the proved route-spine facts. Separate what source/local tests can establish now from what requires Supabase schema/RLS or a signed-in Operator walkthrough.",
+      "go": [
+        "Return a compact GO/PATCH/BLOCK acceptance rubric for account identity, Intake, Workshop, Profile, recommendations continuity, and browser recovery.",
+        "Name the minimum evidence bundle required before this slice may be called durable.",
+        "Name any page, duplicate system, or fallback that should be removed or merged rather than patched."
+      ],
+      "momentum": "Return IDENTITY_SPINE_ACCEPTANCE_READY or BLOCKED and the exact post-build seal packet.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "ENDER": {
+      "vision": "Make returning to Werkles feel remembered and trustworthy without exposing technical custody jargon.",
+      "pull": "Attack sign-in, refresh, return, recovery, unsaved work, conflicting browser/account drafts, and resume navigation as a human walkthrough.",
+      "go": [
+        "Return the exact human-visible states and concise copy for saved-to-account, browser-only, unsaved, recovery-available, recovery-attached, and conflict states.",
+        "Identify the three points most likely to make a member believe work was lost or that Werkles forgot them.",
+        "Give Lady Jessica the smallest sitewide visual-state system and Doozer the interaction behaviors required."
+      ],
+      "momentum": "Return RETURNING_MEMBER_EXPERIENCE_READY or BLOCKED plus the routes to re-walk after build.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or final aesthetic approval."
+    },
+    "BEAN": {
+      "vision": "Prevent a convenience fix from turning local drafts, owner cookies, or recovery state into cross-member leakage or account takeover.",
+      "pull": "Attack owner substitution, stale sessions, forged cookies, duplicate identities, browser-to-account attachment, cross-tab conflict, sign-out residue, and false saved claims.",
+      "go": [
+        "Return only P0/P1 identity and custody failures plus one invariant per failure.",
+        "Define which recovery operations require fresh authentication or explicit member consent.",
+        "Return a hostile matrix Computer can encode before Doozer changes behavior."
+      ],
+      "momentum": "Return IDENTITY_CUSTODY_PASS_WITH_CONDITIONS or BLOCK and the exact post-build attack packet.",
+      "outOfLane": "No code, legal approval, provider action, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Produce one exact technical custody map from current source so the Handeyes do not layer another persistence system on top of duplicates.",
+      "pull": "Inspect auth/session, dev preview, owner resolution, Intake persistence/recovery, Workshop/profile state, recommendations owner session, middleware, Supabase adapters, and tests.",
+      "go": [
+        "Classify every relevant implementation as canonical, transitional, demo-only, duplicate, obsolete, or gated.",
+        "Return the smallest source-only vertical slice that improves real continuity without schema/RLS or provider changes, with exact files and rollback boundary.",
+        "Return executable tests for refresh/revisit, owner separation, conflict, sign-out residue, and truthful UI state."
+      ],
+      "momentum": "Return IDENTITY_TECHNICAL_CONTRACT_READY, NEEDS_FACT_CHECK, or BLOCKED; seed Doozer's exact build packet.",
+      "outOfLane": "No code mutation, provider call, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    },
+    "SKYBRO": {
+      "vision": "Preserve product warmth and value while making persistence truth understandable to ordinary members.",
+      "pull": "Review the resume journey and recovery states for jargon, blame, anxiety, and dead-end copy.",
+      "go": [
+        "Return one concise returning-member narrative from login through resumed useful work.",
+        "Replace only the five worst custody phrases with plain human copy.",
+        "Identify where remembered work should immediately reveal new value rather than merely repeat old answers."
+      ],
+      "momentum": "Return RESUME_VALUE_COPY_READY or BLOCKED and nominate Ender + Bean review targets.",
+      "outOfLane": "No code, provider action, secrets, paid calls, SQL, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

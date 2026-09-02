@@ -154,7 +154,7 @@ export default function MembershipPage() {
 
   return (
     <CockpitShell showDraftBadge={false}>
-      <main className={`dashboard-main membership-page ${routeAtmosphere.membership}`}>
+      <main className={`dashboard-main membership-page route-room route-room--membership ${routeAtmosphere.membership}`}>
 
       <section className="tier2-page-header">
         <div className="tier2-page-header__copy membership-hero">

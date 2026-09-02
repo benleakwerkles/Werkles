@@ -1,0 +1,60 @@
+{
+  "schema": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_SMOKE_UPDATE_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:14:00-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+  "receipt_id": "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_SMOKE_UPDATE_RECEIPT_20260706",
+  "mission": "Add fixture-backed smoke coverage for the Mack return intake validator and record it in the architecture packet index.",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "files_changed": [
+    "scripts/foreman/mack-architecture-return-intake-validator.mjs",
+    "scripts/foreman/mack-architecture-return-intake-validator-smoke.mjs",
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+    "foreman/receipts/MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT_20260706.json",
+    "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_VALIDATOR_SMOKE_UPDATE_RECEIPT_20260706.json"
+  ],
+  "smoke_command": "node scripts/foreman/mack-architecture-return-intake-validator-smoke.mjs",
+  "smoke_receipt": "foreman/receipts/MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT_20260706.json",
+  "validation": {
+    "validator_accepts_fixture_path_overrides": true,
+    "waiting_fixture_blocks": true,
+    "incomplete_fixture_blocks": true,
+    "complete_without_ben_gate_blocks": true,
+    "complete_with_ben_gate_writes_fixture_packet": true,
+    "canonical_intake_not_mutated": true,
+    "canonical_next_build_packet_not_generated": true,
+    "index_contains_smoke_command": true,
+    "index_contains_smoke_receipt": true,
+    "truth_boundary": "The smoke proves validator behavior with temporary fixture files. It does not claim Mack has returned a real review."
+  },
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/mack-architecture-return-intake-validator.mjs",
+      "sha256": "3B65FB8777E324FAF0F7B90B6751C1E66CEDEA332BA4606EE704387289185ABD"
+    },
+    {
+      "path": "scripts/foreman/mack-architecture-return-intake-validator-smoke.mjs",
+      "sha256": "94B59C4D267A43E1FDF65B93D660B911A1C5AD5C2E57BAC5014338A0E57E234B"
+    },
+    {
+      "path": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+      "sha256": "2B1A244AA024B7F7D7273CFBC633B1FDF570E7D6D2E9B19A314C072B241C04A6"
+    },
+    {
+      "path": "foreman/receipts/MACK_ARCHITECTURE_RETURN_INTAKE_VALIDATOR_SMOKE_RECEIPT_20260706.json",
+      "sha256": "39672827A5B0E155D33CD216A43050E090E080EFBF6E5B8AE98E72B55E288928"
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external send claim",
+    "no Mack receipt claim",
+    "no canonical next-build packet generated"
+  ],
+  "next_safe_action": "Add a one-command launcher for Ben that opens the handoff packet, intake file, and operator-only proof links without searching folders."
+}

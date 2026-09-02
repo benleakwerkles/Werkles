@@ -1,0 +1,35 @@
+{
+  "missionId": "PLAID_QUESTIONNAIRE_TECH_STACK_ADDENDUM",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Answer the Plaid questionnaire's requested technology-stack section using the current static Werkles architecture inventory. Return a concise fill-ready answer; no provider submission.",
+  "sharedContext": [
+    "Application: Next.js 15.3.2 App Router, React 19, TypeScript 5.8, Tailwind CSS 3.4; intended Vercel hosting/runtime.",
+    "Identity and member data: Supabase Auth via @supabase/ssr and @supabase/supabase-js; Supabase Postgres is the intended owner-bound persistence layer. Server-readable session continuity for Intake is incomplete; provider claim/event/grant schema and RLS are not applied.",
+    "File storage: Supabase Storage is planned but not connected; no bucket, adapter, route, retention contract, or reviewed access policy is live.",
+    "Payments and identity: Stripe Billing and Stripe Identity code/test paths exist. No production-live status is claimed; secret entry, paid checkout, durable Identity operation/receipt persistence, and go-live remain gated.",
+    "Bank connection: Plaid sandbox Link-token demo only. Public-token exchange, encrypted Item/access-token custody, Assets/Balance evidence, webhooks, revoke, receipt persistence, schema, and RLS are disabled/not connected.",
+    "Phone verification: Twilio Verify foundation/contracts only; no route, credentials, provider setup, consent/rate-limit/spend boundary, or persistence is connected.",
+    "Background checks: Checkr is policy-blocked; no adapter, route, persistence, permissible-purpose/consent/adverse-action workflow, or production connection.",
+    "Runtime and provider availability were not inspected for this packet. Every slot is productionLive:false and actionEnabled:false in the static operator diagnostic."
+  ],
+  "liveStrings": [],
+  "knownGaps": [
+    "Do not describe intended Vercel/Supabase services or route scaffolds as deployed, enabled, encrypted, certified, monitored, or production-live without separate evidence.",
+    "Do not invent WAF, SIEM, SOC 2, penetration testing, incident-response staffing, backup cadence, retention periods, encryption/key-management controls, or subprocessors.",
+    "Final questionnaire attestation and submission remain Ben/legal human gates."
+  ],
+  "cousins": {
+    "COMPUTER": {
+      "vision": "Give Plaid the exact technology stack Werkles actually uses or intends to use, with unfinished controls stated plainly.",
+      "pull": "Use this addendum as the authoritative current stack correction to the questionnaire-retrieval packet already posted in your existing task.",
+      "go": [
+        "Return one concise fill-ready technology-stack answer suitable for Plaid's field, preserving current-versus-planned distinctions.",
+        "Identify which named products are subprocessors/infrastructure candidates versus provider integrations, without claiming live configuration.",
+        "List any follow-up fields the stack answer cannot establish, especially hosting region, encryption, logging/monitoring, retention, incident response, certifications, and production deployment."
+      ],
+      "momentum": "Return TECH_STACK_READY_FOR_PACKET or BLOCKED, followed by the exact proposed field text and an unknowns list.",
+      "outOfLane": "No provider submission, dashboard action, secrets, credentials, legal approval, invented controls, code, SQL, push, deploy, new chats, subagents, or secondary models."
+    }
+  }
+}

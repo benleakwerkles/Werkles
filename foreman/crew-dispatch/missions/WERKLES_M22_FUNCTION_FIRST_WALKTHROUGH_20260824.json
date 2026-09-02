@@ -1,0 +1,73 @@
+{
+  "missionId": "WERKLES_M22_FUNCTION_FIRST_WALKTHROUGH",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Function-first review of the connected Intake, Recommendations, Workshop, and Match Deck walkthrough.",
+  "sharedContext": [
+    "The Operator found Intake visually left-heavy, Recommendations tautological and robotic, and Match Deck results buried under explanation.",
+    "The local candidate now balances Intake with a storefront image, raises the main project answer to 1,600 characters, removes repeated Recommendation acknowledgments, makes Workshop the primary continuation, and renders Match Deck candidates before the long readout.",
+    "The ranked suggestions are deterministic and the visible people are synthetic practice profiles; neither fact may be disguised.",
+    "No provider activation, credentials, schema/RLS, production data, spend, push, deploy, new environment, subagent, or foreground input is allowed."
+  ],
+  "liveStrings": [
+    "Ideas Based on Your Answers",
+    "Update My Answers",
+    "Why This Came First",
+    "Open the general playbook:",
+    "Open My Workshop",
+    "Or Compare People in Match Deck",
+    "Compare 9 useful possibilities"
+  ],
+  "knownGaps": [
+    "Several working artifacts remain browser-local rather than account-saved.",
+    "Production provider activation and real introductions are outside this candidate.",
+    "The exact local candidate is in a large shared dirty tree and has not received fresh M22 cousin or Lady Jessica review.",
+    "The site still needs continued copy continuity beyond these four routes."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Judge whether the core task is visible by the second or third major section and whether each page makes the next useful click obvious.",
+      "pull": "Attack visual imbalance, homework tone, explanation before payoff, fake interactivity, and emotional drop-offs between Recommendations, Workshop, and Match Deck.",
+      "go": [
+        "Return ENDER_M22_GO, PATCH, or STOP with the three strongest experience corrections.",
+        "Review the supplied live strings and page order at desktop and 390px; name any sentence that still sounds assembled or internally addressed.",
+        "Specify the first thing a member should see, do, and understand on Workshop and Match Deck."
+      ],
+      "momentum": "Name one hostile postbuild route and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "BEAN": {
+      "vision": "Attack whether the candidate creates the appearance of intelligence by repetition rather than reasoning, or hides important storage and synthetic-profile boundaries.",
+      "pull": "Look for raw answer echo, false personalization, accidental publication, implied real contact, stale data, and status prose masquerading as user value.",
+      "go": [
+        "Return BEAN_M22_GO, PATCH, or STOP with the three strongest trust corrections.",
+        "Test the 1,600-character Intake boundary, causal Recommendation sentence, Workshop handoff, and Match Deck ordering for misleading behavior.",
+        "Name the minimum visible disclosure that protects trust without smothering the product in policy copy."
+      ],
+      "momentum": "Name the strongest postbuild trust assertion and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "SKYBRO": {
+      "vision": "Decide whether the connected flow now feels like Werkles doing work for an ordinary builder rather than narrating a rules engine.",
+      "pull": "Attack thin payoff, repeated framing, insider nouns, timid transitions, and places where explanation outranks discovery.",
+      "go": [
+        "Return SKYBRO_M22_GO, PATCH, or STOP with the three strongest value/copy corrections.",
+        "Improve the Workshop-first transition without turning the Operator's most recent phrase into untested dogma.",
+        "Name one way Match Deck can feel richer without adding surveillance or wealth ranking."
+      ],
+      "momentum": "Name one value test for the next walkthrough and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "PETRA": {
+      "vision": "Synthesize whether M22 is a bounded local UX correction or contains an unproved release, custody, provider, or intelligence claim.",
+      "pull": "Attack false completion, hidden Operator labor, dirty-tree scope drift, unproved cousin credit, and accidental human-gate crossing.",
+      "go": [
+        "Return PETRA_M22_GO, PATCH, or STOP with acceptance conditions.",
+        "Separate local function-first value from account custody, production matching, provider, and release readiness.",
+        "Name the exact evidence Lady Jessica needs for independent exact-candidate review."
+      ],
+      "momentum": "Name the next bounded checkpoint and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    }
+  }
+}

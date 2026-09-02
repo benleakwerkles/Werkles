@@ -1,0 +1,47 @@
+{
+  "missionId": "WERKLES_M18_FORMATION_POSTBUILD_GATE",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Independent post-build gate on the M18 Formation conversation exercise after Ender's producer artifact and Petra's two required corrections.",
+  "sharedContext": [
+    "Ender producer receipt hash: 191cc66114cdd8fc6bd79e0522faf8eeb2cf47e269d8c1a38b6f5abd52f8689f.",
+    "Petra's prebuild PATCH required point-of-use generated-practice provenance and no comparison state without two-sided material. Both were implemented.",
+    "The old six-question private-prediction quiz was replaced with three axes: what is happening, what makes an hour worthwhile, and what stays yours.",
+    "The member side is written first. Scope is prefilled from the existing purpose source already mapped from latest Intake; it is editable and not re-asked from zero.",
+    "No partner content appears by default. The empty state says no answer from the named practice partner is shown.",
+    "Generated content appears only after Load a generated practice side and is labeled at point of use: Generated practice data — not supplied by [partner].",
+    "Comparison states appear only after generated practice exists and the member deliberately chooses an interpretation. Copy says the result is not a score, compatibility claim, or partner position.",
+    "Session storage is scoped to the Formation ID and version. Text writes synchronously and survives immediate reload. Nothing is sent or account-saved.",
+    "At 390px the browser proof found no horizontal overflow, all exercise links/buttons were at least 44px, textarea height exceeded 150px, and each of the three states had distinct grayscale geometry.",
+    "TypeScript passed. Focused browser walk passed with a clean console.",
+    "Exact source hashes: partner-perspective-exercise.tsx 369284632e5375cada168bdb6f7d35c22b382b0c17fdc88544786da7931b4923; formation-workbench.tsx 6beccc937c481239e1df262d8b60a112534925b74edd7e9dadb42e747be424a2; werkle-formation.css 033cd215df163e4de347d98ee749d90fcf70d0946f084ababd6044c8c5bfbd4b; browser smoke f5063be178e87d93782fd1d68769b7d07090fba8cbd80f233fdaec89169f9fd0.",
+    "Gate 05 remains HOLD regardless of this bounded feature verdict."
+  ],
+  "liveStrings": [
+    "Prepare for a real conversation",
+    "This is rehearsal, not a reading of another person.",
+    "No answer from Ava Salazar is shown.",
+    "Generated practice data — not supplied by Ava Salazar",
+    "Same read",
+    "Close, with a step",
+    "Not the same thing yet",
+    "Lining up on paper is not the same as agreeing in person."
+  ],
+  "knownGaps": [
+    "This is still a synthetic practice candidate, not an account-backed second member.",
+    "The exercise is tab-local and deliberately does not follow the member to another device.",
+    "No provider, schema, RLS, push, deploy, or production action is in this slice."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Independently decide whether the built M18 Formation slice satisfies your prebuild PATCH without inventing release authority.",
+      "pull": "Check generated provenance, empty-state honesty, Intake prefill, reload durability, comparison semantics, 390px geometry, hostile cases, and stage/copy clarity against the supplied exact evidence.",
+      "go": [
+        "Return PETRA_M18_FORMATION_POSTBUILD_GO, PATCH, or STOP.",
+        "If PATCH/STOP, identify the smallest exact blocking correction. If GO, name which evidence closed each of your two original corrections."
+      ],
+      "momentum": "Name the next M18 workstream that may start after this bounded Formation gate, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval. Gate 05 remains HOLD."
+    }
+  }
+}

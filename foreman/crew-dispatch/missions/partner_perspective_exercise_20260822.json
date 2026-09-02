@@ -1,0 +1,56 @@
+{
+  "missionId": "PARTNER_PERSPECTIVE_EXERCISE_20260822",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Review-first design of a private partner-perspective and expectation-gap exercise inside the local Werkle formation room.",
+  "sharedContext": [
+    "The current practice room lets one tester enter decisions as both themselves and a synthetic matched member.",
+    "In a real Werkle, each signed-in member must control only their own actual answers.",
+    "Ben identified a valuable adjacent exercise: privately predict the prospective partner's expectations, compare those predictions with the partner's independent answers, and use mismatches to prevent disputes.",
+    "The exercise should cover time, resources, expectations, authority, compensation, reinvestment/distributions, profitability timeline, and exit without pretending to replace professional advice.",
+    "Predictions must never become attributed facts, shared company language, match scoring, or evidence about the other member.",
+    "The implementation target is a local synthetic practice slice first; no account, provider, schema, push, or deploy action is in scope."
+  ],
+  "liveStrings": [
+    "Review as you",
+    "Review as the other member",
+    "Their actual answer",
+    "Your private prediction",
+    "Where your expectations differ",
+    "Only mutual decisions enter the Werkle"
+  ],
+  "knownGaps": [
+    "The current actor switch can look like permission to speak for the other person if its tester-only purpose is not unmistakable.",
+    "There is no separate prediction model or expectation-gap view today.",
+    "The current draft is browser-local and not saved to a Werkles account.",
+    "A synthetic partner answer is practice data, not a statement from a real person."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the exercise feel like humane preparation for a difficult partnership conversation, not a compatibility quiz or therapy worksheet.",
+      "pull": "Attack emotional tone, comprehension, question quality, hierarchy, cognitive load, and whether the user learns something worth paying for.",
+      "go": [
+        "Return GO, PATCH, or REJECT on the proposed exercise.",
+        "Design the smallest useful interaction arc from private prediction to independent answer to conversation prompt.",
+        "Rewrite the six expectation questions in natural, non-gatekeeper language.",
+        "Name what should be visible together and what should be progressively disclosed.",
+        "Provide the one visual or interaction choice that would make this feel like empathy rather than impersonation."
+      ],
+      "momentum": "Add one ambitious but bounded idea that makes the exercise revisitable as the company evolves.",
+      "outOfLane": "No implementation, trust ruling, provider call, schema, push, deploy, secrets, spend, or new agents."
+    },
+    "BEAN": {
+      "vision": "Prevent private prediction from becoming impersonation, surveillance, false attribution, manipulative scoring, or a concealed personnel judgment.",
+      "pull": "Attack labels, storage, consent, visibility, attribution, gap severity, sensitive financial expectations, and any inference that Werkles knows what the partner thinks.",
+      "go": [
+        "Return GO, PATCH, or REJECT with only P0/P1 trust findings.",
+        "Define the exact boundary among self-report, private prediction, synthetic practice answer, and mutual decision.",
+        "Specify what may be compared, shown, saved locally, shared, or deleted.",
+        "Attack the proposed aligned / discuss / stop-and-clarify gap labels for false precision or coercion.",
+        "Give exact safe language for the prediction control and comparison result."
+      ],
+      "momentum": "Supply one hostile regression case that the implementation must fail closed on.",
+      "outOfLane": "No implementation, product expansion, provider call, schema, push, deploy, secrets, spend, or new agents."
+    }
+  }
+}

@@ -100,6 +100,18 @@ async function loadPublicPageData(publicEnabled) {
     if (id === "@/lib/squibb/recommendations") {
       return { loadSquibbRecommendationSession: () => demo };
     }
+    if (id === "@/lib/squibb/example-matching-source-document") {
+      return {
+        BAKERY_EQUIPMENT_SOURCE_DOCUMENT: {
+          id: "fixture-bakery-equipment-quote-v1",
+          title: "Owner note + oven equipment quote (example)",
+          kind: "example_fixture",
+          summary: "Example fixture",
+          body: "example body",
+          excerpts: []
+        }
+      };
+    }
     throw new Error(`Unexpected public-page dependency: ${id}`);
   }
 
@@ -178,7 +190,9 @@ assert.match(css, /\.squibb-evidence__item[\s\S]*color: var\(--squibb-rec-on-dar
 assert.match(css, /\.squibb-rec-ledger__item[\s\S]*color: var\(--squibb-rec-on-dark\)/);
 assert.match(css, /\.squibb-gates__summary[\s\S]*color: #7b2929/);
 assert.match(css, /\.squibb-gates__operator-note[\s\S]*color: var\(--squibb-rec-muted-on-light\)/);
-assert.match(css, /\.squibb-gate__approval[\s\S]*color: var\(--squibb-rec-muted-on-light\)/);
+assert.match(css, /\.squibb-confidence__score\s*\{[^}]*color: var\(--squibb-rec-ink\)/);
+assert.match(css, /\.squibb-gate__approval\s*\{[^}]*color: var\(--squibb-rec-eyebrow\)/);
+assert.match(css, /\.squibb-gate__approval--auto\s*\{[^}]*color: var\(--squibb-rec-label\)/);
 assert.match(css, /\.squibb-rec-surface \.eyebrow[\s\S]*color: #68411f/);
 assert.match(
   css,

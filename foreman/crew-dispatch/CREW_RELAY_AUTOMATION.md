@@ -1,6 +1,24 @@
 # AEYE Crew Relay Automation (for review)
 
-Status: **v0.1 implemented** — dashboard orchestrator + Edge courier  
+> **DEPRECATED 2026-08-03 — the Edge courier is retired.**
+>
+> Use `scripts/foreman/chrome-cdp-courier.mjs` (Chrome + DevTools protocol).
+>
+> Why: this Edge path delivers by focusing a window and firing `SendKeys` Ctrl+V. It
+> steals the Operator's cursor on every delivery, can drop a paste into whatever window
+> he is actually typing in, and can only report that PowerShell did not throw — it cannot
+> prove the text reached a composer rather than a login screen. Two real bugs also made
+> it non-functional on Sally: an unquoted `--user-data-dir` (the repo path contains a
+> space, so `-EnsureEdge` never opened a detectable bay) and a packet resolver that
+> looked up a bare filename against the repo root.
+>
+> The Chrome courier inserts text over CDP with no OS focus and no clipboard, reads the
+> composer back, requires the head and tail of the paste to be present before claiming
+> success, and screenshots the result to `foreman/receipts/courier-proof/`.
+>
+> Everything below still describes the human gates correctly — Send stays manual.
+
+Status: **v0.1 implemented** — dashboard orchestrator + Edge courier (superseded)  
 Doctrine: **automate mechanics; gate authority only**
 
 ---
@@ -8,6 +26,44 @@ Doctrine: **automate mechanics; gate authority only**
 ## Problem
 
 If Ben is copying and pasting at non-gates, the cockpit is misconfigured. Clipboard loops are **fallback**, not the primary operator path.
+
+---
+
+## Read before you ask (added 2026-08-03)
+
+Nine cousin replies sat unread in `foreman/handoffs/inbox/` from 2026-07-03 to 2026-08-03.
+`processInbox` halts on the first validation failure and moves nothing, which is correct for
+atomicity and silent by default. Two of the buried files were design specs that the work
+then contradicted, and a VPGM packet was dispatched asking Ender a question he had already
+answered in that inbox.
+
+Three changes close the loop:
+
+```text
+node foreman/crew-dispatch/crew-response-intake.mjs alarm
+    Loud report of everything waiting, with ages. Exits 1 if anything is waiting.
+
+node foreman/crew-dispatch/crew-response-intake.mjs consume <file> --note "..."
+    For hand-delivered receipts that can never satisfy the relay schema. Records
+    what was actually done about it. A note is required.
+
+node foreman/crew-dispatch/crew-response-intake.mjs quarantine <file> --reason "..."
+    Parks an unusable reply with the reason recorded beside it, so one bad file
+    cannot freeze every reply behind it.
+```
+
+`crew-vpgm-command.mjs issue` now **refuses to dispatch** while any reply is unread. Override
+with `--ack-inbox` only after genuinely reading them.
+
+Reply statuses now distinguish three real cases instead of calling everything malformed:
+
+| Status | Meaning | Auto-processes |
+| --- | --- | --- |
+| `OK` | Relay envelope, hashes match | Yes |
+| `GD_RECEIPT` | GD-router envelope, no cockpit hash, advisory | Yes |
+| `LEGACY_MANUAL` | No metadata heading — hand-delivered, must be read | No, use `consume` |
+| `MALFORMED` | Has a metadata heading but cannot be parsed | No, use `quarantine` |
+| `STALE_DO_NOT_APPLY` | Cockpit hash drifted since dispatch | No |
 
 ---
 

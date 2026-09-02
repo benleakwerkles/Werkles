@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { getClientAccessToken } from "@/lib/client-auth";
@@ -60,24 +61,33 @@ export function AccountAwarePeopleContinuation({
   }
 
   return (
-    <section className="ops-card" aria-labelledby="ghost-fleet-next-title">
+    <section className="ops-card recommendation-people-gateway" aria-labelledby="ghost-fleet-next-title">
       <div className="card-heading">
-        <p>People who may fit</p>
-        <h2 id="ghost-fleet-next-title">See people who may fit</h2>
+        <p>People</p>
+        <h2 id="ghost-fleet-next-title">Meet People With Similar Ambitions</h2>
       </div>
       {continuation.state === "error" ? (
         <p role="alert">Your account shortlist did not load. Werkles will not substitute another browser&apos;s practice matches.</p>
       ) : (
         <>
           <p>{continuation.count > 0
-            ? `${continuation.count} practice ${continuation.count === 1 ? "profile has" : "profiles have"} a reason to appear.`
+            ? `${continuation.count} practice ${continuation.count === 1 ? "profile lines" : "profiles line"} up with parts of what you are trying to build.`
             : "No practice profile has a strong enough reason to appear yet."}</p>
           <p className="muted" role="note">{continuation.note}</p>
         </>
       )}
       <div className="member-selected-surface__actions">
-        <Link className="button button-outline" href="/dashboard/intros">Open Match Deck</Link>
+        <Link className="button button-outline" href="/dashboard/intros">Meet People Who May Fit</Link>
       </div>
+      <figure className="recommendation-people-gateway__photo">
+        <Image
+          src="/assets/draft/people-v1/people-shared-possibility-v1.png"
+          alt="Two people comparing possibilities in a shared workshop"
+          width={1536}
+          height={1024}
+          sizes="(max-width: 760px) 100vw, 18rem"
+        />
+      </figure>
     </section>
   );
 }

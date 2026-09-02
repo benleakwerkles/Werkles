@@ -1,0 +1,34 @@
+{
+  "schema": "harvey_nerdkle_receiver_handoff_bundle_v0",
+  "generated_at": "2026-07-06T08:50:13.812Z",
+  "bundle_id": "workspace_relay_receiver_handoff_bridge_smoke_v0",
+  "packet_id": "workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os",
+  "receiver": "Maker@Betsy",
+  "lane": "TinkerDen workspace relay",
+  "base_url": "http://127.0.0.1:3000",
+  "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+  "source_packet_path": "data/organism/contracts/packets/workspace_relay_handoff_book_architecture_workspace_relay_receiver_handoff_bridge_v0_mr8zc3os.json",
+  "source_packet_sha256": "d0b6c50e3d5b705c0917a0483a6311219cbec9d608eb9cfdb05af1f336cbad33",
+  "bundle_paths": {
+    "packet": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/packet.json",
+    "receiptTemplate": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+    "handoff": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/HANDOFF.md",
+    "manifest": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/manifest.json"
+  },
+  "files": [
+    {
+      "path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/packet.json",
+      "sha256": "d0b6c50e3d5b705c0917a0483a6311219cbec9d608eb9cfdb05af1f336cbad33"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/receipt-template.json",
+      "sha256": "266b05c0904a672e862ca874fb3cfbc6c1157b72e57eba30a74b644f34f52b81"
+    },
+    {
+      "path": "foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/HANDOFF.md",
+      "sha256": "961692de03a95edf6fa544a2600461013ede11a282344681643352aa4cc32510"
+    }
+  ],
+  "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/workspace_relay_receiver_handoff_bridge_smoke_v0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by Maker@Betsy",
+  "truth_boundary": "Receipt template is blocked until the receiver replaces TEMPLATE_NOT_FILLED with real proof."
+}

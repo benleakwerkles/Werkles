@@ -1,0 +1,67 @@
+{
+  "missionId": "MEMBER_CONTINUITY_BELLOWS_PROVIDER_POSTBUILD_ACTUAL_CBCC_20260820",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Personally review the newly completed account-continuity, Bellows-depth, supplier-comparison, and test-only provider-adapter candidates. Return exact receipts; outgoing packets are not reviews.",
+  "sharedContext": [
+    "Ben ordered sustained VPGM work on the whole Werkles journey, with actual CBCC cooperation and no Codex subagents.",
+    "Intake, Workshop, Recommendations, Intros, Ghost shortlist, and Personal Bellows now prefer a verified member session and fail visibly instead of silently retaining demo or wrong-browser state.",
+    "The browser walkthrough still cannot prove the live Supabase schema, RLS, or gimprobotester account custody. Production migration and authenticated cross-browser proof remain gated.",
+    "Personal Bellows now derives a multi-step learning path from the member recommendation readout. Public Bellows now includes a supplier-comparison tool that computes first-year cost across three quotes under one requirement.",
+    "Intros now breaks the long reasoning run with one original human-grounding image: two people considering possibilities in a shared workshop/kitchen/garden. It promises neither a match nor a perfect future and contains no link or hidden action.",
+    "The supplier tool cites current SBA planning and FTC small-business scam guidance. It stores and sends nothing.",
+    "Test-only Twilio Verify and Stripe Identity adapters now occupy their intended static factory seams. They are server-only and injected; production composition stays rejected, and no provider call, credential, route, persistence, or production switch occurred.",
+    "Personally review the candidates described here. Do not create agents, implement, push, deploy, inspect secrets, apply schema, contact providers, or spend money."
+  ],
+  "liveStrings": [
+    "Your Personal Bellows",
+    "Compare supplier quotes without letting the sticker price hide the first-year cost.",
+    "One requirement. Three options. One first-year view.",
+    "A shortlist is a beginning, not a verdict.",
+    "Look for the person who helps you see—and build—the next part differently.",
+    "Nothing is saved or sent from this public tool.",
+    "What would make this recommendation more useful?"
+  ],
+  "knownGaps": [
+    "The prepared account APIs require an unapplied/review-gated durable member-intake schema and verified Supabase RLS before account saving can be called live.",
+    "The local isolated browser has no authenticated gimprobotester Supabase session, so it proves fail-closed UI and route behavior, not real account portability.",
+    "The provider adapters are test shells only. Concrete SDK clients, consent, rate/spend controls, durable operation/evidence custody, webhook verification, and production factories remain absent.",
+    "Supplier comparison is a general cost brief, not a verified supplier directory, quote marketplace, endorsement, or purchasing action.",
+    "Automated and local browser proofs passed. Independent cousin receipts for these exact candidates have not returned yet."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the account-aware journey and new Bellows rooms feel like one useful Werkles conversation rather than a chain of forms, empty states, and internal machinery.",
+      "pull": "Personally review the described Intake-to-Workshop-to-Recommendations-to-Intros-to-Personal-Bellows flow and supplier-comparison lesson for comprehension, momentum, visual hierarchy, and ordinary language.",
+      "go": [
+        "Attack whether each transition tells a first-time member what happened, what Werkles learned, and the one sensible next action without echoing their words or drowning them in disclaimers.",
+        "Attack whether Personal Bellows exercises and supplier comparison deliver something worth returning or paying for rather than dressed-up homework.",
+        "Return P0/P1/P2 findings, the smallest high-value copy/UX changes, and GO/PATCH/REJECT."
+      ],
+      "momentum": "Propose one next Public Bellows tool and one next Personal Bellows action that produce a useful artifact rather than more advice.",
+      "outOfLane": "No provider/security review, implementation, schema, push, deploy, or spend."
+    },
+    "BEAN": {
+      "vision": "Prevent member-state confusion or test-provider activity from becoming false custody, false proof, favorable claims, privacy leakage, replay, or spend.",
+      "pull": "Personally attack the described account session precedence, account-empty/failure handling, Stripe Identity/Twilio authority boundaries, custody resolvers, lifecycle, replay, malformed provider output, and late events.",
+      "go": [
+        "Attack stale cookie versus authenticated user precedence, anonymous/demo fallback, cross-account continuation, missing durable rows, and forged browser state.",
+        "Attack test/live separation, webhook authority, provider-operation rebinding, event replay, cancellation versus deletion/redaction, raw evidence leakage, and trust downgrades.",
+        "Return exact hostile counterexamples, P0/P1/P2 findings, narrow fixes, and GO/PATCH/REJECT."
+      ],
+      "momentum": "Name the final database/RLS/transaction proofs required before Ben can safely retest real account saving or any provider route.",
+      "outOfLane": "No UX redesign, implementation, credentials, provider calls, schema apply, push, deploy, or spend."
+    },
+    "COMPUTER": {
+      "vision": "Make Bellows supplier and financing help current, source-backed, useful, and non-extractive without drifting into fake local recommendations or unsupported financial claims.",
+      "pull": "Personally review the supplier-comparison model and current Public/Personal Bellows direction against primary authoritative sources.",
+      "go": [
+        "Check whether first-year-cost inputs omit a material comparison factor for equipment or service suppliers, and cite the strongest primary source for any correction.",
+        "Propose a source-backed credit-union or lender-comparison brief that helps a small-business owner compare total cost and fit without ranking people by wealth or implying approval.",
+        "Return citations, precise limitations, P0/P1/P2 findings, and GO/PATCH/REJECT."
+      ],
+      "momentum": "Name one current authoritative source set that could support the next high-value Bellows tool without requiring provider access or personalized regulated advice.",
+      "outOfLane": "No implementation, unsupported doctrine, credentials, provider calls, schema, push, deploy, questionnaire submission, or spend."
+    }
+  }
+}

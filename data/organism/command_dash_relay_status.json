@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "built_at": "2026-06-28T19:06:20.130Z",
+  "built_at": "2026-08-20T05:55:56.903Z",
   "health": {
     "doctor_pass": true,
     "triage_pass": true,
@@ -8,7 +8,7 @@
   },
   "counts": {
     "relay_events": 3,
-    "relay_receipts": 3,
+    "relay_receipts": 0,
     "intake_rows": 1,
     "intake_processed": 1,
     "pending_aeye_receipts": 3
@@ -69,14 +69,15 @@
       "created_at": "2026-06-28T04:38:53.288Z"
     },
     "receipt": {
-      "receipt_id": "receipt_cmd_dash_api_proof_0001",
-      "mission": "COMMAND_DASH_TO_AEYE_RELAY",
-      "producer": "Maker@Doss",
-      "path": "C:/Users/BenLeak/Desktop/github/Werkles/data/organism/command_dash_relay_proofs/cmd_dash_api_proof_0001.json",
-      "timestamp": "2026-06-28T04:38:53.288Z",
-      "hash": "321850f5d4bcd48984dc2f791a833ab8097bd41a4dcf2eba453db225462ad4aa",
-      "status_guess": "packet_relay_ready_manual_send_required",
-      "linked_packet_id": "cmd_dash_api_proof_0001"
+      "receipt_id": "td_receipt_bridge_execute_mr8te4ju_mwoqyw",
+      "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+      "linked_packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+      "mission": "BOOK_ARCHITECTURE_TINKERDEN_BRIDGE_EXECUTE_CONTRACT_MIRROR_V0",
+      "producer": "TinkerDen@Betsy",
+      "status_guess": "DISPATCH_ACKNOWLEDGED",
+      "timestamp": "2026-07-06T06:03:50.538Z",
+      "path": "data/tinkerden/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json",
+      "proof_reference": "data/tinkerden/receipts/td_receipt_bridge_execute_mr8te4ju_mwoqyw.json"
     },
     "intake_receipt": {
       "status": "processed",

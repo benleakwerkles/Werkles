@@ -59,6 +59,7 @@ export async function POST(request: Request) {
       dispatch_state_path: result.dispatch_state_path,
       event_path: result.event_path,
       relay_event: result.relay_event,
+      contract_write: result.contract_write,
       card_status: "DISPATCHED",
       visible_state: "RECEIPT_LINKED",
     });

@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T05:20:18.169Z",
+  "file": "FROM_SWANSON_RECOMMENDATION_CAUSAL_WHY_PRECODE_REVIEW_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SWANSON",
+  "consumed_by": "FOREMAN",
+  "note": "Read and incorporated: recommendation explanations must cite a specific fact and practical effect without full Intake echo.",
+  "auto_merge": false
+}

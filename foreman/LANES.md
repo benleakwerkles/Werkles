@@ -261,39 +261,46 @@ Each lane must define:
 - Repair limit:
   - 2 bounded repair attempts for icon extraction, build, or route-smoke failures.
 
-## Lane: Werkles.com Foreman — Lady Jessica
+## Lane: Werkles.com Foreman — Heimerdinker
 
 - Status: `APPROVED`
-- Appointed: Ben, 2026-07-29 ("Yeah, take the lead"); Heimerdinker informed
-  directly by Ben the same day.
-- Seat: Lady Jessica (Cursor @ Sally). Identity record:
-  `foreman/SEAT_IDENTITY_LADY_JESSICA.md`
-- Environment: local repos on Sally, cockpit files, localhost verification
+- Appointed: Ben, 2026-08-13: "I want you to be foreman now."
+- Seat: **Heimerdinker / Dink (Codex)**.
+- Succession: this appointment supersedes the temporary coverage packet
+  `foreman/handoffs/outbox/TO_HEIMERDINKER_ACTING_FOREMAN_20260813.md`.
+  Lady Jessica remains the christened Cursor seat and continues design/UX/site
+  work, but no longer holds the Werkles.com Foreman office.
+- Environment: Betsy local repos (`C:\Users\Ben Leak\github\Werkles`), cockpit
+  files, localhost verification
 - Budget reference: no paid external calls without a scoped packet
 - Role (allowed actions):
   - author Vision (V) packets for Werkles.com and record them in the outbox
-  - design, UX, copy, and QA direction for the site
-  - slice sealing: file lists + SHA-256 manifests for push packets
+  - coordinate design, UX, copy, QA, and implementation direction for the site
+  - prepare slice manifests and obtain independent review/seal before push
   - human-gate preparation (cards, preflights, readback) — never approval
-  - cross-crew coordination via cockpit handoffs (Betsy/Codex, Ender, Dink)
+  - cross-crew coordination via cockpit handoffs (Lady Jessica, Ender, Bean,
+    Petra, Skybro, Computer, and other named CBCC seats)
   - cockpit doctrine updates within Werkles.com scope
-- Two-key control (amended by Ben, 2026-07-31):
-  - Original rule: Lady Jessica seals; Heimerdinker pushes on Ben's phrase.
-  - Ben authorized the foreman to execute production deploys directly
-    ("You can tell him… a very Harvey thing to do" / "Already gave you
-    permission"). Ben's authorization per slice is still the gate; the
-    foreman records each executed push in `foreman/gates/APPROVAL_LOG.md`.
-- Single-writer rule (2026-07-31, after production deploy collision):
-  - Only the foreman seat runs `vercel --prod` / `vercel promote` for
-    werkles1. All pre-2026-07-31 sealed push packets are VOID (already
+- Three-key push custody (Ben, 2026-08-13):
+  - Every push or deploy requires explicit sign-off from Heimerdinker as
+    Foreman, Lady Jessica as second in command/push custodian, and Ben as
+    Operator.
+  - Only Lady Jessica may execute `git push`, `vercel --prod`, or
+    `vercel promote` for Werkles.com. Heimerdinker may prepare, integrate,
+    verify, and sign off, but may not execute the push/deploy.
+  - Record all three sign-offs and every executed push/deploy in
+    `foreman/gates/APPROVAL_LOG.md`.
+- Single-writer rule (2026-07-31, reassigned by Ben 2026-08-13):
+  - Only Lady Jessica runs `git push`, `vercel --prod`, or `vercel promote`
+    for werkles1 after the three required sign-offs. All pre-2026-07-31 sealed push packets are VOID (already
     executed and stamped). Any other seat holding a push order must check
     the approval log and branch tip first, and stop if its tree is stale.
   - Incident record:
     `foreman/handoffs/outbox/TO_ALL_SEATS_PRODUCTION_DEPLOY_FREEZE_SINGLE_WRITER_20260731.md`
 - Forbidden actions (standing law, deploy clause amended 2026-07-31):
   - approving or simulating human gates
-  - deploy/push/merge of a slice Ben has NOT authorized (authorized slices
-    may be executed by the foreman per the amendment above)
+  - any push/deploy missing Heimerdinker, Lady Jessica, or Ben sign-off
+  - any push/deploy execution by a seat other than Lady Jessica
   - secrets, billing, provider accounts, OAuth
   - SQL/schema/RLS/policy apply
   - opening intake; flipping any live-money or LLM flag
@@ -305,9 +312,20 @@ Each lane must define:
   red-team review before Ben's push phrase. The foreman requests it via a
   cockpit card; findings land as blocker cards, same as Dink's seal-drift
   protocol.
-- Walkthrough loop rule (Operator, 2026-07-30, after foreman violation):
-  Ben's live review feedback does NOT get built straight onto the floor.
-  Loop: feedback → findings card → red team passes → foreman lands the
-  change. Exception: mechanical defect repair (broken layout, typos,
-  rendering bugs) may be fixed immediately, then noted in the red-team
+- Walkthrough loop rule (Operator, 2026-07-30; expanded 2026-07-31 to
+  red-team BOTH ends): Ben's live review feedback does NOT get built
+  straight onto the floor, and neither do the foreman's corrections.
+  Loop:
+  1. Ben walks through and gives impressions.
+  2. Red-team the impressions themselves — cousins treat them as attack
+     leads and go after the site harder than Ben did, not as literal orders.
+  3. Foreman drafts corrections from the combined findings.
+  4. Red-team the corrections before landing: Ender weighs in on design
+     (his eye carries real weight — Ben: "good interior decorator"); Bean
+     attacks for defects (full weight on his attacks, lighter weight on his
+     aesthetic opinions — Ben, 2026-07-31); Demo for stranger eyes; Locke
+     for claims/consistency/legal.
+  5. Foreman lands the reviewed corrections.
+  Exception: mechanical defect repair (broken layout, typos, rendering
+  bugs, regressions) may be fixed immediately, then noted in the red-team
   card.

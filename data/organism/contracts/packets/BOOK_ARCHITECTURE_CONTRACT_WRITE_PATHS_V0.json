@@ -1,0 +1,44 @@
+{
+  "schema": "harvey_nerdkle_packet_v0",
+  "packet_id": "BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0",
+  "created_at": "2026-07-06T05:54:48.156Z",
+  "from": "Ben@Betsy",
+  "to": "Heimerdinker@Betsy",
+  "lane": "Harvey/Nerdkle architecture",
+  "operator_intent": "Wire organism contract validators into real packet and receipt write paths.",
+  "source_paths": [
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md"
+  ],
+  "source_hashes": {
+    "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md": "822769D5BA324F57618107868567BFADACAB200A9AADECBA12D29AB9B8D1D7BF"
+  },
+  "cwd": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "requested_action": "Persist contract-validated packet and receipt records through shared storage.",
+  "allowed_actions": [
+    "read",
+    "write",
+    "run_safe_command",
+    "readback"
+  ],
+  "forbidden_actions": [
+    "deploy",
+    "push",
+    "enter_secret",
+    "production_mutation"
+  ],
+  "stop_conditions": [
+    "source_missing",
+    "gate_required",
+    "breach_risk"
+  ],
+  "acceptance_criteria": [
+    "Valid packet writes through storage.",
+    "Invalid packet returns SCHEMA_INVALID and writes blocker receipt.",
+    "Valid receipt writes through storage.",
+    "Packet write and receipt write append validated events."
+  ],
+  "receipt_required": true,
+  "receipt_destination": "foreman/receipts/BOOK_ARCHITECTURE_CONTRACT_WRITE_PATHS_V0_RECEIPT_20260706.json",
+  "idempotency_key": "book-architecture-contract-write-paths-v0-20260706",
+  "expires_at": "2026-07-07T05:54:48.156Z"
+}

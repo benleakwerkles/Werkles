@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-16T22:37:07.304Z",
+  "file": "FROM_ENDER_VPGM_20260816-223530.md",
+  "reason": "Harvester selected stale dispatch leg before latest consumed-leg repair"
+}

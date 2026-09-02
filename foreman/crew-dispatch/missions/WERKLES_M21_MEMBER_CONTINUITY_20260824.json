@@ -1,0 +1,84 @@
+{
+  "missionId": "WERKLES_M21_MEMBER_CONTINUITY",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad review of member custody, Match Deck self-preview, Formation continuity, Bellows value, provider boundaries, and member-facing copy.",
+  "sharedContext": [
+    "The local member journey is Home, Intake, Recommendations, Workshop, Match Deck, Formation, Personal Bellows, Crucible, and Membership.",
+    "Intake and recommendation reads have owner-bound server paths; Formation and several working drafts remain explicitly browser-local.",
+    "The Match Deck uses deterministic rules, synthetic Ghost profiles, visible fit reasons, location preference, and no wealth ranking.",
+    "The immediate candidate adds a preview of what deliberately supplied project facts could be shown to a future match; it does not publish or contact anyone.",
+    "No provider activation, credentials, schema/RLS, production data, spend, push, deploy, new environment, subagent, or foreground input is allowed."
+  ],
+  "liveStrings": [
+    "Preview what another member could see",
+    "Not shared yet",
+    "Match Deck",
+    "Possible Werkle",
+    "Personal Bellows",
+    "Check what matters before you rely on it"
+  ],
+  "knownGaps": [
+    "Formation and multiple Bellows artifacts remain browser-local rather than account-saved.",
+    "Real introductions are not live; the visible people are synthetic practice profiles.",
+    "Production provider activation and production data custody are outside this candidate.",
+    "Fresh CBCC dispatch routes are blocked or unproved in the current carrier state."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Red-team whether the member can understand what is private, visible, saved, and next without reading policy prose.",
+      "pull": "Attack cold pages, homework tone, fake interactivity, unclear consequences, and Match-to-Formation emotional discontinuity.",
+      "go": [
+        "Return ENDER_M21_CONTINUITY_GO, PATCH, or STOP with the three strongest corrections.",
+        "Review the self-preview, candidate conversation, Formation arrival, and Bellows return at desktop and 390px.",
+        "Name the first confusing sentence and the next-click failure on each surface."
+      ],
+      "momentum": "Name one postbuild hostile route and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "BEAN": {
+      "vision": "Hostile trust review of the self-preview, account/device boundaries, synthetic profiles, money, and provider claims.",
+      "pull": "Attack accidental publishing, private inference, stale data, false partner response, wealth ranking, and verification overclaim.",
+      "go": [
+        "Return BEAN_M21_TRUST_GO, PATCH, or STOP with the three strongest corrections.",
+        "Define the maximum safe self-preview and what must require mutual disclosure later.",
+        "Give hostile checks for stale Intake, another account, browser-local drafts, Ghost funds, and provider-offline states."
+      ],
+      "momentum": "Name the postbuild trust evidence owed and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "SKYBRO": {
+      "vision": "Review whether transparency and continuity feel valuable rather than bureaucratic.",
+      "pull": "Attack thin payoff, internal terminology, fear-heavy copy, and member value that disappears behind caveats.",
+      "go": [
+        "Return SKYBRO_M21_VALUE_GO, PATCH, or STOP with the three strongest corrections.",
+        "Make the self-preview feel like control, the Match Deck feel like discovery, and Formation feel like useful shared work.",
+        "Check plain-language continuity through Bellows and Membership."
+      ],
+      "momentum": "Name one postbuild value test and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "COMPUTER": {
+      "vision": "Source-bound factual review of provider and data-state language.",
+      "pull": "Separate implemented local code, sandbox/test readiness, credential gates, production review, and live member behavior.",
+      "go": [
+        "Return COMPUTER_M21_PROVIDER_GO, PATCH, or STOP with the three strongest factual corrections.",
+        "Flag any copy that implies live Stripe, Plaid, Twilio, identity, storage, or screening behavior.",
+        "Name the next non-production proof for each ready provider."
+      ],
+      "momentum": "Name one postbuild provider check and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    },
+    "PETRA": {
+      "vision": "Comptroller synthesis for the M21 local member-continuity candidate.",
+      "pull": "Attack false completion, unproved CBCC routes, hidden human burden, scope drift, and release implication.",
+      "go": [
+        "Return PETRA_M21_CONTINUITY_GO, PATCH, or STOP with acceptance conditions.",
+        "Separate local member value from account-custody, provider, and release readiness.",
+        "Name the exact evidence Lady Jessica would need for an independent seal."
+      ],
+      "momentum": "Name the next bounded checkpoint and stop.",
+      "outOfLane": "No code, provider action, credentials, schema/RLS, spend, push, deploy, or new task."
+    }
+  }
+}

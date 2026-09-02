@@ -920,7 +920,7 @@ export default function SwansonRelayControl() {
 
   function selectedBookFollowupBody(instruction: string) {
     return [
-      "MISSION: Continue Nerdkle book work from a returned Skybro chapter report without making Ben the courier.",
+      "MISSION: Continue Nerdkle book work from a returned Skybro chapter report without making Operator the courier.",
       "",
       `Source returned packet: ${selectedBookReportPacketId}`,
       `Receiver receipt: ${selectedBookReportReceipt}`,
@@ -942,7 +942,7 @@ export default function SwansonRelayControl() {
       "Return requirements:",
       "1. Write RECEIVED first.",
       "2. Return COMPLETED with a usable editorial report or artifact, or BLOCKER with exact missing proof.",
-      "3. Do not ask Ben to restate the chapter or report.",
+      "3. Do not ask Operator to restate the chapter or report.",
       "4. Do not call SENT success."
     ].join("\n");
   }
@@ -1081,7 +1081,7 @@ export default function SwansonRelayControl() {
       target: asText(move.target, "Petra.Betsy"),
       title: `${asText(lane.project, "Project")}: ${asText(move.title, "Next move")}`,
       body: [
-        "MISSION: Help ThinkIt decide and move the next useful project action without making Ben the courier.",
+        "MISSION: Help ThinkIt decide and move the next useful project action without making Operator the courier.",
         "",
         `Project lane: ${asText(lane.project, "Unknown project")}`,
         `Dashboard question: ${asText(lane.question, "Is this next move correct?")}`,
@@ -1273,7 +1273,7 @@ export default function SwansonRelayControl() {
       target: "Petra.Betsy",
       title: `Receiver setup needed: ${humanTargetName(targetToConnect)}`,
       body: [
-        "MISSION: Create or identify the missing receiver surface so ThinkIt can route packets without Ben as courier.",
+        "MISSION: Create or identify the missing receiver surface so ThinkIt can route packets without Operator as courier.",
         "",
         `Requested receiver: ${humanTargetName(targetToConnect)}`,
         `Raw target: ${targetToConnect}`,
@@ -1410,7 +1410,7 @@ export default function SwansonRelayControl() {
             <h3>ThinkIt is leaving a paper trail Harvey can boot from.</h3>
             <p>
               Elwood is the well-intentioned human Operator role. Harvey is the Nerdkle organism we are building. ThinkIt writes Harvey&apos;s status, Brainboot
-              context, and proof gaps to files that Skybro and Petra can read without Ben re-teaching the project state.
+              context, and proof gaps to files that Skybro and Petra can read without Operator re-teaching the project state.
             </p>
           </div>
           <span>{asText(elwoodStatus?.status, "NO_ELWOOD_READBACK")}</span>

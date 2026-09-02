@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T06:22:34.065Z",
+  "file": "FROM_SKYBRO_OPERATING_BRIEF_RENDERER_VALUE_REVIEW_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SKYBRO",
+  "consumed_by": "FOREMAN",
+  "note": "Read now; prior renderer value verdict informed current product. Not counted as current release review.",
+  "auto_merge": false
+}

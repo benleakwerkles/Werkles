@@ -1,0 +1,37 @@
+{
+  "missionId": "PLAID_QUESTIONNAIRE_BEAN_REDTEAM",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Hostile-review the proposed current-state answers to Plaid's live security questionnaire. Return the safest truthful selection for every question and block any unsupported attestation. Review only; the live form remains untouched.",
+  "sharedContext": [
+    "Live questionnaire has 11 questions plus a final remediation attestation: security contact; operationalized security policy; access controls; consumer MFA before Link; internal MFA; TLS 1.2+; Plaid-data encryption at rest; vulnerability management; privacy policy; consumer consent; enforced retention/deletion; final remediation checkbox.",
+    "Werkles is pre-launch. Stack: Next.js 15.3.2, React 19, TypeScript 5.8, Tailwind 3.4; intended Vercel; intended Supabase Auth/Postgres and planned Storage; Stripe Billing/Identity code/test paths; Plaid sandbox Link-token demo; Twilio foundation only; Checkr policy-blocked.",
+    "Known code truth: public-token exchange, encrypted Plaid Item/access-token custody, Assets/Balance evidence, webhooks, revoke, receipts, provider schema, and RLS are disabled/not connected. Intake server-session continuity is incomplete. No Storage bucket or reviewed retention/access policy is connected.",
+    "Thufir recovered prior draft answers but downgraded nearly every prior Yes: security contact supported; documented policy not operationalized; access-control selections unverified; consumer MFA not implemented; internal MFA unaudited; TLS likely but unproven; encryption-at-rest architecture-dependent; vulnerability practices unverified; privacy policy unconfirmed; consent not built end-to-end; retention/deletion not ratified or enforced.",
+    "The live form is open but unchanged. Save, attestation, Continue, and Submit are forbidden until Ben reviews the assimilated answer table."
+  ],
+  "liveStrings": [
+    "By submitting, you attest to remediate any Plaid-identified gaps in your security practices.",
+    "Does your organization provide multi-factor authentication (MFA) for consumers ... before Plaid Link is surfaced?",
+    "Does your organization encrypt consumer data you receive from the Plaid API at-rest?"
+  ],
+  "knownGaps": [
+    "Exact dropdown option labels are not yet harvested; do not invent an option Plaid may not offer.",
+    "No runtime configuration, secrets, provider accounts, admin consoles, production environment, SSL scan, encryption statement, access audit, or policy ratification was inspected for this packet.",
+    "The questionnaire may allow explanatory or not-applicable options; final UI selection must match visible choices."
+  ],
+  "cousins": {
+    "BEAN": {
+      "vision": "Prevent a pre-launch company from laundering planned architecture and provider defaults into present-tense security attestations.",
+      "pull": "Attack each current/proposed answer for unsupported Yes, misleading No, missing not-applicable logic, pass-through/data-minimization confusion, and representations that create legal or remediation obligations.",
+      "go": [
+        "Return an ordered 1-11 table: safest truthful answer state, minimum explanation, required evidence, and BLOCK/SAVEABLE status.",
+        "Decide whether zero Plaid production data makes encryption-at-rest not applicable, No, or still requires an architecture explanation; do the same for consumer MFA before Link.",
+        "Attack the final remediation attestation and name exactly what Ben would be promising if checked."
+      ],
+      "momentum": "End with GO_TO_STAGE_FIELDS, PATCH_BEFORE_STAGE, or REJECT. Include the three most dangerous answers to get wrong.",
+      "outOfLane": "No form filling/saving/submission, provider calls, secrets, personal contact data, legal approval, invented controls, code, SQL, push, deploy, new chats, subagents, or secondary models."
+    }
+  }
+}
+

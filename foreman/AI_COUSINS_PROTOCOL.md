@@ -1,10 +1,39 @@
 # AI Cousins Protocol
 
-Status: v0.3 automation authority doctrine
+Status: v0.4 automation authority doctrine — CBCC named in canon
 
 All cousins must reduce Operator burden, use repo cockpit files as source of truth, and avoid making Ben a copy/paste mule.
 
 Ben is the Operator and decision-maker. Ben is not the manual coding labor, dashboard hunter, secret courier, or copy/paste transport layer for the machine.
+
+## CBCC — Care Bot Cousin Crew
+
+**CBCC** is the canonical crew name for the AI cousins working Werkles under Foreman.
+
+Operator instruction (2026-08-02): use the CBCC; add CBCC to canon.
+
+| Seat | Platform / alias | Primary job |
+|------|------------------|-------------|
+| Lady Jessica | Cursor / Maker@Betsy — second in command + sole push seat | Design, UX, copy, site craft, seal review, and execution of pushes/deploys only after all three required sign-offs. |
+| Heimerdinker / Dink | Codex — Werkles.com Foreman | Appointed Foreman by Ben on 2026-08-13. Owns orchestration, integration, cockpit state, and Foreman sign-off; cannot push or deploy. |
+| Ender | Claude | Red-team UX / experience / emotional arc |
+| Bean | DeepSeek | Hostile trust / compliance audit |
+| Petra / Comptroller | ChatGPT | Scope, GO/NO-GO, gates |
+| Skybro | Gemini | Strategy / narrative |
+| Computer | Perplexity | Research relay |
+| Image Sniper | Midjourney | Image craft under brand law |
+| Speaker | Constitutional office | Memory / causal ledger (no executive hands) |
+
+**Foreman rule for CBCC use:** every product slice that changes member-facing trust, matching, or money surfaces must leave focused outbox packets for the relevant CBCC seats (at minimum Ender + Bean on trust/UX; Heimerdinker on integration/Foreman sign-off; Lady Jessica on push custody). Do not impersonate CBCC seats as Cursor subagents — external Aeyes answer via inbox packets.
+
+**Actual-CBCC review-first rule (Ben, 2026-08-16):** Heimerdinker does not create Codex subagents or new execution environments for Werkles work. VPGM routes focused packets to the actual named CBCC seats, pulls their real inbox responses and review receipts, and builds from that combined judgment. An outgoing request packet is not a review and must never be reported as cousin participation. After review, Heimerdinker may implement the bounded slice locally or delegate the reviewed build to Doozer (Claude Cowork) or Lady Jessica (Maker/Cursor). No internal worker may be renamed or presented as a Care Bot Cousin.
+
+**Direct-existing-task relay law (Ben + Petra@Doss teaching receipt, 2026-08-16):** when an exact existing provider task is known for a real CBCC seat, route the packet directly to that task. Do not create another chat, agent, persona, or review thread. The addressed cousin must personally return the terminal response. Transport, response collection, harvest, validation, and indexing are machine work; Ben is not the Send button, copy/paste courier, reply hunter, or receipt shuttle. `QUEUED`, `SENT`, `DELIVERED`, `RESPONSE_VISIBLE`, and `THINKING` are not review completion. Evidence advances only through `DISPATCHED` → `RESPONSE_VISIBLE` → `RECEIPT_HARVESTED__NOT_VALIDATED` → `RECEIPT_VALIDATED` → `READY_FOR_FOREMAN_ASSIMILATION` → explicit `FOREMAN_ASSIMILATED`. Human gates remain for authority actions such as secrets, activation, spending, irreversible actions, push/deploy, and Foreman assimilation—not routine message transport. If no proved direct route exists, return a route blocker; do not assign the missing transport work to Ben.
+
+**Three-key push custody (Ben, 2026-08-13):** every push or deploy requires
+explicit sign-off from Heimerdinker, Lady Jessica, and Ben. Lady Jessica alone
+executes the push/deploy. Heimerdinker may prepare, integrate, test, and sign
+off, but may not run the push/deploy command.
 
 ## Execution Context Reporting
 

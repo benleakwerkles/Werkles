@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_doozer_identity_preview_truth_repair_20260822",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "identity_preview_truth_repair_20260822",
+  "target_aeye": "Doozer",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Doozer: personally execute foreman/handoffs/outbox/TO_DOOZER_IDENTITY_PREVIEW_TRUTH_REPAIR_20260822.md. This is the Petra-corrected narrow Recommendations-boundary repair; do not perform Computer's rejected global getClientAccessToken rewrite. Return exact changed bytes, tests, collision map, rollback, and remaining gates to foreman/handoffs/inbox/FROM_DOOZER_IDENTITY_PREVIEW_TRUTH_REPAIR_20260822.md. ACK is not completion. No new task/subagent/environment, provider, credential, env edit, SQL/schema/RLS, production mutation, push, merge, or deploy."
+  },
+  "status": "QUEUED",
+  "created_at": "2026-08-22T07:50:00-04:00"
+}

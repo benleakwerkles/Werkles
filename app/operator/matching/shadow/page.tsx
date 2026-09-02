@@ -52,7 +52,9 @@ export default async function MatchingShadowPage() {
 
           <Link href="/operator/human-gates">Human Gate Hub</Link>
 
-          <Link href="/bellows/recommendations">Squibb recommendations</Link>
+          <Link href="/operator/matching/document-score">Document score</Link>
+
+          <Link href="/bellows/recommendations">Member recommendations</Link>
 
         </nav>
 
@@ -70,7 +72,7 @@ export default async function MatchingShadowPage() {
 
           <p>
 
-            Pipeline: <strong>signals → Layer 0 → not-match → path score → Matching readout → Squibb voice</strong>.
+            Pipeline: <strong>signals → Layer 0 → not-match → path score → member readout → plain-language delivery</strong>.
 
             Public delivery: <strong>{publicEnabled ? "ON (Autonomous Matching)" : "OFF (shadow)"}</strong>.
 
@@ -80,7 +82,7 @@ export default async function MatchingShadowPage() {
 
             Doctrine: <code>company/WERKLES_MATCH_STACKING_AND_NEED_TRANSLATION_V0.md</code> · Packaging is
 
-            Matching readout (not Speaker). Go-live approved 2026-07-16 — LLM still gated.
+            Matching readout. Go-live approved 2026-07-16 — LLM still gated.
 
           </p>
 
@@ -258,7 +260,7 @@ export default async function MatchingShadowPage() {
 
 
 
-                <h3>Member causal draft (Speaker office shape)</h3>
+                <h3>Member causal draft</h3>
 
                 <pre className="muted" style={{ whiteSpace: "pre-wrap", fontSize: "0.8rem" }}>
 
@@ -268,7 +270,7 @@ export default async function MatchingShadowPage() {
 
 
 
-                <h3>Squibb — voice</h3>
+                <h3>Member-facing explanation</h3>
 
                 <p>{run.squibb.intro}</p>
 

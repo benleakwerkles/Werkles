@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "aeye-crew-relay/v0.1",
+  "target_aeye": "Lady Jessica",
+  "destination_label": "Maker@Betsy",
+  "created_at": "2026-08-20T12:00:00-04:00",
+  "task_text": "Open and personally execute foreman/handoffs/outbox/TO_LADY_JESSICA_MEMBER_INTAKE_ACCOUNT_CUSTODY_SEAL_20260820.md. Review the finished candidate plus real Bean/Ender receipts when available. Return GO, PATCH, or REJECT to foreman/handoffs/inbox/. ACK is not completion. No SQL/RLS apply, production mutation, secrets, push, or deploy."
+}

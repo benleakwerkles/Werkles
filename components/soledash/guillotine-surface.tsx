@@ -100,7 +100,7 @@ export function GuillotineSurface({
     relayCards,
     decisionReceipt,
     approvals: {},
-    approver: "Ben"
+    approver: "Operator"
   });
   const receiptAttention = drawerAttentionCount(drawerPreview);
 

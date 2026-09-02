@@ -1,0 +1,178 @@
+{
+  "schema": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_CREATE_API_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:36:04.559Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_RECEIVER_HANDOFF_CREATE_API_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/receiver-handoff-create-api-smoke.mjs",
+  "files_changed": [
+    "lib/organism/contracts/receiver-handoff-bundle.ts",
+    "app/api/organism/contracts/receiver-handoffs/route.ts",
+    "scripts/foreman/receiver-handoff-create-api-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_RECEIVER_HANDOFF_CREATE_API_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+    "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/manifest.json",
+    "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+    "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+    "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+    "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/manifest.json"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "helper_create_ok": true,
+    "live_post_create_ok": true,
+    "live_post_status": 201,
+    "route_has_post": true,
+    "route_calls_bundle_creator": true,
+    "route_requires_packet_id": true,
+    "helper_template_status": "blocked",
+    "live_template_status": "blocked",
+    "templates_blocked_reason": "TEMPLATE_NOT_FILLED",
+    "helper_index_state": "pending_receiver",
+    "live_index_state": "pending_receiver",
+    "handoff_index_pending_count": 2,
+    "handoff_index_invalid_count": 0,
+    "handoff_index_malformed_count": 0,
+    "truth_boundary": "The create API mints pending blocked handoff templates only; it does not claim receiver work or completion."
+  },
+  "helper_bundle": {
+    "ok": true,
+    "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+    "receiver": "ReceiverCreateApiHelperSmoke@Betsy",
+    "bundle_id": "api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+    "handoff_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/manifest.json",
+    "manifest_written": true,
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverCreateApiHelperSmoke@Betsy",
+    "receipt_template_status": "blocked",
+    "receipt_template_blocked_reason": "TEMPLATE_NOT_FILLED"
+  },
+  "live_bundle": {
+    "ok": true,
+    "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+    "receiver": "ReceiverCreateApiLiveSmoke@Betsy",
+    "bundle_id": "api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+    "bundle_dir": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+    "handoff_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+    "packet_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+    "receipt_template_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+    "manifest_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/manifest.json",
+    "manifest_written": true,
+    "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverCreateApiLiveSmoke@Betsy",
+    "receipt_template_status": "blocked",
+    "receipt_template_blocked_reason": "TEMPLATE_NOT_FILLED"
+  },
+  "live_index_records": [
+    {
+      "bundle_id": "api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "bundle_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "receiver": "ReceiverCreateApiHelperSmoke@Betsy",
+      "lane": "Harvey/Nerdkle architecture",
+      "generated_at": "2026-07-06T06:36:04.341Z",
+      "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+      "handoff_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+      "packet_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+      "receipt_template_path": "foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+      "returned_receipt_path": "NO_RETURNED_RECEIPT",
+      "contract_receipt_path": "NO_CONTRACT_RECEIPT",
+      "template_status": "blocked",
+      "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+      "returned_receipt_id": "NO_RETURNED_RECEIPT",
+      "returned_status": "missing",
+      "returned_receiver": "UNKNOWN",
+      "contract_event_joined": false,
+      "state": "pending_receiver",
+      "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverCreateApiHelperSmoke@Betsy",
+      "truth_boundary": "Receiver handoff is waiting on a non-template returned receipt."
+    },
+    {
+      "bundle_id": "api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "bundle_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "receiver": "ReceiverCreateApiLiveSmoke@Betsy",
+      "lane": "Harvey/Nerdkle architecture",
+      "generated_at": "2026-07-06T06:36:04.520Z",
+      "endpoint": "http://127.0.0.1:3000/api/organism/contracts/receiver-receipts",
+      "handoff_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/HANDOFF.md",
+      "packet_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/packet.json",
+      "receipt_template_path": "foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json",
+      "returned_receipt_path": "NO_RETURNED_RECEIPT",
+      "contract_receipt_path": "NO_CONTRACT_RECEIPT",
+      "template_status": "blocked",
+      "template_blocked_reason": "TEMPLATE_NOT_FILLED",
+      "returned_receipt_id": "NO_RETURNED_RECEIPT",
+      "returned_status": "missing",
+      "returned_receiver": "UNKNOWN",
+      "contract_event_joined": false,
+      "state": "pending_receiver",
+      "post_command": "node scripts/foreman/organism-receiver-receipt-post.mjs --receipt foreman/handoffs/receiver-bundles/api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0/receipt-template.json --base-url http://127.0.0.1:3000 --detected-by ReceiverCreateApiLiveSmoke@Betsy",
+      "truth_boundary": "Receiver handoff is waiting on a non-template returned receipt."
+    }
+  ],
+  "file_hashes": [
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-bundle.ts",
+      "sha256": "22b02f2a81d21cfa05eeadc30049d685fce0511752e437b3b877f88eb5d35703",
+      "bytes": 10122
+    },
+    {
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "sha256": "ce0e5d4ee895b8e655b87bd2f09fd7b052509c08f280bf1e92a401f6d7851528",
+      "bytes": 9937
+    },
+    {
+      "path": "app/api/organism/contracts/receiver-handoffs/route.ts",
+      "sha256": "629e671168994a72a3d7845597ad9a9e598915d22fba873d9196bac323161486",
+      "bytes": 1783
+    },
+    {
+      "path": "scripts/foreman/receiver-handoff-create-api-smoke.mjs",
+      "sha256": "824b6d69de24f0f179c5a3ef1ca28a7387335faa767a6daddc3f033a54f4d63d",
+      "bytes": 11376
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no receiver receipt posted",
+    "no synthetic completion receipt"
+  ],
+  "next_safe_action": "Wire a TinkerDen UI control to create receiver handoff bundles from visible contract packets, or hand the pending API-created bundle to a real separate Aeye."
+}

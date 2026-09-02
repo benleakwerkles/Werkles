@@ -1,0 +1,47 @@
+{
+  "schema": "BOOK_ARCHITECTURE_CONTRACT_API_WRITE_PATHS_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T01:55:55.9281404-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_API_WRITE_PATHS_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "inline node fetch POST smoke against http://127.0.0.1:3000/api/organism/contracts/*",
+  "files_changed": [
+    "lib/organism/contracts/storage.ts",
+    "app/api/organism/contracts/packets/route.ts",
+    "app/api/organism/contracts/receipts/route.ts",
+    "foreman/receipts/BOOK_ARCHITECTURE_CONTRACT_API_WRITE_PATHS_V0_RECEIPT_20260706.json"
+  ],
+  "data_artifacts_written": [
+    "data/organism/contracts/packets/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0.json",
+    "data/organism/contracts/receipts/schema_invalid_BOOK_ARCHITECTURE_API_WRITE_PATHS_INVALID_PACKET_V0_8d9083.json",
+    "data/organism/contracts/receipts/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0_RECEIPT_20260706.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "localhost_3000_tcp": true,
+    "valid_packet_api_status": 201,
+    "valid_packet_path": "data/organism/contracts/packets/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0.json",
+    "invalid_packet_api_status": 422,
+    "invalid_packet_returns_schema_invalid": true,
+    "invalid_packet_blocker_receipt_path": "data/organism/contracts/receipts/schema_invalid_BOOK_ARCHITECTURE_API_WRITE_PATHS_INVALID_PACKET_V0_8d9083.json",
+    "valid_receipt_api_status": 201,
+    "valid_receipt_path": "data/organism/contracts/receipts/BOOK_ARCHITECTURE_API_WRITE_PATHS_V0_RECEIPT_20260706.json",
+    "event_path": "data/organism/contracts/events.jsonl"
+  },
+  "what_did_not_change": [
+    "No deploy.",
+    "No push.",
+    "No secrets.",
+    "No production mutation."
+  ],
+  "next_safe_action": "Replace legacy app packet and receipt write call sites with these API/storage paths lane by lane.",
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation"
+  ]
+}

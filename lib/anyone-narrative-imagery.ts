@@ -50,7 +50,7 @@ export const anyoneNarrativeAttribution =
   "Anyone-can-be-anything narrative — draft Sally final run. Ghost Forge + stock placeholders. Not final brand approval.";
 
 export const squibbClassyAttribution =
-  "Squibb classy v2 — Ghost Forge exploration. Manual cutout still canonical per MASCOT_RULES.";
+  "Brass workshop guide — early visual exploration.";
 
 /** Hero prefers render; falls back to stock hero workshop */
 export const anyoneHeroImage = anyoneStockAssets.batchMomentumHero.heroWorkshop;

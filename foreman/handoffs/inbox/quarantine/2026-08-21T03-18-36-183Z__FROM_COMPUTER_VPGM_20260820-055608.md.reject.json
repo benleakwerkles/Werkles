@@ -1,0 +1,5 @@
+{
+  "quarantined_at": "2026-08-21T03:18:36.184Z",
+  "file": "FROM_COMPUTER_VPGM_20260820-055608.md",
+  "reason": "Retained but not applied: relay validator marks this receipt stale, invalid, or conflicting; reviewed during 2026-08-20 VPGM inbox hygiene before fresh Computer work."
+}

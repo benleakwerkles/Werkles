@@ -1,0 +1,21 @@
+{
+  "schema": "werkles_route_audience_boundary_v1",
+  "date": "2026-07-12",
+  "status": "BOUNDARY_INVENTORIED_PROTECTION_NOT_YET_IMPLEMENTED",
+  "public_copy_guard": {
+    "status": "PASS",
+    "routes_checked": 14,
+    "receipt": "foreman/receipts/WERKLES_PUBLIC_COPY_REGRESSION_GUARD_20260712.json"
+  },
+  "anonymous_internal_route_probe": [
+    { "route": "/operator", "status": 200 },
+    { "route": "/operator/matching/shadow", "status": 200 },
+    { "route": "/thinkit", "status": 200 },
+    { "route": "/tinkerden", "status": 200 },
+    { "route": "/soledash", "status": 200 },
+    { "route": "/gd/command-console", "status": 307, "location": "http://127.0.0.1:4317/#gimpdash" },
+    { "route": "/nerdkle", "status": 200 }
+  ],
+  "conclusion": "Internal route names are not currently proof of access control. Authorization is the next required lane.",
+  "mutations": "No route protection, deploy, or push performed in this cycle."
+}

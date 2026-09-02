@@ -1,0 +1,135 @@
+{
+  "schema": "MACK_ARCHITECTURE_ATTACK_SCORECARD_V0",
+  "status": "UNFILLED_TEMPLATE",
+  "date": "2026-07-06",
+  "lane": "Harvey/Nerdkle architecture review",
+  "score_scale": {
+    "0": "Not credible, not specified, or mostly vibes.",
+    "1": "Interesting but underspecified; likely to fake success.",
+    "2": "Buildable with clear blockers and receipts.",
+    "3": "Strong enough to ship into the next build packet."
+  },
+  "truth_boundary": {
+    "does_not_claim": [
+      "Mack filled this scorecard",
+      "Mack returned a review",
+      "External send occurred",
+      "Universal receiver proof exists",
+      "Real-time shared Aeye cognition is solved"
+    ]
+  },
+  "dimensions": [
+    {
+      "id": "central_claim",
+      "label": "Central claim",
+      "attack_question": "Is human as missing message bus true enough to carry Chapter One?",
+      "required_evidence": "Quote the strongest sentence and the weakest overreach."
+    },
+    {
+      "id": "cooperation_model",
+      "label": "Cooperation model",
+      "attack_question": "Does shared body-state, not shared mind, solve the actual Aeye cooperation problem?",
+      "required_evidence": "Name the first place packeted cooperation still fails."
+    },
+    {
+      "id": "custody_spine",
+      "label": "Custody spine",
+      "attack_question": "Does the custody spine cover the real workflow?",
+      "required_evidence": "Identify one missing transition or unnecessary organ."
+    },
+    {
+      "id": "contract_canon",
+      "label": "Contract canon",
+      "attack_question": "Are packet, receipt, event, gate, and boot-context contracts the right first build?",
+      "required_evidence": "Name one required field that is missing or one field that is decorative."
+    },
+    {
+      "id": "gate_model",
+      "label": "Gate model",
+      "attack_question": "Is classifier decides, policy narrows, OS enforces, receipts prove enough?",
+      "required_evidence": "Name where enforcement is still prose instead of OS/API boundary."
+    },
+    {
+      "id": "receiver_proof",
+      "label": "Receiver proof",
+      "attack_question": "Does the architecture prevent sender-side custody from masquerading as receiver completion?",
+      "required_evidence": "Name one path where ACK, custody, and completion can still blur."
+    },
+    {
+      "id": "boot_context",
+      "label": "Boot context",
+      "attack_question": "Does stale world-state reliably block Aeye action?",
+      "required_evidence": "Name one Aeye surface that can still bypass boot context."
+    },
+    {
+      "id": "event_spine",
+      "label": "Event spine",
+      "attack_question": "Can packet, event, receipt, artifact, and next action join by id?",
+      "required_evidence": "Name the join that would fail first under stress."
+    },
+    {
+      "id": "cockpit_readback",
+      "label": "Cockpit readback",
+      "attack_question": "Can Ben return after four hours and see state without reconstructing the thread?",
+      "required_evidence": "Name the one screen or field still missing."
+    },
+    {
+      "id": "secret_and_human_gates",
+      "label": "Secret and human gates",
+      "attack_question": "Do secrets, provider dashboards, deploy, money, and legal gates stay human-owned?",
+      "required_evidence": "Name one gate that must never be automated silently."
+    },
+    {
+      "id": "minimal_mvp",
+      "label": "Minimal MVP",
+      "attack_question": "What is the smallest build that proves momentum?",
+      "required_evidence": "Choose one: contract canon, event join, boot enforcement, receiver proof, cockpit readback."
+    },
+    {
+      "id": "manuscript_balance",
+      "label": "Manuscript balance",
+      "attack_question": "Does the prose preserve myth without overclaiming the machinery?",
+      "required_evidence": "Mark one sentence to keep and one sentence to cut or quarantine in appendix."
+    }
+  ],
+  "fatal_flags": [
+    "Claims real-time shared Aeye consciousness without a falsifiable mechanism.",
+    "Treats a prompt, watcher, or classifier as containment.",
+    "Treats sender-side packet write as delivery proof.",
+    "Treats transport ACK as receiver work completion.",
+    "Routes secrets through chat, logs, or source files.",
+    "Lets stale world-state become current truth.",
+    "Requires Ben to keep being the clipboard or message bus after claiming otherwise.",
+    "Cannot produce a next legal command from the cockpit."
+  ],
+  "return_block": {
+    "header": "MACK SCORECARD RETURN",
+    "fields": [
+      "status",
+      "overall_score_0_to_36",
+      "central_claim_score",
+      "cooperation_model_score",
+      "custody_spine_score",
+      "contract_canon_score",
+      "gate_model_score",
+      "receiver_proof_score",
+      "boot_context_score",
+      "event_spine_score",
+      "cockpit_readback_score",
+      "secret_and_human_gates_score",
+      "minimal_mvp_score",
+      "manuscript_balance_score",
+      "strongest_objection",
+      "highest_risk_fake_success_path",
+      "first_momentum_build",
+      "must_change_before_book",
+      "optional_later"
+    ]
+  },
+  "conversion_rule": {
+    "ACCEPT": "Next build packet may preserve the current sequence and choose the first momentum build.",
+    "REVISE": "Next build packet must include must_change_before_book items as acceptance criteria.",
+    "REJECT": "No next-build packet should be generated until Ben explicitly accepts a replacement architecture direction.",
+    "ben_gate_required": true
+  }
+}

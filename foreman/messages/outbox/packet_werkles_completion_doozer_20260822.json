@@ -1,0 +1,12 @@
+{
+  "packet_id": "packet_werkles_completion_doozer_20260822",
+  "origin_surface": "Werkles Foreman",
+  "origin_card_id": "werkles_completion_campaign_functional_hands_20260822",
+  "target_aeye": "Doozer",
+  "target_machine": "Betsy",
+  "payload": {
+    "task_text": "Doozer: personally pull foreman/handoffs/outbox/TO_DOOZER_WERKLES_COMPLETION_HANDS_20260822.md. Inspect the current running journey and return the strongest bounded functional vertical slice, exact file ownership, collision risks, acceptance tests, and rollback boundary. Wait for Petra/Computer before judgment-heavy implementation; do not mistake packet receipt for completed work. Return to foreman/handoffs/inbox/FROM_DOOZER_WERKLES_COMPLETION_HANDS_20260822.md. No new task/subagent/environment, provider, secret, SQL/schema/RLS, production mutation, push, merge, or deploy."
+  },
+  "status": "QUEUED",
+  "created_at": "2026-08-22T07:30:00-04:00"
+}

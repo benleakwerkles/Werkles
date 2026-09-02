@@ -20,10 +20,10 @@ for (const [name, source, banned] of [
 }
 
 for (const [name, source, required] of [
-  ["Intake recovery", intake, ["Continue where you left off", "saved in this browser on this device, not to your Werkles account", "Continue with my last Intake"]],
+  ["Intake recovery", intake, ["Continue where you left off", "saved only in this browser profile, not to your Werkles account", "another browser or device will not have it", "Continue with my last Intake"]],
   ["Login return", login, ["Account sign-in is not connected here yet", "practice member work saved in this browser"]],
   ["Evidence Brief", evidence, ["Next check or outside review"]],
-  ["Intake form", intakeForm, ["Saved in this browser only", "until account saving is connected"]]
+  ["Intake form", intakeForm, ["Saved only in this browser profile", "another browser or device will not have it"]]
 ]) {
   for (const phrase of required) {
     if (!source.includes(phrase)) failures.push(`${name} is missing plain-language phrase: ${phrase}`);

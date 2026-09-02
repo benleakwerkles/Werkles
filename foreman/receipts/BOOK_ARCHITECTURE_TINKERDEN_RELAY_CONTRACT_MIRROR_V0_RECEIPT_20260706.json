@@ -1,0 +1,117 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T06:00:24.868Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_relay_ready_mr8t9pue_3vkkme",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0_RECEIPT_20260706",
+  "source_packet": "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_FOR_BEN_AND_MACK_20260706.md",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-contract-relay-smoke.mjs",
+  "files_changed": [
+    "lib/tinkerden-return-system-v0/store.ts",
+    "app/api/tinkerden/packet-relay/route.ts",
+    "scripts/foreman/tinkerden-contract-relay-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RELAY_CONTRACT_MIRROR_V0_RECEIPT_20260706.json"
+  ],
+  "runtime_artifacts_written": [
+    "tinkerden/dispatch/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "data/tinkerden/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+    "data/tinkerden/executions/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "data/organism/receipt_pickup.jsonl",
+    "foreman/soledash/tinkerden-return-system-v0/state.json",
+    "data/organism/events.jsonl",
+    "data/organism/contracts/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+    "data/organism/contracts/events.jsonl",
+    "data/organism/contracts/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+    "data/organism/contracts/events.jsonl"
+  ],
+  "validation": {
+    "tsc_compile": "passed",
+    "legacy_tinkerden_packet_written": true,
+    "legacy_tinkerden_receipt_written": true,
+    "canonical_execution_record_written": true,
+    "contract_packet_mirror_written": true,
+    "contract_receipt_mirror_written": true,
+    "contract_packet_schema": "harvey_nerdkle_packet_v0",
+    "contract_receipt_schema": "harvey_nerdkle_receipt_v0",
+    "contract_packet_dispatched_event": true,
+    "contract_packet_receipted_event": true,
+    "truth_boundary": "Relay custody proof does not claim downstream Aeye completion."
+  },
+  "contract_write": {
+    "packet": {
+      "ok": true,
+      "artifact_path": "data/organism/contracts/packets/td_packet_relay_ready_mr8t9pue_3vkkme.json",
+      "event_path": "data/organism/contracts/events.jsonl",
+      "sha256": "93225ab6263c58aa8d4d88a379162b499cd6358dcc53d9349f5957382e4c2737"
+    },
+    "receipt": {
+      "ok": true,
+      "artifact_path": "data/organism/contracts/receipts/td_receipt_packet_relay_mr8t9pue_uy2du4.json",
+      "event_path": "data/organism/contracts/events.jsonl",
+      "sha256": "f8641982ed2cad9ffea10ed664789ddc028cb4a4063c18044c0c6c5d629ded88"
+    }
+  },
+  "contract_file_hashes": [
+    {
+      "path": "lib/tinkerden-return-system-v0/store.ts",
+      "sha256": "0bbdab29c375e7ec580ad11db2fd97c005a67925c84e9df0262420277bf9e1af",
+      "bytes": 41467
+    },
+    {
+      "path": "lib/tinkerden-return-system-v0/types.ts",
+      "sha256": "235d7ff8d806269f9289ddc23f1ff702fa862221138e8a6c8436864bba87612f",
+      "bytes": 2280
+    },
+    {
+      "path": "lib/tinkerden/execution-records.ts",
+      "sha256": "0335e97a226e024606155dec1e037094fc28c1a2cf7819f34d3f87154b349c54",
+      "bytes": 7886
+    },
+    {
+      "path": "lib/organism/contracts/packet.ts",
+      "sha256": "f0e6032b45fff8d6d96b5d486a7b8266402090b7485a85a513078bc61be256c0",
+      "bytes": 4261
+    },
+    {
+      "path": "lib/organism/contracts/receipt.ts",
+      "sha256": "416731c25f727574fa4c34a0befe579d68b69f9d4aade6919fe6a1b29697c6e6",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/organism/contracts/event.ts",
+      "sha256": "a44c50c7b75b2f0d7b85a9ffef3db3d87a5582d99049cd6c2b632c5725032214",
+      "bytes": 3386
+    },
+    {
+      "path": "lib/organism/contracts/storage.ts",
+      "sha256": "fe049df6b11e041dec714d19f4f7228cc1cf0c9bc9cdae42f9e56fb438d097a4",
+      "bytes": 8625
+    },
+    {
+      "path": "app/api/tinkerden/packet-relay/route.ts",
+      "sha256": "c460a09f1e7da911a1371489223a184e102f59b43b6913e17dc287a9aa7bc979",
+      "bytes": 7433
+    },
+    {
+      "path": "scripts/foreman/tinkerden-contract-relay-smoke.mjs",
+      "sha256": "ea14e38ea97479c9b4639a73e9ef83c406290df3387d07424fe020e3f21dca15",
+      "bytes": 9909
+    }
+  ],
+  "compile": {
+    "stdout": "",
+    "stderr": ""
+  },
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no clipboard mutation",
+    "no workspace focus"
+  ],
+  "next_safe_action": "Mirror the bridge-execute lane into the same contract store, then surface contract_write paths in the TinkerDen UI."
+}

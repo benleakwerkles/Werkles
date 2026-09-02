@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-08-23T18:42:12.003Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "status": "FAIL",
+  "routes": 1,
+  "uniqueInternalDestinations": 10,
+  "visibleLinks": 13,
+  "visibleButtons": 32,
+  "visibleDisclosures": 0,
+  "failures": [
+    "/dashboard/werkles/formation?candidate=ghost_095: 1 apparently inert buttons"
+  ],
+  "routeResults": [
+    {
+      "name": "formation",
+      "route": "/dashboard/werkles/formation?candidate=ghost_095",
+      "status": 200,
+      "links": [
+        {
+          "label": "Werkles home",
+          "href": "http://127.0.0.1:3000/",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Six lanes on the floor",
+          "href": "http://127.0.0.1:3000/#lanes",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Four-act journey",
+          "href": "http://127.0.0.1:3000/spark",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Inspect the steel",
+          "href": "http://127.0.0.1:3000/proof",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Squibb hosts the floor",
+          "href": "http://127.0.0.1:3000/bellows",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Foundry membership",
+          "href": "http://127.0.0.1:3000/membership",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Sign in",
+          "href": "http://127.0.0.1:3000/login",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Discover what you need",
+          "href": "http://127.0.0.1:3000/bellows/intake",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Start comparing Workshops",
+          "href": "http://127.0.0.1:3000/dashboard/werkles/formation?candidate=ghost_095#formation-table",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Back to Match Deck",
+          "href": "http://127.0.0.1:3000/dashboard/intros",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Use the Partnership Alignment questions",
+          "href": "http://127.0.0.1:3000/bellows/personal/partnership-alignment",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Open the Personal Bellows handoff",
+          "href": "http://127.0.0.1:3000/bellows/personal/partnership-alignment",
+          "target": "",
+          "download": false
+        },
+        {
+          "label": "Return to Match Deck",
+          "href": "http://127.0.0.1:3000/dashboard/intros",
+          "target": "",
+          "download": false
+        }
+      ],
+      "buttonCount": 32,
+      "summaryCount": 0,
+      "malformedLinks": [],
+      "inertButtons": [
+        {
+          "index": 28,
+          "label": "Build the Operating Brief",
+          "type": "button",
+          "disabled": false,
+          "ariaPressed": null,
+          "ariaExpanded": null,
+          "ariaCurrent": null,
+          "selected": false,
+          "html": "<button class=\"button button-dark\" type=\"button\">Build the Operating Brief</button>",
+          "reason": "click failed: locator.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:visible').nth(28)\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" class=\"button button-dark\">Accept revision 1</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m  5 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b"
+        }
+      ],
+      "inertSummaries": [],
+      "runtimeErrors": []
+    }
+  ],
+  "destinationResults": [
+    {
+      "href": "/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/bellows",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/bellows/intake",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/bellows/personal/partnership-alignment",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/dashboard/intros",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/dashboard/werkles/formation?candidate=ghost_095",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/login",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/membership",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/proof",
+      "status": 200,
+      "location": null
+    },
+    {
+      "href": "/spark",
+      "status": 200,
+      "location": null
+    }
+  ]
+}

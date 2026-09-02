@@ -1,0 +1,78 @@
+﻿{
+    "schema":  "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_BLOCK_HELPER_UPDATE_RECEIPT",
+    "status":  "ARTIFACT",
+    "timestamp":  "2026-07-06T11:10:11.6519480Z",
+    "machine":  "BETSY",
+    "agent":  "Heimerdinker@Betsy",
+    "packet_id":  "MACK_HARVEY_NERDKLE_ARCHITECTURE_TEAR_APART_20260706",
+    "receipt_id":  "BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_BLOCK_HELPER_UPDATE_RECEIPT_20260706",
+    "repo":  "C:\\Users\\Ben Leak\\github\\Werkles",
+    "mission":  "Index and verify the Mack paste-block clipboard helper so Ben can copy the exact Mack block without manually selecting text.",
+    "validation":  {
+                       "index_lists_paste_block_helper":  true,
+                       "index_lists_paste_block_helper_receipt":  true,
+                       "index_next_human_gate_points_to_copy_helper":  true,
+                       "readiness_verifier_requires_paste_block_helper":  true,
+                       "paste_block_helper_dry_run_passed":  true,
+                       "paste_block_helper_clipboard_write_requires_copy_switch":  true,
+                       "paste_block_helper_copy_committed":  false,
+                       "paste_block_line_count":  118,
+                       "paste_block_first_line":  "Mack, tear this architecture apart.",
+                       "paste_block_includes_connection_map_paths":  true,
+                       "paste_block_includes_attack_scorecard_paths":  true,
+                       "paste_block_includes_scorecard_return_contract":  true,
+                       "mack_return_not_received_preserved":  true,
+                       "mack_scorecard_return_not_received_preserved":  true,
+                       "external_send_not_claimed":  true,
+                       "canonical_next_build_packet_absent":  true,
+                       "truth_boundary":  "This receipt proves the local copy helper can extract the Mack paste block and that clipboard mutation requires -Copy. It does not send anything to Mack and does not claim Mack returned review or scorecard."
+                   },
+    "file_hashes":  [
+                        {
+                            "path":  "foreman/source_material/manuscript_workbench/tinkularity/architecture/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_20260706.md",
+                            "sha256":  "BFF7A756DD253021E6A08B655543CCECED272918621C00FA1A794478FE0E4E38",
+                            "bytes":  43035
+                        },
+                        {
+                            "path":  "scripts/foreman/mack-architecture-review-desk-readiness.mjs",
+                            "sha256":  "25DC5EA98AB91256E17CFFEC472F7B7AFFCB909B2EB97ACEFEB21F8F402D35A1",
+                            "bytes":  173523
+                        },
+                        {
+                            "path":  "scripts/foreman/Copy-MackArchitecturePasteBlock.ps1",
+                            "sha256":  "AE6BC3CF908B26E750F5F3090C281BE3FC40178A5B6F852EBFDC487C7723793A",
+                            "bytes":  5317
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_PASTE_BLOCK_CLIPBOARD_RECEIPT_20260706.json",
+                            "sha256":  "0C892253697E80F9A1F4C608F4585C46E302489B7AA079B66863AFB751883D7A",
+                            "bytes":  2688
+                        },
+                        {
+                            "path":  "foreman/receipts/BOOK_ARCHITECTURE_REVIEW_PACKET_INDEX_PASTE_PACKET_UPDATE_RECEIPT_20260706.json",
+                            "sha256":  "7BF21FB3D1E254A44FB6EB9F46F8A750C7C41F9A6D3F052EC7A47C00EB7C9FB5",
+                            "bytes":  6644
+                        },
+                        {
+                            "path":  "scripts/foreman/Open-MackArchitectureReviewDesk.ps1",
+                            "sha256":  "DD79ED9FFFA0493376DA85CCF3FCB303A50DBDEAB1515E284C986110CDA8F37D",
+                            "bytes":  5523
+                        },
+                        {
+                            "path":  "foreman/receipts/MACK_ARCHITECTURE_REVIEW_DESK_LAUNCHER_RECEIPT_20260706.json",
+                            "sha256":  "75625B97ECDDD0E26719E50B851F71FCD06EC488711B1FE578B96F2D35F4A89F",
+                            "bytes":  14397
+                        }
+                    ],
+    "stop_conditions_respected":  [
+                                      "no deploy",
+                                      "no push",
+                                      "no secrets",
+                                      "no production mutation",
+                                      "no external send claim",
+                                      "no Mack receipt claim",
+                                      "no Mack scorecard receipt claim",
+                                      "no clipboard mutation without -Copy",
+                                      "no canonical next-build packet generated"
+                                  ]
+}

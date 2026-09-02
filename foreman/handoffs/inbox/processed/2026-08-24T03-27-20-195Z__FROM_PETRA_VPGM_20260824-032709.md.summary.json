@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T03:27:20.195Z",
+  "file": "FROM_PETRA_VPGM_20260824-032709.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "M17 Petra integration matrix and exact cross-review order adopted; Gate 05 HOLD.",
+  "auto_merge": false
+}

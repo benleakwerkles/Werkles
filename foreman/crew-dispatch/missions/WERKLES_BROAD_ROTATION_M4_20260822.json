@@ -1,0 +1,65 @@
+{
+  "missionId": "WERKLES_BROAD_ROTATION_M4",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Broad member-loop rotation across Member Home and Workshop continuity, Bellows return value, provider/build readiness, human rhythm, and matching-to-Formation trust.",
+  "sharedContext": [
+    "Public Bellows is now a catalog rather than a duplicate full-lesson dump.",
+    "Formation can derive a First Shared Step only from current exact wording accepted by both sides.",
+    "Match Deck can hide practice profiles for the current tab without changing ranking or profile state.",
+    "Crucible names the next build and human gate for eight providers; no provider call is authorized.",
+    "The production build is blocked by webpack scanning a locked live CBCC browser profile inside foreman; do not kill or move that profile in this mission.",
+    "No outgoing packet is a receipt. No push, deploy, provider action, credentials, SQL/schema/RLS, production mutation, paid call, new task, subagent, secondary model, or environment is authorized."
+  ],
+  "liveStrings": [
+    "Member Home",
+    "Workshop",
+    "My Bellows",
+    "What moves this forward",
+    "First Shared Step"
+  ],
+  "knownGaps": [
+    "Member Home and Workshop may not yet explain where private work ends and a shared Werkle begins.",
+    "Personal Bellows return value is device-local until account custody is implemented.",
+    "Provider cards describe readiness but most provider actions remain scaffolded, sandbox-only, or gated.",
+    "Several member routes may still be text-and-bubble heavy or written in internal vocabulary.",
+    "The production build is blocked by webpack context discovery touching a locked live CBCC browser profile inside the repository."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Judge whether the current member loop is coherent and sellable rather than a collection of polished rooms.",
+      "pull": "Inspect Member Home, Workshop, Match Deck, Formation, Personal Bellows, Crucible, and Membership transitions.",
+      "go": ["Return the three highest-leverage cross-route acceptance failures.", "Name what should be merged or removed instead of expanded.", "Seed exact Ender, Bean, and hands review order."],
+      "momentum": "Return JOURNEY_ROTATION_READY or BLOCKED.",
+      "outOfLane": "Review only; no code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or gate approval."
+    },
+    "SKYBRO": {
+      "vision": "Make Bellows and Workshop create enough revisitable value to earn a membership.",
+      "pull": "Attack return value, useful artifacts, learning sequence, and movement from solo Workshop into a shared Werkle.",
+      "go": ["Design two substantial return loops using current source truth.", "Give one complete free success and a graceful paid continuation.", "Nominate exact Bean, Ender, and Computer reviews."],
+      "momentum": "Return RETURN_VALUE_READY or BLOCKED.",
+      "outOfLane": "No code, provider action, paid call, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "ENDER": {
+      "vision": "Keep member routes visually grounded, legible, conversational, and obvious about the next action.",
+      "pull": "Walk Member Home, Workshop, Membership, Personal Bellows, and Crucible at desktop and narrow width.",
+      "go": ["Return five route-specific human consequences, not taste adjectives.", "Separate button confusion from information-bubble problems.", "Give Lady Jessica and Doozer bounded hands briefs plus a re-walk."],
+      "momentum": "Return HUMAN_RHYTHM_READY or BLOCKED.",
+      "outOfLane": "No code, provider action, secrets, SQL, push, deploy, new task, subagent, secondary model, or final creative approval."
+    },
+    "BEAN": {
+      "vision": "Prevent continuity, saved work, matching, Formation, and provider readiness from making false account, consent, or authority claims.",
+      "pull": "Attack what persists, who can see it, what changes rank, what becomes shared, and what provider state is claimed.",
+      "go": ["Return only P0/P1 cross-route failures with executable invariants.", "Attack the exact-source and tab-only boundaries already implemented.", "Seed post-build regression and visible-proof requirements."],
+      "momentum": "Return TRUST_ROTATION_READY, PASS_WITH_CONDITIONS, or BLOCK.",
+      "outOfLane": "No code, provider action, legal approval, secrets, SQL, push, deploy, new task, subagent, or secondary model."
+    },
+    "COMPUTER": {
+      "vision": "Separate real functionality, device-only behavior, scaffolds, and human gates while finding small slices that strengthen several routes.",
+      "pull": "Audit Member Home/Workshop state, Bellows return state, provider readiness, and the locked-profile build failure against actual source paths.",
+      "go": ["Return three source-bound ungated vertical slices.", "Classify the build blocker without recommending process termination or profile movement.", "Give Doozer an implementation contract and Foreman a verification plan."],
+      "momentum": "Return TECHNICAL_ROTATION_READY, NEEDS_FACT_CHECK, or BLOCKED.",
+      "outOfLane": "No code, provider call, secrets, SQL/schema/RLS, push, deploy, new task, subagent, or secondary model."
+    }
+  }
+}

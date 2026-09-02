@@ -1,0 +1,55 @@
+{
+  "missionId": "RECOMMENDATION_SOLUTION_CANDIDATE_REVIEW_ACTUAL_CBCC",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Attack the local candidate built from your Recommendation-to-Solution review. Review only; report defects that should block the next member walkthrough.",
+  "sharedContext": [
+    "All 12 option kinds now have distinct three-step playbooks, distinct three-field artifacts, a Bellows lesson link, and comparison criteria.",
+    "The selected option can build a live working draft, save it in sessionStorage for this browser tab, restore it after reload, and copy it. It explicitly says the draft is not account-saved, shared, or independently verified.",
+    "Strengthen your case is now Strengthen your evidence. Clarify the next step is now Choose the next decision.",
+    "Strengthen your evidence now says Build an evidence brief someone can actually inspect and produces an Evidence brief with Business hypothesis, Current supporting fact, and Biggest gap and test.",
+    "No provider names, price, availability, rank, sponsorship, affiliate relationship, or endorsement was added. The page says no provider is ranked and lists the evidence future comparisons require.",
+    "Focused solution-path, navigation, mobile rail, contrast, and TypeScript proofs pass. Browser proof filled, saved, reloaded, and restored all three artifact fields."
+  ],
+  "liveStrings": [
+    "Strengthen your evidence",
+    "Build an evidence brief someone can actually inspect.",
+    "Turn the idea into useful work",
+    "Build your evidence brief",
+    "Save in this browser tab",
+    "Copy working draft",
+    "Member-authored and not independently verified.",
+    "Open the Bellows lesson",
+    "No provider is ranked here yet. Future results must show sources, location fit, last-checked date, price limits, and whether Werkles is paid."
+  ],
+  "knownGaps": [
+    "This is browser-tab storage, not durable account custody.",
+    "The comparison seam intentionally contains criteria, not real providers.",
+    "The Bellows library has four existing lessons, not yet a complete curriculum for every option.",
+    "No provider call, research adapter, profile mutation, transaction, introduction, SQL, push, or deploy occurred."
+  ],
+  "cousins": {
+    "BEAN": {
+      "vision": "Prove this candidate adds useful work without creating new trust debt.",
+      "pull": "Attack artifact claims, storage/custody wording, professional-advice boundaries, provider-comparison disclosure, and any route that could launder completion into skill or proof.",
+      "go": [
+        "Judge whether the Evidence brief and all stated boundaries satisfy your prior claim ladder or identify exact P0/P1 defects.",
+        "Attack the new sessionStorage and copy behavior for misleading custody, sensitive-data, stale-draft, or cross-option risks.",
+        "Attack the provider-comparison scaffold for fake neutrality, implied future ranking, sponsorship ambiguity, or claims that still need to fail closed."
+      ],
+      "momentum": "Return PASS or BLOCK with the smallest exact repair and one regression test.",
+      "outOfLane": "No code, visual styling, provider outreach, SQL, push, deploy, or commercial invention."
+    },
+    "COMPUTER": {
+      "vision": "Prove the candidate has a defensible own-IP → Bellows → resource-comparison architecture.",
+      "pull": "Attack whether the option-specific artifacts are substantively different, whether Bellows links fit the task, and whether future research criteria are sufficient to support a useful provider shortlist.",
+      "go": [
+        "Judge Strengthen your evidence, equipment, credit union, training, and partner paths for specificity and real outcome value.",
+        "Identify any option whose artifact or Bellows bridge is still a generic mismatch.",
+        "Judge the visible comparison criteria and disclosure against the research contract you returned; name missing fields that should block future providers."
+      ],
+      "momentum": "Return PASS or BLOCK with the smallest exact repair and one source/freshness regression test.",
+      "outOfLane": "No new provider recommendations, outreach, spend, SQL, push, deploy, or unsourced claims."
+    }
+  }
+}

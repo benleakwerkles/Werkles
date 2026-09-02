@@ -19,6 +19,7 @@ Integration: `foreman/speaker/GD_SPEAKER_CONSTITUTIONAL_INTEGRATION_V0.md`
 | `DRAFT_20260608-ai-compression-soul-loss` | DRAFT | AI Compression / Soul Loss | 2026-06-08 | compression, causality |
 | `DRAFT_20260607-human-adaptation-thesis` | DRAFT | Human Adaptation Thesis | 2026-06-07 | operator, becoming |
 | `DRAFT_20260619-tinkerden-return-system-v0` | DRAFT | TinkerDen Return System V0 | 2026-06-19 | tinkerden, receipt, return-loop, speaker |
+| `DRAFT_20260816-review-first-is-state-not-memory` | DRAFT | Review First Is State, Not Memory | 2026-08-16 | cbcc, foreman, review-first, operator-load, visual-proof |
 
 Paths: `foreman/speaker/entries/<id>.md`
 
@@ -43,6 +44,9 @@ _None yet._
 | thread summary / slogan replaces cause | AI Compression |
 | auto-send / auto-ratify | Aeye Life Overseer, Thread Registry |
 | packet without receipt / aeye handoff disappears | TinkerDen Return System V0 |
+| current-slice build begins before actual CBCC returns | Review First Is State, Not Memory |
+| packet sent is described as review received | Review First Is State, Not Memory |
+| automated checks substitute for visual review | Review First Is State, Not Memory |
 
 ---
 

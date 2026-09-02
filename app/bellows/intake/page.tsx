@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { LocalAwareSiteHeader } from "@/components/foundry/local-aware-site-header";
 import { ConciergeIntakeForm } from "@/components/squibb/concierge-intake-form";
-import { isGhostFleetEnabled } from "@/lib/ghost-fleet/enabled";
 import { readLatestSpeakerIntakeForOwner } from "@/lib/squibb/concierge-intake-storage";
 import { readBellowsOwnerIdFromCookies } from "@/lib/squibb/bellows-owner-session";
 import { EMPTY_INTAKE_ANSWERS, type ConciergeIntakeAnswers } from "@/lib/squibb/concierge-intake-v0";
@@ -18,9 +17,7 @@ export default async function ConciergeIntakePage() {
   const ownerId = await readBellowsOwnerIdFromCookies();
   const recoverableLocalIntake = ownerId
     ? await readLatestSpeakerIntakeForOwner(ownerId)
-    : isGhostFleetEnabled()
-      ? await readLatestSpeakerIntakeForOwner("member_dev-preview-user")
-      : null;
+    : null;
   const initialAnswers = recoverableLocalIntake?.packet.symptoms.reduce<ConciergeIntakeAnswers>(
     (next, symptom) => ({ ...next, [symptom.id]: symptom.answer }),
     { ...EMPTY_INTAKE_ANSWERS }
@@ -29,7 +26,7 @@ export default async function ConciergeIntakePage() {
   return (
     <>
       <LocalAwareSiteHeader />
-      <main className="bellows-main narrative-act-page workshop-route--bellows concierge-intake-page">
+      <main className="bellows-main narrative-act-page route-room route-room--bellows workshop-route--bellows concierge-intake-page">
 
         <section className="panel concierge-intake-page__guide" aria-labelledby="intakeGuideTitle">
           <div className="concierge-intake-page__guide-copy">
@@ -59,7 +56,7 @@ export default async function ConciergeIntakePage() {
             <p className="eyebrow">Continue where you left off</p>
             <h2 id="localRecoveryTitle">Your last Intake is still here.</h2>
             <p>Pick up where you stopped without typing it again.</p>
-            <p>This recovery copy is saved in this browser on this device, not to your Werkles account.</p>
+            <p>This recovery copy is saved only in this browser profile, not to your Werkles account. Clearing browser data removes it, and another browser or device will not have it.</p>
             <form action="/api/bellows/intake/recover-local" method="post">
               <button className="button button-dark" type="submit">Continue with my last Intake</button>
             </form>

@@ -89,7 +89,7 @@ export function AmbientLayer({
       <MonitorDoctrineStrip />
 
       <div className="sd-ambient__hero">
-        <p className="sd-ambient__hero-label">What needs Ben</p>
+        <p className="sd-ambient__hero-label">What needs Operator</p>
         <p className="sd-ambient__hero-code">{frontierLabel}</p>
         <p className="sd-ambient__hero-title">{frontierTitle}</p>
         <p className={`sd-ambient__posture sd-ambient__posture--${postureTone}`}>
@@ -182,7 +182,7 @@ export function LeavePointTracker({
 
   return (
     <section className="sd-leave" aria-label="Leave point tracker">
-      <h2 className="sd-leave__title">Why did Ben leave SoleDash?</h2>
+      <h2 className="sd-leave__title">Why did Operator leave SoleDash?</h2>
       <p className="sd-leave__hint">Every leave-point becomes Phase 0 food.</p>
       <div className="sd-leave__reasons">
         {(Object.keys(LEAVE_REASON_LABELS) as LeavePointReason[]).map((reason) => (

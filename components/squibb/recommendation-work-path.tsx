@@ -70,7 +70,7 @@ export function RecommendationWorkPath({ kind, title, intakeFacts = [] }: Recomm
       const normalized = normalizeRecommendationDraft(kind, draft);
       if (!normalized) throw new Error("Invalid device draft");
       window.localStorage.setItem(storageKey, JSON.stringify(normalized));
-      setStatus("Saved on this device. It is not saved to your Werkles account or shared with anyone.");
+      setStatus("Saved only in this browser profile. Clearing browser data removes it, and another browser or device will not have it.");
     } catch {
       setStatus("This browser blocked the save. Your draft is still visible on this page.");
     }
@@ -165,7 +165,7 @@ export function RecommendationWorkPath({ kind, title, intakeFacts = [] }: Recomm
             </label>
           ))}
           <div className="squibb-work-path__actions">
-            <button type="button" onClick={saveDraft}>Save on this device</button>
+            <button type="button" onClick={saveDraft}>Save in this browser</button>
             <button type="button" className="squibb-work-path__copy" onClick={copyDraft}>Copy Draft to Clipboard</button>
             <button type="button" className="squibb-work-path__clear" onClick={clearDraft}>Clear this draft</button>
           </div>

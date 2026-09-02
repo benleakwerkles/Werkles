@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harvey/Nerdkle Architecture Review Packet</title>
+  <style>
+    :root { color-scheme: light; --ink: #172033; --muted: #5b6474; --line: #d8dde6; --accent: #1f5f8b; --soft: #f4f7fb; }
+    body { margin: 0; background: #eef2f7; color: var(--ink); font: 16px/1.58 Arial, sans-serif; }
+    main { max-width: 980px; margin: 32px auto; padding: 42px; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 55px rgba(23, 32, 51, .12); }
+    h1 { margin: 0 0 8px; font-size: 2.3rem; line-height: 1.08; color: #0b2545; }
+    h2 { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--accent); }
+    h3 { margin-top: 24px; color: #1f4d78; }
+    p { margin: 0 0 13px; }
+    ul, ol { margin-top: 0; padding-left: 1.55rem; }
+    li { margin-bottom: 6px; }
+    blockquote { margin: 18px 0; padding: 16px 20px; border-left: 5px solid var(--accent); background: var(--soft); font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 24px; font-size: .92rem; }
+    th, td { border: 1px solid var(--line); padding: 9px 10px; vertical-align: top; }
+    th { background: #f2f4f7; text-align: left; }
+    code { padding: 1px 4px; border-radius: 4px; background: #eef1f5; font-family: Consolas, monospace; font-size: .93em; }
+    pre { overflow-x: auto; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #111827; color: #eef2ff; white-space: pre-wrap; }
+    pre code { padding: 0; background: transparent; color: inherit; }
+    .small { color: var(--muted); font-size: .92rem; }
+  </style>
+</head>
+<body>
+<main>
+<h1>Harvey/Nerdkle Architecture Review Packet</h1>
+<p class="small">Status: REVIEW PACKET V0.2</p>
+<p class="small">Date: 2026-07-06</p>
+<p class="small">Prepared by: Heimerdinker@Betsy</p>
+<p class="small">Prepared for: Ben, then Mack</p>
+<p>Source chapter: PART I - THE GREAT PLAN / Chapter One: The Message Bus</p>
+<p>Primary stack lock: <code>BOOK_ARCHITECTURE_STACK_LOCK_V0_20260706.md</code></p>
+<h2>Why This Exists</h2>
+<p>Ben is not asking for more beautiful language. The prose already carries the mythic charge: the human should not remain the message bus, the clipboard, the transport wire, or the exhausted keeper of context between disconnected tools.</p>
+<p>The job here is to turn that prose into an architecture that can survive attack. It needs to be readable by Ben before it goes to Mack. It needs to show my actual input, not just a flattened summary. It needs to make clear where the system is real today, where it is still packeted and partial, and what has to be built next so the Aeyes can gain momentum without Ben babysitting every handoff.</p>
+<p>Bottom line: the architecture is not &quot;make the Aeyes magically cooperate in real time.&quot; The architecture is &quot;give isolated, truncated Aeyes a shared operational nervous system: source truth, packets, gates, ledgers, receipts, and visible readback.&quot;</p>
+<h2>Review Entry Points For Ben And Mack</h2>
+<p>If you are using the Mack review desk, start with <code>MACK_ARCHITECTURE_REVIEW_DESK_READOUT_20260706.md</code>; it is the current front door and proof-count source. Then read this prose packet and inspect the living proof surface. The cockpit now separates operator handoffs from synthetic smoke-test scaffolding so Mack can attack the architecture without having to mentally filter test records.</p>
+<p>Recommended local review links while the Werkles dev server is running:</p>
+<ul>
+  <li>Bridge, operator-only scope: <code>http://127.0.0.1:3000/tinkerden?handoff_provenance=operator</code></li>
+  <li>Receipts, operator-only scope: <code>http://127.0.0.1:3000/tinkerden/receipts?handoff_provenance=operator</code></li>
+  <li>Bridge, all proof including smoke scaffolding: <code>http://127.0.0.1:3000/tinkerden</code></li>
+  <li>Receipts, all proof including smoke scaffolding: <code>http://127.0.0.1:3000/tinkerden/receipts</code></li>
+</ul>
+<p>Current receiver-handoff proof state on 2026-07-06:</p>
+<ul>
+  <li>19 total handoffs indexed.</li>
+  <li>1 operator handoff visible in operator-only scope.</li>
+  <li>18 synthetic proof handoffs retained for smoke-test auditability.</li>
+  <li>6 posted, 9 pending, 3 ready-to-post, 1 template-return-blocked.</li>
+  <li>0 invalid and 0 malformed.</li>
+</ul>
+<p>The operator-only links are the humane default for Ben and Mack. The synthetic scope remains available when someone wants to audit the proof scaffolding itself.</p>
+<h2>My Blunt Read</h2>
+<p>The strongest idea in the chapter is not that an inorganic consciousness is imminent. The strongest idea is that current human-computer work makes the human serve as missing infrastructure.</p>
+<p>That claim is technically credible. Modern tools can exchange data, but they do not reliably share custody, context, authority, or proof. The human keeps becoming the missing bridge.</p>
+<p>The dangerous overclaim is &quot;seamless cooperation&quot; if we let that phrase mean continuous shared mind. Today&#x27;s Aeyes do not have that. They have truncated context windows, partial tool access, uneven memory, and brittle handoffs.</p>
+<p>The buildable version is stronger:</p>
+<blockquote>Aeyes cooperate when they share source truth, packet custody, stop rules, and receipts. They do not need one merged mind. They need one auditable body-state.</blockquote>
+<p>This keeps the science-fiction reach while protecting the architecture from fake success.</p>
+<h2>Architecture In One Page</h2>
+<p>The Harvey/Nerdkle stack should be a governed nervous system.</p>
+<ol>
+  <li>Ben sets intent.</li>
+  <li>TinkerDen or SoleDash captures that intent as a packet.</li>
+  <li>The packet declares lane, owner, source paths, allowed actions, stop conditions, and receipt requirements.</li>
+  <li>A gate checks whether the next mutation is allowed.</li>
+  <li>A message bus moves custody to the right Aeye, app, or machine.</li>
+  <li>The receiving Aeye loads shared boot context before acting.</li>
+  <li>The executor acts only inside the allowed lane.</li>
+  <li>Every terminal state writes a receipt.</li>
+  <li>Watchers append events when packets, receipts, handoffs, or source truth change.</li>
+  <li>The cockpit shows the current state so Ben can return later without reconstructing the thread.</li>
+</ol>
+<p>The whole system can be summarized like this:</p>
+<pre><code class="language-text">Intent -&gt; Packet -&gt; Gate -&gt; Bus -&gt; Boot Context -&gt; Bounded Execution -&gt; Receipt -&gt; Ledger -&gt; Readback</code></pre>
+<p>The hard rule:</p>
+<pre><code class="language-text">No receipt, no completed custody transfer.</code></pre>
+<h2>What Has To Connect</h2>
+<table>
+<thead><tr><th>Layer</th><th>App or surface</th><th>Language/runtime</th><th>Role in cooperation</th></tr></thead>
+<tbody>
+<tr><td>Operator cockpit</td><td>TinkerDen / SoleDash</td><td>TypeScript, React, Next.js, CSS</td><td>Capture intent, display gates, packets, receipts, blockers, and next actions</td></tr>
+<tr><td>API layer</td><td>Next.js route handlers</td><td>TypeScript on Node.js</td><td>Turn UI actions into structured packet, receipt, gate, and readback operations</td></tr>
+<tr><td>Command intake</td><td>Medulla Command Surface</td><td>Markdown, JSON schemas</td><td>Define command and receipt lifecycle: <code>ACK</code>, <code>BLOCKER</code>, or <code>ARTIFACT</code></td></tr>
+<tr><td>Packet relay</td><td>TinkerDen packet/workspace relay</td><td>TypeScript, Node.js</td><td>Move custody to target Aeye, machine, or workspace</td></tr>
+<tr><td>Receiver</td><td>TinkerDen machine runner</td><td>Node.js</td><td>Receive packet, focus/set clipboard where allowed, write receiver-side receipt</td></tr>
+<tr><td>Event spine</td><td>Chokidar watcher</td><td>Node.js, Chokidar</td><td>Detect file-backed reality changes and append JSONL events</td></tr>
+<tr><td>Boot context</td><td>Tinkarden nervous system</td><td>Node.js CommonJS</td><td>Compile raw doctrine, frontier, world state, and shared state before Aeye calls</td></tr>
+<tr><td>Aeye wrapper</td><td>Aeye client</td><td>Node.js, provider HTTP APIs, SQLite</td><td>Inject Speaker bootpack and log calls before display</td></tr>
+<tr><td>Causal memory</td><td>Speaker</td><td>Markdown, JSON, JSONL</td><td>Preserve lessons and warnings without taking executive hands</td></tr>
+<tr><td>Reality sensor</td><td>Wormeyes / world state</td><td>Node.js, JSON</td><td>Report machine, repo, branch, ports, dirty state, and blockers</td></tr>
+<tr><td>Source truth</td><td>Foreman source-truth pointers</td><td>JSON, Git</td><td>Declare canonical remote, local checkout, branch rules, and promotion boundaries</td></tr>
+<tr><td>Gates</td><td>Foreman / Human Gates</td><td>Markdown, JSON</td><td>Separate safe mechanical work from true human-only authority</td></tr>
+<tr><td>Secret custody</td><td>1Password Desktop/CLI</td><td>PowerShell, op refs</td><td>Keep credentials out of chat, logs, and source files</td></tr>
+<tr><td>Product state</td><td>Supabase Postgres/Auth</td><td>SQL, TypeScript</td><td>Durable product state, auth, and RLS-bound user data</td></tr>
+<tr><td>Deployment</td><td>Vercel</td><td>Next.js, Node.js</td><td>Host public surfaces after explicit human gate</td></tr>
+<tr><td>Provider integrations</td><td>Stripe, Plaid, Twilio, Checkr, PostHog</td><td>HTTP APIs, webhooks</td><td>Produce scoped provider receipts, not raw sensitive storage</td></tr>
+<tr><td>Source custody</td><td>Git/GitHub</td><td>Git</td><td>Preserve code truth, diffs, branch history, and promotion decisions</td></tr>
+<tr><td>Browser workbench</td><td>Chrome / provider dashboards</td><td>Browser UI, optional Playwright/Chrome control</td><td>Navigate dashboards up to human-only gates without making Ben hunt menus</td></tr>
+</tbody></table>
+<h2>Languages And Protocols</h2>
+<p>The architecture is not one language. It is a treaty between languages.</p>
+<ul>
+  <li>TypeScript carries product UI, API contracts, route handlers, and typed packet/receipt readers.</li>
+  <li>React carries the cockpit, receipt drawer, gate panels, and status readback.</li>
+  <li>Node.js carries watchers, runners, bootloaders, source-truth scripts, and provider wrappers.</li>
+  <li>PowerShell carries Windows local control, 1Password sessions, imports, and machine audits.</li>
+  <li>JSON carries packets, receipts, source-truth pointers, machine state, and manifests.</li>
+  <li>JSONL carries append-only events, delivery records, receipt pickup, and call logs.</li>
+  <li>Markdown carries human-readable packets, handoffs, gate reviews, manuscript architecture, and receipts.</li>
+  <li>SQL/Postgres carries durable indexed product state when file-backed ledgers need queryability.</li>
+  <li>SQLite can carry local circulation/audit logs where a local database is enough.</li>
+  <li>HTML/CSS carries static proof pages, easy review packets, and cockpit proof surfaces.</li>
+  <li>HTTP/REST carries Next APIs, provider APIs, and machine-runner endpoints.</li>
+  <li>Webhooks carry external provider state back into the receipt layer.</li>
+  <li>Git carries source history, branch truth, and promotion evidence.</li>
+  <li>1Password op refs carry secrets without printing them into logs or chat.</li>
+</ul>
+<p>The elegance is not that all languages disappear. The elegance is that every language gets one job and every job returns proof.</p>
+<h2>Contracts That Make It Real</h2>
+<h3>Packet</h3>
+<p>A packet is not a prompt. A prompt asks for language. A packet transfers custody.</p>
+<p>Minimum packet fields:</p>
+<ul>
+  <li>packet id;</li>
+  <li>sender and receiver;</li>
+  <li>lane;</li>
+  <li>operator intent;</li>
+  <li>source paths and hashes;</li>
+  <li>current working directory;</li>
+  <li>requested action;</li>
+  <li>allowed actions;</li>
+  <li>forbidden actions;</li>
+  <li>stop conditions;</li>
+  <li>acceptance criteria;</li>
+  <li>receipt destination;</li>
+  <li>expiry or stale window.</li>
+</ul>
+<p>If a task cannot be packetized, it cannot safely be routed yet.</p>
+<h3>Gate</h3>
+<p>A gate is the boundary between intention and mutation.</p>
+<p>The safe formulation remains:</p>
+<pre><code class="language-text">Classifier decides. Policy narrows. OS enforces. Receipts prove.</code></pre>
+<p>A prompt is not containment. A watcher is not containment. A classifier is not containment. The gate must either enforce the boundary or admit that it cannot.</p>
+<h3>Receipt</h3>
+<p>A receipt is the system telling the truth after action or attempted action.</p>
+<p>Valid terminal states:</p>
+<ul>
+  <li>completed;</li>
+  <li>partial;</li>
+  <li>blocked;</li>
+  <li>source missing;</li>
+  <li>breach denied;</li>
+  <li>interrupted;</li>
+  <li>superseded;</li>
+  <li>needs human gate.</li>
+</ul>
+<p>Success is not the only legitimate output. A clean blocker is a useful output. A source-missing receipt is a useful output. A breach-denied receipt is a sign that the system protected the boundary.</p>
+<h3>Event</h3>
+<p>An event is a timestamped change in file-backed reality.</p>
+<p>The current event spine watches packet, receipt, handoff, message, and Speaker paths. The next required improvement is to normalize packet id and receipt id extraction so the cockpit can join the chain without filename guessing.</p>
+<h3>Boot Context</h3>
+<p>An Aeye that does not load shared context is not a collaborator. It is an isolated contractor.</p>
+<p>Boot context must include:</p>
+<ul>
+  <li>core doctrine;</li>
+  <li>current frontier;</li>
+  <li>source-truth pointer;</li>
+  <li>local machine and repo readback;</li>
+  <li>active packets in flight;</li>
+  <li>latest relevant receipts;</li>
+  <li>Speaker bootpack;</li>
+  <li>explicit gates and forbidden actions.</li>
+</ul>
+<p>This is how the system starts resembling a nervous system without pretending every Aeye has one continuous mind.</p>
+<h2>Current Reality</h2>
+<p>Already real in the repo:</p>
+<ul>
+  <li>Next.js, React, and TypeScript product surfaces.</li>
+  <li>File-backed packet, receipt, handoff, source-truth, and event folders.</li>
+  <li>TinkerDen packet relay normalization.</li>
+  <li>Workspace relay API with runner HTTP/CLI fallback.</li>
+  <li>Medulla command lifecycle and receipt lifecycle doctrine.</li>
+  <li>Chokidar watcher over handoffs, messages, receipts, Speaker entries, and TinkerDen receipts.</li>
+  <li>Nervous-system bootloader and Aeye provider wrapper.</li>
+  <li>Speaker memory doctrine and source files.</li>
+  <li>Foreman gates and source-truth pointers.</li>
+  <li>1Password PowerShell tooling for secret custody.</li>
+</ul>
+<p>Not yet seamless:</p>
+<ul>
+  <li>Packet, receipt, event, gate, and boot-context schemas are not centralized as one enforced contract.</li>
+  <li>Event logs are append-only, but joins across packet id, receipt id, and source path are uneven.</li>
+  <li>Some state files are stale and must be refreshed before boot.</li>
+  <li>Aeye provider wrappers exist, but not every external Aeye surface is forced through them.</li>
+  <li>Receiver-side proof exists in specific relay paths, but the rule is not universal yet.</li>
+  <li>The UI has receipt surfaces, but not one canonical cockpit for every packet, owner, gate, event, and receipt.</li>
+  <li>Supabase/Postgres is available for product state, but organism cooperation still mainly uses local files and JSONL.</li>
+</ul>
+<h2>My Recommended Build Sequence</h2>
+<h3>1. Contract Canon</h3>
+<p>Build shared TypeScript contracts for packet, receipt, event, gate, and boot context.</p>
+<p>Proposed repo anchors:</p>
+<ul>
+  <li><code>lib/organism/contracts/packet.ts</code></li>
+  <li><code>lib/organism/contracts/receipt.ts</code></li>
+  <li><code>lib/organism/contracts/event.ts</code></li>
+  <li><code>lib/organism/contracts/gate.ts</code></li>
+  <li><code>lib/organism/contracts/boot-context.ts</code></li>
+</ul>
+<p>Acceptance check: invalid packets return <code>SCHEMA_INVALID</code> with a receipt; valid packets can be joined to receipts by id.</p>
+<h3>2. Event Spine Normalization</h3>
+<p>Extend the Chokidar watcher so every relevant event extracts packet id, receipt id, source hash, event type, and destination.</p>
+<p>Acceptance check: create a packet file, create a receipt file, and see dispatch plus receipt joined by id in the event stream.</p>
+<h3>3. Boot Context Refresh</h3>
+<p>Refresh world state before boot. Block stale world-state reuse. Require Aeye provider wrappers to load boot context or Speaker bootpack before calls.</p>
+<p>Acceptance check: dry-run provider call proves bootpack injection before response; stale world-state returns <code>blocked</code> or <code>source_missing</code>.</p>
+<h3>4. Receiver Proof Everywhere</h3>
+<p>Make receiver-side proof mandatory across TinkerDen, SoleDash, Nerdkle, and workspace relay paths.</p>
+<p>Acceptance check: sender-side write stays <code>receipt_pending</code>; receiver blocker closes <code>blocked</code>; artifact closes <code>completed</code> only when artifact path exists.</p>
+<h3>5. Cockpit Readback</h3>
+<p>Build one operator-facing state panel that shows active packets, owners, gates, latest event, receipt state, stale lanes, and next safe actions.</p>
+<p>Acceptance check: Ben can see one packet, who owns it, whether it is blocked, and what proof exists without reading logs.</p>
+<h3>6. Durable Index</h3>
+<p>Keep human-readable files as source, but index packet/event/receipt chains into SQLite locally or Supabase Postgres when queryability matters.</p>
+<p>Acceptance check: one query returns packet -&gt; events -&gt; receipt -&gt; artifacts -&gt; next action.</p>
+<h2>Where Ben Is Part Of The Process</h2>
+<p>Ben should not have to babysit basic work. But Ben still owns taste, ends, risk appetite, and final language.</p>
+<p>I need Ben to review these choices:</p>
+<ol>
+  <li>Is &quot;governed nervous system&quot; the right technical metaphor, or should the book use a colder phrase like &quot;custody bus&quot; or &quot;operational transport layer&quot;?</li>
+  <li>Is &quot;Aeyes share body-state, not one mind&quot; the cleanest way to avoid fake consciousness claims?</li>
+  <li>Should Chapter One mention actual organs like TinkerDen, Speaker, Wormeyes, and Medulla, or should those stay in appendix/architecture companion files?</li>
+  <li>What is the acceptable first proof of momentum: schema contracts, event normalization, or cockpit readback?</li>
+  <li>Should Mack attack the technical architecture only, or also the prose/myth balance?</li>
+</ol>
+<p>My recommendation: keep the main chapter light. Put detailed organs in appendix/companion files. Let Chapter One carry packets, gates, ledgers, receipts, and human sovereignty. Let the architecture docs name the real stack.</p>
+<h2>Mack Tear-Apart Brief</h2>
+<p>Give Mack this brief with permission to be hard on it.</p>
+<p>Before Mack starts: have Mack open the operator-only Bridge or Receipts link first. That is the clearest view of the real review burden. The synthetic records are not hidden; they are just moved out of the default reading path so the critique can focus on the architecture instead of test noise.</p>
+<h3>What Mack Should Attack</h3>
+<ol>
+  <li>Attack the central claim.</li>
+</ol>
+<ul>
+  <li>Is &quot;human as message bus&quot; true enough to carry the chapter?</li>
+  <li>Is &quot;shared custody, context, authority, and proof&quot; sharper than &quot;tools do not communicate&quot;?</li>
+</ul>
+<ol>
+  <li>Attack the cooperation model.</li>
+</ol>
+<ul>
+  <li>Does &quot;shared body-state, not shared mind&quot; solve the real-time cooperation problem?</li>
+  <li>Where does packeted cooperation still fail compared with a real decentralized nervous system?</li>
+</ul>
+<ol>
+  <li>Attack the stack.</li>
+</ol>
+<ul>
+  <li>Which organs are necessary?</li>
+  <li>Which organs are decorative?</li>
+  <li>Which connections are too brittle?</li>
+  <li>Which layer should be deleted first?</li>
+</ul>
+<ol>
+  <li>Attack the safety model.</li>
+</ol>
+<ul>
+  <li>Is &quot;classifier decides, policy narrows, OS enforces, receipts prove&quot; enough?</li>
+  <li>Where can the system still loop destructively?</li>
+  <li>Where can it fake success?</li>
+  <li>Where can it leak secrets?</li>
+</ul>
+<ol>
+  <li>Attack the proof model.</li>
+</ol>
+<ul>
+  <li>Are packet, receipt, event, and boot-context contracts enough?</li>
+  <li>What fields are missing?</li>
+  <li>What should count as proof?</li>
+  <li>What should never count as proof?</li>
+</ul>
+<ol>
+  <li>Attack the build sequence.</li>
+</ol>
+<ul>
+  <li>What is the smallest real MVP?</li>
+  <li>What can be falsified in a weekend?</li>
+  <li>What should be delayed until there is a visible cockpit?</li>
+</ul>
+<h3>What Mack Should Return</h3>
+<p>Ask Mack to return four things:</p>
+<ol>
+  <li>The strongest objection.</li>
+  <li>The simplest viable architecture.</li>
+  <li>The highest-risk fake-success path.</li>
+  <li>The first build that would create observable momentum without Ben babysitting it.</li>
+</ol>
+<p>Preferred return format:</p>
+<pre><code class="language-text">MACK REVIEW RETURN
+status: ACCEPT | REVISE | REJECT
+strongest_objection:
+simplest_viable_architecture:
+highest_risk_fake_success_path:
+first_momentum_build:
+must_change_before_book:
+optional_later:</code></pre>
+<h2>Proposed Manuscript Insertion</h2>
+<p>Use this only if Ben wants one tight bridge inside Chapter One:</p>
+<pre><code class="language-text">The actual architecture is not mystical. It is a set of connected organs that agree on custody.
+
+The cockpit captures human intent. The packet names the work. The gate decides whether the next mutation is allowed. The message bus moves custody to a receiver. The receiver loads shared context before acting. The executor works only inside its lane. The receipt tells the truth about what happened. The ledger remembers. The watcher wakes the cockpit when reality changes. Speaker preserves the lesson without taking the wheel.
+
+That is how isolated Aeyes begin to cooperate without pretending they share one continuous mind. They do not become seamless because their language model windows magically merge. They become cooperative because they share source truth, packet custody, stop rules, and receipts. The elegance is not in a machine claiming certainty. The elegance is in every part of the system knowing when to move, when to stop, and how to prove the difference.</code></pre>
+<h2>Red Lines For All Aeyes</h2>
+<ul>
+  <li>Do not call a packet write delivery proof.</li>
+  <li>Do not call a <code>SENT</code> state completion.</li>
+  <li>Do not call filesystem custody receiver proof.</li>
+  <li>Do not let a prompt or classifier pretend to be containment.</li>
+  <li>Do not route secrets through chat or logs.</li>
+  <li>Do not let stale world-state become current truth.</li>
+  <li>Do not let Speaker execute, route, or overwrite source truth.</li>
+  <li>Do not let product provider actions cross human gates without explicit approval.</li>
+  <li>Do not claim real-time cooperation until packet, event, receipt, and cockpit readback all join by id.</li>
+</ul>
+<h2>No-Babysitting Operating Rule</h2>
+<p>When Ben gives a direction, Aeyes should keep moving inside the approved lane until one of these happens:</p>
+<ul>
+  <li>a true human gate appears;</li>
+  <li>a source is missing;</li>
+  <li>the lane boundary is unclear;</li>
+  <li>a command risks secrets, money, public exposure, production data, push/merge/deploy, destructive mutation, or legal/compliance approval;</li>
+  <li>the next action would fake success.</li>
+</ul>
+<p>Everything else should produce an artifact, receipt, or blocker. Do not stop at &quot;here is what I would do.&quot; Build the next durable thing and leave proof.</p>
+<h2>First Momentum Packet</h2>
+<p>If Ben approves this direction, the next local work packet should be:</p>
+<pre><code class="language-text">PACKET_ID: BOOK_ARCHITECTURE_CONTRACT_CANON_V0
+MISSION: Create shared organism contracts for packet, receipt, event, gate, and boot context.
+LANE: Harvey/Nerdkle architecture, local repo only.
+FILES:
+- lib/organism/contracts/packet.ts
+- lib/organism/contracts/receipt.ts
+- lib/organism/contracts/event.ts
+- lib/organism/contracts/gate.ts
+- lib/organism/contracts/boot-context.ts
+- scripts/foreman/organism-contracts-smoke.mjs
+ACCEPTANCE:
+- Valid packet parses.
+- Invalid packet returns SCHEMA_INVALID.
+- Receipt requires packet_id and terminal status.
+- Event can join packet_id and receipt_id.
+- Smoke test writes a receipt.
+RETURN:
+- artifact paths
+- smoke command
+- receipt path
+STOP:
+- no deploy
+- no push
+- no secrets
+- no production mutation</code></pre>
+<p>That is the first piece that creates compounding momentum instead of another round of explanation.</p>
+</main>
+</body>
+</html>

@@ -588,7 +588,7 @@ export function DuckCommandStrip({
           relayCards,
           decisionReceipt,
           approvals: {},
-          approver: "Ben"
+          approver: "Operator"
         })
       ),
     [view.machine_label, mergedReceipts, relayCards, decisionReceipt]

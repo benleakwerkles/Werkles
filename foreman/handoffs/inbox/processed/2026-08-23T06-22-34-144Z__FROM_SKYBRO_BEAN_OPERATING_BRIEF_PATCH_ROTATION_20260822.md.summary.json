@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-23T06:22:34.145Z",
+  "file": "FROM_SKYBRO_BEAN_OPERATING_BRIEF_PATCH_ROTATION_20260822.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "SKYBRO",
+  "consumed_by": "FOREMAN",
+  "note": "Read now; value-under-empty-state guidance already reflected in current Brief. Not counted as current release review.",
+  "auto_merge": false
+}

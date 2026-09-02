@@ -4,6 +4,7 @@ param(
   [ValidateSet("Prompt", "RetryApp", "SkipApp", "ContinueWorkspace")]
   [string]$AutoAction = "Prompt",
   [switch]$NoRelaunch,
+  [string]$Producer = "Heimerdinker@Betsy",
   [string]$LauncherPath = "$env:LOCALAPPDATA\PowerToys\PowerToys.WorkspacesLauncher.exe",
   [string]$WorkspaceFile = "$env:LOCALAPPDATA\Microsoft\PowerToys\Workspaces\workspaces.json"
 )
@@ -439,7 +440,7 @@ function Write-WorkspaceLaunchReceipt($params) {
     schema = "powertoys_workspaces_proof_loop_receipt_v1"
     receipt_id = $receiptId
     mission = "WORKSPACES_PROOF_LOOP_V1"
-    producer = "Dink@Betsy"
+    producer = $Producer
     status_guess = $params.status_guess
     timestamp = $timestamp
     proof_reference = $proofReference
@@ -462,7 +463,7 @@ function Write-WorkspaceLaunchReceipt($params) {
   $pickup = [pscustomobject]@{
     receipt_id = $receiptId
     mission = "WORKSPACES_PROOF_LOOP_V1"
-    producer = "Dink@Betsy"
+    producer = $Producer
     status_guess = $params.status_guess
     timestamp = $timestamp
     path = $proofReference

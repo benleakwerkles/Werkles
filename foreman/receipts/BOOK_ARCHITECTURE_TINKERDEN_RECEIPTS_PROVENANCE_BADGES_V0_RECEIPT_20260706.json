@@ -1,0 +1,336 @@
+{
+  "schema": "BOOK_ARCHITECTURE_TINKERDEN_RECEIPTS_PROVENANCE_BADGES_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T07:46:27.592Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+  "receipt_id": "BOOK_ARCHITECTURE_TINKERDEN_RECEIPTS_PROVENANCE_BADGES_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/tinkerden-receipts-provenance-badges-smoke.mjs",
+  "files_changed": [
+    "lib/organism/contracts/receiver-handoff-index.ts",
+    "app/tinkerden/receipts/page.tsx",
+    "app/globals.css",
+    "scripts/foreman/tinkerden-receipts-provenance-badges-smoke.mjs",
+    "foreman/receipts/BOOK_ARCHITECTURE_TINKERDEN_RECEIPTS_PROVENANCE_BADGES_V0_RECEIPT_20260706.json"
+  ],
+  "validation": {
+    "api_records_have_synthetic_fields": true,
+    "browser_cards_match_api_synthetic_flags": true,
+    "browser_badges_match_api_synthetic_count": true,
+    "synthetic_record_count": 16,
+    "operator_record_count": 1,
+    "browser_total_cards": 17,
+    "browser_synthetic_cards": 16,
+    "handoff_count_before": 17,
+    "handoff_count_after": 17,
+    "posted_count_after": 6,
+    "pending_count_after": 7,
+    "returned_unposted_count_after": 3,
+    "template_return_blocked_count_after": 1,
+    "invalid_count_after": 0,
+    "malformed_count_after": 0,
+    "truth_boundary": "Synthetic proof badges are read-only provenance labels. They mark smoke, fixture, and synthetic proof bundles so they do not visually masquerade as operator or separate-Aeye work."
+  },
+  "synthetic_records": [
+    {
+      "bundle_id": "receipts_ready_post_success_mr8wiiud",
+      "state": "posted",
+      "receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+      "returned_receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "receipts_ready_post_success_mr8wh3fq",
+      "state": "posted",
+      "receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+      "returned_receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "receipts_ready_post_success_mr8wbgm7",
+      "state": "posted",
+      "receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+      "returned_receiver": "ReceiptsReadyPostSuccessSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+      "state": "posted",
+      "receiver": "Maker@Betsy",
+      "returned_receiver": "Maker@Betsy",
+      "synthetic_reason": "receipt_text_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_fill_return_blocker_mr8v71ia",
+      "state": "pending_receiver",
+      "receiver": "ReceiverFillReturnControlSmoke@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_fill_return_control_mr8v71ia",
+      "state": "returned_unposted",
+      "receiver": "ReceiverFillReturnControlSmoke@Betsy",
+      "returned_receiver": "ReceiverFillReturnControlSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_fill_return_blocker_mr8v5sqy",
+      "state": "pending_receiver",
+      "receiver": "ReceiverFillReturnControlSmoke@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_fill_return_control_mr8v5sqy",
+      "state": "returned_unposted",
+      "receiver": "ReceiverFillReturnControlSmoke@Betsy",
+      "returned_receiver": "ReceiverFillReturnControlSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "fill_return_template_blocker_mr8v2omm",
+      "state": "pending_receiver",
+      "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "fill_return_api_smoke_mr8v2omm",
+      "state": "returned_unposted",
+      "receiver": "ReceiverFillReturnApiSmoke@Betsy",
+      "returned_receiver": "ReceiverFillReturnApiSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_post_template_return_blocker_mr8uytjj",
+      "state": "template_return_blocked",
+      "receiver": "ReceiverPostReturnBlockerSmoke@Betsy",
+      "returned_receiver": "ReceiverPostReturnBlockerSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_post_missing_return_blocker_mr8uytjj",
+      "state": "pending_receiver",
+      "receiver": "ReceiverPostReturnBlockerSmoke@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "ui_post_return_smoke_mr8uvxbq",
+      "state": "posted",
+      "receiver": "ReceiverPostReturnSmoke@Betsy",
+      "returned_receiver": "ReceiverPostReturnSmoke@Betsy",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "state": "pending_receiver",
+      "receiver": "ReceiverCreateApiLiveSmoke@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+      "state": "pending_receiver",
+      "receiver": "ReceiverCreateApiHelperSmoke@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "bundle_id_marks_smoke_or_fixture"
+    },
+    {
+      "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+      "state": "posted",
+      "receiver": "ReceiverHandoffFixture@Betsy",
+      "returned_receiver": "ReceiverHandoffReturnFixture@Betsy",
+      "synthetic_reason": "receiver_marks_smoke_or_fixture"
+    }
+  ],
+  "operator_records": [
+    {
+      "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8unhs2",
+      "state": "pending_receiver",
+      "receiver": "Maker@Betsy",
+      "returned_receiver": "UNKNOWN",
+      "synthetic_reason": "operator_handoff"
+    }
+  ],
+  "browser_readback": {
+    "path": "/tinkerden/receipts",
+    "total_cards": 17,
+    "synthetic_cards": 16,
+    "provenance_badges": 16,
+    "cards": [
+      {
+        "bundle_id": "ui_fill_return_control_mr8v71ia",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "ui_fill_return_control_mr8v5sqy",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "fill_return_api_smoke_mr8v2omm",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "ui_post_template_return_blocker_mr8uytjj",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "ui_fill_return_blocker_mr8v71ia",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "ui_fill_return_blocker_mr8v5sqy",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "fill_return_template_blocker_mr8v2omm",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "ui_post_missing_return_blocker_mr8uytjj",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8unhs2",
+        "synthetic_proof": false,
+        "synthetic_reason": "operator_handoff",
+        "badge_present": false,
+        "badge_text": "",
+        "badge_reason": ""
+      },
+      {
+        "bundle_id": "api_create_live_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "api_create_helper_smoke_BOOK_ARCHITECTURE_API_WRITE_PATHS_V0",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "receipts_ready_post_success_mr8wiiud",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "receipts_ready_post_success_mr8wh3fq",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "receipts_ready_post_success_mr8wbgm7",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov_mr8v9frn",
+        "synthetic_proof": true,
+        "synthetic_reason": "receipt_text_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "receipt_text_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "ui_post_return_smoke_mr8uvxbq",
+        "synthetic_proof": true,
+        "synthetic_reason": "bundle_id_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "bundle_id_marks_smoke_or_fixture"
+      },
+      {
+        "bundle_id": "td_packet_bridge_execute_mr8te4jp_srhdov",
+        "synthetic_proof": true,
+        "synthetic_reason": "receiver_marks_smoke_or_fixture",
+        "badge_present": true,
+        "badge_text": "SYNTHETIC PROOF",
+        "badge_reason": "receiver_marks_smoke_or_fixture"
+      }
+    ],
+    "playwright_browser_executable": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+  },
+  "file_hashes": [
+    {
+      "path": "lib/organism/contracts/receiver-handoff-index.ts",
+      "sha256": "5e75d74a466f1cafddeb4d380ca42b88d4982a4f57c3bdd78daa9ff8a93b55f5",
+      "bytes": 12194
+    },
+    {
+      "path": "app/tinkerden/receipts/page.tsx",
+      "sha256": "1c6667fc10bb5f53f34dd1ff1a84dc4325f75f2f05b286a8a8624269614826fc",
+      "bytes": 28580
+    },
+    {
+      "path": "app/globals.css",
+      "sha256": "dc9e7c7e91a578555b30d8675a9c3e717bdcee3111f79f53a7443218b0b14d97",
+      "bytes": 233140
+    },
+    {
+      "path": "scripts/foreman/tinkerden-receipts-provenance-badges-smoke.mjs",
+      "sha256": "4c9d9bcb21a1833eaba6f0a3e19fdead0311b728f4cbd26a4cdb81c33fc45d95",
+      "bytes": 12573
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no handoff created",
+    "no returned receipt filled",
+    "no contract receipt posted"
+  ],
+  "next_safe_action": "Add a filter control on Receipts to hide synthetic proof bundles when Ben wants to review only operator or separate-Aeye work."
+}

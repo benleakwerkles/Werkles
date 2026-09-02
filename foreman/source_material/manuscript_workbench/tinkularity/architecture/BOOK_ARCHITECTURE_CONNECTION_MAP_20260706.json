@@ -1,0 +1,128 @@
+{
+  "schema": "BOOK_ARCHITECTURE_CONNECTION_MAP_V0",
+  "status": "COMPANION_ARTIFACT",
+  "date": "2026-07-06",
+  "lane": "Harvey/Nerdkle architecture review",
+  "truth_boundary": {
+    "claims": [
+      "Aeyes can cooperate through shared body-state, custody, gates, and receipts.",
+      "The local architecture companion exists as Markdown, HTML, JSON, and Mermaid.",
+      "The map is indexable by readiness and healthcheck."
+    ],
+    "does_not_claim": [
+      "Mack has reviewed the architecture",
+      "Mack has returned a receipt",
+      "Universal receiver proof exists",
+      "Continuous shared Aeye cognition is solved",
+      "Production deployment occurred"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "ben_intent",
+      "label": "Ben intent",
+      "kind": "human_authority",
+      "runtimes": ["human_review"],
+      "writes": ["operator_intent"]
+    },
+    {
+      "id": "operator_cockpit",
+      "label": "TinkerDen / SoleDash cockpit",
+      "kind": "operator_surface",
+      "runtimes": ["React", "TypeScript", "Next.js"],
+      "writes": ["packet_candidate", "readback_request"]
+    },
+    {
+      "id": "next_api",
+      "label": "Next.js API routes",
+      "kind": "api_layer",
+      "runtimes": ["TypeScript", "Node.js"],
+      "writes": ["packet", "receipt", "readback"]
+    },
+    {
+      "id": "contract_canon",
+      "label": "Contract canon",
+      "kind": "schema_layer",
+      "runtimes": ["TypeScript"],
+      "writes": ["validated_packet", "validated_receipt", "validated_event", "validated_gate"]
+    },
+    {
+      "id": "gate",
+      "label": "Gate",
+      "kind": "authority_boundary",
+      "runtimes": ["TypeScript", "Markdown policy", "OS permissions"],
+      "writes": ["ACK", "BLOCKER", "ARTIFACT"]
+    },
+    {
+      "id": "relay",
+      "label": "Packet and workspace relay",
+      "kind": "custody_transport",
+      "runtimes": ["Node.js", "JSON"],
+      "writes": ["dispatch_record", "pending_receipt"]
+    },
+    {
+      "id": "boot_context",
+      "label": "Boot context",
+      "kind": "shared_body_state",
+      "runtimes": ["Node.js CommonJS", "Markdown", "JSON"],
+      "reads": ["world_state", "source_truth", "speaker_bootpack", "latest_receipts"]
+    },
+    {
+      "id": "receiver",
+      "label": "Receiver Aeye / machine runner",
+      "kind": "execution_receiver",
+      "runtimes": ["Node.js", "PowerShell"],
+      "writes": ["receiver_receipt", "artifact", "blocker"]
+    },
+    {
+      "id": "bounded_tools",
+      "label": "Bounded tools",
+      "kind": "execution_surface",
+      "runtimes": ["Git", "PowerShell", "browser UI", "provider APIs", "SQL"],
+      "writes": ["artifact", "screenshot", "provider_receipt", "blocked_gate"]
+    },
+    {
+      "id": "receipt_writer",
+      "label": "Receipt writer",
+      "kind": "truth_layer",
+      "runtimes": ["JSON", "Markdown", "JSONL"],
+      "writes": ["terminal_receipt"]
+    },
+    {
+      "id": "event_spine",
+      "label": "Event spine",
+      "kind": "change_observer",
+      "runtimes": ["Node.js", "Chokidar", "JSONL"],
+      "writes": ["packet_dispatched", "packet_receipted", "source_changed"]
+    },
+    {
+      "id": "cockpit_readback",
+      "label": "Cockpit readback",
+      "kind": "human_visible_state",
+      "runtimes": ["React", "Next.js", "HTML", "Markdown"],
+      "writes": ["next_legal_action"]
+    }
+  ],
+  "edges": [
+    { "from": "ben_intent", "to": "operator_cockpit", "contract": "intent_capture", "proof": "visible packet preview or blocker" },
+    { "from": "operator_cockpit", "to": "next_api", "contract": "http_route", "proof": "API response plus receipt path" },
+    { "from": "next_api", "to": "contract_canon", "contract": "schema_validation", "proof": "valid ids join or SCHEMA_INVALID" },
+    { "from": "contract_canon", "to": "gate", "contract": "allowed_actions", "proof": "ACK, BLOCKER, or ARTIFACT" },
+    { "from": "gate", "to": "relay", "contract": "custody_transfer", "proof": "sender receipt remains pending until receiver returns" },
+    { "from": "relay", "to": "boot_context", "contract": "receiver_preload", "proof": "stale or missing context blocks work" },
+    { "from": "boot_context", "to": "receiver", "contract": "bounded_execution", "proof": "receiver-side receipt" },
+    { "from": "receiver", "to": "bounded_tools", "contract": "lane_limited_action", "proof": "artifact, screenshot, command output, or blocker" },
+    { "from": "bounded_tools", "to": "receipt_writer", "contract": "terminal_state", "proof": "completed, partial, blocked, source_missing, or breach_denied" },
+    { "from": "receipt_writer", "to": "event_spine", "contract": "event_append", "proof": "packet and receipt ids become joinable" },
+    { "from": "event_spine", "to": "cockpit_readback", "contract": "state_projection", "proof": "owner, state, blocker, and next action visible" },
+    { "from": "cockpit_readback", "to": "ben_intent", "contract": "human_resume", "proof": "Ben can resume without reconstructing the thread" }
+  ],
+  "next_join": "packet_id -> gate_decision -> dispatch_event -> receiver_receipt -> artifact_hash -> next_legal_action",
+  "stop_rules": [
+    "no receipt, no completed custody transfer",
+    "sender-side write is not receiver proof",
+    "transport ACK is not receiver work completion",
+    "stale boot context blocks work",
+    "human gates remain human gates"
+  ]
+}

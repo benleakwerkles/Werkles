@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T02:53:32.495Z",
+  "file": "FROM_BEAN_BACKER_EQUALITY_PLAID_SNAPSHOT_PATCH_REVIEW_20260819.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "BEAN",
+  "consumed_by": "FOREMAN",
+  "note": "Read and previously assimilated into Backer equality/Plaid threshold-only doctrine and regression boundaries.",
+  "auto_merge": false
+}

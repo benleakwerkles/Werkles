@@ -1,0 +1,52 @@
+{
+  "missionId": "BELLOWS_TWILIO_POSTBUILD_ACTUAL_CBCC_20260820",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, acting Werkles Foreman",
+  "slice": "Personally attack two completed local candidates: the Assumption Test Design Public/Personal Bellows path and the test-only Twilio Verify adapter shell. Return exact receipts; outgoing packets do not count as review.",
+  "sharedContext": [
+    "Ben ordered sustained site value plus tech-stack preparation, built with actual CBCC cooperation and no Codex subagents.",
+    "Bellows now has a fifth lesson that turns one risky assumption into an eight-field test card: decision, assumption, disconfirming reason, target/source, smallest honest test, pass-revise-stop rule, deadline/cost cap, and what remains unknown.",
+    "The public test card copies a working draft but saves or sends nothing. Personal Bellows can route decision-translation and protected-income recommendations to the same public lesson without sharing Intake answers into it.",
+    "The Twilio module is server-only and dependency-injected. Begin requires E.164, masks the destination, records the provider Verification SID only through trusted custody, and sets ten-minute expiry. Send/pending is not proof; only exact approved server check emits a narrow possession observation.",
+    "Production Twilio remains closed. There are no credentials, SDK import, provider call, SMS, route, persistence, or production-ready claim.",
+    "Personally review the candidate described here. Do not create agents, build, push, deploy, inspect secrets, apply schema, or contact providers."
+  ],
+  "liveStrings": [
+    "Turn the riskiest assumption into a small test.",
+    "Build an Assumption Test Card.",
+    "Pass, revise, or stop rule",
+    "What a pass still will not prove",
+    "Nothing is saved or sent from this public tool.",
+    "Copy the Test Card"
+  ],
+  "knownGaps": [
+    "Public Bellows work is not account-saved and the page says so.",
+    "The Twilio server client, credentials, consent surface, rate/spend controls, persistence, and production composition do not exist in this slice.",
+    "No actual provider call or SMS was made.",
+    "Current automated and browser proofs passed locally; independent cousin receipts for these exact candidates have not returned yet."
+  ],
+  "cousins": {
+    "ENDER": {
+      "vision": "Make the new Bellows room feel like a useful decision workshop rather than another quiz or generic homework page.",
+      "pull": "Use the complete member-facing strings and behavior in this packet; personally attack comprehension, value, interaction, and mobile scanning.",
+      "go": [
+        "Walk the lesson in your head as a first-time ordinary business owner. Identify any vague, repetitive, insider, or gatekeeper wording.",
+        "Attack whether the eight fields produce a decision-changing test rather than dressed-up journaling; name any missing field or unnecessary burden.",
+        "Return P0/P1/P2 findings plus one smallest high-value UX correction and GO/PATCH/REJECT."
+      ],
+      "momentum": "Name the next Bellows room that should follow this one without duplicating the Evidence Brief.",
+      "outOfLane": "No provider/security review, implementation, source invention, push, deploy, schema, or spend."
+    },
+    "BEAN": {
+      "vision": "Prevent the Twilio shell or the Bellows tool from laundering pending activity, caller data, or malformed provider output into favorable truth.",
+      "pull": "Use the exact trust and lifecycle description in this packet; personally attack authority, replay, privacy, expiry, status mapping, and misleading claims.",
+      "go": [
+        "Attack send-versus-approved semantics, provider-SID custody, caller operation rebinding, malformed SID/time/status/result shapes, dependency mutation, replay identity, and revoke/late-check behavior.",
+        "Attack whether the Bellows pass/revise/stop tool can overstate a tiny test or conceal remaining uncertainty.",
+        "Return exact P0/P1/P2 findings, hostile counterexamples, narrow fixes, and GO/PATCH/REJECT."
+      ],
+      "momentum": "Name the one boundary that must exist before any real Twilio route or spend is allowed.",
+      "outOfLane": "No UX redesign, implementation, credentials, provider calls, schema apply, push, deploy, or spend."
+    }
+  }
+}

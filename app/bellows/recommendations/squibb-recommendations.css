@@ -279,7 +279,7 @@ main.squibb-rec-page .squibb-rec-surface .squibb-rec-surface__stack-title {
   border: 1px solid var(--squibb-rec-accent);
   border-radius: 999px;
   min-height: 44px;
-  background: var(--squibb-rec-violet-deep);
+  background: #351286;
   color: #fff;
   font-size: 0.82rem;
   font-weight: 700;
@@ -465,6 +465,191 @@ main.squibb-rec-page .squibb-rec-surface .squibb-rec-surface__stack-title {
   flex: 0 0 auto;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+.squibb-rec-next--inline {
+  margin: 0.25rem 0 1.35rem;
+  padding: 1.1rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #fff8ed, #f5e5cf);
+  color: #2b201b;
+  box-shadow: 5px 5px 0 #2a1b22;
+}
+
+.squibb-rec-next--inline .eyebrow,
+.squibb-rec-next--inline h2,
+.squibb-rec-next--inline p {
+  color: #2b201b;
+}
+
+.recommendation-people-gateway {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  margin: 0.25rem 0 1.35rem;
+  padding: clamp(1.1rem, 3vw, 1.55rem);
+  overflow: hidden;
+  border: 2px solid #d3b7ff;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 92% 18%, rgb(222 193 255 / 24%) 0 8rem, transparent 8.1rem),
+    linear-gradient(135deg, #2e2142 0%, #4b2f57 58%, #713f54 100%);
+  box-shadow: 8px 8px 0 #18101f;
+  color: #fff;
+}
+
+.recommendation-people-gateway__photo {
+  position: relative;
+  align-self: stretch;
+  width: clamp(10rem, 22vw, 17rem);
+  min-height: 10rem;
+  margin: 0;
+  overflow: hidden;
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  border: 2px solid rgb(255 255 255 / 55%);
+  border-radius: 1.1rem 3rem 1.1rem 3rem;
+  background: #21172f;
+  box-shadow: 5px 5px 0 #1c1124;
+  transform: rotate(1.5deg);
+}
+
+.recommendation-people-gateway__photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 10rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.recommendation-people-gateway .card-heading,
+.recommendation-people-gateway > p,
+.recommendation-people-gateway .member-selected-surface__actions {
+  grid-column: 1;
+}
+
+.recommendation-people-gateway .card-heading p,
+.recommendation-people-gateway .card-heading h2,
+.recommendation-people-gateway > p {
+  margin: 0;
+  color: #fff;
+}
+
+.recommendation-people-gateway .card-heading p {
+  color: #f4c98f;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recommendation-people-gateway .card-heading h2 {
+  margin-top: 0.2rem;
+  font-size: clamp(1.45rem, 3.2vw, 2.25rem);
+}
+
+.recommendation-people-gateway > p.muted {
+  color: #f2e8f7;
+}
+
+main.squibb-rec-page .recommendation-people-gateway .button {
+  border-color: #fff;
+  background: #fff;
+  color: #33213f;
+  box-shadow: 4px 4px 0 #1c1124;
+}
+
+main.squibb-rec-page .recommendation-people-gateway .button:hover {
+  color: #33213f;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 #1c1124;
+}
+
+.squibb-rec-resource-gateway {
+  margin-top: 1.25rem;
+  border: 2px solid #b88a55;
+  background: linear-gradient(135deg, #2d241d, #3a2a21);
+  color: #fff8ed;
+}
+
+.squibb-rec-resource-gateway summary {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.squibb-rec-resource-gateway summary::-webkit-details-marker {
+  display: none;
+}
+
+.squibb-rec-resource-gateway summary > span:first-child {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.squibb-rec-resource-gateway summary strong {
+  color: #fff;
+  font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+}
+
+.squibb-rec-resource-gateway summary > span[aria-hidden="true"] {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #e8bd87;
+  border-radius: 50%;
+  color: #ffe5c4;
+  font-size: 1.45rem;
+  transition: transform 160ms ease;
+}
+
+.squibb-rec-resource-gateway[open] summary > span[aria-hidden="true"] {
+  transform: rotate(45deg);
+}
+
+.squibb-rec-resource-gateway__body {
+  display: grid;
+  gap: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid #6f5540;
+}
+
+.squibb-rec-resource-gateway__body > p {
+  max-width: 62rem;
+  margin: 0;
+  color: #f2ddc3;
+  line-height: 1.55;
+}
+
+.squibb-rec-resource-gateway__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+main.squibb-rec-page .squibb-rec-resource-gateway__links a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  border: 2px solid #e8bd87;
+  border-radius: 999px;
+  background: #17110d;
+  color: #fff3e3;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+main.squibb-rec-page .squibb-rec-resource-gateway__links a:hover {
+  background: #543823;
+  color: #fff;
 }
 
 .squibb-rec-surface__stack-title {
@@ -1210,6 +1395,11 @@ main.squibb-rec-page .squibb-rec-surface .squibb-rec-surface__stack-title {
   text-decoration: none;
 }
 
+main.squibb-rec-page .squibb-work-path__bridge a,
+main.squibb-rec-page .squibb-work-path__bridge a:hover {
+  color: #fff;
+}
+
 .squibb-work-path__disclosure {
   color: #e9cfad;
   font-size: 0.82rem;
@@ -1924,6 +2114,26 @@ main.squibb-rec-page .squibb-rec-surface .squibb-rec-surface__stack-title {
   .squibb-rec-next {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .recommendation-people-gateway {
+    grid-template-columns: 1fr;
+    box-shadow: 5px 5px 0 #18101f;
+  }
+
+  .recommendation-people-gateway__photo {
+    width: 100%;
+    min-height: 11rem;
+    grid-column: 1;
+    grid-row: auto;
+    border-radius: 1rem 2.25rem 1rem 2.25rem;
+    transform: none;
+  }
+
+  .recommendation-people-gateway .card-heading,
+  .recommendation-people-gateway > p,
+  .recommendation-people-gateway .member-selected-surface__actions {
+    grid-column: 1;
   }
 
   .squibb-rec-surface__stack {

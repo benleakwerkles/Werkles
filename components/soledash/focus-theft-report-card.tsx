@@ -11,7 +11,7 @@ function formatReceiptReadable(receipt: FocusTheftReceipt): { label: string; val
     { label: "Timestamp", value: receipt.timestamp },
     { label: "Source app", value: receipt.source_app },
     { label: "Notification", value: receipt.notification_text },
-    { label: "What Ben was doing", value: receipt.what_ben_was_doing || "—" },
+    { label: "What Operator was doing", value: receipt.what_ben_was_doing || "—" },
     { label: "Severity", value: receipt.severity },
     { label: "Repeat offender", value: receipt.repeat_offender ? "YES" : "no" },
     { label: "Reported to", value: receipt.reported_to },
@@ -144,7 +144,7 @@ export function FocusTheftReportCard({ onRefresh }: { onRefresh?: () => void | P
           </dd>
         </div>
         <div>
-          <dt>What Ben was doing</dt>
+          <dt>What Operator was doing</dt>
           <dd>
             <input
               type="text"

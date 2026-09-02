@@ -18,6 +18,7 @@ const MERGE_CONFLICTS_PATH = "foreman/handoffs/merge-conflicts.md";
 const ROLE_CARDS_PATH = "foreman/crew-dispatch/crew-role-cards.json";
 const INBOX_DIR = "foreman/handoffs/inbox";
 const PROCESSED_DIR = "foreman/handoffs/inbox/processed";
+const QUARANTINE_DIR = "foreman/handoffs/inbox/quarantine";
 const OUTBOX_DIR = "foreman/handoffs/outbox";
 const SENT_DIR = "foreman/handoffs/outbox/sent";
 const ARCHIVE_DIR = "foreman/handoffs/outbox/archive";
@@ -44,6 +45,7 @@ export function paths() {
     root: ROOT,
     inbox: abs(INBOX_DIR),
     processed: abs(PROCESSED_DIR),
+    quarantine: abs(QUARANTINE_DIR),
     outbox: abs(OUTBOX_DIR),
     sent: abs(SENT_DIR),
     archive: abs(ARCHIVE_DIR),
@@ -52,7 +54,7 @@ export function paths() {
 }
 
 export function ensureRelayDirs() {
-  for (const rel of [PROCESSED_DIR, SENT_DIR, ARCHIVE_DIR]) {
+  for (const rel of [PROCESSED_DIR, QUARANTINE_DIR, SENT_DIR, ARCHIVE_DIR]) {
     const dir = abs(rel);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   }
@@ -133,8 +135,17 @@ export function validateResponseFile(filePath, options = {}) {
   const parsed = extractRelayMetadata(raw);
   if (!parsed.ok) {
     result.ok = false;
-    result.status = "MALFORMED";
-    result.errors.push(parsed.error);
+    /* A reply with no metadata heading at all is usually hand-delivered by the
+       Operator, not corrupt. Calling it MALFORMED buried two real design specs
+       for a month under a wall of missing-field errors. A file that does have the
+       heading but cannot be parsed is genuinely broken and stays MALFORMED. */
+    const handDelivered = !/##\s*Relay metadata/i.test(raw);
+    result.status = handDelivered ? "LEGACY_MANUAL" : "MALFORMED";
+    result.errors.push(
+      handDelivered
+        ? "No relay metadata block — hand-delivered receipt. It cannot auto-process, but it still has to be READ. Use `consume` once acted on."
+        : parsed.error
+    );
     return result;
   }
 
@@ -143,6 +154,14 @@ export function validateResponseFile(filePath, options = {}) {
 
   const cousinFromName = parseCousinFromFilename(filename);
   const cousin = String(meta.cousin || "").toUpperCase();
+
+  /* GD router receipts carry their own envelope (router/run_id/mission_class/
+     receipt_token) and never had cockpit hashes or a source packet. Judged against
+     the relay schema they produced thirteen bogus errors each and jammed the queue
+     for a month. Validate them against the envelope they actually use. */
+  if (meta.router) {
+    return validateGdReceipt(result, meta, raw, cousin || cousinFromName, schema);
+  }
 
   if (!cousin) {
     result.ok = false;
@@ -226,6 +245,43 @@ export function validateResponseFile(filePath, options = {}) {
 
   if (!result.ok && result.status === "OK") result.status = "INVALID";
 
+  return result;
+}
+
+const GD_REQUIRED_FIELDS = ["router", "cousin", "run_id", "mission_class", "receipt_token"];
+
+/**
+ * A GD-router receipt is a valid reply in a different envelope, not a broken relay
+ * reply. It cannot be checked for staleness (it carries no cockpit hash), so it is
+ * advisory by definition and still never auto-merges.
+ */
+function validateGdReceipt(result, meta, raw, cousin, schema) {
+  result.status = "GD_RECEIPT";
+
+  for (const field of GD_REQUIRED_FIELDS) {
+    if (!meta[field]) {
+      result.ok = false;
+      result.errors.push(`Missing GD receipt field: ${field}`);
+    }
+  }
+
+  const cousinUpper = String(cousin || "").toUpperCase();
+  if (cousinUpper && exists(ROLE_CARDS_PATH)) {
+    const cards = JSON.parse(read(ROLE_CARDS_PATH));
+    if (!cards.cousins?.[cousinUpper]) {
+      result.ok = false;
+      result.errors.push(`Unknown SOURCE/cousin: ${cousinUpper}`);
+    }
+  }
+
+  result.warnings.push(
+    "GD router receipt: no cockpit hash, so staleness cannot be checked. Treat as advisory and confirm against live cockpit files before acting."
+  );
+
+  applyBenReviewFlags(result, meta, raw, schema);
+  applyOverreachWarnings(result, cousinUpper, raw, schema);
+
+  if (!result.ok) result.status = "GD_RECEIPT_INVALID";
   return result;
 }
 
@@ -369,7 +425,13 @@ export function processInbox(options = {}) {
       moved: [],
       conflicts,
       summary: validation.results,
-      message: "Halted: one or more files failed validation — nothing moved",
+      message: [
+        "Halted: one or more files failed validation — nothing moved.",
+        "These files stay in the inbox and block every other reply behind them.",
+        "Clear each one deliberately:",
+        "  LEGACY_MANUAL -> read it, then: consume <file> --note \"what you did\"",
+        "  anything else -> quarantine <file> --reason \"why it cannot be used\"",
+      ].join("\n"),
     };
   }
 
@@ -413,6 +475,160 @@ export function processInbox(options = {}) {
     summary: validation.results,
     message: `Processed ${moved.length} file(s) to inbox/processed/ — never auto-merged`,
   };
+}
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * What is sitting unread in the inbox, and for how long.
+ *
+ * This exists because `processInbox` halts on the first validation failure and
+ * moves nothing. That is correct for atomicity and catastrophic for visibility:
+ * nine malformed replies froze the queue from 2026-07-03 to 2026-08-03 and
+ * nothing ever said so out loud.
+ */
+export function inboxStatus(options = {}) {
+  const validation = validateInbox(options);
+  const now = Date.now();
+  const files = validation.results.map((r) => {
+    let ageDays = null;
+    try {
+      ageDays = Math.floor((now - fs.statSync(r.path).mtimeMs) / DAY_MS);
+    } catch {
+      ageDays = null;
+    }
+    return {
+      file: r.file,
+      cousin: r.metadata?.cousin || parseCousinFromFilename(r.file),
+      mission: r.metadata?.network_command || null,
+      status: r.status,
+      ok: r.ok,
+      ageDays,
+      needsRead: r.status === "LEGACY_MANUAL",
+      firstError: r.errors[0] || null,
+    };
+  });
+
+  /* Scope, per Swanson's ruling of 2026-08-03: an owed reply blocks a successor
+     dispatch only within the same lineage — same receiver, same mission/work
+     object. One unread reply from one seat must not freeze unrelated projects
+     assigned to that seat, and must not freeze other seats at all. The unscoped
+     guard was a global freeze wearing the costume of a safety rule.
+
+     Callers that pass no scope still get the full picture, which is what the
+     `status` and `alarm` commands want. */
+  const scopedCousins = options.scopeToCousins
+    ? new Set(options.scopeToCousins.map((c) => String(c).toUpperCase()))
+    : null;
+  const scopedMission = options.scopeToMission || null;
+  const inScope = files.filter((f) => {
+    if (scopedCousins && !scopedCousins.has(String(f.cousin || "").toUpperCase())) return false;
+    /* A receipt with no recorded mission cannot be proved out of lineage, so it
+       stays in scope. Fail closed on ambiguity. */
+    if (scopedMission && f.mission && f.mission !== scopedMission) return false;
+    return true;
+  });
+
+  const blocked = inScope.filter((f) => !f.ok);
+  const oldestAgeDays = inScope.reduce((max, f) => Math.max(max, f.ageDays ?? 0), 0);
+
+  return {
+    total: inScope.length,
+    blockedCount: blocked.length,
+    readableCount: inScope.filter((f) => f.ok).length,
+    legacyCount: inScope.filter((f) => f.needsRead).length,
+    oldestAgeDays,
+    files: inScope,
+    scoped: Boolean(scopedCousins || scopedMission),
+    outOfScopeCount: files.length - inScope.length,
+  };
+}
+
+export function formatInboxAlarm(status, options = {}) {
+  const staleAfterDays = options.staleAfterDays ?? 1;
+  if (status.total === 0) return "Inbox clear — no cousin replies waiting.";
+
+  const lines = [];
+  const loud = status.oldestAgeDays >= staleAfterDays;
+  if (loud) {
+    lines.push("=".repeat(72));
+    lines.push(`UNREAD CBCC RECEIPTS: ${status.total} waiting, oldest ${status.oldestAgeDays} day(s) old.`);
+    lines.push("Do not dispatch new work until these are read. A cousin may have already");
+    lines.push("answered the question you are about to ask.");
+    lines.push("=".repeat(72));
+  } else {
+    lines.push(`${status.total} cousin reply(ies) waiting in the inbox.`);
+  }
+  for (const f of status.files) {
+    const age = f.ageDays === null ? "age unknown" : `${f.ageDays}d`;
+    lines.push(`  [${f.status}] ${age}  ${f.file}`);
+    if (f.needsRead) lines.push("            ^ hand-delivered: read it, then `consume` it");
+  }
+  return lines.join("\n");
+}
+
+/**
+ * Record that a reply was actually read and acted on. For hand-delivered receipts
+ * that can never satisfy the relay schema, this is the only honest way to clear
+ * them without pretending they auto-validated.
+ */
+export function consumeReply(filename, note, options = {}) {
+  ensureRelayDirs();
+  const src = path.join(options.inboxDir || abs(INBOX_DIR), filename);
+  if (!fs.existsSync(src)) return { ok: false, error: `Inbox reply not found: ${filename}` };
+  if (!note || !String(note).trim()) {
+    return { ok: false, error: "A --note is required: say what was done about this receipt." };
+  }
+
+  const destDir = options.processedDir || abs(PROCESSED_DIR);
+  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  const timestamp = nowIso().replace(/[:.]/g, "-");
+  const destName = `${timestamp}__${filename}`;
+  fs.renameSync(src, path.join(destDir, destName));
+  fs.writeFileSync(
+    path.join(destDir, `${destName}.summary.json`),
+    JSON.stringify(
+      {
+        processed_at: nowIso(),
+        file: filename,
+        status: "CONSUMED_MANUAL",
+        cousin: parseCousinFromFilename(filename),
+        consumed_by: options.by || "FOREMAN",
+        note: String(note).trim(),
+        auto_merge: false,
+      },
+      null,
+      2
+    ),
+    "utf8"
+  );
+  return { ok: true, from: filename, to: destName };
+}
+
+/** Park a reply that cannot be used, with the reason recorded beside it. */
+export function quarantineReply(filename, reason, options = {}) {
+  ensureRelayDirs();
+  const src = path.join(options.inboxDir || abs(INBOX_DIR), filename);
+  if (!fs.existsSync(src)) return { ok: false, error: `Inbox reply not found: ${filename}` };
+  if (!reason || !String(reason).trim()) {
+    return { ok: false, error: "A --reason is required: say why this reply cannot be used." };
+  }
+
+  const destDir = options.quarantineDir || abs(QUARANTINE_DIR);
+  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  const timestamp = nowIso().replace(/[:.]/g, "-");
+  const destName = `${timestamp}__${filename}`;
+  fs.renameSync(src, path.join(destDir, destName));
+  fs.writeFileSync(
+    path.join(destDir, `${destName}.reject.json`),
+    JSON.stringify(
+      { quarantined_at: nowIso(), file: filename, reason: String(reason).trim() },
+      null,
+      2
+    ),
+    "utf8"
+  );
+  return { ok: true, from: filename, to: destName };
 }
 
 export function buildOutgoingMetadata(cousin) {

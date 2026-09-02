@@ -8,13 +8,13 @@ type ConfidenceMeterProps = {
 };
 
 const SUPPORT_BAND: Record<ConfidenceLabel, string> = {
-  high: "Strong input match",
-  medium: "Some input match",
-  low: "Thin input match"
+  high: "Well supported by your answers",
+  medium: "Partly supported",
+  low: "Needs more detail"
 };
 
 const RULES_SCORE_DISCLAIMER =
-  "This only measures how many of your answers support this option. It does not predict success or eligibility.";
+  "This shows how much of the idea is supported by what you told Werkles. It does not predict success or eligibility.";
 
 export function ConfidenceMeter({ score, label, why, variant = "confidence" }: ConfidenceMeterProps) {
   const clamped = Math.min(100, Math.max(0, score));
@@ -25,7 +25,7 @@ export function ConfidenceMeter({ score, label, why, variant = "confidence" }: C
     return (
       <div className="squibb-confidence" aria-labelledby="squibbRulesScoreTitle">
         <div className="squibb-confidence__header">
-          <h3 id="squibbRulesScoreTitle">How Werkles ordered it</h3>
+          <h3 id="squibbRulesScoreTitle">Why this is near the top</h3>
           <span className={`squibb-confidence__badge squibb-confidence__badge--${label}`}>
             {band}
           </span>

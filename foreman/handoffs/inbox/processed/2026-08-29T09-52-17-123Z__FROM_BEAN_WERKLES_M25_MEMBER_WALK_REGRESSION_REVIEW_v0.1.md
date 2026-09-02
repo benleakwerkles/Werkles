@@ -1,0 +1,7 @@
+RECEIVED
+
+CUSTODY_TOKEN: CUSTODY-BEAN-AA8216D44083444B80CB47D925399509
+COUSIN: BEAN
+VERDICT: BEAN_M25_GO
+TRUST_DEFECT: NONE
+WALK_GATE: OPEN — The two regression repairs introduce no new custody or verification overclaim.

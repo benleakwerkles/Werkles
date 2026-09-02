@@ -1,11 +1,10 @@
-import Link from "next/link";
-
+import { TinkerDenSurfaceSwitcher } from "@/components/tinkerden/tinkerden-surface-switcher";
 import { listRealAeyeRelays } from "@/lib/tinkerden/real-aeye-relay";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "TinkerDen Relay Proof | Werkles",
+  title: "TinkerDen Relay Proof",
   robots: { index: false, follow: false }
 };
 
@@ -22,20 +21,7 @@ export default async function TinkerDenRelayProofPage() {
 
   return (
     <main className="td-bridge">
-      <nav className="td-surface-switcher" aria-label="TinkerDen surface switcher">
-        <Link className="td-surface-switcher__link" href="/tinkerden">
-          Bridge
-        </Link>
-        <Link className="td-surface-switcher__link" href="/tinkerden/receipts">
-          Receipts
-        </Link>
-        <Link className="td-surface-switcher__link td-surface-switcher__link--active" href="/tinkerden/relay-proof">
-          Relay Proof
-        </Link>
-        <Link className="td-surface-switcher__link" href="/thinkit">
-          ThinkIt
-        </Link>
-      </nav>
+      <TinkerDenSurfaceSwitcher active="relay-proof" />
 
       <section className="td-command-section td-command-section--proof" aria-label="Real Aeye relay proof">
         <p className="td-bridge__eyebrow">Real Aeye Relay Proof</p>

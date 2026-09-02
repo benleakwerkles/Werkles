@@ -1,0 +1,11 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+const membership = readFileSync("app/membership/page.tsx", "utf8");
+const billing = readFileSync("app/dashboard/billing/page.tsx", "utf8");
+const queue = readFileSync("app/operator/gate-knockout/provider-queue/page.tsx", "utf8");
+assert.match(membership, /href="\/dashboard\/billing"[\s\S]*?Manage membership/);
+assert.match(billing, /Review Membership Value/);
+assert.doesNotMatch(billing, /href="\/membership">\s*\{copy\.dashboard\.billing\.checkoutCta\}/);
+assert.match(queue, /No provider action runs from this page/);
+assert.match(queue, /Open \{link\.provider\}: \{link\.title\}/);
+console.log("BVPGM M43 money/provider continuity contract: PASS");

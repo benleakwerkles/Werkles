@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Werkles source-bound push gate</title>
+  <style>
+    :root { color-scheme: dark; --ink:#fff8ed; --muted:#d9cabb; --copper:#ef9f55; --panel:#21172c; --edge:#654a75; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:16px/1.55 system-ui,sans-serif; color:var(--ink); background:#100b18; }
+    main { width:min(980px,calc(100% - 32px)); margin:32px auto; }
+    h1,h2 { line-height:1.15; } h1 { color:var(--copper); }
+    .status,.card { border:1px solid var(--edge); border-radius:18px; background:var(--panel); padding:20px; margin:16px 0; }
+    .status { border-color:var(--copper); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    strong { color:var(--copper); } code { color:#ffd4a8; overflow-wrap:anywhere; }
+    ul,ol { padding-left:22px; }
+  </style>
+</head>
+<body>
+<main>
+  <p>Werkles · Tier 1 production gate</p>
+  <h1>Machine ready. Release custody still closed.</h1>
+  <section class="status">
+    <strong>Do not approve yet.</strong> Actual CBCC terminal reviews are 0/4,
+    release keys are 0/3, and no candidate commit exists.
+  </section>
+  <section class="grid">
+    <article class="card"><h2>Candidate</h2><p>282 bound paths: 274 changed payload files and 8 baseline dependencies.</p><code>c8e9e75…c8ece</code></article>
+    <article class="card"><h2>Machine proof</h2><p>34/34 contracts, TypeScript, production build, and local 10/10 member routes pass.</p></article>
+    <article class="card"><h2>Live delta</h2><p>Formation and Personal Bellows are still absent from production. Internal diagnostics remain blocked.</p></article>
+    <article class="card"><h2>Rollback</h2><p>Ready production target:</p><code>dpl_2u71JbztPiszxKuMRrCg4cG1Z6Ji</code></article>
+  </section>
+  <section class="card">
+    <h2>What must happen first</h2>
+    <ol>
+      <li>Actual Ender, Bean, Skybro/Petra, and Lady Jessica terminal review.</li>
+      <li>Assimilate PATCH findings and reseal if needed.</li>
+      <li>Create the candidate-only commit and reproduce its digest.</li>
+      <li>Heimerdinker and Lady Jessica sign that exact commit.</li>
+      <li>Ben approves; Lady Jessica alone deploys blue/green.</li>
+    </ol>
+  </section>
+  <section class="card">
+    <h2>Not included</h2>
+    <p>No provider activation, secrets, payments, schema/RLS, production-data mutation, LLM advice, or account-durable Intake.</p>
+  </section>
+</main>
+</body>
+</html>

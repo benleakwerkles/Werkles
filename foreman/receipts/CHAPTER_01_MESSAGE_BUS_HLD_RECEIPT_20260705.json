@@ -1,0 +1,37 @@
+{
+  "schema": "CHAPTER_01_MESSAGE_BUS_HLD_RECEIPT_V1",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-05T23:37:44.7040582-04:00",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "sourceChapterTitle": "Chapter One: The Message Bus",
+  "sourceAttachmentPath": "C:\\Users\\Ben Leak\\.codex\\attachments\\2a1e501b-4c9a-4b9b-a2b0-91a673153b2e\\pasted-text.txt",
+  "sourceAttachmentSha256": "61307BC64AA346DD1126B384EB4C1735D6B588024AC2400BDB81CF63AFB8D68A",
+  "sourceAttachmentCharacterCount": 7365,
+  "artifactPath": "C:\\Users\\Ben Leak\\github\\Werkles\\foreman\\source_material\\manuscript_workbench\\tinkularity\\chapters\\chapter-01\\CHAPTER_01_MESSAGE_BUS_HLD_20260705.md",
+  "artifactType": "chapter high-level design",
+  "manuscriptTextEdited": "NO",
+  "existingArchitectureCompanionEdited": "NO",
+  "documentsWerklesChecked": {
+    "path": "C:\\Users\\Ben Leak\\Documents\\Werkles",
+    "status": "EMPTY_NO_COMMITS_GIT_REPO",
+    "usedForArtifact": "NO"
+  },
+  "deliverables": [
+    "Reader promise",
+    "Non-goals",
+    "Core HLD statement",
+    "High-level component map",
+    "State machine",
+    "Chapter mapping table",
+    "Tight insert candidate",
+    "Red-team guardrails",
+    "Acceptance criteria"
+  ],
+  "memoryGuidanceUsed": [
+    "Preserve mythic voice while grounding technical claims.",
+    "Machine-readable manifests and receipts win over prose.",
+    "Do not treat watcher/classifier as containment; classifier decides, policy narrows, OS enforces, receipts prove."
+  ]
+}

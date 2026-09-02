@@ -1,0 +1,91 @@
+{
+  "schema": "BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0_RECEIPT",
+  "status": "ARTIFACT",
+  "timestamp": "2026-07-06T08:20:03.890Z",
+  "machine": "BETSY",
+  "agent": "Heimerdinker@Betsy",
+  "packet_id": "BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0",
+  "receipt_id": "BOOK_ARCHITECTURE_BOOT_CONTEXT_REFRESH_V0_RECEIPT_20260706",
+  "repo": "C:\\Users\\Ben Leak\\github\\Werkles",
+  "command": "node scripts/foreman/organism-boot-context-refresh-smoke.mjs",
+  "validation": {
+    "wormeyes_refreshed_bootloader_world_state": true,
+    "world_state_machine_matches_current_machine": true,
+    "world_state_includes_current_repo": true,
+    "bootloader_writes_active_context_after_fresh_world_state": true,
+    "stale_world_state_blocks_bootloader_under_forced_stale_gate": true,
+    "aeye_dry_run_injects_bootpack_before_response": true,
+    "aeye_dry_run_logs_to_wrapper_jsonl": true,
+    "sqlite_logging_degraded_truthfully": true,
+    "truth_boundary": "This smoke refreshes local world_state.json, writes active_context.txt, and runs a dry-run Aeye payload. It does not call an external provider, deploy, push, or claim Mack returned a review."
+  },
+  "readbacks": {
+    "wormeyes": {
+      "output_path": "tinkarden/nervous_system/world_state.json",
+      "output_sha256": "3562B8AB2A932E77A7D37EDC8338B0E91AAC8427616E33DD73D28840D41101B0",
+      "changed_file_count": 321
+    },
+    "bootloader": {
+      "output_path": "tinkarden/nervous_system/active_context.txt",
+      "sha256": "2fc3fdaeb852c8c3e29d4e5a74c21907063b2c811c07d928c635293838201a32",
+      "source_count": 4
+    },
+    "stale_block": {
+      "code": 1,
+      "stderr": "{\n  \"ok\": false,\n  \"status\": \"BOOTLOADER_BLOCKED\",\n  \"error\": \"BOOTLOADER_WORLD_STATE_STALE: tinkarden/nervous_system/world_state.json world_state.json is stale; refresh before boot. age_minutes=0.01, max_age_minutes=-1\"\n}"
+    },
+    "aeye_dry_run": {
+      "status": "BOOTPACK_INJECTED_DRY_RUN_COMPLETE",
+      "bootpack_loaded": false,
+      "bootpack_path": "speaker/bootpacks/out/Heimerdinker.Betsy.BOOTPACK.md",
+      "system_payload_contains_bootpack": true,
+      "call_log_backend": "wrapper_jsonl_only",
+      "call_log_degraded_reason": "Cannot find module 'better-sqlite3'\nRequire stack:\n- C:\\Users\\Ben Leak\\github\\Werkles\\tinkarden\\nervous_system\\aeye_client.js"
+    }
+  },
+  "file_hashes": [
+    {
+      "path": "scripts/foreman/organism-boot-context-refresh-smoke.mjs",
+      "sha256": "0c280ab091b07ae0d57f1d8827b7fde9b6ebe803005c4d91c6e6a12e407823c7",
+      "bytes": 8520
+    },
+    {
+      "path": "scripts/foreman/wormeyes-world-state.mjs",
+      "sha256": "583e992aab4361be49d65f2cfb6a21cd005ec4c0ddbc41931e55f933b41a9fff",
+      "bytes": 8335
+    },
+    {
+      "path": "tinkarden/nervous_system/bootloader.js",
+      "sha256": "24112c0dfc649019378e8a4f44ca86ec5824fbbdb34188579242efa48b81f5fb",
+      "bytes": 5566
+    },
+    {
+      "path": "tinkarden/nervous_system/aeye_client.js",
+      "sha256": "8f23845ef7ff3f5720d4f2bcf9cc9aa597761830fbca68745962120f93cda0be",
+      "bytes": 15178
+    },
+    {
+      "path": "tinkarden/nervous_system/world_state.json",
+      "sha256": "3562b8ab2a932e77a7d37edc8338b0e91aac8427616e33dd73d28840d41101b0",
+      "bytes": 289334
+    },
+    {
+      "path": "tinkarden/nervous_system/active_context.txt",
+      "sha256": "2fc3fdaeb852c8c3e29d4e5a74c21907063b2c811c07d928c635293838201a32",
+      "bytes": 294801
+    },
+    {
+      "path": "tinkarden/nervous_system/aeye-wrapper-events.jsonl",
+      "sha256": "d40bb186ca585903261420305a3a81ec06c6a219bcbf8f6b446f4944c5dac256",
+      "bytes": 3907
+    }
+  ],
+  "stop_conditions_respected": [
+    "no deploy",
+    "no push",
+    "no secrets",
+    "no production mutation",
+    "no external provider call",
+    "no Mack receipt claim"
+  ]
+}

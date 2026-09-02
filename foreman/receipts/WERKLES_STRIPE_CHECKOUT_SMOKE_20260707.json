@@ -1,0 +1,65 @@
+﻿{
+    "schema":  "WERKLES_STRIPE_CHECKOUT_SMOKE_V1",
+    "timestamp":  "2026-07-07T07:24:38.869Z",
+    "machine":  "BETSY",
+    "secret_values_printed":  "NO",
+    "ok":  true,
+    "checks":  [
+                   {
+                       "name":  "stripe_test_mode",
+                       "status":  "PASS",
+                       "mode":  "test"
+                   },
+                   {
+                       "name":  "stripe_monthly_price",
+                       "status":  "PASS",
+                       "price_id":  "\u003cconcealed by 1Password\u003e",
+                       "recurring":  "month"
+                   },
+                   {
+                       "name":  "stripe_webhook_endpoint",
+                       "status":  "PASS",
+                       "webhook_id":  "we_1Tq0y6BzNBvy0VkUWOJLgD6l",
+                       "event_count":  7,
+                       "has_checkout_session_completed":  true
+                   },
+                   {
+                       "name":  "production_membership_route",
+                       "status":  "PASS",
+                       "http_status":  200
+                   },
+                   {
+                       "name":  "webhook_rejects_unsigned",
+                       "status":  "PASS",
+                       "http_status":  400
+                   },
+                   {
+                       "name":  "supabase_mule_user",
+                       "status":  "PASS",
+                       "user_id":  "07c90ac7-1a03-4448-93c7-1d2cef56b909"
+                   },
+                   {
+                       "name":  "supabase_mule_profile",
+                       "status":  "PASS",
+                       "membership_tier_before":  "free"
+                   },
+                   {
+                       "name":  "stripe_test_subscription",
+                       "status":  "active",
+                       "subscription_id":  "sub_1TqTMlBzNBvy0VkUNhBzyDB3"
+                   },
+                   {
+                       "name":  "checkout_session_completed_webhook",
+                       "status":  200,
+                       "received":  true
+                   },
+                   {
+                       "name":  "supabase_membership_state",
+                       "status":  "PASS",
+                       "membership_tier":  "member",
+                       "subscription_status":  "active",
+                       "stripe_subscription_id":  "sub_1TqTMlBzNBvy0VkUNhBzyDB3"
+                   }
+               ],
+    "overall":  "PASS"
+}

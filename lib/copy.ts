@@ -1,7 +1,7 @@
 export const copy = {
   brand: "Werkles",
   tagline: "Understand the situation. Find an honest next step.",
-  // No-ceiling rule (Ben, 2026-07-31): never "small business" — anything can
+  // No-ceiling rule (Operator, 2026-07-31): never "small business" — anything can
   // be conceived here, corner bakery to the next behemoth.
   longPositioning:
     "Werkles helps people understand a situation, compare useful options, and make something real without pretending uncertainty is certainty.",
@@ -24,27 +24,27 @@ export const copy = {
     cta: "Discover what you need"
   },
   squibb: {
-    default: "Squibb: This option is closer than it looks. You can ignore this and keep your original path.",
+    default: "This option is closer than it looks. You can ignore it and keep your original path.",
     scout: {
       eyebrow: "The Scout",
-      headline: "Squibb notices what is easy to miss.",
+      headline: "Look for the option that is easy to miss.",
       body:
-        "Squibb is the workshop's Pooka and its scout. He points toward the overlooked option, asks the question under the question, and steps back.",
+        "Werkles points toward overlooked options, asks the question underneath the first question, and leaves the choice with you.",
       closing:
-        "He does not decide for you. He does not become a chatbot. He does not turn your life into a profile. He helps you see the door.",
+        "Werkles does not decide for you or turn your life into a profile. It helps you see a useful door without pretending you must take it.",
       microcopy: [
         "This might not be the real constraint.",
         "People who started here often needed this first.",
         "This option is closer than it looks.",
         "You can ignore this and keep your original path.",
-        "Evidence is thin here. Squibb should stay quiet."
+        "Evidence is thin here. Werkles should not pretend otherwise."
       ]
     },
-    proof: "Squibb: Proof clears the path. It does not make the decision for you.",
-    crucible: "Squibb: I can clear the path. I cannot make the call for you.",
-    membership: "Squibb: Dues open the workshop. The work still has to prove itself.",
-    billing: "Squibb: No surprises here. Dues, invoices, and gates stay visible.",
-    success: "Squibb: Blathering blatherskites. You are through the gate. Now let's see what is actually missing."
+    proof: "Proof can clear the path. It cannot make the decision for you.",
+    crucible: "Verification can clear uncertainty. The call remains yours.",
+    membership: "Dues open the Workshop. The work still has to prove itself.",
+    billing: "No surprises: dues, invoices, and limits stay visible.",
+    success: "You are through the gate. Now return to the work that matters."
   },
   terms: {
     forgeFile: "Profile",
@@ -139,9 +139,9 @@ export const copy = {
     eyebrow: "Bellows",
     headline: "Learn how the floor actually works.",
     body:
-      "Practical lessons, checklists, and working tools. Squibb helps you understand the decision and leave with something useful.",
+      "Practical lessons, checklists, and working tools help you understand the decision and leave with something useful.",
     shellNote: "Browse every lesson or start with the shorter path shaped by your current answers.",
-    host: "Hosted by Squibb"
+    host: "Built for practical decisions"
   },
   onboarding: {
     headline: "Your first pass",
@@ -261,7 +261,7 @@ export const copy = {
       cta: "Open the Foundry"
     },
     squibbBeat: {
-      line: "Squibb: You said customers. The oven price is sitting in the overlooked column. Look or skip — your call."
+      line: "You said customers. The equipment price is sitting in the overlooked column. Look or skip—the choice is yours."
     },
     anyone: {
       door: {
@@ -278,7 +278,7 @@ export const copy = {
         body:
           "Say it in your own words. No profile. No compatibility score. No box to squeeze yourself into.",
         closing:
-          "Squibb asks one better question: what might be underneath this? The answer stays yours. The system only helps surface better hypotheses."
+          "Werkles asks one better question: what might be underneath this? The answer stays yours; the system only surfaces possibilities worth testing."
       },
       discovery: {
         eyebrow: "Discovery",
@@ -383,7 +383,7 @@ export const copy = {
     },
     foldTrust: {
       before: "You came looking for one answer. Werkles helps name the one underneath.",
-      proof: "Squibb helps surface the option. The choice stays yours.",
+      proof: "Werkles surfaces the option. The choice stays yours.",
       signup: "The category matters less than seeing it clearly enough to act."
     },
     spaceBeat: {
@@ -414,10 +414,10 @@ export const copy = {
       eyebrow: "Bellows",
       headline: "Learn the part nobody explained.",
       body:
-        "Squibb hosts practical lessons, working examples, and tools you can return to when the business question changes.",
-      host: "Hosted by Squibb",
+        "Bellows offers practical lessons, working examples, and tools you can return to when the business question changes.",
+      host: "Practical guidance from Werkles",
       cta: "Explore Bellows",
-      squibbCaption: "Squibb keeps the lesson grounded in the work.",
+      squibbCaption: "Each lesson stays grounded in the work.",
       lessonCaption: "A lesson should leave you with something useful to do."
     }
   },
@@ -626,7 +626,7 @@ export const copy = {
   access: {
     insufficientWeightTitle: "More proof needed",
     insufficientWeight:
-      "The other side is carrying heavier proof signals. Strengthen your profile and try again when you're ready.",
+      "The other side has stronger supporting evidence right now. Strengthen your profile and try again when you are ready.",
     membershipRequired: "Foundry Dues open intro requests. Build your profile first."
   },
   verification: {

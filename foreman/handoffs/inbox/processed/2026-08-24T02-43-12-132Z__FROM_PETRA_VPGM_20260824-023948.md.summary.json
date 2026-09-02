@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T02:43:12.132Z",
+  "file": "FROM_PETRA_VPGM_20260824-023948.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Foreman assimilated PETRA_M15_PATCH. Implemented the two bounded local walkthrough changes and preserved Gate 05 HOLD.",
+  "auto_merge": false
+}

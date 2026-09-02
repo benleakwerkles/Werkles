@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-21T21:55:15.028Z",
+  "file": "FROM_ORSON_DOOZER_RECOMMENDATION_SPECIFICITY_SECOND_REPAIR_REVIEW_20260817.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "ORSON",
+  "consumed_by": "FOREMAN",
+  "note": "Read: underscore normalization bypass and relay byte mismatch were required repairs; latest third-repair seal later confirmed both closed.",
+  "auto_merge": false
+}

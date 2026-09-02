@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T03:02:40.570Z",
+  "file": "FROM_PETRA_VPGM_20260824-030206.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "M16 Petra terminal prebuild receipt correlated by exact custody challenge; adopted only the two bounded client-only changes and retained Gate 05 HOLD.",
+  "auto_merge": false
+}

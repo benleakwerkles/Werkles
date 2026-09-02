@@ -1,0 +1,48 @@
+{
+  "missionId": "WERKLES_M18_ENDER_FORMATION_STAKE_REDTEAM",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Independent red-team of Ender's M18 asymmetric Formation empathy stake before implementation.",
+  "sharedContext": [
+    "The current device-local PartnerPerspectiveExercise asks a member to predict a synthetic partner's answers across six questions. Ender identifies that as mind-reading and false symmetry.",
+    "Ender's replacement has three shared axes with asymmetric prompts. Carrying side: What's in front of you right now?; What would make an hour of this worth it?; What you'd rather not hand over. Helping side: What you'd want to look at first.; What you'd need from them to be useful.; What you wouldn't take on.",
+    "Member name is Prepare for a real conversation. Internal words Formation, stake, packet, lane, and seat do not render.",
+    "Each side answers only for itself. In the single-player ghost walk, the partner side may be generated practice data only when labeled as generated and never attributed to a real person.",
+    "Comparison states are words plus geometry: Same read; Close, with a step; Not the same thing yet. There is no score, percent, match strength, green/amber/red, or compatibility verdict.",
+    "Visual break is a lay-up seam diagram: two pieces of stock meeting, offset, or separated across Scope, Bar, and Edge. Geometry carries meaning in grayscale.",
+    "State is device-local and scoped to one Possible Werkle. Text must survive reload. Completion never auto-shares. No timers, read receipts, waiting spinner, or implied response.",
+    "If Intake already supplied a Scope answer, amend rather than re-ask; source mapping remains an admitted dependency and must not be invented.",
+    "Hostile cases: no partner answer, one-word answer, cloned answers, professional-advice request, second device, long answer, and self-match.",
+    "390px checks require one axis per step, non-destructive back/forward, vertical reveal, no overflow, reload persistence, grayscale distinction, and 44px targets.",
+    "Ender's exact receipt hash is 191cc66114cdd8fc6bd79e0522faf8eeb2cf47e269d8c1a38b6f5abd52f8689f. Gate 05 remains HOLD."
+  ],
+  "liveStrings": [
+    "Prepare for a real conversation",
+    "Three questions about your side. Not a form—nobody grades this.",
+    "What's in front of you right now?",
+    "What would make an hour of this worth it?",
+    "What you'd rather not hand over.",
+    "What you'd want to look at first.",
+    "What you'd need from them to be useful.",
+    "What you wouldn't take on.",
+    "Where you two line up",
+    "Same read",
+    "Close, with a step",
+    "Not the same thing yet",
+    "A sentence is plenty."
+  ],
+  "knownGaps": [
+    "Account-backed two-member custody does not exist for this candidate.",
+    "The Intake-to-Scope prefill map is not yet proved.",
+    "The current flow uses a synthetic ghost partner and must label generated partner-side practice data honestly."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Independently challenge Ender's Formation stake for bounded local implementation.",
+      "pull": "Attack mind-reading, false symmetry, generated-partner attribution, state durability, privacy, advice claims, and stage confusion.",
+      "go": ["Return PETRA_M18_FORMATION_GO, PATCH, or STOP with the two strongest corrections.", "If GO/PATCH, give exact acceptance checks for ghost practice, empty partner state, reload persistence, and 390px geometry."],
+      "momentum": "Name the exact post-build evidence owed, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    }
+  }
+}

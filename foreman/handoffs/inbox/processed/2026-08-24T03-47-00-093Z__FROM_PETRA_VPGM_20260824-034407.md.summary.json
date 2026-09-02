@@ -1,0 +1,9 @@
+{
+  "processed_at": "2026-08-24T03:47:00.094Z",
+  "file": "FROM_PETRA_VPGM_20260824-034407.md",
+  "status": "CONSUMED_MANUAL",
+  "cousin": "PETRA",
+  "consumed_by": "FOREMAN",
+  "note": "Consumed as terminal M17 navigation post-build GO for digest 7b9bf210204ba047230bd8e8cf6cc508e1bf99554754c32789d820c82587298c; Gate 05 HOLD preserved.",
+  "auto_merge": false
+}

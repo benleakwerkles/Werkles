@@ -1,0 +1,207 @@
+{
+  "schema": "HARVEY_BUILD_COMPANION_VOLUME_II_MACHINE_MANIFEST_V0",
+  "status": "BUILD_COMPANION_ARTIFACT",
+  "date": "2026-07-06",
+  "artifact_id": "HARVEY_BUILD_COMPANION_VOLUME_II_MACHINE_MANIFEST_20260706",
+  "source_text": "C:\\Users\\Ben Leak\\.codex\\attachments\\91c48139-50d3-4356-8a74-9748f47a7681\\pasted-text.txt",
+  "truth_boundary": "This manifest specifies required build behavior. It does not claim runtime implementation is complete.",
+  "fleet_roster": [
+    "Dink",
+    "Maker",
+    "Bean",
+    "Ender",
+    "Thufir",
+    "Skybro",
+    "Petra",
+    "Swanson"
+  ],
+  "guardrails": [
+    {
+      "id": "PROSE_VS_MANIFEST",
+      "rule": "Machine-readable manifests win over prose conflicts.",
+      "required_output": "transaction_receipt"
+    },
+    {
+      "id": "CUSTODY_TRIAD",
+      "rule": "Classifier decides. Operating system enforces. Receipts prove.",
+      "forbidden_claims": [
+        "watcher_as_cage",
+        "dashboard_as_custody",
+        "prompt_as_containment"
+      ]
+    },
+    {
+      "id": "SOVEREIGNTY_FLOOR",
+      "rule": "Machine layer handles means, never human ends.",
+      "human_gate_required": true
+    },
+    {
+      "id": "SINGLE_CLICK_GATE",
+      "rule": "One click equals one informed human decision.",
+      "forbidden_patterns": [
+        "blind_trust",
+        "approve_all_forever",
+        "hidden_multi_action_consent"
+      ]
+    }
+  ],
+  "core_components": [
+    {
+      "id": "INTENT_CAPSULE",
+      "purpose": "Human-authorized task scope.",
+      "minimum_fields": [
+        "intent_id",
+        "human_operator",
+        "created_at",
+        "lane",
+        "purpose",
+        "allowed_paths",
+        "forbidden_paths",
+        "allowed_actions",
+        "forbidden_actions",
+        "fleet_roster",
+        "expiry",
+        "required_receipt_path",
+        "human_gate_required_for",
+        "stale_after_ms"
+      ]
+    },
+    {
+      "id": "INCUBATION_NEST",
+      "purpose": "Shared bounded workspace for safe simulation.",
+      "implementation_candidates": [
+        "git_worktree",
+        "overlay_filesystem",
+        "container_bind_mount",
+        "vm_snapshot",
+        "copy_on_write_mirror"
+      ]
+    },
+    {
+      "id": "PHANTOM_LANE",
+      "purpose": "Temporary bounded mirror for fleet work.",
+      "minimum_fields": [
+        "phantom_lane_id",
+        "intent_id",
+        "source_manifest_id",
+        "created_at",
+        "expires_at",
+        "budget_bytes",
+        "allowed_paths",
+        "write_root",
+        "promotion_gate",
+        "receipt_path"
+      ]
+    },
+    {
+      "id": "SENSORY_SKIN",
+      "purpose": "Watcher that records file-backed reality changes.",
+      "recommended_runtime": [
+        "nodejs",
+        "chokidar",
+        "jsonl"
+      ],
+      "non_authority": true
+    },
+    {
+      "id": "LYMPHATIC_TRANSPORT",
+      "purpose": "Live coordination message fabric.",
+      "recommended_runtime": [
+        "redis_pubsub",
+        "redis_streams"
+      ],
+      "rule": "Transport is not trust."
+    },
+    {
+      "id": "SCOPED_SOURCE_MANIFEST",
+      "purpose": "Defines visible, readable, writable, and forbidden paths.",
+      "minimum_fields": [
+        "source_manifest_id",
+        "intent_id",
+        "visible_paths",
+        "read_only_paths",
+        "write_paths",
+        "forbidden_paths",
+        "secret_paths",
+        "promotion_targets",
+        "hashes",
+        "created_by",
+        "created_at",
+        "expires_at"
+      ]
+    },
+    {
+      "id": "BRAINBOOT_PACKET",
+      "purpose": "Initialization payload that counters model amnesia.",
+      "minimum_fields": [
+        "brainboot_packet_id",
+        "generated_at",
+        "source_truth_hash",
+        "active_intent_ids",
+        "active_lane_ids",
+        "latest_receipts",
+        "active_blockers",
+        "stale_sources",
+        "fleet_roster",
+        "human_gates",
+        "forbidden_actions",
+        "world_state_summary",
+        "compression_notes"
+      ]
+    },
+    {
+      "id": "STIGMERGIC_GOSSIP_LEDGER",
+      "purpose": "Append-only event trail for coordination, mutation, and correction.",
+      "recommended_storage": [
+        "jsonl",
+        "sqlite_index",
+        "optional_postgres_mirror"
+      ]
+    },
+    {
+      "id": "VISIBLE_GATE_PANEL",
+      "purpose": "Human review surface for lane state, proposed mutation, blockers, and exact next decision.",
+      "single_click_gate": true
+    }
+  ],
+  "allowed_lane_states": [
+    "INITIALIZED",
+    "PARTIAL",
+    "COMPLETED",
+    "BLOCKED",
+    "SOURCE_MISSING",
+    "BREACH_DENIED",
+    "INTERRUPTED",
+    "SUPERSEDED"
+  ],
+  "lockout_triggers": [
+    "UNAUTHORIZED_FILE_WRITE",
+    "PATH_OUTSIDE_SCOPED_MANIFEST",
+    "ALTERED_TOKEN_SHORTHAND",
+    "UNRECOGNIZED_COORDINATION_PATTERN",
+    "MISSING_SOURCE",
+    "STALE_SOURCE_HASH",
+    "INVALID_MESSAGE_FRAME",
+    "UNKNOWN_FLEET_NODE",
+    "EXPIRED_INTENT_CAPSULE",
+    "OVERSIZED_TRANSPORT_PAYLOAD",
+    "HUMAN_GATE_REQUIRED_BUT_ABSENT"
+  ],
+  "first_build_slice": [
+    "INTENT_CAPSULE",
+    "SCOPED_SOURCE_MANIFEST",
+    "PHANTOM_LANE",
+    "SENSORY_SKIN_EVENT",
+    "RECEIPT",
+    "VISIBLE_GATE_READBACK"
+  ],
+  "acceptance_checks": [
+    "missing_intent_capsule_blocks_execution",
+    "path_outside_scope_returns_breach_denied",
+    "allowed_write_is_captured_as_proposed_mutation",
+    "forbidden_write_does_not_touch_source",
+    "watcher_records_evidence_but_does_not_authorize",
+    "receipt_joins_intent_lane_manifest_actor",
+    "visible_gate_panel_shows_next_human_action"
+  ]
+}

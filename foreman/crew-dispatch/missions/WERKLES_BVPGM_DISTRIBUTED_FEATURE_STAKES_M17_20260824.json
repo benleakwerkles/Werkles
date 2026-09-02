@@ -1,0 +1,59 @@
+{
+  "missionId": "WERKLES_BVPGM_DISTRIBUTED_FEATURE_STAKES_M17",
+  "version": "v0.1",
+  "issuedBy": "Heimerdinker@Betsy, Werkles Foreman",
+  "slice": "Five distinct Werkles feature stakes, followed by exact-artifact cross-review before integration.",
+  "sharedContext": [
+    "Production remains at 93b79d1; no push or deploy is authorized.",
+    "A packet is not participation; return one terminal feature artifact in your assigned lane.",
+    "Do not merely review Heimerdinker's work. Produce a bounded member-facing feature stake that another cousin can red-team.",
+    "Every artifact must name its surface, behavior, natural copy, state boundary, and executable acceptance checks.",
+    "Do not imply account durability, partner response, provider completion, production readiness, or release custody."
+  ],
+  "liveStrings": ["Match Deck", "Formation", "Personal Bellows", "Crucible", "Workshop", "Werkle"],
+  "knownGaps": [
+    "Matches can still feel repetitive or overly same-lane.",
+    "Formation needs stronger perspective-taking without pretending to know another person's private answer.",
+    "Bellows needs durable repeat value beyond one lesson pass.",
+    "Provider readiness must be useful without becoming an internal dashboard.",
+    "Member navigation must preserve a coherent Workshop-to-Werkle next-decision path."
+  ],
+  "cousins": {
+    "PETRA": {
+      "vision": "Produce the integration and gate matrix that all five feature stakes must satisfy.",
+      "pull": "Define compatible state/custody boundaries and the evidence required before integration.",
+      "go": ["Return a compact five-row acceptance matrix with cross-feature conflicts and hard stops.", "Return PETRA_M17_STAKE, PATCH, or STOP."],
+      "momentum": "Name the exact order in which returned stakes should enter cross-review, then stop.",
+      "outOfLane": "No code, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    },
+    "ENDER": {
+      "vision": "Produce a Formation perspective feature that helps two people understand mismatched expectations without fabricating the other person's view.",
+      "pull": "Use the existing self/other practice mode, partner expectations, ownership, time, resources, and decision rows.",
+      "go": ["Return exact member behavior and natural copy for one bounded perspective/empathy feature.", "Include state boundary and executable acceptance checks; return ENDER_M17_STAKE, PATCH, or STOP."],
+      "momentum": "Name the exact artifact Bean should attack next, then stop.",
+      "outOfLane": "No code, invented partner data, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or release approval."
+    },
+    "BEAN": {
+      "vision": "Produce a Match Deck feature that improves lane/geography/conversation diversity while resisting ranking manipulation and stale state.",
+      "pull": "Attack cloned matches, identical prompts, proximity overreach, last-click dogma, and unverifiable ranking claims.",
+      "go": ["Return one bounded diversity/ranking feature with invariants and hostile regression cases.", "Include exact member-visible explanation; return BEAN_M17_STAKE, PATCH, or STOP."],
+      "momentum": "Name the exact artifact Computer should research-check next, then stop.",
+      "outOfLane": "No code, legal conclusion, surveillance, private-data expansion, credentials, schema/RLS, provider action, spend, push, deploy, or subagent."
+    },
+    "SKYBRO": {
+      "vision": "Produce a Personal Bellows feature that creates honest repeat value and a classy free-to-paid loop.",
+      "pull": "Turn saved work and observed results into a reason to return without paywall frustration or shallow advice.",
+      "go": ["Return one bounded repeat-use feature with natural copy, free value, paid extension, and acceptance checks.", "Return SKYBRO_M17_STAKE, PATCH, or STOP."],
+      "momentum": "Name the exact artifact Ender should human-walk next, then stop.",
+      "outOfLane": "No code, pricing change, purchase flow, credentials, schema/RLS, provider action, spend, push, deploy, subagent, or canon-by-flattery."
+    },
+    "COMPUTER": {
+      "vision": "Produce a member-facing Crucible provider-readiness feature that helps the member prepare without exposing internal integration trivia.",
+      "pull": "Cover Plaid, Stripe Identity, and Twilio boundaries using accurate, minimal-data language.",
+      "go": ["Return one bounded readiness feature with exact copy, provider-neutral structure, and executable acceptance checks.", "Return COMPUTER_M17_STAKE, PATCH, or STOP."],
+      "momentum": "Name the exact artifact Skybro should value-check next, then stop.",
+      "outOfLane": "No code, legal conclusion, live provider action, credentials, schema/RLS, production claim, spend, push, deploy, or subagent."
+    }
+  }
+}
+

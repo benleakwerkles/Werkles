@@ -1,6 +1,6 @@
 {
   "schema": "werkles_internal_external_route_boundary_v1",
-  "created_at": "2026-07-15T00:35:45.241Z",
+  "created_at": "2026-09-02T02:57:29.620Z",
   "policy": "deny internal page and API families outside local development except explicit Vercel Preview automation-bypass access with WERKLES_INTERNAL_PREVIEW_ACCESS=enabled; no cookie or query bypass",
   "pass": true,
   "results": [
@@ -234,6 +234,15 @@
     {
       "name": "speaker api production",
       "pathname": "/api/speaker/inheritance",
+      "hostname": "werkles.com",
+      "nodeEnv": "production",
+      "expectedDeny": true,
+      "actualDeny": true,
+      "pass": true
+    },
+    {
+      "name": "operator api production",
+      "pathname": "/api/operator/matching/document-score",
       "hostname": "werkles.com",
       "nodeEnv": "production",
       "expectedDeny": true,

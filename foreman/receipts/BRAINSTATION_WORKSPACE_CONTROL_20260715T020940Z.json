@@ -1,0 +1,28 @@
+{
+    "schema":  "brainstation_workspace_control_receipt_v1",
+    "controller":  "Heimerdinker@Betsy",
+    "action":  "Launch",
+    "timestamp":  "2026-07-15T02:09:40.433Z",
+    "scope":  "PowerToys Workspace status and launch only",
+    "results":  [
+                    {
+                        "machine":  "Betsy",
+                        "status":  "WORKSPACE_LAUNCH_COMPLETE",
+                        "launched":  true,
+                        "workspace_id":  "{27BB1F1B-BC9E-4DBE-9003-0DAB8576BC0B}",
+                        "workspace_name":  "Betsy Autopaste Workspace",
+                        "monitor_indexes":  [
+                                                1,
+                                                2
+                                            ],
+                        "detail":  "Workspace launch command completed."
+                    }
+                ],
+    "all_ready":  true,
+    "guardrails":  [
+                       "No general remote commands.",
+                       "No browser control or auto-send.",
+                       "Each machine may launch only a workspace already present in its local PowerToys configuration."
+                   ],
+    "receipt_path":  "foreman/receipts/BRAINSTATION_WORKSPACE_CONTROL_20260715T020940Z.json"
+}
