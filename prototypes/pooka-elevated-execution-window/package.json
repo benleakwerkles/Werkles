@@ -1,0 +1,18 @@
+{
+  "name": "pooka-elevated-execution-window",
+  "version": "0.1.0-prototype",
+  "private": true,
+  "description": "Isolated prototype: session-limited elevated local worker for PreApp. Synthetic ops only. No live activation.",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "typescript": "^5.8.3"
+  }
+}
