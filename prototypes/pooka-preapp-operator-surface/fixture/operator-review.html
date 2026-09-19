@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compiled PreApp Operator review</title>
+<style>/* Isolated PreApp Operator review surface.
+   Accessibility is a prove requirement: visible focus, keyboard order,
+   screen-reader names, and a stacked narrow layout. */
+
+:root {
+  color-scheme: light;
+  --fg: #111111;
+  --bg: #f4f1ea;
+  --card: #fffdf8;
+  --muted: #3d3d3d;
+  --line: #1f1f1f;
+  --focus: #0b57d0;
+  --internal: #1f4d3a;
+  --uac: #7a4a00;
+  --credentials: #7a1f2b;
+  --provider: #1f3a6b;
+  --unsupported: #4a1f5c;
+  --dormant: #5c5c5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", "Liberation Sans", sans-serif;
+  line-height: 1.45;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  transform: translateY(-200%);
+  background: var(--card);
+  color: var(--fg);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--line);
+  z-index: 10;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: min(72rem, 100%);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.banner {
+  border: 2px solid var(--line);
+  background: var(--card);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.banner p {
+  margin: 0.35rem 0 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-size: 1.55rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+.hash-strip,
+.trusted-fields,
+.selected-actions,
+.channel-lanes,
+.dormant-controls {
+  border: 2px solid var(--line);
+  background: var(--card);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hash,
+.field-value,
+.action-id {
+  font-family: ui-monospace, "Cascadia Code", "Liberation Mono", monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+dl.trusted-list {
+  display: grid;
+  grid-template-columns: minmax(10rem, 16rem) 1fr;
+  gap: 0.65rem 1rem;
+  margin: 0;
+}
+
+dl.trusted-list dt {
+  font-weight: 700;
+}
+
+dl.trusted-list dd {
+  margin: 0;
+}
+
+.selected-actions ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.action-card {
+  border: 2px solid var(--line);
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.action-card[data-channel="internal_approval"] {
+  border-left: 8px solid var(--internal);
+}
+
+.action-card[data-channel="uac"] {
+  border-left: 8px solid var(--uac);
+}
+
+.action-card[data-channel="credentials"] {
+  border-left: 8px solid var(--credentials);
+}
+
+.action-card[data-channel="provider_sign_in"] {
+  border-left: 8px solid var(--provider);
+}
+
+.action-card[data-channel="unsupported"] {
+  border-left: 8px solid var(--unsupported);
+}
+
+.channel-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  padding: 0.15rem 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.channel-lanes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.channel-lanes.channel-lanes-wrap {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.lanes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.lane {
+  border: 2px solid var(--line);
+  background: var(--card);
+  padding: 0.75rem;
+  min-height: 8rem;
+}
+
+.lane h3 {
+  font-size: 1rem;
+}
+
+.lane[data-channel="internal_approval"] {
+  border-top: 8px solid var(--internal);
+}
+
+.lane[data-channel="uac"] {
+  border-top: 8px solid var(--uac);
+}
+
+.lane[data-channel="credentials"] {
+  border-top: 8px solid var(--credentials);
+}
+
+.lane[data-channel="provider_sign_in"] {
+  border-top: 8px solid var(--provider);
+}
+
+.lane[data-channel="unsupported"] {
+  border-top: 8px solid var(--unsupported);
+}
+
+.dormant-controls button {
+  font: inherit;
+  padding: 0.65rem 0.9rem;
+  border: 2px solid var(--dormant);
+  background: #ececec;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Selected actions must never be display:none / visibility:hidden / off-screen. */
+[data-selected-requirement-id] {
+  display: block;
+  visibility: visible;
+  position: static;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0.65rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  dl.trusted-list {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  dl.trusted-list dt {
+    margin-top: 0.45rem;
+  }
+
+  .lanes-grid,
+  .channel-lanes {
+    grid-template-columns: 1fr;
+  }
+
+  .hash-strip,
+  .trusted-fields,
+  .selected-actions,
+  .dormant-controls,
+  .lane,
+  .action-card {
+    padding: 0.75rem;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#selected-actions">Skip to selected requirements</a>
+<div class="wrap">
+<header class="banner">
+  <p><strong>Read-only Operator surface.</strong> Rendering this checklist does not authorize or execute it.</p>
+  <p>Approval remains dormant or synthetic. Live signing-key custody is not created. UAC, credentials, and provider sign-in are separated and not exercised here.</p>
+</header>
+<main id="operator-review" role="main" aria-labelledby="review-title" data-review-sha256="8f54b045b68a5aee3d5060261dc64d80808b92fa16755a858466834e2dbcd58d" data-catalog-sha256="83447a74f50122f067cac35c5bac5f0cfd3619b85feb8bd60771aed772c0a9b8">
+  <h1 id="review-title" data-trusted-field="title">Compiled PreApp Operator review</h1>
+
+  <section class="hash-strip" aria-labelledby="binding-heading">
+    <h2 id="binding-heading">Hash binding</h2>
+    <p><strong>review_sha256:</strong> <span class="hash" data-binding="review_sha256">8f54b045b68a5aee3d5060261dc64d80808b92fa16755a858466834e2dbcd58d</span></p>
+    <p><strong>catalog_sha256:</strong> <span class="hash" data-binding="catalog_sha256">83447a74f50122f067cac35c5bac5f0cfd3619b85feb8bd60771aed772c0a9b8</span></p>
+    <p>Displayed bytes and any decision payload must bind to these same hashes.</p>
+  </section>
+
+  <section class="trusted-fields" aria-labelledby="trusted-fields-heading">
+    <h2 id="trusted-fields-heading">Trusted compiled fields</h2>
+    <dl class="trusted-list">
+      <dt id="field-title-label">title</dt>
+<dd id="field-title" data-trusted-field="title" aria-labelledby="field-title-label" class="field-value">Compiled PreApp Operator review</dd>
+<dt id="field-consequence-label">consequence</dt>
+<dd id="field-consequence" data-trusted-field="consequence" aria-labelledby="field-consequence-label" class="field-value">This surface displays one compiled PreApp review for Operator inspection. Rendering the checklist does not authorize or execute it.</dd>
+<dt id="field-reversibility-label">reversibility</dt>
+<dd id="field-reversibility" data-trusted-field="reversibility" aria-labelledby="field-reversibility-label" class="field-value">review_only</dd>
+<dt id="field-administrator_requirement-label">administrator requirement</dt>
+<dd id="field-administrator_requirement" data-trusted-field="administrator_requirement" aria-labelledby="field-administrator_requirement-label" class="field-value">not_required_for_read_only_review</dd>
+<dt id="field-channel-label">channel</dt>
+<dd id="field-channel" data-trusted-field="channel" aria-labelledby="field-channel-label" class="field-value">internal_approval</dd>
+<dt id="field-resource_digest-label">resource digest</dt>
+<dd id="field-resource_digest" data-trusted-field="resource_digest" aria-labelledby="field-resource_digest-label" class="field-value">b2b27f4985cc0b395baeb4073e3c2a4b18d81747d4b2a83718a7951798d669ab</dd>
+<dt id="field-expiration-label">expiration</dt>
+<dd id="field-expiration" data-trusted-field="expiration" aria-labelledby="field-expiration-label" class="field-value">2026-12-31T23:59:59.000Z</dd>
+<dt id="field-machine-label">machine</dt>
+<dd id="field-machine" data-trusted-field="machine" aria-labelledby="field-machine-label" class="field-value">doss</dd>
+<dt id="field-receiver-label">receiver</dt>
+<dd id="field-receiver" data-trusted-field="receiver" aria-labelledby="field-receiver-label" class="field-value">preapp.native</dd>
+<dt id="field-selected_requirement_identifiers-label">selected requirement identifiers</dt>
+<dd id="field-selected_requirement_identifiers" data-trusted-field="selected_requirement_identifiers" aria-labelledby="field-selected_requirement_identifiers-label" class="field-value">preapp.internal.compiled_review_ack, preapp.uac.supported_windows_elevation, preapp.credentials.private_entry_forbidden, preapp.provider.sign_in_not_exercised, preapp.unsupported.live_signing_key_custody</dd>
+    </dl>
+  </section>
+
+  <section class="selected-actions" id="selected-actions" aria-labelledby="selected-heading">
+    <h2 id="selected-heading">Selected requirement identifiers</h2>
+    <p>Every selected identifier is visible. None may be hidden, off-screen, or display:none.</p>
+    <ol>
+      <li>
+<article
+  class="action-card"
+  tabindex="0"
+  data-selected-requirement-id="preapp.internal.compiled_review_ack"
+  data-channel="internal_approval"
+  aria-labelledby="selected-action-0-title"
+>
+  <div class="channel-pill" aria-label="Channel: Internal approval">Internal approval</div>
+  <h3 id="selected-action-0-title">Internal PreApp review acknowledgement</h3>
+  <p class="action-id"><span class="visually-hidden">Requirement identifier: </span>preapp.internal.compiled_review_ack</p>
+  <p><strong>Consequence:</strong> Records that the Operator inspected this compiled review. Does not execute actions or create signing-key custody.</p>
+  <p><strong>Reversibility:</strong> reversible_until_live_approval_which_this_surface_cannot_grant</p>
+  <p><strong>Administrator requirement:</strong> not_required</p>
+  <p><strong>Resource digest:</strong> <span class="hash">b46b8125d49fdd0a3204c75d758ff71a461dedf9521ec4710d9ed704385c2f6b</span></p>
+  <p><strong>Approval class:</strong> dormant_or_synthetic</p>
+</article>
+</li>
+<li>
+<article
+  class="action-card"
+  tabindex="0"
+  data-selected-requirement-id="preapp.uac.supported_windows_elevation"
+  data-channel="uac"
+  aria-labelledby="selected-action-1-title"
+>
+  <div class="channel-pill" aria-label="Channel: UAC">UAC</div>
+  <h3 id="selected-action-1-title">Supported Windows UAC elevation (Operator-owned)</h3>
+  <p class="action-id"><span class="visually-hidden">Requirement identifier: </span>preapp.uac.supported_windows_elevation</p>
+  <p><strong>Consequence:</strong> Any later elevated worker must be opened by the Operator through supported Windows UAC. This surface cannot raise elevation, type a password, or bypass UAC.</p>
+  <p><strong>Reversibility:</strong> no_effect_from_this_surface</p>
+  <p><strong>Administrator requirement:</strong> operator_uac_required_outside_this_surface</p>
+  <p><strong>Resource digest:</strong> <span class="hash">07f3b2246ea2547da5e23809cb5341ec392a3c2ca10e52664b92d45759f54d01</span></p>
+  <p><strong>Approval class:</strong> not_this_surface</p>
+</article>
+</li>
+<li>
+<article
+  class="action-card"
+  tabindex="0"
+  data-selected-requirement-id="preapp.credentials.private_entry_forbidden"
+  data-channel="credentials"
+  aria-labelledby="selected-action-2-title"
+>
+  <div class="channel-pill" aria-label="Channel: Credentials">Credentials</div>
+  <h3 id="selected-action-2-title">Credentials remain outside this surface</h3>
+  <p class="action-id"><span class="visually-hidden">Requirement identifier: </span>preapp.credentials.private_entry_forbidden</p>
+  <p><strong>Consequence:</strong> Passwords, OTPs, and secret values are not collected, displayed, or stored here.</p>
+  <p><strong>Reversibility:</strong> no_credential_material_present</p>
+  <p><strong>Administrator requirement:</strong> ben_only_private_entry_if_ever_required</p>
+  <p><strong>Resource digest:</strong> <span class="hash">38f1ca90f1c6178789417c8946e2188dd8c6c5689f9c16a9c52fab69ca86cbe2</span></p>
+  <p><strong>Approval class:</strong> blocked</p>
+</article>
+</li>
+<li>
+<article
+  class="action-card"
+  tabindex="0"
+  data-selected-requirement-id="preapp.provider.sign_in_not_exercised"
+  data-channel="provider_sign_in"
+  aria-labelledby="selected-action-3-title"
+>
+  <div class="channel-pill" aria-label="Channel: Provider sign-in">Provider sign-in</div>
+  <h3 id="selected-action-3-title">Provider sign-in is not exercised</h3>
+  <p class="action-id"><span class="visually-hidden">Requirement identifier: </span>preapp.provider.sign_in_not_exercised</p>
+  <p><strong>Consequence:</strong> OAuth, account login, and provider dashboards are not opened or completed by this review surface.</p>
+  <p><strong>Reversibility:</strong> no_provider_session</p>
+  <p><strong>Administrator requirement:</strong> not_applicable_on_this_surface</p>
+  <p><strong>Resource digest:</strong> <span class="hash">95e6e54e84cd44f43c1480db4ffc167581c0989b82a8f791d3764839a7ce3d84</span></p>
+  <p><strong>Approval class:</strong> blocked</p>
+</article>
+</li>
+<li>
+<article
+  class="action-card"
+  tabindex="0"
+  data-selected-requirement-id="preapp.unsupported.live_signing_key_custody"
+  data-channel="unsupported"
+  aria-labelledby="selected-action-4-title"
+>
+  <div class="channel-pill" aria-label="Channel: Unsupported">Unsupported</div>
+  <h3 id="selected-action-4-title">Live signing-key custody is unsupported</h3>
+  <p class="action-id"><span class="visually-hidden">Requirement identifier: </span>preapp.unsupported.live_signing_key_custody</p>
+  <p><strong>Consequence:</strong> This review cannot create, import, or use a live signing key.</p>
+  <p><strong>Reversibility:</strong> unsupported_no_effect</p>
+  <p><strong>Administrator requirement:</strong> unsupported</p>
+  <p><strong>Resource digest:</strong> <span class="hash">9eb3b1b169875058a99c4514d37b452546bc2b98cb136aef945089fbd6e117cf</span></p>
+  <p><strong>Approval class:</strong> unsupported</p>
+</article>
+</li>
+    </ol>
+  </section>
+
+  <section class="channel-lanes-wrap" aria-labelledby="lanes-heading">
+    <h2 id="lanes-heading">Separated action classes</h2>
+    <div class="lanes-grid">
+      <section class="lane" data-channel="internal_approval" aria-labelledby="lane-internal_approval-title">
+  <h3 id="lane-internal_approval-title">Internal approval</h3>
+  <p>Dormant or synthetic acknowledgement only. This lane is not UAC, credentials, or provider sign-in.</p>
+  <p><strong>Routing:</strong> dormant_synthetic_ack_only</p>
+  <ul><li data-lane-requirement-id="preapp.internal.compiled_review_ack">preapp.internal.compiled_review_ack</li></ul>
+</section>
+<section class="lane" data-channel="uac" aria-labelledby="lane-uac-title">
+  <h3 id="lane-uac-title">UAC</h3>
+  <p>Operator-owned supported Windows elevation. This surface cannot raise UAC or type an administrator password.</p>
+  <p><strong>Routing:</strong> operator_owned_supported_windows_elevation</p>
+  <ul><li data-lane-requirement-id="preapp.uac.supported_windows_elevation">preapp.uac.supported_windows_elevation</li></ul>
+</section>
+<section class="lane" data-channel="credentials" aria-labelledby="lane-credentials-title">
+  <h3 id="lane-credentials-title">Credentials</h3>
+  <p>Passwords, OTPs, and secrets stay outside this surface. No credential fields are offered.</p>
+  <p><strong>Routing:</strong> blocked_no_secret_entry</p>
+  <ul><li data-lane-requirement-id="preapp.credentials.private_entry_forbidden">preapp.credentials.private_entry_forbidden</li></ul>
+</section>
+<section class="lane" data-channel="provider_sign_in" aria-labelledby="lane-provider_sign_in-title">
+  <h3 id="lane-provider_sign_in-title">Provider sign-in</h3>
+  <p>Provider login and OAuth are not exercised here.</p>
+  <p><strong>Routing:</strong> blocked_not_exercised</p>
+  <ul><li data-lane-requirement-id="preapp.provider.sign_in_not_exercised">preapp.provider.sign_in_not_exercised</li></ul>
+</section>
+<section class="lane" data-channel="unsupported" aria-labelledby="lane-unsupported-title">
+  <h3 id="lane-unsupported-title">Unsupported</h3>
+  <p>Unsupported actions cannot be approved or executed from this review.</p>
+  <p><strong>Routing:</strong> blocked_unsupported</p>
+  <ul><li data-lane-requirement-id="preapp.unsupported.live_signing_key_custody">preapp.unsupported.live_signing_key_custody</li></ul>
+</section>
+    </div>
+  </section>
+
+  <section class="dormant-controls" aria-labelledby="dormant-heading">
+    <h2 id="dormant-heading">Approval control (dormant)</h2>
+    <p id="ack-dormant-help">This control is synthetic and dormant. It cannot sign, elevate, collect credentials, or talk to a provider.</p>
+    <button
+      type="button"
+      id="preapp-synthetic-ack"
+      aria-disabled="true"
+      aria-describedby="ack-dormant-help"
+    >Synthetic ack (dormant)</button>
+  </section>
+</main>
+</div>
+<script type="application/json" id="preapp-trusted-display-bytes">{"administrator_requirement":"not_required_for_read_only_review","channel":"internal_approval","consequence":"This surface displays one compiled PreApp review for Operator inspection. Rendering the checklist does not authorize or execute it.","expiration":"2026-12-31T23:59:59.000Z","machine":"doss","receiver":"preapp.native","resource_digest":"b2b27f4985cc0b395baeb4073e3c2a4b18d81747d4b2a83718a7951798d669ab","reversibility":"review_only","selected_requirement_identifiers":["preapp.internal.compiled_review_ack","preapp.uac.supported_windows_elevation","preapp.credentials.private_entry_forbidden","preapp.provider.sign_in_not_exercised","preapp.unsupported.live_signing_key_custody"],"title":"Compiled PreApp Operator review"}</script>
+<script>
+(function () {
+  var button = document.getElementById("preapp-synthetic-ack");
+  if (button) {
+    function refuse(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      button.setAttribute("data-activation-refused", "true");
+    }
+    button.addEventListener("click", refuse);
+    button.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") refuse(event);
+    });
+  }
+  var params = new URLSearchParams(location.search);
+  var focusTarget = params.get("focus");
+  if (focusTarget === "selected") {
+    var first = document.querySelector("[data-selected-requirement-id]");
+    if (first) first.focus();
+  } else if (focusTarget === "ack" && button) {
+    button.focus();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+/* Isolated PreApp Operator review surface.
+   Accessibility is a prove requirement: visible focus, keyboard order,
+   screen-reader names, and a stacked narrow layout. */
+
+:root {
+  color-scheme: light;
+  --fg: #111111;
+  --bg: #f4f1ea;
+  --card: #fffdf8;
+  --muted: #3d3d3d;
+  --line: #1f1f1f;
+  --focus: #0b57d0;
+  --internal: #1f4d3a;
+  --uac: #7a4a00;
+  --credentials: #7a1f2b;
+  --provider: #1f3a6b;
+  --unsupported: #4a1f5c;
+  --dormant: #5c5c5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", "Liberation Sans", sans-serif;
+  line-height: 1.45;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  transform: translateY(-200%);
+  background: var(--card);
+  color: var(--fg);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--line);
+  z-index: 10;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: min(72rem, 100%);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.banner {
+  border: 2px solid var(--line);
+  background: var(--card);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.banner p {
+  margin: 0.35rem 0 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-size: 1.55rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+.hash-strip,
+.trusted-fields,
+.selected-actions,
+.channel-lanes,
+.dormant-controls {
+  border: 2px solid var(--line);
+  background: var(--card);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hash,
+.field-value,
+.action-id {
+  font-family: ui-monospace, "Cascadia Code", "Liberation Mono", monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+dl.trusted-list {
+  display: grid;
+  grid-template-columns: minmax(10rem, 16rem) 1fr;
+  gap: 0.65rem 1rem;
+  margin: 0;
+}
+
+dl.trusted-list dt {
+  font-weight: 700;
+}
+
+dl.trusted-list dd {
+  margin: 0;
+}
+
+.selected-actions ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.action-card {
+  border: 2px solid var(--line);
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.action-card[data-channel="internal_approval"] {
+  border-left: 8px solid var(--internal);
+}
+
+.action-card[data-channel="uac"] {
+  border-left: 8px solid var(--uac);
+}
+
+.action-card[data-channel="credentials"] {
+  border-left: 8px solid var(--credentials);
+}
+
+.action-card[data-channel="provider_sign_in"] {
+  border-left: 8px solid var(--provider);
+}
+
+.action-card[data-channel="unsupported"] {
+  border-left: 8px solid var(--unsupported);
+}
+
+.channel-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  padding: 0.15rem 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.channel-lanes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.channel-lanes.channel-lanes-wrap {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.lanes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.lane {
+  border: 2px solid var(--line);
+  background: var(--card);
+  padding: 0.75rem;
+  min-height: 8rem;
+}
+
+.lane h3 {
+  font-size: 1rem;
+}
+
+.lane[data-channel="internal_approval"] {
+  border-top: 8px solid var(--internal);
+}
+
+.lane[data-channel="uac"] {
+  border-top: 8px solid var(--uac);
+}
+
+.lane[data-channel="credentials"] {
+  border-top: 8px solid var(--credentials);
+}
+
+.lane[data-channel="provider_sign_in"] {
+  border-top: 8px solid var(--provider);
+}
+
+.lane[data-channel="unsupported"] {
+  border-top: 8px solid var(--unsupported);
+}
+
+.dormant-controls button {
+  font: inherit;
+  padding: 0.65rem 0.9rem;
+  border: 2px solid var(--dormant);
+  background: #ececec;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Selected actions must never be display:none / visibility:hidden / off-screen. */
+[data-selected-requirement-id] {
+  display: block;
+  visibility: visible;
+  position: static;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0.65rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  dl.trusted-list {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  dl.trusted-list dt {
+    margin-top: 0.45rem;
+  }
+
+  .lanes-grid,
+  .channel-lanes {
+    grid-template-columns: 1fr;
+  }
+
+  .hash-strip,
+  .trusted-fields,
+  .selected-actions,
+  .dormant-controls,
+  .lane,
+  .action-card {
+    padding: 0.75rem;
+  }
+}
