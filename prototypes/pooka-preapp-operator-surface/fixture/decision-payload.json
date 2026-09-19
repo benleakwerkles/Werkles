@@ -1,0 +1,20 @@
+{
+  "schema": "pooka.preapp.decision_payload.v1",
+  "catalog_sha256": "83447a74f50122f067cac35c5bac5f0cfd3619b85feb8bd60771aed772c0a9b8",
+  "review_sha256": "8f54b045b68a5aee3d5060261dc64d80808b92fa16755a858466834e2dbcd58d",
+  "display_sha256": "8f54b045b68a5aee3d5060261dc64d80808b92fa16755a858466834e2dbcd58d",
+  "selected_requirement_identifiers": [
+    "preapp.internal.compiled_review_ack",
+    "preapp.uac.supported_windows_elevation",
+    "preapp.credentials.private_entry_forbidden",
+    "preapp.provider.sign_in_not_exercised",
+    "preapp.unsupported.live_signing_key_custody"
+  ],
+  "intent": "synthetic_ack",
+  "dormant": true,
+  "live_signing_key_custody": false,
+  "executes_selected_actions": false,
+  "uac_performed": false,
+  "credentials_collected": false,
+  "provider_sign_in_performed": false
+}
