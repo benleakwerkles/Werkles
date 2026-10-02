@@ -48,9 +48,11 @@
     "relay:command-dash:triage": "node scripts/foreman/command-dash-inbox-triage.mjs",
     "relay:command-dash:status": "node scripts/foreman/command-dash-relay-status.mjs",
     "nerdkle:doctor": "node scripts/foreman/nerdkle-doctor.mjs",
-    "nerdkle:packet": "node scripts/foreman/nerdkle-execution-packet.mjs"
+    "nerdkle:packet": "node scripts/foreman/nerdkle-execution-packet.mjs",
+    "swateyes:counter": "node scripts/foreman/harvey-swateyes-counter.mjs --write"
   },
   "dependencies": {
+    "@1password/sdk": "0.5.0",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
     "next": "^15.3.2",

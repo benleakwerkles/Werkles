@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "PookaKind Stewart Generalized Credential Bridge",
+  "version": "0.2.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxLsssvBm8S6tuoXOgl6NeNlB4epffOzsYC7LvJrm6ZAvfbs1a54JpOrP2B80HhITs5zRrdaB5Ing+qCnATRFGQ1dbCY/wb3Iw26DQsiuHMTpoZ0uSHSyDsB3Z9db8XAVYDO2+uG+zD6py1G6bGFwBAmeDLMxKNPlLVcg4Ed/kJrpbN+oLbU2rDbfDYoIMUMxhjDkvtLE89WxMhIGPiY7iHgJTPI/5nUZu6PGTUkkScisMm6x3eg4weOiwKsjsazy06Y8ethcGyzai1AxUCkzSPsdmYCuMjfY/bpoyUgTxpc+VENQwI0y1T+ZipOu4Evn2wrXWWd4BwPThNJ/a1RMjQIDAQAB",
+  "description": "Inactive exact one-operation background credential bridge.",
+  "permissions": ["nativeMessaging"],
+  "host_permissions": ["https://*/*"],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["content-runtime.js", "content-script.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

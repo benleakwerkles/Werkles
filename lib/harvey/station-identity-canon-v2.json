@@ -1,0 +1,81 @@
+{
+  "schema": "werkles.harvey-station-identity-canon/v2",
+  "revision": "2026-09-05.1",
+  "canonical_station_count": 6,
+  "roles_per_station": 7,
+  "canonical_seat_count": 42,
+  "stations": [
+    {
+      "station_id": "doss",
+      "canonical_machine": "Doss",
+      "expected_physical_hostnames": ["DOSS"],
+      "dink_address": "Dink@Doss",
+      "dink_nickname": "Swanson",
+      "lifecycle": "ENROLLMENT_ELIGIBLE"
+    },
+    {
+      "station_id": "betsy",
+      "canonical_machine": "Betsy",
+      "expected_physical_hostnames": ["BETSY"],
+      "dink_address": "Dink@Betsy",
+      "dink_nickname": "Heimerdinker",
+      "lifecycle": "ENROLLMENT_ELIGIBLE"
+    },
+    {
+      "station_id": "spanzee",
+      "canonical_machine": "Spanzee",
+      "expected_physical_hostnames": ["SPANZEE"],
+      "dink_address": "Dink@Spanzee",
+      "dink_nickname": "Direwolf Dink",
+      "lifecycle": "ENROLLMENT_ELIGIBLE"
+    },
+    {
+      "station_id": "medullina",
+      "canonical_machine": "Medullina",
+      "expected_physical_hostnames": ["COURTNEY"],
+      "dink_address": "Dink@Medullina",
+      "dink_nickname": null,
+      "lifecycle": "ENROLLMENT_ELIGIBLE"
+    },
+    {
+      "station_id": "mustang-sally",
+      "canonical_machine": "Mustang Sally",
+      "expected_physical_hostnames": ["MUSTANGSALLY"],
+      "dink_address": "Dink@MustangSally",
+      "dink_nickname": null,
+      "lifecycle": "ENROLLMENT_ELIGIBLE"
+    },
+    {
+      "station_id": "granny-sally",
+      "canonical_machine": "Granny Sally",
+      "expected_physical_hostnames": [],
+      "dink_address": "Dink@GrannySally",
+      "dink_nickname": null,
+      "lifecycle": "AWAITING_PHYSICAL_HOSTNAME_EVIDENCE"
+    }
+  ],
+  "retired_stations": [
+    {
+      "station_id": "sally",
+      "canonical_machine": "Mustang Sally",
+      "expected_physical_hostnames": ["SALLY"],
+      "dink_address": "Dink@MustangSally",
+      "dink_nickname": "MacrostheBlack",
+      "lifecycle": "RETIRED_HISTORICAL_COMPATIBILITY_ONLY"
+    }
+  ],
+  "machine_aliases": {
+    "doss": "doss",
+    "betsy": "betsy",
+    "spanzee": "spanzee",
+    "medullina": "medullina",
+    "mustang sally": "mustang-sally",
+    "granny sally": "granny-sally"
+  },
+  "identity_law": {
+    "canonical_machine_and_hostname_are_separate": true,
+    "retired_sally_routes_transfer_to_new_stations": false,
+    "unknown_future_hostname_is_guessed": false,
+    "hardware_pending_station_is_enrollable": false
+  }
+}

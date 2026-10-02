@@ -1,0 +1,9 @@
+{
+  "name": "com.werkles.pookakind.stewart_generalized",
+  "description": "PookaKind Stewart one-operation generalized credential bridge",
+  "path": "__PINNED_NATIVE_HOST_EXECUTABLE__",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://dlkekkfjpgfghllndmdjffnfnpencdge/"
+  ]
+}
