@@ -1,0 +1,37 @@
+{
+  "schema": "pooka.preapp.native_handoff.v1",
+  "catalog_sha256": "83447a74f50122f067cac35c5bac5f0cfd3619b85feb8bd60771aed772c0a9b8",
+  "review_sha256": "8f54b045b68a5aee3d5060261dc64d80808b92fa16755a858466834e2dbcd58d",
+  "machine": "doss",
+  "receiver": "preapp.native",
+  "expiration": "2026-12-31T23:59:59.000Z",
+  "channel_routing": {
+    "internal_approval": "dormant_synthetic_ack_only",
+    "uac": "operator_owned_supported_windows_elevation",
+    "credentials": "blocked_no_secret_entry",
+    "provider_sign_in": "blocked_not_exercised",
+    "unsupported": "blocked_unsupported"
+  },
+  "channel_actions": {
+    "internal_approval": [
+      "preapp.internal.compiled_review_ack"
+    ],
+    "uac": [
+      "preapp.uac.supported_windows_elevation"
+    ],
+    "credentials": [
+      "preapp.credentials.private_entry_forbidden"
+    ],
+    "provider_sign_in": [
+      "preapp.provider.sign_in_not_exercised"
+    ],
+    "unsupported": [
+      "preapp.unsupported.live_signing_key_custody"
+    ]
+  },
+  "live_provider_action": false,
+  "live_signing_key_custody": false,
+  "uac_automated": false,
+  "credentials_accepted": false,
+  "note": "Native handoff binds machine and receiver to the compiled review hashes. It does not execute selected actions."
+}

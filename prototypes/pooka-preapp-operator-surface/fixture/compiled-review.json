@@ -1,0 +1,81 @@
+{
+  "schema": "pooka.preapp.compiled_review.v1",
+  "catalog_sha256": "83447a74f50122f067cac35c5bac5f0cfd3619b85feb8bd60771aed772c0a9b8",
+  "review_sha256": "8f54b045b68a5aee3d5060261dc64d80808b92fa16755a858466834e2dbcd58d",
+  "title": "Compiled PreApp Operator review",
+  "consequence": "This surface displays one compiled PreApp review for Operator inspection. Rendering the checklist does not authorize or execute it.",
+  "reversibility": "review_only",
+  "administrator_requirement": "not_required_for_read_only_review",
+  "channel": "internal_approval",
+  "resource_digest": "b2b27f4985cc0b395baeb4073e3c2a4b18d81747d4b2a83718a7951798d669ab",
+  "expiration": "2026-12-31T23:59:59.000Z",
+  "machine": "doss",
+  "receiver": "preapp.native",
+  "selected_requirement_identifiers": [
+    "preapp.internal.compiled_review_ack",
+    "preapp.uac.supported_windows_elevation",
+    "preapp.credentials.private_entry_forbidden",
+    "preapp.provider.sign_in_not_exercised",
+    "preapp.unsupported.live_signing_key_custody"
+  ],
+  "selected_actions": [
+    {
+      "id": "preapp.internal.compiled_review_ack",
+      "title": "Internal PreApp review acknowledgement",
+      "consequence": "Records that the Operator inspected this compiled review. Does not execute actions or create signing-key custody.",
+      "reversibility": "reversible_until_live_approval_which_this_surface_cannot_grant",
+      "administrator_requirement": "not_required",
+      "channel": "internal_approval",
+      "resource_digest": "b46b8125d49fdd0a3204c75d758ff71a461dedf9521ec4710d9ed704385c2f6b",
+      "executable": false,
+      "approval_class": "dormant_or_synthetic"
+    },
+    {
+      "id": "preapp.uac.supported_windows_elevation",
+      "title": "Supported Windows UAC elevation (Operator-owned)",
+      "consequence": "Any later elevated worker must be opened by the Operator through supported Windows UAC. This surface cannot raise elevation, type a password, or bypass UAC.",
+      "reversibility": "no_effect_from_this_surface",
+      "administrator_requirement": "operator_uac_required_outside_this_surface",
+      "channel": "uac",
+      "resource_digest": "07f3b2246ea2547da5e23809cb5341ec392a3c2ca10e52664b92d45759f54d01",
+      "executable": false,
+      "approval_class": "not_this_surface"
+    },
+    {
+      "id": "preapp.credentials.private_entry_forbidden",
+      "title": "Credentials remain outside this surface",
+      "consequence": "Passwords, OTPs, and secret values are not collected, displayed, or stored here.",
+      "reversibility": "no_credential_material_present",
+      "administrator_requirement": "ben_only_private_entry_if_ever_required",
+      "channel": "credentials",
+      "resource_digest": "38f1ca90f1c6178789417c8946e2188dd8c6c5689f9c16a9c52fab69ca86cbe2",
+      "executable": false,
+      "approval_class": "blocked"
+    },
+    {
+      "id": "preapp.provider.sign_in_not_exercised",
+      "title": "Provider sign-in is not exercised",
+      "consequence": "OAuth, account login, and provider dashboards are not opened or completed by this review surface.",
+      "reversibility": "no_provider_session",
+      "administrator_requirement": "not_applicable_on_this_surface",
+      "channel": "provider_sign_in",
+      "resource_digest": "95e6e54e84cd44f43c1480db4ffc167581c0989b82a8f791d3764839a7ce3d84",
+      "executable": false,
+      "approval_class": "blocked"
+    },
+    {
+      "id": "preapp.unsupported.live_signing_key_custody",
+      "title": "Live signing-key custody is unsupported",
+      "consequence": "This review cannot create, import, or use a live signing key.",
+      "reversibility": "unsupported_no_effect",
+      "administrator_requirement": "unsupported",
+      "channel": "unsupported",
+      "resource_digest": "9eb3b1b169875058a99c4514d37b452546bc2b98cb136aef945089fbd6e117cf",
+      "executable": false,
+      "approval_class": "unsupported"
+    }
+  ],
+  "live_signing_key_custody": false,
+  "approval_mode": "dormant_or_synthetic",
+  "rendering_authorizes_execution": false
+}

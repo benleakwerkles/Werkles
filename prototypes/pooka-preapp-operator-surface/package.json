@@ -1,0 +1,14 @@
+{
+  "name": "pooka-preapp-operator-surface",
+  "version": "0.1.0-prototype",
+  "private": true,
+  "description": "Isolated read-only Operator surface for one compiled PreApp review. Synthetic/dormant approval only. No live signing keys.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "render": "node scripts/render-fixture.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
