@@ -1,0 +1,15 @@
+{
+  "id": "skypooka_fire_smoketest1",
+  "action": "fire",
+  "card_id": "TO_TEST_SMOKE_CARD",
+  "subject": "SMOKE TEST CARD",
+  "target": "PETRA",
+  "path": "foreman/handoffs/outbox/TO_TEST_SMOKE_CARD.md",
+  "created_at": "2026-07-03T16:12:40.605Z",
+  "status": "done",
+  "source": "skypooka-mobile",
+  "acked_at": "2026-07-03T16:12:40.803Z",
+  "acked_by": "DINK_CLOUD_TEST",
+  "done_at": "2026-07-03T16:12:40.899Z",
+  "done_note": "lifecycle proof only"
+}

@@ -48,7 +48,10 @@
     "relay:command-dash:triage": "node scripts/foreman/command-dash-inbox-triage.mjs",
     "relay:command-dash:status": "node scripts/foreman/command-dash-relay-status.mjs",
     "nerdkle:doctor": "node scripts/foreman/nerdkle-doctor.mjs",
-    "nerdkle:packet": "node scripts/foreman/nerdkle-execution-packet.mjs"
+    "nerdkle:packet": "node scripts/foreman/nerdkle-execution-packet.mjs",
+    "skypooka:queue": "node scripts/foreman/skypooka-queue.mjs",
+    "skypooka:smoke": "node scripts/foreman/skypooka-mobile-smoke.mjs",
+    "skypooka:smoke:dev": "node scripts/foreman/skypooka-mobile-smoke.mjs --dev"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

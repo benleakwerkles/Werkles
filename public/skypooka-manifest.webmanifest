@@ -1,0 +1,19 @@
+{
+  "name": "SkyPooka",
+  "short_name": "SkyPooka",
+  "description": "Mobile Nerdkle · Mobile Werkles operator field view",
+  "start_url": "/skypooka",
+  "scope": "/skypooka",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#14110e",
+  "theme_color": "#14110e",
+  "icons": [
+    {
+      "src": "/assets/werkles-app-icon-board.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

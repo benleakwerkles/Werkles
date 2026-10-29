@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-07-03T16:32:28.995Z",
+  "base_url": "http://127.0.0.1:3311",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "mode": "start",
+  "pass": false,
+  "results": [
+    {
+      "route": "/skypooka",
+      "name": "field",
+      "url": "http://127.0.0.1:3311/skypooka",
+      "ok": true,
+      "error": null,
+      "screenshot": "foreman/skypooka/smoke/20260703-163021/field.png"
+    },
+    {
+      "route": "/skypooka/intent",
+      "name": "intent",
+      "url": "http://127.0.0.1:3311/skypooka/intent",
+      "ok": false,
+      "error": "SkyPooka header not visible",
+      "screenshot": "foreman/skypooka/smoke/20260703-163021/intent-FAIL.png"
+    },
+    {
+      "route": "/skypooka/gates",
+      "name": "gates",
+      "url": "http://127.0.0.1:3311/skypooka/gates",
+      "ok": false,
+      "error": "SkyPooka header not visible",
+      "screenshot": "foreman/skypooka/smoke/20260703-163021/gates-FAIL.png"
+    },
+    {
+      "route": "/skypooka/nerdkle",
+      "name": "nerdkle",
+      "url": "http://127.0.0.1:3311/skypooka/nerdkle",
+      "ok": false,
+      "error": "SkyPooka header not visible",
+      "screenshot": "foreman/skypooka/smoke/20260703-163021/nerdkle-FAIL.png"
+    }
+  ]
+}
