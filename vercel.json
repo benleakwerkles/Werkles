@@ -6,7 +6,7 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!security(?:/.*)?$).*)",
       "headers": [
         {
           "key": "X-Frame-Options",

@@ -6,7 +6,15 @@ import { copy } from "@/lib/copy";
 export const metadata: Metadata = {
   title: "Security at Werkles",
   description:
-    "Werkles security leadership, product-security scope, and authorization boundaries for PookaKind, CredBro, and future Werkles automation products."
+    "Werkles security leadership, product-security scope, and authorization boundaries for PookaKind, CredBro, and future Werkles automation products.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true
+    }
+  }
 };
 
 export default function SecurityPage() {
